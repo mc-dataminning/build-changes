@@ -1,121 +1,15 @@
-import javax.annotation.Nullable;
+public class gnv extends gmv<cjv> {
+   private static final akt b = new akt("textures/entity/skeleton/wither_skeleton.png");
 
-public class gnv {
-   private final akm a;
-   private final gnp b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-
-   protected gnv(akm $$0, gnp $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   public gnv(gkq.a $$0) {
+      super($$0, fyr.cd, fyr.ce, fyr.cf);
    }
 
-   public int a() {
-      return this.c;
+   public akt a(cjv $$0) {
+      return b;
    }
 
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public gnp e() {
-      return this.b;
-   }
-
-   @Nullable
-   public gnv.a f() {
-      final gnr $$0 = this.b.e();
-      return $$0 != null ? new gnv.a() {
-         @Override
-         public void a() {
-            $$0.a(gnv.this.c, gnv.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public akm i() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
-   }
-
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
-
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
-
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public eyw a(eyw $$0) {
-      return new gda($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
-
-      @Override
-      void close();
+   protected void a(cjv $$0, fbc $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

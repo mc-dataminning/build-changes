@@ -1,57 +1,17 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public record esd(akl<esl> b) implements esl {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akl.a(lf.aW).fieldOf("name").forGetter(esd::c)).apply($$0, esd::new));
+public class esd {
+   public static final Codec<esf> a = lh.F.q().dispatch(esf::a, esg::a);
+   public static final esg b = a("empty", esa.a);
+   public static final esg c = a("item", esc.a);
+   public static final esg d = a("loot_table", esi.a);
+   public static final esg e = a("dynamic", erz.a);
+   public static final esg f = a("tag", esk.a);
+   public static final esg g = a("alternatives", erw.a);
+   public static final esg h = a("sequence", esj.a);
+   public static final esg i = a("group", esb.a);
 
-   @Override
-   public esm b() {
-      return esn.r;
-   }
-
-   @Override
-   public void a(epl $$0) {
-      if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         esl.super.a($$0);
-         $$0.a()
-            .a(lf.aW, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
-   }
-
-   public boolean a(epf $$0) {
-      esl $$1 = $$0.a().a(lf.aW, this.b).map(ix.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         epf.c<?> $$2 = epf.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
-   }
-
-   public static esl.a a(akl<esl> $$0) {
-      return () -> new esd($$0);
-   }
-
-   public akl<esl> c() {
-      return this.b;
+   private static esg a(String $$0, Codec<? extends esf> $$1) {
+      return jn.a(lh.F, new akt($$0), new esg($$1));
    }
 }

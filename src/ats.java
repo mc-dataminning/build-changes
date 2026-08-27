@@ -1,18 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ats {
-   CompletableFuture<?> a();
-
-   float b();
-
-   default boolean c() {
-      return this.a().isDone();
-   }
-
-   default void d() {
-      CompletableFuture<?> $$0 = this.a();
-      if ($$0.isCompletedExceptionally()) {
-         $$0.join();
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface ats {
 }

@@ -1,46 +1,80 @@
 import java.util.List;
 
 public class sc {
-   public static final akl<egn> a = si.a("seagrass_warm");
-   public static final akl<egn> b = si.a("seagrass_normal");
-   public static final akl<egn> c = si.a("seagrass_cold");
-   public static final akl<egn> d = si.a("seagrass_river");
-   public static final akl<egn> e = si.a("seagrass_swamp");
-   public static final akl<egn> f = si.a("seagrass_deep_warm");
-   public static final akl<egn> g = si.a("seagrass_deep");
-   public static final akl<egn> h = si.a("seagrass_deep_cold");
-   public static final akl<egn> i = si.a("seagrass_simple");
-   public static final akl<egn> j = si.a("sea_pickle");
-   public static final akl<egn> k = si.a("kelp_cold");
-   public static final akl<egn> l = si.a("kelp_warm");
-   public static final akl<egn> m = si.a("warm_ocean_vegetation");
+   public static final aks<ebm<?, ?>> a = sa.a("delta");
+   public static final aks<ebm<?, ?>> b = sa.a("poison");
+   public static final aks<ebm<?, ?>> c = sa.a("small_basalt_columns");
+   public static final aks<ebm<?, ?>> d = sa.a("small_debris_columns");
+   public static final aks<ebm<?, ?>> e = sa.a("large_basalt_columns");
+   public static final aks<ebm<?, ?>> f = sa.a("large_potato_columns");
+   public static final aks<ebm<?, ?>> g = sa.a("basalt_blobs");
+   public static final aks<ebm<?, ?>> h = sa.a("blackstone_blobs");
+   public static final aks<ebm<?, ?>> i = sa.a("glowstone_extra");
+   public static final aks<ebm<?, ?>> j = sa.a("crimson_forest_vegetation");
+   public static final aks<ebm<?, ?>> k = sa.a("crimson_forest_vegetation_bonemeal");
+   public static final aks<ebm<?, ?>> l = sa.a("warped_forest_vegetation");
+   public static final aks<ebm<?, ?>> m = sa.a("warped_forest_vegetation_bonemeal");
+   public static final aks<ebm<?, ?>> n = sa.a("nether_sprouts");
+   public static final aks<ebm<?, ?>> o = sa.a("nether_sprouts_bonemeal");
+   public static final aks<ebm<?, ?>> p = sa.a("twisting_vines");
+   public static final aks<ebm<?, ?>> q = sa.a("corrputed_buds");
+   public static final aks<ebm<?, ?>> r = sa.a("potato_sprouts");
+   public static final aks<ebm<?, ?>> s = sa.a("twisting_vines_bonemeal");
+   public static final aks<ebm<?, ?>> t = sa.a("weeping_vines");
+   public static final aks<ebm<?, ?>> u = sa.a("patch_crimson_roots");
+   public static final aks<ebm<?, ?>> v = sa.a("basalt_pillar");
+   public static final aks<ebm<?, ?>> w = sa.a("spring_lava_nether");
+   public static final aks<ebm<?, ?>> x = sa.a("spring_nether_closed");
+   public static final aks<ebm<?, ?>> y = sa.a("spring_nether_open");
+   public static final aks<ebm<?, ?>> z = sa.a("patch_fire");
+   public static final aks<ebm<?, ?>> A = sa.a("patch_soul_fire");
 
-   private static List<egq> a(int $$0) {
-      return List.of(egk.a(), si.b, egg.a($$0), egb.a());
-   }
-
-   public static void a(qo<egn> $$0) {
-      iy<dzk<?, ?>> $$1 = $$0.a(lf.aC);
-      ix.c<dzk<?, ?>> $$2 = $$1.b(rq.a);
-      ix.c<dzk<?, ?>> $$3 = $$1.b(rq.b);
-      ix.c<dzk<?, ?>> $$4 = $$1.b(rq.c);
-      ix.c<dzk<?, ?>> $$5 = $$1.b(rq.d);
-      ix.c<dzk<?, ?>> $$6 = $$1.b(rq.f);
-      ix.c<dzk<?, ?>> $$7 = $$1.b(rq.e);
-      ix.c<dzk<?, ?>> $$8 = $$1.b(rq.g);
-      ix.c<dzk<?, ?>> $$9 = $$1.b(rq.h);
-      si.a($$0, a, $$2, a(80));
-      si.a($$0, b, $$2, a(48));
-      si.a($$0, c, $$2, a(32));
-      si.a($$0, d, $$3, a(48));
-      si.a($$0, e, $$4, a(64));
-      si.a($$0, f, $$5, a(80));
-      si.a($$0, g, $$5, a(48));
-      si.a($$0, h, $$5, a(40));
-      si.a($$0, i, $$6, egd.a(dwp.a.b), egt.a(10), egc.a(dya.a(dya.a(it.a.q(), dea.b), dya.a(io.c, dea.G), dya.a(it.b.q(), dea.G))), egb.a());
-      si.a($$0, j, $$7, egt.a(16), egk.a(), si.b, egb.a());
-      si.a($$0, k, $$8, egl.a(120, 80.0, 0.0), egk.a(), si.b, egb.a());
-      si.a($$0, l, $$8, egl.a(80, 80.0, 0.0), egk.a(), si.b, egb.a());
-      si.a($$0, m, $$9, egl.a(20, 400.0, 0.0), egk.a(), si.b, egb.a());
+   public static void a(qq<ebm<?, ?>> $$0) {
+      sa.a($$0, a, eca.ag, new eeg(dfe.am.n(), dfe.lH.n(), bpl.a(3, 7), bpl.a(0, 2)));
+      sa.a($$0, b, eca.ag, new eeg(dfe.iR.n().a(dju.d, Boolean.valueOf(true)), dfe.iP.n(), bpl.a(3, 7), bpl.a(0, 2)));
+      sa.a($$0, c, eca.af, new eee(dfe.eM.n(), bpc.a(1), bpl.a(1, 4)));
+      sa.a($$0, d, eca.af, new eee(dfe.qu.n(), bpc.a(1), bpl.a(1, 4)));
+      sa.a($$0, e, eca.af, new eee(dfe.eM.n(), bpl.a(2, 3), bpl.a(5, 10)));
+      sa.a($$0, f, eca.af, new eee(dfe.uT.get(csy.p).n(), bpl.a(0, 1), bpl.a(2, 15)));
+      sa.a($$0, g, eca.ah, new eez(dfe.eJ.n(), dfe.eM.n(), bpl.a(3, 7)));
+      sa.a($$0, h, eca.ah, new eez(dfe.eJ.n(), dfe.qC.n(), bpl.a(3, 7)));
+      sa.a($$0, i, eca.v);
+      egv $$1 = new egv(bok.<dtc>a().a(dfe.pD.n(), 87).a(dfe.px.n(), 11).a(dfe.po.n(), 1));
+      sa.a($$0, j, eca.Y, new eeq($$1, 8, 4));
+      sa.a($$0, k, eca.Y, new eeq($$1, 3, 1));
+      egv $$2 = new egv(bok.<dtc>a().a(dfe.pq.n(), 85).a(dfe.pD.n(), 1).a(dfe.po.n(), 13).a(dfe.px.n(), 1));
+      sa.a($$0, l, eca.Y, new eeq($$2, 8, 4));
+      sa.a($$0, m, eca.Y, new eeq($$2, 3, 1));
+      sa.a($$0, n, eca.Y, new eeq(egl.a(dfe.pr), 8, 4));
+      sa.a($$0, o, eca.Y, new eeq(egl.a(dfe.pr), 3, 1));
+      sa.a($$0, p, eca.aa, new efh(8, 4, 8));
+      sa.a($$0, q, eca.ab, new efh(8, 4, 12));
+      sa.a(
+         $$0,
+         r,
+         eca.Y,
+         new eeq(
+            new egv(
+               bok.<dtc>a()
+                  .a(dfe.tK.n(), 2)
+                  .a(dfe.ho.n(), 4)
+                  .a(dfe.ho.n().a(dgy.f, Integer.valueOf(4)), 5)
+                  .a(dfe.ho.n().a(dgy.f, Integer.valueOf(7)), 5)
+                  .a(dfe.cd.n(), 5)
+                  .a(dfe.jB.n(), 3)
+            ),
+            8,
+            4
+         )
+      );
+      sa.a($$0, s, eca.aa, new efh(3, 1, 2));
+      sa.a($$0, t, eca.Z);
+      sa.a($$0, u, eca.i, sa.a(eca.V, new efc(egl.a(dfe.pD))));
+      sa.a($$0, v, eca.ak);
+      sa.a($$0, w, eca.k, new eff(epf.e.g(), true, 4, 1, je.a(dfc::r, dfe.eJ, dfe.eK, dfe.ar, dfe.lH, dfe.qC)));
+      sa.a($$0, x, eca.k, new eff(epf.e.g(), false, 5, 0, je.a(dfc::r, dfe.eJ)));
+      sa.a($$0, y, eca.k, new eff(epf.e.g(), false, 4, 1, je.a(dfc::r, dfe.eJ)));
+      sa.a($$0, z, eca.i, sa.a(eca.V, new efc(egl.a(dfe.dc)), List.of(dfe.eJ)));
+      sa.a($$0, A, eca.i, sa.a(eca.V, new efc(egl.a(dfe.dd)), List.of(dfe.eL)));
    }
 }

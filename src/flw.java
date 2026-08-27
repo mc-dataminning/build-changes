@@ -1,48 +1,20 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 
-public class flw extends fly {
-   private static final wx a = wx.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier d;
+public class flw {
+   private static final int a = 4;
 
-   public flw(BooleanSupplier $$0) {
-      super(fdr.a);
-      this.d = $$0;
-      this.c = System.currentTimeMillis();
+   private flw() {
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   public static fmb a(fhy $$0, fmc $$1, xe $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, a, this.n / 2, this.o / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void e() {
-      if (this.d.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
-      }
-   }
-
-   @Override
-   public void d() {
-      this.m.aZ().c(wx.c("narrator.ready_to_play"));
-      super.d();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
+   public static fmb a(fhy $$0, fmc $$1, xe $$2, Consumer<fmd> $$3) {
+      fme $$4 = fme.d().a(4);
+      $$4.a(new fju($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

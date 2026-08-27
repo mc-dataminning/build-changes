@@ -1,29 +1,27 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public record fdt(int a, wx b, @Nullable xj c, @Nullable fdu d) {
-   @Nullable
-   public fdu.a a() {
-      return this.d != null ? this.d.f() : null;
+public class fdt extends gxb {
+   protected BooleanConsumer a;
+   private final xe b;
+   private final xe c;
+
+   public fdt(BooleanConsumer $$0, xe $$1, xe $$2) {
+      super(fgb.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public int b() {
-      return this.a;
+   @Override
+   public void aN_() {
+      this.c(fin.a(xd.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fin.a(xd.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
-   public wx c() {
-      return this.b;
-   }
-
-   @Nullable
-   public xj d() {
-      return this.c;
-   }
-
-   @Nullable
-   public fdu e() {
-      return this.d;
-   }
-
-   public static record a(int a, axq b, @Nullable fdu c, boolean d) {
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

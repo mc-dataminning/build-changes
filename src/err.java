@@ -1,60 +1,57 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class err extends eqq {
-   private static final Map<ka<?>, err.a<?>> b = Stream.of(
-         new err.a<>(kb.J, cvs::a),
-         new err.a<>(kb.y, cwg::a),
-         new err.a<>(kb.j, cze::a),
-         new err.a<>(kb.x, cze::a),
-         new err.a<>(kb.e, cwv::a),
-         new err.a<>(kb.l, cra::a),
-         new err.a<>(kb.k, cra::a),
-         new err.a<>(kb.m, cwj::a)
-      )
-      .collect(Collectors.toMap(err.a::a, $$0 -> (err.a<?>)$$0));
-   private static final Codec<err.a<?>> c = le.as.q().comapFlatMap($$0 -> {
-      err.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + le.as.b($$0));
-   }, err.a::a);
-   public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, err::new)
-   );
-   private final Map<err.a<?>, Boolean> d;
+public record err<T>(aks<jn<T>> d, Codec<T> e, String f, err.a<T> g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final err<euu> a = new err<>(li.aW, euw.a, "predicates", f());
+   public static final err<etb> b = new err<>(li.aV, etd.c, "item_modifiers", f());
+   public static final err<eru> c = new err<>(li.aU, eru.d, "loot_tables", g());
 
-   private err(List<esl> $$0, Map<err.a<?>, Boolean> $$1) {
-      super($$0);
-      this.d = $$1;
+   public void a(erv $$0, aks<T> $$1, T $$2) {
+      this.g.run($$0, $$1, $$2);
    }
 
-   @Override
-   protected cto a(cto $$0, epf $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
-      return $$0;
+   public <V> Optional<T> a(akt $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   @Override
-   public eqs b() {
-      return eqt.M;
+   public static Stream<err<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   static record a<T>(ka<T> a, err.b<T> b) {
-      public void a(cto $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
-         }
-      }
+   private static <T extends erq> err.a<T> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   private static err.a<eru> g() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public aks<jn<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public String d() {
+      return this.f;
+   }
+
+   public err.a<T> e() {
+      return this.g;
    }
 
    @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+   public interface a<T> {
+      void run(erv var1, aks<T> var2, T var3);
    }
 }

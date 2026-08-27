@@ -1,113 +1,71 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gj implements gc {
-   private final gi a;
-   private final gi b;
-   private final gi c;
+public class gj implements ArgumentType<gf> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("argument.pos2d.incomplete"));
+   private final boolean c;
 
-   public gj(gi $$0, gi $$1, gi $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gj(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public euk a(ee $$0) {
-      euk $$1 = $$0.d();
-      return new euk(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public static gj a() {
+      return new gj(true);
    }
 
-   @Override
-   public euj b(ee $$0) {
-      euj $$1 = $$0.k();
-      return new euj((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static gj a(boolean $$0) {
+      return new gj($$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static ewt a(CommandContext<eh> $$0, String $$1) {
+      ewu $$2 = ((gf)$$0.getArgument($$1, gf.class)).a((eh)$$0.getSource());
+      return new ewt((float)$$2.c, (float)$$2.e);
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gj $$1)) {
-         return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
-      } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
-      }
-   }
-
-   public static gj a(StringReader $$0) throws CommandSyntaxException {
+   public gf a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      gi $$2 = gi.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gi $$3 = gi.a($$0);
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         gl $$2 = gl.a($$0, this.c);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            gi $$4 = gi.a($$0);
-            return new gj($$2, $$3, $$4);
+            gl $$3 = gl.a($$0, this.c);
+            return new gm($$2, new gl(true, 0.0), $$3);
          } else {
             $$0.setCursor($$1);
-            throw gh.a.createWithContext($$0);
+            throw a.createWithContext($$0);
          }
-      } else {
-         $$0.setCursor($$1);
-         throw gh.a.createWithContext($$0);
       }
    }
 
-   public static gj a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      gi $$3 = gi.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gi $$4 = gi.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gi $$5 = gi.a($$0, $$1);
-            return new gj($$3, $$4, $$5);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof em)) {
+         return Suggestions.empty();
+      } else {
+         String $$2 = $$1.getRemaining();
+         Collection<em.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(em.b.a);
          } else {
-            $$0.setCursor($$2);
-            throw gh.a.createWithContext($$0);
+            $$3 = ((em)$$0.getSource()).C();
          }
-      } else {
-         $$0.setCursor($$2);
-         throw gh.a.createWithContext($$0);
+
+         return em.b($$2, $$3, $$1, ei.a(this::a));
       }
    }
 
-   public static gj a(double $$0, double $$1, double $$2) {
-      return new gj(new gi(false, $$0), new gi(false, $$1), new gi(false, $$2));
-   }
-
-   public static gj a(euj $$0) {
-      return new gj(new gi(false, (double)$$0.i), new gi(false, (double)$$0.j), new gi(true, 0.0));
-   }
-
-   public static gj d() {
-      return new gj(new gi(true, 0.0), new gi(true, 0.0), new gi(true, 0.0));
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public Collection<String> getExamples() {
+      return b;
    }
 }

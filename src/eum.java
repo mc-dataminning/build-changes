@@ -1,46 +1,57 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class eum extends evd {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public record eum(aks<euu> b) implements euu {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<eum> a = RecordCodecBuilder.create($$0 -> $$0.group(aks.a(li.aW).fieldOf("name").forGetter(eum::c)).apply($$0, eum::new));
 
-   protected eum(eut $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   eum(eut $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   @Override
+   public euv b() {
+      return euw.r;
    }
 
    @Override
-   protected DoubleList a(it.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
+   public void a(erv $$0) {
+      if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         euu.super.a($$0);
+         $$0.a()
+            .a(li.aW, this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
       }
+   }
+
+   public boolean a(erp $$0) {
+      euu $$1 = $$0.a().a(li.aW, this.b).map(ja.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         erp.c<?> $$2 = erp.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
+   }
+
+   public static euu.a a(aks<euu> $$0) {
+      return () -> new eum($$0);
+   }
+
+   public aks<euu> c() {
+      return this.b;
    }
 }

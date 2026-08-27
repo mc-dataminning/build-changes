@@ -1,11 +1,11 @@
 import javax.annotation.Nullable;
 
 public class chg extends chc {
-   private static final cdf b = cdf.a().d();
+   private static final cde b = cde.a().d();
    @Nullable
-   private eni c;
+   private eps c;
    @Nullable
-   private euk d;
+   private ewu d;
    private boolean e;
 
    public chg(cha $$0) {
@@ -19,8 +19,8 @@ public class chg extends chc {
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.R || this.a.S) {
          this.j();
       }
    }
@@ -33,37 +33,37 @@ public class chg extends chc {
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.d;
    }
 
    private void j() {
       if (this.c != null && this.c.c()) {
-         io $$0 = this.a.dP().a(dwt.a.f, new io(dzw.a(this.a.s())));
-         int $$1 = this.a.gn() == null ? 0 : this.a.gn().e();
-         if (this.a.el().a($$1 + 3) == 0) {
-            this.a.gm().a(chq.c);
+         ir $$0 = this.a.dU().a(dyu.a.f, new ir(ebz.a(this.a.r())));
+         int $$1 = this.a.gw() == null ? 0 : this.a.gw().e();
+         if (this.a.et().a($$1 + 3) == 0) {
+            this.a.gv().a(chq.c);
             return;
          }
 
-         clw $$2 = this.a.dP().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         cly $$2 = this.a.dU().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
          double $$3;
          if ($$2 != null) {
-            $$3 = $$0.b($$2.dn()) / 512.0;
+            $$3 = $$0.b($$2.ds()) / 512.0;
          } else {
             $$3 = 64.0;
          }
 
-         if ($$2 != null && (this.a.el().a((int)($$3 + 2.0)) == 0 || this.a.el().a($$1 + 2) == 0)) {
+         if ($$2 != null && (this.a.et().a((int)($$3 + 2.0)) == 0 || this.a.et().a($$1 + 2) == 0)) {
             this.a($$2);
             return;
          }
       }
 
       if (this.c == null || this.c.c()) {
-         int $$5 = this.a.y();
+         int $$5 = this.a.x();
          int $$6 = $$5;
-         if (this.a.el().a(8) == 0) {
+         if (this.a.et().a(8) == 0) {
             this.e = !this.e;
             $$6 = $$5 + 6;
          }
@@ -74,7 +74,7 @@ public class chg extends chc {
             $$6--;
          }
 
-         if (this.a.gn() != null && this.a.gn().e() >= 0) {
+         if (this.a.gw() != null && this.a.gw().e() >= 0) {
             $$6 %= 12;
             if ($$6 < 0) {
                $$6 += 12;
@@ -94,29 +94,29 @@ public class chg extends chc {
       this.k();
    }
 
-   private void a(clw $$0) {
-      this.a.gm().a(chq.b);
-      this.a.gm().b(chq.b).a($$0);
+   private void a(cly $$0) {
+      this.a.gv().a(chq.b);
+      this.a.gv().b(chq.b).a($$0);
    }
 
    private void k() {
       if (this.c != null && !this.c.c()) {
-         js $$0 = this.c.g();
+         jv $$0 = this.c.g();
          this.c.a();
          double $$1 = (double)$$0.u();
          double $$2 = (double)$$0.w();
 
          double $$3;
          do {
-            $$3 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+            $$3 = (double)((float)$$0.v() + this.a.et().i() * 20.0F);
          } while ($$3 < (double)$$0.v());
 
-         this.d = new euk($$1, $$3, $$2);
+         this.d = new ewu($$1, $$3, $$2);
       }
    }
 
    @Override
-   public void a(cgz $$0, io $$1, bqn $$2, @Nullable clw $$3) {
+   public void a(cgz $$0, ir $$1, bqt $$2, @Nullable cly $$3) {
       if ($$3 != null && this.a.c($$3)) {
          this.a($$3);
       }

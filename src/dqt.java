@@ -1,113 +1,122 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dqt extends ddk {
-   public static final MapCodec<dqt> a = b(dqt::new);
-   public static final drv b = dqv.a;
-   public static final drz<dsd> c = dqv.c;
+public class dqt {
+   private static final String b = "decorated_pot_base";
+   public static final aks<String> a = a("decorated_pot_base");
+   private static final String c = "decorated_pot_side";
+   private static final String d = "angler_pottery_pattern";
+   private static final String e = "archer_pottery_pattern";
+   private static final String f = "arms_up_pottery_pattern";
+   private static final String g = "blade_pottery_pattern";
+   private static final String h = "brewer_pottery_pattern";
+   private static final String i = "burn_pottery_pattern";
+   private static final String j = "danger_pottery_pattern";
+   private static final String k = "explorer_pottery_pattern";
+   private static final String l = "flow_pottery_pattern";
+   private static final String m = "friend_pottery_pattern";
+   private static final String n = "guster_pottery_pattern";
+   private static final String o = "heart_pottery_pattern";
+   private static final String p = "heartbreak_pottery_pattern";
+   private static final String q = "howl_pottery_pattern";
+   private static final String r = "miner_pottery_pattern";
+   private static final String s = "mourner_pottery_pattern";
+   private static final String t = "plenty_pottery_pattern";
+   private static final String u = "prize_pottery_pattern";
+   private static final String v = "scrape_pottery_pattern";
+   private static final String w = "sheaf_pottery_pattern";
+   private static final String x = "shelter_pottery_pattern";
+   private static final String y = "skull_pottery_pattern";
+   private static final String z = "snort_pottery_pattern";
+   private static final aks<String> A = a("decorated_pot_side");
+   private static final aks<String> B = a("angler_pottery_pattern");
+   private static final aks<String> C = a("archer_pottery_pattern");
+   private static final aks<String> D = a("arms_up_pottery_pattern");
+   private static final aks<String> E = a("blade_pottery_pattern");
+   private static final aks<String> F = a("brewer_pottery_pattern");
+   private static final aks<String> G = a("burn_pottery_pattern");
+   private static final aks<String> H = a("danger_pottery_pattern");
+   private static final aks<String> I = a("explorer_pottery_pattern");
+   private static final aks<String> J = a("flow_pottery_pattern");
+   private static final aks<String> K = a("friend_pottery_pattern");
+   private static final aks<String> L = a("guster_pottery_pattern");
+   private static final aks<String> M = a("heart_pottery_pattern");
+   private static final aks<String> N = a("heartbreak_pottery_pattern");
+   private static final aks<String> O = a("howl_pottery_pattern");
+   private static final aks<String> P = a("miner_pottery_pattern");
+   private static final aks<String> Q = a("mourner_pottery_pattern");
+   private static final aks<String> R = a("plenty_pottery_pattern");
+   private static final aks<String> S = a("prize_pottery_pattern");
+   private static final aks<String> T = a("scrape_pottery_pattern");
+   private static final aks<String> U = a("sheaf_pottery_pattern");
+   private static final aks<String> V = a("shelter_pottery_pattern");
+   private static final aks<String> W = a("skull_pottery_pattern");
+   private static final aks<String> X = a("snort_pottery_pattern");
+   private static final Map<cuc, aks<String>> Y = Map.ofEntries(
+      Map.entry(cuk.si, A),
+      Map.entry(cuk.zy, B),
+      Map.entry(cuk.zz, C),
+      Map.entry(cuk.zA, D),
+      Map.entry(cuk.zB, E),
+      Map.entry(cuk.zC, F),
+      Map.entry(cuk.zD, G),
+      Map.entry(cuk.zE, H),
+      Map.entry(cuk.zF, I),
+      Map.entry(cuk.zG, J),
+      Map.entry(cuk.zH, K),
+      Map.entry(cuk.zI, L),
+      Map.entry(cuk.zJ, M),
+      Map.entry(cuk.zK, N),
+      Map.entry(cuk.zL, O),
+      Map.entry(cuk.zM, P),
+      Map.entry(cuk.zN, Q),
+      Map.entry(cuk.zO, R),
+      Map.entry(cuk.zP, S),
+      Map.entry(cuk.zQ, T),
+      Map.entry(cuk.zR, U),
+      Map.entry(cuk.zS, V),
+      Map.entry(cuk.zT, W),
+      Map.entry(cuk.zU, X)
+   );
 
-   @Override
-   public MapCodec<dqt> a() {
-      return a;
+   private static aks<String> a(String $$0) {
+      return aks.a(li.as, new akt($$0));
    }
 
-   public dqt(dra.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, it.c).a(c, dsd.a));
+   public static akt a(aks<String> $$0) {
+      return $$0.a().d("entity/decorated_pot/");
    }
 
    @Nullable
-   @Override
-   public dog a(io $$0, drb $$1) {
-      return null;
+   public static aks<String> a(cuc $$0) {
+      return Y.get($$0);
    }
 
-   public static dog a(io $$0, drb $$1, drb $$2, it $$3, boolean $$4, boolean $$5) {
-      return new dqx($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return a($$2, doi.k, dqx::a);
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dog $$5 = $$1.c_($$2);
-         if ($$5 instanceof dqx) {
-            ((dqx)$$5).k();
-         }
-      }
-   }
-
-   @Override
-   public void a(day $$0, io $$1, drb $$2) {
-      io $$3 = $$1.a($$2.c(b).g());
-      drb $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dqu && $$4.c(dqu.c)) {
-         $$0.a($$3, false);
-      }
-   }
-
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bpu.b;
-      } else {
-         return bpu.d;
-      }
-   }
-
-   @Override
-   protected List<cto> a(drb $$0, epi.a $$1) {
-      dqx $$2 = this.a($$1.a(), io.a($$1.a(erx.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
-   }
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return eva.a();
-   }
-
-   @Override
-   protected evd b(drb $$0, dad $$1, io $$2, eup $$3) {
-      dqx $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : eva.a();
-   }
-
-   @Nullable
-   private dqx a(dad $$0, io $$1) {
-      dog $$2 = $$0.c_($$1);
-      return $$2 instanceof dqx ? (dqx)$$2 : null;
-   }
-
-   @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return cto.i;
-   }
-
-   @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(drb $$0, enj $$1) {
-      return false;
+   public static String a(jn<String> $$0) {
+      jn.a($$0, A, "decorated_pot_side");
+      jn.a($$0, B, "angler_pottery_pattern");
+      jn.a($$0, C, "archer_pottery_pattern");
+      jn.a($$0, D, "arms_up_pottery_pattern");
+      jn.a($$0, E, "blade_pottery_pattern");
+      jn.a($$0, F, "brewer_pottery_pattern");
+      jn.a($$0, G, "burn_pottery_pattern");
+      jn.a($$0, H, "danger_pottery_pattern");
+      jn.a($$0, I, "explorer_pottery_pattern");
+      jn.a($$0, J, "flow_pottery_pattern");
+      jn.a($$0, K, "friend_pottery_pattern");
+      jn.a($$0, L, "guster_pottery_pattern");
+      jn.a($$0, M, "heart_pottery_pattern");
+      jn.a($$0, N, "heartbreak_pottery_pattern");
+      jn.a($$0, O, "howl_pottery_pattern");
+      jn.a($$0, P, "miner_pottery_pattern");
+      jn.a($$0, Q, "mourner_pottery_pattern");
+      jn.a($$0, R, "plenty_pottery_pattern");
+      jn.a($$0, S, "prize_pottery_pattern");
+      jn.a($$0, T, "scrape_pottery_pattern");
+      jn.a($$0, U, "sheaf_pottery_pattern");
+      jn.a($$0, V, "shelter_pottery_pattern");
+      jn.a($$0, W, "skull_pottery_pattern");
+      jn.a($$0, X, "snort_pottery_pattern");
+      return jn.a($$0, a, "decorated_pot_base");
    }
 }

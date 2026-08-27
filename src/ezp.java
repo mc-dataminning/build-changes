@@ -1,33 +1,9 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class ezp extends fao {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ezo> a;
-
-   public static ezp a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      ezp $$2 = new ezp();
-      $$2.a = Lists.newArrayList();
-
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$2.a.add(ezo.a($$4.next()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
-      }
-
-      return $$2;
+public class ezp extends ezo {
+   public ezp(int $$0, int $$1, boolean $$2, boolean $$3) {
+      super($$2);
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a($$0, $$1, $$3);
    }
 }

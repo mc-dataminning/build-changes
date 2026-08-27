@@ -5,37 +5,40 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fn implements ArgumentType<cqp> {
-   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("slot.unknown", $$0));
+public class fn implements ArgumentType<exp> {
+   private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("argument.scoreboardDisplaySlot.invalid", $$0));
+
+   private fn() {
+   }
 
    public static fn a() {
       return new fn();
    }
 
-   public static cqp a(CommandContext<ee> $$0, String $$1) {
-      return (cqp)$$0.getArgument($$1, cqp.class);
+   public static exp a(CommandContext<eh> $$0, String $$1) {
+      return (exp)$$0.getArgument($$1, exp.class);
    }
 
-   public cqp a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = ei.a($$0, $$0x -> $$0x != ' ');
-      cqp $$2 = cqq.a($$1);
+   public exp a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      exp $$2 = exp.t.a($$1);
       if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
+         throw a.createWithContext($$0, $$1);
       } else {
          return $$2;
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ej.b(cqq.a(), $$1);
+      return em.b(Arrays.stream(exp.values()).map(exp::c), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

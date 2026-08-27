@@ -1,28 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum fjc implements ayx {
-   a("bitmap", fiz.a.a),
-   b("ttf", fje.a),
-   c("space", ewx.a.a),
-   d("unihex", fjf.b.a),
-   e("reference", fjd.a);
+public class fjc extends fil {
+   private final fhy a;
 
-   public static final Codec<fjc> f = ayx.a(fjc::values);
-   private final String g;
-   private final MapCodec<? extends fjb> h;
-
-   private fjc(String $$0, MapCodec<? extends fjb> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public fjc(fhy $$0, xe $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   public String c() {
-      return this.g;
+   protected void b(fia $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.x() / 2;
+      int $$5 = this.D() + this.v() / 2;
+      xe $$6 = this.y();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fnx.a(ad.b());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public MapCodec<? extends fjb> a() {
-      return this.h;
+   @Override
+   protected void a(fmj $$0) {
+   }
+
+   @Override
+   public void a(gvq $$0) {
+   }
+
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fhx a(fmp $$0) {
+      return null;
    }
 }

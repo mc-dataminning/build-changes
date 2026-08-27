@@ -1,31 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfv extends ddy {
+public class dfv extends dfc {
    public static final MapCodec<dfv> a = b(dfv::new);
+   private static final xe b = xe.c("container.cartography_table");
 
    @Override
    public MapCodec<dfv> a() {
       return a;
    }
 
-   public dfv(dra.d $$0) {
+   protected dfv(dtb.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
-      if ($$3.a(5) == 0) {
-         it $$4 = it.b($$3);
-         if ($$4 != it.b) {
-            io $$5 = $$2.a($$4);
-            drb $$6 = $$1.a_($$5);
-            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(ky.aE, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
+   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
+      if ($$1.C) {
+         return bqa.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avz.ax);
+         return bqa.b;
       }
+   }
+
+   @Nullable
+   @Override
+   protected bqe b(dtc $$0, dca $$1, ir $$2) {
+      return new bqk(($$2x, $$3, $$4) -> new cpm($$2x, $$3, cpr.a($$1, $$2)), b);
    }
 }

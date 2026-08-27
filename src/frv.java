@@ -1,3 +1,8 @@
-public interface frv {
-   void a(bsi var1, eys var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface frv {
 }

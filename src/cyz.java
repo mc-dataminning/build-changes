@@ -1,176 +1,107 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyz implements cog {
-   private final cyz.b b;
-   @Nullable
-   protected String a;
-   private final ix.c<cyz> c = le.f.f(this);
+public class cyz implements cza<bpt> {
+   private final czf<?> b = czf.i;
+   private final String c;
+   private final cyn d;
+   final cyv e;
+   final cyv f;
+   final cuh g;
+   final float j;
+   protected final int a;
 
-   public static cyz.a a(int $$0) {
-      return new cyz.a($$0, 0);
+   public cyz(cyv $$0, cyv $$1, cuh $$2, float $$3, int $$4) {
+      this("", cyn.c, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public static cyz.a a(int $$0, int $$1) {
-      return new cyz.a($$0, $$1);
-   }
-
-   public static cyz.b a(awl<ctj> $$0, awl<ctj> $$1, int $$2, int $$3, cyz.a $$4, cyz.a $$5, int $$6, bsb... $$7) {
-      return new cyz.b($$0, Optional.of($$1), $$2, $$3, $$4, $$5, $$6, col.h, $$7);
-   }
-
-   public static cyz.b a(awl<ctj> $$0, int $$1, int $$2, cyz.a $$3, cyz.a $$4, int $$5, bsb... $$6) {
-      return new cyz.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, col.h, $$6);
-   }
-
-   public static cyz.b a(awl<ctj> $$0, int $$1, int $$2, cyz.a $$3, cyz.a $$4, int $$5, coj $$6, bsb... $$7) {
-      return new cyz.b($$0, Optional.empty(), $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Nullable
-   public static cyz b(int $$0) {
-      return le.f.a($$0);
-   }
-
-   public cyz(cyz.b $$0) {
-      this.b = $$0;
-   }
-
-   public Map<bsb, cto> a(bso $$0) {
-      Map<bsb, cto> $$1 = Maps.newEnumMap(bsb.class);
-
-      for (bsb $$2 : this.b.i()) {
-         cto $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            $$1.put($$2, $$3);
-         }
-      }
-
-      return $$1;
-   }
-
-   public final awl<ctj> c() {
-      return this.b.a();
-   }
-
-   public final boolean a(cto $$0) {
-      return this.b.b.isEmpty() || $$0.a(this.b.b.get());
-   }
-
-   public final int d() {
-      return this.b.c();
-   }
-
-   public final int e() {
-      return this.b.g();
-   }
-
-   public final int f() {
-      return 1;
-   }
-
-   public final int g() {
-      return this.b.d();
-   }
-
-   public final int c(int $$0) {
-      return this.b.e().a($$0);
-   }
-
-   public final int d(int $$0) {
-      return this.b.f().a($$0);
-   }
-
-   public int a(int $$0, bqn $$1) {
-      return 0;
-   }
-
-   public float a(int $$0, @Nullable bsa<?> $$1) {
-      return 0.0F;
-   }
-
-   public final boolean b(cyz $$0) {
-      return this.a($$0) && $$0.a(this);
-   }
-
-   protected boolean a(cyz $$0) {
-      return this != $$0;
-   }
-
-   protected String h() {
-      if (this.a == null) {
-         this.a = ac.a("enchantment", le.f.b(this));
-      }
-
-      return this.a;
-   }
-
-   public String j() {
-      return this.h();
-   }
-
-   public wx e(int $$0) {
-      xl $$1 = wx.c(this.j());
-      if (this.b()) {
-         $$1.a(n.m);
-      } else {
-         $$1.a(n.h);
-      }
-
-      if ($$0 != 1 || this.g() != 1) {
-         $$1.b(ww.v).b(wx.c("enchantment.level." + $$0));
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cto $$0) {
-      return $$0.g().n().a(this.b.a());
-   }
-
-   public void a(bso $$0, bru $$1, int $$2) {
-   }
-
-   public void b(bso $$0, bru $$1, int $$2) {
-   }
-
-   public void c(bso $$0, bru $$1, int $$2) {
-   }
-
-   public boolean a() {
-      return false;
-   }
-
-   public boolean b() {
-      return false;
-   }
-
-   public boolean k() {
-      return true;
-   }
-
-   public boolean l() {
-      return true;
-   }
-
-   @Deprecated
-   public ix.c<cyz> m() {
-      return this.c;
+   private cyz(String $$0, cyn $$1, cyv $$2, cyv $$3, cuh $$4, float $$5, int $$6) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.j = $$5;
+      this.a = $$6;
    }
 
    @Override
-   public coj i() {
-      return this.b.h();
+   public boolean a(bpt $$0, dca $$1) {
+      return this.e.a($$0.a(0)) && this.f.a($$0.a(2));
    }
 
-   public static record a(int a, int b) {
-      public int a(int $$0) {
-         return this.a + this.b * ($$0 - 1);
+   @Override
+   public cuh a(bpt $$0, jc.a $$1) {
+      return this.g.r();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public cuh a(jc.a $$0) {
+      return this.g;
+   }
+
+   @Override
+   public cuh g() {
+      return new cuh(dfe.up);
+   }
+
+   @Override
+   public cze<?> ao_() {
+      return cze.z;
+   }
+
+   @Override
+   public czf<?> e() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.a;
+   }
+
+   public static class a implements cze<cyz> {
+      private static final Codec<cyz> A = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cyv.c.fieldOf("ingredient").forGetter($$0x -> $$0x.e),
+                  cyv.c.fieldOf("bottle_ingredient").forGetter($$0x -> $$0x.f),
+                  cuh.a.fieldOf("result").forGetter($$0x -> $$0x.g),
+                  Codec.FLOAT.fieldOf("experience").forGetter($$0x -> $$0x.j),
+                  Codec.INT.fieldOf("refinement_time").forGetter($$0x -> $$0x.a)
+               )
+               .apply($$0, cyz::new)
+      );
+      public static final zc<wp, cyz> a = zc.a(cyz.a::a, cyz.a::a);
+
+      @Override
+      public Codec<cyz> a() {
+         return A;
       }
-   }
 
-   public static record b(awl<ctj> a, Optional<awl<ctj>> b, int c, int d, cyz.a e, cyz.a f, int g, coj h, bsb[] i) {
+      @Override
+      public zc<wp, cyz> b() {
+         return a;
+      }
+
+      private static cyz a(wp $$0) {
+         cyv $$1 = cyv.b.decode($$0);
+         cyv $$2 = cyv.b.decode($$0);
+         cuh $$3 = cuh.f.decode($$0);
+         float $$4 = $$0.readFloat();
+         int $$5 = $$0.readInt();
+         return new cyz($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private static void a(wp $$0, cyz $$1) {
+         cyv.b.encode($$0, $$1.e);
+         cyv.b.encode($$0, $$1.f);
+         cuh.f.encode($$0, $$1.g);
+         $$0.a($$1.j);
+         $$0.p($$1.a);
+      }
    }
 }

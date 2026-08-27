@@ -1,116 +1,121 @@
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class cim extends cik implements btf {
+public class cim extends cik implements bte {
    private static final int c = 50;
    private static final int d = 70;
-   private static final ajr<Boolean> e = ajv.a(cim.class, ajt.k);
+   private static final ajy<Boolean> e = akc.a(cim.class, aka.k);
    public static final String b = "sheared";
 
-   public static btv.a gs() {
-      return cik.s().a(btw.q, 16.0);
+   public static btu.a gB() {
+      return cik.r().a(btv.q, 16.0);
    }
 
-   public cim(bsa<? extends cim> $$0, dax $$1) {
+   public cim(bsb<? extends cim> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   public boolean dW() {
+      return true;
+   }
+
+   @Override
+   protected void a(akc.a $$0) {
       super.a($$0);
       $$0.a(e, false);
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("sheared", this.gt());
+      $$0.a("sheared", this.gC());
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
       this.w($$0.q("sheared"));
    }
 
-   public boolean gt() {
-      return this.ao.a(e);
+   public boolean gC() {
+      return this.as.a(e);
    }
 
    public void w(boolean $$0) {
-      this.ao.a(e, $$0);
+      this.as.a(e, $$0);
    }
 
    @Override
-   protected bpu b(clw $$0, bpt $$1) {
-      cto $$2 = $$0.b($$1);
-      if ($$2.a(ctr.rV) && this.a()) {
-         this.a(avi.h);
-         this.a(dvu.M, $$0);
-         if (!this.dP().B) {
+   protected bqa b(cly $$0, bpz $$1) {
+      cuh $$2 = $$0.b($$1);
+      if ($$2.a(cuk.ts) && this.a()) {
+         this.a(avq.h);
+         this.a(dxv.M, $$0);
+         if (!this.dU().C) {
             $$2.a(1, $$0, d($$1));
          }
 
-         return bpu.a(this.dP().B);
+         return bqa.a(this.dU().C);
       } else {
          return super.b($$0, $$1);
       }
    }
 
    @Override
-   protected avg v() {
-      return avh.cn;
+   protected avn u() {
+      return avo.cs;
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.cp;
+   protected avn d(bqt $$0) {
+      return avo.cu;
    }
 
    @Override
-   protected avg o_() {
-      return avh.co;
+   protected avn n_() {
+      return avo.ct;
    }
 
    @Override
-   protected avg u() {
-      return avh.cr;
+   protected avn t() {
+      return avo.cw;
    }
 
    @Override
-   protected cmc b(cto $$0, float $$1) {
-      cmc $$2 = super.b($$0, $$1);
-      if ($$2 instanceof cme $$3) {
-         $$3.a(new brc(bre.s, 100));
+   protected cme b(cuh $$0, float $$1) {
+      cme $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cmg $$3) {
+         $$3.a(new brh(brj.s, 100));
       }
 
       return $$2;
    }
 
    @Override
-   protected int gp() {
+   protected int gy() {
       return 50;
    }
 
    @Override
-   protected int gq() {
+   protected int gz() {
       return 70;
    }
 
    @Override
-   public void a(avi $$0) {
-      this.dP().a(null, this, avh.cq, $$0, 1.0F, 1.0F);
-      this.gw();
+   public void a(avq $$0) {
+      this.dU().a(null, this, avo.cv, $$0, 1.0F, 1.0F);
+      this.gD();
       this.w(true);
    }
 
-   private void gw() {
-      if (this.dP() instanceof aqm $$0 && $$0.aa().b(dat.f)) {
-         epk $$1 = $$0.o().be().b(epd.ba);
-         epi $$2 = new epi.a($$0).a(erx.f, this.dn()).a(erx.a, this).a(erw.s);
+   private void gD() {
+      if (this.dU() instanceof aqt $$0 && $$0.ab().b(dbw.f)) {
+         eru $$1 = $$0.o().be().b(ern.bl);
+         ers $$2 = new ers.a($$0).a(eug.f, this.ds()).a(eug.a, this).a(euf.r);
          ObjectListIterator var4 = $$1.a($$2).iterator();
 
          while (var4.hasNext()) {
-            cto $$3 = (cto)var4.next();
+            cuh $$3 = (cuh)var4.next();
             this.b($$3);
          }
       }
@@ -118,6 +123,6 @@ public class cim extends cik implements btf {
 
    @Override
    public boolean a() {
-      return !this.gt() && this.bD();
+      return !this.gC() && this.bI();
    }
 }

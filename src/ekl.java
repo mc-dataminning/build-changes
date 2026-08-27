@@ -1,27 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class ekl extends elg {
-   public static final MapCodec<ekl> a = drb.b.xmap(dra.a::b, ddy::n).listOf().fieldOf("blocks").xmap(ekl::new, $$0 -> $$0.e);
-   public static final ekl b = new ekl(ImmutableList.of(dea.pa));
-   public static final ekl c = new ekl(ImmutableList.of(dea.a));
-   public static final ekl d = new ekl(ImmutableList.of(dea.a, dea.pa));
-   private final ImmutableList<ddy> e;
+public class ekl implements ejy {
+   private final List<ejx> a = Lists.newArrayList();
 
-   public ekl(List<ddy> $$0) {
-      this.e = ImmutableList.copyOf($$0);
+   @Override
+   public void a(ejx $$0) {
+      this.a.add($$0);
    }
 
    @Nullable
    @Override
-   public elj.c a(dba $$0, io $$1, io $$2, elj.c $$3, elj.c $$4, elf $$5) {
-      return this.e.contains($$4.b().b()) ? null : $$4;
+   public ejx a(ejl $$0) {
+      return ejx.a(this.a, $$0);
    }
 
-   @Override
-   protected eli<?> a() {
-      return eli.e;
+   @Deprecated
+   public void a(int $$0) {
+      for (ejx $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
+   }
+
+   @Deprecated
+   public int a(int $$0, int $$1, ayt $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      ejl $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(ayt $$0, int $$1, int $$2) {
+      ejl $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public eki a() {
+      return new eki(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public ejl d() {
+      return ejx.a(this.a.stream());
    }
 }

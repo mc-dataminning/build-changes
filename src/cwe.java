@@ -1,12 +1,19 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record cwe(int d) {
-   public static final cwe a = new cwe(0);
-   public static final Codec<cwe> b = Codec.INT.xmap(cwe::new, cwe::a);
-   public static final yv<ByteBuf, cwe> c = yt.f.a(cwe::new, cwe::a);
+public interface cwe {
+   int a();
 
-   public int a() {
-      return this.d;
+   float b();
+
+   float c();
+
+   awt<dfc> d();
+
+   int e();
+
+   cyv f();
+
+   default cxw a(awt<dfc> $$0) {
+      return new cxw(List.of(cxw.a.a(this.d()), cxw.a.a($$0, this.b())), 1.0F, 1);
    }
 }

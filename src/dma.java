@@ -1,25 +1,34 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dma {
-   cws b();
+public class dma extends dfc implements dff {
+   public static final MapCodec<dma> a = b(dma::new);
 
-   static List<dma> c() {
-      return le.h.s().map(dma::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dma> a() {
+      return a;
    }
 
-   @Nullable
-   static dma a(daw $$0) {
-      if ($$0.q() instanceof crm $$1) {
-         ddy var6 = $$1.d();
-         if (var6 instanceof dma) {
-            return (dma)var6;
-         }
-      }
+   public dma(dtb.d $$0) {
+      super($$0);
+   }
 
-      ctj $$2 = $$0.q();
-      return $$2 instanceof dma ? (dma)$$2 : null;
+   @Override
+   public boolean b(dcd $$0, ir $$1, dtc $$2) {
+      return $$0.a_($$1.d()).i();
+   }
+
+   @Override
+   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
+      $$0.b($$2.d(), dfe.ud.n());
+   }
+
+   @Override
+   public ir a(ir $$0) {
+      return $$0.d();
    }
 }

@@ -1,11 +1,8 @@
-public class gha extends giz<cfv, fsg<cfv>> {
-   private static final akm a = new akm("textures/entity/camel/camel.png");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gha(ght.a $$0, fvu $$1) {
-      super($$0, new fsg<>($$0.a($$1)), 0.7F);
-   }
-
-   public akm a(cfv $$0) {
-      return a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface gha {
 }

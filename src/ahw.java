@@ -1,53 +1,18 @@
-public class ahw implements ze<agd> {
-   public static final yv<vx, ahw> a = ze.a(ahw::a, ahw::new);
-   private static final int b = 384;
-   private final io c;
-   private final String[] d;
-   private final boolean e;
+import java.util.Optional;
 
-   public ahw(io $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
-   }
-
-   private ahw(vx $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
-      }
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.c);
-      $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
-      }
-   }
+public record ahw(Optional<ja<brf>> b, Optional<ja<brf>> c) implements zl<agl> {
+   public static final zc<wp, ahw> a = zc.a(za.b(li.R).a(za::a), ahw::b, za.b(li.R).a(za::a), ahw::e, ahw::new);
 
    @Override
-   public zg<ahw> a() {
-      return agb.bY;
+   public zn<ahw> a() {
+      return agj.bS;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public io b() {
+   public Optional<ja<brf>> e() {
       return this.c;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public String[] f() {
-      return this.d;
    }
 }

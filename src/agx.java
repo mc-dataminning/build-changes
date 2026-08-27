@@ -1,37 +1,23 @@
-public class agx implements ze<agd> {
-   public static final yv<vx, agx> a = ze.a(agx::a, agx::new);
-   private final int b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public agx(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class agx implements zl<agl> {
+   public static final agx a = new agx();
+   public static final zc<ByteBuf, agx> b = zc.a(a);
 
-   private agx(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private agx() {
    }
 
    @Override
-   public zg<agx> a() {
-      return agb.bw;
+   public zn<agx> a() {
+      return agj.bq;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

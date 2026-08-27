@@ -1,50 +1,316 @@
-public class fgk extends fgt {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import org.lwjgl.glfw.GLFWDropCallback;
 
-   public fgk(int $$0, wx $$1, ffk $$2) {
-      this($$0, $$1, $$2, 4);
+public class fgk {
+   private final fgj a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final azc l = new azc();
+   private final azc m = new azc();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
+
+   public fgk(fgj $$0) {
+      this.a = $$0;
    }
 
-   public fgk(int $$0, wx $$1, ffk $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aP().i()) {
+         if (this.a.y != null) {
+            this.a.a(fgg.b);
+         }
+
+         boolean $$4 = $$2 == 1;
+         if (fgj.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
+            }
+         }
+
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.Z().c() && this.j++ > 0) {
+               return;
+            }
+
+            this.h = $$5;
+            this.k = eys.b();
+         } else if (this.h != -1) {
+            if (this.a.m.Z().c() && --this.j > 0) {
+               return;
+            }
+
+            this.h = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aM() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$8 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+               fon $$9 = this.a.y;
+               if ($$4) {
+                  $$9.w();
+                  fon.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  fon.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
+
+         if (!$$6[0] && this.a.y == null && this.a.aM() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
+
+            fgh.a(ezx.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.O_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  fgh.a(ezx.b.c.a($$5));
+               }
+            }
+         }
+      }
    }
 
-   public fgk(int $$0, wx $$1, ffk $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == fgj.Q().aP().i()) {
+         boolean $$3 = this.a.m.S().c();
+         double $$4 = this.a.m.F().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aM() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$8 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.w();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
+
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.O_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = aym.a(this.a.s.gm().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.gm().a($$12);
+                  }
+               } else {
+                  this.a.s.gl().a((double)$$11);
+               }
+            }
+         }
+      }
    }
 
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
+      }
    }
 
-   @Override
-   protected void a(fjv $$0) {
-      $$0.a(fju.a, this.y());
+   public void a(long $$0) {
+      ezx.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
+      );
    }
 
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      if (this.aI_() || this.b) {
-         int $$4 = this.C() - this.c;
-         int $$5 = this.D() - this.c;
-         int $$6 = this.x() + this.c * 2;
-         int $$7 = this.v() + this.c * 2;
-         int $$8 = this.b ? (this.aI_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == fgj.Q().aP().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
+         } else {
+            if (this.a.aC()) {
+               this.n = this.n + ($$1 - this.e);
+               this.o = this.o + ($$2 - this.f);
+            }
+
+            this.e = $$1;
+            this.f = $$2;
+         }
+      }
+   }
+
+   public void a() {
+      double $$0 = eys.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.a.aC()) {
+         fon $$2 = this.a.y;
+         if ($$2 != null && this.a.aM() == null && (this.n != 0.0 || this.o != 0.0)) {
+            double $$3 = this.e * (double)this.a.aP().o() / (double)this.a.aP().m();
+            double $$4 = this.f * (double)this.a.aP().p() / (double)this.a.aP().n();
+            fon.a(() -> $$2.f($$3, $$4), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$5 = this.n * (double)this.a.aP().o() / (double)this.a.aP().m();
+               double $$6 = this.o * (double)this.a.aP().p() / (double)this.a.aP().n();
+               fon.a(() -> $$2.a($$3, $$4, this.h, $$5, $$6), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.u();
+         }
+
+         if (this.h() && this.a.s != null) {
+            this.a($$1);
+         }
       }
 
-      super.b($$0, $$1, $$2, $$3);
+      this.n = 0.0;
+      this.o = 0.0;
    }
 
-   @Override
-   public void a(gsn $$0) {
+   private void a(double $$0) {
+      double $$1 = this.a.m.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.a.m.ac) {
+         double $$4 = this.l.a(this.n * $$3, $$0 * $$3);
+         double $$5 = this.m.a(this.o * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.a.m.aA().a() && this.a.s.gL()) {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$2;
+         $$7 = this.o * $$2;
+      } else {
+         this.l.a();
+         this.m.a();
+         $$6 = this.n * $$3;
+         $$7 = this.o * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.a.m.R().c()) {
+         $$12 = -1;
+      }
+
+      this.a.aB().a($$6, $$7);
+      if (this.a.s != null) {
+         this.a.s.b($$6, $$7 * (double)$$12);
+      }
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.aC()) {
+         if (!this.s) {
+            if (!fgj.a) {
+               fgh.a();
+            }
+
+            this.s = true;
+            this.e = (double)(this.a.aP().m() / 2);
+            this.f = (double)(this.a.aP().n() / 2);
+            ezx.a(this.a.aP().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
+         }
+      }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aP().m() / 2);
+         this.f = (double)(this.a.aP().n() / 2);
+         ezx.a(this.a.aP().i(), 212993, this.e, this.f);
+      }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

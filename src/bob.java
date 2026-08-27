@@ -1,13 +1,29 @@
-import java.time.Instant;
+public class bob implements boc {
+   public static final boc a = new bob();
 
-public final class bob {
-   public final Instant a;
-   public final int b;
-   public final bmh c;
+   @Override
+   public void a() {
+   }
 
-   public bob(Instant $$0, int $$1, bmh $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bmo f() {
+      return bml.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

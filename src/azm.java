@@ -1,42 +1,50 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public class azm extends bex {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
+public interface azm<C> {
+   azm<Float> a = a($$0 -> $$0);
 
-   public azm(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bfy.z, "minecraft:wolf");
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static azm<Float> a(final Float2FloatFunction $$0) {
+      return new azm<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bhj.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
-
-            return $$0x;
+   default <C2> azm<C2> a(final Function<C2, C> $$0) {
+      final azm<C> $$1 = this;
+      return new azm<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
          }
-      );
+
+         @Override
+         public float b() {
+            return $$1.b();
+         }
+
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

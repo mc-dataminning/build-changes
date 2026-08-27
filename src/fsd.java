@@ -1,37 +1,86 @@
-public class fsd extends fur<cim> {
-   private final fvw a;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fsd(fvw $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+public class fsd {
+   @Nullable
+   private czc<?> a;
+   private final List<fsd.a> b = Lists.newArrayList();
+   float c;
+
+   public void a() {
+      this.a = null;
+      this.b.clear();
+      this.c = 0.0F;
    }
 
-   public static fwc c() {
-      fwe $$0 = ftj.a(fwa.a, 0.0F);
-      fwf $$1 = $$0.a();
-      fur.a($$1);
-      fwf $$2 = $$1.a("head").a("mushrooms", fwb.c(), fvy.a);
-      $$2.a("red_mushroom_1", fwb.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fvy.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", fwb.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fvy.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", fwb.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fvy.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", fwb.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fvy.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         fwb.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fvy.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         fwb.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         fvy.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return fwc.a($$0, 64, 32);
+   public void a(cyv $$0, int $$1, int $$2) {
+      this.b.add(new fsd.a($$0, $$1, $$2));
    }
 
-   public void a(cim $$0, float $$1, float $$2, float $$3) {
-      this.a.k = !$$0.gt();
-      super.a($$0, $$1, $$2, $$3);
+   public fsd.a a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int b() {
+      return this.b.size();
+   }
+
+   @Nullable
+   public czc<?> c() {
+      return this.a;
+   }
+
+   public void a(czc<?> $$0) {
+      this.a = $$0;
+   }
+
+   public void a(fia $$0, fgj $$1, int $$2, int $$3, boolean $$4, float $$5) {
+      if (!fon.r()) {
+         this.c += $$5;
+      }
+
+      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
+         fsd.a $$7 = this.b.get($$6);
+         int $$8 = $$7.a() + $$2;
+         int $$9 = $$7.b() + $$3;
+         if ($$6 == 0 && $$4) {
+            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
+         } else {
+            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+         }
+
+         cuh $$10 = $$7.c();
+         $$0.b($$10, $$8, $$9);
+         $$0.a(gfo.H(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
+         if ($$6 == 0) {
+            $$0.a($$1.h, $$10, $$8, $$9);
+         }
+      }
+   }
+
+   public class a {
+      private final cyv b;
+      private final int c;
+      private final int d;
+
+      public a(cyv $$1, int $$2, int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public cuh c() {
+         cuh[] $$0 = this.b.a();
+         return $$0.length == 0 ? cuh.i : $$0[aym.d(fsd.this.c / 30.0F) % $$0.length];
+      }
    }
 }

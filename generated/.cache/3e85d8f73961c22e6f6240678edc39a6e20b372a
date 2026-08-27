@@ -1,7 +1,7 @@
-// 24w13a	2026-08-28T01:52:42.2208552	update_1_21/Tags for minecraft:block
-eead159568467477b62e9f2314af15d122a3f48f data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\wooden_doors.json
-759fae2e6c137458e65ac556666a27231832447e data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\trapdoors.json
+// 24w14potato	2026-08-28T01:54:53.9435914	update_1_21/Tags for minecraft:block
 c0b9472da044676739361fd55bc4d413e485144e data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\blocks_wind_charge_explosions.json
+759fae2e6c137458e65ac556666a27231832447e data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\trapdoors.json
+eead159568467477b62e9f2314af15d122a3f48f data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\wooden_doors.json
 5e7030f5aec0cfe272652f20c67807d98bc94854 data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\stairs.json
 4566532194d000f068193f3b594b6cf17b268601 data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\walls.json
 e4e0677676c88b770fb2f198c8904b8e4899ab59 data\minecraft\datapacks\update_1_21\data\minecraft\tags\blocks\slabs.json

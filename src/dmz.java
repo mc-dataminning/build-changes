@@ -1,78 +1,124 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dmz extends dcu {
-   public static final MapCodec<dmz> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dla.a.b.fieldOf("kind").forGetter(dcu::b), u()).apply($$0, dmz::new));
-   public static final drv d = dhu.aE;
-   private static final Map<it, evd> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         it.c,
-         ddy.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         it.d,
-         ddy.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         it.f,
-         ddy.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         it.e,
-         ddy.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
-
-   @Override
-   public MapCodec<? extends dmz> a() {
-      return c;
-   }
-
-   protected dmz(dla.a $$0, dra.d $$1) {
-      super($$0, $$1);
-      this.k(this.n().a(d, it.c));
-   }
+public class dmz extends dfc {
+   public static final MapCodec<dmz> a = b(dmz::new);
+   public static final int b = 8;
+   public static final duc c = dts.aF;
+   protected static final exn[] d = new exn[]{
+      exk.a(),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
-   public String g() {
-      return this.q().a();
+   public MapCodec<dmz> a() {
+      return a;
+   }
+
+   protected dmz(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b.get($$0.c(d));
-   }
-
-   @Override
-   public drb a(cwz $$0) {
-      drb $$1 = super.a($$0);
-      dad $$2 = $$0.q();
-      io $$3 = $$0.a();
-      it[] $$4 = $$0.f();
-
-      for (it $$5 : $$4) {
-         if ($$5.o().d()) {
-            it $$6 = $$5.g();
-            $$1 = $$1.a(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
-         }
+   protected boolean a(dtc $$0, ept $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
-
-      return null;
    }
 
    @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   protected drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d[$$0.c(c) - 1];
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   protected exn b_(dtc $$0, dbg $$1, ir $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected exn c(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean f_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected float d(dtc $$0, dbg $$1, ir $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      dtc $$3 = $$1.a_($$2.d());
+      if ($$3.a(awe.cr)) {
+         return false;
+      } else {
+         return $$3.a(awe.cs) ? true : dfc.a($$3.k($$1, $$2.d()), iw.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      return !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if ($$1.a(dcj.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dtc $$0, cyd $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.q()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == iw.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(c);
    }
 }

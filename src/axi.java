@@ -1,80 +1,33 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
 
-public class axi implements DataOutput {
-   private final DataOutput a;
+public class axi {
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/Minecraft-Support";
+   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String m = "https://aka.ms/aboutjavareporting";
+   public static final String n = "https://aka.ms/mcjavamoderation";
+   public static final String o = "https://aka.ms/javablocking";
+   public static final String p = "https://aka.ms/MinecraftSymLinks";
+   public static final String q = "https://aka.ms/startjavarealmstrial";
+   public static final String r = "https://aka.ms/BuyJavaRealms";
+   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
 
-   public axi(DataOutput $$0) {
-      this.a = $$0;
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
-   }
-
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
-   }
-
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
-   }
-
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
-   }
-
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
-   }
-
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
-
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
-
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

@@ -1,17 +1,20 @@
-public class fyo extends fyq {
-   protected fyo(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
+public class fyo implements aue {
+   private Map<fyq, fyy> a = ImmutableMap.of();
+
+   public fys a(fyq $$0) {
+      fyy $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyo($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
+   @Override
+   public void a(aud $$0) {
+      this.a = ImmutableMap.copyOf(fyp.a());
    }
 }

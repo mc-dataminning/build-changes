@@ -1,46 +1,31 @@
-public record aav(io c, float d, float e, float f, float g, float h) implements aaf {
-   public static final yv<vx, aav> a = aaf.a(aav::a, aav::new);
-   public static final aaf.b<aav> b = aaf.a("debug/worldgen_attempt");
+public record aav(int c, eps d, float e) implements aam {
+   public static final zc<we, aav> a = aam.a(aav::a, aav::new);
+   public static final aam.b<aav> b = aam.a("debug/path");
 
-   private aav(vx $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   private aav(we $$0) {
+      this($$0.readInt(), eps.b($$0), $$0.readFloat());
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(we $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
    }
 
    @Override
-   public aaf.b<aav> a() {
+   public aam.b<aav> a() {
       return b;
    }
 
-   public io b() {
+   public int b() {
       return this.c;
    }
 
-   public float c() {
+   public eps c() {
       return this.d;
    }
 
    public float d() {
       return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

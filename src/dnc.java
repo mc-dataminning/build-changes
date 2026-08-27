@@ -1,43 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnc extends dmk implements dkz {
+public class dnc extends dfc {
    public static final MapCodec<dnc> a = b(dnc::new);
-   public static final drs c = drr.C;
+   protected static final exn b = dfc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
-   protected MapCodec<? extends dnc> a() {
+   public MapCodec<dnc> a() {
       return a;
    }
 
-   protected dnc(dra.d $$0) {
+   public dnc(dtb.d $$0) {
       super($$0);
-      this.k(this.n().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public drb a(cwz $$0) {
-      emu $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(emv.c)));
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, emv.c, emv.c.a($$3));
+   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return b;
+   }
+
+   @Override
+   protected exn b_(dtc $$0, dbg $$1, ir $$2) {
+      return exk.b();
+   }
+
+   @Override
+   protected exn c(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return exk.b();
+   }
+
+   @Override
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      dfi.b($$1, $$2.c(), $$0);
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$1 == iw.b && $$2.a(dfe.al)) {
+         $$3.a($$4, this, 20);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected emu b_(drb $$0) {
-      return $$0.c(c) ? emv.c.a(true) : super.b_($$0);
+   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c);
+   protected boolean a(dtc $$0, ept $$1) {
+      return false;
+   }
+
+   @Override
+   protected float d(dtc $$0, dbg $$1, ir $$2) {
+      return 0.2F;
    }
 }

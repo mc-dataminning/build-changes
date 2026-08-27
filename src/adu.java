@@ -1,21 +1,33 @@
-public record adu(int b, wx c) implements ze<abq> {
-   public static final yv<wi, adu> a = yv.a(yt.f, adu::b, wz.d, adu::e, adu::new);
+public class adu implements zl<abw> {
+   public static final zc<wp, adu> a = zc.a(za.g, adu::b, za.a(li.Q), adu::e, xg.d, adu::f, adu::new);
+   private final int b;
+   private final cqo<?> c;
+   private final xe d;
 
-   @Override
-   public zg<adu> a() {
-      return agb.ad;
+   public adu(int $$0, cqo<?> $$1, xe $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(abq $$0) {
+   @Override
+   public zn<adu> a() {
+      return agj.X;
+   }
+
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int b() {
+      return this.b;
    }
 
-   public wx e() {
+   public cqo<?> e() {
       return this.c;
+   }
+
+   public xe f() {
+      return this.d;
    }
 }

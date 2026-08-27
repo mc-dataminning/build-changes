@@ -1,51 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class bqp {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public record bqp(String b, bqm c, float d, bql e, bqr f) {
-   public static final Codec<bqp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bqp::a),
-               bqm.d.fieldOf("scaling").forGetter(bqp::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bqp::c),
-               bql.g.optionalFieldOf("effects", bql.a).forGetter(bqp::d),
-               bqr.d.optionalFieldOf("death_message_type", bqr.a).forGetter(bqp::e)
-            )
-            .apply($$0, bqp::new)
-   );
-
-   public bqp(String $$0, bqm $$1, float $$2) {
-      this($$0, $$1, $$2, bql.a, bqr.a);
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 2.0F + $$2 / 4.0F;
+      float $$4 = aym.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
+      return $$0 * (1.0F - $$4 / 25.0F);
    }
 
-   public bqp(String $$0, bqm $$1, float $$2, bql $$3) {
-      this($$0, $$1, $$2, $$3, bqr.a);
-   }
-
-   public bqp(String $$0, float $$1, bql $$2) {
-      this($$0, bqm.b, $$1, $$2);
-   }
-
-   public bqp(String $$0, float $$1) {
-      this($$0, bqm.b, $$1);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public bqm b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public bql d() {
-      return this.e;
-   }
-
-   public bqr e() {
-      return this.f;
+   public static float a(float $$0, float $$1) {
+      float $$2 = aym.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

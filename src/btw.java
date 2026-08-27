@@ -1,32 +1,111 @@
-public class btw {
-   public static final ix<btr> a = a("generic.armor", new bty("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final ix<btr> b = a("generic.armor_toughness", new bty("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final ix<btr> c = a("generic.attack_damage", new bty("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final ix<btr> d = a("generic.attack_knockback", new bty("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final ix<btr> e = a("generic.attack_speed", new bty("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final ix<btr> f = a("player.block_break_speed", new bty("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final ix<btr> g = a("player.block_interaction_range", new bty("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final ix<btr> h = a("player.entity_interaction_range", new bty("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final ix<btr> i = a("generic.fall_damage_multiplier", new bty("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
-   public static final ix<btr> j = a("generic.flying_speed", new bty("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
-   public static final ix<btr> k = a("generic.follow_range", new bty("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final ix<btr> l = a("generic.gravity", new bty("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
-   public static final ix<btr> m = a("generic.jump_strength", new bty("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final ix<btr> n = a("generic.knockback_resistance", new bty("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final ix<btr> o = a("generic.luck", new bty("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final ix<btr> p = a("generic.max_absorption", new bty("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final ix<btr> q = a("generic.max_health", new bty("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final ix<btr> r = a("generic.movement_speed", new bty("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
-   public static final ix<btr> s = a("generic.safe_fall_distance", new bty("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final ix<btr> t = a("generic.scale", new bty("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
-   public static final ix<btr> u = a("zombie.spawn_reinforcements", new bty("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final ix<btr> v = a("generic.step_height", new bty("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import org.slf4j.Logger;
 
-   private static ix<btr> a(String $$0, btr $$1) {
-      return jk.b(le.u, new akm($$0), $$1);
+public class btw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bsb<? extends bso>, btu> b = ImmutableMap.builder()
+      .put(bsb.a, cfk.r().a())
+      .put(bsb.c, cfn.r().a())
+      .put(bsb.d, chw.r().a())
+      .put(bsb.g, cfq.gF().a())
+      .put(bsb.h, cdy.r().a())
+      .put(bsb.i, cdy.r().a())
+      .put(bsb.j, cef.gK().a())
+      .put(bsb.k, cil.r().a())
+      .put(bsb.n, cim.gB().a())
+      .put(bsb.r, ceh.gJ().a())
+      .put(bsb.q, cfv.r().a())
+      .put(bsb.s, cin.r().a())
+      .put(bsb.v, cej.r().a())
+      .put(bsb.w, ceb.r().a())
+      .put(bsb.y, cel.r().a())
+      .put(bsb.z, cio.r().a())
+      .put(bsb.A, cem.gy().a())
+      .put(bsb.B, cgh.r().a())
+      .put(bsb.D, ciq.r().a())
+      .put(bsb.F, cir.r().a())
+      .put(bsb.J, cis.r().a())
+      .put(bsb.K, cit.r().a())
+      .put(bsb.H, cha.t().a())
+      .put(bsb.L, civ.t().a())
+      .put(bsb.o, cka.r().a())
+      .put(bsb.S, ceo.r().a())
+      .put(bsb.T, cfy.gy().a())
+      .put(bsb.V, ciw.x().a())
+      .put(bsb.W, cix.r().a())
+      .put(bsb.Y, bsg.gy().a())
+      .put(bsb.Z, cge.t().a())
+      .put(bsb.aa, ciy.gA().a())
+      .put(bsb.ab, cki.r().a())
+      .put(bsb.ad, cgi.gX().a())
+      .put(bsb.ae, cjx.gD().a())
+      .put(bsb.af, cja.t().a())
+      .put(bsb.ah, ceq.r().a())
+      .put(bsb.ao, cgl.gJ().a())
+      .put(bsb.aq, cjb.r().a())
+      .put(bsb.aS, cjc.r().a())
+      .put(bsb.at, cel.r().a())
+      .put(bsb.au, cgh.r().a())
+      .put(bsb.av, ces.r().a())
+      .put(bsb.ax, cet.gJ().a())
+      .put(bsb.ay, ceu.gE().a())
+      .put(bsb.az, cjd.gG().a())
+      .put(bsb.aA, cev.r().a())
+      .put(bsb.aB, cko.gD().a())
+      .put(bsb.aC, ckr.x().a())
+      .put(bsb.aD, cjg.t().a())
+      .put(bsb.aE, cir.r().a())
+      .put(bsb.bE, cly.fZ().a())
+      .put(bsb.aF, cew.r().a())
+      .put(bsb.bz, cjh.gC().a())
+      .put(bsb.aH, ceb.r().a())
+      .put(bsb.aI, cey.t().a())
+      .put(bsb.aJ, cjj.r().a())
+      .put(bsb.aK, ceb.r().a())
+      .put(bsb.aL, cfa.r().a())
+      .put(bsb.aM, cjk.r().a())
+      .put(bsb.aO, cjl.r().a())
+      .put(bsb.aP, cik.r().a())
+      .put(bsb.aQ, cgo.r().a())
+      .put(bsb.aR, cjd.gG().a())
+      .put(bsb.aU, cgv.r().a())
+      .put(bsb.aV, cfc.r().a())
+      .put(bsb.aZ, cjp.t().a())
+      .put(bsb.ba, cfd.gy().a())
+      .put(bsb.bb, cik.r().a())
+      .put(bsb.bc, cjr.t().a())
+      .put(bsb.bd, cgb.gA().a())
+      .put(bsb.bh, ciy.gA().a())
+      .put(bsb.bi, cgl.gJ().a())
+      .put(bsb.bk, ceb.r().a())
+      .put(bsb.bl, cff.x().a())
+      .put(bsb.bm, cjs.r().a())
+      .put(bsb.bn, cll.gH().a())
+      .put(bsb.bo, cjt.t().a())
+      .put(bsb.bq, clc.r().a())
+      .put(bsb.bp, bsq.A().a())
+      .put(bsb.bs, cju.t().a())
+      .put(bsb.bt, chu.t().a())
+      .put(bsb.bu, cik.r().a())
+      .put(bsb.bw, cfh.gG().a())
+      .put(bsb.bx, cjw.r().a())
+      .put(bsb.by, cjx.gD().a())
+      .put(bsb.bA, cgs.r().a())
+      .put(bsb.bB, cjx.gD().a())
+      .put(bsb.bC, cjz.gC().a())
+      .build();
+
+   public static btu a(bsb<? extends bso> $$0) {
+      return b.get($$0);
    }
 
-   public static ix<btr> a(jk<btr> $$0) {
-      return q;
+   public static boolean b(bsb<?> $$0) {
+      return b.containsKey($$0);
+   }
+
+   public static void a() {
+      lh.g.s().filter($$0 -> $$0.f() != bsr.h).filter($$0 -> !b((bsb<?>)$$0)).map(lh.g::b).forEach($$0 -> ad.a("Entity " + $$0 + " has no attributes"));
    }
 }

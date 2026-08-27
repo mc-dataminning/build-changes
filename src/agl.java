@@ -1,44 +1,100 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
-
-public record agl(String b, Instant c, long d, @Nullable xj e, xe.b f) implements ze<agd> {
-   public static final yv<vx, agl> a = ze.a(agl::a, agl::new);
-
-   private agl(vx $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xj::a), new xe.b($$0));
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, xj::a);
-      this.f.a($$0);
-   }
-
+public interface agl extends aac, ajn {
    @Override
-   public zg<agl> a() {
-      return agb.bk;
+   default wd b() {
+      return wd.b;
    }
 
-   public void a(agd $$0) {
-      $$0.a(this);
-   }
+   void a(aie var1);
 
-   public Instant e() {
-      return this.c;
-   }
+   void a(ags var1);
 
-   public long f() {
-      return this.d;
-   }
+   void a(agr var1);
 
-   @Nullable
-   public xj g() {
-      return this.e;
-   }
+   void a(agq var1);
 
-   public xe.b h() {
-      return this.f;
-   }
+   void a(agv var1);
+
+   void a(agy var1);
+
+   void a(agz var1);
+
+   void a(ahm var1);
+
+   void a(aha var1);
+
+   void a(ahf var1);
+
+   void a(ahi var1);
+
+   void a(ahn var1);
+
+   void a(aho var1);
+
+   void a(ahp var1);
+
+   void a(ahq var1);
+
+   void a(ahx var1);
+
+   void a(aia var1);
+
+   void a(aid var1);
+
+   void a(aig var1);
+
+   void a(aih var1);
+
+   void a(aif var1);
+
+   void a(ahk var1);
+
+   void a(ahj var1);
+
+   void a(agn var1);
+
+   void a(ahs var1);
+
+   void a(ahr var1);
+
+   void a(ahu var1);
+
+   void a(agw var1);
+
+   void a(ahy var1);
+
+   void a(ahz var1);
+
+   void a(ahl var1);
+
+   void a(aht var1);
+
+   void a(ahw var1);
+
+   void a(aic var1);
+
+   void a(ahv var1);
+
+   void a(ahd var1);
+
+   void a(ahe var1);
+
+   void a(ahb var1);
+
+   void a(ago var1);
+
+   void a(aib var1);
+
+   void a(ahg var1);
+
+   void a(agp var1);
+
+   void a(ahh var1);
+
+   void a(agt var1);
+
+   void a(agx var1);
+
+   void a(agu var1);
+
+   void a(ahc var1);
 }

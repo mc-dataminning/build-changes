@@ -1,30 +1,50 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public interface eor {
-   io a();
+public interface eor extends eow {
+   @Nullable
+   dvd a(jt var1);
 
-   float b();
+   int b(ir var1);
 
-   long c();
+   public static record a(int c) implements eor {
+      public static final eor.a a = new eor.a(0);
+      public static final eor.a b = new eor.a(15);
 
-   long d();
+      @Nullable
+      @Override
+      public dvd a(jt $$0) {
+         return null;
+      }
 
-   boolean g();
+      @Override
+      public int b(ir $$0) {
+         return this.c;
+      }
 
-   boolean i();
+      @Override
+      public void a(ir $$0) {
+      }
 
-   void b(boolean var1);
+      @Override
+      public boolean L_() {
+         return false;
+      }
 
-   boolean l();
+      @Override
+      public int a() {
+         return 0;
+      }
 
-   dat o();
+      @Override
+      public void a(jt $$0, boolean $$1) {
+      }
 
-   bpr q();
+      @Override
+      public void a(dbh $$0, boolean $$1) {
+      }
 
-   boolean r();
-
-   default void a(p $$0, daz $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+      @Override
+      public void b(dbh $$0) {
+      }
    }
 }

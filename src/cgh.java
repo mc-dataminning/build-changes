@@ -1,53 +1,53 @@
 public abstract class cgh extends cgi {
-   private static final ajr<Boolean> bZ = ajv.a(cgh.class, ajt.k);
-   public static final int bY = 15;
-   private final brx cb;
+   private static final ajy<Boolean> ci = akc.a(cgh.class, aka.k);
+   public static final int ch = 15;
+   private final bry ck;
 
-   protected cgh(bsa<? extends cgh> $$0, dax $$1) {
+   protected cgh(bsb<? extends cgh> $$0, dca $$1) {
       super($$0, $$1);
-      this.cw = false;
-      this.cb = $$0.n().a(brw.a().a(brv.a, 0.0F, $$0.m() - 0.15625F, 0.0F)).a(0.5F);
+      this.cF = false;
+      this.ck = $$0.n().a(brx.a().a(brw.a, 0.0F, $$0.l() - 0.15625F, 0.0F)).a(0.5F);
    }
 
    @Override
-   protected void a(ayk $$0) {
-      this.f(btw.q).a((double)a($$0::a));
+   protected void a(ayt $$0) {
+      this.f(btv.q).a((double)a($$0::a));
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       super.a($$0);
-      $$0.a(bZ, false);
+      $$0.a(ci, false);
    }
 
-   public static btv.a s() {
-      return gO().a(btw.r, 0.175F).a(btw.m, 0.5);
+   public static btu.a r() {
+      return gX().a(btv.r, 0.175F).a(btv.m, 0.5);
    }
 
-   public boolean u() {
-      return this.ao.a(bZ);
+   public boolean t() {
+      return this.as.a(ci);
    }
 
    public void w(boolean $$0) {
-      this.ao.a(bZ, $$0);
+      this.as.a(ci, $$0);
    }
 
    @Override
-   protected int ab_() {
-      return this.u() ? 16 : super.ab_();
+   protected int ac_() {
+      return this.t() ? 16 : super.ac_();
    }
 
    @Override
-   public brx e(bta $$0) {
-      return this.p_() ? this.cb : super.e($$0);
+   public bry e(bsz $$0) {
+      return this.o_() ? this.ck : super.e($$0);
    }
 
    @Override
-   protected void eD() {
-      super.eD();
-      if (this.u()) {
-         if (!this.dP().B) {
-            this.a(dea.cv);
+   protected void eL() {
+      super.eL();
+      if (this.t()) {
+         if (!this.dU().C) {
+            this.a(dfe.dg);
          }
 
          this.w(false);
@@ -55,18 +55,18 @@ public abstract class cgh extends cgi {
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("ChestedHorse", this.u());
-      if (this.u()) {
-         uj $$1 = new uj();
+      $$0.a("ChestedHorse", this.t());
+      if (this.t()) {
+         uq $$1 = new uq();
 
-         for (int $$2 = 1; $$2 < this.cs.b(); $$2++) {
-            cto $$3 = this.cs.a($$2);
-            if (!$$3.e()) {
-               ud $$4 = new ud();
+         for (int $$2 = 1; $$2 < this.cB.b(); $$2++) {
+            cuh $$3 = this.cB.a($$2);
+            if (!$$3.d()) {
+               uk $$4 = new uk();
                $$4.a("Slot", (byte)($$2 - 1));
-               $$1.add($$3.b(this.dR(), $$4));
+               $$1.add($$3.b(this.dY(), $$4));
             }
          }
 
@@ -75,46 +75,46 @@ public abstract class cgh extends cgi {
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
       this.w($$0.q("ChestedHorse"));
-      this.gL();
-      if (this.u()) {
-         uj $$1 = $$0.c("Items", 10);
+      this.gU();
+      if (this.t()) {
+         uq $$1 = $$0.c("Items", 10);
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            ud $$3 = $$1.a($$2);
+            uk $$3 = $$1.a($$2);
             int $$4 = $$3.f("Slot") & 255;
-            if ($$4 < this.cs.b() - 1) {
-               this.cs.a($$4 + 1, cto.a(this.dR(), (va)$$3).orElse(cto.i));
+            if ($$4 < this.cB.b() - 1) {
+               this.cB.a($$4 + 1, cuh.a(this.dY(), (vh)$$3).orElse(cuh.i));
             }
          }
       }
 
-      this.gM();
+      this.gV();
    }
 
    @Override
-   public btg a_(int $$0) {
-      return $$0 == 499 ? new btg() {
+   public btf a_(int $$0) {
+      return $$0 == 499 ? new btf() {
          @Override
-         public cto a() {
-            return cgh.this.u() ? new cto(ctr.eN) : cto.i;
+         public cuh a() {
+            return cgh.this.t() ? new cuh(cuk.fY) : cuh.i;
          }
 
          @Override
-         public boolean a(cto $$0) {
-            if ($$0.e()) {
-               if (cgh.this.u()) {
+         public boolean a(cuh $$0) {
+            if ($$0.d()) {
+               if (cgh.this.t()) {
                   cgh.this.w(false);
-                  cgh.this.gL();
+                  cgh.this.gU();
                }
 
                return true;
-            } else if ($$0.a(ctr.eN)) {
-               if (!cgh.this.u()) {
+            } else if ($$0.a(cuk.fY)) {
+               if (!cgh.this.t()) {
                   cgh.this.w(true);
-                  cgh.this.gL();
+                  cgh.this.gU();
                }
 
                return true;
@@ -126,23 +126,23 @@ public abstract class cgh extends cgi {
    }
 
    @Override
-   public bpu b(clw $$0, bpt $$1) {
-      boolean $$2 = !this.p_() && this.gE() && $$0.fR();
-      if (!this.bS() && !$$2) {
-         cto $$3 = $$0.b($$1);
-         if (!$$3.e()) {
+   public bqa b(cly $$0, bpz $$1) {
+      boolean $$2 = !this.o_() && this.gN() && $$0.ga();
+      if (!this.bX() && !$$2) {
+         cuh $$3 = $$0.b($$1);
+         if (!$$3.d()) {
             if (this.o($$3)) {
                return this.c($$0, $$3);
             }
 
-            if (!this.gE()) {
-               this.gU();
-               return bpu.a(this.dP().B);
+            if (!this.gN()) {
+               this.hd();
+               return bqa.a(this.dU().C);
             }
 
-            if (!this.u() && $$3.a(ctr.eN)) {
+            if (!this.t() && $$3.a(cuk.fY)) {
                this.d($$0, $$3);
-               return bpu.a(this.dP().B);
+               return bqa.a(this.dU().C);
             }
          }
 
@@ -152,19 +152,19 @@ public abstract class cgh extends cgi {
       }
    }
 
-   private void d(clw $$0, cto $$1) {
+   private void d(cly $$0, cuh $$1) {
       this.w(true);
-      this.gp();
+      this.gy();
       $$1.a(1, $$0);
-      this.gL();
+      this.gU();
    }
 
    @Override
-   protected void gp() {
-      this.a(avh.hh, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+   protected void gy() {
+      this.a(avo.hh, 1.0F, (this.al.i() - this.al.i()) * 0.2F + 1.0F);
    }
 
-   public int gx() {
+   public int gG() {
       return 5;
    }
 }

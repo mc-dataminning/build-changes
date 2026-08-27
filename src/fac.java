@@ -1,4 +1,3 @@
-public class fac extends fao {
-   public volatile String a = "0";
-   public volatile String b = "";
+public interface fac {
+   fab createMonitor(long var1);
 }

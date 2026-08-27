@@ -1,84 +1,45 @@
-public class ahr implements ze<agd> {
-   public static final yv<vx, ahr> a = ze.a(ahr::a, ahr::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final io e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final doq.a j;
+public class ahr implements zl<agl> {
+   public static final zc<we, ahr> a = zl.a(ahr::a, ahr::new);
+   private final cqx b;
+   private final boolean c;
+   private final boolean d;
 
-   public ahr(io $$0, String $$1, doq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+   public ahr(cqx $$0, boolean $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ahr(vx $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(doq.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   private ahr(we $$0) {
+      this.b = $$0.b(cqx.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
-
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zg<ahr> a() {
-      return agb.bT;
+   public zn<ahr> a() {
+      return agj.bN;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public io b() {
-      return this.e;
+   public cqx b() {
+      return this.b;
    }
 
-   public String e() {
-      return this.f;
+   public boolean e() {
+      return this.c;
    }
 
    public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public doq.a i() {
-      return this.j;
+      return this.d;
    }
 }

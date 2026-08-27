@@ -1,20 +1,20 @@
-public enum dru implements ayx {
-   a("compare"),
-   b("subtract");
-
-   private final String c;
-
-   private dru(String $$0) {
-      this.c = $$0;
+public class dru extends dpp {
+   public dru(ir $$0, dtc $$1) {
+      super(dqe.C, $$0, $$1, czf.d);
    }
 
    @Override
-   public String toString() {
-      return this.c;
+   protected xe k() {
+      return xe.c("container.smoker");
    }
 
    @Override
-   public String c() {
-      return this.c;
+   protected int b(cuh $$0) {
+      return super.b($$0) / 2;
+   }
+
+   @Override
+   protected cpg a(int $$0, clx $$1) {
+      return new cri($$0, $$1, this, this.m);
    }
 }

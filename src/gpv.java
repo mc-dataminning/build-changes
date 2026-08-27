@@ -1,70 +1,23 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public class gpv implements AutoCloseable {
-   private final Map<akm, gpv.a> a;
-
-   public gpv(Map<akm, akm> $$0, gnw $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         gnu $$2 = new gnu((akm)$$1x.getKey());
-         $$1.a((akm)$$1x.getKey(), $$2);
-         return new gpv.a($$2, (akm)$$1x.getValue());
-      }));
-   }
-
-   public gnu a(akm $$0) {
-      return this.a.get($$0).a();
+public class gpv<T extends bso> extends goj<T, fyh<T>> {
+   public gpv(gmp<T, fyh<T>> $$0, gfc $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(gpv.a::close);
-      this.a.clear();
-   }
-
-   public Map<akm, CompletableFuture<gpv.b>> a(atw $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         gpv.a $$4 = $$3.getValue();
-         return gnq.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gpv.b($$4.a, $$1xx));
-      }));
-   }
-
-   static record a(gnu a, akm b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
-      }
-   }
-
-   public static class b {
-      private final gnu a;
-      private final gnq.a b;
-
-      public b(gnu $$0, gnq.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cuh $$10 = $$3.fg();
+      $$0.a();
+      if ($$10.a(cuk.tH)) {
+         this.c().d().a($$0);
+         this.c().e().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
       }
 
-      @Nullable
-      public gnv a(akm $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public gnv a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+      $$0.b();
    }
 }

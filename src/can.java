@@ -1,127 +1,125 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class can<T extends cjc & cjg & cip> extends bzm {
-   public static final bpf a = azc.a(1, 2);
-   private final T b;
-   private can.a c = can.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class can extends bzy {
+   private final dfc g;
+   private final bsq h;
+   private int i;
+   private static final int j = 20;
 
-   public can(T $$0, double $$1, float $$2) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
+   public can(dfc $$0, bsw $$1, double $$2, int $$3) {
+      super($$1, $$2, 24, $$3);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
    public boolean a() {
-      return this.i() && this.h();
-   }
-
-   private boolean h() {
-      return this.b.b(ctr.vT);
-   }
-
-   @Override
-   public boolean b() {
-      return this.i() && (this.a() || !this.b.K().l()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.p() != null && this.b.p().bD();
+      if (!this.h.dU().ab().b(dbw.c)) {
+         return false;
+      } else if (this.c > 0) {
+         this.c--;
+         return false;
+      } else if (this.n()) {
+         this.c = b(20);
+         return true;
+      } else {
+         this.c = this.a(this.a);
+         return false;
+      }
    }
 
    @Override
    public void d() {
       super.d();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fv()) {
-         this.b.fB();
-         this.b.b(false);
-         this.b.fx().b(kb.D, cwc.a);
-      }
+      this.h.ad = 1.0F;
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void c() {
+      super.c();
+      this.i = 0;
+   }
+
+   public void a(dcb $$0, ir $$1) {
+   }
+
+   public void a(dca $$0, ir $$1) {
    }
 
    @Override
    public void e() {
-      bso $$0 = this.b.p();
-      if ($$0 != null) {
-         boolean $$1 = this.b.M().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
+      super.e();
+      dca $$0 = this.h.dU();
+      ir $$1 = this.h.du();
+      ir $$2 = this.a($$1, $$0);
+      ayt $$3 = this.h.et();
+      if (this.m() && $$2 != null) {
+         if (this.i > 0) {
+            ewu $$4 = this.h.dx();
+            this.h.o($$4.c, 0.3, $$4.e);
+            if (!$$0.C) {
+               double $$5 = 0.08;
+               ((aqt)$$0)
+                  .a(
+                     new kx(lb.Q, new cuh(cuk.so)),
+                     (double)$$2.u() + 0.5,
+                     (double)$$2.v() + 0.7,
+                     (double)$$2.w() + 0.5,
+                     3,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     ((double)$$3.i() - 0.5) * 0.08,
+                     0.15F
+                  );
+            }
          }
 
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
+         if (this.i % 2 == 0) {
+            ewu $$6 = this.h.dx();
+            this.h.o($$6.c, -0.3, $$6.e);
+            if (this.i % 6 == 0) {
+               this.a((dcb)$$0, this.e);
+            }
          }
 
-         double $$3 = this.b.g($$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.K().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.el());
+         if (this.i > 60) {
+            $$0.a($$2, false);
+            if (!$$0.C) {
+               for (int $$7 = 0; $$7 < 20; $$7++) {
+                  double $$8 = $$3.k() * 0.02;
+                  double $$9 = $$3.k() * 0.02;
+                  double $$10 = $$3.k() * 0.02;
+                  ((aqt)$$0).a(lb.Z, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
+               }
+
+               this.a($$0, $$2);
             }
-         } else {
-            this.h = 0;
-            this.b.K().n();
          }
 
-         this.b.G().a($$0, 30.0F, 30.0F);
-         if (this.c == can.a.a) {
-            if (!$$4) {
-               this.b.c(cmq.a(this.b, ctr.vT));
-               this.c = can.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == can.a.b) {
-            if (!this.b.fv()) {
-               this.c = can.a.a;
-            }
-
-            int $$5 = this.b.fz();
-            cto $$6 = this.b.fx();
-            if ($$5 >= csb.l($$6)) {
-               this.b.fA();
-               this.c = can.a.c;
-               this.g = 20 + this.b.el().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == can.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = can.a.d;
-            }
-         } else if (this.c == can.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            this.c = can.a.a;
-         }
+         this.i++;
       }
    }
 
-   private boolean k() {
-      return this.c == can.a.a;
+   @Nullable
+   private ir a(ir $$0, dbg $$1) {
+      if ($$1.a_($$0).a(this.g)) {
+         return $$0;
+      } else {
+         ir[] $$2 = new ir[]{$$0.d(), $$0.g(), $$0.h(), $$0.e(), $$0.f(), $$0.d().d()};
+
+         for (ir $$3 : $$2) {
+            if ($$1.a_($$3).a(this.g)) {
+               return $$3;
+            }
+         }
+
+         return null;
+      }
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   protected boolean a(dcd $$0, ir $$1) {
+      duy $$2 = $$0.a(jt.a($$1.u()), jt.a($$1.w()), dvx.n, false);
+      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.c()).i() && $$2.a_($$1.b(2)).i();
    }
 }

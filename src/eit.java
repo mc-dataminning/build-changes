@@ -1,25 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record eit(akl<eis> c, akl<eis> d) implements eiu {
-   static MapCodec<eit> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akl.a(lf.aM).fieldOf("alias").forGetter(eit::c), akl.a(lf.aM).fieldOf("target").forGetter(eit::d)).apply($$0, eit::new)
-   );
+public class eit extends eja {
+   public static final Codec<eit> a = RecordCodecBuilder.create($$0 -> $$0.group(dyu.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, eit::new));
+   private final dyu.a c;
 
-   @Override
-   public void a(ayk $$0, BiConsumer<akl<eis>, akl<eis>> $$1) {
-      $$1.accept(this.c, this.d);
+   private eit(dyu.a $$0) {
+      this.c = $$0;
+   }
+
+   public static eit a(dyu.a $$0) {
+      return new eit($$0);
    }
 
    @Override
-   public Stream<akl<eis>> a() {
-      return Stream.of(this.d);
+   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new ir($$3, $$5, $$4)) : Stream.of();
    }
 
    @Override
-   public MapCodec<eit> b() {
-      return a;
+   public ejb<?> b() {
+      return ejb.k;
    }
 }

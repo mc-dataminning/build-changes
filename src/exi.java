@@ -1,40 +1,53 @@
-import com.mojang.blaze3d.platform.GLX;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import javax.annotation.Nullable;
-import org.lwjgl.system.Pointer;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class exi {
-   @Nullable
-   private static final MethodHandle a = GLX.make(() -> {
-      try {
-         Lookup $$0 = MethodHandles.lookup();
-         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
-         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
-         $$2.setAccessible(true);
-         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
-         $$3.setAccessible(true);
-         Object $$4 = $$3.get(null);
-         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
-      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
-         throw new RuntimeException(var5);
-      }
-   });
+public class exi extends AbstractDoubleList implements exg {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   public static void a(long $$0) {
-      if (a != null) {
-         try {
-            a.invoke((long)$$0);
-         } catch (Throwable var3) {
-            throw new RuntimeException(var3);
-         }
-      }
+   protected exi(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static void a(Pointer $$0) {
-      a($$0.address());
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(exg.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(exg.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

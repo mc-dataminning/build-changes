@@ -1,90 +1,94 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.Map.Entry;
 
 public class baz extends DataFix {
-   public baz(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final List<String> a = List.of(
+      "minecraft:witch", "minecraft:ravager", "minecraft:pillager", "minecraft:illusioner", "minecraft:evoker", "minecraft:vindicator"
+   );
+
+   public baz(Schema $$0) {
+      super($$0, false);
+   }
+
+   private Typed<?> a(Typed<?> $$0, Map<String, String> $$1) {
+      return $$0.update(DSL.remainderFinder(), $$1x -> {
+         for (Entry<String, String> $$2 : $$1.entrySet()) {
+            $$1x = azu.a($$1x, $$2.getKey(), $$2.getValue(), azu::a);
+         }
+
+         return $$1x;
+      });
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("frames", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = azu.a($$0xx, "Pos", "pos", azu::a);
+            $$0xx = azu.a($$0xx, "Rotation", "rotation");
+            return azu.a($$0xx, "EntityId", "entity_id");
+         }))).update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> {
+            $$0xx = azu.a($$0xx, "Pos", "pos");
+            $$0xx = azu.a($$0xx, "Color", "color");
+            return azu.a($$0xx, "Name", "name");
+         })));
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bfy.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         return this.a($$1, $$3);
-      }
-   }
-
-   private <TE> TypeRewriteRule a(Type<?> $$0, ListType<TE> $$1) {
-      Type<TE> $$2 = $$1.getElement();
-      OpticFinder<?> $$3 = DSL.fieldFinder("Level", $$0);
-      OpticFinder<List<TE>> $$4 = DSL.fieldFinder("TileEntities", $$1);
-      int $$5 = 416;
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bfy.s), this.getOutputSchema().findChoiceType(bfy.s), $$0x -> $$0xx -> $$0xx
-         ),
+      List<TypeRewriteRule> $$0 = new ArrayList<>();
+      this.a($$0);
+      this.b($$0);
+      $$0.add(
          this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(bfy.c),
-            $$3x -> {
-               Typed<?> $$4x = $$3x.getTyped($$3);
-               Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());
-               int $$6 = $$5x.get("xPos").asInt(0);
-               int $$7 = $$5x.get("zPos").asInt(0);
-               List<TE> $$8 = Lists.newArrayList((Iterable)$$4x.getOrCreate($$4));
-
-               for (Dynamic<?> $$10 : $$5x.get("Sections").asList(Function.identity())) {
-                  int $$11 = $$10.get("Y").asInt(0);
-                  Streams.mapWithIndex($$10.get("Blocks").asIntStream(), ($$4xx, $$5xx) -> {
-                        if (416 == ($$4xx & 0xFF) << 4) {
-                           int $$6x = (int)$$5xx;
-                           int $$7x = $$6x & 15;
-                           int $$8x = $$6x >> 8 & 15;
-                           int $$9 = $$6x >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> $$10x = Maps.newHashMap();
-                           $$10x.put($$10.createString("id"), $$10.createString("minecraft:bed"));
-                           $$10x.put($$10.createString("x"), $$10.createInt($$7x + ($$6 << 4)));
-                           $$10x.put($$10.createString("y"), $$10.createInt($$8x + ($$11 << 4)));
-                           $$10x.put($$10.createString("z"), $$10.createInt($$9 + ($$7 << 4)));
-                           $$10x.put($$10.createString("color"), $$10.createShort((short)14));
-                           return $$10x;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        $$3xx -> {
-                           if ($$3xx != null) {
-                              $$8.add(
-                                 (TE)((Pair)$$2.read($$10.createMap($$3xx))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !$$8.isEmpty() ? $$3x.set($$3, $$4x.set($$4, $$8)) : $$3x;
-            }
+            "BlockPos format for map frames",
+            this.getInputSchema().getType(bgf.j),
+            $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("data", this::a))
          )
       );
+      Type<?> $$1 = this.getInputSchema().getType(bgf.t);
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format for compass target", $$1, bek.a($$1, "minecraft:compass"::equals, $$0x -> $$0x.update("LodestonePos", azu::a))
+         )
+      );
+      return TypeRewriteRule.seq($$0);
+   }
+
+   private void a(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(bgf.z, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
+      $$0.add(this.a(bgf.z, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
+      $$0.add(this.a(bgf.z, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
+
+      for (String $$1 : a) {
+         $$0.add(this.a(bgf.z, $$1, Map.of("PatrolTarget", "patrol_target")));
+      }
+
+      $$0.add(
+         this.fixTypeEverywhereTyped(
+            "BlockPos format in Leash for mobs",
+            this.getInputSchema().getType(bgf.z),
+            $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> azu.a($$0xx, "Leash", "leash", azu::a))
+         )
+      );
+   }
+
+   private void b(List<TypeRewriteRule> $$0) {
+      $$0.add(this.a(bgf.s, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
+      $$0.add(this.a(bgf.s, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
+   }
+
+   private TypeRewriteRule a(TypeReference $$0, String $$1, Map<String, String> $$2) {
+      String $$3 = "BlockPos format in " + $$2.keySet() + " for " + $$1 + " (" + $$0.typeName() + ")";
+      OpticFinder<?> $$4 = DSL.namedChoice($$1, this.getInputSchema().getChoiceType($$0, $$1));
+      return this.fixTypeEverywhereTyped($$3, this.getInputSchema().getType($$0), $$2x -> $$2x.updateTyped($$4, $$1xx -> this.a($$1xx, $$2)));
    }
 }

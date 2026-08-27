@@ -1,51 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class edl extends edn {
-   public static final MapCodec<edl> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, edl::new));
-
-   public edl(boz $$0, boz $$1) {
-      super($$0, $$1);
+public class edl extends eca<eeu> {
+   public edl(Codec<eeu> $$0) {
+      super($$0);
    }
 
    @Override
-   protected edo<?> a() {
-      return edo.i;
-   }
+   public boolean a(ecc<eeu> $$0) {
+      boolean $$1 = false;
+      ayt $$2 = $$0.d();
+      dcv $$3 = $$0.b();
+      ir $$4 = $$0.e();
+      eeu $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(dyu.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      ir $$9 = new ir($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dfe.al)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dtc $$11 = $$10 ? dfe.ch.n() : dfe.cg.n();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dtc $$12 = $$11.a(dnx.d, dty.a);
+               ir $$13 = $$9.c();
+               if ($$3.a_($$13).a(dfe.al)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
+               }
+            } else {
+               $$3.a($$9, $$11, 2);
+            }
 
-   @Override
-   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
-      io $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+            $$1 = true;
          }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
-   }
 
-   @Override
-   public int a(ayk $$0, int $$1, ecx $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+      return $$1;
    }
 }

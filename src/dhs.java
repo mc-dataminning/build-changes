@@ -1,114 +1,56 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhs extends dho {
+public class dhs extends den {
    public static final MapCodec<dhs> a = b(dhs::new);
-   private static final double c = 0.13;
-   private static final double e = 0.08;
-   private static final double f = 0.05;
-   private static final int g = 20;
-   protected static final evd b = ddy.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final exn b = dfc.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
 
    @Override
    public MapCodec<dhs> a() {
       return a;
    }
 
-   public dhs(dra.d $$0) {
+   protected dhs(dtb.d $$0) {
       super($$0);
    }
 
-   private static boolean c(bru $$0) {
-      return $$0 instanceof bso || $$0 instanceof cnr || $$0 instanceof cih || $$0 instanceof cnt;
+   @Override
+   public dqc a(ir $$0, dtc $$1) {
+      return new dry($$0, $$1);
    }
 
    @Override
-   protected evd b(drb $$0, dad $$1, io $$2, eup $$3) {
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
       return b;
    }
 
    @Override
-   public void a(dax $$0, drb $$1, io $$2, bru $$3, float $$4) {
-      $$3.a(avh.mA, 1.0F, 1.0F);
-      if (!$$0.B) {
-         $$0.a($$3, (byte)54);
-      }
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if ($$1 instanceof aqt && $$3.cB() && exk.c(exk.a($$3.cP().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ewy.i)) {
+         aks<dca> $$4 = $$1.af() == dca.j ? dca.h : dca.j;
+         aqt $$5 = ((aqt)$$1).o().a($$4);
+         if ($$5 == null) {
+            return;
+         }
 
-      if ($$3.a($$4, 0.2F, $$0.ai().k())) {
-         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
+         $$3.b($$5, false);
       }
    }
 
    @Override
-   protected void a(drb $$0, dax $$1, io $$2, bru $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(lb.ac, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   private boolean a(io $$0, bru $$1) {
-      if ($$1.aE()) {
-         return false;
-      } else if ($$1.dw() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if ($$1.ds().d >= -0.08) {
-         return false;
-      } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.du());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dA());
-         double $$4 = 0.4375 + (double)($$1.dj() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
-      }
+   @Override
+   public cuh a(dcd $$0, ir $$1, dtc $$2) {
+      return cuh.i;
    }
 
-   private void a(bru $$0, io $$1) {
-      if ($$0 instanceof aqn && $$0.dP().Y() % 20L == 0L) {
-         am.K.a((aqn)$$0, $$0.dP().a_($$1));
-      }
-   }
-
-   private void d(bru $$0) {
-      euk $$1 = $$0.ds();
-      if ($$1.d < -0.13) {
-         double $$2 = -0.05 / $$1.d;
-         $$0.g(new euk($$1.c * $$2, -0.05, $$1.e * $$2));
-      } else {
-         $$0.g(new euk($$1.c, -0.05, $$1.e));
-      }
-
-      $$0.n();
-   }
-
-   private void a(dax $$0, bru $$1) {
-      if (c($$1)) {
-         if ($$0.z.a(5) == 0) {
-            $$1.a(avh.mA, 1.0F, 1.0F);
-         }
-
-         if (!$$0.B && $$0.z.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
-      }
-   }
-
-   public static void a(bru $$0) {
-      a($$0, 5);
-   }
-
-   public static void b(bru $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(bru $$0, int $$1) {
-      if ($$0.dP().B) {
-         drb $$2 = dea.pg.n();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dP().a(new kp(ky.b, $$2), $$0.du(), $$0.dw(), $$0.dA(), 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected boolean a(dtc $$0, epd $$1) {
+      return false;
    }
 }

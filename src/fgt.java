@@ -1,69 +1,99 @@
-import java.util.OptionalInt;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fgt extends ffw {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final ays<fgt.a, fgs> c;
-   private boolean d = false;
+public class fgt {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fgt.c b;
+   private int c;
 
-   public fgt(wx $$0, ffk $$1) {
-      this(0, 0, $$0, $$1);
+   public void a(fgt.b $$0, List<asp> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new fgt.c($$0, $$1.stream().map(asp::b).collect(ImmutableList.toImmutableList()));
    }
 
-   public fgt(int $$0, int $$1, wx $$2, ffk $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fgs.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fgs.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fgt.c(fgt.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new fgt.a($$0);
    }
 
-   public fgt c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fgt d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fgt e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fgt b(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   @Override
-   public int x() {
-      return this.c.a(this.d()).b();
-   }
-
-   @Override
-   public int v() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      fgs $$4 = this.c.a(this.d());
-      int $$5 = this.C();
-      int $$6 = this.D();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.x() / 2, $$6, $$7, $$8);
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
       } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+         this.b.d = true;
       }
    }
 
-   private fgt.a d() {
-      return new fgt.a(this.y(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
    }
 
-   static record a(wx a, int b, OptionalInt c) {
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final fgt.b a;
+      private final List<String> b;
+      @Nullable
+      fgt.a c;
+      boolean d;
+
+      c(fgt.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

@@ -1,29 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 
-public class dzv extends dzx<eci> {
-   public dzv(Codec<eci> $$0) {
-      super($$0);
+public class dzv implements ayt {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dzv> b = dzu.a.xmap($$0 -> new dzv($$0), $$0 -> $$0.e);
+   private dzu e;
+   private final dyw f = new dyw(this);
+
+   public dzv(long $$0) {
+      this.e = new dzu(dzj.c($$0));
+   }
+
+   public dzv(dzj.a $$0) {
+      this.e = new dzu($$0);
+   }
+
+   public dzv(long $$0, long $$1) {
+      this.e = new dzu($$0, $$1);
+   }
+
+   private dzv(dzu $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(dzz<eci> $$0) {
-      dbs $$1 = $$0.b();
-      ayk $$2 = $$0.d();
-      io $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public ayt d() {
+      return new dzv(this.e.a(), this.e.a());
+   }
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = ayd.d(-$$4); $$6 <= ayd.f($$4); $$6++) {
-            for (int $$7 = ayd.d(-$$4); $$7 <= ayd.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dea.fz.n());
-               }
+   @Override
+   public dzh e() {
+      return new dzv.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new dzu(dzj.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
             }
          }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
+   }
+
+   @Override
+   public long g() {
+      return this.e.a();
+   }
+
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
+
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements dzh {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return true;
+      @Override
+      public ayt a(int $$0, int $$1, int $$2) {
+         long $$3 = aym.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dzv($$4, this.b);
+      }
+
+      @Override
+      public ayt a(String $$0) {
+         dzj.a $$1 = dzj.a($$0);
+         return new dzv($$1.a(this.a, this.b));
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

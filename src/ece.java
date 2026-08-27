@@ -1,40 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ece implements ecb {
-   public static final Codec<ece> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               boz.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               box.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               box.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               box.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               box.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, ece::new)
-   );
-   public final int b;
-   public final boz c;
-   public final box d;
-   public final float e;
-   public final box f;
-   public final box g;
-   public final box h;
-   public final int i;
-   public final float j;
+public class ece extends eca<ecf> {
+   public ece(Codec<ecf> $$0) {
+      super($$0);
+   }
 
-   public ece(int $$0, boz $$1, box $$2, float $$3, box $$4, box $$5, box $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(ecc<ecf> $$0) {
+      ayt $$1 = $$0.d();
+      dcv $$2 = $$0.b();
+      ir $$3 = $$0.e();
+      dmd $$4 = dmd.a($$1);
+      ecf $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      enu $$7 = $$2.E().o().ba();
+      ent $$8 = $$7.a($$5.b.get($$6));
+      ent $$9 = $$7.a($$5.c.get($$6));
+      dbh $$10 = new dbh($$3);
+      ejl $$11 = new ejl($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.am(), $$10.g() + 16);
+      enp $$12 = new enp().a($$4).a($$11).a($$1);
+      jv $$13 = $$8.a($$4);
+      ir $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(dyu.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
+      ir $$19 = $$8.a($$14.h($$18), dke.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
+      }
+   }
+
+   private static int a(dcv $$0, ejl $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dtc $$3 = $$0.a_($$2x);
+         if ($$3.i() || $$3.a(dfe.am) || $$3.a(dfe.al)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

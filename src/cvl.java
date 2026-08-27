@@ -1,13 +1,20 @@
-public class cvl extends ctj {
-   public cvl(ctj.a $$0) {
+public class cvl extends cuc {
+   public cvl(cuc.a $$0) {
       super($$0);
    }
 
    @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      cto $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avr.c.b(this));
-      return bpv.a($$3, $$0.x_());
+   public bqa a(cuh $$0, cly $$1, bso $$2, bpz $$3) {
+      if ($$2 instanceof btd $$4 && $$2.bI() && !$$4.i() && $$4.f()) {
+         if (!$$1.dU().C) {
+            $$4.a(avq.g);
+            $$2.dU().a($$2, dxv.v, $$2.ds());
+            $$0.h(1);
+         }
+
+         return bqa.a($$1.dU().C);
+      }
+
+      return bqa.d;
    }
 }

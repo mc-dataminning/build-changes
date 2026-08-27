@@ -1,103 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dcx extends dcw implements dkz {
-   public static final MapCodec<dcx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
+public class dcx {
+   public static final Codec<dcx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avn.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
             .apply($$0, dcx::new)
    );
-   public static final drs c = drr.C;
-   public static final drv d = drr.P;
-   private final float k;
-   private final float l;
-   protected final evd e;
-   protected final evd f;
-   protected final evd g;
-   protected final evd h;
-   protected final evd i;
-   protected final evd j;
+   public static final dcx b = new dcx(avo.h, 6000, 8, 2.0);
+   private final ja<avn> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   @Override
-   public MapCodec<dcx> a() {
-      return b;
+   public dcx(ja<avn> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public dcx(float $$0, float $$1, dra.d $$2) {
-      super($$2);
-      this.k(this.n().a(c, Boolean.valueOf(false)).a(d, it.b));
-      this.i = ddy.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
-      this.j = ddy.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
-      this.e = ddy.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
-      this.f = ddy.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
-      this.g = ddy.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.h = ddy.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.k = $$0;
-      this.l = $$1;
+   public ja<avn> a() {
+      return this.c;
    }
 
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      it $$4 = $$0.c(d);
-      switch ($$4) {
-         case c:
-            return this.e;
-         case d:
-            return this.f;
-         case f:
-            return this.g;
-         case e:
-            return this.h;
-         case a:
-            return this.j;
-         case b:
-         default:
-            return this.i;
-      }
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      it $$3 = $$0.c(d);
-      io $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
+   public int c() {
+      return this.e;
    }
 
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, emv.c, emv.c.a($$3));
-      }
-
-      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public drb a(cwz $$0) {
-      day $$1 = $$0.q();
-      io $$2 = $$0.a();
-      return this.n().a(c, Boolean.valueOf($$1.b_($$2).a() == emv.c)).a(d, $$0.k());
-   }
-
-   @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected emu b_(drb $$0) {
-      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c, d);
+   public double d() {
+      return this.f;
    }
 }

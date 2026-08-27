@@ -1,101 +1,70 @@
-public class ade implements ze<abq> {
-   public static final yv<wi, ade> a = ze.a(ade::a, ade::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final kw k;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public <T extends kw> ade(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.k = $$0;
-      this.j = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
-      this.h = $$8;
-      this.i = $$9;
+public class ade implements zl<abw> {
+   public static final zc<we, ade> a = zl.a(ade::a, ade::new);
+   public static final ade.a b = new ade.a(0);
+   public static final ade.a c = new ade.a(1);
+   public static final ade.a d = new ade.a(2);
+   public static final ade.a e = new ade.a(3);
+   public static final ade.a f = new ade.a(4);
+   public static final ade.a g = new ade.a(5);
+   public static final ade.a h = new ade.a(6);
+   public static final ade.a i = new ade.a(7);
+   public static final ade.a j = new ade.a(8);
+   public static final ade.a k = new ade.a(9);
+   public static final ade.a l = new ade.a(10);
+   public static final ade.a m = new ade.a(11);
+   public static final ade.a n = new ade.a(12);
+   public static final ade.a o = new ade.a(13);
+   public static final ade.a p = new ade.a(15);
+   public static final int q = 0;
+   public static final int r = 101;
+   public static final int s = 102;
+   public static final int t = 103;
+   public static final int u = 104;
+   private final ade.a v;
+   private final float w;
+
+   public ade(ade.a $$0, float $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   private ade(wi $$0) {
-      this.j = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.k = ky.bg.decode($$0);
+   private ade(we $$0) {
+      this.v = (ade.a)ade.a.a.get($$0.readUnsignedByte());
+      this.w = $$0.readFloat();
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.j);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.p(this.i);
-      ky.bg.encode($$0, this.k);
+   private void a(we $$0) {
+      $$0.k(this.v.b);
+      $$0.a(this.w);
    }
 
    @Override
-   public zg<ade> a() {
-      return agb.M;
+   public zn<ade> a() {
+      return agj.H;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.j;
+   public ade.a b() {
+      return this.v;
    }
 
-   public double e() {
-      return this.b;
+   public float e() {
+      return this.w;
    }
 
-   public double f() {
-      return this.c;
-   }
+   public static class a {
+      static final Int2ObjectMap<ade.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public double g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public float k() {
-      return this.h;
-   }
-
-   public int l() {
-      return this.i;
-   }
-
-   public kw m() {
-      return this.k;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

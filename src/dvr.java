@@ -1,43 +1,31 @@
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 
-public class dvr<T extends dvw> {
-   private final T a;
-   @Nullable
-   private jq b;
+public interface dvr<T> {
+   T a(int var1, int var2, int var3);
 
-   public dvr(T $$0) {
-      this.a = $$0;
+   void a(Consumer<T> var1);
+
+   void b(we var1);
+
+   int c();
+
+   boolean a(Predicate<T> var1);
+
+   void a(dvq.b<T> var1);
+
+   dvq<T> e();
+
+   dvr.a<T> a(jf<T> var1, dvq.d var2);
+
+   public static record a<T>(List<T> a, Optional<LongStream> b) {
    }
 
-   public void a(aqm $$0) {
-      this.c($$0);
-   }
-
-   public T a() {
-      return this.a;
-   }
-
-   public void b(aqm $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(aqm $$0) {
-      this.a.a().a($$0).map(jq::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dba $$0, @Nullable jq $$1, Consumer<dvx> $$2) {
-      if ($$1 != null) {
-         dsx $$3 = $$0.a($$1.a(), $$1.c(), dtw.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
+   public interface b<T, C extends dvr<T>> {
+      DataResult<C> read(jf<T> var1, dvq.d var2, dvr.a<T> var3);
    }
 }

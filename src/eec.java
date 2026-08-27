@@ -1,17 +1,10 @@
 import com.mojang.serialization.Codec;
 
-public abstract class eec {
-   public static final Codec<eec> a = le.V.q().dispatch(eec::a, eed::a);
+public class eec implements eek {
+   public static final Codec<eec> a = egl.a.fieldOf("state_provider").xmap(eec::new, $$0 -> $$0.b).codec();
+   public final egl b;
 
-   public static eel a(drb $$0) {
-      return new eel($$0);
+   public eec(egl $$0) {
+      this.b = $$0;
    }
-
-   public static eel a(ddy $$0) {
-      return new eel($$0.n());
-   }
-
-   protected abstract eed<?> a();
-
-   public abstract drb a(ayk var1, io var2);
 }

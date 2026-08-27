@@ -4,22 +4,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class biq extends bhj {
+public class biq extends bhp {
    public biq(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   private static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bfy.t.in($$0)), "RecipesUsed", DSL.compoundList(bfy.H.in($$0), DSL.constType(DSL.intType())))
-      );
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:furnace");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
+      $$0.register($$1, "minecraft:jigsaw", () -> DSL.optionalFields("final_state", bgf.v.in($$0)));
       return $$1;
    }
 }

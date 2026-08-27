@@ -1,35 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eac implements ecb {
-   public static final Codec<eac> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akm.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               akm.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               eli.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               eli.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eac::new)
-   );
-   public final List<akm> b;
-   public final List<akm> c;
-   public final ix<elh> d;
-   public final ix<elh> e;
-   public final int f;
+public interface eac<P extends eab> {
+   eac<eah> a = a("matching_blocks", eah.a);
+   eac<eag> b = a("matching_block_tag", eag.e);
+   eac<eai> c = a("matching_fluids", eai.a);
+   eac<eae> d = a("has_sturdy_face", eae.a);
+   eac<eal> e = a("solid", eal.a);
+   eac<eak> f = a("replaceable", eak.a);
+   eac<eao> g = a("would_survive", eao.a);
+   eac<eaf> h = a("inside_world_bounds", eaf.a);
+   eac<eaa> i = a("any_of", eaa.a);
+   eac<dzz> j = a("all_of", dzz.a);
+   eac<eaj> k = a("not", eaj.a);
+   eac<ean> l = a("true", ean.e);
 
-   public eac(List<akm> $$0, List<akm> $$1, ix<elh> $$2, ix<elh> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
+   Codec<P> codec();
+
+   private static <P extends eab> eac<P> a(String $$0, Codec<P> $$1) {
+      return jn.a(lh.O, $$0, () -> $$1);
    }
 }

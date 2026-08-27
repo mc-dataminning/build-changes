@@ -1,42 +1,47 @@
-import java.util.EnumSet;
+public class cah extends bzl {
+   private final cgi a;
+   private int b;
 
-public class cah extends bzm {
-   private final bsq a;
-   private double b;
-   private double c;
-   private int d;
-
-   public cah(bsq $$0) {
+   public cah(cgi $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.el().i() < 0.02F;
-   }
-
-   @Override
-   public boolean b() {
-      return this.d >= 0;
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.el().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.el().a(20);
+      this.a.hc();
+      this.h();
+   }
+
+   private void h() {
+      avn $$0 = this.a.hb();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public boolean R_() {
+   public boolean b() {
+      return false;
+   }
+
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.et().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fp() && this.a.et().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cgi $$0) {
+      this.b = -$$0.hg();
+   }
+
+   @Override
+   public boolean S_() {
       return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
    }
 }

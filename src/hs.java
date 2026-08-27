@@ -1,7 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface hs<T> {
-   akm a();
-
-   List<hh<T>> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface hs {
 }

@@ -1,29 +1,24 @@
-public enum dvo {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.List;
+import java.util.function.Predicate;
 
-   private final boolean d;
-   private final boolean e;
+public interface dvo<T> {
+   int a(T var1);
 
-   private dvo(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   boolean a(Predicate<T> var1);
 
-   public boolean a() {
-      return this.e;
-   }
+   T a(int var1);
 
-   public boolean b() {
-      return this.d;
-   }
+   void a(we var1);
 
-   public static dvo a(aqf $$0) {
-      if ($$0.a(aqf.d)) {
-         return c;
-      } else {
-         return $$0.a(aqf.b) ? b : a;
-      }
+   void b(we var1);
+
+   int a();
+
+   int b();
+
+   dvo<T> c();
+
+   public interface a {
+      <A> dvo<A> create(int var1, jf<A> var2, dvp<A> var3, List<A> var4);
    }
 }

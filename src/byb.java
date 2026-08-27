@@ -1,22 +1,17 @@
 import com.google.common.collect.ImmutableMap;
 
-public class byb<E extends cla> extends buh<E> {
-   public byb(int $$0) {
-      super(ImmutableMap.of(cbs.aC, cbt.a, cbs.m, cbt.b, cbs.n, cbt.c), $$0);
+public class byb extends bug<bso> {
+   public byb() {
+      super(ImmutableMap.of());
    }
 
-   protected boolean a(aqm $$0, E $$1, long $$2) {
-      return true;
+   @Override
+   protected boolean a(aqt $$0, bso $$1) {
+      return $$1.bW();
    }
 
-   protected void b(aqm $$0, E $$1, long $$2) {
-      $$1.b(bta.n);
-      $$1.a(avh.BI, 5.0F, 1.0F);
-   }
-
-   protected void c(aqm $$0, E $$1, long $$2) {
-      if ($$1.c(bta.n)) {
-         $$1.b(bta.a);
-      }
+   @Override
+   protected void d(aqt $$0, bso $$1, long $$2) {
+      $$1.ai();
    }
 }

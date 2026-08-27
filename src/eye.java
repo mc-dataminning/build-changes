@@ -1,40 +1,45 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-
-public class eye extends eyg {
-   private static final exz a = new exz() {
+public class eye {
+   private static final eyo<Object> a = new eyo<Object>() {
       @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
+      public void a(eyl<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(ir $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
       }
    };
-   private int b;
-
-   private eye(eyg.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(eyd $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
-   }
-
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
+   private static final eyh<Object> b = new eyh<Object>() {
+      @Override
+      public void a(eyl<Object> $$0) {
       }
+
+      @Override
+      public boolean a(ir $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(ir $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> eyo<T> a() {
+      return (eyo<T>)a;
    }
 
-   public static eye a(eyg.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      eye $$5 = new eye($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
+   public static <T> eyh<T> b() {
+      return (eyh<T>)b;
    }
 }

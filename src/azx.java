@@ -1,44 +1,40 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
+import java.util.function.Function;
 
 public class azx extends DataFix {
    public azx(Schema $$0) {
       super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bfy.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bfy.s);
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
-         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
-         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
-      });
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bgf.z), this::a);
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
-      OptionalDynamic<?> $$3 = $$2.get("CustomName");
-      boolean $$4 = $$3.asString().result().flatMap(azi::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      if ($$4) {
-         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
-            .update(
-               DSL.remainderFinder(),
-               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
-            );
-         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
-      } else {
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", azx::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", azx::a);
+      return this.a($$0, "minecraft:trident", azx::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
          return $$0;
+      } else {
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
       }
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgf.z, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgf.z, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

@@ -1,20 +1,32 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class ctp<T extends brv & bsl> extends cuc {
+   private final bsb<T> a;
+   private final int b;
 
-public class ctp {
-   private static final Strategy<? super cto> a = new Strategy<cto>() {
-      public int a(@Nullable cto $$0) {
-         return cto.a($$0);
+   public ctp(cuc.a $$0, bsb<T> $$1, int $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+   }
+
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bqb.c($$3);
+      } else {
+         brv $$4 = $$1.di();
+         if ($$1.bW() && $$4 instanceof bsl $$5 && $$4.ak() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, bso.d($$2));
+            if ($$3.d()) {
+               cuh $$6 = $$3.b(cuk.ss, 1);
+               return bqb.a($$6);
+            }
+
+            return bqb.a($$3);
+         }
+
+         $$1.b(avz.c.b(this));
+         return bqb.c($$3);
       }
-
-      public boolean a(@Nullable cto $$0, @Nullable cto $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.e() == $$1.e() && cto.c($$0, $$1);
-      }
-   };
-
-   public static Set<cto> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

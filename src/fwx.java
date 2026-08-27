@@ -1,41 +1,12 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-public class fwx {
-   private final ath a = atk.c();
-   private final Map<atd, String> b;
-
-   public fwx() {
-      this.a.a();
-      Builder<atd, String> $$0 = ImmutableMap.builder();
-      this.a.c().forEach($$1 -> {
-         ash $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+public class fwx<T extends cjx> extends fyk<T> {
+   public fwx(fys $$0) {
+      super($$0);
    }
 
-   public List<atd> a(List<atd> $$0) {
-      List<atd> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (atd $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
-      }
-
-      this.a.a($$2);
-      return $$1;
-   }
-
-   public atm a() {
-      List<asi> $$0 = this.a.g();
-      return new atp(ask.b, $$0);
+   public static fyy a(fyw $$0) {
+      fza $$1 = fwd.a($$0, 0.0F);
+      fzb $$2 = $$1.a();
+      $$2.a("head", fyx.c().a(0, 0).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), fyu.a(5.0F, 2.0F, 0.0F));
+      return fyy.a($$1, 64, 64);
    }
 }

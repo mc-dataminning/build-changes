@@ -1,13 +1,15 @@
-public class fdd extends fde {
-   private final faq b;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   public fdd(faq $$0, long $$1, wx $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public class fdd implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public fdd(Logger $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void a(ezi $$0, long $$1) throws fav {
-      $$0.d($$1, this.b.a);
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

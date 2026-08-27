@@ -1,438 +1,62 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import it.unimi.dsi.fastutil.shorts.ShortListIterator;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public enum dud implements azg {
+   a("harp", avo.su, dud.a.a),
+   b("basedrum", avo.so, dud.a.a),
+   c("snare", avo.sx, dud.a.a),
+   d("hat", avo.sv, dud.a.a),
+   e("bass", avo.sp, dud.a.a),
+   f("flute", avo.ss, dud.a.a),
+   g("bell", avo.sq, dud.a.a),
+   h("guitar", avo.st, dud.a.a),
+   i("chime", avo.sr, dud.a.a),
+   j("xylophone", avo.sy, dud.a.a),
+   k("iron_xylophone", avo.sz, dud.a.a),
+   l("cow_bell", avo.sA, dud.a.a),
+   m("didgeridoo", avo.sB, dud.a.a),
+   n("bit", avo.sC, dud.a.a),
+   o("banjo", avo.sD, dud.a.a),
+   p("pling", avo.sw, dud.a.a),
+   q("zombie", avo.sE, dud.a.b),
+   r("skeleton", avo.sF, dud.a.b),
+   s("creeper", avo.sG, dud.a.b),
+   t("dragon", avo.sH, dud.a.b),
+   u("wither_skeleton", avo.sI, dud.a.b),
+   v("piglin", avo.sJ, dud.a.b),
+   w("custom_head", avo.AM, dud.a.c);
 
-public class dud {
-   private static final Codec<dtp<drb>> h = dtp.a(ddy.q, drb.b, dtp.d.d, dea.a.n());
-   private static final Logger i = LogUtils.getLogger();
-   private static final String j = "UpgradeData";
-   private static final String k = "block_ticks";
-   private static final String l = "fluid_ticks";
-   public static final String a = "xPos";
-   public static final String b = "zPos";
-   public static final String c = "Heightmaps";
-   public static final String d = "isLightOn";
-   public static final String e = "sections";
-   public static final String f = "BlockLight";
-   public static final String g = "SkyLight";
+   private final String x;
+   private final ja<avn> y;
+   private final dud.a z;
 
-   public static dtr a(aqm $$0, cds $$1, dae $$2, ud $$3) {
-      dae $$4 = new dae($$3.h("xPos"), $$3.h("zPos"));
-      if (!Objects.equals($$2, $$4)) {
-         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
-      }
-
-      dtu $$5 = $$3.b("UpgradeData", 10) ? new dtu($$3.p("UpgradeData"), $$0) : dtu.a;
-      boolean $$6 = $$3.q("isLightOn");
-      uj $$7 = $$3.c("sections", 10);
-      int $$8 = $$0.am();
-      dti[] $$9 = new dti[$$8];
-      boolean $$10 = $$0.D_().g();
-      dtb $$11 = $$0.l();
-      emj $$12 = $$11.p();
-      jk<dbw> $$13 = $$0.H_().d(lf.az);
-      Codec<dtq<ix<dbw>>> $$14 = a($$13);
-      boolean $$15 = false;
-
-      for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
-         ud $$17 = $$7.a($$16);
-         int $$18 = $$17.f("Y");
-         int $$19 = $$0.f($$18);
-         if ($$19 >= 0 && $$19 < $$9.length) {
-            dtp<drb> $$20;
-            if ($$17.b("block_states", 10)) {
-               $$20 = (dtp<drb>)h.parse(ur.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(dud.a::new);
-            } else {
-               $$20 = new dtp<>(ddy.q, dea.a.n(), dtp.d.d);
-            }
-
-            dtq<ix<dbw>> $$22;
-            if ($$17.b("biomes", 10)) {
-               $$22 = (dtq<ix<dbw>>)$$14.parse(ur.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(dud.a::new);
-            } else {
-               $$22 = new dtp<>($$13.t(), $$13.g(dcd.b), dtp.d.e);
-            }
-
-            dti $$24 = new dti($$20, $$22);
-            $$9[$$19] = $$24;
-            jq $$25 = jq.a($$2, $$18);
-            $$1.a($$25, $$24);
-         }
-
-         boolean $$26 = $$17.b("BlockLight", 7);
-         boolean $$27 = $$10 && $$17.b("SkyLight", 7);
-         if ($$26 || $$27) {
-            if (!$$15) {
-               $$12.b($$2, true);
-               $$15 = true;
-            }
-
-            if ($$26) {
-               $$12.a(dbg.b, jq.a($$2, $$18), new dtc($$17.m("BlockLight")));
-            }
-
-            if ($$27) {
-               $$12.a(dbg.a, jq.a($$2, $$18), new dtc($$17.m("SkyLight")));
-            }
-         }
-      }
-
-      long $$28 = $$3.i("InhabitedTime");
-      dty $$29 = a($$3);
-      dxw $$30;
-      if ($$3.b("blending_data", 10)) {
-         $$30 = (dxw)dxw.e.parse(new Dynamic(ur.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
-      } else {
-         $$30 = null;
-      }
-
-      dsx $$34;
-      if ($$29 == dty.b) {
-         evw<ddy> $$32 = evw.a($$3.c("block_ticks", 10), $$0x -> le.e.b(akm.a($$0x)), $$2);
-         evw<emt> $$33 = evw.a($$3.c("fluid_ticks", 10), $$0x -> le.c.b(akm.a($$0x)), $$2);
-         $$34 = new dth($$0.E(), $$2, $$5, $$32, $$33, $$28, $$9, a($$0, $$3), $$30);
-      } else {
-         evz<ddy> $$35 = evz.a($$3.c("block_ticks", 10), $$0x -> le.e.b(akm.a($$0x)), $$2);
-         evz<emt> $$36 = evz.a($$3.c("fluid_ticks", 10), $$0x -> le.c.b(akm.a($$0x)), $$2);
-         dtr $$37 = new dtr($$2, $$5, $$9, $$35, $$36, $$0, $$13, $$30);
-         $$34 = $$37;
-         $$37.b($$28);
-         if ($$3.b("below_zero_retrogen", 10)) {
-            dwh.a.parse(new Dynamic(ur.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
-         }
-
-         dtw $$39 = dtw.a($$3.l("Status"));
-         $$37.a($$39);
-         if ($$39.b(dtw.k)) {
-            $$37.a($$12);
-         }
-      }
-
-      $$34.b($$6);
-      ud $$40 = $$3.p("Heightmaps");
-      EnumSet<dwt.a> $$41 = EnumSet.noneOf(dwt.a.class);
-
-      for (dwt.a $$42 : $$34.j().h()) {
-         String $$43 = $$42.a();
-         if ($$40.b($$43, 12)) {
-            $$34.a($$42, $$40.o($$43));
-         } else {
-            $$41.add($$42);
-         }
-      }
-
-      dwt.a($$34, $$41);
-      ud $$44 = $$3.p("structures");
-      $$34.a(a(ehz.a($$0), $$44, $$0.C()));
-      $$34.b(a($$0.H_(), $$2, $$44));
-      if ($$3.q("shouldSave")) {
-         $$34.a(true);
-      }
-
-      uj $$45 = $$3.c("PostProcessing", 9);
-
-      for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
-         uj $$47 = $$45.b($$46);
-
-         for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
-            $$34.a($$47.d($$48), $$46);
-         }
-      }
-
-      if ($$29 == dty.b) {
-         return new dtg((dth)$$34, false);
-      } else {
-         dtr $$49 = (dtr)$$34;
-         uj $$50 = $$3.c("entities", 10);
-
-         for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
-            $$49.b($$50.a($$51));
-         }
-
-         uj $$52 = $$3.c("block_entities", 10);
-
-         for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
-            ud $$54 = $$52.a($$53);
-            $$34.a($$54);
-         }
-
-         ud $$55 = $$3.p("CarvingMasks");
-
-         for (String $$56 : $$55.e()) {
-            dwp.a $$57 = dwp.a.valueOf($$56);
-            $$49.a($$57, new dsw($$55.o($$56), $$34.I_()));
-         }
-
-         return $$49;
-      }
+   private dud(String $$0, ja<avn> $$1, dud.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   private static void a(dae $$0, int $$1, String $$2) {
-      i.error("Recoverable errors when loading section [" + $$0.e + ", " + $$1 + ", " + $$0.f + "]: " + $$2);
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   private static Codec<dtq<ix<dbw>>> a(jk<dbw> $$0) {
-      return dtp.b($$0.t(), $$0.r(), dtp.d.e, $$0.g(dcd.b));
+   public ja<avn> a() {
+      return this.y;
    }
 
-   public static ud a(aqm $$0, dsx $$1) {
-      dae $$2 = $$1.f();
-      ud $$3 = us.e(new ud());
-      $$3.a("xPos", $$2.e);
-      $$3.a("yPos", $$1.an());
-      $$3.a("zPos", $$2.f);
-      $$3.a("LastUpdate", $$0.Y());
-      $$3.a("InhabitedTime", $$1.u());
-      $$3.a("Status", le.n.b($$1.j()).toString());
-      dxw $$4 = $$1.t();
-      if ($$4 != null) {
-         dxw.e.encodeStart(ur.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
-      }
-
-      dwh $$5 = $$1.x();
-      if ($$5 != null) {
-         dwh.a.encodeStart(ur.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
-      }
-
-      dtu $$6 = $$1.r();
-      if (!$$6.a()) {
-         $$3.a("UpgradeData", $$6.b());
-      }
-
-      dti[] $$7 = $$1.d();
-      uj $$8 = new uj();
-      emj $$9 = $$0.l().a();
-      jk<dbw> $$10 = $$0.H_().d(lf.az);
-      Codec<dtq<ix<dbw>>> $$11 = a($$10);
-      boolean $$12 = $$1.v();
-
-      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
-         int $$14 = $$1.f($$13);
-         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
-         dtc $$16 = $$9.a(dbg.b).a(jq.a($$2, $$13));
-         dtc $$17 = $$9.a(dbg.a).a(jq.a($$2, $$13));
-         if ($$15 || $$16 != null || $$17 != null) {
-            ud $$18 = new ud();
-            if ($$15) {
-               dti $$19 = $$7[$$14];
-               $$18.a("block_states", (va)h.encodeStart(ur.a, $$19.h()).getOrThrow());
-               $$18.a("biomes", (va)$$11.encodeStart(ur.a, $$19.i()).getOrThrow());
-            }
-
-            if ($$16 != null && !$$16.d()) {
-               $$18.a("BlockLight", $$16.a());
-            }
-
-            if ($$17 != null && !$$17.d()) {
-               $$18.a("SkyLight", $$17.a());
-            }
-
-            if (!$$18.g()) {
-               $$18.a("Y", (byte)$$13);
-               $$8.add($$18);
-            }
-         }
-      }
-
-      $$3.a("sections", $$8);
-      if ($$12) {
-         $$3.a("isLightOn", true);
-      }
-
-      uj $$20 = new uj();
-
-      for (io $$21 : $$1.c()) {
-         ud $$22 = $$1.a($$21, $$0.H_());
-         if ($$22 != null) {
-            $$20.add($$22);
-         }
-      }
-
-      $$3.a("block_entities", $$20);
-      if ($$1.j().g() == dty.a) {
-         dtr $$23 = (dtr)$$1;
-         uj $$24 = new uj();
-         $$24.addAll($$23.E());
-         $$3.a("entities", $$24);
-         ud $$25 = new ud();
-
-         for (dwp.a $$26 : dwp.a.values()) {
-            dsw $$27 = $$23.a($$26);
-            if ($$27 != null) {
-               $$25.a($$26.toString(), $$27.a());
-            }
-         }
-
-         $$3.a("CarvingMasks", $$25);
-      }
-
-      a($$0, $$3, $$1.q());
-      $$3.a("PostProcessing", a($$1.n()));
-      ud $$28 = new ud();
-
-      for (Entry<dwt.a, dwt> $$29 : $$1.e()) {
-         if ($$1.j().h().contains($$29.getKey())) {
-            $$28.a($$29.getKey().a(), new uk($$29.getValue().a()));
-         }
-      }
-
-      $$3.a("Heightmaps", $$28);
-      $$3.a("structures", a(ehz.a($$0), $$2, $$1.g(), $$1.h()));
-      return $$3;
+   public boolean b() {
+      return this.z == dud.a.a;
    }
 
-   private static void a(aqm $$0, ud $$1, dsx.a $$2) {
-      long $$3 = $$0.A_().c();
-      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> le.e.b($$0x).toString()));
-      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> le.c.b($$0x).toString()));
+   public boolean d() {
+      return this.z == dud.a.c;
    }
 
-   public static dty a(@Nullable ud $$0) {
-      return $$0 != null ? dtw.a($$0.l("Status")).g() : dty.a;
+   public boolean e() {
+      return this.z != dud.a.a;
    }
 
-   @Nullable
-   private static dth.c a(aqm $$0, ud $$1) {
-      uj $$2 = a($$1, "entities");
-      uj $$3 = a($$1, "block_entities");
-      return $$2 == null && $$3 == null ? null : $$3x -> {
-         if ($$2 != null) {
-            $$0.a(bsa.a($$2, $$0));
-         }
-
-         if ($$3 != null) {
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               ud $$5 = $$3.a($$4);
-               boolean $$6 = $$5.q("keepPacked");
-               if ($$6) {
-                  $$3x.a($$5);
-               } else {
-                  io $$7 = dog.b($$5);
-                  dog $$8 = dog.a($$7, $$3x.a_($$7), $$5, $$0.H_());
-                  if ($$8 != null) {
-                     $$3x.a($$8);
-                  }
-               }
-            }
-         }
-      };
-   }
-
-   @Nullable
-   private static uj a(ud $$0, String $$1) {
-      uj $$2 = $$0.c($$1, 10);
-      return $$2.isEmpty() ? null : $$2;
-   }
-
-   private static ud a(ehz $$0, dae $$1, Map<ehj, ehr> $$2, Map<ehj, LongSet> $$3) {
-      ud $$4 = new ud();
-      ud $$5 = new ud();
-      jk<ehj> $$6 = $$0.b().d(lf.aJ);
-
-      for (Entry<ehj, ehr> $$7 : $$2.entrySet()) {
-         akm $$8 = $$6.b($$7.getKey());
-         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
-      }
-
-      $$4.a("starts", $$5);
-      ud $$9 = new ud();
-
-      for (Entry<ehj, LongSet> $$10 : $$3.entrySet()) {
-         if (!$$10.getValue().isEmpty()) {
-            akm $$11 = $$6.b($$10.getKey());
-            $$9.a($$11.toString(), new uk($$10.getValue()));
-         }
-      }
-
-      $$4.a("References", $$9);
-      return $$4;
-   }
-
-   private static Map<ehj, ehr> a(ehz $$0, ud $$1, long $$2) {
-      Map<ehj, ehr> $$3 = Maps.newHashMap();
-      jk<ehj> $$4 = $$0.b().d(lf.aJ);
-      ud $$5 = $$1.p("starts");
-
-      for (String $$6 : $$5.e()) {
-         akm $$7 = akm.a($$6);
-         ehj $$8 = $$4.a($$7);
-         if ($$8 == null) {
-            i.error("Unknown structure start: {}", $$7);
-         } else {
-            ehr $$9 = ehr.a($$0, $$5.p($$6), $$2);
-            if ($$9 != null) {
-               $$3.put($$8, $$9);
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   private static Map<ehj, LongSet> a(jl $$0, dae $$1, ud $$2) {
-      Map<ehj, LongSet> $$3 = Maps.newHashMap();
-      jk<ehj> $$4 = $$0.d(lf.aJ);
-      ud $$5 = $$2.p("References");
-
-      for (String $$6 : $$5.e()) {
-         akm $$7 = akm.a($$6);
-         ehj $$8 = $$4.a($$7);
-         if ($$8 == null) {
-            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
-         } else {
-            long[] $$9 = $$5.o($$6);
-            if ($$9.length != 0) {
-               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
-                  dae $$3x = new dae($$2x);
-                  if ($$3x.a($$1) > 8) {
-                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
-                     return false;
-                  } else {
-                     return true;
-                  }
-               }).toArray()));
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   public static uj a(ShortList[] $$0) {
-      uj $$1 = new uj();
-
-      for (ShortList $$2 : $$0) {
-         uj $$3 = new uj();
-         if ($$2 != null) {
-            ShortListIterator var7 = $$2.iterator();
-
-            while (var7.hasNext()) {
-               Short $$4 = (Short)var7.next();
-               $$3.add(uv.a($$4));
-            }
-         }
-
-         $$1.add($$3);
-      }
-
-      return $$1;
-   }
-
-   public static class a extends RuntimeException {
-      public a(String $$0) {
-         super($$0);
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

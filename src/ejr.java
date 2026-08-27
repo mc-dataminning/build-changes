@@ -1,48 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
+public abstract class ejr extends ejx {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class ejr extends ehj {
-   public static final MapCodec<ejr> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), efq.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ejr::new)
-   );
-   public final efq e;
+   protected ejr(ekk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, iw $$7) {
+      super($$0, 0, ejx.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
+   }
 
-   public ejr(ehj.c $$0, efq $$1) {
-      super($$0);
-      this.e = $$1;
+   protected ejr(ekk $$0, uk $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
    @Override
-   public Optional<ehj.b> a(ehj.a $$0) {
-      dxs $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().e();
-      dxq $$5 = new dxq($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dbj $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      io.a $$8 = new io.a($$2, $$6, $$3);
+   protected void a(ekj $$0, uk $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
 
-      while ($$6 > $$4) {
-         drb $$9 = $$7.a($$6);
-         drb $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dea.dW) || $$10.d(dam.a, $$8.q($$6), it.b))) {
-            break;
+   protected boolean a(dcb $$0, ejl $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         ir.a $$5 = new ir.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dyu.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
          }
       }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         io $$11 = new io($$2, $$6, $$3);
-         return Optional.of(new ehj.b($$11, (Consumer<eib>)($$3x -> ejq.a($$0.e(), $$3x, $$1, $$11))));
-      }
    }
 
-   @Override
-   public ehs<?> e() {
-      return ehs.i;
+   protected boolean a(dcb $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.am();
+         boolean $$3 = false;
+         ir.a $$4 = new ir.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dyu.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

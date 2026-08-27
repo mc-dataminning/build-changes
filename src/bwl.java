@@ -3,46 +3,27 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bwl {
-   public static bui<bsx> a(cbs<io> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, euk::c);
+   private static final int a = 1;
+
+   public static buh<bsq> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   public static bvs<bsx> b(cbs<? extends bru> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bru::dn);
-   }
-
-   private static <T> bvs<bsx> a(cbs<T> $$0, float $$1, int $$2, boolean $$3, Function<T, euk> $$4) {
-      return bxu.a(
-         (Function<bxu.b<bsx>, ? extends App<bxu.c<bsx>, bxx<bsx>>>)($$5 -> $$5.group($$5.a(cbs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cbv> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     euk $$11 = $$8.dn();
-                     euk $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jh)$$12, (double)$$2)) {
-                        return false;
+   public static buh<bsq> a(Function<bso, Float> $$0) {
+      return bxt.a(
+         (Function<bxt.b<bsq>, ? extends App<bxt.c<bsq>, bxw<bsq>>>)($$1 -> $$1.group($$1.a(cbr.m), $$1.a(cbr.n), $$1.b(cbr.o), $$1.a(cbr.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bso $$9 = $$1.b($$4);
+                     Optional<cbt> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bui.a($$7, $$9, 1)) {
+                        $$2.b();
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           euk $$13 = $$10.get().a().a().d($$11);
-                           euk $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           euk $$16 = cdm.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cbv($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
-                        return true;
+                        $$3.a(new bur($$9, true));
+                        $$2.a(new cbu(new bur($$9, false), $$0.apply($$7), 0));
                      }
-                  }
-               }))
+
+                     return true;
+                  }))
       );
    }
 }

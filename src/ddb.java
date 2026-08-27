@@ -1,76 +1,101 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.hash.Hashing;
 
-public class ddb extends ddy implements deb {
-   public static final MapCodec<ddb> a = b(ddb::new);
-   protected static final float b = 4.0F;
-   protected static final evd c = ddy.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class ddb {
+   public static final int a = jl.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final ddb.a e;
+   private final long f;
 
-   @Override
-   public MapCodec<ddb> a() {
-      return a;
+   public ddb(ddb.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public ddb(dra.d $$0) {
-      super($$0);
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      euk $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
+   public ddb a(ddb.a $$0) {
+      return new ddb($$0, this.f);
    }
 
-   @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
-   }
+   public ja<dcz> a(ir $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
 
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      return $$1.a_($$2.d()).a(avw.au);
-   }
-
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dea.a.n();
-      } else {
-         if ($$1 == it.b && $$2.a(dea.mZ)) {
-            $$3.a($$4, dea.mZ.n(), 2);
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return new cto(ctr.dR);
+   public ja<dcz> a(double $$0, double $$1, double $$2) {
+      int $$3 = jl.a(aym.a($$0));
+      int $$4 = jl.a(aym.a($$1));
+      int $$5 = jl.a(aym.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   public boolean b(dba $$0, io $$1, drb $$2) {
-      return $$0.a_($$1.c()).i();
+   public ja<dcz> b(ir $$0) {
+      int $$1 = jl.a($$0.u());
+      int $$2 = jl.a($$0.v());
+      int $$3 = jl.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   @Override
-   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
-      return true;
+   public ja<dcz> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
-      this.a($$0, $$2);
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = ayi.a($$0, (long)$$1);
+      $$7 = ayi.a($$7, (long)$$2);
+      $$7 = ayi.a($$7, (long)$$3);
+      $$7 = ayi.a($$7, (long)$$1);
+      $$7 = ayi.a($$7, (long)$$2);
+      $$7 = ayi.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = ayi.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = ayi.a($$7, $$0);
+      double $$10 = b($$7);
+      return aym.k($$6 + $$10) + aym.k($$5 + $$9) + aym.k($$4 + $$8);
    }
 
-   @Override
-   protected float a(drb $$0, clw $$1, dad $$2, io $$3) {
-      return $$1.eX().g() instanceof cvb ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   protected void a(dax $$0, io $$1) {
-      $$0.a($$1.c(), dea.mZ.n().a(ddc.i, drn.b), 3);
+   public interface a {
+      ja<dcz> getNoiseBiome(int var1, int var2, int var3);
    }
 }

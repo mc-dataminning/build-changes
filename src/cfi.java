@@ -6,23 +6,23 @@ import java.util.function.UnaryOperator;
 public final class cfi {
    public static final Codec<cfi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               akm.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
-               akm.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
-               akm.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
-               jm.a(lf.az).fieldOf("biomes").forGetter(cfi::d)
+               akt.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.c),
+               akt.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.d),
+               akt.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.e),
+               jp.a(li.az).fieldOf("biomes").forGetter(cfi::d)
             )
             .apply($$0, cfi::new)
    );
-   public static final Codec<ix<cfi>> b = aki.a(lf.m, a);
-   private final akm c;
-   private final akm d;
-   private final akm e;
-   private final akm f;
-   private final akm g;
-   private final akm h;
-   private final jb<dbw> i;
+   public static final Codec<ja<cfi>> b = akp.a(li.m, a);
+   private final akt c;
+   private final akt d;
+   private final akt e;
+   private final akt f;
+   private final akt g;
+   private final akt h;
+   private final je<dcz> i;
 
-   public cfi(akm $$0, akm $$1, akm $$2, jb<dbw> $$3) {
+   public cfi(akt $$0, akt $$1, akt $$2, je<dcz> $$3) {
       this.c = $$0;
       this.f = a($$0);
       this.d = $$1;
@@ -32,23 +32,23 @@ public final class cfi {
       this.i = $$3;
    }
 
-   private static akm a(akm $$0) {
+   private static akt a(akt $$0) {
       return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   public akm a() {
+   public akt a() {
       return this.f;
    }
 
-   public akm b() {
+   public akt b() {
       return this.g;
    }
 
-   public akm c() {
+   public akt c() {
       return this.h;
    }
 
-   public jb<dbw> d() {
+   public je<dcz> d() {
       return this.i;
    }
 

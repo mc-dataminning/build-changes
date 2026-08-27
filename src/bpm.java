@@ -1,86 +1,49 @@
-public class bpm implements bpn {
-   private final bpn b;
-   private final bpn c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public bpm(bpn $$0, bpn $$1) {
+public class bpm extends bpf {
+   public static final Codec<bpm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bok.b(bpf.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bpm::new)
+   );
+   private final bok<bpf> b;
+   private final int f;
+   private final int g;
+
+   public bpm(bok<bpf> $$0) {
       this.b = $$0;
-      this.c = $$1;
+      List<bom.b<bpf>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bom.b<bpf> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   @Override
+   public int a(ayt $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   }
+
+   @Override
+   public int a() {
+      return this.f;
    }
 
    @Override
    public int b() {
-      return this.b.b() + this.c.b();
+      return this.g;
    }
 
    @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bpn $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cto a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cto a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cto b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cto $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public int ah_() {
-      return this.b.ah_();
-   }
-
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
-
-   @Override
-   public void d_(clw $$0) {
-      this.b.d_($$0);
-      this.c.d_($$0);
-   }
-
-   @Override
-   public void c(clw $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cto $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public bpg<?> c() {
+      return bpg.e;
    }
 }

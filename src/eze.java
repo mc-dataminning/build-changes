@@ -1,43 +1,26 @@
-import java.util.Locale;
+import java.util.function.Function;
 
-public enum eze {
-   a,
-   b,
-   c,
-   d;
+public interface eze {
+   float getAdvance();
 
-   private static final int e = 1024;
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
 
-   public static eze a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
+   default float a() {
+      return 1.0F;
+   }
+
+   default float b() {
+      return 1.0F;
+   }
+
+   fli bake(Function<ezg, fli> var1);
+
+   public interface a extends eze {
+      @Override
+      default fli bake(Function<ezg, fli> $$0) {
+         return flj.a;
       }
-   }
-
-   public static double a(long $$0, eze $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
-   }
-
-   public static String b(long $$0, eze $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

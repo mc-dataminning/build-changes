@@ -1,29 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class edc {
-   public static final Codec<edc> a = le.aa.q().dispatch(edc::b, edd::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
-
-   protected static <S extends edc> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+public class edc extends eca<eev> {
+   public edc(Codec<eev> $$0) {
+      super($$0);
    }
 
-   public edc(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract edd<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public boolean a(ecc<eev> $$0) {
+      ayt $$1 = $$0.d();
+      eev $$2 = $$0.f();
+      dcv $$3 = $$0.b();
+      duz $$4 = $$0.c();
+      ir $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

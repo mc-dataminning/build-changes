@@ -1,3 +1,8 @@
-public interface bxx<E extends bso> {
-   boolean trigger(aqm var1, E var2, long var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface bxx {
 }

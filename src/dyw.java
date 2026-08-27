@@ -1,24 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+public class dyw {
+   public final ayt a;
+   private double b;
+   private boolean c;
 
-public record dyw<WC extends dyr>(dyy<WC> d, WC e) {
-   public static final Codec<dyw<?>> a = le.P.q().dispatch($$0 -> $$0.d, dyy::c);
-   public static final Codec<ix<dyw<?>>> b = aki.a(lf.aB, a);
-   public static final Codec<jb<dyw<?>>> c = jm.a(lf.aB, a);
-
-   public boolean a(ayk $$0) {
-      return this.d.a(this.e, $$0);
+   public dyw(ayt $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(dyt $$0, dsx $$1, Function<io, ix<dbw>> $$2, ayk $$3, dwf $$4, dae $$5, dsw $$6) {
-      return aa.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a() {
+      this.c = false;
    }
 
-   public dyy<WC> a() {
-      return this.d;
-   }
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = aym.k($$0) + aym.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-   public WC b() {
-      return this.e;
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
+      }
    }
 }

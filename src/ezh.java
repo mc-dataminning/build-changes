@@ -1,73 +1,47 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ezh {
-   public static List<faj> a(ezh.a... $$0) {
-      for (ezh.a $$1 : $$0) {
-         a($$1.j);
+public class ezh implements ezf {
+   private final Int2ObjectMap<eze.a> b;
+
+   public ezh(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (eze.a)() -> $$1));
+   }
+
+   @Nullable
+   @Override
+   public eze a(int $$0) {
+      return (eze)this.b.get($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements flp {
+      public static final MapCodec<ezh.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(axu.y, Codec.FLOAT).fieldOf("advances").forGetter(ezh.a::c)).apply($$0, ezh.a::new)
+      );
+
+      @Override
+      public flq a() {
+         return flq.c;
       }
 
-      List<faj> $$2 = Lists.newArrayList();
-
-      for (ezh.a $$3 : $$0) {
-         $$2.add(new faj($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(faj::a));
-      return $$2;
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
-         }
-      }
-
-      return (int)((double)$$2 / 5.0);
-   }
-
-   private static long b() {
-      return ac.c();
-   }
-
-   public static List<faj> a() {
-      return a(ezh.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      @Override
+      public Either<flp.b, flp.c> b() {
+         flp.b $$0 = $$0x -> new ezh(this.c);
+         return Either.left($$0);
       }
    }
 }

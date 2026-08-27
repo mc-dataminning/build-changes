@@ -1,66 +1,95 @@
-import com.mojang.serialization.Codec;
-
-public class dzf extends dzx<ebs> {
-   public dzf(Codec<ebs> $$0) {
-      super($$0);
-   }
+public class dzf implements dbn {
+   private int a;
 
    @Override
-   public boolean a(dzz<ebs> $$0) {
-      dbs $$1 = $$0.b();
-      ebs $$2 = $$0.f();
-      ayk $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
-
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
+   public int a(aqt $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ab().b(dbw.L)) {
+         return 0;
       } else {
-         io.a $$8 = $$0.e().j();
-         io.a $$9 = $$8.j().c($$2.b());
+         ayt $$3 = $$0.A;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.aa() / 24000L;
+            if ($$4 < 5L || !$$0.R()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cly $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.O_()) {
+                     return 0;
+                  } else if ($$0.a($$6.du(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     ir.a $$9 = $$6.du().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        ja<dcz> $$11 = $$0.t($$9);
+                        if ($$11.a(awd.ak)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dyu.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-            $$9.c($$2.b());
-         }
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
 
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               ebs.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+                           return $$12;
+                        }
+                     }
+                  }
                }
             }
          }
-
-         return true;
       }
    }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
+   private boolean a(aqt $$0, ir $$1, ayt $$2, boolean $$3) {
+      dtc $$4 = $$0.a_($$1);
+      if (!dcl.a($$0, $$1, $$4, $$4.u(), bsb.aD)) {
+         return false;
+      } else if (!cje.b(bsb.aD, $$0, bss.p, $$1, $$2)) {
+         return false;
+      } else {
+         cje $$5 = bsb.aD.a((dca)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gE();
+            }
 
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bss.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

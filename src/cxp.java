@@ -1,68 +1,44 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cxp extends cxm {
-   private static final cxr a = cxr.a(ctr.uv);
+public record cxp(Map<String, cxp.a> c) {
+   public static final cxp a = new cxp(Map.of());
+   public static final Codec<cxp> b = Codec.unboundedMap(Codec.STRING, cxp.a.a).xmap(cxp::new, cxp::a);
 
-   public cxp(cxk $$0) {
-      super($$0);
+   public cxp a(String $$0, cxp.a $$1) {
+      return new cxp(ad.a(this.c, $$0, $$1));
    }
 
-   public boolean a(cpj $$0, dax $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
+   public Map<String, cxp.a> a() {
+      return this.c;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.g() instanceof csi) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
+   public static record a(ja<eqo> b, double c, double d, float e) {
+      public static final Codec<cxp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eqo.b.fieldOf("type").forGetter(cxp.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cxp.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cxp.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cxp.a::d)
+               )
+               .apply($$0, cxp.a::new)
+      );
 
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
+      public ja<eqo> a() {
+         return this.b;
       }
 
-      return $$3 && $$2;
-   }
-
-   public cto a(cpj $$0, iz.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cto $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         ctj $$6 = $$5.g();
-         if ($$6 instanceof csi) {
-            $$2.add(((csi)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
+      public double b() {
+         return this.c;
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kb.S, cwh.a, $$2, cwh::a);
-         return $$3;
-      } else {
-         return cto.i;
+      public double c() {
+         return this.d;
       }
-   }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cxy<?> ao_() {
-      return cxy.i;
+      public float d() {
+         return this.e;
+      }
    }
 }

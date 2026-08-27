@@ -1,40 +1,30 @@
-import java.util.EnumSet;
+public class cav extends bzl {
+   private final bsw a;
 
-public class cav extends bzm {
-   private final cle a;
-
-   public cav(cle $$0) {
+   public cav(bsw $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bzm.a.c, bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bD()) {
-         return false;
-      } else if (this.a.be()) {
-         return false;
-      } else if (!this.a.aE()) {
-         return false;
-      } else if (this.a.U) {
-         return false;
-      } else {
-         clw $$0 = this.a.gp();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cc != null;
-         }
-      }
+      return this.a.aE() && !this.a.dU().b_(this.a.du()).a(awj.a);
    }
 
    @Override
    public void c() {
-      this.a.K().n();
-   }
+      ir $$0 = null;
 
-   @Override
-   public void d() {
-      this.a.f(null);
+      for (ir $$2 : ir.b(
+         aym.a(this.a.dz() - 2.0), aym.a(this.a.dB() - 2.0), aym.a(this.a.dF() - 2.0), aym.a(this.a.dz() + 2.0), this.a.dA(), aym.a(this.a.dF() + 2.0)
+      )) {
+         if (this.a.dU().b_($$2).a(awj.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.G().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

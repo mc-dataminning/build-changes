@@ -1,22 +1,37 @@
-public class fgl extends ffz {
-   protected final fhm a;
+import java.util.function.IntFunction;
 
-   public fgl(int $$0, int $$1, int $$2, int $$3, fhm $$4, ffz.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, ww.a);
+public enum fgl {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
+
+   private static final IntFunction<fgl> e = axd.a(fgl::a, values(), axd.a.b);
+   private final int f;
+   private final xe g;
+
+   private fgl(int $$0, String $$1) {
+      this.f = $$0;
+      this.g = xe.c($$1);
    }
 
-   public fgl(int $$0, int $$1, int $$2, int $$3, fhm $$4, ffz.c $$5, wx $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
+   public int a() {
+      return this.f;
    }
 
-   public fgl(int $$0, int $$1, fhm $$2, ffz.c $$3, wx $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public xe b() {
+      return this.g;
    }
 
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      akm $$4 = this.a.a(this.B(), this.A());
-      $$0.a($$4, this.C(), this.D(), this.g, this.h);
+   public static fgl a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

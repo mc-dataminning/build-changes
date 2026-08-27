@@ -1,11 +1,21 @@
-import org.apache.commons.lang3.StringEscapeUtils;
-
 public class z extends RuntimeException {
-   public z(String $$0) {
-      super(StringEscapeUtils.escapeJava($$0));
+   private final o a;
+
+   public z(o $$0) {
+      this.a = $$0;
    }
 
-   public z(String $$0, Throwable $$1) {
-      super(StringEscapeUtils.escapeJava($$0), $$1);
+   public o a() {
+      return this.a;
+   }
+
+   @Override
+   public Throwable getCause() {
+      return this.a.b();
+   }
+
+   @Override
+   public String getMessage() {
+      return this.a.a();
    }
 }

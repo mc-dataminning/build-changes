@@ -1,45 +1,45 @@
-public class afg implements ze<abq> {
-   public static final yv<vx, afg> a = ze.a(afg::a, afg::new);
-   private final long b;
-   private final long c;
+public class afg implements zl<abw> {
+   public static final zc<we, afg> a = zl.a(afg::a, afg::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-   public afg(long $$0, long $$1, boolean $$2) {
+   public afg(float $$0, int $$1, float $$2) {
       this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.c = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afg(vx $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
+   private afg(we $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(vx $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zg<afg> a() {
-      return agb.aO;
+   public zn<afg> a() {
+      return agj.aI;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public long b() {
+   public float b() {
       return this.b;
    }
 
-   public long e() {
+   public int e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

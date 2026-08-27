@@ -1,130 +1,122 @@
-import com.google.common.collect.Lists;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
 
-public class bzy extends bzm {
-   protected final bsx a;
-   private final double b;
-   @Nullable
-   private eni c;
-   private io d;
-   private final boolean e;
-   private final List<io> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
+public abstract class bzy extends bzl {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bsw a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected ir e = ir.c;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
 
-   public bzy(bsx $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
+   public bzy(bsw $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
+   }
+
+   public bzy(bsw $$0, double $$1, int $$2, int $$3) {
       this.a = $$0;
       this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(bzm.a.a));
-      if (!cdk.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
-      }
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(bzl.a.a, bzl.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!cdk.a(this.a)) {
+      if (this.c > 0) {
+         this.c--;
          return false;
       } else {
-         this.h();
-         if (this.e && this.a.dP().Q()) {
-            return false;
-         } else {
-            aqm $$0 = (aqm)this.a.dP();
-            io $$1 = this.a.dp();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               euk $$2 = cdm.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<io> $$3x = $$0.y().d($$0xx -> $$0xx.a(awg.b), this::a, $$2x, 10, cds.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<io> $$3 = $$0.y().d($$0x -> $$0x.a(awg.b), this::a, io.a($$2), 10, cds.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().i();
-                     cbz $$4 = (cbz)this.a.K();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        euk $$6 = cdj.a(this.a, 10, 7, euk.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
+         this.c = this.a(this.a);
+         return this.n();
+      }
+   }
 
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.K().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
+   protected int a(bsw $$0) {
+      return b(200 + $$0.et().a(200));
+   }
 
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        eng $$8 = this.c.a($$7);
-                        io $$9 = new io($$8.a, $$8.b + 1, $$8.c);
-                        if (dge.a(this.a.dP(), $$9)) {
-                           this.c = this.a.K().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
+   @Override
+   public boolean b() {
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dU(), this.e);
+   }
 
-                     return this.c != null;
+   @Override
+   public void c() {
+      this.h();
+      this.d = 0;
+      this.j = this.a.et().a(this.a.et().a(1200) + 1200) + 1200;
+   }
+
+   protected void h() {
+      this.a.J().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
+   }
+
+   public double i() {
+      return 1.0;
+   }
+
+   protected ir k() {
+      return this.e.c();
+   }
+
+   @Override
+   public boolean S_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      ir $$0 = this.k();
+      if (!$$0.a(this.a.ds(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.J().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
+         }
+      } else {
+         this.k = true;
+         this.d--;
+      }
+   }
+
+   public boolean l() {
+      return this.d % 40 == 0;
+   }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      ir $$2 = this.a.du();
+      ir.a $$3 = new ir.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dU(), $$3)) {
+                     this.e = $$3;
+                     return true;
                   }
                }
             }
          }
       }
+
+      return false;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.K().l() ? false : !this.d.a(this.a.dn(), (double)(this.a.dj() + (float)this.g));
-   }
-
-   @Override
-   public void c() {
-      this.a.K().a(this.c, this.b);
-   }
-
-   @Override
-   public void d() {
-      if (this.a.K().l() || this.d.a(this.a.dn(), (double)this.g)) {
-         this.f.add(this.d);
-      }
-   }
-
-   private boolean a(io $$0) {
-      for (io $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
-      }
-   }
+   protected abstract boolean a(dcd var1, ir var2);
 }

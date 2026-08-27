@@ -1,25 +1,29 @@
-public record acr(long[] b, bkv c) implements ze<abq> {
-   public static final yv<vx, acr> a = ze.a(acr::a, acr::new);
+public class acr implements zl<abw> {
+   public static final zc<we, acr> a = zl.a(acr::a, acr::new);
+   private final int b;
 
-   private acr(vx $$0) {
-      this($$0.d(), $$0.b(bkv.class));
+   public acr(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private acr(we $$0) {
+      this.b = $$0.readUnsignedByte();
+   }
+
+   private void a(we $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zg<acr> a() {
-      return agb.A;
+   public zn<acr> a() {
+      return agj.u;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bkv e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

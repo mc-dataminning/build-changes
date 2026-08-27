@@ -1,212 +1,52 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public record cr(
-   Optional<cr.b> b, Optional<jb<dbw>> c, Optional<jb<ehj>> d, Optional<akl<dax>> e, Optional<Boolean> f, Optional<co> g, Optional<av> h, Optional<bz> i
-) {
-   public static final Codec<cr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cr.b.a.optionalFieldOf("position").forGetter(cr::a),
-               jm.a(lf.az).optionalFieldOf("biomes").forGetter(cr::b),
-               jm.a(lf.aJ).optionalFieldOf("structures").forGetter(cr::c),
-               akl.a(lf.aS).optionalFieldOf("dimension").forGetter(cr::d),
-               Codec.BOOL.optionalFieldOf("smokey").forGetter(cr::e),
-               co.a.optionalFieldOf("light").forGetter(cr::f),
-               av.a.optionalFieldOf("block").forGetter(cr::g),
-               bz.a.optionalFieldOf("fluid").forGetter(cr::h)
-            )
-            .apply($$0, cr::new)
-   );
-
-   public boolean a(aqm $$0, double $$1, double $$2, double $$3) {
-      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
-         return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.ae()) {
-         return false;
-      } else {
-         io $$4 = io.a($$1, $$2, $$3);
-         boolean $$5 = $$0.p($$4);
-         if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
-            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dem.a($$0, $$4)) {
-                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
-                     return false;
-                  } else {
-                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
-                  }
-               } else {
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         } else {
-            return false;
-         }
-      }
+public class cr extends dh<cr.a> {
+   @Override
+   public Codec<cr.a> a() {
+      return cr.a.a;
    }
 
-   public Optional<cr.b> a() {
-      return this.b;
+   public void a(aqu $$0, bsn $$1, List<brv> $$2) {
+      List<erp> $$3 = $$2.stream().map($$1x -> bs.b($$0, $$1x)).collect(Collectors.toList());
+      erp $$4 = bs.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public Optional<jb<dbw>> b() {
-      return this.c;
-   }
-
-   public Optional<jb<ehj>> c() {
-      return this.d;
-   }
-
-   public Optional<akl<dax>> d() {
-      return this.e;
-   }
-
-   public Optional<Boolean> e() {
-      return this.f;
-   }
-
-   public Optional<co> f() {
-      return this.g;
-   }
-
-   public Optional<av> g() {
-      return this.h;
-   }
-
-   public Optional<bz> h() {
-      return this.i;
-   }
-
-   public static class a {
-      private ct.c a;
-      private ct.c b;
-      private ct.c c;
-      private Optional<jb<dbw>> d;
-      private Optional<jb<ehj>> e;
-      private Optional<akl<dax>> f;
-      private Optional<Boolean> g;
-      private Optional<co> h;
-      private Optional<av> i;
-      private Optional<bz> j;
-
-      public a() {
-         this.a = ct.c.c;
-         this.b = ct.c.c;
-         this.c = ct.c.c;
-         this.d = Optional.empty();
-         this.e = Optional.empty();
-         this.f = Optional.empty();
-         this.g = Optional.empty();
-         this.h = Optional.empty();
-         this.i = Optional.empty();
-         this.j = Optional.empty();
-      }
-
-      public static cr.a a() {
-         return new cr.a();
-      }
-
-      public static cr.a a(ix<dbw> $$0) {
-         return a().a(jb.a($$0));
-      }
-
-      public static cr.a a(akl<dax> $$0) {
-         return a().b($$0);
-      }
-
-      public static cr.a b(ix<ehj> $$0) {
-         return a().b(jb.a($$0));
-      }
-
-      public static cr.a a(ct.c $$0) {
-         return a().c($$0);
-      }
-
-      public cr.a b(ct.c $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cr.a c(ct.c $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cr.a d(ct.c $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cr.a a(jb<dbw> $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public cr.a b(jb<ehj> $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public cr.a b(akl<dax> $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public cr.a a(co.a $$0) {
-         this.h = Optional.of($$0.b());
-         return this;
-      }
-
-      public cr.a a(av.a $$0) {
-         this.i = Optional.of($$0.b());
-         return this;
-      }
-
-      public cr.a a(bz.a $$0) {
-         this.j = Optional.of($$0.b());
-         return this;
-      }
-
-      public cr.a a(boolean $$0) {
-         this.g = Optional.of($$0);
-         return this;
-      }
-
-      public cr b() {
-         Optional<cr.b> $$0 = cr.b.a(this.a, this.b, this.c);
-         return new cr($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
-   }
-
-   static record b(ct.c b, ct.c c, ct.c d) {
-      public static final Codec<cr.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ct.c.d.optionalFieldOf("x", ct.c.c).forGetter(cr.b::a),
-                  ct.c.d.optionalFieldOf("y", ct.c.c).forGetter(cr.b::b),
-                  ct.c.d.optionalFieldOf("z", ct.c.c).forGetter(cr.b::c)
-               )
-               .apply($$0, cr.b::new)
+   public static record a(Optional<bd> b, Optional<bd> c, Optional<bd> d) implements dh.a {
+      public static final Codec<cr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(cr.a::a), axu.a(bs.b, "lightning").forGetter(cr.a::b), axu.a(bs.b, "bystander").forGetter(cr.a::c))
+               .apply($$0, cr.a::new)
       );
 
-      static Optional<cr.b> a(ct.c $$0, ct.c $$1, ct.c $$2) {
-         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new cr.b($$0, $$1, $$2));
+      public static ao<cr.a> a(Optional<bs> $$0, Optional<bs> $$1) {
+         return an.V.a(new cr.a(Optional.empty(), bs.a($$0), bs.a($$1)));
       }
 
-      public boolean a(double $$0, double $$1, double $$2) {
-         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
+      public boolean a(erp $$0, List<erp> $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 
-      public ct.c a() {
+      @Override
+      public void a(be $$0) {
+         dh.a.super.a($$0);
+         $$0.a(this.c, ".lightning");
+         $$0.a(this.d, ".bystander");
+      }
+
+      @Override
+      public Optional<bd> a() {
          return this.b;
       }
 
-      public ct.c b() {
+      public Optional<bd> b() {
          return this.c;
       }
 
-      public ct.c c() {
+      public Optional<bd> c() {
          return this.d;
       }
    }

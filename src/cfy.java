@@ -5,67 +5,67 @@ import java.util.Optional;
 import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cfy extends cee implements bto<ix<cep>> {
-   protected static final ImmutableList<ccz<? extends ccy<? super cfy>>> bY = ImmutableList.of(ccz.c, ccz.f, ccz.v, ccz.s, ccz.w);
-   protected static final ImmutableList<cbs<?>> bZ = ImmutableList.of(
-      cbs.n, cbs.g, cbs.h, cbs.m, cbs.E, cbs.t, cbs.r, cbs.S, cbs.T, cbs.o, cbs.O, cbs.P, new cbs[]{cbs.R, cbs.x, cbs.y, cbs.B, cbs.X, cbs.Y, cbs.Z, cbs.aa}
+public class cfy extends cee implements btn<ja<cep>> {
+   protected static final ImmutableList<ccy<? extends ccx<? super cfy>>> ch = ImmutableList.of(ccy.c, ccy.f, ccy.v, ccy.s, ccy.w);
+   protected static final ImmutableList<cbr<?>> ci = ImmutableList.of(
+      cbr.n, cbr.g, cbr.h, cbr.m, cbr.E, cbr.t, cbr.r, cbr.S, cbr.T, cbr.o, cbr.O, cbr.P, new cbr[]{cbr.R, cbr.x, cbr.y, cbr.B, cbr.X, cbr.Y, cbr.Z, cbr.aa}
    );
-   private static final ajr<ix<cep>> cg = ajv.a(cfy.class, ajt.z);
-   private static final ajr<OptionalInt> ch = ajv.a(cfy.class, ajt.v);
-   private static final int ci = 5;
-   public static final String cb = "variant";
-   private static final akl<cep> cj = cep.a;
-   public final brp cc = new brp();
-   public final brp cd = new brp();
-   public final brp ce = new brp();
-   public final brp cf = new brp();
+   private static final ajy<ja<cep>> cp = akc.a(cfy.class, aka.z);
+   private static final ajy<OptionalInt> cq = akc.a(cfy.class, aka.v);
+   private static final int cr = 5;
+   public static final String ck = "variant";
+   private static final aks<cep> cs = cep.a;
+   public final brq cl = new brq();
+   public final brq cm = new brq();
+   public final brq cn = new brq();
+   public final brq co = new brq();
 
-   public cfy(bsa<? extends cee> $$0, dax $$1) {
+   public cfy(bsb<? extends cee> $$0, dca $$1) {
       super($$0, $$1);
-      this.bO = new cfy.a(this);
-      this.a(enl.j, 4.0F);
-      this.a(enl.e, -1.0F);
-      this.bP = new byr(this, 85, 10, 0.02F, 0.1F, true);
+      this.bX = new cfy.a(this);
+      this.a(epv.j, 4.0F);
+      this.a(epv.e, -1.0F);
+      this.bY = new byq(this, 85, 10, 0.02F, 0.1F, true);
    }
 
    @Override
-   protected btq.b<cfy> dT() {
-      return btq.a(bZ, bY);
+   protected btp.b<cfy> ea() {
+      return btp.a(ci, ch);
    }
 
    @Override
-   protected btq<?> a(Dynamic<?> $$0) {
-      return cfz.a(this.dT().a($$0));
+   protected btp<?> a(Dynamic<?> $$0) {
+      return cfz.a(this.ea().a($$0));
    }
 
    @Override
-   public btq<cfy> dS() {
-      return (btq<cfy>)super.dS();
+   public btp<cfy> dZ() {
+      return (btp<cfy>)super.dZ();
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       super.a($$0);
-      $$0.a(cg, le.al.g(cj));
-      $$0.a(ch, OptionalInt.empty());
+      $$0.a(cp, lh.al.g(cs));
+      $$0.a(cq, OptionalInt.empty());
    }
 
    @Override
-   public void s() {
-      this.ao.a(ch, OptionalInt.empty());
+   public void r() {
+      this.as.a(cq, OptionalInt.empty());
    }
 
-   public Optional<bru> u() {
-      return this.ao.a(ch).stream().mapToObj(this.dP()::a).filter(Objects::nonNull).findFirst();
-   }
-
-   @Override
-   public void b(bru $$0) {
-      this.ao.a(ch, OptionalInt.of($$0.al()));
+   public Optional<brv> t() {
+      return this.as.a(cq).stream().mapToObj(this.dU()::a).filter(Objects::nonNull).findFirst();
    }
 
    @Override
-   public int ad() {
+   public void b(brv $$0) {
+      this.as.a(cq, OptionalInt.of($$0.al()));
+   }
+
+   @Override
+   public int ac() {
       return 35;
    }
 
@@ -74,67 +74,67 @@ public class cfy extends cee implements bto<ix<cep>> {
       return 5;
    }
 
-   public ix<cep> y() {
-      return this.ao.a(cg);
+   public ja<cep> x() {
+      return this.as.a(cp);
    }
 
    @Override
-   public void i(ix<cep> $$0) {
-      this.ao.a(cg, $$0);
+   public void i(ja<cep> $$0) {
+      this.as.a(cp, $$0);
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("variant", this.y().e().orElse(cj).a().toString());
+      $$0.a("variant", this.x().e().orElse(cs).a().toString());
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
-      Optional.ofNullable(akm.a($$0.l("variant"))).map($$0x -> akl.a(lf.B, $$0x)).flatMap(le.al::b).ifPresent(this::i);
+      Optional.ofNullable(akt.a($$0.l("variant"))).map($$0x -> aks.a(li.B, $$0x)).flatMap(lh.al::b).ifPresent(this::i);
    }
 
    @Override
    protected void Y() {
-      this.dP().af().a("frogBrain");
-      this.dS().a((aqm)this.dP(), this);
-      this.dP().af().c();
-      this.dP().af().a("frogActivityUpdate");
+      this.dU().ag().a("frogBrain");
+      this.dZ().a((aqt)this.dU(), this);
+      this.dU().ag().c();
+      this.dU().ag().a("frogActivityUpdate");
       cfz.a(this);
-      this.dP().af().c();
+      this.dU().ag().c();
       super.Y();
    }
 
    @Override
    public void l() {
-      if (this.dP().x_()) {
-         this.cf.a(this.bh() && !this.aV.c(), this.ai);
+      if (this.dU().x_()) {
+         this.co.a(this.bl() && !this.bf.c(), this.am);
       }
 
       super.l();
    }
 
    @Override
-   public void a(ajr<?> $$0) {
-      if (at.equals($$0)) {
-         bta $$1 = this.ar();
-         if ($$1 == bta.g) {
-            this.cc.a(this.ai);
+   public void a(ajy<?> $$0) {
+      if (ax.equals($$0)) {
+         bsz $$1 = this.ar();
+         if ($$1 == bsz.g) {
+            this.cl.a(this.am);
          } else {
-            this.cc.a();
+            this.cl.a();
          }
 
-         if ($$1 == bta.i) {
-            this.cd.a(this.ai);
+         if ($$1 == bsz.i) {
+            this.cm.a(this.am);
          } else {
-            this.cd.a();
+            this.cm.a();
          }
 
-         if ($$1 == bta.j) {
-            this.ce.a(this.ai);
+         if ($$1 == bsz.j) {
+            this.cn.a(this.am);
          } else {
-            this.ce.a();
+            this.cn.a();
          }
       }
 
@@ -144,28 +144,28 @@ public class cfy extends cee implements bto<ix<cep>> {
    @Override
    protected void x(float $$0) {
       float $$1;
-      if (this.cc.c()) {
+      if (this.cl.c()) {
          $$1 = 0.0F;
       } else {
          $$1 = Math.min($$0 * 25.0F, 1.0F);
       }
 
-      this.aV.a($$1, 0.4F);
+      this.bf.a($$1, 0.4F);
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
-      cfy $$2 = bsa.R.a((dax)$$0);
+   public brp a(aqt $$0, brp $$1) {
+      cfy $$2 = bsb.T.a((dca)$$0);
       if ($$2 != null) {
-         cfz.a($$2, $$0.E_());
+         cfz.a($$2, $$0.F_());
       }
 
       return $$2;
    }
 
    @Override
-   public boolean p_() {
+   public boolean o_() {
       return false;
    }
 
@@ -174,62 +174,62 @@ public class cfy extends cee implements bto<ix<cep>> {
    }
 
    @Override
-   public void a(aqm $$0, cee $$1) {
+   public void a(aqt $$0, cee $$1) {
       this.a($$0, $$1, null);
-      this.dS().a(cbs.Y, azf.a);
+      this.dZ().a(cbr.Y, azo.a);
    }
 
    @Override
-   public bth a(dbm $$0, bps $$1, bss $$2, @Nullable bth $$3) {
-      ix<dbw> $$4 = $$0.t(this.dp());
-      if ($$4.a(avv.ai)) {
-         this.i(le.al.g(cep.c));
-      } else if ($$4.a(avv.aj)) {
-         this.i(le.al.g(cep.b));
+   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
+      ja<dcz> $$4 = $$0.t(this.du());
+      if ($$4.a(awd.am)) {
+         this.i(lh.al.g(cep.c));
+      } else if ($$4.a(awd.an)) {
+         this.i(lh.al.g(cep.b));
       } else {
-         this.i(le.al.g(cj));
+         this.i(lh.al.g(cs));
       }
 
-      cfz.a(this, $$0.E_());
+      cfz.a(this, $$0.F_());
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static btv.a gp() {
-      return bsq.A().a(btw.r, 1.0).a(btw.q, 10.0).a(btw.c, 10.0).a(btw.v, 1.0);
+   public static btu.a gy() {
+      return bsq.A().a(btv.r, 1.0).a(btv.q, 10.0).a(btv.c, 10.0).a(btv.v, 1.0);
    }
 
    @Nullable
    @Override
-   protected avg v() {
-      return avh.jL;
+   protected avn u() {
+      return avo.jY;
    }
 
    @Nullable
    @Override
-   protected avg d(bqn $$0) {
-      return avh.jO;
+   protected avn d(bqt $$0) {
+      return avo.kb;
    }
 
    @Nullable
    @Override
-   protected avg o_() {
-      return avh.jM;
+   protected avn n_() {
+      return avo.jZ;
    }
 
    @Override
-   protected void b(io $$0, drb $$1) {
-      this.a(avh.jR, 0.15F, 1.0F);
+   protected void b(ir $$0, dtc $$1) {
+      this.a(avo.ke, 0.15F, 1.0F);
    }
 
    @Override
-   public boolean cC() {
+   public boolean cH() {
       return false;
    }
 
    @Override
    protected void X() {
       super.X();
-      aga.a(this);
+      agi.a(this);
    }
 
    @Override
@@ -238,84 +238,84 @@ public class cfy extends cee implements bto<ix<cep>> {
    }
 
    @Override
-   public void a(euk $$0) {
-      if (this.da() && this.be()) {
-         this.a(this.fn(), $$0);
-         this.a(bst.a, this.ds());
-         this.g(this.ds().a(0.9));
+   public void a(ewu $$0) {
+      if (this.df() && this.bi()) {
+         this.a(this.fw(), $$0);
+         this.a(bst.a, this.dx());
+         this.g(this.dx().a(0.9));
       } else {
          super.a($$0);
       }
    }
 
    public static boolean j(bso $$0) {
-      if ($$0 instanceof cjl $$1 && $$1.gq() != 1) {
+      if ($$0 instanceof cjn $$1 && $$1.gz() != 1) {
          return false;
       }
 
-      return $$0.ak().a(avz.n);
+      return $$0.ak().a(awh.n);
    }
 
    @Override
-   protected cca b(dax $$0) {
+   protected cbz b(dca $$0) {
       return new cfy.c(this, $$0);
    }
 
    @Override
-   public boolean o(cto $$0) {
-      return $$0.a(awe.al);
+   public boolean o(cuh $$0) {
+      return $$0.a(awm.al);
    }
 
-   public static boolean c(bsa<? extends cee> $$0, day $$1, bss $$2, io $$3, ayk $$4) {
-      return $$1.a_($$3.d()).a(avw.cg) && a($$1, $$3);
+   public static boolean c(bsb<? extends cee> $$0, dcb $$1, bss $$2, ir $$3, ayt $$4) {
+      return $$1.a_($$3.d()).a(awe.cj) && a($$1, $$3);
    }
 
-   class a extends byo {
+   class a extends byn {
       a(bsq $$0) {
          super($$0);
       }
 
       @Override
       protected boolean c() {
-         return cfy.this.u().isEmpty();
+         return cfy.this.t().isEmpty();
       }
    }
 
-   static class b extends end {
-      private final io.a l = new io.a();
+   static class b extends epn {
+      private final ir.a l = new ir.a();
 
       public b(boolean $$0) {
          super($$0);
       }
 
       @Override
-      public eng a() {
-         return !this.b.be() ? super.a() : this.c(new io(ayd.a(this.b.cK().a), ayd.a(this.b.cK().b), ayd.a(this.b.cK().c)));
+      public epq a() {
+         return !this.b.bi() ? super.a() : this.c(new ir(aym.a(this.b.cP().a), aym.a(this.b.cP().b), aym.a(this.b.cP().c)));
       }
 
       @Override
-      public enl a(enn $$0, int $$1, int $$2, int $$3) {
+      public epv a(epx $$0, int $$1, int $$2, int $$3) {
          this.l.d($$1, $$2 - 1, $$3);
-         drb $$4 = $$0.a(this.l);
-         return $$4.a(avw.bR) ? enl.b : super.a($$0, $$1, $$2, $$3);
+         dtc $$4 = $$0.a(this.l);
+         return $$4.a(awe.bU) ? epv.b : super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   static class c extends cbx {
-      c(cfy $$0, dax $$1) {
+   static class c extends cbw {
+      c(cfy $$0, dca $$1) {
          super($$0, $$1);
       }
 
       @Override
-      public boolean b(enl $$0) {
-         return $$0 != enl.k && super.b($$0);
+      public boolean b(epv $$0) {
+         return $$0 != epv.k && super.b($$0);
       }
 
       @Override
-      protected enk a(int $$0) {
+      protected epu a(int $$0) {
          this.o = new cfy.b(true);
          this.o.a(true);
-         return new enk(this.o, $$0);
+         return new epu(this.o, $$0);
       }
    }
 }

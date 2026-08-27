@@ -1,82 +1,78 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class dot {
-   private static final int a = 5;
-   private int b;
-   private double c;
+public class dot extends ddx {
+   public static final MapCodec<dot> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dms.a.b.fieldOf("kind").forGetter(ddx::b), u()).apply($$0, dot::new));
+   public static final dtw d = djc.aE;
+   private static final Map<iw, exn> b = Maps.newEnumMap(
+      ImmutableMap.of(
+         iw.c,
+         dfc.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         iw.d,
+         dfc.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         iw.f,
+         dfc.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         iw.e,
+         dfc.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
 
-   protected abstract void a(dax var1, io var2, drb var3);
-
-   protected abstract void b(dax var1, io var2, drb var3);
-
-   protected abstract void a(dax var1, io var2, drb var3, int var4, int var5);
-
-   protected abstract boolean a(clw var1);
-
-   public void a(clw $$0, dax $$1, io $$2, drb $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dvu.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gC(), this.c);
+   @Override
+   public MapCodec<? extends dot> a() {
+      return c;
    }
 
-   public void b(clw $$0, dax $$1, io $$2, drb $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dvu.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   protected dot(dms.a $$0, dtb.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(d, iw.c));
    }
 
-   private List<clw> a(dax $$0, io $$1) {
-      double $$2 = this.c + 4.0;
-      euf $$3 = new euf($$1).g($$2);
-      return $$0.a(dvi.a(clw.class), $$3, this::a);
+   @Override
+   public String g() {
+      return this.q().a();
    }
 
-   public void c(dax $$0, io $$1, drb $$2) {
-      List<clw> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return b.get($$0.c(d));
+   }
 
-      for (clw $$4 : $$3) {
-         this.c = Math.max($$4.gC(), this.c);
-      }
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = super.a($$0);
+      dbg $$2 = $$0.q();
+      ir $$3 = $$0.a();
+      iw[] $$4 = $$0.f();
 
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dvu.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dvu.j, $$1);
+      for (iw $$5 : $$4) {
+         if ($$5.o().d()) {
+            iw $$6 = $$5.g();
+            $$1 = $$1.a(d, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
          }
-
-         this.b = $$5;
       }
 
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
-      }
+      return null;
    }
 
-   public int a() {
-      return this.b;
+   @Override
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
-   private static void d(dax $$0, io $$1, drb $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      super.a($$0);
+      $$0.a(d);
    }
 }

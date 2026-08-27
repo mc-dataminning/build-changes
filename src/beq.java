@@ -1,21 +1,35 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Optional;
 
-public class beq extends bdx {
-   public beq(Schema $$0) {
-      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
+public class beq extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
+
+   public beq(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
-      $$0 = $$0.remove("pos").remove("dimension");
-      if ($$1.isPresent() && $$2.isPresent()) {
-         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
-      }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result();
+      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
+         String $$1x = $$0x.get("facing").asString("north");
+         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
+      }) : $$0;
+   }
 
-      return $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bgf.u), $$0 -> $$0.update(DSL.remainderFinder(), beq::a));
    }
 }

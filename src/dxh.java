@@ -1,127 +1,121 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public final class dxh {
-   final dxg a;
-   private final iy<elx.a> b;
-   private final dwz c;
-   private final dcf.f d;
-   private final dxl e;
-   private final dxg f;
-   private final dxg g;
-   private final Map<akl<elx.a>, elx> h;
-   private final Map<akm, dxg> i;
+public class dxh<T extends dxc> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dxp> b;
+   private final Long2ObjectMap<dxg<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public static dxh a(iy.a $$0, akl<dwy> $$1, long $$2) {
-      return a($$0.b(lf.aG).b($$1).a(), $$0.b(lf.aH), $$2);
-   }
-
-   public static dxh a(dwy $$0, iy<elx.a> $$1, long $$2) {
-      return new dxh($$0, $$1, $$2);
-   }
-
-   private dxh(dwy $$0, iy<elx.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
+   public dxh(Class<T> $$0, Long2ObjectFunction<dxp> $$1) {
+      this.a = $$0;
       this.b = $$1;
-      this.f = this.a.a(new akm("aquifer")).e();
-      this.g = this.a.a(new akm("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dxl(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   }
 
-      class a implements dwm.f {
-         private final Map<dwm, dwm> d = new HashMap<>();
+   public void a(ewp $$0, awz<dxg<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = jt.a($$0.a - 2.0);
+      int $$4 = jt.a($$0.b - 4.0);
+      int $$5 = jt.a($$0.c - 2.0);
+      int $$6 = jt.a($$0.d + 2.0);
+      int $$7 = jt.a($$0.e + 0.0);
+      int $$8 = jt.a($$0.f + 2.0);
 
-         private ayk a(long $$0) {
-            return new dwu($$2 + $$0);
-         }
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = jt.b($$9, 0, 0);
+         long $$11 = jt.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
 
-         @Override
-         public dwm.c a(dwm.c $$0) {
-            ix<elx.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dxc.a)) {
-                  elx $$2 = elx.a(this.a(0L), new elx.a(-7, 1.0, 1.0));
-                  return new dwm.c($$1, $$2);
-               }
-
-               if ($$1.a(dxc.b)) {
-                  elx $$3 = elx.a(this.a(1L), new elx.a(-7, 1.0, 1.0));
-                  return new dwm.c($$1, $$3);
-               }
-
-               if ($$1.a(dxc.j)) {
-                  elx $$4 = elx.b(dxh.this.a.a(dxc.j.a()), new elx.a(0, 0.0));
-                  return new dwm.c($$1, $$4);
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = jt.c($$13);
+            int $$15 = jt.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dxg<T> $$16 = (dxg<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
                }
             }
-
-            elx $$5 = dxh.this.a($$1.e().orElseThrow());
-            return new dwm.c($$1, $$5);
-         }
-
-         private dwm a(dwm $$0) {
-            if ($$0 instanceof elu $$1) {
-               ayk $$2 = $$3 ? this.a(0L) : dxh.this.a.a(new akm("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dwm)($$0 instanceof dwn.i ? new dwn.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public dwm apply(dwm $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
          }
       }
-
-      this.c = $$0.i().a(new a());
-      dwm.f $$4 = new dwm.f() {
-         private final Map<dwm, dwm> b = new HashMap<>();
-
-         private dwm a(dwm $$0) {
-            if ($$0 instanceof dwn.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dwn.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dwm apply(dwm $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dcf.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public elx a(akl<elx.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dxc.a(this.b, this.a, $$0));
+   public LongStream a(long $$0) {
+      int $$1 = dbh.a($$0);
+      int $$2 = dbh.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+      }
    }
 
-   public dxg a(akm $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jt.b($$0, 0, $$1);
+      long $$3 = jt.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
    }
 
-   public dwz a() {
-      return this.c;
+   public Stream<dxg<T>> b(long $$0) {
+      return this.a($$0).<dxg<T>>mapToObj(this.c::get).filter(Objects::nonNull);
    }
 
-   public dcf.f b() {
-      return this.d;
+   private static long f(long $$0) {
+      return dbh.c(jt.b($$0), jt.d($$0));
    }
 
-   public dxl c() {
-      return this.e;
+   public dxg<T> c(long $$0) {
+      return (dxg<T>)this.c.computeIfAbsent($$0, this::g);
    }
 
-   public dxg d() {
-      return this.f;
+   @Nullable
+   public dxg<T> d(long $$0) {
+      return (dxg<T>)this.c.get($$0);
    }
 
-   public dxg e() {
-      return this.g;
+   private dxg<T> g(long $$0) {
+      long $$1 = f($$0);
+      dxp $$2 = (dxp)this.b.get($$1);
+      this.d.add($$0);
+      return new dxg<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(ewp $$0, awz<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dxj<T, U> $$0, ewp $$1, awz<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @azp
+   public int b() {
+      return this.d.size();
    }
 }

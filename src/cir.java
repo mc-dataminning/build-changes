@@ -1,61 +1,88 @@
 import java.util.List;
 
 public class cir extends ciy {
-   public static final float b = bsa.D.l() / bsa.Y.l();
+   public static final float b = bsb.F.k() / bsb.aa.k();
    private static final int e = 1200;
-   private static final int bY = 50;
-   private static final int bZ = 6000;
-   private static final int ca = 2;
-   private static final int cb = 1200;
+   private static final int ch = 50;
+   private static final int ci = 6000;
+   private static final int cj = 2;
+   private static final int ck = 1200;
 
-   public cir(bsa<? extends cir> $$0, dax $$1) {
-      super($$0, $$1);
-      this.fT();
+   public cir(bsb<? extends cir> $$0, dca $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.gc();
       if (this.d != null) {
          this.d.c(400);
       }
    }
 
-   public static btv.a s() {
-      return ciy.gp().a(btw.r, 0.3F).a(btw.c, 8.0).a(btw.q, 80.0);
+   public static cir a(bsb<? extends cir> $$0, dca $$1) {
+      return new cir($$0, $$1, true);
+   }
+
+   public static cir b(bsb<? extends cir> $$0, dca $$1) {
+      return new cir($$0, $$1, false);
+   }
+
+   public static btu.a r() {
+      return ciy.gA().a(btv.r, 0.3F).a(btv.c, 8.0).a(btv.q, 80.0);
    }
 
    @Override
-   public int u() {
+   public int t() {
       return 60;
    }
 
    @Override
-   protected avg v() {
-      return this.bh() ? avh.hO : avh.hP;
+   protected avn u() {
+      if (this.gz()) {
+         return this.bl() ? avo.hP : avo.hR;
+      } else {
+         return this.bl() ? avo.hO : avo.hQ;
+      }
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return this.bh() ? avh.hU : avh.hV;
+   protected avn d(bqt $$0) {
+      if (this.gz()) {
+         return this.bl() ? avo.ia : avo.ic;
+      } else {
+         return this.bl() ? avo.hZ : avo.ib;
+      }
    }
 
    @Override
-   protected avg o_() {
-      return this.bh() ? avh.hR : avh.hS;
+   protected avn n_() {
+      if (this.gz()) {
+         return this.bl() ? avo.hU : avo.hW;
+      } else {
+         return this.bl() ? avo.hT : avo.hV;
+      }
    }
 
    @Override
-   protected avg y() {
-      return avh.hT;
+   protected avn x() {
+      return this.gz() ? avo.hY : avo.hX;
    }
 
    @Override
    protected void Y() {
       super.Y();
-      if ((this.ai + this.al()) % 1200 == 0) {
-         brc $$0 = new brc(bre.d, 6000, 2);
-         List<aqn> $$1 = brd.a((aqm)this.dP(), this, this.dn(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.d.b(new acx(acx.l, this.aW() ? 0.0F : 1.0F)));
-      }
+      if (!this.gz()) {
+         if ((this.am + this.al()) % 1200 == 0) {
+            brh $$0 = new brh(brj.d, 6000, 2);
+            List<aqu> $$1 = bri.a((aqt)this.dU(), this, this.ds(), 50.0, $$0, 1200);
+            $$1.forEach($$0x -> $$0x.d.b(new ade(ade.l, this.ba() ? 0.0F : 1.0F)));
+         }
 
-      if (!this.ga()) {
-         this.a(this.dp(), 16);
+         if (!this.gj()) {
+            this.a(this.du(), 16);
+         }
       }
+   }
+
+   @Override
+   protected double gy() {
+      return -0.294;
    }
 }

@@ -1,41 +1,43 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cck extends ccy<bso> {
-   private static final int a = 200;
-   private static final int c = 599;
-
-   public cck() {
-      this(200);
-   }
-
-   public cck(int $$0) {
-      super($$0);
-   }
-
+public class cck extends ccx<cki> {
    @Override
-   protected void a(aqm $$0, bso $$1) {
-      a($$1);
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.h, cbr.aw, cbr.aq, cbr.ap, cbr.as, cbr.at, new cbr[0]);
    }
 
-   @Override
-   public Set<cbs<?>> a() {
-      return ImmutableSet.of(cbs.g);
-   }
+   protected void a(aqt $$0, cki $$1) {
+      btp<?> $$2 = $$1.dZ();
+      $$2.a(cbr.aw, this.b($$0, $$1));
+      Optional<cko> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cki> $$5 = Lists.newArrayList();
+      cbt $$6 = $$2.c(cbr.h).orElse(cbt.a());
 
-   public static void a(bso $$0) {
-      Optional<List<bso>> $$1 = $$0.dS().c(cbs.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(bsa.af));
-         if ($$2) {
-            b($$0);
+      for (bso $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cko || $$0x instanceof cki))) {
+         if ($$7 instanceof cko $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cki $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(cbr.aq, $$3);
+      $$2.a(cbr.ap, $$5);
+      $$2.a(cbr.as, $$4);
+      $$2.a(cbr.at, $$5.size());
    }
 
-   public static void b(bso $$0) {
-      $$0.dS().a(cbs.F, true, 599L);
+   private Optional<ir> b(aqt $$0, cki $$1) {
+      return ir.a($$1.du(), 8, 4, $$1x -> $$0.a_($$1x).a(awe.aU));
    }
 }

@@ -1,76 +1,73 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public record dnx(List<dnx.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dnx a = new dnx(List.of());
-   public static final Codec<dnx> b = dnx.b.a.listOf().xmap(dnx::new, dnx::b);
-   public static final yv<wi, dnx> c = dnx.b.b.a(yt.a()).a(dnx::new, dnx::b);
+public class dnx extends dhl implements djx {
+   public static final MapCodec<dnx> c = b(dnx::new);
+   public static final dua<dty> d = dhl.b;
+   protected static final float e = 6.0F;
+   protected static final exn f = dfc.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
-   public dnx a() {
-      return new dnx(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<dnx> a() {
+      return c;
    }
 
-   public List<dnx.b> b() {
-      return this.d;
+   public dnx(dtb.d $$0) {
+      super($$0);
    }
 
-   public static class a {
-      private final Builder<dnx.b> a = ImmutableList.builder();
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return f;
+   }
 
-      @Deprecated
-      public dnx.a a(iy<dnw> $$0, akl<dnw> $$1, csh $$2) {
-         Optional<ix.c<dnw>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dnx.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
+   @Override
+   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
+      return $$0.d($$1, $$2, iw.b) && !$$0.a(dfe.lH);
+   }
+
+   @Override
+   public cuh a(dcd $$0, ir $$1, dtc $$2) {
+      return new cuh(dfe.cg);
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = super.a($$0);
+      if ($$1 != null) {
+         epe $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(awj.a) && $$2.e() == 8) {
+            return $$1;
          }
       }
 
-      public dnx.a a(ix<dnw> $$0, csh $$1) {
-         return this.a(new dnx.b($$0, $$1));
-      }
+      return null;
+   }
 
-      public dnx.a a(dnx.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dnx.a a(dnx $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dnx a() {
-         return new dnx(this.a.build());
+   @Override
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      if ($$0.c(d) == dty.a) {
+         dtc $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dty.b;
+      } else {
+         epe $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awj.a) && $$4.e() == 8;
       }
    }
 
-   public static record b(ix<dnw> c, csh d) {
-      public static final Codec<dnx.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dnw.c.fieldOf("pattern").forGetter(dnx.b::b), csh.q.fieldOf("color").forGetter(dnx.b::c)).apply($$0, dnx.b::new)
-      );
-      public static final yv<wi, dnx.b> b = yv.a(dnw.d, dnx.b::b, csh.r, dnx.b::c, dnx.b::new);
+   @Override
+   protected epe b_(dtc $$0) {
+      return epf.c.a(false);
+   }
 
-      public xl a() {
-         String $$0 = this.c.a().b();
-         return wx.c($$0 + "." + this.d.b());
-      }
+   @Override
+   public boolean a(@Nullable cly $$0, dbg $$1, ir $$2, dtc $$3, epd $$4) {
+      return false;
+   }
 
-      public ix<dnw> b() {
-         return this.c;
-      }
-
-      public csh c() {
-         return this.d;
-      }
+   @Override
+   public boolean a(dcb $$0, ir $$1, dtc $$2, epe $$3) {
+      return false;
    }
 }

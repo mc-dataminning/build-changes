@@ -1,102 +1,117 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
 
-public record cwj(List<cwj.b> e, boolean f) {
-   public static final cwj a = new cwj(List.of(), true);
-   private static final Codec<cwj> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cwj.b.a.listOf().fieldOf("modifiers").forGetter(cwj::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwj::c))
-            .apply($$0, cwj::new)
-   );
-   public static final Codec<cwj> b = Codec.withAlternative(g, cwj.b.a.listOf(), $$0 -> new cwj($$0, true));
-   public static final yv<wi, cwj> c = yv.a(cwj.b.b.a(yt.a()), cwj::b, yt.b, cwj::c, cwj::new);
-   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+public class cwj extends cuc {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-   public cwj a(boolean $$0) {
-      return new cwj(this.e, $$0);
+   public cwj(cuc.a $$0) {
+      super($$0);
    }
 
-   public static cwj.a a() {
-      return new cwj.a();
+   public static cxl d() {
+      return cxl.a().a(btv.c, new btt(e, "Tool modifier", 8.0, btt.a.a), bsd.b).a(btv.e, new btt(f, "Tool modifier", -2.9F, btt.a.a), bsd.b).a();
    }
 
-   public cwj a(ix<btr> $$0, btu $$1, bsc $$2) {
-      return new cwj(ac.a(this.e, new cwj.b($$0, $$1, $$2)), this.f);
+   public static cxw h() {
+      return new cxw(List.of(), 1.0F, 2);
    }
 
-   public void a(bsb $$0, BiConsumer<ix<btr>, btu> $$1) {
-      for (cwj.b $$2 : this.e) {
-         if ($$2.e.a($$0)) {
-            $$1.accept($$2.c, $$2.d);
+   @Override
+   public boolean a(dtc $$0, dca $$1, ir $$2, cly $$3) {
+      return !$$3.f();
+   }
+
+   @Override
+   public cwk c(cuh $$0) {
+      return cwk.f;
+   }
+
+   @Override
+   public int b(cuh $$0) {
+      return 72000;
+   }
+
+   @Override
+   public void a(cuh $$0, dca $$1, bso $$2, int $$3) {
+      if ($$2 instanceof cly $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = dae.j($$0);
+            if ($$6 <= 0 || $$4.bj()) {
+               if (!$$1.C) {
+                  $$0.a(1, $$4, bso.d($$2.fF()));
+                  if ($$6 == 0) {
+                     cnf $$7 = new cnf($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dM(), $$4.dK(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fY()) {
+                        $$7.d = cme.a.c;
+                     }
+
+                     $$1.b($$7);
+                     $$1.a(null, $$7, avo.Ab, avq.h, 1.0F, 1.0F);
+                     if (!$$4.fY()) {
+                        $$4.gl().h($$0);
+                     }
+                  }
+               }
+
+               $$4.b(avz.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dK();
+                  float $$9 = $$4.dM();
+                  float $$10 = -aym.a($$8 * (float) (Math.PI / 180.0)) * aym.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -aym.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = aym.b($$8 * (float) (Math.PI / 180.0)) * aym.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = aym.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.v(20);
+                  if ($$4.aE()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bst.a, new ewu(0.0, 1.1999999F, 0.0));
+                  }
+
+                  avn $$16;
+                  if ($$6 >= 3) {
+                     $$16 = avo.Aa;
+                  } else if ($$6 == 2) {
+                     $$16 = avo.zZ;
+                  } else {
+                     $$16 = avo.zY;
+                  }
+
+                  $$1.a(null, $$4, $$16, avq.h, 1.0F, 1.0F);
+               }
+            }
          }
       }
    }
 
-   public double a(double $$0, bsb $$1) {
-      double $$2 = $$0;
-
-      for (cwj.b $$3 : this.e) {
-         if ($$3.e.a($$1)) {
-            double $$4 = $$3.d.d();
-
-            $$2 += switch ($$3.d.e()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
-         }
-      }
-
-      return $$2;
-   }
-
-   public List<cwj.b> b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Builder<cwj.b> a = ImmutableList.builder();
-
-      a() {
-      }
-
-      public cwj.a a(ix<btr> $$0, btu $$1, bsc $$2) {
-         this.a.add(new cwj.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public cwj a() {
-         return new cwj(this.a.build(), true);
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      if ($$3.m() >= $$3.n() - 1) {
+         return bqb.d($$3);
+      } else if (dae.j($$3) > 0 && !$$1.bj()) {
+         return bqb.d($$3);
+      } else {
+         $$1.c($$2);
+         return bqb.b($$3);
       }
    }
 
-   public static record b(ix<btr> c, btu d, bsc e) {
-      public static final Codec<cwj.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(le.u.r().fieldOf("type").forGetter(cwj.b::a), btu.a.forGetter(cwj.b::b), bsc.l.optionalFieldOf("slot", bsc.a).forGetter(cwj.b::c))
-               .apply($$0, cwj.b::new)
-      );
-      public static final yv<wi, cwj.b> b = yv.a(yt.b(lf.c), cwj.b::a, btu.c, cwj.b::b, bsc.m, cwj.b::c, cwj.b::new);
+   @Override
+   public boolean a(cuh $$0, bso $$1, bso $$2) {
+      $$0.a(1, $$2, bsc.a);
+      return true;
+   }
 
-      public ix<btr> a() {
-         return this.c;
-      }
-
-      public btu b() {
-         return this.d;
-      }
-
-      public bsc c() {
-         return this.e;
-      }
+   @Override
+   public int g() {
+      return 1;
    }
 }

@@ -1,15 +1,12 @@
-public class cxg extends cxd {
-   public cxg(String $$0, cxj $$1, cxr $$2, cto $$3, float $$4, int $$5) {
-      super(cxz.c, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public cto g() {
-      return new cto(dea.nW);
-   }
+public record cxg(int d) {
+   public static final cxg a = new cxg(0);
+   public static final Codec<cxg> b = Codec.INT.xmap(cxg::new, cxg::a);
+   public static final zc<ByteBuf, cxg> c = za.g.a(cxg::new, cxg::a);
 
-   @Override
-   public cxy<?> ao_() {
-      return cxy.q;
+   public int a() {
+      return this.d;
    }
 }

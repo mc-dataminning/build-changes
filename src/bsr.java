@@ -1,6 +1,6 @@
 import com.mojang.serialization.Codec;
 
-public enum bsr implements ayx {
+public enum bsr implements azg {
    a("monster", 70, false, false, 128),
    b("creature", 10, true, true, 128),
    c("ambient", 15, true, false, 128),
@@ -10,7 +10,7 @@ public enum bsr implements ayx {
    g("water_ambient", 20, true, false, 64),
    h("misc", -1, true, true, 128);
 
-   public static final Codec<bsr> i = ayx.a(bsr::values);
+   public static final Codec<bsr> i = azg.a(bsr::values);
    private final int j;
    private final boolean k;
    private final boolean l;

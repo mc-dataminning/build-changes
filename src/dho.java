@@ -1,19 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dho extends ddy {
-   public static final MapCodec<dho> d = b(dho::new);
-
-   @Override
-   protected MapCodec<? extends dho> a() {
-      return d;
-   }
-
-   protected dho(dra.d $$0) {
-      super($$0);
-   }
+public class dho extends dhn {
+   public static final MapCodec<dho> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bpf.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, dho::new)
+   );
 
    @Override
-   protected boolean a(drb $$0, drb $$1, it $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   public MapCodec<dho> a() {
+      return c;
+   }
+
+   public dho(bpf $$0, dtb.d $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected int f(dtc $$0, dbg $$1, ir $$2) {
+      return 2;
    }
 }

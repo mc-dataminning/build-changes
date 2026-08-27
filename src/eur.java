@@ -1,18 +1,36 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public final class eur extends evd {
-   protected eur(eut $$0) {
-      super($$0);
+public record eur(euu b) implements euu {
+   public static final Codec<eur> a = RecordCodecBuilder.create($$0 -> $$0.group(euw.a.fieldOf("term").forGetter(eur::c)).apply($$0, eur::new));
+
+   @Override
+   public euv b() {
+      return euw.c;
+   }
+
+   public boolean a(erp $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   protected DoubleList a(it.a $$0) {
-      return new euq(this.a.c($$0));
+   public Set<eud<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   protected int a(it.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return ayd.a(ayd.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public void a(erv $$0) {
+      euu.super.a($$0);
+      this.b.a($$0);
+   }
+
+   public static euu.a a(euu.a $$0) {
+      eur $$1 = new eur($$0.build());
+      return () -> $$1;
+   }
+
+   public euu c() {
+      return this.b;
    }
 }

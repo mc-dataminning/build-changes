@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface hc<T> {
-   void execute(hd<T> var1, hf var2);
+public record hc<T>(hi a, hf<T> b) {
+   public void a(hg<T> $$0) {
+      this.b.execute($$0, this.a);
+   }
 }

@@ -1,36 +1,45 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class gbr extends gdu {
+   private final gdp a;
 
-public class gbr implements bnr {
-   private final gci a;
-   private final Set<bnp> b = new ObjectOpenHashSet();
-   private final bnx c = new bnx();
-
-   public gbr(LongSupplier $$0, gci $$1) {
-      this.a = $$1;
-      this.b.add(bny.a($$0));
-      this.a();
+   gbr(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
-   private void a() {
-      this.b.addAll(bny.a());
-      this.b.add(bnp.a("totalChunks", bno.f, this.a, gci::i));
-      this.b.add(bnp.a("renderedChunks", bno.f, this.a, gci::k));
-      this.b.add(bnp.a("lastViewDistance", bno.f, this.a, gci::j));
-      gfk $$0 = this.a.h();
-      this.b.add(bnp.a("toUpload", bno.g, $$0, gfk::c));
-      this.b.add(bnp.a("freeBufferCount", bno.g, $$0, gfk::d));
-      this.b.add(bnp.a("toBatchCount", bno.g, $$0, gfk::b));
-      if (eyl.a().isPresent()) {
-         this.b.add(bnp.a("gpuUtilization", bno.i, fdz.Q(), fdz::v));
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
       }
    }
 
    @Override
-   public Set<bnp> a(Supplier<bmg> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public gcy b() {
+      return gcy.b;
+   }
+
+   public static class a implements gcx<le> {
+      private final gdp a;
+
+      public a(gdp $$0) {
+         this.a = $$0;
+      }
+
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

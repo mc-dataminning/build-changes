@@ -1,8 +1,8 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class lt {
-   public static lo a(ln $$0, CompletableFuture<iz.a> $$1) {
-      return new lo($$0, $$1, List.of(new ly(), new lv(), new lu(), new lw(), new lx()));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface lt {
 }

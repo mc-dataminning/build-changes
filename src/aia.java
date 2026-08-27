@@ -1,37 +1,37 @@
-public class aia implements ze<agd> {
-   public static final yv<vx, aia> a = ze.a(aia::a, aia::new);
-   private final bpt b;
-   private final int c;
+public class aia implements zl<agl> {
+   public static final zc<wp, aia> a = zl.a(aia::a, aia::new);
+   private final int b;
+   private final cuh c;
 
-   public aia(bpt $$0, int $$1) {
+   public aia(int $$0, cuh $$1) {
       this.b = $$0;
-      this.c = $$1;
+      this.c = $$1.r();
    }
 
-   private aia(vx $$0) {
-      this.b = $$0.b(bpt.class);
-      this.c = $$0.l();
+   private aia(wp $$0) {
+      this.b = $$0.readShort();
+      this.c = cuh.e.decode($$0);
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(wp $$0) {
+      $$0.l(this.b);
+      cuh.e.encode($$0, this.c);
    }
 
    @Override
-   public zg<aia> a() {
-      return agb.cc;
+   public zn<aia> a() {
+      return agj.bW;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public bpt b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public cuh e() {
       return this.c;
    }
 }

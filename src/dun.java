@@ -1,5 +1,23 @@
-public record dun(String a, akl<dax> b, String c) {
-   public dun a(String $$0) {
-      return new dun(this.a, this.b, this.c + $$0);
+public enum dun implements azg {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
+
+   private final String e;
+   private final boolean f;
+
+   private dun(String $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
    }
 }

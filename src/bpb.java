@@ -1,25 +1,44 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bpb implements bpc {
-   private final bpc[] a;
+public class bpb extends bpd {
+   public static final bpb a = new bpb(0.0F);
+   public static final Codec<bpb> b = axu.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bpb::new, bpb::d);
+   private final float d;
 
-   public bpb(bpc... $$0) {
-      this.a = $$0;
+   public static bpb a(float $$0) {
+      return $$0 == 0.0F ? a : new bpb($$0);
+   }
+
+   private bpb(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public float a(ayk $$0) {
-      float $$1 = 1.0F;
+   public float a(ayt $$0) {
+      return this.d;
+   }
 
-      for (bpc $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public float a() {
+      return this.d;
+   }
 
-      return $$1;
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bpe<?> c() {
+      return bpe.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Float.toString(this.d);
    }
 }

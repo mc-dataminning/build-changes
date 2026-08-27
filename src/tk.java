@@ -1,115 +1,134 @@
 import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Supplier;
 
 public class tk {
-   private static final char a = ' ';
-   private static final char b = '_';
-   private static final char c = '+';
-   private static final char d = 'x';
-   private static final char e = 'X';
-   private final Collection<sz> f = Lists.newArrayList();
-   private final Collection<ta> g = Lists.newArrayList();
+   final tg a;
+   private final List<td> b = Lists.newArrayList();
+   private long c;
 
-   public tk() {
+   tk(tg $$0) {
+      this.a = $$0;
+      this.c = $$0.o();
    }
 
-   public tk(Collection<sz> $$0) {
-      this.f.addAll($$0);
+   public tk a(Runnable $$0) {
+      this.b.add(td.a($$0));
+      return this;
    }
 
-   public void a(sz $$0) {
-      this.f.add($$0);
-      this.g.forEach($$0::a);
+   public tk a(long $$0, Runnable $$1) {
+      this.b.add(td.a($$0, $$1));
+      return this;
    }
 
-   public void a(ta $$0) {
-      this.g.add($$0);
-      this.f.forEach($$1 -> $$1.a($$0));
-   }
-
-   public void a(final Consumer<sz> $$0) {
-      this.a(new ta() {
-         @Override
-         public void a(sz $$0x) {
-         }
-
-         @Override
-         public void a(sz $$0x, tc $$1) {
-         }
-
-         @Override
-         public void b(sz $$0x, tc $$1) {
-            $$0.accept($$0);
-         }
-
-         @Override
-         public void a(sz $$0x, sz $$1, tc $$2) {
-         }
+   public tk a(int $$0) {
+      return this.a($$0, () -> {
       });
    }
 
-   public int a() {
-      return (int)this.f.stream().filter(sz::h).filter(sz::q).count();
+   public tk b(Runnable $$0) {
+      this.b.add(td.a(() -> this.c($$0)));
+      return this;
    }
 
-   public int b() {
-      return (int)this.f.stream().filter(sz::h).filter(sz::r).count();
-   }
-
-   public int c() {
-      return (int)this.f.stream().filter(sz::j).count();
-   }
-
-   public boolean d() {
-      return this.a() > 0;
-   }
-
-   public boolean e() {
-      return this.b() > 0;
-   }
-
-   public Collection<sz> f() {
-      return this.f.stream().filter(sz::h).filter(sz::q).collect(Collectors.toList());
-   }
-
-   public Collection<sz> g() {
-      return this.f.stream().filter(sz::h).filter(sz::r).collect(Collectors.toList());
-   }
-
-   public int h() {
-      return this.f.size();
-   }
-
-   public boolean i() {
-      return this.c() == this.h();
-   }
-
-   public String j() {
-      StringBuffer $$0 = new StringBuffer();
-      $$0.append('[');
-      this.f.forEach($$1 -> {
-         if (!$$1.i()) {
-            $$0.append(' ');
-         } else if ($$1.g()) {
-            $$0.append('+');
-         } else if ($$1.h()) {
-            $$0.append((char)($$1.q() ? 'X' : 'x'));
+   public tk a(int $$0, Runnable $$1) {
+      this.b.add(td.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            throw new sy("Test timed out before sequence completed");
          } else {
-            $$0.append('_');
+            this.c($$1);
          }
-      });
-      $$0.append(']');
-      return $$0.toString();
+      }));
+      return this;
    }
 
-   @Override
-   public String toString() {
-      return this.j();
+   public tk b(int $$0, Runnable $$1) {
+      this.b.add(td.a(() -> {
+         if (this.a.o() < this.c + (long)$$0) {
+            this.c($$1);
+            throw new sy("Test timed out before sequence completed");
+         }
+      }));
+      return this;
    }
 
-   public void b(sz $$0) {
-      this.f.remove($$0);
+   public void a() {
+      this.b.add(td.a(this.a::l));
+   }
+
+   public void a(Supplier<Exception> $$0) {
+      this.b.add(td.a(() -> this.a.a($$0.get())));
+   }
+
+   public tk.a b() {
+      tk.a $$0 = new tk.a();
+      this.b.add(td.a(() -> $$0.a(this.a.o())));
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sy var4) {
+      }
+   }
+
+   public void b(long $$0) {
+      try {
+         this.c($$0);
+      } catch (sy var4) {
+         this.a.a(var4);
+      }
+   }
+
+   private void c(Runnable $$0) {
+      try {
+         $$0.run();
+      } catch (sy var3) {
+         this.a.a(var3);
+      }
+   }
+
+   private void c(long $$0) {
+      Iterator<td> $$1 = this.b.iterator();
+
+      while ($$1.hasNext()) {
+         td $$2 = $$1.next();
+         $$2.b.run();
+         $$1.remove();
+         long $$3 = $$0 - this.c;
+         long $$4 = this.c;
+         this.c = $$0;
+         if ($$2.a != null && $$2.a != $$3) {
+            this.a.a(new sy("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
+            break;
+         }
+      }
+   }
+
+   public class a {
+      private static final long b = -1L;
+      private long c = -1L;
+
+      void a(long $$0) {
+         if (this.c != -1L) {
+            throw new IllegalStateException("Condition already triggered at " + this.c);
+         } else {
+            this.c = $$0;
+         }
+      }
+
+      public void a() {
+         long $$0 = tk.this.a.o();
+         if (this.c != $$0) {
+            if (this.c == -1L) {
+               throw new sy("Condition not triggered (t=" + $$0 + ")");
+            } else {
+               throw new sy("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
+            }
+         }
+      }
    }
 }

@@ -1,62 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record eti(etp b, String c, float d) implements etg {
-   public static final MapCodec<eti> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               etq.a.fieldOf("target").forGetter(eti::c),
-               Codec.STRING.fieldOf("score").forGetter(eti::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(eti::e)
+public class eti extends eta {
+   public static final Codec<eti> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  axu.a(ark.a(axu.b(0, 32)), "title").forGetter($$0x -> $$0x.c),
+                  axu.a(Codec.STRING, "author").forGetter($$0x -> $$0x.b),
+                  axu.a(axu.a(0, 3), "generation").forGetter($$0x -> $$0x.d)
+               )
             )
             .apply($$0, eti::new)
    );
+   private final Optional<String> b;
+   private final Optional<ark<String>> c;
+   private final Optional<Integer> d;
 
-   @Override
-   public etf b() {
-      return eth.e;
+   public eti(List<euu> $$0, Optional<ark<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+      super($$0);
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return this.b.b();
+   protected cuh a(cuh $$0, erp $$1) {
+      $$0.a(ke.H, cya.a, this::a);
+      return $$0;
    }
 
-   public static eti a(epf.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static eti a(epf.b $$0, String $$1, float $$2) {
-      return new eti(etm.a($$0), $$1, $$2);
+   private cya a(cya $$0) {
+      return new cya(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
    }
 
    @Override
-   public float b(epf $$0) {
-      evn $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         evo $$2 = $$0.d().f();
-         evg $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            evk $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public etp c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.d;
+   public etc b() {
+      return etd.J;
    }
 }

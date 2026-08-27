@@ -1,66 +1,66 @@
 import javax.annotation.Nullable;
 
 public class cgo extends cgi {
-   private final cgp bY = new cgp(this);
-   private static final int bZ = 18000;
-   private static final brx cb = bsa.aO.n().a(brw.a().a(brv.a, 0.0F, bsa.aO.m() - 0.03125F, 0.0F)).a(0.5F);
-   private boolean cc;
-   private int cd;
+   private final cgp ch = new cgp(this);
+   private static final int ci = 18000;
+   private static final bry ck = bsb.aQ.n().a(brx.a().a(brw.a, 0.0F, bsb.aQ.l() - 0.03125F, 0.0F)).a(0.5F);
+   private boolean cl;
+   private int cm;
 
-   public cgo(bsa<? extends cgo> $$0, dax $$1) {
+   public cgo(bsb<? extends cgo> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public static btv.a s() {
-      return gO().a(btw.q, 15.0).a(btw.r, 0.2F);
+   public static btu.a r() {
+      return gX().a(btv.q, 15.0).a(btv.r, 0.2F);
    }
 
-   public static boolean c(bsa<? extends cee> $$0, day $$1, bss $$2, io $$3, ayk $$4) {
+   public static boolean c(bsb<? extends cee> $$0, dcb $$1, bss $$2, ir $$3, ayt $$4) {
       return !bss.a($$2) ? cee.b($$0, $$1, $$2, $$3, $$4) : bss.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected void a(ayk $$0) {
-      this.f(btw.m).a(a($$0::j));
+   protected void a(ayt $$0) {
+      this.f(btv.m).a(a($$0::j));
    }
 
    @Override
-   protected void gF() {
+   protected void gO() {
    }
 
    @Override
-   protected avg v() {
-      return this.a(awb.a) ? avh.xf : avh.xb;
+   protected avn u() {
+      return this.a(awj.a) ? avo.xD : avo.xz;
    }
 
    @Override
-   protected avg o_() {
-      return avh.xc;
+   protected avn n_() {
+      return avo.xA;
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.xd;
+   protected avn d(bqt $$0) {
+      return avo.xB;
    }
 
    @Override
-   protected avg aP() {
+   protected avn aT() {
       if (this.aE()) {
-         if (!this.bS()) {
-            return avh.xi;
+         if (!this.bX()) {
+            return avo.xG;
          }
 
-         this.cx++;
-         if (this.cx > 5 && this.cx % 3 == 0) {
-            return avh.xg;
+         this.cG++;
+         if (this.cG > 5 && this.cG % 3 == 0) {
+            return avo.xE;
          }
 
-         if (this.cx <= 5) {
-            return avh.xi;
+         if (this.cG <= 5) {
+            return avo.xG;
          }
       }
 
-      return avh.xe;
+      return avo.xC;
    }
 
    @Override
@@ -73,69 +73,69 @@ public class cgo extends cgi {
    }
 
    @Override
-   protected void gV() {
-      if (this.be()) {
-         this.a(avh.xh, 0.4F, 1.0F);
+   protected void he() {
+      if (this.bi()) {
+         this.a(avo.xF, 0.4F, 1.0F);
       } else {
-         super.gV();
+         super.he();
       }
    }
 
    @Override
-   public brx e(bta $$0) {
-      return this.p_() ? cb : super.e($$0);
+   public bry e(bsz $$0) {
+      return this.o_() ? ck : super.e($$0);
    }
 
    @Override
-   public void n_() {
-      super.n_();
-      if (this.u() && this.cd++ >= 18000) {
+   public void m_() {
+      super.m_();
+      if (this.t() && this.cm++ >= 18000) {
          this.ao();
       }
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("SkeletonTrap", this.u());
-      $$0.a("SkeletonTrapTime", this.cd);
+      $$0.a("SkeletonTrap", this.t());
+      $$0.a("SkeletonTrapTime", this.cm);
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
       this.w($$0.q("SkeletonTrap"));
-      this.cd = $$0.h("SkeletonTrapTime");
+      this.cm = $$0.h("SkeletonTrapTime");
    }
 
    @Override
-   protected float fl() {
+   protected float fu() {
       return 0.96F;
    }
 
-   public boolean u() {
-      return this.cc;
+   public boolean t() {
+      return this.cl;
    }
 
    public void w(boolean $$0) {
-      if ($$0 != this.cc) {
-         this.cc = $$0;
+      if ($$0 != this.cl) {
+         this.cl = $$0;
          if ($$0) {
-            this.bS.a(1, this.bY);
+            this.cb.a(1, this.ch);
          } else {
-            this.bS.a(this.bY);
+            this.cb.a(this.ch);
          }
       }
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
-      return bsa.aO.a((dax)$$0);
+   public brp a(aqt $$0, brp $$1) {
+      return bsb.aQ.a((dca)$$0);
    }
 
    @Override
-   public bpu b(clw $$0, bpt $$1) {
-      return !this.gE() ? bpu.d : super.b($$0, $$1);
+   public bqa b(cly $$0, bpz $$1) {
+      return !this.gN() ? bqa.d : super.b($$0, $$1);
    }
 }

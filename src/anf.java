@@ -1,38 +1,45 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class anf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.op.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("commands.jfr.dump.failed", $$0));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   private anf() {
+   }
+
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("op").requires($$0x -> $$0x.c(3))).then(ef.a("targets", et.a()).suggests(($$0x, $$1) -> {
-            auj $$2 = ((ee)$$0x.getSource()).l().ah();
-            return ej.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
-         }).executes($$0x -> a((ee)$$0x.getSource(), et.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ei.a("start").executes($$0x -> a((eh)$$0x.getSource()))))
+            .then(ei.a("stop").executes($$0x -> b((eh)$$0x.getSource())))
       );
    }
 
-   private static int a(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      auj $$2 = $$0.l().ah();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> wx.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
+   private static int a(eh $$0) throws CommandSyntaxException {
+      bms $$1 = bms.a($$0.l());
+      if (!bmu.f.a($$1)) {
          throw a.create();
       } else {
-         return $$3;
+         $$0.a(() -> xe.c("commands.jfr.started"), false);
+         return 1;
+      }
+   }
+
+   private static int b(eh $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bmu.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ab.aX ? $$1 : $$1.toAbsolutePath();
+         xe $$3 = xe.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xc(xc.a.f, $$2.toString())).a(new xk(xk.a.a, xe.c("chat.copy.click"))));
+         $$0.a(() -> xe.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
       }
    }
 }

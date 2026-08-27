@@ -1,94 +1,61 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
-
-public interface epb {
-   int d = 19133;
-   int e = 19132;
-
-   dbr D();
-
-   void a(dbr var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+public class epb extends epd {
+   @Override
+   public cuc a() {
+      return cuk.a;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   @Override
+   public boolean a(epe $$0, dbg $$1, ir $$2, epd $$3, iw $$4) {
+      return true;
    }
 
-   @Nullable
-   ud E();
+   @Override
+   public ewu a(dbg $$0, ir $$1, epe $$2) {
+      return ewu.b;
+   }
 
-   void a(@Nullable ud var1);
+   @Override
+   public int a(dcd $$0) {
+      return 0;
+   }
 
-   epa I();
+   @Override
+   protected boolean b() {
+      return true;
+   }
 
-   dbb J();
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-   ud a(jl var1, @Nullable ud var2);
+   @Override
+   public float a(epe $$0, dbg $$1, ir $$2) {
+      return 0.0F;
+   }
 
-   boolean l();
+   @Override
+   public float a(epe $$0) {
+      return 0.0F;
+   }
 
-   int x();
+   @Override
+   protected dtc b(epe $$0) {
+      return dfe.a.n();
+   }
 
-   String e();
+   @Override
+   public boolean c(epe $$0) {
+      return false;
+   }
 
-   dau k();
+   @Override
+   public int d(epe $$0) {
+      return 0;
+   }
 
-   void a(dau var1);
-
-   boolean m();
-
-   bpr q();
-
-   void a(bpr var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dat o();
-
-   @Nullable
-   ud w();
-
-   duw.a C();
-
-   void a(duw.a var1);
-
-   dxr y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default coj K() {
-      return this.D().b();
+   @Override
+   public exn b(epe $$0, dbg $$1, ir $$2) {
+      return exk.a();
    }
 }

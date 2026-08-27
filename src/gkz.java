@@ -1,9 +1,9 @@
-public class gkz extends ggo<cjv, fvo<cjv>> {
-   public gkz(ght.a $$0) {
-      this($$0, fvv.cf, fvv.ci, fvv.cj);
+public class gkz extends glz<cfy, fvt<cfy>> {
+   public gkz(gkq.a $$0) {
+      super($$0, new fvt<>($$0.a(fyr.ah)), 0.3F);
    }
 
-   public gkz(ght.a $$0, fvu $$1, fvu $$2, fvu $$3) {
-      super($$0, new fvo<>($$0.a($$1)), new fvo<>($$0.a($$2)), new fvo<>($$0.a($$3)));
+   public akt a(cfy $$0) {
+      return $$0.x().a().a();
    }
 }

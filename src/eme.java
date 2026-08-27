@@ -1,166 +1,252 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+
 public class eme {
-   private static final int b = 16;
-   public static final int a = Integer.MIN_VALUE;
-   private final int c;
-   private final awt d;
-   private final io.a e = new io.a();
-   private final io.a f = new io.a();
+   static final enq a = a(dfe.an, dfe.ap, ern.bq);
+   static final enq b = a(dfe.ar, dfe.as, ern.br);
+   private static final akt[] c = new akt[]{
+      new akt("underwater_ruin/warm_1"),
+      new akt("underwater_ruin/warm_2"),
+      new akt("underwater_ruin/warm_3"),
+      new akt("underwater_ruin/warm_4"),
+      new akt("underwater_ruin/warm_5"),
+      new akt("underwater_ruin/warm_6"),
+      new akt("underwater_ruin/warm_7"),
+      new akt("underwater_ruin/warm_8")
+   };
+   private static final akt[] d = new akt[]{
+      new akt("underwater_ruin/brick_1"),
+      new akt("underwater_ruin/brick_2"),
+      new akt("underwater_ruin/brick_3"),
+      new akt("underwater_ruin/brick_4"),
+      new akt("underwater_ruin/brick_5"),
+      new akt("underwater_ruin/brick_6"),
+      new akt("underwater_ruin/brick_7"),
+      new akt("underwater_ruin/brick_8")
+   };
+   private static final akt[] e = new akt[]{
+      new akt("underwater_ruin/cracked_1"),
+      new akt("underwater_ruin/cracked_2"),
+      new akt("underwater_ruin/cracked_3"),
+      new akt("underwater_ruin/cracked_4"),
+      new akt("underwater_ruin/cracked_5"),
+      new akt("underwater_ruin/cracked_6"),
+      new akt("underwater_ruin/cracked_7"),
+      new akt("underwater_ruin/cracked_8")
+   };
+   private static final akt[] f = new akt[]{
+      new akt("underwater_ruin/mossy_1"),
+      new akt("underwater_ruin/mossy_2"),
+      new akt("underwater_ruin/mossy_3"),
+      new akt("underwater_ruin/mossy_4"),
+      new akt("underwater_ruin/mossy_5"),
+      new akt("underwater_ruin/mossy_6"),
+      new akt("underwater_ruin/mossy_7"),
+      new akt("underwater_ruin/mossy_8")
+   };
+   private static final akt[] g = new akt[]{
+      new akt("underwater_ruin/big_brick_1"),
+      new akt("underwater_ruin/big_brick_2"),
+      new akt("underwater_ruin/big_brick_3"),
+      new akt("underwater_ruin/big_brick_8")
+   };
+   private static final akt[] h = new akt[]{
+      new akt("underwater_ruin/big_mossy_1"),
+      new akt("underwater_ruin/big_mossy_2"),
+      new akt("underwater_ruin/big_mossy_3"),
+      new akt("underwater_ruin/big_mossy_8")
+   };
+   private static final akt[] i = new akt[]{
+      new akt("underwater_ruin/big_cracked_1"),
+      new akt("underwater_ruin/big_cracked_2"),
+      new akt("underwater_ruin/big_cracked_3"),
+      new akt("underwater_ruin/big_cracked_8")
+   };
+   private static final akt[] j = new akt[]{
+      new akt("underwater_ruin/big_warm_4"),
+      new akt("underwater_ruin/big_warm_5"),
+      new akt("underwater_ruin/big_warm_6"),
+      new akt("underwater_ruin/big_warm_7")
+   };
 
-   public eme(daz $$0) {
-      this.c = $$0.I_() - 1;
-      int $$1 = $$0.al();
-      int $$2 = ayd.e($$1 - this.c + 1);
-      this.d = new ayr($$2, 256);
+   private static enq a(dfc $$0, dfc $$1, aks<eru> $$2) {
+      return new emz(new enm(List.of(new eni(new emw($$0), emr.b, enf.b, $$1.n(), new enx($$2)))), bpc.a(5));
    }
 
-   public void a(dsx $$0) {
-      int $$1 = $$0.a();
-      if ($$1 == -1) {
-         this.a(this.c);
-      } else {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
-               this.b(c($$3, $$2), $$4);
+   private static akt a(ayt $$0) {
+      return ad.a(c, $$0);
+   }
+
+   private static akt b(ayt $$0) {
+      return ad.a(j, $$0);
+   }
+
+   public static void a(enu $$0, ir $$1, dmd $$2, ejy $$3, ayt $$4, emf $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
+      }
+   }
+
+   private static void a(enu $$0, ayt $$1, dmd $$2, ir $$3, emf $$4, ejy $$5) {
+      ir $$6 = new ir($$3.u(), 90, $$3.w());
+      ir $$7 = ent.a(new ir(15, 0, 15), dke.a, $$2, ir.c).a((jv)$$6);
+      ejl $$8 = ejl.a($$6, $$7);
+      ir $$9 = new ir(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<ir> $$10 = a($$1, $$9);
+      int $$11 = aym.a($$1, 4, 8);
+
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            ir $$14 = $$10.remove($$13);
+            dmd $$15 = dmd.a($$1);
+            ir $$16 = ent.a(new ir(5, 0, 6), dke.a, $$15, ir.c).a((jv)$$14);
+            ejl $$17 = ejl.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
       }
    }
 
-   private int a(dsx $$0, int $$1, int $$2, int $$3) {
-      int $$4 = jq.c($$0.g($$1) + 1);
-      io.a $$5 = this.e.d($$2, $$4, $$3);
-      io.a $$6 = this.f.a($$5, it.a);
-      drb $$7 = dea.a.n();
+   private static List<ir> a(ayt $$0, ir $$1) {
+      List<ir> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + aym.a($$0, 1, 8), 0, 16 + aym.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + aym.a($$0, 1, 8), 0, aym.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + aym.a($$0, 1, 8), 0, -16 + aym.a($$0, 4, 8)));
+      $$2.add($$1.b(aym.a($$0, 1, 7), 0, 16 + aym.a($$0, 1, 7)));
+      $$2.add($$1.b(aym.a($$0, 1, 7), 0, -16 + aym.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + aym.a($$0, 1, 7), 0, 16 + aym.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + aym.a($$0, 1, 7), 0, aym.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + aym.a($$0, 1, 7), 0, -16 + aym.a($$0, 4, 8)));
+      return $$2;
+   }
 
-      for (int $$8 = $$1; $$8 >= 0; $$8--) {
-         dti $$9 = $$0.b($$8);
-         if ($$9.c()) {
-            $$7 = dea.a.n();
-            int $$10 = $$0.g($$8);
-            $$5.q(jq.c($$10));
-            $$6.q($$5.v() - 1);
-         } else {
-            for (int $$11 = 15; $$11 >= 0; $$11--) {
-               drb $$12 = $$9.a($$2, $$11, $$3);
-               if (a($$0, $$5, $$7, $$6, $$12)) {
-                  return $$5.v();
+   private static void a(enu $$0, ir $$1, dmd $$2, ejy $$3, ayt $$4, emf $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            akt $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new eme.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            akt[] $$9 = $$6 ? g : d;
+            akt[] $$10 = $$6 ? i : e;
+            akt[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new eme.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new eme.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new eme.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
+      }
+   }
+
+   public static class a extends ekd {
+      private final emf.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(enu $$0, akt $$1, ir $$2, dmd $$3, float $$4, emf.a $$5, boolean $$6) {
+         super(ekk.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
+      }
+
+      private a(enu $$0, uk $$1, dmd $$2, float $$3, emf.a $$4, boolean $$5) {
+         super(ekk.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
+
+      private static enp a(dmd $$0, float $$1, emf.a $$2) {
+         enq $$3 = $$2 == emf.a.b ? eme.b : eme.a;
+         return new enp().a($$0).a(dke.a).a(new emx($$1)).a(emv.d).a($$3);
+      }
+
+      public static eme.a a(enu $$0, uk $$1) {
+         dmd $$2 = dmd.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         emf.a $$4 = emf.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new eme.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void a(ekj $$0, uk $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, ir $$1, dcp $$2, ayt $$3, ejl $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dfe.dg.n().a(dgf.e, Boolean.valueOf($$2.b_($$1).a(awj.a))), 2);
+            dqc $$5 = $$2.c_($$1);
+            if ($$5 instanceof dqj) {
+               ((dqj)$$5).a(this.j ? ern.H : ern.G, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            ciq $$6 = bsb.D.a((dca)$$2.E());
+            if ($$6 != null) {
+               $$6.gc();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bss.d, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.A_()) {
+                  $$2.a($$1, dfe.a.n(), 2);
+               } else {
+                  $$2.a($$1, dfe.al.n(), 2);
                }
-
-               $$7 = $$12;
-               $$5.g($$6);
-               $$6.c(it.a);
             }
          }
       }
 
-      return this.c;
-   }
-
-   public boolean a(dad $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 + 1;
-      int $$5 = c($$1, $$3);
-      int $$6 = this.b($$5);
-      if ($$4 < $$6) {
-         return false;
-      } else {
-         io $$7 = this.e.d($$1, $$2 + 1, $$3);
-         drb $$8 = $$0.a_($$7);
-         io $$9 = this.f.d($$1, $$2, $$3);
-         drb $$10 = $$0.a_($$9);
-         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return true;
-         } else {
-            io $$11 = this.e.d($$1, $$2 - 1, $$3);
-            drb $$12 = $$0.a_($$11);
-            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
-         }
-      }
-   }
-
-   private boolean a(dad $$0, int $$1, int $$2, io $$3, drb $$4, io $$5, drb $$6) {
-      int $$7 = $$3.v();
-      if (a($$0, $$3, $$4, $$5, $$6)) {
-         if ($$7 > $$2) {
-            this.b($$1, $$7);
-            return true;
-         }
-      } else if ($$7 == $$2) {
-         this.b($$1, this.a($$0, $$5, $$6));
-         return true;
+      @Override
+      public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, dbh $$5, ir $$6) {
+         int $$7 = $$0.a(dyu.a.c, this.d.u(), this.d.w());
+         this.d = new ir(this.d.u(), $$7, this.d.w());
+         ir $$8 = ent.a(new ir(this.b.a().u() - 1, 0, this.b.a().w() - 1), dke.a, this.c.d(), ir.c).a((jv)this.d);
+         this.d = new ir(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 
-      return false;
-   }
+      private int a(ir $$0, dbg $$1, ir $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
 
-   private int a(dad $$0, io $$1, drb $$2) {
-      io.a $$3 = this.e.g($$1);
-      io.a $$4 = this.f.a($$1, it.a);
-      drb $$5 = $$2;
+         for (ir $$7 : ir.c($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            ir.a $$11 = new ir.a($$8, $$10, $$9);
+            dtc $$12 = $$1.a_($$11);
 
-      while ($$4.v() >= this.c) {
-         drb $$6 = $$0.a_($$4);
-         if (a($$0, $$3, $$5, $$4, $$6)) {
-            return $$3.v();
+            for (epe $$13 = $$1.b_($$11); ($$12.i() || $$13.a(awj.a) || $$12.a(awe.an)) && $$10 > $$1.J_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
          }
 
-         $$5 = $$6;
-         $$3.g($$4);
-         $$4.c(it.a);
-      }
-
-      return this.c;
-   }
-
-   private static boolean a(dad $$0, io $$1, drb $$2, io $$3, drb $$4) {
-      if ($$4.b($$0, $$3) != 0) {
-         return true;
-      } else {
-         evd $$5 = eml.a($$0, $$1, $$2, it.a);
-         evd $$6 = eml.a($$0, $$3, $$4, it.b);
-         return eva.b($$5, $$6);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = this.b(c($$0, $$1));
-      return this.c($$2);
-   }
-
-   public int a() {
-      int $$0 = Integer.MIN_VALUE;
-
-      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
-         int $$2 = this.d.a($$1);
-         if ($$2 > $$0) {
-            $$0 = $$2;
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
          }
+
+         return $$3;
       }
-
-      return this.c($$0 + this.c);
-   }
-
-   private void a(int $$0) {
-      int $$1 = $$0 - this.c;
-
-      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
-         this.d.b($$2, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      this.d.b($$0, $$1 - this.c);
-   }
-
-   private int b(int $$0) {
-      return this.d.a($$0) + this.c;
-   }
-
-   private int c(int $$0) {
-      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
    }
 }

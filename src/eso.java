@@ -1,47 +1,92 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public record eso(Optional<br> b, epf.b c) implements esl {
-   public static final MapCodec<eso> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(br.a.optionalFieldOf("predicate").forGetter(eso::c), epf.b.e.fieldOf("entity").forGetter(eso::d)).apply($$0, eso::new)
+public class eso extends eta {
+   public static final Codec<eso> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  lh.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(duf::f).toList())
+               )
+            )
+            .apply($$0, eso::new)
    );
+   private final ja<dfc> b;
+   private final Set<duf<?>> c;
 
-   @Override
-   public esm b() {
-      return esn.h;
+   eso(List<euu> $$0, ja<dfc> $$1, Set<duf<?>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private eso(List<euu> $$0, ja<dfc> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return ImmutableSet.of(erx.f, this.c.a());
+   public etc b() {
+      return etd.A;
    }
 
-   public boolean a(epf $$0) {
-      bru $$1 = $$0.c(this.c.a());
-      euk $$2 = $$0.c(erx.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(eug.g);
    }
 
-   public static esl.a a(epf.b $$0) {
-      return a($$0, br.a.a());
+   @Override
+   protected cuh a(cuh $$0, erp $$1) {
+      dtc $$2 = $$1.c(eug.g);
+      if ($$2 != null) {
+         $$0.a(ke.aa, cxb.a, $$1x -> {
+            for (duf<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
+      return $$0;
    }
 
-   public static esl.a a(epf.b $$0, br.a $$1) {
-      return () -> new eso(Optional.of($$1.b()), $$0);
+   public static eso.a a(dfc $$0) {
+      return new eso.a($$0);
    }
 
-   public static esl.a a(epf.b $$0, br $$1) {
-      return () -> new eso(Optional.of($$1), $$0);
-   }
+   public static class a extends eta.a<eso.a> {
+      private final ja<dfc> a;
+      private final Builder<duf<?>> b = ImmutableSet.builder();
 
-   public Optional<br> c() {
-      return this.b;
-   }
+      a(dfc $$0) {
+         this.a = $$0.r();
+      }
 
-   public epf.b d() {
-      return this.c;
+      public eso.a a(duf<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      protected eso.a a() {
+         return this;
+      }
+
+      @Override
+      public etb b() {
+         return new eso(this.g(), this.a, this.b.build());
+      }
    }
 }

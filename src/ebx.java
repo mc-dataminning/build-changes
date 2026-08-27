@@ -1,41 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebx implements ecb {
-   public static final Codec<ebx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               drb.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               drb.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               boz.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               boz.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ebx::new)
-   );
-   private final drb b;
-   private final drb c;
-   private final boz d;
-   private final boz e;
-
-   public ebx(drb $$0, drb $$1, boz $$2, boz $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class ebx extends eca<eej> {
+   public ebx(Codec<eej> $$0) {
+      super($$0);
    }
 
-   public drb a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(ecc<eej> $$0) {
+      ir $$1 = $$0.e();
+      dcv $$2 = $$0.b();
+      eej $$3 = $$0.f();
 
-   public drb b() {
-      return this.c;
-   }
+      for (ir $$4 : ir.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ir $$9 = $$4.i();
+            this.a($$2, $$9, dfe.lD.n());
+            $$3.b().ifPresent($$3x -> {
+               dqc $$4x = $$2.c_($$9);
+               if ($$4x instanceof drx $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dfe.a.n());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dfe.ak.n());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dfe.ak.n());
+         } else {
+            this.a($$2, $$4, dfe.a.n());
+         }
+      }
 
-   public boz c() {
-      return this.d;
-   }
-
-   public boz d() {
-      return this.e;
+      return true;
    }
 }

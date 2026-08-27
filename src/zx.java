@@ -1,16 +1,49 @@
-import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-public record zx(aaf b) implements ze<zv> {
-   private static final int c = 32767;
-   public static final yv<vx, zx> a = aaf.<vx>a($$0 -> aag.a($$0, 32767), ac.a(Lists.newArrayList(new aaf.c[]{new aaf.c<>(aad.b, aad.a)}), $$0 -> {
-   })).a(zx::new, zx::b);
+public record zx(UUID c, String d, String e, boolean f, Optional<xe> g) implements zl<zr> {
+   public static final int a = 40;
+   public static final zc<ByteBuf, zx> b = zc.a(ju.g, zx::b, za.l, zx::e, za.b(40), zx::f, za.b, zx::g, xg.f.a(za::a), zx::h, zx::new);
 
-   @Override
-   public zg<zx> a() {
-      return zu.k;
+   public zx(UUID c, String d, String e, boolean f, Optional<xe> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
-   public void a(zv $$0) {
+   @Override
+   public zn<zx> a() {
+      return aab.f;
+   }
+
+   public void a(zr $$0) {
       $$0.a(this);
+   }
+
+   public UUID b() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public String f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public Optional<xe> h() {
+      return this.g;
    }
 }

@@ -1,31 +1,55 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dmi extends ddo {
-   protected static final MapCodec<lb> c = le.j
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof lb $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dmi> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dmi::new));
-   protected final lb e;
+public class dmi extends den {
+   public static final MapCodec<dmi> a = b(dmi::new);
+   public static final dtt b = dts.E;
+   private final bpf c = bpc.a(5);
 
    @Override
-   public MapCodec<? extends dmi> a() {
-      return d;
+   public MapCodec<dmi> a() {
+      return a;
    }
 
-   protected dmi(lb $$0, dra.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dmi(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(ky.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dqc a(ir $$0, dtc $$1) {
+      return new drn($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
+      return $$0.C ? null : a($$2, dqe.L, drn::a);
+   }
+
+   @Override
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
+   }
+
+   @Override
+   protected void a(dtc $$0, aqt $$1, ir $$2, cuh $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

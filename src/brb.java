@@ -1,15 +1,22 @@
-public enum brb {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private brb(n $$0) {
-      this.d = $$0;
+class brb extends brf {
+   protected brb(brg $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean a(bso $$0, int $$1) {
+      if ($$0 instanceof aqu $$2 && !$$0.O_()) {
+         aqt $$3 = $$2.B();
+         if ($$3.al() != bpx.a && $$3.c($$0.du())) {
+            $$3.z().a($$2);
+         }
+      }
+
+      return true;
    }
 }

@@ -1,71 +1,251 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMaps;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class kb {
-   public static final ka<cwd> a = a("custom_data", $$0 -> $$0.a(cwd.b));
-   public static final ka<Integer> b = a("max_stack_size", $$0 -> $$0.a(axm.a(1, 99)).a(yt.f));
-   public static final ka<Integer> c = a("max_damage", $$0 -> $$0.a(axm.j).a(yt.f));
-   public static final ka<Integer> d = a("damage", $$0 -> $$0.a(axm.i).a(yt.f));
-   public static final ka<cwv> e = a("unbreakable", $$0 -> $$0.a(cwv.a).a(cwv.b));
-   public static final ka<wx> f = a("custom_name", $$0 -> $$0.a(wz.g).a(wz.b));
-   public static final ka<wx> g = a("item_name", $$0 -> $$0.a(wz.g).a(wz.b));
-   public static final ka<cwl> h = a("lore", $$0 -> $$0.a(cwl.c).a(cwl.d));
-   public static final ka<cui> i = a("rarity", $$0 -> $$0.a(cui.e).a(cui.g));
-   public static final ka<cze> j = a("enchantments", $$0 -> $$0.a(cze.c).a(cze.d));
-   public static final ka<cra> k = a("can_place_on", $$0 -> $$0.a(cra.a).a(cra.b));
-   public static final ka<cra> l = a("can_break", $$0 -> $$0.a(cra.a).a(cra.b));
-   public static final ka<cwj> m = a("attribute_modifiers", $$0 -> $$0.a(cwj.b).a(cwj.c));
-   public static final ka<cwe> n = a("custom_model_data", $$0 -> $$0.a(cwe.b).a(cwe.c));
-   public static final ka<azf> o = a("hide_additional_tooltip", $$0 -> $$0.a(Codec.unit(azf.a)).a(yv.a(azf.a)));
-   public static final ka<azf> p = a("hide_tooltip", $$0 -> $$0.a(Codec.unit(azf.a)).a(yv.a(azf.a)));
-   public static final ka<Integer> q = a("repair_cost", $$0 -> $$0.a(axm.i).a(yt.f));
-   public static final ka<azf> r = a("creative_slot_lock", $$0 -> $$0.a(yv.a(azf.a)));
-   public static final ka<Boolean> s = a("enchantment_glint_override", $$0 -> $$0.a(Codec.BOOL).a(yt.b));
-   public static final ka<azf> t = a("intangible_projectile", $$0 -> $$0.a(Codec.unit(azf.a)));
-   public static final ka<coq> u = a("food", $$0 -> $$0.a(coq.a).a(coq.b));
-   public static final ka<azf> v = a("fire_resistant", $$0 -> $$0.a(Codec.unit(azf.a)).a(yv.a(azf.a)));
-   public static final ka<cwt> w = a("tool", $$0 -> $$0.a(cwt.a).a(cwt.b));
-   public static final ka<cze> x = a("stored_enchantments", $$0 -> $$0.a(cze.c).a(cze.d));
-   public static final ka<cwg> y = a("dyed_color", $$0 -> $$0.a(cwg.a).a(cwg.b));
-   public static final ka<cwo> z = a("map_color", $$0 -> $$0.a(cwo.a).a(cwo.b));
-   public static final ka<eoh> A = a("map_id", $$0 -> $$0.a(eoh.a).a(eoh.b));
-   public static final ka<cwn> B = a("map_decorations", $$0 -> $$0.a(cwn.b));
-   public static final ka<cwp> C = a("map_post_processing", $$0 -> $$0.a(cwp.d));
-   public static final ka<cwc> D = a("charged_projectiles", $$0 -> $$0.a(cwc.b).a(cwc.c));
-   public static final ka<cwb> E = a("bundle_contents", $$0 -> $$0.a(cwb.c).a(cwb.d));
-   public static final ka<cvp> F = a("potion_contents", $$0 -> $$0.a(cvp.b).a(cvp.c));
-   public static final ka<cws> G = a("suspicious_stew_effects", $$0 -> $$0.a(cws.b).a(cws.c));
-   public static final ka<cww> H = a("writable_book_content", $$0 -> $$0.a(cww.d).a(cww.e));
-   public static final ka<cwx> I = a("written_book_content", $$0 -> $$0.a(cwx.j).a(cwx.k));
-   public static final ka<cvs> J = a("trim", $$0 -> $$0.a(cvs.a).a(cvs.b));
-   public static final ka<cwf> K = a("debug_stick_state", $$0 -> $$0.a(cwf.b));
-   public static final ka<cwd> L = a("entity_data", $$0 -> $$0.a(cwd.c).a(cwd.d));
-   public static final ka<cwd> M = a("bucket_entity_data", $$0 -> $$0.a(cwd.b).a(cwd.d));
-   public static final ka<cwd> N = a("block_entity_data", $$0 -> $$0.a(cwd.c).a(cwd.d));
-   public static final ka<ix<ctg>> O = a("instrument", $$0 -> $$0.a(ctg.c).a(ctg.d));
-   public static final ka<Integer> P = a("ominous_bottle_amplifier", $$0 -> $$0.a(axm.a(0, 4)).a(yt.f));
-   public static final ka<List<akm>> Q = a("recipes", $$0 -> $$0.a(akm.a.listOf()));
-   public static final ka<cwm> R = a("lodestone_tracker", $$0 -> $$0.a(cwm.a).a(cwm.b));
-   public static final ka<cwh> S = a("firework_explosion", $$0 -> $$0.a(cwh.c).a(cwh.d));
-   public static final ka<cwi> T = a("fireworks", $$0 -> $$0.a(cwi.b).a(cwi.c));
-   public static final ka<cwq> U = a("profile", $$0 -> $$0.a(cwq.a).a(cwq.b));
-   public static final ka<akm> V = a("note_block_sound", $$0 -> $$0.a(akm.a).a(akm.b));
-   public static final ka<dnx> W = a("banner_patterns", $$0 -> $$0.a(dnx.b).a(dnx.c));
-   public static final ka<csh> X = a("base_color", $$0 -> $$0.a(csh.q).a(csh.r));
-   public static final ka<dpk> Y = a("pot_decorations", $$0 -> $$0.a(dpk.b).a(dpk.c));
-   public static final ka<cwk> Z = a("container", $$0 -> $$0.a(cwk.b).a(cwk.c));
-   public static final ka<cvz> aa = a("block_state", $$0 -> $$0.a(cvz.b).a(cvz.c));
-   public static final ka<List<dod.c>> ab = a("bees", $$0 -> $$0.a(dod.c.b).a(dod.c.c.a(yt.a())));
-   public static final ka<bpx> ac = a("lock", $$0 -> $$0.a(bpx.b));
-   public static final ka<cwr> ad = a("container_loot", $$0 -> $$0.a(cwr.a));
-   public static final jx ae = jx.a().a(b, 64).a(h, cwl.a).a(j, cze.a).a(q, 0).a(m, cwj.a).a(i, cui.a).a();
+public final class kb {
+   public static final kb a = new kb(Reference2ObjectMaps.emptyMap());
+   public static final Codec<kb> b = axu.c(kb.b.a, kb.b::a).xmap($$0 -> {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         Reference2ObjectMap<kd<?>, Optional<?>> $$1 = new Reference2ObjectArrayMap($$0.size());
 
-   public static ka<?> a(jk<ka<?>> $$0) {
-      return a;
+         for (Entry<kb.b, ?> $$2 : $$0.entrySet()) {
+            kb.b $$3 = $$2.getKey();
+            if ($$3.c()) {
+               $$1.put($$3.b(), Optional.empty());
+            } else {
+               $$1.put($$3.b(), Optional.of($$2.getValue()));
+            }
+         }
+
+         return new kb($$1);
+      }
+   }, $$0 -> {
+      Reference2ObjectMap<kb.b, Object> $$1 = new Reference2ObjectArrayMap($$0.d.size());
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
+
+      while (var2.hasNext()) {
+         Entry<kd<?>, Optional<?>> $$2 = (Entry<kd<?>, Optional<?>>)var2.next();
+         kd<?> $$3 = $$2.getKey();
+         if (!$$3.d()) {
+            Optional<?> $$4 = $$2.getValue();
+            if ($$4.isPresent()) {
+               $$1.put(new kb.b($$3, false), $$4.get());
+            } else {
+               $$1.put(new kb.b($$3, true), azo.a);
+            }
+         }
+      }
+
+      return $$1;
+   });
+   public static final zc<wp, kb> c = new zc<wp, kb>() {
+      public kb a(wp $$0) {
+         int $$1 = $$0.l();
+         int $$2 = $$0.l();
+         if ($$1 == 0 && $$2 == 0) {
+            return kb.a;
+         } else {
+            Reference2ObjectMap<kd<?>, Optional<?>> $$3 = new Reference2ObjectArrayMap($$1 + $$2);
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               kd<?> $$5 = kd.b.decode($$0);
+               Object $$6 = $$5.e().decode($$0);
+               $$3.put($$5, Optional.of($$6));
+            }
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               kd<?> $$8 = kd.b.decode($$0);
+               $$3.put($$8, Optional.empty());
+            }
+
+            return new kb($$3);
+         }
+      }
+
+      public void a(wp $$0, kb $$1) {
+         if ($$1.d()) {
+            $$0.c(0);
+            $$0.c(0);
+         } else {
+            int $$2 = 0;
+            int $$3 = 0;
+            ObjectIterator var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
+
+            while (var5.hasNext()) {
+               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>> $$4 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>>)var5.next();
+               if (((Optional)$$4.getValue()).isPresent()) {
+                  $$2++;
+               } else {
+                  $$3++;
+               }
+            }
+
+            $$0.c($$2);
+            $$0.c($$3);
+            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
+
+            while (var5.hasNext()) {
+               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>> $$5 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>>)var5.next();
+               Optional<?> $$6 = (Optional<?>)$$5.getValue();
+               if ($$6.isPresent()) {
+                  kd<?> $$7 = (kd<?>)$$5.getKey();
+                  kd.b.encode($$0, $$7);
+                  a($$0, $$7, $$6.get());
+               }
+            }
+
+            var5 = Reference2ObjectMaps.fastIterable($$1.d).iterator();
+
+            while (var5.hasNext()) {
+               it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>> $$8 = (it.unimi.dsi.fastutil.objects.Reference2ObjectMap.Entry<kd<?>, Optional<?>>)var5.next();
+               if (((Optional)$$8.getValue()).isEmpty()) {
+                  kd<?> $$9 = (kd<?>)$$8.getKey();
+                  kd.b.encode($$0, $$9);
+               }
+            }
+         }
+      }
+
+      private static <T> void a(wp $$0, kd<T> $$1, Object $$2) {
+         $$1.e().encode($$0, (T)$$2);
+      }
+   };
+   private static final String e = "!";
+   final Reference2ObjectMap<kd<?>, Optional<?>> d;
+
+   kb(Reference2ObjectMap<kd<?>, Optional<?>> $$0) {
+      this.d = $$0;
    }
 
-   private static <T> ka<T> a(String $$0, UnaryOperator<ka.a<T>> $$1) {
-      return jk.a(le.as, $$0, $$1.apply(ka.a()).a());
+   public static kb.a a() {
+      return new kb.a();
+   }
+
+   @Nullable
+   public <T> Optional<? extends T> a(kd<? extends T> $$0) {
+      return (Optional<? extends T>)this.d.get($$0);
+   }
+
+   public Set<Entry<kd<?>, Optional<?>>> b() {
+      return this.d.entrySet();
+   }
+
+   public int c() {
+      return this.d.size();
+   }
+
+   public boolean d() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof kb $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return a(this.d);
+   }
+
+   static String a(Reference2ObjectMap<kd<?>, Optional<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      $$1.append('{');
+      boolean $$2 = true;
+      ObjectIterator var3 = Reference2ObjectMaps.fastIterable($$0).iterator();
+
+      while (var3.hasNext()) {
+         Entry<kd<?>, Optional<?>> $$3 = (Entry<kd<?>, Optional<?>>)var3.next();
+         if ($$2) {
+            $$2 = false;
+         } else {
+            $$1.append(", ");
+         }
+
+         Optional<?> $$4 = $$3.getValue();
+         if ($$4.isPresent()) {
+            $$1.append($$3.getKey());
+            $$1.append("=>");
+            $$1.append($$4.get());
+         } else {
+            $$1.append("!");
+            $$1.append($$3.getKey());
+         }
+      }
+
+      $$1.append('}');
+      return $$1.toString();
+   }
+
+   public static class a {
+      private final Reference2ObjectMap<kd<?>, Optional<?>> a = new Reference2ObjectArrayMap();
+
+      a() {
+      }
+
+      public <T> kb.a a(kd<T> $$0, T $$1) {
+         this.a.put($$0, Optional.of($$1));
+         return this;
+      }
+
+      public <T> kb.a a(kd<T> $$0) {
+         this.a.put($$0, Optional.empty());
+         return this;
+      }
+
+      public <T> kb.a a(kg<T> $$0) {
+         return this.a($$0.a(), $$0.b());
+      }
+
+      public kb a() {
+         return new kb(this.a);
+      }
+   }
+
+   static record b(kd<?> b, boolean c) {
+      public static final Codec<kb.b> a = Codec.STRING.flatXmap($$0 -> {
+         boolean $$1 = $$0.startsWith("!");
+         if ($$1) {
+            $$0 = $$0.substring("!".length());
+         }
+
+         akt $$2 = akt.a($$0);
+         kd<?> $$3 = lh.as.a($$2);
+         if ($$3 == null) {
+            return DataResult.error(() -> "No component with type: '" + $$2 + "'");
+         } else {
+            return $$3.d() ? DataResult.error(() -> "'" + $$2 + "' is not a persistent component") : DataResult.success(new kb.b($$3, $$1));
+         }
+      }, $$0 -> {
+         kd<?> $$1 = $$0.b();
+         akt $$2 = lh.as.b($$1);
+         return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
+      });
+
+      public Codec<?> a() {
+         return this.c ? Codec.unit(azo.a) : this.b.c();
+      }
    }
 }

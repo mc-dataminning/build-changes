@@ -1,11 +1,20 @@
-import javax.annotation.Nullable;
+public class gna<T extends cjp> extends glz<T, fxt<T>> {
+   private static final akt a = new akt("textures/entity/spider/spider.png");
 
-public interface gna extends gnd {
-   @Deprecated
-   @Override
-   default float call(cto $$0, @Nullable fwr $$1, @Nullable bso $$2, int $$3) {
-      return ayd.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gna(gkq.a $$0) {
+      this($$0, fyr.bD);
    }
 
-   float unclampedCall(cto var1, @Nullable fwr var2, @Nullable bso var3, int var4);
+   public gna(gkq.a $$0, fyq $$1) {
+      super($$0, new fxt<>($$0.a($$1)), 0.8F);
+      this.a(new gpp<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akt a(T $$0) {
+      return a;
+   }
 }

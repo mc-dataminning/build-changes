@@ -1,93 +1,415 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public interface dxn {
-   Codec<dxn> a = Codec.xor(dxn.b.d, Codec.xor(dxn.a.d, dxn.c.d)).xmap(dxn::a, dxn::a);
-   dxn b = b(0);
-   dxn c = c(0);
+public class dxn<T extends dxc> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final dxk<T> c;
+   private final dxf<T> d;
+   private final dxe<T> e;
+   final dxh<T> f;
+   private final dxl<T> g;
+   private final Long2ObjectMap<dxp> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<dxn.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<dxa<T>> k = Queues.newConcurrentLinkedQueue();
 
-   static dxn a(int $$0) {
-      return new dxn.b($$0);
+   public dxn(Class<T> $$0, dxk<T> $$1, dxf<T> $$2) {
+      this.e = new dxe<>();
+      this.f = new dxh<>($$0, this.h);
+      this.h.defaultReturnValue(dxp.a);
+      this.i.defaultReturnValue(dxn.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new dxm<>(this.e, this.f);
    }
 
-   static dxn b(int $$0) {
-      return new dxn.a($$0);
+   void a(long $$0, dxg<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
+      }
    }
 
-   static dxn c(int $$0) {
-      return new dxn.c($$0);
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cE())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
    }
 
-   static dxn a() {
-      return b;
+   public boolean a(T $$0) {
+      return this.a($$0, false);
    }
 
-   static dxn b() {
-      return c;
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = jt.c($$0.du());
+         dxg<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new dxn.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         dxp $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
    }
 
-   private static dxn a(Either<dxn.b, Either<dxn.a, dxn.c>> $$0) {
-      return (dxn)$$0.map(Function.identity(), Either::unwrap);
+   static <T extends dxc> dxp a(T $$0, dxp $$1) {
+      return $$0.dT() ? dxp.c : $$1;
    }
 
-   private static Either<dxn.b, Either<dxn.a, dxn.c>> a(dxn $$0) {
-      return $$0 instanceof dxn.b ? Either.left((dxn.b)$$0) : Either.right($$0 instanceof dxn.a ? Either.left((dxn.a)$$0) : Either.right((dxn.c)$$0));
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
    }
 
-   int a(dxq var1);
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
 
-   public static record a(int e) implements dxn {
-      public static final Codec<dxn.a> d = Codec.intRange(dut.e, dut.d).fieldOf("above_bottom").xmap(dxn.a::new, dxn.a::c).codec();
+   void c(T $$0) {
+      this.c.e($$0);
+   }
 
-      @Override
-      public int a(dxq $$0) {
-         return $$0.a() + this.e;
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(dbh $$0, aqm $$1) {
+      dxp $$2 = dxp.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(dbh $$0, dxp $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == dxp.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
+      }
+
+      this.f.b($$2).forEach($$1x -> {
+         dxp $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dT()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      dxn.b $$1 = (dxn.b)this.i.get($$0);
+      if ($$1 == dxn.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      dxn.b $$2 = (dxn.b)this.i.get($$0);
+      if ($$2 == dxn.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dxc::dS)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == dxn.b.c) {
+               this.d.a(new dxa<>(new dbh($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == dxn.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new dxa<>(new dbh($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
+
+   private void c(long $$0) {
+      this.i.put($$0, dxn.b.b);
+      dbh $$1 = new dbh($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.da().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(dxc $$0) {
+      $$0.b(brv.d.c);
+      $$0.a(dxd.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != dxp.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      dxa<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), dxn.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<dxn.b> $$1 = (Entry<dxn.b>)var2.next();
+         if ($$1.getValue() == dxn.b.c) {
+            $$0.add($$1.getLongKey());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == dxp.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == dxp.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
+      }
+
+      this.d.a(true);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
+   }
+
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public dxl<T> d() {
+      return this.g;
+   }
+
+   public boolean a(ir $$0) {
+      return ((dxp)this.h.get(dbh.a($$0))).a();
+   }
+
+   public boolean a(dbh $$0) {
+      return ((dxp)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == dxn.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      axm $$1 = axm.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         dxn.b $$2 = (dxn.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            dxg<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(jt.b($$2x), jt.c($$2x), jt.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
+               }
+            }
+         });
+      });
+   }
+
+   @azp
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @azp
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements dxd {
+      private final T c;
+      private long d;
+      private dxg<T> e;
+
+      a(T $$0, long $$1, dxg<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
       @Override
-      public String toString() {
-         return this.e + " above bottom";
+      public void a() {
+         ir $$0 = this.c.du();
+         long $$1 = jt.c($$0);
+         if ($$1 != this.d) {
+            dxp $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               dxn.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jt.a(this.d), $$1});
+            }
+
+            dxn.this.a(this.d, this.e);
+            dxg<T> $$3 = dxn.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
       }
 
-      public int c() {
-         return this.e;
+      private void a(dxp $$0, dxp $$1) {
+         dxp $$2 = dxn.a(this.c, $$0);
+         dxp $$3 = dxn.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               dxn.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               dxn.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               dxn.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               dxn.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               dxn.this.c(this.c);
+            }
+
+            if ($$5) {
+               dxn.this.c.a(this.c);
+            }
+         }
+      }
+
+      @Override
+      public void a(brv.d $$0) {
+         if (!this.e.b(this.c)) {
+            dxn.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jt.a(this.d), $$0});
+         }
+
+         dxp $$1 = dxn.a(this.c, this.e.c());
+         if ($$1.a()) {
+            dxn.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            dxn.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            dxn.this.c.f(this.c);
+         }
+
+         dxn.this.b.remove(this.c.cE());
+         this.c.a(a);
+         dxn.this.a(this.d, this.e);
       }
    }
 
-   public static record b(int e) implements dxn {
-      public static final Codec<dxn.b> d = Codec.intRange(dut.e, dut.d).fieldOf("absolute").xmap(dxn.b::new, dxn.b::c).codec();
-
-      @Override
-      public int a(dxq $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements dxn {
-      public static final Codec<dxn.c> d = Codec.intRange(dut.e, dut.d).fieldOf("below_top").xmap(dxn.c::new, dxn.c::c).codec();
-
-      @Override
-      public int a(dxq $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,188 +1,135 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.Iterator;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class aka<C extends bpn> implements ajz<Integer> {
-   private static final Logger d = LogUtils.getLogger();
-   protected final cma a = new cma();
-   protected clv b;
-   protected cqg<C> c;
+public class aka {
+   private static final axj<ajz<?>> F = axj.c(16);
+   public static final ajz<Byte> a = ajz.a(za.c);
+   public static final ajz<Integer> b = ajz.a(za.g);
+   public static final ajz<Long> c = ajz.a(za.h);
+   public static final ajz<Float> d = ajz.a(za.i);
+   public static final ajz<String> e = ajz.a(za.l);
+   public static final ajz<xe> f = ajz.a(xg.d);
+   public static final ajz<Optional<xe>> g = ajz.a(xg.e);
+   public static final ajz<cuh> h = new ajz<cuh>() {
+      @Override
+      public zc<? super wp, cuh> codec() {
+         return cuh.e;
+      }
 
-   public aka(cqg<C> $$0) {
-      this.c = $$0;
+      public cuh a(cuh $$0) {
+         return $$0.r();
+      }
+   };
+   public static final ajz<dtc> i = ajz.a(za.a(dfc.q));
+   private static final zc<ByteBuf, Optional<dtc>> G = new zc<ByteBuf, Optional<dtc>>() {
+      public void a(ByteBuf $$0, Optional<dtc> $$1) {
+         if ($$1.isPresent()) {
+            wv.a($$0, dfc.i($$1.get()));
+         } else {
+            wv.a($$0, 0);
+         }
+      }
+
+      public Optional<dtc> a(ByteBuf $$0) {
+         int $$1 = wv.a($$0);
+         return $$1 == 0 ? Optional.empty() : Optional.of(dfc.a($$1));
+      }
+   };
+   public static final ajz<Optional<dtc>> j = ajz.a(G);
+   public static final ajz<Boolean> k = ajz.a(za.b);
+   public static final ajz<kz> l = ajz.a(lb.bc);
+   public static final ajz<List<kz>> m = ajz.a(lb.bc.a(za.a()));
+   public static final ajz<js> n = ajz.a(js.a);
+   public static final ajz<ir> o = ajz.a(ir.b);
+   public static final ajz<Optional<ir>> p = ajz.a(ir.b.a(za::a));
+   public static final ajz<iw> q = ajz.a(iw.j);
+   public static final ajz<Optional<UUID>> r = ajz.a(ju.g.a(za::a));
+   public static final ajz<Optional<iz>> s = ajz.a(iz.c.a(za::a));
+   public static final ajz<uk> t = new ajz<uk>() {
+      @Override
+      public zc<? super wp, uk> codec() {
+         return za.p;
+      }
+
+      public uk a(uk $$0) {
+         return $$0.h();
+      }
+   };
+   public static final ajz<clm> u = ajz.a(clm.d);
+   private static final zc<ByteBuf, OptionalInt> H = new zc<ByteBuf, OptionalInt>() {
+      public OptionalInt a(ByteBuf $$0) {
+         int $$1 = wv.a($$0);
+         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
+      }
+
+      public void a(ByteBuf $$0, OptionalInt $$1) {
+         wv.a($$0, $$1.orElse(-1) + 1);
+      }
+   };
+   public static final ajz<OptionalInt> v = ajz.a(H);
+   public static final ajz<bsz> w = ajz.a(bsz.t);
+   public static final ajz<ja<cei>> x = ajz.a(za.b(li.l));
+   public static final ajz<ja<cfi>> y = ajz.a(za.b(li.m));
+   public static final ajz<ja<cep>> z = ajz.a(za.b(li.B));
+   public static final ajz<ja<cic>> A = ajz.a(za.b(li.S));
+   public static final ajz<cfn.a> B = ajz.a(cfn.a.e);
+   public static final ajz<cgv.a> C = ajz.a(cgv.a.i);
+   public static final ajz<Vector3f> D = ajz.a(za.r);
+   public static final ajz<Quaternionf> E = ajz.a(za.s);
+
+   public static void a(ajz<?> $$0) {
+      F.d($$0);
    }
 
-   public void a(aqn $$0, @Nullable cxw<? extends cxu<C>> $$1, boolean $$2) {
-      if ($$1 != null && $$0.I().b($$1)) {
-         this.b = $$0.gc();
-         if (this.b() || $$0.f()) {
-            this.a.a();
-            $$0.gc().a(this.a);
-            this.c.a(this.a);
-            if (this.a.a((cxu<?>)$$1.b(), null)) {
-               this.a($$1, $$2);
-            } else {
-               this.a();
-               $$0.d.b(new adp($$0.cc.j, $$1));
-            }
-
-            $$0.gc().e();
-         }
-      }
+   @Nullable
+   public static ajz<?> a(int $$0) {
+      return F.a($$0);
    }
 
-   protected void a() {
-      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
-         if (this.c.e($$0)) {
-            cto $$1 = this.c.b($$0).g().s();
-            this.b.a($$1, false);
-            this.c.b($$0).f($$1);
-         }
-      }
-
-      this.c.l();
+   public static int b(ajz<?> $$0) {
+      return F.a($$0);
    }
 
-   protected void a(cxw<? extends cxu<C>> $$0, boolean $$1) {
-      boolean $$2 = this.c.a($$0);
-      int $$3 = this.a.a($$0, null);
-      if ($$2) {
-         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cto $$5 = this.c.b($$4).g();
-               if (!$$5.e() && Math.min($$3, $$5.j()) < $$5.I() + 1) {
-                  return;
-               }
-            }
-         }
-      }
-
-      int $$6 = this.a($$1, $$3, $$2);
-      IntList $$7 = new IntArrayList();
-      if (this.a.a((cxu<?>)$$0.b(), $$7, $$6)) {
-         int $$8 = $$6;
-         IntListIterator var8 = $$7.iterator();
-
-         while (var8.hasNext()) {
-            int $$9 = (Integer)var8.next();
-            int $$10 = cma.a($$9).j();
-            if ($$10 < $$8) {
-               $$8 = $$10;
-            }
-         }
-
-         if (this.a.a((cxu<?>)$$0.b(), $$7, $$8)) {
-            this.a();
-            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
-         }
-      }
+   private aka() {
    }
 
-   @Override
-   public void a(Iterator<Integer> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cqo $$5 = this.c.b($$1);
-      cto $$6 = cma.a($$0.next());
-      if (!$$6.e()) {
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            this.a($$5, $$6);
-         }
-      }
-   }
-
-   protected int a(boolean $$0, int $$1, boolean $$2) {
-      int $$3 = 1;
-      if ($$0) {
-         $$3 = $$1;
-      } else if ($$2) {
-         $$3 = Integer.MAX_VALUE;
-
-         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
-            if ($$4 != this.c.m()) {
-               cto $$5 = this.c.b($$4).g();
-               if (!$$5.e() && $$3 > $$5.I()) {
-                  $$3 = $$5.I();
-               }
-            }
-         }
-
-         if ($$3 != Integer.MAX_VALUE) {
-            $$3++;
-         }
-      }
-
-      return $$3;
-   }
-
-   protected void a(cqo $$0, cto $$1) {
-      int $$2 = this.b.d($$1);
-      if ($$2 != -1) {
-         cto $$3 = this.b.a($$2);
-         if (!$$3.e()) {
-            if ($$3.I() > 1) {
-               this.b.a($$2, 1);
-            } else {
-               this.b.b($$2);
-            }
-
-            if ($$0.g().e()) {
-               $$0.f($$3.c(1));
-            } else {
-               $$0.g().g(1);
-            }
-         }
-      }
-   }
-
-   private boolean b() {
-      List<cto> $$0 = Lists.newArrayList();
-      int $$1 = this.c();
-
-      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
-         if ($$2 != this.c.m()) {
-            cto $$3 = this.c.b($$2).g().s();
-            if (!$$3.e()) {
-               int $$4 = this.b.e($$3);
-               if ($$4 == -1 && $$0.size() <= $$1) {
-                  for (cto $$5 : $$0) {
-                     if (cto.b($$5, $$3) && $$5.I() != $$5.j() && $$5.I() + $$3.I() <= $$5.j()) {
-                        $$5.g($$3.I());
-                        $$3.e(0);
-                        break;
-                     }
-                  }
-
-                  if (!$$3.e()) {
-                     if ($$0.size() >= $$1) {
-                        return false;
-                     }
-
-                     $$0.add($$3);
-                  }
-               } else if ($$4 == -1) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private int c() {
-      int $$0 = 0;
-
-      for (cto $$1 : this.b.h) {
-         if ($$1.e()) {
-            $$0++;
-         }
-      }
-
-      return $$0;
+   static {
+      a(a);
+      a(b);
+      a(c);
+      a(d);
+      a(e);
+      a(f);
+      a(g);
+      a(h);
+      a(k);
+      a(n);
+      a(o);
+      a(p);
+      a(q);
+      a(r);
+      a(i);
+      a(j);
+      a(t);
+      a(l);
+      a(m);
+      a(u);
+      a(v);
+      a(w);
+      a(x);
+      a(y);
+      a(z);
+      a(s);
+      a(A);
+      a(C);
+      a(B);
+      a(D);
+      a(E);
    }
 }

@@ -1,18 +1,23 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.gson.annotations.SerializedName;
+import java.util.Set;
 
-public class fcr {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public class fcr extends fcy implements fcs {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
+   @SerializedName("experiments")
+   private final Set<String> e;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
-   }
-
-   public static void b(long $$0) {
-      a.remove($$0);
-   }
-
-   public static void a(long $$0, String $$1) {
-      a.put($$0, $$1);
+   public fcr(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

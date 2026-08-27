@@ -1,28 +1,44 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 
-public class eji extends ehj {
-   public static final MapCodec<eji> d = a(eji::new);
+public class eji {
+   public static final Codec<eji> a = axu.b(
+      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(aks.a(li.aT), dwv.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, eji::new)),
+      eji::a
+   );
+   public static final Codec<ja<eji>> b = akp.a(li.aQ, a);
+   private final Map<aks<dwv>, dwv> c;
 
-   public eji(ehj.c $$0) {
-      super($$0);
+   public eji(Map<aks<dwv>, dwv> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public Optional<ehj.b> a(ehj.a $$0) {
-      return a($$0, dwt.a.a, $$1 -> this.a($$1, $$0));
+   private ImmutableMap<aks<dwv>, dwv> c() {
+      Builder<aks<dwv>, dwv> $$0 = ImmutableMap.builder();
+      dzp.a(this.c.keySet().stream()).forEach($$1 -> {
+         dwv $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
    }
 
-   private void a(eib $$0, ehj.a $$1) {
-      dae $$2 = $$1.h();
-      dxs $$3 = $$1.f();
-      io $$4 = new io($$2.d(), 90, $$2.e());
-      dkl $$5 = dkl.a($$3);
-      ejh.a($$1.e(), $$4, $$5, $$0, $$3);
+   public dzp a() {
+      return new dzp(this.c());
    }
 
-   @Override
-   public ehs<?> e() {
-      return ehs.e;
+   public Optional<dwv> b() {
+      return Optional.ofNullable(this.c.get(dwv.b));
+   }
+
+   private static DataResult<eji> a(eji $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

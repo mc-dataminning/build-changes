@@ -1,22 +1,13 @@
-import java.util.Set;
+public class ffn extends ffo {
+   private final fda b;
 
-public class ffn extends goy {
-   private static final Set<asv<?>> a = Set.of(gpg.a, gpm.c);
-
-   public ffn(gnw $$0) {
-      super($$0, new akm("textures/atlas/gui.png"), new akm("gui"), a);
+   public ffn(fda $$0, long $$1, xe $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public gnv a(akm $$0) {
-      return super.a($$0);
-   }
-
-   public gpn a(gnv $$0) {
-      return this.b($$0).a();
-   }
-
-   private gpm b(gnv $$0) {
-      return $$0.e().f().a(gpm.c).orElse(gpm.a);
+   protected void a(fbs $$0, long $$1) throws fdf {
+      $$0.d($$1, this.b.a);
    }
 }

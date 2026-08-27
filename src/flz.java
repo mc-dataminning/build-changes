@@ -1,96 +1,218 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class flz extends fly {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final wx c = wx.c("selectWorld.allowCommands.new");
-   private static final wx d = wx.c("selectWorld.gameMode");
-   private static final wx r = wx.c("lanServer.otherPlayers");
-   private static final wx s = wx.c("lanServer.port");
-   private static final wx u = wx.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final wx v = wx.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int w = 16733525;
-   private final fly x;
-   private dau y = dau.a;
-   private boolean z;
-   private int A = axv.a();
-   @Nullable
-   private fgi B;
+public class flz extends flv {
+   private final List<fmc> c = new ArrayList<>();
+   private final List<flz.a> d = new ArrayList<>();
+   private final fmd e = fmd.i();
+   private int f = 0;
+   private int g = 0;
 
-   public flz(fly $$0) {
-      super(wx.c("lanServer.title"));
-      this.x = $$0;
+   public flz() {
+      this(0, 0);
+   }
+
+   public flz(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   protected void aM_() {
-      gsa $$0 = this.m.V();
-      this.y = $$0.u_();
-      this.z = $$0.bb().m();
-      this.c(fgg.a(dau::e).a(dau.a, dau.d, dau.b, dau.c).a(this.y).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.y = $$1x));
-      this.c(fgg.b(this.z).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
-      ffz $$1 = ffz.a(wx.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         wx $$2;
-         if ($$0.a(this.y, this.z, this.A)) {
-            $$2 = anm.a(this.A);
-         } else {
-            $$2 = wx.c("commands.publish.failed");
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (flz.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (flz.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
          }
 
-         this.m.l.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.B = new fgi(this.p, this.n / 2 - 75, 160, 150, 20, wx.c("lanServer.port"));
-      this.B.b($$1x -> {
-         wx $$2 = this.a($$1x);
-         this.B.c(wx.b(this.A + "").a(n.i));
-         if ($$2 == null) {
-            this.B.g(14737632);
-            this.B.a(null);
-            $$1.j = true;
-         } else {
-            this.B.g(16733525);
-            this.B.a(fhk.a($$2));
-            $$1.j = false;
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
          }
-      });
-      this.B.c(wx.b(this.A + "").a(n.i));
-      this.c(this.B);
-      this.c($$1);
-      this.c(ffz.a(ww.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (flz.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.C() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.D() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.x);
+   public <T extends fmc> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
    }
 
-   @Nullable
-   private wx a(String $$0) {
-      if ($$0.isBlank()) {
-         this.A = axv.a();
-         return null;
+   public <T extends fmc> T a(T $$0, int $$1, int $$2, fmd $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends fmc> T a(T $$0, int $$1, int $$2, Consumer<fmd> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ad.a(this.b(), $$3));
+   }
+
+   public <T extends fmc> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends fmc> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fmd $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
       } else {
-         try {
-            this.A = Integer.parseInt($$0);
-            if (this.A < 1024 || this.A > 65535) {
-               return v;
-            } else {
-               return !axv.a(this.A) ? u : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.A = axv.a();
-            return v;
-         }
+         this.d.add(new flz.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
       }
    }
 
+   public <T extends fmc> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fmd> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ad.a(this.b(), $$5));
+   }
+
+   public flz a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public flz b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public flz c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, r, this.n / 2, 82, 16777215);
-      $$0.a(this.p, s, this.n / 2, 142, 16777215);
+   public void b(Consumer<fmc> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public fmd b() {
+      return this.e.g();
+   }
+
+   public fmd c() {
+      return this.e;
+   }
+
+   public flz.b d(int $$0) {
+      return new flz.b($$0);
+   }
+
+   static class a extends flv.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(fmc $$0, int $$1, int $$2, int $$3, int $$4, fmd $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends fmc> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends fmc> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends fmc> T a(T $$0, fmd $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends fmc> T a(T $$0, int $$1, fmd $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = aym.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return flz.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public flz a() {
+         return flz.this;
+      }
+
+      public fmd b() {
+         return flz.this.b();
+      }
+
+      public fmd c() {
+         return flz.this.c();
+      }
    }
 }

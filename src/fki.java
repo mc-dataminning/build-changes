@@ -1,104 +1,225 @@
-import com.mojang.text2speech.Narrator;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public class fki extends fly {
-   private static final wx a = wx.c("accessibility.onboarding.screen.title");
-   private static final wx b = wx.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fgq r;
-   private final fed s;
-   private final boolean u;
-   private boolean v;
-   private float w;
-   private final Runnable x;
-   @Nullable
-   private fgk y;
-   @Nullable
-   private ffx z;
-   private final fjm A = new fjm(this, this.m(), 33);
+public interface fki extends fkj {
+   List<? extends fkj> aE_();
 
-   public fki(fed $$0, Runnable $$1) {
-      super(a);
-      this.s = $$0;
-      this.x = $$1;
-      this.r = new fgq(true);
-      this.u = fdz.Q().aZ().a();
-   }
-
-   @Override
-   public void aM_() {
-      fjq $$0 = this.A.c(fjq.d());
-      $$0.c().b().a(4);
-      this.y = $$0.a(new fgk(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      this.z = this.s.as().a(this.s);
-      this.z.j = this.u;
-      $$0.a(this.z);
-      $$0.a(fgd.b(150, $$0x -> this.a(new fkj(this, this.m.m)), false));
-      $$0.a(fgd.a(150, $$0x -> this.a(new flh(this, this.m.m, this.m.ag())), false));
-      this.A.b(ffz.a(ww.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.y != null) {
-         this.y.b(this.n);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aC_() {
-      if (this.u && this.z != null) {
-         this.b(this.z);
-      } else {
-         super.aC_();
-      }
-   }
-
-   private int m() {
-      return 90;
-   }
-
-   @Override
-   public void d() {
-      this.a(this.x);
-   }
-
-   private void a(fly $$0) {
-      this.a(() -> this.m.a($$0));
-   }
-
-   private void a(Runnable $$0) {
-      this.s.ae = false;
-      this.s.av();
-      Narrator.getNarrator().clear();
-      $$0.run();
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C();
-      this.r.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(ffm $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void C() {
-      if (!this.v && this.u) {
-         if (this.w < 40.0F) {
-            this.w++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.v = true;
+   default Optional<fkj> b_(double $$0, double $$1) {
+      for (fkj $$2 : this.aE_()) {
+         if ($$2.c($$0, $$1)) {
+            return Optional.of($$2);
          }
       }
+
+      return Optional.empty();
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2) {
+      for (fkj $$3 : this.aE_()) {
+         if ($$3.a($$0, $$1, $$2)) {
+            this.a($$3);
+            if ($$2 == 0) {
+               this.b(true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      this.b(false);
+      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aH_() != null && this.aG_() && $$2 == 0 ? this.aH_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aG_();
+
+   void b(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aH_() != null && this.aH_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aH_() != null && this.aH_().a($$0, $$1);
+   }
+
+   @Nullable
+   fkj aH_();
+
+   void a(@Nullable fkj var1);
+
+   @Override
+   default void a(boolean $$0) {
+   }
+
+   @Override
+   default boolean aI_() {
+      return this.aH_() != null;
+   }
+
+   @Nullable
+   @Override
+   default fhx aJ_() {
+      fkj $$0 = this.aH_();
+      return $$0 != null ? fhx.a(this, $$0.aJ_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default fhx a(fmp $$0) {
+      fkj $$1 = this.aH_();
+      if ($$1 != null) {
+         fhx $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return fhx.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof fmp.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof fmp.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private fhx a(fmp.c $$0) {
+      boolean $$1 = $$0.b();
+      fkj $$2 = this.aH_();
+      List<? extends fkj> $$3 = new ArrayList<>(this.aE_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.H()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
+
+      ListIterator<? extends fkj> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fkj> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fkj $$11 = $$10.get();
+         fhx $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return fhx.a(this, $$12);
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   private fhx a(fmp.a $$0) {
+      fkj $$1 = this.aH_();
+      if ($$1 == null) {
+         fmr $$2 = $$0.b();
+         fmt $$3 = this.G().c($$2.b());
+         return fhx.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fmt $$4 = $$1.G();
+         return fhx.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private fhx a(fmt $$0, fmr $$1, @Nullable fkj $$2, fmp $$3) {
+      fmq $$4 = $$1.a();
+      fmq $$5 = $$4.a();
+      fmr $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fkj> $$8 = new ArrayList<>();
+
+      for (fkj $$9 : this.aE_()) {
+         if ($$9 != $$2) {
+            fmt $$10 = $$9.G();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<fkj> $$12 = Comparator.comparing($$1x -> $$1x.G().b($$1.b()), $$1.d());
+      Comparator<fkj> $$13 = Comparator.comparing($$1x -> $$1x.G().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (fkj $$14 : $$8) {
+         fhx $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private fhx b(fmt $$0, fmr $$1, @Nullable fkj $$2, fmp $$3) {
+      fmq $$4 = $$1.a();
+      fmq $$5 = $$4.a();
+      List<Pair<fkj, Long>> $$6 = new ArrayList<>();
+      fms $$7 = fms.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fkj $$8 : this.aE_()) {
+         if ($$8 != $$2) {
+            fmt $$9 = $$8.G();
+            fms $$10 = fms.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<fkj, Long> $$12 : $$6) {
+         fhx $$13 = ((fkj)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

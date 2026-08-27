@@ -1,111 +1,129 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fjk extends fjh {
-   private final List<fjk.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fjp f = fjp.i().a(0.5F, 0.5F);
+public class fjk extends fit<fjk.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final foe n;
 
-   public fjk() {
-      this(0, 0, 0, 0);
+   public fjk(fgj $$0, int $$1, int $$2, foe $$3) {
+      super($$0, $$1, $$3.d.d(), $$3.d.c(), 25);
+      this.e = false;
+      this.n = $$3;
    }
 
-   public fjk(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   public void a(fgm<?> $$0) {
+      this.b(fjk.b.a(this.c.m, $$0, this.n));
    }
 
-   public fjk(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
+   public void a(fgm<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fgm<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fjk.b.a(this.c.m, $$0[$$1], $$2, this.n));
+      }
    }
 
-   public fjk a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
+   public void a(List<fil> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
    }
 
-   public fjk a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fjk b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fjp b() {
-      return this.f.g();
-   }
-
-   public fjp c() {
-      return this.f;
+   public void a(fil $$0, @Nullable fil $$1) {
+      this.b(fjk.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+   public int b() {
+      return 310;
+   }
 
-      for (fjk.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+   @Nullable
+   public fil b(fgm<?> $$0) {
+      for (fjk.a $$1 : this.aE_()) {
+         if ($$1 instanceof fjk.b $$2) {
+            fil $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
       }
 
-      for (fjk.a $$3 : this.c) {
-         $$3.a(this.C(), $$0);
-         $$3.b(this.D(), $$1);
+      return null;
+   }
+
+   public Optional<fkj> e(double $$0, double $$1) {
+      for (fjk.a $$2 : this.aE_()) {
+         for (fkj $$3 : $$2.aE_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
       }
 
-      this.a = $$0;
-      this.b = $$1;
+      return Optional.empty();
    }
 
-   public <T extends fjo> T a(T $$0) {
-      return this.a($$0, this.b());
+   protected static class a extends fit.a<fjk.a> {
+      private final List<fil> a;
+      private final fon b;
+      private static final int c = 160;
+
+      a(List<fil> $$0, fon $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fjk.a a(List<fil> $$0, fon $$1) {
+         return new fjk.a($$0, $$1);
+      }
+
+      public static fjk.a a(fil $$0, @Nullable fil $$1, fon $$2) {
+         return $$1 == null ? new fjk.a(ImmutableList.of($$0), $$2) : new fjk.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fil $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fkj> aE_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fmh> b() {
+         return this.a;
+      }
    }
 
-   public <T extends fjo> T a(T $$0, fjp $$1) {
-      this.c.add(new fjk.a($$0, $$1));
-      return $$0;
-   }
+   protected static class b extends fjk.a {
+      final Map<fgm<?>, fil> a;
 
-   public <T extends fjo> T a(T $$0, Consumer<fjp> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
+      private b(Map<fgm<?>, fil> $$0, foe $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
 
-   @Override
-   public void b(Consumer<fjo> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
+      public static fjk.b a(fgn $$0, fgm<?> $$1, foe $$2) {
+         return new fjk.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
 
-   public static void a(fjo $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fjo $$0, fkf $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fjo $$0, fkf $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fjo $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.x(), $$0::m, $$5);
-      a($$2, $$4, $$0.v(), $$0::n, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)ayd.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fjh.a {
-      protected a(fjo $$0, fjp $$1) {
-         super($$0, $$1);
+      public static fjk.b a(fgn $$0, fgm<?> $$1, @Nullable fgm<?> $$2, foe $$3) {
+         fil $$4 = $$1.a($$0);
+         return $$2 == null ? new fjk.b(ImmutableMap.of($$1, $$4), $$3) : new fjk.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

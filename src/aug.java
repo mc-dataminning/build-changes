@@ -1,43 +1,29 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public class aug extends auo<String, auh> {
-   public aug(File $$0) {
-      super($$0);
+@FunctionalInterface
+public interface aug {
+   aug b = $$0 -> Optional.empty();
+
+   Optional<aub> getResource(akt var1);
+
+   default aub getResourceOrThrow(akt $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   @Override
-   protected aun<String> a(JsonObject $$0) {
-      return new auh($$0);
+   default InputStream open(akt $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
+   default BufferedReader openAsReader(akt $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
    }
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
-
-   @Nullable
-   public auh b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
-      }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
+   static aug fromMap(Map<akt, aub> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

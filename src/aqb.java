@@ -1,22 +1,45 @@
-public record aqb(String b, int c, clu d, boolean e, int f, bsi g, boolean h, boolean i) {
-   public static final int a = 16;
+public class aqb {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dvx.b();
 
-   public aqb(vx $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(clu.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bsi.class), $$0.readBoolean(), $$0.readBoolean());
+   public static dvx a(int $$0) {
+      return $$0 < 33 ? dvx.n : dvx.a($$0 - 33);
    }
 
-   public void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
+   public static int a(dvx $$0) {
+      return 33 + dvx.a($$0);
    }
 
-   public static aqb a() {
-      return new aqb("en_us", 2, clu.a, true, 0, clw.bG, false, false);
+   public static aqm b(int $$0) {
+      if ($$0 <= 31) {
+         return aqm.d;
+      } else if ($$0 <= 32) {
+         return aqm.c;
+      } else {
+         return $$0 <= 33 ? aqm.b : aqm.a;
+      }
+   }
+
+   public static int a(aqm $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
+   }
+
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

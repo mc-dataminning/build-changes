@@ -1,117 +1,83 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class cra extends cre {
+   private final cpw a;
+   private final cly b;
+   private int c;
 
-public class cra {
-   private static final Codec<cra> e = av.a.flatComapMap($$0 -> new cra(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<cra> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axm.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cra::a)
-            )
-            .apply($$0, cra::new)
-   );
-   public static final Codec<cra> a = Codec.withAlternative(f, e);
-   public static final yv<wi, cra> b = yv.a(av.b.a(yt.a()), $$0 -> $$0.h, yt.b, cra::a, cra::new);
-   public static final wx c = wx.c("item.canBreak").a(n.h);
-   public static final wx d = wx.c("item.canPlace").a(n.h);
-   private static final wx g = wx.c("item.canUse.unknown").a(n.h);
-   private final List<av> h;
-   private final boolean i;
-   private final List<wx> j;
-   @Nullable
-   private drf k;
-   private boolean l;
-   private boolean m;
-
-   private cra(List<av> $$0, boolean $$1, List<wx> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public cra(cly $$0, cpw $$1, bpt $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public cra(List<av> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
+   @Override
+   public boolean a(cuh $$0) {
+      return false;
    }
 
-   private static boolean a(drf $$0, @Nullable drf $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         jl $$3 = $$0.c().H_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
+   @Override
+   public cuh a(int $$0) {
+      if (this.h()) {
+         this.c = this.c + Math.min($$0, this.g().G());
       }
+
+      return super.a($$0);
    }
 
-   public boolean a(drf $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
+   @Override
+   protected void a(cuh $$0, int $$1) {
+      this.c += $$1;
+      this.d($$0);
+   }
 
-         for (av $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
+   @Override
+   protected void b(int $$0) {
+      this.c += $$0;
+   }
+
+   protected void d(cuh $$0) {
+      if (this.c > 0) {
+         $$0.a(this.b.dU(), this.b, this.c);
+      }
+
+      if (this.d instanceof cqy $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.c = 0;
+   }
+
+   @Override
+   public void a(cly $$0, cuh $$1) {
+      this.d($$1);
+      if ($$0.b("wrote_thoughts", 19) && $$1.a(cuk.AB)) {
+         $$0.c("crafted_eyes");
+      }
+
+      jj<cuh> $$2 = $$0.dU().r().c(czf.a, this.a, $$0.dU());
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         cuh $$4 = this.a.a($$3);
+         cuh $$5 = $$2.get($$3);
+         if (!$$4.d()) {
+            this.a.a($$3, 1);
+            $$4 = this.a.a($$3);
+         }
+
+         if (!$$5.d()) {
+            if ($$4.d()) {
+               this.a.a($$3, $$5);
+            } else if (cuh.c($$4, $$5)) {
+               $$5.g($$4.G());
+               this.a.a($$3, $$5);
+            } else if (!this.b.gl().f($$5)) {
+               this.b.a($$5, false);
             }
          }
-
-         this.l = false;
-         return false;
-      }
-   }
-
-   public void a(Consumer<wx> $$0) {
-      this.j.forEach($$0);
-   }
-
-   public cra a(boolean $$0) {
-      return new cra(this.h, $$0, this.j);
-   }
-
-   private static List<wx> a(List<av> $$0) {
-      for (av $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((ddy)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof cra $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
+   public boolean f() {
+      return true;
    }
 }

@@ -1,79 +1,59 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eua {
-   private final PathMatcher a;
+public class eua extends eta {
+   private static final Map<kd<?>, eua.a<?>> b = Stream.of(
+         new eua.a<>(ke.I, cwu::a),
+         new eua.a<>(ke.x, cxi::a),
+         new eua.a<>(ke.i, dai::a),
+         new eua.a<>(ke.w, dai::a),
+         new eua.a<>(ke.e, cxy::a),
+         new eua.a<>(ke.k, crq::a),
+         new eua.a<>(ke.j, crq::a),
+         new eua.a<>(ke.l, cxl::a)
+      )
+      .collect(Collectors.toMap(eua.a::a, $$0 -> (eua.a<?>)$$0));
+   private static final Codec<eua.a<?>> c = lh.as.q().comapFlatMap($$0 -> {
+      eua.a<?> $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lh.as.b($$0));
+   }, eua.a::a);
+   public static final Codec<eua> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, eua::new)
+   );
+   private final Map<eua.a<?>, Boolean> d;
 
-   public eua(PathMatcher $$0) {
-      this.a = $$0;
+   private eua(List<euu> $$0, Map<eua.a<?>, Boolean> $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
-   public void a(Path $$0, List<eub> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new eub($$0, $$2));
+   @Override
+   protected cuh a(cuh $$0, erp $$1) {
+      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+      return $$0;
+   }
+
+   @Override
+   public etc b() {
+      return etd.M;
+   }
+
+   static record a<T>(kd<T> a, eua.b<T> b) {
+      public void a(cuh $$0, boolean $$1) {
+         T $$2 = $$0.a(this.a);
+         if ($$2 != null) {
+            $$0.b(this.a, this.b.withTooltip($$2, $$1));
+         }
       }
    }
 
-   public List<eub> a(Path $$0) throws IOException {
-      List<eub> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   public List<eub> a(Path $$0, boolean $$1) throws IOException {
-      List<eub> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
-   }
-
-   public void b(Path $$0, final List<eub> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               eua.this.a($$0, $$1);
-            }
-         }
-
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
-
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   @FunctionalInterface
+   interface b<T> {
+      T withTooltip(T var1, boolean var2);
    }
 }

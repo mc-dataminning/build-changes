@@ -1,47 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eae extends dzx<eci> {
-   public eae(Codec<eci> $$0) {
-      super($$0);
+public class eae implements eab {
+   private final jv e;
+   private final iw f;
+   public static final Codec<eae> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jv.v(16).optionalFieldOf("offset", jv.g).forGetter($$0x -> $$0x.e), iw.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, eae::new)
+   );
+
+   public eae(jv $$0, iw $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dcv $$0, ir $$1) {
+      ir $$2 = $$1.a(this.e);
+      return $$0.a_($$2).d($$0, $$2, this.f);
    }
 
    @Override
-   public boolean a(dzz<eci> $$0) {
-      dbs $$1 = $$0.b();
-      io $$2 = $$0.e();
-      ayk $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         drb $$4 = $$1.a_($$2.c());
-         if (!$$4.a(dea.dV) && !$$4.a(dea.dY) && !$$4.a(dea.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dea.ec.n(), 2);
-
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               io $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).i()) {
-                  int $$7 = 0;
-
-                  for (it $$8 : it.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dea.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dea.ec.n(), 2);
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public eac<?> a() {
+      return eac.d;
    }
 }

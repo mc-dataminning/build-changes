@@ -1,18 +1,17 @@
 public class se {
-   public static final akl<egn> a = si.a("end_spike");
-   public static final akl<egn> b = si.a("end_gateway_return");
-   public static final akl<egn> c = si.a("chorus_plant");
-   public static final akl<egn> d = si.a("end_island_decorated");
+   public static final aks<ebm<?, ?>> a = sa.a("pile_hay");
+   public static final aks<ebm<?, ?>> b = sa.a("pile_potato_fruit");
+   public static final aks<ebm<?, ?>> c = sa.a("pile_melon");
+   public static final aks<ebm<?, ?>> d = sa.a("pile_snow");
+   public static final aks<ebm<?, ?>> e = sa.a("pile_ice");
+   public static final aks<ebm<?, ?>> f = sa.a("pile_pumpkin");
 
-   public static void a(qo<egn> $$0) {
-      iy<dzk<?, ?>> $$1 = $$0.a(lf.aC);
-      ix<dzk<?, ?>> $$2 = $$1.b(rs.a);
-      ix<dzk<?, ?>> $$3 = $$1.b(rs.b);
-      ix<dzk<?, ?>> $$4 = $$1.b(rs.d);
-      ix<dzk<?, ?>> $$5 = $$1.b(rs.e);
-      si.a($$0, a, $$2, egb.a());
-      si.a($$0, b, $$3, egt.a(700), egk.a(), si.a, egs.a(bpf.a(3, 9)), egb.a());
-      si.a($$0, c, $$4, egg.a(bpf.a(0, 4)), egk.a(), si.a, egb.a());
-      si.a($$0, d, $$5, egt.a(14), si.a(1, 0.25F, 1), egk.a(), egi.a(dxn.a(55), dxn.a(70)), egb.a());
+   public static void a(qq<ebm<?, ?>> $$0) {
+      sa.a($$0, a, eca.j, new eec(new egs(dfe.jd)));
+      sa.a($$0, b, eca.j, new eec(egl.a(dfe.tI)));
+      sa.a($$0, c, eca.j, new eec(egl.a(dfe.fS)));
+      sa.a($$0, d, eca.j, new eec(egl.a(dfe.eB)));
+      sa.a($$0, e, eca.j, new eec(new egv(bok.<dtc>a().a(dfe.nU.n(), 1).a(dfe.jw.n(), 5))));
+      sa.a($$0, f, eca.j, new eec(new egv(bok.<dtc>a().a(dfe.fR.n(), 19).a(dfe.eX.n(), 1))));
    }
 }

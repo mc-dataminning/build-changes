@@ -1,84 +1,43 @@
-import java.util.function.LongFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dxs extends dwu {
-   private final ayk d;
-   private int e;
+public class dxs<T extends dxx> {
+   private final T a;
+   @Nullable
+   private jt b;
 
-   public dxs(ayk $$0) {
-      super(0L);
-      this.d = $$0;
+   public dxs(T $$0) {
+      this.a = $$0;
    }
 
-   public int l() {
-      return this.e;
+   public void a(aqt $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public ayk d() {
-      return this.d.d();
+   public T a() {
+      return this.a;
    }
 
-   @Override
-   public dxg e() {
-      return this.d.e();
+   public void b(aqt $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dwu $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   public void c(aqt $$0) {
+      this.a.a().a($$0).map(jt::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ayk a(int $$0, int $$1, long $$2, long $$3) {
-      return ayk.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dwu::new),
-      b(dxu::new);
-
-      private final LongFunction<ayk> c;
-
-      private a(LongFunction<ayk> $$0) {
-         this.c = $$0;
-      }
-
-      public ayk a(long $$0) {
-         return this.c.apply($$0);
+   private static void a(dcd $$0, @Nullable jt $$1, Consumer<dxy> $$2) {
+      if ($$1 != null) {
+         duy $$3 = $$0.a($$1.a(), $$1.c(), dvx.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
    }
 }

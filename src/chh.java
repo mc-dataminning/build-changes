@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class chh extends chc {
    @Nullable
-   private euk b;
+   private ewu b;
 
    public chh(cha $$0) {
       super($$0);
@@ -11,7 +11,7 @@ public class chh extends chc {
    @Override
    public void c() {
       if (this.b == null) {
-         this.b = this.a.dn();
+         this.b = this.a.ds();
       }
    }
 
@@ -32,7 +32,7 @@ public class chh extends chc {
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.b;
    }
 

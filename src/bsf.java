@@ -1,38 +1,38 @@
 public abstract class bsf extends bsq {
-   protected bsf(bsa<? extends bsf> $$0, dax $$1) {
+   protected bsf(bsb<? extends bsf> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, drb $$2, io $$3) {
+   protected void a(double $$0, boolean $$1, dtc $$2, ir $$3) {
    }
 
    @Override
-   public void a(euk $$0) {
-      if (this.da()) {
-         if (this.be()) {
+   public void a(ewu $$0) {
+      if (this.df()) {
+         if (this.bi()) {
             this.a(0.02F, $$0);
-            this.a(bst.a, this.ds());
-            this.g(this.ds().a(0.8F));
-         } else if (this.bs()) {
+            this.a(bst.a, this.dx());
+            this.g(this.dx().a(0.8F));
+         } else if (this.bx()) {
             this.a(0.02F, $$0);
-            this.a(bst.a, this.ds());
-            this.g(this.ds().a(0.5));
+            this.a(bst.a, this.dx());
+            this.g(this.dx().a(0.5));
          } else {
             float $$1 = 0.91F;
             if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+               $$1 = this.dU().a_(this.aN()).b().h() * 0.91F;
             }
 
             float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
             $$1 = 0.91F;
             if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
+               $$1 = this.dU().a_(this.aN()).b().h() * 0.91F;
             }
 
             this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bst.a, this.ds());
-            this.g(this.ds().a((double)$$1));
+            this.a(bst.a, this.dx());
+            this.g(this.dx().a((double)$$1));
          }
       }
 
@@ -40,7 +40,7 @@ public abstract class bsf extends bsq {
    }
 
    @Override
-   public boolean q_() {
+   public boolean p_() {
       return false;
    }
 }

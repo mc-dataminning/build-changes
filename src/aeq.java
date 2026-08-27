@@ -1,37 +1,37 @@
-public class aeq implements ze<abq> {
-   public static final yv<vx, aeq> a = ze.a(aeq::a, aeq::new);
-   private final int b;
-   private final int c;
+public class aeq implements zl<abw> {
+   public static final zc<we, aeq> a = zl.a(aeq::a, aeq::new);
+   private final double b;
+   private final double c;
 
-   public aeq(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aeq(dut $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aeq(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
+   private aeq(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<aeq> a() {
-      return agb.ay;
+   public zn<aeq> a() {
+      return agj.as;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public double b() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public double e() {
+      return this.b;
    }
 }

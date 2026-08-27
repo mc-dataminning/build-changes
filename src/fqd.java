@@ -1,77 +1,50 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.List;
 
-public class fqd extends fpw<fya.a> {
-   private static final int y = 120;
-   private static final int z = 85;
-   private static final int A = 178;
-   private static final wx B = wx.c("gui.abuseReport.skin.title");
-   private final fjq C = fjq.d().a(8);
-   private fgr D;
-   private ffz E;
-   private ffz F;
+public class fqd {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<akt> e = List.of();
+   private int f;
+   private int g;
 
-   private fqd(fly $$0, fxz $$1, fya.a $$2) {
-      super(B, $$0, $$1, $$2);
+   public fqd(int $$0) {
+      this.d = $$0;
    }
 
-   public fqd(fly $$0, fxz $$1, UUID $$2, Supplier<gov> $$3) {
-      this($$0, $$1, new fya.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fqd(fly $$0, fxz $$1, fya $$2) {
-      this($$0, $$1, new fya.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void aM_() {
-      this.C.c().b();
-      this.C.a(new fhg(this.l, this.p));
-      fjq $$0 = this.C.a(fjq.e().a(8));
-      $$0.c().e();
-      $$0.a(new fgz(85, 120, this.m.aS(), this.x.e().a()));
-      fjq $$1 = $$0.a(fjq.d().a(8));
-      this.F = ffz.a(c, $$0x -> this.m.a(new fqc(this, this.x.h(), $$0xx -> {
-            this.x.a($$0xx);
-            this.C();
-         }))).a(178).a();
-      $$1.a(fji.a(this.p, this.F, b));
-      this.D = this.a(178, 9 * 8, $$0x -> {
-         this.x.a($$0x);
-         this.C();
-      });
-      $$1.a(fji.a(this.p, this.D, d, $$0x -> $$0x.e(12)));
-      fjq $$2 = this.C.a(fjq.e().a(8));
-      $$2.a(ffz.a(ww.k, $$0x -> this.d()).a(120).a());
-      this.E = $$2.a(ffz.a(a, $$0x -> this.m()).a(120).a());
-      this.C.a($$1x -> {
-         ffx var10000 = this.c($$1x);
-      });
-      this.c();
-      this.C();
-   }
-
-   @Override
-   protected void c() {
-      this.C.a();
-      fjk.a(this.C, this.G());
-   }
-
-   private void C() {
-      fxx $$0 = this.x.h();
-      if ($$0 != null) {
-         this.F.b($$0.b());
-      } else {
-         this.F.b(c);
+   public void a(List<akt> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
       }
 
-      fxv.b $$1 = this.x.c();
-      this.E.j = $$1 == null;
-      this.E.a(x.a($$1, fxv.b::a));
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
+   public void a(cpg $$0, fia $$1, float $$2, int $$3, int $$4) {
+      cre $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
+   }
+
+   private void a(cre $$0, akt $$1, float $$2, fia $$3, int $$4, int $$5) {
+      gqy $$6 = fgj.Q().a(gqx.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

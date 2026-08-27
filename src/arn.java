@@ -1,68 +1,112 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.logging.LogUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class arn implements aih {
-   private static final wx a = wx.c("disconnect.ignoring_status_request");
-   private final MinecraftServer b;
-   private final vv c;
+public class arn extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final alj b;
 
-   public arn(MinecraftServer $$0, vv $$1) {
+   public arn(alj $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   @Override
-   public void a(aie $$0) {
-      switch ($$0.g()) {
-         case b:
-            this.a($$0, false);
-            break;
-         case a:
-            ajl $$1 = this.b.av();
-            this.c.a(ajp.b);
-            if (this.b.an() && $$1 != null) {
-               this.c.a(ajp.a, new arq($$1, this.c));
-            } else {
-               this.c.a(a);
-            }
-            break;
-         case c:
-            if (!this.b.bo()) {
-               this.c.a(aiq.b);
-               wx $$2 = wx.c("multiplayer.disconnect.transfers_disabled");
-               this.c.a(new aio($$2));
-               this.c.a($$2);
-            } else {
-               this.a($$0, true);
-            }
-            break;
-         default:
-            throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      }
-   }
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
 
-   private void a(aie $$0, boolean $$1) {
-      this.c.a(aiq.b);
-      if ($$0.b() != aa.b().e()) {
-         wx $$2;
-         if ($$0.b() < 754) {
-            $$2 = wx.a("multiplayer.disconnect.outdated_client", aa.b().c());
-         } else {
-            $$2 = wx.a("multiplayer.disconnect.incompatible", aa.b().c());
+      try {
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
+            }
+
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
+
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
          }
-
-         this.c.a(new aio($$2));
-         this.c.a($$2);
-      } else {
-         this.c.a(aiq.a, new aro(this.b, this.c, $$1));
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
       }
    }
 
-   @Override
-   public void a(wx $$0) {
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
+      } else {
+         String $$2 = arm.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
+         } else {
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = arm.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public boolean c() {
-      return this.c.i();
+   private static String a(alj $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.af(), $$0.M(), $$0.N());
+   }
+
+   private static String b(alj $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.L(), $$0.af(), $$0.M(), $$0.N());
+   }
+
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   }
+
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      arm.a($$2, $$1);
+      return $$2;
    }
 }

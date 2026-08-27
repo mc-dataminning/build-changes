@@ -9,8 +9,8 @@ public abstract class chd extends chc {
    }
 
    @Override
-   public float a(bqn $$0, float $$1) {
-      if ($$0.c() instanceof cmc) {
+   public float a(bqt $$0, float $$1) {
+      if ($$0.c() instanceof cme) {
          $$0.c().g(1);
          return 0.0F;
       } else {

@@ -1,13 +1,63 @@
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 
-public interface apb {
-   void a(ud var1) throws CommandSyntaxException;
+public class apb {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.transfer.error.no_players"));
 
-   ud a() throws CommandSyntaxException;
+   public static void a(CommandDispatcher<eh> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("transfer").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ei.a("hostname", StringArgumentType.string())
+                     .executes($$0x -> a((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((eh)$$0x.getSource()).h()))))
+                  .then(
+                     ((RequiredArgumentBuilder)ei.a("port", IntegerArgumentType.integer(1, 65535))
+                           .executes(
+                              $$0x -> a(
+                                    (eh)$$0x.getSource(),
+                                    StringArgumentType.getString($$0x, "hostname"),
+                                    IntegerArgumentType.getInteger($$0x, "port"),
+                                    List.of(((eh)$$0x.getSource()).h())
+                                 )
+                           ))
+                        .then(
+                           ei.a("players", eu.d())
+                              .executes(
+                                 $$0x -> a(
+                                       (eh)$$0x.getSource(),
+                                       StringArgumentType.getString($$0x, "hostname"),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       eu.f($$0x, "players")
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
+   }
 
-   wx b();
+   private static int a(eh $$0, String $$1, int $$2, Collection<aqu> $$3) throws CommandSyntaxException {
+      if ($$3.isEmpty()) {
+         throw a.create();
+      } else {
+         for (aqu $$4 : $$3) {
+            $$4.d.b(new zz($$1, $$2));
+         }
 
-   wx a(va var1);
+         if ($$3.size() == 1) {
+            $$0.a(() -> xe.a("commands.transfer.success.single", $$3.iterator().next().P_(), $$1, $$2), true);
+         } else {
+            $$0.a(() -> xe.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+         }
 
-   wx a(ew.g var1, double var2, int var4);
+         return $$3.size();
+      }
+   }
 }

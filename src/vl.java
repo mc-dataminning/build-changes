@@ -1,89 +1,27 @@
-public interface vl extends ux {
-   vl a = new vl() {
-   };
+public interface vl {
+   void a(vf var1);
 
-   @Override
-   default ux.b a() {
-      return ux.b.a;
-   }
+   void a(ui var1);
 
-   @Override
-   default ux.b a(String $$0) {
-      return ux.b.a;
-   }
+   void a(vc var1);
 
-   @Override
-   default ux.b a(byte $$0) {
-      return ux.b.a;
-   }
+   void a(up var1);
 
-   @Override
-   default ux.b a(short $$0) {
-      return ux.b.a;
-   }
+   void a(us var1);
 
-   @Override
-   default ux.b a(int $$0) {
-      return ux.b.a;
-   }
+   void a(un var1);
 
-   @Override
-   default ux.b a(long $$0) {
-      return ux.b.a;
-   }
+   void a(ul var1);
 
-   @Override
-   default ux.b a(float $$0) {
-      return ux.b.a;
-   }
+   void a(uh var1);
 
-   @Override
-   default ux.b a(double $$0) {
-      return ux.b.a;
-   }
+   void a(uo var1);
 
-   @Override
-   default ux.b a(byte[] $$0) {
-      return ux.b.a;
-   }
+   void a(ur var1);
 
-   @Override
-   default ux.b a(int[] $$0) {
-      return ux.b.a;
-   }
+   void a(uq var1);
 
-   @Override
-   default ux.b a(long[] $$0) {
-      return ux.b.a;
-   }
+   void a(uk var1);
 
-   @Override
-   default ux.b a(vc<?> $$0, int $$1) {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.a b(vc<?> $$0, int $$1) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.a a(vc<?> $$0) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.a a(vc<?> $$0, String $$1) {
-      return ux.a.b;
-   }
-
-   @Override
-   default ux.b b() {
-      return ux.b.a;
-   }
-
-   @Override
-   default ux.b b(vc<?> $$0) {
-      return ux.b.a;
-   }
+   void a(um var1);
 }

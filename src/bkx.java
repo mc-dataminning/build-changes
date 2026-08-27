@@ -1,7 +1,8 @@
-public interface bkx {
-   void a(long[] var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(long var1);
-
-   void a(long var1, int var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface bkx {
 }

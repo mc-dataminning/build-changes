@@ -1,83 +1,45 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 
-public class awv {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+public class awv implements atx {
+   private static final Map<aks<? extends jn<?>>, String> a = Map.of(
+      li.f, "tags/blocks", li.v, "tags/entity_types", li.z, "tags/fluids", li.C, "tags/game_events", li.G, "tags/items"
+   );
+   private final jo b;
+   private List<awv.a<?>> c = List.of();
 
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
-            }
-         }
-
-         return $$2;
-      }
+   public awv(jo $$0) {
+      this.b = $$0;
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
+   public List<awv.a<?>> a() {
+      return this.c;
    }
 
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
-         }
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
-         }
-
-         return $$3;
-      }
+   public static String a(aks<? extends jn<?>> $$0) {
+      String $$1 = a.get($$0);
+      return $$1 != null ? $$1 : "tags/" + $$0.a().a();
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, awv.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
-         }
-         case b -> $$2x -> $$3[ayd.b($$2x, $$4)];
-         case c -> $$2x -> $$3[ayd.a($$2x, 0, $$4 - 1)];
-      };
+   @Override
+   public CompletableFuture<Void> a(atx.a $$0, aud $$1, bmo $$2, bmo $$3, Executor $$4, Executor $$5) {
+      List<? extends CompletableFuture<? extends awv.a<?>>> $$6 = this.b.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
+      return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
+         .thenCompose($$0::a)
+         .thenAcceptAsync($$1x -> this.c = $$6.stream().map(CompletableFuture::join).collect(Collectors.toUnmodifiableList()), $$5);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   private <T> CompletableFuture<awv.a<T>> a(aud $$0, Executor $$1, jo.d<T> $$2) {
+      aks<? extends jn<T>> $$3 = $$2.a();
+      jn<T> $$4 = $$2.b();
+      awu<ja<T>> $$5 = new awu<>($$4::c, a($$3));
+      return CompletableFuture.supplyAsync(() -> new awv.a<>($$3, $$5.b($$0)), $$1);
+   }
+
+   public static record a<T>(aks<? extends jn<T>> a, Map<akt, Collection<ja<T>>> b) {
    }
 }

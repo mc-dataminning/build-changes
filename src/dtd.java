@@ -1,69 +1,159 @@
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dtd extends dth {
-   private final ix<dbw> n;
+public class dtd<O, S extends dte<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, duf<?>> c;
+   private final ImmutableList<S> d;
 
-   public dtd(dax $$0, dae $$1, ix<dbw> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   protected dtd(Function<O, S> $$0, O $$1, dtd.b<O, S> $$2, Map<String, duf<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, duf<?>> $$6 = (Entry<String, duf<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<duf<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<duf<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         duf<?> $$11 = (duf<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<duf<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<duf<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((duf)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
+   }
+
+   private static <S extends dte<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, duf<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dte)((dte)$$1x.getFirst()).a($$3, ((duf.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   }
+
+   public ImmutableList<S> a() {
+      return this.d;
+   }
+
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<duf<?>> d() {
+      return this.c.values();
    }
 
    @Override
-   public drb a_(io $$0) {
-      return dea.nb.n();
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(duf::f).collect(Collectors.toList()))
+         .toString();
    }
 
    @Nullable
-   @Override
-   public drb a(io $$0, drb $$1, boolean $$2) {
-      return null;
+   public duf<?> a(String $$0) {
+      return (duf<?>)this.c.get($$0);
    }
 
-   @Override
-   public emu b_(io $$0) {
-      return emv.a.g();
+   public static class a<O, S extends dte<O, S>> {
+      private final O a;
+      private final Map<String, duf<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
+      }
+
+      public dtd.a<O, S> a(duf<?>... $$0) {
+         for (duf<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
+      }
+
+      private <T extends Comparable<T>> void a(duf<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dtd.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dtd.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
+         }
+      }
+
+      public dtd<O, S> a(Function<O, S> $$0, dtd.b<O, S> $$1) {
+         return new dtd<>($$0, this.a, $$1, this.b);
+      }
    }
 
-   @Override
-   public int i(io $$0) {
-      return 0;
-   }
-
-   @Nullable
-   @Override
-   public dog a(io $$0, dth.b $$1) {
-      return null;
-   }
-
-   @Override
-   public void b(dog $$0) {
-   }
-
-   @Override
-   public void a(dog $$0) {
-   }
-
-   @Override
-   public void d(io $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public aqf D() {
-      return aqf.b;
-   }
-
-   @Override
-   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<duf<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

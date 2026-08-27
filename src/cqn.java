@@ -1,22 +1,7 @@
-public class cqn implements cpd {
-   private final int[] a;
+import javax.annotation.Nullable;
 
-   public cqn(int $$0) {
-      this.a = new int[$$0];
-   }
-
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
-
-   @Override
-   public int a() {
-      return this.a.length;
-   }
+@FunctionalInterface
+public interface cqn {
+   @Nullable
+   cpg createMenu(int var1, clx var2, cly var3);
 }

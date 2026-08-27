@@ -1,17 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
-public interface atx extends atq {
-   @Override
-   default CompletableFuture<Void> a(atq.a $$0, atw $$1, bmi $$2, bmi $$3, Executor $$4, Executor $$5) {
-      return $$0.a(azf.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public interface atx {
+   CompletableFuture<Void> a(atx.a var1, aud var2, bmo var3, bmo var4, Executor var5, Executor var6);
+
+   default String c() {
+      return this.getClass().getSimpleName();
    }
 
-   void a(atw var1);
+   public interface a {
+      <T> CompletableFuture<T> a(T var1);
+   }
 }

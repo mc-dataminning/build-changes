@@ -1,52 +1,127 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 import java.util.List;
+import javax.annotation.Nullable;
 
 public class ans {
-   public static <T extends eg<T>> void a(CommandDispatcher<T> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new ans.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new ans.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new ans.b(), false))
-      );
-   }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.playsound.failed"));
 
-   static class a<T extends eg<T>> implements ha.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
-         $$0.p().onFailure();
-         hf $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
+   public static void a(CommandDispatcher<eh> $$0) {
+      RequiredArgumentBuilder<eh, akt> $$1 = (RequiredArgumentBuilder<eh, akt>)ei.a("sound", fi.a())
+         .suggests(ig.c)
+         .executes($$0x -> a((eh)$$0x.getSource(), a(((eh)$$0x.getSource()).i()), fi.c($$0x, "sound"), avq.a, ((eh)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+
+      for (avq $$2 : avq.values()) {
+         $$1.then(a($$2));
       }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   static class b<T extends eg<T>> implements hb.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gy $$3, he<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(hn.a());
+   private static LiteralArgumentBuilder<eh> a(avq $$0) {
+      return (LiteralArgumentBuilder<eh>)((LiteralArgumentBuilder)ei.a($$0.a())
+            .executes($$1 -> a((eh)$$1.getSource(), a(((eh)$$1.getSource()).i()), fi.c($$1, "sound"), $$0, ((eh)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+         .then(
+            ((RequiredArgumentBuilder)ei.a("targets", eu.d())
+                  .executes($$1 -> a((eh)$$1.getSource(), eu.f($$1, "targets"), fi.c($$1, "sound"), $$0, ((eh)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)ei.a("pos", gk.a())
+                        .executes($$1 -> a((eh)$$1.getSource(), eu.f($$1, "targets"), fi.c($$1, "sound"), $$0, gk.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)ei.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (eh)$$1.getSource(),
+                                       eu.f($$1, "targets"),
+                                       fi.c($$1, "sound"),
+                                       $$0,
+                                       gk.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
+                           .then(
+                              ((RequiredArgumentBuilder)ei.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (eh)$$1.getSource(),
+                                             eu.f($$1, "targets"),
+                                             fi.c($$1, "sound"),
+                                             $$0,
+                                             gk.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    ei.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (eh)$$1.getSource(),
+                                                eu.f($$1, "targets"),
+                                                fi.c($$1, "sound"),
+                                                $$0,
+                                                gk.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               )
+         );
+   }
+
+   private static Collection<aqu> a(@Nullable aqu $$0) {
+      return $$0 != null ? List.of($$0) : List.of();
+   }
+
+   private static int a(eh $$0, Collection<aqu> $$1, akt $$2, avq $$3, ewu $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      ja<avn> $$8 = ja.a(avn.a($$2));
+      double $$9 = (double)aym.k($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().F_().g();
+
+      for (aqu $$12 : $$1) {
+         double $$13 = $$4.c - $$12.dz();
+         double $$14 = $$4.d - $$12.dB();
+         double $$15 = $$4.e - $$12.dF();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         ewu $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
             }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hj.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
-   }
 
-   static class c<T extends eg<T>> implements ha.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gy $$2, he<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hf $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+            double $$19 = Math.sqrt($$16);
+            $$17 = new ewu($$12.dz() + $$13 / $$19 * 2.0, $$12.dB() + $$14 / $$19 * 2.0, $$12.dF() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
+         }
+
+         $$12.d.b(new afr($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
+      }
+
+      if ($$10 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xe.a("commands.playsound.success.single", xe.a($$2), $$1.iterator().next().P_()), true);
+         } else {
+            $$0.a(() -> xe.a("commands.playsound.success.multiple", xe.a($$2), $$1.size()), true);
+         }
+
+         return $$10;
       }
    }
 }

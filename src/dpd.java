@@ -1,23 +1,33 @@
-public class dpd extends dpq {
-   private static final int a = 60;
-   private static final int b = 9;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dpd(io $$0, drb $$1) {
-      super(doi.i, $$0, $$1);
+public class dpd extends dmt implements doy {
+   public static final MapCodec<dpd> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(doy.a.e.fieldOf("weathering_state").forGetter(dgd::c), u()).apply($$0, dpd::new)
+   );
+   private final doy.a g;
+
+   @Override
+   public MapCodec<dpd> a() {
+      return f;
+   }
+
+   public dpd(doy.a $$0, dtb.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int c() {
-      return 60;
+   protected boolean d_(dtc $$0) {
+      return doy.c($$0.b()).isPresent();
    }
 
-   @Override
-   public avg d() {
-      return avh.BW;
+   public doy.a k() {
+      return this.g;
    }
 }

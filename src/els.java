@@ -1,14 +1,28 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface els<P extends elr> {
-   els<elp> a = a("clear", elp.a);
-   els<elq> b = a("passthrough", elq.b);
-   els<elo> c = a("append_static", elo.a);
-   els<eln> d = a("append_loot", eln.a);
+public class els extends ejt {
+   public static final Codec<els> d = a(els::new);
 
-   MapCodec<P> codec();
+   public els(ejt.d $$0) {
+      super($$0);
+   }
 
-   private static <P extends elr> els<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.p, $$0, () -> $$1);
+   @Override
+   public Optional<ejt.c> a(ejt.b $$0) {
+      return a($$0, dyu.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(ekl $$0, ejt.b $$1) {
+      dbh $$2 = $$1.h();
+      dzt $$3 = $$1.f();
+      ir $$4 = new ir($$2.d(), 90, $$2.e());
+      dmd $$5 = dmd.a($$3);
+      elr.a($$1.e(), $$4, $$5, $$0, $$3);
+   }
+
+   @Override
+   public ekc<?> f() {
+      return ekc.e;
    }
 }

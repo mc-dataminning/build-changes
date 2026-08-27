@@ -1,33 +1,31 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnj extends dls implements dnd {
-   public static final MapCodec<dnj> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dnd.a.e.fieldOf("weathering_state").forGetter(dez::c), drb.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dnj::new)
-   );
-   private final dnd.a J;
+public class dnj extends djh implements des {
+   public static final MapCodec<dnj> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csy.q.fieldOf("color").forGetter(dnj::b), u()).apply($$0, dnj::new));
+   private final csy k;
 
    @Override
    public MapCodec<dnj> a() {
-      return I;
+      return j;
    }
 
-   public dnj(dnd.a $$0, drb $$1, dra.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   public dnj(csy $$0, dtb.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      this.a_($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean d_(drb $$0) {
-      return dnd.c($$0.b()).isPresent();
-   }
-
-   public dnd.a l() {
-      return this.J;
+   public csy b() {
+      return this.k;
    }
 }

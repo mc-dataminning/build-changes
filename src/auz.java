@@ -1,58 +1,28 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public abstract class auz implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
-
-   protected auz(String $$0) {
-      this.b = $$0;
+public class auz extends auv<GameProfile, ava> {
+   public auz(File $$0) {
+      super($$0);
    }
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
-      }
+   @Override
+   protected auu<GameProfile> a(JsonObject $$0) {
+      return new ava($$0);
    }
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public boolean c() {
-      return this.a;
+   @Override
+   public String[] a() {
+      return this.d().stream().map(auu::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
+
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

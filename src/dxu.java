@@ -1,132 +1,104 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class dxu implements ayk {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dxu> b = dxt.a.xmap($$0 -> new dxu($$0), $$0 -> $$0.e);
-   private dxt e;
-   private final dwv f = new dwv(this);
+public class dxu implements dxy {
+   private final List<dxx> b = Lists.newArrayList();
+   private final Set<dxx> c = Sets.newHashSet();
+   private final List<dxx> d = Lists.newArrayList();
+   private boolean e;
+   private final aqt f;
+   private final int g;
+   private final dxu.a h;
 
-   public dxu(long $$0) {
-      this.e = new dxt(dxi.c($$0));
-   }
-
-   public dxu(dxi.a $$0) {
-      this.e = new dxt($$0);
-   }
-
-   public dxu(long $$0, long $$1) {
-      this.e = new dxt($$0, $$1);
-   }
-
-   private dxu(dxt $$0) {
-      this.e = $$0;
+   public dxu(aqt $$0, int $$1, dxu.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
    @Override
-   public ayk d() {
-      return new dxu(this.e.a(), this.e.a());
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
    @Override
-   public dxg e() {
-      return new dxu.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dxt(dxi.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   public void a(dxx $$0) {
+      if (this.e) {
+         this.d.add($$0);
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
+         this.b.add($$0);
+      }
+
+      agi.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(dxx $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
+   }
+
+   @Override
+   public boolean a(ja<dxv> $$0, ewu $$1, dxv.a $$2, dxy.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<dxx> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dxx $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<ewu> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
             }
          }
+      } finally {
+         this.e = false;
+      }
 
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<ewu> a(aqt $$0, ewu $$1, dxx $$2) {
+      Optional<ewu> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = ir.a($$3.get()).j(ir.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dxg {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public ayk a(int $$0, int $$1, int $$2) {
-         long $$3 = ayd.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dxu($$4, this.b);
-      }
-
-      @Override
-      public ayk a(String $$0) {
-         dxi.a $$1 = dxi.a($$0);
-         return new dxu($$1.a(this.a, this.b));
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

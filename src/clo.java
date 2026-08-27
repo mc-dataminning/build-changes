@@ -1,61 +1,68 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public final class clo {
-   public static final clo a = a("desert");
-   public static final clo b = a("jungle");
-   public static final clo c = a("plains");
-   public static final clo d = a("savanna");
-   public static final clo e = a("snow");
-   public static final clo f = a("swamp");
-   public static final clo g = a("taiga");
-   private final String h;
-   private static final Map<akl<dbw>, clo> i = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dcd.A, a);
-      $$0.put(dcd.f, a);
-      $$0.put(dcd.B, a);
-      $$0.put(dcd.C, a);
-      $$0.put(dcd.z, b);
-      $$0.put(dcd.x, b);
-      $$0.put(dcd.y, b);
-      $$0.put(dcd.s, d);
-      $$0.put(dcd.r, d);
-      $$0.put(dcd.w, d);
-      $$0.put(dcd.X, e);
-      $$0.put(dcd.W, e);
-      $$0.put(dcd.L, e);
-      $$0.put(dcd.e, e);
-      $$0.put(dcd.N, e);
-      $$0.put(dcd.q, e);
-      $$0.put(dcd.d, e);
-      $$0.put(dcd.F, e);
-      $$0.put(dcd.G, e);
-      $$0.put(dcd.H, e);
-      $$0.put(dcd.I, e);
-      $$0.put(dcd.g, f);
-      $$0.put(dcd.h, f);
-      $$0.put(dcd.o, g);
-      $$0.put(dcd.n, g);
-      $$0.put(dcd.u, g);
-      $$0.put(dcd.t, g);
-      $$0.put(dcd.p, g);
-      $$0.put(dcd.v, g);
-   });
-
-   private clo(String $$0) {
-      this.h = $$0;
-   }
+public record clo(String q, Predicate<ja<cdu>> r, Predicate<ja<cdu>> s, ImmutableSet<cuc> t, ImmutableSet<dfc> u, @Nullable avn v) {
+   public static final Predicate<ja<cdu>> a = $$0 -> $$0.a(awo.a);
+   public static final clo b = a("none", cdu.a, a, null);
+   public static final clo c = a("armorer", cdv.a, avo.Bt);
+   public static final clo d = a("butcher", cdv.b, avo.Bu);
+   public static final clo e = a("cartographer", cdv.c, avo.Bv);
+   public static final clo f = a("cleric", cdv.d, avo.Bw);
+   public static final clo g = a("farmer", cdv.e, ImmutableSet.of(cuk.qP, cuk.qO, cuk.wW, cuk.sV), ImmutableSet.of(dfe.dn, dfe.do), avo.Bx);
+   public static final clo h = a("fisherman", cdv.f, avo.By);
+   public static final clo i = a("fletcher", cdv.g, avo.Bz);
+   public static final clo j = a("leatherworker", cdv.h, avo.BA);
+   public static final clo k = a("librarian", cdv.i, avo.BB);
+   public static final clo l = a("mason", cdv.j, avo.BC);
+   public static final clo m = a("nitwit", cdu.a, cdu.a, null);
+   public static final clo n = a("shepherd", cdv.k, avo.BD);
+   public static final clo o = a("toolsmith", cdv.l, avo.BE);
+   public static final clo p = a("weaponsmith", cdv.m, avo.BF);
 
    @Override
    public String toString() {
-      return this.h;
+      return this.q;
    }
 
-   private static clo a(String $$0) {
-      return jk.a(le.y, new akm($$0), new clo($$0));
+   private static clo a(String $$0, aks<cdu> $$1, @Nullable avn $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   public static clo a(ix<dbw> $$0) {
-      return $$0.e().map(i::get).orElse(c);
+   private static clo a(String $$0, Predicate<ja<cdu>> $$1, Predicate<ja<cdu>> $$2, @Nullable avn $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   }
+
+   private static clo a(String $$0, aks<cdu> $$1, ImmutableSet<cuc> $$2, ImmutableSet<dfc> $$3, @Nullable avn $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   }
+
+   private static clo a(String $$0, Predicate<ja<cdu>> $$1, Predicate<ja<cdu>> $$2, ImmutableSet<cuc> $$3, ImmutableSet<dfc> $$4, @Nullable avn $$5) {
+      return jn.a(lh.z, new akt($$0), new clo($$0, $$1, $$2, $$3, $$4, $$5));
+   }
+
+   public String a() {
+      return this.q;
+   }
+
+   public Predicate<ja<cdu>> b() {
+      return this.r;
+   }
+
+   public Predicate<ja<cdu>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cuc> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dfc> e() {
+      return this.u;
+   }
+
+   @Nullable
+   public avn f() {
+      return this.v;
    }
 }

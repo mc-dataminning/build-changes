@@ -1,17 +1,85 @@
-public class gam extends fyq {
-   protected gam(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+
+public interface gam {
+   static gam a(gas $$0, UserApiService $$1) {
+      return new gam.b($$0, $$1);
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   CompletableFuture<Unit> a(UUID var1, gau var2, AbuseReport var3);
 
-      public a(gat $$0) {
-         this.a = $$0;
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends ye {
+      public a(xe $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static record b(gas a, UserApiService b) implements gam {
+      private static final xe c = xe.c("gui.abuseReport.send.service_unavailable");
+      private static final xe d = xe.c("gui.abuseReport.send.http_error");
+      private static final xe e = xe.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gau $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xe $$5 = this.a(var7);
+               throw new CompletionException(new gam.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xe $$7 = this.a(var8);
+               throw new CompletionException(new gam.a($$7, var8));
+            }
+         }, ad.g());
       }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gam($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private xe a(MinecraftClientHttpException $$0) {
+         return xe.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xe a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new IncompatibleClassChangeError();
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gas c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

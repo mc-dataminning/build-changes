@@ -1,29 +1,37 @@
-public class ack implements ze<abq> {
-   public static final yv<vx, ack> a = ze.a(ack::a, ack::new);
-   private final int b;
+public class ack implements zl<abw> {
+   public static final zc<we, ack> a = zl.a(ack::a, ack::new);
+   private final bpx b;
+   private final boolean c;
 
-   public ack(int $$0) {
+   public ack(bpx $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ack(vx $$0) {
-      this.b = $$0.readUnsignedByte();
+   private ack(we $$0) {
+      this.b = bpx.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vx $$0) {
-      $$0.k(this.b);
+   private void a(we $$0) {
+      $$0.k(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<ack> a() {
-      return agb.t;
+   public zn<ack> a() {
+      return agj.n;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.c;
+   }
+
+   public bpx e() {
       return this.b;
    }
 }

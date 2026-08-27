@@ -1,52 +1,56 @@
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cco<T extends bso> extends ccy<T> {
-   private final BiPredicate<T, bso> a;
-   private final Predicate<T> c;
-   private final cbs<Boolean> d;
-   private final int e;
+public class cco extends ccx<bsq> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   public cco(int $$0, BiPredicate<T, bso> $$1, Predicate<T> $$2, cbs<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public cco() {
+      super(20);
    }
 
    @Override
-   protected void a(aqm $$0, T $$1) {
-      if (!this.c.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.w);
    }
 
-   @Override
-   public Set<cbs<?>> a() {
-      return Set.of(cbs.g);
-   }
-
-   public void a(T $$0) {
-      Optional<List<bso>> $$1 = $$0.dS().c(cbs.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+   protected void a(aqt $$0, bsq $$1) {
+      if ($$1.o_()) {
+         this.f = 0;
+         this.g = $$0.Z() + (long)$$0.F_().a(20);
+         cdr $$2 = $$0.y();
+         Predicate<ir> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<ja<cdu>, ir>> $$4 = $$2.b($$0x -> $$0x.a(cdv.n), $$3, $$1.du(), 48, cdr.b.c).collect(Collectors.toSet());
+         eps $$5 = btz.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            ir $$6 = $$5.l();
+            Optional<ja<cdu>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dZ().a(cbr.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
          }
       }
-   }
-
-   public void b(T $$0) {
-      $$0.dS().a(this.d, true, (long)this.e);
-   }
-
-   public void c(T $$0) {
-      $$0.dS().b(this.d);
    }
 }

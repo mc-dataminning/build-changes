@@ -1,68 +1,53 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class eid extends eig {
-   public static final MapCodec<eid> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eid::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final jb<dbw> f;
+public class eid extends ehz {
+   public static final Codec<eid> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzo.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dzo.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eid::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dzo d;
+   private final dzo e;
+   private final int f;
 
-   private static P9<Mu<eid>, js, eig.c, Float, Integer, Optional<eig.a>, Integer, Integer, Integer, jb<dbw>> b(Instance<eid> $$0) {
-      P5<Mu<eid>, js, eig.c, Float, Integer, Optional<eig.a>> $$1 = a($$0);
-      P4<Mu<eid>, Integer, Integer, Integer, jb<dbw>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eid::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eid::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(eid::c),
-         jm.a(lf.az).fieldOf("preferred_biomes").forGetter(eid::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   private eid(dzo $$0, dzo $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public eid(js $$0, eig.c $$1, float $$2, int $$3, Optional<eig.a> $$4, int $$5, int $$6, int $$7, jb<dbw> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
-   }
-
-   public eid(int $$0, int $$1, int $$2, jb<dbw> $$3) {
-      this(js.g, eig.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public jb<dbw> d() {
-      return this.f;
+   public static eid a(dzo $$0, dzo $$1, int $$2) {
+      return new eid($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(dsz $$0, int $$1, int $$2) {
-      List<dae> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dae($$1, $$2));
+   public int a(ayt $$0, dzr $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = aym.a($$0, $$2 + this.f, $$3);
+         int $$5 = aym.a($$0, $$2, $$4 - 1);
+         return aym.a($$0, $$2, $$5 - 1 + this.f);
+      }
    }
 
    @Override
-   public eih<?> e() {
-      return eih.b;
+   public eia<?> a() {
+      return eia.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

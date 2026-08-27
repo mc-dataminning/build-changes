@@ -1,21 +1,32 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dnt extends dep {
-   public static final MapCodec<dnt> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csh.q.fieldOf("color").forGetter(dnt::b), u()).apply($$0, dnt::new));
-   private final csh d;
+public interface dnt {
+   ayt e = ayt.a();
+   List<ja<brf>> f = List.of(brj.d, brj.c, brj.H, brj.z, brj.A, brj.B, brj.F, brj.x);
 
-   @Override
-   public MapCodec<dnt> a() {
-      return c;
+   cxv getSuspiciousEffects();
+
+   static List<dnt> b() {
+      return lh.h.s().map(dnt::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   protected dnt(csh $$0, dra.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
+   @Nullable
+   static dnt a(dbz $$0) {
+      if ($$0.q() instanceof csc $$1) {
+         dfc var6 = $$1.d();
+         if (var6 instanceof dnt) {
+            return (dnt)var6;
+         }
+      }
 
-   public csh b() {
-      return this.d;
+      cuc $$2 = $$0.q();
+      if ($$2 instanceof dnt) {
+         return (dnt)$$2;
+      } else {
+         return $$0.q() == cuk.vT ? () -> new cxv(List.of(new cxv.a(ad.a(f, e), e.a(60)))) : null;
+      }
    }
 }

@@ -1,210 +1,290 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class enu {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dra.f e = ($$0, $$1, $$2) -> $$0.a(dea.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final day h;
-   private final it.a i;
-   private final it j;
-   private int k;
-   @Nullable
-   private io l;
-   private int m;
-   private final int n;
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "structures";
+   private static final String c = ".nbt";
+   private static final String d = ".snbt";
+   private final Map<akt, Optional<ent>> e = Maps.newConcurrentMap();
+   private final DataFixer f;
+   private aud g;
+   private final Path h;
+   private final List<enu.b> i;
+   private final jb<dfc> j;
+   private static final akm k = new akm("structures", ".nbt");
 
-   public static Optional<enu> a(day $$0, io $$1, it.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
+   public enu(aud $$0, erf.c $$1, DataFixer $$2, jb<dfc> $$3) {
+      this.g = $$0;
+      this.f = $$2;
+      this.h = $$1.a(erd.i).normalize();
+      this.j = $$3;
+      Builder<enu.b> $$4 = ImmutableList.builder();
+      $$4.add(new enu.b(this::h, this::d));
+      if (ab.aX) {
+         $$4.add(new enu.b(this::g, this::c));
+      }
+
+      $$4.add(new enu.b(this::f, this::b));
+      this.i = $$4.build();
    }
 
-   public static Optional<enu> a(day $$0, io $$1, Predicate<enu> $$2, it.a $$3) {
-      Optional<enu> $$4 = Optional.of(new enu($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
+   public ent a(akt $$0) {
+      Optional<ent> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         return $$1.get();
       } else {
-         it.a $$5 = $$3 == it.a.a ? it.a.c : it.a.a;
-         return Optional.of(new enu($$0, $$1, $$5)).filter($$2);
+         ent $$2 = new ent();
+         this.e.put($$0, Optional.of($$2));
+         return $$2;
       }
    }
 
-   public enu(day $$0, io $$1, it.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == it.a.a ? it.e : it.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
-         }
-      }
+   public Optional<ent> b(akt $$0) {
+      return this.e.computeIfAbsent($$0, this::e);
    }
 
-   @Nullable
-   private io a(io $$0) {
-      int $$1 = Math.max(this.h.I_(), $$0.v() - 21);
-
-      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
-         $$0 = $$0.d();
-      }
-
-      it $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
+   public Stream<akt> a() {
+      return this.i.stream().flatMap($$0 -> $$0.b().get()).distinct();
    }
 
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
-
-   private int a(io $$0, it $$1) {
-      io.a $$2 = new io.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         drb $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
+   private Optional<ent> e(akt $$0) {
+      for (enu.b $$1 : this.i) {
+         try {
+            Optional<ent> $$2 = $$1.a().apply($$0);
+            if ($$2.isPresent()) {
+               return $$2;
             }
-            break;
-         }
-
-         drb $$5 = this.h.a_($$2.c(it.a));
-         if (!e.test($$5, this.h, $$2)) {
-            break;
+         } catch (Exception var5) {
          }
       }
 
-      return 0;
+      return Optional.empty();
    }
 
-   private int e() {
-      io.a $$0 = new io.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   public void a(aud $$0) {
+      this.g = $$0;
+      this.e.clear();
    }
 
-   private boolean a(io.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         io.a $$3 = $$0.g(this.l).c(it.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
+   private Optional<ent> f(akt $$0) {
+      akt $$1 = k.a($$0);
+      return this.a(() -> this.g.open($$1), $$1x -> a.error("Couldn't load structure {}", $$0, $$1x));
+   }
+
+   private Stream<akt> b() {
+      return k.a(this.g).keySet().stream().map(k::b);
+   }
+
+   private Optional<ent> g(akt $$0) {
+      return this.a($$0, Paths.get(tw.b));
+   }
+
+   private Stream<akt> c() {
+      return this.a(Paths.get(tw.b), "minecraft", ".snbt");
+   }
+
+   private Optional<ent> h(akt $$0) {
+      if (!Files.isDirectory(this.h)) {
+         return Optional.empty();
+      } else {
+         Path $$1 = b(this.h, $$0, ".nbt");
+         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> a.error("Couldn't load structure from {}", $$1, $$1x));
+      }
+   }
+
+   private Stream<akt> d() {
+      if (!Files.isDirectory(this.h)) {
+         return Stream.empty();
+      } else {
+         try {
+            return Files.list(this.h).filter($$0 -> Files.isDirectory($$0)).flatMap($$0 -> this.a($$0));
+         } catch (IOException var2) {
+            return Stream.empty();
+         }
+      }
+   }
+
+   private Stream<akt> a(Path $$0) {
+      Path $$1 = $$0.resolve("structures");
+      return this.a($$1, $$0.getFileName().toString(), ".nbt");
+   }
+
+   private Stream<akt> a(Path $$0, String $$1, String $$2) {
+      if (!Files.isDirectory($$0)) {
+         return Stream.empty();
+      } else {
+         int $$3 = $$2.length();
+         Function<String, String> $$4 = $$1x -> $$1x.substring(0, $$1x.length() - $$3);
+
+         try {
+            return Files.walk($$0).filter($$1x -> $$1x.toString().endsWith($$2)).mapMulti(($$3x, $$4x) -> {
+               try {
+                  $$4x.accept(new akt($$1, $$4.apply(this.a($$0, $$3x))));
+               } catch (aa var7x) {
+                  a.error("Invalid location while listing pack contents", var7x);
+               }
+            });
+         } catch (IOException var7) {
+            a.error("Failed to list folder contents", var7);
+            return Stream.empty();
+         }
+      }
+   }
+
+   private String a(Path $$0, Path $$1) {
+      return $$0.relativize($$1).toString().replace(File.separator, "/");
+   }
+
+   private Optional<ent> a(akt $$0, Path $$1) {
+      if (!Files.isDirectory($$1)) {
+         return Optional.empty();
+      } else {
+         Path $$2 = v.b($$1, $$0.a(), ".snbt");
+
+         try {
+            Optional var6;
+            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
+               String $$4 = IOUtils.toString($$3);
+               var6 = Optional.of(this.a(uz.a($$4)));
+            }
+
+            return var6;
+         } catch (NoSuchFileException var9) {
+            return Optional.empty();
+         } catch (CommandSyntaxException | IOException var10) {
+            a.error("Couldn't load structure from {}", $$2, var10);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private Optional<ent> a(enu.a $$0, Consumer<Throwable> $$1) {
+      try {
+         Optional var5;
+         try (
+            InputStream $$2 = $$0.open();
+            InputStream $$3 = new axv($$2);
+         ) {
+            var5 = Optional.of(this.a($$3));
+         }
+
+         return var5;
+      } catch (FileNotFoundException var11) {
+         return Optional.empty();
+      } catch (Throwable var12) {
+         $$1.accept(var12);
+         return Optional.empty();
+      }
+   }
+
+   private ent a(InputStream $$0) throws IOException {
+      uk $$1 = ux.a($$0, ut.a());
+      return this.a($$1);
+   }
+
+   public ent a(uk $$0) {
+      ent $$1 = new ent();
+      int $$2 = uz.b($$0, 500);
+      $$1.a(this.j, azs.f.a(this.f, $$0, $$2));
+      return $$1;
+   }
+
+   public boolean c(akt $$0) {
+      Optional<ent> $$1 = this.e.get($$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         ent $$2 = $$1.get();
+         Path $$3 = b(this.h, $$0, ".nbt");
+         Path $$4 = $$3.getParent();
+         if ($$4 == null) {
             return false;
-         }
-      }
-
-      return true;
-   }
-
-   private int a(io.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(it.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         $$0.g(this.l).c(it.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
-
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(it.b, $$1).c(this.j, $$2);
-            drb $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
+         } else {
+            try {
+               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
+            } catch (IOException var13) {
+               a.error("Failed to create parent directory: {}", $$4);
+               return false;
             }
 
-            if ($$3.a(dea.ed)) {
-               this.k++;
+            uk $$6 = $$2.a(new uk());
+
+            try {
+               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
+                  ux.a($$6, $$7);
+               }
+
+               return true;
+            } catch (Throwable var12) {
+               return false;
             }
          }
       }
-
-      return 21;
    }
 
-   private static boolean a(drb $$0) {
-      return $$0.i() || $$0.a(avw.aK) || $$0.a(dea.ed);
+   public Path a(akt $$0, String $$1) {
+      return a(this.h, $$0, $$1);
    }
 
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
-
-   public void b() {
-      drb $$0 = dea.ed.n().a(djc.b, this.i);
-      io.c(this.l, this.l.a(it.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
-   }
-
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
-   }
-
-   public static euk a(l.a $$0, it.a $$1, euk $$2, brx $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      io $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = ayd.a(ayd.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
+   public static Path a(Path $$0, akt $$1, String $$2) {
+      try {
+         Path $$3 = $$0.resolve($$1.b());
+         Path $$4 = $$3.resolve("structures");
+         return v.b($$4, $$1.a(), $$2);
+      } catch (InvalidPathException var5) {
+         throw new aa("Invalid resource path: " + $$1, var5);
       }
-
-      double $$11;
-      if ($$5 > 0.0) {
-         it.a $$10 = it.a.b;
-         $$11 = ayd.a(ayd.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      it.a $$13 = $$1 == it.a.a ? it.a.c : it.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new euk($$8, $$11, $$14);
    }
 
-   public static ent a(aqm $$0, l.a $$1, it.a $$2, euk $$3, bru $$4, euk $$5, float $$6, float $$7) {
-      io $$8 = $$1.a;
-      drb $$9 = $$0.a_($$8);
-      it.a $$10 = $$9.d(drr.H).orElse(it.a.a);
-      double $$11 = (double)$$1.b;
-      double $$12 = (double)$$1.c;
-      brx $$13 = $$4.a($$4.ar());
-      int $$14 = $$2 == $$10 ? 0 : 90;
-      euk $$15 = $$2 == $$10 ? $$5 : new euk($$5.e, $$5.d, -$$5.c);
-      double $$16 = (double)$$13.a() / 2.0 + ($$11 - (double)$$13.a()) * $$3.a();
-      double $$17 = ($$12 - (double)$$13.b()) * $$3.b();
-      double $$18 = 0.5 + $$3.c();
-      boolean $$19 = $$10 == it.a.a;
-      euk $$20 = new euk((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
-      euk $$21 = a($$20, $$0, $$4, $$13);
-      return new ent($$21, $$15, $$6 + (float)$$14, $$7);
+   private static Path b(Path $$0, akt $$1, String $$2) {
+      if ($$1.a().contains("//")) {
+         throw new aa("Invalid resource path: " + $$1);
+      } else {
+         Path $$3 = a($$0, $$1, $$2);
+         if ($$3.startsWith($$0) && v.a($$3) && v.b($$3)) {
+            return $$3;
+         } else {
+            throw new aa("Invalid resource path: " + $$3);
+         }
+      }
    }
 
-   private static euk a(euk $$0, aqm $$1, bru $$2, brx $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         euk $$5 = $$0.b(0.0, $$4, 0.0);
-         evd $$6 = eva.a(euf.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<euk> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<euk> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
-      }
+   public void d(akt $$0) {
+      this.e.remove($$0);
+   }
+
+   @FunctionalInterface
+   interface a {
+      InputStream open() throws IOException;
+   }
+
+   static record b(Function<akt, Optional<ent>> a, Supplier<Stream<akt>> b) {
    }
 }

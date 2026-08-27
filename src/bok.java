@@ -1,148 +1,52 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public abstract class bok<R extends Runnable> implements bns, bom<R>, Executor {
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
-
-   protected bok(String $$0) {
-      this.b = $$0;
-      bnq.a.a(this);
+public class bok<E> extends boo<bom.b<E>> {
+   public static <E> Codec<bok<E>> a(Codec<E> $$0) {
+      return bom.b.a($$0).listOf().xmap(bok::new, boo::e);
    }
 
-   protected abstract R f(Runnable var1);
-
-   protected abstract boolean e(R var1);
-
-   public boolean bv() {
-      return Thread.currentThread() == this.az();
+   public static <E> Codec<bok<E>> b(Codec<E> $$0) {
+      return axu.a(bom.b.a($$0).listOf()).xmap(bok::new, boo::e);
    }
 
-   protected abstract Thread az();
-
-   protected boolean ay() {
-      return !this.bv();
+   bok(List<? extends bom.b<E>> $$0) {
+      super($$0);
    }
 
-   public int bw() {
-      return this.d.size();
+   public static <E> bok.a<E> a() {
+      return new bok.a<>();
    }
 
-   @Override
-   public String bx() {
-      return this.b;
+   public static <E> bok<E> b() {
+      return new bok<>(List.of());
    }
 
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.ay() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   public static <E> bok<E> a(E $$0) {
+      return new bok<>(List.of(bom.a($$0, 1)));
    }
 
-   private CompletableFuture<Void> a(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
+   public Optional<E> a(ayt $$0) {
+      return this.b($$0).map(bom.b::b);
    }
 
-   @CheckReturnValue
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.ay()) {
-         return this.a($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
+   public static class a<E> {
+      private final Builder<bom.b<E>> a = ImmutableList.builder();
+
+      public bok.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public void h(Runnable $$0) {
-      if (!this.bv()) {
-         this.a($$0).join();
-      } else {
-         $$0.run();
+      public bok.a<E> a(E $$0, int $$1) {
+         this.a.add(bom.a($$0, $$1));
+         return this;
       }
-   }
 
-   public void i(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.az());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.ay()) {
-         this.i(this.f($$0));
-      } else {
-         $$0.run();
+      public bok<E> a() {
+         return new bok<>(this.a.build());
       }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void by() {
-      this.d.clear();
-   }
-
-   protected void bz() {
-      while (this.A()) {
-      }
-   }
-
-   public boolean A() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void c(BooleanSupplier $$0) {
-      this.e++;
-
-      try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.A()) {
-               this.z();
-            }
-         }
-      } finally {
-         this.e--;
-      }
-   }
-
-   public void z() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
-   }
-
-   protected void d(R $$0) {
-      try {
-         $$0.run();
-      } catch (Exception var3) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bx(), var3);
-         throw var3;
-      }
-   }
-
-   @Override
-   public List<bnp> bu() {
-      return ImmutableList.of(bnp.a(this.b + "-pending-tasks", bno.b, this::bw));
    }
 }

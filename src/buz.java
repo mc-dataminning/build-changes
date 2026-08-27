@@ -1,41 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class buz extends buh<clj> {
-   private static final int d = 1200;
-   final float c;
-
-   public buz(float $$0) {
-      super(ImmutableMap.of(cbs.d, cbt.a), 1200);
-      this.c = $$0;
+public class buz {
+   private static ir a(bsq $$0, ir $$1) {
+      ayt $$2 = $$0.dU().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   protected boolean a(aqm $$0, clj $$1) {
-      return $$1.dS().g().map($$0x -> $$0x == cnl.b || $$0x == cnl.c || $$0x == cnl.d).orElse(true);
+   private static int a(ayt $$0) {
+      return $$0.a(3) - 1;
    }
 
-   protected boolean a(aqm $$0, clj $$1, long $$2) {
-      return $$1.dS().a(cbs.d);
-   }
+   public static <E extends bsq> bvr<E> a(cbr<ir> $$0, int $$1, float $$2) {
+      return bxt.a(
+         (Function<bxt.b<E>, ? extends App<bxt.c<E>, bxw<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cbr.o), $$3.c(cbr.m), $$3.a(cbr.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ir $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.du(), (double)$$1);
+                     if (!$$8) {
+                        bui.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   protected void b(aqm $$0, clj $$1, long $$2) {
-      buj.a($$1, $$1.dS().c(cbs.d).get().b(), this.c, 1);
-   }
-
-   protected void c(aqm $$0, clj $$1, long $$2) {
-      Optional<iw> $$3 = $$1.dS().c(cbs.d);
-      $$3.ifPresent($$1x -> {
-         io $$2x = $$1x.b();
-         aqm $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            cds $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            aga.c($$0, $$2x);
-         }
-      });
-      $$1.dS().b(cbs.d);
+                     return true;
+                  }))
+      );
    }
 }

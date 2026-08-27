@@ -1,86 +1,61 @@
+import com.mojang.datafixers.DataFixUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class bzh extends bzm {
-   private int a;
-   private final bsx b;
-   @Nullable
-   private clw c;
-   private byv d;
+public class bzh extends bzl {
+   private static final int a = 200;
+   private final ced b;
+   private int c;
+   private int d;
 
-   public bzh(bsx $$0) {
+   public bzh(ced $$0) {
       this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(ced $$0) {
+      return b(200 + $$0.et().a(200) % 20);
    }
 
    @Override
    public boolean a() {
-      List<cnt> $$0 = this.b.dP().a(cnt.class, this.b.cK().g(5.0));
-      boolean $$1 = false;
-
-      for (cnt $$2 : $$0) {
-         bru $$3 = $$2.cQ();
-         if ($$3 instanceof clw && (ayd.e(((clw)$$3).bp) > 0.0F || ayd.e(((clw)$$3).br) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (this.b.gE()) {
+         return false;
+      } else if (this.b.gB()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<ced> $$0 = $$0x -> $$0x.gD() || !$$0x.gB();
+         List<? extends ced> $$1 = this.b.dU().a((Class<? extends ced>)this.b.getClass(), this.b.cP().c(8.0, 8.0, 8.0), $$0);
+         ced $$2 = (ced)DataFixUtils.orElse($$1.stream().filter(ced::gD).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gB()));
+         return this.b.gB();
       }
-
-      return this.c != null && (ayd.e(this.c.bp) > 0.0F || ayd.e(this.c.br) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
    }
 
    @Override
    public boolean b() {
-      return this.c != null && this.c.bR() && (ayd.e(this.c.bp) > 0.0F || ayd.e(this.c.br) > 0.0F);
+      return this.b.gB() && this.b.gF();
    }
 
    @Override
    public void c() {
-      for (cnt $$1 : this.b.dP().a(cnt.class, this.b.cK().g(5.0))) {
-         if ($$1.cQ() instanceof clw $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = byv.a;
+      this.c = 0;
    }
 
    @Override
    public void d() {
-      this.c = null;
+      this.b.gC();
    }
 
    @Override
    public void e() {
-      boolean $$0 = ayd.e(this.c.bp) > 0.0F || ayd.e(this.c.br) > 0.0F;
-      float $$1 = this.d == byv.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new euk((double)this.b.bp, (double)this.b.bq, (double)this.b.br));
-      this.b.a(bst.a, this.b.ds());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == byv.a) {
-            io $$2 = this.c.dp().a(this.c.cH().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.K().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = byv.b;
-            }
-         } else if (this.d == byv.b) {
-            it $$3 = this.c.cI();
-            io $$4 = this.c.dp().a($$3, 10);
-            this.b.K().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = byv.a;
-            }
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gG();
       }
    }
 }

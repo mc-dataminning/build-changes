@@ -1,24 +1,9 @@
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface dvb {
-   int al();
-
-   UUID cz();
-
-   io dp();
-
-   euf cK();
-
-   void a(dvc var1);
-
-   Stream<? extends dvb> cU();
-
-   Stream<? extends dvb> cV();
-
-   void b(bru.c var1);
-
-   boolean dN();
-
-   boolean dO();
+public class dvb {
+   public static Codec<? extends duz> a(jn<Codec<? extends duz>> $$0) {
+      jn.a($$0, "noise", dyx.c);
+      jn.a($$0, "flat", dyp.c);
+      return jn.a($$0, "debug", dyl.c);
+   }
 }

@@ -1,21 +1,7 @@
-public enum bno {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import jdk.jfr.consumer.RecordedEvent;
 
-   private final String j;
-
-   private bno(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
+public record bno(String a, String b, String c) {
+   public static bno a(RecordedEvent $$0) {
+      return new bno($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
    }
 }

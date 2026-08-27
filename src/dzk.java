@@ -1,29 +1,40 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+public class dzk implements dyj {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dyw i = new dyw(this);
 
-public record dzk<FC extends ecb, F extends dzx<FC>>(F d, FC e) {
-   public static final Codec<dzk<?, ?>> a = le.Q.q().dispatch($$0 -> $$0.d, dzx::a);
-   public static final Codec<ix<dzk<?, ?>>> b = aki.a(lf.aC, a);
-   public static final Codec<jb<dzk<?, ?>>> c = jm.a(lf.aC, a);
-
-   public boolean a(dbs $$0, dsy $$1, ayk $$2, io $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<dzk<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public dzk(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public ayt d() {
+      return new dzk(this.g());
    }
 
-   public F b() {
-      return this.d;
+   @Override
+   public dzh e() {
+      return new dyv.a(this.g());
    }
 
-   public FC c() {
-      return this.e;
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

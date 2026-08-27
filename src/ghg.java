@@ -1,11 +1,15 @@
-public class ghg extends giz<cel, fsp<cel>> {
-   private static final akm a = new akm("textures/entity/cow/cow.png");
+public interface ghg<T extends dqc> {
+   void a(T var1, float var2, fbc var3, gfg var4, int var5, int var6);
 
-   public ghg(ght.a $$0) {
-      super($$0, new fsp<>($$0.a(fvv.G)), 0.7F);
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public akm a(cel $$0) {
-      return a;
+   default int aQ_() {
+      return 64;
+   }
+
+   default boolean a(T $$0, ewu $$1) {
+      return ewu.b($$0.az_()).a((jk)$$1, (double)this.aQ_());
    }
 }

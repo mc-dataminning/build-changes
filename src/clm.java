@@ -1,68 +1,62 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record clm(String q, Predicate<ix<cdv>> r, Predicate<ix<cdv>> s, ImmutableSet<ctj> t, ImmutableSet<ddy> u, @Nullable avg v) {
-   public static final Predicate<ix<cdv>> a = $$0 -> $$0.a(awg.a);
-   public static final clm b = a("none", cdv.a, a, null);
-   public static final clm c = a("armorer", cdw.a, avh.AV);
-   public static final clm d = a("butcher", cdw.b, avh.AW);
-   public static final clm e = a("cartographer", cdw.c, avh.AX);
-   public static final clm f = a("cleric", cdw.d, avh.AY);
-   public static final clm g = a("farmer", cdw.e, ImmutableSet.of(ctr.pw, ctr.pv, ctr.vl, ctr.ry), ImmutableSet.of(dea.cC), avh.AZ);
-   public static final clm h = a("fisherman", cdw.f, avh.Ba);
-   public static final clm i = a("fletcher", cdw.g, avh.Bb);
-   public static final clm j = a("leatherworker", cdw.h, avh.Bc);
-   public static final clm k = a("librarian", cdw.i, avh.Bd);
-   public static final clm l = a("mason", cdw.j, avh.Be);
-   public static final clm m = a("nitwit", cdv.a, cdv.a, null);
-   public static final clm n = a("shepherd", cdw.k, avh.Bf);
-   public static final clm o = a("toolsmith", cdw.l, avh.Bg);
-   public static final clm p = a("weaponsmith", cdw.m, avh.Bh);
+public class clm {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<clm> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               lh.y.q().fieldOf("type").orElseGet(() -> clq.c).forGetter($$0x -> $$0x.f),
+               lh.z.q().fieldOf("profession").orElseGet(() -> clo.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, clm::new)
+   );
+   public static final zc<wp, clm> d = zc.a(za.a(li.ar), $$0 -> $$0.f, za.a(li.aq), $$0 -> $$0.g, za.g, $$0 -> $$0.h, clm::new);
+   private final clq f;
+   private final clo g;
+   private final int h;
 
-   @Override
-   public String toString() {
-      return this.q;
+   public clm(clq $$0, clo $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   private static clm a(String $$0, akl<cdv> $$1, @Nullable avg $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   public clq a() {
+      return this.f;
    }
 
-   private static clm a(String $$0, Predicate<ix<cdv>> $$1, Predicate<ix<cdv>> $$2, @Nullable avg $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   public clo b() {
+      return this.g;
    }
 
-   private static clm a(String $$0, akl<cdv> $$1, ImmutableSet<ctj> $$2, ImmutableSet<ddy> $$3, @Nullable avg $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   public int c() {
+      return this.h;
    }
 
-   private static clm a(String $$0, Predicate<ix<cdv>> $$1, Predicate<ix<cdv>> $$2, ImmutableSet<ctj> $$3, ImmutableSet<ddy> $$4, @Nullable avg $$5) {
-      return jk.a(le.z, new akm($$0), new clm($$0, $$1, $$2, $$3, $$4, $$5));
+   public clm a(clq $$0) {
+      return new clm($$0, this.g, this.h);
    }
 
-   public String a() {
-      return this.q;
+   public clm a(clo $$0) {
+      return new clm(this.f, $$0, this.h);
    }
 
-   public Predicate<ix<cdv>> b() {
-      return this.r;
+   public clm a(int $$0) {
+      return new clm(this.f, this.g, $$0);
    }
 
-   public Predicate<ix<cdv>> c() {
-      return this.s;
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
    }
 
-   public ImmutableSet<ctj> d() {
-      return this.t;
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
    }
 
-   public ImmutableSet<ddy> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public avg f() {
-      return this.v;
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

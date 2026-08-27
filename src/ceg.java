@@ -1,48 +1,48 @@
 import java.util.Optional;
 
 public interface ceg {
-   boolean u();
+   boolean t();
 
    void w(boolean var1);
 
-   void n(cto var1);
+   void n(cuh var1);
 
-   void c(ud var1);
+   void c(uk var1);
 
-   cto b();
+   cuh b();
 
-   avg y();
+   avn x();
 
    @Deprecated
-   static void a(bsq $$0, cto $$1) {
-      $$1.b(kb.f, $$0.ah());
-      cwd.a(kb.M, $$1, $$1x -> {
-         if ($$0.gf()) {
-            $$1x.a("NoAI", $$0.gf());
+   static void a(bsq $$0, cuh $$1) {
+      $$1.b(ke.f, $$0.ah());
+      cxf.a(ke.N, $$1, $$1x -> {
+         if ($$0.go()) {
+            $$1x.a("NoAI", $$0.go());
          }
 
-         if ($$0.aW()) {
-            $$1x.a("Silent", $$0.aW());
+         if ($$0.ba()) {
+            $$1x.a("Silent", $$0.ba());
          }
 
-         if ($$0.aX()) {
-            $$1x.a("NoGravity", $$0.aX());
+         if ($$0.bb()) {
+            $$1x.a("NoGravity", $$0.bb());
          }
 
-         if ($$0.cf()) {
-            $$1x.a("Glowing", $$0.cf());
+         if ($$0.ck()) {
+            $$1x.a("Glowing", $$0.ck());
          }
 
-         if ($$0.cu()) {
-            $$1x.a("Invulnerable", $$0.cu());
+         if ($$0.cz()) {
+            $$1x.a("Invulnerable", $$0.cz());
          }
 
-         $$1x.a("Health", $$0.eA());
+         $$1x.a("Health", $$0.eI());
       });
    }
 
    @Deprecated
-   static void a(bsq $$0, ud $$1) {
+   static void a(bsq $$0, uk $$1) {
       if ($$1.e("NoAI")) {
          $$0.t($$1.q("NoAI"));
       }
@@ -68,21 +68,21 @@ public interface ceg {
       }
    }
 
-   static <T extends bso & ceg> Optional<bpu> a(clw $$0, bpt $$1, T $$2) {
-      cto $$3 = $$0.b($$1);
-      if ($$3.g() == ctr.qz && $$2.bD()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         cto $$4 = $$2.b();
+   static <T extends bso & ceg> Optional<bqa> a(cly $$0, bpz $$1, T $$2) {
+      cuh $$3 = $$0.b($$1);
+      if ($$3.f() == cuk.rW && $$2.bI()) {
+         $$2.a($$2.x(), 1.0F, 1.0F);
+         cuh $$4 = $$2.b();
          $$2.n($$4);
-         cto $$5 = ctq.a($$3, $$0, $$4, false);
+         cuh $$5 = cuj.a($$3, $$0, $$4, false);
          $$0.a($$1, $$5);
-         dax $$6 = $$2.dP();
-         if (!$$6.B) {
-            am.k.a((aqn)$$0, $$4);
+         dca $$6 = $$2.dU();
+         if (!$$6.C) {
+            an.k.a((aqu)$$0, $$4);
          }
 
          $$2.ao();
-         return Optional.of(bpu.a($$6.B));
+         return Optional.of(bqa.a($$6.C));
       } else {
          return Optional.empty();
       }

@@ -1,46 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaf extends dza {
-   public eaf(Codec<ecd> $$0) {
-      super($$0);
+public class eaf implements eab {
+   public static final Codec<eaf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jv.v(16).optionalFieldOf("offset", ir.c).forGetter($$0x -> $$0x.e)).apply($$0, eaf::new)
+   );
+   private final jv e;
+
+   public eaf(jv $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(dcv $$0, ir $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   protected void a(day $$0, ayk $$1, io $$2, int $$3, io.a $$4, ecd $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  drb $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dhv.e) && $$19.b(dhv.c) && $$19.b(dhv.b) && $$19.b(dhv.d)) {
-                     $$19 = $$19.a(dhv.e, Boolean.valueOf($$15))
-                        .a(dhv.c, Boolean.valueOf($$16))
-                        .a(dhv.b, Boolean.valueOf($$17))
-                        .a(dhv.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public eac<?> a() {
+      return eac.h;
    }
 }

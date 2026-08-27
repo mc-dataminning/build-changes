@@ -1,15 +1,24 @@
-public class gmv extends gmf<cfh, fvn<cfh>> {
-   private static final akm a = new akm("textures/entity/wolf/wolf_collar.png");
+public class gmv<T extends cik> extends gli<T, fxn<T>> {
+   public static final akt a = new akt("textures/entity/skeleton/skeleton.png");
 
-   public gmv(gjp<cfh, fvn<cfh>> $$0) {
-      super($$0);
+   public gmv(gkq.a $$0) {
+      this($$0, fyr.br, fyr.bt, fyr.bu);
    }
 
-   public void a(eys $$0, gck $$1, int $$2, cfh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ch()) {
-         float[] $$10 = $$3.gA().d();
-         eyw $$11 = $$1.getBuffer(gcs.e(a));
-         this.c().a($$0, $$11, $$2, gnm.d, $$10[0], $$10[1], $$10[2], 1.0F);
-      }
+   public gmv(gkq.a $$0, fyq $$1, fyq $$2, fyq $$3) {
+      this($$0, $$2, $$3, new fxn<>($$0.a($$1)));
+   }
+
+   public gmv(gkq.a $$0, fyq $$1, fyq $$2, fxn<T> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new gov<>(this, new fxn($$0.a($$1)), new fxn($$0.a($$2)), $$0.g()));
+   }
+
+   public akt a(T $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.gA();
    }
 }

@@ -1,11 +1,9 @@
-import java.security.SignatureException;
-
-@FunctionalInterface
 public interface ayo {
-   void update(ayo.a var1) throws SignatureException;
+   int a();
 
-   @FunctionalInterface
-   public interface a {
-      void update(byte[] var1) throws SignatureException;
+   String b();
+
+   default xe d() {
+      return xe.c(this.b());
    }
 }

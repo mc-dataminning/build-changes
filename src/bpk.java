@@ -1,147 +1,57 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public abstract class bpk {
-   private final UUID h;
-   protected wx a;
-   protected float b;
-   protected bpk.a c;
-   protected bpk.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class bpk extends bpd {
+   public static final Codec<bpk> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bpk::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final float b;
+   private final float d;
 
-   public bpk(UUID $$0, wx $$1, bpk.a $$2, bpk.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   private bpk(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   public UUID h() {
-      return this.h;
+   public static bpk b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new bpk($$0, $$1);
+      }
    }
 
-   public wx i() {
-      return this.a;
+   @Override
+   public float a(ayt $$0) {
+      return aym.b($$0, this.b, this.d);
    }
 
-   public void a(wx $$0) {
-      this.a = $$0;
-   }
-
-   public float j() {
+   @Override
+   public float a() {
       return this.b;
    }
 
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bpk.a k() {
-      return this.c;
-   }
-
-   public void a(bpk.a $$0) {
-      this.c = $$0;
-   }
-
-   public bpk.b l() {
+   @Override
+   public float b() {
       return this.d;
    }
 
-   public void a(bpk.b $$0) {
-      this.d = $$0;
+   @Override
+   public bpe<?> c() {
+      return bpe.b;
    }
 
-   public boolean m() {
-      return this.e;
-   }
-
-   public bpk a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
-      return this.f;
-   }
-
-   public bpk b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public bpk c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(String $$0, n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bpk.a a(String $$0) {
-         for (bpk.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
-   }
-
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bpk.b a(String $$0) {
-         for (bpk.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,103 +1,64 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class egz {
-   public static final akl<egy> a = a("normal");
-   public static final akl<egy> b = a("flat");
-   public static final akl<egy> c = a("large_biomes");
-   public static final akl<egy> d = a("amplified");
-   public static final akl<egy> e = a("single_biome_surface");
-   public static final akl<egy> f = a("debug_all_block_states");
+public class egz extends ehc {
+   public static final Codec<egz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("fixed_height").orElse(true).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, egz::new)
+   );
+   private static final iw b = iw.d;
+   private static final iw[] c = iw.c.a.a().filter($$0 -> $$0 != b.g()).toArray(iw[]::new);
+   private final float d;
+   private final boolean e;
 
-   public static void a(qo<egy> $$0) {
-      new egz.a($$0).a();
+   public egz(float $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static akl<egy> a(String $$0) {
-      return akl.a(lf.aQ, new akm($$0));
+   @Override
+   protected ehd<?> a() {
+      return ehd.d;
    }
 
-   public static Optional<akl<egy>> a(dxo $$0) {
-      return $$0.a(duu.b).flatMap($$0x -> {
-         dsy $$1 = $$0x.b();
-         if ($$1 instanceof dwo) {
-            return Optional.of(b);
-         } else {
-            return $$1 instanceof dwk ? Optional.of(f) : Optional.empty();
+   @Override
+   public void a(ehc.a $$0) {
+      ayt $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ir> $$2 = $$0.d();
+         List<ir> $$3 = $$0.c();
+         if (!$$3.isEmpty()) {
+            int $$4;
+            if (this.e) {
+               $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+            } else {
+               $$4 = $$1.a($$3.get(0).v() + 1, $$3.get($$3.size() - 1).v() - 1);
+            }
+
+            List<ir> $$6 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+            if (!$$6.isEmpty()) {
+               Collections.shuffle($$6);
+               Optional<ir> $$7 = $$6.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+               if (!$$7.isEmpty()) {
+                  $$0.a($$7.get(), dfe.qp.n().a(dev.b, b));
+                  $$0.a().a($$7.get(), dqe.I).ifPresent($$1x -> {
+                     int $$2x = 2 + $$1.a(2);
+
+                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                        $$1x.a(dpy.c.a($$1.a(599)));
+                     }
+                  });
+               }
+            }
          }
-      });
-   }
-
-   public static dxo a(jl $$0) {
-      return $$0.d(lf.aQ).g(a).a().a();
-   }
-
-   public static duu b(jl $$0) {
-      return $$0.d(lf.aQ).g(a).a().b().orElseThrow();
-   }
-
-   static class a {
-      private final qo<egy> a;
-      private final iy<dwy> b;
-      private final iy<dbw> c;
-      private final iy<egn> d;
-      private final iy<ehp> e;
-      private final iy<dck> f;
-      private final ix<dut> g;
-      private final duu h;
-      private final duu i;
-
-      a(qo<egy> $$0) {
-         this.a = $$0;
-         iy<dut> $$1 = $$0.a(lf.aE);
-         this.b = $$0.a(lf.aG);
-         this.c = $$0.a(lf.az);
-         this.d = $$0.a(lf.aI);
-         this.e = $$0.a(lf.aL);
-         this.f = $$0.a(lf.aR);
-         this.g = $$1.b(dur.a);
-         ix<dut> $$2 = $$1.b(dur.b);
-         ix<dwy> $$3 = this.b.b(dwy.f);
-         ix.c<dck> $$4 = this.f.b(dcl.a);
-         this.h = new duu($$2, new dww(dcj.a($$4), $$3));
-         ix<dut> $$5 = $$1.b(dur.c);
-         ix<dwy> $$6 = this.b.b(dwy.g);
-         this.i = new duu($$5, new dww(dcn.a(this.c), $$6));
-      }
-
-      private duu a(dsy $$0) {
-         return new duu(this.g, $$0);
-      }
-
-      private duu a(dca $$0, ix<dwy> $$1) {
-         return this.a(new dww($$0, $$1));
-      }
-
-      private egy a(duu $$0) {
-         return new egy(Map.of(duu.b, $$0, duu.c, this.h, duu.d, this.i));
-      }
-
-      private void a(akl<egy> $$0, duu $$1) {
-         this.a.a($$0, this.a($$1));
-      }
-
-      private void a(dca $$0) {
-         ix<dwy> $$1 = this.b.b(dwy.c);
-         this.a(egz.a, this.a($$0, $$1));
-         ix<dwy> $$2 = this.b.b(dwy.d);
-         this.a(egz.c, this.a($$0, $$2));
-         ix<dwy> $$3 = this.b.b(dwy.e);
-         this.a(egz.d, this.a($$0, $$3));
-      }
-
-      public void a() {
-         ix.c<dck> $$0 = this.f.b(dcl.b);
-         this.a(dcj.a($$0));
-         ix<dwy> $$1 = this.b.b(dwy.c);
-         ix.c<dbw> $$2 = this.c.b(dcd.b);
-         this.a(egz.e, this.a(new dch($$2), $$1));
-         this.a(egz.b, this.a(new dwo(efm.a(this.c, this.e, this.d))));
-         this.a(egz.f, this.a(new dwk($$2)));
       }
    }
 }

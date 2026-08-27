@@ -1,3 +1,10 @@
-public interface dak {
-   int a(aqm var1, boolean var2, boolean var3);
+public class dak extends dad {
+   public dak(dad.b $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
 }

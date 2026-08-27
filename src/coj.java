@@ -1,97 +1,84 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public abstract class coj extends brv {
+   protected static final ajy<Integer> f = akc.a(coj.class, aka.b);
+   protected static final ajy<Integer> g = akc.a(coj.class, aka.b);
+   protected static final ajy<Float> h = akc.a(coj.class, aka.d);
 
-public final class coj {
-   private static final coj b = new coj(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cok c;
-   private final long d;
-
-   private coj(@Nullable cok $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static coj a(cok $$0, Collection<coh> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new coj($$0, $$2);
-      }
-   }
-
-   public static coj a() {
-      return b;
-   }
-
-   public static coj a(coh $$0) {
-      return new coj($$0.a, $$0.b);
-   }
-
-   public static coj a(coh $$0, coh... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new coj($$0.a, $$2);
-   }
-
-   private static long a(cok $$0, long $$1, Iterable<coh> $$2) {
-      for (coh $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(coh $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(coj $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public coj b(coj $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new coj(this.c, this.d | $$0.d);
-      }
+   public coj(bsb<?> $$0, dca $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(bqt $$0, float $$1) {
+      if (this.dU().C || this.dP()) {
          return true;
-      } else {
-         if ($$0 instanceof coj $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
+      } else if (this.b($$0)) {
          return false;
+      } else {
+         this.n(-this.P());
+         this.d(10);
+         this.bA();
+         this.b(this.M() + $$1 * 10.0F);
+         this.a(dxv.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cly && ((cly)$$0.d()).gm().d;
+         if (($$2 || !(this.M() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.ao();
+            }
+         } else {
+            this.a($$0);
+         }
+
+         return true;
+      }
+   }
+
+   boolean d(bqt $$0) {
+      return false;
+   }
+
+   public void b(cuc $$0) {
+      this.an();
+      if (this.dU().ab().b(dbw.i)) {
+         cuh $$1 = new cuh($$0);
+         $$1.b(ke.f, this.ah());
+         this.b($$1);
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected void a(akc.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
    }
+
+   public void d(int $$0) {
+      this.as.a(f, $$0);
+   }
+
+   public void n(int $$0) {
+      this.as.a(g, $$0);
+   }
+
+   public void b(float $$0) {
+      this.as.a(h, $$0);
+   }
+
+   public float M() {
+      return this.as.a(h);
+   }
+
+   public int O() {
+      return this.as.a(f);
+   }
+
+   public int P() {
+      return this.as.a(g);
+   }
+
+   protected void a(bqt $$0) {
+      this.b(this.ah_());
+   }
+
+   abstract cuc ah_();
 }

@@ -1,23 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aiv implements zl<aiq> {
+   public static final zc<we, aiv> a = zl.a(aiv::a, aiv::new);
+   private final xe b;
 
-public class aiv implements ze<air> {
-   public static final aiv a = new aiv();
-   public static final yv<ByteBuf, aiv> b = yv.a(a);
+   public aiv(xe $$0) {
+      this.b = $$0;
+   }
 
-   private aiv() {
+   private aiv(we $$0) {
+      this.b = xe.a.b($$0.d(262144), jo.b);
+   }
+
+   private void a(we $$0) {
+      $$0.a(xe.a.a(this.b, jo.b));
    }
 
    @Override
-   public zg<aiv> a() {
-      return aip.i;
+   public zn<aiv> a() {
+      return aiw.e;
    }
 
-   public void a(air $$0) {
+   public void a(aiq $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public xe b() {
+      return this.b;
    }
 }

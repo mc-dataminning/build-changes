@@ -1,56 +1,42 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.io.IOException;
 import org.slf4j.Logger;
 
-public class far extends fao {
-   private static final Logger e = LogUtils.getLogger();
-   public List<faq> a;
-   public int b;
-   public int c;
-   public int d;
+public class far {
+   private static final Logger a = LogUtils.getLogger();
 
-   public far() {
+   public static void a(int $$0) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram($$0);
    }
 
-   public far(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
+   public static void a(fas $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.d().a();
+      $$0.c().a();
+      GlStateManager.glDeleteProgram($$0.a());
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
-
-   public static far a(String $$0) {
-      far $$1 = new far();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(faq.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fcl.a("page", $$3, 0);
-         $$1.c = fcl.a("size", $$3, 0);
-         $$1.d = fcl.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+   public static int a() throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$0 = GlStateManager.glCreateProgram();
+      if ($$0 <= 0) {
+         throw new IOException("Could not create shader program (returned program ID " + $$0 + ")");
+      } else {
+         return $$0;
       }
+   }
 
-      return $$1;
+   public static void b(fas $$0) {
+      RenderSystem.assertOnRenderThread();
+      $$0.e();
+      GlStateManager.glLinkProgram($$0.a());
+      int $$1 = GlStateManager.glGetProgrami($$0.a(), 35714);
+      if ($$1 == 0) {
+         a.warn("Error encountered when linking program containing VS {} and FS {}. Log output:", $$0.c().b(), $$0.d().b());
+         a.warn(GlStateManager.glGetProgramInfoLog($$0.a(), 32768));
+      }
    }
 }

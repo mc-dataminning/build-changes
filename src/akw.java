@@ -1,102 +1,80 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Collection;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class akw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private static final jj c = new jj(Optional.empty(), Lifecycle.experimental());
+public class akw extends IOException {
+   private final List<akw.a> a = Lists.newArrayList();
+   private final String b;
 
-   public static CompletableFuture<je<akv>> a(je<akv> $$0, atw $$1, Executor $$2) {
-      jl.b $$3 = $$0.b(akv.d);
-      akk<JsonElement> $$4 = new akw.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<jt<?>>> $$5 = eph.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
-      CompletableFuture<List<jt<?>>> $$6 = ac.d($$5);
-      return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
+   public akw(String $$0) {
+      this.a.add(new akw.a());
+      this.b = $$0;
    }
 
-   private static <T> CompletableFuture<jt<?>> a(eph<T> $$0, akk<JsonElement> $$1, atw $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         jt<T> $$3x = new jf<>($$0.b(), Lifecycle.experimental());
-         Map<akm, JsonElement> $$4 = new HashMap<>();
-         aua.a($$2, $$0.d(), b, $$4);
-         $$4.forEach(($$3xx, $$4x) -> $$0.a($$3xx, $$1, $$4x).ifPresent($$3xxx -> $$3x.a(akl.a($$0.b(), $$3xx), (T)$$3xxx, c)));
-         return $$3x;
-      }, $$3);
+   public akw(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new akw.a());
+      this.b = $$0;
    }
 
-   private static je<akv> a(je<akv> $$0, List<jt<?>> $$1) {
-      je<akv> $$2 = b($$0, $$1);
-      ayi.a $$3 = new ayi.a();
-      jl.b $$4 = $$2.a();
-      epl $$5 = new epl($$3, erw.q, $$4.b());
-      eph.a().forEach($$2x -> a($$5, $$2x, $$4));
-      $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      return $$2;
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
    }
 
-   private static je<akv> b(je<akv> $$0, List<jt<?>> $$1) {
-      jl $$2 = new jl.c($$1);
-      ((jt)$$2.<epk>d(lf.aU)).a(epd.a, epk.a, c);
-      return $$0.a(akv.d, $$2.d());
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new akw.a());
    }
 
-   private static <T> void a(epl $$0, eph<T> $$1, jl $$2) {
-      jk<T> $$3 = $$2.d($$1.b());
-      $$3.h().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
    }
 
-   static class a implements iz.a {
-      private final jl a;
+   public static akw a(Exception $$0) {
+      if ($$0 instanceof akw) {
+         return (akw)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
+         }
 
-      a(jl $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public Stream<akl<? extends jk<?>>> a() {
-         return this.a.a();
-      }
-
-      @Override
-      public <T> Optional<iz.b<T>> a(akl<? extends jk<? extends T>> $$0) {
-         return this.a.c($$0).map(jk::u);
+         return new akw($$1, $$0);
       }
    }
 
-   public static class b {
-      private final jl.b a;
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
 
-      public b(jl.b $$0) {
-         this.a = $$0;
+      a() {
       }
 
-      public jl.b a() {
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
          return this.a;
       }
 
-      public iy.a b() {
-         return this.a.b();
+      public String b() {
+         return StringUtils.join(this.b, "->");
       }
 
-      public Collection<akm> a(akl<? extends jk<?>> $$0) {
-         return this.a.c($$0).stream().flatMap($$0x -> $$0x.h().map($$0xx -> $$0xx.h().a())).toList();
-      }
-
-      public epk b(akl<epk> $$0) {
-         return this.a.a(lf.aU).flatMap($$1 -> $$1.a($$0)).map(ix::a).orElse(epk.a);
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
       }
    }
 }

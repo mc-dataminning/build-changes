@@ -1,29 +1,33 @@
-public class aen implements ze<abq> {
-   public static final yv<vx, aen> a = ze.a(aen::a, aen::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public aen(dss $$0) {
-      this.b = $$0.r();
+public class aen implements zl<abw> {
+   public static final zc<we, aen> a = zl.a(aen::a, aen::new);
+   @Nullable
+   private final akt b;
+
+   public aen(@Nullable akt $$0) {
+      this.b = $$0;
    }
 
-   private aen(vx $$0) {
-      this.b = $$0.l();
+   private aen(we $$0) {
+      this.b = $$0.c(we::q);
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b, we::a);
    }
 
    @Override
-   public zg<aen> a() {
-      return agb.av;
+   public zn<aen> a() {
+      return agj.ap;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Nullable
+   public akt b() {
       return this.b;
    }
 }

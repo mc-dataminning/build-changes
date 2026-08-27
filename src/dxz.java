@@ -1,25 +1,11 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-class dxz extends dyc {
-   public static final MapCodec<dxz> a = a(dxz::new);
+public interface dxz {
+   Codec<dxz> c = lh.v.q().dispatch(dxz::a, dya::a);
+   zc<wp, dxz> d = za.a(li.W).b(dxz::a, dya::b);
 
-   public dxz(List<dya> $$0) {
-      super($$0);
-   }
+   Optional<ewu> a(dca var1);
 
-   public boolean a(dbs $$0, io $$1) {
-      for (dya $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public dyb<?> a() {
-      return dyb.i;
-   }
+   dya<? extends dxz> a();
 }

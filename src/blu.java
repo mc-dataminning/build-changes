@@ -1,33 +1,31 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
 import java.util.Optional;
 
-public abstract class blu<C, V> implements blo<StringReader, V>, blv {
-   private final bli<akm> b;
-   protected final C a;
+public interface blu<S, T> {
+   Optional<T> a(blt<S> var1);
 
-   protected blu(bli<akm> $$0, C $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   static <S, T> blu<S, T> a(blx<S> $$0, blu.a<S, T> $$1) {
+      return new blu.c<>($$1, $$0);
    }
 
-   @Override
-   public Optional<V> a(bln<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-      Optional<akm> $$2 = $$0.b(this.b);
-      if ($$2.isPresent()) {
-         try {
-            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
-         } catch (Exception var5) {
-            $$0.a().a($$1, this, var5);
-            return Optional.empty();
-         }
-      } else {
-         $$0.a().a($$1, this, akm.c.createWithContext((ImmutableStringReader)$$0.b()));
-         return Optional.empty();
+   static <S, T> blu<S, T> a(blx<S> $$0, blu.b<T> $$1) {
+      return new blu.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   }
+
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(blt<S> var1, blv var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      T run(blv var1);
+   }
+
+   public static record c<S, T>(blu.a<S, T> a, blx<S> b) implements blu<S, T> {
+      @Override
+      public Optional<T> a(blt<S> $$0) {
+         blv $$1 = new blv();
+         return this.b.a($$0, $$1, blp.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
    }
-
-   protected abstract V a(ImmutableStringReader var1, akm var2) throws Exception;
 }

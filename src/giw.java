@@ -1,25 +1,64 @@
-public class giw extends ghs<cmn> {
-   private static final akm a = new akm("textures/entity/llama/spit.png");
-   private final ftq<cmn> f;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-   public giw(ght.a $$0) {
-      super($$0);
-      this.f = new ftq<>($$0.a(fvv.az));
+public class giw implements gis.a {
+   private final fgj a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
+
+   public giw(fgj $$0) {
+      this.a = $$0;
    }
 
-   public void a(cmn $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(ayd.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayd.i($$2, $$0.P, $$0.dH())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      eyw $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
+      dcb $$5 = this.a.r;
+      fbg $$6 = $$1.getBuffer(gfo.B());
+      ir $$7 = ir.a($$2, 0.0, $$4);
+
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            duy $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<dyu.a, dyu> $$11 : $$10.f()) {
+               dyu.a $$12 = $$11.getKey();
+               dbh $$13 = $$10.g();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jt.a($$13.e, $$15);
+                     int $$18 = jt.a($$13.f, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gfe.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public akm a(cmn $$0) {
-      return a;
+   private Vector3f a(dyu.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

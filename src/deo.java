@@ -1,114 +1,173 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Optional;
 
-public class deo extends dcq {
-   public static final MapCodec<deo> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(le.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), u()).apply($$0, deo::new)
-   );
-   public static final drs d = dcq.b;
-   protected static final float e = 1.0F;
-   protected static final evd f = ddy.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final evd g = ddy.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final evd h = eva.a(f, g);
-   private static final Map<den, deo> i = Maps.newHashMap();
-   private static final Iterable<euk> j = ImmutableList.of(new euk(0.5, 1.0, 0.5));
-   private final den k;
+public abstract class deo extends dfc {
+   private static final int c = 8;
+   private final float d;
+   protected static final float a = 1.0F;
+   protected static final exn b = dfc.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-   @Override
-   public MapCodec<deo> a() {
-      return c;
+   public deo(dtb.d $$0, float $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
-   protected deo(ddy $$0, dra.d $$1) {
-      super($$1);
-      this.k(this.E.b().a(d, Boolean.valueOf(false)));
-      if ($$0 instanceof den $$2) {
-         i.put($$2, this);
-         this.k = $$2;
+   @Override
+   protected abstract MapCodec<? extends deo> a();
+
+   @Override
+   public dtc a(cyd $$0) {
+      return a($$0.q(), $$0.a());
+   }
+
+   public static dtc a(dbg $$0, ir $$1) {
+      ir $$2 = $$1.d();
+      dtc $$3 = $$0.a_($$2);
+      return dnb.m($$3) ? dfe.dd.n() : ((dif)dfe.dc).b($$0, $$1);
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return b;
+   }
+
+   @Override
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      if ($$3.a(24) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avo.jg, avq.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
+      }
+
+      ir $$4 = $$2.d();
+      dtc $$5 = $$1.a_($$4);
+      if (!this.f($$5) && !$$5.d($$1, $$4, iw.b)) {
+         if (this.f($$1.a_($$2.g()))) {
+            for (int $$10 = 0; $$10 < 2; $$10++) {
+               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
+               double $$12 = (double)$$2.v() + $$3.j();
+               double $$13 = (double)$$2.w() + $$3.j();
+               $$1.a(lb.V, $$11, $$12, $$13, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.h()))) {
+            for (int $$14 = 0; $$14 < 2; $$14++) {
+               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
+               double $$16 = (double)$$2.v() + $$3.j();
+               double $$17 = (double)$$2.w() + $$3.j();
+               $$1.a(lb.V, $$15, $$16, $$17, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.e()))) {
+            for (int $$18 = 0; $$18 < 2; $$18++) {
+               double $$19 = (double)$$2.u() + $$3.j();
+               double $$20 = (double)$$2.v() + $$3.j();
+               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
+               $$1.a(lb.V, $$19, $$20, $$21, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.f()))) {
+            for (int $$22 = 0; $$22 < 2; $$22++) {
+               double $$23 = (double)$$2.u() + $$3.j();
+               double $$24 = (double)$$2.v() + $$3.j();
+               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
+               $$1.a(lb.V, $$23, $$24, $$25, 0.0, 0.0, 0.0);
+            }
+         }
+
+         if (this.f($$1.a_($$2.c()))) {
+            for (int $$26 = 0; $$26 < 2; $$26++) {
+               double $$27 = (double)$$2.u() + $$3.j();
+               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
+               double $$29 = (double)$$2.w() + $$3.j();
+               $$1.a(lb.V, $$27, $$28, $$29, 0.0, 0.0, 0.0);
+            }
+         }
       } else {
-         throw new IllegalArgumentException("Expected block to be of " + den.class + " was " + $$0.getClass());
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
+            double $$9 = (double)$$2.w() + $$3.j();
+            $$1.a(lb.V, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         }
       }
    }
 
+   protected abstract boolean f(dtc var1);
+
    @Override
-   protected Iterable<euk> b(drb $$0) {
-      return j;
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if (!$$3.bh()) {
+         $$3.i($$3.aB() + 1);
+         if ($$3.aB() == 0) {
+            $$3.g(8);
+         }
+      }
+
+      $$3.a($$1.aj().a(), this.d);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return h;
+   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         if (a($$1)) {
+            Optional<eqe> $$5 = eqe.a($$1, $$2, iw.a.a);
+            if ($$5.isPresent()) {
+               $$5.get().b();
+               return;
+            }
+         }
+
+         if (!$$0.a((dcd)$$1, $$2)) {
+            $$1.a($$2, false);
+         }
+      }
+   }
+
+   private static boolean a(dca $$0) {
+      return $$0.af() == dca.h || $$0.af() == dca.i;
    }
 
    @Override
-   protected bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
-      if ($$0.a(ctr.os) || $$0.a(ctr.tX)) {
-         return bpw.e;
-      } else if (a($$6) && $$0.e() && $$1.c(d)) {
-         a($$4, $$1, $$2, $$3);
-         return bpw.a($$2.B);
+   protected void a(dca $$0, cly $$1, ir $$2, dtc $$3) {
+   }
+
+   @Override
+   public dtc a(dca $$0, ir $$1, dtc $$2, cly $$3) {
+      if (!$$0.x_()) {
+         $$0.a(null, 1009, $$1, 0);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public static boolean a(dca $$0, ir $$1, iw $$2) {
+      dtc $$3 = $$0.a_($$1);
+      return !$$3.i() ? false : a($$0, $$1).a((dcd)$$0, $$1) || b($$0, $$1, $$2);
+   }
+
+   private static boolean b(dca $$0, ir $$1, iw $$2) {
+      if (!a($$0)) {
+         return false;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         ir.a $$3 = $$1.j();
+         boolean $$4 = false;
+
+         for (iw $$5 : iw.values()) {
+            if ($$0.a_($$3.g($$1).d($$5)).a(dfe.cZ)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            return false;
+         } else {
+            iw.a $$6 = $$2.o().d() ? $$2.i().o() : iw.c.a.b($$0.A);
+            return eqe.a($$0, $$1, $$6).isPresent();
+         }
       }
-   }
-
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      bpu $$5 = dek.a($$1, $$2, dea.eg.n(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
-      }
-
-      return $$5;
-   }
-
-   private static boolean a(eug $$0) {
-      return $$0.e().d - (double)$$0.a().v() > 0.5;
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(d);
-   }
-
-   @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return new cto(dea.eg);
-   }
-
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      return $$1 == it.a && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      return $$1.a_($$2.d()).e();
-   }
-
-   @Override
-   protected int a(drb $$0, dax $$1, io $$2) {
-      return dek.d;
-   }
-
-   @Override
-   protected boolean c_(drb $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(drb $$0, enj $$1) {
-      return false;
-   }
-
-   public static drb a(den $$0) {
-      return i.get($$0).n();
-   }
-
-   public static boolean g(drb $$0) {
-      return $$0.a(avw.bk, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

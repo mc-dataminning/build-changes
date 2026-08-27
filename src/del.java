@@ -1,61 +1,72 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class del extends dkr {
-   public static final MapCodec<del> a = b(del::new);
-   public static final drv b = drr.R;
+public abstract class del extends dfc implements dmr {
+   public static final dtt d = dts.C;
+   private static final exn a = dfc.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+
+   protected del(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
+   }
 
    @Override
-   public MapCodec<del> a() {
+   protected abstract MapCodec<? extends del> a();
+
+   protected void a(dtc $$0, dcb $$1, ir $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.F_().a(40));
+      }
+   }
+
+   protected static boolean e(dtc $$0, dbg $$1, ir $$2) {
+      if ($$0.c(d)) {
+         return true;
+      } else {
+         for (iw $$3 : iw.values()) {
+            if ($$1.b_($$2.a($$3)).a(awj.a)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      epe $$1 = $$0.q().b_($$0.a());
+      return this.n().a(d, Boolean.valueOf($$1.a(awj.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
       return a;
    }
 
-   public del(dra.d $$0) {
-      super($$0);
-      this.k(this.n().a(b, it.c));
-   }
-
-   @Nullable
    @Override
-   public dog a(io $$0, drb $$1) {
-      return new dol($$0, $$1);
-   }
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, epf.c, epf.c.a($$3));
+      }
 
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return !$$0.B ? a($$2, doi.J, ($$0x, $$1x, $$2x, $$3) -> dwd.c.a($$0x, $$3.gr(), $$3.gs())) : null;
-   }
-
-   @Nullable
-   @Override
-   public drb a(cwz $$0) {
-      return super.a($$0).a(b, $$0.g());
+      return $$1 == iw.a && !this.a($$0, (dcd)$$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(drb $$0, dad $$1, io $$2, it $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      ir $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, iw.b);
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   public drb a(drb $$0, dkl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
    }
 }

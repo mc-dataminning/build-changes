@@ -1,85 +1,47 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eux implements euw {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public record eux(Optional<bs> b, erp.b c) implements euu {
+   public static final Codec<eux> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axu.a(bs.a, "predicate").forGetter(eux::c), erp.b.e.fieldOf("entity").forGetter(eux::d)).apply($$0, eux::new)
+   );
 
-   public eux(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
-
-      while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
-            return;
-         }
-
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
-            }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
-
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
-      }
+   @Override
+   public euv b() {
+      return euw.h;
    }
 
    @Override
-   public boolean a(euw.a $$0) {
-      int $$1 = this.e - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(eug.f, this.c.a());
    }
 
-   @Override
-   public int size() {
-      return this.e;
+   public boolean a(erp $$0) {
+      brv $$1 = $$0.c(this.c.a());
+      ewu $$2 = $$0.c(eug.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
+   public static euu.a a(erp.b $$0) {
+      return a($$0, bs.a.a());
+   }
+
+   public static euu.a a(erp.b $$0, bs.a $$1) {
+      return () -> new eux(Optional.of($$1.b()), $$0);
+   }
+
+   public static euu.a a(erp.b $$0, bs $$1) {
+      return () -> new eux(Optional.of($$1), $$0);
+   }
+
+   public Optional<bs> c() {
+      return this.b;
+   }
+
+   public erp.b d() {
+      return this.c;
    }
 }

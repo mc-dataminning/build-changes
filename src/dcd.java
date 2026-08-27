@@ -1,70 +1,199 @@
-public abstract class dcd {
-   public static final akl<dbw> a = a("the_void");
-   public static final akl<dbw> b = a("plains");
-   public static final akl<dbw> c = a("sunflower_plains");
-   public static final akl<dbw> d = a("snowy_plains");
-   public static final akl<dbw> e = a("ice_spikes");
-   public static final akl<dbw> f = a("desert");
-   public static final akl<dbw> g = a("swamp");
-   public static final akl<dbw> h = a("mangrove_swamp");
-   public static final akl<dbw> i = a("forest");
-   public static final akl<dbw> j = a("flower_forest");
-   public static final akl<dbw> k = a("birch_forest");
-   public static final akl<dbw> l = a("dark_forest");
-   public static final akl<dbw> m = a("old_growth_birch_forest");
-   public static final akl<dbw> n = a("old_growth_pine_taiga");
-   public static final akl<dbw> o = a("old_growth_spruce_taiga");
-   public static final akl<dbw> p = a("taiga");
-   public static final akl<dbw> q = a("snowy_taiga");
-   public static final akl<dbw> r = a("savanna");
-   public static final akl<dbw> s = a("savanna_plateau");
-   public static final akl<dbw> t = a("windswept_hills");
-   public static final akl<dbw> u = a("windswept_gravelly_hills");
-   public static final akl<dbw> v = a("windswept_forest");
-   public static final akl<dbw> w = a("windswept_savanna");
-   public static final akl<dbw> x = a("jungle");
-   public static final akl<dbw> y = a("sparse_jungle");
-   public static final akl<dbw> z = a("bamboo_jungle");
-   public static final akl<dbw> A = a("badlands");
-   public static final akl<dbw> B = a("eroded_badlands");
-   public static final akl<dbw> C = a("wooded_badlands");
-   public static final akl<dbw> D = a("meadow");
-   public static final akl<dbw> E = a("cherry_grove");
-   public static final akl<dbw> F = a("grove");
-   public static final akl<dbw> G = a("snowy_slopes");
-   public static final akl<dbw> H = a("frozen_peaks");
-   public static final akl<dbw> I = a("jagged_peaks");
-   public static final akl<dbw> J = a("stony_peaks");
-   public static final akl<dbw> K = a("river");
-   public static final akl<dbw> L = a("frozen_river");
-   public static final akl<dbw> M = a("beach");
-   public static final akl<dbw> N = a("snowy_beach");
-   public static final akl<dbw> O = a("stony_shore");
-   public static final akl<dbw> P = a("warm_ocean");
-   public static final akl<dbw> Q = a("lukewarm_ocean");
-   public static final akl<dbw> R = a("deep_lukewarm_ocean");
-   public static final akl<dbw> S = a("ocean");
-   public static final akl<dbw> T = a("deep_ocean");
-   public static final akl<dbw> U = a("cold_ocean");
-   public static final akl<dbw> V = a("deep_cold_ocean");
-   public static final akl<dbw> W = a("frozen_ocean");
-   public static final akl<dbw> X = a("deep_frozen_ocean");
-   public static final akl<dbw> Y = a("mushroom_fields");
-   public static final akl<dbw> Z = a("dripstone_caves");
-   public static final akl<dbw> aa = a("lush_caves");
-   public static final akl<dbw> ab = a("deep_dark");
-   public static final akl<dbw> ac = a("nether_wastes");
-   public static final akl<dbw> ad = a("warped_forest");
-   public static final akl<dbw> ae = a("crimson_forest");
-   public static final akl<dbw> af = a("soul_sand_valley");
-   public static final akl<dbw> ag = a("basalt_deltas");
-   public static final akl<dbw> ah = a("the_end");
-   public static final akl<dbw> ai = a("end_highlands");
-   public static final akl<dbw> aj = a("end_midlands");
-   public static final akl<dbw> ak = a("small_end_islands");
-   public static final akl<dbw> al = a("end_barrens");
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   private static akl<dbw> a(String $$0) {
-      return akl.a(lf.az, new akm($$0));
+public interface dcd extends dbd, dbk, dcq, ddb.a {
+   @Nullable
+   duy a(int var1, int var2, dvx var3, boolean var4);
+
+   @Deprecated
+   boolean b(int var1, int var2);
+
+   int a(dyu.a var1, int var2, int var3);
+
+   int C_();
+
+   ddb G_();
+
+   default ja<dcz> t(ir $$0) {
+      return this.G_().a($$0);
+   }
+
+   default Stream<dtc> c(ewp $$0) {
+      int $$1 = aym.a($$0.a);
+      int $$2 = aym.a($$0.d);
+      int $$3 = aym.a($$0.b);
+      int $$4 = aym.a($$0.e);
+      int $$5 = aym.a($$0.c);
+      int $$6 = aym.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
+   }
+
+   @Override
+   default int a(ir $$0, dbl $$1) {
+      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
+   }
+
+   @Override
+   default ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2) {
+      duy $$3 = this.a(jl.e($$0), jl.e($$2), dvx.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
+   }
+
+   ja<dcz> a(int var1, int var2, int var3);
+
+   boolean x_();
+
+   @Deprecated
+   int A_();
+
+   dwu E_();
+
+   @Override
+   default int J_() {
+      return this.E_().n();
+   }
+
+   @Override
+   default int K_() {
+      return this.E_().o();
+   }
+
+   default ir a(dyu.a $$0, ir $$1) {
+      return new ir($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
+   }
+
+   default boolean u(ir $$0) {
+      return this.a_($$0).i();
+   }
+
+   default boolean v(ir $$0) {
+      if ($$0.v() >= this.A_()) {
+         return this.h($$0);
+      } else {
+         ir $$1 = new ir($$0.u(), this.A_(), $$0.w());
+         if (!this.h($$1)) {
+            return false;
+         } else {
+            for (ir var4 = $$1.d(); var4.v() > $$0.v(); var4 = var4.d()) {
+               dtc $$2 = this.a_(var4);
+               if ($$2.b(this, var4) > 0 && !$$2.k()) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
+   }
+
+   default float w(ir $$0) {
+      return this.x($$0) - 0.5F;
+   }
+
+   @Deprecated
+   default float x(ir $$0) {
+      float $$1 = (float)this.A($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return aym.i(this.E_().s(), $$2, 1.0F);
+   }
+
+   default duy y(ir $$0) {
+      return this.a_(jt.a($$0.u()), jt.a($$0.w()));
+   }
+
+   default duy a_(int $$0, int $$1) {
+      return this.a($$0, $$1, dvx.n, true);
+   }
+
+   default duy a(int $$0, int $$1, dvx $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   @Nullable
+   @Override
+   default dbg a(int $$0, int $$1) {
+      return this.a($$0, $$1, dvx.c, false);
+   }
+
+   default boolean z(ir $$0) {
+      return this.b_($$0).a(awj.a);
+   }
+
+   default boolean d(ewp $$0) {
+      int $$1 = aym.a($$0.a);
+      int $$2 = aym.c($$0.d);
+      int $$3 = aym.a($$0.b);
+      int $$4 = aym.c($$0.e);
+      int $$5 = aym.a($$0.c);
+      int $$6 = aym.c($$0.f);
+      ir.a $$7 = new ir.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dtc $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.u().c()) {
+                  return true;
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   default int A(ir $$0) {
+      return this.c($$0, this.C_());
+   }
+
+   default int c(ir $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
+   }
+
+   @Deprecated
+   default boolean e(int $$0, int $$1) {
+      return this.b(jt.a($$0), jt.a($$1));
+   }
+
+   @Deprecated
+   default boolean B(ir $$0) {
+      return this.e($$0.u(), $$0.w());
+   }
+
+   @Deprecated
+   default boolean a(ir $$0, ir $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.J_() && $$1 < this.am() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jt.a($$0);
+      int $$5 = jt.a($$2);
+      int $$6 = jt.a($$1);
+      int $$7 = jt.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   jo I_();
+
+   cop K();
+
+   default <T> jc<T> a(aks<? extends jn<? extends T>> $$0) {
+      jn<T> $$1 = this.I_().d($$0);
+      return $$1.p().a(this.K());
    }
 }

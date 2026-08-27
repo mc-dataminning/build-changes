@@ -1,9 +1,25 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public abstract class eld {
-   public static final Codec<eld> c = le.o.q().dispatch("predicate_type", eld::a, ele::codec);
+record eld(aks<elc> c, aks<elc> d) implements ele {
+   static Codec<eld> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aks.a(li.aM).fieldOf("alias").forGetter(eld::c), aks.a(li.aM).fieldOf("target").forGetter(eld::d)).apply($$0, eld::new)
+   );
 
-   public abstract boolean a(drb var1, ayk var2);
+   @Override
+   public void a(ayt $$0, BiConsumer<aks<elc>, aks<elc>> $$1) {
+      $$1.accept(this.c, this.d);
+   }
 
-   protected abstract ele<?> a();
+   @Override
+   public Stream<aks<elc>> a() {
+      return Stream.of(this.d);
+   }
+
+   @Override
+   public Codec<eld> b() {
+      return a;
+   }
 }

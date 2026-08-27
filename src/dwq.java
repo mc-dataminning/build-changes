@@ -1,38 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class dwq {
-   public final eec a;
-   public final eec b;
-   public final eec c;
-   public final eec d;
-   public final eec e;
-   public final List<drb> f;
-   public final awl<ddy> g;
-   public final awl<ddy> h;
-   public static final Codec<dwq> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eec.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               eec.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               eec.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               eec.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               eec.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               axm.a(drb.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               awl.b(lf.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               awl.b(lf.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dwq::new)
-   );
+public class dwq implements AutoCloseable {
+   private final dwh a;
+   private final DataFixer b;
+   private final azs c;
 
-   public dwq(eec $$0, eec $$1, eec $$2, eec $$3, eec $$4, List<drb> $$5, awl<ddy> $$6, awl<ddy> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dwq(dwo $$0, Path $$1, DataFixer $$2, boolean $$3, azs $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new dwh($$0, $$1, $$3);
+   }
+
+   public CompletableFuture<Optional<uk>> a(dbh $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dbh $$0, @Nullable uk $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public uk a(uk $$0, int $$1) {
+      int $$2 = uz.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
+   }
+
+   public Dynamic<vh> a(Dynamic<vh> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 }

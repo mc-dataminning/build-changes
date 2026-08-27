@@ -1,31 +1,14 @@
-import java.util.Map;
+import io.netty.buffer.ByteBuf;
 
-public class zt implements ze<zk> {
-   public static final yv<vx, zt> a = ze.a(zt::a, zt::new);
-   private final Map<akl<? extends jk<?>>, awo.a> b;
-
-   public zt(Map<akl<? extends jk<?>>, awo.a> $$0) {
-      this.b = $$0;
-   }
-
-   private zt(vx $$0) {
-      this.b = $$0.a(vx::r, awo.a::b);
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b, vx::b, ($$0x, $$1) -> $$1.a($$0x));
-   }
+public record zt(xe b) implements zl<zr> {
+   public static final zc<ByteBuf, zt> a = xg.f.a(zt::new, zt::b);
 
    @Override
-   public zg<zt> a() {
-      return zu.i;
+   public zn<zt> a() {
+      return aab.b;
    }
 
-   public void a(zk $$0) {
+   public void a(zr $$0) {
       $$0.a(this);
-   }
-
-   public Map<akl<? extends jk<?>>, awo.a> b() {
-      return this.b;
    }
 }

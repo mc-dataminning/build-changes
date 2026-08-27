@@ -1,355 +1,121 @@
+import java.util.EnumSet;
+import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public class gho extends ghs<cha> {
-   public static final akm a = new akm("textures/entity/end_crystal/end_crystal_beam.png");
-   private static final akm f = new akm("textures/entity/enderdragon/dragon_exploding.png");
-   private static final akm g = new akm("textures/entity/enderdragon/dragon.png");
-   private static final akm h = new akm("textures/entity/enderdragon/dragon_eyes.png");
-   private static final gcs i = gcs.e(g);
-   private static final gcs j = gcs.l(g);
-   private static final gcs k = gcs.p(h);
-   private static final gcs l = gcs.k(a);
-   private static final float m = (float)(Math.sqrt(3.0) / 2.0);
-   private final gho.a n;
+public class gho implements ghg<dqs> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final fys h;
+   private final fys i;
+   private final fys j;
+   private final fys k;
+   private final fys l;
+   private final fys m;
+   private final fys n;
+   private final gtc o = Objects.requireNonNull(gfv.a(dqt.a));
+   private static final float p = 0.125F;
 
-   public gho(ght.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.n = new gho.a($$0.a(fvv.Z));
+   public gho(ghh.a $$0) {
+      fys $$1 = $$0.a(fyr.L);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      fys $$2 = $$0.a(fyr.M);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public void a(cha $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      $$3.a();
-      float $$6 = (float)$$0.a(7, $$2)[0];
-      float $$7 = (float)($$0.a(5, $$2)[1] - $$0.a(10, $$2)[1]);
-      $$3.a(a.d.rotationDegrees(-$$6));
-      $$3.a(a.b.rotationDegrees($$7 * 10.0F));
-      $$3.a(0.0F, 0.0F, 1.0F);
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(0.0F, -1.501F, 0.0F);
-      boolean $$8 = $$0.aP > 0;
-      this.n.a($$0, 0.0F, 0.0F, $$2);
-      if ($$0.ca > 0) {
-         float $$9 = (float)$$0.ca / 200.0F;
-         eyw $$10 = $$4.getBuffer(gcs.o(f));
-         this.n.a($$3, $$10, $$5, gnm.d, 1.0F, 1.0F, 1.0F, $$9);
-         eyw $$11 = $$4.getBuffer(j);
-         this.n.a($$3, $$11, $$5, gnm.a(0.0F, $$8), 1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         eyw $$12 = $$4.getBuffer(i);
-         this.n.a($$3, $$12, $$5, gnm.a(0.0F, $$8), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
-
-      eyw $$13 = $$4.getBuffer(k);
-      this.n.a($$3, $$13, $$5, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if ($$0.ca > 0) {
-         float $$14 = ((float)$$0.ca + $$2) / 200.0F;
-         float $$15 = Math.min($$14 > 0.8F ? ($$14 - 0.8F) / 0.2F : 0.0F, 1.0F);
-         ayk $$16 = ayk.a(432L);
-         eyw $$17 = $$4.getBuffer(gcs.s());
-         $$3.a();
-         $$3.a(0.0F, -1.0F, -2.0F);
-
-         for (int $$18 = 0; (float)$$18 < ($$14 + $$14 * $$14) / 2.0F * 60.0F; $$18++) {
-            $$3.a(a.b.rotationDegrees($$16.i() * 360.0F));
-            $$3.a(a.d.rotationDegrees($$16.i() * 360.0F));
-            $$3.a(a.f.rotationDegrees($$16.i() * 360.0F));
-            $$3.a(a.b.rotationDegrees($$16.i() * 360.0F));
-            $$3.a(a.d.rotationDegrees($$16.i() * 360.0F));
-            $$3.a(a.f.rotationDegrees($$16.i() * 360.0F + $$14 * 90.0F));
-            float $$19 = $$16.i() * 20.0F + 5.0F + $$15 * 10.0F;
-            float $$20 = $$16.i() * 2.0F + 1.0F + $$15 * 2.0F;
-            Matrix4f $$21 = $$3.c().a();
-            int $$22 = (int)(255.0F * (1.0F - $$15));
-            a($$17, $$21, $$22);
-            a($$17, $$21, $$19, $$20);
-            b($$17, $$21, $$19, $$20);
-            a($$17, $$21, $$22);
-            b($$17, $$21, $$19, $$20);
-            c($$17, $$21, $$19, $$20);
-            a($$17, $$21, $$22);
-            c($$17, $$21, $$19, $$20);
-            a($$17, $$21, $$19, $$20);
-         }
-
-         $$3.b();
-      }
-
-      $$3.b();
-      if ($$0.cc != null) {
-         $$3.a();
-         float $$23 = (float)($$0.cc.du() - ayd.d((double)$$2, $$0.L, $$0.du()));
-         float $$24 = (float)($$0.cc.dw() - ayd.d((double)$$2, $$0.M, $$0.dw()));
-         float $$25 = (float)($$0.cc.dA() - ayd.d((double)$$2, $$0.N, $$0.dA()));
-         a($$23, $$24 + ghn.a($$0.cc, $$2), $$25, $$2, $$0.ai, $$3, $$4, $$5);
-         $$3.b();
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private static void a(eyw $$0, Matrix4f $$1, int $$2) {
-      $$0.a($$1, 0.0F, 0.0F, 0.0F).a(255, 255, 255, $$2).e();
-   }
-
-   private static void a(eyw $$0, Matrix4f $$1, float $$2, float $$3) {
-      $$0.a($$1, -m * $$3, $$2, -0.5F * $$3).a(255, 0, 255, 0).e();
-   }
-
-   private static void b(eyw $$0, Matrix4f $$1, float $$2, float $$3) {
-      $$0.a($$1, m * $$3, $$2, -0.5F * $$3).a(255, 0, 255, 0).e();
-   }
-
-   private static void c(eyw $$0, Matrix4f $$1, float $$2, float $$3) {
-      $$0.a($$1, 0.0F, $$2, 1.0F * $$3).a(255, 0, 255, 0).e();
-   }
-
-   public static void a(float $$0, float $$1, float $$2, float $$3, int $$4, eys $$5, gck $$6, int $$7) {
-      float $$8 = ayd.c($$0 * $$0 + $$2 * $$2);
-      float $$9 = ayd.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-      $$5.a();
-      $$5.a(0.0F, 2.0F, 0.0F);
-      $$5.a(a.d.rotation((float)(-Math.atan2((double)$$2, (double)$$0)) - (float) (Math.PI / 2)));
-      $$5.a(a.b.rotation((float)(-Math.atan2((double)$$8, (double)$$1)) - (float) (Math.PI / 2)));
-      eyw $$10 = $$6.getBuffer(l);
-      float $$11 = 0.0F - ((float)$$4 + $$3) * 0.01F;
-      float $$12 = ayd.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2) / 32.0F - ((float)$$4 + $$3) * 0.01F;
-      int $$13 = 8;
-      float $$14 = 0.0F;
-      float $$15 = 0.75F;
-      float $$16 = 0.0F;
-      eys.a $$17 = $$5.c();
-
-      for (int $$18 = 1; $$18 <= 8; $$18++) {
-         float $$19 = ayd.a((float)$$18 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$20 = ayd.b((float)$$18 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$21 = (float)$$18 / 8.0F;
-         $$10.a($$17, $$14 * 0.2F, $$15 * 0.2F, 0.0F).a(0, 0, 0, 255).a($$16, $$11).c(gnm.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
-         $$10.a($$17, $$14, $$15, $$9).a(255, 255, 255, 255).a($$16, $$12).c(gnm.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
-         $$10.a($$17, $$19, $$20, $$9).a(255, 255, 255, 255).a($$21, $$12).c(gnm.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
-         $$10.a($$17, $$19 * 0.2F, $$20 * 0.2F, 0.0F).a(0, 0, 0, 255).a($$21, $$11).c(gnm.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
-         $$14 = $$19;
-         $$15 = $$20;
-         $$16 = $$21;
-      }
-
-      $$5.b();
-   }
-
-   public akm a(cha $$0) {
-      return g;
-   }
-
-   public static fwc a() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      float $$2 = -16.0F;
-      fwf $$3 = $$1.a(
-         "head",
-         fwb.c()
-            .a("upperlip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upperhead", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a()
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a()
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         fvy.a
-      );
-      $$3.a("jaw", fwb.c().a("jaw", -6.0F, 0.0F, -16.0F, 12, 4, 16, 176, 65), fvy.a(0.0F, 4.0F, -8.0F));
-      $$1.a("neck", fwb.c().a("box", -5.0F, -5.0F, -5.0F, 10, 10, 10, 192, 104).a("scale", -1.0F, -9.0F, -3.0F, 2, 4, 6, 48, 0), fvy.a);
+   public static fyy b() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      fyw $$2 = new fyw(0.2F);
+      fyw $$3 = new fyw(-0.1F);
       $$1.a(
-         "body",
-         fwb.c()
-            .a("body", -12.0F, 0.0F, -16.0F, 24, 24, 64, 0, 0)
-            .a("scale", -1.0F, -6.0F, -10.0F, 2, 6, 12, 220, 53)
-            .a("scale", -1.0F, -6.0F, 10.0F, 2, 6, 12, 220, 53)
-            .a("scale", -1.0F, -6.0F, 30.0F, 2, 6, 12, 220, 53),
-         fvy.a(0.0F, 4.0F, 8.0F)
+         "neck",
+         fyx.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         fyu.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
       );
-      fwf $$4 = $$1.a(
-         "left_wing", fwb.c().a().a("bone", 0.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), fvy.a(12.0F, 5.0F, 2.0F)
-      );
-      $$4.a(
-         "left_wing_tip",
-         fwb.c().a().a("bone", 0.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
-         fvy.a(56.0F, 0.0F, 0.0F)
-      );
-      fwf $$5 = $$1.a("left_front_leg", fwb.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), fvy.a(12.0F, 20.0F, 2.0F));
-      fwf $$6 = $$5.a("left_front_leg_tip", fwb.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), fvy.a(0.0F, 20.0F, -1.0F));
-      $$6.a("left_front_foot", fwb.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), fvy.a(0.0F, 23.0F, 0.0F));
-      fwf $$7 = $$1.a("left_hind_leg", fwb.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), fvy.a(16.0F, 16.0F, 42.0F));
-      fwf $$8 = $$7.a("left_hind_leg_tip", fwb.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), fvy.a(0.0F, 32.0F, -4.0F));
-      $$8.a("left_hind_foot", fwb.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), fvy.a(0.0F, 31.0F, 4.0F));
-      fwf $$9 = $$1.a(
-         "right_wing", fwb.c().a("bone", -56.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), fvy.a(-12.0F, 5.0F, 2.0F)
-      );
-      $$9.a(
-         "right_wing_tip",
-         fwb.c().a("bone", -56.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
-         fvy.a(-56.0F, 0.0F, 0.0F)
-      );
-      fwf $$10 = $$1.a("right_front_leg", fwb.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), fvy.a(-12.0F, 20.0F, 2.0F));
-      fwf $$11 = $$10.a("right_front_leg_tip", fwb.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), fvy.a(0.0F, 20.0F, -1.0F));
-      $$11.a("right_front_foot", fwb.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), fvy.a(0.0F, 23.0F, 0.0F));
-      fwf $$12 = $$1.a("right_hind_leg", fwb.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), fvy.a(-16.0F, 16.0F, 42.0F));
-      fwf $$13 = $$12.a("right_hind_leg_tip", fwb.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), fvy.a(0.0F, 32.0F, -4.0F));
-      $$13.a("right_hind_foot", fwb.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), fvy.a(0.0F, 31.0F, 4.0F));
-      return fwc.a($$0, 256, 256);
+      fyx $$4 = fyx.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, fyu.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, fyu.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return fyy.a($$0, 32, 32);
    }
 
-   public static class a extends fsw<cha> {
-      private final fvw a;
-      private final fvw b;
-      private final fvw f;
-      private final fvw g;
-      private final fvw h;
-      private final fvw i;
-      private final fvw j;
-      private final fvw k;
-      private final fvw l;
-      private final fvw m;
-      private final fvw n;
-      private final fvw o;
-      private final fvw p;
-      private final fvw q;
-      private final fvw r;
-      private final fvw s;
-      private final fvw t;
-      private final fvw u;
-      private final fvw w;
-      private final fvw x;
-      @Nullable
-      private cha y;
-      private float z;
+   public static fyy c() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      fyx $$2 = fyx.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(iw.c));
+      $$1.a("back", $$2, fyu.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, fyu.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, fyu.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, fyu.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return fyy.a($$0, 16, 16);
+   }
 
-      public a(fvw $$0) {
-         this.a = $$0.b("head");
-         this.f = this.a.b("jaw");
-         this.b = $$0.b("neck");
-         this.g = $$0.b("body");
-         this.h = $$0.b("left_wing");
-         this.i = this.h.b("left_wing_tip");
-         this.j = $$0.b("left_front_leg");
-         this.k = this.j.b("left_front_leg_tip");
-         this.l = this.k.b("left_front_foot");
-         this.m = $$0.b("left_hind_leg");
-         this.n = this.m.b("left_hind_leg_tip");
-         this.o = this.n.b("left_hind_foot");
-         this.p = $$0.b("right_wing");
-         this.q = this.p.b("right_wing_tip");
-         this.r = $$0.b("right_front_leg");
-         this.s = this.r.b("right_front_leg_tip");
-         this.t = this.s.b("right_front_foot");
-         this.u = $$0.b("right_hind_leg");
-         this.w = this.u.b("right_hind_leg_tip");
-         this.x = this.w.b("right_hind_foot");
-      }
-
-      public void a(cha $$0, float $$1, float $$2, float $$3) {
-         this.y = $$0;
-         this.z = $$3;
-      }
-
-      public void a(cha $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      }
-
-      @Override
-      public void a(eys $$0, eyw $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         $$0.a();
-         float $$8 = ayd.i(this.z, this.y.bX, this.y.bY);
-         this.f.e = (float)(Math.sin((double)($$8 * (float) (Math.PI * 2))) + 1.0) * 0.2F;
-         float $$9 = (float)(Math.sin((double)($$8 * (float) (Math.PI * 2) - 1.0F)) + 1.0);
-         $$9 = ($$9 * $$9 + $$9 * 2.0F) * 0.05F;
-         $$0.a(0.0F, $$9 - 2.0F, -3.0F);
-         $$0.a(a.b.rotationDegrees($$9 * 2.0F));
-         float $$10 = 0.0F;
-         float $$11 = 20.0F;
-         float $$12 = -12.0F;
-         float $$13 = 1.5F;
-         double[] $$14 = this.y.a(6, this.z);
-         float $$15 = ayd.g((float)(this.y.a(5, this.z)[0] - this.y.a(10, this.z)[0]));
-         float $$16 = ayd.g((float)(this.y.a(5, this.z)[0] + (double)($$15 / 2.0F)));
-         float $$17 = $$8 * (float) (Math.PI * 2);
-
-         for (int $$18 = 0; $$18 < 5; $$18++) {
-            double[] $$19 = this.y.a(5 - $$18, this.z);
-            float $$20 = (float)Math.cos((double)((float)$$18 * 0.45F + $$17)) * 0.15F;
-            this.b.f = ayd.g((float)($$19[0] - $$14[0])) * (float) (Math.PI / 180.0) * 1.5F;
-            this.b.e = $$20 + this.y.a($$18, $$14, $$19) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-            this.b.g = -ayd.g((float)($$19[0] - (double)$$16)) * (float) (Math.PI / 180.0) * 1.5F;
-            this.b.c = $$11;
-            this.b.d = $$12;
-            this.b.b = $$10;
-            $$11 += ayd.a(this.b.e) * 10.0F;
-            $$12 -= ayd.b(this.b.f) * ayd.b(this.b.e) * 10.0F;
-            $$10 -= ayd.a(this.b.f) * ayd.b(this.b.e) * 10.0F;
-            this.b.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
+   @Nullable
+   private static gtc a(Optional<cuc> $$0) {
+      if ($$0.isPresent()) {
+         gtc $$1 = gfv.a(dqt.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
          }
-
-         this.a.c = $$11;
-         this.a.d = $$12;
-         this.a.b = $$10;
-         double[] $$21 = this.y.a(0, this.z);
-         this.a.f = ayd.g((float)($$21[0] - $$14[0])) * (float) (Math.PI / 180.0);
-         this.a.e = ayd.g(this.y.a(6, $$14, $$21)) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-         this.a.g = -ayd.g((float)($$21[0] - (double)$$16)) * (float) (Math.PI / 180.0);
-         this.a.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
-         $$0.a();
-         $$0.a(0.0F, 1.0F, 0.0F);
-         $$0.a(a.f.rotationDegrees(-$$15 * 1.5F));
-         $$0.a(0.0F, -1.0F, 0.0F);
-         this.g.g = 0.0F;
-         this.g.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
-         float $$22 = $$8 * (float) (Math.PI * 2);
-         this.h.e = 0.125F - (float)Math.cos((double)$$22) * 0.2F;
-         this.h.f = -0.25F;
-         this.h.g = -((float)(Math.sin((double)$$22) + 0.125)) * 0.8F;
-         this.i.g = (float)(Math.sin((double)($$22 + 2.0F)) + 0.5) * 0.75F;
-         this.p.e = this.h.e;
-         this.p.f = -this.h.f;
-         this.p.g = -this.h.g;
-         this.q.g = -this.i.g;
-         this.a($$0, $$1, $$2, $$3, $$9, this.h, this.j, this.k, this.l, this.m, this.n, this.o, $$7);
-         this.a($$0, $$1, $$2, $$3, $$9, this.p, this.r, this.s, this.t, this.u, this.w, this.x, $$7);
-         $$0.b();
-         float $$23 = -ayd.a($$8 * (float) (Math.PI * 2)) * 0.0F;
-         $$17 = $$8 * (float) (Math.PI * 2);
-         $$11 = 10.0F;
-         $$12 = 60.0F;
-         $$10 = 0.0F;
-         $$14 = this.y.a(11, this.z);
-
-         for (int $$24 = 0; $$24 < 12; $$24++) {
-            $$21 = this.y.a(12 + $$24, this.z);
-            $$23 += ayd.a((float)$$24 * 0.45F + $$17) * 0.05F;
-            this.b.f = (ayd.g((float)($$21[0] - $$14[0])) * 1.5F + 180.0F) * (float) (Math.PI / 180.0);
-            this.b.e = $$23 + (float)($$21[1] - $$14[1]) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
-            this.b.g = ayd.g((float)($$21[0] - (double)$$16)) * (float) (Math.PI / 180.0) * 1.5F;
-            this.b.c = $$11;
-            this.b.d = $$12;
-            this.b.b = $$10;
-            $$11 += ayd.a(this.b.e) * 10.0F;
-            $$12 -= ayd.b(this.b.f) * ayd.b(this.b.e) * 10.0F;
-            $$10 -= ayd.a(this.b.f) * ayd.b(this.b.e) * 10.0F;
-            this.b.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
-         }
-
-         $$0.b();
       }
 
-      private void a(eys $$0, eyw $$1, int $$2, int $$3, float $$4, fvw $$5, fvw $$6, fvw $$7, fvw $$8, fvw $$9, fvw $$10, fvw $$11, float $$12) {
-         $$9.e = 1.0F + $$4 * 0.1F;
-         $$10.e = 0.5F + $$4 * 0.1F;
-         $$11.e = 0.75F + $$4 * 0.1F;
-         $$6.e = 1.3F + $$4 * 0.1F;
-         $$7.e = -0.5F - $$4 * 0.1F;
-         $$8.e = 0.75F + $$4 * 0.1F;
-         $$5.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
-         $$6.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
-         $$9.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
+      return gfv.a(dqt.a(cuk.si));
+   }
+
+   public void a(dqs $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
+      $$2.a();
+      iw $$6 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dqs.a $$7 = $$0.h;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().Z() - $$0.g) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dqs.a.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (aym.b($$10) + 0.5F) * aym.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = aym.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = aym.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      fbg $$15 = this.o.a($$3, gfo::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      drj $$16 = $$0.l();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      $$2.b();
+   }
+
+   private void a(fys $$0, fbc $$1, gfg $$2, int $$3, int $$4, @Nullable gtc $$5) {
+      if ($$5 == null) {
+         $$5 = a(Optional.empty());
+      }
+
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, gfo::c), $$3, $$4);
       }
    }
 }

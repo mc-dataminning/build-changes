@@ -1,97 +1,95 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-
-public class cyl implements cyk {
-   final cxr a;
-   final cxr b;
-   final cxr c;
-   final cto d;
-
-   public cyl(cxr $$0, cxr $$1, cxr $$2, cto $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class cyl extends cyq {
+   public cyl(cyo $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(bpn $$0, dax $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
+   public boolean a(cpw $$0, dca $$1) {
+      int $$2 = 0;
+      cuh $$3 = cuh.i;
 
-   @Override
-   public cto a(bpn $$0, iz.a $$1) {
-      cto $$2 = $$0.a(1).a(this.d.g(), this.d.I());
-      $$2.a(this.d.d());
-      return $$2;
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuh $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(cuk.vC)) {
+               if (!$$3.d()) {
+                  return false;
+               }
 
-   @Override
-   public cto a(iz.a $$0) {
-      return this.d;
-   }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cuk.vB)) {
+                  return false;
+               }
 
-   @Override
-   public boolean a(cto $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cto $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cto $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cxy<?> ao_() {
-      return cxy.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cxr::c);
-   }
-
-   public static class a implements cxy<cyl> {
-      private static final MapCodec<cyl> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  cxr.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cxr.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cxr.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  cto.a.fieldOf("result").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cyl::new)
-      );
-      public static final yv<wi, cyl> x = yv.a(cyl.a::a, cyl.a::a);
-
-      @Override
-      public MapCodec<cyl> a() {
-         return y;
+               $$2++;
+            }
+         }
       }
 
-      @Override
-      public yv<wi, cyl> b() {
-         return x;
+      return !$$3.d() && $$2 > 0;
+   }
+
+   public cuh a(cpw $$0, jc.a $$1) {
+      int $$2 = 0;
+      cuh $$3 = cuh.i;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuh $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(cuk.vC)) {
+               if (!$$3.d()) {
+                  return cuh.i;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cuk.vB)) {
+                  return cuh.i;
+               }
+
+               $$2++;
+            }
+         }
       }
 
-      private static cyl a(wi $$0) {
-         cxr $$1 = cxr.b.decode($$0);
-         cxr $$2 = cxr.b.decode($$0);
-         cxr $$3 = cxr.b.decode($$0);
-         cto $$4 = cto.f.decode($$0);
-         return new cyl($$1, $$2, $$3, $$4);
+      cya $$6 = $$3.a(ke.H);
+      if (!$$3.d() && $$2 >= 1 && $$6 != null) {
+         cya $$7 = $$6.b();
+         if ($$7 == null) {
+            return cuh.i;
+         } else {
+            cuh $$8 = $$3.c($$2);
+            $$8.b(ke.H, $$7);
+            return $$8;
+         }
+      } else {
+         return cuh.i;
+      }
+   }
+
+   public jj<cuh> a(cpw $$0) {
+      jj<cuh> $$1 = jj.a($$0.b(), cuh.i);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cuh $$3 = $$0.a($$2);
+         if ($$3.f().u()) {
+            $$1.set($$2, new cuh($$3.f().t()));
+         } else if ($$3.f() instanceof cwo) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
       }
 
-      private static void a(wi $$0, cyl $$1) {
-         cxr.b.encode($$0, $$1.a);
-         cxr.b.encode($$0, $$1.b);
-         cxr.b.encode($$0, $$1.c);
-         cto.f.encode($$0, $$1.d);
-      }
+      return $$1;
+   }
+
+   @Override
+   public cze<?> ao_() {
+      return cze.e;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 }

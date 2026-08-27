@@ -1,14 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pw extends pr<bqp> {
-   public pw(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, lf.s, $$1);
+public class pw extends pt<dcz> {
+   public pw(lq $$0, CompletableFuture<jc.a> $$1, CompletableFuture<pt.c<dcz>> $$2) {
+      super($$0, li.az, $$1, $$2);
    }
 
    @Override
-   protected void a(iz.a $$0) {
-      this.b(avy.b).a(bqq.C, bqq.D);
-      this.b(avy.k).a(bqq.G);
-      this.b(avy.B).a(bqq.G);
+   protected void a(jc.a $$0) {
+      this.b(awd.K).b(awd.l);
    }
 }

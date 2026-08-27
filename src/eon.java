@@ -1,30 +1,24 @@
-public class eon {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-   public eon(int $$0) {
-      this($$0, a);
+public class eon extends eos<eon.a> {
+   protected eon(dvl $$0) {
+      super(dcj.b, $$0, new eon.a(new Long2ObjectOpenHashMap()));
    }
 
-   public eon(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   protected int a(long $$0) {
+      long $$1 = jt.e($$0);
+      dvd $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(jt.b(ir.a($$0)), jt.b(ir.b($$0)), jt.b(ir.c($$0)));
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
-   }
+   protected static final class a extends eop<eon.a> {
+      public a(Long2ObjectOpenHashMap<dvd> $$0) {
+         super($$0);
+      }
 
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(eon $$0) {
-      return this.b().equals($$0.b());
+      public eon.a a() {
+         return new eon.a(this.a.clone());
+      }
    }
 }

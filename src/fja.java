@@ -1,64 +1,66 @@
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import javax.annotation.Nullable;
 
-public class fja {
-   private static long a = 0L;
+public abstract class fja extends fil {
+   fja(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, xd.a);
+   }
 
-   public static long a() {
-      if (a == 0L) {
-         MemoryStack $$0 = MemoryStack.stackPush();
+   public static fja a(int $$0, int $$1, akt $$2, int $$3, int $$4) {
+      return new fja.b(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
 
-         try {
-            PointerBuffer $$1 = $$0.mallocPointer(1);
-            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-            a = $$1.get();
-         } catch (Throwable var4) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var3) {
-                  var4.addSuppressed(var3);
-               }
-            }
+   public static fja a(int $$0, int $$1, akt $$2) {
+      return new fja.a(0, 0, $$0, $$1, $$2);
+   }
 
-            throw var4;
-         }
+   @Override
+   protected void a(fmj $$0) {
+   }
 
-         if ($$0 != null) {
-            $$0.close();
-         }
+   @Override
+   public void a(gvq $$0) {
+   }
+
+   @Override
+   public boolean B() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fhx a(fmp $$0) {
+      return null;
+   }
+
+   static class a extends fja {
+      private final akt a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, akt $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
       }
 
-      return a;
-   }
-
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      @Override
+      public void b(fia $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.C(), this.D(), this.x(), this.v());
       }
    }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
+   static class b extends fja {
+      private final akt a;
+      private final int b;
+      private final int c;
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
+      public b(int $$0, int $$1, int $$2, int $$3, akt $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
 
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      if (a != 0L) {
-         FreeType.FT_Done_Library(a);
-         a = 0L;
+      @Override
+      protected void b(fia $$0, int $$1, int $$2, float $$3) {
+         $$0.a(this.a, this.C(), this.D(), this.x(), this.v(), 0.0F, 0.0F, this.x(), this.v(), this.b, this.c);
       }
    }
 }

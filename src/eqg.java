@@ -1,178 +1,141 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqg extends eqq {
-   public static final MapCodec<eqg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eta.a.fieldOf("source").forGetter($$0x -> $$0x.b), eqg.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eqg::new)
-   );
-   private final esz b;
-   private final List<eqg.b> c;
+public class eqg implements eqi {
+   private static final Logger b = LogUtils.getLogger();
+   private final dca c;
+   private final int d;
+   private final ArrayDeque<eqg.c> e = new ArrayDeque<>();
+   private final List<eqg.c> f = new ArrayList<>();
+   private int g = 0;
 
-   eqg(List<esl> $$0, esz $$1, List<eqg.b> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   public eqg(dca $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public eqs b() {
-      return eqt.z;
+   public void a(iw $$0, dtc $$1, ir $$2, ir $$3, int $$4, int $$5) {
+      this.a($$2, new eqg.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return this.b.b();
+   public void a(ir $$0, dfc $$1, ir $$2) {
+      this.a($$0, new eqg.e($$0, $$1, $$2.i()));
    }
 
    @Override
-   public cto a(cto $$0, epf $$1) {
-      va $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         MutableObject<ud> $$3 = new MutableObject();
-         Supplier<va> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(kb.a, cwd.a).c());
-            }
+   public void a(dtc $$0, ir $$1, dfc $$2, ir $$3, boolean $$4) {
+      this.a($$1, new eqg.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   }
 
-            return (va)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         ud $$5 = (ud)$$3.getValue();
-         if ($$5 != null) {
-            cwd.a(kb.a, $$0, $$5);
+   @Override
+   public void a(ir $$0, dfc $$1, @Nullable iw $$2) {
+      this.a($$0, new eqg.b($$0.i(), $$1, $$2));
+   }
+
+   private void a(ir $$0, eqg.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
          }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
 
-         return $$0;
+      if (!$$2) {
+         this.a();
       }
    }
 
-   @Deprecated
-   public static eqg.a a(esz $$0) {
-      return new eqg.a($$0);
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            eqg.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
    }
 
-   public static eqg.a a(epf.b $$0) {
-      return new eqg.a(esx.a($$0));
+   static record a(dtc a, ir b, dfc c, ir d, boolean e) implements eqg.c {
+      @Override
+      public boolean a(dca $$0) {
+         eqi.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
+      }
    }
 
-   public static class a extends eqq.a<eqg.a> {
-      private final esz a;
-      private final List<eqg.b> b = Lists.newArrayList();
+   static final class b implements eqg.c {
+      private final ir a;
+      private final dfc b;
+      @Nullable
+      private final iw c;
+      private int d = 0;
 
-      a(esz $$0) {
+      b(ir $$0, dfc $$1, @Nullable iw $$2) {
          this.a = $$0;
-      }
-
-      public eqg.a a(String $$0, String $$1, eqg.c $$2) {
-         try {
-            this.b.add(new eqg.b(ew.g.a($$0), ew.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
+         this.b = $$1;
+         this.c = $$2;
+         if (eqi.a[this.d] == $$2) {
+            this.d++;
          }
-      }
-
-      public eqg.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, eqg.c.a);
-      }
-
-      protected eqg.a a() {
-         return this;
       }
 
       @Override
-      public eqr b() {
-         return new eqg(this.g(), this.a, this.b);
+      public boolean a(dca $$0) {
+         ir $$1 = this.a.a(eqi.a[this.d++]);
+         dtc $$2 = $$0.a_($$1);
+         eqi.a($$0, $$2, $$1, this.b, this.a, false);
+         if (this.d < eqi.a.length && eqi.a[this.d] == this.c) {
+            this.d++;
+         }
+
+         return this.d < eqi.a.length;
       }
    }
 
-   static record b(ew.g b, ew.g c, eqg.c d) {
-      public static final Codec<eqg.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ew.g.a.fieldOf("source").forGetter(eqg.b::a), ew.g.a.fieldOf("target").forGetter(eqg.b::b), eqg.c.d.fieldOf("op").forGetter(eqg.b::c))
-               .apply($$0, eqg.b::new)
-      );
-
-      public void a(Supplier<va> $$0, va $$1) {
-         try {
-            List<va> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public ew.g a() {
-         return this.b;
-      }
-
-      public ew.g b() {
-         return this.c;
-      }
-
-      public eqg.c c() {
-         return this.d;
-      }
+   interface c {
+      boolean a(dca var1);
    }
 
-   public static enum c implements ayx {
-      a("replace") {
-         @Override
-         public void a(va $$0, ew.g $$1, List<va> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (va)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(va $$0, ew.g $$1, List<va> $$2) throws CommandSyntaxException {
-            List<va> $$3 = $$1.a($$0, uj::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uj) {
-                  $$2.forEach($$1xx -> ((uj)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(va $$0, ew.g $$1, List<va> $$2) throws CommandSyntaxException {
-            List<va> $$3 = $$1.a($$0, ud::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof ud) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof ud) {
-                        ((ud)$$1x).a((ud)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<eqg.c> d = ayx.a(eqg.c::values);
-      private final String e;
-
-      public abstract void a(va var1, ew.g var2, List<va> var3) throws CommandSyntaxException;
-
-      c(String $$0) {
-         this.e = $$0;
-      }
-
+   static record d(iw a, dtc b, ir c, ir d, int e, int f) implements eqg.c {
       @Override
-      public String c() {
-         return this.e;
+      public boolean a(dca $$0) {
+         eqi.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(ir a, dfc b, ir c) implements eqg.c {
+      @Override
+      public boolean a(dca $$0) {
+         dtc $$1 = $$0.a_(this.a);
+         eqi.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
       }
    }
 }

@@ -1,79 +1,125 @@
-import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 
-public class ftg<T extends bsq & cki> extends frr<T> {
-   private static final float a = 0.87266463F;
-   private static final float b = (float) (-Math.PI / 9);
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private final fvw j;
-   private final fvw k;
-   private final fvw l;
-   private final fvw m;
-   private final fvw n;
+public class ftg extends fon {
+   private static final xe a = xe.c("selectWorld.experimental.title");
+   private static final xe b = xe.c("selectWorld.experimental.message");
+   private static final xe c = xe.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int r = 100;
+   private final BooleanConsumer s;
+   final Collection<atl> u;
+   private final flz v = new flz().a(10).b(20);
 
-   public ftg(fvw $$0) {
-      super(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F);
-      this.i = $$0.b("body");
-      this.n = this.i.b("mane");
-      this.f = $$0.b("head");
-      this.g = this.f.b("right_ear");
-      this.h = this.f.b("left_ear");
-      this.j = $$0.b("right_front_leg");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_hind_leg");
-      this.m = $$0.b("left_hind_leg");
-   }
-
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a("body", fwb.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), fvy.a(0.0F, 7.0F, 0.0F));
-      $$2.a("mane", fwb.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new fwa(0.001F)), fvy.a(0.0F, -14.0F, -5.0F));
-      fwf $$3 = $$1.a("head", fwb.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), fvy.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
-      $$3.a("right_ear", fwb.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fvy.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
-      $$3.a("left_ear", fwb.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), fvy.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
-      $$3.a("right_horn", fwb.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fvy.a(-7.0F, 2.0F, -12.0F));
-      $$3.a("left_horn", fwb.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), fvy.a(7.0F, 2.0F, -12.0F));
-      int $$4 = 14;
-      int $$5 = 11;
-      $$1.a("right_front_leg", fwb.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fvy.a(-4.0F, 10.0F, -8.5F));
-      $$1.a("left_front_leg", fwb.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), fvy.a(4.0F, 10.0F, -8.5F));
-      $$1.a("right_hind_leg", fwb.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fvy.a(-5.0F, 13.0F, 10.0F));
-      $$1.a("left_hind_leg", fwb.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), fvy.a(5.0F, 13.0F, 10.0F));
-      return fwc.a($$0, 128, 64);
+   public ftg(Collection<atl> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.u = $$0;
+      this.s = $$1;
    }
 
    @Override
-   protected Iterable<fvw> a() {
-      return ImmutableList.of(this.f);
+   public xe i() {
+      return xd.a(super.i(), b);
    }
 
    @Override
-   protected Iterable<fvw> b() {
-      return ImmutableList.of(this.i, this.j, this.k, this.l, this.m);
+   protected void aN_() {
+      super.aN_();
+      flz.b $$0 = this.v.d(2);
+      fmd $$1 = $$0.b().b();
+      $$0.a(new fju(this.l, this.p), 2, $$1);
+      fjh $$2 = $$0.a(new fjh(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fin.a(c, $$0x -> this.m.a(new ftg.a())).a(100).a(), 2, $$1);
+      $$0.a(fin.a(xd.i, $$0x -> this.s.accept(true)).a());
+      $$0.a(fin.a(xd.k, $$0x -> this.s.accept(false)).a());
+      this.v.a($$1x -> {
+         fil var10000 = this.c($$1x);
+      });
+      this.v.a();
+      this.c();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.g = (float) (-Math.PI * 2.0 / 9.0) - $$2 * ayd.a($$1);
-      this.h.g = (float) (Math.PI * 2.0 / 9.0) + $$2 * ayd.a($$1);
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      int $$6 = $$0.gp();
-      float $$7 = 1.0F - (float)ayd.a(10 - 2 * $$6) / 10.0F;
-      this.f.e = ayd.i($$7, 0.87266463F, (float) (-Math.PI / 9));
-      if ($$0.p_()) {
-         this.f.c = ayd.i($$7, 2.0F, 5.0F);
-         this.n.d = -3.0F;
-      } else {
-         this.f.c = 2.0F;
-         this.n.d = -7.0F;
+   @Override
+   protected void c() {
+      fly.a(this.v, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void d() {
+      this.s.accept(false);
+   }
+
+   class a extends fon {
+      private static final xe b = xe.c("selectWorld.experimental.details.title");
+      final fma c = new fma(this);
+
+      a() {
+         super(b);
       }
 
-      float $$8 = 1.2F;
-      this.j.e = ayd.b($$1) * 1.2F * $$2;
-      this.k.e = ayd.b($$1 + (float) Math.PI) * 1.2F * $$2;
-      this.l.e = this.k.e;
-      this.m.e = this.j.e;
+      @Override
+      protected void aN_() {
+         this.c.a(b, this.p);
+         this.c.c(new ftg.a.a(this.m, ftg.this.u));
+         this.c.b(fin.a(xd.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fil var10000 = this.c($$1);
+         });
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void d() {
+         this.m.a(ftg.this);
+      }
+
+      class a extends fjj<ftg.a.b> {
+         public a(fgj $$0, Collection<atl> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (atl $$2 : $$1) {
+               String $$3 = cor.a(cor.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xe $$4 = xh.a($$2.b().f(), yb.a.a(true));
+                  xe $$5 = xe.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fjg.a(a.this.p, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends fjj.a<ftg.a.b> {
+         private final xe b;
+         private final xe c;
+         private final fjg d;
+
+         b(xe $$0, xe $$1, fjg $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public xe a() {
+            return xe.a("narrator.select", xd.a(this.b, this.c));
+         }
+      }
    }
 }

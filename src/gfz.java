@@ -1,52 +1,61 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class gfz implements gfw.a {
-   private static final int a = 160;
-   private final fdz b;
-   private final Int2ObjectMap<gfz.a> c = new Int2ObjectOpenHashMap();
+public class gfz {
+   private Map<dtc, gsz> a = Map.of();
+   private final gtf b;
 
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void a(int $$0, io $$1, List<aal.a> $$2) {
-      this.c.put($$0, new gfz.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public gfz(fdz $$0) {
+   public gfz(gtf $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
-      fdk $$5 = this.b.j.m();
-      io $$6 = io.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gfz.a $$7 = (gfz.a)var11.next();
-         io $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               aal.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gfw.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
-         }
-      }
+   public gqy a(dtc $$0) {
+      return this.b($$0).e();
    }
 
-   static record a(io a, List<aal.a> b) {
+   public gsz b(dtc $$0) {
+      gsz $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public gtf a() {
+      return this.b;
+   }
+
+   public void a(Map<dtc, gsz> $$0) {
+      this.a = $$0;
+   }
+
+   public static gtg c(dtc $$0) {
+      return a(lh.e.b($$0.b()), $$0);
+   }
+
+   public static gtg a(akt $$0, dtc $$1) {
+      return new gtg($$0, b($$1.C()));
+   }
+
+   public static String b(Map<duf<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<duf<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         duf<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
+   }
+
+   private static <T extends Comparable<T>> String a(duf<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

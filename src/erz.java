@@ -1,42 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class erz extends esc {
-   public static final MapCodec<erz> a = a(erz::new);
-   public static final Codec<erz> b = b(erz::new);
+public class erz extends esh {
+   public static final Codec<erz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akt.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erz::new)
+   );
+   private final akt j;
 
-   erz(List<esl> $$0) {
-      super($$0, ac.a($$0));
-   }
-
-   public static erz a(List<esl> $$0) {
-      return new erz(List.copyOf($$0));
+   private erz(akt $$0, int $$1, int $$2, List<euu> $$3, List<etb> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public esm b() {
-      return esn.e;
+   public esg a() {
+      return esd.e;
    }
 
-   public static erz.a a(esl.a... $$0) {
-      return new erz.a($$0);
+   @Override
+   public void a(Consumer<cuh> $$0, erp $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static class a extends esc.a {
-      public a(esl.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public erz.a and(esl.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected esl a(List<esl> $$0) {
-         return new erz($$0);
-      }
+   public static esh.a<?> a(akt $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erz($$0, $$1, $$2, $$3, $$4));
    }
 }

@@ -1,55 +1,31 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import org.lwjgl.system.MemoryUtil;
 
-public class ezv extends fao implements fai {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
-
-   public String a() {
-      return this.a;
+public class ezv {
+   public static ByteBuffer a(int $$0) {
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
    }
 
-   public UUID b() {
-      return this.b;
+   public static String a() {
+      return GlStateManager._getString(7936);
    }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
+   public static String b() {
+      return GLX._getCpuInfo();
    }
 
-   public boolean c() {
-      return this.c;
+   public static String c() {
+      return GlStateManager._getString(7937);
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

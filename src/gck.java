@@ -1,94 +1,43 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+public class gck extends gcs {
+   private final double a;
+   private final int b;
 
-public interface gck {
-   static gck.a a(eyn $$0) {
-      return a(ImmutableMap.of(), $$0);
+   gck(fzn $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$4;
+      this.t = $$5;
+      this.b = $$6;
    }
 
-   static gck.a a(Map<gcs, eyn> $$0, eyn $$1) {
-      return new gck.a($$1, $$0);
+   @Override
+   public void a() {
+      if (this.s % (this.b + 1) == 0) {
+         for (int $$0 = 0; $$0 < 3; $$0++) {
+            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
+            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
+            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
+            this.c.a(lb.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+         }
+      }
+
+      if (this.s++ == this.t) {
+         this.k();
+      }
    }
 
-   eyw getBuffer(gcs var1);
+   public static class a implements gcx<le> {
+      private final double a;
+      private final int b;
+      private final int c;
 
-   public static class a implements gck {
-      protected final eyn a;
-      protected final Map<gcs, eyn> b;
-      protected Optional<gcs> c = Optional.empty();
-      protected final Set<eyn> d = Sets.newHashSet();
-
-      protected a(eyn $$0, Map<gcs, eyn> $$1) {
+      public a(double $$0, int $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public eyw getBuffer(gcs $$0) {
-         Optional<gcs> $$1 = $$0.P();
-         eyn $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.O()) {
-            if (this.c.isPresent()) {
-               gcs $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.K(), $$0.J());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private eyn b(gcs $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            gcs $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            eyw $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (gcs $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gcs $$0) {
-         eyn $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.P());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gck($$1, $$2, $$3, $$4, this.a, this.b, this.c);
       }
    }
 }

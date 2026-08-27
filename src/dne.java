@@ -1,33 +1,47 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dne extends dfm implements dnd {
-   public static final MapCodec<dne> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dnd.a.e.fieldOf("weathering_state").forGetter(dne::l), u()).apply($$0, dne::new)
-   );
-   private final dnd.a e;
+public class dne extends den {
+   public static final MapCodec<dne> a = b(dne::new);
 
    @Override
-   protected MapCodec<dne> a() {
-      return d;
+   public MapCodec<dne> a() {
+      return a;
    }
 
-   public dne(dnd.a $$0, dra.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dne(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dqc a(ir $$0, dtc $$1) {
+      return new drv($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
+      return a($$2, dqe.k, $$0.C ? drv::a : drv::b);
    }
 
    @Override
-   protected boolean d_(drb $$0) {
-      return dnd.c($$0.b()).isPresent();
+   protected void a(dtc $$0, aqt $$1, ir $$2, cuh $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
+         this.a($$1, $$2, $$5);
+      }
    }
 
-   public dnd.a l() {
-      return this.e;
+   @Override
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
+   }
+
+   @Override
+   public void a(cuh $$0, @Nullable dbg $$1, List<xe> $$2, cwi $$3, @Nullable jo $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcs.a($$0, $$2, "SpawnData");
    }
 }

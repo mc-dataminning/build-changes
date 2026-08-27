@@ -1,65 +1,15 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ag {
-   private final af a;
-   @Nullable
-   private final ag b;
-   private final Set<ag> c = new ReferenceOpenHashSet();
-
-   @VisibleForTesting
-   public ag(af $$0, @Nullable ag $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public ae a() {
-      return this.a.b();
-   }
-
-   public af b() {
-      return this.a;
-   }
-
-   @Nullable
-   public ag c() {
-      return this.b;
-   }
-
-   public ag d() {
-      return a(this);
-   }
-
-   public static ag a(ag $$0) {
-      ag $$1 = $$0;
-
-      while (true) {
-         ag $$2 = $$1.c();
-         if ($$2 == null) {
-            return $$1;
-         }
-
-         $$1 = $$2;
-      }
-   }
-
-   public Iterable<ag> e() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public void b(ag $$0) {
-      this.c.add($$0);
-   }
+public record ag(akt c, af d) {
+   public static final zc<wp, ag> a = zc.a(akt.b, ag::a, af.b, ag::b, ag::new);
+   public static final zc<wp, List<ag>> b = a.a(za.a());
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ag $$1 && this.a.equals($$1.a)) {
+         if ($$0 instanceof ag $$1 && this.c.equals($$1.c)) {
             return true;
          }
 
@@ -69,11 +19,19 @@ public class ag {
 
    @Override
    public int hashCode() {
-      return this.a.hashCode();
+      return this.c.hashCode();
    }
 
    @Override
    public String toString() {
-      return this.a.a().toString();
+      return this.c.toString();
+   }
+
+   public akt a() {
+      return this.c;
+   }
+
+   public af b() {
+      return this.d;
    }
 }

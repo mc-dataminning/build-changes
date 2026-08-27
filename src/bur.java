@@ -1,41 +1,44 @@
-public class bur implements bui<bso> {
-   private final int a;
-   private final int b;
-   private buh.a c = buh.a.a;
-   private long d;
+import java.util.Optional;
 
-   public bur(int $$0, int $$1) {
+public class bur implements bvu {
+   private final brv a;
+   private final boolean b;
+
+   public bur(brv $$0, boolean $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public buh.a a() {
-      return this.c;
+   public ewu a() {
+      return this.b ? this.a.ds().b(0.0, (double)this.a.cQ(), 0.0) : this.a.ds();
    }
 
    @Override
-   public final boolean e(aqm $$0, bso $$1, long $$2) {
-      this.c = buh.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   public ir b() {
+      return this.a.du();
    }
 
    @Override
-   public final void f(aqm $$0, bso $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   public boolean a(bso $$0) {
+      if (this.a instanceof bso $$1) {
+         if (!$$1.bI()) {
+            return false;
+         } else {
+            Optional<cbt> $$3 = $$0.dZ().c(cbr.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
       }
    }
 
-   @Override
-   public final void g(aqm $$0, bso $$1, long $$2) {
-      this.c = buh.a.a;
+   public brv c() {
+      return this.a;
    }
 
    @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

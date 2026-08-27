@@ -1,111 +1,89 @@
-public class cob extends cns implements dpe {
-   private boolean c = true;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cob(bsa<? extends cob> $$0, dax $$1) {
-      super($$0, $$1);
+public class cob {
+   public static int[][] a(iw $$0) {
+      iw $$1 = $$0.h();
+      iw $$2 = $$1.g();
+      iw $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cob(dax $$0, double $$1, double $$2, double $$3) {
-      super(bsa.aa, $$1, $$2, $$3, $$0);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   public cnr.a v() {
-      return cnr.a.f;
-   }
-
-   @Override
-   public drb x() {
-      return dea.hc.n();
-   }
-
-   @Override
-   public int z() {
-      return 1;
-   }
-
-   @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.G()) {
-         this.b($$4);
+   public static boolean a(dbk $$0, bso $$1, ewp $$2) {
+      for (exn $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
+
+      return $$0.D_().a($$2);
    }
 
-   public boolean G() {
-      return this.c;
+   public static boolean a(dbk $$0, ewu $$1, bso $$2, bsz $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public void b(boolean $$0) {
-      this.c = $$0;
+   public static exn a(dbg $$0, ir $$1) {
+      dtc $$2 = $$0.a_($$1);
+      return !$$2.a(awe.aR) && (!($$2.b() instanceof doe) || !$$2.c(doe.b)) ? $$2.k($$0, $$1) : exk.a();
    }
 
-   @Override
-   public double H() {
-      return this.du();
-   }
+   public static double a(ir $$0, int $$1, Function<ir, exn> $$2) {
+      ir.a $$3 = $$0.j();
+      int $$4 = 0;
 
-   @Override
-   public double I() {
-      return this.dw() + 0.5;
-   }
-
-   @Override
-   public double J() {
-      return this.dA();
-   }
-
-   @Override
-   public boolean K() {
-      return false;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dP().B && this.bD() && this.G() && this.M()) {
-         this.e();
-      }
-   }
-
-   public boolean M() {
-      if (dpf.a(this.dP(), this)) {
-         return true;
-      } else {
-         for (cig $$1 : this.dP().a(cig.class, this.cK().c(0.25, 0.0, 0.25), brz.a)) {
-            if (dpf.a(this, $$1)) {
-               return true;
-            }
+      while ($$4 < $$1) {
+         exn $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(iw.a.b);
          }
 
-         return false;
+         $$4++;
+         $$3.d(iw.b);
       }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   protected ctj ag_() {
-      return ctr.nQ;
-   }
+   @Nullable
+   public static ewu a(bsb<?> $$0, dbk $$1, ir $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dbg)$$1, $$2), () -> a((dbg)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ewu $$5 = ewu.a($$2, $$4);
+            ewp $$6 = $$0.n().a($$5);
 
-   @Override
-   protected void b(ud $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
-   }
+            for (exn $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   protected void a(ud $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public cot a(int $$0, clv $$1) {
-      return new cps($$0, $$1, this);
+            if ($$0 != bsb.bE || !$$1.a_($$2).a(awe.ct) && !$$1.a_($$2.c()).a(awe.ct)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

@@ -1,48 +1,24 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class wo {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+public class wo extends wc {
+   private static final Logger h = LogUtils.getLogger();
+   private static final xe i = xe.c("disconnect.exceeded_packet_rate");
+   private final int j;
 
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
-            return $$1;
-         }
+   public wo(int $$0) {
+      super(zm.a);
+      this.j = $$0;
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      float $$0 = this.o();
+      if ($$0 > (float)this.j) {
+         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
+         this.a(new zt(i), wl.a(() -> this.a(i)));
+         this.m();
       }
-
-      return 5;
-   }
-
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
-   }
-
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
-         }
-      } while (a($$3));
-
-      return $$1;
-   }
-
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
-      }
-
-      $$0.writeByte($$1);
-      return $$0;
    }
 }

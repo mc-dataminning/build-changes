@@ -1,68 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
-
-public class gdq {
-   private final akm a;
-   private final List<gdq.b> b;
-
-   public gdq(akm $$0, List<gdq.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
+public class gdq extends gdg {
+   gdq(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gdp $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axw.b.b($$7), (float)axw.b.c($$7), (float)axw.b.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
-   public akm a() {
-      return this.a;
-   }
-
-   public Stream<gdq.b> b() {
-      return this.b.stream();
-   }
-
-   protected static class a implements JsonDeserializer<gdq> {
-      public gdq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         akm $$4 = new akm(axu.i($$3, "model"));
-         List<gdq.b> $$5 = this.a($$3);
-         return new gdq($$4, $$5);
-      }
-
-      protected List<gdq.b> a(JsonObject $$0) {
-         Map<akm, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = axu.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(new akm($$3.getKey()), axu.e($$3.getValue(), $$3.getKey()));
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
          }
 
-         return $$1.entrySet().stream().map($$0x -> new gdq.b((akm)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+         if (this.c.a_(ir.a(this.g, this.h, this.i)).i()) {
+            this.k -= 0.0074F;
+         }
       }
    }
 
-   public static class b {
-      private final akm a;
-      private final float b;
+   public static class a implements gcx<le> {
+      private final gdp a;
 
-      public b(akm $$0, float $$1) {
+      public a(gdp $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public akm a() {
-         return this.a;
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdq($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.b.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gcx<le> {
+      private final gdp a;
+
+      public b(gdp $$0) {
+         this.a = $$0;
       }
 
-      public float b() {
-         return this.b;
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdq($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.b.a(255, 255, 255, 255), this.a);
       }
    }
 }

@@ -1,33 +1,66 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
 public class fay {
-   public final fch a = new fch(ac.h(), TimeUnit.MILLISECONDS, ac.c);
-   private final List<fch.e<?>> h;
-   public final fch.e<List<ezy>> b;
-   public final fch.e<fay.a> c;
-   public final fch.e<Integer> d;
-   public final fch.e<Boolean> e;
-   public final fch.e<ezx> f;
-   public final faz g = new faz(new fcn());
+   @Nullable
+   private static fbf a;
 
-   public fay(ezi $$0) {
-      this.c = this.a.a("server list", () -> {
-         fab $$1 = $$0.b();
-         return ezd.b() ? new fay.a($$1.a, $$0.c()) : new fay.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fci.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fci.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fci.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fci.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fci.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   public static void a() {
+      if (a != null) {
+         b();
+         fbf.b();
+      }
    }
 
-   public List<fch.e<?>> a() {
-      return this.h;
+   public static void b() {
+      a = null;
    }
 
-   public static record a(List<ezz> a, List<ezz> b) {
+   public static void a(fax.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(fax.b $$0) {
+      fbf $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(fax.b $$0) {
+      fbf $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static fbf d(fax.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         fbf $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static fbf a(fbh $$0) {
+      fbf $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fbf $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

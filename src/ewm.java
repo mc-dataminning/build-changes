@@ -1,166 +1,103 @@
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 
-public class ewm {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 4;
-   public static final int a = 1;
-   private final int d;
-   private final AtomicBoolean e = new AtomicBoolean(true);
-   private int f = 16384;
-   @Nullable
-   private gsf g;
+public class ewm implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<ewm.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
 
-   @Nullable
-   static ewm a() {
-      int[] $$0 = new int[1];
-      AL10.alGenSources($$0);
-      return ewr.a("Allocate new source") ? null : new ewm($$0[0]);
+   public ewm(List<ewm.a> $$0) {
+      this.c = $$0;
    }
 
-   private ewm(int $$0) {
-      this.d = $$0;
-   }
-
-   public void b() {
-      if (this.e.compareAndSet(true, false)) {
-         AL10.alSourceStop(this.d);
-         ewr.a("Stop");
-         if (this.g != null) {
-            try {
-               this.g.close();
-            } catch (IOException var2) {
-               b.error("Failed to close audio stream", var2);
-            }
-
-            this.l();
-            this.g = null;
-         }
-
-         AL10.alDeleteSources(new int[]{this.d});
-         ewr.a("Cleanup");
-      }
-   }
-
-   public void c() {
-      AL10.alSourcePlay(this.d);
-   }
-
-   private int k() {
-      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
-   }
-
-   public void d() {
-      if (this.k() == 4114) {
-         AL10.alSourcePause(this.d);
-      }
-   }
-
-   public void e() {
-      if (this.k() == 4115) {
-         AL10.alSourcePlay(this.d);
-      }
-   }
-
-   public void f() {
-      if (this.e.get()) {
-         AL10.alSourceStop(this.d);
-         ewr.a("Stop");
-      }
-   }
-
-   public boolean g() {
-      return this.k() == 4114;
-   }
-
-   public boolean h() {
-      return this.k() == 4116;
-   }
-
-   public void a(euk $$0) {
-      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.c, (float)$$0.d, (float)$$0.e});
-   }
-
-   public void a(float $$0) {
-      AL10.alSourcef(this.d, 4099, $$0);
-   }
-
-   public void a(boolean $$0) {
-      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
-   }
-
-   public void b(float $$0) {
-      AL10.alSourcef(this.d, 4106, $$0);
-   }
-
-   public void i() {
-      AL10.alSourcei(this.d, 53248, 0);
-   }
-
-   public void c(float $$0) {
-      AL10.alSourcei(this.d, 53248, 53251);
-      AL10.alSourcef(this.d, 4131, $$0);
-      AL10.alSourcef(this.d, 4129, 1.0F);
-      AL10.alSourcef(this.d, 4128, 0.0F);
-   }
-
-   public void b(boolean $$0) {
-      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
-   }
-
-   public void a(ews $$0) {
-      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
-   }
-
-   public void a(gsf $$0) {
-      this.g = $$0;
-      AudioFormat $$1 = $$0.a();
-      this.f = a($$1, 1);
-      this.a(4);
-   }
-
-   private static int a(AudioFormat $$0, int $$1) {
-      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
-   }
-
-   private void a(int $$0) {
-      if (this.g != null) {
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
          try {
-            for (int $$1 = 0; $$1 < $$0; $$1++) {
-               ByteBuffer $$2 = this.g.a(this.f);
-               if ($$2 != null) {
-                  new ews($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
                }
             }
-         } catch (IOException var4) {
-            b.error("Failed to read from audio stream", var4);
+
+            return false;
+         };
+         };
+      });
+   }
+
+   @Override
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
+   }
+
+   public static ewm a(BufferedReader $$0) {
+      return new ewm($$0.lines().flatMap($$0x -> ewm.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(ewm.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<ewm.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new ewm.a(ewm.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new ewm.a(ewm.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new ewm.a(ewm.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
          }
       }
-   }
 
-   public void j() {
-      if (this.g != null) {
-         int $$0 = this.l();
-         this.a($$0);
+      static ewm.a b(String $$0) {
+         return new ewm.a(ewm.b.a, "glob:" + $$0);
+      }
+
+      static ewm.a c(String $$0) {
+         return new ewm.a(ewm.b.a, "regex:" + $$0);
+      }
+
+      static ewm.a d(String $$0) {
+         return new ewm.a(ewm.b.b, $$0);
       }
    }
 
-   private int l() {
-      int $$0 = AL10.alGetSourcei(this.d, 4118);
-      if ($$0 > 0) {
-         int[] $$1 = new int[$$0];
-         AL10.alSourceUnqueueBuffers(this.d, $$1);
-         ewr.a("Unqueue buffers");
-         AL10.alDeleteBuffers($$1);
-         ewr.a("Remove processed buffers");
-      }
+   @FunctionalInterface
+   public interface b {
+      ewm.b a = FileSystem::getPathMatcher;
+      ewm.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
 
-      return $$0;
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

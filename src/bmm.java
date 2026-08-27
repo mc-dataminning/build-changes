@@ -1,20 +1,12 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public enum bmm {
-   a("client"),
-   b("server");
+public interface bmm extends bmo {
+   bmn d();
 
-   private final String c;
+   @Nullable
+   bmh.a c(String var1);
 
-   private bmm(String $$0) {
-      this.c = $$0;
-   }
-
-   public static bmm a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
-   }
+   Set<Pair<String, bnu>> e();
 }

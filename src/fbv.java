@@ -1,121 +1,289 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 
-public class fbv extends gty {
-   private static final wx a = wx.c("mco.selectServer.popup");
-   private static final wx b = wx.c("mco.selectServer.close");
-   private static final akm c = new akm("popup/background");
-   private static final akm B = new akm("icon/trial_available");
-   private static final fhm C = new fhm(new akm("widget/cross_button"), new akm("widget/cross_button_highlighted"));
-   private static final int D = 236;
-   private static final int E = 34;
-   private static final int F = 6;
-   private static final int G = 195;
-   private static final int H = 152;
-   private static final int I = 4;
-   private static final int J = 10;
-   private static final int K = 320;
-   private static final int L = 172;
-   private static final int M = 100;
-   private static final int N = 99;
-   private static final int O = 100;
-   private static List<akm> P = List.of();
-   private final fly Q;
-   private final boolean R;
-   @Nullable
-   private ffz S;
-   private int T;
-   private int U;
+public abstract class fbv<T extends fbv<T>> {
+   protected HttpURLConnection a;
+   private boolean c;
+   protected String b;
+   private static final int d = 60000;
+   private static final int e = 5000;
+   private static final String f = "Is-Prerelease";
+   private static final String g = "Cookie";
 
-   public fbv(fly $$0, boolean $$1) {
-      super(a);
-      this.Q = $$0;
-      this.R = $$1;
-   }
+   public fbv(String $$0, int $$1, int $$2) {
+      try {
+         this.b = $$0;
+         Proxy $$3 = fbt.a();
+         if ($$3 != null) {
+            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+         } else {
+            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         }
 
-   public static void a(atw $$0) {
-      Collection<akm> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
-   }
-
-   @Override
-   protected void aM_() {
-      this.Q.a(this.m, this.n, this.o);
-      if (this.R) {
-         this.S = this.c(
-            ffz.a(wx.c("mco.selectServer.trial"), fkp.b(this, "https://aka.ms/startjavarealmstrial")).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a()
-         );
-      }
-
-      this.c(ffz.a(wx.c("mco.selectServer.buy"), fkp.b(this, "https://aka.ms/BuyJavaRealms")).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a());
-      fgl $$0 = this.c(new fgl(this.C() + 4, this.D() + 4, 14, 14, C, $$0x -> this.d(), b));
-      $$0.a(fhk.a(b));
-      int $$1 = 142 - (this.R ? 40 : 20);
-      fgj $$2 = new fgj(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.p);
-      if ($$2.j()) {
-         $$2.k(100 - $$2.f());
-      }
-
-      this.c($$2);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (++this.U > 100) {
-         this.U = 0;
-         this.T = (this.T + 1) % P.size();
+         this.a.setConnectTimeout($$1);
+         this.a.setReadTimeout($$2);
+      } catch (MalformedURLException var5) {
+         throw new fde(var5.getMessage(), var5);
+      } catch (IOException var6) {
+         throw new fde(var6.getMessage(), var6);
       }
    }
 
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.S != null) {
-         a($$0, this.S);
+   public void a(String $$0, String $$1) {
+      a(this.a, $$0, $$1);
+   }
+
+   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
+      String $$3 = $$0.getRequestProperty("Cookie");
+      if ($$3 == null) {
+         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+      } else {
+         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
       }
    }
 
-   public static void a(ffm $$0, ffz $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(B, $$1.C() + $$1.x() - 8 - 4, $$1.D() + $$1.v() / 2 - 4, 8, 8);
-      $$0.c().b();
+   public void a(boolean $$0) {
+      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
    }
 
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      this.Q.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, fdz.a);
-      this.b($$0);
-      $$0.a(c, this.C(), this.D(), 320, 172);
-      if (!P.isEmpty()) {
-         $$0.a(P.get(this.T), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+   public int a() {
+      return a(this.a);
+   }
+
+   public static int a(HttpURLConnection $$0) {
+      String $$1 = $$0.getHeaderField("Retry-After");
+
+      try {
+         return Integer.valueOf($$1);
+      } catch (Exception var3) {
+         return 5;
       }
    }
 
-   private int C() {
-      return (this.n - 320) / 2;
+   public int b() {
+      try {
+         this.d();
+         return this.a.getResponseCode();
+      } catch (Exception var2) {
+         throw new fde(var2.getMessage(), var2);
+      }
    }
 
-   private int D() {
-      return (this.o - 172) / 2;
+   public String c() {
+      try {
+         this.d();
+         String $$0;
+         if (this.b() >= 400) {
+            $$0 = this.a(this.a.getErrorStream());
+         } else {
+            $$0 = this.a(this.a.getInputStream());
+         }
+
+         this.f();
+         return $$0;
+      } catch (IOException var2) {
+         throw new fde(var2.getMessage(), var2);
+      }
    }
 
-   private int E() {
-      return this.C() + 320;
+   private String a(@Nullable InputStream $$0) throws IOException {
+      if ($$0 == null) {
+         return "";
+      } else {
+         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
+         StringBuilder $$2 = new StringBuilder();
+
+         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
+            $$2.append((char)$$3);
+         }
+
+         return $$2.toString();
+      }
    }
 
-   private int F() {
-      return this.D() + 172;
+   private void f() {
+      byte[] $$0 = new byte[1024];
+
+      try {
+         InputStream $$1 = this.a.getInputStream();
+
+         while ($$1.read($$0) > 0) {
+         }
+
+         $$1.close();
+         return;
+      } catch (Exception var9) {
+         try {
+            InputStream $$3 = this.a.getErrorStream();
+            if ($$3 != null) {
+               while ($$3.read($$0) > 0) {
+               }
+
+               $$3.close();
+               return;
+            }
+         } catch (IOException var8) {
+            return;
+         }
+      } finally {
+         if (this.a != null) {
+            this.a.disconnect();
+         }
+      }
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.Q);
+   protected T d() {
+      if (this.c) {
+         return (T)this;
+      } else {
+         T $$0 = this.e();
+         this.c = true;
+         return $$0;
+      }
+   }
+
+   protected abstract T e();
+
+   public static fbv<?> a(String $$0) {
+      return new fbv.b($$0, 5000, 60000);
+   }
+
+   public static fbv<?> a(String $$0, int $$1, int $$2) {
+      return new fbv.b($$0, $$1, $$2);
+   }
+
+   public static fbv<?> b(String $$0, String $$1) {
+      return new fbv.c($$0, $$1, 5000, 60000);
+   }
+
+   public static fbv<?> a(String $$0, String $$1, int $$2, int $$3) {
+      return new fbv.c($$0, $$1, $$2, $$3);
+   }
+
+   public static fbv<?> b(String $$0) {
+      return new fbv.a($$0, 5000, 60000);
+   }
+
+   public static fbv<?> c(String $$0, String $$1) {
+      return new fbv.d($$0, $$1, 5000, 60000);
+   }
+
+   public static fbv<?> b(String $$0, String $$1, int $$2, int $$3) {
+      return new fbv.d($$0, $$1, $$2, $$3);
+   }
+
+   public String c(String $$0) {
+      return a(this.a, $$0);
+   }
+
+   public static String a(HttpURLConnection $$0, String $$1) {
+      try {
+         return $$0.getHeaderField($$1);
+      } catch (Exception var3) {
+         return "";
+      }
+   }
+
+   public static class a extends fbv<fbv.a> {
+      public a(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public fbv.a f() {
+         try {
+            this.a.setDoOutput(true);
+            this.a.setRequestMethod("DELETE");
+            this.a.connect();
+            return this;
+         } catch (Exception var2) {
+            throw new fde(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class b extends fbv<fbv.b> {
+      public b(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public fbv.b f() {
+         try {
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("GET");
+            return this;
+         } catch (Exception var2) {
+            throw new fde(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class c extends fbv<fbv.c> {
+      private final String c;
+
+      public c(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public fbv.c f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("POST");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fde(var3.getMessage(), var3);
+         }
+      }
+   }
+
+   public static class d extends fbv<fbv.d> {
+      private final String c;
+
+      public d(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public fbv.d f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoOutput(true);
+            this.a.setDoInput(true);
+            this.a.setRequestMethod("PUT");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fde(var3.getMessage(), var3);
+         }
+      }
    }
 }

@@ -1,11 +1,11 @@
-public abstract class cfg extends bsx {
-   protected cfg(bsa<? extends cfg> $$0, dax $$1) {
+public abstract class cfg extends bsw {
+   protected cfg(bsb<? extends cfg> $$0, dca $$1) {
       super($$0, $$1);
-      this.a(enl.j, 0.0F);
+      this.a(epv.j, 0.0F);
    }
 
    @Override
-   public boolean a(dba $$0) {
+   public boolean a(dcd $$0) {
       return $$0.f(this);
    }
 
@@ -15,16 +15,16 @@ public abstract class cfg extends bsx {
    }
 
    @Override
-   public int ej() {
-      return 1 + this.dP().z.a(3);
+   public int er() {
+      return 1 + this.dU().A.a(3);
    }
 
    protected void b(int $$0) {
-      if (this.bD() && !this.bh()) {
+      if (this.bI() && !this.bl()) {
          this.k($$0 - 1);
-         if (this.cl() == -20) {
+         if (this.cq() == -20) {
             this.k(0);
-            this.a(this.dQ().h(), 2.0F);
+            this.a(this.dX().i(), 2.0F);
          }
       } else {
          this.k(300);
@@ -33,24 +33,24 @@ public abstract class cfg extends bsx {
 
    @Override
    public void au() {
-      int $$0 = this.cl();
+      int $$0 = this.cq();
       super.au();
       this.b($$0);
    }
 
    @Override
-   public boolean cC() {
+   public boolean cH() {
       return false;
    }
 
    @Override
-   public boolean a(clw $$0) {
+   public boolean a(cly $$0) {
       return false;
    }
 
-   public static boolean c(bsa<? extends cfg> $$0, day $$1, bss $$2, io $$3, ayk $$4) {
-      int $$5 = $$1.z_();
+   public static boolean c(bsb<? extends cfg> $$0, dcb $$1, bss $$2, ir $$3, ayt $$4) {
+      int $$5 = $$1.A_();
       int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(awb.a) && $$1.a_($$3.c()).a(dea.G);
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(awj.a) && $$1.a_($$3.c()).a(dfe.al);
    }
 }

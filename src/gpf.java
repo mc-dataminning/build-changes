@@ -1,22 +1,12 @@
-public class gpf {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+public class gpf<T extends cjf> extends gor<T, fws<T>> {
+   private static final gfo a = gfo.p(new akt("textures/entity/phantom_eyes.png"));
 
-   public gpf(int $$0) {
-      this($$0, -1);
+   public gpf(gmp<T, fws<T>> $$0) {
+      super($$0);
    }
 
-   public gpf(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public gfo a() {
+      return a;
    }
 }

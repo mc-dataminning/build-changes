@@ -1,104 +1,522 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.joml.Matrix4f;
+import org.slf4j.Logger;
 
-public class gfu implements gfw.a {
-   final fdz a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
+public class gfu implements fas, AutoCloseable {
+   public static final String a = "shaders";
+   private static final String q = "shaders/core/";
+   private static final String r = "shaders/include/";
+   static final Logger s = LogUtils.getLogger();
+   private static final fal t = new fal();
+   private static final boolean u = true;
+   private static gfu v;
+   private static int w = -1;
+   private final Map<String, Object> x = Maps.newHashMap();
+   private final List<String> y = Lists.newArrayList();
+   private final List<Integer> z = Lists.newArrayList();
+   private final List<fat> A = Lists.newArrayList();
+   private final List<Integer> B = Lists.newArrayList();
+   private final Map<String, fat> C = Maps.newHashMap();
+   private final int D;
+   private final String E;
+   private boolean F;
+   private final fam G;
+   private final faq H;
+   private final faq I;
+   private final fbh J;
    @Nullable
-   private gfu.a d;
+   public final fat b;
+   @Nullable
+   public final fat c;
+   @Nullable
+   public final fat d;
+   @Nullable
+   public final fat e;
+   @Nullable
+   public final fat f;
+   @Nullable
+   public final fat g;
+   @Nullable
+   public final fat h;
+   @Nullable
+   public final fat i;
+   @Nullable
+   public final fat j;
+   @Nullable
+   public final fat k;
+   @Nullable
+   public final fat l;
+   @Nullable
+   public final fat m;
+   @Nullable
+   public final fat n;
+   @Nullable
+   public final fat o;
+   @Nullable
+   public final fat p;
 
-   public gfu(fdz $$0) {
-      this.a = $$0;
+   public gfu(aug $$0, String $$1, fbh $$2) throws IOException {
+      this.E = $$1;
+      this.J = $$2;
+      akt $$3 = new akt("shaders/core/" + $$1 + ".json");
+
+      try (Reader $$4 = $$0.openAsReader($$3)) {
+         JsonObject $$5 = ayc.a($$4);
+         String $$6 = ayc.i($$5, "vertex");
+         String $$7 = ayc.i($$5, "fragment");
+         JsonArray $$8 = ayc.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
+
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var18) {
+                  akw $$12 = akw.a(var18);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
+         }
+
+         JsonArray $$13 = ayc.a($$5, "uniforms", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.b($$15);
+               } catch (Exception var17) {
+                  akw $$17 = akw.a(var17);
+                  $$17.a("uniforms[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         }
+
+         this.G = a(ayc.a($$5, "blend", null));
+         this.H = a($$0, faq.a.a, $$6);
+         this.I = a($$0, faq.a.b, $$7);
+         this.D = far.a();
+         int $$18 = 0;
+
+         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
+            String $$19 = (String)var26.next();
+            fat.a(this.D, $$18, $$19);
+         }
+
+         far.b(this);
+         this.j();
+      } catch (Exception var20) {
+         akw $$22 = akw.a(var20);
+         $$22.b($$3.a());
+         throw $$22;
+      }
+
+      this.b();
+      this.b = this.a("ModelViewMat");
+      this.c = this.a("ProjMat");
+      this.d = this.a("TextureMat");
+      this.e = this.a("ScreenSize");
+      this.f = this.a("ColorModulator");
+      this.g = this.a("Light0_Direction");
+      this.h = this.a("Light1_Direction");
+      this.i = this.a("GlintAlpha");
+      this.j = this.a("FogStart");
+      this.k = this.a("FogEnd");
+      this.l = this.a("FogColor");
+      this.m = this.a("FogShape");
+      this.n = this.a("LineWidth");
+      this.o = this.a("GameTime");
+      this.p = this.a("ChunkOffset");
+   }
+
+   private static faq a(final aug $$0, faq.a $$1, String $$2) throws IOException {
+      faq $$3 = $$1.c().get($$2);
+      faq $$8;
+      if ($$3 == null) {
+         String $$4 = "shaders/core/" + $$2 + $$1.b();
+         aub $$5 = $$0.getResourceOrThrow(new akt($$4));
+
+         try (InputStream $$6 = $$5.d()) {
+            final String $$7 = v.a($$4);
+            $$8 = faq.a($$1, $$2, $$6, $$5.b(), new faj() {
+               private final Set<String> c = Sets.newHashSet();
+
+               @Override
+               public String a(boolean $$0x, String $$1) {
+                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
+                  if (!this.c.add($$1)) {
+                     return null;
+                  } else {
+                     akt $$2 = new akt($$1);
+
+                     try {
+                        String var5;
+                        try (Reader $$3 = $$0.openAsReader($$2)) {
+                           var5 = IOUtils.toString($$3);
+                        }
+
+                        return var5;
+                     } catch (IOException var9) {
+                        gfu.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
+                        return "#error " + var9.getMessage();
+                     }
+                  }
+               }
+            });
+         }
+      } else {
+         $$8 = $$3;
+      }
+
+      return $$8;
+   }
+
+   public static fam a(JsonObject $$0) {
+      if ($$0 == null) {
+         return new fam();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (ayc.a($$0, "func")) {
+            $$1 = fam.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (ayc.a($$0, "srcrgb")) {
+            $$2 = fam.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (ayc.a($$0, "dstrgb")) {
+            $$3 = fam.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (ayc.a($$0, "srcalpha")) {
+            $$4 = fam.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (ayc.a($$0, "dstalpha")) {
+            $$5 = fam.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new fam();
+         } else {
+            return $$7 ? new fam($$2, $$3, $$4, $$5, $$1) : new fam($$2, $$3, $$1);
+         }
+      }
    }
 
    @Override
-   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gsa $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gfu.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
+   public void close() {
+      for (fat $$0 : this.A) {
+         $$0.close();
+      }
+
+      far.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      far.a(0);
+      w = -1;
+      v = null;
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         if (this.x.get(this.y.get($$1)) != null) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
          }
       }
 
-      if (this.d != null) {
-         Map<dae, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.m().b().d * 0.85;
+      GlStateManager._activeTexture($$0);
+   }
 
-         for (Entry<dae, String> $$9 : this.d.b.entrySet()) {
-            dae $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      this.F = false;
+      v = this;
+      this.G.a();
+      if (this.D != w) {
+         far.a(this.D);
+         w = this.D;
+      }
+
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         if (this.x.get($$2) != null) {
+            int $$3 = fat.a(this.D, $$2);
+            fat.b($$3, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            Object $$4 = this.x.get($$2);
+            int $$5 = -1;
+            if ($$4 instanceof ezo) {
+               $$5 = ((ezo)$$4).f();
+            } else if ($$4 instanceof gqj) {
+               $$5 = ((gqj)$$4).a();
+            } else if ($$4 instanceof Integer) {
+               $$5 = (Integer)$$4;
             }
 
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gfw.a($$0, $$1, $$14, (double)jq.a($$10.e, 8), $$8 + (double)$$13, (double)jq.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
+            if ($$5 != -1) {
+               RenderSystem.bindTexture($$5);
             }
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (fat $$6 : this.A) {
+         $$6.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.F = true;
+   }
+
+   @Nullable
+   public fat a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.C.get($$0);
+   }
+
+   public fal b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      fat $$1 = this.a($$0);
+      return (fal)($$1 == null ? t : $$1);
+   }
+
+   private void j() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
+         String $$2 = this.y.get($$1);
+         int $$3 = fat.a(this.D, $$2);
+         if ($$3 == -1) {
+            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
+            this.x.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.z.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         int $$5 = $$0.getInt($$4);
+         this.y.remove($$5);
+      }
+
+      for (fat $$6 : this.A) {
+         String $$7 = $$6.a();
+         int $$8 = fat.a(this.D, $$7);
+         if ($$8 == -1) {
+            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
+         } else {
+            this.B.add($$8);
+            $$6.b($$8);
+            this.C.put($$7, $$6);
          }
       }
    }
 
-   final class a {
-      final Map<dae, String> b;
-      final CompletableFuture<Map<dae, String>> c;
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = ayc.m($$0, "sampler");
+      String $$2 = ayc.i($$1, "name");
+      if (!ayc.a($$1, "file")) {
+         this.x.put($$2, null);
+         this.y.add($$2);
+      } else {
+         this.y.add($$2);
+      }
+   }
 
-      a(gsa $$0, double $$1, double $$2) {
-         fwr $$3 = gfu.this.a.r;
-         akl<dax> $$4 = $$3.ae();
-         int $$5 = jq.a($$1);
-         int $$6 = jq.a($$2);
-         Builder<dae, String> $$7 = ImmutableMap.builder();
-         fwn $$8 = $$3.i();
+   public void a(String $$0, Object $$1) {
+      this.x.put($$0, $$1);
+      this.b();
+   }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dae $$11 = new dae($$9, $$10);
-               String $$12 = "";
-               dth $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
+   private void b(JsonElement $$0) throws akw {
+      JsonObject $$1 = ayc.m($$0, "uniform");
+      String $$2 = ayc.i($$1, "name");
+      int $$3 = fat.a(ayc.i($$1, "type"));
+      int $$4 = ayc.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = ayc.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new akw("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
 
-               $$7.put($$11, $$12);
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = ayc.e($$8, "value");
+            } catch (Exception var13) {
+               akw $$10 = akw.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
             }
          }
 
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            aqm $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dae, String> $$5x = ImmutableMap.builder();
-               aqk $$6x = $$4x.l();
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         fat $$12 = new fat($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         }
 
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dae $$9x = new dae($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+         this.A.add($$12);
       }
+   }
+
+   @Override
+   public faq c() {
+      return this.H;
+   }
+
+   @Override
+   public faq d() {
+      return this.I;
+   }
+
+   @Override
+   public void e() {
+      this.I.a(this);
+      this.H.a(this);
+   }
+
+   public fbh h() {
+      return this.J;
+   }
+
+   public String i() {
+      return this.E;
+   }
+
+   @Override
+   public int a() {
+      return this.D;
+   }
+
+   public void a(fbh.b $$0, Matrix4f $$1, Matrix4f $$2, fag $$3) {
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         int $$5 = RenderSystem.getShaderTexture($$4);
+         this.a("Sampler" + $$4, $$5);
+      }
+
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+
+      if (this.c != null) {
+         this.c.a($$2);
+      }
+
+      if (this.f != null) {
+         this.f.a(RenderSystem.getShaderColor());
+      }
+
+      if (this.i != null) {
+         this.i.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      if (this.j != null) {
+         this.j.a(RenderSystem.getShaderFogStart());
+      }
+
+      if (this.k != null) {
+         this.k.a(RenderSystem.getShaderFogEnd());
+      }
+
+      if (this.l != null) {
+         this.l.a(RenderSystem.getShaderFogColor());
+      }
+
+      if (this.m != null) {
+         this.m.a(RenderSystem.getShaderFogShape().a());
+      }
+
+      if (this.d != null) {
+         this.d.a(RenderSystem.getTextureMatrix());
+      }
+
+      if (this.o != null) {
+         this.o.a(RenderSystem.getShaderGameTime());
+      }
+
+      if (this.e != null) {
+         this.e.a((float)$$3.k(), (float)$$3.l());
+      }
+
+      if (this.n != null && ($$0 == fbh.b.a || $$0 == fbh.b.b)) {
+         this.n.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights(this);
    }
 }

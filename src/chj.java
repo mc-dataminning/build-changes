@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class chj extends chc {
    @Nullable
-   private euk b;
+   private ewu b;
 
    public chj(cha $$0) {
       super($$0);
@@ -10,19 +10,19 @@ public class chj extends chc {
 
    @Override
    public void b() {
-      euk $$0 = this.a.F(1.0F).d();
+      ewu $$0 = this.a.F(1.0F).d();
       $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.du();
+      double $$1 = this.a.e.dz();
       double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dA();
+      double $$3 = this.a.e.dF();
 
       for (int $$4 = 0; $$4 < 8; $$4++) {
-         ayk $$5 = this.a.el();
+         ayt $$5 = this.a.et();
          double $$6 = $$1 + $$5.k() / 2.0;
          double $$7 = $$2 + $$5.k() / 2.0;
          double $$8 = $$3 + $$5.k() / 2.0;
-         euk $$9 = this.a.ds();
-         this.a.dP().a(ky.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
+         ewu $$9 = this.a.dx();
+         this.a.dU().a(lb.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
          $$0.b((float) (Math.PI / 16));
       }
    }
@@ -30,12 +30,12 @@ public class chj extends chc {
    @Override
    public void c() {
       if (this.b == null) {
-         this.b = euk.c(this.a.dP().a(dwt.a.f, dzw.a(this.a.s())));
+         this.b = ewu.c(this.a.dU().a(dyu.a.f, ebz.a(this.a.r())));
       }
 
-      if (this.b.c(this.a.du(), this.a.dw(), this.a.dA()) < 1.0) {
-         this.a.gm().b(chq.f).j();
-         this.a.gm().a(chq.g);
+      if (this.b.c(this.a.dz(), this.a.dB(), this.a.dF()) < 1.0) {
+         this.a.gv().b(chq.f).j();
+         this.a.gv().a(chq.g);
       }
    }
 
@@ -46,7 +46,7 @@ public class chj extends chc {
 
    @Override
    public float h() {
-      float $$0 = (float)this.a.ds().h() + 1.0F;
+      float $$0 = (float)this.a.dx().h() + 1.0F;
       float $$1 = Math.min($$0, 40.0F);
       return $$1 / $$0;
    }
@@ -58,7 +58,7 @@ public class chj extends chc {
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.b;
    }
 

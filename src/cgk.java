@@ -1,119 +1,119 @@
 import javax.annotation.Nullable;
 
-public class cgk extends cgi implements bto<cgr> {
-   private static final ajr<Integer> bY = ajv.a(cgk.class, ajt.b);
-   private static final brx bZ = bsa.ab.n().a(brw.a().a(brv.a, 0.0F, bsa.ab.m() + 0.125F, 0.0F)).a(0.5F);
+public class cgk extends cgi implements btn<cgr> {
+   private static final ajy<Integer> ch = akc.a(cgk.class, aka.b);
+   private static final bry ci = bsb.ad.n().a(brx.a().a(brw.a, 0.0F, bsb.ad.l() + 0.125F, 0.0F)).a(0.5F);
 
-   public cgk(bsa<? extends cgk> $$0, dax $$1) {
+   public cgk(bsb<? extends cgk> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(ayk $$0) {
-      this.f(btw.q).a((double)a($$0::a));
-      this.f(btw.r).a(b($$0::j));
-      this.f(btw.m).a(a($$0::j));
+   protected void a(ayt $$0) {
+      this.f(btv.q).a((double)a($$0::a));
+      this.f(btv.r).a(b($$0::j));
+      this.f(btv.m).a(a($$0::j));
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       super.a($$0);
-      $$0.a(bY, 0);
+      $$0.a(ch, 0);
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("Variant", this.gp());
+      $$0.a("Variant", this.gy());
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
-      this.x($$0.h("Variant"));
+      this.y($$0.h("Variant"));
    }
 
-   private void x(int $$0) {
-      this.ao.a(bY, $$0);
+   private void y(int $$0) {
+      this.as.a(ch, $$0);
    }
 
-   private int gp() {
-      return this.ao.a(bY);
+   private int gy() {
+      return this.as.a(ch);
    }
 
    private void a(cgr $$0, cgm $$1) {
-      this.x($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
+      this.y($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
    }
 
-   public cgr s() {
-      return cgr.a(this.gp() & 0xFF);
+   public cgr r() {
+      return cgr.a(this.gy() & 0xFF);
    }
 
    public void a(cgr $$0) {
-      this.x($$0.a() & 0xFF | this.gp() & -256);
+      this.y($$0.a() & 0xFF | this.gy() & -256);
    }
 
-   public cgm u() {
-      return cgm.a((this.gp() & 0xFF00) >> 8);
+   public cgm t() {
+      return cgm.a((this.gy() & 0xFF00) >> 8);
    }
 
    @Override
-   public void a(bpn $$0) {
-      cto $$1 = this.fQ();
+   public void a(bpt $$0) {
+      cuh $$1 = this.fZ();
       super.a($$0);
-      cto $$2 = this.fQ();
-      if (this.ai > 20 && this.l($$2) && $$1 != $$2) {
-         this.a(avh.mI, 0.5F, 1.0F);
+      cuh $$2 = this.fZ();
+      if (this.am > 20 && this.l($$2) && $$1 != $$2) {
+         this.a(avo.mY, 0.5F, 1.0F);
       }
    }
 
    @Override
-   protected void a(dll $$0) {
+   protected void a(dnd $$0) {
       super.a($$0);
-      if (this.ah.a(10) == 0) {
-         this.a(avh.mJ, $$0.a() * 0.6F, $$0.b());
+      if (this.al.a(10) == 0) {
+         this.a(avo.mZ, $$0.a() * 0.6F, $$0.b());
       }
    }
 
    @Override
-   protected avg v() {
-      return avh.mG;
+   protected avn u() {
+      return avo.mW;
    }
 
    @Override
-   protected avg o_() {
-      return avh.mK;
+   protected avn n_() {
+      return avo.na;
    }
 
    @Nullable
    @Override
-   protected avg gw() {
-      return avh.mL;
+   protected avn gF() {
+      return avo.nb;
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.mN;
+   protected avn d(bqt $$0) {
+      return avo.nd;
    }
 
    @Override
-   protected avg gN() {
-      return avh.mH;
+   protected avn gW() {
+      return avo.mX;
    }
 
    @Override
-   public bpu b(clw $$0, bpt $$1) {
-      boolean $$2 = !this.p_() && this.gE() && $$0.fR();
-      if (!this.bS() && !$$2) {
-         cto $$3 = $$0.b($$1);
-         if (!$$3.e()) {
+   public bqa b(cly $$0, bpz $$1) {
+      boolean $$2 = !this.o_() && this.gN() && $$0.ga();
+      if (!this.bX() && !$$2) {
+         cuh $$3 = $$0.b($$1);
+         if (!$$3.d()) {
             if (this.o($$3)) {
                return this.c($$0, $$3);
             }
 
-            if (!this.gE()) {
-               this.gU();
-               return bpu.a(this.dP().B);
+            if (!this.gN()) {
+               this.hd();
+               return bqa.a(this.dU().C);
             }
          }
 
@@ -128,15 +128,15 @@ public class cgk extends cgi implements bto<cgr> {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof cgj) && !($$0 instanceof cgk) ? false : this.gW() && ((cgi)$$0).gW();
+         return !($$0 instanceof cgj) && !($$0 instanceof cgk) ? false : this.hf() && ((cgi)$$0).hf();
       }
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
+   public brp a(aqt $$0, brp $$1) {
       if ($$1 instanceof cgj) {
-         cgn $$2 = bsa.at.a((dax)$$0);
+         cgn $$2 = bsb.au.a((dca)$$0);
          if ($$2 != null) {
             this.a($$1, $$2);
          }
@@ -144,26 +144,26 @@ public class cgk extends cgi implements bto<cgr> {
          return $$2;
       } else {
          cgk $$3 = (cgk)$$1;
-         cgk $$4 = bsa.ab.a((dax)$$0);
+         cgk $$4 = bsb.ad.a((dca)$$0);
          if ($$4 != null) {
-            int $$5 = this.ah.a(9);
+            int $$5 = this.al.a(9);
             cgr $$6;
             if ($$5 < 4) {
-               $$6 = this.s();
+               $$6 = this.r();
             } else if ($$5 < 8) {
-               $$6 = $$3.s();
+               $$6 = $$3.r();
             } else {
-               $$6 = ac.a(cgr.values(), this.ah);
+               $$6 = ad.a(cgr.values(), this.al);
             }
 
-            int $$9 = this.ah.a(5);
+            int $$9 = this.al.a(5);
             cgm $$10;
             if ($$9 < 2) {
-               $$10 = this.u();
+               $$10 = this.t();
             } else if ($$9 < 4) {
-               $$10 = $$3.u();
+               $$10 = $$3.t();
             } else {
-               $$10 = ac.a(cgm.values(), this.ah);
+               $$10 = ad.a(cgm.values(), this.al);
             }
 
             $$4.a($$6, $$10);
@@ -175,13 +175,13 @@ public class cgk extends cgi implements bto<cgr> {
    }
 
    @Override
-   public boolean fR() {
+   public boolean ga() {
       return true;
    }
 
    @Override
-   public boolean l(cto $$0) {
-      if ($$0.g() instanceof crc $$1 && $$1.d() == crc.a.a) {
+   public boolean l(cuh $$0) {
+      if ($$0.f() instanceof crs $$1 && $$1.d() == crs.a.a) {
          return true;
       }
 
@@ -190,26 +190,26 @@ public class cgk extends cgi implements bto<cgr> {
 
    @Nullable
    @Override
-   public bth a(dbm $$0, bps $$1, bss $$2, @Nullable bth $$3) {
-      ayk $$4 = $$0.E_();
+   public btg a(dcp $$0, bpy $$1, bss $$2, @Nullable btg $$3) {
+      ayt $$4 = $$0.F_();
       cgr $$5;
       if ($$3 instanceof cgk.a) {
          $$5 = ((cgk.a)$$3).a;
       } else {
-         $$5 = ac.a(cgr.values(), $$4);
+         $$5 = ad.a(cgr.values(), $$4);
          $$3 = new cgk.a($$5);
       }
 
-      this.a($$5, ac.a(cgm.values(), $$4));
+      this.a($$5, ad.a(cgm.values(), $$4));
       return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public brx e(bta $$0) {
-      return this.p_() ? bZ : super.e($$0);
+   public bry e(bsz $$0) {
+      return this.o_() ? ci : super.e($$0);
    }
 
-   public static class a extends bro.a {
+   public static class a extends brp.a {
       public final cgr a;
 
       public a(cgr $$0) {

@@ -1,38 +1,59 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ffo {
-   public static final float a = 200.0F;
-   private final List<ffo.a> b = new ArrayList<>();
+public abstract class ffo extends ffj {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xe d;
+   private final Runnable e;
 
-   public ffo a(ffo.a $$0) {
-      this.b.add($$0);
-      return this;
+   public ffo(long $$0, xe $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public ffo a(ffo $$0, BooleanSupplier $$1) {
-      return this.a(($$2, $$3) -> {
-         if ($$1.getAsBoolean()) {
-            $$0.b($$2, $$3);
+   protected abstract void a(fbs var1, long var2) throws fdf;
+
+   @Override
+   public void run() {
+      fbs $$0 = fbs.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fdg var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
          }
-      });
-   }
-
-   public void a(ffm $$0, float $$1) {
-      $$0.c().a();
-      this.b($$0, $$1);
-      $$0.c().b();
-   }
-
-   private void b(ffm $$0, float $$1) {
-      for (ffo.a $$2 : this.b) {
-         $$2.render($$0, $$1);
-         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
    }
 
-   public interface a {
-      void render(ffm var1, float var2);
+   @Override
+   public xe a() {
+      return this.d;
    }
 }

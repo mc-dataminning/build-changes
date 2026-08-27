@@ -1,10 +1,81 @@
-public class czb extends bog.a {
-   public final cyz a;
-   public final int b;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public czb(cyz $$0, int $$1) {
-      super($$0.d());
-      this.a = $$0;
-      this.b = $$1;
+public class czb {
+   private final czb.a[] a;
+   private WeakReference<czd> b = new WeakReference<>(null);
+
+   public czb(int $$0) {
+      this.a = new czb.a[$$0];
+   }
+
+   public Optional<czc<cyp>> a(dca $$0, cpw $$1) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            czb.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
+   }
+
+   private void a(dca $$0) {
+      czd $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<czc<cyp>> a(cpw $$0, dca $$1) {
+      Optional<czc<cyp>> $$2 = $$1.r().a(czf.a, $$0, $$1);
+      this.a($$0.h(), $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         czb.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(List<cuh> $$0, @Nullable czc<cyp> $$1) {
+      jj<cuh> $$2 = jj.a($$0.size(), cuh.i);
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new czb.a($$2, $$1);
+   }
+
+   static record a(jj<cuh> a, @Nullable czc<cyp> b) {
+      public boolean a(List<cuh> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cuh.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

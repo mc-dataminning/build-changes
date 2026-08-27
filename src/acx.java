@@ -1,69 +1,69 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
 
-public class acx implements ze<abq> {
-   public static final yv<vx, acx> a = ze.a(acx::a, acx::new);
-   public static final acx.a b = new acx.a(0);
-   public static final acx.a c = new acx.a(1);
-   public static final acx.a d = new acx.a(2);
-   public static final acx.a e = new acx.a(3);
-   public static final acx.a f = new acx.a(4);
-   public static final acx.a g = new acx.a(5);
-   public static final acx.a h = new acx.a(6);
-   public static final acx.a i = new acx.a(7);
-   public static final acx.a j = new acx.a(8);
-   public static final acx.a k = new acx.a(9);
-   public static final acx.a l = new acx.a(10);
-   public static final acx.a m = new acx.a(11);
-   public static final acx.a n = new acx.a(12);
-   public static final acx.a o = new acx.a(13);
-   public static final int p = 0;
-   public static final int q = 101;
-   public static final int r = 102;
-   public static final int s = 103;
-   public static final int t = 104;
-   private final acx.a u;
-   private final float v;
+public record acx(int b, ja<bqv> c, int d, int e, Optional<ewu> f) implements zl<abw> {
+   public static final zc<wp, acx> a = zl.a(acx::a, acx::new);
+   private static final zc<wp, ja<bqv>> g = za.b(li.s);
 
-   public acx(acx.a $$0, float $$1) {
-      this.u = $$0;
-      this.v = $$1;
+   public acx(brv $$0, bqt $$1) {
+      this($$0.al(), $$1.k(), $$1.d() != null ? $$1.d().al() : -1, $$1.c() != null ? $$1.c().al() : -1, Optional.ofNullable($$1.i()));
    }
 
-   private acx(vx $$0) {
-      this.u = (acx.a)acx.a.a.get($$0.readUnsignedByte());
-      this.v = $$0.readFloat();
+   private acx(wp $$0) {
+      this($$0.l(), g.decode($$0), a((we)$$0), a((we)$$0), $$0.b($$0x -> new ewu($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
-   private void a(vx $$0) {
-      $$0.k(this.u.b);
-      $$0.a(this.v);
+   private static void a(we $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(we $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(wp $$0) {
+      $$0.c(this.b);
+      g.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
    }
 
    @Override
-   public zg<acx> a() {
-      return agb.G;
+   public zn<acx> a() {
+      return agj.A;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public acx.a b() {
-      return this.u;
-   }
-
-   public float e() {
-      return this.v;
-   }
-
-   public static class a {
-      static final Int2ObjectMap<acx.a> a = new Int2ObjectOpenHashMap();
-      final int b;
-
-      public a(int $$0) {
-         this.b = $$0;
-         a.put($$0, this);
+   public bqt a(dca $$0) {
+      if (this.f.isPresent()) {
+         return new bqt(this.c, this.f.get());
+      } else {
+         brv $$1 = $$0.a(this.d);
+         brv $$2 = $$0.a(this.e);
+         return new bqt(this.c, $$2, $$1);
       }
+   }
+
+   public ja<bqv> e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public Optional<ewu> h() {
+      return this.f;
    }
 }

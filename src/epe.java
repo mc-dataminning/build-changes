@@ -1,109 +1,118 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class epe {
-   private static final Codec<epe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eth.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               eth.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, epe::new)
-   );
-   public static final Codec<epe> a = Codec.either(Codec.INT, b).xmap($$0 -> (epe)$$0.map(epe::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final etg c;
-   @Nullable
-   private final etg d;
-   private final epe.b e;
-   private final epe.a f;
+public final class epe extends dte<epd, epe> {
+   public static final Codec<epe> a = a(lh.c.q(), epd::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
 
-   public Set<eru<?>> a() {
-      Builder<eru<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public epe(epd $$0, Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$1, MapCodec<epe> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private epe(Optional<etg> $$0, Optional<etg> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public epd a() {
+      return this.e;
    }
 
-   private epe(@Nullable etg $$0, @Nullable etg $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   public boolean b() {
+      return this.a().c(this);
+   }
+
+   public boolean a(epd $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(dbg $$0, ir $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(dbg $$0, ir $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            ir $$4 = $$1.b($$2, 0, $$3);
+            epe $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> ayd.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
+
+      return false;
    }
 
-   public static epe a(int $$0) {
-      ete $$1 = ete.a((float)$$0);
-      return new epe(Optional.of($$1), Optional.of($$1));
+   public void a(dca $$0, ir $$1) {
+      this.a().b($$0, $$1, this);
    }
 
-   public static epe a(int $$0, int $$1) {
-      return new epe(Optional.of(ete.a((float)$$0)), Optional.of(ete.a((float)$$1)));
+   public void a(dca $$0, ir $$1, ayt $$2) {
+      this.a().a($$0, $$1, this, $$2);
    }
 
-   public static epe b(int $$0) {
-      return new epe(Optional.of(ete.a((float)$$0)), Optional.empty());
+   public boolean f() {
+      return this.a().i();
    }
 
-   public static epe c(int $$0) {
-      return new epe(Optional.empty(), Optional.of(ete.a((float)$$0)));
+   public void b(dca $$0, ir $$1, ayt $$2) {
+      this.a().b($$0, $$1, this, $$2);
    }
 
-   public int a(epf $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   public ewu c(dbg $$0, ir $$1) {
+      return this.a().a($$0, $$1, this);
    }
 
-   public boolean b(epf $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   public dtc g() {
+      return this.a().b(this);
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ete $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   @Nullable
+   public kz h() {
+      return this.a().h();
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(epf var1, int var2);
+   public boolean a(awt<epd> $$0) {
+      return this.a().k().a($$0);
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(epf var1, int var2);
+   public boolean a(je<epd> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(epd $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(dbg $$0, ir $$1, epd $$2, iw $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public exn d(dbg $$0, ir $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public ja<epd> j() {
+      return this.e.k();
+   }
+
+   public Stream<awt<epd>> k() {
+      return this.e.k().c();
    }
 }

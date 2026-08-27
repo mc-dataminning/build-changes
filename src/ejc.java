@@ -1,25 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ejc extends ehj {
-   public static final MapCodec<ejc> d = a(ejc::new);
+public class ejc extends eja {
+   public static final Codec<ejc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bpf.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpf.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, ejc::new)
+   );
+   private final bpf c;
+   private final bpf d;
 
-   public ejc(ehj.c $$0) {
-      super($$0);
+   public static ejc a(bpf $$0, bpf $$1) {
+      return new ejc($$0, $$1);
+   }
+
+   public static ejc a(bpf $$0) {
+      return new ejc(bpc.a(0), $$0);
+   }
+
+   public static ejc b(bpf $$0) {
+      return new ejc($$0, bpc.a(0));
+   }
+
+   private ejc(bpf $$0, bpf $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public Optional<ehj.b> a(ehj.a $$0) {
-      return a($$0, dwt.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(eib $$0, ehj.a $$1) {
-      io $$2 = new io($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new ejb.a($$2));
+   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new ir($$3, $$4, $$5));
    }
 
    @Override
-   public ehs<?> e() {
-      return ehs.a;
+   public ejb<?> b() {
+      return ejb.o;
    }
 }

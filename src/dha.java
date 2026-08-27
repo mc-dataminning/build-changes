@@ -1,40 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class dha extends deh implements dma {
-   protected static final MapCodec<cws> a = cws.b.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dha> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dha::b), u()).apply($$0, dha::new));
-   protected static final float c = 3.0F;
-   protected static final evd d = ddy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-   private final cws e;
+public class dha extends dfc {
+   public static final MapCodec<dha> a = b(dha::new);
 
    @Override
-   public MapCodec<? extends dha> a() {
-      return b;
+   public MapCodec<dha> a() {
+      return a;
    }
 
-   public dha(ix<bra> $$0, float $$1, dra.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dha(cws $$0, dra.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   protected static cws a(ix<bra> $$0, float $$1) {
-      return new cws(List.of(new cws.a($$0, ayd.d($$1 * 20.0F))));
+   public dha(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      euk $$4 = $$0.n($$1, $$2);
-      return d.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public cws b() {
-      return this.e;
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      if ($$3.a(5) == 0) {
+         iw $$4 = iw.b($$3);
+         if ($$4 != iw.b) {
+            ir $$5 = $$2.a($$4);
+            dtc $$6 = $$1.a_($$5);
+            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
+               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
+               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
+               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
+               $$1.a(lb.aD, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
+            }
+         }
+      }
    }
 }

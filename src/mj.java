@@ -1,6 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@FunctionalInterface
-public interface mj {
-   void generate(iz.a var1, BiConsumer<akl<epk>, epk.a> var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface mj {
 }

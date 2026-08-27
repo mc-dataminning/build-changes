@@ -1,132 +1,86 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bzn {
-   private static final cba a = new cba(Integer.MAX_VALUE, new bzm() {
-      @Override
-      public boolean a() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<bzm.a, cba> b = new EnumMap<>(bzm.a.class);
-   private final Set<cba> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<bmi> d;
-   private final EnumSet<bzm.a> e = EnumSet.noneOf(bzm.a.class);
+public class bzn extends cai {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public bzn(Supplier<bmi> $$0) {
-      this.d = $$0;
+   public bzn(bsw $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
-   public void a(int $$0, bzm $$1) {
-      this.c.add(new cba($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<bzm> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(bzm $$0) {
-      for (cba $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.d();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cba $$0, EnumSet<bzm.a> $$1) {
-      for (bzm.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(cba $$0, Map<bzm.a, cba> $$1) {
-      for (bzm.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bmi $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (cba $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
-            $$1.d();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cba)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cba $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
-            for (bzm.a $$3 : $$2.j()) {
-               cba $$4 = this.b.getOrDefault($$3, a);
-               $$4.d();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.c();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bmi $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (cba $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.R_())) {
-            $$2.e();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cba> b() {
-      return this.c;
-   }
-
-   public void a(bzm.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(bzm.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(bzm.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
+   @Nullable
+   @Override
+   protected ewu h() {
+      float $$0 = this.b.dU().A.i();
+      if (this.b.dU().A.i() < 0.3F) {
+         return this.k();
       } else {
-         this.a($$0);
+         ewu $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
+         }
+
+         return $$1 == null ? this.k() : $$1;
       }
+   }
+
+   @Nullable
+   private ewu k() {
+      return cdl.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private ewu l() {
+      aqt $$0 = (aqt)this.b.dU();
+      List<cll> $$1 = $$0.a(bsb.bn, this.b.cP().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cll $$2 = $$1.get(this.b.dU().A.a($$1.size()));
+         ewu $$3 = $$2.ds();
+         return cdl.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private ewu m() {
+      jt $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         ir $$1 = this.a($$0);
+         return $$1 == null ? null : cdl.a(this.b, 10, 7, ewu.c($$1));
+      }
+   }
+
+   @Nullable
+   private jt n() {
+      aqt $$0 = (aqt)this.b.dU();
+      List<jt> $$1 = jt.a(jt.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private ir a(jt $$0) {
+      aqt $$1 = (aqt)this.b.dU();
+      cdr $$2 = $$1.y();
+      List<ir> $$3 = $$2.c($$0x -> true, $$0.q(), 8, cdr.b.b).map(cds::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(cll $$0) {
+      return $$0.a(this.b.dU().Z());
    }
 }

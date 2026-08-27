@@ -1,216 +1,443 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ejx extends ehj {
-   private static final String[] e = new String[]{
-      "ruined_portal/portal_1",
-      "ruined_portal/portal_2",
-      "ruined_portal/portal_3",
-      "ruined_portal/portal_4",
-      "ruined_portal/portal_5",
-      "ruined_portal/portal_6",
-      "ruined_portal/portal_7",
-      "ruined_portal/portal_8",
-      "ruined_portal/portal_9",
-      "ruined_portal/portal_10"
-   };
-   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
-   private static final float g = 0.05F;
-   private static final int h = 15;
-   private final List<ejx.a> i;
-   public static final MapCodec<ejx> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), axm.a(ejx.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, ejx::new)
-   );
+public abstract class ejx {
+   private static final Logger a = LogUtils.getLogger();
+   protected static final dtc e = dfe.oa.n();
+   protected ejl f;
+   @Nullable
+   private iw b;
+   private dke c;
+   private dmd d;
+   protected int g;
+   private final ekk h;
+   private static final Set<dfc> i = ImmutableSet.builder()
+      .add(dfe.gg)
+      .add(dfe.da)
+      .add(dfe.db)
+      .add(dfe.eI)
+      .add(dfe.kX)
+      .add(dfe.lc)
+      .add(dfe.la)
+      .add(dfe.kY)
+      .add(dfe.kZ)
+      .add(dfe.dA)
+      .add(dfe.fO)
+      .build();
 
-   public ejx(ehj.c $$0, List<ejx.a> $$1) {
-      super($$0);
-      this.i = $$1;
+   protected ejx(ekk $$0, int $$1, ejl $$2) {
+      this.h = $$0;
+      this.g = $$1;
+      this.f = $$2;
    }
 
-   public ejx(ehj.c $$0, ejx.a $$1) {
-      this($$0, List.of($$1));
+   public ejx(ekk $$0, uk $$1) {
+      this(
+         $$0, $$1.h("GD"), (ejl)ejl.a.parse(uy.a, $$1.c("BB")).resultOrPartial(a::error).orElseThrow(() -> new IllegalArgumentException("Invalid boundingbox"))
+      );
+      int $$2 = $$1.h("O");
+      this.a($$2 == -1 ? null : iw.b($$2));
    }
 
-   @Override
-   public Optional<ehj.b> a(ehj.a $$0) {
-      ejw.a $$1 = new ejw.a();
-      dxs $$2 = $$0.f();
-      ejx.a $$3 = null;
-      if (this.i.size() > 1) {
-         float $$4 = 0.0F;
+   protected static ejl a(int $$0, int $$1, int $$2, iw $$3, int $$4, int $$5, int $$6) {
+      return $$3.o() == iw.a.c
+         ? new ejl($$0, $$1, $$2, $$0 + $$4 - 1, $$1 + $$5 - 1, $$2 + $$6 - 1)
+         : new ejl($$0, $$1, $$2, $$0 + $$6 - 1, $$1 + $$5 - 1, $$2 + $$4 - 1);
+   }
 
-         for (ejx.a $$5 : this.i) {
-            $$4 += $$5.h();
+   protected static iw a(ayt $$0) {
+      return iw.c.a.a($$0);
+   }
+
+   public final uk a(ekj $$0) {
+      uk $$1 = new uk();
+      $$1.a("id", lh.S.b(this.k()).toString());
+      ejl.a.encodeStart(uy.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
+      iw $$2 = this.i();
+      $$1.a("O", $$2 == null ? -1 : $$2.e());
+      $$1.a("GD", this.g);
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   protected abstract void a(ekj var1, uk var2);
+
+   public void a(ejx $$0, ejy $$1, ayt $$2) {
+   }
+
+   public abstract void a(dcv var1, dct var2, duz var3, ayt var4, ejl var5, dbh var6, ir var7);
+
+   public ejl f() {
+      return this.f;
+   }
+
+   public int g() {
+      return this.g;
+   }
+
+   public void a(int $$0) {
+      this.g = $$0;
+   }
+
+   public boolean a(dbh $$0, int $$1) {
+      int $$2 = $$0.d();
+      int $$3 = $$0.e();
+      return this.f.a($$2 - $$1, $$3 - $$1, $$2 + 15 + $$1, $$3 + 15 + $$1);
+   }
+
+   public ir h() {
+      return new ir(this.f.g());
+   }
+
+   protected ir.a b(int $$0, int $$1, int $$2) {
+      return new ir.a(this.a($$0, $$2), this.b($$1), this.b($$0, $$2));
+   }
+
+   protected int a(int $$0, int $$1) {
+      iw $$2 = this.i();
+      if ($$2 == null) {
+         return $$0;
+      } else {
+         switch ($$2) {
+            case c:
+            case d:
+               return this.f.h() + $$0;
+            case e:
+               return this.f.k() - $$1;
+            case f:
+               return this.f.h() + $$1;
+            default:
+               return $$0;
          }
+      }
+   }
 
-         float $$6 = $$2.i();
+   protected int b(int $$0) {
+      return this.i() == null ? $$0 : $$0 + this.f.i();
+   }
 
-         for (ejx.a $$7 : this.i) {
-            $$6 -= $$7.h() / $$4;
-            if ($$6 < 0.0F) {
-               $$3 = $$7;
-               break;
+   protected int b(int $$0, int $$1) {
+      iw $$2 = this.i();
+      if ($$2 == null) {
+         return $$1;
+      } else {
+         switch ($$2) {
+            case c:
+               return this.f.m() - $$1;
+            case d:
+               return this.f.j() + $$1;
+            case e:
+            case f:
+               return this.f.j() + $$0;
+            default:
+               return $$1;
+         }
+      }
+   }
+
+   protected void a(dcv $$0, dtc $$1, int $$2, int $$3, int $$4, ejl $$5) {
+      ir $$6 = this.b($$2, $$3, $$4);
+      if ($$5.b($$6)) {
+         if (this.a((dcd)$$0, $$2, $$3, $$4, $$5)) {
+            if (this.c != dke.a) {
+               $$1 = $$1.a(this.c);
+            }
+
+            if (this.d != dmd.a) {
+               $$1 = $$1.a(this.d);
+            }
+
+            $$0.a($$6, $$1, 2);
+            epe $$7 = $$0.b_($$6);
+            if (!$$7.c()) {
+               $$0.a($$6, $$7.a(), 0);
+            }
+
+            if (i.contains($$1.b())) {
+               $$0.y($$6).e($$6);
             }
          }
-      } else {
-         $$3 = this.i.get(0);
       }
+   }
 
-      if ($$3 == null) {
-         throw new IllegalStateException();
-      } else {
-         ejx.a $$8 = $$3;
-         $$1.d = a($$2, $$8.b());
-         $$1.c = $$8.c();
-         $$1.e = $$8.d();
-         $$1.f = $$8.e();
-         $$1.g = $$8.g();
-         akm $$9;
-         if ($$2.i() < 0.05F) {
-            $$9 = new akm(f[$$2.a(f.length)]);
-         } else {
-            $$9 = new akm(e[$$2.a(e.length)]);
-         }
+   protected boolean a(dcd $$0, int $$1, int $$2, int $$3, ejl $$4) {
+      return true;
+   }
 
-         elj $$11 = $$0.e().a($$9);
-         dkl $$12 = ac.a(dkl.values(), $$2);
-         div $$13 = $$2.i() < 0.5F ? div.a : div.c;
-         io $$14 = new io($$11.a().u() / 2, 0, $$11.a().w() / 2);
-         dsy $$15 = $$0.b();
-         daz $$16 = $$0.i();
-         dxh $$17 = $$0.d();
-         io $$18 = $$0.h().l();
-         ehb $$19 = $$11.a($$18, $$12, $$14, $$13);
-         io $$20 = $$19.g();
-         int $$21 = $$15.a($$20.u(), $$20.w(), ejw.a($$8.a()), $$16, $$17) - 1;
-         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
-         io $$23 = new io($$18.u(), $$22, $$18.w());
-         return Optional.of(new ehj.b($$23, (Consumer<eib>)($$10 -> {
-            if ($$8.f()) {
-               $$1.b = a($$23, $$0.b().c().getNoiseBiome(ji.a($$23.u()), ji.a($$23.v()), ji.a($$23.w()), $$17.b()));
+   protected dtc a(dbg $$0, int $$1, int $$2, int $$3, ejl $$4) {
+      ir $$5 = this.b($$1, $$2, $$3);
+      return !$$4.b($$5) ? dfe.a.n() : $$0.a_($$5);
+   }
+
+   protected boolean b(dcd $$0, int $$1, int $$2, int $$3, ejl $$4) {
+      ir $$5 = this.b($$1, $$2 + 1, $$3);
+      return !$$4.b($$5) ? false : $$5.v() < $$0.a(dyu.a.c, $$5.u(), $$5.w());
+   }
+
+   protected void a(dcv $$0, ejl $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      for (int $$8 = $$3; $$8 <= $$6; $$8++) {
+         for (int $$9 = $$2; $$9 <= $$5; $$9++) {
+            for (int $$10 = $$4; $$10 <= $$7; $$10++) {
+               this.a($$0, dfe.a.n(), $$9, $$8, $$10, $$1);
             }
-
-            $$10.a(new ejw($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
-         })));
-      }
-   }
-
-   private static boolean a(dxs $$0, float $$1) {
-      if ($$1 == 0.0F) {
-         return false;
-      } else {
-         return $$1 == 1.0F ? true : $$0.i() < $$1;
-      }
-   }
-
-   private static boolean a(io $$0, ix<dbw> $$1) {
-      return $$1.a().b($$0);
-   }
-
-   private static int a(ayk $$0, dsy $$1, ejw.b $$2, boolean $$3, int $$4, int $$5, ehb $$6, daz $$7, dxh $$8) {
-      int $$9 = $$7.I_() + 15;
-      int $$10;
-      if ($$2 == ejw.b.f) {
-         if ($$3) {
-            $$10 = ayd.b($$0, 32, 100);
-         } else if ($$0.i() < 0.5F) {
-            $$10 = ayd.b($$0, 27, 29);
-         } else {
-            $$10 = ayd.b($$0, 29, 100);
          }
-      } else if ($$2 == ejw.b.d) {
-         int $$13 = $$4 - $$5;
-         $$10 = a($$0, 70, $$13);
-      } else if ($$2 == ejw.b.e) {
-         int $$15 = $$4 - $$5;
-         $$10 = a($$0, $$9, $$15);
-      } else if ($$2 == ejw.b.b) {
-         $$10 = $$4 - $$5 + ayd.b($$0, 2, 8);
-      } else {
-         $$10 = $$4;
       }
+   }
 
-      List<io> $$19 = ImmutableList.of(new io($$6.h(), 0, $$6.j()), new io($$6.k(), 0, $$6.j()), new io($$6.h(), 0, $$6.m()), new io($$6.k(), 0, $$6.m()));
-      List<dbj> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
-      dwt.a $$21 = $$2 == ejw.b.c ? dwt.a.c : dwt.a.a;
-
-      int $$22;
-      for ($$22 = $$10; $$22 > $$9; $$22--) {
-         int $$23 = 0;
-
-         for (dbj $$24 : $$20) {
-            drb $$25 = $$24.a($$22);
-            if ($$21.e().test($$25)) {
-               if (++$$23 == 3) {
-                  return $$22;
+   protected void a(dcv $$0, ejl $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dtc $$8, dtc $$9, boolean $$10) {
+      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
+         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
+            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
+               if (!$$10 || !this.a((dbg)$$0, $$12, $$11, $$13, $$1).i()) {
+                  if ($$11 != $$3 && $$11 != $$6 && $$12 != $$2 && $$12 != $$5 && $$13 != $$4 && $$13 != $$7) {
+                     this.a($$0, $$9, $$12, $$11, $$13, $$1);
+                  } else {
+                     this.a($$0, $$8, $$12, $$11, $$13, $$1);
+                  }
                }
             }
          }
       }
-
-      return $$22;
    }
 
-   private static int a(ayk $$0, int $$1, int $$2) {
-      return $$1 < $$2 ? ayd.b($$0, $$1, $$2) : $$2;
+   protected void a(dcv $$0, ejl $$1, ejl $$2, dtc $$3, dtc $$4, boolean $$5) {
+      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
    }
 
-   @Override
-   public ehs<?> e() {
-      return ehs.l;
+   protected void a(dcv $$0, ejl $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, ayt $$9, ejx.a $$10) {
+      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
+         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
+            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
+               if (!$$8 || !this.a((dbg)$$0, $$12, $$11, $$13, $$1).i()) {
+                  $$10.a($$9, $$12, $$11, $$13, $$11 == $$3 || $$11 == $$6 || $$12 == $$2 || $$12 == $$5 || $$13 == $$4 || $$13 == $$7);
+                  this.a($$0, $$10.a(), $$12, $$11, $$13, $$1);
+               }
+            }
+         }
+      }
    }
 
-   public static record a(ejw.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
-      public static final Codec<ejx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ejw.b.g.fieldOf("placement").forGetter(ejx.a::a),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(ejx.a::b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(ejx.a::c),
-                  Codec.BOOL.fieldOf("overgrown").forGetter(ejx.a::d),
-                  Codec.BOOL.fieldOf("vines").forGetter(ejx.a::e),
-                  Codec.BOOL.fieldOf("can_be_cold").forGetter(ejx.a::f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(ejx.a::g),
-                  axm.k.fieldOf("weight").forGetter(ejx.a::h)
-               )
-               .apply($$0, ejx.a::new)
-      );
+   protected void a(dcv $$0, ejl $$1, ejl $$2, boolean $$3, ayt $$4, ejx.a $$5) {
+      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
+   }
 
-      public ejw.b a() {
-         return this.b;
+   protected void a(dcv $$0, ejl $$1, ayt $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, dtc $$10, dtc $$11, boolean $$12, boolean $$13) {
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$4; $$15 <= $$7; $$15++) {
+            for (int $$16 = $$6; $$16 <= $$9; $$16++) {
+               if (!($$2.i() > $$3) && (!$$12 || !this.a((dbg)$$0, $$15, $$14, $$16, $$1).i()) && (!$$13 || this.b($$0, $$15, $$14, $$16, $$1))) {
+                  if ($$14 != $$5 && $$14 != $$8 && $$15 != $$4 && $$15 != $$7 && $$16 != $$6 && $$16 != $$9) {
+                     this.a($$0, $$11, $$15, $$14, $$16, $$1);
+                  } else {
+                     this.a($$0, $$10, $$15, $$14, $$16, $$1);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(dcv $$0, ejl $$1, ayt $$2, float $$3, int $$4, int $$5, int $$6, dtc $$7) {
+      if ($$2.i() < $$3) {
+         this.a($$0, $$7, $$4, $$5, $$6, $$1);
+      }
+   }
+
+   protected void a(dcv $$0, ejl $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dtc $$8, boolean $$9) {
+      float $$10 = (float)($$5 - $$2 + 1);
+      float $$11 = (float)($$6 - $$3 + 1);
+      float $$12 = (float)($$7 - $$4 + 1);
+      float $$13 = (float)$$2 + $$10 / 2.0F;
+      float $$14 = (float)$$4 + $$12 / 2.0F;
+
+      for (int $$15 = $$3; $$15 <= $$6; $$15++) {
+         float $$16 = (float)($$15 - $$3) / $$11;
+
+         for (int $$17 = $$2; $$17 <= $$5; $$17++) {
+            float $$18 = ((float)$$17 - $$13) / ($$10 * 0.5F);
+
+            for (int $$19 = $$4; $$19 <= $$7; $$19++) {
+               float $$20 = ((float)$$19 - $$14) / ($$12 * 0.5F);
+               if (!$$9 || !this.a((dbg)$$0, $$17, $$15, $$19, $$1).i()) {
+                  float $$21 = $$18 * $$18 + $$16 * $$16 + $$20 * $$20;
+                  if ($$21 <= 1.05F) {
+                     this.a($$0, $$8, $$17, $$15, $$19, $$1);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void b(dcv $$0, dtc $$1, int $$2, int $$3, int $$4, ejl $$5) {
+      ir.a $$6 = this.b($$2, $$3, $$4);
+      if ($$5.b($$6)) {
+         while (this.a($$0.a_($$6)) && $$6.v() > $$0.J_() + 1) {
+            $$0.a($$6, $$1, 2);
+            $$6.d(iw.a);
+         }
+      }
+   }
+
+   protected boolean a(dtc $$0) {
+      return $$0.i() || $$0.k() || $$0.a(dfe.fY) || $$0.a(dfe.cg) || $$0.a(dfe.ch);
+   }
+
+   protected boolean a(dcv $$0, ejl $$1, ayt $$2, int $$3, int $$4, int $$5, aks<eru> $$6) {
+      return this.a($$0, $$1, $$2, this.b($$3, $$4, $$5), $$6, null);
+   }
+
+   public static dtc a(dbg $$0, ir $$1, dtc $$2) {
+      iw $$3 = null;
+
+      for (iw $$4 : iw.c.a) {
+         ir $$5 = $$1.a($$4);
+         dtc $$6 = $$0.a_($$5);
+         if ($$6.a(dfe.dg)) {
+            return $$2;
+         }
+
+         if ($$6.i($$0, $$5)) {
+            if ($$3 != null) {
+               $$3 = null;
+               break;
+            }
+
+            $$3 = $$4;
+         }
       }
 
-      public float b() {
-         return this.c;
+      if ($$3 != null) {
+         return $$2.a(djc.aE, $$3.g());
+      } else {
+         iw $$7 = $$2.c(djc.aE);
+         ir $$8 = $$1.a($$7);
+         if ($$0.a_($$8).i($$0, $$8)) {
+            $$7 = $$7.g();
+            $$8 = $$1.a($$7);
+         }
+
+         if ($$0.a_($$8).i($$0, $$8)) {
+            $$7 = $$7.h();
+            $$8 = $$1.a($$7);
+         }
+
+         if ($$0.a_($$8).i($$0, $$8)) {
+            $$7 = $$7.g();
+            $$8 = $$1.a($$7);
+         }
+
+         return $$2.a(djc.aE, $$7);
+      }
+   }
+
+   protected boolean a(dcp $$0, ejl $$1, ayt $$2, ir $$3, aks<eru> $$4, @Nullable dtc $$5) {
+      if ($$1.b($$3) && !$$0.a_($$3).a(dfe.dg)) {
+         if ($$5 == null) {
+            $$5 = a($$0, $$3, dfe.dg.n());
+         }
+
+         $$0.a($$3, $$5, 2);
+         dqc $$6 = $$0.c_($$3);
+         if ($$6 instanceof dqj) {
+            ((dqj)$$6).a($$4, $$2.g());
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(dcv $$0, ejl $$1, ayt $$2, int $$3, int $$4, int $$5, iw $$6, aks<eru> $$7) {
+      ir $$8 = this.b($$3, $$4, $$5);
+      if ($$1.b($$8) && !$$0.a_($$8).a(dfe.bD)) {
+         this.a($$0, dfe.bD.n().a(dhi.b, $$6), $$3, $$4, $$5, $$1);
+         dqc $$9 = $$0.c_($$8);
+         if ($$9 instanceof dqu) {
+            ((dqu)$$9).a($$7, $$2.g());
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+      this.f.a($$0, $$1, $$2);
+   }
+
+   public static ejl a(Stream<ejx> $$0) {
+      return ejl.b($$0.map(ejx::f)::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox without pieces"));
+   }
+
+   @Nullable
+   public static ejx a(List<ejx> $$0, ejl $$1) {
+      for (ejx $$2 : $$0) {
+         if ($$2.f().a($$1)) {
+            return $$2;
+         }
       }
 
-      public float c() {
-         return this.d;
-      }
+      return null;
+   }
 
-      public boolean d() {
-         return this.e;
-      }
+   @Nullable
+   public iw i() {
+      return this.b;
+   }
 
-      public boolean e() {
-         return this.f;
+   public void a(@Nullable iw $$0) {
+      this.b = $$0;
+      if ($$0 == null) {
+         this.d = dmd.a;
+         this.c = dke.a;
+      } else {
+         switch ($$0) {
+            case d:
+               this.c = dke.b;
+               this.d = dmd.a;
+               break;
+            case e:
+               this.c = dke.b;
+               this.d = dmd.b;
+               break;
+            case f:
+               this.c = dke.a;
+               this.d = dmd.b;
+               break;
+            default:
+               this.c = dke.a;
+               this.d = dmd.a;
+         }
       }
+   }
 
-      public boolean f() {
-         return this.g;
-      }
+   public dmd a() {
+      return this.d;
+   }
 
-      public boolean g() {
-         return this.h;
-      }
+   public dke j() {
+      return this.c;
+   }
 
-      public float h() {
-         return this.i;
+   public ekk k() {
+      return this.h;
+   }
+
+   public abstract static class a {
+      protected dtc a = dfe.a.n();
+
+      public abstract void a(ayt var1, int var2, int var3, int var4, boolean var5);
+
+      public dtc a() {
+         return this.a;
       }
    }
 }

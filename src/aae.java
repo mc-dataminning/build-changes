@@ -1,61 +1,16 @@
-import java.util.UUID;
+import com.google.common.collect.Lists;
 
-public record aae(aae.a c) implements aaf {
-   public static final yv<vx, aae> a = aaf.a(aae::a, aae::new);
-   public static final aaf.b<aae> b = aaf.a("debug/breeze");
-
-   private aae(vx $$0) {
-      this(new aae.a($$0));
-   }
-
-   private void a(vx $$0) {
-      this.c.a($$0);
-   }
+public record aae(aam b) implements zl<aac> {
+   private static final int c = 32767;
+   public static final zc<we, aae> a = aam.<we>a($$0 -> aan.a($$0, 32767), ad.a(Lists.newArrayList(new aam.c[]{new aam.c<>(aak.b, aak.a)}), $$0 -> {
+   })).a(aae::new, aae::b);
 
    @Override
-   public aaf.b<aae> a() {
-      return b;
+   public zn<aae> a() {
+      return aab.k;
    }
 
-   public aae.a b() {
-      return this.c;
-   }
-
-   public static record a(UUID a, int b, Integer c, io d) {
-      public a(vx $$0) {
-         this($$0.n(), $$0.readInt(), $$0.c(vx::readInt), $$0.c(io.b));
-      }
-
-      public void a(vx $$0) {
-         $$0.a(this.a);
-         $$0.p(this.b);
-         $$0.a(this.c, vx::p);
-         $$0.a(this.d, io.b);
-      }
-
-      public String a() {
-         return afz.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public Integer d() {
-         return this.c;
-      }
-
-      public io e() {
-         return this.d;
-      }
+   public void a(aac $$0) {
+      $$0.a(this);
    }
 }

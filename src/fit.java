@@ -1,276 +1,193 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fit {
-   private final Supplier<String> a;
-   private final Consumer<String> b;
-   private final Supplier<String> c;
-   private final Consumer<String> d;
-   private final Predicate<String> e;
-   private int f;
-   private int g;
-
-   public fit(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f();
+public abstract class fit<E extends fit.a<E>> extends fii<E> {
+   public fit(fgj $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static Supplier<String> a(fdz $$0) {
-      return () -> b($$0);
-   }
-
-   public static String b(fdz $$0) {
-      return n.a($$0.o.a().replaceAll("\\r", ""));
-   }
-
-   public static Consumer<String> c(fdz $$0) {
-      return $$1 -> a($$0, $$1);
-   }
-
-   public static void a(fdz $$0, String $$1) {
-      $$0.o.a($$1);
-   }
-
-   public boolean a(char $$0) {
-      if (ayy.a($$0)) {
-         this.a(this.a.get(), Character.toString($$0));
-      }
-
-      return true;
-   }
-
-   public boolean a(int $$0) {
-      if (fly.f($$0)) {
-         this.d();
-         return true;
-      } else if (fly.e($$0)) {
-         this.c();
-         return true;
-      } else if (fly.d($$0)) {
-         this.b();
-         return true;
-      } else if (fly.c($$0)) {
-         this.a();
-         return true;
+   @Nullable
+   @Override
+   public fhx a(fmp $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (!($$0 instanceof fmp.a $$1)) {
+         return super.a($$0);
       } else {
-         fit.a $$1 = fly.r() ? fit.a.b : fit.a.a;
-         if ($$0 == 259) {
-            this.a(-1, $$1);
-            return true;
+         E $$2 = this.j();
+         if ($$1.b().a() == fmq.a && $$2 != null) {
+            return fhx.a(this, $$2.a($$0));
          } else {
-            if ($$0 == 261) {
-               this.a(1, $$1);
-            } else {
-               if ($$0 == 263) {
-                  this.a(-1, fly.s(), $$1);
-                  return true;
-               }
+            int $$3 = -1;
+            fmr $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.aE_().indexOf($$2.aH_());
+            }
 
-               if ($$0 == 262) {
-                  this.a(1, fly.s(), $$1);
-                  return true;
-               }
-
-               if ($$0 == 268) {
-                  this.a(fly.s());
-                  return true;
-               }
-
-               if ($$0 == 269) {
-                  this.b(fly.s());
-                  return true;
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = fmr.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = fmr.b;
+                     break;
+                  default:
+                     $$3 = 0;
                }
             }
 
-            return false;
+            E $$5 = $$2;
+
+            fhx $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.aE_().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return fhx.a(this, $$6);
          }
       }
    }
 
-   private int h(int $$0) {
-      return ayd.a($$0, 0, this.a.get().length());
-   }
-
-   private void a(String $$0, String $$1) {
-      if (this.g != this.f) {
-         $$0 = this.c($$0);
-      }
-
-      this.f = ayd.a(this.f, 0, $$0.length());
-      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
-      if (this.e.test($$2)) {
-         this.b.accept($$2);
-         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+   @Override
+   public void a(@Nullable fkj $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
       }
    }
 
-   public void a(String $$0) {
-      this.a(this.a.get(), $$0);
+   @Override
+   public fmh.a t() {
+      return this.aI_() ? fmh.a.c : super.t();
    }
 
-   private void c(boolean $$0) {
-      if (!$$0) {
-         this.g = this.f;
+   @Override
+   protected boolean e(int $$0) {
+      return false;
+   }
+
+   @Override
+   public void a(fmj $$0) {
+      E $$1 = this.u();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.j();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
       }
+
+      $$0.a(fmi.d, xe.c("narration.component_list.usage"));
    }
 
-   public void a(int $$0, boolean $$1, fit.a $$2) {
-      switch ($$2) {
-         case a:
-            this.a($$0, $$1);
-            break;
-         case b:
-            this.b($$0, $$1);
+   public abstract static class a<E extends fit.a<E>> extends fii.a<E> implements fki {
+      @Nullable
+      private fkj a;
+      @Nullable
+      private fmh b;
+      private boolean c;
+
+      @Override
+      public boolean aG_() {
+         return this.c;
       }
-   }
 
-   public void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      this.f = ac.a(this.a.get(), this.f, $$0);
-      this.c($$1);
-   }
-
-   public void c(int $$0) {
-      this.b($$0, false);
-   }
-
-   public void b(int $$0, boolean $$1) {
-      this.f = fel.a(this.a.get(), $$0, this.f, true);
-      this.c($$1);
-   }
-
-   public void a(int $$0, fit.a $$1) {
-      switch ($$1) {
-         case a:
-            this.e($$0);
-            break;
-         case b:
-            this.d($$0);
+      @Override
+      public void b(boolean $$0) {
+         this.c = $$0;
       }
-   }
 
-   public void d(int $$0) {
-      int $$1 = fel.a(this.a.get(), $$0, this.f, true);
-      this.e($$1 - this.f);
-   }
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return fki.super.a($$0, $$1, $$2);
+      }
 
-   public void e(int $$0) {
-      String $$1 = this.a.get();
-      if (!$$1.isEmpty()) {
-         String $$2;
-         if (this.g != this.f) {
-            $$2 = this.c($$1);
+      @Override
+      public void a(@Nullable fkj $$0) {
+         if (this.a != null) {
+            this.a.a(false);
+         }
+
+         if ($$0 != null) {
+            $$0.a(true);
+         }
+
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public fkj aH_() {
+         return this.a;
+      }
+
+      @Nullable
+      public fhx a(fmp $$0, int $$1) {
+         if (this.aE_().isEmpty()) {
+            return null;
          } else {
-            int $$3 = ac.a($$1, this.f, $$0);
-            int $$4 = Math.min($$3, this.f);
-            int $$5 = Math.max($$3, this.f);
-            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
-            if ($$0 < 0) {
-               this.g = this.f = $$4;
+            fhx $$2 = this.aE_().get(Math.min($$1, this.aE_().size() - 1)).a($$0);
+            return fhx.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public fhx a(fmp $$0) {
+         if ($$0 instanceof fmp.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = aym.a($$2 + this.aE_().indexOf(this.aH_()), 0, this.aE_().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aE_().size(); $$4 += $$2) {
+               fkj $$5 = this.aE_().get($$4);
+               fhx $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return fhx.a(this, $$6);
+               }
             }
          }
 
-         this.b.accept($$2);
+         return fki.super.a($$0);
       }
-   }
 
-   public void a() {
-      String $$0 = this.a.get();
-      this.d.accept(this.b($$0));
-      this.b.accept(this.c($$0));
-   }
+      public abstract List<? extends fmh> b();
 
-   public void b() {
-      this.a(this.a.get(), this.c.get());
-      this.g = this.f;
-   }
+      void a(fmj $$0) {
+         List<? extends fmh> $$1 = this.b();
+         fon.b $$2 = fon.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
 
-   public void c() {
-      this.d.accept(this.b(this.a.get()));
-   }
+            if ($$1.size() > 1) {
+               $$0.a(fmi.b, xe.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == fmh.a.c) {
+                  $$0.a(fmi.d, xe.c("narration.component_list.usage"));
+               }
+            }
 
-   public void d() {
-      this.g = 0;
-      this.f = this.a.get().length();
-   }
-
-   private String b(String $$0) {
-      int $$1 = Math.min(this.f, this.g);
-      int $$2 = Math.max(this.f, this.g);
-      return $$0.substring($$1, $$2);
-   }
-
-   private String c(String $$0) {
-      if (this.g == this.f) {
-         return $$0;
-      } else {
-         int $$1 = Math.min(this.f, this.g);
-         int $$2 = Math.max(this.f, this.g);
-         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
-         this.g = this.f = $$1;
-         return $$3;
+            $$2.a.b($$0.a());
+         }
       }
-   }
-
-   public void e() {
-      this.a(false);
-   }
-
-   public void a(boolean $$0) {
-      this.f = 0;
-      this.c($$0);
-   }
-
-   public void f() {
-      this.b(false);
-   }
-
-   public void b(boolean $$0) {
-      this.f = this.a.get().length();
-      this.c($$0);
-   }
-
-   public int g() {
-      return this.f;
-   }
-
-   public void f(int $$0) {
-      this.c($$0, true);
-   }
-
-   public void c(int $$0, boolean $$1) {
-      this.f = this.h($$0);
-      this.c($$1);
-   }
-
-   public int h() {
-      return this.g;
-   }
-
-   public void g(int $$0) {
-      this.g = this.h($$0);
-   }
-
-   public void a(int $$0, int $$1) {
-      int $$2 = this.a.get().length();
-      this.f = ayd.a($$0, 0, $$2);
-      this.g = ayd.a($$1, 0, $$2);
-   }
-
-   public boolean i() {
-      return this.f != this.g;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

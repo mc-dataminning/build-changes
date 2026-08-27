@@ -1,33 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvh {
-   public static bvs<bso> a(int $$0, float $$1, int $$2) {
-      return bxu.a(
-         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$3 -> $$3.group(
-                  $$3.c(cbs.m), $$3.a(cbs.b), $$3.a(cbs.C), $$3.a(cbs.t), $$3.a(cbs.n), $$3.a(cbs.r), $$3.a(cbs.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.y()
-                           .d($$0xxxx -> $$0xxxx.a(cdw.n), $$0xxxx -> true, $$12.dp(), $$2 + 1, cds.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dn(), (double)$$2))
-                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cdw.n), $$0xxxxx -> true, cds.b.c, $$12.dp(), $$0, $$12.el()))
-                           .or(() -> $$3.<iw>a($$5).map(iw::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(iw.a($$11.ae(), $$10xx));
-                              if (!$$10xx.a($$12.dn(), (double)$$2)) {
-                                 $$4.a(new cbv($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class bvh extends bug<bsq> {
+   public static final int c = 100;
+   private final bpl d;
+   private final avn e;
+
+   public bvh(bpl $$0, avn $$1) {
+      super(ImmutableMap.of(cbr.n, cbs.c, cbr.T, cbs.a), 100);
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   protected boolean a(aqt $$0, bsq $$1, long $$2) {
+      return !$$1.aE();
+   }
+
+   protected void b(aqt $$0, bsq $$1, long $$2) {
+      $$1.q(true);
+      $$1.b(bsz.g);
+   }
+
+   protected void c(aqt $$0, bsq $$1, long $$2) {
+      if ($$1.aE()) {
+         $$1.g($$1.dx().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, avq.g, 2.0F, 1.0F);
+      }
+
+      $$1.q(false);
+      $$1.b(bsz.a);
+      $$1.dZ().b(cbr.T);
+      $$1.dZ().a(cbr.S, this.d.a($$0.A));
    }
 }

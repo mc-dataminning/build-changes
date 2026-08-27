@@ -1,11 +1,20 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public abstract class egu extends egq {
-   protected abstract int a(ayk var1, io var2);
+public class egu extends egl {
+   public static final Codec<egu> b = dtc.b.fieldOf("state").xmap(egu::new, $$0 -> $$0.c).codec();
+   private final dtc c;
+
+   protected egu(dtc $$0) {
+      this.c = $$0;
+   }
 
    @Override
-   public Stream<io> a_(ego $$0, ayk $$1, io $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected egm<?> a() {
+      return egm.a;
+   }
+
+   @Override
+   public dtc a(ayt $$0, ir $$1) {
+      return this.c;
    }
 }

@@ -1,60 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ees extends eet {
-   public static final MapCodec<ees> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ees::new, $$0 -> $$0.b);
-   private final float b;
+public class ees implements eek {
+   public static final Codec<ees> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(ees.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ees::new)
+   );
+   public final List<ees.a> b;
+   public final int c;
+   public final float d;
 
-   @Override
-   protected eeu<?> a() {
-      return eeu.b;
-   }
-
-   public ees(float $$0) {
+   public ees(List<ees.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
       this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   public void a(eet.a $$0) {
-      ayk $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            io $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               a($$3, dmu.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            io $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               a($$4, dmu.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            io $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               a($$5, dmu.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            io $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               a($$6, dmu.c, $$0);
-            }
-         }
-      });
+   public ees(List<ees.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   private static void a(io $$0, drs $$1, eet.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   public ees(enn $$0, dtc $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new ees.a($$0, $$1)), $$2, $$3);
+   }
 
-      for (io var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.d();
+   public ees(enn $$0, dtc $$1, int $$2) {
+      this(ImmutableList.of(new ees.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static ees.a a(enn $$0, dtc $$1) {
+      return new ees.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<ees.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(enn.c.fieldOf("target").forGetter($$0x -> $$0x.b), dtc.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ees.a::new)
+      );
+      public final enn b;
+      public final dtc c;
+
+      a(enn $$0, dtc $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

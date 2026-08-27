@@ -1,63 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import java.util.List;
 
-public final class cwc {
-   public static final cwc a = new cwc(List.of());
-   public static final Codec<cwc> b = cto.a.listOf().xmap(cwc::new, $$0 -> $$0.d);
-   public static final yv<wi, cwc> c = cto.f.a(yt.a()).a(cwc::new, $$0 -> $$0.d);
-   private final List<cto> d;
-
-   private cwc(List<cto> $$0) {
-      this.d = $$0;
+public class cwc extends cwf {
+   public cwc(cwe $$0, cuc.a $$1) {
+      super($$0, $$1.a(ke.v, h()));
    }
 
-   public static cwc a(cto $$0) {
-      return new cwc(List.of($$0.s()));
+   private static cxw h() {
+      return new cxw(List.of(cxw.a.a(List.of(dfe.cc), 15.0F), cxw.a.b(awe.bH, 1.5F)), 1.0F, 2);
    }
 
-   public static cwc a(List<cto> $$0) {
-      return new cwc(Lists.transform($$0, cto::s));
-   }
-
-   public boolean a(ctj $$0) {
-      for (cto $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public List<cto> a() {
-      return Lists.transform(this.d, cto::s);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
+   public static cxl a(cwe $$0, int $$1, float $$2) {
+      return cxl.a()
+         .a(btv.c, new btt(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), btt.a.a), bsd.b)
+         .a(btv.e, new btt(f, "Weapon modifier", (double)$$2, btt.a.a), bsd.b)
+         .a();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cwc $$1 && cto.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
+   public boolean a(dtc $$0, dca $$1, ir $$2, cly $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public int hashCode() {
-      return cto.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public boolean a(cuh $$0, bso $$1, bso $$2) {
+      $$0.a(1, $$2, bsc.a);
+      return true;
    }
 }

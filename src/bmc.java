@@ -1,33 +1,24 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
 
-public class bmc {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bmg c = bmf.a;
+public class bmc extends blt<StringReader> {
+   private final StringReader a;
 
-   public bmc(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bmc(blq<StringReader> $$0, blr<StringReader> $$1, StringReader $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public boolean a() {
-      return this.c != bmf.a;
+   public StringReader d() {
+      return this.a;
    }
 
-   public void b() {
-      this.c = bmf.a;
+   @Override
+   public int c() {
+      return this.a.getCursor();
    }
 
-   public void c() {
-      this.c = new bmb(this.a, this.b, true);
-   }
-
-   public bmi d() {
-      return this.c;
-   }
-
-   public bmh e() {
-      return this.c.d();
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
    }
 }

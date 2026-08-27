@@ -1,79 +1,96 @@
-public class doy extends dpl {
-   public static final int d = 9;
-   private jg<cto> e = jg.a(9, cto.i);
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   protected doy(doi<?> $$0, io $$1, drb $$2) {
-      super($$0, $$1, $$2);
+public interface doy extends dgd<doy.a> {
+   Supplier<BiMap<dfc, dfc>> t_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dfe.sh, dfe.si)
+            .put(dfe.si, dfe.sj)
+            .put(dfe.sj, dfe.sk)
+            .put(dfe.sq, dfe.sp)
+            .put(dfe.sp, dfe.so)
+            .put(dfe.so, dfe.sn)
+            .put(dfe.su, dfe.st)
+            .put(dfe.st, dfe.ss)
+            .put(dfe.ss, dfe.sr)
+            .put(dfe.sG, dfe.sF)
+            .put(dfe.sF, dfe.sE)
+            .put(dfe.sE, dfe.sD)
+            .put(dfe.sC, dfe.sB)
+            .put(dfe.sB, dfe.sA)
+            .put(dfe.sA, dfe.sz)
+            .put(dfe.sX, dfe.sY)
+            .put(dfe.sY, dfe.ta)
+            .put(dfe.ta, dfe.sZ)
+            .put(dfe.tf, dfe.tg)
+            .put(dfe.tg, dfe.ti)
+            .put(dfe.ti, dfe.th)
+            .put(dfe.tn, dfe.to)
+            .put(dfe.to, dfe.tp)
+            .put(dfe.tp, dfe.tq)
+            .put(dfe.tv, dfe.tw)
+            .put(dfe.tw, dfe.tx)
+            .put(dfe.tx, dfe.ty)
+            .build()
+   );
+   Supplier<BiMap<dfc, dfc>> u_ = Suppliers.memoize(() -> t_.get().inverse());
+
+   static Optional<dfc> a(dfc $$0) {
+      return Optional.ofNullable((dfc)u_.get().get($$0));
    }
 
-   public doy(io $$0, drb $$1) {
-      this(doi.f, $$0, $$1);
-   }
+   static dfc b(dfc $$0) {
+      dfc $$1 = $$0;
 
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   public int a(ayk $$0) {
-      this.e_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).e() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
+      for (dfc $$2 = (dfc)u_.get().get($$0); $$2 != null; $$2 = (dfc)u_.get().get($$2)) {
+         $$1 = $$2;
       }
 
       return $$1;
    }
 
-   public int b(cto $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         if (this.e.get($$1).e()) {
-            this.a($$1, $$0);
-            return $$1;
-         }
+   static Optional<dtc> b(dtc $$0) {
+      return a($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   static Optional<dfc> c(dfc $$0) {
+      return Optional.ofNullable((dfc)t_.get().get($$0));
+   }
+
+   static dtc c(dtc $$0) {
+      return b($$0.b()).l($$0);
+   }
+
+   @Override
+   default Optional<dtc> i_(dtc $$0) {
+      return c($$0.b()).map($$1 -> $$1.l($$0));
+   }
+
+   @Override
+   default float au_() {
+      return this.c() == doy.a.a ? 0.75F : 1.0F;
+   }
+
+   public static enum a implements azg {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
+
+      public static final Codec<doy.a> e = azg.a(doy.a::values);
+      private final String f;
+
+      private a(String $$0) {
+         this.f = $$0;
       }
 
-      return -1;
-   }
-
-   @Override
-   protected wx k() {
-      return wx.c("container.dispenser");
-   }
-
-   @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.e = jg.a(this.b(), cto.i);
-      if (!this.a_($$0)) {
-         bpo.b($$0, this.e, $$1);
+      @Override
+      public String c() {
+         return this.f;
       }
-   }
-
-   @Override
-   protected void b(ud $$0, iz.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bpo.a($$0, this.e, $$1);
-      }
-   }
-
-   @Override
-   protected jg<cto> j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(jg<cto> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected cot a(int $$0, clv $$1) {
-      return new cpm($$0, $$1, this);
    }
 }

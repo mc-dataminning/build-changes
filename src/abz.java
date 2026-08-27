@@ -1,31 +1,42 @@
-public class abz implements ze<abq> {
-   public static final yv<wi, abz> a = yv.a(io.b, abz::e, yt.a(ddy.q), abz::b, abz::new);
-   private final io b;
-   private final drb c;
+import java.util.UUID;
 
-   public abz(io $$0, drb $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record abz(int b, UUID c, double d, double e, double f, cpb g, ja<dcz> h) implements zl<abw> {
+   public static final zc<wp, abz> a = zc.a(za.g, abz::b, ju.g, abz::e, za.j, abz::f, za.j, abz::g, za.j, abz::h, cpb.a, abz::i, za.b(li.az), abz::j, abz::new);
 
-   public abz(dad $$0, io $$1) {
-      this($$1, $$0.a_($$1));
+   public abz(coz $$0) {
+      this($$0.al(), $$0.cE(), $$0.dz(), $$0.dB(), $$0.dF(), $$0.r().e().d(), $$0.r().g());
    }
 
    @Override
-   public zg<abz> a() {
-      return agb.k;
+   public zn<abz> a() {
+      return agj.e;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public drb b() {
+   public UUID e() {
       return this.c;
    }
 
-   public io e() {
-      return this.b;
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public double h() {
+      return this.f;
+   }
+
+   public cpb i() {
+      return this.g;
+   }
+
+   public ja<dcz> j() {
+      return this.h;
    }
 }

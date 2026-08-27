@@ -1,14 +1,23 @@
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface azb {
-   long get(TimeUnit var1);
+public class azb<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   private w<V> c = w.d();
 
-   public interface a extends azb, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+   public azb(Function<K, V> $$0) {
+      this.a = $$0;
+   }
+
+   public V a(K $$0) {
+      if (this.c.a() || !Objects.equals(this.b, $$0)) {
+         this.c = w.a(this.a.apply($$0));
+         this.b = $$0;
       }
+
+      return this.c.c();
    }
 }

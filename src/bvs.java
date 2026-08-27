@@ -1,37 +1,85 @@
-public abstract class bvs<E extends bso> implements bui<E>, bxx<E> {
-   private buh.a a;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-   public bvs() {
-      this.a = buh.a.a;
+public class bvs {
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
+
+   public static buh<bsw> a() {
+      return bxt.a(
+         (Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$0 -> $$0.group($$0.b(cbr.i), $$0.c(cbr.m), $$0.a(cbr.n), $$0.a(cbr.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.F_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bso> $$8 = $$0.b($$1);
+                        Optional<bso> $$9 = $$8.stream().filter($$1xx -> a((bso)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bso> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              ewu $$11 = cdl.a($$6, 20, 8);
+                              if ($$11 != null && $$5.c(ir.a($$11))) {
+                                 $$2.a(new cbu($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 
-   @Override
-   public final buh.a a() {
-      return this.a;
+   private static void a(bxu<?, bso> $$0, bxu<?, bvu> $$1, bxu<?, cbu> $$2, bso $$3) {
+      $$0.a($$3);
+      $$1.a(new bur($$3, true));
+      $$2.a(new cbu(new bur($$3, false), 0.6F, 1));
    }
 
-   @Override
-   public final boolean e(aqm $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = buh.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   private static Optional<bso> a(List<bso> $$0) {
+      Map<bso, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   @Override
-   public final void f(aqm $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
+   private static Map<bso, Integer> b(List<bso> $$0) {
+      Map<bso, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bvs::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
    }
 
-   @Override
-   public final void g(aqm $$0, E $$1, long $$2) {
-      this.a = buh.a.a;
+   private static bso a(bso $$0) {
+      return $$0.dZ().c(cbr.q).get();
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   private static boolean b(bso $$0) {
+      return $$0.dZ().c(cbr.q).isPresent();
+   }
+
+   private static boolean a(bso $$0, bso $$1) {
+      return $$1.dZ().c(cbr.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

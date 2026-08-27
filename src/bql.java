@@ -1,28 +1,60 @@
-import com.mojang.serialization.Codec;
+public class bql {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = azl.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-public enum bql implements ayx {
-   a("hurt", avh.ui),
-   b("thorns", avh.zu),
-   c("drowning", avh.uj),
-   d("burning", avh.ul),
-   e("poking", avh.um),
-   f("freezing", avh.uk);
-
-   public static final Codec<bql> g = ayx.a(bql::values);
-   private final String h;
-   private final avg i;
-
-   private bql(String $$0, avg $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)azl.a / (double)this.b);
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public float f() {
+      return this.b;
    }
 
-   public avg a() {
-      return this.i;
+   public float g() {
+      return (float)this.c / (float)azl.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(brv $$0) {
+      return !this.i() && !($$0 instanceof cly) && $$0.dc() <= 0;
    }
 }

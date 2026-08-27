@@ -1,34 +1,20 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dol extends dpn {
-   public dol(io $$0, drb $$1) {
-      super(doi.J, $$0, $$1);
+public class dol extends diu {
+   public static final MapCodec<dol> c = b(dol::new);
+   public static final exn e = dfc.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+
+   @Override
+   public MapCodec<dol> a() {
+      return c;
+   }
+
+   public dol(dtb.d $$0) {
+      super($$0, iw.b, e, false);
    }
 
    @Override
-   public dwd.d b() {
-      return new dol.a(this.az_());
-   }
-
-   protected class a extends dpn.a {
-      public a(io $$1) {
-         super($$1);
-      }
-
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(aqm $$0, io $$1, ix<dvu> $$2, @Nullable dvu.a $$3) {
-         int $$4 = this.a($$0, this.c, dol.this.n());
-         return $$4 != 0 && dwd.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dax $$0, io $$1, drb $$2) {
-         it $$3 = $$2.c(del.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   protected div c() {
+      return (div)dfe.pB;
    }
 }

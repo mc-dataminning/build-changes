@@ -1,23 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record afl(int b) implements zl<abw> {
+   public static final zc<we, afl> a = zl.a(afl::a, afl::new);
 
-public class afl implements ze<abq> {
-   public static final afl a = new afl();
-   public static final yv<ByteBuf, afl> b = yv.a(a);
+   private afl(we $$0) {
+      this($$0.l());
+   }
 
-   private afl() {
+   private void a(we $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zg<afl> a() {
-      return agb.aT;
+   public zn<afl> a() {
+      return agj.aN;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

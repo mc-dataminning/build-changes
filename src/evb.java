@@ -1,24 +1,42 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class evb extends evd {
-   private final evd b;
-   private final it.a c;
-   private static final DoubleList d = new euq(1);
+public record evb(float b, float c) implements euu {
+   public static final Codec<evb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(evb::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(evb::d)).apply($$0, evb::new)
+   );
 
-   public evb(evd $$0, it.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private static eut a(eut $$0, it.a $$1, int $$2) {
-      return new evc(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   @Override
+   public euv b() {
+      return euw.g;
    }
 
    @Override
-   protected DoubleList a(it.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(eug.d);
+   }
+
+   public boolean a(erp $$0) {
+      brv $$1 = $$0.c(eug.d);
+      int $$2 = 0;
+      if ($$1 instanceof bso) {
+         $$2 = dae.h((bso)$$1);
+      }
+
+      return $$0.b().i() < this.b + (float)$$2 * this.c;
+   }
+
+   public static euu.a a(float $$0, float $$1) {
+      return () -> new evb($$0, $$1);
+   }
+
+   public float c() {
+      return this.b;
+   }
+
+   public float d() {
+      return this.c;
    }
 }

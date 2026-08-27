@@ -1,43 +1,100 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
-public class axs implements ayz, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+public class axs implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-   public axs(Executor $$0) {
-      this.d = $$0;
-   }
+   public static axs a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-   @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
-         }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
-         }
-
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
+      try {
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw axs.a.a($$1);
          } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
+            return new axs($$2, $$3);
          }
-      });
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
+
+         throw var6;
+      }
+   }
+
+   private axs(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void close() {
-      this.e = true;
+   public void close() throws IOException {
+      try {
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
+   }
+
+   public boolean a() {
+      return this.c.isValid();
+   }
+
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
+         }
+
+         return var4;
+      } catch (AccessDeniedException var10) {
+         return true;
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
+   }
+
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
+   }
+
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
+      }
+
+      public static axs.a a(Path $$0) {
+         return new axs.a($$0, "already locked (possibly by other Minecraft instance?)");
+      }
    }
 }

@@ -1,12 +1,10 @@
-public class abm {
-   public static final zg<abl> a = a("cookie_request");
-   public static final zg<abo> b = b("cookie_response");
-
-   private static <T extends ze<abk>> zg<T> a(String $$0) {
-      return new zg<>(zf.b, new akm($$0));
+public interface abm extends aac {
+   @Override
+   default wd b() {
+      return wd.e;
    }
 
-   private static <T extends ze<abn>> zg<T> b(String $$0) {
-      return new zg<>(zf.a, new akm($$0));
-   }
+   void a(abn var1);
+
+   void a(abo var1);
 }

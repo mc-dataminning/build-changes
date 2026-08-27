@@ -1,232 +1,119 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ale extends evo {
-   private final MinecraftServer b;
-   private final Set<evg> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class ale {
+   private static final Logger a = LogUtils.getLogger();
+   private static final CompletableFuture<azo> b = CompletableFuture.completedFuture(azo.a);
+   private final ald.b c;
+   private final ale.a d;
+   private final ei e;
+   private final czd f;
+   private final awv g;
+   private final alg h;
+   private final alh i;
 
-   public ale(MinecraftServer $$0) {
-      this.b = $$0;
+   private ale(jo.b $$0, cop $$1, ei.a $$2, int $$3) {
+      this.c = new ald.b($$0);
+      this.d = new ale.a($$0);
+      this.d.a(ale.b.a);
+      this.f = new czd(this.d);
+      this.g = new awv($$0);
+      this.e = new ei($$2, ed.a(this.d, $$1));
+      this.h = new alg(this.d);
+      this.i = new alh($$3, this.e.a());
    }
 
-   @Override
-   protected void a(evn $$0, evg $$1, evl $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ah().a(new afd($$0.cB(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+   public alh a() {
+      return this.i;
+   }
+
+   public ald.b b() {
+      return this.c;
+   }
+
+   public czd c() {
+      return this.f;
+   }
+
+   public ei d() {
+      return this.e;
+   }
+
+   public alg e() {
+      return this.h;
+   }
+
+   public List<atx> f() {
+      return List.of(this.g, this.f, this.i, this.h);
+   }
+
+   public static CompletableFuture<ale> a(aud $$0, jh<alc> $$1, cop $$2, ei.a $$3, int $$4, Executor $$5, Executor $$6) {
+      return ald.a($$1, $$0, $$5).thenCompose($$6x -> {
+         ale $$7 = new ale($$6x.a(), $$2, $$3, $$4);
+         return auj.a($$0, $$7.f(), $$5, $$6, b, a.isDebugEnabled()).a().whenComplete(($$1xx, $$2xx) -> $$7.d.a(ale.b.b)).thenApply($$1xx -> $$7);
+      });
+   }
+
+   public void g() {
+      this.g.a().forEach($$0 -> a(this.c.a(), (awv.a<?>)$$0));
+      dpp.f();
+      dfe.a();
+   }
+
+   private static <T> void a(jo $$0, awv.a<T> $$1) {
+      aks<? extends jn<T>> $$2 = $$1.a();
+      Map<awt<T>, List<ja<T>>> $$3 = $$1.b()
+         .entrySet()
+         .stream()
+         .collect(Collectors.toUnmodifiableMap($$1x -> awt.a($$2, (akt)$$1x.getKey()), $$0x -> List.copyOf((Collection<? extends ja<T>>)$$0x.getValue())));
+      $$0.d($$2).a($$3);
+   }
+
+   static class a implements jc.a {
+      private final jo a;
+      ale.b b;
+
+      a(jo $$0) {
+         this.b = ale.b.b;
+         this.a = $$0;
       }
 
-      this.a();
-   }
-
-   @Override
-   protected void a(evn $$0, evg $$1) {
-      super.a($$0, $$1);
-      this.a();
-   }
-
-   @Override
-   public void a(evn $$0) {
-      super.a($$0);
-      this.b.ah().a(new aec($$0.cB(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(evn $$0, evg $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ah().a(new aec($$0.cB(), $$1.b()));
+      public void a(ale.b $$0) {
+         this.b = $$0;
       }
 
-      this.a();
-   }
-
-   @Override
-   public void a(evf $$0, @Nullable evg $$1) {
-      evg $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ah().a(new aet($$0, $$1));
-         } else {
-            this.g($$2);
-         }
+      @Override
+      public Stream<aks<? extends jn<?>>> a() {
+         return this.a.a();
       }
 
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ah().a(new aet($$0, $$1));
-         } else {
-            this.e($$1);
-         }
+      @Override
+      public <T> Optional<jc.b<T>> a(aks<? extends jn<? extends T>> $$0) {
+         return this.a.c($$0).map($$0x -> this.a($$0x.p(), $$0x.u()));
       }
 
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, evj $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ah().a(afc.a($$1, $$0, afc.a.a));
-         this.a();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void b(String $$0, evj $$1) {
-      super.b($$0, $$1);
-      this.b.ah().a(afc.a($$1, $$0, afc.a.b));
-      this.a();
-   }
-
-   @Override
-   public void a(evg $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(evg $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ah().a(new afa($$0, 2));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void c(evg $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(evj $$0) {
-      super.a($$0);
-      this.b.ah().a(afc.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(evj $$0) {
-      super.b($$0);
-      this.b.ah().a(afc.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(evj $$0) {
-      super.c($$0);
-      this.b.ah().a(afc.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
+      private <T> jc.b<T> a(final jc.b<T> $$0, final jc.b<T> $$1) {
+         return new jc.b.a<T>() {
+            @Override
+            public jc.b<T> a() {
+               return switch (a.this.b) {
+                  case b -> $$0;
+                  case a -> $$1;
+               };
+            }
+         };
       }
    }
 
-   public List<ze<?>> d(evg $$0) {
-      List<ze<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afa($$0, 0));
-
-      for (evf $$2 : evf.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aet($$2, $$0));
-         }
-      }
-
-      for (evh $$3 : this.i($$0)) {
-         $$1.add(new afd($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
-      }
-
-      return $$1;
-   }
-
-   public void e(evg $$0) {
-      List<ze<?>> $$1 = this.d($$0);
-
-      for (aqn $$2 : this.b.ah().t()) {
-         for (ze<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<ze<?>> f(evg $$0) {
-      List<ze<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afa($$0, 1));
-
-      for (evf $$2 : evf.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new aet($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(evg $$0) {
-      List<ze<?>> $$1 = this.f($$0);
-
-      for (aqn $$2 : this.b.ah().t()) {
-         for (ze<?> $$3 : $$1) {
-            $$2.d.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(evg $$0) {
-      int $$1 = 0;
-
-      for (evf $$2 : evf.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public eob.a<evp> b() {
-      return new eob.a<>(this::h, this::a, azj.n);
-   }
-
-   private evp h() {
-      evp $$0 = new evp(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private evp a(ud $$0, iz.a $$1) {
-      return this.h().b($$0, $$1);
-   }
-
-   public static enum a {
+   static enum b {
       a,
       b;
    }

@@ -1,9 +1,15 @@
-public class cyy extends cyz {
-   protected cyy(cyz.b $$0) {
-      super($$0);
+public class cyy extends czo {
+   public cyy(String $$0, cyv $$1, cuh $$2) {
+      super(czf.h, cze.v, $$0, $$1, $$2);
    }
 
-   public static boolean a(cto $$0, int $$1, ayk $$2) {
-      return $$0.g() instanceof crd && $$2.i() < 0.6F ? false : $$2.a($$1 + 1) > 0;
+   @Override
+   public boolean a(bpt $$0, dca $$1) {
+      return this.a.a($$0.a(0));
+   }
+
+   @Override
+   public cuh g() {
+      return new cuh(dfe.pb);
    }
 }

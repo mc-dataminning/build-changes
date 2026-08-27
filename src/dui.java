@@ -1,31 +1,37 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
+import java.util.Optional;
 
-public class dui extends dup {
-   private final dug a;
-   private final Path b;
+public class dui {
+   private static final ayv a = new ayv(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   public dui(dun $$0, Path $$1, dun $$2, Path $$3, DataFixer $$4, boolean $$5, azj $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dug($$2, $$3, $$5);
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public CompletableFuture<Void> a(dae $$0, @Nullable ud $$1) {
-      return this.a.a($$0, $$1);
+   public static int a(iw $$0) {
+      return a.a($$0);
    }
 
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<iw> a(int $$0) {
+      iw $$1 = switch ($$0) {
+         case 0 -> iw.c;
+         case 4 -> iw.f;
+         case 8 -> iw.d;
+         case 12 -> iw.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

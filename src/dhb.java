@@ -1,85 +1,101 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dhb extends ddy {
-   public static final MapCodec<dhb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(le.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dhb::new)
-   );
-   private static final Map<ddy, ddy> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final evd c = ddy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final ddy e;
+public class dhb extends den {
+   public static final MapCodec<dhb> a = b(dhb::new);
+   public static final duc b = dts.aT;
+   public static final dtt c = dts.p;
+   protected static final exn d = dfc.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
    public MapCodec<dhb> a() {
       return a;
    }
 
-   public dhb(ddy $$0, dra.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public dhb(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return c;
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d;
    }
 
    @Override
-   protected bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
-      drb $$8 = ($$0.g() instanceof crm $$7 ? d.getOrDefault($$7.d(), dea.a) : dea.a).n();
-      if ($$8.i()) {
-         return bpw.d;
-      } else if (!this.l()) {
-         return bpw.b;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dvu.c, $$3);
-         $$4.a(avr.ah);
-         $$0.a(1, $$4);
-         return bpw.a($$2.B);
+   protected boolean f_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
+      return $$0.c(b);
+   }
+
+   private static void d(dtc $$0, dca $$1, ir $$2) {
+      int $$3 = $$1.a(dcj.a, $$2) - $$1.C_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * aym.b($$4));
+      }
+
+      $$3 = aym.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
       }
    }
 
    @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if (this.l()) {
-         return bpu.b;
-      } else {
-         cto $$5 = new cto(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
+   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
+      if ($$3.gz()) {
+         if ($$1.C) {
+            return bqa.a;
+         } else {
+            dtc $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(dxv.c, $$2, dxv.a.a($$3, $$5));
+            d($$5, $$1, $$2);
+            return bqa.b;
          }
-
-         $$1.a($$2, dea.fR.n(), 3);
-         $$1.a($$3, dvu.c, $$2);
-         return bpu.a($$1.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return this.l() ? super.a($$0, $$1, $$2) : new cto(this.e);
-   }
-
-   private boolean l() {
-      return this.e == dea.a;
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      return $$1 == it.a && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ddy b() {
-      return this.e;
+   protected boolean e_(dtc $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(drb $$0, enj $$1) {
-      return false;
+   public dqc a(ir $$0, dtc $$1) {
+      return new dqr($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
+      return !$$0.C && $$0.E_().g() ? a($$2, dqe.r, dhb::a) : null;
+   }
+
+   private static void a(dca $$0, ir $$1, dtc $$2, dqr $$3) {
+      if ($$0.Z() % 20L == 0L) {
+         d($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b, c);
    }
 }

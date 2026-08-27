@@ -1,73 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dln extends ddy {
-   public static final MapCodec<dln> a = b(dln::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final it[] d = it.values();
+public class dln extends dep {
+   public static final MapCodec<dln> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dtr.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dln::new)
+   );
+   public static final dtt f = dts.w;
 
    @Override
    public MapCodec<dln> a() {
-      return a;
+      return e;
    }
 
-   protected dln(dra.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   protected dln(dtr $$0, dtb.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(drb $$0, dax $$1, io $$2, ddy $$3, io $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int g(dtc $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
-   protected void a(dax $$0, io $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dea.aP.n(), 2);
-         $$0.a(null, $$1, avh.yT, avi.e, 1.0F, 1.0F);
-      }
+   @Override
+   protected dtc a(dtc $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
    }
 
-   private boolean b(dax $$0, io $$1) {
-      return io.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (it $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            drb $$3 = $$0.a_($$2);
-            emu $$4 = $$0.b_($$2);
-            if (!$$4.a(awb.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof def $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
-                  return true;
-               }
+   @Override
+   protected int b(dca $$0, ir $$1) {
+      Class<? extends brv> $$2 = switch (this.d.f()) {
+         case a -> brv.class;
+         case b -> bso.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
 
-               if ($$3.b() instanceof dio) {
-                  $$0.a($$2, dea.a.n(), 3);
-               } else {
-                  if (!$$3.a(dea.mc) && !$$3.a(dea.md) && !$$3.a(dea.bw) && !$$3.a(dea.bx)) {
-                     return false;
-                  }
-
-                  dog $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dea.a.n(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(f);
    }
 }

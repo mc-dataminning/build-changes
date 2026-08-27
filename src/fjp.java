@@ -1,143 +1,152 @@
-public interface fjp {
-   fjp a(int var1);
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   fjp a(int var1, int var2);
+public class fjp extends fon {
+   private static final akt a = new akt("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int d = 6;
+   private static final int r = 130;
+   private static final int s = 64;
+   private static final int u = 250;
+   private final fon v;
+   @Nullable
+   private final akt w;
+   private final xe x;
+   private final List<fjp.b> y;
+   @Nullable
+   private final Runnable z;
+   private final int A;
+   private final fme B = fme.d();
 
-   fjp a(int var1, int var2, int var3, int var4);
-
-   fjp b(int var1);
-
-   fjp c(int var1);
-
-   fjp d(int var1);
-
-   fjp e(int var1);
-
-   fjp f(int var1);
-
-   fjp g(int var1);
-
-   fjp a(float var1, float var2);
-
-   fjp a(float var1);
-
-   fjp b(float var1);
-
-   default fjp a() {
-      return this.a(0.0F);
+   fjp(fon $$0, int $$1, @Nullable akt $$2, xe $$3, xe $$4, List<fjp.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.v = $$0;
+      this.w = $$2;
+      this.x = $$4;
+      this.y = $$5;
+      this.z = $$6;
+      this.A = $$1 - 36;
    }
 
-   default fjp b() {
-      return this.a(0.5F);
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.v.o();
    }
 
-   default fjp c() {
-      return this.a(1.0F);
-   }
-
-   default fjp d() {
-      return this.b(0.0F);
-   }
-
-   default fjp e() {
-      return this.b(0.5F);
-   }
-
-   default fjp f() {
-      return this.b(1.0F);
-   }
-
-   fjp g();
-
-   fjp.a h();
-
-   static fjp i() {
-      return new fjp.a();
-   }
-
-   public static class a implements fjp {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
+   @Override
+   protected void aN_() {
+      this.B.a(12).c().b();
+      this.B.a(new fjh(this.l.f().a(n.r), this.p).d(this.A).b(true));
+      if (this.w != null) {
+         this.B.a(fja.a(130, 64, this.w, 130, 64));
       }
 
-      public a(fjp.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      this.B.a(new fjh(this.x, this.p).d(this.A).b(true));
+      this.B.a(this.B());
+      this.B.a($$1 -> {
+         fil var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   private fme B() {
+      int $$0 = 6 * (this.y.size() - 1);
+      int $$1 = Math.min((this.A - $$0) / this.y.size(), 150);
+      fme $$2 = fme.e();
+      $$2.a(6);
+
+      for (fjp.b $$3 : this.y) {
+         $$2.a(fin.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
       }
 
-      public fjp.a h(int $$0) {
-         return this.b($$0, $$0);
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.v.a(this.m, this.n, this.o);
+      this.B.a();
+      fly.a(this.B, this.G());
+   }
+
+   @Override
+   public void b(fia $$0, int $$1, int $$2, float $$3) {
+      this.v.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, fgj.a);
+      this.b($$0);
+      $$0.a(a, this.B.C() - 18, this.B.D() - 18, this.B.x() + 36, this.B.v() + 36);
+   }
+
+   @Override
+   public xe i() {
+      return xd.a(this.l, this.x);
+   }
+
+   @Override
+   public void d() {
+      if (this.z != null) {
+         this.z.run();
       }
 
-      public fjp.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+      this.m.a(this.v);
+   }
 
-      public fjp.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public static class a {
+      private final fon a;
+      private final xe b;
+      private xe c = xd.a;
+      private int d = 250;
+      @Nullable
+      private akt e;
+      private final List<fjp.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
 
-      public fjp.a i(int $$0) {
+      public a(fon $$0, xe $$1) {
          this.a = $$0;
-         return this;
+         this.b = $$1;
       }
 
-      public fjp.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fjp.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fjp.a l(int $$0) {
+      public fjp.a a(int $$0) {
          this.d = $$0;
          return this;
       }
 
-      public fjp.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fjp.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fjp.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fjp.a c(float $$0) {
+      public fjp.a a(akt $$0) {
          this.e = $$0;
          return this;
       }
 
-      public fjp.a d(float $$0) {
-         this.f = $$0;
+      public fjp.a a(xe $$0) {
+         this.c = $$0;
          return this;
       }
 
-      public fjp.a j() {
-         return new fjp.a(this);
-      }
-
-      @Override
-      public fjp.a h() {
+      public fjp.a a(xe $$0, Consumer<fjp> $$1) {
+         this.f.add(new fjp.b($$0, $$1));
          return this;
       }
+
+      public fjp.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public fjp a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new fjp(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
+      }
+   }
+
+   static record b(xe a, Consumer<fjp> b) {
    }
 }

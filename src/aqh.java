@@ -1,52 +1,126 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Consumer;
 
-public class aqh {
-   @Nullable
-   protected static io a(aqm $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.D_().h();
-      dth $$4 = $$0.d(jq.a($$1), jq.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dwt.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.I_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(dwt.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dwt.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            io.a $$7 = new io.a();
+public interface aqh {
+   aqh a = new aqh() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
+      }
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               drb $$9 = $$0.a_($$7);
-               if (!$$9.u().c()) {
-                  break;
-               }
+      @Override
+      public void a(Consumer<dbh> $$0) {
+      }
+   };
 
-               if (ddy.a($$9.k($$0, $$7), it.b)) {
-                  return $$7.c().i();
+   static aqh a(dbh $$0, int $$1) {
+      return new aqh.a($$0, $$1);
+   }
+
+   static void a(aqh $$0, aqh $$1, Consumer<dbh> $$2, Consumer<dbh> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aqh.a $$4 && $$1 instanceof aqh.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
+
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new dbh($$10, $$11));
+                     } else {
+                        $$3.accept(new dbh($$10, $$11));
+                     }
+                  }
                }
             }
 
-            return null;
+            return;
          }
+
+         $$0.a($$3);
+         $$1.a($$2);
       }
    }
 
-   @Nullable
-   public static io a(aqm $$0, dae $$1) {
-      if (aa.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               io $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
+   default boolean a(dbh $$0) {
+      return this.a($$0.e, $$0.f);
+   }
+
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   boolean a(int var1, int var2, boolean var3);
+
+   void a(Consumer<dbh> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
+   }
+
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
+   }
+
+   public static record a(dbh b, int c) implements aqh {
+      int c() {
+         return this.b.e - this.c - 1;
+      }
+
+      int d() {
+         return this.b.f - this.c - 1;
+      }
+
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aqh.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aqh.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<dbh> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new dbh($$1, $$2));
                }
             }
          }
+      }
 
-         return null;
+      public dbh a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

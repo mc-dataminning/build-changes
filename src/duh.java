@@ -1,31 +1,25 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import org.apache.commons.io.FileUtils;
+public enum duh implements azg {
+   a("up"),
+   b("side"),
+   c("none");
 
-public class duh extends due {
-   private final dug a;
-   private final Path b;
+   private final String d;
 
-   public duh(dun $$0, Path $$1, dun $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new dug($$2, $$3, $$5);
+   private duh(String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public CompletableFuture<Void> a(dae $$0, ud $$1) {
-      this.f($$0);
-      return this.a.a($$0, $$1);
+   public String toString() {
+      return this.c();
    }
 
    @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   public String c() {
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

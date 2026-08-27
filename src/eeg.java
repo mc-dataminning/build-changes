@@ -1,41 +1,41 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class eeg extends eef {
-   public static final MapCodec<eeg> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eeg::new));
-   protected final List<drb> h;
+public class eeg implements eek {
+   public static final Codec<eeg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dtc.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dtc.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bpf.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bpf.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eeg::new)
+   );
+   private final dtc b;
+   private final dtc c;
+   private final bpf d;
+   private final bpf e;
 
-   protected static <P extends eeg> P4<Mu<P>, Long, elx.a, Float, List<drb>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(drb.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   public eeg(dtc $$0, dtc $$1, bpf $$2, bpf $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public eeg(long $$0, elx.a $$1, float $$2, List<drb> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public dtc a() {
+      return this.b;
    }
 
-   @Override
-   protected eed<?> a() {
-      return eed.d;
+   public dtc b() {
+      return this.c;
    }
 
-   @Override
-   public drb a(ayk $$0, io $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   public bpf c() {
+      return this.d;
    }
 
-   protected drb a(List<drb> $$0, io $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected drb a(List<drb> $$0, double $$1) {
-      double $$2 = ayd.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public bpf d() {
+      return this.e;
    }
 }

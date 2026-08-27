@@ -1,72 +1,62 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class eep extends eet {
-   public static final MapCodec<eep> a = RecordCodecBuilder.mapCodec(
+public class eep implements eek {
+   public static final Codec<eep> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               eec.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               axm.a(it.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+               lh.e.q().fieldOf("block").flatXmap(eep::a, DataResult::success).orElse((dkh)dfe.fY).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               jp.a(li.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, eep::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final eec e;
-   protected final int f;
-   protected final List<it> g;
+   public final dkh b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final je<dfc> h;
+   private final ObjectArrayList<iw> i;
 
-   public eep(float $$0, int $$1, int $$2, eec $$3, int $$4, List<it> $$5) {
+   private static DataResult<dkh> a(dfc $$0) {
+      return $$0 instanceof dkh $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   }
+
+   public eep(dkh $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, je<dfc> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
       this.f = $$4;
       this.g = $$5;
-   }
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(iw.b);
+      }
 
-   @Override
-   public void a(eet.a $$0) {
-      Set<io> $$1 = new HashSet<>();
-      ayk $$2 = $$0.b();
+      if ($$2) {
+         this.i.add(iw.a);
+      }
 
-      for (io $$3 : ac.a($$0.d(), $$2)) {
-         it $$4 = ac.a(this.g, $$2);
-         io $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            io $$6 = $$5.b(-this.c, -this.d, -this.c);
-            io $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (io $$8 : io.c($$6, $$7)) {
-               $$1.add($$8.i());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
+      if ($$4) {
+         iw.c.a.forEach(this.i::add);
       }
    }
 
-   private boolean a(eet.a $$0, io $$1, it $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         io $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   public List<iw> a(ayt $$0, iw $$1) {
+      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
    }
 
-   @Override
-   protected eeu<?> a() {
-      return eeu.f;
+   public List<iw> a(ayt $$0) {
+      return ad.a(this.i, $$0);
    }
 }

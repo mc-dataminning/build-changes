@@ -1,38 +1,79 @@
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
 
-public class cke extends buh<cjy> {
+public class cke extends bug<cka> {
+   private static final int c = 4;
+   private static final int d = 256;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final float g = 0.7F;
+   private static final int h = Math.round(15.0F);
+   private static final int i = Math.round(4.0F);
+   private static final int j = Math.round(10.0F);
+
+   @VisibleForTesting
    public cke() {
-      super(Map.of(cbs.o, cbt.a, cbs.m, cbt.b, cbs.aU, cbt.b, cbs.aV, cbt.b));
+      super(ImmutableMap.of(cbr.o, cbs.a, cbr.aY, cbs.b, cbr.aW, cbs.b, cbr.aX, cbs.b, cbr.aV, cbs.a, cbr.m, cbs.b, cbr.ba, cbs.b), h + 1 + i);
    }
 
-   protected boolean a(aqm $$0, cjy $$1) {
-      return $$1.aE() && !$$1.be() && $$1.ar() == bta.a;
+   protected boolean a(aqt $$0, cka $$1) {
+      return $$1.ar() != bsz.a ? false : $$1.dZ().c(cbr.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
+         if (!$$1x) {
+            $$1.dZ().b(cbr.aV);
+         }
+
+         return $$1x;
+      }).orElse(false);
    }
 
-   protected void a(aqm $$0, cjy $$1, long $$2) {
-      bso $$3 = $$1.dS().c(cbs.o).orElse(null);
-      if ($$3 != null) {
-         boolean $$4 = $$1.j($$3.dn());
-         euk $$5 = null;
-         if ($$4) {
-            euk $$6 = cdj.a($$1, 5, 5, $$3.dn());
-            if ($$6 != null && cka.a($$1, $$6) && $$3.i($$6.c, $$6.d, $$6.e) > $$3.g($$1)) {
-               $$5 = $$6;
+   protected boolean a(aqt $$0, cka $$1, long $$2) {
+      return $$1.dZ().a(cbr.o) && $$1.dZ().a(cbr.aV);
+   }
+
+   protected void b(aqt $$0, cka $$1, long $$2) {
+      $$1.dZ().c(cbr.o).ifPresent($$1x -> $$1.b(bsz.q));
+      $$1.dZ().a(cbr.aW, azo.a, (long)h);
+      $$1.a(avo.cL, 1.0F, 1.0F);
+   }
+
+   protected void c(aqt $$0, cka $$1, long $$2) {
+      if ($$1.ar() == bsz.q) {
+         $$1.b(bsz.a);
+      }
+
+      $$1.dZ().a(cbr.aY, azo.a, (long)j);
+      $$1.dZ().b(cbr.aV);
+   }
+
+   protected void d(aqt $$0, cka $$1, long $$2) {
+      btp<cka> $$3 = $$1.dZ();
+      bso $$4 = $$3.c(cbr.o).orElse(null);
+      if ($$4 != null) {
+         $$1.a(et.a.b, $$4.ds());
+         if (!$$3.c(cbr.aW).isPresent() && !$$3.c(cbr.aX).isPresent()) {
+            $$3.a(cbr.aX, azo.a, (long)i);
+            if (a($$1, $$4)) {
+               double $$5 = $$4.dz() - $$1.dz();
+               double $$6 = $$4.e(0.3) - $$1.e(0.5);
+               double $$7 = $$4.dF() - $$1.dF();
+               cnk $$8 = new cnk($$1, $$0);
+               $$1.a(avo.cO, 1.5F, 1.0F);
+               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.al().a() * 4));
+               $$0.b($$8);
             }
          }
-
-         if ($$5 == null) {
-            $$5 = $$1.el().h() ? cka.a($$3, $$1.el()) : a($$1, $$3);
-         }
-
-         $$1.dS().a(cbs.m, new cbv(io.a($$5), 0.6F, 1));
       }
    }
 
-   private static euk a(cjy $$0, bso $$1) {
-      euk $$2 = $$1.dn().d($$0.dn());
-      double $$3 = $$2.f() - ayd.d($$0.el().j(), 8.0, 4.0);
-      euk $$4 = $$2.d().d($$3, $$3, $$3);
-      return $$0.dn().e($$4);
+   @VisibleForTesting
+   public static boolean a(cka $$0, bso $$1) {
+      ewu $$2 = $$0.f(1.0F);
+      ewu $$3 = $$1.ds().d($$0.ds()).d();
+      return $$2.b($$3) > 0.5;
+   }
+
+   private static boolean b(cka $$0, bso $$1) {
+      double $$2 = $$0.ds().g($$1.ds());
+      return $$2 > 4.0 && $$2 < 256.0;
    }
 }

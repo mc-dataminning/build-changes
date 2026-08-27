@@ -1,80 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import java.io.DataOutput;
+import java.io.IOException;
 
-@FunctionalInterface
-public interface axq {
-   axq a = $$0 -> true;
+public class axq implements DataOutput {
+   private final DataOutput a;
 
-   boolean accept(axr var1);
-
-   static axq codepoint(int $$0, xu $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   public axq(DataOutput $$0) {
+      this.a = $$0;
    }
 
-   static axq forward(String $$0, xu $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ayw.a($$0, $$1, $$2);
+   @Override
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   static axq forward(String $$0, xu $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ayw.a($$0, $$1, decorateOutput($$3, $$2));
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   static axq backward(String $$0, xu $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ayw.b($$0, $$1, $$2);
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
    }
 
-   static axq backward(String $$0, xu $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ayw.b($$0, $$1, decorateOutput($$3, $$2));
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
    }
 
-   static axr decorateOutput(axr $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
    }
 
-   static axq composite() {
-      return a;
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
    }
 
-   static axq composite(axq $$0) {
-      return $$0;
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
    }
 
-   static axq composite(axq $$0, axq $$1) {
-      return fromPair($$0, $$1);
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
    }
 
-   static axq composite(axq... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
    }
 
-   static axq composite(List<axq> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
-      }
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
    }
 
-   static axq fromPair(axq $$0, axq $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
    }
 
-   static axq fromList(List<axq> $$0) {
-      return $$1 -> {
-         for (axq $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
 
-         return true;
-      };
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

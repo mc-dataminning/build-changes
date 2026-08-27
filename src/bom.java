@@ -1,50 +1,52 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface bom<Msg> extends AutoCloseable {
-   String bx();
+public interface bom {
+   bol a();
 
-   void a(Msg var1);
-
-   @Override
-   default void close() {
+   static <T> bom.b<T> a(T $$0, int $$1) {
+      return new bom.b<>($$0, bol.a($$1));
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bom<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
+   public static class a implements bom {
+      private final bol a;
+
+      public a(int $$0) {
+         this.a = bol.a($$0);
+      }
+
+      public a(bol $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bol a() {
+         return this.a;
+      }
    }
 
-   default <Source> CompletableFuture<Source> c(Function<? super bom<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
-   }
+   public static class b<T> implements bom {
+      private final T a;
+      private final bol b;
 
-   static <Msg> bom<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bom<Msg>() {
-         @Override
-         public String bx() {
-            return $$0;
-         }
+      b(T $$0, bol $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
+      public T b() {
+         return this.a;
+      }
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+      @Override
+      public bol a() {
+         return this.b;
+      }
+
+      public static <E> Codec<bom.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bom.b::b), bol.a.fieldOf("weight").forGetter(bom.b::a)).apply($$1, bom.b::new)
+         );
+      }
    }
 }

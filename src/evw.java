@@ -1,126 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class evw<T> implements ewc<T>, ewe<T> {
-   private final Queue<ewb<T>> a = new PriorityQueue<>(ewb.a);
-   @Nullable
-   private List<ewa<T>> b;
-   private final Set<ewb<?>> c = new ObjectOpenCustomHashSet(ewb.c);
-   @Nullable
-   private BiConsumer<evw<T>, ewb<T>> d;
+public record evw(erp.b c) implements evz {
+   public static final Codec<evw> a = RecordCodecBuilder.create($$0 -> $$0.group(erp.b.e.fieldOf("target").forGetter(evw::c)).apply($$0, evw::new));
+   public static final Codec<evw> b = erp.b.e.xmap(evw::new, evw::c);
 
-   public evw() {
-   }
-
-   public evw(List<ewa<T>> $$0) {
-      this.b = $$0;
-
-      for (ewa<T> $$1 : $$0) {
-         this.c.add(ewb.a($$1.a(), $$1.b()));
-      }
-   }
-
-   public void a(@Nullable BiConsumer<evw<T>, ewb<T>> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   public ewb<T> b() {
-      return this.a.peek();
-   }
-
-   @Nullable
-   public ewb<T> c() {
-      ewb<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
-      }
-
-      return $$0;
+   public static evz a(erp.b $$0) {
+      return new evw($$0);
    }
 
    @Override
-   public void a(ewb<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
+   public evy a() {
+      return ewa.c;
    }
 
-   private void b(ewb<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
+   @Nullable
+   @Override
+   public exx a(erp $$0) {
+      return $$0.c(this.c.a());
    }
 
    @Override
-   public boolean a(io $$0, T $$1) {
-      return this.c.contains(ewb.a($$1, $$0));
-   }
-
-   public void a(Predicate<ewb<T>> $$0) {
-      Iterator<ewb<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         ewb<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<ewb<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   public uj a(long $$0, Function<T, String> $$1) {
-      uj $$2 = new uj();
-      if (this.b != null) {
-         for (ewa<T> $$3 : this.b) {
-            $$2.add($$3.a($$1));
-         }
-      }
-
-      for (ewb<T> $$4 : this.a) {
-         $$2.add(ewa.a($$4, $$1, $$0));
-      }
-
-      return $$2;
-   }
-
-   public void a(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (ewa<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> evw<T> a(uj $$0, Function<String, Optional<T>> $$1, dae $$2) {
-      Builder<ewa<T>> $$3 = ImmutableList.builder();
-      ewa.a($$0, $$1, $$2, $$3::add);
-      return new evw<>($$3.build());
+   public Set<eud<?>> b() {
+      return ImmutableSet.of(this.c.a());
    }
 }

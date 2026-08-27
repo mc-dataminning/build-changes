@@ -1,71 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+public class gph<T extends bso, M extends fvq<T>> extends gpi<T, M> {
+   private static final akt a = new akt("textures/entity/poisonous_polytra.png");
+   private final fvn<T> b;
 
-public class gph implements asv<gpg> {
-   public gpg b(JsonObject $$0) {
-      Builder<gpf> $$1 = ImmutableList.builder();
-      int $$2 = axu.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+   public gph(gmp<T, M> $$0, fyo $$1) {
+      super($$0);
+      this.b = new fvn<>($$1.a(fyr.Y));
+   }
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = axu.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gpf $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
+   public void a(fbc $$0, gfg $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cuh $$10 = $$3.d(bsc.e);
+      if ($$10.a(cuk.At)) {
+         akt $$13;
+         if ($$3 instanceof gef $$11) {
+            gry $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(clz.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
             }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = axu.a($$0, "width", -1);
-      int $$9 = axu.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = axu.a($$0, "interpolate", false);
-      return new gpg($$1.build(), $$8, $$9, $$2, $$10);
-   }
-
-   @Nullable
-   private gpf a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gpf(axu.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = axu.m($$1, "frames[" + $$0 + "]");
-         int $$3 = axu.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         } else {
+            $$13 = a;
          }
 
-         int $$4 = axu.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gpf($$4, $$3);
-      } else {
-         return null;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         fbg $$17 = glp.a($$1, gfo.a($$13), false, $$10.x());
+         this.b.a($$0, $$17, $$2, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
-   }
-
-   @Override
-   public String a() {
-      return "animation";
    }
 }

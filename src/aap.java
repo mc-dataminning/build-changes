@@ -1,31 +1,17 @@
-public record aap(io c, String d, int e) implements aaf {
-   public static final yv<vx, aap> a = aaf.a(aap::a, aap::new);
-   public static final aaf.b<aap> b = aaf.a("debug/poi_added");
-
-   private aap(vx $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
-   }
+public record aap(dxz c, int d) implements aam {
+   public static final zc<wp, aap> a = zc.a(dxz.d, aap::b, za.g, aap::c, aap::new);
+   public static final aam.b<aap> b = aam.a("debug/game_event_listeners");
 
    @Override
-   public aaf.b<aap> a() {
+   public aam.b<aap> a() {
       return b;
    }
 
-   public io b() {
+   public dxz b() {
       return this.c;
    }
 
-   public String c() {
+   public int c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

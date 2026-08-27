@@ -1,56 +1,51 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class ie implements hy<FloatArgumentType, ie.a> {
-   public void a(ie.a $$0, vx $$1) {
-      boolean $$2 = $$0.b != -Float.MAX_VALUE;
-      boolean $$3 = $$0.c != Float.MAX_VALUE;
-      $$1.k(ia.a($$2, $$3));
-      if ($$2) {
-         $$1.a($$0.b);
-      }
+public class ie<A extends ArgumentType<?>> implements ib<A, ie<A>.a> {
+   private final ie<A>.a a;
 
-      if ($$3) {
-         $$1.a($$0.c);
-      }
+   private ie(Function<ed, A> $$0) {
+      this.a = new ie.a($$0);
    }
 
-   public ie.a a(vx $$0) {
-      byte $$1 = $$0.readByte();
-      float $$2 = ia.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
-      float $$3 = ia.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
-      return new ie.a($$2, $$3);
+   public static <T extends ArgumentType<?>> ie<T> a(Supplier<T> $$0) {
+      return new ie<>($$1 -> $$0.get());
    }
 
-   public void a(ie.a $$0, JsonObject $$1) {
-      if ($$0.b != -Float.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Float.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+   public static <T extends ArgumentType<?>> ie<T> a(Function<ed, T> $$0) {
+      return new ie<>($$0);
    }
 
-   public ie.a a(FloatArgumentType $$0) {
-      return new ie.a($$0.getMinimum(), $$0.getMaximum());
+   public void a(ie<A>.a $$0, we $$1) {
    }
 
-   public final class a implements hy.a<FloatArgumentType> {
-      final float b;
-      final float c;
+   public void a(ie<A>.a $$0, JsonObject $$1) {
+   }
 
-      a(float $$1, float $$2) {
+   public ie<A>.a a(we $$0) {
+      return this.a;
+   }
+
+   public ie<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements ib.a<A> {
+      private final Function<ed, A> b;
+
+      public a(Function<ed, A> $$1) {
          this.b = $$1;
-         this.c = $$2;
-      }
-
-      public FloatArgumentType a(ea $$0) {
-         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
       @Override
-      public hy<FloatArgumentType, ?> a() {
+      public A b(ed $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public ib<A, ?> a() {
          return ie.this;
       }
    }

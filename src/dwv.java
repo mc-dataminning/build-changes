@@ -1,34 +1,20 @@
-public class dwv {
-   public final ayk a;
-   private double b;
-   private boolean c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dwv(ayk $$0) {
-      this.a = $$0;
+public record dwv(ja<dwu> f, duz g) {
+   public static final Codec<dwv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwu.j.fieldOf("type").forGetter(dwv::a), duz.a.fieldOf("generator").forGetter(dwv::b)).apply($$0, $$0.stable(dwv::new))
+   );
+   public static final aks<dwv> b = aks.a(li.aT, new akt("overworld"));
+   public static final aks<dwv> c = aks.a(li.aT, new akt("the_nether"));
+   public static final aks<dwv> d = aks.a(li.aT, new akt("the_end"));
+   public static final aks<dwv> e = aks.a(li.aT, new akt("potato"));
+
+   public ja<dwu> a() {
+      return this.f;
    }
 
-   public void a() {
-      this.c = false;
-   }
-
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = ayd.k($$0) + ayd.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
-      }
+   public duz b() {
+      return this.g;
    }
 }

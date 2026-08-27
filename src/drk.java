@@ -1,51 +1,29 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public class drk implements Predicate<drb> {
-   public static final Predicate<drb> a = $$0 -> true;
-   private final drc<ddy, drb> b;
-   private final Map<dse<?>, Predicate<Object>> c = Maps.newHashMap();
+public record drk(float c) implements cxx {
+   public static final Codec<drk> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("damage_boost").forGetter(drk::a)).apply($$0, drk::new));
+   public static final zc<ByteBuf, drk> b = za.b(a);
 
-   private drk(drc<ddy, drb> $$0) {
-      this.b = $$0;
+   @Override
+   public void a(Consumer<xe> $$0, cwi $$1) {
+      $$0.accept(xe.a("potato_bane.tooltip.damage_boost", this.c).a(n.k));
    }
 
-   public static drk a(ddy $$0) {
-      return new drk($$0.m());
-   }
-
-   public boolean a(@Nullable drb $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dse<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
+   public static float a(cuh $$0, brv $$1) {
+      if ($$1.dV()) {
+         drk $$2 = $$0.a(ke.ap);
+         if ($$2 != null) {
+            return $$2.c;
          }
-      } else {
-         return false;
       }
+
+      return 0.0F;
    }
 
-   protected <T extends Comparable<T>> boolean a(drb $$0, dse<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> drk a(dse<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
-      }
+   public float a() {
+      return this.c;
    }
 }

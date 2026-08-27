@@ -1,112 +1,127 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.Iterables;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public class dbk implements dad, dah {
-   protected final int a;
-   protected final int b;
-   protected final dsx[][] c;
-   protected boolean d;
-   protected final dax e;
-   private final Supplier<ix<dbw>> f;
+public interface dbk extends dbg {
+   dut D_();
 
-   public dbk(dax $$0, io $$1, io $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.H_().d(lf.az).g(dcd.b));
-      this.a = jq.a($$1.u());
-      this.b = jq.a($$1.w());
-      int $$3 = jq.a($$2.u());
-      int $$4 = jq.a($$2.w());
-      this.c = new dsx[$$3 - this.a + 1][$$4 - this.b + 1];
-      dtb $$5 = $$0.M();
-      this.d = true;
+   @Nullable
+   dbg a(int var1, int var2);
 
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+   default boolean a(@Nullable brv $$0, exn $$1) {
+      return true;
+   }
+
+   default boolean a(dtc $$0, ir $$1, ewz $$2) {
+      exn $$3 = $$0.b(this, $$1, $$2);
+      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   }
+
+   default boolean f(brv $$0) {
+      return this.a($$0, exk.a($$0.cP()));
+   }
+
+   default boolean b(ewp $$0) {
+      return this.b(null, $$0);
+   }
+
+   default boolean g(brv $$0) {
+      return this.b($$0, $$0.cP());
+   }
+
+   default boolean b(@Nullable brv $$0, ewp $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   default boolean a(@Nullable brv $$0, ewp $$1, boolean $$2) {
+      for (exn $$3 : this.e($$0, $$1)) {
+         if (!$$3.c()) {
+            return false;
          }
       }
 
-      for (int $$8 = jq.a($$1.u()); $$8 <= jq.a($$2.u()); $$8++) {
-         for (int $$9 = jq.a($$1.w()); $$9 <= jq.a($$2.w()); $$9++) {
-            dsx $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
-   }
-
-   private dsx d(io $$0) {
-      return this.a(jq.a($$0.u()), jq.a($$0.w()));
-   }
-
-   private dsx a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dsx $$4 = this.c[$$2][$$3];
-         return (dsx)($$4 != null ? $$4 : new dtd(this.e, new dae($$0, $$1), this.f.get()));
+      if (!this.a($$0, $$1).isEmpty()) {
+         return false;
+      } else if ($$0 == null) {
+         return true;
       } else {
-         return new dtd(this.e, new dae($$0, $$1), this.f.get());
+         exn $$4 = this.h($$0, $$1);
+         return $$4 == null || !exk.c($$4, exk.a($$1), ewy.i);
       }
    }
 
-   @Override
-   public dss C_() {
-      return this.e.C_();
+   default boolean c(@Nullable brv $$0, ewp $$1) {
+      for (exn $$2 : this.e($$0, $$1)) {
+         if (!$$2.c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Override
-   public dad c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   List<exn> a(@Nullable brv var1, ewp var2);
+
+   default Iterable<exn> d(@Nullable brv $$0, ewp $$1) {
+      List<exn> $$2 = this.a($$0, $$1);
+      Iterable<exn> $$3 = this.e($$0, $$1);
+      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
    }
 
-   @Override
-   public List<evd> c(@Nullable bru $$0, euf $$1) {
-      return List.of();
+   default Iterable<exn> e(@Nullable brv $$0, ewp $$1) {
+      return () -> new dbe<exn>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
    }
 
    @Nullable
-   @Override
-   public dog c_(io $$0) {
-      dsx $$1 = this.d($$0);
-      return $$1.c_($$0);
+   private exn h(brv $$0, ewp $$1) {
+      dut $$2 = this.D_();
+      return $$2.a($$0, $$1) ? $$2.c() : null;
    }
 
-   @Override
-   public drb a_(io $$0) {
-      if (this.s($$0)) {
-         return dea.a.n();
-      } else {
-         dsx $$1 = this.d($$0);
-         return $$1.a_($$0);
+   default boolean f(@Nullable brv $$0, ewp $$1) {
+      dbe<exn> $$2 = new dbe<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+
+      while ($$2.hasNext()) {
+         if (!((exn)$$2.next()).c()) {
+            return true;
+         }
       }
+
+      return false;
    }
 
-   @Override
-   public emu b_(io $$0) {
-      if (this.s($$0)) {
-         return emv.a.g();
-      } else {
-         dsx $$1 = this.d($$0);
-         return $$1.b_($$0);
+   default Optional<ir> g(brv $$0, ewp $$1) {
+      ir $$2 = null;
+      double $$3 = Double.MAX_VALUE;
+      dbe<ir> $$4 = new dbe<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
+
+      while ($$4.hasNext()) {
+         ir $$5 = (ir)$$4.next();
+         double $$6 = $$5.b($$0.ds());
+         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
+            $$2 = $$5.i();
+            $$3 = $$6;
+         }
       }
+
+      return Optional.ofNullable($$2);
    }
 
-   @Override
-   public int I_() {
-      return this.e.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.e.J_();
-   }
-
-   public bmi a() {
-      return this.e.af();
+   default Optional<ewu> a(@Nullable brv $$0, exn $$1, ewu $$2, double $$3, double $$4, double $$5) {
+      if ($$1.c()) {
+         return Optional.empty();
+      } else {
+         ewp $$6 = $$1.a().c($$3, $$4, $$5);
+         exn $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
+            .filter($$0x -> this.D_() == null || this.D_().a($$0x.a()))
+            .flatMap($$0x -> $$0x.e().stream())
+            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
+            .map(exk::a)
+            .reduce(exk.a(), exk::a);
+         exn $$8 = exk.a($$1, $$7, ewy.e);
+         return $$8.a($$2);
+      }
    }
 }

@@ -1,208 +1,37 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+public class gnw extends gkp<cnh> {
+   private static final akt a = new akt("textures/entity/wither/wither_invulnerable.png");
+   private static final akt b = new akt("textures/entity/wither/wither.png");
+   private final fxo g;
 
-public class gnw implements atq, gnx, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final akm a = new akm("");
-   private final Map<akm, gng> c = Maps.newHashMap();
-   private final Set<gnx> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final atw f;
-
-   public gnw(atw $$0) {
-      this.f = $$0;
+   public gnw(gkq.a $$0) {
+      super($$0);
+      this.g = new fxo($$0.a(fyr.ch));
    }
 
-   public void a(akm $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.d($$0));
-      } else {
-         this.d($$0);
-      }
+   public static fyy a() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("head", fyx.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyu.a);
+      return fyy.a($$0, 64, 64);
    }
 
-   private void d(akm $$0) {
-      gng $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new gno($$0);
-         this.a($$0, $$1);
-      }
-
-      $$1.c();
+   protected int a(cnh $$0, ir $$1) {
+      return 15;
    }
 
-   public void a(akm $$0, gng $$1) {
-      $$1 = this.d($$0, $$1);
-      gng $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != gnl.c()) {
-            this.c($$0, $$2);
-         }
-
-         if ($$1 instanceof gnx) {
-            this.d.add((gnx)$$1);
-         }
-      }
+   public void a(cnh $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = aym.j($$2, $$0.P, $$0.dK());
+      float $$7 = aym.i($$2, $$0.Q, $$0.dM());
+      fbg $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void c(akm $$0, gng $$1) {
-      if ($$1 != gnl.c()) {
-         this.d.remove($$1);
-
-         try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
-
-      $$1.b();
-   }
-
-   private gng d(akm $$0, gng $$1) {
-      try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return gnl.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new y($$4);
-      }
-   }
-
-   public gng b(akm $$0) {
-      gng $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new gno($$0);
-         this.a($$0, $$1);
-      }
-
-      return $$1;
-   }
-
-   public gng b(akm $$0, gng $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   public akm a(String $$0, gni $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
-      } else {
-         $$2 = $$2 + 1;
-      }
-
-      this.e.put($$0, $$2);
-      akm $$3 = new akm(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
-      return $$3;
-   }
-
-   public CompletableFuture<Void> a(akm $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         gnn $$2 = new gnn(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.d().thenRunAsync(() -> this.a($$0, (gng)$$2), gnw::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private static void a(Runnable $$0) {
-      fdz.Q().execute(() -> RenderSystem.recordRenderCall($$0::run));
-   }
-
-   @Override
-   public void e() {
-      for (gnx $$0 : this.d) {
-         $$0.e();
-      }
-   }
-
-   public void c(akm $$0) {
-      gng $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmi $$2, bmi $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Void> $$6 = new CompletableFuture<>();
-      fmd.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         gnl.c();
-         fbv.a(this.f);
-         Iterator<Entry<akm, gng>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<akm, gng> $$5x = $$4x.next();
-            akm $$6x = $$5x.getKey();
-            gng $$7 = $$5x.getValue();
-            if ($$7 == gnl.c() && !$$6x.equals(gnl.b())) {
-               $$4x.remove();
-            } else {
-               $$7.a(this, $$1, $$6x, $$5);
-            }
-         }
-
-         fdz.Q().i(() -> $$6.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$6;
-   }
-
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
-      }
-   }
-
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
-      }
-
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof gnh $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
-            }
-         }
-      });
+   public akt a(cnh $$0) {
+      return $$0.y() ? a : b;
    }
 }

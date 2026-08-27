@@ -1,166 +1,43 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fxg<T extends brv> extends fvz<T> {
+   private static final String a = "body_front";
+   private static final String b = "body_back";
+   private final fys f;
+   private final fys g;
 
-public class fxg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bon<Runnable> b = bon.a(ac.g(), "server-list-io");
-   private static final int c = 16;
-   private final fdz d;
-   private final List<fxf> e = Lists.newArrayList();
-   private final List<fxf> f = Lists.newArrayList();
-
-   public fxg(fdz $$0) {
-      this.d = $$0;
+   public fxg(fys $$0) {
+      this.f = $$0;
+      this.g = $$0.b("body_back");
    }
 
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         ud $$0 = uq.a(this.d.p.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         uj $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            ud $$3 = $$1.a($$2);
-            fxf $$4 = fxf.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
+   public static fyy b() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      int $$2 = 20;
+      fzb $$3 = $$1.a("body_front", fyx.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fyu.a(0.0F, 20.0F, 0.0F));
+      fzb $$4 = $$1.a("body_back", fyx.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fyu.a(0.0F, 20.0F, 8.0F));
+      $$1.a("head", fyx.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fyu.a(0.0F, 20.0F, 0.0F));
+      $$4.a("back_fin", fyx.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fyu.a(0.0F, 0.0F, 8.0F));
+      $$3.a("top_front_fin", fyx.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fyu.a(0.0F, -4.5F, 5.0F));
+      $$4.a("top_back_fin", fyx.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fyu.a(0.0F, -4.5F, -1.0F));
+      $$1.a("right_fin", fyx.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyu.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fyx.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyu.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      return fyy.a($$0, 32, 32);
    }
 
-   public void b() {
-      try {
-         uj $$0 = new uj();
-
-         for (fxf $$1 : this.e) {
-            ud $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (fxf $$3 : this.f) {
-            ud $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         ud $$5 = new ud();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.p.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         uq.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ac.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
+   @Override
+   public fys a() {
+      return this.f;
    }
 
-   public fxf a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public fxf a(String $$0) {
-      for (fxf $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.bi()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
       }
 
-      for (fxf $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   public fxf b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         fxf $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(fxf $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(fxf $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      fxf $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, fxf $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(fxf $$0, List<fxf> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         fxf $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(fxf $$0) {
-      b.a(() -> {
-         fxg $$1 = new fxg(fdz.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+      this.g.f = -$$6 * 0.25F * aym.a($$7 * 0.6F * $$3);
    }
 }

@@ -1,37 +1,83 @@
-public class aee implements ze<abq> {
-   public static final yv<vx, aee> a = ze.a(aee::a, aee::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public aee(bru $$0, byte $$1) {
-      this.b = $$0.al();
-      this.c = $$1;
+public class aee implements zl<abw> {
+   public static final zc<we, aee> a = zl.a(aee::a, aee::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
+   private final et.a f;
+   private final et.a g;
+   private final boolean h;
+
+   public aee(et.a $$0, double $$1, double $$2, double $$3) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = 0;
+      this.h = false;
+      this.g = null;
    }
 
-   private aee(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
+   public aee(et.a $$0, brv $$1, et.a $$2) {
+      this.f = $$0;
+      this.e = $$1.al();
+      this.g = $$2;
+      ewu $$3 = $$2.a($$1);
+      this.b = $$3.c;
+      this.c = $$3.d;
+      this.d = $$3.e;
+      this.h = true;
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.k(this.c);
+   private aee(we $$0) {
+      this.f = $$0.b(et.a.class);
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.h = $$0.readBoolean();
+      if (this.h) {
+         this.e = $$0.l();
+         this.g = $$0.b(et.a.class);
+      } else {
+         this.e = 0;
+         this.g = null;
+      }
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.f);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.h);
+      if (this.h) {
+         $$0.c(this.e);
+         $$0.a(this.g);
+      }
    }
 
    @Override
-   public zg<aee> a() {
-      return agb.am;
+   public zn<aee> a() {
+      return agj.ah;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bru a(dax $$0) {
-      return $$0.a(this.b);
+   public et.a b() {
+      return this.f;
    }
 
-   public byte b() {
-      return this.c;
+   @Nullable
+   public ewu a(dca $$0) {
+      if (this.h) {
+         brv $$1 = $$0.a(this.e);
+         return $$1 == null ? new ewu(this.b, this.c, this.d) : this.g.a($$1);
+      } else {
+         return new ewu(this.b, this.c, this.d);
+      }
    }
 }

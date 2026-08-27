@@ -1,55 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgc extends ddy {
+public class dgc extends dmc implements dmr {
    public static final MapCodec<dgc> a = b(dgc::new);
-   protected static final evd b = dgv.c;
+   public static final dtt b = dts.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final exn e = dfc.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final exn f = dfc.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final exn g = dfc.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
    @Override
    public MapCodec<dgc> a() {
       return a;
    }
 
-   protected dgc(dra.d $$0) {
+   public dgc(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, iw.a.b));
    }
 
    @Override
-   protected boolean f_(drb $$0) {
-      return true;
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      switch ((iw.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      epe $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == epf.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   public drb a(cwz $$0) {
-      return !this.n().a((dba)$$0.q(), $$0.a()) ? ddy.a(this.n(), dea.j.n(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$1 == it.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      dgv.a(null, $$0, $$1, $$2);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b).a(i);
    }
 
    @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      drb $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof dgx;
+   protected epe b_(dtc $$0) {
+      return $$0.c(b) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(drb $$0, enj $$1) {
+   protected boolean a(dtc $$0, ept $$1) {
       return false;
    }
 }

@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
+import java.util.Set;
 
-public class abb implements ze<aay> {
-   public static final abb a = new abb();
-   public static final yv<ByteBuf, abb> b = yv.a(a);
+public record abb(Set<jt> c, Set<jt> d) implements aam {
+   public static final zc<we, abb> a = aam.a(abb::a, abb::new);
+   public static final aam.b<abb> b = aam.a("debug/village_sections");
 
-   private abb() {
+   private abb(we $$0) {
+      this($$0.a(HashSet::new, we::g), $$0.a(HashSet::new, we::g));
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.c, we::a);
+      $$0.a(this.d, we::a);
    }
 
    @Override
-   public zg<abb> a() {
-      return abe.e;
+   public aam.b<abb> a() {
+      return b;
    }
 
-   public void a(aay $$0) {
-      $$0.a(this);
+   public Set<jt> b() {
+      return this.c;
+   }
+
+   public Set<jt> c() {
+      return this.d;
    }
 }

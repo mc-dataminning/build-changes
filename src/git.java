@@ -1,103 +1,151 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class git extends ghs<bsn> {
-   public git(ght.a $$0) {
-      super($$0);
+public class git implements gis.a {
+   private final fgj a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<git.a> d = Lists.newArrayList();
+   private final List<git.b> e = Lists.newArrayList();
+
+   public git(fgj $$0) {
+      this.a = $$0;
    }
 
-   public void a(bsn $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      ayk $$10 = ayk.a($$0.b);
+   @Override
+   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
+      dca $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         ewu $$6 = new ewu($$2, 0.0, $$4);
+         this.d.removeIf(git.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         fbg $$7 = $$1.getBuffer(gfo.z());
 
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
-      }
+         for (git.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               gfe.a($$0, $$7, exk.a(new ewp($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
 
-      eyw $$12 = $$4.getBuffer(gcs.s());
-      Matrix4f $$13 = $$3.c().a();
+         fbg $$9 = $$1.getBuffer(gfo.B());
 
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         ayk $$15 = ayk.a($$0.b);
+         for (git.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> gfe.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
 
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
-            }
+         for (git.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               gis.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               gis.a($$0, $$1, ir.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
 
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
-            }
+         for (git.a $$12 : this.d) {
+            ewu $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new ewp($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            gis.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
          }
       }
    }
 
-   private static void a(
-      Matrix4f $$0,
-      eyw $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+   private static void a(fbc $$0, gfg $$1, ewp $$2, float $$3, float $$4, float $$5, float $$6) {
+      ffu $$7 = fgj.Q().j.m();
+      if ($$7.h()) {
+         ewu $$8 = $$7.b().e();
+         gis.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
    }
 
-   public akm a(bsn $$0) {
-      return gnu.e;
+   public void a(aks<dxv> $$0, ewu $$1) {
+      this.d.add(new git.a(ad.b(), $$0, $$1));
+   }
+
+   public void a(dxz $$0, int $$1) {
+      this.e.add(new git.b($$0, $$1));
+   }
+
+   static record a(long a, aks<dxv> b, ewu c) {
+
+      public boolean a() {
+         return ad.b() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public aks<dxv> c() {
+         return this.b;
+      }
+
+      public ewu d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dxx {
+      public final dxz a;
+      public final int b;
+
+      public b(dxz $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dca $$0, ewu $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<ewu> a(dca $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public dxz a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(aqt $$0, ja<dxv> $$1, dxv.a $$2, ewu $$3) {
+         return false;
+      }
    }
 }

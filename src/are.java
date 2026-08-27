@@ -1,35 +1,61 @@
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record are(String b, xb c) {
-   public static final are a = a("");
+public class are implements arc {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   public static are a(String $$0) {
-      return new are($$0, xb.c);
+   private are(int $$0) {
+      this.b = $$0;
    }
 
-   public static are b(String $$0) {
-      return new are($$0, xb.b);
+   public static are b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   public static are c(int $$0) {
+      int $$1 = arc.a($$0);
+      return new are($$1 * $$1);
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   public static are c() {
+      return new are(0);
    }
 
-   public boolean c() {
-      return !this.c.a();
+   @Override
+   public void a(dbh $$0) {
+      this.e = ad.b();
+      this.d = this.e;
    }
 
-   public String d() {
-      return this.b;
+   @Override
+   public void a(dbh $$0, @Nullable dvx $$1) {
+      if ($$1 == dvx.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ad.b() > this.e) {
+         this.e += 500L;
+         a.info(xe.a("menu.preparingSpawn", aym.a($$2, 0, 100)).getString());
+      }
    }
 
-   public xb e() {
-      return this.c;
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ad.b() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : aym.d((float)this.c * 100.0F / (float)this.b);
    }
 }

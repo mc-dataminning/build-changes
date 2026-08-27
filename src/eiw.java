@@ -1,24 +1,37 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@FunctionalInterface
-public interface eiw {
-   eiw a = $$0 -> $$0;
+public class eiw extends eje {
+   public static final Codec<eiw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eiw::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   akl<eis> lookup(akl<eis> var1);
+   private eiw(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   static eiw create(List<eiu> $$0, io $$1, long $$2) {
-      if ($$0.isEmpty()) {
-         return a;
-      } else {
-         ayk $$3 = ayk.a($$2).e().a($$1);
-         Builder<akl<eis>, akl<eis>> $$4 = ImmutableMap.builder();
-         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
-         Map<akl<eis>, akl<eis>> $$5 = $$4.build();
-         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x + " was mapped to null value");
-      }
+   public static eiw a(double $$0, int $$1, int $$2) {
+      return new eiw($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(ayt $$0, ir $$1) {
+      double $$2 = dcz.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public ejb<?> b() {
+      return ejb.h;
    }
 }

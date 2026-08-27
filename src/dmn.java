@@ -1,49 +1,149 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dmn extends ddk {
+public class dmn extends dfl implements dff, dmr {
    public static final MapCodec<dmn> a = b(dmn::new);
-   public static final drz<dqh> b = drr.by;
-   public static final drs c = drr.bA;
+   public static final int b = 4;
+   public static final duc c = dts.aS;
+   public static final dtt d = dts.C;
+   protected static final exn e = dfc.a(6.0, 0.0, 6.0, 10.0, 6.0, 10.0);
+   protected static final exn f = dfc.a(3.0, 0.0, 3.0, 13.0, 6.0, 13.0);
+   protected static final exn g = dfc.a(2.0, 0.0, 2.0, 14.0, 6.0, 14.0);
+   protected static final exn h = dfc.a(2.0, 0.0, 2.0, 14.0, 7.0, 14.0);
 
    @Override
    public MapCodec<dmn> a() {
       return a;
    }
 
-   public dmn(dra.d $$0) {
+   protected dmn(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dqh.a).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected dke a_(drb $$0) {
-      return dke.c;
+      this.k(this.E.b().a(c, Integer.valueOf(1)).a(d, Boolean.valueOf(true)));
    }
 
    @Nullable
    @Override
-   public dog a(io $$0, drb $$1) {
-      return new dqa($$0, $$1);
+   public dtc a(cyd $$0) {
+      dtc $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
+      } else {
+         epe $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == epf.c;
+         return super.a($$0).a(d, Boolean.valueOf($$3));
+      }
    }
 
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return $$0 instanceof aqm $$3
-         ? a($$2, doi.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(drr.bA).orElse(false)))
-         : a($$2, doi.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(drr.bA).orElse(false)));
+   public static boolean m(dtc $$0) {
+      return !$$0.c(d);
    }
 
    @Override
-   public void a(cto $$0, @Nullable dad $$1, List<wx> $$2, cvh $$3, @Nullable jl $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dbp.a($$0, $$2, "spawn_data");
+   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
+      return !$$0.k($$1, $$2).a(iw.b).c() || $$0.d($$1, $$2, iw.b);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      ir $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dfe.a.n();
+      } else {
+         if ($$0.c(d)) {
+            $$3.a($$4, epf.c, epf.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   protected boolean a(dtc $$0, cyd $$1) {
+      return !$$1.h() && $$1.n().a(this.q()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      switch ($$0.c(c)) {
+         case 1:
+         default:
+            return e;
+         case 2:
+            return f;
+         case 3:
+            return g;
+         case 4:
+            return h;
+      }
+   }
+
+   @Override
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public boolean b(dcd $$0, ir $$1, dtc $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
+      if (!m($$3) && $$0.a_($$2.d()).a(awe.ar)) {
+         int $$4 = 5;
+         int $$5 = 1;
+         int $$6 = 2;
+         int $$7 = 0;
+         int $$8 = $$2.u() - 2;
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < 5; $$10++) {
+            for (int $$11 = 0; $$11 < $$5; $$11++) {
+               int $$12 = 2 + $$2.v() - 1;
+
+               for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
+                  ir $$14 = new ir($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
+                  if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dfe.al)) {
+                     dtc $$15 = $$0.a_($$14.d());
+                     if ($$15.a(awe.ar)) {
+                        $$0.a($$14, dfe.nT.n().a(c, Integer.valueOf($$1.a(4) + 1)), 3);
+                     }
+                  }
+               }
+            }
+
+            if ($$7 < 2) {
+               $$5 += 2;
+               $$9++;
+            } else {
+               $$5 -= 2;
+               $$9--;
+            }
+
+            $$7++;
+         }
+
+         $$0.a($$2, $$3.a(c, Integer.valueOf(4)), 2);
+      }
+   }
+
+   @Override
+   protected boolean a(dtc $$0, ept $$1) {
+      return false;
    }
 }

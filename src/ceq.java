@@ -2,43 +2,43 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class ceq extends cec implements bsu {
-   protected static final ajr<Byte> c = ajv.a(ceq.class, ajt.a);
+   protected static final ajy<Byte> c = akc.a(ceq.class, aka.a);
    private static final int d = 25;
    private int e;
-   private int bY;
-   private static final bpf bZ = azc.a(20, 39);
-   private int ca;
+   private int ch;
+   private static final bpl ci = azl.a(20, 39);
+   private int cj;
    @Nullable
-   private UUID cb;
+   private UUID ck;
 
-   public ceq(bsa<? extends ceq> $$0, dax $$1) {
+   public ceq(bsb<? extends ceq> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void z() {
-      this.bS.a(1, new bzw(this, 1.0, true));
-      this.bS.a(2, new cab(this, 0.9, 32.0F));
-      this.bS.a(2, new bzx(this, 0.6, false));
-      this.bS.a(4, new bzo(this, 0.6));
-      this.bS.a(5, new cad(this));
-      this.bS.a(7, new bzu(this, clw.class, 6.0F));
-      this.bS.a(8, new cah(this));
-      this.bT.a(1, new cbd(this));
-      this.bT.a(2, new cbe(this));
-      this.bT.a(3, new cbf<>(this, clw.class, 10, true, false, this::a_));
-      this.bT.a(3, new cbf<>(this, bsq.class, 5, false, false, $$0 -> $$0 instanceof ciu && !($$0 instanceof cio)));
-      this.bT.a(4, new cbl<>(this, false));
+   protected void y() {
+      this.cb.a(1, new bzv(this, 1.0, true));
+      this.cb.a(2, new caa(this, 0.9, 32.0F));
+      this.cb.a(2, new bzw(this, 0.6, false));
+      this.cb.a(4, new bzn(this, 0.6));
+      this.cb.a(5, new cac(this));
+      this.cb.a(7, new bzt(this, cly.class, 6.0F));
+      this.cb.a(8, new cag(this));
+      this.cc.a(1, new cbc(this));
+      this.cc.a(2, new cbd(this));
+      this.cc.a(3, new cbe<>(this, cly.class, 10, true, false, this::a_));
+      this.cc.a(3, new cbe<>(this, bsq.class, 5, false, false, $$0 -> $$0 instanceof ciu && !($$0 instanceof cio)));
+      this.cc.a(4, new cbk<>(this, false));
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       super.a($$0);
       $$0.a(c, (byte)0);
    }
 
-   public static btv.a s() {
-      return bsq.A().a(btw.q, 100.0).a(btw.r, 0.25).a(btw.n, 1.0).a(btw.c, 15.0).a(btw.v, 1.0);
+   public static btu.a r() {
+      return bsq.A().a(btv.q, 100.0).a(btv.r, 0.25).a(btv.n, 1.0).a(btv.c, 15.0).a(btv.v, 1.0);
    }
 
    @Override
@@ -47,8 +47,8 @@ public class ceq extends cec implements bsu {
    }
 
    @Override
-   protected void D(bru $$0) {
-      if ($$0 instanceof ciu && !($$0 instanceof cio) && this.el().a(20) == 0) {
+   protected void D(brv $$0) {
+      if ($$0 instanceof ciu && !($$0 instanceof cio) && this.et().a(20) == 0) {
          this.h((bso)$$0);
       }
 
@@ -56,218 +56,218 @@ public class ceq extends cec implements bsu {
    }
 
    @Override
-   public void n_() {
-      super.n_();
+   public void m_() {
+      super.m_();
       if (this.e > 0) {
          this.e--;
       }
 
-      if (this.bY > 0) {
-         this.bY--;
+      if (this.ch > 0) {
+         this.ch--;
       }
 
-      if (!this.dP().B) {
-         this.a((aqm)this.dP(), true);
+      if (!this.dU().C) {
+         this.a_((aqt)this.dU(), true);
       }
    }
 
    @Override
-   public boolean bq() {
-      return this.ds().i() > 2.5000003E-7F && this.ah.a(5) == 0;
+   public boolean bu() {
+      return this.dx().i() > 2.5000003E-7F && this.al.a(5) == 0;
    }
 
    @Override
-   public boolean a(bsa<?> $$0) {
-      if (this.gq() && $$0 == bsa.by) {
+   public boolean a(bsb<?> $$0) {
+      if (this.gz() && $$0 == bsb.bE) {
          return false;
       } else {
-         return $$0 == bsa.x ? false : super.a($$0);
+         return $$0 == bsb.z ? false : super.a($$0);
       }
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       super.b($$0);
-      $$0.a("PlayerCreated", this.gq());
+      $$0.a("PlayerCreated", this.gz());
       this.c($$0);
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       super.a($$0);
       this.x($$0.q("PlayerCreated"));
-      this.a(this.dP(), $$0);
+      this.a(this.dU(), $$0);
    }
 
    @Override
    public void c() {
-      this.a(bZ.a(this.ah));
+      this.a(ci.a(this.al));
    }
 
    @Override
    public void a(int $$0) {
-      this.ca = $$0;
+      this.cj = $$0;
    }
 
    @Override
    public int a() {
-      return this.ca;
+      return this.cj;
    }
 
    @Override
    public void a(@Nullable UUID $$0) {
-      this.cb = $$0;
+      this.ck = $$0;
    }
 
    @Nullable
    @Override
    public UUID b() {
-      return this.cb;
+      return this.ck;
    }
 
-   private float gr() {
-      return (float)this.g(btw.c);
+   private float gA() {
+      return (float)this.g(btv.c);
    }
 
    @Override
-   public boolean C(bru $$0) {
+   public boolean C(brv $$0) {
       this.e = 10;
-      this.dP().a(this, (byte)4);
-      float $$1 = this.gr();
-      float $$2 = (int)$$1 > 0 ? $$1 / 2.0F + (float)this.ah.a((int)$$1) : $$1;
-      boolean $$3 = $$0.a(this.dQ().b((bso)this), $$2);
+      this.dU().a(this, (byte)4);
+      float $$1 = this.gA();
+      float $$2 = (int)$$1 > 0 ? $$1 / 2.0F + (float)this.al.a((int)$$1) : $$1;
+      boolean $$3 = $$0.a(this.dX().b((bso)this), $$2);
       if ($$3) {
-         double $$5 = $$0 instanceof bso $$4 ? $$4.g(btw.n) : 0.0;
+         double $$5 = $$0 instanceof bso $$4 ? $$4.g(btv.n) : 0.0;
          double $$6 = Math.max(0.0, 1.0 - $$5);
-         $$0.g($$0.ds().b(0.0, 0.4F * $$6, 0.0));
+         $$0.g($$0.dx().b(0.0, 0.4F * $$6, 0.0));
          this.a(this, $$0);
       }
 
-      this.a(avh.no, 1.0F, 1.0F);
+      this.a(avo.nE, 1.0F, 1.0F);
       return $$3;
    }
 
    @Override
-   public boolean a(bqn $$0, float $$1) {
-      brs.a $$2 = this.u();
+   public boolean a(bqt $$0, float $$1) {
+      brt.a $$2 = this.t();
       boolean $$3 = super.a($$0, $$1);
-      if ($$3 && this.u() != $$2) {
-         this.a(avh.np, 1.0F, 1.0F);
+      if ($$3 && this.t() != $$2) {
+         this.a(avo.nF, 1.0F, 1.0F);
       }
 
       return $$3;
    }
 
-   public brs.a u() {
-      return brs.a.a(this.eA() / this.eR());
+   public brt.a t() {
+      return brt.a.a(this.eI() / this.eZ());
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 4) {
          this.e = 10;
-         this.a(avh.no, 1.0F, 1.0F);
+         this.a(avo.nE, 1.0F, 1.0F);
       } else if ($$0 == 11) {
-         this.bY = 400;
+         this.ch = 400;
       } else if ($$0 == 34) {
-         this.bY = 0;
+         this.ch = 0;
       } else {
          super.b($$0);
       }
    }
 
-   public int y() {
+   public int x() {
       return this.e;
    }
 
    public void w(boolean $$0) {
       if ($$0) {
-         this.bY = 400;
-         this.dP().a(this, (byte)11);
+         this.ch = 400;
+         this.dU().a(this, (byte)11);
       } else {
-         this.bY = 0;
-         this.dP().a(this, (byte)34);
+         this.ch = 0;
+         this.dU().a(this, (byte)34);
       }
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.nr;
+   protected avn d(bqt $$0) {
+      return avo.nH;
    }
 
    @Override
-   protected avg o_() {
-      return avh.nq;
+   protected avn n_() {
+      return avo.nG;
    }
 
    @Override
-   protected bpu b(clw $$0, bpt $$1) {
-      cto $$2 = $$0.b($$1);
-      if (!$$2.a(ctr.oE)) {
-         return bpu.d;
+   protected bqa b(cly $$0, bpz $$1) {
+      cuh $$2 = $$0.b($$1);
+      if (!$$2.a(cuk.pX)) {
+         return bqa.d;
       } else {
-         float $$3 = this.eA();
+         float $$3 = this.eI();
          this.c(25.0F);
-         if (this.eA() == $$3) {
-            return bpu.d;
+         if (this.eI() == $$3) {
+            return bqa.d;
          } else {
-            float $$4 = 1.0F + (this.ah.i() - this.ah.i()) * 0.2F;
-            this.a(avh.ns, 1.0F, $$4);
+            float $$4 = 1.0F + (this.al.i() - this.al.i()) * 0.2F;
+            this.a(avo.nI, 1.0F, $$4);
             $$2.a(1, $$0);
-            return bpu.a(this.dP().B);
+            return bqa.a(this.dU().C);
          }
       }
    }
 
    @Override
-   protected void b(io $$0, drb $$1) {
-      this.a(avh.nt, 1.0F, 1.0F);
+   protected void b(ir $$0, dtc $$1) {
+      this.a(avo.nJ, 1.0F, 1.0F);
    }
 
-   public int gp() {
-      return this.bY;
+   public int gy() {
+      return this.ch;
    }
 
-   public boolean gq() {
-      return (this.ao.a(c) & 1) != 0;
+   public boolean gz() {
+      return (this.as.a(c) & 1) != 0;
    }
 
    public void x(boolean $$0) {
-      byte $$1 = this.ao.a(c);
+      byte $$1 = this.as.a(c);
       if ($$0) {
-         this.ao.a(c, (byte)($$1 | 1));
+         this.as.a(c, (byte)($$1 | 1));
       } else {
-         this.ao.a(c, (byte)($$1 & -2));
+         this.as.a(c, (byte)($$1 & -2));
       }
    }
 
    @Override
-   public void a(bqn $$0) {
+   public void a(bqt $$0) {
       super.a($$0);
    }
 
    @Override
-   public boolean a(dba $$0) {
-      io $$1 = this.dp();
-      io $$2 = $$1.d();
-      drb $$3 = $$0.a_($$2);
+   public boolean a(dcd $$0) {
+      ir $$1 = this.du();
+      ir $$2 = $$1.d();
+      dtc $$3 = $$0.a_($$2);
       if (!$$3.a($$0, $$2, this)) {
          return false;
       } else {
          for (int $$4 = 1; $$4 < 3; $$4++) {
-            io $$5 = $$1.b($$4);
-            drb $$6 = $$0.a_($$5);
-            if (!dbi.a($$0, $$5, $$6, $$6.u(), bsa.af)) {
+            ir $$5 = $$1.b($$4);
+            dtc $$6 = $$0.a_($$5);
+            if (!dcl.a($$0, $$5, $$6, $$6.u(), bsb.ah)) {
                return false;
             }
          }
 
-         return dbi.a($$0, $$1, $$0.a_($$1), emv.a.g(), bsa.af) && $$0.f(this);
+         return dcl.a($$0, $$1, $$0.a_($$1), epf.a.g(), bsb.ah) && $$0.f(this);
       }
    }
 
    @Override
-   public euk cM() {
-      return new euk(0.0, (double)(0.875F * this.cL()), (double)(this.dj() * 0.4F));
+   public ewu cR() {
+      return new ewu(0.0, (double)(0.875F * this.cQ()), (double)(this.do() * 0.4F));
    }
 }

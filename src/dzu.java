@@ -1,42 +1,32 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public class dzu extends dzx<eca> {
-   public dzu(Codec<eca> $$0) {
-      super($$0);
+public class dzu {
+   private long b;
+   private long c;
+   public static final Codec<dzu> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new dzu($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+
+   public dzu(dzj.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   @Override
-   public boolean a(dzz<eca> $$0) {
-      io $$1 = $$0.e();
-      dbs $$2 = $$0.b();
-      eca $$3 = $$0.f();
-
-      for (io $$4 : io.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            io $$9 = $$4.i();
-            this.a($$2, $$9, dea.kF.n());
-            $$3.b().ifPresent($$3x -> {
-               dog $$4x = $$2.c_($$9);
-               if ($$4x instanceof dpw $$5x) {
-                  $$5x.a($$3x, $$3.c());
-                  $$4x.e();
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dea.a.n());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dea.F.n());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dea.F.n());
-         } else {
-            this.a($$2, $$4, dea.a.n());
-         }
+   public dzu(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
+   }
 
-      return true;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

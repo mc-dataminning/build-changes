@@ -1,31 +1,24 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class exl {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+public class exl extends exn {
+   private final exn b;
+   private final iw.a c;
+   private static final DoubleList d = new exa(1);
+
+   public exl(exn $$0, iw.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   private static exd a(exd $$0, iw.a $$1, int $$2) {
+      return new exm(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
-   }
-
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
-
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   @Override
+   protected DoubleList a(iw.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

@@ -3,16 +3,15 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bye {
-   public static <E extends cla> bui<E> a(Function<E, Optional<? extends bso>> $$0) {
-      return bxu.a(
-         (Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$1 -> $$1.group($$1.c(cbs.ay), $$1.c(cbs.o), $$1.a(cbs.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bso> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
+   public static buh<bso> a() {
+      return bxt.a(
+         (Function<bxt.b<bso>, ? extends App<bxt.c<bso>, bxw<bso>>>)($$0 -> $$0.group($$0.a(cbr.n), $$0.a(cbr.az), $$0.a(cbr.ay), $$0.c(cbr.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<ir> $$7 = $$0.<bso>a($$3).map(brv::du).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
                         return false;
                      } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
+                        $$1.a(new buj($$7.get()));
                         return true;
                      }
                   }))

@@ -1,16 +1,20 @@
-import java.util.function.Consumer;
+public class gsv {
+   public static final gsw a = new gsw();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-@FunctionalInterface
-public interface gsv {
-   gsv a = ($$0, $$1) -> {
-   };
-
-   default gsv decorate(Consumer<gsz.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   public gsv(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   void send(gsw var1, Consumer<gsz.a> var2);
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
+   }
 }

@@ -1,65 +1,63 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gta {
-   private final UUID a = UUID.randomUUID();
-   private final gsv b;
-   private final gte c;
-   private final gtg d = new gtg();
-   private final gtd e;
-   private final gtf f;
+public enum gta implements gth {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gta(gsv $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new gte($$3);
-      this.e = new gtd();
-      this.f = new gtf($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(gsy.i, this.a);
-      });
+   private static final int q = 360;
+   private static final Map<Integer, gta> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gta)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public void a() {
-      this.e.a(this.b);
-   }
+   private gta(int $$0, int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-   public void a(dau $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
-   }
 
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(dax $$0, af $$1) {
-      akm $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.Y();
-         this.b.send(gsw.f, $$2x -> {
-            $$2x.a(gsy.D, $$2.toString());
-            $$2x.a(gsy.E, $$3);
-         });
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static gta a(int $$0, int $$1) {
+      return r.get(b(aym.b($$0, 360), aym.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

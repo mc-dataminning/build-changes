@@ -1,45 +1,68 @@
-import com.mojang.serialization.Codec;
+public final class dze {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public class dze extends dzx<ebu> {
-   public dze(Codec<ebu> $$0) {
-      super($$0);
+   private dze() {
    }
 
-   @Override
-   public boolean a(dzz<ebu> $$0) {
-      io $$1 = $$0.e();
-      dbs $$2 = $$0.b();
-      ayk $$3 = $$0.d();
-
-      ebu $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            drb $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (io $$11 : io.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
+   protected static dyy.c a(dyn $$0, dyn $$1, dyn $$2, dzh $$3) {
+      dtc $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dze.a $$8 = $$6 > 0.0 ? dze.a.a : dze.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = aym.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               ayt $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = aym.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
                }
             }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         } else {
+            return $$4;
          }
+      };
+   }
 
-         return true;
+   protected static enum a {
+      a(dfe.sl.n(), dfe.uE.n(), dfe.d.n(), 0, 50),
+      b(dfe.aw.n(), dfe.uD.n(), dfe.rK.n(), -60, -8);
+
+      final dtc e;
+      final dtc f;
+      final dtc g;
+      protected final int c;
+      protected final int d;
+
+      private a(dtc $$0, dtc $$1, dtc $$2, int $$3, int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

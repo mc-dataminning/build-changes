@@ -1,22 +1,15 @@
-public interface cyk extends cxu<bpn> {
-   @Override
-   default cxz<?> e() {
-      return cxz.g;
+public class cyk extends cyh {
+   public cyk(String $$0, cyn $$1, cyv $$2, cuh $$3, float $$4, int $$5) {
+      super(czf.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cuh g() {
+      return new cuh(dfe.oU);
    }
 
    @Override
-   default cto g() {
-      return new cto(dea.ob);
+   public cze<?> ao_() {
+      return cze.r;
    }
-
-   boolean a(cto var1);
-
-   boolean b(cto var1);
-
-   boolean c(cto var1);
 }

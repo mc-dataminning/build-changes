@@ -1,28 +1,16 @@
-import com.mojang.serialization.MapCodec;
+public class ddo {
+   public static final aks<ddn> a = a("nether");
+   public static final aks<ddn> b = a("overworld");
+   public static final aks<ddn> c = a("potato");
 
-public abstract class ddo extends ddy {
-   protected static final int a = 2;
-   protected static final evd b = ddy.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
-
-   protected ddo(dra.d $$0) {
-      super($$0);
+   public static void a(qq<ddn> $$0) {
+      jb<dcz> $$1 = $$0.a(li.az);
+      $$0.a(a, new ddn(ddn.a.a, $$1));
+      $$0.a(b, new ddn(ddn.a.c, $$1));
+      $$0.a(c, new ddn(ddn.a.b, $$1));
    }
 
-   @Override
-   protected abstract MapCodec<? extends ddo> a();
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b;
-   }
-
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      return $$1 == it.a && !this.a($$0, $$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      return a($$1, $$2.d(), it.b);
+   private static aks<ddn> a(String $$0) {
+      return aks.a(li.aR, new akt($$0));
    }
 }

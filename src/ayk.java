@@ -1,65 +1,14 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import javax.annotation.Nullable;
 
-public interface ayk {
-   @Deprecated
-   double a = 2.297;
+public class ayk {
+   @Nullable
+   private static byte[] a = null;
 
-   static ayk a() {
-      return a(dxi.a());
+   public static void a() {
+      a = new byte[10485760];
    }
 
-   @Deprecated
-   static ayk b() {
-      return new dxm(dxi.a());
-   }
-
-   static ayk a(long $$0) {
-      return new dwu($$0);
-   }
-
-   static ayk c() {
-      return new dxj(ThreadLocalRandom.current().nextLong());
-   }
-
-   ayk d();
-
-   dxg e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
-      }
+   public static void b() {
+      a = new byte[0];
    }
 }

@@ -1,45 +1,42 @@
-public class evu {
-   private static final ewe<Object> a = new ewe<Object>() {
-      @Override
-      public void a(ewb<Object> $$0) {
-      }
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-      @Override
-      public boolean a(io $$0, Object $$1) {
-         return false;
-      }
+public record evu(evq b, evq c) implements evq {
+   public static final Codec<evu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(evr.a.fieldOf("min").forGetter(evu::c), evr.a.fieldOf("max").forGetter(evu::d)).apply($$0, evu::new)
+   );
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final evx<Object> b = new evx<Object>() {
-      @Override
-      public void a(ewb<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(io $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(io $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> ewe<T> a() {
-      return (ewe<T>)a;
+   @Override
+   public evp b() {
+      return evr.c;
    }
 
-   public static <T> evx<T> b() {
-      return (evx<T>)b;
+   public static evu a(float $$0, float $$1) {
+      return new evu(evo.a($$0), evo.a($$1));
+   }
+
+   @Override
+   public int a(erp $$0) {
+      return aym.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(erp $$0) {
+      return aym.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<eud<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public evq c() {
+      return this.b;
+   }
+
+   public evq d() {
+      return this.c;
    }
 }

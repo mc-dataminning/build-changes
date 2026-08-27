@@ -1,72 +1,23 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
+public class gng extends gkp<cnf> {
+   public static final akt a = new akt("textures/entity/trident.png");
+   private final fxx b;
 
-public abstract class gng implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
-
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
+   public gng(gkq.a $$0) {
+      super($$0);
+      this.b = new fxx($$0.a(fyr.bO));
    }
 
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
+   public void a(cnf $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(aym.i($$2, $$0.P, $$0.dK()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(aym.i($$2, $$0.Q, $$0.dM()) + 90.0F));
+      fbg $$6 = glp.c($$4, this.b.a(this.a($$0)), false, $$0.G());
+      this.b.a($$3, $$6, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
-      }
-   }
-
-   public abstract void a(atw var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
-      }
-   }
-
-   public void a(gnw $$0, atw $$1, akm $$2, Executor $$3) {
-      $$0.a($$2, this);
-   }
-
-   @Override
-   public void close() {
+   public akt a(cnf $$0) {
+      return a;
    }
 }

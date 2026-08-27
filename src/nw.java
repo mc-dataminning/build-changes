@@ -1,166 +1,32 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.function.UnaryOperator;
 
 public class nw {
-   public static final nv a = a("cube", ny.c, ny.j, ny.k, ny.l, ny.m, ny.n, ny.o);
-   public static final nv b = a("cube_directional", ny.c, ny.j, ny.k, ny.l, ny.m, ny.n, ny.o);
-   public static final nv c = a("cube_all", ny.a);
-   public static final nv d = a("cube_all_inner_faces", ny.a);
-   public static final nv e = a("cube_mirrored_all", "_mirrored", ny.a);
-   public static final nv f = a("cube_north_west_mirrored_all", "_north_west_mirrored", ny.a);
-   public static final nv g = a("cube_column_uv_locked_x", "_x", ny.d, ny.i);
-   public static final nv h = a("cube_column_uv_locked_y", "_y", ny.d, ny.i);
-   public static final nv i = a("cube_column_uv_locked_z", "_z", ny.d, ny.i);
-   public static final nv j = a("cube_column", ny.d, ny.i);
-   public static final nv k = a("cube_column_horizontal", "_horizontal", ny.d, ny.i);
-   public static final nv l = a("cube_column_mirrored", "_mirrored", ny.d, ny.i);
-   public static final nv m = a("cube_top", ny.f, ny.i);
-   public static final nv n = a("cube_bottom_top", ny.f, ny.e, ny.i);
-   public static final nv o = a("cube_bottom_top_inner_faces", ny.f, ny.e, ny.i);
-   public static final nv p = a("orientable", ny.f, ny.g, ny.i);
-   public static final nv q = a("orientable_with_bottom", ny.f, ny.e, ny.i, ny.g);
-   public static final nv r = a("orientable_vertical", "_vertical", ny.g, ny.i);
-   public static final nv s = a("button", ny.b);
-   public static final nv t = a("button_pressed", "_pressed", ny.b);
-   public static final nv u = a("button_inventory", "_inventory", ny.b);
-   public static final nv v = a("door_bottom_left", "_bottom_left", ny.f, ny.e);
-   public static final nv w = a("door_bottom_left_open", "_bottom_left_open", ny.f, ny.e);
-   public static final nv x = a("door_bottom_right", "_bottom_right", ny.f, ny.e);
-   public static final nv y = a("door_bottom_right_open", "_bottom_right_open", ny.f, ny.e);
-   public static final nv z = a("door_top_left", "_top_left", ny.f, ny.e);
-   public static final nv A = a("door_top_left_open", "_top_left_open", ny.f, ny.e);
-   public static final nv B = a("door_top_right", "_top_right", ny.f, ny.e);
-   public static final nv C = a("door_top_right_open", "_top_right_open", ny.f, ny.e);
-   public static final nv D = a("custom_fence_post", "_post", ny.b, ny.c);
-   public static final nv E = a("custom_fence_side_north", "_side_north", ny.b);
-   public static final nv F = a("custom_fence_side_east", "_side_east", ny.b);
-   public static final nv G = a("custom_fence_side_south", "_side_south", ny.b);
-   public static final nv H = a("custom_fence_side_west", "_side_west", ny.b);
-   public static final nv I = a("custom_fence_inventory", "_inventory", ny.b);
-   public static final nv J = a("fence_post", "_post", ny.b);
-   public static final nv K = a("fence_side", "_side", ny.b);
-   public static final nv L = a("fence_inventory", "_inventory", ny.b);
-   public static final nv M = a("template_wall_post", "_post", ny.r);
-   public static final nv N = a("template_wall_side", "_side", ny.r);
-   public static final nv O = a("template_wall_side_tall", "_side_tall", ny.r);
-   public static final nv P = a("wall_inventory", "_inventory", ny.r);
-   public static final nv Q = a("template_custom_fence_gate", ny.b, ny.c);
-   public static final nv R = a("template_custom_fence_gate_open", "_open", ny.b, ny.c);
-   public static final nv S = a("template_custom_fence_gate_wall", "_wall", ny.b, ny.c);
-   public static final nv T = a("template_custom_fence_gate_wall_open", "_wall_open", ny.b, ny.c);
-   public static final nv U = a("template_fence_gate", ny.b);
-   public static final nv V = a("template_fence_gate_open", "_open", ny.b);
-   public static final nv W = a("template_fence_gate_wall", "_wall", ny.b);
-   public static final nv X = a("template_fence_gate_wall_open", "_wall_open", ny.b);
-   public static final nv Y = a("pressure_plate_up", ny.b);
-   public static final nv Z = a("pressure_plate_down", "_down", ny.b);
-   public static final nv aa = a(ny.c);
-   public static final nv ab = a("slab", ny.e, ny.f, ny.i);
-   public static final nv ac = a("slab_top", "_top", ny.e, ny.f, ny.i);
-   public static final nv ad = a("leaves", ny.a);
-   public static final nv ae = a("stairs", ny.e, ny.f, ny.i);
-   public static final nv af = a("inner_stairs", "_inner", ny.e, ny.f, ny.i);
-   public static final nv ag = a("outer_stairs", "_outer", ny.e, ny.f, ny.i);
-   public static final nv ah = a("template_trapdoor_top", "_top", ny.b);
-   public static final nv ai = a("template_trapdoor_bottom", "_bottom", ny.b);
-   public static final nv aj = a("template_trapdoor_open", "_open", ny.b);
-   public static final nv ak = a("template_orientable_trapdoor_top", "_top", ny.b);
-   public static final nv al = a("template_orientable_trapdoor_bottom", "_bottom", ny.b);
-   public static final nv am = a("template_orientable_trapdoor_open", "_open", ny.b);
-   public static final nv an = a("pointed_dripstone", ny.p);
-   public static final nv ao = a("cross", ny.p);
-   public static final nv ap = a("tinted_cross", ny.p);
-   public static final nv aq = a("flower_pot_cross", ny.q);
-   public static final nv ar = a("tinted_flower_pot_cross", ny.q);
-   public static final nv as = a("rail_flat", ny.s);
-   public static final nv at = a("rail_curved", "_corner", ny.s);
-   public static final nv au = a("template_rail_raised_ne", "_raised_ne", ny.s);
-   public static final nv av = a("template_rail_raised_sw", "_raised_sw", ny.s);
-   public static final nv aw = a("carpet", ny.t);
-   public static final nv ax = a("flowerbed_1", "_1", ny.P, ny.y);
-   public static final nv ay = a("flowerbed_2", "_2", ny.P, ny.y);
-   public static final nv az = a("flowerbed_3", "_3", ny.P, ny.y);
-   public static final nv aA = a("flowerbed_4", "_4", ny.P, ny.y);
-   public static final nv aB = a("coral_fan", ny.x);
-   public static final nv aC = a("coral_wall_fan", ny.x);
-   public static final nv aD = a("template_glazed_terracotta", ny.u);
-   public static final nv aE = a("template_chorus_flower", ny.b);
-   public static final nv aF = a("template_daylight_detector", ny.f, ny.i);
-   public static final nv aG = a("template_glass_pane_noside", "_noside", ny.v);
-   public static final nv aH = a("template_glass_pane_noside_alt", "_noside_alt", ny.v);
-   public static final nv aI = a("template_glass_pane_post", "_post", ny.v, ny.w);
-   public static final nv aJ = a("template_glass_pane_side", "_side", ny.v, ny.w);
-   public static final nv aK = a("template_glass_pane_side_alt", "_side_alt", ny.v, ny.w);
-   public static final nv aL = a("template_command_block", ny.g, ny.h, ny.i);
-   public static final nv aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", ny.b);
-   public static final nv aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", ny.b);
-   public static final nv aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", ny.b);
-   public static final nv aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", ny.b);
-   public static final nv aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", ny.b);
-   public static final nv aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", ny.b);
-   public static final nv aS = a("template_anvil", ny.f);
-   public static final nv[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, ny.y)).toArray(nv[]::new);
-   public static final nv aU = a("stem_fruit", ny.y, ny.z);
-   public static final nv aV = a("crop", ny.A);
-   public static final nv aW = a("template_farmland", ny.B, ny.f);
-   public static final nv aX = a("template_fire_floor", ny.C);
-   public static final nv aY = a("template_fire_side", ny.C);
-   public static final nv aZ = a("template_fire_side_alt", ny.C);
-   public static final nv ba = a("template_fire_up", ny.C);
-   public static final nv bb = a("template_fire_up_alt", ny.C);
-   public static final nv bc = a("template_campfire", ny.C, ny.K);
-   public static final nv bd = a("template_lantern", ny.D);
-   public static final nv be = a("template_hanging_lantern", "_hanging", ny.D);
-   public static final nv bf = a("template_torch", ny.G);
-   public static final nv bg = a("template_torch_wall", ny.G);
-   public static final nv bh = a("template_piston", ny.E, ny.e, ny.i);
-   public static final nv bi = a("template_piston_head", ny.E, ny.i, ny.F);
-   public static final nv bj = a("template_piston_head_short", ny.E, ny.i, ny.F);
-   public static final nv bk = a("template_seagrass", ny.b);
-   public static final nv bl = a("template_turtle_egg", ny.a);
-   public static final nv bm = a("template_two_turtle_eggs", ny.a);
-   public static final nv bn = a("template_three_turtle_eggs", ny.a);
-   public static final nv bo = a("template_four_turtle_eggs", ny.a);
-   public static final nv bp = a("template_single_face", ny.b);
-   public static final nv bq = a("template_cauldron_level1", ny.N, ny.M, ny.c, ny.f, ny.e, ny.i);
-   public static final nv br = a("template_cauldron_level2", ny.N, ny.M, ny.c, ny.f, ny.e, ny.i);
-   public static final nv bs = a("template_cauldron_full", ny.N, ny.M, ny.c, ny.f, ny.e, ny.i);
-   public static final nv bt = a("template_azalea", ny.f, ny.i);
-   public static final nv bu = a("template_potted_azalea_bush", ny.q, ny.f, ny.i);
-   public static final nv bv = a("template_potted_azalea_bush", ny.q, ny.f, ny.i);
-   public static final nv bw = a("sniffer_egg", ny.f, ny.e, ny.j, ny.k, ny.l, ny.m);
-   public static final nv bx = b("generated", ny.H);
-   public static final nv by = b("template_music_disc", ny.H);
-   public static final nv bz = b("handheld", ny.H);
-   public static final nv bA = b("handheld_rod", ny.H);
-   public static final nv bB = b("generated", ny.H, ny.I);
-   public static final nv bC = b("generated", ny.H, ny.I, ny.J);
-   public static final nv bD = b("template_shulker_box", ny.c);
-   public static final nv bE = b("template_bed", ny.c);
-   public static final nv bF = b("template_banner");
-   public static final nv bG = b("template_skull");
-   public static final nv bH = a("template_candle", ny.a, ny.c);
-   public static final nv bI = a("template_two_candles", ny.a, ny.c);
-   public static final nv bJ = a("template_three_candles", ny.a, ny.c);
-   public static final nv bK = a("template_four_candles", ny.a, ny.c);
-   public static final nv bL = a("template_cake_with_candle", ny.L, ny.e, ny.i, ny.f, ny.c);
-   public static final nv bM = a("template_sculk_shrieker", ny.e, ny.i, ny.f, ny.c, ny.O);
-   public static final nv bN = a("template_vault", ny.f, ny.e, ny.i, ny.g);
-   public static final nv bO = b("handheld_mace", ny.H);
-
-   private static nv a(ny... $$0) {
-      return new nv(Optional.empty(), Optional.empty(), $$0);
+   @Deprecated
+   public static akt a(String $$0) {
+      return new akt("minecraft", "block/" + $$0);
    }
 
-   private static nv a(String $$0, ny... $$1) {
-      return new nv(Optional.of(new akm("minecraft", "block/" + $$0)), Optional.empty(), $$1);
+   public static akt b(String $$0) {
+      return new akt("minecraft", "item/" + $$0);
    }
 
-   private static nv b(String $$0, ny... $$1) {
-      return new nv(Optional.of(new akm("minecraft", "item/" + $$0)), Optional.empty(), $$1);
+   public static akt a(dfc $$0, String $$1) {
+      akt $$2 = lh.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   private static nv a(String $$0, String $$1, ny... $$2) {
-      return new nv(Optional.of(new akm("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public static akt a(dfc $$0) {
+      akt $$1 = lh.e.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static akt a(cuc $$0) {
+      akt $$1 = lh.h.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static akt a(cuc $$0, String $$1) {
+      akt $$2 = lh.h.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

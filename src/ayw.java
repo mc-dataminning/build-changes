@@ -1,144 +1,70 @@
-import java.util.Optional;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Queues;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Deque;
+import javax.annotation.Nullable;
 
-public class ayw {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(azf.a);
+public final class ayw<T> extends AbstractIterator<T> {
+   private static final int a = Integer.MIN_VALUE;
+   @Nullable
+   private Deque<T> b = null;
+   private int c = Integer.MIN_VALUE;
+   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
 
-   private static boolean a(xu $$0, axr $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
+   public void a(T $$0, int $$1) {
+      if ($$1 == this.c && this.b != null) {
+         this.b.addLast($$0);
+      } else {
+         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
+         $$2.addLast($$0);
+         if ($$1 >= this.c) {
+            this.b = $$2;
+            this.c = $$1;
+         }
+      }
    }
 
-   public static boolean a(String $$0, xu $$1, axr $$2) {
-      int $$3 = $$0.length();
+   @Nullable
+   protected T computeNext() {
+      if (this.b == null) {
+         return (T)this.endOfData();
+      } else {
+         T $$0 = this.b.removeFirst();
+         if ($$0 == null) {
+            return (T)this.endOfData();
+         } else {
+            if (this.b.isEmpty()) {
+               this.a();
+            }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
+            return $$0;
+         }
+      }
+   }
+
+   private void a() {
+      int $$0 = Integer.MIN_VALUE;
+      Deque<T> $$1 = null;
+      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
+
+      while (var3.hasNext()) {
+         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
+         Deque<T> $$3 = (Deque<T>)$$2.getValue();
+         int $$4 = $$2.getIntKey();
+         if ($$4 > $$0 && !$$3.isEmpty()) {
+            $$0 = $$4;
+            $$1 = $$3;
+            if ($$4 == this.c - 1) {
                break;
             }
-
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
-               }
-
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
          }
       }
 
-      return true;
-   }
-
-   public static boolean b(String $$0, xu $$1, axr $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean c(String $$0, xu $$1, axr $$2) {
-      return a($$0, 0, $$1, $$2);
-   }
-
-   public static boolean a(String $$0, int $$1, xu $$2, axr $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public static boolean a(String $$0, int $$1, xu $$2, xu $$3, axr $$4) {
-      int $$5 = $$0.length();
-      xu $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean a(xc $$0, xu $$1, axr $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
-   }
-
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, xu.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
-   }
-
-   public static String a(xc $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, xu.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+      this.c = $$0;
+      this.b = $$1;
    }
 }

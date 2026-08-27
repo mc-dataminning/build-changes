@@ -1,67 +1,72 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dey extends dkk implements dkz {
-   public static final MapCodec<dey> a = b(dey::new);
-   public static final drs b = drr.C;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final evd e = ddy.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final evd f = ddy.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final evd g = ddy.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+public class dey extends den {
+   public static final dtw a = dts.R;
+   private static final exn d = exk.a(dfc.a(6.0, 0.0, 6.0, 10.0, 5.0, 10.0), dfc.a(1.0, 5.0, 1.0, 15.0, 15.0, 15.0));
+   public static final MapCodec<dey> b = b(dey::new);
+   public static final int c = 1000;
 
-   @Override
-   public MapCodec<dey> a() {
-      return a;
-   }
-
-   public dey(dra.d $$0) {
+   public dey(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(i, it.a.b));
+      this.k(this.E.b().a(a, iw.c));
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      switch ((it.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
-      }
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(a);
    }
 
    @Nullable
    @Override
-   public drb a(cwz $$0) {
-      emu $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == emv.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+   public dtc a(cyd $$0) {
+      return this.n().a(a, $$0.g());
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, emv.c, emv.c.a($$3));
+   public MapCodec<dey> a() {
+      return b;
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d;
+   }
+
+   @Nullable
+   @Override
+   public dqc a(ir $$0, dtc $$1) {
+      return new dqa($$0, $$1);
+   }
+
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if (!$$1.C && $$3 instanceof bse $$4) {
+         $$1.a($$2, dqe.T).ifPresent($$3x -> {
+            int $$4x = $$3x.b() + $$4.r();
+            $$4.ao();
+
+            while ($$4x >= 1000) {
+               cuh $$5 = new cuh(cuk.As);
+               $$5.b(ke.ae, new cyb(1000));
+               a($$1, $$2, $$5);
+               $$4x -= 1000;
+            }
+
+            $$3x.a($$4x);
+            $$3x.e();
+         });
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b).a(i);
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
    }
 
+   @Nullable
    @Override
-   protected emu b_(drb $$0) {
-      return $$0.c(b) ? emv.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(drb $$0, enj $$1) {
-      return false;
+   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
+      return a($$2, dqe.T, dqa::a);
    }
 }

@@ -1,23 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcw extends ddy {
-   public static final MapCodec<dcw> a = b(dcw::new);
+public class dcw {
+   public static final Codec<dcw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avn.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dcw::new)
+   );
+   private final ja<avn> b;
+   private final double c;
 
-   @Override
-   public MapCodec<? extends dcw> a() {
-      return a;
+   public dcw(ja<avn> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dcw(dra.d $$0) {
-      super($$0);
+   public ja<avn> a() {
+      return this.b;
    }
 
-   @Override
-   protected void a(dax $$0, drb $$1, eug $$2, cmo $$3) {
-      if (!$$0.B) {
-         io $$4 = $$2.a();
-         $$0.a(null, $$4, avh.G, avi.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, avh.E, avi.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-      }
+   public double b() {
+      return this.c;
    }
 }

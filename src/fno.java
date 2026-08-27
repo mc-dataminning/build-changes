@@ -1,108 +1,80 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public abstract class fno<T extends cot> extends fmw<T> {
-   private static final akm D = new akm("container/inventory/effect_background_large");
-   private static final akm E = new akm("container/inventory/effect_background_small");
+public class fno extends fon {
+   private static final xe a = xe.c("addServer.enterName");
+   private static final xe b = xe.c("addServer.enterIp");
+   private fin c;
+   private final BooleanConsumer d;
+   private final gab r;
+   private fiw s;
+   private fiw u;
+   private final fon v;
 
-   public fno(T $$0, clv $$1, wx $$2) {
-      super($$0, $$1, $$2);
+   public fno(fon $$0, BooleanConsumer $$1, gab $$2) {
+      super(xe.c("addServer.title"));
+      this.v = $$0;
+      this.d = $$1;
+      this.r = $$2;
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
+   protected void aN_() {
+      this.u = new fiw(this.p, this.n / 2 - 100, 66, 200, 20, xe.c("addServer.enterName"));
+      this.u.a(this.r.a);
+      this.u.b($$0 -> this.C());
+      this.d(this.u);
+      this.s = new fiw(this.p, this.n / 2 - 100, 106, 200, 20, xe.c("addServer.enterIp"));
+      this.s.f(128);
+      this.s.a(this.r.b);
+      this.s.b($$0 -> this.C());
+      this.d(this.s);
+      this.c(
+         fiu.a(gab.a::a)
+            .a(gab.a.values())
+            .a(this.r.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xe.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+      );
+      this.c = this.c(fin.a(xe.c("addServer.add"), $$0 -> this.B()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fin.a(xd.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.C();
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.u);
+   }
+
+   @Override
+   public void a(fgj $$0, int $$1, int $$2) {
+      String $$3 = this.s.a();
+      String $$4 = this.u.a();
+      this.b($$0, $$1, $$2);
+      this.s.a($$3);
+      this.u.a($$4);
+   }
+
+   private void B() {
+      this.r.a = this.u.a();
+      this.r.b = this.s.a();
+      this.d.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.v);
+   }
+
+   private void C() {
+      this.c.j = gbe.b(this.s.a()) && !this.u.a().isEmpty();
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
-   }
-
-   public boolean I() {
-      int $$0 = this.z + this.c + 2;
-      int $$1 = this.n - $$0;
-      return $$1 >= 32;
-   }
-
-   private void c(ffm $$0, int $$1, int $$2) {
-      int $$3 = this.z + this.c + 2;
-      int $$4 = this.n - $$3;
-      Collection<brc> $$5 = this.m.s.ex();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
-         }
-
-         Iterable<brc> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.A;
-            brc $$10 = null;
-
-            for (brc $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<wx> $$12 = List.of(this.a($$10), brd.a($$10, 1.0F, this.m.r.s().f()));
-               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   private void a(ffm $$0, int $$1, int $$2, Iterable<brc> $$3, boolean $$4) {
-      int $$5 = this.A;
-
-      for (brc $$6 : $$3) {
-         if ($$4) {
-            $$0.a(D, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(E, $$1, $$5, 32, 32);
-         }
-
-         $$5 += $$2;
-      }
-   }
-
-   private void b(ffm $$0, int $$1, int $$2, Iterable<brc> $$3, boolean $$4) {
-      got $$5 = this.m.aG();
-      int $$6 = this.A;
-
-      for (brc $$7 : $$3) {
-         ix<bra> $$8 = $$7.c();
-         gnv $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
-      }
-   }
-
-   private void a(ffm $$0, int $$1, int $$2, Iterable<brc> $$3) {
-      int $$4 = this.A;
-
-      for (brc $$5 : $$3) {
-         wx $$6 = this.a($$5);
-         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         wx $$7 = brd.a($$5, 1.0F, this.m.r.s().f());
-         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
-      }
-   }
-
-   private wx a(brc $$0) {
-      xl $$1 = $$0.c().a().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(ww.v).b(wx.c("enchantment.level." + ($$0.e() + 1)));
-      }
-
-      return $$1;
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.u.a($$0, $$1, $$2, $$3);
+      this.s.a($$0, $$1, $$2, $$3);
    }
 }

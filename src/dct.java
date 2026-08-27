@@ -1,85 +1,154 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public abstract class dct extends ddk {
-   public static final drv a = dhu.aE;
-   public static final drs b = drr.r;
+public class dct {
+   private final dcb a;
+   private final dzs b;
+   private final eju c;
 
-   protected dct(dra.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, it.c).a(b, Boolean.valueOf(false)));
+   public dct(dcb $$0, dzs $$1, eju $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected abstract MapCodec<? extends dct> a();
-
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if ($$1.B) {
-         return bpu.a;
+   public dct a(ara $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
       } else {
-         this.a($$1, $$2, $$3);
-         return bpu.b;
+         return new dct($$0, this.b, this.c);
       }
    }
 
-   protected abstract void a(dax var1, io var2, clw var3);
+   public List<ekb> a(dbh $$0, Predicate<ejt> $$1) {
+      Map<ejt, LongSet> $$2 = this.a.a($$0.e, $$0.f, dvx.e).i();
+      Builder<ekb> $$3 = ImmutableList.builder();
 
-   @Override
-   public drb a(cwz $$0) {
-      return this.n().a(a, $$0.g().g());
+      for (Entry<ejt, LongSet> $$4 : $$2.entrySet()) {
+         ejt $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
+         }
+      }
+
+      return $$3.build();
    }
 
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dog $$5 = $$1.c_($$2);
-         if ($$5 instanceof dnu) {
-            if ($$1 instanceof aqm) {
-               bpq.a($$1, $$2, (dnu)$$5);
-               ((dnu)$$5).a((aqm)$$1, euk.b($$2));
-            }
+   public List<ekb> a(jt $$0, ejt $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dvx.e).b($$1);
+      Builder<ekb> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
 
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
+   public void a(ejt $$0, LongSet $$1, Consumer<ekb> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         jt $$4 = jt.a(new dbh($$3), this.a.ao());
+         ekb $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dvx.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
          }
       }
    }
 
-   @Override
-   protected boolean c_(drb $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(drb $$0, dax $$1, io $$2) {
-      return cot.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dke a_(drb $$0) {
-      return dke.c;
-   }
-
-   @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(a, b);
-   }
-
    @Nullable
-   protected static <T extends dog> doh<T> a(dax $$0, doi<T> $$1, doi<? extends dnu> $$2) {
-      return $$0.B ? null : a($$1, $$2, dnu::a);
+   public ekb a(jt $$0, ejt $$1, dvu $$2) {
+      return $$2.a($$1);
+   }
+
+   public void a(jt $$0, ejt $$1, ekb $$2, dvu $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(jt $$0, ejt $$1, long $$2, dvu $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public ekb a(ir $$0, ejt $$1) {
+      for (ekb $$2 : this.a(jt.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return ekb.b;
+   }
+
+   public ekb a(ir $$0, awt<ejt> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public ekb a(ir $$0, je<ejt> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public ekb a(ir $$0, Predicate<ja<ejt>> $$1) {
+      jn<ejt> $$2 = this.b().d(li.aJ);
+
+      for (ekb $$3 : this.a(new dbh($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return ekb.b;
+   }
+
+   public ekb b(ir $$0, ejt $$1) {
+      for (ekb $$2 : this.a(jt.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return ekb.b;
+   }
+
+   public boolean a(ir $$0, ekb $$1) {
+      for (ejx $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(ir $$0) {
+      jt $$1 = jt.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dvx.e).x();
+   }
+
+   public Map<ejt, LongSet> b(ir $$0) {
+      jt $$1 = jt.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dvx.e).i();
+   }
+
+   public ejv a(dbh $$0, ejt $$1, ekq $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(ekb $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public jo b() {
+      return this.a.I_();
    }
 }

@@ -1,35 +1,32 @@
-import javax.annotation.Nullable;
+public interface fmp {
+   fmr a();
 
-public class fmp extends flq {
-   private static final wx a = wx.c("controls.title");
-   @Nullable
-   private fgw r;
+   public static record a(fmr a) implements fmp {
+      @Override
+      public fmr a() {
+         return this.a.a() == fmq.b ? this.a : fmr.b;
+      }
 
-   private static fec<?>[] a(fed $$0) {
-      return new fec[]{$$0.ac(), $$0.ad(), $$0.H(), $$0.I()};
+      public fmr b() {
+         return this.a;
+      }
    }
 
-   public fmp(fly $$0, fed $$1) {
-      super($$0, $$1, a);
+   public static class b implements fmp {
+      @Override
+      public fmr a() {
+         return fmr.b;
+      }
    }
 
-   @Override
-   protected void aM_() {
-      this.r = this.c(new fgw(this.m, this.n, this.o, this));
-      this.r
-         .a(
-            ffz.a(wx.c("options.mouse_settings"), $$0 -> this.m.a(new flm(this, this.c))).a(),
-            ffz.a(wx.c("controls.keybinds"), $$0 -> this.m.a(new fmr(this, this.c))).a()
-         );
-      this.r.a(a(this.c));
-      super.aM_();
-   }
+   public static record c(boolean a) implements fmp {
+      @Override
+      public fmr a() {
+         return this.a ? fmr.b : fmr.a;
+      }
 
-   @Override
-   protected void c() {
-      super.c();
-      if (this.r != null) {
-         this.r.a(this.n, this.d);
+      public boolean b() {
+         return this.a;
       }
    }
 }

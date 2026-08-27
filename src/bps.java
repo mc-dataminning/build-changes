@@ -1,59 +1,86 @@
-import javax.annotation.concurrent.Immutable;
+public class bps implements bpt {
+   private final bpt b;
+   private final bpt c;
 
-@Immutable
-public class bps {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bpr d;
-   private final float e;
-
-   public bps(bpr $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public bps(bpt $$0, bpt $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public bpr a() {
-      return this.d;
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   public float b() {
-      return this.e;
-   }
-
+   @Override
    public boolean c() {
-      return this.e >= (float)bpr.d.ordinal();
+      return this.b.c() && this.c.c();
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   public boolean a(bpt $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
+   @Override
+   public cuh a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   }
+
+   @Override
+   public cuh a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   }
+
+   @Override
+   public cuh b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cuh $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
       } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+         this.b.a($$0, $$1);
       }
    }
 
-   private float a(bpr $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bpr.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bpr.d;
-         float $$5 = 0.75F;
-         float $$6 = ayd.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += ayd.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += ayd.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bpr.b) {
-            $$7 *= 0.5F;
-         }
+   @Override
+   public int ai_() {
+      return this.b.ai_();
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void d_(cly $$0) {
+      this.b.d_($$0);
+      this.c.d_($$0);
+   }
+
+   @Override
+   public void c(cly $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cuh $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

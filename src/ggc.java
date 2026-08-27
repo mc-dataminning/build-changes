@@ -1,151 +1,617 @@
-import java.time.Duration;
-import java.time.Instant;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2IntLinkedOpenHashMap;
+import java.util.BitSet;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
 
-public class ggc implements gfw.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final fdz e;
-   private final dbg f;
-   private Instant g = Instant.now();
-   @Nullable
-   private ggc.a h;
+public class ggc {
+   private static final int a = 0;
+   private static final int b = 1;
+   static final iw[] c = iw.values();
+   private final fhn d;
+   private static final int e = 100;
+   static final ThreadLocal<ggc.d> f = ThreadLocal.withInitial(ggc.d::new);
 
-   public ggc(fdz $$0, dbg $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ggc(fhn $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new ggc.a(this.e.r.y_(), jq.a(this.e.s.dp()), 10, this.f);
+   public void a(dbd $$0, gsz $$1, dtc $$2, ir $$3, fbc $$4, fbg $$5, boolean $$6, ayt $$7, long $$8, int $$9) {
+      boolean $$10 = fgj.P() && $$2.h() == 0 && $$1.a();
+      ewu $$11 = $$2.n($$0, $$3);
+      $$4.a($$11.c, $$11.d, $$11.e);
+
+      try {
+         if ($$10) {
+            this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+         } else {
+            this.c($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+         }
+      } catch (Throwable var17) {
+         o $$13 = o.a(var17, "Tesselating block model");
+         p $$14 = $$13.a("Block model being tesselated");
+         p.a($$14, $$0, $$3, $$2);
+         $$14.a("Using AO", $$10);
+         throw new z($$13);
+      }
+   }
+
+   public void b(dbd $$0, gsz $$1, dtc $$2, ir $$3, fbc $$4, fbg $$5, boolean $$6, ayt $$7, long $$8, int $$9) {
+      float[] $$10 = new float[c.length * 2];
+      BitSet $$11 = new BitSet(3);
+      ggc.b $$12 = new ggc.b();
+      ir.a $$13 = $$3.j();
+
+      for (iw $$14 : c) {
+         $$7.b($$8);
+         List<ggd> $$15 = $$1.a($$2, $$14, $$7);
+         if (!$$15.isEmpty()) {
+            $$13.a($$3, $$14);
+            if (!$$6 || dfc.a($$2, $$0, $$3, $$14, $$13)) {
+               this.a($$0, $$2, $$3, $$4, $$5, $$15, $$10, $$11, $$12, $$9);
+            }
+         }
       }
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      eyw $$6 = $$1.getBuffer(gcs.C());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+      $$7.b($$8);
+      List<ggd> $$16 = $$1.a($$2, null, $$7);
+      if (!$$16.isEmpty()) {
+         this.a($$0, $$2, $$3, $$4, $$5, $$16, $$10, $$11, $$12, $$9);
+      }
    }
 
-   private static void a(eys $$0, eut $$1, jq $$2, eyw $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
+   public void c(dbd $$0, gsz $$1, dtc $$2, ir $$3, fbc $$4, fbg $$5, boolean $$6, ayt $$7, long $$8, int $$9) {
+      BitSet $$10 = new BitSet(3);
+      ir.a $$11 = $$3.j();
+
+      for (iw $$12 : c) {
+         $$7.b($$8);
+         List<ggd> $$13 = $$1.a($$2, $$12, $$7);
+         if (!$$13.isEmpty()) {
+            $$11.a($$3, $$12);
+            if (!$$6 || dfc.a($$2, $$0, $$3, $$12, $$11)) {
+               int $$14 = gfe.a($$0, $$2, $$11);
+               this.a($$0, $$2, $$3, $$14, $$9, false, $$4, $$5, $$13, $$10);
+            }
+         }
+      }
+
+      $$7.b($$8);
+      List<ggd> $$15 = $$1.a($$2, null, $$7);
+      if (!$$15.isEmpty()) {
+         this.a($$0, $$2, $$3, -1, $$9, true, $$4, $$5, $$15, $$10);
+      }
    }
 
-   private static void a(eys $$0, eut $$1, jq $$2, gck $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         eyw $$19 = $$3.getBuffer(gcs.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
+   private void a(dbd $$0, dtc $$1, ir $$2, fbc $$3, fbg $$4, List<ggd> $$5, float[] $$6, BitSet $$7, ggc.b $$8, int $$9) {
+      for (ggd $$10 : $$5) {
+         this.a($$0, $$1, $$2, $$10.b(), $$10.e(), $$6, $$7);
+         $$8.a($$0, $$1, $$2, $$10.e(), $$6, $$7, $$10.f());
+         this.a($$0, $$1, $$2, $$4, $$3.c(), $$10, $$8.a[0], $$8.a[1], $$8.a[2], $$8.a[3], $$8.b[0], $$8.b[1], $$8.b[2], $$8.b[3], $$9);
+      }
    }
 
-   private static void a(eys $$0, eyw $$1, it $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)jq.c($$6) - $$3);
-      float $$11 = (float)((double)jq.c($$7) - $$4);
-      float $$12 = (float)((double)jq.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
+   private void a(
+      dbd $$0, dtc $$1, ir $$2, fbg $$3, fbc.a $$4, ggd $$5, float $$6, float $$7, float $$8, float $$9, int $$10, int $$11, int $$12, int $$13, int $$14
+   ) {
+      float $$16;
+      float $$17;
+      float $$18;
+      if ($$5.c()) {
+         int $$15 = this.d.a($$1, $$0, $$2, $$5.d());
+         $$16 = (float)($$15 >> 16 & 0xFF) / 255.0F;
+         $$17 = (float)($$15 >> 8 & 0xFF) / 255.0F;
+         $$18 = (float)($$15 & 0xFF) / 255.0F;
+      } else {
+         $$16 = 1.0F;
+         $$17 = 1.0F;
+         $$18 = 1.0F;
+      }
+
+      $$3.a($$4, $$5, new float[]{$$6, $$7, $$8, $$9}, $$16, $$17, $$18, 1.0F, new int[]{$$10, $$11, $$12, $$13}, $$14, true);
+   }
+
+   private void a(dbd $$0, dtc $$1, ir $$2, int[] $$3, iw $$4, @Nullable float[] $$5, BitSet $$6) {
+      float $$7 = 32.0F;
+      float $$8 = 32.0F;
+      float $$9 = 32.0F;
+      float $$10 = -32.0F;
+      float $$11 = -32.0F;
+      float $$12 = -32.0F;
+
+      for (int $$13 = 0; $$13 < 4; $$13++) {
+         float $$14 = Float.intBitsToFloat($$3[$$13 * 8]);
+         float $$15 = Float.intBitsToFloat($$3[$$13 * 8 + 1]);
+         float $$16 = Float.intBitsToFloat($$3[$$13 * 8 + 2]);
+         $$7 = Math.min($$7, $$14);
+         $$8 = Math.min($$8, $$15);
+         $$9 = Math.min($$9, $$16);
+         $$10 = Math.max($$10, $$14);
+         $$11 = Math.max($$11, $$15);
+         $$12 = Math.max($$12, $$16);
+      }
+
+      if ($$5 != null) {
+         $$5[iw.e.d()] = $$7;
+         $$5[iw.f.d()] = $$10;
+         $$5[iw.a.d()] = $$8;
+         $$5[iw.b.d()] = $$11;
+         $$5[iw.c.d()] = $$9;
+         $$5[iw.d.d()] = $$12;
+         int $$17 = c.length;
+         $$5[iw.e.d() + $$17] = 1.0F - $$7;
+         $$5[iw.f.d() + $$17] = 1.0F - $$10;
+         $$5[iw.a.d() + $$17] = 1.0F - $$8;
+         $$5[iw.b.d() + $$17] = 1.0F - $$11;
+         $$5[iw.c.d() + $$17] = 1.0F - $$9;
+         $$5[iw.d.d() + $$17] = 1.0F - $$12;
+      }
+
+      float $$18 = 1.0E-4F;
+      float $$19 = 0.9999F;
+      switch ($$4) {
          case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$7 >= 1.0E-4F || $$9 >= 1.0E-4F || $$10 <= 0.9999F || $$12 <= 0.9999F);
+            $$6.set(0, $$8 == $$11 && ($$8 < 1.0E-4F || $$1.r($$0, $$2)));
             break;
          case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$7 >= 1.0E-4F || $$9 >= 1.0E-4F || $$10 <= 0.9999F || $$12 <= 0.9999F);
+            $$6.set(0, $$8 == $$11 && ($$11 > 0.9999F || $$1.r($$0, $$2)));
             break;
          case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$7 >= 1.0E-4F || $$8 >= 1.0E-4F || $$10 <= 0.9999F || $$11 <= 0.9999F);
+            $$6.set(0, $$9 == $$12 && ($$9 < 1.0E-4F || $$1.r($$0, $$2)));
             break;
          case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$7 >= 1.0E-4F || $$8 >= 1.0E-4F || $$10 <= 0.9999F || $$11 <= 0.9999F);
+            $$6.set(0, $$9 == $$12 && ($$12 > 0.9999F || $$1.r($$0, $$2)));
             break;
          case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$8 >= 1.0E-4F || $$9 >= 1.0E-4F || $$11 <= 0.9999F || $$12 <= 0.9999F);
+            $$6.set(0, $$7 == $$10 && ($$7 < 1.0E-4F || $$1.r($$0, $$2)));
             break;
          case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
+            $$6.set(1, $$8 >= 1.0E-4F || $$9 >= 1.0E-4F || $$11 <= 0.9999F || $$12 <= 0.9999F);
+            $$6.set(0, $$7 == $$10 && ($$10 > 0.9999F || $$1.r($$0, $$2)));
       }
    }
 
-   private static void a(eys $$0, eyw $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)jq.c($$5) - $$2);
-      float $$13 = (float)((double)jq.c($$6) - $$3);
-      float $$14 = (float)((double)jq.c($$7) - $$4);
-      float $$15 = (float)((double)jq.c($$8) - $$2);
-      float $$16 = (float)((double)jq.c($$9) - $$3);
-      float $$17 = (float)((double)jq.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
+   private void a(dbd $$0, dtc $$1, ir $$2, int $$3, int $$4, boolean $$5, fbc $$6, fbg $$7, List<ggd> $$8, BitSet $$9) {
+      for (ggd $$10 : $$8) {
+         if ($$5) {
+            this.a($$0, $$1, $$2, $$10.b(), $$10.e(), null, $$9);
+            ir $$11 = $$9.get(0) ? $$2.a($$10.e()) : $$2;
+            $$3 = gfe.a($$0, $$1, $$11);
+         }
+
+         float $$12 = $$0.a($$10.e(), $$10.f());
+         this.a($$0, $$1, $$2, $$7, $$6.c(), $$10, $$12, $$12, $$12, $$12, $$3, $$3, $$3, $$3, $$4);
+      }
    }
 
-   static final class a {
-      final eut a;
-      final eut b;
-      final jq c;
+   public void a(fbc.a $$0, fbg $$1, @Nullable dtc $$2, gsz $$3, float $$4, float $$5, float $$6, int $$7, int $$8) {
+      ayt $$9 = ayt.a();
+      long $$10 = 42L;
 
-      a(emj $$0, jq $$1, int $$2, dbg $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new eun($$4, $$4, $$4);
-         this.b = new eun($$4, $$4, $$4);
+      for (iw $$11 : c) {
+         $$9.b(42L);
+         a($$0, $$1, $$4, $$5, $$6, $$3.a($$2, $$11, $$9), $$7, $$8);
+      }
 
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  jq $$8 = jq.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  emi.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == emi.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == emi.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
+      $$9.b(42L);
+      a($$0, $$1, $$4, $$5, $$6, $$3.a($$2, null, $$9), $$7, $$8);
+   }
+
+   private static void a(fbc.a $$0, fbg $$1, float $$2, float $$3, float $$4, List<ggd> $$5, int $$6, int $$7) {
+      for (ggd $$8 : $$5) {
+         float $$9;
+         float $$10;
+         float $$11;
+         if ($$8.c()) {
+            $$9 = aym.a($$2, 0.0F, 1.0F);
+            $$10 = aym.a($$3, 0.0F, 1.0F);
+            $$11 = aym.a($$4, 0.0F, 1.0F);
+         } else {
+            $$9 = 1.0F;
+            $$10 = 1.0F;
+            $$11 = 1.0F;
+         }
+
+         $$1.a($$0, $$8, $$9, $$10, $$11, 1.0F, $$6, $$7);
+      }
+   }
+
+   public static void a() {
+      f.get().a();
+   }
+
+   public static void b() {
+      f.get().b();
+   }
+
+   protected static enum a {
+      a(
+         new iw[]{iw.e, iw.f, iw.c, iw.d},
+         0.5F,
+         true,
+         new ggc.e[]{ggc.e.k, ggc.e.d, ggc.e.k, ggc.e.j, ggc.e.e, ggc.e.j, ggc.e.e, ggc.e.d},
+         new ggc.e[]{ggc.e.k, ggc.e.c, ggc.e.k, ggc.e.i, ggc.e.e, ggc.e.i, ggc.e.e, ggc.e.c},
+         new ggc.e[]{ggc.e.l, ggc.e.c, ggc.e.l, ggc.e.i, ggc.e.f, ggc.e.i, ggc.e.f, ggc.e.c},
+         new ggc.e[]{ggc.e.l, ggc.e.d, ggc.e.l, ggc.e.j, ggc.e.f, ggc.e.j, ggc.e.f, ggc.e.d}
+      ),
+      b(
+         new iw[]{iw.f, iw.e, iw.c, iw.d},
+         1.0F,
+         true,
+         new ggc.e[]{ggc.e.f, ggc.e.d, ggc.e.f, ggc.e.j, ggc.e.l, ggc.e.j, ggc.e.l, ggc.e.d},
+         new ggc.e[]{ggc.e.f, ggc.e.c, ggc.e.f, ggc.e.i, ggc.e.l, ggc.e.i, ggc.e.l, ggc.e.c},
+         new ggc.e[]{ggc.e.e, ggc.e.c, ggc.e.e, ggc.e.i, ggc.e.k, ggc.e.i, ggc.e.k, ggc.e.c},
+         new ggc.e[]{ggc.e.e, ggc.e.d, ggc.e.e, ggc.e.j, ggc.e.k, ggc.e.j, ggc.e.k, ggc.e.d}
+      ),
+      c(
+         new iw[]{iw.b, iw.a, iw.f, iw.e},
+         0.8F,
+         true,
+         new ggc.e[]{ggc.e.b, ggc.e.k, ggc.e.b, ggc.e.e, ggc.e.h, ggc.e.e, ggc.e.h, ggc.e.k},
+         new ggc.e[]{ggc.e.b, ggc.e.l, ggc.e.b, ggc.e.f, ggc.e.h, ggc.e.f, ggc.e.h, ggc.e.l},
+         new ggc.e[]{ggc.e.a, ggc.e.l, ggc.e.a, ggc.e.f, ggc.e.g, ggc.e.f, ggc.e.g, ggc.e.l},
+         new ggc.e[]{ggc.e.a, ggc.e.k, ggc.e.a, ggc.e.e, ggc.e.g, ggc.e.e, ggc.e.g, ggc.e.k}
+      ),
+      d(
+         new iw[]{iw.e, iw.f, iw.a, iw.b},
+         0.8F,
+         true,
+         new ggc.e[]{ggc.e.b, ggc.e.k, ggc.e.h, ggc.e.k, ggc.e.h, ggc.e.e, ggc.e.b, ggc.e.e},
+         new ggc.e[]{ggc.e.a, ggc.e.k, ggc.e.g, ggc.e.k, ggc.e.g, ggc.e.e, ggc.e.a, ggc.e.e},
+         new ggc.e[]{ggc.e.a, ggc.e.l, ggc.e.g, ggc.e.l, ggc.e.g, ggc.e.f, ggc.e.a, ggc.e.f},
+         new ggc.e[]{ggc.e.b, ggc.e.l, ggc.e.h, ggc.e.l, ggc.e.h, ggc.e.f, ggc.e.b, ggc.e.f}
+      ),
+      e(
+         new iw[]{iw.b, iw.a, iw.c, iw.d},
+         0.6F,
+         true,
+         new ggc.e[]{ggc.e.b, ggc.e.d, ggc.e.b, ggc.e.j, ggc.e.h, ggc.e.j, ggc.e.h, ggc.e.d},
+         new ggc.e[]{ggc.e.b, ggc.e.c, ggc.e.b, ggc.e.i, ggc.e.h, ggc.e.i, ggc.e.h, ggc.e.c},
+         new ggc.e[]{ggc.e.a, ggc.e.c, ggc.e.a, ggc.e.i, ggc.e.g, ggc.e.i, ggc.e.g, ggc.e.c},
+         new ggc.e[]{ggc.e.a, ggc.e.d, ggc.e.a, ggc.e.j, ggc.e.g, ggc.e.j, ggc.e.g, ggc.e.d}
+      ),
+      f(
+         new iw[]{iw.a, iw.b, iw.c, iw.d},
+         0.6F,
+         true,
+         new ggc.e[]{ggc.e.g, ggc.e.d, ggc.e.g, ggc.e.j, ggc.e.a, ggc.e.j, ggc.e.a, ggc.e.d},
+         new ggc.e[]{ggc.e.g, ggc.e.c, ggc.e.g, ggc.e.i, ggc.e.a, ggc.e.i, ggc.e.a, ggc.e.c},
+         new ggc.e[]{ggc.e.h, ggc.e.c, ggc.e.h, ggc.e.i, ggc.e.b, ggc.e.i, ggc.e.b, ggc.e.c},
+         new ggc.e[]{ggc.e.h, ggc.e.d, ggc.e.h, ggc.e.j, ggc.e.b, ggc.e.j, ggc.e.b, ggc.e.d}
+      );
+
+      final iw[] g;
+      final boolean h;
+      final ggc.e[] i;
+      final ggc.e[] j;
+      final ggc.e[] k;
+      final ggc.e[] l;
+      private static final ggc.a[] m = ad.a(new ggc.a[6], $$0 -> {
+         $$0[iw.a.d()] = a;
+         $$0[iw.b.d()] = b;
+         $$0[iw.c.d()] = c;
+         $$0[iw.d.d()] = d;
+         $$0[iw.e.d()] = e;
+         $$0[iw.f.d()] = f;
+      });
+
+      private a(iw[] $$0, float $$1, boolean $$2, ggc.e[] $$3, ggc.e[] $$4, ggc.e[] $$5, ggc.e[] $$6) {
+         this.g = $$0;
+         this.h = $$2;
+         this.i = $$3;
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+      }
+
+      public static ggc.a a(iw $$0) {
+         return m[$$0.d()];
+      }
+   }
+
+   static class b {
+      final float[] a = new float[4];
+      final int[] b = new int[4];
+
+      public b() {
+      }
+
+      public void a(dbd $$0, dtc $$1, ir $$2, iw $$3, float[] $$4, BitSet $$5, boolean $$6) {
+         ir $$7 = $$5.get(0) ? $$2.a($$3) : $$2;
+         ggc.a $$8 = ggc.a.a($$3);
+         ir.a $$9 = new ir.a();
+         ggc.d $$10 = ggc.f.get();
+         $$9.a($$7, $$8.g[0]);
+         dtc $$11 = $$0.a_($$9);
+         int $$12 = $$10.a($$11, $$0, $$9);
+         float $$13 = $$10.b($$11, $$0, $$9);
+         $$9.a($$7, $$8.g[1]);
+         dtc $$14 = $$0.a_($$9);
+         int $$15 = $$10.a($$14, $$0, $$9);
+         float $$16 = $$10.b($$14, $$0, $$9);
+         $$9.a($$7, $$8.g[2]);
+         dtc $$17 = $$0.a_($$9);
+         int $$18 = $$10.a($$17, $$0, $$9);
+         float $$19 = $$10.b($$17, $$0, $$9);
+         $$9.a($$7, $$8.g[3]);
+         dtc $$20 = $$0.a_($$9);
+         int $$21 = $$10.a($$20, $$0, $$9);
+         float $$22 = $$10.b($$20, $$0, $$9);
+         dtc $$23 = $$0.a_($$9.a($$7, $$8.g[0]).d($$3));
+         boolean $$24 = !$$23.p($$0, $$9) || $$23.b($$0, $$9) == 0;
+         dtc $$25 = $$0.a_($$9.a($$7, $$8.g[1]).d($$3));
+         boolean $$26 = !$$25.p($$0, $$9) || $$25.b($$0, $$9) == 0;
+         dtc $$27 = $$0.a_($$9.a($$7, $$8.g[2]).d($$3));
+         boolean $$28 = !$$27.p($$0, $$9) || $$27.b($$0, $$9) == 0;
+         dtc $$29 = $$0.a_($$9.a($$7, $$8.g[3]).d($$3));
+         boolean $$30 = !$$29.p($$0, $$9) || $$29.b($$0, $$9) == 0;
+         float $$34;
+         int $$35;
+         if (!$$28 && !$$24) {
+            $$34 = $$13;
+            $$35 = $$12;
+         } else {
+            $$9.a($$7, $$8.g[0]).d($$8.g[2]);
+            dtc $$31 = $$0.a_($$9);
+            $$34 = $$10.b($$31, $$0, $$9);
+            $$35 = $$10.a($$31, $$0, $$9);
+         }
+
+         float $$39;
+         int $$40;
+         if (!$$30 && !$$24) {
+            $$39 = $$13;
+            $$40 = $$12;
+         } else {
+            $$9.a($$7, $$8.g[0]).d($$8.g[3]);
+            dtc $$36 = $$0.a_($$9);
+            $$39 = $$10.b($$36, $$0, $$9);
+            $$40 = $$10.a($$36, $$0, $$9);
+         }
+
+         float $$44;
+         int $$45;
+         if (!$$28 && !$$26) {
+            $$44 = $$13;
+            $$45 = $$12;
+         } else {
+            $$9.a($$7, $$8.g[1]).d($$8.g[2]);
+            dtc $$41 = $$0.a_($$9);
+            $$44 = $$10.b($$41, $$0, $$9);
+            $$45 = $$10.a($$41, $$0, $$9);
+         }
+
+         float $$49;
+         int $$50;
+         if (!$$30 && !$$26) {
+            $$49 = $$13;
+            $$50 = $$12;
+         } else {
+            $$9.a($$7, $$8.g[1]).d($$8.g[3]);
+            dtc $$46 = $$0.a_($$9);
+            $$49 = $$10.b($$46, $$0, $$9);
+            $$50 = $$10.a($$46, $$0, $$9);
+         }
+
+         int $$51 = $$10.a($$1, $$0, $$2);
+         $$9.a($$2, $$3);
+         dtc $$52 = $$0.a_($$9);
+         if ($$5.get(0) || !$$52.i($$0, $$9)) {
+            $$51 = $$10.a($$52, $$0, $$9);
+         }
+
+         float $$53 = $$5.get(0) ? $$10.b($$0.a_($$7), $$0, $$7) : $$10.b($$0.a_($$2), $$0, $$2);
+         ggc.c $$54 = ggc.c.a($$3);
+         if ($$5.get(1) && $$8.h) {
+            float $$59 = ($$22 + $$13 + $$39 + $$53) * 0.25F;
+            float $$60 = ($$19 + $$13 + $$34 + $$53) * 0.25F;
+            float $$61 = ($$19 + $$16 + $$44 + $$53) * 0.25F;
+            float $$62 = ($$22 + $$16 + $$49 + $$53) * 0.25F;
+            float $$63 = $$4[$$8.i[0].m] * $$4[$$8.i[1].m];
+            float $$64 = $$4[$$8.i[2].m] * $$4[$$8.i[3].m];
+            float $$65 = $$4[$$8.i[4].m] * $$4[$$8.i[5].m];
+            float $$66 = $$4[$$8.i[6].m] * $$4[$$8.i[7].m];
+            float $$67 = $$4[$$8.j[0].m] * $$4[$$8.j[1].m];
+            float $$68 = $$4[$$8.j[2].m] * $$4[$$8.j[3].m];
+            float $$69 = $$4[$$8.j[4].m] * $$4[$$8.j[5].m];
+            float $$70 = $$4[$$8.j[6].m] * $$4[$$8.j[7].m];
+            float $$71 = $$4[$$8.k[0].m] * $$4[$$8.k[1].m];
+            float $$72 = $$4[$$8.k[2].m] * $$4[$$8.k[3].m];
+            float $$73 = $$4[$$8.k[4].m] * $$4[$$8.k[5].m];
+            float $$74 = $$4[$$8.k[6].m] * $$4[$$8.k[7].m];
+            float $$75 = $$4[$$8.l[0].m] * $$4[$$8.l[1].m];
+            float $$76 = $$4[$$8.l[2].m] * $$4[$$8.l[3].m];
+            float $$77 = $$4[$$8.l[4].m] * $$4[$$8.l[5].m];
+            float $$78 = $$4[$$8.l[6].m] * $$4[$$8.l[7].m];
+            this.a[$$54.g] = $$59 * $$63 + $$60 * $$64 + $$61 * $$65 + $$62 * $$66;
+            this.a[$$54.h] = $$59 * $$67 + $$60 * $$68 + $$61 * $$69 + $$62 * $$70;
+            this.a[$$54.i] = $$59 * $$71 + $$60 * $$72 + $$61 * $$73 + $$62 * $$74;
+            this.a[$$54.j] = $$59 * $$75 + $$60 * $$76 + $$61 * $$77 + $$62 * $$78;
+            int $$79 = this.a($$21, $$12, $$40, $$51);
+            int $$80 = this.a($$18, $$12, $$35, $$51);
+            int $$81 = this.a($$18, $$15, $$45, $$51);
+            int $$82 = this.a($$21, $$15, $$50, $$51);
+            this.b[$$54.g] = this.a($$79, $$80, $$81, $$82, $$63, $$64, $$65, $$66);
+            this.b[$$54.h] = this.a($$79, $$80, $$81, $$82, $$67, $$68, $$69, $$70);
+            this.b[$$54.i] = this.a($$79, $$80, $$81, $$82, $$71, $$72, $$73, $$74);
+            this.b[$$54.j] = this.a($$79, $$80, $$81, $$82, $$75, $$76, $$77, $$78);
+         } else {
+            float $$55 = ($$22 + $$13 + $$39 + $$53) * 0.25F;
+            float $$56 = ($$19 + $$13 + $$34 + $$53) * 0.25F;
+            float $$57 = ($$19 + $$16 + $$44 + $$53) * 0.25F;
+            float $$58 = ($$22 + $$16 + $$49 + $$53) * 0.25F;
+            this.b[$$54.g] = this.a($$21, $$12, $$40, $$51);
+            this.b[$$54.h] = this.a($$18, $$12, $$35, $$51);
+            this.b[$$54.i] = this.a($$18, $$15, $$45, $$51);
+            this.b[$$54.j] = this.a($$21, $$15, $$50, $$51);
+            this.a[$$54.g] = $$55;
+            this.a[$$54.h] = $$56;
+            this.a[$$54.i] = $$57;
+            this.a[$$54.j] = $$58;
+         }
+
+         float $$83 = $$0.a($$3, $$6);
+
+         for (int $$84 = 0; $$84 < this.a.length; $$84++) {
+            this.a[$$84] = this.a[$$84] * $$83;
+         }
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         if ($$0 == 0) {
+            $$0 = $$3;
+         }
+
+         if ($$1 == 0) {
+            $$1 = $$3;
+         }
+
+         if ($$2 == 0) {
+            $$2 = $$3;
+         }
+
+         return $$0 + $$1 + $$2 + $$3 >> 2 & 16711935;
+      }
+
+      private int a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         int $$8 = (int)((float)($$0 >> 16 & 0xFF) * $$4 + (float)($$1 >> 16 & 0xFF) * $$5 + (float)($$2 >> 16 & 0xFF) * $$6 + (float)($$3 >> 16 & 0xFF) * $$7)
+            & 0xFF;
+         int $$9 = (int)((float)($$0 & 0xFF) * $$4 + (float)($$1 & 0xFF) * $$5 + (float)($$2 & 0xFF) * $$6 + (float)($$3 & 0xFF) * $$7) & 0xFF;
+         return $$8 << 16 | $$9;
+      }
+   }
+
+   static enum c {
+      a(0, 1, 2, 3),
+      b(2, 3, 0, 1),
+      c(3, 0, 1, 2),
+      d(0, 1, 2, 3),
+      e(3, 0, 1, 2),
+      f(1, 2, 3, 0);
+
+      final int g;
+      final int h;
+      final int i;
+      final int j;
+      private static final ggc.c[] k = ad.a(new ggc.c[6], $$0 -> {
+         $$0[iw.a.d()] = a;
+         $$0[iw.b.d()] = b;
+         $$0[iw.c.d()] = c;
+         $$0[iw.d.d()] = d;
+         $$0[iw.e.d()] = e;
+         $$0[iw.f.d()] = f;
+      });
+
+      private c(int $$0, int $$1, int $$2, int $$3) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         this.j = $$3;
+      }
+
+      public static ggc.c a(iw $$0) {
+         return k[$$0.d()];
+      }
+   }
+
+   static class d {
+      private boolean a;
+      private final Long2IntLinkedOpenHashMap b = ad.a(() -> {
+         Long2IntLinkedOpenHashMap $$0 = new Long2IntLinkedOpenHashMap(100, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0.defaultReturnValue(Integer.MAX_VALUE);
+         return $$0;
+      });
+      private final Long2FloatLinkedOpenHashMap c = ad.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0 = new Long2FloatLinkedOpenHashMap(100, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0.defaultReturnValue(Float.NaN);
+         return $$0;
+      });
+
+      private d() {
+      }
+
+      public void a() {
+         this.a = true;
+      }
+
+      public void b() {
+         this.a = false;
+         this.b.clear();
+         this.c.clear();
+      }
+
+      public int a(dtc $$0, dbd $$1, ir $$2) {
+         long $$3 = $$2.a();
+         if (this.a) {
+            int $$4 = this.b.get($$3);
+            if ($$4 != Integer.MAX_VALUE) {
+               return $$4;
             }
          }
 
-         this.c = jq.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+         int $$5 = gfe.a($$1, $$0, $$2);
+         if (this.a) {
+            if (this.b.size() == 100) {
+               this.b.removeFirstInt();
+            }
+
+            this.b.put($$3, $$5);
+         }
+
+         return $$5;
+      }
+
+      public float b(dtc $$0, dbd $$1, ir $$2) {
+         long $$3 = $$2.a();
+         if (this.a) {
+            float $$4 = this.c.get($$3);
+            if (!Float.isNaN($$4)) {
+               return $$4;
+            }
+         }
+
+         float $$5 = $$0.f($$1, $$2);
+         if (this.a) {
+            if (this.c.size() == 100) {
+               this.c.removeFirstFloat();
+            }
+
+            this.c.put($$3, $$5);
+         }
+
+         return $$5;
+      }
+   }
+
+   protected static enum e {
+      a(iw.a, false),
+      b(iw.b, false),
+      c(iw.c, false),
+      d(iw.d, false),
+      e(iw.e, false),
+      f(iw.f, false),
+      g(iw.a, true),
+      h(iw.b, true),
+      i(iw.c, true),
+      j(iw.d, true),
+      k(iw.e, true),
+      l(iw.f, true);
+
+      final int m;
+
+      private e(iw $$0, boolean $$1) {
+         this.m = $$0.d() + ($$1 ? ggc.c.length : 0);
       }
    }
 }

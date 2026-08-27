@@ -1,13 +1,58 @@
-public class dur {
-   public static final akl<dut> a = a("overworld");
-   public static final akl<dut> b = a("the_nether");
-   public static final akl<dut> c = a("the_end");
-   public static final akl<dut> d = a("overworld_caves");
-   public static final akm e = new akm("overworld");
-   public static final akm f = new akm("the_nether");
-   public static final akm g = new akm("the_end");
+public interface dur {
+   void a(dut var1, double var2);
 
-   private static akl<dut> a(String $$0) {
-      return akl.a(lf.aE, new akm($$0));
+   void a(dut var1, double var2, double var4, long var6);
+
+   void a(dut var1, double var2, double var4);
+
+   void a(dut var1, int var2);
+
+   void b(dut var1, int var2);
+
+   void b(dut var1, double var2);
+
+   void c(dut var1, double var2);
+
+   public static class a implements dur {
+      private final dut a;
+
+      public a(dut $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dut $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dut $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dut $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dut $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dut $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dut $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dut $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

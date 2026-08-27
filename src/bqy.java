@@ -1,31 +1,46 @@
-import java.util.function.ToIntFunction;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-class bqy extends bra {
-   private final float a;
-   private final ToIntFunction<ayk> b;
+public record bqy(String i) {
+   public static final bqy a = new bqy("generic");
+   public static final bqy b = new bqy("ladder");
+   public static final bqy c = new bqy("vines");
+   public static final bqy d = new bqy("weeping_vines");
+   public static final bqy e = new bqy("twisting_vines");
+   public static final bqy f = new bqy("scaffolding");
+   public static final bqy g = new bqy("other_climbable");
+   public static final bqy h = new bqy("water");
 
-   protected bqy(brb $$0, int $$1, float $$2, ToIntFunction<ayk> $$3) {
-      super($$0, $$1, ky.G);
-      this.a = $$2;
-      this.b = $$3;
-   }
-
-   @Override
-   public void a(bso $$0, int $$1, bqn $$2, float $$3) {
-      if ($$0.el().i() <= this.a) {
-         int $$4 = this.b.applyAsInt($$0.el());
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.a($$0.dP(), $$0.du(), $$0.dw() + 0.5, $$0.dA());
-         }
+   public static bqy a(dtc $$0) {
+      if ($$0.a(dfe.dA) || $$0.a(awe.P)) {
+         return b;
+      } else if ($$0.a(dfe.fX)) {
+         return c;
+      } else if ($$0.a(dfe.pz) || $$0.a(dfe.pA)) {
+         return d;
+      } else if ($$0.a(dfe.pB) || $$0.a(dfe.pC)) {
+         return e;
+      } else {
+         return $$0.a(dfe.oQ) ? f : g;
       }
    }
 
-   private void a(dax $$0, double $$1, double $$2, double $$3) {
-      cjj $$4 = bsa.aM.a($$0);
-      if ($$4 != null) {
-         $$4.b($$1, $$2, $$3, $$0.E_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
+   @Nullable
+   public static bqy a(bso $$0) {
+      Optional<ir> $$1 = $$0.eU();
+      if ($$1.isPresent()) {
+         dtc $$2 = $$0.dU().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bi() ? h : null;
       }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

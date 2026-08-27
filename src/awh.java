@@ -1,26 +1,37 @@
 public interface awh {
-   awl<ehj> a = a("eye_of_ender_located");
-   awl<ehj> b = a("dolphin_located");
-   awl<ehj> c = a("on_woodland_explorer_maps");
-   awl<ehj> d = a("on_ocean_explorer_maps");
-   awl<ehj> e = a("on_savanna_village_maps");
-   awl<ehj> f = a("on_desert_village_maps");
-   awl<ehj> g = a("on_plains_village_maps");
-   awl<ehj> h = a("on_taiga_village_maps");
-   awl<ehj> i = a("on_snowy_village_maps");
-   awl<ehj> j = a("on_jungle_explorer_maps");
-   awl<ehj> k = a("on_swamp_explorer_maps");
-   awl<ehj> l = a("on_treasure_maps");
-   awl<ehj> m = a("on_trial_chambers_maps");
-   awl<ehj> n = a("cats_spawn_in");
-   awl<ehj> o = a("cats_spawn_as_black");
-   awl<ehj> p = a("village");
-   awl<ehj> q = a("mineshaft");
-   awl<ehj> r = a("shipwreck");
-   awl<ehj> s = a("ruined_portal");
-   awl<ehj> t = a("ocean_ruin");
+   awt<bsb<?>> a = a("skeletons");
+   awt<bsb<?>> b = a("zombies");
+   awt<bsb<?>> c = a("raiders");
+   awt<bsb<?>> d = a("undead");
+   awt<bsb<?>> e = a("beehive_inhabitors");
+   awt<bsb<?>> f = a("arrows");
+   awt<bsb<?>> g = a("impact_projectiles");
+   awt<bsb<?>> h = a("powder_snow_walkable_mobs");
+   awt<bsb<?>> i = a("axolotl_always_hostiles");
+   awt<bsb<?>> j = a("axolotl_hunt_targets");
+   awt<bsb<?>> k = a("freeze_immune_entity_types");
+   awt<bsb<?>> l = a("freeze_hurts_extra_types");
+   awt<bsb<?>> m = a("can_breathe_under_water");
+   awt<bsb<?>> n = a("frog_food");
+   awt<bsb<?>> o = a("fall_damage_immune");
+   awt<bsb<?>> p = a("dismounts_underwater");
+   awt<bsb<?>> q = a("non_controlling_rider");
+   awt<bsb<?>> r = a("deflects_projectiles");
+   awt<bsb<?>> s = a("can_turn_in_boats");
+   awt<bsb<?>> t = a("illager");
+   awt<bsb<?>> u = a("aquatic");
+   awt<bsb<?>> v = a("arthropod");
+   awt<bsb<?>> w = a("ignores_poison_and_regen");
+   awt<bsb<?>> x = a("inverted_healing_and_harm");
+   awt<bsb<?>> y = a("wither_friends");
+   awt<bsb<?>> z = a("illager_friends");
+   awt<bsb<?>> A = a("not_scary_for_pufferfish");
+   awt<bsb<?>> B = a("sensitive_to_impaling");
+   awt<bsb<?>> C = a("sensitive_to_bane_of_arthropods");
+   awt<bsb<?>> D = a("sensitive_to_smite");
+   awt<bsb<?>> E = a("no_anger_from_wind_charge");
 
-   private static awl<ehj> a(String $$0) {
-      return awl.a(lf.aJ, new akm($$0));
+   private static awt<bsb<?>> a(String $$0) {
+      return awt.a(li.v, new akt($$0));
    }
 }

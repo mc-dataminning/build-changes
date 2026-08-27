@@ -1,15 +1,92 @@
-import java.util.List;
+import java.io.DataInput;
+import java.io.IOException;
 
-public record vj(List<String> a, vc<?> b, String c) {
-   public vj(vc<?> $$0, String $$1) {
-      this(List.of(), $$0, $$1);
+public interface vj<T extends vh> {
+   T c(DataInput var1, ut var2) throws IOException;
+
+   ve.b a(DataInput var1, ve var2, ut var3) throws IOException;
+
+   default void b(DataInput $$0, ve $$1, ut $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
+      }
    }
 
-   public vj(String $$0, vc<?> $$1, String $$2) {
-      this(List.of($$0), $$1, $$2);
+   void a(DataInput var1, int var2, ut var3) throws IOException;
+
+   void b(DataInput var1, ut var2) throws IOException;
+
+   default boolean d() {
+      return false;
    }
 
-   public vj(String $$0, String $$1, vc<?> $$2, String $$3) {
-      this(List.of($$0, $$1), $$2, $$3);
+   String a();
+
+   String b();
+
+   static vj<um> a(final int $$0) {
+      return new vj<um>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
+         }
+
+         public um a(DataInput $$0x, ut $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public ve.b a(DataInput $$0x, ve $$1, ut $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, ut $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, ut $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
+   }
+
+   public interface a<T extends vh> extends vj<T> {
+      @Override
+      default void b(DataInput $$0, ut $$1) throws IOException {
+         $$0.skipBytes(this.c());
+      }
+
+      @Override
+      default void a(DataInput $$0, int $$1, ut $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
+   }
+
+   public interface b<T extends vh> extends vj<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, ut $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
    }
 }

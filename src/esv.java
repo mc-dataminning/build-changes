@@ -1,52 +1,38 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 
-public record esv(Optional<Boolean> b, Optional<Boolean> c) implements esl {
-   public static final MapCodec<esv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(esv::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(esv::e))
-            .apply($$0, esv::new)
-   );
+public class esv extends eta {
+   public static final Codec<esv> a = RecordCodecBuilder.create($$0 -> a($$0).and(erp.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, esv::new));
+   private final erp.b b;
+
+   public esv(List<euu> $$0, erp.b $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
    @Override
-   public esm b() {
-      return esn.q;
+   public etc b() {
+      return etd.y;
    }
 
-   public boolean a(epf $$0) {
-      aqm $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ac() ? false : !this.c.isPresent() || this.c.get() == $$1.ab();
+   @Override
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(this.b.a());
    }
 
-   public static esv.a c() {
-      return new esv.a();
-   }
-
-   public Optional<Boolean> d() {
-      return this.b;
-   }
-
-   public Optional<Boolean> e() {
-      return this.c;
-   }
-
-   public static class a implements esl.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public esv.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
+   @Override
+   public cuh a(cuh $$0, erp $$1) {
+      if ($$0.a(cuk.vY) && $$1.c(this.b.a()) instanceof cly $$2) {
+         $$0.b(ke.U, new cxs($$2.gk()));
       }
 
-      public esv.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
+      return $$0;
+   }
 
-      public esv a() {
-         return new esv(this.a, this.b);
-      }
+   public static eta.a<?> a(erp.b $$0) {
+      return a($$1 -> new esv($$1, $$0));
    }
 }

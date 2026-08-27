@@ -1,48 +1,51 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-
-public class czw extends ArrayList<czv> {
-   public static final Codec<czw> a = czv.a.listOf().fieldOf("Recipes").xmap(czw::new, Function.identity()).codec();
-   public static final yv<wi, czw> b = czv.b.a(yt.a(czw::new));
-
-   public czw() {
-   }
-
-   private czw(int $$0) {
+public class czw extends cyq {
+   public czw(cyo $$0) {
       super($$0);
    }
 
-   private czw(Collection<czv> $$0) {
-      super($$0);
-   }
+   public boolean a(cpw $$0, dca $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3) {
+         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
+            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
+               cuh $$4 = $$0.a($$2 + $$3 * $$0.f());
+               if ($$4.d()) {
+                  return false;
+               }
 
-   @Nullable
-   public czv a(cto $$0, cto $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         czv $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            czv $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
+               if ($$2 == 1 && $$3 == 1) {
+                  if (!$$4.a(cuk.xc)) {
+                     return false;
+                  }
+               } else if (!$$4.a(cuk.pL)) {
+                  return false;
+               }
             }
          }
 
-         return null;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public czw a() {
-      czw $$0 = new czw(this.size());
-
-      for (czv $$1 : this) {
-         $$0.add($$1.v());
+   public cuh a(cpw $$0, jc.a $$1) {
+      cuh $$2 = $$0.a(1 + $$0.f());
+      if (!$$2.a(cuk.xc)) {
+         return cuh.i;
+      } else {
+         cuh $$3 = new cuh(cuk.xb, 8);
+         $$3.b(ke.E, $$2.a(ke.E));
+         return $$3;
       }
+   }
 
-      return $$0;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 2 && $$1 >= 2;
+   }
+
+   @Override
+   public cze<?> ao_() {
+      return cze.k;
    }
 }

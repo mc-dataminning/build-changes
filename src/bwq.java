@@ -1,98 +1,81 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.Set;
 
-public class bwq<U> implements Iterable<U> {
-   protected final List<bwq.a<U>> a;
-   private final ayk b = ayk.a();
+public class bwq extends bug<bso> {
+   public static final int c = 100;
+   private long d;
 
    public bwq() {
-      this.a = Lists.newArrayList();
-   }
-
-   private bwq(List<bwq.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
-
-   public static <U> Codec<bwq<U>> a(Codec<U> $$0) {
-      return bwq.a.a($$0).listOf().xmap(bwq::new, $$0x -> $$0x.a);
-   }
-
-   public bwq<U> a(U $$0, int $$1) {
-      this.a.add(new bwq.a<>($$0, $$1));
-      return this;
-   }
-
-   public bwq<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bwq.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bwq.a::a);
+      super(ImmutableMap.of(cbr.b, cbs.a, cbr.I, cbs.c));
    }
 
    @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bwq.a::a);
+   protected boolean a(aqt $$0, bso $$1) {
+      if ($$1.bW()) {
+         return false;
+      } else {
+         btp<?> $$2 = $$1.dZ();
+         iz $$3 = $$2.c(cbr.b).get();
+         if ($$0.af() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cbr.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.Z() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dtc $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.ds(), 2.0) && $$6.a(awe.R) && !$$6.c(deu.c);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
+   protected boolean a(aqt $$0, bso $$1, long $$2) {
+      Optional<iz> $$3 = $$1.dZ().c(cbr.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ir $$4 = $$3.get().b();
+         return $$1.dZ().c(cnq.e) && $$1.dB() > (double)$$4.v() + 0.4 && $$4.a($$1.ds(), 1.14);
+      }
    }
 
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bwq.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bwq.a<E>>() {
-            public <T> DataResult<Pair<bwq.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bwq.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+   @Override
+   protected void d(aqt $$0, bso $$1, long $$2) {
+      if ($$2 > this.d) {
+         btp<?> $$3 = $$1.dZ();
+         if ($$3.a(cbr.v)) {
+            Set<iz> $$4 = $$3.c(cbr.v).get();
+            Optional<List<bso>> $$5;
+            if ($$3.a(cbr.g)) {
+               $$5 = $$3.c(cbr.g);
+            } else {
+               $$5 = Optional.empty();
             }
 
-            public <T> DataResult<T> a(bwq.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
+            bve.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dZ().c(cbr.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(aqt $$0, bso $$1, long $$2) {
+      if ($$1.fU()) {
+         $$1.fV();
+         this.d = $$2 + 40L;
       }
    }
 }

@@ -1,11 +1,22 @@
-public class awz {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -4539718;
-   public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -256;
-   public static final int i = -171;
+import java.util.function.Consumer;
+
+@FunctionalInterface
+public interface awz<T> {
+   awz.a accept(T var1);
+
+   static <T> awz<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return awz.a.a;
+      };
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      public boolean a() {
+         return this == b;
+      }
+   }
 }

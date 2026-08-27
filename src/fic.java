@@ -1,48 +1,38 @@
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
 public class fic {
-   private final Consumer<ffx> a;
-   private final Consumer<ffx> b;
-   @Nullable
-   private fib c;
-   @Nullable
-   private fkf d;
+   public static final float a = 200.0F;
+   private final List<fic.a> b = new ArrayList<>();
 
-   public fic(Consumer<ffx> $$0, Consumer<ffx> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fic a(fic.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public void a(fkf $$0) {
-      this.d = $$0;
-      fib $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
+   public fic a(fic $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
+   }
+
+   public void a(fia $$0, float $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
+   }
+
+   private void b(fia $$0, float $$1) {
+      for (fic.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
    }
 
-   public void a(fib $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            fdz.Q().ak().a(gre.a(avh.Ao, 1.0F));
-         }
-      }
-   }
-
-   @Nullable
-   public fib a() {
-      return this.c;
+   public interface a {
+      void render(fia var1, float var2);
    }
 }

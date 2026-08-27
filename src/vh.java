@@ -1,77 +1,52 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class vh extends vi {
-   private int a;
-   private final Set<vc<?>> b;
-   private final Deque<vk> c = new ArrayDeque<>();
+public interface vh {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   public vh(vj... $$0) {
-      this.a = $$0.length;
-      Builder<vc<?>> $$1 = ImmutableSet.builder();
-      vk $$2 = vk.a();
-
-      for (vj $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
-      }
-
-      this.c.push($$2);
-      $$1.add(ud.b);
-      this.b = $$1.build();
-   }
-
-   @Override
-   public ux.b b(vc<?> $$0) {
-      return $$0 != ud.b ? ux.b.c : super.b($$0);
-   }
+   void a(DataOutput var1) throws IOException;
 
    @Override
-   public ux.a a(vc<?> $$0) {
-      vk $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return ux.a.d;
-      } else {
-         return !this.b.contains($$0) ? ux.a.b : super.a($$0);
-      }
+   String toString();
+
+   byte b();
+
+   vj<?> c();
+
+   vh d();
+
+   int a();
+
+   default String s_() {
+      return new vg().a(this);
    }
 
-   @Override
-   public ux.a a(vc<?> $$0, String $$1) {
-      vk $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == ud.b) {
-            vk $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
-         }
+   void a(vl var1);
 
-         return ux.a.b;
+   ve.b a(ve var1);
+
+   default void b(ve $$0) {
+      ve.b $$1 = $$0.b(this.c());
+      if ($$1 == ve.b.a) {
+         this.a($$0);
       }
-   }
-
-   @Override
-   public ux.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
-
-      return super.b();
-   }
-
-   public int c() {
-      return this.a;
    }
 }

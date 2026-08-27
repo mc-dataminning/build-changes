@@ -1,14 +1,15 @@
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-public interface eqr extends epg, BiFunction<cto, epf, cto> {
-   eqs b();
+public record eqr(int c) {
+   public static final Codec<eqr> a = Codec.INT.xmap(eqr::new, eqr::b);
+   public static final zc<ByteBuf, eqr> b = za.g.a(eqr::new, eqr::b);
 
-   static Consumer<cto> a(BiFunction<cto, epf, cto> $$0, Consumer<cto> $$1, epf $$2) {
-      return $$3 -> $$1.accept($$0.apply($$3, $$2));
+   public String a() {
+      return "map_" + this.c;
    }
 
-   public interface a {
-      eqr b();
+   public int b() {
+      return this.c;
    }
 }

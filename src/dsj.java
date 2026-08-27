@@ -1,21 +1,8 @@
-public enum dsj implements ayx {
-   a("top"),
-   b("bottom"),
-   c("double");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String d;
-
-   private dsj(String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.d;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface dsj {
 }

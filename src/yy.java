@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface yy<O, T> {
-   void encode(T var1, O var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface yy {
 }

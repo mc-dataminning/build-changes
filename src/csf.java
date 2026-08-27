@@ -1,8 +1,15 @@
-import javax.annotation.Nullable;
-
-public interface csf {
-   default void a(@Nullable clw $$0, dax $$1, cto $$2, io $$3) {
+public class csf extends cuc {
+   public csf(cuc.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable clw var1, dax var2, io var3, @Nullable eug var4);
+   @Override
+   public boolean a(cuh $$0) {
+      return $$0.G() == 1;
+   }
+
+   @Override
+   public int g() {
+      return 1;
+   }
 }

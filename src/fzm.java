@@ -1,147 +1,204 @@
-public class fzm extends gay {
-   static final ayk a = ayk.a();
-   private final gat b;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-   fzm(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
+public class fzm implements aiq {
+   private static final Logger a = LogUtils.getLogger();
+   private final fgj b;
+   @Nullable
+   private final gab c;
+   @Nullable
+   private final fon d;
+   private final Consumer<xe> e;
+   private final wc f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<akt, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<fzm.a> l = new AtomicReference<>(fzm.a.a);
+
+   public fzm(wc $$0, fgj $$1, @Nullable gab $$2, @Nullable fon $$3, boolean $$4, @Nullable Duration $$5, Consumer<xe> $$6, @Nullable gaf $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   @Override
-   public gac b() {
-      return gac.c;
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = ayd.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gab<lb> {
-      private final double a = 0.25;
-      private final gat b;
-
-      public a(gat $$0) {
-         this.b = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzm $$8 = new fzm($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
-      }
-   }
-
-   public static class b implements gab<lb> {
-      private final gat a;
-
-      public b(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzm $$8 = new fzm($$1, $$2, $$3, $$4, 0.5 - fzm.a.j(), $$6, 0.5 - fzm.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
+   private void a(fzm.a $$0) {
+      fzm.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
          } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
+            return $$0;
          }
+      });
+      this.e.accept($$1.e);
+   }
 
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
+   @Override
+   public void a(ait $$0) {
+      this.a(fzm.a.b);
 
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
-         return $$8;
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      ajb $$7;
+      try {
+         SecretKey $$1 = axk.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(axk.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = axk.a(2, $$1);
+         $$5 = axk.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new ajb($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      if ($$0.g()) {
+         ad.g().submit(() -> {
+            xe $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
+
+               a.warn($$4x.getString());
+            }
+
+            this.a($$7, $$4, $$5);
+         });
+      } else {
+         this.a($$7, $$4, $$5);
       }
    }
 
-   public static class c implements gab<lb> {
-      private final double a = 0.01;
-      private final gat b;
+   private void a(ajb $$0, Cipher $$1, Cipher $$2) {
+      this.a(fzm.a.c);
+      this.f.a($$0, wl.a(() -> this.f.a($$1, $$2)));
+   }
 
-      public c(gat $$0) {
-         this.b = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzm $$8 = new fzm($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
+   @Nullable
+   private xe b(String $$0) {
+      try {
+         this.e().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return xe.a("disconnect.loginFailedInfo", xe.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return xe.a("disconnect.loginFailedInfo", xe.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return xe.a("disconnect.loginFailedInfo", xe.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return xe.a("disconnect.loginFailedInfo", xe.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return xe.a("disconnect.loginFailedInfo", var7.getMessage());
       }
    }
 
-   public static class d implements gab<lb> {
-      private final double a = 0.01;
-      private final gat b;
+   private MinecraftSessionService e() {
+      return this.b.am();
+   }
 
-      public d(gat $$0) {
-         this.b = $$0;
-      }
+   @Override
+   public void a(ais $$0) {
+      this.a(fzm.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f.a(abl.b, new fzl(this.b, this.f, new fzr($$1, this.b.u().a(this.g, this.h, this.i), fzp.a().a(), cor.h, null, this.c, this.d, this.j)));
+      this.f.a(ajc.a);
+      this.f.a(abl.a);
+      this.f.a(new aae(new aak(ClientBrandRetriever.getClientModName())));
+      this.f.a(new aad(this.b.m.aw()));
+   }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzm $$8 = new fzm($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
+   @Override
+   public void a(xe $$0) {
+      xe $$1 = this.k ? xd.q : xd.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new gwx(this.d, $$1, $$0));
+      } else {
+         this.b.a(new fnn(this.d, $$1, $$0));
       }
    }
 
-   public static class e implements gab<lb> {
-      private final double a = 0.01;
-      private final gat b;
+   @Override
+   public boolean c() {
+      return this.f.i();
+   }
 
-      public e(gat $$0) {
-         this.b = $$0;
+   @Override
+   public void a(aiv $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(aiu $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
       }
+   }
 
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzm $$8 = new fzm($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
+   @Override
+   public void a(air $$0) {
+      this.e.accept(xe.c("connect.negotiating"));
+      this.f.a(new aiz($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(abr $$0) {
+      this.f.a(new abu($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(p $$0) {
+      $$0.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$0.a("Login phase", () -> this.l.get().toString());
+   }
+
+   static enum a {
+      a(xe.c("connect.connecting"), Set.of()),
+      b(xe.c("connect.authorizing"), Set.of(a)),
+      c(xe.c("connect.encrypting"), Set.of(b)),
+      d(xe.c("connect.joining"), Set.of(c, a));
+
+      final xe e;
+      final Set<fzm.a> f;
+
+      private a(xe $$0, Set<fzm.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
    }
 }

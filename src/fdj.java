@@ -1,30 +1,40 @@
-import java.util.function.IntFunction;
+public class fdj {
+   private final fex a;
+   private boolean b;
+   private String c;
 
-public enum fdj implements ayf {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
-
-   private static final IntFunction<fdj> d = awv.a(fdj::a, values(), awv.a.b);
-   private final int e;
-   private final String f;
-
-   private fdj(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fdj(fex $$0) {
+      this.a = $$0;
+      fex.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
    public String b() {
-      return this.f;
+      return this.c;
    }
 
-   public static fdj a(int $$0) {
-      return d.apply($$0);
+   public void a(fch $$0) {
+      fex.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fex.a b(fch $$0) {
+      fex.a $$1 = new fex.a();
+      $$1.a = $$0.a;
+      fex.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
+      } else {
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
+      }
    }
 }

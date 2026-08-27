@@ -1,138 +1,18 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+public class gnq extends glz<clr, fyd<clr>> {
+   private static final akt a = new akt("textures/entity/wandering_trader.png");
 
-public class gnq {
-   public static final Set<asv<?>> a = Set.of(gpg.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final akm c;
-   private final int d;
-   private final int e;
-   private final int f;
-
-   public gnq(akm $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public gnq(gkq.a $$0) {
+      super($$0, new fyd<>($$0.a(fyr.bY)), 0.5F);
+      this.a(new gok<>(this, $$0.f(), $$0.d()));
+      this.a(new goj<>(this, $$0.d()));
    }
 
-   public static gnq a(gnu $$0) {
-      return new gnq($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   public akt a(clr $$0) {
+      return a;
    }
 
-   public gnq.a a(List<gnp> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gns<gnp> $$4 = new gns<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
-
-      for (gnp $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayd.f($$6), ayd.f($$8)});
-            $$6 = $$8;
-         }
-
-         $$4.a($$7);
-      }
-
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = ayd.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
-      } else {
-         $$11 = $$1;
-      }
-
-      try {
-         $$4.c();
-      } catch (gnt var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new y($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<akm, gnv> $$18 = this.a($$4, $$16, $$17);
-      gnv $$19 = $$18.get(gnl.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new gnq.a($$16, $$17, $$11, $$19, $$18, $$20);
-   }
-
-   public static CompletableFuture<List<gnp>> a(gny $$0, List<Function<gny, gnp>> $$1, Executor $$2) {
-      List<CompletableFuture<gnp>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gnp)$$2x.apply($$0), $$2)).toList();
-      return ac.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
-   }
-
-   public CompletableFuture<gnq.a> a(atw $$0, akm $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
-   }
-
-   public CompletableFuture<gnq.a> a(atw $$0, akm $$1, int $$2, Executor $$3, Collection<asv<?>> $$4) {
-      gny $$5 = gny.create($$4);
-      return CompletableFuture.<List<Function<gny, gnp>>>supplyAsync(() -> goa.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
-
-   private Map<akm, gnv> a(gns<gnp> $$0, int $$1, int $$2) {
-      Map<akm, gnv> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gnv(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
-
-   public static record a(int a, int b, int c, gnv d, Map<akm, gnv> e, CompletableFuture<Void> f) {
-      public CompletableFuture<gnq.a> a() {
-         return this.f.thenApply($$0 -> this);
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public gnv e() {
-         return this.d;
-      }
-
-      public Map<akm, gnv> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
-      }
+   protected void a(clr $$0, fbc $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

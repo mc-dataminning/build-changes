@@ -1,30 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dmr extends dhn {
-   public static final MapCodec<dmr> c = b(dmr::new);
-   public static final evd g = ddy.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
-
+public interface dmr extends dfj, djx {
    @Override
-   public MapCodec<dmr> a() {
-      return c;
-   }
-
-   public dmr(dra.d $$0) {
-      super($$0, it.b, g, false, 0.1);
+   default boolean a(@Nullable cly $$0, dbg $$1, ir $$2, dtc $$3, epd $$4) {
+      return $$4 == epf.c;
    }
 
    @Override
-   protected int a(ayk $$0) {
-      return dje.a($$0);
+   default boolean a(dcb $$0, ir $$1, dtc $$2, epe $$3) {
+      if (!$$2.c(dts.C) && $$3.a() == epf.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.a(dts.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected ddy b() {
-      return dea.oC;
+   default cuh a(@Nullable cly $$0, dcb $$1, ir $$2, dtc $$3) {
+      if ($$3.c(dts.C)) {
+         $$1.a($$2, $$3.a(dts.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cuh(cuk.rW);
+      } else {
+         return cuh.i;
+      }
    }
 
    @Override
-   protected boolean g(drb $$0) {
-      return dje.a($$0);
+   default Optional<avn> as_() {
+      return epf.c.j();
    }
 }

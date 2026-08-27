@@ -1,54 +1,51 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class efu extends efq {
-   public static final MapCodec<efu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dxn.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dxn.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, efu::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dxn d;
-   private final dxn e;
-   private final int f;
+public class efu extends efw {
+   public static final Codec<efu> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, efu::new));
 
-   private efu(dxn $$0, dxn $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static efu a(dxn $$0, dxn $$1, int $$2) {
-      return new efu($$0, $$1, $$2);
+   public efu(bpf $$0, bpf $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int a(ayk $$0, dxq $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
+   protected efx<?> a() {
+      return efx.i;
+   }
+
+   @Override
+   protected void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, int $$4, efw.a $$5, int $$6, int $$7, int $$8) {
+      ir $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
       } else {
-         int $$4 = ayd.a($$0, $$2 + this.f, $$3);
-         int $$5 = ayd.a($$0, $$2, $$4 - 1);
-         return ayd.a($$0, $$2, $$5 - 1 + this.f);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public efr<?> a() {
-      return efr.d;
+   public int a(ayt $$0, int $$1, efg $$2) {
+      return 4;
    }
 
    @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   protected boolean b(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   }
+
+   @Override
+   protected boolean a(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

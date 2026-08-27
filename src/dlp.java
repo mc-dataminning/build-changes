@@ -1,46 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dlp extends dli {
-   protected dlp(dra.d $$0) {
-      super($$0);
+public class dlp extends deq {
+   public static final MapCodec<dlp> d = b(dlp::new);
+   public static final dua<dug> e = dts.ag;
+
+   @Override
+   public MapCodec<dlp> a() {
+      return d;
    }
 
-   private static boolean b(drb $$0, dba $$1, io $$2) {
-      io $$3 = $$2.c();
-      drb $$4 = $$1.a_($$3);
-      if ($$4.a(dea.dN) && $$4.c(dlh.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = eml.a($$1, $$0, $$2, $$4, $$3, it.b, $$4.b($$1, $$3));
-         return $$5 < $$1.P();
+   protected dlp(dtb.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dug.a).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3) {
+      if ($$3.n().m() && new dlq($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dlp> a();
-
-   private static boolean c(drb $$0, dba $$1, io $$2) {
-      io $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awb.a);
+   public duf<dug> c() {
+      return e;
    }
 
    @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dea.j.n());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            drb $$4 = this.n();
+   protected dtc a(dtc $$0, dmd $$1) {
+      dug $$2 = $$0.c(e);
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               io $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dea.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dea.dN))));
-               }
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dug.a;
+               case b:
+                  yield dug.b;
+               case c:
+                  yield dug.d;
+               case d:
+                  yield dug.c;
+               case e:
+                  yield dug.f;
+               case f:
+                  yield dug.e;
+               case g:
+                  yield dug.i;
+               case h:
+                  yield dug.j;
+               case i:
+                  yield dug.g;
+               case j:
+                  yield dug.h;
+               default:
+                  throw new IncompatibleClassChangeError();
             }
          }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dug.b;
+               case b:
+                  yield dug.a;
+               case c:
+                  yield dug.e;
+               case d:
+                  yield dug.f;
+               case e:
+                  yield dug.d;
+               case f:
+                  yield dug.c;
+               case g:
+                  yield dug.j;
+               case h:
+                  yield dug.g;
+               case i:
+                  yield dug.h;
+               case j:
+                  yield dug.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dug.b;
+               case b:
+                  yield dug.a;
+               case c:
+                  yield dug.f;
+               case d:
+                  yield dug.e;
+               case e:
+                  yield dug.c;
+               case f:
+                  yield dug.d;
+               case g:
+                  yield dug.h;
+               case h:
+                  yield dug.i;
+               case i:
+                  yield dug.j;
+               case j:
+                  yield dug.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dke $$1) {
+      dug $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dug.f);
+               case f:
+                  return $$0.a(e, dug.e);
+               case g:
+                  return $$0.a(e, dug.j);
+               case h:
+                  return $$0.a(e, dug.i);
+               case i:
+                  return $$0.a(e, dug.h);
+               case j:
+                  return $$0.a(e, dug.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dug.d);
+               case d:
+                  return $$0.a(e, dug.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dug.h);
+               case h:
+                  return $$0.a(e, dug.g);
+               case i:
+                  return $$0.a(e, dug.j);
+               case j:
+                  return $$0.a(e, dug.i);
+            }
       }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(e, c);
    }
 }

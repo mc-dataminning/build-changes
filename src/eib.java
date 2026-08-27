@@ -1,70 +1,62 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class eib implements eho {
-   private final List<ehn> a = Lists.newArrayList();
+public class eib extends ehz {
+   public static final Codec<eib> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzo.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dzo.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eib::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dzo d;
+   private final dzo e;
+   private final int f;
+
+   private eib(dzo $$0, dzo $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static eib a(dzo $$0, dzo $$1, int $$2) {
+      return new eib($$0, $$1, $$2);
+   }
+
+   public static eib a(dzo $$0, dzo $$1) {
+      return a($$0, $$1, 0);
+   }
 
    @Override
-   public void a(ehn $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   @Override
-   public ehn a(ehb $$0) {
-      return ehn.a(this.a, $$0);
-   }
-
-   @Deprecated
-   public void a(int $$0) {
-      for (ehn $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, ayk $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      ehb $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(ayk $$0, int $$1, int $$2) {
-      ehb $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
+   public int a(ayt $$0, dzr $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
       } else {
-         $$5 = $$1;
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return aym.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + aym.b($$0, 0, $$6) + aym.b($$0, 0, $$5);
+         }
       }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
    }
 
-   public ehy a() {
-      return new ehy(this.a);
+   @Override
+   public eia<?> a() {
+      return eia.e;
    }
 
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public ehb d() {
-      return ehn.a(this.a.stream());
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

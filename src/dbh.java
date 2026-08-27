@@ -1,50 +1,205 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
 public class dbh {
-   private final Long2ObjectMap<List<aqn>> a = new Long2ObjectOpenHashMap();
-   private final Map<aqn, dbh.a> b = Maps.newHashMap();
-   private final apv c;
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final dbh b = new dbh(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   public dbh(apv $$0) {
-      this.c = $$0;
+   public dbh(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private List<aqn> a(dae $$0) {
-      return (List<aqn>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   public dbh(ir $$0) {
+      this.e = jt.a($$0.u());
+      this.f = jt.a($$0.w());
    }
 
-   public void a(dae $$0, bsr $$1) {
-      for (aqn $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dbh.a()).a($$1);
+   public dbh(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
+   }
+
+   public static dbh a(int $$0, int $$1) {
+      return new dbh($$0 << 5, $$1 << 5);
+   }
+
+   public static dbh b(int $$0, int $$1) {
+      return new dbh(($$0 << 5) + 31, ($$1 << 5) + 31);
+   }
+
+   public long a() {
+      return c(this.e, this.f);
+   }
+
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static long a(ir $$0) {
+      return c(jt.a($$0.u()), jt.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dbh $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
    }
 
-   public boolean a(bsr $$0, dae $$1) {
-      for (aqn $$2 : this.a($$1)) {
-         dbh.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
+   public int b() {
+      return this.a(8);
+   }
+
+   public int c() {
+      return this.b(8);
+   }
+
+   public int d() {
+      return jt.c(this.e);
+   }
+
+   public int e() {
+      return jt.c(this.f);
+   }
+
+   public int f() {
+      return this.a(15);
+   }
+
+   public int g() {
+      return this.b(15);
+   }
+
+   public int h() {
+      return this.e >> 5;
+   }
+
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public ir a(int $$0, int $$1, int $$2) {
+      return new ir(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return jt.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return jt.a(this.f, $$0);
+   }
+
+   public ir c(int $$0) {
+      return new ir(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public ir l() {
+      return new ir(this.d(), 0, this.e());
+   }
+
+   public int a(dbh $$0) {
+      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   }
+
+   public int b(dbh $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.e(a($$0), b($$0));
+   }
+
+   private int e(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<dbh> a(dbh $$0, int $$1) {
+      return a(new dbh($$0.e - $$1, $$0.f - $$1), new dbh($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<dbh> a(final dbh $$0, final dbh $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<dbh>((long)($$2 * $$3), 64) {
+         @Nullable
+         private dbh e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super dbh> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new dbh($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new dbh($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
             return true;
          }
-      }
-
-      return false;
-   }
-
-   static class a {
-      private final Object2IntMap<bsr> a = new Object2IntOpenHashMap(bsr.values().length);
-
-      public void a(bsr $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
-
-      public boolean b(bsr $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+      }, false);
    }
 }

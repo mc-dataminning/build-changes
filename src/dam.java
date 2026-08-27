@@ -1,31 +1,60 @@
-import javax.annotation.Nullable;
+public class dam extends dad {
+   public final dam.a b;
 
-public enum dam implements dad {
-   a;
-
-   @Nullable
-   @Override
-   public dog c_(io $$0) {
-      return null;
+   public dam(dad.b $$0, dam.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public drb a_(io $$0) {
-      return dea.a.n();
+   public int a(int $$0, bqt $$1) {
+      if ($$1.a(awg.e)) {
+         return 0;
+      } else if (this.b == dam.a.a) {
+         return $$0;
+      } else if (this.b == dam.a.b && $$1.a(awg.j)) {
+         return $$0 * 2;
+      } else if (this.b == dam.a.c && $$1.a(awg.n)) {
+         return $$0 * 3;
+      } else if (this.b == dam.a.d && $$1.a(awg.m)) {
+         return $$0 * 2;
+      } else {
+         return this.b == dam.a.e && $$1.a(awg.k) ? $$0 * 2 : 0;
+      }
    }
 
    @Override
-   public emu b_(io $$0) {
-      return emv.a.g();
+   public boolean a(dad $$0) {
+      if ($$0 instanceof dam $$1) {
+         return this.b == $$1.b ? false : this.b == dam.a.c || $$1.b == dam.a.c;
+      } else {
+         return super.a($$0);
+      }
    }
 
-   @Override
-   public int I_() {
-      return 0;
+   public static int a(bso $$0, int $$1) {
+      int $$2 = dae.a(dag.b, $$0);
+      if ($$2 > 0) {
+         $$1 -= aym.d((float)$$1 * (float)$$2 * 0.15F);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public int J_() {
-      return 0;
+   public static double a(bso $$0, double $$1) {
+      int $$2 = dae.a(dag.d, $$0);
+      if ($$2 > 0) {
+         $$1 *= aym.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
+      }
+
+      return $$1;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

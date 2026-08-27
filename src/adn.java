@@ -1,33 +1,88 @@
-public class adn implements ze<abq> {
-   public static final yv<wi, adn> a = yv.a(yt.f, adn::b, yt.a(lf.Q), adn::e, wz.d, adn::f, adn::new);
-   private final int b;
-   private final cqa<?> c;
-   private final wx d;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adn(int $$0, cqa<?> $$1, wx $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class adn {
+   private static final zc<ByteBuf, byte[]> a = za.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public adn(dbh $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dcj.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dcj.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   @Override
-   public zg<adn> a() {
-      return agb.W;
+   public adn(we $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   public void a(abq $$0) {
-      $$0.a(this);
+   public void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   public int b() {
+   private void a(dbh $$0, eot $$1, dcj $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dvd $$7 = $$1.a($$2).a(jt.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
+   }
+
+   public BitSet a() {
       return this.b;
    }
 
-   public cqa<?> e() {
+   public BitSet b() {
+      return this.d;
+   }
+
+   public List<byte[]> c() {
+      return this.f;
+   }
+
+   public BitSet d() {
       return this.c;
    }
 
-   public wx f() {
-      return this.d;
+   public BitSet e() {
+      return this.e;
+   }
+
+   public List<byte[]> f() {
+      return this.g;
    }
 }

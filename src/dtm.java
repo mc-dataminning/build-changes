@@ -1,5 +1,8 @@
-public class dtm extends RuntimeException {
-   public dtm(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface dtm {
 }

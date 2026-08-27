@@ -1,118 +1,193 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class btk {
-   private static final Map<bsa<?>, btk.a> a = Maps.newHashMap();
+public abstract class btk extends cee implements bsv {
+   protected static final ajy<Byte> ch = akc.a(btk.class, aka.a);
+   protected static final ajy<Optional<UUID>> ci = akc.a(btk.class, aka.r);
+   private boolean ck;
 
-   private static <T extends bsq> void a(bsa<T> $$0, bti $$1, dwt.a $$2, btk.b<T> $$3) {
-      btk.a $$4 = a.put($$0, new btk.a($$2, $$1, $$3));
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration for type " + le.g.b($$0));
+   protected btk(bsb<? extends btk> $$0, dca $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void a(akc.a $$0) {
+      super.a($$0);
+      $$0.a(ch, (byte)0);
+      $$0.a(ci, Optional.empty());
+   }
+
+   @Override
+   public void b(uk $$0) {
+      super.b($$0);
+      if (this.X_() != null) {
+         $$0.a("Owner", this.X_());
+      }
+
+      $$0.a("Sitting", this.ck);
+   }
+
+   @Override
+   public void a(uk $$0) {
+      super.a($$0);
+      UUID $$1;
+      if ($$0.b("Owner")) {
+         $$1 = $$0.a("Owner");
+      } else {
+         String $$2 = $$0.l("Owner");
+         $$1 = aup.a(this.cT(), $$2);
+      }
+
+      if ($$1 != null) {
+         try {
+            this.b($$1);
+            this.b(true, false);
+         } catch (Throwable var4) {
+            this.b(false, true);
+         }
+      }
+
+      this.ck = $$0.q("Sitting");
+      this.x(this.ck);
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return !this.gl();
+   }
+
+   protected void w(boolean $$0) {
+      kz $$1 = lb.O;
+      if (!$$0) {
+         $$1 = lb.ac;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.al.k() * 0.02;
+         double $$4 = this.al.k() * 0.02;
+         double $$5 = this.al.k() * 0.02;
+         this.dU().a($$1, this.d(1.0), this.dC() + 0.5, this.g(1.0), $$3, $$4, $$5);
       }
    }
 
-   public static bti a(bsa<?> $$0) {
-      btk.a $$1 = a.get($$0);
-      return $$1 == null ? btj.a : $$1.b;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
+      } else {
+         super.b($$0);
+      }
    }
 
-   public static boolean a(bsa<?> $$0, dba $$1, io $$2) {
-      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
+   public boolean r() {
+      return (this.as.a(ch) & 4) != 0;
    }
 
-   public static dwt.a b(@Nullable bsa<?> $$0) {
-      btk.a $$1 = a.get($$0);
-      return $$1 == null ? dwt.a.f : $$1.a;
+   public void b(boolean $$0, boolean $$1) {
+      byte $$2 = this.as.a(ch);
+      if ($$0) {
+         this.as.a(ch, (byte)($$2 | 4));
+      } else {
+         this.as.a(ch, (byte)($$2 & -5));
+      }
+
+      if ($$1) {
+         this.t();
+      }
    }
 
-   public static <T extends bru> boolean a(bsa<T> $$0, dbm $$1, bss $$2, io $$3, ayk $$4) {
-      btk.a $$5 = a.get($$0);
-      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
+   protected void t() {
    }
 
-   static {
-      a(bsa.f, btj.b, dwt.a.f, cfq::a);
-      a(bsa.u, btj.b, dwt.a.f, cfg::c);
-      a(bsa.y, btj.b, dwt.a.f, cfg::c);
-      a(bsa.B, btj.b, dwt.a.f, ciq::a);
-      a(bsa.Y, btj.b, dwt.a.f, ciy::b);
-      a(bsa.aF, btj.b, dwt.a.f, cfg::c);
-      a(bsa.aI, btj.b, dwt.a.f, cfg::c);
-      a(bsa.aX, btj.b, dwt.a.f, cfg::c);
-      a(bsa.bg, btj.b, dwt.a.f, cfe::b);
-      a(bsa.c, btj.d, dwt.a.f, cfn::c);
-      a(bsa.g, btj.d, dwt.a.f, cdz::b);
-      a(bsa.i, btj.d, dwt.a.f, cjc::c);
-      a(bsa.l, btj.d, dwt.a.f, cjc::b);
-      a(bsa.q, btj.d, dwt.a.f, cjc::b);
-      a(bsa.t, btj.d, dwt.a.f, cee::b);
-      a(bsa.w, btj.d, dwt.a.f, cee::b);
-      a(bsa.x, btj.d, dwt.a.f, cjc::b);
-      a(bsa.z, btj.d, dwt.a.f, cee::b);
-      a(bsa.H, btj.d, dwt.a.f, cjc::b);
-      a(bsa.I, btj.d, dwt.a.f, cit::b);
-      a(bsa.F, btj.d, dwt.a.f, bsq::a);
-      a(bsa.R, btj.d, dwt.a.f, cfy::c);
-      a(bsa.T, btj.d, dwt.a.f, ciw::b);
-      a(bsa.U, btj.d, dwt.a.f, cjc::b);
-      a(bsa.W, btj.b, dwt.a.f, bsg::a);
-      a(bsa.X, btj.d, dwt.a.f, cge::c);
-      a(bsa.ab, btj.d, dwt.a.f, cee::b);
-      a(bsa.ac, btj.d, dwt.a.f, ciz::a);
-      a(bsa.af, btj.d, dwt.a.f, bsq::a);
-      a(bsa.an, btj.d, dwt.a.f, cee::b);
-      a(bsa.ap, btj.d, dwt.a.f, cjb::b);
-      a(bsa.as, btj.d, dwt.a.f, cer::c);
-      a(bsa.at, btj.d, dwt.a.f, cee::b);
-      a(bsa.au, btj.d, dwt.a.e, ces::c);
-      a(bsa.ax, btj.d, dwt.a.e, ceu::c);
-      a(bsa.az, btj.d, dwt.a.f, cee::b);
-      a(bsa.Z, btj.d, dwt.a.f, ckg::c);
-      a(bsa.aA, btj.d, dwt.a.f, ckm::b);
-      a(bsa.aC, btj.d, dwt.a.f, cjd::b);
-      a(bsa.aD, btj.d, dwt.a.f, cew::c);
-      a(bsa.aG, btj.d, dwt.a.f, cey::c);
-      a(bsa.aJ, btj.d, dwt.a.f, cee::b);
-      a(bsa.aM, btj.d, dwt.a.f, cjj::b);
-      a(bsa.aN, btj.d, dwt.a.f, cjc::b);
-      a(bsa.aO, btj.d, dwt.a.f, cgo::c);
-      a(bsa.aP, btj.d, dwt.a.f, cjl::c);
-      a(bsa.aS, btj.d, dwt.a.f, bsq::a);
-      a(bsa.aW, btj.d, dwt.a.f, cjc::b);
-      a(bsa.aY, btj.d, dwt.a.f, cjo::a);
-      a(bsa.aZ, btj.c, dwt.a.f, cjp::c);
-      a(bsa.bh, btj.d, dwt.a.f, cff::c);
-      a(bsa.bj, btj.d, dwt.a.f, bsq::a);
-      a(bsa.bo, btj.d, dwt.a.f, cjc::b);
-      a(bsa.bp, btj.d, dwt.a.f, cjc::b);
-      a(bsa.bq, btj.d, dwt.a.f, cjc::b);
-      a(bsa.bs, btj.d, dwt.a.f, cfh::c);
-      a(bsa.bu, btj.d, dwt.a.f, cjc::b);
-      a(bsa.bv, btj.d, dwt.a.f, cgs::c);
-      a(bsa.bx, btj.d, dwt.a.f, cjx::b);
-      a(bsa.bw, btj.d, dwt.a.f, cjc::b);
-      a(bsa.p, btj.d, dwt.a.f, cee::b);
-      a(bsa.D, btj.b, dwt.a.f, ciy::b);
-      a(bsa.J, btj.a, dwt.a.f, cjc::b);
-      a(bsa.Q, btj.a, dwt.a.f, ceo::c);
-      a(bsa.ad, btj.a, dwt.a.f, cjc::b);
-      a(bsa.aw, btj.a, dwt.a.f, cee::b);
-      a(bsa.ay, btj.a, dwt.a.f, bsq::a);
-      a(bsa.aH, btj.d, dwt.a.f, cjc::b);
-      a(bsa.aK, btj.a, dwt.a.f, bsq::a);
-      a(bsa.be, btj.a, dwt.a.f, cee::b);
-      a(bsa.bi, btj.a, dwt.a.f, cjc::b);
-      a(bsa.bk, btj.a, dwt.a.f, cjc::b);
-      a(bsa.bl, btj.d, dwt.a.f, bsq::a);
-      a(bsa.bm, btj.a, dwt.a.f, bsq::a);
+   public boolean x() {
+      return (this.as.a(ch) & 1) != 0;
    }
 
-   static record a(dwt.a a, bti b, btk.b<?> c) {
+   public void x(boolean $$0) {
+      byte $$1 = this.as.a(ch);
+      if ($$0) {
+         this.as.a(ch, (byte)($$1 | 1));
+      } else {
+         this.as.a(ch, (byte)($$1 & -2));
+      }
    }
 
-   @FunctionalInterface
-   public interface b<T extends bru> {
-      boolean test(bsa<T> var1, dbm var2, bss var3, io var4, ayk var5);
+   @Nullable
+   @Override
+   public UUID X_() {
+      return this.as.a(ci).orElse(null);
+   }
+
+   public void b(@Nullable UUID $$0) {
+      this.as.a(ci, Optional.ofNullable($$0));
+   }
+
+   public void f(cly $$0) {
+      this.b(true, true);
+      this.b($$0.cE());
+      if ($$0 instanceof aqu $$1) {
+         an.y.a($$1, this);
+      }
+   }
+
+   @Override
+   public boolean c(bso $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(bso $$0) {
+      return $$0 == this.Q_();
+   }
+
+   public boolean a(bso $$0, bso $$1) {
+      return true;
+   }
+
+   @Override
+   public ext co() {
+      if (this.r()) {
+         bso $$0 = this.Q_();
+         if ($$0 != null) {
+            return $$0.co();
+         }
+      }
+
+      return super.co();
+   }
+
+   @Override
+   public boolean s(brv $$0) {
+      if (this.r()) {
+         bso $$1 = this.Q_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.s($$0);
+         }
+      }
+
+      return super.s($$0);
+   }
+
+   @Override
+   public void a(bqt $$0) {
+      if (!this.dU().C && this.dU().ab().b(dbw.n) && this.Q_() instanceof aqu) {
+         this.Q_().a(this.eX().a());
+      }
+
+      super.a($$0);
+   }
+
+   public boolean gy() {
+      return this.ck;
+   }
+
+   public void y(boolean $$0) {
+      this.ck = $$0;
    }
 }

@@ -1,34 +1,37 @@
-public class ago implements ze<agd> {
-   public static final yv<vx, ago> a = ze.a(ago::a, ago::new);
-   private final ago.a b;
+public class ago implements zl<agl> {
+   public static final zc<we, ago> a = zl.a(ago::a, ago::new);
+   private final int b;
+   private final ir c;
 
-   public ago(ago.a $$0) {
+   public ago(int $$0, ir $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ago(vx $$0) {
-      this.b = $$0.b(ago.a.class);
+   private ago(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<ago> a() {
-      return agb.bn;
+   public zn<ago> a() {
+      return agj.bh;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public ago.a b() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public ir e() {
+      return this.c;
    }
 }

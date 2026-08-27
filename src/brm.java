@@ -1,17 +1,14 @@
-class brm extends bra {
-   protected brm(brb $$0, int $$1) {
+class brm extends bre {
+   protected brm(brg $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
    public boolean a(bso $$0, int $$1) {
-      $$0.a($$0.dQ().p(), 1.0F);
-      return true;
-   }
+      if (!$$0.dU().C && $$0 instanceof cly $$2) {
+         $$2.gx().a($$1 + 1, 1.0F);
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

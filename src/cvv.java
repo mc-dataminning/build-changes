@@ -1,37 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record cvv(akm e, ix<ctj> f, wx g, boolean h) {
-   public static final Codec<cvv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akm.a.fieldOf("asset_id").forGetter(cvv::a),
-               akj.a(lf.G).fieldOf("template_item").forGetter(cvv::b),
-               wz.a.fieldOf("description").forGetter(cvv::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cvv::d)
-            )
-            .apply($$0, cvv::new)
-   );
-   public static final yv<wi, cvv> b = yv.a(akm.b, cvv::a, yt.b(lf.G), cvv::b, wz.b, cvv::c, yt.b, cvv::d, cvv::new);
-   public static final Codec<ix<cvv>> c = aki.a(lf.aP, a);
-   public static final yv<wi, ix<cvv>> d = yt.a(lf.aP, b);
+public class cvv extends csc implements csw {
+   private final avn a;
 
-   public wx a(ix<cvt> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   public cvv(dfc $$0, avn $$1, cuc.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
-   public akm a() {
-      return this.e;
+   @Override
+   public bqa a(cyf $$0) {
+      bqa $$1 = super.a($$0);
+      cly $$2 = $$0.o();
+      if ($$1.a() && $$2 != null && !$$2.f()) {
+         bpz $$3 = $$0.p();
+         $$2.a($$3, cuk.rV.v());
+      }
+
+      return $$1;
    }
 
-   public ix<ctj> b() {
-      return this.f;
+   @Override
+   public String a() {
+      return this.s();
    }
 
-   public wx c() {
-      return this.g;
+   @Override
+   protected avn a(dtc $$0) {
+      return this.a;
    }
 
-   public boolean d() {
-      return this.h;
+   @Override
+   public boolean a(@Nullable cly $$0, dca $$1, ir $$2, @Nullable ewq $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().n(), 3);
+         }
+
+         $$1.a($$0, dxv.z, $$2);
+         $$1.a($$0, $$2, this.a, avq.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

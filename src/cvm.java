@@ -1,56 +1,60 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cvm extends ctj {
-   public cvm(ctj.a $$0) {
-      super($$0);
+public class cvm extends csc {
+   public cvm(dfc $$0, cuc.a $$1) {
+      super($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public cyd b(cyd $$0) {
+      ir $$1 = $$0.a();
+      dca $$2 = $$0.q();
+      dtc $$3 = $$2.a_($$1);
+      dfc $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dmf.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         iw $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == iw.b ? $$0.g() : iw.b;
+         }
+
+         int $$7 = 0;
+         ir.a $$8 = $$1.j().d($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cly $$9 = $$0.o();
+               int $$10 = $$2.am();
+               if ($$9 instanceof aqu && $$8.v() >= $$10) {
+                  ((aqu)$$9).b(xe.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return cyd.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.d($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public wx o(cto $$0) {
-      cwx $$1 = $$0.a(kb.I);
-      if ($$1 != null) {
-         String $$2 = $$1.d().a();
-         if (!ayy.h($$2)) {
-            return wx.b($$2);
-         }
-      }
-
-      return super.o($$0);
-   }
-
-   @Override
-   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
-      cwx $$4 = $$0.a(kb.I);
-      if ($$4 != null) {
-         if (!ayy.h($$4.e())) {
-            $$2.add(wx.a("book.byAuthor", $$4.e()).a(n.h));
-         }
-
-         $$2.add(wx.c("book.generation." + $$4.f()).a(n.h));
-      }
-   }
-
-   @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      cto $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avr.c.b(this));
-      return bpv.a($$3, $$0.x_());
-   }
-
-   public static boolean a(cto $$0, ee $$1, @Nullable clw $$2) {
-      cwx $$3 = $$0.a(kb.I);
-      if ($$3 != null && !$$3.g()) {
-         cwx $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(kb.I, $$4);
-            return true;
-         }
-
-         $$0.b(kb.I, $$3.c());
-      }
-
+   protected boolean c() {
       return false;
    }
 }

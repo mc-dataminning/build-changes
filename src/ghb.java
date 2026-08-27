@@ -1,32 +1,87 @@
-public class ghb extends giz<ceh, fsh<ceh>> {
-   public ghb(ght.a $$0) {
-      super($$0, new fsh<>($$0.a(fvv.t)), 0.4F);
-      this.a(new glh(this, $$0.f()));
+public class ghb implements ghg<dpq> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final fys g;
+   private final fys h;
+   private final fys i;
+
+   public ghb(ghh.a $$0) {
+      fys $$1 = $$0.a(fyr.g);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   public akm a(ceh $$0) {
-      return $$0.gv();
+   public static fyy a() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("flag", fyx.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fyu.a);
+      $$1.a("pole", fyx.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fyu.a);
+      $$1.a("bar", fyx.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fyu.a);
+      return fyy.a($$0, 64, 64);
    }
 
-   protected void a(ceh $$0, eys $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
-   }
-
-   protected void a(ceh $$0, eys $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.G($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(ayd.j($$6, 0.0F, 90.0F)));
-         io $$7 = $$0.dp();
-
-         for (clw $$9 : $$0.dP().a(clw.class, new euf($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fL()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
-            }
+   public void a(dpq $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().Z();
+         dtc $$10 = $$0.n();
+         if ($$10.b() instanceof deg) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dui.b($$10.c(deg.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(dop.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
       }
+
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fbg $$13 = gte.f.a($$3, gfo::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      ir $$14 = $$0.az_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * aym.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      this.g.c = -32.0F;
+      a($$2, $$3, $$4, $$5, this.g, gte.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
+   }
+
+   public static void a(fbc $$0, gfg $$1, int $$2, int $$3, fys $$4, gtc $$5, boolean $$6, csy $$7, dps $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
+   }
+
+   public static void a(fbc $$0, gfg $$1, int $$2, int $$3, fys $$4, gtc $$5, boolean $$6, csy $$7, dps $$8, boolean $$9) {
+      $$4.a($$0, $$5.a($$1, gfo::c, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gfv.m : gfv.n, $$7);
+
+      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
+         dps.b $$11 = $$8.b().get($$10);
+         gtc $$12 = $$6 ? gfv.a($$11.b()) : gfv.b($$11.b());
+         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
+      }
+   }
+
+   private static void a(fbc $$0, gfg $$1, int $$2, int $$3, fys $$4, gtc $$5, csy $$6) {
+      float[] $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gfo::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
    }
 }

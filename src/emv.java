@@ -1,24 +1,27 @@
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class emv {
-   public static final emt a = a("empty", new emr());
-   public static final ems b = a("flowing_water", new ena.a());
-   public static final ems c = a("water", new ena.b());
-   public static final ems d = a("flowing_lava", new emx.a());
-   public static final ems e = a("lava", new emx.b());
+public class emv extends enq {
+   public static final Codec<emv> a = dtc.b.xmap(dtb.a::b, dfc::n).listOf().fieldOf("blocks").xmap(emv::new, $$0 -> $$0.e).codec();
+   public static final emv b = new emv(ImmutableList.of(dfe.ql));
+   public static final emv c = new emv(ImmutableList.of(dfe.a));
+   public static final emv d = new emv(ImmutableList.of(dfe.a, dfe.ql));
+   private final ImmutableList<dfc> e;
 
-   private static <T extends emt> T a(String $$0, T $$1) {
-      return jk.a(le.c, $$0, $$1);
+   public emv(List<dfc> $$0) {
+      this.e = ImmutableList.copyOf($$0);
    }
 
-   static {
-      for (emt $$0 : le.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Nullable
+   @Override
+   public ent.c a(dcd $$0, ir $$1, ir $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
+   }
 
-         while (var2.hasNext()) {
-            emu $$1 = (emu)var2.next();
-            emt.c.b($$1);
-         }
-      }
+   @Override
+   protected ens<?> a() {
+      return ens.e;
    }
 }

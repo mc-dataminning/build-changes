@@ -1,28 +1,40 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egg extends egu {
-   public static final MapCodec<egg> a = boz.b(0, 256).fieldOf("count").xmap(egg::new, $$0 -> $$0.c);
-   private final boz c;
+public record egg(je<dfc> b, je<dfc> c, egl d, int e, int f, float g) {
+   public static final Codec<egg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jp.a(li.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jp.a(li.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               egl.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, egg::new)
+   );
 
-   private egg(boz $$0) {
-      this.c = $$0;
+   public je<dfc> a() {
+      return this.b;
    }
 
-   public static egg a(boz $$0) {
-      return new egg($$0);
+   public je<dfc> b() {
+      return this.c;
    }
 
-   public static egg a(int $$0) {
-      return a(bow.a($$0));
+   public egl c() {
+      return this.d;
    }
 
-   @Override
-   protected int a(ayk $$0, io $$1) {
-      return this.c.a($$0);
+   public int d() {
+      return this.e;
    }
 
-   @Override
-   public egr<?> b() {
-      return egr.f;
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

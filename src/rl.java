@@ -1,70 +1,345 @@
-public abstract class rl {
-   public static void a(qo<dbw> $$0) {
-      iy<egn> $$1 = $$0.a(lf.aI);
-      iy<dyw<?>> $$2 = $$0.a(lf.aB);
-      $$0.a(dcd.a, ro.j($$1, $$2));
-      $$0.a(dcd.b, ro.a($$1, $$2, false, false, false));
-      $$0.a(dcd.c, ro.a($$1, $$2, true, false, false));
-      $$0.a(dcd.d, ro.a($$1, $$2, false, true, false));
-      $$0.a(dcd.e, ro.a($$1, $$2, false, true, true));
-      $$0.a(dcd.f, ro.d($$1, $$2));
-      $$0.a(dcd.g, ro.h($$1, $$2));
-      $$0.a(dcd.h, ro.i($$1, $$2));
-      $$0.a(dcd.i, ro.b($$1, $$2, false, false, false));
-      $$0.a(dcd.j, ro.b($$1, $$2, false, false, true));
-      $$0.a(dcd.k, ro.b($$1, $$2, true, false, false));
-      $$0.a(dcd.l, ro.g($$1, $$2));
-      $$0.a(dcd.m, ro.b($$1, $$2, true, true, false));
-      $$0.a(dcd.n, ro.a($$1, $$2, false));
-      $$0.a(dcd.o, ro.a($$1, $$2, true));
-      $$0.a(dcd.p, ro.h($$1, $$2, false));
-      $$0.a(dcd.q, ro.h($$1, $$2, true));
-      $$0.a(dcd.r, ro.a($$1, $$2, false, false));
-      $$0.a(dcd.s, ro.a($$1, $$2, false, true));
-      $$0.a(dcd.t, ro.b($$1, $$2, false));
-      $$0.a(dcd.u, ro.b($$1, $$2, false));
-      $$0.a(dcd.v, ro.b($$1, $$2, true));
-      $$0.a(dcd.w, ro.a($$1, $$2, true, false));
-      $$0.a(dcd.x, ro.b($$1, $$2));
-      $$0.a(dcd.y, ro.a($$1, $$2));
-      $$0.a(dcd.z, ro.c($$1, $$2));
-      $$0.a(dcd.A, ro.c($$1, $$2, false));
-      $$0.a(dcd.B, ro.c($$1, $$2, false));
-      $$0.a(dcd.C, ro.c($$1, $$2, true));
-      $$0.a(dcd.D, ro.j($$1, $$2, false));
-      $$0.a(dcd.E, ro.j($$1, $$2, true));
-      $$0.a(dcd.F, ro.o($$1, $$2));
-      $$0.a(dcd.G, ro.n($$1, $$2));
-      $$0.a(dcd.H, ro.k($$1, $$2));
-      $$0.a(dcd.I, ro.l($$1, $$2));
-      $$0.a(dcd.J, ro.m($$1, $$2));
-      $$0.a(dcd.K, ro.i($$1, $$2, false));
-      $$0.a(dcd.L, ro.i($$1, $$2, true));
-      $$0.a(dcd.M, ro.b($$1, $$2, false, false));
-      $$0.a(dcd.N, ro.b($$1, $$2, true, false));
-      $$0.a(dcd.O, ro.b($$1, $$2, false, true));
-      $$0.a(dcd.P, ro.f($$1, $$2));
-      $$0.a(dcd.Q, ro.f($$1, $$2, false));
-      $$0.a(dcd.R, ro.f($$1, $$2, true));
-      $$0.a(dcd.S, ro.e($$1, $$2, false));
-      $$0.a(dcd.T, ro.e($$1, $$2, true));
-      $$0.a(dcd.U, ro.d($$1, $$2, false));
-      $$0.a(dcd.V, ro.d($$1, $$2, true));
-      $$0.a(dcd.W, ro.g($$1, $$2, false));
-      $$0.a(dcd.X, ro.g($$1, $$2, true));
-      $$0.a(dcd.Y, ro.e($$1, $$2));
-      $$0.a(dcd.Z, ro.q($$1, $$2));
-      $$0.a(dcd.aa, ro.p($$1, $$2));
-      $$0.a(dcd.ab, ro.r($$1, $$2));
-      $$0.a(dcd.ac, rn.a($$1, $$2));
-      $$0.a(dcd.ad, rn.e($$1, $$2));
-      $$0.a(dcd.ae, rn.d($$1, $$2));
-      $$0.a(dcd.af, rn.b($$1, $$2));
-      $$0.a(dcd.ag, rn.c($$1, $$2));
-      $$0.a(dcd.ah, rm.b($$1, $$2));
-      $$0.a(dcd.ai, rm.d($$1, $$2));
-      $$0.a(dcd.aj, rm.c($$1, $$2));
-      $$0.a(dcd.ak, rm.e($$1, $$2));
-      $$0.a(dcd.al, rm.a($$1, $$2));
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class rl {
+   public static final aks<elc> a = ra.a("trial_chambers/chamber/end");
+   public static final aks<elc> b = ra.a("trial_chambers/hallway/fallback");
+   public static final aks<elc> c = ra.a("trial_chambers/chamber/entrance_cap");
+   public static final List<ele> d = ImmutableList.builder()
+      .add(
+         ele.a(
+            bok.<List<ele>>a()
+               .a(List.of(ele.a(a("contents/ranged"), a("ranged/skeleton")), ele.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
+               .a(List.of(ele.a(a("contents/ranged"), a("ranged/stray")), ele.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
+               .a(List.of(ele.a(a("contents/ranged"), a("ranged/poison_skeleton")), ele.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
+               .a()
+         )
+      )
+      .add(ele.a(a("contents/melee"), bok.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/slime")).a()))
+      .add(
+         ele.a(
+            a("contents/small_melee"),
+            bok.<String>a().a(a("small_melee/spider")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
+         )
+      )
+      .build();
+
+   public static String a(String $$0) {
+      return "trial_chambers/spawner/" + $$0;
+   }
+
+   public static void a(qq<elc> $$0) {
+      jb<elc> $$1 = $$0.a(li.aM);
+      ja<elc> $$2 = $$1.b(ra.a);
+      ja<elc> $$3 = $$1.b(b);
+      ja<elc> $$4 = $$1.b(c);
+      jb<enr> $$5 = $$0.a(li.aK);
+      ja<enr> $$6 = $$5.b(rn.a);
+      $$0.a(a, new elc($$2, List.of(Pair.of(ela.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(ela.b("trial_chambers/corridor/end_2", $$6), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/chamber/entrance_cap", new elc($$4, List.of(Pair.of(ela.b("trial_chambers/chamber/entrance_cap", $$6), 1)), elc.a.b));
+      ra.a(
+         $$0,
+         "trial_chambers/chambers/end",
+         new elc(
+            $$3,
+            List.of(
+               Pair.of(ela.b("trial_chambers/chamber/chamber_1", $$6), 1),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_5", $$6), 1),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_6", $$6), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted", $$6), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/chamber/addon",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/full_corner_column"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/full_column_ranged_spawner", $$6), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/middle_column_ranged_spawner", $$6), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/grate_bridge"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/hanging_platform"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/short_platform"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/lower_walkway_platform"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/walkway_extension"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/side_walkway"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/closed_side_walkway"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/middle_walkway"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/10x15_rise"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/10x15_stacked_pathway"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/10x15_pathway_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/platform_with_space"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/stairs_with_space"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/stairs_with_space_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c3_side_walkway_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c3_side_walkway_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/corner_room_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_wide_platform"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c1_breeze"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/chamber/addon/c6",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.g(), 3),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_small_1"), 2),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_small_2"), 2),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_small_3"), 2),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_column_full"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_column_tall"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_column_tall_wide"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_ranged_column_short"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_ranged_column_short_wide"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_chest"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_melee_spawner"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_long"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_short"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_cover_small"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/addon/c6_stairs"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/chamber/slanted",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/chamber/slanted/center"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/hallway_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/hallway_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/hallway_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/hallway_4"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/hallway_5"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_4"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/ramp_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/ramp_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/ramp_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/ramp_4"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/chamber/pedestal",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/center_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/slice_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/slice_2"), 3),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/slice_3"), 3),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/slice_4"), 3),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/slice_5"), 3),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/quadrant_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/quadrant_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal/quadrant_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/slanted/quadrant_4"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/corridor/second",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/corridor/second_plate"), 1),
+               Pair.of(ela.b("trial_chambers/intersection/intersection_1", $$6), 1),
+               Pair.of(ela.b("trial_chambers/intersection/intersection_2", $$6), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/corridor/first",
+         new elc($$2, List.of(Pair.of(ela.b("trial_chambers/corridor/first_plate"), 1), Pair.of(ela.b("trial_chambers/corridor/entrance_1", $$6), 2)), elc.a.b)
+      );
+      ra.a($$0, "trial_chambers/corridor/first/straight", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/corridor/first_plate"), 1)), elc.a.b));
+      ra.a(
+         $$0,
+         "trial_chambers/corridor",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/corridor/straight_1", $$6), 1),
+               Pair.of(ela.b("trial_chambers/corridor/straight_2", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_3", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_4", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_5", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_6", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_7", $$6), 2),
+               Pair.of(ela.b("trial_chambers/corridor/straight_8", $$6), 2)
+            ),
+            elc.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ela.b("trial_chambers/hallway/rubble_chamber"), 1),
+               Pair.of(ela.b("trial_chambers/hallway/rubble_thin"), 1),
+               Pair.of(ela.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/hallway",
+         new elc(
+            $$3,
+            List.of(
+               Pair.of(ela.b("trial_chambers/hallway/corridor_connector_1"), 1),
+               Pair.of(ela.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/rubble"), 1),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_1", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_2", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_4", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_5", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_6", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/chamber_8", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/slanted", $$6), 150),
+               Pair.of(ela.b("trial_chambers/chamber/pedestal", $$6), 150),
+               Pair.of(ela.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
+               Pair.of(ela.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/cache_1", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/left_corner", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/right_corner", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/corner_staircase", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/straight", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/straight_staircase", $$6), 1),
+               Pair.of(ela.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/corridors/addon/lower",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.g(), 8),
+               Pair.of(ela.b("trial_chambers/corridor/addon/staircase"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/wall"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.g(), 8),
+               Pair.of(ela.b("trial_chambers/corridor/addon/open_walkway"), 2),
+               Pair.of(ela.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/corridors/addon/middle_upper",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.g(), 6),
+               Pair.of(ela.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
+               Pair.of(ela.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/decoration_upper"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/head_upper"), 1),
+               Pair.of(ela.b("trial_chambers/corridor/addon/reward_upper"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "trial_chambers/decor",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.g(), 22),
+               Pair.of(ela.b("trial_chambers/decor/empty_pot"), 2),
+               Pair.of(ela.b("trial_chambers/decor/dead_bush_pot"), 2),
+               Pair.of(ela.b("trial_chambers/decor/undecorated_pot"), 10),
+               Pair.of(ela.b("trial_chambers/decor/flow_pot"), 1),
+               Pair.of(ela.b("trial_chambers/decor/guster_pot"), 1),
+               Pair.of(ela.b("trial_chambers/decor/scrape_pot"), 1),
+               Pair.of(ela.b("trial_chambers/decor/candle_1"), 1),
+               Pair.of(ela.b("trial_chambers/decor/candle_2"), 1),
+               Pair.of(ela.b("trial_chambers/decor/candle_3"), 1),
+               Pair.of(ela.b("trial_chambers/decor/candle_4"), 1),
+               Pair.of(ela.b("trial_chambers/decor/barrel"), 2)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a($$0, "trial_chambers/decor_chamber", new elc($$2, List.of(Pair.of(ela.g(), 4), Pair.of(ela.b("trial_chambers/decor/undecorated_pot"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/reward/all", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/reward/connectors/default"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/reward/contents/default", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/reward/default"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/chests/supply", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/chests/connectors/supply"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/chests/contents/supply", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/chests/supply"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/spawner/ranged", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/connectors/ranged"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/spawner/slow_ranged", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/spawner/melee", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/connectors/melee"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/spawner/small_melee", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/connectors/small_melee"), 1)), elc.a.b));
+      ra.a($$0, "trial_chambers/spawner/breeze", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/connectors/breeze"), 1)), elc.a.b));
+      ra.a(
+         $$0,
+         "trial_chambers/spawner/all",
+         new elc(
+            $$2,
+            List.of(
+               Pair.of(ela.b("trial_chambers/spawner/connectors/ranged"), 1),
+               Pair.of(ela.b("trial_chambers/spawner/connectors/melee"), 1),
+               Pair.of(ela.b("trial_chambers/spawner/connectors/small_melee"), 1)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a($$0, "trial_chambers/spawner/contents/breeze", new elc($$2, List.of(Pair.of(ela.b("trial_chambers/spawner/breeze/breeze"), 1)), elc.a.b));
+      ra.a(
+         $$0, "trial_chambers/dispensers/chamber", new elc($$2, List.of(Pair.of(ela.g(), 1), Pair.of(ela.b("trial_chambers/dispensers/chamber"), 1)), elc.a.b)
+      );
+      elf.a($$0, $$2, d);
    }
 }

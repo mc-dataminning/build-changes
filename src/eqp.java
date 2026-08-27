@@ -1,168 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public class eqp {
+   private static final int J = 12741452;
+   public static final ja<eqo> a = a("player", "player", false, true);
+   public static final ja<eqo> b = a("frame", "frame", true, true);
+   public static final ja<eqo> c = a("red_marker", "red_marker", false, true);
+   public static final ja<eqo> d = a("blue_marker", "blue_marker", false, true);
+   public static final ja<eqo> e = a("target_x", "target_x", true, false);
+   public static final ja<eqo> f = a("target_point", "target_point", true, false);
+   public static final ja<eqo> g = a("player_off_map", "player_off_map", false, true);
+   public static final ja<eqo> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final ja<eqo> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final ja<eqo> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final ja<eqo> k = a("banner_white", "white_banner", true, true);
+   public static final ja<eqo> l = a("banner_orange", "orange_banner", true, true);
+   public static final ja<eqo> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final ja<eqo> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final ja<eqo> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final ja<eqo> p = a("banner_lime", "lime_banner", true, true);
+   public static final ja<eqo> q = a("banner_pink", "pink_banner", true, true);
+   public static final ja<eqo> r = a("banner_gray", "gray_banner", true, true);
+   public static final ja<eqo> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final ja<eqo> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final ja<eqo> u = a("banner_purple", "purple_banner", true, true);
+   public static final ja<eqo> v = a("banner_blue", "blue_banner", true, true);
+   public static final ja<eqo> w = a("banner_brown", "brown_banner", true, true);
+   public static final ja<eqo> x = a("banner_green", "green_banner", true, true);
+   public static final ja<eqo> y = a("banner_red", "red_banner", true, true);
+   public static final ja<eqo> z = a("banner_black", "black_banner", true, true);
+   public static final ja<eqo> A = a("red_x", "red_x", true, false);
+   public static final ja<eqo> B = a("village_desert", "desert_village", true, epi.w.al, false, true);
+   public static final ja<eqo> C = a("village_plains", "plains_village", true, epi.w.al, false, true);
+   public static final ja<eqo> D = a("village_savanna", "savanna_village", true, epi.w.al, false, true);
+   public static final ja<eqo> E = a("village_snowy", "snowy_village", true, epi.w.al, false, true);
+   public static final ja<eqo> F = a("village_taiga", "taiga_village", true, epi.w.al, false, true);
+   public static final ja<eqo> G = a("jungle_temple", "jungle_temple", true, epi.w.al, false, true);
+   public static final ja<eqo> H = a("swamp_hut", "swamp_hut", true, epi.w.al, false, true);
+   public static final ja<eqo> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-public interface eqp {
-   static MapCodec<eqp> a(int $$0) {
-      return eqp.e.e.dispatchMap("mode", eqp::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof eqp.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
-            }
-         }
-
-         return DataResult.success($$1);
-      });
+   public static ja<eqo> a(jn<eqo> $$0) {
+      return a;
    }
 
-   eqp.e a();
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements eqp {
-      private static final Logger c = LogUtils.getLogger();
-      public static final eqp.a a = new eqp.a();
-      public static final MapCodec<eqp.a> b = MapCodec.unit(() -> a);
-
-      private a() {
-      }
-
-      @Override
-      public eqp.e a() {
-         return eqp.e.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            c.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
-      }
+   private static ja<eqo> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   public static record b(int b) implements eqp {
-      private static final Logger c = LogUtils.getLogger();
-      public static final MapCodec<eqp.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axm.i.optionalFieldOf("offset", 0).forGetter(eqp.b::b)).apply($$0, eqp.b::new)
-      );
-
-      @Override
-      public eqp.e a() {
-         return eqp.e.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.b > $$3) {
-            c.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            c.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.b));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.b, $$3));
-            return $$4.build();
-         }
-      }
-   }
-
-   public static class c implements eqp {
-      public static final eqp.c a = new eqp.c();
-      public static final MapCodec<eqp.c> b = MapCodec.unit(() -> a);
-
-      private c() {
-      }
-
-      @Override
-      public eqp.e a() {
-         return eqp.e.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int b, Optional<Integer> c) implements eqp {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<eqp.d> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axm.i.optionalFieldOf("offset", 0).forGetter(eqp.d::b), axm.i.optionalFieldOf("size").forGetter(eqp.d::c)).apply($$0, eqp.d::new)
-      );
-
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
-
-      @Override
-      public eqp.e a() {
-         return eqp.e.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.b > $$3) {
-            d.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.b));
-            $$4.addAll($$1);
-            int $$5 = this.b + this.c.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               d.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
-      }
-   }
-
-   public static enum e implements ayx {
-      a("replace_all", eqp.c.b),
-      b("replace_section", eqp.d.a),
-      c("insert", eqp.b.a),
-      d("append", eqp.a.b);
-
-      public static final Codec<eqp.e> e = ayx.a(eqp.e::values);
-      private final String f;
-      final MapCodec<? extends eqp> g;
-
-      private e(String $$0, MapCodec<? extends eqp> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends eqp> a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   private static ja<eqo> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      aks<eqo> $$6 = aks.a(li.ay, new akt($$0));
+      eqo $$7 = new eqo(new akt($$1), $$2, $$3, $$5, $$4);
+      return jn.b(lh.av, $$6, $$7);
    }
 }

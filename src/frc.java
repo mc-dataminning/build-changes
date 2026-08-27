@@ -1,22 +1,9 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class frc extends fpo<cri> {
+   private static final akt E = new akt("container/smoker/lit_progress");
+   private static final akt F = new akt("container/smoker/burn_progress");
+   private static final akt G = new akt("textures/gui/container/smoker.png");
 
-public class frc implements fre {
-   private static final wx a = wx.c("spectatorMenu.root.prompt");
-   private final List<frf> b = Lists.newArrayList();
-
-   public frc() {
-      this.b.add(new fri());
-      this.b.add(new frj());
-   }
-
-   @Override
-   public List<frf> a() {
-      return this.b;
-   }
-
-   @Override
-   public wx b() {
-      return a;
+   public frc(cri $$0, clx $$1, xe $$2) {
+      super($$0, new fsn(), $$1, $$2, G, E, F);
    }
 }

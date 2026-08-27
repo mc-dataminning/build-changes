@@ -1,24 +1,13 @@
-public class gli extends glq<cio, fsq<cio>> {
-   private static final akm a = new akm("textures/entity/creeper/creeper_armor.png");
-   private final fsq<cio> b;
-
-   public gli(gjp<cio, fsq<cio>> $$0, fvs $$1) {
-      super($$0);
-      this.b = new fsq<>($$1.a(fvv.I));
+public abstract class gli<T extends bsq, M extends fwd<T>> extends glz<T, M> {
+   public gli(gkq.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected akm a() {
-      return a;
-   }
-
-   @Override
-   protected fsw<cio> b() {
-      return this.b;
+   public gli(gkq.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new gok<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new goo<>(this, $$0.f()));
+      this.a(new gph<>(this, $$0.f()));
+      this.a(new goy<>(this, $$0.d()));
    }
 }

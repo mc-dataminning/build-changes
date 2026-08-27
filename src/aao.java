@@ -1,31 +1,26 @@
-public record aao(int c, eni d, float e) implements aaf {
-   public static final yv<vx, aao> a = aaf.a(aao::a, aao::new);
-   public static final aaf.b<aao> b = aaf.a("debug/path");
+public record aao(aks<dxv> c, ewu d) implements aam {
+   public static final zc<we, aao> a = aam.a(aao::a, aao::new);
+   public static final aam.b<aao> b = aam.a("debug/game_event");
 
-   private aao(vx $$0) {
-      this($$0.readInt(), eni.b($$0), $$0.readFloat());
+   private aao(we $$0) {
+      this($$0.a(li.C), $$0.k());
    }
 
-   private void a(vx $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(we $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aaf.b<aao> a() {
+   public aam.b<aao> a() {
       return b;
    }
 
-   public int b() {
+   public aks<dxv> b() {
       return this.c;
    }
 
-   public eni c() {
+   public ewu c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

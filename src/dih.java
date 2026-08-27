@@ -1,95 +1,86 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dih extends dcr {
-   public static final MapCodec<dih> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dbw.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), ju.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dih::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dsb g = drr.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dbw.c j;
+public class dih extends dfc implements coy {
+   public static final MapCodec<dih> a = b(dih::new);
+   public static final dtw b = dhg.a;
+   public static final dtt c = dts.A;
 
    @Override
-   public MapCodec<dih> a() {
-      return d;
+   protected MapCodec<dih> a() {
+      return a;
    }
 
-   public dih(dbw.c $$0, ju.a $$1, dra.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   protected dih(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, iw.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean d(drb $$0) {
-      return $$0.c(g) == 3;
+   public dtc a(cyd $$0) {
+      return this.n().a(b, $$0.d());
    }
 
    @Override
-   protected boolean a(emt $$0) {
-      return $$0 == emv.c && this.j == dbw.c.b;
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected double b(drb $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(drb $$0, dax $$1, io $$2, bru $$3) {
-      if (!$$1.B && $$3.bQ() && this.a($$0, $$2, $$3)) {
-         $$3.aC();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
+      boolean $$6 = a(dhj.a($$1, $$2), $$1, $$2);
+      boolean $$7 = $$0.c(c);
+      if ($$6 != $$7) {
+         if ($$6) {
+            $$1.a($$2, this, 1);
+            $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         } else {
+            $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
          }
       }
    }
 
-   private void e(drb $$0, dax $$1, io $$2) {
-      if (this.j == dbw.c.c) {
-         d(dea.fu.n().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(drb $$0, dax $$1, io $$2) {
-      int $$3 = $$0.c(g) - 1;
-      drb $$4 = $$3 == 0 ? dea.ft.n() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dvu.c, $$2, dvu.a.a($$4));
+   private static boolean a(boolean $$0, dca $$1, ir $$2) {
+      return $$0 && $$1.C($$2);
    }
 
    @Override
-   public void a(drb $$0, dax $$1, io $$2, dbw.c $$3) {
-      if (det.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         drb $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dvu.c, $$2, dvu.a.a($$4));
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      iw $$4 = $$0.c(b);
+      cpc $$5 = cpc.a($$1, $$2, $$4);
+      if ($$5 != null) {
+         coz $$6 = new coz(bsb.bH, $$1);
+         ir $$7 = $$5.c();
+         $$6.e((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
+         $$6.r().a($$5.a());
+         $$6.r().a($$1.t($$2));
+         $$6.a($$4, (float)$$5.d() * 0.1F);
+         $$5.a($$1);
+         $$1.b($$6);
       }
    }
 
    @Override
-   protected int a(drb $$0, dax $$1, io $$2) {
-      return $$0.c(g);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, emt $$3) {
-      if (!this.d($$0)) {
-         drb $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dvu.c, $$2, dvu.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   public void a(dca $$0, cpb $$1, dtc $$2, ir $$3, ewu $$4, iw $$5) {
+      if ($$0.C) {
+         iw $$6 = $$2.c(b);
+         if ($$5 == $$6 && $$2.c(c) && $$0.F_().h()) {
+            iw $$7 = $$6.g();
+            if ($$1.b($$3.a($$7)).i()) {
+               double $$8 = 0.5;
+               $$4 = $$4.b(0.5, 0.5, 0.5).b((double)$$7.j() * 0.5, (double)$$7.k() * 0.5, (double)$$7.l() * 0.5);
+               $$0.a(lb.e, $$4.c, $$4.d, $$4.e, 0.0, 0.0, 0.0);
+            }
+         }
       }
    }
 }

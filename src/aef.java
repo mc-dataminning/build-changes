@@ -1,66 +1,79 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class aef implements ze<abq> {
-   public static final yv<vx, aef> a = ze.a(aef::a, aef::new);
-   private static final int b = 12;
-   private final jq c;
-   private final short[] d;
-   private final drb[] e;
+public class aef implements zl<abw> {
+   public static final zc<we, aef> a = zl.a(aef::a, aef::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<btb> g;
+   private final int h;
 
-   public aef(jq $$0, ShortSet $$1, dti $$2) {
-      this.c = $$0;
-      int $$3 = $$1.size();
-      this.d = new short[$$3];
-      this.e = new drb[$$3];
-      int $$4 = 0;
-
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.d[$$4] = $$5;
-         this.e[$$4] = $$2.a(jq.a($$5), jq.b($$5), jq.c($$5));
-      }
+   public aef(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btb> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private aef(vx $$0) {
-      this.c = jq.a($$0.readLong());
-      int $$1 = $$0.l();
-      this.d = new short[$$1];
-      this.e = new drb[$$1];
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.m();
-         this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = ddy.q.a((int)($$3 >>> 12));
-      }
+   private aef(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = btb.a($$0.readUnsignedByte());
+      this.h = $$0.l();
    }
 
-   private void a(vx $$0) {
-      $$0.b(this.c.s());
-      $$0.c(this.d.length);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)ddy.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
-      }
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.k(btb.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public zg<aef> a() {
-      return agb.an;
+   public zn<aef> a() {
+      return agj.ai;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<io, drb> $$0) {
-      io.a $$1 = new io.a();
+   public double b() {
+      return this.b;
+   }
 
-      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
-         short $$3 = this.d[$$2];
-         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
-         $$0.accept($$1, this.e[$$2]);
-      }
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<btb> j() {
+      return this.g;
    }
 }

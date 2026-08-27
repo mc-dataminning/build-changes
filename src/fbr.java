@@ -1,167 +1,73 @@
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public class fbr extends gty {
-   private static final akm a = new akm("icon/unseen_notification");
-   private static final akm b = new akm("icon/news");
-   private static final akm c = new akm("icon/invite");
-   private static final akm B = new akm("icon/trial_available");
-   private final CompletableFuture<Boolean> C = ezc.a().thenApply($$0 -> $$0.a() == ezc.b.a);
-   @Nullable
-   private fch.c D;
-   @Nullable
-   private fbr.a E;
-   private volatile int F;
-   private static boolean G;
-   private static boolean H;
-   private static boolean I;
-   private final fbr.a J = new fbr.a() {
-      @Override
-      public fch.c a(fay $$0) {
-         fch.c $$1 = $$0.a.a();
-         fbr.this.a($$0, $$1);
-         fbr.this.b($$0, $$1);
-         return $$1;
+public class fbr {
+   public static List<fct> a(fbr.a... $$0) {
+      for (fbr.a $$1 : $$0) {
+         a($$1.j);
       }
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final fbr.a K = new fbr.a() {
-      @Override
-      public fch.c a(fay $$0) {
-         fch.c $$1 = $$0.a.a();
-         fbr.this.b($$0, $$1);
-         return $$1;
+      List<fct> $$2 = Lists.newArrayList();
+
+      for (fbr.a $$3 : $$0) {
+         $$2.add(new fct($$3.i, a($$3.j)));
       }
 
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public fbr() {
-      super(fdr.a);
+      $$2.sort(Comparator.comparingInt(fct::a));
+      return $$2;
    }
 
-   @Override
-   public void aM_() {
-      if (this.D != null) {
-         this.D.a();
-      }
-   }
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
 
-   @Override
-   public void aF_() {
-      super.aF_();
-      this.m.bc().b.a();
-   }
-
-   @Nullable
-   private fbr.a C() {
-      boolean $$0 = this.E() && this.C.getNow(false);
-      if (!$$0) {
-         return null;
-      } else {
-         return this.D() ? this.J : this.K;
-      }
-   }
-
-   @Override
-   public void e() {
-      fbr.a $$0 = this.C();
-      if (!Objects.equals(this.E, $$0)) {
-         this.E = $$0;
-         if (this.E != null) {
-            this.D = this.E.a(this.m.bc());
-         } else {
-            this.D = null;
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
       }
 
-      if (this.D != null) {
-         this.D.b();
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return ad.b();
+   }
+
+   public static List<fct> a() {
+      return a(fbr.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(String $$0, String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
-   }
-
-   private boolean D() {
-      return this.m.m.T().c();
-   }
-
-   private boolean E() {
-      return this.m.y instanceof fmd;
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.C.getNow(false)) {
-         this.c($$0);
-      }
-   }
-
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void c(ffm $$0) {
-      int $$1 = this.F;
-      int $$2 = 24;
-      int $$3 = this.o / 4 + 48;
-      int $$4 = this.n / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (I) {
-         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
-      }
-
-      if (this.E != null && this.E.a()) {
-         if (H) {
-            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (G) {
-            $$0.a(B, $$6 - 10, $$5 + 4, 8, 8);
-         }
-      }
-   }
-
-   void a(fay $$0, fch.c $$1) {
-      $$1.a($$0.d, $$0x -> this.F = $$0x);
-      $$1.a($$0.e, $$0x -> G = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         H = $$0.g.a();
-      });
-   }
-
-   void b(fay $$0, fch.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         I = false;
-
-         for (ezy $$1x : $$0x) {
-            if (!$$1x.a()) {
-               I = true;
-               break;
-            }
-         }
-      });
-   }
-
-   interface a {
-      fch.c a(fay var1);
-
-      boolean a();
    }
 }

@@ -1,28 +1,34 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class edm extends edi {
-   public static final MapCodec<edm> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, edm::new));
-
-   public edm(boz $$0, boz $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class edm extends eca<efc> {
+   public edm(Codec<efc> $$0) {
+      super($$0);
    }
 
    @Override
-   protected edo<?> a() {
-      return edo.f;
-   }
-
-   @Override
-   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   public boolean a(ecc<efc> $$0) {
+      efc $$1 = $$0.f();
+      dcv $$2 = $$0.b();
+      ir $$3 = $$0.e();
+      dtc $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a(dfe.ho)) {
+         $$4 = dld.a($$4, $$2.a_($$3.d()));
       }
+
+      return $$4.a($$2, $$3) ? a($$4, $$2, $$3) : false;
    }
 
-   @Override
-   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return ayd.k((float)$$1 + 0.5F) + ayd.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public static boolean a(dtc $$0, dcv $$1, ir $$2) {
+      if ($$0.b() instanceof dhl) {
+         if (!$$1.u($$2.c())) {
+            return false;
+         }
+
+         dhl.a($$1, $$0, $$2, 2);
+      } else {
+         $$1.a($$2, $$0, 2);
+      }
+
+      return true;
    }
 }

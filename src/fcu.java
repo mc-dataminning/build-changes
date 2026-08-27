@@ -1,53 +1,20 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
 
-public class fcu extends fcz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wx c = wx.c("mco.configure.world.closing");
-   private final ezz d;
-   private final fbi e;
+public class fcu extends fcy {
+   public String a;
+   public long b;
+   public long c;
 
-   public fcu(ezz $$0, fbi $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   public static fcu a(JsonObject $$0) {
+      fcu $$1 = new fcu();
 
-   @Override
-   public void run() {
-      ezi $$0 = ezi.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.b();
-               this.d.e = ezz.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (faw var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+      try {
+         $$1.a = fev.b("profileUuid", $$0, null);
+         $$1.b = fev.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fev.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
-   }
 
-   @Override
-   public wx a() {
-      return c;
+      return $$1;
    }
 }

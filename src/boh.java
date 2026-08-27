@@ -1,47 +1,13 @@
-import java.util.List;
-import java.util.Optional;
+import java.time.Instant;
 
-public class boh {
-   private boh() {
-   }
+public final class boh {
+   public final Instant a;
+   public final int b;
+   public final bmn c;
 
-   public static int a(List<? extends bog> $$0) {
-      long $$1 = 0L;
-
-      for (bog $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
-      }
-
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
-   }
-
-   public static <T extends bog> Optional<T> a(ayk $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
-   }
-
-   public static <T extends bog> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public static <T extends bog> Optional<T> a(ayk $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   public boh(Instant $$0, int $$1, bmn $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

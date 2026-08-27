@@ -1,20 +1,75 @@
-import com.mojang.serialization.MapCodec;
+public abstract class ddg {
+   public static final aks<dcz> a = a("the_void");
+   public static final aks<dcz> b = a("plains");
+   public static final aks<dcz> c = a("sunflower_plains");
+   public static final aks<dcz> d = a("fields");
+   public static final aks<dcz> e = a("hash");
+   public static final aks<dcz> f = a("arboretum");
+   public static final aks<dcz> g = a("wasteland");
+   public static final aks<dcz> h = a("corruption");
+   public static final aks<dcz> i = a("snowy_plains");
+   public static final aks<dcz> j = a("ice_spikes");
+   public static final aks<dcz> k = a("desert");
+   public static final aks<dcz> l = a("swamp");
+   public static final aks<dcz> m = a("mangrove_swamp");
+   public static final aks<dcz> n = a("forest");
+   public static final aks<dcz> o = a("flower_forest");
+   public static final aks<dcz> p = a("birch_forest");
+   public static final aks<dcz> q = a("dark_forest");
+   public static final aks<dcz> r = a("old_growth_birch_forest");
+   public static final aks<dcz> s = a("old_growth_pine_taiga");
+   public static final aks<dcz> t = a("old_growth_spruce_taiga");
+   public static final aks<dcz> u = a("taiga");
+   public static final aks<dcz> v = a("snowy_taiga");
+   public static final aks<dcz> w = a("savanna");
+   public static final aks<dcz> x = a("savanna_plateau");
+   public static final aks<dcz> y = a("windswept_hills");
+   public static final aks<dcz> z = a("windswept_gravelly_hills");
+   public static final aks<dcz> A = a("windswept_forest");
+   public static final aks<dcz> B = a("windswept_savanna");
+   public static final aks<dcz> C = a("jungle");
+   public static final aks<dcz> D = a("sparse_jungle");
+   public static final aks<dcz> E = a("bamboo_jungle");
+   public static final aks<dcz> F = a("badlands");
+   public static final aks<dcz> G = a("eroded_badlands");
+   public static final aks<dcz> H = a("wooded_badlands");
+   public static final aks<dcz> I = a("meadow");
+   public static final aks<dcz> J = a("cherry_grove");
+   public static final aks<dcz> K = a("grove");
+   public static final aks<dcz> L = a("snowy_slopes");
+   public static final aks<dcz> M = a("frozen_peaks");
+   public static final aks<dcz> N = a("jagged_peaks");
+   public static final aks<dcz> O = a("stony_peaks");
+   public static final aks<dcz> P = a("river");
+   public static final aks<dcz> Q = a("frozen_river");
+   public static final aks<dcz> R = a("beach");
+   public static final aks<dcz> S = a("snowy_beach");
+   public static final aks<dcz> T = a("stony_shore");
+   public static final aks<dcz> U = a("warm_ocean");
+   public static final aks<dcz> V = a("lukewarm_ocean");
+   public static final aks<dcz> W = a("deep_lukewarm_ocean");
+   public static final aks<dcz> X = a("ocean");
+   public static final aks<dcz> Y = a("deep_ocean");
+   public static final aks<dcz> Z = a("cold_ocean");
+   public static final aks<dcz> aa = a("deep_cold_ocean");
+   public static final aks<dcz> ab = a("frozen_ocean");
+   public static final aks<dcz> ac = a("deep_frozen_ocean");
+   public static final aks<dcz> ad = a("mushroom_fields");
+   public static final aks<dcz> ae = a("dripstone_caves");
+   public static final aks<dcz> af = a("lush_caves");
+   public static final aks<dcz> ag = a("deep_dark");
+   public static final aks<dcz> ah = a("nether_wastes");
+   public static final aks<dcz> ai = a("warped_forest");
+   public static final aks<dcz> aj = a("crimson_forest");
+   public static final aks<dcz> ak = a("soul_sand_valley");
+   public static final aks<dcz> al = a("basalt_deltas");
+   public static final aks<dcz> am = a("the_end");
+   public static final aks<dcz> an = a("end_highlands");
+   public static final aks<dcz> ao = a("end_midlands");
+   public static final aks<dcz> ap = a("small_end_islands");
+   public static final aks<dcz> aq = a("end_barrens");
 
-public class ddg extends ddi {
-   public static final MapCodec<ddg> a = b(ddg::new);
-   private static final evd b = ddy.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   @Override
-   public MapCodec<? extends ddg> a() {
-      return a;
-   }
-
-   protected ddg(dra.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b;
+   private static aks<dcz> a(String $$0) {
+      return aks.a(li.az, new akt($$0));
    }
 }

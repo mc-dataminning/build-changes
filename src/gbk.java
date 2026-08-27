@@ -1,21 +1,17 @@
-public class gbk {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
-
-   public void a(boolean $$0, float $$1) {
+public class gbk extends gbm {
+   protected gbk(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdp $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   public euj a() {
-      return new euj(this.a, this.b);
-   }
+   public static class a implements gcx<le> {
+      private final gdp a;
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+      public a(gdp $$0) {
+         this.a = $$0;
+      }
+
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbk($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+      }
    }
 }

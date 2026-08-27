@@ -1,28 +1,23 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.UUID;
 
-public record aec(String b, @Nullable String c) implements ze<abq> {
-   public static final yv<vx, aec> a = ze.a(aec::a, aec::new);
+public record aec(List<UUID> b) implements zl<abw> {
+   public static final zc<we, aec> a = zl.a(aec::a, aec::new);
 
-   private aec(vx $$0) {
-      this($$0.p(), $$0.c(vx::p));
+   private aec(we $$0) {
+      this($$0.a(ju.g));
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vx::a);
+   private void a(we $$0) {
+      $$0.a(this.b, ju.g);
    }
 
    @Override
-   public zg<aec> a() {
-      return agb.cd;
+   public zn<aec> a() {
+      return agj.af;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public String e() {
-      return this.c;
    }
 }

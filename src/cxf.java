@@ -1,90 +1,133 @@
-public class cxf extends cxm {
-   public cxf(cxk $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public final class cxf {
+   public static final cxf a = new cxf(new uk());
+   public static final Codec<cxf> b = uk.a.xmap(cxf::new, $$0 -> $$0.e);
+   public static final Codec<cxf> c = axu.b(
+      b, (Function<cxf, DataResult<cxf>>)($$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0))
+   );
+   @Deprecated
+   public static final zc<ByteBuf, cxf> d = za.o.a(cxf::new, $$0 -> $$0.e);
+   private final uk e;
+
+   private cxf(uk $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(cpj $$0, dax $$1) {
-      csh $$2 = null;
-      cto $$3 = null;
-      cto $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cto $$6 = $$0.a($$5);
-         if (!$$6.e()) {
-            ctj $$7 = $$6.g();
-            if (!($$7 instanceof crj)) {
-               return false;
-            }
-
-            crj $$8 = (crj)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(kb.W, dnx.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   public static cxf a(uk $$0) {
+      return new cxf($$0.h());
    }
 
-   public cto a(cpj $$0, iz.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-         cto $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            int $$4 = $$3.a(kb.W, dnx.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cto.i;
+   public static Predicate<cuh> a(kd<cxf> $$0, uk $$1) {
+      return $$2 -> {
+         cxf $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
    }
 
-   public jg<cto> a(cpj $$0) {
-      jg<cto> $$1 = jg.a($$0.b(), cto.i);
+   public boolean b(uk $$0) {
+      return uz.a($$0, this.e, true);
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cto $$3 = $$0.a($$2);
-         if (!$$3.e()) {
-            if ($$3.g().u()) {
-               $$1.set($$2, new cto($$3.g().t()));
-            } else if (!$$3.a(kb.W, dnx.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
+   public static void a(kd<cxf> $$0, cuh $$1, Consumer<uk> $$2) {
+      cxf $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.e.g()) {
+         $$1.c($$0);
+      } else {
+         $$1.b($$0, $$3);
       }
+   }
 
-      return $$1;
+   public static void a(kd<cxf> $$0, cuh $$1, uk $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.c($$0);
+      }
+   }
+
+   public cxf a(Consumer<uk> $$0) {
+      uk $$1 = this.e.h();
+      $$0.accept($$1);
+      return new cxf($$1);
+   }
+
+   public void a(brv $$0) {
+      uk $$1 = $$0.f(new uk());
+      UUID $$2 = $$0.cE();
+      $$1.a(this.e);
+      $$0.g($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(dqc $$0, jc.a $$1) {
+      uk $$2 = $$0.d($$1);
+      uk $$3 = $$2.h();
+      $$2.a(this.e);
+      if (!$$2.equals($$3)) {
+         $$0.a($$2, $$1);
+         $$0.e();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public <T> DataResult<cxf> a(MapEncoder<T> $$0, T $$1) {
+      return $$0.encode($$1, uy.a, uy.a.mapBuilder()).build(this.e).map($$0x -> new cxf((uk)$$0x));
+   }
+
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      MapLike<vh> $$1 = ad.a(uy.a.e(this.e), IllegalStateException::new);
+      return $$0.decode(uy.a, $$1);
+   }
+
+   public int a() {
+      return this.e.f();
+   }
+
+   public boolean b() {
+      return this.e.g();
+   }
+
+   public uk c() {
+      return this.e.h();
+   }
+
+   public boolean a(String $$0) {
+      return this.e.e($$0);
    }
 
    @Override
-   public cxy<?> ao_() {
-      return cxy.k;
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof cxf $$1 ? this.e.equals($$1.e) : false;
+      }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public int hashCode() {
+      return this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.e.toString();
+   }
+
+   @Deprecated
+   public uk d() {
+      return this.e;
    }
 }

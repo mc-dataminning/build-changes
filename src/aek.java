@@ -1,45 +1,36 @@
-public class aek implements ze<abq> {
-   public static final yv<vx, aek> a = ze.a(aek::a, aek::new);
-   private final double b;
-   private final double c;
-   private final long d;
+public record aek(agg e, byte f) implements zl<abw> {
+   public static final zc<wp, aek> a = zl.a(aek::a, aek::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aek(dss $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   private aek(wp $$0) {
+      this(new agg($$0), $$0.readByte());
    }
 
-   private aek(vx $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(wp $$0) {
+      this.e.a($$0);
+      $$0.k(this.f);
    }
 
    @Override
-   public zg<aek> a() {
-      return agb.as;
+   public zn<aek> a() {
+      return agj.am;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public double e() {
-      return this.c;
+   public agg b() {
+      return this.e;
    }
 
-   public long f() {
-      return this.d;
+   public byte e() {
+      return this.f;
    }
 }

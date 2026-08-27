@@ -1,29 +1,61 @@
-public class ads implements ze<abq> {
-   public static final yv<vx, ads> a = ze.a(ads::a, ads::new);
-   private final int b;
+public class ads implements zl<abw> {
+   public static final zc<we, ads> a = zl.a(ads::a, ads::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public ads(bqk $$0) {
-      this($$0.b());
+   public ads(brv $$0) {
+      this.b = $$0.dz();
+      this.c = $$0.dB();
+      this.d = $$0.dF();
+      this.e = $$0.dK();
+      this.f = $$0.dM();
    }
 
-   public ads(int $$0) {
-      this.b = $$0;
+   private ads(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private ads(vx $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zg<ads> a() {
-      return agb.ab;
+   public zn<ads> a() {
+      return agj.V;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
+   }
+
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

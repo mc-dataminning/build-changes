@@ -1,37 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class ba extends df<ba.a> {
+public class ba extends dh<ba.a> {
    @Override
    public Codec<ba.a> a() {
       return ba.a.a;
    }
 
-   public void a(aqn $$0, int $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aqu $$0, Collection<? extends brv> $$1) {
+      List<erp> $$2 = $$1.stream().map($$1x -> bs.b($$0, $$1x)).collect(Collectors.toList());
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bc> b, ct.d c) implements df.a {
+   public static record a(Optional<bd> b, List<bd> c) implements dh.a {
       public static final Codec<ba.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(ba.a::a), ct.d.d.optionalFieldOf("level", ct.d.c).forGetter(ba.a::c)).apply($$0, ba.a::new)
+         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(ba.a::a), axu.a(bs.b.listOf(), "victims", List.of()).forGetter(ba.a::b)).apply($$0, ba.a::new)
       );
 
-      public static an<ba.a> b() {
-         return am.m.a(new ba.a(Optional.empty(), ct.d.c));
+      public static ao<ba.a> a(bs.a... $$0) {
+         return an.F.a(new ba.a(Optional.empty(), bs.a($$0)));
       }
 
-      public static an<ba.a> a(ct.d $$0) {
-         return am.m.a(new ba.a(Optional.empty(), $$0));
-      }
+      public boolean a(Collection<? extends erp> $$0) {
+         for (bd $$1 : this.c) {
+            boolean $$2 = false;
 
-      public boolean a(int $$0) {
-         return this.c.d($$0);
+            for (erp $$3 : $$0) {
+               if ($$1.a($$3)) {
+                  $$2 = true;
+                  break;
+               }
+            }
+
+            if (!$$2) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
       @Override
-      public Optional<bc> a() {
+      public void a(be $$0) {
+         dh.a.super.a($$0);
+         $$0.a(this.c, ".victims");
+      }
+
+      @Override
+      public Optional<bd> a() {
          return this.b;
+      }
+
+      public List<bd> b() {
+         return this.c;
       }
    }
 }

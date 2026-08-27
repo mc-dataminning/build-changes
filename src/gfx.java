@@ -1,151 +1,108 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class gfx implements gfw.a {
-   private final fdz a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gfx.a> d = Lists.newArrayList();
-   private final List<gfx.b> e = Lists.newArrayList();
+public class gfx {
+   protected final gfe a;
+   protected final dca b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public gig.b[] f;
 
-   public gfx(fdz $$0) {
-      this.a = $$0;
+   public gfx(gig $$0, dca $$1, int $$2, gfe $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
    }
 
-   @Override
-   public void a(eys $$0, gck $$1, double $$2, double $$3, double $$4) {
-      dax $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   protected void a(gig $$0) {
+      if (!fgj.Q().bv()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
       } else {
-         euk $$6 = new euk($$2, 0.0, $$4);
-         this.d.removeIf(gfx.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         eyw $$7 = $$1.getBuffer(gcs.y());
+         int $$1 = this.d * this.c * this.e;
+         this.f = new gig.b[$$1];
 
-         for (gfx.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gci.a($$0, $$7, eva.a(new euf($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         eyw $$9 = $$1.getBuffer(gcs.A());
-
-         for (gfx.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gci.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (gfx.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gfw.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gfw.a($$0, $$1, io.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (gfx.a $$12 : this.d) {
-            euk $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new euf($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gfw.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.J_() + $$3 * 16, $$4 * 16);
+               }
+            }
          }
       }
    }
 
-   private static void a(eys $$0, gck $$1, euf $$2, float $$3, float $$4, float $$5, float $$6) {
-      fdk $$7 = fdz.Q().j.m();
-      if ($$7.h()) {
-         euk $$8 = $$7.b().e();
-         gfw.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+   public void a() {
+      for (gig.b $$0 : this.f) {
+         $$0.e();
       }
    }
 
-   public void a(akl<dvu> $$0, euk $$1) {
-      this.d.add(new gfx.a(ac.c(), $$0, $$1));
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
    }
 
-   public void a(dvy $$0, int $$1) {
-      this.e.add(new gfx.b($$0, $$1));
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.an();
+      this.e = $$1;
+      this.g = $$0;
    }
 
-   static record a(long a, akl<dvu> b, euk c) {
+   public int b() {
+      return this.g;
+   }
 
-      public boolean a() {
-         return ac.c() - this.a > 3000L;
-      }
+   public dcc c() {
+      return this.b;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public void a(double $$0, double $$1) {
+      int $$2 = aym.c($$0);
+      int $$3 = aym.c($$1);
 
-      public akl<dvu> c() {
-         return this.b;
-      }
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
 
-      public euk d() {
-         return this.c;
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.J_() + $$12 * 16;
+               gig.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               ir $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
       }
    }
 
-   static class b implements dvw {
-      public final dvy a;
-      public final int b;
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      gig.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
 
-      public b(dvy $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public boolean a(dax $$0, euk $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<euk> a(dax $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public dvy a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(aqm $$0, ix<dvu> $$1, dvu.a $$2, euk $$3) {
-         return false;
+   @Nullable
+   protected gig.b a(ir $$0) {
+      int $$1 = aym.a($$0.v() - this.b.J_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = aym.b(aym.a($$0.u(), 16), this.d);
+         int $$3 = aym.b(aym.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
       }
    }
 }

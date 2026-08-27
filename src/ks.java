@@ -1,32 +1,41 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
 
-public class ks extends kt {
-   public static final Vector3f a = euk.a(16711680).j();
-   public static final ks b = new ks(a, 1.0F);
-   public static final MapCodec<ks> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axm.c.fieldOf("color").forGetter($$0x -> $$0x.h), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.i)).apply($$0, ks::new)
-   );
-   public static final yv<wi, ks> d = yv.a(yt.q, $$0 -> $$0.h, yt.h, $$0 -> $$0.i, ks::new);
-   public static final kw.a<ks> e = new kw.a<ks>() {
-      public ks a(kx<ks> $$0, StringReader $$1, iz.a $$2) throws CommandSyntaxException {
-         Vector3f $$3 = kt.a($$1);
+public class ks implements kz {
+   public static final kz.a<ks> a = new kz.a<ks>() {
+      public ks a(la<ks> $$0, StringReader $$1, jc.a $$2) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$4 = $$1.readFloat();
-         return new ks($$3, $$4);
+         return new ks($$0, gb.a(lh.e.p(), $$1, false).a());
       }
    };
+   private final la<ks> b;
+   private final dtc c;
 
-   public ks(Vector3f $$0, float $$1) {
-      super($$0, $$1);
+   public static Codec<ks> a(la<ks> $$0) {
+      return dtc.b.xmap($$1 -> new ks($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public static zc<? super wp, ks> b(la<ks> $$0) {
+      return za.a(dfc.q).a($$1 -> new ks($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public ks(la<ks> $$0, dtc $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public kx<ks> a() {
-      return ky.n;
+   public String a(jc.a $$0) {
+      return lh.j.b(this.a()) + " " + gb.a(this.c);
+   }
+
+   @Override
+   public la<ks> a() {
+      return this.b;
+   }
+
+   public dtc b() {
+      return this.c;
    }
 }

@@ -1,17 +1,20 @@
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class exj {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+public class exj extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   public exj(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
+   public exj(DoubleList $$0, double $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   }
+
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
+   }
+
+   public int size() {
+      return this.a.size();
    }
 }

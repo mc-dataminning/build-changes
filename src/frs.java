@@ -1,98 +1,50 @@
-public class frs extends ftf<cfk> implements frv {
-   private final fvw a;
-   private final fvw b;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private final fvw j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+public class frs extends fon {
+   private static final int a = 600;
+   private final wc b;
+   private fin c;
+   private int d;
+   private final fme r = fme.d();
 
-   public frs(fvw $$0) {
-      super(gcs::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+   public frs(xe $$0, wc $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public fvw a() {
-      return this.a;
+   public boolean aD_() {
+      return false;
    }
 
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a("root", fwb.c(), fvy.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", fwb.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fwa(0.0F)), fvy.a(0.0F, -3.99F, 0.0F));
-      fwf $$3 = $$2.a(
-         "body",
-         fwb.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fwa(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fwa(-0.2F)),
-         fvy.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", fwb.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fwa(-0.01F)), fvy.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", fwb.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fwa(-0.01F)), fvy.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", fwb.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fwa(0.0F)), fvy.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", fwb.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fwa(0.0F)), fvy.a(0.5F, 0.0F, 0.6F));
-      return fwc.a($$0, 32, 32);
+   @Override
+   protected void aN_() {
+      this.r.c().b().a(10);
+      this.r.a(new fju(this.l, this.p));
+      this.c = this.r.a(fin.a(xd.p, $$0 -> this.b.a(fnf.a)).a());
+      this.c.j = false;
+      this.r.a();
+      this.r.a($$1 -> {
+         fil var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public void a(cfk $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fvw::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = ayd.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ai;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.G($$8);
-      if ($$0.gp()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = ayd.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.H($$8);
-         float $$16 = ayd.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = ayd.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.gq() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
+   @Override
+   protected void c() {
+      fly.a(this.r, this.G());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
       }
 
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * ayd.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - ayd.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
-   }
-
-   @Override
-   public void a(bsi $$0, eys $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

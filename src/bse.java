@@ -1,7 +1,8 @@
 import java.util.List;
 import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class bse extends bru {
+public class bse extends brv {
    private static final int b = 6000;
    private static final int c = 20;
    private static final int d = 8;
@@ -11,80 +12,81 @@ public class bse extends bru {
    private int h = 5;
    private int i;
    private int j = 1;
-   private clw k;
+   @Nullable
+   private bse.c k;
 
-   public bse(dax $$0, double $$1, double $$2, double $$3, int $$4) {
-      this(bsa.M, $$0);
+   public bse(dca $$0, double $$1, double $$2, double $$3, int $$4) {
+      this(bsb.O, $$0);
       this.a_($$1, $$2, $$3);
-      this.r((float)(this.ah.j() * 360.0));
-      this.o((this.ah.j() * 0.2F - 0.1F) * 2.0, this.ah.j() * 0.2 * 2.0, (this.ah.j() * 0.2F - 0.1F) * 2.0);
+      this.r((float)(this.al.j() * 360.0));
+      this.o((this.al.j() * 0.2F - 0.1F) * 2.0, this.al.j() * 0.2 * 2.0, (this.al.j() * 0.2F - 0.1F) * 2.0);
       this.i = $$4;
    }
 
-   public bse(bsa<? extends bse> $$0, dax $$1) {
+   public bse(bsb<? extends bse> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected bru.b bb() {
-      return bru.b.a;
+   protected brv.c bf() {
+      return brv.c.a;
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
    }
 
    @Override
-   protected double aY() {
+   protected double bc() {
       return 0.03;
    }
 
    @Override
    public void l() {
       super.l();
-      this.L = this.du();
-      this.M = this.dw();
-      this.N = this.dA();
-      if (this.a(awb.a)) {
-         this.v();
+      this.M = this.dz();
+      this.N = this.dB();
+      this.O = this.dF();
+      if (this.a(awj.a)) {
+         this.w();
       } else {
-         this.ba();
+         this.be();
       }
 
-      if (this.dP().b_(this.dp()).a(awb.b)) {
-         this.o((double)((this.ah.i() - this.ah.i()) * 0.2F), 0.2F, (double)((this.ah.i() - this.ah.i()) * 0.2F));
+      if (this.dU().b_(this.du()).a(awj.b)) {
+         this.o((double)((this.al.i() - this.al.i()) * 0.2F), 0.2F, (double)((this.al.i() - this.al.i()) * 0.2F));
       }
 
-      if (!this.dP().b(this.cK())) {
-         this.m(this.du(), (this.cK().b + this.cK().e) / 2.0, this.dA());
+      if (!this.dU().b(this.cP())) {
+         this.m(this.dz(), (this.cP().b + this.cP().e) / 2.0, this.dF());
       }
 
-      if (this.ai % 20 == 1) {
+      if (this.am % 20 == 1) {
          this.u();
       }
 
-      if (this.k != null && (this.k.N_() || this.k.eB())) {
-         this.k = null;
-      }
-
       if (this.k != null) {
-         euk $$0 = new euk(this.k.du() - this.du(), this.k.dw() + (double)this.k.cL() / 2.0 - this.dw(), this.k.dA() - this.dA());
-         double $$1 = $$0.g();
-         if ($$1 < 64.0) {
-            double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
-            this.g(this.ds().e($$0.d().a($$2 * $$2 * 0.1)));
+         if (this.k.b()) {
+            ewu $$0 = this.k.a().a(this.dz(), this.dB(), this.dF());
+            double $$1 = $$0.g();
+            if ($$1 < 64.0) {
+               double $$2 = 1.0 - Math.sqrt($$1) / 8.0;
+               this.g(this.dx().e($$0.d().a($$2 * $$2 * 0.1)));
+            }
+         } else {
+            this.k = null;
          }
       }
 
-      this.a(bst.a, this.ds());
+      this.a(bst.a, this.dx());
       float $$3 = 0.98F;
       if (this.aE()) {
-         $$3 = this.dP().a_(this.aK()).b().h() * 0.98F;
+         $$3 = this.dU().a_(this.aN()).b().h() * 0.98F;
       }
 
-      this.g(this.ds().d((double)$$3, 0.98, (double)$$3));
+      this.g(this.dx().d((double)$$3, 0.98, (double)$$3));
       if (this.aE()) {
-         this.g(this.ds().d(1.0, -0.9, 1.0));
+         this.g(this.dx().d(1.0, -0.9, 1.0));
       }
 
       this.g++;
@@ -94,23 +96,26 @@ public class bse extends bru {
    }
 
    @Override
-   protected io aK() {
+   protected ir aN() {
       return this.d(0.999999F);
    }
 
    private void u() {
-      if (this.k == null || this.k.g(this) > 64.0) {
-         this.k = this.dP().a(this, 8.0);
+      if (this.k == null || this.k.a().c(this.dz(), this.dB(), this.dF()) > 64.0) {
+         cly $$0 = this.dU().a(this, 8.0);
+         if ($$0 != null) {
+            this.k = new bse.b($$0);
+         }
       }
 
-      if (this.dP() instanceof aqm) {
-         for (bse $$1 : this.dP().a(dvi.a(bse.class), this.cK().g(0.5), this::a)) {
-            this.b($$1);
+      if (this.dU() instanceof aqt) {
+         for (bse $$2 : this.dU().a(dxj.a(bse.class), this.cP().g(0.5), this::a)) {
+            this.b($$2);
          }
       }
    }
 
-   public static void a(aqm $$0, euk $$1, int $$2) {
+   public static void a(aqt $$0, ewu $$1, int $$2) {
       while ($$2 > 0) {
          int $$3 = b($$2);
          $$2 -= $$3;
@@ -120,10 +125,10 @@ public class bse extends bru {
       }
    }
 
-   private static boolean b(aqm $$0, euk $$1, int $$2) {
-      euf $$3 = euf.a($$1, 1.0, 1.0, 1.0);
-      int $$4 = $$0.E_().a(40);
-      List<bse> $$5 = $$0.a(dvi.a(bse.class), $$3, $$2x -> a($$2x, $$4, $$2));
+   private static boolean b(aqt $$0, ewu $$1, int $$2) {
+      ewp $$3 = ewp.a($$1, 1.0, 1.0, 1.0);
+      int $$4 = $$0.F_().a(40);
+      List<bse> $$5 = $$0.a(dxj.a(bse.class), $$3, $$2x -> a($$2x, $$4, $$2));
       if (!$$5.isEmpty()) {
          bse $$6 = $$5.get(0);
          $$6.j++;
@@ -139,7 +144,7 @@ public class bse extends bru {
    }
 
    private static boolean a(bse $$0, int $$1, int $$2) {
-      return !$$0.dK() && ($$0.al() - $$1) % 40 == 0 && $$0.i == $$2;
+      return !$$0.dP() && ($$0.al() - $$1) % 40 == 0 && $$0.i == $$2;
    }
 
    private void b(bse $$0) {
@@ -148,23 +153,23 @@ public class bse extends bru {
       $$0.ao();
    }
 
-   private void v() {
-      euk $$0 = this.ds();
+   private void w() {
+      ewu $$0 = this.dx();
       this.o($$0.c * 0.99F, Math.min($$0.d + 5.0E-4F, 0.06F), $$0.e * 0.99F);
    }
 
    @Override
-   protected void bn() {
+   protected void br() {
    }
 
    @Override
-   public boolean a(bqn $$0, float $$1) {
+   public boolean a(bqt $$0, float $$1) {
       if (this.b($$0)) {
          return false;
-      } else if (this.dP().B) {
+      } else if (this.dU().C) {
          return true;
       } else {
-         this.bv();
+         this.bA();
          this.h = (int)((float)this.h - $$1);
          if (this.h <= 0) {
             this.ao();
@@ -175,7 +180,7 @@ public class bse extends bru {
    }
 
    @Override
-   public void b(ud $$0) {
+   public void b(uk $$0) {
       $$0.a("Health", (short)this.h);
       $$0.a("Age", (short)this.g);
       $$0.a("Value", (short)this.i);
@@ -183,7 +188,7 @@ public class bse extends bru {
    }
 
    @Override
-   public void a(ud $$0) {
+   public void a(uk $$0) {
       this.h = $$0.g("Health");
       this.g = $$0.g("Age");
       this.i = $$0.g("Value");
@@ -191,10 +196,10 @@ public class bse extends bru {
    }
 
    @Override
-   public void b_(clw $$0) {
-      if (!this.dP().B) {
-         if ($$0.ch == 0) {
-            $$0.ch = 2;
+   public void b_(cly $$0) {
+      if (!this.dU().C) {
+         if ($$0.cv == 0) {
+            $$0.cv = 2;
             $$0.a(this, 1);
             int $$1 = this.a($$0, this.i);
             if ($$1 > 0) {
@@ -209,12 +214,12 @@ public class bse extends bru {
       }
    }
 
-   private int a(clw $$0, int $$1) {
-      Entry<bsb, cto> $$2 = cza.a(czc.O, $$0, cto::m);
+   private int a(cly $$0, int $$1) {
+      Entry<bsc, cuh> $$2 = dae.a(dag.M, $$0, cuh::l);
       if ($$2 != null) {
-         cto $$3 = $$2.getValue();
-         int $$4 = Math.min(this.d($$1), $$3.n());
-         $$3.b($$3.n() - $$4);
+         cuh $$3 = $$2.getValue();
+         int $$4 = Math.min(this.d($$1), $$3.m());
+         $$3.b($$3.m() - $$4);
          int $$5 = $$1 - this.c($$4);
          return $$5 > 0 ? this.a($$0, $$5) : 0;
       } else {
@@ -234,7 +239,11 @@ public class bse extends bru {
       return this.i;
    }
 
-   public int s() {
+   public int r() {
+      return this.i * this.j;
+   }
+
+   public int t() {
       if (this.i >= 2477) {
          return 10;
       } else if (this.i >= 1237) {
@@ -283,17 +292,66 @@ public class bse extends bru {
    }
 
    @Override
-   public boolean ct() {
+   public boolean cy() {
       return false;
    }
 
    @Override
-   public ze<abq> dl() {
-      return new abs(this);
+   public zl<abw> dq() {
+      return new aby(this);
+   }
+
+   public void a(ir $$0) {
+      bse.a $$1 = new bse.a($$0);
+      if (this.k == null || this.k.a().f(this.ds()) > $$1.a().f(this.ds())) {
+         this.k = $$1;
+      }
    }
 
    @Override
-   public avi de() {
-      return avi.i;
+   public avq dj() {
+      return avq.i;
+   }
+
+   static class a implements bse.c {
+      private final ir a;
+
+      a(ir $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public ewu a() {
+         return ewu.b(this.a);
+      }
+
+      @Override
+      public boolean b() {
+         return true;
+      }
+   }
+
+   static class b implements bse.c {
+      private final cly a;
+
+      b(cly $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public ewu a() {
+         return new ewu(this.a.dz(), this.a.dB() + (double)this.a.cQ() / 2.0, this.a.dF());
+      }
+
+      @Override
+      public boolean b() {
+         return !this.a.O_() && !this.a.eJ();
+      }
+   }
+
+   interface c {
+      ewu a();
+
+      boolean b();
    }
 }

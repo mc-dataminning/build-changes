@@ -5,35 +5,34 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fq implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "123");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wx.b("team.notFound", $$0));
+public class fq implements ArgumentType<crf> {
+   private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("slot.unknown", $$0));
 
    public static fq a() {
       return new fq();
    }
 
-   public static evj a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      evo $$3 = ((ee)$$0.getSource()).l().aK();
-      evj $$4 = $$3.b($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
+   public static crf a(CommandContext<eh> $$0, String $$1) {
+      return (crf)$$0.getArgument($$1, crf.class);
+   }
+
+   public crf a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = el.a($$0, $$0x -> $$0x != ' ');
+      crf $$2 = crg.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
       } else {
-         return $$4;
+         return $$2;
       }
    }
 
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
-   }
-
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ej ? ej.b(((ej)$$0.getSource()).r(), $$1) : Suggestions.empty();
+      return em.b(crg.a(), $$1);
    }
 
    public Collection<String> getExamples() {

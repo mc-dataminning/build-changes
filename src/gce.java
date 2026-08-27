@@ -1,168 +1,304 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gce extends aub<gce.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akm b = new akm("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+public class gce {
+   public static class a implements gcx<le> {
+      private final gdp a;
 
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return this.a() && !this.e;
-   }
-
-   public void d() {
-      this.d = true;
-   }
-
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gce.a a(atw $$0, bmi $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
-      }
-
-      $$1.b();
-      return new gce.a($$2, $$3, $$4);
-   }
-
-   protected void a(gce.a $$0, atw $$1, bmi $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(atw $$0, bmi $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
-
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
-      }
-
-      $$1.c();
-      return $$2;
-   }
-
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
-
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+      public a(gdp $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gce.b $$8 = new gce.b($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
 
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
+   public static class b extends gdu {
+      b(fzn $$0, double $$1, double $$2, double $$3) {
+         super($$0, $$1, $$2, $$3);
+         this.t = 4;
+      }
 
-            while ($$4.find()) {
-               $$2.add($$4.group());
+      @Override
+      public gcy b() {
+         return gcy.c;
+      }
+
+      @Override
+      public void a(fbg $$0, ffu $$1, float $$2) {
+         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
+         super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public float b(float $$0) {
+         return 7.1F * aym.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
+      }
+   }
+
+   static class c extends gdg {
+      private boolean b;
+      private boolean F;
+      private final gcw G;
+      private float H;
+      private float I;
+      private float J;
+      private boolean K;
+
+      c(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcw $$7, gdp $$8) {
+         super($$0, $$1, $$2, $$3, $$8, 0.1F);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.G = $$7;
+         this.D *= 0.75F;
+         this.t = 48 + this.r.a(12);
+         this.b($$8);
+      }
+
+      public void a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      public void b(boolean $$0) {
+         this.F = $$0;
+      }
+
+      @Override
+      public void a(fbg $$0, ffu $$1, float $$2) {
+         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
+            super.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
+            gce.c $$0 = new gce.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
+            $$0.e(0.99F);
+            $$0.a(this.v, this.w, this.x);
+            $$0.s = $$0.t / 2;
+            if (this.K) {
+               $$0.K = true;
+               $$0.H = this.H;
+               $$0.I = this.I;
+               $$0.J = this.J;
+            }
+
+            $$0.F = this.F;
+            this.G.a($$0);
+         }
+      }
+   }
+
+   public static class d implements gcx<le> {
+      private final gdp a;
+
+      public d(gdp $$0) {
+         this.a = $$0;
+      }
+
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gce.c $$8 = new gce.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, fgj.Q().g, this.a);
+         $$8.e(0.99F);
+         return $$8;
+      }
+   }
+
+   public static class e extends gcs {
+      private static final double[][] a = new double[][]{
+         {0.0, 0.2}, {0.2, 0.2}, {0.2, 0.6}, {0.6, 0.6}, {0.6, 0.2}, {0.2, 0.2}, {0.2, 0.0}, {0.4, 0.0}, {0.4, -0.6}, {0.2, -0.6}, {0.2, -0.4}, {0.0, -0.4}
+      };
+      private static final double[][] b = new double[][]{
+         {0.0, 1.0},
+         {0.3455, 0.309},
+         {0.9511, 0.309},
+         {0.3795918367346939, -0.12653061224489795},
+         {0.6122448979591837, -0.8040816326530612},
+         {0.0, -0.35918367346938773}
+      };
+      private int D;
+      private final gcw E;
+      private final List<cxj> F;
+      private boolean G;
+
+      public e(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcw $$7, List<cxj> $$8) {
+         super($$0, $$1, $$2, $$3);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.E = $$7;
+         if ($$8.isEmpty()) {
+            throw new IllegalArgumentException("Cannot create firework starter with no explosions");
+         } else {
+            this.F = $$8;
+            this.t = $$8.size() * 2 - 1;
+
+            for (cxj $$9 : $$8) {
+               if ($$9.e()) {
+                  this.G = true;
+                  this.t += 15;
+                  break;
+               }
             }
          }
-
-         return String.join(", ", $$2);
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, exl.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
+      @Override
+      public void a() {
+         if (this.D == 0) {
+            boolean $$0 = this.c();
+            boolean $$1 = false;
+            if (this.F.size() >= 3) {
+               $$1 = true;
+            } else {
+               for (cxj $$2 : this.F) {
+                  if ($$2.a() == cxj.a.b) {
+                     $$1 = true;
+                     break;
+                  }
+               }
+            }
+
+            avn $$3;
+            if ($$1) {
+               $$3 = $$0 ? avo.jb : avo.ja;
+            } else {
+               $$3 = $$0 ? avo.iZ : avo.iY;
+            }
+
+            this.c.a(this.g, this.h, this.i, $$3, avq.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
          }
 
-         String $$2 = a(this.b, exl.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
+         if (this.D % 2 == 0 && this.D / 2 < this.F.size()) {
+            int $$5 = this.D / 2;
+            cxj $$6 = this.F.get($$5);
+            boolean $$7 = $$6.d();
+            boolean $$8 = $$6.e();
+            IntList $$9 = $$6.b();
+            IntList $$10 = $$6.c();
+            if ($$9.isEmpty()) {
+               $$9 = IntList.of(csy.p.f());
+            }
+
+            switch ($$6.a()) {
+               case a:
+                  this.a(0.25, 2, $$9, $$10, $$7, $$8);
+                  break;
+               case b:
+                  this.a(0.5, 4, $$9, $$10, $$7, $$8);
+                  break;
+               case c:
+                  this.a(0.5, b, $$9, $$10, $$7, $$8, false);
+                  break;
+               case d:
+                  this.a(0.5, a, $$9, $$10, $$7, $$8, true);
+                  break;
+               case e:
+                  this.a($$9, $$10, $$7, $$8);
+            }
+
+            int $$11 = $$9.getInt(0);
+            gcu $$12 = this.E.a(lb.L, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            $$12.a((float)axw.b.b($$11) / 255.0F, (float)axw.b.c($$11) / 255.0F, (float)axw.b.d($$11) / 255.0F);
          }
 
-         String $$3 = a(this.c, exl.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
+         this.D++;
+         if (this.D > this.t) {
+            if (this.G) {
+               boolean $$13 = this.c();
+               avn $$14 = $$13 ? avo.jf : avo.je;
+               this.c.a(this.g, this.h, this.i, $$14, avq.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
+            }
 
-         return $$0.build();
+            this.k();
+         }
+      }
+
+      private boolean c() {
+         fgj $$0 = fgj.Q();
+         return $$0.j.m().b().c(this.g, this.h, this.i) >= 256.0;
+      }
+
+      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, IntList $$6, IntList $$7, boolean $$8, boolean $$9) {
+         gce.c $$10 = (gce.c)this.E.a(lb.C, $$0, $$1, $$2, $$3, $$4, $$5);
+         $$10.a($$8);
+         $$10.b($$9);
+         $$10.e(0.99F);
+         $$10.b(ad.<Integer>a($$6, this.r));
+         if (!$$7.isEmpty()) {
+            $$10.c(ad.<Integer>a($$7, this.r));
+         }
+      }
+
+      private void a(double $$0, int $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5) {
+         double $$6 = this.g;
+         double $$7 = this.h;
+         double $$8 = this.i;
+
+         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
+            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
+               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
+                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
+                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
+                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
+                     $$11 += $$1 * 2 - 1;
+                  }
+               }
+            }
+         }
+      }
+
+      private void a(double $$0, double[][] $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5, boolean $$6) {
+         double $$7 = $$1[0][0];
+         double $$8 = $$1[0][1];
+         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
+         float $$9 = this.r.i() * (float) Math.PI;
+         double $$10 = $$6 ? 0.034 : 0.34;
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
+            double $$13 = $$7;
+            double $$14 = $$8;
+
+            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
+               double $$16 = $$1[$$15][0];
+               double $$17 = $$1[$$15][1];
+
+               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
+                  double $$19 = aym.d($$18, $$13, $$16) * $$0;
+                  double $$20 = aym.d($$18, $$14, $$17) * $$0;
+                  double $$21 = $$19 * Math.sin($$12);
+                  $$19 *= Math.cos($$12);
+
+                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
+                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
+                  }
+               }
+
+               $$13 = $$16;
+               $$14 = $$17;
+            }
+         }
+      }
+
+      private void a(IntList $$0, IntList $$1, boolean $$2, boolean $$3) {
+         double $$4 = this.r.k() * 0.05;
+         double $$5 = this.r.k() * 0.05;
+
+         for (int $$6 = 0; $$6 < 70; $$6++) {
+            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
+            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
+            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
+            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
+         }
       }
    }
 }

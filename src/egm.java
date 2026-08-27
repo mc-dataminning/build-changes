@@ -1,38 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egm extends egu {
-   public static final MapCodec<egm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, egm::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class egm<P extends egl> {
+   public static final egm<egu> a = a("simple_state_provider", egu.b);
+   public static final egm<egv> b = a("weighted_state_provider", egv.b);
+   public static final egm<egq> c = a("noise_threshold_provider", egq.b);
+   public static final egm<egp> d = a("noise_provider", egp.g);
+   public static final egm<egn> e = a("dual_noise_provider", egn.b);
+   public static final egm<egs> f = a("rotated_block_provider", egs.b);
+   public static final egm<egr> g = a("randomized_int_state_provider", egr.b);
+   private final Codec<P> h;
 
-   private egm(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private static <P extends egl> egm<P> a(String $$0, Codec<P> $$1) {
+      return jn.a(lh.V, $$0, new egm<>($$1));
    }
 
-   public static egm a(double $$0, int $$1, int $$2) {
-      return new egm($$0, $$1, $$2);
+   private egm(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   protected int a(ayk $$0, io $$1) {
-      double $$2 = dbw.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
-   }
-
-   @Override
-   public egr<?> b() {
-      return egr.h;
+   public Codec<P> a() {
+      return this.h;
    }
 }

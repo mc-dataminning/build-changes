@@ -1,131 +1,84 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class xa {
-   public static final String a = ", ";
-   public static final wx b = wx.b(", ").a(n.h);
-   public static final wx c = wx.b(", ");
+public record xa(xb j, xb k) {
+   public static final Codec<xa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(xb.a.fieldOf("chat").forGetter(xa::a), xb.a.fieldOf("narration").forGetter(xa::b)).apply($$0, xa::new)
+   );
+   public static final xb b = xb.a("chat.type.text");
+   public static final aks<xa> c = a("chat");
+   public static final aks<xa> d = a("say_command");
+   public static final aks<xa> e = a("msg_command_incoming");
+   public static final aks<xa> f = a("msg_command_outgoing");
+   public static final aks<xa> g = a("team_msg_command_incoming");
+   public static final aks<xa> h = a("team_msg_command_outgoing");
+   public static final aks<xa> i = a("emote_command");
 
-   public static xl a(xl $$0, xu $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         xu $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
-         } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
+   private static aks<xa> a(String $$0) {
+      return aks.a(li.aA, new akt($$0));
+   }
+
+   public static void a(qq<xa> $$0) {
+      $$0.a(c, new xa(b, xb.a("chat.type.text.narrate")));
+      $$0.a(d, new xa(xb.a("chat.type.announcement"), xb.a("chat.type.text.narrate")));
+      $$0.a(e, new xa(xb.b("commands.message.display.incoming"), xb.a("chat.type.text.narrate")));
+      $$0.a(f, new xa(xb.c("commands.message.display.outgoing"), xb.a("chat.type.text.narrate")));
+      $$0.a(g, new xa(xb.d("chat.type.team.text"), xb.a("chat.type.text.narrate")));
+      $$0.a(h, new xa(xb.d("chat.type.team.sent"), xb.a("chat.type.text.narrate")));
+      $$0.a(i, new xa(xb.a("chat.type.emote"), xb.a("chat.type.emote")));
+   }
+
+   public static xa.a a(aks<xa> $$0, brv $$1) {
+      return a($$0, $$1.dU().I_(), $$1.P_());
+   }
+
+   public static xa.a a(aks<xa> $$0, eh $$1) {
+      return a($$0, $$1.v(), $$1.b());
+   }
+
+   public static xa.a a(aks<xa> $$0, jo $$1, xe $$2) {
+      jn<xa> $$3 = $$1.d(li.aA);
+      return new xa.a($$3.g($$0), $$2);
+   }
+
+   public xb a() {
+      return this.j;
+   }
+
+   public xb b() {
+      return this.k;
+   }
+
+   public static record a(ja<xa> b, xe c, Optional<xe> d) {
+      public static final zc<wp, xa.a> a = zc.a(za.b(li.aA), xa.a::a, xg.d, xa.a::b, xg.e, xa.a::c, xa.a::new);
+
+      a(ja<xa> $$0, xe $$1) {
+         this($$0, $$1, Optional.empty());
       }
-   }
 
-   public static Optional<xl> a(@Nullable ee $$0, Optional<wx> $$1, @Nullable bru $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
-   }
-
-   public static xl a(@Nullable ee $$0, wx $$1, @Nullable bru $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
-      } else {
-         xl $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (wx $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
-         }
-
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
-   }
-
-   private static xu a(@Nullable ee $$0, xu $$1, @Nullable bru $$2, int $$3) throws CommandSyntaxException {
-      xd $$4 = $$1.i();
-      if ($$4 != null) {
-         wx $$5 = $$4.a(xd.a.a);
-         if ($$5 != null) {
-            xd $$6 = new xd(xd.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
-         }
+      public xe a(xe $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      return $$1;
-   }
-
-   public static wx a(Collection<String> $$0) {
-      return a($$0, $$0x -> wx.b($$0x).a(n.k));
-   }
-
-   public static <T extends Comparable<T>> wx a(Collection<T> $$0, Function<T, wx> $$1) {
-      if ($$0.isEmpty()) {
-         return ww.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
+      public xe b(xe $$0) {
+         return this.b.a().b().a($$0, this);
       }
-   }
 
-   public static <T> wx b(Collection<? extends T> $$0, Function<T, wx> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> xl a(Collection<? extends T> $$0, Optional<? extends wx> $$1, Function<T, wx> $$2) {
-      return a($$0, (wx)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static wx a(Collection<? extends wx> $$0, wx $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> xl a(Collection<? extends T> $$0, wx $$1, Function<T, wx> $$2) {
-      if ($$0.isEmpty()) {
-         return wx.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         xl $$3 = wx.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
-            }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
-         }
-
-         return $$3;
+      public xa.a c(xe $$0) {
+         return new xa.a(this.b, this.c, Optional.of($$0));
       }
-   }
 
-   public static xl a(wx $$0) {
-      return wx.a("chat.square_brackets", $$0);
-   }
-
-   public static wx a(Message $$0) {
-      return (wx)($$0 instanceof wx ? (wx)$$0 : wx.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable wx $$0) {
-      if ($$0 != null && $$0.b() instanceof yi $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || ty.a().b($$2);
-      } else {
-         return true;
+      public ja<xa> a() {
+         return this.b;
       }
-   }
 
-   public static xl a(String $$0) {
-      return a((wx)wx.b($$0).a($$1 -> $$1.a(n.k).a(new wv(wv.a.f, $$0)).a(new xd(xd.a.a, wx.c("chat.copy.click"))).a($$0)));
+      public xe b() {
+         return this.c;
+      }
+
+      public Optional<xe> c() {
+         return this.d;
+      }
    }
 }

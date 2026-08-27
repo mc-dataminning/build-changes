@@ -1,45 +1,44 @@
-public class afi implements ze<abq> {
-   public static final yv<vx, afi> a = ze.a(afi::a, afi::new);
+import java.util.List;
+
+public class afi implements zl<abw> {
+   public static final zc<we, afi> a = zl.a(afi::a, afi::new);
    private final int b;
-   private final int c;
-   private final int d;
+   private final int[] c;
 
-   public afi(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afi(brv $$0) {
+      this.b = $$0.al();
+      List<brv> $$1 = $$0.cX();
+      this.c = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).al();
+      }
    }
 
-   private afi(vx $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
+   private afi(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
    }
 
-   private void a(vx $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.p(this.d);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zg<afi> a() {
-      return agb.aQ;
+   public zn<afi> a() {
+      return agj.aK;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public int[] b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   public int e() {
+      return this.b;
    }
 }

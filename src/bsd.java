@@ -1,51 +1,42 @@
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public interface bsd {
-   void a(bsb var1, cto var2);
+public enum bsd implements azg {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bsc.a),
+   c(2, "offhand", bsc.b),
+   d(3, "hand", $$0 -> $$0.a() == bsc.a.a),
+   e(4, "feet", bsc.c),
+   f(5, "legs", bsc.d),
+   g(6, "chest", bsc.e),
+   h(7, "head", bsc.f),
+   i(8, "armor", bsc::f);
 
-   cto a(bsb var1);
+   public static final IntFunction<bsd> j = axd.a($$0 -> $$0.m, values(), axd.a.a);
+   public static final Codec<bsd> k = azg.a(bsd::values);
+   public static final zc<ByteBuf, bsd> l = za.a(j, $$0 -> $$0.m);
+   private final int m;
+   private final String n;
+   private final Predicate<bsc> o;
 
-   void a(bsb var1, float var2);
-
-   default void a(akm $$0, epi $$1) {
-      this.a($$0, $$1, 0L);
+   private bsd(int $$0, String $$1, Predicate<bsc> $$2) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
    }
 
-   default void a(akm $$0, epi $$1, long $$2) {
-      akl<epk> $$3 = akl.a(lf.aU, $$0);
-      if (!$$3.equals(epd.a)) {
-         epk $$4 = $$1.a().o().be().b($$3);
-         if ($$4 != epk.a) {
-            List<cto> $$5 = $$4.a($$1, $$2);
-            List<bsb> $$6 = new ArrayList<>();
-
-            for (cto $$7 : $$5) {
-               bsb $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  cto $$9 = $$8.f() ? $$7.c(1) : $$7;
-                  this.a($$8, $$9);
-                  this.a($$8, 0.085F);
-                  $$6.add($$8);
-               }
-            }
-         }
-      }
+   private bsd(int $$0, String $$1, bsc $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   @Nullable
-   default bsb a(cto $$0, List<bsb> $$1) {
-      csq $$2 = csq.c_($$0);
-      if ($$2 != null) {
-         bsb $$3 = $$2.l();
-         if (!$$1.contains($$3)) {
-            return $$3;
-         }
-      } else if (!$$1.contains(bsb.a)) {
-         return bsb.a;
-      }
+   @Override
+   public String c() {
+      return this.n;
+   }
 
-      return null;
+   public boolean a(bsc $$0) {
+      return this.o.test($$0);
    }
 }

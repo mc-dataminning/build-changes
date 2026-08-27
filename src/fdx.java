@@ -1,166 +1,99 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fdx implements Comparable<fdx> {
-   private static final Map<String, fdx> h = Maps.newHashMap();
-   private static final Map<exn.a, fdx> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final exn.a m;
-   private final String n;
-   private exn.a o;
-   private boolean p;
-   private int q;
+public class fdx extends gxb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xe b = xe.c("mco.configure.world.buttons.invite");
+   private static final xe c = xe.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final xe B = xe.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final xe C = xe.c("mco.configure.world.players.error").b(-65536);
+   private final fma D = new fma(this);
+   private fiw E;
+   private fin F;
+   private final fcj G;
+   private final fds H;
+   private final fon I;
+   @Nullable
+   private xe J;
 
-   public static void a(exn.a $$0) {
-      fdx $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public fdx(fds $$0, fon $$1, fcj $$2) {
+      super(b);
+      this.H = $$0;
+      this.I = $$1;
+      this.G = $$2;
    }
 
-   public static void a(exn.a $$0, boolean $$1) {
-      fdx $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
+   @Override
+   public void aN_() {
+      this.D.a(b, this.p);
+      fme $$0 = this.D.c(fme.d().a(8));
+      this.E = new fiw(this.m.h, 200, 20, xe.c("mco.configure.world.invite.profile.name"));
+      $$0.a(flw.a(this.p, this.E, c));
+      this.F = $$0.a(fin.a(b, $$0x -> this.C()).a(200).a());
+      this.D.b(fin.a(xd.k, $$0x -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         fil var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public static void a() {
-      for (fdx $$0 : h.values()) {
-         if ($$0.o.a() == exn.b.a && $$0.o.b() != exn.bv.b()) {
-            $$0.a(exn.a(fdz.Q().aP().i(), $$0.o.b()));
-         }
-      }
+   @Override
+   protected void c() {
+      this.D.a();
    }
 
-   public static void b() {
-      for (fdx $$0 : h.values()) {
-         $$0.n();
-      }
+   @Override
+   protected void aC_() {
+      this.b(this.E);
    }
 
-   public static void c() {
-      for (fdx $$0 : h.values()) {
-         if ($$0 instanceof fen $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fdx $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fdx(String $$0, int $$1, String $$2) {
-      this($$0, exn.b.a, $$1, $$2);
-   }
-
-   public fdx(String $$0, exn.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
+   private void C() {
+      if (azh.h(this.E.a())) {
+         this.a(C);
       } else {
-         this.q--;
-         return true;
+         long $$0 = this.G.a;
+         String $$1 = this.E.a().trim();
+         this.F.j = false;
+         this.E.e(false);
+         this.a(B);
+         CompletableFuture.<fcj>supplyAsync(() -> {
+            try {
+               return fbs.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ad.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.G.h = $$0x.h;
+               this.m.a(new fee(this.H, this.G));
+            } else {
+               this.a(C);
+            }
+
+            this.E.e(true);
+            this.F.j = true;
+         }, this.q);
       }
    }
 
-   private void n() {
-      this.q = 0;
-      this.a(false);
+   private void a(xe $$0) {
+      this.J = $$0;
+      this.m.aZ().c($$0);
    }
 
-   public String h() {
-      return this.l;
+   @Override
+   public void d() {
+      this.m.a(this.I);
    }
 
-   public exn.a i() {
-      return this.m;
-   }
-
-   public void b(exn.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fdx $$0) {
-      return this.n.equals($$0.n) ? gpb.a(this.l).compareTo(gpb.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wx> a(String $$0) {
-      fdx $$1 = h.get($$0);
-      return $$1 == null ? () -> wx.c($$0) : $$1::k;
-   }
-
-   public boolean b(fdx $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(exn.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == exn.bv.b() ? this.o.a() == exn.b.b && this.o.b() == $$1 : this.o.a() == exn.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == exn.b.c && this.o.b() == $$0;
-   }
-
-   public wx k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, this.n / 2, this.F.D() + this.F.v() + 8, -1);
+      }
    }
 }

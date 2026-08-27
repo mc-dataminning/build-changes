@@ -1,43 +1,79 @@
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import java.io.File;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record alg(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, auf d) {
-   private static final String e = "usercache.json";
+public class alg extends auh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<akt, ag> c = Map.of();
+   private al d = new al();
+   private final jc.a e;
 
-   public static alg a(YggdrasilAuthenticationService $$0, File $$1) {
-      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
-      GameProfileRepository $$3 = $$0.createProfileRepository();
-      auf $$4 = new auf($$3, new File($$1, "usercache.json"));
-      return new alg($$2, $$0.getServicesKeySet(), $$3, $$4);
+   public alg(jc.a $$0) {
+      super(b, "advancements");
+      this.e = $$0;
+   }
+
+   protected void a(Map<akt, JsonElement> $$0, aud $$1, bmo $$2) {
+      akr<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<akt, ag> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            af $$4x = ad.a(af.a.parse($$3, $$3x), JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new ag($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+         }
+      });
+      this.c = $$4.buildOrThrow();
+      al $$5 = new al();
+      $$5.a(this.c.values());
+
+      for (ah $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            at.a($$6);
+         }
+      }
+
+      this.d = $$5;
+   }
+
+   private void a(akt $$0, af $$1) {
+      ayr.a $$2 = new ayr.a();
+      $$1.a($$2, this.e.b());
+      Multimap<String, String> $$3 = $$2.a();
+      if (!$$3.isEmpty()) {
+         String $$4 = $$3.asMap()
+            .entrySet()
+            .stream()
+            .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+            .collect(Collectors.joining("\n"));
+         a.warn("Found validation problems in advancement {}: \n{}", $$0, $$4);
+      }
    }
 
    @Nullable
-   public ayp a() {
-      return ayp.a(this.b, ServicesKeyType.PROFILE_KEY);
+   public ag a(akt $$0) {
+      return this.c.get($$0);
    }
 
-   public boolean b() {
-      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
-   }
-
-   public MinecraftSessionService c() {
-      return this.a;
-   }
-
-   public ServicesKeySet d() {
-      return this.b;
-   }
-
-   public GameProfileRepository e() {
-      return this.c;
-   }
-
-   public auf f() {
+   public al a() {
       return this.d;
+   }
+
+   public Collection<ag> b() {
+      return this.c.values();
    }
 }

@@ -1,49 +1,91 @@
+import com.mojang.logging.LogUtils;
 import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bmu extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public interface bmu {
+   bmu f = (bmu)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bmt.a() : new bmu.a());
 
-   public bmu(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
-   }
+   boolean a(bms var1);
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   Path b();
 
-      private a() {
+   boolean c();
+
+   boolean d();
+
+   void a(float var1);
+
+   void a(wd var1, zn<?> var2, SocketAddress var3, int var4);
+
+   void b(wd var1, zn<?> var2, SocketAddress var3, int var4);
+
+   void a(dwo var1, dbh var2, dwn var3, int var4);
+
+   void b(dwo var1, dbh var2, dwn var3, int var4);
+
+   @Nullable
+   bmx e();
+
+   @Nullable
+   bmx a(dbh var1, aks<dca> var2, String var3);
+
+   public static class a implements bmu {
+      private static final Logger b = LogUtils.getLogger();
+      static final bmx a = () -> {
+      };
+
+      @Override
+      public boolean a(bms $$0) {
+         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
+         return false;
+      }
+
+      @Override
+      public Path b() {
+         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      }
+
+      @Override
+      public boolean c() {
+         return false;
+      }
+
+      @Override
+      public boolean d() {
+         return false;
+      }
+
+      @Override
+      public void a(wd $$0, zn<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void b(wd $$0, zn<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void a(dwo $$0, dbh $$1, dwn $$2, int $$3) {
+      }
+
+      @Override
+      public void b(dwo $$0, dbh $$1, dwn $$2, int $$3) {
+      }
+
+      @Override
+      public void a(float $$0) {
+      }
+
+      @Override
+      public bmx e() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public bmx a(dbh $$0, aks<dca> $$1, String $$2) {
+         return null;
       }
    }
 }

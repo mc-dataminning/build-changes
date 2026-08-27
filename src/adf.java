@@ -1,36 +1,33 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adf implements ze<abq> {
-   public static final yv<vx, adf> a = ze.a(adf::a, adf::new);
+public class adf implements zl<abw> {
+   public static final zc<we, adf> a = zl.a(adf::a, adf::new);
    private final int b;
    private final int c;
-   private final adg d;
+   private final int d;
 
-   public adf(dae $$0, emj $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new adg($$0, $$1, $$2, $$3);
+   public adf(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private adf(vx $$0) {
-      this.b = $$0.l();
+   private adf(we $$0) {
+      this.b = $$0.readUnsignedByte();
       this.c = $$0.l();
-      this.d = new adg($$0, this.b, this.c);
+      this.d = $$0.readInt();
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.k(this.b);
       $$0.c(this.c);
-      this.d.a($$0);
+      $$0.p(this.d);
    }
 
    @Override
-   public zg<adf> a() {
-      return agb.N;
+   public zn<adf> a() {
+      return agj.I;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
@@ -42,7 +39,7 @@ public class adf implements ze<abq> {
       return this.c;
    }
 
-   public adg f() {
+   public int f() {
       return this.d;
    }
 }

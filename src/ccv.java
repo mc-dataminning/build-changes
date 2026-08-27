@@ -1,24 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class ccv extends ccy<bso> {
-   @Override
-   public Set<cbs<?>> a() {
-      return ImmutableSet.of(cbs.j, cbs.k, cbs.l);
+public class ccv extends ccx<cll> {
+   private static final int a = 40;
+
+   public ccv() {
+      super(40);
+   }
+
+   protected void a(aqt $$0, cll $$1) {
+      aks<dca> $$2 = $$0.af();
+      ir $$3 = $$1.du();
+      List<iz> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               ir $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gL().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(iz.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      btp<?> $$10 = $$1.dZ();
+      if (!$$4.isEmpty()) {
+         $$10.a(cbr.f, $$4);
+      } else {
+         $$10.b(cbr.f);
+      }
    }
 
    @Override
-   protected void a(aqm $$0, bso $$1) {
-      List<clw> $$2 = $$0.x().stream().filter(brz.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
-      btq<?> $$3 = $$1.dS();
-      $$3.a(cbs.j, $$2);
-      List<clw> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(cbs.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<clw> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(cbs.l, $$5);
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.f);
    }
 }

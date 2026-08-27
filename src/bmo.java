@@ -1,91 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
 public interface bmo {
-   bmo f = (bmo)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bmn.a() : new bmo.a());
+   String b = "root";
 
-   boolean a(bmm var1);
+   void a();
 
-   Path b();
+   void b();
 
-   boolean c();
+   void a(String var1);
 
-   boolean d();
+   void a(Supplier<String> var1);
 
-   void a(float var1);
+   void c();
 
-   void a(vw var1, zg<?> var2, SocketAddress var3, int var4);
+   void b(String var1);
 
-   void b(vw var1, zg<?> var2, SocketAddress var3, int var4);
+   void b(Supplier<String> var1);
 
-   void a(dun var1, dae var2, dum var3, int var4);
+   void a(bnu var1);
 
-   void b(dun var1, dae var2, dum var3, int var4);
+   default void d(String $$0) {
+      this.a($$0, 1);
+   }
 
-   @Nullable
-   bmr e();
+   void a(String var1, int var2);
 
-   @Nullable
-   bmr a(dae var1, akl<dax> var2, String var3);
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
+   }
 
-   public static class a implements bmo {
-      private static final Logger b = LogUtils.getLogger();
-      static final bmr a = () -> {
-      };
+   void a(Supplier<String> var1, int var2);
 
-      @Override
-      public boolean a(bmm $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
+   static bmo a(final bmo $$0, final bmo $$1) {
+      if ($$0 == bml.a) {
+         return $$1;
+      } else {
+         return $$1 == bml.a ? $$0 : new bmo() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
 
-      @Override
-      public boolean c() {
-         return false;
-      }
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public void a(vw $$0, zg<?> $$1, SocketAddress $$2, int $$3) {
-      }
+            @Override
+            public void a(bnu $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public void b(vw $$0, zg<?> $$1, SocketAddress $$2, int $$3) {
-      }
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
 
-      @Override
-      public void a(dun $$0, dae $$1, dum $$2, int $$3) {
-      }
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
 
-      @Override
-      public void b(dun $$0, dae $$1, dum $$2, int $$3) {
-      }
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
 
-      @Override
-      public void a(float $$0) {
-      }
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
 
-      @Override
-      public bmr e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bmr a(dae $$0, akl<dax> $$1, String $$2) {
-         return null;
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
       }
    }
 }

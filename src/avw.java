@@ -1,191 +1,51 @@
-public final class avw {
-   public static final awl<ddy> a = a("wool");
-   public static final awl<ddy> b = a("planks");
-   public static final awl<ddy> c = a("stone_bricks");
-   public static final awl<ddy> d = a("wooden_buttons");
-   public static final awl<ddy> e = a("stone_buttons");
-   public static final awl<ddy> f = a("buttons");
-   public static final awl<ddy> g = a("wool_carpets");
-   public static final awl<ddy> h = a("wooden_doors");
-   public static final awl<ddy> i = a("wooden_stairs");
-   public static final awl<ddy> j = a("wooden_slabs");
-   public static final awl<ddy> k = a("wooden_fences");
-   public static final awl<ddy> l = a("pressure_plates");
-   public static final awl<ddy> m = a("wooden_pressure_plates");
-   public static final awl<ddy> n = a("stone_pressure_plates");
-   public static final awl<ddy> o = a("wooden_trapdoors");
-   public static final awl<ddy> p = a("doors");
-   public static final awl<ddy> q = a("saplings");
-   public static final awl<ddy> r = a("logs_that_burn");
-   public static final awl<ddy> s = a("overworld_natural_logs");
-   public static final awl<ddy> t = a("logs");
-   public static final awl<ddy> u = a("dark_oak_logs");
-   public static final awl<ddy> v = a("oak_logs");
-   public static final awl<ddy> w = a("birch_logs");
-   public static final awl<ddy> x = a("acacia_logs");
-   public static final awl<ddy> y = a("cherry_logs");
-   public static final awl<ddy> z = a("jungle_logs");
-   public static final awl<ddy> A = a("spruce_logs");
-   public static final awl<ddy> B = a("mangrove_logs");
-   public static final awl<ddy> C = a("crimson_stems");
-   public static final awl<ddy> D = a("warped_stems");
-   public static final awl<ddy> E = a("bamboo_blocks");
-   public static final awl<ddy> F = a("wart_blocks");
-   public static final awl<ddy> G = a("banners");
-   public static final awl<ddy> H = a("sand");
-   public static final awl<ddy> I = a("smelts_to_glass");
-   public static final awl<ddy> J = a("stairs");
-   public static final awl<ddy> K = a("slabs");
-   public static final awl<ddy> L = a("walls");
-   public static final awl<ddy> M = a("anvil");
-   public static final awl<ddy> N = a("rails");
-   public static final awl<ddy> O = a("leaves");
-   public static final awl<ddy> P = a("trapdoors");
-   public static final awl<ddy> Q = a("small_flowers");
-   public static final awl<ddy> R = a("beds");
-   public static final awl<ddy> S = a("fences");
-   public static final awl<ddy> T = a("tall_flowers");
-   public static final awl<ddy> U = a("flowers");
-   public static final awl<ddy> V = a("piglin_repellents");
-   public static final awl<ddy> W = a("gold_ores");
-   public static final awl<ddy> X = a("iron_ores");
-   public static final awl<ddy> Y = a("diamond_ores");
-   public static final awl<ddy> Z = a("redstone_ores");
-   public static final awl<ddy> aa = a("lapis_ores");
-   public static final awl<ddy> ab = a("coal_ores");
-   public static final awl<ddy> ac = a("emerald_ores");
-   public static final awl<ddy> ad = a("copper_ores");
-   public static final awl<ddy> ae = a("candles");
-   public static final awl<ddy> af = a("dirt");
-   public static final awl<ddy> ag = a("terracotta");
-   public static final awl<ddy> ah = a("badlands_terracotta");
-   public static final awl<ddy> ai = a("concrete_powder");
-   public static final awl<ddy> aj = a("completes_find_tree_tutorial");
-   public static final awl<ddy> ak = a("flower_pots");
-   public static final awl<ddy> al = a("enderman_holdable");
-   public static final awl<ddy> am = a("ice");
-   public static final awl<ddy> an = a("valid_spawn");
-   public static final awl<ddy> ao = a("impermeable");
-   public static final awl<ddy> ap = a("underwater_bonemeals");
-   public static final awl<ddy> aq = a("coral_blocks");
-   public static final awl<ddy> ar = a("wall_corals");
-   public static final awl<ddy> as = a("coral_plants");
-   public static final awl<ddy> at = a("corals");
-   public static final awl<ddy> au = a("bamboo_plantable_on");
-   public static final awl<ddy> av = a("standing_signs");
-   public static final awl<ddy> aw = a("wall_signs");
-   public static final awl<ddy> ax = a("signs");
-   public static final awl<ddy> ay = a("ceiling_hanging_signs");
-   public static final awl<ddy> az = a("wall_hanging_signs");
-   public static final awl<ddy> aA = a("all_hanging_signs");
-   public static final awl<ddy> aB = a("all_signs");
-   public static final awl<ddy> aC = a("dragon_immune");
-   public static final awl<ddy> aD = a("dragon_transparent");
-   public static final awl<ddy> aE = a("wither_immune");
-   public static final awl<ddy> aF = a("wither_summon_base_blocks");
-   public static final awl<ddy> aG = a("beehives");
-   public static final awl<ddy> aH = a("crops");
-   public static final awl<ddy> aI = a("bee_growables");
-   public static final awl<ddy> aJ = a("portals");
-   public static final awl<ddy> aK = a("fire");
-   public static final awl<ddy> aL = a("nylium");
-   public static final awl<ddy> aM = a("beacon_base_blocks");
-   public static final awl<ddy> aN = a("soul_speed_blocks");
-   public static final awl<ddy> aO = a("wall_post_override");
-   public static final awl<ddy> aP = a("climbable");
-   public static final awl<ddy> aQ = a("fall_damage_resetting");
-   public static final awl<ddy> aR = a("shulker_boxes");
-   public static final awl<ddy> aS = a("hoglin_repellents");
-   public static final awl<ddy> aT = a("soul_fire_base_blocks");
-   public static final awl<ddy> aU = a("strider_warm_blocks");
-   public static final awl<ddy> aV = a("campfires");
-   public static final awl<ddy> aW = a("guarded_by_piglins");
-   public static final awl<ddy> aX = a("prevent_mob_spawning_inside");
-   public static final awl<ddy> aY = a("fence_gates");
-   public static final awl<ddy> aZ = a("unstable_bottom_center");
-   public static final awl<ddy> ba = a("mushroom_grow_block");
-   public static final awl<ddy> bb = a("infiniburn_overworld");
-   public static final awl<ddy> bc = a("infiniburn_nether");
-   public static final awl<ddy> bd = a("infiniburn_end");
-   public static final awl<ddy> be = a("base_stone_overworld");
-   public static final awl<ddy> bf = a("stone_ore_replaceables");
-   public static final awl<ddy> bg = a("deepslate_ore_replaceables");
-   public static final awl<ddy> bh = a("base_stone_nether");
-   public static final awl<ddy> bi = a("overworld_carver_replaceables");
-   public static final awl<ddy> bj = a("nether_carver_replaceables");
-   public static final awl<ddy> bk = a("candle_cakes");
-   public static final awl<ddy> bl = a("cauldrons");
-   public static final awl<ddy> bm = a("crystal_sound_blocks");
-   public static final awl<ddy> bn = a("inside_step_sound_blocks");
-   public static final awl<ddy> bo = a("combination_step_sound_blocks");
-   public static final awl<ddy> bp = a("camel_sand_step_sound_blocks");
-   public static final awl<ddy> bq = a("occludes_vibration_signals");
-   public static final awl<ddy> br = a("dampens_vibrations");
-   public static final awl<ddy> bs = a("dripstone_replaceable_blocks");
-   public static final awl<ddy> bt = a("cave_vines");
-   public static final awl<ddy> bu = a("moss_replaceable");
-   public static final awl<ddy> bv = a("lush_ground_replaceable");
-   public static final awl<ddy> bw = a("azalea_root_replaceable");
-   public static final awl<ddy> bx = a("small_dripleaf_placeable");
-   public static final awl<ddy> by = a("big_dripleaf_placeable");
-   public static final awl<ddy> bz = a("snow");
-   public static final awl<ddy> bA = a("mineable/axe");
-   public static final awl<ddy> bB = a("mineable/hoe");
-   public static final awl<ddy> bC = a("mineable/pickaxe");
-   public static final awl<ddy> bD = a("mineable/shovel");
-   public static final awl<ddy> bE = a("sword_efficient");
-   public static final awl<ddy> bF = a("needs_diamond_tool");
-   public static final awl<ddy> bG = a("needs_iron_tool");
-   public static final awl<ddy> bH = a("needs_stone_tool");
-   public static final awl<ddy> bI = a("incorrect_for_netherite_tool");
-   public static final awl<ddy> bJ = a("incorrect_for_diamond_tool");
-   public static final awl<ddy> bK = a("incorrect_for_iron_tool");
-   public static final awl<ddy> bL = a("incorrect_for_stone_tool");
-   public static final awl<ddy> bM = a("incorrect_for_gold_tool");
-   public static final awl<ddy> bN = a("incorrect_for_wooden_tool");
-   public static final awl<ddy> bO = a("features_cannot_replace");
-   public static final awl<ddy> bP = a("lava_pool_stone_cannot_replace");
-   public static final awl<ddy> bQ = a("geode_invalid_blocks");
-   public static final awl<ddy> bR = a("frog_prefer_jump_to");
-   public static final awl<ddy> bS = a("sculk_replaceable");
-   public static final awl<ddy> bT = a("sculk_replaceable_world_gen");
-   public static final awl<ddy> bU = a("ancient_city_replaceable");
-   public static final awl<ddy> bV = a("vibration_resonators");
-   public static final awl<ddy> bW = a("animals_spawnable_on");
-   public static final awl<ddy> bX = a("armadillo_spawnable_on");
-   public static final awl<ddy> bY = a("axolotls_spawnable_on");
-   public static final awl<ddy> bZ = a("goats_spawnable_on");
-   public static final awl<ddy> ca = a("mooshrooms_spawnable_on");
-   public static final awl<ddy> cb = a("parrots_spawnable_on");
-   public static final awl<ddy> cc = a("polar_bears_spawnable_on_alternate");
-   public static final awl<ddy> cd = a("rabbits_spawnable_on");
-   public static final awl<ddy> ce = a("foxes_spawnable_on");
-   public static final awl<ddy> cf = a("wolves_spawnable_on");
-   public static final awl<ddy> cg = a("frogs_spawnable_on");
-   public static final awl<ddy> ch = a("azalea_grows_on");
-   public static final awl<ddy> ci = a("convertable_to_mud");
-   public static final awl<ddy> cj = a("mangrove_logs_can_grow_through");
-   public static final awl<ddy> ck = a("mangrove_roots_can_grow_through");
-   public static final awl<ddy> cl = a("dead_bush_may_place_on");
-   public static final awl<ddy> cm = a("snaps_goat_horn");
-   public static final awl<ddy> cn = a("replaceable_by_trees");
-   public static final awl<ddy> co = a("snow_layer_cannot_survive_on");
-   public static final awl<ddy> cp = a("snow_layer_can_survive_on");
-   public static final awl<ddy> cq = a("invalid_spawn_inside");
-   public static final awl<ddy> cr = a("sniffer_diggable_block");
-   public static final awl<ddy> cs = a("sniffer_egg_hatch_boost");
-   public static final awl<ddy> ct = a("trail_ruins_replaceable");
-   public static final awl<ddy> cu = a("replaceable");
-   public static final awl<ddy> cv = a("enchantment_power_provider");
-   public static final awl<ddy> cw = a("enchantment_power_transmitter");
-   public static final awl<ddy> cx = a("maintains_farmland");
-   public static final awl<ddy> cy = a("blocks_wind_charge_explosions");
-   public static final awl<ddy> cz = a("does_not_block_hoppers");
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private avw() {
+public class avw<T> extends eyb {
+   public static final zc<wp, avw<?>> a = za.a(li.ah).b(avw::a, avy::a);
+   private final avx o;
+   private final T p;
+   private final avy<T> q;
+
+   protected avw(avy<T> $$0, T $$1, avx $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   private static awl<ddy> a(String $$0) {
-      return awl.a(lf.f, new akm($$0));
+   public static <T> String a(avy<T> $$0, T $$1) {
+      return a(lh.x.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable akt $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public avy<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof avw && Objects.equals(this.d(), ((avw)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

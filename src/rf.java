@@ -1,382 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
+import java.util.Optional;
 
-public class rf {
-   public static final akl<eis> a = qv.a("trial_chambers/chamber/end");
-   public static final akl<eis> b = qv.a("trial_chambers/hallway/fallback");
-   public static final akl<eis> c = qv.a("trial_chambers/chamber/entrance_cap");
-   public static final List<eiu> d = ImmutableList.builder()
-      .add(
-         eiu.a(
-            boe.<List<eiu>>a()
-               .a(List.of(eiu.a(a("contents/ranged"), a("ranged/skeleton")), eiu.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
-               .a(List.of(eiu.a(a("contents/ranged"), a("ranged/stray")), eiu.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
-               .a(List.of(eiu.a(a("contents/ranged"), a("ranged/poison_skeleton")), eiu.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
-               .a()
-         )
-      )
-      .add(eiu.a(a("contents/melee"), boe.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/slime")).a()))
-      .add(
-         eiu.a(
-            a("contents/small_melee"),
-            boe.<String>a().a(a("small_melee/spider")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
-         )
-      )
-      .build();
-
-   public static String a(String $$0) {
-      return "trial_chambers/spawner/" + $$0;
-   }
-
-   public static void a(qo<eis> $$0) {
-      iy<eis> $$1 = $$0.a(lf.aM);
-      ix<eis> $$2 = $$1.b(qv.a);
-      ix<eis> $$3 = $$1.b(b);
-      ix<eis> $$4 = $$1.b(c);
-      iy<elh> $$5 = $$0.a(lf.aK);
-      ix<elh> $$6 = $$5.b(rh.a);
-      $$0.a(a, new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(eiq.b("trial_chambers/corridor/end_2", $$6), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/chamber/entrance_cap", new eis($$4, List.of(Pair.of(eiq.b("trial_chambers/chamber/entrance_cap", $$6), 1)), eis.a.b));
-      qv.a(
-         $$0,
-         "trial_chambers/chambers/end",
-         new eis(
-            $$3,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_1", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_6", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted", $$6), 1)
-            ),
-            eis.a.b
+public interface rf {
+   static void a(qq<ejz> $$0) {
+      jb<ejt> $$1 = $$0.a(li.aJ);
+      jb<dcz> $$2 = $$0.a(li.az);
+      ja.c<ejz> $$3 = $$0.a(
+         ejm.a,
+         new ejz(
+            List.of(ejz.a($$1.b(ejn.v)), ejz.a($$1.b(ejn.w)), ejz.a($$1.b(ejn.x)), ejz.a($$1.b(ejn.y)), ejz.a($$1.b(ejn.z)), ejz.a($$1.b(ejn.A))),
+            new eko(34, 8, ekp.a, 10387312)
          )
       );
-      qv.a(
-         $$0,
-         "trial_chambers/corridor",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/corridor/second_plate"), 1),
-               Pair.of(eiq.b("trial_chambers/intersection/intersection_1", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/intersection/intersection_2", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/first_plate"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium_1", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/entrance_1", $$6), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/chamber/addon",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/full_corner_column"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/full_column_ranged_spawner", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/middle_column_ranged_spawner", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/grate_bridge"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/hanging_platform"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/short_platform"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/lower_walkway_platform"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/walkway_extension"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/side_walkway"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/closed_side_walkway"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/middle_walkway"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/10x15_rise"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/10x15_stacked_pathway"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/10x15_pathway_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/platform_with_space"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/stairs_with_space"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/stairs_with_space_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c3_side_walkway_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c3_side_walkway_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/corner_room_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_wide_platform"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c1_breeze"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/chamber/addon/c6",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.g(), 3),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_small_1"), 2),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_small_2"), 2),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_small_3"), 2),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_column_full"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_column_tall"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_column_tall_wide"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_ranged_column_short"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_ranged_column_short_wide"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_chest"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_melee_spawner"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_long"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_short"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_cover_small"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/addon/c6_stairs"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/chamber/eruption",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/center_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/breeze_slice_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/slice_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/slice_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/slice_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/quadrant_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/quadrant_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/quadrant_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/quadrant_4"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption/quadrant_5"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/chamber/slanted",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/center"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/hallway_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/hallway_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/hallway_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/hallway_4"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/hallway_5"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_4"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/ramp_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/ramp_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/ramp_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/ramp_4"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/ominous_upper_arm_1"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/chamber/pedestal",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/center_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/slice_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/slice_2"), 3),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/slice_3"), 3),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/slice_4"), 3),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/slice_5"), 3),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/ominous_slice_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/quadrant_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/quadrant_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal/quadrant_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted/quadrant_4"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/corridor/slices",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/corridor/straight_1", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_2", $$6), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_3", $$6), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_4", $$6), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_5", $$6), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_6", $$6), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_7", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/straight_8", $$6), 2)
-            ),
-            eis.a.b
-         )
+      $$0.a(ejm.b, new ejz($$1.b(ejn.g), new eko(32, 8, ekp.a, 14357617)));
+      $$0.a(ejm.c, new ejz($$1.b(ejn.h), new eko(32, 8, ekp.a, 14357618)));
+      $$0.a(ejm.d, new ejz($$1.b(ejn.f), new eko(32, 8, ekp.a, 14357619)));
+      $$0.a(ejm.e, new ejz($$1.b(ejn.k), new eko(32, 8, ekp.a, 14357620)));
+      $$0.a(ejm.f, new ejz($$1.b(ejn.a), new eko(jv.g, ekq.c.b, 0.2F, 165745296, Optional.of(new ekq.a($$3, 10)), 32, 8, ekp.a)));
+      $$0.a(ejm.s, new ejz($$1.b(ejn.J), new eko(24, 8, ekp.a, 20083232)));
+      $$0.a(ejm.g, new ejz($$1.b(ejn.m), new eko(32, 5, ekp.b, 10387313)));
+      $$0.a(ejm.h, new ejz($$1.b(ejn.e), new eko(80, 20, ekp.b, 10387319)));
+      $$0.a(ejm.i, new ejz($$1.b(ejn.s), new eko(new jv(9, 0, 9), ekq.c.c, 0.01F, 0, Optional.empty(), 1, 0, ekp.a)));
+      $$0.a(
+         ejm.j,
+         new ejz(List.of(ejz.a($$1.b(ejn.b)), ejz.a($$1.b(ejn.c)), ejz.a($$1.b(ejn.d))), new eko(jv.g, ekq.c.d, 0.004F, 0, Optional.empty(), 1, 0, ekp.a))
       );
       $$0.a(
-         b,
-         new eis(
-            $$2,
+         ejm.k,
+         new ejz(
             List.of(
-               Pair.of(eiq.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble_chamber"), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble_thin"), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+               ejz.a($$1.b(ejn.B)),
+               ejz.a($$1.b(ejn.C)),
+               ejz.a($$1.b(ejn.D)),
+               ejz.a($$1.b(ejn.E)),
+               ejz.a($$1.b(ejn.F)),
+               ejz.a($$1.b(ejn.G)),
+               ejz.a($$1.b(ejn.H))
             ),
-            eis.a.b
+            new eko(40, 15, ekp.a, 34222645)
          )
       );
-      qv.a(
-         $$0,
-         "trial_chambers/hallway",
-         new eis(
-            $$3,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/hallway/corridor_connector_1"), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_1", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_2", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_4", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_6", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/chamber_8", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/eruption", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/slanted", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/chamber/pedestal", $$6), 150),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
-               Pair.of(eiq.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/cache_1", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/left_corner", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/right_corner", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/corner_staircase", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/straight", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/straight_staircase", $$6), 1),
-               Pair.of(eiq.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/corridors/addon/lower",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.g(), 8),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/staircase"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/wall"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/bridge_lower"), 2)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/corridors/addon/middle",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.g(), 8),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/open_walkway"), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/walled_walkway"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/corridors/addon/middle_upper",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.g(), 6),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/decoration_upper"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/head_upper"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/addon/reward_upper"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/atrium",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/bogged_relief"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/breeze_relief"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/spiral_relief"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/spider_relief"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/grand_staircase_1"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/grand_staircase_2"), 1),
-               Pair.of(eiq.b("trial_chambers/corridor/atrium/grand_staircase_3"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a(
-         $$0,
-         "trial_chambers/decor",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.g(), 22),
-               Pair.of(eiq.b("trial_chambers/decor/empty_pot"), 2),
-               Pair.of(eiq.b("trial_chambers/decor/dead_bush_pot"), 2),
-               Pair.of(eiq.b("trial_chambers/decor/undecorated_pot"), 10),
-               Pair.of(eiq.b("trial_chambers/decor/flow_pot"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/guster_pot"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/scrape_pot"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/candle_1"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/candle_2"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/candle_3"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/candle_4"), 1),
-               Pair.of(eiq.b("trial_chambers/decor/barrel"), 2)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a($$0, "trial_chambers/decor_chamber", new eis($$2, List.of(Pair.of(eiq.g(), 4), Pair.of(eiq.b("trial_chambers/decor/undecorated_pot"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/reward/all", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/reward/vault"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/reward/ominous_vault", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/reward/ominous_vault"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/reward/contents/default", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/reward/vault"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/chests/supply", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/chests/connectors/supply"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/chests/contents/supply", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/chests/supply"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/spawner/ranged", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/connectors/ranged"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/spawner/slow_ranged", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/spawner/melee", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/connectors/melee"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/spawner/small_melee", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/connectors/small_melee"), 1)), eis.a.b));
-      qv.a($$0, "trial_chambers/spawner/breeze", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/connectors/breeze"), 1)), eis.a.b));
-      qv.a(
-         $$0,
-         "trial_chambers/spawner/all",
-         new eis(
-            $$2,
-            List.of(
-               Pair.of(eiq.b("trial_chambers/spawner/connectors/ranged"), 1),
-               Pair.of(eiq.b("trial_chambers/spawner/connectors/melee"), 1),
-               Pair.of(eiq.b("trial_chambers/spawner/connectors/small_melee"), 1)
-            ),
-            eis.a.b
-         )
-      );
-      qv.a($$0, "trial_chambers/spawner/contents/breeze", new eis($$2, List.of(Pair.of(eiq.b("trial_chambers/spawner/breeze/breeze"), 1)), eis.a.b));
-      qv.a(
-         $$0, "trial_chambers/dispensers/chamber", new eis($$2, List.of(Pair.of(eiq.g(), 1), Pair.of(eiq.b("trial_chambers/dispensers/chamber"), 1)), eis.a.b)
-      );
-      eiv.a($$0, $$2, d);
+      $$0.a(ejm.l, new ejz(List.of(ejz.a($$1.b(ejn.I))), new eko(28, 8, ekp.a, 31415926)));
+      $$0.a(ejm.m, new ejz(List.of(ejz.a($$1.b(ejn.i)), ejz.a($$1.b(ejn.j))), new eko(24, 4, ekp.a, 165745295)));
+      $$0.a(ejm.n, new ejz(List.of(ejz.a($$1.b(ejn.n)), ejz.a($$1.b(ejn.o))), new eko(20, 8, ekp.a, 14357621)));
+      $$0.a(ejm.o, new ejz(List.of(ejz.a($$1.b(ejn.p), 2), ejz.a($$1.b(ejn.t), 3)), new eko(27, 4, ekp.a, 30084232)));
+      $$0.a(ejm.q, new ejz($$1.b(ejn.u), new eko(24, 5, ekp.a, 123456789)));
+      $$0.a(ejm.p, new ejz($$1.b(ejn.q), new eko(2, 1, ekp.a, 14357921)));
+      $$0.a(ejm.r, new ejz($$1.b(ejn.r), new eko(20, 11, ekp.b, 10387313)));
+      $$0.a(ejm.t, new ejz($$1.b(ejn.l), new ekn(32, 3, 128, $$2.b(awd.p))));
+      $$0.a(ejm.u, new ejz($$1.b(ejn.K), new eko(34, 8, ekp.a, 83469867)));
    }
 }

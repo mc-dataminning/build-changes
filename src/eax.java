@@ -1,54 +1,24 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class eax extends dzx<ecq> {
-   public eax(Codec<ecq> $$0) {
-      super($$0);
+public record eax<WC extends eas>(eaz<WC> d, WC e) {
+   public static final Codec<eax<?>> a = lh.P.q().dispatch($$0 -> $$0.d, eaz::c);
+   public static final Codec<ja<eax<?>>> b = akp.a(li.aB, a);
+   public static final Codec<je<eax<?>>> c = jp.a(li.aB, a);
+
+   public boolean a(ayt $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dzz<ecq> $$0) {
-      ecq $$1 = $$0.f();
-      dbs $$2 = $$0.b();
-      ayk $$3 = $$0.d();
-      ddy $$4 = $$1.b.b();
-      io $$5 = a($$2, $$0.e().j().a(it.a.b, $$2.I_() + 1, $$2.al() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (io $$11 : io.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            drb $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
-      }
+   public boolean a(eau $$0, duy $$1, Function<ir, ja<dcz>> $$2, ayt $$3, dyg $$4, dbh $$5, dux $$6) {
+      return ab.a($$1.g()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Nullable
-   private static io a(day $$0, io.a $$1, ddy $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         drb $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
+   public eaz<WC> a() {
+      return this.d;
+   }
 
-         $$1.c(it.a);
-      }
-
-      return null;
+   public WC b() {
+      return this.e;
    }
 }

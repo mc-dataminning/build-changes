@@ -1,130 +1,81 @@
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public final class exv {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
+public class exv implements exu {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private xe g;
+   @Nullable
+   private yu h;
 
-   public exv(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public exv(Buffer $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
-   public exv(GLFWVidMode $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
+   @Override
    public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public int e() {
       return this.e;
    }
 
-   public int f() {
+   public void a(int $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public boolean b() {
       return this.f;
    }
 
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public xe d() {
+      return this.g;
+   }
+
+   public void a(@Nullable xe $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         exv $$1 = (exv)$$0;
-         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
-      } else {
-         return false;
+   public yu c() {
+      return this.h;
+   }
+
+   public void b(@Nullable yu $$0) {
+      this.h = $$0;
+   }
+
+   public uk a(jc.a $$0) {
+      uk $$1 = new uk();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", xe.a.a(this.g, $$0));
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
-   }
-
-   public static Optional<exv> a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return Optional.empty();
-      } else {
-         try {
-            Matcher $$1 = g.matcher($$0);
-            if ($$1.matches()) {
-               int $$2 = Integer.parseInt($$1.group(1));
-               int $$3 = Integer.parseInt($$1.group(2));
-               String $$4 = $$1.group(3);
-               int $$5;
-               if ($$4 == null) {
-                  $$5 = 60;
-               } else {
-                  $$5 = Integer.parseInt($$4);
-               }
-
-               String $$7 = $$1.group(4);
-               int $$8;
-               if ($$7 == null) {
-                  $$8 = 24;
-               } else {
-                  $$8 = Integer.parseInt($$7);
-               }
-
-               int $$10 = $$8 / 3;
-               return Optional.of(new exv($$2, $$3, $$10, $$10, $$10, $$5));
-            }
-         } catch (Exception var9) {
-         }
-
-         return Optional.empty();
+      if (this.h != null) {
+         yw.b.encodeStart($$0.a(uy.a), this.h).result().ifPresent($$1x -> $$1.a("format", $$1x));
       }
+
+      return $$1;
    }
 
-   public String g() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
+   public static exv a(uk $$0, jc.a $$1) {
+      exv $$2 = new exv();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = xe.a.a($$0.l("display"), $$1);
+      }
+
+      if ($$0.b("format", 10)) {
+         yw.b.parse($$1.a(uy.a), $$0.c("format")).result().ifPresent($$1x -> $$2.h = $$1x);
+      }
+
+      return $$2;
    }
 }

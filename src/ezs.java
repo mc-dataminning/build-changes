@@ -1,30 +1,40 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
-public class ezs extends fao {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
-
-   public static ezs a(JsonObject $$0) {
-      ezs $$1 = new ezs();
-
+public class ezs {
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
       try {
-         $$1.a = fcl.b("invitationId", $$0, "");
-         $$1.b = fcl.b("worldName", $$0, "");
-         $$1.c = fcl.b("worldOwnerName", $$0, "");
-         $$1.d = fcl.a("worldOwnerUuid", $$0, ac.e);
-         $$1.e = fcl.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
       }
+   });
 
-      return $$1;
+   public static void a(long $$0) {
+      if (a != null) {
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
+         }
+      }
+   }
+
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

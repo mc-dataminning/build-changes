@@ -1,16 +1,20 @@
-class brl extends bra {
-   protected brl(brb $$0, int $$1) {
-      super($$0, $$1, ky.y);
+class brl extends brf {
+   protected brl(brg $$0, int $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(bso $$0, int $$1, bru.c $$2) {
-      if ($$2 == bru.c.a && $$0.dP() instanceof aqm $$3) {
-         double $$4 = $$0.du();
-         double $$5 = $$0.dw() + (double)($$0.dk() / 2.0F);
-         double $$6 = $$0.dA();
-         float $$7 = 3.0F + $$0.el().i() * 2.0F;
-         $$3.a($$0, null, cne.e, $$4, $$5, $$6, $$7, false, dax.a.e, ky.A, ky.z, avh.cQ);
+   public boolean a(bso $$0, int $$1) {
+      if ($$0.eI() < $$0.eZ()) {
+         $$0.c(1.0F);
       }
+
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 50 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

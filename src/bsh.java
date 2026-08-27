@@ -1,3 +1,3 @@
 public interface bsh {
-   void b(clw var1);
+   void b(cly var1);
 }

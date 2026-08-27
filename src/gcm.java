@@ -1,30 +1,49 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gcm extends gdu {
+   private final gdp a;
 
-public class gcm {
-   public static final akm a = new akm("textures/gui/title/background/panorama_overlay.png");
-   private final fdz b;
-   private final gby c;
-   private float d;
-   private float e;
-
-   public gcm(gby $$0) {
-      this.c = $$0;
-      this.b = fdz.Q();
+   protected gcm(fzn $$0, double $$1, double $$2, double $$3, double $$4, gdp $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
-   public void a(ffm $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gcy b() {
+      return gcy.d;
+   }
+
+   public static class a implements gcx<le> {
+      private final gdp a;
+
+      public a(gdp $$0) {
+         this.a = $$0;
+      }
+
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcm($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

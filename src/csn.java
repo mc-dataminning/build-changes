@@ -1,44 +1,63 @@
-import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csn extends ctj {
-   public csn(ctj.a $$0) {
+public class csn extends cuc {
+   public csn(cuc.a $$0) {
       super($$0);
    }
 
-   @Override
-   public bpu a(cxb $$0) {
-      dax $$1 = $$0.q();
-      io $$2 = $$0.a();
-      drb $$3 = $$1.a_($$2);
-      if (!$$3.a(dea.co) && !$$3.a(dea.F)) {
-         return bpu.e;
-      } else {
-         io $$4 = $$2.c();
-         if (!$$1.u($$4)) {
-            return bpu.e;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bru> $$8 = $$1.a_(null, new euf($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bpu.e;
-            } else {
-               if ($$1 instanceof aqm) {
-                  cgz $$9 = new cgz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dvu.t, $$4);
-                  duw $$10 = ((aqm)$$1).D();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
+   @Nullable
+   public static iz a(dca $$0) {
+      return $$0.E_().j() ? iz.a($$0.af(), $$0.V()) : null;
+   }
 
-               $$0.n().h(1);
-               return bpu.a($$1.B);
+   @Override
+   public boolean d_(cuh $$0) {
+      return $$0.b(ke.R) || super.d_($$0);
+   }
+
+   @Override
+   public void a(cuh $$0, dca $$1, brv $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aqt $$5) {
+         cxo $$6 = $$0.a(ke.R);
+         if ($$6 != null) {
+            cxo $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(ke.R, $$7);
             }
          }
       }
+   }
+
+   @Override
+   public bqa a(cyf $$0) {
+      ir $$1 = $$0.a();
+      dca $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dfe.qB)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, avo.oD, avq.h, 1.0F, 1.0F);
+         cly $$3 = $$0.o();
+         cuh $$4 = $$0.n();
+         boolean $$5 = !$$3.fY() && $$4.G() == 1;
+         cxo $$6 = new cxo(Optional.of(iz.a($$2.af(), $$1)), true);
+         if ($$5) {
+            $$4.b(ke.R, $$6);
+         } else {
+            cuh $$7 = $$4.a(cuk.sp, 1);
+            $$4.a(1, $$3);
+            $$7.b(ke.R, $$6);
+            if (!$$3.gl().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bqa.a($$2.C);
+      }
+   }
+
+   @Override
+   public String i(cuh $$0) {
+      return $$0.b(ke.R) ? "item.minecraft.lodestone_compass" : super.i($$0);
    }
 }

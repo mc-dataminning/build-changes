@@ -1,63 +1,63 @@
 import javax.annotation.Nullable;
 
-public class cgy extends bru {
+public class cgy extends brv {
    public final cha b;
    public final String c;
-   private final brx d;
+   private final bry d;
 
    public cgy(cha $$0, String $$1, float $$2, float $$3) {
-      super($$0.ak(), $$0.dP());
-      this.d = brx.b($$2, $$3);
-      this.j_();
+      super($$0.ak(), $$0.dU());
+      this.d = bry.b($$2, $$3);
+      this.i_();
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
    }
 
    @Override
-   protected void a(ud $$0) {
+   protected void a(uk $$0) {
    }
 
    @Override
-   protected void b(ud $$0) {
+   protected void b(uk $$0) {
    }
 
    @Override
-   public boolean bz() {
+   public boolean bE() {
       return true;
    }
 
    @Nullable
    @Override
-   public cto dC() {
-      return this.b.dC();
+   public cuh dH() {
+      return this.b.dH();
    }
 
    @Override
-   public boolean a(bqn $$0, float $$1) {
+   public boolean a(bqt $$0, float $$1) {
       return this.b($$0) ? false : this.b.a(this, $$0, $$1);
    }
 
    @Override
-   public boolean t(bru $$0) {
+   public boolean t(brv $$0) {
       return this == $$0 || this.b == $$0;
    }
 
    @Override
-   public ze<abq> dl() {
+   public zl<abw> dq() {
       throw new UnsupportedOperationException();
    }
 
    @Override
-   public brx a(bta $$0) {
+   public bry a(bsz $$0) {
       return this.d;
    }
 
    @Override
-   public boolean dN() {
+   public boolean dS() {
       return false;
    }
 }

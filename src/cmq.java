@@ -1,144 +1,160 @@
-import java.util.Optional;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public final class cmq {
-   private static final float a = 0.3F;
+public class cmq extends cms {
+   public static final ajy<Boolean> b = akc.a(cmq.class, aka.k);
+   public static final ajy<Float> c = akc.a(cmq.class, aka.d);
+   private static final float d = 100.0F;
+   private static final double e = 5.0;
 
-   public static eui a(bru $$0, Predicate<bru> $$1) {
-      euk $$2 = $$0.ds();
-      dax $$3 = $$0.dP();
-      euk $$4 = $$0.dn();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F, dag.a.a);
+   public cmq(bsb<? extends cmq> $$0, dca $$1) {
+      super($$0, $$1);
+      this.ay = true;
    }
 
-   public static eui a(bru $$0, Predicate<bru> $$1, dag.a $$2) {
-      euk $$3 = $$0.ds();
-      dax $$4 = $$0.dP();
-      euk $$5 = $$0.dn();
-      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
+   public cmq(dca $$0, cly $$1) {
+      this(bsb.bG, $$0);
+      this.c($$1);
+      this.a_($$1.dz(), $$1.dD() - 0.1, $$1.dF());
+      this.g($$1.f(1.0F).a(5.0));
    }
 
-   public static eui a(bru $$0, Predicate<bru> $$1, double $$2) {
-      euk $$3 = $$0.f(0.0F).a($$2);
-      dax $$4 = $$0.dP();
-      euk $$5 = $$0.bx();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F, dag.a.a);
+   @Override
+   protected void a(akc.a $$0) {
+      $$0.a(b, false);
+      $$0.a(c, 0.0F);
    }
 
-   private static eui a(euk $$0, bru $$1, Predicate<bru> $$2, euk $$3, dax $$4, float $$5, dag.a $$6) {
-      euk $$7 = $$0.e($$3);
-      eui $$8 = $$4.a(new dag($$0, $$7, $$6, dag.b.a, $$1));
-      if ($$8.c() != eui.a.a) {
-         $$7 = $$8.e();
+   @Override
+   public boolean a(double $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      cly $$0 = this.u();
+      if ($$0 != null && (this.dU().x_() || !this.a($$0))) {
+         ews $$1 = cmu.a(this, this::b);
+         if ($$1.c() != ews.a.a) {
+            this.a($$1);
+         }
+
+         this.b($$1.e());
+         this.aW();
+      } else {
+         this.ao();
       }
+   }
 
-      eui $$9 = a($$4, $$1, $$0, $$7, $$1.cK().b($$3).g(1.0), $$2, $$5);
-      if ($$9 != null) {
-         $$8 = $$9;
+   private boolean a(cly $$0) {
+      if (!$$0.dP() && $$0.bI() && $$0.b(cuk.Ar) && !(this.g($$0) > 10000.0)) {
+         return false;
+      } else {
+         this.ao();
+         return true;
       }
+   }
 
-      return $$8;
+   @Override
+   protected boolean b(brv $$0) {
+      return false;
+   }
+
+   @Override
+   protected void a(ewq $$0) {
+      super.a($$0);
+      this.g(ewu.b);
+      this.a(true);
+      cly $$1 = this.u();
+      if ($$1 != null) {
+         double $$2 = $$1.bC().d($$0.e()).f();
+         this.a(Math.max((float)$$2 * 0.5F - 3.0F, 1.5F));
+      }
+   }
+
+   @Override
+   public void b(uk $$0) {
+      $$0.a("in_block", this.p());
+      $$0.a("length", this.r());
+   }
+
+   @Override
+   public void a(uk $$0) {
+      this.a($$0.q("in_block"));
+      this.a($$0.j("length"));
+   }
+
+   private void a(boolean $$0) {
+      this.ap().a(b, $$0);
+   }
+
+   private void a(float $$0) {
+      this.ap().a(c, $$0);
+   }
+
+   public boolean p() {
+      return this.ap().a(b);
+   }
+
+   public float r() {
+      return this.ap().a(c);
+   }
+
+   @Override
+   protected brv.c bf() {
+      return brv.c.a;
+   }
+
+   @Override
+   public void a(brv.d $$0) {
+      this.a(null);
+      super.a($$0);
+   }
+
+   @Override
+   public void aq() {
+      this.a(null);
+   }
+
+   @Override
+   public void c(@Nullable brv $$0) {
+      super.c($$0);
+      this.a(this);
+   }
+
+   private void a(@Nullable cmq $$0) {
+      cly $$1 = this.u();
+      if ($$1 != null) {
+         $$1.cK = $$0;
+      }
    }
 
    @Nullable
-   public static euh a(bru $$0, euk $$1, euk $$2, euf $$3, Predicate<bru> $$4, double $$5) {
-      dax $$6 = $$0.dP();
-      double $$7 = $$5;
-      bru $$8 = null;
-      euk $$9 = null;
+   public cly u() {
+      brv $$0 = this.t();
+      return $$0 instanceof cly ? (cly)$$0 : null;
+   }
 
-      for (bru $$10 : $$6.a($$0, $$3, $$4)) {
-         euf $$11 = $$10.cK().g((double)$$10.bK());
-         Optional<euk> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
-            }
-         } else if ($$12.isPresent()) {
-            euk $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cZ() == $$0.cZ()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
-               }
-            }
-         }
+   @Override
+   public boolean cB() {
+      return false;
+   }
+
+   @Override
+   public zl<abw> dq() {
+      brv $$0 = this.t();
+      return new abx(this, $$0 == null ? this.al() : $$0.al());
+   }
+
+   @Override
+   public void a(abx $$0) {
+      super.a($$0);
+      if (this.u() == null) {
+         this.an();
       }
-
-      return $$8 == null ? null : new euh($$8, $$9);
-   }
-
-   @Nullable
-   public static euh a(dax $$0, bru $$1, euk $$2, euk $$3, euf $$4, Predicate<bru> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
-
-   @Nullable
-   public static euh a(dax $$0, bru $$1, euk $$2, euk $$3, euf $$4, Predicate<bru> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bru $$8 = null;
-
-      for (bru $$9 : $$0.a($$1, $$4, $$5)) {
-         euf $$10 = $$9.cK().g((double)$$6);
-         Optional<euk> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
-            }
-         }
-      }
-
-      return $$8 == null ? null : new euh($$8);
-   }
-
-   public static void a(bru $$0, float $$1) {
-      euk $$2 = $$0.ds();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(ayd.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(ayd.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dH() - $$0.P < -180.0F) {
-            $$0.P -= 360.0F;
-         }
-
-         while ($$0.dH() - $$0.P >= 180.0F) {
-            $$0.P += 360.0F;
-         }
-
-         while ($$0.dF() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dF() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         $$0.s(ayd.i($$1, $$0.P, $$0.dH()));
-         $$0.r(ayd.i($$1, $$0.O, $$0.dF()));
-      }
-   }
-
-   public static bpt a(bso $$0, ctj $$1) {
-      return $$0.eX().a($$1) ? bpt.a : bpt.b;
-   }
-
-   public static cmc a(bso $$0, cto $$1, float $$2) {
-      crh $$3 = (crh)($$1.g() instanceof crh ? $$1.g() : ctr.ov);
-      cmc $$4 = $$3.a($$0.dP(), $$1, $$0);
-      $$4.a($$0, $$2);
-      return $$4;
    }
 }

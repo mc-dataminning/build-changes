@@ -1,40 +1,38 @@
-public class dxj implements dwi {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dwv i = new dwv(this);
+import javax.annotation.Nullable;
 
-   public dxj(long $$0) {
-      this.b($$0);
+public interface dxj<B, T extends B> {
+   static <B, T extends B> dxj<B, T> a(final Class<T> $$0) {
+      return new dxj<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   @Override
-   public ayk d() {
-      return new dxj(this.g());
+   static <B, T extends B> dxj<B, T> b(final Class<T> $$0) {
+      return new dxj<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   @Override
-   public dxg e() {
-      return new dwu.a(this.g());
-   }
+   @Nullable
+   T a(B var1);
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
+   Class<? extends B> a();
 }

@@ -1,17 +1,15 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
 import java.util.List;
-import javax.crypto.Cipher;
 
-public class vq extends MessageToMessageDecoder<ByteBuf> {
-   private final vp a;
-
-   public vq(Cipher $$0) {
-      this.a = new vp($$0);
+public record vq(List<String> a, vj<?> b, String c) {
+   public vq(vj<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   public vq(String $$0, vj<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
+   }
+
+   public vq(String $$0, String $$1, vj<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

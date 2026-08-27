@@ -1,40 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+public class fxi<T extends cfa> extends fxc<T> {
+   private float j;
 
-public class fxi {
-   private final Map<akl<? extends jk<?>>, awo.a> a = new HashMap<>();
-
-   public void a(akl<? extends jk<?>> $$0, awo.a $$1) {
-      this.a.put($$0, $$1);
+   public fxi(fys $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   private static void a() {
-      csa.e().n();
+   public static fyy c() {
+      fza $$0 = fxc.a(12, fyw.a);
+      fzb $$1 = $$0.a();
+      $$1.a("head", fyx.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), fyu.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fyx.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), fyu.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return fyy.a($$0, 64, 32);
    }
 
-   private static void b() {
-      dnu.f();
-      dea.a();
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.G($$3) * 9.0F;
+      this.j = $$0.H($$3);
    }
 
-   private void a(jl $$0, Predicate<akl<? extends jk<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((akl<? extends jk<?>>)$$2)) {
-            $$3.a($$0.d((akl<? extends jk<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(jl $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, jo.a::contains);
-      } else {
-         $$0.c().filter($$0x -> !jo.a.contains($$0x.a())).forEach($$0x -> $$0x.b().m());
-         this.a($$0, $$0x -> true);
-         b();
-      }
-
-      a();
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

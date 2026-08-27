@@ -1,31 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dle extends dfs {
-   public static final MapCodec<dle> b = b(dle::new);
-   private static final wx c = wx.c("container.upgrade");
+public class dle extends dfc {
+   public static final MapCodec<dle> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(u(), csy.q.fieldOf("color").forGetter($$0x -> $$0x.b)).apply($$0, dle::new)
+   );
+   private final csy b;
 
-   @Override
-   public MapCodec<dle> a() {
-      return b;
-   }
-
-   protected dle(dra.d $$0) {
+   public dle(dtb.d $$0, csy $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected bpy b(drb $$0, dax $$1, io $$2) {
-      return new bqe(($$2x, $$3, $$4) -> new cqr($$2x, $$3, cpe.a($$1, $$2)), c);
+   protected MapCodec<dle> a() {
+      return a;
    }
 
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if ($$1.B) {
-         return bpu.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avr.aF);
-         return bpu.b;
-      }
+   public csy b() {
+      return this.b;
+   }
+
+   public cuc c() {
+      return (cuc)cuk.AD.get(this.b());
    }
 }

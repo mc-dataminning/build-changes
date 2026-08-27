@@ -1,102 +1,61 @@
-public interface agd extends ajg, zv {
-   @Override
-   default vw b() {
-      return vw.b;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class agd implements zl<abw> {
+   public static final zc<wp, agd> a = zc.a(za.g, agd::b, agd.a.b.a(za.a()), agd::e, agd::new);
+   private final int b;
+   private final List<agd.a> c;
+
+   public agd(int $$0, Collection<btr> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (btr $$2 : $$1) {
+         this.c.add(new agd.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   void a(ahx var1);
+   private agd(int $$0, List<agd.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   void a(agl var1);
+   @Override
+   public zn<agd> a() {
+      return agj.bd;
+   }
 
-   void a(agj var1);
+   public void a(abw $$0) {
+      $$0.a(this);
+   }
 
-   void a(agk var1);
+   public int b() {
+      return this.b;
+   }
 
-   void a(agi var1);
+   public List<agd.a> e() {
+      return this.c;
+   }
 
-   void a(ago var1);
+   public static record a(ja<btq> c, double d, Collection<btt> e) {
+      public static final zc<ByteBuf, btt> a = zc.a(
+         ju.g, btt::b, za.j, btt::d, btt.a.e, btt::e, ($$0, $$1, $$2) -> new btt($$0, "Unknown synced attribute modifier", $$1, $$2)
+      );
+      public static final zc<wp, agd.a> b = zc.a(za.b(li.c), agd.a::a, za.j, agd.a::b, a.a(za.a(ArrayList::new)), agd.a::c, agd.a::new);
 
-   void a(agr var1);
+      public ja<btq> a() {
+         return this.c;
+      }
 
-   void a(ags var1);
+      public double b() {
+         return this.d;
+      }
 
-   void a(ahf var1);
-
-   void a(agt var1);
-
-   void a(agy var1);
-
-   void a(ahb var1);
-
-   void a(ahg var1);
-
-   void a(ahh var1);
-
-   void a(ahi var1);
-
-   void a(ahj var1);
-
-   void a(ahq var1);
-
-   void a(aht var1);
-
-   void a(ahw var1);
-
-   void a(ahz var1);
-
-   void a(aia var1);
-
-   void a(ahy var1);
-
-   void a(ahd var1);
-
-   void a(ahc var1);
-
-   void a(agf var1);
-
-   void a(ahl var1);
-
-   void a(ahk var1);
-
-   void a(ahn var1);
-
-   void a(agp var1);
-
-   void a(ahr var1);
-
-   void a(ahs var1);
-
-   void a(ahe var1);
-
-   void a(ahm var1);
-
-   void a(ahp var1);
-
-   void a(ahv var1);
-
-   void a(aho var1);
-
-   void a(agw var1);
-
-   void a(agx var1);
-
-   void a(agu var1);
-
-   void a(agg var1);
-
-   void a(ahu var1);
-
-   void a(agz var1);
-
-   void a(agh var1);
-
-   void a(aha var1);
-
-   void a(agm var1);
-
-   void a(agq var1);
-
-   void a(agn var1);
-
-   void a(agv var1);
+      public Collection<btt> c() {
+         return this.e;
+      }
+   }
 }

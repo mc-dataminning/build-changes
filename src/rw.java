@@ -1,82 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class rw {
-   public static final akl<dzk<?, ?>> a = rt.a("ore_magma");
-   public static final akl<dzk<?, ?>> b = rt.a("ore_soul_sand");
-   public static final akl<dzk<?, ?>> c = rt.a("ore_nether_gold");
-   public static final akl<dzk<?, ?>> d = rt.a("ore_quartz");
-   public static final akl<dzk<?, ?>> e = rt.a("ore_gravel_nether");
-   public static final akl<dzk<?, ?>> f = rt.a("ore_blackstone");
-   public static final akl<dzk<?, ?>> g = rt.a("ore_dirt");
-   public static final akl<dzk<?, ?>> h = rt.a("ore_gravel");
-   public static final akl<dzk<?, ?>> i = rt.a("ore_granite");
-   public static final akl<dzk<?, ?>> j = rt.a("ore_diorite");
-   public static final akl<dzk<?, ?>> k = rt.a("ore_andesite");
-   public static final akl<dzk<?, ?>> l = rt.a("ore_tuff");
-   public static final akl<dzk<?, ?>> m = rt.a("ore_coal");
-   public static final akl<dzk<?, ?>> n = rt.a("ore_coal_buried");
-   public static final akl<dzk<?, ?>> o = rt.a("ore_iron");
-   public static final akl<dzk<?, ?>> p = rt.a("ore_iron_small");
-   public static final akl<dzk<?, ?>> q = rt.a("ore_gold");
-   public static final akl<dzk<?, ?>> r = rt.a("ore_gold_buried");
-   public static final akl<dzk<?, ?>> s = rt.a("ore_redstone");
-   public static final akl<dzk<?, ?>> t = rt.a("ore_diamond_small");
-   public static final akl<dzk<?, ?>> u = rt.a("ore_diamond_medium");
-   public static final akl<dzk<?, ?>> v = rt.a("ore_diamond_large");
-   public static final akl<dzk<?, ?>> w = rt.a("ore_diamond_buried");
-   public static final akl<dzk<?, ?>> x = rt.a("ore_lapis");
-   public static final akl<dzk<?, ?>> y = rt.a("ore_lapis_buried");
-   public static final akl<dzk<?, ?>> z = rt.a("ore_infested");
-   public static final akl<dzk<?, ?>> A = rt.a("ore_emerald");
-   public static final akl<dzk<?, ?>> B = rt.a("ore_ancient_debris_large");
-   public static final akl<dzk<?, ?>> C = rt.a("ore_ancient_debris_small");
-   public static final akl<dzk<?, ?>> D = rt.a("ore_copper_small");
-   public static final akl<dzk<?, ?>> E = rt.a("ore_copper_large");
-   public static final akl<dzk<?, ?>> F = rt.a("ore_clay");
-
-   public static void a(qo<dzk<?, ?>> $$0) {
-      eld $$1 = new ell(avw.be);
-      eld $$2 = new ell(avw.bf);
-      eld $$3 = new ell(avw.bg);
-      eld $$4 = new ekm(dea.dV);
-      eld $$5 = new ell(avw.bh);
-      List<ecj.a> $$6 = List.of(ecj.a($$2, dea.P.n()), ecj.a($$3, dea.Q.n()));
-      List<ecj.a> $$7 = List.of(ecj.a($$2, dea.N.n()), ecj.a($$3, dea.O.n()));
-      List<ecj.a> $$8 = List.of(ecj.a($$2, dea.cx.n()), ecj.a($$3, dea.cy.n()));
-      List<ecj.a> $$9 = List.of(ecj.a($$2, dea.aR.n()), ecj.a($$3, dea.aS.n()));
-      List<ecj.a> $$10 = List.of(ecj.a($$2, dea.ra.n()), ecj.a($$3, dea.rb.n()));
-      List<ecj.a> $$11 = List.of(ecj.a($$2, dea.R.n()), ecj.a($$3, dea.S.n()));
-      rt.a($$0, a, dzx.I, new ecj($$4, dea.kJ.n(), 33));
-      rt.a($$0, b, dzx.I, new ecj($$4, dea.dW.n(), 12));
-      rt.a($$0, c, dzx.I, new ecj($$4, dea.T.n(), 10));
-      rt.a($$0, d, dzx.I, new ecj($$4, dea.hb.n(), 14));
-      rt.a($$0, e, dzx.I, new ecj($$4, dea.L.n(), 33));
-      rt.a($$0, f, dzx.I, new ecj($$4, dea.pr.n(), 33));
-      rt.a($$0, g, dzx.I, new ecj($$1, dea.j.n(), 33));
-      rt.a($$0, h, dzx.I, new ecj($$1, dea.L.n(), 33));
-      rt.a($$0, i, dzx.I, new ecj($$1, dea.c.n(), 64));
-      rt.a($$0, j, dzx.I, new ecj($$1, dea.e.n(), 64));
-      rt.a($$0, k, dzx.I, new ecj($$1, dea.g.n(), 64));
-      rt.a($$0, l, dzx.I, new ecj($$1, dea.qz.n(), 64));
-      rt.a($$0, m, dzx.I, new ecj($$11, 17));
-      rt.a($$0, n, dzx.I, new ecj($$11, 17, 0.5F));
-      rt.a($$0, o, dzx.I, new ecj($$6, 9));
-      rt.a($$0, p, dzx.I, new ecj($$6, 4));
-      rt.a($$0, q, dzx.I, new ecj($$7, 9));
-      rt.a($$0, r, dzx.I, new ecj($$7, 9, 0.5F));
-      rt.a($$0, s, dzx.I, new ecj(List.of(ecj.a($$2, dea.dI.n()), ecj.a($$3, dea.dJ.n())), 8));
-      rt.a($$0, t, dzx.I, new ecj($$8, 4, 0.5F));
-      rt.a($$0, v, dzx.I, new ecj($$8, 12, 0.7F));
-      rt.a($$0, w, dzx.I, new ecj($$8, 8, 1.0F));
-      rt.a($$0, u, dzx.I, new ecj($$8, 8, 0.5F));
-      rt.a($$0, x, dzx.I, new ecj($$9, 7));
-      rt.a($$0, y, dzx.I, new ecj($$9, 7, 1.0F));
-      rt.a($$0, z, dzx.I, new ecj(List.of(ecj.a($$2, dea.eN.n()), ecj.a($$3, dea.td.n())), 9));
-      rt.a($$0, A, dzx.I, new ecj(List.of(ecj.a($$2, dea.fE.n()), ecj.a($$3, dea.fF.n())), 3));
-      rt.a($$0, B, dzx.ae, new ecj($$5, dea.pj.n(), 3, 1.0F));
-      rt.a($$0, C, dzx.ae, new ecj($$5, dea.pj.n(), 2, 1.0F));
-      rt.a($$0, D, dzx.I, new ecj($$10, 10));
-      rt.a($$0, E, dzx.I, new ecj($$10, 20));
-      rt.a($$0, F, dzx.I, new ecj($$1, dea.dR.n(), 33));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface rw {
 }

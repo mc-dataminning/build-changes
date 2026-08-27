@@ -1,36 +1,56 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fdb extends fcz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wx c = wx.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public class fdb extends fcy {
+   private static final Logger e = LogUtils.getLogger();
+   public List<fda> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public fdb(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fdb() {
    }
 
-   @Override
-   public void run() {
-      ezi $$0 = ezi.a();
+   public fdb(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
+   }
+
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static fdb a(String $$0) {
+      fdb $$1 = new fdb();
+      $$1.a = Lists.newArrayList();
 
       try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fav var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
-   }
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   @Override
-   public wx a() {
-      return c;
+            while ($$4.hasNext()) {
+               $$1.a.add(fda.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = fev.a("page", $$3, 0);
+         $$1.c = fev.a("size", $$3, 0);
+         $$1.d = fev.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
+
+      return $$1;
    }
 }

@@ -1,88 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class dec extends ddk {
-   public static final MapCodec<dec> a = b(dec::new);
-   public static final drs[] b = new drs[]{drr.k, drr.l, drr.m};
-   protected static final evd c = eva.a(ddy.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), ddy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public class dec extends dfl {
+   public static final MapCodec<dec> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aks.a(li.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               aks.a(li.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               aks.a(li.G).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, dec::new)
+   );
+   public static final dtw b = djc.aE;
+   protected static final float c = 2.0F;
+   private static final Map<iw, exn> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         iw.d,
+         dfc.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         iw.e,
+         dfc.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         iw.c,
+         dfc.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         iw.f,
+         dfc.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final aks<dfc> e;
+   private final aks<dfc> f;
+   private final aks<cuc> g;
 
    @Override
    public MapCodec<dec> a() {
       return a;
    }
 
-   public dec(dra.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
+   protected dec(aks<dfc> $$0, aks<dfc> $$1, aks<cuc> $$2, dtb.d $$3) {
+      super($$3);
+      this.k(this.E.b().a(b, iw.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dke a_(drb $$0) {
-      return dke.c;
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   public dog a(io $$0, drb $$1) {
-      return new doj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return $$0.B ? null : a($$2, doi.l, doj::a);
-   }
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return c;
-   }
-
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if ($$1.B) {
-         return bpu.a;
-      } else {
-         dog $$5 = $$1.c_($$2);
-         if ($$5 instanceof doj) {
-            $$3.a((doj)$$5);
-            $$3.a(avr.aa);
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dfc> $$6 = $$3.I_().d(li.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().n().b(dnm.c, Integer.valueOf(7));
          }
-
-         return bpu.b;
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(ky.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
+      return $$0.a(dfe.dn) || $$0.a(dfe.do);
    }
 
    @Override
-   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      bpq.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public cuh a(dcd $$0, ir $$1, dtc $$2) {
+      return new cuh((dbz)DataFixUtils.orElse($$0.I_().d(li.G).e(this.g), this));
    }
 
    @Override
-   protected boolean c_(drb $$0) {
-      return true;
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected int a(drb $$0, dax $$1, io $$2) {
-      return cot.a($$1.c_($$2));
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   protected boolean a(drb $$0, enj $$1) {
-      return false;
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b);
    }
 }

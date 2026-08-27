@@ -1,71 +1,196 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.ToIntFunction;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ll {
-   ToIntFunction<String> a = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("type", 0);
-      $$0.put("parent", 1);
-      $$0.defaultReturnValue(2);
-   });
-   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
-   Logger c = LogUtils.getLogger();
+public class ll {
+   private final dfc a;
+   final Map<ll.b, dfc> b = Maps.newHashMap();
+   boolean c = true;
+   boolean d = true;
+   @Nullable
+   String e;
+   @Nullable
+   String f;
 
-   CompletableFuture<?> a(lj var1);
-
-   String a();
-
-   static <T> CompletableFuture<?> a(lj $$0, iz.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      akk<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
-      JsonElement $$6 = (JsonElement)$$2.encodeStart($$5, $$3).getOrThrow();
-      return a($$0, $$6, $$4);
+   ll(dfc $$0) {
+      this.a = $$0;
    }
 
-   static CompletableFuture<?> a(lj $$0, JsonElement $$1, Path $$2) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
-
-            try {
-               $$5.setSerializeNulls(false);
-               $$5.setIndent("  ");
-               axu.a($$5, $$1, b);
-            } catch (Throwable var9) {
-               try {
-                  $$5.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-
-               throw var9;
-            }
-
-            $$5.close();
-            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
-         } catch (IOException var10) {
-            c.error("Failed to save file to {}", $$2, var10);
-         }
-      }, ac.g());
+   public dfc a() {
+      return this.a;
    }
 
-   @FunctionalInterface
-   public interface a<T extends ll> {
-      T create(ln var1);
+   public Map<ll.b, dfc> b() {
+      return this.b;
+   }
+
+   public dfc a(ll.b $$0) {
+      return this.b.get($$0);
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public Optional<String> e() {
+      return azh.h(this.e) ? Optional.empty() : Optional.of(this.e);
+   }
+
+   public Optional<String> f() {
+      return azh.h(this.f) ? Optional.empty() : Optional.of(this.f);
+   }
+
+   public static class a {
+      private final ll a;
+
+      public a(dfc $$0) {
+         this.a = new ll($$0);
+      }
+
+      public ll a() {
+         return this.a;
+      }
+
+      public ll.a a(dfc $$0) {
+         this.a.b.put(ll.b.a, $$0);
+         return this;
+      }
+
+      public ll.a b(dfc $$0) {
+         this.a.b.put(ll.b.b, $$0);
+         return this;
+      }
+
+      public ll.a c(dfc $$0) {
+         this.a.b.put(ll.b.j, $$0);
+         return this;
+      }
+
+      public ll.a d(dfc $$0) {
+         this.a.b.put(ll.b.c, $$0);
+         return this;
+      }
+
+      public ll.a e(dfc $$0) {
+         this.a.b.put(ll.b.d, $$0);
+         return this;
+      }
+
+      public ll.a f(dfc $$0) {
+         this.a.b.put(ll.b.e, $$0);
+         return this;
+      }
+
+      public ll.a g(dfc $$0) {
+         this.a.b.put(ll.b.f, $$0);
+         return this;
+      }
+
+      public ll.a h(dfc $$0) {
+         this.a.b.put(ll.b.g, $$0);
+         return this;
+      }
+
+      public ll.a i(dfc $$0) {
+         this.a.b.put(ll.b.h, $$0);
+         return this;
+      }
+
+      public ll.a j(dfc $$0) {
+         this.a.b.put(ll.b.i, $$0);
+         return this;
+      }
+
+      public ll.a a(dfc $$0, dfc $$1) {
+         this.a.b.put(ll.b.k, $$0);
+         this.a.b.put(ll.b.r, $$1);
+         return this;
+      }
+
+      public ll.a k(dfc $$0) {
+         this.a.b.put(ll.b.l, $$0);
+         return this;
+      }
+
+      public ll.a l(dfc $$0) {
+         this.a.b.put(ll.b.m, $$0);
+         return this;
+      }
+
+      public ll.a m(dfc $$0) {
+         this.a.b.put(ll.b.n, $$0);
+         return this;
+      }
+
+      public ll.a n(dfc $$0) {
+         this.a.b.put(ll.b.o, $$0);
+         return this;
+      }
+
+      public ll.a o(dfc $$0) {
+         this.a.b.put(ll.b.p, $$0);
+         return this;
+      }
+
+      public ll.a p(dfc $$0) {
+         this.a.b.put(ll.b.q, $$0);
+         return this;
+      }
+
+      public ll.a b() {
+         this.a.c = false;
+         return this;
+      }
+
+      public ll.a c() {
+         this.a.d = false;
+         return this;
+      }
+
+      public ll.a a(String $$0) {
+         this.a.e = $$0;
+         return this;
+      }
+
+      public ll.a b(String $$0) {
+         this.a.f = $$0;
+         return this;
+      }
+   }
+
+   public static enum b {
+      a("button"),
+      b("chiseled"),
+      c("cracked"),
+      d("cut"),
+      e("door"),
+      f("fence"),
+      g("fence"),
+      h("fence_gate"),
+      i("fence_gate"),
+      j("mosaic"),
+      k("sign"),
+      l("slab"),
+      m("stairs"),
+      n("pressure_plate"),
+      o("polished"),
+      p("trapdoor"),
+      q("wall"),
+      r("wall_sign");
+
+      private final String s;
+
+      private b(String $$0) {
+         this.s = $$0;
+      }
+
+      public String a() {
+         return this.s;
+      }
    }
 }

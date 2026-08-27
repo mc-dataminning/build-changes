@@ -1,31 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 
-public class fcf {
-   public final int a;
-   @Nullable
-   public final String b;
+public class fcf extends fcy implements fcs {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   fcf(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public String a() {
+      return this.a;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   public void a(String $$0) {
+      this.a = $$0;
+   }
 
-      public fcf.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public UUID b() {
+      return this.b;
+   }
 
-      public fcf.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
 
-      public fcf a() {
-         return new fcf(this.a, this.b);
-      }
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

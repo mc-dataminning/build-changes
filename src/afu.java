@@ -1,59 +1,68 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class afu implements ze<abq> {
-   public static final yv<wi, afu> a = ze.a(afu::a, afu::new);
-   private final boolean b;
-   private final List<af> c;
-   private final Set<akm> d;
-   private final Map<akm, ah> e;
+public class afu implements zl<abw> {
+   public static final zc<we, afu> a = zl.a(afu::a, afu::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   @Nullable
+   private final akt d;
+   @Nullable
+   private final avq e;
 
-   public afu(boolean $$0, Collection<af> $$1, Set<akm> $$2, Map<akm, ah> $$3) {
-      this.b = $$0;
-      this.c = List.copyOf($$1);
-      this.d = Set.copyOf($$2);
-      this.e = Map.copyOf($$3);
+   public afu(@Nullable akt $$0, @Nullable avq $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private afu(wi $$0) {
-      this.b = $$0.readBoolean();
-      this.c = af.b.decode($$0);
-      this.d = $$0.a(Sets::newLinkedHashSetWithExpectedSize, vx::q);
-      this.e = $$0.a(vx::q, ah::b);
+   private afu(we $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(avq.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      af.b.encode($$0, this.c);
-      $$0.a(this.d, vx::a);
-      $$0.a(this.e, vx::a, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(we $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.k(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.k(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.k(2);
+         $$0.a(this.d);
+      } else {
+         $$0.k(0);
+      }
    }
 
    @Override
-   public zg<afu> a() {
-      return agb.ba;
+   public zn<afu> a() {
+      return agj.aW;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public List<af> b() {
-      return this.c;
-   }
-
-   public Set<akm> e() {
+   @Nullable
+   public akt b() {
       return this.d;
    }
 
-   public Map<akm, ah> f() {
+   @Nullable
+   public avq e() {
       return this.e;
-   }
-
-   public boolean g() {
-      return this.b;
    }
 }

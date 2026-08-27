@@ -1,56 +1,80 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record kd<T>(ka<T> b, T c) {
-   public static final yv<wi, kd<?>> a = new yv<wi, kd<?>>() {
-      public kd<?> a(wi $$0) {
-         ka<?> $$1 = ka.b.decode($$0);
-         return a($$0, (ka<T>)$$1);
+public interface kd<T> {
+   Codec<kd<?>> a = axu.a((Supplier<Codec<kd<?>>>)(() -> lh.as.q()));
+   zc<wp, kd<?>> b = zc.a($$0 -> za.a(li.av));
+
+   static <T> kd.a<T> a() {
+      return new kd.a<>();
+   }
+
+   @Nullable
+   Codec<T> b();
+
+   default Codec<T> c() {
+      Codec<T> $$0 = this.b();
+      if ($$0 == null) {
+         throw new IllegalStateException(this + " is not a persistent component");
+      } else {
+         return $$0;
+      }
+   }
+
+   default boolean d() {
+      return this.b() == null;
+   }
+
+   zc<? super wp, T> e();
+
+   public static class a<T> {
+      @Nullable
+      private Codec<T> a;
+      @Nullable
+      private zc<? super wp, T> b;
+
+      public kd.a<T> a(Codec<T> $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      private static <T> kd<T> a(wi $$0, ka<T> $$1) {
-         return new kd<>($$1, $$1.e().decode($$0));
+      public kd.a<T> a(zc<? super wp, T> $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public void a(wi $$0, kd<?> $$1) {
-         b($$0, (kd<T>)$$1);
+      public kd<T> a() {
+         zc<? super wp, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> za.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
+         return new kd.a.a<>(this.a, $$0);
       }
 
-      private static <T> void b(wi $$0, kd<T> $$1) {
-         ka.b.encode($$0, $$1.a());
-         $$1.a().e().encode($$0, $$1.b());
+      static class a<T> implements kd<T> {
+         @Nullable
+         private final Codec<T> c;
+         private final zc<? super wp, T> d;
+
+         a(@Nullable Codec<T> $$0, zc<? super wp, T> $$1) {
+            this.c = $$0;
+            this.d = $$1;
+         }
+
+         @Nullable
+         @Override
+         public Codec<T> b() {
+            return this.c;
+         }
+
+         @Override
+         public zc<? super wp, T> e() {
+            return this.d;
+         }
+
+         @Override
+         public String toString() {
+            return ad.a((jn<kd.a.a<T>>)lh.as, this);
+         }
       }
-   };
-
-   static kd<?> a(Entry<ka<?>, Object> $$0) {
-      return a($$0.getKey(), $$0.getValue());
-   }
-
-   static <T> kd<T> a(ka<T> $$0, Object $$1) {
-      return new kd<>($$0, (T)$$1);
-   }
-
-   public void a(kc $$0) {
-      $$0.b(this.b, this.c);
-   }
-
-   public <D> DataResult<D> a(DynamicOps<D> $$0) {
-      Codec<T> $$1 = this.b.b();
-      return $$1 == null ? DataResult.error(() -> "Component of type " + this.b + " is not encodable") : $$1.encodeStart($$0, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return this.b + "=>" + this.c;
-   }
-
-   public ka<T> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
    }
 }

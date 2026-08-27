@@ -1,10 +1,23 @@
-public interface abg extends zv {
-   @Override
-   default vw b() {
-      return vw.e;
+import io.netty.buffer.ByteBuf;
+
+public class abg implements zl<abf> {
+   public static final abg a = new abg();
+   public static final zc<ByteBuf, abg> b = zc.a(a);
+
+   private abg() {
    }
 
-   void a(abh var1);
+   @Override
+   public zn<abg> a() {
+      return abk.a;
+   }
 
-   void a(abi var1);
+   public void a(abf $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

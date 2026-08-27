@@ -1,50 +1,79 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fnm {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<akm> e = List.of();
-   private int f;
-   private int g;
+public class fnm extends fon {
+   private static final xe a = xe.c("addServer.enterIp");
+   private fin b;
+   private final gab c;
+   private fiw d;
+   private final BooleanConsumer r;
+   private final fon s;
 
-   public fnm(int $$0) {
-      this.d = $$0;
+   public fnm(fon $$0, BooleanConsumer $$1, gab $$2) {
+      super(xe.c("selectServer.direct"));
+      this.s = $$0;
+      this.c = $$2;
+      this.r = $$1;
    }
 
-   public void a(List<akm> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
-   }
-
-   public void a(cot $$0, ffm $$1, float $$2, int $$3, int $$4) {
-      cqo $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aH_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.B();
+         return true;
       }
    }
 
-   private void a(cqo $$0, akm $$1, float $$2, ffm $$3, int $$4, int $$5) {
-      gnv $$6 = fdz.Q().a(gnu.e).apply($$1);
-      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   @Override
+   protected void aN_() {
+      this.d = new fiw(this.p, this.n / 2 - 100, 116, 200, 20, xe.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.m.ab);
+      this.d.b($$0 -> this.C());
+      this.d(this.d);
+      this.b = this.c(fin.a(xe.c("selectServer.select"), $$0 -> this.B()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fin.a(xd.e, $$0 -> this.r.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.C();
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   protected void aC_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(fgj $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void B() {
+      this.c.b = this.d.a();
+      this.r.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.s);
+   }
+
+   @Override
+   public void j() {
+      this.m.m.ab = this.d.a();
+      this.m.m.av();
+   }
+
+   private void C() {
+      this.b.j = gbe.b(this.d.a());
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

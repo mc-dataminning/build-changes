@@ -1,27 +1,15 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elb extends eld {
-   public static final MapCodec<elb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(drb.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, elb::new)
-   );
-   private final drb b;
-   private final float d;
+public interface elb<P extends ela> {
+   elb<ekz> a = a("single_pool_element", ekz.b);
+   elb<eky> b = a("list_pool_element", eky.a);
+   elb<eku> c = a("feature_pool_element", eku.a);
+   elb<ekt> d = a("empty_pool_element", ekt.a);
+   elb<ekx> e = a("legacy_single_pool_element", ekx.a);
 
-   public elb(drb $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   Codec<P> codec();
 
-   @Override
-   public boolean a(drb $$0, ayk $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected ele<?> a() {
-      return ele.f;
+   static <P extends ela> elb<P> a(String $$0, Codec<P> $$1) {
+      return jn.a(lh.ai, $$0, () -> $$1);
    }
 }

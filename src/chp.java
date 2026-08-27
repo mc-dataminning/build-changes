@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 public class chp extends chc {
    private boolean b;
    @Nullable
-   private eni c;
+   private eps c;
    @Nullable
-   private euk d;
+   private ewu d;
 
    public chp(cha $$0) {
       super($$0);
@@ -14,9 +14,9 @@ public class chp extends chc {
    @Override
    public void c() {
       if (!this.b && this.c != null) {
-         io $$0 = this.a.dP().a(dwt.a.f, dzw.a(this.a.s()));
-         if (!$$0.a(this.a.dn(), 10.0)) {
-            this.a.gm().a(chq.a);
+         ir $$0 = this.a.dU().a(dyu.a.f, ebz.a(this.a.r()));
+         if (!$$0.a(this.a.ds(), 10.0)) {
+            this.a.gv().a(chq.a);
          }
       } else {
          this.b = false;
@@ -32,10 +32,10 @@ public class chp extends chc {
    }
 
    private void j() {
-      int $$0 = this.a.y();
-      euk $$1 = this.a.F(1.0F);
+      int $$0 = this.a.x();
+      ewu $$1 = this.a.F(1.0F);
       int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
-      if (this.a.gn() != null && this.a.gn().e() > 0) {
+      if (this.a.gw() != null && this.a.gw().e() > 0) {
          $$2 %= 12;
          if ($$2 < 0) {
             $$2 += 12;
@@ -54,22 +54,22 @@ public class chp extends chc {
       if (this.c != null) {
          this.c.a();
          if (!this.c.c()) {
-            js $$0 = this.c.g();
+            jv $$0 = this.c.g();
             this.c.a();
 
             double $$1;
             do {
-               $$1 = (double)((float)$$0.v() + this.a.el().i() * 20.0F);
+               $$1 = (double)((float)$$0.v() + this.a.et().i() * 20.0F);
             } while ($$1 < (double)$$0.v());
 
-            this.d = new euk((double)$$0.u(), $$1, (double)$$0.w());
+            this.d = new ewu((double)$$0.u(), $$1, (double)$$0.w());
          }
       }
    }
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.d;
    }
 

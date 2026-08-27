@@ -1,17 +1,19 @@
-public class gla extends gik<cjw, fvp<cjw>> {
-   private static final akm a = new akm("textures/entity/zombie_villager/zombie_villager.png");
+public class gla extends glz<ciw, fvu<ciw>> {
+   private static final akt a = new akt("textures/entity/ghast/ghast.png");
+   private static final akt b = new akt("textures/entity/ghast/ghast_shooting.png");
 
-   public gla(ght.a $$0) {
-      super($$0, new fvp<>($$0.a(fvv.ck)), 0.5F);
-      this.a(new glv<>(this, new fvp($$0.a(fvv.cl)), new fvp($$0.a(fvv.cm)), $$0.g()));
-      this.a(new gmq<>(this, $$0.e(), "zombie_villager"));
+   public gla(gkq.a $$0) {
+      super($$0, new fvu<>($$0.a(fyr.aj)), 1.5F);
    }
 
-   public akm a(cjw $$0) {
-      return a;
+   public akt a(ciw $$0) {
+      return $$0.r() ? b : a;
    }
 
-   protected boolean b(cjw $$0) {
-      return super.a($$0) || $$0.gz();
+   protected void a(ciw $$0, fbc $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

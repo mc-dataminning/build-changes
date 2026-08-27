@@ -1,254 +1,166 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
-public class alt {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("commands.attribute.failed.entity", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> wx.b("commands.attribute.failed.no_attribute", $$0, $$1)
-   );
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wx.b("commands.attribute.failed.no_modifier", $$1, $$0, $$2)
-   );
-   private static final Dynamic3CommandExceptionType d = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wx.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
-   );
+public class alt extends aqq {
+   private final akt j;
+   private final Set<UUID> k = Sets.newHashSet();
+   private int l;
+   private int m = 100;
 
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("attribute").requires($$0x -> $$0x.c(2)))
-            .then(
-               ef.a("target", er.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("attribute", fd.a($$1, lf.c))
-                              .then(
-                                 ((LiteralArgumentBuilder)ef.a("get")
-                                       .executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), fd.a($$0x, "attribute"), 1.0)))
-                                    .then(
-                                       ef.a("scale", DoubleArgumentType.doubleArg())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ee)$$0x.getSource(),
-                                                   er.a($$0x, "target"),
-                                                   fd.a($$0x, "attribute"),
-                                                   DoubleArgumentType.getDouble($$0x, "scale")
-                                                )
-                                          )
-                                    )
-                              ))
-                           .then(
-                              ((LiteralArgumentBuilder)ef.a("base")
-                                    .then(
-                                       ef.a("set")
-                                          .then(
-                                             ef.a("value", DoubleArgumentType.doubleArg())
-                                                .executes(
-                                                   $$0x -> c(
-                                                         (ee)$$0x.getSource(),
-                                                         er.a($$0x, "target"),
-                                                         fd.a($$0x, "attribute"),
-                                                         DoubleArgumentType.getDouble($$0x, "value")
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    ((LiteralArgumentBuilder)ef.a("get")
-                                          .executes($$0x -> b((ee)$$0x.getSource(), er.a($$0x, "target"), fd.a($$0x, "attribute"), 1.0)))
-                                       .then(
-                                          ef.a("scale", DoubleArgumentType.doubleArg())
-                                             .executes(
-                                                $$0x -> b(
-                                                      (ee)$$0x.getSource(),
-                                                      er.a($$0x, "target"),
-                                                      fd.a($$0x, "attribute"),
-                                                      DoubleArgumentType.getDouble($$0x, "scale")
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("modifier")
-                                    .then(
-                                       ef.a("add")
-                                          .then(
-                                             ef.a("uuid", fu.a())
-                                                .then(
-                                                   ef.a("name", StringArgumentType.string())
-                                                      .then(
-                                                         ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a("value", DoubleArgumentType.doubleArg())
-                                                                  .then(
-                                                                     ef.a("add_value")
-                                                                        .executes(
-                                                                           $$0x -> a(
-                                                                                 (ee)$$0x.getSource(),
-                                                                                 er.a($$0x, "target"),
-                                                                                 fd.a($$0x, "attribute"),
-                                                                                 fu.a($$0x, "uuid"),
-                                                                                 StringArgumentType.getString($$0x, "name"),
-                                                                                 DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 btu.a.a
-                                                                              )
-                                                                        )
-                                                                  ))
-                                                               .then(
-                                                                  ef.a("add_multiplied_base")
-                                                                     .executes(
-                                                                        $$0x -> a(
-                                                                              (ee)$$0x.getSource(),
-                                                                              er.a($$0x, "target"),
-                                                                              fd.a($$0x, "attribute"),
-                                                                              fu.a($$0x, "uuid"),
-                                                                              StringArgumentType.getString($$0x, "name"),
-                                                                              DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              btu.a.b
-                                                                           )
-                                                                     )
-                                                               ))
-                                                            .then(
-                                                               ef.a("add_multiplied_total")
-                                                                  .executes(
-                                                                     $$0x -> a(
-                                                                           (ee)$$0x.getSource(),
-                                                                           er.a($$0x, "target"),
-                                                                           fd.a($$0x, "attribute"),
-                                                                           fu.a($$0x, "uuid"),
-                                                                           StringArgumentType.getString($$0x, "name"),
-                                                                           DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           btu.a.c
-                                                                        )
-                                                                  )
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    ef.a("remove")
-                                       .then(
-                                          ef.a("uuid", fu.a())
-                                             .executes($$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), fd.a($$0x, "attribute"), fu.a($$0x, "uuid")))
-                                       )
-                                 ))
-                              .then(
-                                 ef.a("value")
-                                    .then(
-                                       ef.a("get")
-                                          .then(
-                                             ((RequiredArgumentBuilder)ef.a("uuid", fu.a())
-                                                   .executes(
-                                                      $$0x -> a((ee)$$0x.getSource(), er.a($$0x, "target"), fd.a($$0x, "attribute"), fu.a($$0x, "uuid"), 1.0)
-                                                   ))
-                                                .then(
-                                                   ef.a("scale", DoubleArgumentType.doubleArg())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ee)$$0x.getSource(),
-                                                               er.a($$0x, "target"),
-                                                               fd.a($$0x, "attribute"),
-                                                               fu.a($$0x, "uuid"),
-                                                               DoubleArgumentType.getDouble($$0x, "scale")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public alt(akt $$0, xe $$1) {
+      super($$1, bpq.a.g, bpq.b.a);
+      this.j = $$0;
+      this.a(0.0F);
    }
 
-   private static bts a(bru $$0, ix<btr> $$1) throws CommandSyntaxException {
-      bts $$2 = a($$0).eW().a($$1);
-      if ($$2 == null) {
-         throw b.create($$0.af(), a($$1));
-      } else {
-         return $$2;
+   public akt a() {
+      return this.j;
+   }
+
+   @Override
+   public void a(aqu $$0) {
+      super.a($$0);
+      this.k.add($$0.cE());
+   }
+
+   public void a(UUID $$0) {
+      this.k.add($$0);
+   }
+
+   @Override
+   public void b(aqu $$0) {
+      super.b($$0);
+      this.k.remove($$0.cE());
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.k.clear();
+   }
+
+   public int c() {
+      return this.l;
+   }
+
+   public int d() {
+      return this.m;
+   }
+
+   public void a(int $$0) {
+      this.l = $$0;
+      this.a(aym.a((float)$$0 / (float)this.m, 0.0F, 1.0F));
+   }
+
+   public void b(int $$0) {
+      this.m = $$0;
+      this.a(aym.a((float)this.l / (float)$$0, 0.0F, 1.0F));
+   }
+
+   public final xe e() {
+      return xh.a(this.i()).a($$0 -> $$0.a(this.k().a()).a(new xk(xk.a.a, xe.b(this.a().toString()))).a(this.a().toString()));
+   }
+
+   public boolean a(Collection<aqu> $$0) {
+      Set<UUID> $$1 = Sets.newHashSet();
+      Set<aqu> $$2 = Sets.newHashSet();
+
+      for (UUID $$3 : this.k) {
+         boolean $$4 = false;
+
+         for (aqu $$5 : $$0) {
+            if ($$5.cE().equals($$3)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            $$1.add($$3);
+         }
+      }
+
+      for (aqu $$6 : $$0) {
+         boolean $$7 = false;
+
+         for (UUID $$8 : this.k) {
+            if ($$6.cE().equals($$8)) {
+               $$7 = true;
+               break;
+            }
+         }
+
+         if (!$$7) {
+            $$2.add($$6);
+         }
+      }
+
+      for (UUID $$9 : $$1) {
+         for (aqu $$10 : this.g()) {
+            if ($$10.cE().equals($$9)) {
+               this.b($$10);
+               break;
+            }
+         }
+
+         this.k.remove($$9);
+      }
+
+      for (aqu $$11 : $$2) {
+         this.a($$11);
+      }
+
+      return !$$1.isEmpty() || !$$2.isEmpty();
+   }
+
+   public uk a(jc.a $$0) {
+      uk $$1 = new uk();
+      $$1.a("Name", xe.a.a(this.a, $$0));
+      $$1.a("Visible", this.f());
+      $$1.a("Value", this.l);
+      $$1.a("Max", this.m);
+      $$1.a("Color", this.k().b());
+      $$1.a("Overlay", this.l().a());
+      $$1.a("DarkenScreen", this.m());
+      $$1.a("PlayBossMusic", this.n());
+      $$1.a("CreateWorldFog", this.o());
+      uq $$2 = new uq();
+
+      for (UUID $$3 : this.k) {
+         $$2.add(uz.a($$3));
+      }
+
+      $$1.a("Players", $$2);
+      return $$1;
+   }
+
+   public static alt a(uk $$0, akt $$1, jc.a $$2) {
+      alt $$3 = new alt($$1, xe.a.a($$0.l("Name"), $$2));
+      $$3.d($$0.q("Visible"));
+      $$3.a($$0.h("Value"));
+      $$3.b($$0.h("Max"));
+      $$3.a(bpq.a.a($$0.l("Color")));
+      $$3.a(bpq.b.a($$0.l("Overlay")));
+      $$3.a($$0.q("DarkenScreen"));
+      $$3.b($$0.q("PlayBossMusic"));
+      $$3.c($$0.q("CreateWorldFog"));
+
+      for (vh $$5 : $$0.c("Players", 11)) {
+         $$3.a(uz.a($$5));
+      }
+
+      return $$3;
+   }
+
+   public void c(aqu $$0) {
+      if (this.k.contains($$0.cE())) {
+         this.a($$0);
       }
    }
 
-   private static bso a(bru $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bso)) {
-         throw a.create($$0.af());
-      } else {
-         return (bso)$$0;
-      }
-   }
-
-   private static bso b(bru $$0, ix<btr> $$1) throws CommandSyntaxException {
-      bso $$2 = a($$0);
-      if (!$$2.eW().b($$1)) {
-         throw b.create($$0.af(), a($$1));
-      } else {
-         return $$2;
-      }
-   }
-
-   private static int a(ee $$0, bru $$1, ix<btr> $$2, double $$3) throws CommandSyntaxException {
-      bso $$4 = b($$1, $$2);
-      double $$5 = $$4.g($$2);
-      $$0.a(() -> wx.a("commands.attribute.value.get.success", a($$2), $$1.af(), $$5), false);
-      return (int)($$5 * $$3);
-   }
-
-   private static int b(ee $$0, bru $$1, ix<btr> $$2, double $$3) throws CommandSyntaxException {
-      bso $$4 = b($$1, $$2);
-      double $$5 = $$4.h($$2);
-      $$0.a(() -> wx.a("commands.attribute.base_value.get.success", a($$2), $$1.af(), $$5), false);
-      return (int)($$5 * $$3);
-   }
-
-   private static int a(ee $$0, bru $$1, ix<btr> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      bso $$5 = b($$1, $$2);
-      btt $$6 = $$5.eW();
-      if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.af(), a($$2), $$3);
-      } else {
-         double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> wx.a("commands.attribute.modifier.value.get.success", wx.a($$3), a($$2), $$1.af(), $$7), false);
-         return (int)($$7 * $$4);
-      }
-   }
-
-   private static int c(ee $$0, bru $$1, ix<btr> $$2, double $$3) throws CommandSyntaxException {
-      a($$1, $$2).a($$3);
-      $$0.a(() -> wx.a("commands.attribute.base_value.set.success", a($$2), $$1.af(), $$3), false);
-      return 1;
-   }
-
-   private static int a(ee $$0, bru $$1, ix<btr> $$2, UUID $$3, String $$4, double $$5, btu.a $$6) throws CommandSyntaxException {
-      bts $$7 = a($$1, $$2);
-      btu $$8 = new btu($$3, $$4, $$5, $$6);
-      if ($$7.a($$8)) {
-         throw d.create($$1.af(), a($$2), $$3);
-      } else {
-         $$7.d($$8);
-         $$0.a(() -> wx.a("commands.attribute.modifier.add.success", wx.a($$3), a($$2), $$1.af()), false);
-         return 1;
-      }
-   }
-
-   private static int a(ee $$0, bru $$1, ix<btr> $$2, UUID $$3) throws CommandSyntaxException {
-      bts $$4 = a($$1, $$2);
-      if ($$4.c($$3)) {
-         $$0.a(() -> wx.a("commands.attribute.modifier.remove.success", wx.a($$3), a($$2), $$1.af()), false);
-         return 1;
-      } else {
-         throw c.create($$1.af(), a($$2), $$3);
-      }
-   }
-
-   private static wx a(ix<btr> $$0) {
-      return wx.c($$0.a().c());
+   public void d(aqu $$0) {
+      super.b($$0);
    }
 }

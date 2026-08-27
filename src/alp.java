@@ -1,141 +1,94 @@
-import com.google.common.base.Charsets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
 import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class alp {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
-   @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
 
-   public alp(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
-   }
-
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
-   }
-
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+   public static <D, R> CompletableFuture<R> a(alp.c $$0, alp.f<D> $$1, alp.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<dcu, att> $$5 = $$0.a.a();
+         att $$6 = (att)$$5.getSecond();
+         jh<alc> $$7 = alc.a();
+         jh<alc> $$8 = b($$6, $$7, alc.b, ako.a);
+         jo.b $$9 = $$8.b(alc.c);
+         jo.b $$10 = ako.a($$6, $$9, ako.b);
+         dcu $$11 = (dcu)$$5.getFirst();
+         alp.b<D> $$12 = $$1.get(new alp.a($$6, $$11, $$9, $$10));
+         jh<alc> $$13 = $$8.a(alc.c, $$12.b);
+         return ale.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
             }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var14) {
+         return CompletableFuture.failedFuture(var14);
       }
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
+   private static jo.b a(aud $$0, jh<alc> $$1, alc $$2, List<ako.c<?>> $$3) {
+      jo.b $$4 = $$1.b($$2);
+      return ako.a($$0, $$4, $$3);
+   }
+
+   private static jh<alc> b(aud $$0, jh<alc> $$1, alc $$2, List<ako.c<?>> $$3) {
+      jo.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(aud a, dcu b, jo.b c, jo.b d) {
+   }
+
+   public static record b<D>(D a, jo.b b) {
+   }
+
+   public static record c(alp.d a, ei.a b, int c) {
+   }
+
+   public static record d(ato a, dcu b, boolean c, boolean d) {
+      public Pair<dcu, att> a() {
+         cop $$0 = this.d ? cor.e.a() : this.b.b();
+         dcu $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
+         if (!this.d) {
+            $$1 = $$1.a(this.b.b());
          }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+
+         List<asp> $$2 = this.a.g();
+         att $$3 = new atw(asr.b, $$2);
+         return Pair.of($$1, $$3);
+      }
+
+      public ato b() {
+         return this.a;
+      }
+
+      public dcu c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
       }
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
-               )
-         );
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(att var1, ale var2, jh<alc> var3, D var4);
    }
 
-   private Optional<alp.a> b(Scanner $$0) {
-      akl<dax> $$1 = (akl<dax>)aly.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new alp.a($$1, new euk((double)$$2, (double)$$3, (double)$$4), new euj($$6, $$5)));
-      }
-   }
-
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<aqn> $$1 = this.e.ah().t();
-         if (!$$1.isEmpty()) {
-            aqn $$2 = $$1.get(0);
-            aqm $$3 = this.e.I();
-            ee $$4 = new ee($$2, euk.a($$3.U()), euj.a, $$3, 4, "", ww.a, this.e, $$2);
-            ef $$5 = this.e.aH();
-            $$5.a($$4, $$0);
-         }
-      });
-   }
-
-   static record a(akl<dax> a, euk b, euj c) {
+   @FunctionalInterface
+   public interface f<D> {
+      alp.b<D> get(alp.a var1);
    }
 }

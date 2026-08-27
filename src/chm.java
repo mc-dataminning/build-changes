@@ -7,7 +7,7 @@ public class chm extends chd {
    private int e;
    private int f;
    @Nullable
-   private brq g;
+   private brr g;
 
    public chm(cha $$0) {
       super($$0);
@@ -17,19 +17,19 @@ public class chm extends chd {
    public void b() {
       this.e++;
       if (this.e % 2 == 0 && this.e < 10) {
-         euk $$0 = this.a.F(1.0F).d();
+         ewu $$0 = this.a.F(1.0F).d();
          $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.du();
+         double $$1 = this.a.e.dz();
          double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dA();
+         double $$3 = this.a.e.dF();
 
          for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.el().k() / 2.0;
-            double $$6 = $$2 + this.a.el().k() / 2.0;
-            double $$7 = $$3 + this.a.el().k() / 2.0;
+            double $$5 = $$1 + this.a.et().k() / 2.0;
+            double $$6 = $$2 + this.a.et().k() / 2.0;
+            double $$7 = $$3 + this.a.et().k() / 2.0;
 
             for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dP().a(ky.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
+               this.a.dU().a(lb.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
             }
 
             $$0.b((float) (Math.PI / 16));
@@ -42,20 +42,20 @@ public class chm extends chd {
       this.e++;
       if (this.e >= 200) {
          if (this.f >= 4) {
-            this.a.gm().a(chq.e);
+            this.a.gv().a(chq.e);
          } else {
-            this.a.gm().a(chq.g);
+            this.a.gv().a(chq.g);
          }
       } else if (this.e == 10) {
-         euk $$0 = new euk(this.a.e.du() - this.a.du(), 0.0, this.a.e.dA() - this.a.dA()).d();
+         ewu $$0 = new ewu(this.a.e.dz() - this.a.dz(), 0.0, this.a.e.dF() - this.a.dF()).d();
          float $$1 = 5.0F;
-         double $$2 = this.a.e.du() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dA() + $$0.e * 5.0 / 2.0;
+         double $$2 = this.a.e.dz() + $$0.c * 5.0 / 2.0;
+         double $$3 = this.a.e.dF() + $$0.e * 5.0 / 2.0;
          double $$4 = this.a.e.e(0.5);
          double $$5 = $$4;
-         io.a $$6 = new io.a($$2, $$4, $$3);
+         ir.a $$6 = new ir.a($$2, $$4, $$3);
 
-         while (this.a.dP().u($$6)) {
+         while (this.a.dU().u($$6)) {
             if (--$$5 < 0.0) {
                $$5 = $$4;
                break;
@@ -64,14 +64,14 @@ public class chm extends chd {
             $$6.b($$2, $$5, $$3);
          }
 
-         $$5 = (double)(ayd.a($$5) + 1);
-         this.g = new brq(this.a.dP(), $$2, $$5, $$3);
+         $$5 = (double)(aym.a($$5) + 1);
+         this.g = new brr(this.a.dU(), $$2, $$5, $$3);
          this.g.a(this.a);
          this.g.a(5.0F);
          this.g.a(200);
-         this.g.a(ky.h);
-         this.g.a(new brc(bre.g));
-         this.a.dP().b(this.g);
+         this.g.a(lb.h);
+         this.g.a(new brh(brj.g));
+         this.a.dU().b(this.g);
       }
    }
 

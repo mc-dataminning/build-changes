@@ -1,88 +1,103 @@
 import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ghn extends ghs<cgz> {
-   private static final akm a = new akm("textures/entity/end_crystal/end_crystal.png");
-   private static final gcs f = gcs.e(a);
-   private static final float g = (float)Math.sin(Math.PI / 4);
-   private static final String h = "glass";
-   private static final String i = "base";
-   private final fvw j;
-   private final fvw k;
-   private final fvw l;
+public class ghn implements ghg<dqo> {
+   public static final gtc a = new gtc(gqx.e, new akt("entity/conduit/base"));
+   public static final gtc b = new gtc(gqx.e, new akt("entity/conduit/cage"));
+   public static final gtc c = new gtc(gqx.e, new akt("entity/conduit/wind"));
+   public static final gtc d = new gtc(gqx.e, new akt("entity/conduit/wind_vertical"));
+   public static final gtc e = new gtc(gqx.e, new akt("entity/conduit/open_eye"));
+   public static final gtc f = new gtc(gqx.e, new akt("entity/conduit/closed_eye"));
+   private final fys g;
+   private final fys h;
+   private final fys i;
+   private final fys j;
+   private final ghf k;
 
-   public ghn(ght.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      fvw $$1 = $$0.a(fvv.aa);
-      this.k = $$1.b("glass");
-      this.j = $$1.b("cube");
-      this.l = $$1.b("base");
+   public ghn(ghh.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(fyr.E);
+      this.h = $$0.a(fyr.G);
+      this.i = $$0.a(fyr.F);
+      this.j = $$0.a(fyr.D);
    }
 
-   public static fwc a() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("glass", fwb.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvy.a);
-      $$1.a("cube", fwb.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fvy.a);
-      $$1.a("base", fwb.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fvy.a);
-      return fwc.a($$0, 64, 32);
+   public static fyy b() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("eye", fyx.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fyw(0.01F)), fyu.a);
+      return fyy.a($$0, 16, 16);
    }
 
-   public void a(cgz $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      $$3.a();
-      float $$6 = a($$0, $$2);
-      float $$7 = ((float)$$0.b + $$2) * 3.0F;
-      eyw $$8 = $$4.getBuffer(f);
-      $$3.a();
-      $$3.b(2.0F, 2.0F, 2.0F);
-      $$3.a(0.0F, -0.5F, 0.0F);
-      int $$9 = gnm.d;
-      if ($$0.s()) {
-         this.l.a($$3, $$8, $$5, $$9);
+   public static fyy c() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("wind", fyx.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fyu.a);
+      return fyy.a($$0, 64, 32);
+   }
+
+   public static fyy d() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("shell", fyx.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyu.a);
+      return fyy.a($$0, 32, 16);
+   }
+
+   public static fyy e() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      $$1.a("shell", fyx.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyu.a);
+      return fyy.a($$0, 32, 16);
+   }
+
+   public void a(dqo $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         fbg $$8 = a.a($$3, gfo::c);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
+      } else {
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = aym.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gfo::e), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+         }
+
+         fbg $$13 = ($$12 == 1 ? d : c).a($$3, gfo::e);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         ffu $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gfo::e), $$4, $$5);
+         $$2.b();
       }
-
-      $$3.a(a.d.rotationDegrees($$7));
-      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      this.k.a($$3, $$8, $$5, $$9);
-      float $$10 = 0.875F;
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.k.a($$3, $$8, $$5, $$9);
-      $$3.b(0.875F, 0.875F, 0.875F);
-      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
-      $$3.a(a.d.rotationDegrees($$7));
-      this.j.a($$3, $$8, $$5, $$9);
-      $$3.b();
-      $$3.b();
-      io $$11 = $$0.p();
-      if ($$11 != null) {
-         float $$12 = (float)$$11.u() + 0.5F;
-         float $$13 = (float)$$11.v() + 0.5F;
-         float $$14 = (float)$$11.w() + 0.5F;
-         float $$15 = (float)((double)$$12 - $$0.du());
-         float $$16 = (float)((double)$$13 - $$0.dw());
-         float $$17 = (float)((double)$$14 - $$0.dA());
-         $$3.a($$15, $$16, $$17);
-         gho.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static float a(cgz $$0, float $$1) {
-      float $$2 = (float)$$0.b + $$1;
-      float $$3 = ayd.a($$2 * 0.2F) / 2.0F + 0.5F;
-      $$3 = ($$3 * $$3 + $$3) * 0.4F;
-      return $$3 - 1.4F;
-   }
-
-   public akm a(cgz $$0) {
-      return a;
-   }
-
-   public boolean a(cgz $$0, gfo $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.p() != null;
    }
 }

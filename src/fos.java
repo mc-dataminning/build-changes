@@ -1,27 +1,34 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import java.util.Arrays;
 
-public class fos implements foq {
-   public static final foq a = new fos();
+public class fos extends foe {
+   private static final xe a = xe.c("options.sounds.title");
+   private fjk r;
 
-   private fos() {
+   private static fgm<?>[] a(fgn $$0) {
+      return new fgm[]{$$0.W(), $$0.X()};
+   }
+
+   public fos(fon $$0, fgn $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   protected void aN_() {
+      this.r = this.c(new fjk(this.m, this.n, this.o, this));
+      this.r.a(this.c.b(avq.a));
+      this.r.a(this.B());
+      this.r.a(this.c.at());
+      this.r.a(a(this.c));
+      super.aN_();
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   @Override
+   protected void c() {
+      super.c();
+      this.r.a(this.n, this.d);
+   }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   private fgm<?>[] B() {
+      return Arrays.stream(avq.values()).filter($$0 -> $$0 != avq.a).map($$0 -> this.c.b($$0)).toArray(fgm[]::new);
    }
 }

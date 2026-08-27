@@ -1,130 +1,156 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public final class awm {
+   public static final awt<cuc> a = a("wool");
+   public static final awt<cuc> b = a("planks");
+   public static final awt<cuc> c = a("stone_bricks");
+   public static final awt<cuc> d = a("wooden_buttons");
+   public static final awt<cuc> e = a("stone_buttons");
+   public static final awt<cuc> f = a("buttons");
+   public static final awt<cuc> g = a("wool_carpets");
+   public static final awt<cuc> h = a("wooden_doors");
+   public static final awt<cuc> i = a("wooden_stairs");
+   public static final awt<cuc> j = a("wooden_slabs");
+   public static final awt<cuc> k = a("wooden_fences");
+   public static final awt<cuc> l = a("fence_gates");
+   public static final awt<cuc> m = a("wooden_pressure_plates");
+   public static final awt<cuc> n = a("wooden_trapdoors");
+   public static final awt<cuc> o = a("doors");
+   public static final awt<cuc> p = a("saplings");
+   public static final awt<cuc> q = a("logs_that_burn");
+   public static final awt<cuc> r = a("logs");
+   public static final awt<cuc> s = a("dark_oak_logs");
+   public static final awt<cuc> t = a("oak_logs");
+   public static final awt<cuc> u = a("birch_logs");
+   public static final awt<cuc> v = a("acacia_logs");
+   public static final awt<cuc> w = a("cherry_logs");
+   public static final awt<cuc> x = a("jungle_logs");
+   public static final awt<cuc> y = a("spruce_logs");
+   public static final awt<cuc> z = a("mangrove_logs");
+   public static final awt<cuc> A = a("crimson_stems");
+   public static final awt<cuc> B = a("warped_stems");
+   public static final awt<cuc> C = a("bamboo_blocks");
+   public static final awt<cuc> D = a("wart_blocks");
+   public static final awt<cuc> E = a("banners");
+   public static final awt<cuc> F = a("sand");
+   public static final awt<cuc> G = a("smelts_to_glass");
+   public static final awt<cuc> H = a("stairs");
+   public static final awt<cuc> I = a("slabs");
+   public static final awt<cuc> J = a("walls");
+   public static final awt<cuc> K = a("anvil");
+   public static final awt<cuc> L = a("rails");
+   public static final awt<cuc> M = a("leaves");
+   public static final awt<cuc> N = a("trapdoors");
+   public static final awt<cuc> O = a("small_flowers");
+   public static final awt<cuc> P = a("beds");
+   public static final awt<cuc> Q = a("fences");
+   public static final awt<cuc> R = a("tall_flowers");
+   public static final awt<cuc> S = a("flowers");
+   public static final awt<cuc> T = a("piglin_repellents");
+   public static final awt<cuc> U = a("piglin_loved");
+   public static final awt<cuc> V = a("ignored_by_piglin_babies");
+   public static final awt<cuc> W = a("meat");
+   public static final awt<cuc> X = a("sniffer_food");
+   public static final awt<cuc> Y = a("piglin_food");
+   public static final awt<cuc> Z = a("fox_food");
+   public static final awt<cuc> aa = a("cow_food");
+   public static final awt<cuc> ab = a("goat_food");
+   public static final awt<cuc> ac = a("sheep_food");
+   public static final awt<cuc> ad = a("wolf_food");
+   public static final awt<cuc> ae = a("cat_food");
+   public static final awt<cuc> af = a("horse_food");
+   public static final awt<cuc> ag = a("horse_tempt_items");
+   public static final awt<cuc> ah = a("camel_food");
+   public static final awt<cuc> ai = a("armadillo_food");
+   public static final awt<cuc> aj = a("bee_food");
+   public static final awt<cuc> ak = a("chicken_food");
+   public static final awt<cuc> al = a("frog_food");
+   public static final awt<cuc> am = a("hoglin_food");
+   public static final awt<cuc> an = a("llama_food");
+   public static final awt<cuc> ao = a("llama_tempt_items");
+   public static final awt<cuc> ap = a("ocelot_food");
+   public static final awt<cuc> aq = a("panda_food");
+   public static final awt<cuc> ar = a("pig_food");
+   public static final awt<cuc> as = a("rabbit_food");
+   public static final awt<cuc> at = a("strider_food");
+   public static final awt<cuc> au = a("strider_tempt_items");
+   public static final awt<cuc> av = a("turtle_food");
+   public static final awt<cuc> aw = a("parrot_food");
+   public static final awt<cuc> ax = a("parrot_poisonous_food");
+   public static final awt<cuc> ay = a("axolotl_food");
+   public static final awt<cuc> az = a("gold_ores");
+   public static final awt<cuc> aA = a("iron_ores");
+   public static final awt<cuc> aB = a("diamond_ores");
+   public static final awt<cuc> aC = a("redstone_ores");
+   public static final awt<cuc> aD = a("lapis_ores");
+   public static final awt<cuc> aE = a("coal_ores");
+   public static final awt<cuc> aF = a("emerald_ores");
+   public static final awt<cuc> aG = a("copper_ores");
+   public static final awt<cuc> aH = a("non_flammable_wood");
+   public static final awt<cuc> aI = a("soul_fire_base_blocks");
+   public static final awt<cuc> aJ = a("candles");
+   public static final awt<cuc> aK = a("dirt");
+   public static final awt<cuc> aL = a("terracotta");
+   public static final awt<cuc> aM = a("completes_find_tree_tutorial");
+   public static final awt<cuc> aN = a("heatable_potatos");
+   public static final awt<cuc> aO = a("boats");
+   public static final awt<cuc> aP = a("chest_boats");
+   public static final awt<cuc> aQ = a("fishes");
+   public static final awt<cuc> aR = a("signs");
+   public static final awt<cuc> aS = a("music_discs");
+   public static final awt<cuc> aT = a("creeper_drop_music_discs");
+   public static final awt<cuc> aU = a("coals");
+   public static final awt<cuc> aV = a("arrows");
+   public static final awt<cuc> aW = a("lectern_books");
+   public static final awt<cuc> aX = a("bookshelf_books");
+   public static final awt<cuc> aY = a("beacon_payment_items");
+   public static final awt<cuc> aZ = a("stone_tool_materials");
+   public static final awt<cuc> ba = a("stone_crafting_materials");
+   public static final awt<cuc> bb = a("freeze_immune_wearables");
+   public static final awt<cuc> bc = a("dampens_vibrations");
+   public static final awt<cuc> bd = a("cluster_max_harvestables");
+   public static final awt<cuc> be = a("compasses");
+   public static final awt<cuc> bf = a("hanging_signs");
+   public static final awt<cuc> bg = a("creeper_igniters");
+   public static final awt<cuc> bh = a("noteblock_top_instruments");
+   public static final awt<cuc> bi = a("foot_armor");
+   public static final awt<cuc> bj = a("leg_armor");
+   public static final awt<cuc> bk = a("chest_armor");
+   public static final awt<cuc> bl = a("head_armor");
+   public static final awt<cuc> bm = a("skulls");
+   public static final awt<cuc> bn = a("trimmable_armor");
+   public static final awt<cuc> bo = a("trim_materials");
+   public static final awt<cuc> bp = a("trim_templates");
+   public static final awt<cuc> bq = a("decorated_pot_sherds");
+   public static final awt<cuc> br = a("decorated_pot_ingredients");
+   public static final awt<cuc> bs = a("swords");
+   public static final awt<cuc> bt = a("axes");
+   public static final awt<cuc> bu = a("hoes");
+   public static final awt<cuc> bv = a("pickaxes");
+   public static final awt<cuc> bw = a("shovels");
+   public static final awt<cuc> bx = a("tools");
+   public static final awt<cuc> by = a("breaks_decorated_pots");
+   public static final awt<cuc> bz = a("villager_plantable_seeds");
+   public static final awt<cuc> bA = a("dyeable");
+   public static final awt<cuc> bB = a("enchantable/foot_armor");
+   public static final awt<cuc> bC = a("enchantable/leg_armor");
+   public static final awt<cuc> bD = a("enchantable/chest_armor");
+   public static final awt<cuc> bE = a("enchantable/head_armor");
+   public static final awt<cuc> bF = a("enchantable/armor");
+   public static final awt<cuc> bG = a("enchantable/sword");
+   public static final awt<cuc> bH = a("enchantable/weapon");
+   public static final awt<cuc> bI = a("enchantable/mining");
+   public static final awt<cuc> bJ = a("enchantable/mining_loot");
+   public static final awt<cuc> bK = a("enchantable/fishing");
+   public static final awt<cuc> bL = a("enchantable/trident");
+   public static final awt<cuc> bM = a("enchantable/durability");
+   public static final awt<cuc> bN = a("enchantable/bow");
+   public static final awt<cuc> bO = a("enchantable/equippable");
+   public static final awt<cuc> bP = a("enchantable/crossbow");
+   public static final awt<cuc> bQ = a("enchantable/vanishing");
 
-public class awm<T> {
-   private static final Logger a = LogUtils.getLogger();
-   final Function<akm, Optional<? extends T>> b;
-   private final String c;
-
-   public awm(Function<akm, Optional<? extends T>> $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private awm() {
    }
 
-   public Map<akm, List<awm.a>> a(atw $$0) {
-      Map<akm, List<awm.a>> $$1 = Maps.newHashMap();
-      akf $$2 = akf.a(this.c);
-
-      for (Entry<akm, List<atu>> $$3 : $$2.b($$0).entrySet()) {
-         akm $$4 = $$3.getKey();
-         akm $$5 = $$2.b($$4);
-
-         for (atu $$6 : $$3.getValue()) {
-            try (Reader $$7 = $$6.e()) {
-               JsonElement $$8 = JsonParser.parseReader($$7);
-               List<awm.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
-               awk $$10 = (awk)awk.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow();
-               if ($$10.b()) {
-                  $$9.clear();
-               }
-
-               String $$11 = $$6.b();
-               $$10.a().forEach($$2x -> $$9.add(new awm.a($$2x, $$11)));
-            } catch (Exception var17) {
-               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private Either<Collection<awm.a>, Collection<T>> a(awj.a<T> $$0, List<awm.a> $$1) {
-      Builder<T> $$2 = ImmutableSet.builder();
-      List<awm.a> $$3 = new ArrayList<>();
-
-      for (awm.a $$4 : $$1) {
-         if (!$$4.a().a($$0, $$2::add)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
-   }
-
-   public Map<akm, Collection<T>> a(Map<akm, List<awm.a>> $$0) {
-      final Map<akm, Collection<T>> $$1 = Maps.newHashMap();
-      awj.a<T> $$2 = new awj.a<T>() {
-         @Nullable
-         @Override
-         public T a(akm $$0) {
-            return (T)awm.this.b.apply($$0).orElse(null);
-         }
-
-         @Nullable
-         @Override
-         public Collection<T> b(akm $$0) {
-            return $$1.get($$0);
-         }
-      };
-      axj<akm, awm.b> $$3 = new axj<>();
-      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new awm.b($$2x)));
-      $$3.a(
-         ($$2x, $$3x) -> this.a($$2, $$3x.a)
-               .ifLeft(
-                  $$1xx -> a.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        $$2x,
-                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
-               )
-               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
-      );
-      return $$1;
-   }
-
-   public Map<akm, Collection<T>> b(atw $$0) {
-      return this.a(this.a($$0));
-   }
-
-   public static record a(awj a, String b) {
-
-      @Override
-      public String toString() {
-         return this.a + " (from " + this.b + ")";
-      }
-   }
-
-   static record b(List<awm.a> a) implements axj.a<akm> {
-
-      @Override
-      public void a(Consumer<akm> $$0) {
-         this.a.forEach($$1 -> $$1.a.a($$0));
-      }
-
-      @Override
-      public void b(Consumer<akm> $$0) {
-         this.a.forEach($$1 -> $$1.a.b($$0));
-      }
+   private static awt<cuc> a(String $$0) {
+      return awt.a(li.G, new akt($$0));
    }
 }

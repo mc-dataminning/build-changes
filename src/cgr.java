@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 import java.util.function.IntFunction;
 
-public enum cgr implements ayx {
+public enum cgr implements azg {
    a(0, "white"),
    b(1, "creamy"),
    c(2, "chestnut"),
@@ -10,8 +10,8 @@ public enum cgr implements ayx {
    f(5, "gray"),
    g(6, "dark_brown");
 
-   public static final Codec<cgr> h = ayx.a(cgr::values);
-   private static final IntFunction<cgr> i = awv.a(cgr::a, values(), awv.a.b);
+   public static final Codec<cgr> h = azg.a(cgr::values);
+   private static final IntFunction<cgr> i = axd.a(cgr::a, values(), axd.a.b);
    private final int j;
    private final String k;
 

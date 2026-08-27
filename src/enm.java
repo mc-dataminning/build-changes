@@ -1,40 +1,36 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import org.jetbrains.annotations.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class enm {
-   private static final int a = 4096;
-   private static final int b = 4095;
-   private final long[] c = new long[4096];
-   private final enl[] d = new enl[4096];
+public class enm extends enq {
+   public static final Codec<enm> a = eni.b.listOf().fieldOf("rules").xmap(enm::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<eni> b;
 
-   public enl a(dad $$0, io $$1) {
-      long $$2 = $$1.a();
-      int $$3 = a($$2);
-      enl $$4 = this.a($$3, $$2);
-      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
+   public enm(List<? extends eni> $$0) {
+      this.b = ImmutableList.copyOf($$0);
    }
 
    @Nullable
-   private enl a(int $$0, long $$1) {
-      return this.c[$$0] == $$1 ? this.d[$$0] : null;
-   }
+   @Override
+   public ent.c a(dcd $$0, ir $$1, ir $$2, ent.c $$3, ent.c $$4, enp $$5) {
+      ayt $$6 = ayt.a(aym.a($$4.a()));
+      dtc $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
 
-   private enl a(dad $$0, io $$1, int $$2, long $$3) {
-      enl $$4 = enq.b($$0, $$1);
-      this.c[$$2] = $$3;
-      this.d[$$2] = $$4;
+      while (var9.hasNext()) {
+         eni $$8 = (eni)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new ent.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
       return $$4;
    }
 
-   public void a(io $$0) {
-      long $$1 = $$0.a();
-      int $$2 = a($$1);
-      if (this.c[$$2] == $$1) {
-         this.d[$$2] = null;
-      }
-   }
-
-   private static int a(long $$0) {
-      return (int)HashCommon.mix($$0) & 4095;
+   @Override
+   protected ens<?> a() {
+      return ens.i;
    }
 }

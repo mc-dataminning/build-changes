@@ -1,49 +1,115 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class crq extends ctj {
-   public crq(ctj.a $$0) {
-      super($$0);
+public class crq {
+   private static final Codec<crq> e = aw.a.flatComapMap($$0 -> new crq(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
+   private static final Codec<crq> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axu.a(aw.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), axu.a(Codec.BOOL, "show_in_tooltip", true).forGetter(crq::a))
+            .apply($$0, crq::new)
+   );
+   public static final Codec<crq> a = axu.e(f, e);
+   public static final zc<wp, crq> b = zc.a(aw.b.a(za.a()), $$0 -> $$0.h, za.b, crq::a, crq::new);
+   public static final xe c = xe.c("item.canBreak").a(n.h);
+   public static final xe d = xe.c("item.canPlace").a(n.h);
+   private static final xe g = xe.c("item.canUse.unknown").a(n.h);
+   private final List<aw> h;
+   private final boolean i;
+   private final List<xe> j;
+   @Nullable
+   private dtg k;
+   private boolean l;
+   private boolean m;
+
+   private crq(List<aw> $$0, boolean $$1, List<xe> $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      List<brq> $$3 = $$0.a(brq.class, $$1.cK().g(2.0), $$0x -> $$0x != null && $$0x.bD() && $$0x.q() instanceof cha);
-      cto $$4 = $$1.b($$2);
-      if (!$$3.isEmpty()) {
-         brq $$5 = $$3.get(0);
-         $$5.a($$5.g() - 0.5F);
-         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avh.cD, avi.g, 1.0F, 1.0F);
-         $$0.a($$1, dvu.y, $$1.dn());
-         if ($$1 instanceof aqn $$6) {
-            am.T.a($$6, $$4, $$5);
-         }
+   public crq(List<aw> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = a($$0);
+   }
 
-         return bpv.a(this.a($$4, $$1, new cto(ctr.vn)), $$0.x_());
+   private static boolean a(dtg $$0, @Nullable dtg $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         jo $$3 = $$0.c().I_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
       } else {
-         eug $$7 = a($$0, $$1, dag.b.b);
-         if ($$7.c() == eui.a.a) {
-            return bpv.c($$4);
-         } else {
-            if ($$7.c() == eui.a.b) {
-               io $$8 = $$7.a();
-               if (!$$0.a($$1, $$8)) {
-                  return bpv.c($$4);
-               }
-
-               if ($$0.b_($$8).a(awb.a)) {
-                  $$0.a($$1, $$1.du(), $$1.dw(), $$1.dA(), avh.cC, avi.g, 1.0F, 1.0F);
-                  $$0.a($$1, dvu.y, $$8);
-                  return bpv.a(this.a($$4, $$1, cvp.a(ctr.sk, cvq.a)), $$0.x_());
-               }
-            }
-
-            return bpv.c($$4);
-         }
+         return false;
       }
    }
 
-   protected cto a(cto $$0, clw $$1, cto $$2) {
-      $$1.b(avr.c.b(this));
-      return ctq.a($$0, $$1, $$2);
+   public boolean a(dtg $$0) {
+      if (a($$0, this.k, this.m)) {
+         return this.l;
+      } else {
+         this.k = $$0;
+         this.m = false;
+
+         for (aw $$1 : this.h) {
+            if ($$1.a($$0)) {
+               this.m = this.m | $$1.a();
+               this.l = true;
+               return true;
+            }
+         }
+
+         this.l = false;
+         return false;
+      }
+   }
+
+   public void a(Consumer<xe> $$0) {
+      this.j.forEach($$0);
+   }
+
+   public crq a(boolean $$0) {
+      return new crq(this.h, $$0, this.j);
+   }
+
+   private static List<xe> a(List<aw> $$0) {
+      for (aw $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(g);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dfc)$$0x.a()).f().a(n.i)).toList();
+   }
+
+   public boolean a() {
+      return this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof crq $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
+   }
+
+   @Override
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

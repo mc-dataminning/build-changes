@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class chf extends chc {
    @Nullable
-   private euk b;
+   private ewu b;
    private int c;
 
    public chf(cha $$0) {
@@ -12,10 +12,10 @@ public class chf extends chc {
    @Override
    public void b() {
       if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.el().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.el().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.el().i() - 0.5F) * 8.0F;
-         this.a.dP().a(ky.v, this.a.du() + (double)$$0, this.a.dw() + 2.0 + (double)$$1, this.a.dA() + (double)$$2, 0.0, 0.0, 0.0);
+         float $$0 = (this.a.et().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.et().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.et().i() - 0.5F) * 8.0F;
+         this.a.dU().a(lb.v, this.a.dz() + (double)$$0, this.a.dB() + 2.0 + (double)$$1, this.a.dF() + (double)$$2, 0.0, 0.0, 0.0);
       }
    }
 
@@ -23,12 +23,12 @@ public class chf extends chc {
    public void c() {
       this.c++;
       if (this.b == null) {
-         io $$0 = this.a.dP().a(dwt.a.e, dzw.a(this.a.s()));
-         this.b = euk.c($$0);
+         ir $$0 = this.a.dU().a(dyu.a.e, ebz.a(this.a.r()));
+         this.b = ewu.c($$0);
       }
 
-      double $$1 = this.b.c(this.a.du(), this.a.dw(), this.a.dA());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
+      double $$1 = this.b.c(this.a.dz(), this.a.dB(), this.a.dF());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.R && !this.a.S) {
          this.a.t(1.0F);
       } else {
          this.a.t(0.0F);
@@ -48,7 +48,7 @@ public class chf extends chc {
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.b;
    }
 

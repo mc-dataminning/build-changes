@@ -1,85 +1,45 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-public class fmr extends flq {
-   private static final wx s = wx.c("controls.keybinds.title");
-   @Nullable
-   public fdx a;
-   public long r;
-   private fmq u;
-   private ffz v;
+public enum fmr {
+   a,
+   b,
+   c,
+   d;
 
-   public fmr(fly $$0, fed $$1) {
-      super($$0, $$1, s);
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public fmq a() {
+      return switch (this) {
+         case a, b -> fmq.b;
+         case c, d -> fmq.a;
+      };
    }
 
-   @Override
-   protected void aM_() {
-      this.u = this.c(new fmq(this, this.m));
-      this.v = ffz.a(wx.c("controls.resetAll"), $$0 -> {
-         for (fdx $$1 : this.c.X) {
-            $$1.b($$1.i());
-         }
-
-         this.u.d();
-      }).a();
-      super.aM_();
+   public fmr b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   @Override
-   protected void h() {
-      fjq $$0 = this.d.b(fjq.e().a(8));
-      $$0.a(this.v);
-      $$0.a(ffz.a(ww.d, $$0x -> this.d()).a());
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
    }
 
-   @Override
-   protected void c() {
-      this.d.a();
-      this.u.a(this.n, this.d);
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, exn.b.c.a($$2));
-         this.a = null;
-         this.u.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, exn.bv);
-         } else {
-            this.c.a(this.a, exn.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.r = ac.c();
-         this.u.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (fdx $$5 : this.c.X) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.v.j = $$4;
+   public IntComparator d() {
+      return this.e;
    }
 }

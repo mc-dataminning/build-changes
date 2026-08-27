@@ -5,11 +5,11 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bsj extends bru implements brr, btm {
+public class bsj extends brv implements brs, btl {
    private static final Logger b = LogUtils.getLogger();
-   private static final ajr<Float> c = ajv.a(bsj.class, ajt.d);
-   private static final ajr<Float> d = ajv.a(bsj.class, ajt.d);
-   private static final ajr<Boolean> e = ajv.a(bsj.class, ajt.k);
+   private static final ajy<Float> c = akc.a(bsj.class, aka.d);
+   private static final ajy<Float> d = akc.a(bsj.class, aka.d);
+   private static final ajy<Boolean> e = akc.a(bsj.class, aka.k);
    private static final String f = "width";
    private static final String g = "height";
    private static final String h = "attack";
@@ -20,20 +20,20 @@ public class bsj extends bru implements brr, btm {
    @Nullable
    private bsj.a l;
 
-   public bsj(bsa<?> $$0, dax $$1) {
+   public bsj(bsb<?> $$0, dca $$1) {
       super($$0, $$1);
-      this.ag = true;
+      this.ah = true;
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       $$0.a(c, 1.0F);
       $$0.a(d, 1.0F);
       $$0.a(e, false);
    }
 
    @Override
-   protected void a(ud $$0) {
+   protected void a(uk $$0) {
       if ($$0.b("width", 99)) {
          this.a($$0.j("width"));
       }
@@ -43,13 +43,13 @@ public class bsj extends bru implements brr, btm {
       }
 
       if ($$0.e("attack")) {
-         bsj.a.a.decode(ur.a, $$0.c("attack")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bsj.a)$$0x.getFirst());
+         bsj.a.a.decode(uy.a, $$0.c("attack")).resultOrPartial(ad.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bsj.a)$$0x.getFirst());
       } else {
          this.k = null;
       }
 
       if ($$0.e("interaction")) {
-         bsj.a.a.decode(ur.a, $$0.c("interaction")).resultOrPartial(ac.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bsj.a)$$0x.getFirst());
+         bsj.a.a.decode(uy.a, $$0.c("interaction")).resultOrPartial(ad.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bsj.a)$$0x.getFirst());
       } else {
          this.l = null;
       }
@@ -59,22 +59,22 @@ public class bsj extends bru implements brr, btm {
    }
 
    @Override
-   protected void b(ud $$0) {
-      $$0.a("width", this.s());
-      $$0.a("height", this.u());
+   protected void b(uk $$0) {
+      $$0.a("width", this.r());
+      $$0.a("height", this.t());
       if (this.k != null) {
-         bsj.a.a.encodeStart(ur.a, this.k).ifSuccess($$1 -> $$0.a("attack", $$1));
+         bsj.a.a.encodeStart(uy.a, this.k).result().ifPresent($$1 -> $$0.a("attack", $$1));
       }
 
       if (this.l != null) {
-         bsj.a.a.encodeStart(ur.a, this.l).ifSuccess($$1 -> $$0.a("interaction", $$1));
+         bsj.a.a.encodeStart(uy.a, this.l).result().ifPresent($$1 -> $$0.a("interaction", $$1));
       }
 
-      $$0.a("response", this.v());
+      $$0.a("response", this.u());
    }
 
    @Override
-   public void a(ajr<?> $$0) {
+   public void a(ajy<?> $$0) {
       super.a($$0);
       if (d.equals($$0) || c.equals($$0)) {
          this.a(this.as());
@@ -82,18 +82,18 @@ public class bsj extends bru implements brr, btm {
    }
 
    @Override
-   public boolean by() {
+   public boolean bD() {
       return false;
    }
 
    @Override
-   public boolean bz() {
+   public boolean bE() {
       return true;
    }
 
    @Override
-   public emz k_() {
-      return emz.d;
+   public epj j_() {
+      return epj.d;
    }
 
    @Override
@@ -102,26 +102,26 @@ public class bsj extends bru implements brr, btm {
    }
 
    @Override
-   public boolean u(bru $$0) {
-      if ($$0 instanceof clw $$1) {
-         this.k = new bsj.a($$1.cz(), this.dP().Y());
-         if ($$1 instanceof aqn $$2) {
-            am.h.a($$2, this, $$1.dQ().n(), 1.0F, 1.0F, false);
+   public boolean u(brv $$0) {
+      if ($$0 instanceof cly $$1) {
+         this.k = new bsj.a($$1.cE(), this.dU().Z());
+         if ($$1 instanceof aqu $$2) {
+            an.h.a($$2, this, $$1.dX().o(), 1.0F, 1.0F, false);
          }
 
-         return !this.v();
+         return !this.u();
       } else {
          return false;
       }
    }
 
    @Override
-   public bpu a(clw $$0, bpt $$1) {
-      if (this.dP().B) {
-         return this.v() ? bpu.a : bpu.b;
+   public bqa a(cly $$0, bpz $$1) {
+      if (this.dU().C) {
+         return this.u() ? bqa.a : bqa.b;
       } else {
-         this.l = new bsj.a($$0.cz(), this.dP().Y());
-         return bpu.b;
+         this.l = new bsj.a($$0.cE(), this.dU().Z());
+         return bqa.b;
       }
    }
 
@@ -131,57 +131,57 @@ public class bsj extends bru implements brr, btm {
 
    @Nullable
    @Override
-   public bso T_() {
-      return this.k != null ? this.dP().b(this.k.a()) : null;
+   public bso U_() {
+      return this.k != null ? this.dU().c(this.k.a()) : null;
    }
 
    @Nullable
    @Override
    public bso p() {
-      return this.l != null ? this.dP().b(this.l.a()) : null;
+      return this.l != null ? this.dU().c(this.l.a()) : null;
    }
 
    private void a(float $$0) {
-      this.ao.a(c, $$0);
+      this.as.a(c, $$0);
    }
 
-   private float s() {
-      return this.ao.a(c);
+   private float r() {
+      return this.as.a(c);
    }
 
    private void b(float $$0) {
-      this.ao.a(d, $$0);
+      this.as.a(d, $$0);
    }
 
-   private float u() {
-      return this.ao.a(d);
+   private float t() {
+      return this.as.a(d);
    }
 
    private void a(boolean $$0) {
-      this.ao.a(e, $$0);
+      this.as.a(e, $$0);
    }
 
-   private boolean v() {
-      return this.ao.a(e);
+   private boolean u() {
+      return this.as.a(e);
    }
 
-   private brx w() {
-      return brx.b(this.s(), this.u());
+   private bry w() {
+      return bry.b(this.r(), this.t());
    }
 
    @Override
-   public brx a(bta $$0) {
+   public bry a(bsz $$0) {
       return this.w();
    }
 
    @Override
-   protected euf as() {
-      return this.w().a(this.dn());
+   protected ewp as() {
+      return this.w().a(this.ds());
    }
 
    static record a(UUID b, long c) {
       public static final Codec<bsj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jr.a.fieldOf("player").forGetter(bsj.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bsj.a::b)).apply($$0, bsj.a::new)
+         $$0 -> $$0.group(ju.a.fieldOf("player").forGetter(bsj.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bsj.a::b)).apply($$0, bsj.a::new)
       );
 
       public UUID a() {

@@ -7,7 +7,7 @@ public interface chk {
 
    void c();
 
-   void a(cgz var1, io var2, bqn var3, @Nullable clw var4);
+   void a(cgz var1, ir var2, bqt var3, @Nullable cly var4);
 
    void d();
 
@@ -20,7 +20,7 @@ public interface chk {
    chq<? extends chk> i();
 
    @Nullable
-   euk g();
+   ewu g();
 
-   float a(bqn var1, float var2);
+   float a(bqt var1, float var2);
 }

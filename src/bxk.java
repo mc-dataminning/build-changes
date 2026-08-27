@@ -1,33 +1,33 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxk {
-   private static final int a = 16;
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public static bui<bso> a(Predicate<ix<cdv>> $$0, cbs<iw> $$1) {
-      return bxu.a((Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               iw $$6 = $$2.b($$2x);
-               io $$7 = $$6.b();
-               if ($$3.ae() == $$6.a() && $$7.a($$4.dn(), 16.0)) {
-                  aqm $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     aga.c($$3, $$7);
-                  }
-
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bvr<bsw> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   private static boolean a(aqm $$0, io $$1, bso $$2) {
-      drb $$3 = $$0.a_($$1);
-      return $$3.a(avw.R) && $$3.c(ddr.c) && !$$2.fL();
+   public static bvr<bsw> a(float $$0, int $$1, int $$2) {
+      return bxt.a((Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$3 -> $$3.group($$3.c(cbr.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ir $$7 = $$5.du();
+               ewu $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cdl.a($$5, $$1, $$2);
+               } else {
+                  jt $$9 = jt.a($$7);
+                  jt $$10 = bui.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cdi.a($$5, $$1, $$2, ewu.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cdl.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cbu($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

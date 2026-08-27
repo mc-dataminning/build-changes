@@ -1,122 +1,77 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.util.Map;
-import java.util.function.BiFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eop {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, eob> b = Maps.newHashMap();
-   private final DataFixer c;
-   private final iz.a d;
-   private final File e;
+public abstract class eop<M extends eop<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dvd[] d = new dvd[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dvd> a;
 
-   public eop(File $$0, DataFixer $$1, iz.a $$2) {
-      this.c = $$1;
-      this.e = $$0;
-      this.d = $$2;
+   protected eop(Long2ObjectOpenHashMap<dvd> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   private File a(String $$0) {
-      return new File(this.e, $$0 + ".dat");
+   public abstract M b();
+
+   public dvd a(long $$0) {
+      dvd $$1 = ((dvd)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   public <T extends eob> T a(eob.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
    @Nullable
-   public <T extends eob> T b(eob.a<T> $$0, String $$1) {
-      eob $$2 = this.b.get($$1);
-      if ($$2 == null && !this.b.containsKey($$1)) {
-         $$2 = this.a($$0.b(), $$0.c(), $$1);
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2;
-   }
-
-   @Nullable
-   private <T extends eob> T a(BiFunction<ud, iz.a, T> $$0, azj $$1, String $$2) {
-      try {
-         File $$3 = this.a($$2);
-         if ($$3.exists()) {
-            ud $$4 = this.a($$2, $$1, aa.b().d().c());
-            return $$0.apply($$4.p("data"), this.d);
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
-      }
-
-      return null;
-   }
-
-   public void a(String $$0, eob $$1) {
-      this.b.put($$0, $$1);
-   }
-
-   public ud a(String $$0, azj $$1, int $$2) throws IOException {
-      File $$3 = this.a($$0);
-
-      ud var9;
-      try (
-         InputStream $$4 = new FileInputStream($$3);
-         PushbackInputStream $$5 = new PushbackInputStream(new axn($$4), 2);
-      ) {
-         ud $$6;
-         if (this.a($$5)) {
-            $$6 = uq.a($$5, um.a());
-         } else {
-            try (DataInputStream $$7 = new DataInputStream($$5)) {
-               $$6 = uq.a($$7);
+   public dvd c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
             }
          }
-
-         int $$10 = us.b($$6, 1343);
-         var9 = $$1.a(this.c, $$6, $$10, $$2);
       }
 
-      return var9;
+      dvd $$2 = (dvd)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
    }
 
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
+   @Nullable
+   public dvd d(long $$0) {
+      return (dvd)this.a.remove($$0);
    }
 
-   public void a() {
-      this.b.forEach(($$0, $$1) -> {
-         if ($$1 != null) {
-            $$1.a(this.a($$0), this.d);
-         }
-      });
+   public void a(long $$0, dvd $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
    }
 }

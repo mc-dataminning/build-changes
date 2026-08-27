@@ -1,346 +1,131 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableDouble;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dxv {
-   private static final dxv a = new dxv(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
-      @Override
-      public dxv.a a(int $$0, int $$1) {
-         return new dxv.a(1.0, 0.0);
-      }
+public record dxv(int aj) {
+   public static final ja.c<dxv> a = a("block_activate");
+   public static final ja.c<dxv> b = a("block_attach");
+   public static final ja.c<dxv> c = a("block_change");
+   public static final ja.c<dxv> d = a("block_close");
+   public static final ja.c<dxv> e = a("block_deactivate");
+   public static final ja.c<dxv> f = a("block_destroy");
+   public static final ja.c<dxv> g = a("block_detach");
+   public static final ja.c<dxv> h = a("block_open");
+   public static final ja.c<dxv> i = a("block_place");
+   public static final ja.c<dxv> j = a("container_close");
+   public static final ja.c<dxv> k = a("container_open");
+   public static final ja.c<dxv> l = a("drink");
+   public static final ja.c<dxv> m = a("eat");
+   public static final ja.c<dxv> n = a("elytra_glide");
+   public static final ja.c<dxv> o = a("entity_damage");
+   public static final ja.c<dxv> p = a("entity_die");
+   public static final ja.c<dxv> q = a("entity_dismount");
+   public static final ja.c<dxv> r = a("entity_interact");
+   public static final ja.c<dxv> s = a("entity_mount");
+   public static final ja.c<dxv> t = a("entity_place");
+   public static final ja.c<dxv> u = a("entity_action");
+   public static final ja.c<dxv> v = a("equip");
+   public static final ja.c<dxv> w = a("explode");
+   public static final ja.c<dxv> x = a("flap");
+   public static final ja.c<dxv> y = a("fluid_pickup");
+   public static final ja.c<dxv> z = a("fluid_place");
+   public static final ja.c<dxv> A = a("hit_ground");
+   public static final ja.c<dxv> B = a("instrument_play");
+   public static final ja.c<dxv> C = a("item_interact_finish");
+   public static final ja.c<dxv> D = a("item_interact_start");
+   public static final ja.c<dxv> E = a("jukebox_play", 10);
+   public static final ja.c<dxv> F = a("jukebox_stop_play", 10);
+   public static final ja.c<dxv> G = a("lightning_strike");
+   public static final ja.c<dxv> H = a("note_block_play");
+   public static final ja.c<dxv> I = a("prime_fuse");
+   public static final ja.c<dxv> J = a("projectile_land");
+   public static final ja.c<dxv> K = a("projectile_shoot");
+   public static final ja.c<dxv> L = a("sculk_sensor_tendrils_clicking");
+   public static final ja.c<dxv> M = a("shear");
+   public static final ja.c<dxv> N = a("shriek", 32);
+   public static final ja.c<dxv> O = a("splash");
+   public static final ja.c<dxv> P = a("step");
+   public static final ja.c<dxv> Q = a("swim");
+   public static final ja.c<dxv> R = a("teleport");
+   public static final ja.c<dxv> S = a("unequip");
+   public static final ja.c<dxv> T = a("resonate_1");
+   public static final ja.c<dxv> U = a("resonate_2");
+   public static final ja.c<dxv> V = a("resonate_3");
+   public static final ja.c<dxv> W = a("resonate_4");
+   public static final ja.c<dxv> X = a("resonate_5");
+   public static final ja.c<dxv> Y = a("resonate_6");
+   public static final ja.c<dxv> Z = a("resonate_7");
+   public static final ja.c<dxv> aa = a("resonate_8");
+   public static final ja.c<dxv> ab = a("resonate_9");
+   public static final ja.c<dxv> ac = a("resonate_10");
+   public static final ja.c<dxv> ad = a("resonate_11");
+   public static final ja.c<dxv> ae = a("resonate_12");
+   public static final ja.c<dxv> af = a("resonate_13");
+   public static final ja.c<dxv> ag = a("resonate_14");
+   public static final ja.c<dxv> ah = a("resonate_15");
+   public static final int ai = 16;
 
-      @Override
-      public double a(dwm.b $$0, double $$1) {
-         return $$1;
-      }
-
-      @Override
-      public dbz a(dbz $$0) {
-         return $$0;
-      }
-   };
-   private static final elx b = elx.b(new dxu(42L), qs.a);
-   private static final int c = ji.d(7) - 1;
-   private static final int d = ji.e(c + 3);
-   private static final int e = 2;
-   private static final int f = ji.e(5);
-   private static final double g = 8.0;
-   private final Long2ObjectOpenHashMap<dxw> h;
-   private final Long2ObjectOpenHashMap<dxw> i;
-
-   public static dxv a() {
+   public static ja<dxv> a(jn<dxv> $$0) {
       return a;
    }
 
-   public static dxv a(@Nullable aqt $$0) {
-      if ($$0 == null) {
-         return a;
-      } else {
-         dae $$1 = $$0.a();
-         if (!$$0.a($$1, d)) {
-            return a;
-         } else {
-            Long2ObjectOpenHashMap<dxw> $$2 = new Long2ObjectOpenHashMap();
-            Long2ObjectOpenHashMap<dxw> $$3 = new Long2ObjectOpenHashMap();
-            int $$4 = ayd.h(d + 1);
+   public int a() {
+      return this.aj;
+   }
 
-            for (int $$5 = -d; $$5 <= d; $$5++) {
-               for (int $$6 = -d; $$6 <= d; $$6++) {
-                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
-                     int $$7 = $$1.e + $$5;
-                     int $$8 = $$1.f + $$6;
-                     dxw $$9 = dxw.a($$0, $$7, $$8);
-                     if ($$9 != null) {
-                        $$2.put(dae.c($$7, $$8), $$9);
-                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
-                           $$3.put(dae.c($$7, $$8), $$9);
-                        }
-                     }
-                  }
-               }
-            }
+   private static ja.c<dxv> a(String $$0) {
+      return a($$0, 16);
+   }
 
-            return $$2.isEmpty() && $$3.isEmpty() ? a : new dxv($$2, $$3);
-         }
+   private static ja.c<dxv> a(String $$0, int $$1) {
+      return jn.b(lh.a, new akt($$0), new dxv($$1));
+   }
+
+   public static record a(@Nullable brv a, @Nullable dtc b) {
+      public static dxv.a a(@Nullable brv $$0) {
+         return new dxv.a($$0, null);
+      }
+
+      public static dxv.a a(@Nullable dtc $$0) {
+         return new dxv.a(null, $$0);
+      }
+
+      public static dxv.a a(@Nullable brv $$0, @Nullable dtc $$1) {
+         return new dxv.a($$0, $$1);
       }
    }
 
-   dxv(Long2ObjectOpenHashMap<dxw> $$0, Long2ObjectOpenHashMap<dxw> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
+   public static final class b implements Comparable<dxv.b> {
+      private final ja<dxv> a;
+      private final ewu b;
+      private final dxv.a c;
+      private final dxx d;
+      private final double e;
 
-   public dxv.a a(int $$0, int $$1) {
-      int $$2 = ji.a($$0);
-      int $$3 = ji.a($$1);
-      double $$4 = this.a($$2, 0, $$3, dxw::a);
-      if ($$4 != Double.MAX_VALUE) {
-         return new dxv.a(0.0, a($$4));
-      } else {
-         MutableDouble $$5 = new MutableDouble(0.0);
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.h.forEach(($$5x, $$6x) -> $$6x.a(ji.d(dae.a($$5x)), ji.d(dae.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
-               double $$8x = ayd.f((double)($$2 - $$5xx), (double)($$3 - $$6xx));
-               if (!($$8x > (double)c)) {
-                  if ($$8x < $$7.doubleValue()) {
-                     $$7.setValue($$8x);
-                  }
-
-                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
-                  $$6.add($$7x * $$9x);
-                  $$5.add($$9x);
-               }
-            }));
-         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
-            return new dxv.a(1.0, 0.0);
-         } else {
-            double $$8 = $$6.doubleValue() / $$5.doubleValue();
-            double $$9 = ayd.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
-            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
-            return new dxv.a($$9, a($$8));
-         }
-      }
-   }
-
-   private static double a(double $$0) {
-      double $$1 = 1.0;
-      double $$2 = $$0 + 0.5;
-      double $$3 = ayd.c($$2, 8.0);
-      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
-   }
-
-   public double a(dwm.b $$0, double $$1) {
-      int $$2 = ji.a($$0.a());
-      int $$3 = $$0.b() / 8;
-      int $$4 = ji.a($$0.c());
-      double $$5 = this.a($$2, $$3, $$4, dxw::b);
-      if ($$5 != Double.MAX_VALUE) {
-         return $$5;
-      } else {
-         MutableDouble $$6 = new MutableDouble(0.0);
-         MutableDouble $$7 = new MutableDouble(0.0);
-         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
-         this.i.forEach(($$6x, $$7x) -> $$7x.a(ji.d(dae.a($$6x)), ji.d(dae.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
-               double $$10x = ayd.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
-               if (!($$10x > 2.0)) {
-                  if ($$10x < $$8.doubleValue()) {
-                     $$8.setValue($$10x);
-                  }
-
-                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
-                  $$7.add($$9x * $$11);
-                  $$6.add($$11);
-               }
-            }));
-         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
-            return $$1;
-         } else {
-            double $$9 = $$7.doubleValue() / $$6.doubleValue();
-            double $$10 = ayd.a($$8.doubleValue() / 3.0, 0.0, 1.0);
-            return ayd.d($$10, $$9, $$1);
-         }
-      }
-   }
-
-   private double a(int $$0, int $$1, int $$2, dxv.b $$3) {
-      int $$4 = ji.e($$0);
-      int $$5 = ji.e($$2);
-      boolean $$6 = ($$0 & 3) == 0;
-      boolean $$7 = ($$2 & 3) == 0;
-      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
-      if ($$8 == Double.MAX_VALUE) {
-         if ($$6 && $$7) {
-            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
-         }
-
-         if ($$8 == Double.MAX_VALUE) {
-            if ($$6) {
-               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
-            }
-
-            if ($$8 == Double.MAX_VALUE && $$7) {
-               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
-            }
-         }
+      public b(ja<dxv> $$0, ewu $$1, dxv.a $$2, dxx $$3, ewu $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$1.g($$4);
       }
 
-      return $$8;
-   }
-
-   private double a(dxv.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      dxw $$6 = (dxw)this.h.get(dae.c($$1, $$2));
-      return $$6 != null ? $$0.get($$6, $$3 - ji.d($$1), $$4, $$5 - ji.d($$2)) : Double.MAX_VALUE;
-   }
-
-   public dbz a(dbz $$0) {
-      return ($$1, $$2, $$3, $$4) -> {
-         ix<dbw> $$5 = this.a($$1, $$2, $$3);
-         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
-      };
-   }
-
-   @Nullable
-   private ix<dbw> a(int $$0, int $$1, int $$2) {
-      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
-      MutableObject<ix<dbw>> $$4 = new MutableObject();
-      this.h.forEach(($$5x, $$6x) -> $$6x.a(ji.d(dae.a($$5x)), $$1, ji.d(dae.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
-            double $$7 = ayd.f((double)($$0 - $$4xx), (double)($$2 - $$5xx));
-            if (!($$7 > (double)c)) {
-               if ($$7 < $$3.doubleValue()) {
-                  $$4.setValue($$6xx);
-                  $$3.setValue($$7);
-               }
-            }
-         }));
-      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
-         return null;
-      } else {
-         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
-         double $$6 = ayd.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
-         return $$6 > 0.5 ? null : (ix)$$4.getValue();
-      }
-   }
-
-   public static void a(aqt $$0, dsx $$1) {
-      dae $$2 = $$1.f();
-      boolean $$3 = $$1.s();
-      io.a $$4 = new io.a();
-      io $$5 = new io($$2.d(), 0, $$2.e());
-      dxw $$6 = $$1.t();
-      if ($$6 != null) {
-         int $$7 = $$6.a().I_();
-         int $$8 = $$6.a().al() - 1;
-         if ($$3) {
-            for (int $$9 = 0; $$9 < 16; $$9++) {
-               for (int $$10 = 0; $$10 < 16; $$10++) {
-                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
-                  a($$1, $$4.a($$5, $$9, $$7, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8, $$10));
-                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
-               }
-            }
-         }
-
-         for (it $$11 : it.c.a) {
-            if ($$0.a($$2.e + $$11.j(), $$2.f + $$11.l()).s() != $$3) {
-               int $$12 = $$11 == it.f ? 15 : 0;
-               int $$13 = $$11 == it.e ? 0 : 15;
-               int $$14 = $$11 == it.d ? 15 : 0;
-               int $$15 = $$11 == it.c ? 0 : 15;
-
-               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
-                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
-                     int $$18 = Math.min($$8, $$1.a(dwt.a.e, $$16, $$17)) + 1;
-
-                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
-                        a($$1, $$4.a($$5, $$16, $$19, $$17));
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static void a(dsx $$0, io $$1) {
-      drb $$2 = $$0.a_($$1);
-      if ($$2.a(avw.O)) {
-         $$0.e($$1);
+      public int a(dxv.b $$0) {
+         return Double.compare(this.e, $$0.e);
       }
 
-      emu $$3 = $$0.b_($$1);
-      if (!$$3.c()) {
-         $$0.e($$1);
-      }
-   }
-
-   public static void a(dbs $$0, dtr $$1) {
-      dae $$2 = $$1.f();
-      Builder<iu, dxw> $$3 = ImmutableMap.builder();
-
-      for (iu $$4 : iu.values()) {
-         int $$5 = $$2.e + $$4.b();
-         int $$6 = $$2.f + $$4.c();
-         dxw $$7 = $$0.a($$5, $$6).t();
-         if ($$7 != null) {
-            $$3.put($$4, $$7);
-         }
+      public ja<dxv> a() {
+         return this.a;
       }
 
-      ImmutableMap<iu, dxw> $$8 = $$3.build();
-      if ($$1.s() || !$$8.isEmpty()) {
-         dxv.c $$9 = a($$1.t(), $$8);
-         dsw.a $$10 = ($$1x, $$2x, $$3x) -> {
-            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
-            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
-            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
-            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
-         };
-         Stream.of(dwp.a.values()).map($$1::b).forEach($$1x -> $$1x.a($$10));
-      }
-   }
-
-   public static dxv.c a(@Nullable dxw $$0, Map<iu, dxw> $$1) {
-      List<dxv.c> $$2 = Lists.newArrayList();
-      if ($$0 != null) {
-         $$2.add(a(null, $$0));
+      public ewu b() {
+         return this.b;
       }
 
-      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
-      return ($$1x, $$2x, $$3) -> {
-         double $$4 = Double.POSITIVE_INFINITY;
-
-         for (dxv.c $$5 : $$2) {
-            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
-            if ($$6 < $$4) {
-               $$4 = $$6;
-            }
-         }
-
-         return $$4;
-      };
-   }
-
-   private static dxv.c a(@Nullable iu $$0, dxw $$1) {
-      double $$2 = 0.0;
-      double $$3 = 0.0;
-      if ($$0 != null) {
-         for (it $$4 : $$0.a()) {
-            $$2 += (double)($$4.j() * 16);
-            $$3 += (double)($$4.l() * 16);
-         }
+      public dxv.a c() {
+         return this.c;
       }
 
-      double $$5 = $$2;
-      double $$6 = $$3;
-      double $$7 = (double)$$1.a().J_() / 2.0;
-      double $$8 = (double)$$1.a().I_() + $$7;
-      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
-   }
-
-   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      double $$6 = Math.abs($$0) - $$3;
-      double $$7 = Math.abs($$1) - $$4;
-      double $$8 = Math.abs($$2) - $$5;
-      return ayd.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
-   }
-
-   public static record a(double a, double b) {
-   }
-
-   interface b {
-      double get(dxw var1, int var2, int var3, int var4);
-   }
-
-   public interface c {
-      double getDistance(double var1, double var3, double var5);
+      public dxx d() {
+         return this.d;
+      }
    }
 }

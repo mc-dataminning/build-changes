@@ -1,230 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
-import java.util.ArrayList;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fqf extends fgf.a<fqf> {
-   private static final akm f = new akm("icon/draft_report");
-   private static final Duration g = Duration.ofMillis(500L);
-   private static final fhm h = new fhm(
-      new akm("social_interactions/report_button"),
-      new akm("social_interactions/report_button_disabled"),
-      new akm("social_interactions/report_button_highlighted")
-   );
-   private static final fhm i = new fhm(new akm("social_interactions/mute_button"), new akm("social_interactions/mute_button_highlighted"));
-   private static final fhm j = new fhm(new akm("social_interactions/unmute_button"), new akm("social_interactions/unmute_button_highlighted"));
-   private final fdz k;
-   private final List<ffx> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<gov> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean s;
-   private final boolean u;
-   @Nullable
-   private ffz v;
-   @Nullable
-   private ffz w;
-   @Nullable
-   private ffz x;
-   private float y;
-   private static final wx z = wx.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final wx A = wx.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final wx B = wx.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final wx C = wx.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final wx D = wx.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final wx E = wx.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final wx F = wx.c("gui.socialInteractions.tooltip.hide");
-   private static final wx G = wx.c("gui.socialInteractions.tooltip.show");
-   private static final wx H = wx.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = axo.b.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = axo.b.a(255, 74, 74, 74);
-   public static final int c = axo.b.a(255, 48, 48, 48);
-   public static final int d = axo.b.a(255, 255, 255, 255);
-   public static final int e = axo.b.a(140, 255, 255, 255);
+public abstract class fqf<T extends cpg> extends fpn<T> {
+   private static final akt D = new akt("container/inventory/effect_background_large");
+   private static final akt E = new akt("container/inventory/effect_background_small");
 
-   public fqf(fdz $$0, fqi $$1, UUID $$2, String $$3, Supplier<gov> $$4, boolean $$5) {
-      this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      fxz $$6 = $$0.bb();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.s = $$6.a($$2);
-      wx $$7 = wx.a("gui.socialInteractions.narration.hide", $$3);
-      wx $$8 = wx.a("gui.socialInteractions.narration.show", $$3);
-      fqg $$9 = $$0.aN();
-      boolean $$10 = $$0.J().a($$0.T());
-      boolean $$11 = !$$0.s.cz().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new fgl(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fqb($$1, $$6, this)), false), wx.c("gui.socialInteractions.report")) {
-            @Override
-            protected xl aK_() {
-               return fqf.this.a(super.aK_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.l());
-         this.x.a(g);
-         this.v = new fgl(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, wx.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, wx.c("gui.socialInteractions.hide")) {
-            @Override
-            protected xl aK_() {
-               return fqf.this.a(super.aK_());
-            }
-         };
-         this.v.a(fhk.a(F, $$7));
-         this.v.a(g);
-         this.w = new fgl(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, wx.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, wx.c("gui.socialInteractions.show")) {
-            @Override
-            protected xl aK_() {
-               return fqf.this.a(super.aK_());
-            }
-         };
-         this.w.a(fhk.a(G, $$8));
-         this.w.a(g);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
-      }
-   }
-
-   private fhk l() {
-      return !this.r ? fhk.a(E) : fhk.a(H, wx.a("gui.socialInteractions.narration.report", this.n));
+   public fqf(T $$0, clx $$1, xe $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      wx $$13 = this.m();
-      int $$14;
-      if ($$13 == ww.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
-      }
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
+   }
 
-      fgy.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
-      }
+   public boolean I() {
+      int $$0 = this.z + this.c + 2;
+      int $$1 = this.n - $$0;
+      return $$1 >= 32;
+   }
 
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.m($$3 + ($$4 - this.v.x() - 4) - 20 - 4);
-         this.v.n($$2 + ($$5 - this.v.v()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.m($$3 + ($$4 - this.w.x() - 4) - 20 - 4);
-         this.w.n($$2 + ($$5 - this.w.v()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.m($$3 + ($$4 - this.w.x() - 4));
-         this.x.n($$2 + ($$5 - this.w.v()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+   private void c(fia $$0, int $$1, int $$2) {
+      int $$3 = this.z + this.c + 2;
+      int $$4 = this.n - $$3;
+      Collection<brh> $$5 = this.m.s.eF();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
+
+         Iterable<brh> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.A;
+            brh $$10 = null;
+
+            for (brh $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xe> $$12 = List.of(this.a($$10), bri.a($$10, 1.0F, this.m.r.s().f()));
+               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+            }
          }
       }
+   }
 
-      if (this.s && this.x != null) {
-         $$0.a(f, this.x.C() + 5, this.x.D() + 1, 15, 15);
+   private void a(fia $$0, int $$1, int $$2, Iterable<brh> $$3, boolean $$4) {
+      int $$5 = this.A;
+
+      for (brh $$6 : $$3) {
+         if ($$4) {
+            $$0.a(D, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(E, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
       }
    }
 
-   @Override
-   public List<? extends fhv> aE_() {
-      return this.l;
-   }
+   private void b(fia $$0, int $$1, int $$2, Iterable<brh> $$3, boolean $$4) {
+      grw $$5 = this.m.aG();
+      int $$6 = this.A;
 
-   @Override
-   public List<? extends fjt> b() {
-      return this.l;
-   }
-
-   public String c() {
-      return this.n;
-   }
-
-   public UUID d() {
-      return this.m;
-   }
-
-   public Supplier<gov> h() {
-      return this.o;
-   }
-
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public boolean i() {
-      return this.p;
-   }
-
-   public void d(boolean $$0) {
-      this.q = $$0;
-   }
-
-   public boolean j() {
-      return this.q;
-   }
-
-   public boolean k() {
-      return this.u;
-   }
-
-   private void a(boolean $$0, wx $$1) {
-      this.e($$0);
-      this.k.l.d().a($$1);
-      this.k.aZ().c($$1);
-   }
-
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
-
-   xl a(xl $$0) {
-      wx $$1 = this.m();
-      return $$1 == ww.a ? wx.b(this.n).f(", ").b($$0) : wx.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
-
-   private wx m() {
-      boolean $$0 = this.k.aN().d(this.m);
-      boolean $$1 = this.k.aN().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
-      } else {
-         return this.p ? B : ww.a;
+      for (brh $$7 : $$3) {
+         ja<brf> $$8 = $$7.c();
+         gqy $$9 = $$5.a($$8);
+         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
+         $$6 += $$2;
       }
+   }
+
+   private void a(fia $$0, int $$1, int $$2, Iterable<brh> $$3) {
+      int $$4 = this.A;
+
+      for (brh $$5 : $$3) {
+         xe $$6 = this.a($$5);
+         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xe $$7 = bri.a($$5, 1.0F, this.m.r.s().f());
+         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xe a(brh $$0) {
+      xs $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.a(xd.v).a(xe.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

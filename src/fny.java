@@ -1,192 +1,169 @@
-public class fny extends fly {
-   private static final wx a = wx.c("jigsaw_block.joint_label");
-   private static final wx b = wx.c("jigsaw_block.pool");
-   private static final wx c = wx.c("jigsaw_block.name");
-   private static final wx d = wx.c("jigsaw_block.target");
-   private static final wx r = wx.c("jigsaw_block.final_state");
-   private static final wx s = wx.c("jigsaw_block.placement_priority");
-   private static final wx u = wx.c("jigsaw_block.placement_priority.tooltip");
-   private static final wx v = wx.c("jigsaw_block.selection_priority");
-   private static final wx w = wx.c("jigsaw_block.selection_priority.tooltip");
-   private final dpg x;
-   private fgi y;
-   private fgi z;
-   private fgi A;
-   private fgi B;
-   private fgi C;
-   private fgi D;
-   int E;
-   private boolean F = true;
-   private fgg<dpg.a> G;
-   private ffz H;
-   private ffz I;
-   private dpg.a J;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-   public fny(dpg $$0) {
-      super(fdr.a);
-      this.x = $$0;
+public class fny extends fog {
+   static final akt c = new akt("textures/gui/title/mojangstudios.png");
+   private static final int d = axw.b.a(255, 239, 50, 61);
+   private static final int e = axw.b.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fgj.Q().m.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long a = 1000L;
+   public static final long b = 500L;
+   private final fgj m;
+   private final atz n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
+
+   public fny(fgj $$0, atz $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   private void m() {
-      this.D();
-      this.m.a(null);
+   public static void a(fgj $$0) {
+      $$0.aa().a(c, new fny.a());
    }
 
-   private void C() {
-      this.m.a(null);
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
-   private void D() {
-      this.m
-         .L()
-         .b(new ahu(this.x.az_(), new akm(this.y.a()), new akm(this.z.a()), new akm(this.A.a()), this.B.a(), this.J, this.a(this.C.a()), this.a(this.D.a())));
-   }
-
-   private int a(String $$0) {
-      try {
-         return Integer.parseInt($$0);
-      } catch (NumberFormatException var3) {
-         return 0;
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ad.b();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
       }
-   }
 
-   private void E() {
-      this.m.L().b(new agz(this.x.az_(), this.E, this.F));
-   }
-
-   @Override
-   public void d() {
-      this.C();
-   }
-
-   @Override
-   protected void aM_() {
-      this.A = new fgi(this.p, this.n / 2 - 153, 20, 300, 20, b);
-      this.A.f(128);
-      this.A.a(this.x.d().a().toString());
-      this.A.b($$0x -> this.F());
-      this.d(this.A);
-      this.y = new fgi(this.p, this.n / 2 - 153, 55, 300, 20, c);
-      this.y.f(128);
-      this.y.a(this.x.b().toString());
-      this.y.b($$0x -> this.F());
-      this.d(this.y);
-      this.z = new fgi(this.p, this.n / 2 - 153, 90, 300, 20, d);
-      this.z.f(128);
-      this.z.a(this.x.c().toString());
-      this.z.b($$0x -> this.F());
-      this.d(this.z);
-      this.B = new fgi(this.p, this.n / 2 - 153, 125, 300, 20, r);
-      this.B.f(256);
-      this.B.a(this.x.f());
-      this.d(this.B);
-      this.C = new fgi(this.p, this.n / 2 - 153, 160, 98, 20, v);
-      this.C.f(3);
-      this.C.a(Integer.toString(this.x.l()));
-      this.C.a(fhk.a(w));
-      this.d(this.C);
-      this.D = new fgi(this.p, this.n / 2 - 50, 160, 98, 20, s);
-      this.D.f(3);
-      this.D.a(Integer.toString(this.x.k()));
-      this.D.a(fhk.a(u));
-      this.d(this.D);
-      this.J = this.x.j();
-      this.G = this.c(fgg.<dpg.a>a(dpg.a::a).a(dpg.a.values()).a(this.J).a().a(this.n / 2 + 54, 160, 100, 20, a, ($$0x, $$1) -> this.J = $$1));
-      boolean $$0 = dia.m(this.x.n()).o().b();
-      this.G.j = $$0;
-      this.G.k = $$0;
-      this.c(new ffv(this.n / 2 - 154, 185, 100, 20, ww.a, 0.0) {
-         {
-            this.b();
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.y != null) {
+            this.m.y.a($$0, 0, 0, $$3);
          }
 
-         @Override
-         protected void b() {
-            this.b(wx.a("jigsaw_block.levels", fny.this.E));
+         int $$9 = aym.f((1.0F - aym.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(gfo.F(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - aym.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.y != null && $$8 < 1.0F) {
+            this.m.y.a($$0, $$1, $$2, $$3);
          }
 
-         @Override
-         protected void a() {
-            fny.this.E = ayd.a(ayd.b(0.0, 20.0, this.c));
-         }
-      });
-      this.c(fgg.b(this.F).a(this.n / 2 - 50, 185, 100, 20, wx.c("jigsaw_block.keep_jigsaws"), ($$0x, $$1) -> this.F = $$1));
-      this.I = this.c((ffz)ffz.a(wx.c("jigsaw_block.generate"), $$0x -> {
-         this.m();
-         this.E();
-      }).a(this.n / 2 + 54, 185, 100, 20).a());
-      this.H = this.c((ffz)ffz.a(ww.d, $$0x -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c((ffz)ffz.a(ww.e, $$0x -> this.C()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.F();
-   }
-
-   @Override
-   protected void aC_() {
-      this.b(this.A);
-   }
-
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private void F() {
-      boolean $$0 = akm.i(this.y.a()) && akm.i(this.z.a()) && akm.i(this.A.a());
-      this.H.j = $$0;
-      this.I.j = $$0;
-   }
-
-   @Override
-   public void a(fdz $$0, int $$1, int $$2) {
-      String $$3 = this.y.a();
-      String $$4 = this.z.a();
-      String $$5 = this.A.a();
-      String $$6 = this.B.a();
-      String $$7 = this.C.a();
-      String $$8 = this.D.a();
-      int $$9 = this.E;
-      dpg.a $$10 = this.J;
-      this.b($$0, $$1, $$2);
-      this.y.a($$3);
-      this.z.a($$4);
-      this.A.a($$5);
-      this.B.a($$6);
-      this.E = $$9;
-      this.J = $$10;
-      this.G.a($$10);
-      this.C.a($$7);
-      this.D.a($$8);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (!this.H.j || $$0 != 257 && $$0 != 335) {
-         return false;
+         int $$11 = aym.c(aym.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(gfo.F(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = aym.a($$8, 0.0F, 1.0F);
       } else {
-         this.m();
-         return true;
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384, fgj.a);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+      $$0.a(1.0F, 1.0F, 1.0F, $$10);
+      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
+      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      int $$24 = (int)((double)$$0.b() * 0.8325);
+      float $$25 = this.n.b();
+      this.q = aym.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - aym.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var23) {
+            this.o.accept(Optional.of(var23));
+         }
+
+         this.r = ad.b();
+         if (this.m.y != null) {
+            this.m.y.b(this.m, $$0.a(), $$0.b());
+         }
       }
    }
 
+   private void a(fia $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = aym.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = axw.b.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, b, this.n / 2 - 153, 10, 10526880);
-      this.A.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, c, this.n / 2 - 153, 45, 10526880);
-      this.y.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, d, this.n / 2 - 153, 80, 10526880);
-      this.z.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, r, this.n / 2 - 153, 115, 10526880);
-      this.B.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, v, this.n / 2 - 153, 150, 10526880);
-      this.D.a($$0, $$1, $$2, $$3);
-      $$0.b(this.p, s, this.n / 2 - 50, 150, 10526880);
-      this.C.a($$0, $$1, $$2, $$3);
-      if (dia.m(this.x.n()).o().b()) {
-         $$0.b(this.p, a, this.n / 2 + 53, 150, 10526880);
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gqr {
+      public a() {
+         super(fny.c);
+      }
+
+      @Override
+      protected gqr.a b(aud $$0) {
+         ast $$1 = fgj.Q().ad();
+         atv<InputStream> $$2 = $$1.a(asr.a, fny.c);
+         if ($$2 == null) {
+            return new gqr.a(new FileNotFoundException(fny.c.toString()));
+         } else {
+            try {
+               gqr.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gqr.a(new gsv(true, true), fad.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new gqr.a(var9);
+            }
+         }
       }
    }
 }

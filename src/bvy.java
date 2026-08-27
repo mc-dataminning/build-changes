@@ -1,29 +1,71 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bvy extends buh<bsq> {
-   private final boz c;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bvy {
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
 
-   public bvy(boz $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(cbs.n, cbt.b, cbs.Q, cbt.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+   public static bvr<bsw> a(float $$0) {
+      return a($$0, true);
    }
 
-   protected void a(aqm $$0, bsq $$1, long $$2) {
-      ayk $$3 = $$1.el();
-      float $$4 = ayd.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ayd.g($$1.dF() + 2.0F * $$3.i() * this.d - this.d);
-      euk $$6 = euk.a($$4, $$5);
-      $$1.dS().a(cbs.n, new buk($$1.bx().e($$6)));
-      $$1.dS().a(cbs.Q, this.c.a($$3));
+   public static bvr<bsw> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> cdl.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bl());
+   }
+
+   public static buh<bsw> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> cdl.a($$2x, $$1, $$2), $$0x -> true);
+   }
+
+   public static buh<bsw> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
+
+   public static buh<bsw> c(float $$0) {
+      return a($$0, bvy::a, brv::bl);
+   }
+
+   private static bvr<bsw> a(float $$0, Function<bsw, ewu> $$1, Predicate<bsw> $$2) {
+      return bxt.a((Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$3 -> $$3.group($$3.c(cbr.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<ewu> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new cbu($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static ewu a(bsw $$0) {
+      ewu $$1 = null;
+      ewu $$2 = null;
+
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bui.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.ds().e($$0.ds().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+         }
+
+         if ($$2 == null || $$0.dU().b_(ir.a($$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static ewu a(bsw $$0, int $$1, int $$2) {
+      ewu $$3 = $$0.f(0.0F);
+      return cdg.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

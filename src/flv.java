@@ -1,71 +1,83 @@
-import javax.annotation.Nullable;
-
-public class flv extends fly implements ayj {
-   @Nullable
-   private wx a;
-   @Nullable
-   private wx b;
+public abstract class flv implements fmb {
    private int c;
-   private boolean d;
-   private final boolean r;
+   private int d;
+   protected int a;
+   protected int b;
 
-   public flv(boolean $$0) {
-      super(fdr.a);
-      this.r = $$0;
+   public flv(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public void a(wx $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wx $$0) {
-      this.a = $$0;
-      this.c(wx.c("menu.working"));
-   }
-
-   @Override
-   public void c(wx $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.C() + ($$0 - this.C());
+         $$1.m($$2);
+      });
       this.c = $$0;
    }
 
    @Override
-   public void a() {
-      this.d = true;
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.n($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.r) {
-            this.m.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
-         }
+   public int C() {
+      return this.c;
+   }
 
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, wx.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
-         }
+   @Override
+   public int D() {
+      return this.d;
+   }
+
+   @Override
+   public int x() {
+      return this.a;
+   }
+
+   @Override
+   public int v() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fmc a;
+      public final fmd.a b;
+
+      protected a(fmc $$0, fmd $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
+
+      public int a() {
+         return this.a.v() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.x() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.x() - this.b.c);
+         int $$4 = (int)aym.i(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.v() - this.b.d);
+         int $$4 = Math.round(aym.i(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
       }
    }
 }

@@ -1,29 +1,29 @@
-public class ahx implements ze<agd> {
-   public static final yv<vx, ahx> a = ze.a(ahx::a, ahx::new);
-   private final bpt b;
+public class ahx implements zl<agl> {
+   public static final zc<we, ahx> a = zl.a(ahx::a, ahx::new);
+   private final int b;
 
-   public ahx(bpt $$0) {
+   public ahx(int $$0) {
       this.b = $$0;
    }
 
-   private ahx(vx $$0) {
-      this.b = $$0.b(bpt.class);
+   private ahx(we $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.l(this.b);
    }
 
    @Override
-   public zg<ahx> a() {
-      return agb.bZ;
+   public zn<ahx> a() {
+      return agj.bT;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public bpt b() {
+   public int b() {
       return this.b;
    }
 }

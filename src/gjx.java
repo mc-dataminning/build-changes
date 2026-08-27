@@ -1,11 +1,11 @@
-public class gjx extends giz<cgv, fuv<cgv>> {
-   private static final akm a = new akm("textures/entity/sniffer/sniffer.png");
+public class gjx extends glz<cfv, fva<cfv>> {
+   private static final akt a = new akt("textures/entity/camel/camel.png");
 
-   public gjx(ght.a $$0) {
-      super($$0, new fuv<>($$0.a(fvv.bu)), 1.1F);
+   public gjx(gkq.a $$0, fyq $$1) {
+      super($$0, new fva<>($$0.a($$1)), 0.7F);
    }
 
-   public akm a(cgv $$0) {
+   public akt a(cfv $$0) {
       return a;
    }
 }

@@ -1,85 +1,45 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public abstract class gdu extends gdh {
+   protected gqy E;
 
-public class gdu implements gqh {
-   private final List<gdv> a;
-
-   public gdu(List<gdv> $$0) {
-      this.a = $$0;
+   protected gdu(fzn $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public List<gdv> a() {
-      return this.a;
+   protected gdu(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   protected void a(gqy $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gdu $$1 ? this.a.equals($$1.a) : false;
-      }
+   protected float c() {
+      return this.E.c();
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   protected float d() {
+      return this.E.d();
    }
 
    @Override
-   public Collection<akm> f() {
-      return this.a().stream().map(gdv::a).collect(Collectors.toSet());
+   protected float e() {
+      return this.E.g();
    }
 
    @Override
-   public void a(Function<akm, gqh> $$0) {
-      this.a().stream().map(gdv::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   protected float f() {
+      return this.E.h();
    }
 
-   @Nullable
-   @Override
-   public gpw a(gqa $$0, Function<gpz, gnv> $$1, gqe $$2, akm $$3) {
-      if (this.a().isEmpty()) {
-         return null;
-      } else {
-         gqi.a $$4 = new gqi.a();
-
-         for (gdv $$5 : this.a()) {
-            gpw $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
-         }
-
-         return $$4.a();
-      }
+   public void a(gdp $$0) {
+      this.a($$0.a(this.r));
    }
 
-   public static class a implements JsonDeserializer<gdu> {
-      public gdu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<gdv> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.size() == 0) {
-               throw new JsonParseException("Empty variant array");
-            }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((gdv)$$2.deserialize($$5, gdv.class));
-            }
-         } else {
-            $$3.add((gdv)$$2.deserialize($$0, gdv.class));
-         }
-
-         return new gdu($$3);
+   public void b(gdp $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

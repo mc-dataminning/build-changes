@@ -1,71 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class cuj extends ctj {
-   private static final Map<avg, cuj> a = Maps.newHashMap();
-   private final int b;
-   private final avg c;
-   private final int j;
-
-   protected cuj(int $$0, avg $$1, ctj.a $$2, int $$3) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
-      this.j = $$3 * 20;
-      a.put(this.c, this);
+public class cuj {
+   public static bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      $$1.c($$2);
+      return bqb.b($$1.b($$2));
    }
 
-   @Override
-   public bpu a(cxb $$0) {
-      dax $$1 = $$0.q();
-      io $$2 = $$0.a();
-      drb $$3 = $$1.a_($$2);
-      if ($$3.a(dea.dT) && !$$3.c(dib.b)) {
-         cto $$4 = $$0.n();
-         if (!$$1.B) {
-            clw $$5 = $$0.o();
-            if ($$1.c_($$2) instanceof dph $$6) {
-               $$6.b($$4.s());
-               $$1.a(dvu.c, $$2, dvu.a.a($$5, $$3));
-            }
-
-            $$4.h(1);
-            if ($$5 != null) {
-               $$5.a(avr.al);
-            }
+   public static cuh a(cuh $$0, cly $$1, cuh $$2, boolean $$3) {
+      boolean $$4 = $$1.fY();
+      if ($$3 && $$4) {
+         if (!$$1.gl().i($$2)) {
+            $$1.gl().f($$2);
          }
 
-         return bpu.a($$1.B);
+         return $$0;
       } else {
-         return bpu.d;
+         $$0.a(1, $$1);
+         if ($$0.d()) {
+            return $$2;
+         } else {
+            if (!$$1.gl().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
       }
    }
 
-   public int h() {
-      return this.b;
+   public static cuh a(cuh $$0, cly $$1, cuh $$2) {
+      return a($$0, $$1, $$2, true);
    }
 
-   @Override
-   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
-      $$2.add(this.j().a(n.h));
-   }
-
-   public xl j() {
-      return wx.c(this.a() + ".desc");
-   }
-
-   @Nullable
-   public static cuj a(avg $$0) {
-      return a.get($$0);
-   }
-
-   public avg k() {
-      return this.c;
-   }
-
-   public int l() {
-      return this.j;
+   public static void a(cig $$0, Stream<cuh> $$1) {
+      dca $$2 = $$0.dU();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new cig($$2, $$0.dz(), $$0.dB(), $$0.dF(), $$2x)));
+      }
    }
 }

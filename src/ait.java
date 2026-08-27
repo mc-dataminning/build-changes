@@ -1,27 +1,55 @@
-import java.util.UUID;
+import java.security.PublicKey;
 
-public record ait(String b, UUID c) implements ze<air> {
-   public static final yv<vx, ait> a = ze.a(ait::a, ait::new);
+public class ait implements zl<aiq> {
+   public static final zc<we, ait> a = zl.a(ait::a, ait::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
 
-   private ait(vx $$0) {
-      this($$0.d(16), $$0.n());
+   public ait(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b, 16);
+   private ait(we $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zg<ait> a() {
-      return aip.g;
+   public zn<ait> a() {
+      return aiw.c;
    }
 
-   public void a(air $$0) {
+   public void a(aiq $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
-      return this.c;
+   public String b() {
+      return this.b;
+   }
+
+   public PublicKey e() throws axl {
+      return axk.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

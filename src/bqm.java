@@ -1,19 +1,9 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bqm implements ayx {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+public interface bqm extends bpt {
+   int[] a(iw var1);
 
-   public static final Codec<bqm> d = ayx.a(bqm::values);
-   private final String e;
+   boolean a(int var1, cuh var2, @Nullable iw var3);
 
-   private bqm(String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+   boolean b(int var1, cuh var2, iw var3);
 }

@@ -1,30 +1,41 @@
-public class caw extends bzm {
-   private final bsx a;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public caw(bsx $$0) {
+public class caw<T extends bsq> extends bzl {
+   private final T a;
+   private final cuh b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final avn d;
+
+   public caw(T $$0, cuh $$1, @Nullable avn $$2, Predicate<? super T> $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awb.a);
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.fE();
    }
 
    @Override
    public void c() {
-      io $$0 = null;
+      this.a.a(bsc.a, this.b.r());
+      this.a.c(bpz.a);
+   }
 
-      for (io $$2 : io.b(
-         ayd.a(this.a.du() - 2.0), ayd.a(this.a.dw() - 2.0), ayd.a(this.a.dA() - 2.0), ayd.a(this.a.du() + 2.0), this.a.dv(), ayd.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awb.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public void d() {
+      this.a.a(bsc.a, cuh.i);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.et().i() * 0.2F + 0.9F);
       }
    }
 }

@@ -1,136 +1,24 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class evr {
-   private static final Map<String, evr> a = Maps.newHashMap();
-   private static final Map<String, evr> o = Maps.newHashMap();
-   public static final evr b = b("dummy");
-   public static final evr c = b("trigger");
-   public static final evr d = b("deathCount");
-   public static final evr e = b("playerKillCount");
-   public static final evr f = b("totalKillCount");
-   public static final evr g = a("health", true, evr.a.b);
-   public static final evr h = a("food", true, evr.a.a);
-   public static final evr i = a("air", true, evr.a.a);
-   public static final evr j = a("armor", true, evr.a.a);
-   public static final evr k = a("xp", true, evr.a.a);
-   public static final evr l = a("level", true, evr.a.a);
-   public static final evr[] m = new evr[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final evr[] n = new evr[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final evr.a r;
+   private static final Codec<evq> g = lh.I.q().dispatch(evq::b, evp::a);
+   public static final Codec<evq> a = axu.a(
+      (Supplier<Codec<evq>>)(() -> {
+         Codec<evq> $$0 = axu.e(g, evu.a);
+         return Codec.either(evo.b, $$0)
+            .xmap($$0x -> (evq)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof evo $$1 ? Either.left($$1) : Either.right($$0x));
+      })
+   );
+   public static final evp b = a("constant", evo.a);
+   public static final evp c = a("uniform", evu.a);
+   public static final evp d = a("binomial", evn.a);
+   public static final evp e = a("score", evs.a);
+   public static final evp f = a("storage", evt.a);
 
-   private static evr a(String $$0, boolean $$1, evr.a $$2) {
-      evr $$3 = new evr($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
-   }
-
-   private static evr b(String $$0) {
-      return a($$0, false, evr.a.a);
-   }
-
-   protected evr(String $$0) {
-      this($$0, false, evr.a.a);
-   }
-
-   protected evr(String $$0, boolean $$1, evr.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
-   }
-
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
-
-   public static Optional<evr> a(String $$0) {
-      evr $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : le.x.b(akm.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akm.a($$0.substring($$2 + 1), '.')));
-      }
-   }
-
-   private static <T> Optional<evr> a(avq<T> $$0, akm $$1) {
-      return $$0.b().b($$1).map($$0::b);
-   }
-
-   public String d() {
-      return this.p;
-   }
-
-   public boolean e() {
-      return this.q;
-   }
-
-   public evr.a f() {
-      return this.r;
-   }
-
-   public static enum a implements ayx {
-      a("integer"),
-      b("hearts");
-
-      private final String d;
-      public static final ayx.a<evr.a> c = ayx.a(evr.a::values);
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public static evr.a a(String $$0) {
-         return c.a($$0, a);
-      }
+   private static evp a(String $$0, Codec<? extends evq> $$1) {
+      return jn.a(lh.I, new akt($$0), new evp($$1));
    }
 }

@@ -1,46 +1,32 @@
-public final class evc extends eut {
-   private final eut d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-   protected evc(eut $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public record evc(Optional<ci> b) implements euu {
+   public static final Codec<evc> a = RecordCodecBuilder.create($$0 -> $$0.group(axu.a(ci.a, "predicate").forGetter(evc::c)).apply($$0, evc::new));
+
+   @Override
+   public euv b() {
+      return euw.l;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(eug.i);
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public boolean a(erp $$0) {
+      cuh $$1 = $$0.c(eug.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
    }
 
-   @Override
-   public int a(it.a $$0) {
-      return this.a($$0, this.d.a($$0));
+   public static euu.a a(ci.a $$0) {
+      return () -> new evc(Optional.of($$0.b()));
    }
 
-   @Override
-   public int b(it.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(it.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return ayd.a($$1, $$2, $$3) - $$2;
+   public Optional<ci> c() {
+      return this.b;
    }
 }

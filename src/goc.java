@@ -1,35 +1,44 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class goc<T extends bso, M extends fww<T>> extends gpr<T, M> {
+   private static final akt a = new akt("textures/entity/bee/bee_stinger.png");
 
-public class goc {
-   private static final BiMap<akm, gob> i = HashBiMap.create();
-   public static final gob a = a("single", goh.b);
-   public static final gob b = a("directory", goe.b);
-   public static final gob c = a("filter", goi.b);
-   public static final gob d = a("unstitch", goj.b);
-   public static final gob e = a("paletted_permutations", gog.b);
-   public static Codec<gob> f = akm.a.flatXmap($$0 -> {
-      gob $$1 = (gob)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      akm $$1 = (akm)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gnz> g = f.dispatch(gnz::a, gob::a);
-   public static Codec<List<gnz>> h = g.listOf().fieldOf("sources").codec();
+   public goc(glt<T, M> $$0) {
+      super($$0);
+   }
 
-   private static gob a(String $$0, MapCodec<? extends gnz> $$1) {
-      gob $$2 = new gob($$1);
-      akm $$3 = new akm($$0);
-      gob $$4 = (gob)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   @Override
+   protected int a(T $$0) {
+      return $$0.fc();
+   }
+
+   @Override
+   protected void a(fbc $$0, gfg $$1, int $$2, brv $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aym.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      fbg $$16 = $$1.getBuffer(gfo.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         fbc.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
       }
+   }
+
+   private static void a(fbg $$0, fbc.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(gqp.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
    }
 }

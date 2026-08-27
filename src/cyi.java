@@ -1,89 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public abstract class cyi implements cxu<bpn> {
-   protected final cxr a;
-   protected final cto b;
-   private final cxz<?> d;
-   private final cxy<?> e;
-   protected final String c;
-
-   public cyi(cxz<?> $$0, cxy<?> $$1, String $$2, cxr $$3, cto $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+public class cyi extends cyq {
+   public cyi(cyo $$0) {
+      super($$0);
    }
 
-   @Override
-   public cxz<?> e() {
-      return this.d;
+   public boolean a(cpw $$0, dca $$1) {
+      cuh $$2 = cuh.i;
+      List<cuh> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuh $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(awm.bA)) {
+               if (!$$2.d()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.f() instanceof csz)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
+         }
+      }
+
+      return !$$2.d() && !$$3.isEmpty();
    }
 
-   @Override
-   public cxy<?> ao_() {
-      return this.e;
-   }
+   public cuh a(cpw $$0, jc.a $$1) {
+      List<csz> $$2 = Lists.newArrayList();
+      cuh $$3 = cuh.i;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cuh $$5 = $$0.a($$4);
+         if (!$$5.d()) {
+            if ($$5.a(awm.bA)) {
+               if (!$$3.d()) {
+                  return cuh.i;
+               }
 
-   @Override
-   public cto a(iz.a $$0) {
-      return this.b;
-   }
+               $$3 = $$5.r();
+            } else {
+               if (!($$5.f() instanceof csz $$6)) {
+                  return cuh.i;
+               }
 
-   @Override
-   public jg<cxr> a() {
-      jg<cxr> $$0 = jg.a();
-      $$0.add(this.a);
-      return $$0;
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.d() && !$$2.isEmpty() ? cxi.a($$3, $$2) : cuh.i;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cto a(bpn $$0, iz.a $$1) {
-      return this.b.s();
-   }
-
-   public interface a<T extends cyi> {
-      T create(String var1, cxr var2, cto var3);
-   }
-
-   public static class b<T extends cyi> implements cxy<T> {
-      final cyi.a<T> x;
-      private final MapCodec<T> y;
-      private final yv<wi, T> z;
-
-      protected b(cyi.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     cxr.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cto.a.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = yv.a(yt.k, $$0x -> $$0x.c, cxr.b, $$0x -> $$0x.a, cto.f, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public yv<wi, T> b() {
-         return this.z;
-      }
+   public cze<?> ao_() {
+      return cze.d;
    }
 }

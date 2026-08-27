@@ -1,134 +1,78 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bzk extends bzm {
-   public static final int a = 12;
-   private static final int b = 2;
-   private static final int c = 3;
-   private static final int d = 1;
-   private final btl e;
-   private bso f;
-   private final dba g;
-   private final double h;
-   private final cca i;
-   private int j;
-   private final float k;
-   private final float l;
-   private float m;
-   private final boolean n;
+public class bzk extends bzl {
+   public static final int a = 8;
+   public static final int b = 4;
+   public static final int c = 3;
+   private final cee d;
+   @Nullable
+   private cee e;
+   private final double f;
+   private int g;
 
-   public bzk(btl $$0, double $$1, float $$2, float $$3, boolean $$4) {
-      this.e = $$0;
-      this.g = $$0.dP();
-      this.h = $$1;
-      this.i = $$0.K();
-      this.l = $$2;
-      this.k = $$3;
-      this.n = $$4;
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
-      if (!($$0.K() instanceof cbz) && !($$0.K() instanceof cby)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public bzk(cee $$0, double $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
    @Override
    public boolean a() {
-      bso $$0 = this.e.P_();
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.N_()) {
-         return false;
-      } else if (this.h()) {
-         return false;
-      } else if (this.e.g((bru)$$0) < (double)(this.l * this.l)) {
+      if (this.d.g() >= 0) {
          return false;
       } else {
-         this.f = $$0;
-         return true;
+         List<? extends cee> $$0 = this.d.dU().a((Class<? extends cee>)this.d.getClass(), this.d.cP().c(8.0, 4.0, 8.0));
+         cee $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (cee $$3 : $$0) {
+            if ($$3.g() >= 0) {
+               double $$4 = this.d.g($$3);
+               if (!($$4 > $$2)) {
+                  $$2 = $$4;
+                  $$1 = $$3;
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 9.0) {
+            return false;
+         } else {
+            this.e = $$1;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      if (this.i.l()) {
+      if (this.d.g() >= 0) {
+         return false;
+      } else if (!this.e.bI()) {
          return false;
       } else {
-         return this.h() ? false : !(this.e.g((bru)this.f) <= (double)(this.k * this.k));
+         double $$0 = this.d.g(this.e);
+         return !($$0 < 9.0) && !($$0 > 256.0);
       }
-   }
-
-   private boolean h() {
-      return this.e.gp() || this.e.bR() || this.e.gd();
    }
 
    @Override
    public void c() {
-      this.j = 0;
-      this.m = this.e.a(enl.j);
-      this.e.a(enl.j, 0.0F);
+      this.g = 0;
    }
 
    @Override
    public void d() {
-      this.f = null;
-      this.i.n();
-      this.e.a(enl.j, this.m);
+      this.e = null;
    }
 
    @Override
    public void e() {
-      this.e.G().a(this.f, 10.0F, (float)this.e.Z());
-      if (--this.j <= 0) {
-         this.j = this.a(10);
-         if (this.e.g((bru)this.f) >= 144.0) {
-            this.i();
-         } else {
-            this.i.a(this.f, this.h);
-         }
+      if (--this.g <= 0) {
+         this.g = this.a(10);
+         this.d.J().a(this.e, this.f);
       }
-   }
-
-   private void i() {
-      io $$0 = this.f.dp();
-
-      for (int $$1 = 0; $$1 < 10; $$1++) {
-         int $$2 = this.a(-3, 3);
-         int $$3 = this.a(-1, 1);
-         int $$4 = this.a(-3, 3);
-         boolean $$5 = this.a($$0.u() + $$2, $$0.v() + $$3, $$0.w() + $$4);
-         if ($$5) {
-            return;
-         }
-      }
-   }
-
-   private boolean a(int $$0, int $$1, int $$2) {
-      if (Math.abs((double)$$0 - this.f.du()) < 2.0 && Math.abs((double)$$2 - this.f.dA()) < 2.0) {
-         return false;
-      } else if (!this.a(new io($$0, $$1, $$2))) {
-         return false;
-      } else {
-         this.e.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.e.dF(), this.e.dH());
-         this.i.n();
-         return true;
-      }
-   }
-
-   private boolean a(io $$0) {
-      enl $$1 = enq.b(this.e, $$0);
-      if ($$1 != enl.c) {
-         return false;
-      } else {
-         drb $$2 = this.g.a_($$0.d());
-         if (!this.n && $$2.b() instanceof dii) {
-            return false;
-         } else {
-            io $$3 = $$0.b(this.e.dp());
-            return this.g.a(this.e, this.e.cK().a($$3));
-         }
-      }
-   }
-
-   private int a(int $$0, int $$1) {
-      return this.e.el().a($$1 - $$0 + 1) + $$0;
    }
 }

@@ -1,61 +1,96 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public abstract class edz {
-   public static final Codec<edz> d = le.Y.q().dispatch(edz::a, eea::a);
-   protected final boz e;
-   protected final eec f;
-   protected final Optional<edw> g;
+public class edz extends eca<eer> {
+   private static final iw[] a = iw.values();
 
-   protected static <P extends edz> P3<Mu<P>, boz, eec, Optional<edw>> a(Instance<P> $$0) {
-      return $$0.group(
-         boz.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eec.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         edw.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public edz(Codec<eer> $$0) {
+      super($$0);
    }
 
-   public edz(boz $$0, eec $$1, Optional<edw> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   public boolean a(ecc<eer> $$0) {
+      dcv $$1 = $$0.b();
+      ir $$2 = $$0.e();
+      ayt $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dtc $$4 = $$1.a_($$2.c());
+         if (!$$4.a(dfe.eJ) && !$$4.a(dfe.lI)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
    }
 
-   protected abstract eea<?> a();
+   private void a(dcb $$0, ayt $$1, ir $$2) {
+      $$0.a($$2, dfe.lI.n(), 2);
+      ir.a $$3 = new ir.a();
+      ir.a $$4 = new ir.a();
 
-   public abstract boolean a(dbd var1, BiConsumer<io, drb> var2, ayk var3, io var4, io var5, ecx var6);
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
 
-   protected boolean a(dbd $$0, io $$1) {
-      return ebj.c($$0, $$1);
-   }
+            for (iw $$7 : a) {
+               dtc $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dfe.eJ) || $$8.a(dfe.lI)) {
+                  $$6++;
+               }
 
-   protected void a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, io $$3, ecx $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            edw $$5 = this.g.get();
-            io $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dra.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dfe.lI.n(), 2);
             }
          }
       }
    }
 
-   protected drb a(dbd $$0, io $$1, drb $$2) {
-      if ($$2.b(drr.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awb.a));
-         return $$2.a(drr.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
+   private void b(dcb $$0, ayt $$1, ir $$2) {
+      ir.a $$3 = new ir.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dtc $$5 = $$0.a_($$3.c());
+            if ($$5.a(dfe.eJ) || $$5.a(dfe.lI)) {
+               int $$6 = aym.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
       }
    }
 
-   public io a(io $$0, ayk $$1) {
-      return $$0.b(this.e.a($$1));
+   public static void a(dcb $$0, ayt $$1, ir.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dfe.pz.n().a(div.e, Integer.valueOf(aym.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dfe.pA.n(), 2);
+         }
+
+         $$2.d(iw.a);
+      }
    }
 }

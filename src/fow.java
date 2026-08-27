@@ -1,256 +1,183 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class fow extends fly {
-   public static final int a = 308;
-   public static final int b = 100;
-   public static final int c = 74;
-   public static final int d = 64;
-   private static final Logger s = LogUtils.getLogger();
-   private final fxh u = new fxh();
-   private final fly v;
-   protected fpa r;
-   private fxg w;
-   private ffz x;
-   private ffz y;
-   private ffz z;
-   private fxf A;
-   private gsc.b B;
-   @Nullable
-   private gsc.a C;
-   private boolean D;
+public class fow extends foe {
+   private static final xe a = xe.c("options.videoTitle");
+   private static final xe r = xe.c("options.graphics.fabulous").a(n.u);
+   private static final xe s = xe.a("options.graphics.warning.message", r, r);
+   private static final xe u = xe.c("options.graphics.warning.title").a(n.m);
+   private static final xe v = xe.c("options.graphics.warning.accept");
+   private static final xe w = xe.c("options.graphics.warning.cancel");
+   private fjk x;
+   private final gfa y;
+   private final int z;
 
-   public fow(fly $$0) {
-      super(wx.c("multiplayer.title"));
-      this.v = $$0;
+   private static fgm<?>[] a(fgn $$0) {
+      return new fgm[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.N(),
+         $$0.ab(),
+         $$0.aq(),
+         $$0.D(),
+         $$0.ap(),
+         $$0.i(),
+         $$0.aa(),
+         $$0.ar(),
+         $$0.C(),
+         $$0.O(),
+         $$0.aj(),
+         $$0.g(),
+         $$0.ak(),
+         $$0.af(),
+         $$0.am(),
+         $$0.an(),
+         $$0.p()
+      };
+   }
+
+   public fow(fon $$0, fgn $$1) {
+      super($$0, $$1, a);
+      this.y = $$0.m.aj();
+      this.y.i();
+      if ($$1.j().c() == fgc.c) {
+         this.y.e();
+      }
+
+      this.z = $$1.C().c();
    }
 
    @Override
-   protected void aM_() {
-      if (this.D) {
-         this.r.a(this.n, this.o - 64 - 32, 0, 32);
+   protected void aN_() {
+      this.x = this.c(new fjk(this.m, this.n, this.o, this));
+      int $$0 = -1;
+      fag $$1 = this.m.aP();
+      fab $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         this.D = true;
-         this.w = new fxg(this.m);
-         this.w.a();
-         this.B = new gsc.b();
-
-         try {
-            this.C = new gsc.a(this.B);
-            this.C.start();
-         } catch (Exception var8) {
-            s.warn("Unable to start LAN server detection: {}", var8.getMessage());
-         }
-
-         this.r = new fpa(this, this.m, this.n, this.o - 64 - 32, 32, 36);
-         this.r.a(this.w);
+         Optional<faf> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      this.c(this.r);
-      this.y = this.c(ffz.a(wx.c("selectServer.select"), $$0 -> this.m()).a(100).a());
-      ffz $$1 = this.c(ffz.a(wx.c("selectServer.direct"), $$0 -> {
-         this.A = new fxf(gpb.a("selectServer.defaultName"), "", fxf.c.c);
-         this.m.a(new fky(this, this::g, this.A));
-      }).a(100).a());
-      ffz $$2 = this.c(ffz.a(wx.c("selectServer.add"), $$0 -> {
-         this.A = new fxf(gpb.a("selectServer.defaultName"), "", fxf.c.c);
-         this.m.a(new fla(this, this::f, this.A));
-      }).a(100).a());
-      this.x = this.c(ffz.a(wx.c("selectServer.edit"), $$0 -> {
-         fpa.a $$1x = this.r.h();
-         if ($$1x instanceof fpa.d) {
-            fxf $$2x = ((fpa.d)$$1x).c();
-            this.A = new fxf($$2x.a, $$2x.b, fxf.c.c);
-            this.A.b($$2x);
-            this.m.a(new fla(this, this::e, this.A));
+      fgm<Integer> $$6 = new fgm<>("options.fullscreen.resolution", fgm.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return xe.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return fgn.a($$1x, xe.c("options.fullscreen.current"));
+         } else {
+            faf $$3x = $$2.a($$2x);
+            return fgn.a($$1x, xe.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
-      }).a(74).a());
-      this.z = this.c(ffz.a(wx.c("selectServer.delete"), $$0 -> {
-         fpa.a $$1x = this.r.h();
-         if ($$1x instanceof fpa.d) {
-            String $$2x = ((fpa.d)$$1x).c().a;
-            if ($$2x != null) {
-               wx $$3x = wx.c("selectServer.deleteQuestion");
-               wx $$4x = wx.a("selectServer.deleteWarning", $$2x);
-               wx $$5x = wx.c("selectServer.deleteButton");
-               wx $$6x = ww.e;
-               this.m.a(new fkq(this::c, $$3x, $$4x, $$5x, $$6x));
-            }
+      }, new fgm.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
          }
-      }).a(74).a());
-      ffz $$3 = this.c(ffz.a(wx.c("selectServer.refresh"), $$0 -> this.F()).a(74).a());
-      ffz $$4 = this.c(ffz.a(ww.k, $$0 -> this.d()).a(74).a());
-      fjq $$5 = fjq.d();
-      fjj $$6 = $$5.a(new fjj(308, 20, fjj.b.a));
-      $$6.a(this.y);
-      $$6.a($$1);
-      $$6.a($$2);
-      $$5.a(fjr.b(4));
-      fjj $$7 = $$5.a(new fjj(308, 20, fjj.b.a));
-      $$7.a(this.x);
-      $$7.a(this.z);
-      $$7.a($$3);
-      $$7.a($$4);
-      $$5.a();
-      fjk.a($$5, 0, this.o - 64, this.n, 64);
-      this.C();
+      });
+      this.x.a($$6);
+      this.x.a(this.c.E());
+      this.x.a(a(this.c));
+      super.aN_();
    }
 
    @Override
    public void d() {
-      this.m.a(this.v);
+      this.m.aP().g();
+      super.d();
    }
 
    @Override
-   public void e() {
-      super.e();
-      List<gsb> $$0 = this.B.a();
-      if ($$0 != null) {
-         this.r.a($$0);
-      }
-
-      this.u.a();
+   protected void c() {
+      super.c();
+      this.x.a(this.n, this.d);
    }
 
    @Override
    public void j() {
-      if (this.C != null) {
-         this.C.interrupt();
-         this.C = null;
+      if (this.c.C().c() != this.z) {
+         this.m.b(this.c.C().c());
+         this.m.R();
       }
 
-      this.u.b();
-      this.r.d();
-   }
-
-   private void F() {
-      this.m.a(new fow(this.v));
-   }
-
-   private void c(boolean $$0) {
-      fpa.a $$1 = this.r.h();
-      if ($$0 && $$1 instanceof fpa.d) {
-         this.w.a(((fpa.d)$$1).c());
-         this.w.b();
-         this.r.a(null);
-         this.r.a(this.w);
-      }
-
-      this.m.a(this);
-   }
-
-   private void e(boolean $$0) {
-      fpa.a $$1 = this.r.h();
-      if ($$0 && $$1 instanceof fpa.d) {
-         fxf $$2 = ((fpa.d)$$1).c();
-         $$2.a = this.A.a;
-         $$2.b = this.A.b;
-         $$2.b(this.A);
-         this.w.b();
-         this.r.a(this.w);
-      }
-
-      this.m.a(this);
-   }
-
-   private void f(boolean $$0) {
-      if ($$0) {
-         fxf $$1 = this.w.b(this.A.b);
-         if ($$1 != null) {
-            $$1.a(this.A);
-            this.w.b();
-         } else {
-            this.w.a(this.A, false);
-            this.w.b();
-         }
-
-         this.r.a(null);
-         this.r.a(this.w);
-      }
-
-      this.m.a(this);
-   }
-
-   private void g(boolean $$0) {
-      if ($$0) {
-         fxf $$1 = this.w.a(this.A.b);
-         if ($$1 == null) {
-            this.w.a(this.A, true);
-            this.w.b();
-            this.a(this.A);
-         } else {
-            this.a($$1);
-         }
-      } else {
-         this.m.a(this);
-      }
+      super.j();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.c.aq().c();
       if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 == 294) {
-         this.F();
-         return true;
-      } else if (this.r.h() != null) {
-         if (fka.a($$0)) {
-            this.m();
-            return true;
-         } else {
-            return this.r.a($$0, $$1, $$2);
+         if (this.c.aq().c() != $$3) {
+            this.m.a();
          }
+
+         if (this.y.g()) {
+            List<xe> $$4 = Lists.newArrayList(new xe[]{s, xd.s});
+            String $$5 = this.y.j();
+            if ($$5 != null) {
+               $$4.add(xd.s);
+               $$4.add(xe.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.y.l();
+            if ($$6 != null) {
+               $$4.add(xd.s);
+               $$4.add(xe.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.y.k();
+            if ($$7 != null) {
+               $$4.add(xd.s);
+               $$4.add(xe.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.m.a(new fov(u, $$4, ImmutableList.of(new fov.a(v, $$0x -> {
+               this.c.j().a(fgc.c);
+               fgj.Q().f.f();
+               this.y.e();
+               this.m.a(this);
+            }), new fov.a(w, $$0x -> {
+               this.y.f();
+               this.m.a(this);
+            }))));
+         }
+
+         return true;
       } else {
          return false;
       }
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-   }
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (fon.r()) {
+         fgm<Integer> $$4 = this.c.aq();
+         if ($$4.e() instanceof fgm.c $$5) {
+            int $$6 = $$4.c() + (int)Math.signum($$3);
+            if ($$6 != 0 && $$6 <= $$5.b()) {
+               fiu<Integer> $$7 = (fiu<Integer>)this.x.b($$4);
+               if ($$7 != null) {
+                  $$4.a($$6);
+                  $$7.a($$6);
+               }
 
-   public void m() {
-      fpa.a $$0 = this.r.h();
-      if ($$0 instanceof fpa.d) {
-         this.a(((fpa.d)$$0).c());
-      } else if ($$0 instanceof fpa.c) {
-         gsb $$1 = ((fpa.c)$$0).b();
-         this.a(new fxf($$1.a(), $$1.b(), fxf.c.a));
-      }
-   }
-
-   private void a(fxf $$0) {
-      fkr.a(this, this.m, fyi.a($$0.b), $$0, false, null);
-   }
-
-   public void a(fpa.a $$0) {
-      this.r.a($$0);
-      this.C();
-   }
-
-   protected void C() {
-      this.y.j = false;
-      this.x.j = false;
-      this.z.j = false;
-      fpa.a $$0 = this.r.h();
-      if ($$0 != null && !($$0 instanceof fpa.b)) {
-         this.y.j = true;
-         if ($$0 instanceof fpa.d) {
-            this.x.j = true;
-            this.z.j = true;
+               if ($$4.c() == $$6) {
+                  this.m.a();
+                  this.x.a(0.0);
+                  return true;
+               }
+            }
          }
+
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
-   }
-
-   public fxh D() {
-      return this.u;
-   }
-
-   public fxg E() {
-      return this.w;
    }
 }

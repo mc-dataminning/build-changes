@@ -1,32 +1,20 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public enum cui implements ayx {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n);
+public class cui {
+   private static final Strategy<? super cuh> a = new Strategy<cuh>() {
+      public int a(@Nullable cuh $$0) {
+         return cuh.a($$0);
+      }
 
-   public static final Codec<cui> e = ayx.b(cui::values);
-   public static final IntFunction<cui> f = awv.a($$0 -> $$0.h, values(), awv.a.a);
-   public static final yv<ByteBuf, cui> g = yt.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final n j;
+      public boolean a(@Nullable cuh $$0, @Nullable cuh $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.d() == $$1.d() && cuh.c($$0, $$1);
+      }
+   };
 
-   private cui(int $$0, String $$1, n $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   public n a() {
-      return this.j;
-   }
-
-   @Override
-   public String c() {
-      return this.i;
+   public static Set<cuh> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

@@ -1,21 +1,32 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eej extends eec {
-   public static final MapCodec<eej> b = drb.b.fieldOf("state").xmap(dra.a::b, ddy::n).xmap(eej::new, $$0 -> $$0.c);
-   private final ddy c;
+public class eej implements eek {
+   public static final Codec<eej> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ir.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eej::new)
+   );
+   private final Optional<ir> b;
+   private final boolean c;
 
-   public eej(ddy $$0) {
-      this.c = $$0;
+   private eej(Optional<ir> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected eed<?> a() {
-      return eed.f;
+   public static eej a(ir $$0, boolean $$1) {
+      return new eej(Optional.of($$0), $$1);
    }
 
-   @Override
-   public drb a(ayk $$0, io $$1) {
-      it.a $$2 = it.a.a($$0);
-      return this.c.n().a(dkk.i, $$2);
+   public static eej a() {
+      return new eej(Optional.empty(), false);
+   }
+
+   public Optional<ir> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

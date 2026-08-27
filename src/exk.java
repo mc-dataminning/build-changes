@@ -1,179 +1,277 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.math.DoubleMath;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
+import java.util.Objects;
 
-public class exk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final Queue<exk.a> c = EvictingQueue.create(10);
-   @Nullable
-   private static volatile exk.a d;
-   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
-   private static boolean g;
+public final class exk {
+   public static final double a = 1.0E-7;
+   public static final double b = 1.0E-6;
+   private static final exn d = ad.a(() -> {
+      exd $$0 = new ewx(1, 1, 1);
+      $$0.c(0, 0, 0);
+      return new exb($$0);
+   });
+   public static final exn c = a(
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY
+   );
+   private static final exn e = new eww(
+      new ewx(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
+   );
 
-   private static String d(int $$0) {
-      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
+   public static exn a() {
+      return e;
    }
 
-   public static String a(int $$0) {
-      switch ($$0) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return d($$0);
+   public static exn b() {
+      return d;
+   }
+
+   public static exn a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
+         return b($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
       }
    }
 
-   public static String b(int $$0) {
-      switch ($$0) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return d($$0);
-      }
-   }
-
-   public static String c(int $$0) {
-      switch ($$0) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return d($$0);
-      }
-   }
-
-   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
-      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
-      exk.a $$8;
-      synchronized (c) {
-         $$8 = d;
-         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
-            $$8.f++;
+   public static exn b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
+         int $$6 = a($$0, $$3);
+         int $$7 = a($$1, $$4);
+         int $$8 = a($$2, $$5);
+         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
+            return new eww(
+               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
+            );
+         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
+            return b();
          } else {
-            $$8 = new exk.a($$0, $$1, $$2, $$3, $$7);
-            c.add($$8);
-            d = $$8;
+            int $$9 = 1 << $$6;
+            int $$10 = 1 << $$7;
+            int $$11 = 1 << $$8;
+            ewx $$12 = ewx.a(
+               $$9,
+               $$10,
+               $$11,
+               (int)Math.round($$0 * (double)$$9),
+               (int)Math.round($$1 * (double)$$10),
+               (int)Math.round($$2 * (double)$$11),
+               (int)Math.round($$3 * (double)$$9),
+               (int)Math.round($$4 * (double)$$10),
+               (int)Math.round($$5 * (double)$$11)
+            );
+            return new exb($$12);
+         }
+      } else {
+         return a();
+      }
+   }
+
+   public static exn a(ewp $$0) {
+      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   @VisibleForTesting
+   protected static int a(double $$0, double $$1) {
+      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
+         for (int $$2 = 0; $$2 <= 3; $$2++) {
+            int $$3 = 1 << $$2;
+            double $$4 = $$0 * (double)$$3;
+            double $$5 = $$1 * (double)$$3;
+            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
+            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
+            if ($$6 && $$7) {
+               return $$2;
+            }
+         }
+
+         return -1;
+      } else {
+         return -1;
+      }
+   }
+
+   protected static long a(int $$0, int $$1) {
+      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
+   }
+
+   public static exn a(exn $$0, exn $$1) {
+      return a($$0, $$1, ewy.o);
+   }
+
+   public static exn a(exn $$0, exn... $$1) {
+      return Arrays.stream($$1).reduce($$0, exk::a);
+   }
+
+   public static exn a(exn $$0, exn $$1, ewy $$2) {
+      return b($$0, $$1, $$2).d();
+   }
+
+   public static exn b(exn $$0, exn $$1, ewy $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException());
+      } else if ($$0 == $$1) {
+         return $$2.apply(true, true) ? $$0 : a();
+      } else {
+         boolean $$3 = $$2.apply(true, false);
+         boolean $$4 = $$2.apply(false, true);
+         if ($$0.c()) {
+            return $$4 ? $$1 : a();
+         } else if ($$1.c()) {
+            return $$3 ? $$0 : a();
+         } else {
+            exg $$5 = a(1, $$0.a(iw.a.a), $$1.a(iw.a.a), $$3, $$4);
+            exg $$6 = a($$5.size() - 1, $$0.a(iw.a.b), $$1.a(iw.a.b), $$3, $$4);
+            exg $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(iw.a.c), $$1.a(iw.a.c), $$3, $$4);
+            ewx $$8 = ewx.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
+            return (exn)($$5 instanceof exc && $$6 instanceof exc && $$7 instanceof exc ? new exb($$8) : new eww($$8, $$5.a(), $$6.a(), $$7.a()));
+         }
+      }
+   }
+
+   public static boolean c(exn $$0, exn $$1, ewy $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException());
+      } else {
+         boolean $$3 = $$0.c();
+         boolean $$4 = $$1.c();
+         if (!$$3 && !$$4) {
+            if ($$0 == $$1) {
+               return $$2.apply(true, true);
+            } else {
+               boolean $$5 = $$2.apply(true, false);
+               boolean $$6 = $$2.apply(false, true);
+
+               for (iw.a $$7 : io.d) {
+                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
+
+                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
+               }
+
+               exg $$8 = a(1, $$0.a(iw.a.a), $$1.a(iw.a.a), $$5, $$6);
+               exg $$9 = a($$8.size() - 1, $$0.a(iw.a.b), $$1.a(iw.a.b), $$5, $$6);
+               exg $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(iw.a.c), $$1.a(iw.a.c), $$5, $$6);
+               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
+            }
+         } else {
+            return $$2.apply(!$$3, !$$4);
+         }
+      }
+   }
+
+   private static boolean a(exg $$0, exg $$1, exg $$2, exd $$3, exd $$4, ewy $$5) {
+      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
+   }
+
+   public static double a(iw.a $$0, ewp $$1, Iterable<exn> $$2, double $$3) {
+      for (exn $$4 : $$2) {
+         if (Math.abs($$3) < 1.0E-7) {
+            return 0.0;
+         }
+
+         $$3 = $$4.a($$0, $$1, $$3);
+      }
+
+      return $$3;
+   }
+
+   public static boolean a(exn $$0, exn $$1, iw $$2) {
+      if ($$0 == b() && $$1 == b()) {
+         return true;
+      } else if ($$1.c()) {
+         return false;
+      } else {
+         iw.a $$3 = $$2.o();
+         iw.b $$4 = $$2.f();
+         exn $$5 = $$4 == iw.b.a ? $$0 : $$1;
+         exn $$6 = $$4 == iw.b.a ? $$1 : $$0;
+         ewy $$7 = $$4 == iw.b.a ? ewy.e : ewy.c;
+         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
+            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
+            && !c(new exl($$5, $$3, $$5.a.c($$3) - 1), new exl($$6, $$3, 0), $$7);
+      }
+   }
+
+   public static exn a(exn $$0, iw $$1) {
+      if ($$0 == b()) {
+         return b();
+      } else {
+         iw.a $$2 = $$1.o();
+         boolean $$3;
+         int $$4;
+         if ($$1.f() == iw.b.a) {
+            $$3 = DoubleMath.fuzzyEquals($$0.c($$2), 1.0, 1.0E-7);
+            $$4 = $$0.a.c($$2) - 1;
+         } else {
+            $$3 = DoubleMath.fuzzyEquals($$0.b($$2), 0.0, 1.0E-7);
+            $$4 = 0;
+         }
+
+         return (exn)(!$$3 ? a() : new exl($$0, $$2, $$4));
+      }
+   }
+
+   public static boolean b(exn $$0, exn $$1, iw $$2) {
+      if ($$0 != b() && $$1 != b()) {
+         iw.a $$3 = $$2.o();
+         iw.b $$4 = $$2.f();
+         exn $$5 = $$4 == iw.b.a ? $$0 : $$1;
+         exn $$6 = $$4 == iw.b.a ? $$1 : $$0;
+         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
+            $$5 = a();
+         }
+
+         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
+            $$6 = a();
+         }
+
+         return !c(b(), b(new exl($$5, $$3, $$5.a.c($$3) - 1), new exl($$6, $$3, 0), ewy.o), ewy.e);
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean b(exn $$0, exn $$1) {
+      if ($$0 == b() || $$1 == b()) {
+         return true;
+      } else {
+         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, ewy.o), ewy.e);
+      }
+   }
+
+   @VisibleForTesting
+   protected static exg a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
+      int $$5 = $$1.size() - 1;
+      int $$6 = $$2.size() - 1;
+      if ($$1 instanceof exa && $$2 instanceof exa) {
+         long $$7 = a($$5, $$6);
+         if ((long)$$0 * $$7 <= 256L) {
+            return new exc($$5, $$6);
          }
       }
 
-      a.info("OpenGL debug message: {}", $$8);
-   }
-
-   public static List<String> a() {
-      synchronized (c) {
-         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
-
-         for (exk.a $$1 : c) {
-            $$0.add($$1 + " x " + $$1.f);
-         }
-
-         return $$0;
+      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
+         return new exi($$1, $$2, false);
+      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
+         return new exi($$2, $$1, true);
+      } else {
+         return (exg)($$5 == $$6 && Objects.equals($$1, $$2) ? new exf($$1) : new exh($$1, $$2, $$3, $$4));
       }
    }
 
-   public static boolean b() {
-      return g;
-   }
-
-   public static void a(int $$0, boolean $$1) {
-      RenderSystem.assertInInitPhase();
-      if ($$0 > 0) {
-         GLCapabilities $$2 = GL.getCapabilities();
-         if ($$2.GL_KHR_debug) {
-            g = true;
-            GL11.glEnable(37600);
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$3 = 0; $$3 < e.size(); $$3++) {
-               boolean $$4 = $$3 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
-            }
-
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(exk::a), exi::a), 0L);
-         } else if ($$2.GL_ARB_debug_output) {
-            g = true;
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$5 = 0; $$5 < f.size(); $$5++) {
-               boolean $$6 = $$5 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(exk::a), exi::a), 0L);
-         }
-      }
-   }
-
-   static class a {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final String e;
-      int f = 1;
-
-      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         this.a = $$2;
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
-      }
-
-      @Override
-      public String toString() {
-         return "id=" + this.a + ", source=" + exk.a(this.b) + ", type=" + exk.b(this.c) + ", severity=" + exk.c(this.d) + ", message='" + this.e + "'";
-      }
+   public interface a {
+      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
    }
 }

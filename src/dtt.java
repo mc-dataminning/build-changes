@@ -1,18 +1,47 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
+import java.util.Optional;
 
-public interface dtt {
-   @Nullable
-   ehr a(ehj var1);
+public class dtt extends duf<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   void a(ehj var1, ehr var2);
+   protected dtt(String $$0) {
+      super($$0, Boolean.class);
+   }
 
-   LongSet b(ehj var1);
+   @Override
+   public Collection<Boolean> a() {
+      return this.a;
+   }
 
-   void a(ehj var1, long var2);
+   public static dtt a(String $$0) {
+      return new dtt($$0);
+   }
 
-   Map<ehj, LongSet> h();
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
+   }
 
-   void b(Map<ehj, LongSet> var1);
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtt $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
 }

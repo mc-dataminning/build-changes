@@ -1,16 +1,12 @@
-public record afo(wx b, wx c) implements ze<abq> {
-   public static final yv<wi, afo> a = yv.a(wz.d, afo::b, wz.d, afo::e, afo::new);
+public record afo(xe b) implements zl<abw> {
+   public static final zc<wp, afo> a = zc.a(xg.d, afo::b, afo::new);
 
    @Override
-   public zg<afo> a() {
-      return agb.aW;
+   public zn<afo> a() {
+      return agj.aQ;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public wx e() {
-      return this.c;
    }
 }

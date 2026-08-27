@@ -1,49 +1,81 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public class erw {
-   private static final BiMap<akm, erv> t = HashBiMap.create();
-   public static final Codec<erv> a = akm.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((erv)t.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         t.inverse()::get
-      );
-   public static final erv b = a("empty", $$0 -> {
-   });
-   public static final erv c = a("chest", $$0 -> $$0.a(erx.f).b(erx.a));
-   public static final erv d = a("command", $$0 -> $$0.a(erx.f).b(erx.a));
-   public static final erv e = a("selector", $$0 -> $$0.a(erx.f).a(erx.a));
-   public static final erv f = a("fishing", $$0 -> $$0.a(erx.f).a(erx.i).b(erx.a));
-   public static final erv g = a("entity", $$0 -> $$0.a(erx.a).a(erx.f).a(erx.c).b(erx.d).b(erx.e).b(erx.b));
-   public static final erv h = a("equipment", $$0 -> $$0.a(erx.f).a(erx.a));
-   public static final erv i = a("archaeology", $$0 -> $$0.a(erx.f).b(erx.a));
-   public static final erv j = a("gift", $$0 -> $$0.a(erx.f).a(erx.a));
-   public static final erv k = a("barter", $$0 -> $$0.a(erx.a));
-   public static final erv l = a("vault", $$0 -> $$0.a(erx.f).b(erx.a));
-   public static final erv m = a("advancement_reward", $$0 -> $$0.a(erx.a).a(erx.f));
-   public static final erv n = a("advancement_entity", $$0 -> $$0.a(erx.a).a(erx.f));
-   public static final erv o = a("advancement_location", $$0 -> $$0.a(erx.a).a(erx.f).a(erx.i).a(erx.g));
-   public static final erv p = a("block_use", $$0 -> $$0.a(erx.a).a(erx.f).a(erx.g));
-   public static final erv q = a("generic", $$0 -> $$0.a(erx.a).a(erx.b).a(erx.c).a(erx.d).a(erx.e).a(erx.f).a(erx.g).a(erx.h).a(erx.i).a(erx.j));
-   public static final erv r = a("block", $$0 -> $$0.a(erx.g).a(erx.f).a(erx.i).b(erx.a).b(erx.h).b(erx.j));
-   public static final erv s = a("shearing", $$0 -> $$0.a(erx.f).b(erx.a));
+public class erw extends ery {
+   public static final Codec<erw> a = a(erw::new);
 
-   private static erv a(String $$0, Consumer<erv.a> $$1) {
-      erv.a $$2 = new erv.a();
-      $$1.accept($$2);
-      erv $$3 = $$2.a();
-      akm $$4 = new akm($$0);
-      erv $$5 = (erv)t.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
-      } else {
-         return $$3;
+   erw(List<esf> $$0, List<euu> $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public esg a() {
+      return esd.g;
+   }
+
+   @Override
+   protected erx a(List<? extends erx> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (erx)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (erx $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static erw.a a(esf.a<?>... $$0) {
+      return new erw.a($$0);
+   }
+
+   public static <E> erw.a a(Collection<E> $$0, Function<E, esf.a<?>> $$1) {
+      return new erw.a($$0.stream().map($$1::apply).toArray(esf.a[]::new));
+   }
+
+   public static class a extends esf.a<erw.a> {
+      private final Builder<esf> a = ImmutableList.builder();
+
+      public a(esf.a<?>... $$0) {
+         for (esf.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected erw.a a() {
+         return this;
+      }
+
+      @Override
+      public erw.a a(esf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public esf b() {
+         return new erw(this.a.build(), this.f());
       }
    }
 }

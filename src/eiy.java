@@ -1,25 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-record eiy(boe<List<eiu>> c) implements eiu {
-   static MapCodec<eiy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(boe.b(Codec.list(eiu.b)).fieldOf("groups").forGetter(eiy::c)).apply($$0, eiy::new));
+public class eiy extends dzr {
+   private final dcv a;
+   private final duz b;
+   private final Optional<eix> c;
 
-   @Override
-   public void a(ayk $$0, BiConsumer<akl<eis>, akl<eis>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   public eiy(dcv $$0, duz $$1, Optional<eix> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public Stream<akl<eis>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(eiu::a);
+   public int a(dyu.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   public MapCodec<eiy> b() {
-      return a;
+   public dux a(dbh $$0, dyq.a $$1) {
+      return ((dvs)this.a.a_($$0.e, $$0.f)).b($$1);
+   }
+
+   public dtc a(ir $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.J_();
+   }
+
+   public dcv d() {
+      return this.a;
+   }
+
+   public Optional<eix> e() {
+      return this.c;
+   }
+
+   public duz f() {
+      return this.b;
    }
 }

@@ -1,34 +1,61 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class egi extends egq {
-   public static final MapCodec<egi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(efq.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, egi::new));
-   private final efq c;
+public abstract class egi {
+   public static final Codec<egi> d = lh.Y.q().dispatch(egi::a, egj::a);
+   protected final bpf e;
+   protected final egl f;
+   protected final Optional<egf> g;
 
-   private egi(efq $$0) {
-      this.c = $$0;
+   protected static <P extends egi> P3<Mu<P>, bpf, egl, Optional<egf>> a(Instance<P> $$0) {
+      return $$0.group(
+         bpf.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         egl.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         egf.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static egi a(efq $$0) {
-      return new egi($$0);
+   public egi(bpf $$0, egl $$1, Optional<egf> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static egi a(dxn $$0, dxn $$1) {
-      return a(eft.a($$0, $$1));
+   protected abstract egj<?> a();
+
+   public abstract boolean a(dcg var1, BiConsumer<ir, dtc> var2, ayt var3, ir var4, ir var5, efg var6);
+
+   protected boolean a(dcg $$0, ir $$1) {
+      return edr.c($$0, $$1);
    }
 
-   public static egi b(dxn $$0, dxn $$1) {
-      return a(efs.a($$0, $$1));
+   protected void a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, ir $$3, efg $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            egf $$5 = this.g.get();
+            ir $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dtb.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
+      }
    }
 
-   @Override
-   public Stream<io> a_(ego $$0, ayk $$1, io $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected dtc a(dcg $$0, ir $$1, dtc $$2) {
+      if ($$2.b(dts.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awj.a));
+         return $$2.a(dts.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
    }
 
-   @Override
-   public egr<?> b() {
-      return egr.l;
+   public ir a(ir $$0, ayt $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

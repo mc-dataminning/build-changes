@@ -1,224 +1,132 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class fbg extends gty {
-   private static final akm a = new akm("widget/slot_frame");
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 80;
-   private final fly B;
-   @Nullable
-   private ezz C;
-   private final long D;
-   private final wx[] E = new wx[]{wx.c("mco.brokenworld.message.line1"), wx.c("mco.brokenworld.message.line2")};
-   private int F;
-   private final List<Integer> G = Lists.newArrayList();
-   private int H;
+public interface fbg {
+   fbg a(double var1, double var3, double var5);
 
-   public fbg(fly $$0, long $$1, boolean $$2) {
-      super($$2 ? wx.c("mco.brokenworld.minigame.title") : wx.c("mco.brokenworld.title"));
-      this.B = $$0;
-      this.D = $$1;
+   fbg a(int var1, int var2, int var3, int var4);
+
+   fbg a(float var1, float var2);
+
+   fbg a(int var1, int var2);
+
+   fbg b(int var1, int var2);
+
+   fbg a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
    }
 
-   @Override
-   public void aM_() {
-      this.F = this.n / 2 - 150;
-      this.c(ffz.a(ww.k, $$0 -> this.d()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
-      if (this.C == null) {
-         this.a(this.D);
-      } else {
-         this.C();
-      }
+   void b(int var1, int var2, int var3, int var4);
+
+   void l();
+
+   default fbg a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   @Override
-   public wx i() {
-      return xa.a(Stream.concat(Stream.of(this.l), Stream.of(this.E)).collect(Collectors.toList()), ww.v);
+   default fbg a(int $$0) {
+      return this.a(axw.b.b($$0), axw.b.c($$0), axw.b.d($$0), axw.b.a($$0));
    }
 
-   private void C() {
-      for (Entry<Integer, fag> $$0 : this.C.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.C.n || this.C.m == ezz.d.b;
-         ffz $$3;
-         if ($$2) {
-            $$3 = ffz.a(wx.c("mco.brokenworld.play"), $$1x -> this.m.a(new fbp(this.B, new fdh(this.C.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
-            $$3.j = !this.C.i.get($$1).n;
-         } else {
-            $$3 = ffz.a(wx.c("mco.brokenworld.download"), $$1x -> {
-               wx $$2x = wx.c("mco.configure.world.restore.download.question.line1");
-               wx $$3x = wx.c("mco.configure.world.restore.download.question.line2");
-               this.m.a(new fbo($$1xx -> {
-                  if ($$1xx) {
-                     this.b($$1);
-                  } else {
-                     this.m.a(this);
-                  }
-               }, fbo.a.b, $$2x, $$3x, true));
-            }).a(this.a($$1), g(8), 80, 20).a();
-         }
-
-         if (this.G.contains($$1)) {
-            $$3.j = false;
-            $$3.b(wx.c("mco.brokenworld.downloaded"));
-         }
-
-         this.c($$3);
-      }
+   default fbg b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   @Override
-   public void e() {
-      this.H++;
+   default fbg c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-
-      for (int $$4 = 0; $$4 < this.E.length; $$4++) {
-         $$0.a(this.p, this.E[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
-      }
-
-      if (this.C != null) {
-         for (Entry<Integer, fag> $$5 : this.C.i.entrySet()) {
-            if ($$5.getValue().m != null && $$5.getValue().l != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.C.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().l,
-                  $$5.getValue().m,
-                  $$5.getValue().n
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.C.n == $$5.getKey() && !this.D(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().n
-               );
-            }
-         }
-      }
+   default void a(fbc.a $$0, ggd $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
    }
 
-   private int a(int $$0) {
-      return this.F + ($$0 - 1) * 110;
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         ezi $$1 = ezi.a();
-
-         try {
-            this.C = $$1.a($$0);
-            this.C();
-         } catch (fav var5) {
-            b.error("Couldn't get own world", var5);
-            this.m.a(new fbm(var5, this.B));
-         }
-      }).start();
-   }
-
-   public void b() {
-      new Thread(() -> {
-         ezi $$0 = ezi.a();
-         if (this.C.e == ezz.c.a) {
-            this.m.execute(() -> this.m.a(new fbp(this, new fda(this.C, this, true, this.m))));
-         } else {
-            try {
-               ezz $$1 = $$0.a(this.D);
-               this.m.execute(() -> ezd.a($$1, this));
-            } catch (fav var3) {
-               b.error("Couldn't get own world", var3);
-               this.m.execute(() -> this.m.a(this.B));
-            }
-         }
-      }).start();
-   }
-
-   private void b(int $$0) {
-      ezi $$1 = ezi.a();
+   default void a(fbc.a $$0, ggd $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      float[] $$10 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$11 = new int[]{$$7[0], $$7[1], $$7[2], $$7[3]};
+      int[] $$12 = $$1.b();
+      jv $$13 = $$1.e().q();
+      Matrix4f $$14 = $$0.a();
+      Vector3f $$15 = $$0.a((float)$$13.u(), (float)$$13.v(), (float)$$13.w(), new Vector3f());
+      int $$16 = 8;
+      int $$17 = $$12.length / 8;
+      MemoryStack $$18 = MemoryStack.stackPush();
 
       try {
-         fap $$2 = $$1.b(this.C.a, $$0);
-         fbl $$3 = new fbl(this, $$2, this.C.a($$0), $$1x -> {
-            if ($$1x) {
-               this.G.add($$0);
-               this.p();
-               this.C();
+         ByteBuffer $$19 = $$18.malloc(fba.j.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
+
+         for (int $$21 = 0; $$21 < $$17; $$21++) {
+            $$20.clear();
+            $$20.put($$12, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255) / 255.0F;
+               float $$26 = (float)($$19.get(13) & 255) / 255.0F;
+               float $$27 = (float)($$19.get(14) & 255) / 255.0F;
+               $$28 = $$25 * $$10[$$21] * $$3;
+               $$29 = $$26 * $$10[$$21] * $$4;
+               $$30 = $$27 * $$10[$$21] * $$5;
             } else {
-               this.m.a(this);
+               $$28 = $$10[$$21] * $$3;
+               $$29 = $$10[$$21] * $$4;
+               $$30 = $$10[$$21] * $$5;
             }
-         });
-         this.m.a($$3);
-      } catch (fav var5) {
-         b.error("Couldn't download world data", var5);
-         this.m.a(new fbm(var5, this));
+
+            int $$34 = $$11[$$21];
+            float $$35 = $$19.getFloat(16);
+            float $$36 = $$19.getFloat(20);
+            Vector4f $$37 = $$14.transform(new Vector4f($$22, $$23, $$24, 1.0F));
+            this.a($$37.x(), $$37.y(), $$37.z(), $$28, $$29, $$30, $$6, $$35, $$36, $$8, $$34, $$15.x(), $$15.y(), $$15.z());
+         }
+      } catch (Throwable var34) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var33) {
+               var34.addSuppressed(var33);
+            }
+         }
+
+         throw var34;
+      }
+
+      if ($$18 != null) {
+         $$18.close();
       }
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.B);
+   default fbg a(fbc.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
    }
 
-   private boolean D() {
-      return this.C != null && this.C.m == ezz.d.b;
+   default fbg a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
    }
 
-   private void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      akm $$11;
-      if ($$10) {
-         $$11 = fbb.a;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = fco.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = fbb.b;
-      } else if ($$7 == 2) {
-         $$11 = fbb.c;
-      } else if ($$7 == 3) {
-         $$11 = fbb.d;
-      } else {
-         $$11 = fco.a(String.valueOf(this.C.p), this.C.q);
-      }
-
-      if (!$$5) {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      } else if ($$5) {
-         float $$17 = 0.9F + 0.1F * ayd.b((float)this.H * 0.2F);
-         $$0.a($$17, $$17, $$17, 1.0F);
-      }
-
-      $$0.a($$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74);
-      if ($$5) {
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      } else {
-         $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-      }
-
-      $$0.a(a, $$1, $$2, 80, 80);
-      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   default fbg b(fbc.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
    }
 }

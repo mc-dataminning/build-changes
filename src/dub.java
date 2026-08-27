@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dub implements azg {
+   a("top"),
+   b("bottom");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dub {
+   private final String c;
+
+   private dub(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

@@ -1,11 +1,45 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public interface bmj {
-   long a();
+public class bmj implements bmn {
+   public static final bmj a = new bmj();
 
-   long b();
+   private bmj() {
+   }
 
-   long c();
+   @Override
+   public List<bmq> a(String $$0) {
+      return Collections.emptyList();
+   }
 
-   Object2LongMap<String> d();
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
+   }
 }

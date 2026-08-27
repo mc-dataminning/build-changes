@@ -1,32 +1,68 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class dxt {
-   private long b;
-   private long c;
-   public static final Codec<dxt> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dxt($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public class dxt implements dxz {
+   public static final Codec<dxt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ju.a.fieldOf("source_entity").forGetter(dxt::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dxt(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final zc<wp, dxt> b = zc.a(za.g, dxt::c, za.i, $$0 -> $$0.f, ($$0, $$1) -> new dxt(Either.right(Either.right($$0)), $$1));
+   private Either<brv, Either<UUID, Integer>> e;
+   private final float f;
 
-   public dxt(dxi.a $$0) {
-      this($$0.b(), $$0.c());
+   public dxt(brv $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public dxt(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   private dxt(Either<brv, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public Optional<ewu> a(dca $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
       }
+
+      return this.e.left().map($$0x -> $$0x.ds().b(0.0, (double)this.f, 0.0));
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   private void b(dca $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((brv)$$1.map($$1x -> $$0 instanceof aqt $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(brv::cE, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(brv::al, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dya<dxt> a() {
+      return dya.b;
+   }
+
+   public static class a implements dya<dxt> {
+      @Override
+      public Codec<dxt> a() {
+         return dxt.a;
+      }
+
+      @Override
+      public zc<wp, dxt> b() {
+         return dxt.b;
+      }
    }
 }

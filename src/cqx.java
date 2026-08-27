@@ -1,2 +1,6 @@
-public record cqx(cwb a) implements cqy {
+public enum cqx {
+   a,
+   b,
+   c,
+   d;
 }

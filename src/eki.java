@@ -1,49 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class eki extends ekw {
-   public static final MapCodec<eki> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               it.a.e.fieldOf("axis").orElse(it.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eki::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final it.a g;
+public record eki(List<ejx> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akt c = new akt("jigsaw");
+   private static final Map<akt, akt> d = ImmutableMap.builder()
+      .put(new akt("nvi"), c)
+      .put(new akt("pcp"), c)
+      .put(new akt("bastionremnant"), c)
+      .put(new akt("runtime"), c)
+      .build();
 
-   public eki(float $$0, float $$1, int $$2, int $$3, it.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+   public eki(List<ejx> a) {
+      this.a = List.copyOf(a);
+   }
+
+   public boolean a() {
+      return this.a.isEmpty();
+   }
+
+   public boolean a(ir $$0) {
+      for (ejx $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
       }
+
+      return false;
    }
 
-   @Override
-   public boolean a(io $$0, io $$1, io $$2, ayk $$3) {
-      it $$4 = it.a(it.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= ayd.b(this.b, this.d, ayd.g((float)$$8, (float)this.e, (float)this.f));
+   public vh a(ekj $$0) {
+      uq $$1 = new uq();
+
+      for (ejx $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   @Override
-   protected ekx<?> a() {
-      return ekx.c;
+   public static eki a(uq $$0, ekj $$1) {
+      List<ejx> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         uk $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         akt $$6 = new akt($$5);
+         akt $$7 = d.getOrDefault($$6, $$6);
+         ekk $$8 = lh.S.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               ejx $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new eki($$2);
+   }
+
+   public ejl b() {
+      return ejx.a(this.a.stream());
+   }
+
+   public List<ejx> c() {
+      return this.a;
    }
 }

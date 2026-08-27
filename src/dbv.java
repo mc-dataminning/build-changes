@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class dbv {
-   public static final Codec<dbv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ky.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dbv::new)
-   );
-   private final kw b;
-   private final float c;
+public class dbv extends eql {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   public dbv(kw $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static eql.a<dbv> a() {
+      return new eql.a<>(dbv::new, dbv::b, azs.i);
    }
 
-   public kw a() {
-      return this.b;
+   private dbv(LongSet $$0) {
+      this.c = $$0;
    }
 
-   public boolean a(ayk $$0) {
-      return $$0.i() <= this.c;
+   public dbv() {
+      this(new LongOpenHashSet());
+   }
+
+   public static dbv b(uk $$0, jc.a $$1) {
+      return new dbv(new LongOpenHashSet($$0.o("Forced")));
+   }
+
+   @Override
+   public uk a(uk $$0, jc.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

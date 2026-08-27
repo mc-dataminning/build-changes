@@ -1,116 +1,121 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
+public class fpq extends fqp<cpi> {
+   private static final akt D = new akt("container/anvil/text_field");
+   private static final akt E = new akt("container/anvil/text_field_disabled");
+   private static final akt F = new akt("container/anvil/error");
+   private static final akt G = new akt("textures/gui/container/anvil.png");
+   private static final xe H = xe.c("container.repair.expensive");
+   private fiw I;
+   private final cly J;
 
-public class fpq {
-   private final jl a;
-   private final List<cxw<?>> b;
-   private final boolean c;
-   private final Set<cxw<?>> d = Sets.newHashSet();
-   private final Set<cxw<?>> e = Sets.newHashSet();
-   private final Set<cxw<?>> f = Sets.newHashSet();
-
-   public fpq(jl $$0, List<cxw<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
-      } else {
-         this.c = a($$0, $$1);
-      }
+   public fpq(cpi $$0, clx $$1, xe $$2) {
+      super($$0, $$1, $$2, G);
+      this.J = $$1.l;
+      this.r = 60;
    }
 
-   private static boolean a(jl $$0, List<cxw<?>> $$1) {
-      int $$2 = $$1.size();
-      cto $$3 = $$1.get(0).b().a($$0);
+   @Override
+   protected void E() {
+      int $$0 = (this.n - this.c) / 2;
+      int $$1 = (this.o - this.d) / 2;
+      this.I = new fiw(this.p, $$0 + 62, $$1 + 24, 103, 12, xe.c("container.repair"));
+      this.I.f(false);
+      this.I.g(-1);
+      this.I.h(-1);
+      this.I.d(false);
+      this.I.f(50);
+      this.I.b(this::a);
+      this.I.a("");
+      this.d(this.I);
+      this.I.e(this.w.b(0).h());
+   }
 
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cto $$5 = $$1.get($$4).b().a($$0);
-         if (!cto.c($$3, $$5)) {
-            return false;
+   @Override
+   protected void aC_() {
+      this.b(this.I);
+   }
+
+   @Override
+   public void a(fgj $$0, int $$1, int $$2) {
+      String $$3 = this.I.a();
+      this.b($$0, $$1, $$2);
+      this.I.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.s.t();
+      }
+
+      return !this.I.a($$0, $$1, $$2) && !this.I.d() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cre $$1 = this.w.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ke.f) && $$0.equals($$1.g().w().getString())) {
+            $$2 = "";
+         }
+
+         if (this.w.a($$2)) {
+            this.m.s.h.b(new aht($$2));
          }
       }
-
-      return true;
    }
 
-   public jl a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public void a(avk $$0) {
-      for (cxw<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
-      }
-   }
-
-   public void a(cma $$0, int $$1, int $$2, avk $$3) {
-      for (cxw<?> $$4 : this.b) {
-         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
+   @Override
+   protected void b(fia $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.w.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xe $$5;
+         if ($$3 >= 40 && !this.m.s.gm().d) {
+            $$5 = H;
+            $$4 = 16736352;
+         } else if (!this.w.b(2).h()) {
+            $$5 = null;
          } else {
-            this.e.remove($$4);
+            $$5 = xe.a("container.repair.cost", $$3);
+            if (!this.w.b(2).a(this.J)) {
+               $$4 = 16736352;
+            }
          }
 
-         if ($$5 && $$0.a($$4.b(), null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
+         if ($$5 != null) {
+            int $$8 = this.c - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
          }
+      }
+   }
+
+   @Override
+   protected void a(fia $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
+   }
+
+   @Override
+   public void d(fia $$0, int $$1, int $$2, float $$3) {
+      this.I.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(fia $$0, int $$1, int $$2) {
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
+         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
       }
    }
 
-   public boolean a(cxw<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
-   }
-
-   public boolean d() {
-      return !this.e.isEmpty();
-   }
-
-   public List<cxw<?>> e() {
-      return this.b;
-   }
-
-   public List<cxw<?>> a(boolean $$0) {
-      List<cxw<?>> $$1 = Lists.newArrayList();
-      Set<cxw<?>> $$2 = $$0 ? this.d : this.e;
-
-      for (cxw<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
-         }
+   @Override
+   public void a(cpg $$0, int $$1, cuh $$2) {
+      if ($$1 == 0) {
+         this.I.a($$2.d() ? "" : $$2.w().getString());
+         this.I.e(!$$2.d());
+         this.a(this.I);
       }
-
-      return $$1;
-   }
-
-   public List<cxw<?>> b(boolean $$0) {
-      List<cxw<?>> $$1 = Lists.newArrayList();
-
-      for (cxw<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean f() {
-      return this.c;
    }
 }

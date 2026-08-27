@@ -21,11 +21,11 @@ public class chr {
          }
 
          this.d = this.b((chq<chk>)$$0);
-         if (!this.b.dP().B) {
+         if (!this.b.dU().C) {
             this.b.ap().a(cha.b, $$0.b());
          }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dP().B ? "client" : "server");
+         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dU().C ? "client" : "server");
          this.d.d();
       }
    }

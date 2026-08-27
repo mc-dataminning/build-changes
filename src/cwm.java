@@ -1,32 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class cwm extends cuc {
+   private static final int a = 10;
 
-public record cwm(Optional<iw> c, boolean d) {
-   public static final Codec<cwm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iw.b.optionalFieldOf("target").forGetter(cwm::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cwm::b)).apply($$0, cwm::new)
-   );
-   public static final yv<ByteBuf, cwm> b = yv.a(iw.c.a(yt::a), cwm::a, yt.b, cwm::b, cwm::new);
+   public cwm(cuc.a $$0) {
+      super($$0);
+   }
 
-   public cwm a(aqm $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ae()) {
-            return this;
-         } else {
-            io $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.y().a(cdw.s, $$1) ? this : new cwm(Optional.empty(), true);
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      if (!$$0.x_()) {
+         ewu $$3 = $$1.bC().e($$1.bS().a(0.8F));
+         if (!$$0.a_(ir.a($$3)).r()) {
+            $$3 = $$1.bC().e($$1.bS().a(0.05F));
          }
-      } else {
-         return this;
+
+         cnl $$4 = new cnl($$1, $$0, $$3.a(), $$3.b(), $$3.c());
+         $$4.a($$1, $$1.dM(), $$1.dK(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   public Optional<iw> a() {
-      return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
+      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.CL, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      cuh $$5 = $$1.b($$2);
+      $$1.gI().a(this, 10);
+      $$1.b(avz.c.b(this));
+      $$5.a(1, $$1);
+      return bqb.a($$5, $$0.x_());
    }
 }

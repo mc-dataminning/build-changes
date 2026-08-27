@@ -1,357 +1,226 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.types.Type;
+import com.mojang.logging.LogUtils;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dqe {
-   public static final String a = "normal_config";
-   public static final String b = "ominous_config";
-   public static final int c = 40;
-   private static final int d = 36000;
-   private static final int e = 14;
-   private static final int f = 47;
-   private static final int g = ayd.h(47);
-   private static final float h = 0.02F;
-   private final dqf i;
-   private final dqf j;
-   private final dqg k;
-   private final int l;
-   private final int m;
-   private final dqe.b n;
-   private dqd o;
-   private final dqd.a p;
-   private boolean q;
-   private boolean r;
+public class dqe<T extends dqc> {
+   private static final Logger V = LogUtils.getLogger();
+   public static final dqe<dqz> a = a("furnace", dqe.b.a(dqz::new, dfe.dp));
+   public static final dqe<dqy> b = a("fletching", dqe.b.a(dqy::new, dfe.oW));
+   public static final dqe<dqj> c = a("chest", dqe.b.a(dqj::new, dfe.dg));
+   public static final dqe<dsa> d = a("trapped_chest", dqe.b.a(dsa::new, dfe.hP));
+   public static final dqe<dqx> e = a("ender_chest", dqe.b.a(dqx::new, dfe.gy));
+   public static final dqe<drf> f = a("jukebox", dqe.b.a(drf::new, dfe.eH));
+   public static final dqe<dqu> g = a("dispenser", dqe.b.a(dqu::new, dfe.bD));
+   public static final dqe<dqv> h = a("dropper", dqe.b.a(dqv::new, dfe.ic));
+   public static final dqe<drr> i = a(
+      "sign",
+      dqe.b.a(
+         drr::new,
+         dfe.qh,
+         dfe.qk,
+         dfe.dq,
+         dfe.dr,
+         dfe.ds,
+         dfe.dt,
+         dfe.du,
+         dfe.dv,
+         dfe.dw,
+         dfe.dD,
+         dfe.dE,
+         dfe.dF,
+         dfe.dG,
+         dfe.dH,
+         dfe.dI,
+         dfe.dJ,
+         dfe.qf,
+         dfe.qi,
+         dfe.qg,
+         dfe.qj,
+         dfe.dx,
+         dfe.dK,
+         dfe.dy,
+         dfe.dL
+      )
+   );
+   public static final dqe<dra> j = a(
+      "hanging_sign",
+      dqe.b.a(
+         dra::new,
+         dfe.dV,
+         dfe.ei,
+         dfe.dM,
+         dfe.dN,
+         dfe.dO,
+         dfe.dP,
+         dfe.dQ,
+         dfe.dR,
+         dfe.dS,
+         dfe.dT,
+         dfe.dU,
+         dfe.dW,
+         dfe.dX,
+         dfe.dY,
+         dfe.dZ,
+         dfe.ea,
+         dfe.eb,
+         dfe.ec,
+         dfe.ed,
+         dfe.ee,
+         dfe.eg,
+         dfe.eh,
+         dfe.ef,
+         dfe.ej
+      )
+   );
+   public static final dqe<drv> k = a("mob_spawner", dqe.b.a(drv::new, dfe.de));
+   public static final dqe<dsy> l = a("piston", dqe.b.a(dsy::new, dfe.cA));
+   public static final dqe<dqf> m = a("brewing_stand", dqe.b.a(dqf::new, dfe.gk));
+   public static final dqe<dqw> n = a("enchanting_table", dqe.b.a(dqw::new, dfe.gj));
+   public static final dqe<dry> o = a("end_portal", dqe.b.a(dry::new, dfe.gp));
+   public static final dqe<dpw> p = a("beacon", dqe.b.a(dpw::new, dfe.gH));
+   public static final dqe<drt> q = a(
+      "skull", dqe.b.a(drt::new, dfe.hy, dfe.hz, dfe.hG, dfe.hH, dfe.hI, dfe.hJ, dfe.hC, dfe.hD, dfe.hA, dfe.hB, dfe.hE, dfe.hF, dfe.hK, dfe.hL)
+   );
+   public static final dqe<dqr> r = a("daylight_detector", dqe.b.a(dqr::new, dfe.hT));
+   public static final dqe<drc> s = a("hopper", dqe.b.a(drc::new, dfe.hW));
+   public static final dqe<dqn> t = a("comparator", dqe.b.a(dqn::new, dfe.hS));
+   public static final dqe<dpq> u = a(
+      "banner",
+      dqe.b.a(
+         dpq::new,
+         dfe.jD,
+         dfe.jE,
+         dfe.jF,
+         dfe.jG,
+         dfe.jH,
+         dfe.jI,
+         dfe.jJ,
+         dfe.jK,
+         dfe.jL,
+         dfe.jM,
+         dfe.jN,
+         dfe.jO,
+         dfe.jP,
+         dfe.jQ,
+         dfe.jR,
+         dfe.jS,
+         dfe.jT,
+         dfe.jU,
+         dfe.jV,
+         dfe.jW,
+         dfe.jX,
+         dfe.jY,
+         dfe.jZ,
+         dfe.ka,
+         dfe.kb,
+         dfe.kc,
+         dfe.kd,
+         dfe.ke,
+         dfe.kf,
+         dfe.kg,
+         dfe.kh,
+         dfe.ki
+      )
+   );
+   public static final dqe<drw> v = a("structure_block", dqe.b.a(drw::new, dfe.ql));
+   public static final dqe<drx> w = a("end_gateway", dqe.b.a(drx::new, dfe.lD));
+   public static final dqe<dqm> x = a("command_block", dqe.b.a(dqm::new, dfe.gG, dfe.lF, dfe.lE));
+   public static final dqe<drq> y = a(
+      "shulker_box",
+      dqe.b.a(drq::new, dfe.lN, dfe.md, dfe.lZ, dfe.ma, dfe.lX, dfe.lV, dfe.mb, dfe.lR, dfe.lW, dfe.lT, dfe.lQ, dfe.lP, dfe.lU, dfe.lY, dfe.mc, dfe.lO, dfe.lS)
+   );
+   public static final dqe<dpx> z = a(
+      "bed", dqe.b.a(dpx::new, dfe.bX, dfe.bY, dfe.bU, dfe.bV, dfe.bS, dfe.bQ, dfe.bW, dfe.bM, dfe.bR, dfe.bO, dfe.bL, dfe.bK, dfe.bP, dfe.bT, dfe.bJ, dfe.bN)
+   );
+   public static final dqe<dqo> A = a("conduit", dqe.b.a(dqo::new, dfe.nV));
+   public static final dqe<dpu> B = a("barrel", dqe.b.a(dpu::new, dfe.oS));
+   public static final dqe<dru> C = a("smoker", dqe.b.a(dru::new, dfe.oT));
+   public static final dqe<dqb> D = a("blast_furnace", dqe.b.a(dqb::new, dfe.oU));
+   public static final dqe<drg> E = a("lectern", dqe.b.a(drg::new, dfe.oY));
+   public static final dqe<dpz> F = a("bell", dqe.b.a(dpz::new, dfe.pc));
+   public static final dqe<dre> G = a("jigsaw", dqe.b.a(dre::new, dfe.qm));
+   public static final dqe<dqi> H = a("campfire", dqe.b.a(dqi::new, dfe.pf, dfe.pg, dfe.ph));
+   public static final dqe<dpy> I = a("beehive", dqe.b.a(dpy::new, dfe.qp, dfe.qq));
+   public static final dqe<dro> J = a("sculk_sensor", dqe.b.a(dro::new, dfe.sb));
+   public static final dqe<dqh> K = a("calibrated_sculk_sensor", dqe.b.a(dqh::new, dfe.sc));
+   public static final dqe<drn> L = a("sculk_catalyst", dqe.b.a(drn::new, dfe.sf));
+   public static final dqe<drp> M = a("sculk_shrieker", dqe.b.a(drp::new, dfe.sg));
+   public static final dqe<dql> N = a("chiseled_bookshelf", dqe.b.a(dql::new, dfe.cX));
+   public static final dqe<dqg> O = a("brushable_block", dqe.b.a(dqg::new, dfe.ap, dfe.as));
+   public static final dqe<dqs> P = a("decorated_pot", dqe.b.a(dqs::new, dfe.uN));
+   public static final dqe<dqq> Q = a("crafter", dqe.b.a(dqq::new, dfe.uO));
+   public static final dqe<dsb> R = a("trial_spawner", dqe.b.a(dsb::new, dfe.uP));
+   public static final dqe<dsk> S = a("vault", dqe.b.a(dsk::new, dfe.uQ));
+   public static final dqe<dqa> T = a("big_brain", dqe.b.a(dqa::new, dfe.uS));
+   public static final dqe<drl> U = a("potato_refinery", dqe.b.a(drl::new, dfe.up));
+   private final dqe.a<? extends T> W;
+   private final Set<dfc> X;
+   private final Type<?> Y;
+   private final ja.c<dqe<?>> Z = lh.k.f(this);
 
-   public Codec<dqe> a() {
-      return RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dqf.b.optionalFieldOf("normal_config", dqf.a).forGetter(dqe::c),
-                  dqf.b.optionalFieldOf("ominous_config", dqf.a).forGetter(dqe::n),
-                  dqg.b.forGetter(dqe::f),
-                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dqe::g),
-                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dqe::h)
-               )
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dqe($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
-      );
+   @Nullable
+   public static akt a(dqe<?> $$0) {
+      return lh.k.b($$0);
    }
 
-   public dqe(dqe.b $$0, dqd $$1, dqd.a $$2) {
-      this(dqf.a, dqf.a, new dqg(), 36000, 14, $$0, $$1, $$2);
-   }
-
-   public dqe(dqf $$0, dqf $$1, dqg $$2, int $$3, int $$4, dqe.b $$5, dqd $$6, dqd.a $$7) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.m = $$3;
-      this.l = $$4;
-      this.n = $$5;
-      this.o = $$6;
-      this.p = $$7;
-   }
-
-   public dqf b() {
-      return this.r ? this.j : this.i;
-   }
-
-   @VisibleForTesting
-   public dqf c() {
-      return this.i;
-   }
-
-   @VisibleForTesting
-   public dqf d() {
-      return this.j;
-   }
-
-   private dqf n() {
-      return !this.j.equals(this.i) ? this.j : dqf.a;
-   }
-
-   public void a(aqm $$0, io $$1) {
-      $$0.a($$1, $$0.a_($$1).a(dmn.c, Boolean.valueOf(true)), 3);
-      $$0.c(3020, $$1, 1);
-      this.r = true;
-      this.k.a(this, $$0);
-   }
-
-   public void b(aqm $$0, io $$1) {
-      $$0.a($$1, $$0.a_($$1).a(dmn.c, Boolean.valueOf(false)), 3);
-      this.r = false;
-   }
-
-   public boolean e() {
-      return this.r;
-   }
-
-   public dqg f() {
-      return this.k;
-   }
-
-   public int g() {
-      return this.m;
-   }
-
-   public int h() {
-      return this.l;
-   }
-
-   public dqh i() {
-      return this.n.d();
-   }
-
-   public void a(dax $$0, dqh $$1) {
-      this.n.a($$0, $$1);
-   }
-
-   public void j() {
-      this.n.f();
-   }
-
-   public dqd k() {
-      return this.o;
-   }
-
-   public dqd.a l() {
-      return this.p;
-   }
-
-   public boolean a(dax $$0) {
-      if (this.q) {
-         return true;
-      } else {
-         return $$0.ak() == bpr.a ? false : $$0.aa().b(dat.e);
-      }
-   }
-
-   public Optional<UUID> c(aqm $$0, io $$1) {
-      ayk $$2 = $$0.E_();
-      dbo $$3 = this.k.b(this, $$0.E_());
-      ud $$4 = $$3.d();
-      uj $$5 = $$4.c("Pos", 6);
-      Optional<bsa<?>> $$6 = bsa.a($$4);
-      if ($$6.isEmpty()) {
-         return Optional.empty();
-      } else {
-         int $$7 = $$5.size();
-         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
-         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
-         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
-         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
-            return Optional.empty();
-         } else {
-            euk $$11 = new euk($$8, $$9, $$10);
-            if (!a($$0, $$1.b(), $$11)) {
-               return Optional.empty();
-            } else {
-               io $$12 = io.a($$11);
-               if (!btk.a($$6.get(), $$0, bss.q, $$12, $$0.E_())) {
-                  return Optional.empty();
-               } else {
-                  if ($$3.b().isPresent()) {
-                     dbo.a $$13 = $$3.b().get();
-                     if (!$$13.a($$12, $$0)) {
-                        return Optional.empty();
-                     }
-                  }
-
-                  bru $$14 = bsa.a($$4, $$0, $$4x -> {
-                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
-                     return $$4x;
-                  });
-                  if ($$14 == null) {
-                     return Optional.empty();
-                  } else {
-                     if ($$14 instanceof bsq $$15) {
-                        if (!$$15.a($$0)) {
-                           return Optional.empty();
-                        }
-
-                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
-                        if ($$16) {
-                           $$15.a($$0, $$0.d_($$15.dp()), bss.q, null);
-                        }
-
-                        $$15.fT();
-                        $$3.c().ifPresent($$15::a);
-                     }
-
-                     if (!$$0.e($$14)) {
-                        return Optional.empty();
-                     } else {
-                        dqe.a $$17 = this.r ? dqe.a.b : dqe.a.a;
-                        $$0.c(3011, $$1, $$17.a());
-                        $$0.c(3012, $$12, $$17.a());
-                        $$0.a($$14, dvu.t, $$12);
-                        return Optional.of($$14.cz());
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public void a(aqm $$0, io $$1, akl<epk> $$2) {
-      epk $$3 = $$0.o().be().b($$2);
-      epi $$4 = new epi.a($$0).a(erw.b);
-      ObjectArrayList<cto> $$5 = $$3.a($$4);
-      if (!$$5.isEmpty()) {
-         ObjectListIterator var7 = $$5.iterator();
-
-         while (var7.hasNext()) {
-            cto $$6 = (cto)var7.next();
-            kh.a($$0, $$6, 2, it.b, euk.c($$1).a(it.b, 1.2));
-         }
-
-         $$0.c(3014, $$1, 0);
-      }
-   }
-
-   public void a(dax $$0, io $$1, boolean $$2) {
-      if (!this.a($$0)) {
-         this.k.l = this.k.k;
-      } else {
-         dqh $$3 = this.i();
-         $$3.a($$0, $$1, $$2);
-         if ($$3.d()) {
-            double $$4 = (double)Math.max(0L, this.k.f - $$0.Y());
-            this.k.l = this.k.k;
-            this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
-         }
-
-         if ($$3.e()) {
-            ayk $$5 = $$0.E_();
-            if ($$5.i() <= 0.02F) {
-               avg $$6 = $$2 ? avh.mj : avh.mi;
-               $$0.a($$1, $$6, avi.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
-            }
-         }
-      }
-   }
-
-   public void a(aqm $$0, io $$1, boolean $$2) {
-      this.r = $$2;
-      dqh $$3 = this.i();
-      if (!this.a($$0)) {
-         if ($$3.e()) {
-            this.k.a();
-            this.a($$0, dqh.a);
-         }
-      } else {
-         if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
-            this.k.f = $$0.Y() + (long)this.b().g();
-         }
-
-         dqh $$4 = $$3.a($$1, this, $$0);
-         if ($$4 != $$3) {
-            this.a($$0, $$4);
-         }
-      }
-   }
-
-   private static boolean a(aqm $$0, io $$1, UUID $$2) {
-      bru $$3 = $$0.a($$2);
-      return $$3 == null || !$$3.bD() || !$$3.dP().ae().equals($$0.ae()) || $$3.dp().j($$1) > (double)g;
-   }
-
-   private static boolean a(dax $$0, euk $$1, euk $$2) {
-      eug $$3 = $$0.a(new dag($$2, $$1, dag.a.c, dag.b.a, eup.a()));
-      return $$3.a().equals(io.a($$1)) || $$3.c() == eui.a.a;
-   }
-
-   public static void a(dax $$0, io $$1, ayk $$2, lb $$3) {
-      for (int $$4 = 0; $$4 < 20; $$4++) {
-         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         $$0.a(ky.ae, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-      }
-   }
-
-   public static void a(dax $$0, io $$1, ayk $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$7 = $$2.k() * 0.02;
-         double $$8 = $$2.k() * 0.02;
-         double $$9 = $$2.k() * 0.02;
-         $$0.a(ky.be, $$4, $$5, $$6, $$7, $$8, $$9);
-         $$0.a(ky.L, $$4, $$5, $$6, $$7, $$8, $$9);
-      }
-   }
-
-   public static void a(dax $$0, io $$1, ayk $$2, int $$3, kw $$4) {
-      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
-         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$8 = (double)$$1.u() + 0.5 + $$6;
-         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
-         double $$10 = (double)$$1.w() + 0.5 + $$7;
-         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
-      }
-   }
-
-   public static void b(dax $$0, io $$1, ayk $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
-         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
-         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
-         double $$7 = $$2.k() * 0.02;
-         double $$8 = $$2.k() * 0.02;
-         double $$9 = $$2.k() * 0.02;
-         $$0.a(ky.aJ, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
-         $$0.a(ky.ae, $$4, $$5, $$6, $$7, $$8, $$9);
-      }
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void a(dqd $$0) {
-      this.o = $$0;
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void m() {
-      this.q = true;
-   }
-
-   public static enum a {
-      a(ky.F),
-      b(ky.L);
-
-      public final lb c;
-
-      private a(lb $$0) {
-         this.c = $$0;
+   private static <T extends dqc> dqe<T> a(String $$0, dqe.b<T> $$1) {
+      if ($$1.b.isEmpty()) {
+         V.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
       }
 
-      public static dqe.a a(int $$0) {
-         dqe.a[] $$1 = values();
-         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
-      }
-
-      public int a() {
-         return this.ordinal();
-      }
+      Type<?> $$2 = ad.a(bgf.s, $$0);
+      return jn.a(lh.k, $$0, $$1.a($$2));
    }
 
-   public interface b {
-      void a(dax var1, dqh var2);
+   public dqe(dqe.a<? extends T> $$0, Set<dfc> $$1, Type<?> $$2) {
+      this.W = $$0;
+      this.X = $$1;
+      this.Y = $$2;
+   }
 
-      dqh d();
+   @Nullable
+   public T a(ir $$0, dtc $$1) {
+      return (T)this.W.create($$0, $$1);
+   }
 
-      void f();
+   public boolean a(dtc $$0) {
+      return this.X.contains($$0.b());
+   }
+
+   @Nullable
+   public ja.c<dqe<?>> a() {
+      return this.Z;
+   }
+
+   @Nullable
+   public T a(dbg $$0, ir $$1) {
+      dqc $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.r() == this ? $$2 : null);
+   }
+
+   @FunctionalInterface
+   interface a<T extends dqc> {
+      T create(ir var1, dtc var2);
+   }
+
+   public static final class b<T extends dqc> {
+      private final dqe.a<? extends T> a;
+      final Set<dfc> b;
+
+      private b(dqe.a<? extends T> $$0, Set<dfc> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static <T extends dqc> dqe.b<T> a(dqe.a<? extends T> $$0, dfc... $$1) {
+         return new dqe.b<>($$0, ImmutableSet.copyOf($$1));
+      }
+
+      public dqe<T> a(Type<?> $$0) {
+         return new dqe<>(this.a, this.b, $$0);
+      }
    }
 }

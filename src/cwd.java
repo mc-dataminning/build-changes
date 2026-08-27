@@ -1,132 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public final class cwd {
-   public static final cwd a = new cwd(new ud());
-   public static final Codec<cwd> b = ud.a.xmap(cwd::new, $$0 -> $$0.e);
-   public static final Codec<cwd> c = b.validate(
-      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final yv<ByteBuf, cwd> d = yt.n.a(cwd::new, $$0 -> $$0.e);
-   private final ud e;
-
-   private cwd(ud $$0) {
-      this.e = $$0;
-   }
-
-   public static cwd a(ud $$0) {
-      return new cwd($$0.h());
-   }
-
-   public static Predicate<cto> a(ka<cwd> $$0, ud $$1) {
-      return $$2 -> {
-         cwd $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(ud $$0) {
-      return us.a($$0, this.e, true);
-   }
-
-   public static void a(ka<cwd> $$0, cto $$1, Consumer<ud> $$2) {
-      cwd $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.e.g()) {
-         $$1.c($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(ka<cwd> $$0, cto $$1, ud $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
-   }
-
-   public cwd a(Consumer<ud> $$0) {
-      ud $$1 = this.e.h();
-      $$0.accept($$1);
-      return new cwd($$1);
-   }
-
-   public void a(bru $$0) {
-      ud $$1 = $$0.f(new ud());
-      UUID $$2 = $$0.cz();
-      $$1.a(this.e);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dog $$0, iz.a $$1) {
-      ud $$2 = $$0.e($$1);
-      ud $$3 = $$2.h();
-      $$2.a(this.e);
-      if (!$$2.equals($$3)) {
-         $$0.d($$2, $$1);
-         $$0.e();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public <T> DataResult<cwd> a(MapEncoder<T> $$0, T $$1) {
-      return $$0.encode($$1, ur.a, ur.a.mapBuilder()).build(this.e).map($$0x -> new cwd((ud)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      MapLike<va> $$1 = (MapLike<va>)ur.a.e(this.e).getOrThrow();
-      return $$0.decode(ur.a, $$1);
-   }
-
-   public int a() {
-      return this.e.f();
-   }
-
-   public boolean b() {
-      return this.e.g();
-   }
-
-   public ud c() {
-      return this.e.h();
-   }
-
-   public boolean a(String $$0) {
-      return this.e.e($$0);
+public class cwd extends cvh {
+   public cwd(cuc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof cwd $$1 ? this.e.equals($$1.e) : false;
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      if (!$$0.C) {
+         cne $$4 = new cne($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dM(), $$1.dK(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.e.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.e.toString();
-   }
-
-   @Deprecated
-   public ud d() {
-      return this.e;
+      $$1.b(avz.c.b(this));
+      $$3.a(1, $$1);
+      return bqb.a($$3, $$0.x_());
    }
 }

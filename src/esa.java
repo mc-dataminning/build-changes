@@ -1,36 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class esa extends esc {
-   public static final MapCodec<esa> a = a(esa::new);
+public class esa extends esh {
+   public static final Codec<esa> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, esa::new));
 
-   esa(List<esl> $$0) {
-      super($$0, ac.b($$0));
+   private esa(int $$0, int $$1, List<euu> $$2, List<etb> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public esm b() {
-      return esn.d;
+   public esg a() {
+      return esd.b;
    }
 
-   public static esa.a a(esl.a... $$0) {
-      return new esa.a($$0);
+   @Override
+   public void a(Consumer<cuh> $$0, erp $$1) {
    }
 
-   public static class a extends esc.a {
-      public a(esl.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public esa.a or(esl.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected esl a(List<esl> $$0) {
-         return new esa($$0);
-      }
+   public static esh.a<?> b() {
+      return a(esa::new);
    }
 }

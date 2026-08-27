@@ -1,110 +1,111 @@
-public class cpa extends cot {
-   private static final int k = 9;
-   private final bpn l;
-   private final int m;
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private cpa(cqa<?> $$0, int $$1, clv $$2, int $$3) {
-      this($$0, $$1, $$2, new bqd(9 * $$3), $$3);
+public class cpa implements dbg, dbk {
+   protected final dca a;
+   protected final coz b;
+   private cpb d = new cpb(0, 0, 0);
+   protected ja<dcz> c;
+   private ewp e = new ewp(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
+   public cpa(dca $$0, coz $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$0.I_().d(li.az).g(ddg.b);
+      this.a($$1.dz(), $$1.dB(), $$1.dF());
    }
 
-   public static cpa a(int $$0, clv $$1) {
-      return new cpa(cqa.a, $$0, $$1, 1);
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = new ewp($$0, $$1, $$2, $$0 + (double)this.d.a() + 1.0, $$1 + (double)this.d.b() + 1.0, $$2 + (double)this.d.c() + 1.0);
    }
 
-   public static cpa b(int $$0, clv $$1) {
-      return new cpa(cqa.b, $$0, $$1, 2);
+   public void a(cpb $$0) {
+      this.d = $$0;
+      this.a(this.b.dz(), this.b.dB(), this.b.dF());
    }
 
-   public static cpa c(int $$0, clv $$1) {
-      return new cpa(cqa.c, $$0, $$1, 3);
+   public void a(ja<dcz> $$0) {
+      this.c = $$0;
    }
 
-   public static cpa d(int $$0, clv $$1) {
-      return new cpa(cqa.d, $$0, $$1, 4);
-   }
-
-   public static cpa e(int $$0, clv $$1) {
-      return new cpa(cqa.e, $$0, $$1, 5);
-   }
-
-   public static cpa f(int $$0, clv $$1) {
-      return new cpa(cqa.f, $$0, $$1, 6);
-   }
-
-   public static cpa a(int $$0, clv $$1, bpn $$2) {
-      return new cpa(cqa.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cpa b(int $$0, clv $$1, bpn $$2) {
-      return new cpa(cqa.f, $$0, $$1, $$2, 6);
-   }
-
-   public cpa(cqa<?> $$0, int $$1, clv $$2, bpn $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.l);
-      int $$5 = (this.m - 4) * 18;
-
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cqo($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cqo($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cqo($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
+   public dca a() {
+      return this.a;
    }
 
    @Override
-   public boolean a(clw $$0) {
-      return this.l.a($$0);
+   public dtc a_(ir $$0) {
+      return this.d.b($$0);
    }
 
    @Override
-   public cto a(clw $$0, int $$1) {
-      cto $$2 = cto.i;
-      cqo $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cto $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cto.i;
-            }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cto.i;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cto.i);
-         } else {
-            $$3.b();
-         }
-      }
-
-      return $$2;
+   public epe b_(ir $$0) {
+      return this.a_($$0).u();
    }
 
    @Override
-   public void b(clw $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public boolean z_() {
+      return false;
    }
 
-   public bpn l() {
-      return this.l;
+   @Nullable
+   @Override
+   public dqc c_(ir $$0) {
+      return null;
    }
 
-   public int m() {
-      return this.m;
+   @Override
+   public int K_() {
+      return this.d.b();
+   }
+
+   @Override
+   public int J_() {
+      return 0;
+   }
+
+   public UUID c() {
+      return this.b.cE();
+   }
+
+   public coz d() {
+      return this.b;
+   }
+
+   public cpb e() {
+      return this.d;
+   }
+
+   public ja<dcz> g() {
+      return this.c;
+   }
+
+   public ewp h() {
+      return this.e;
+   }
+
+   public ewp i() {
+      ewu $$0 = this.j();
+      return this.e.d(-$$0.c, -$$0.d, -$$0.e);
+   }
+
+   @Override
+   public dut D_() {
+      return this.a.D_();
+   }
+
+   @Nullable
+   @Override
+   public dbg a(int $$0, int $$1) {
+      return this;
+   }
+
+   @Override
+   public List<exn> a(@Nullable brv $$0, ewp $$1) {
+      return List.of();
+   }
+
+   public ewu j() {
+      return new ewu(this.b.dz() - this.b.ae, this.b.dB() - this.b.af, this.b.dF() - this.b.ag);
    }
 }

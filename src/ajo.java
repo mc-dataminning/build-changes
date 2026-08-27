@@ -1,12 +1,29 @@
-public class ajo {
-   public static final zg<ajk> a = a("status_response");
-   public static final zg<ajn> b = b("status_request");
+public class ajo implements zl<ajn> {
+   public static final zc<we, ajo> a = zl.a(ajo::a, ajo::new);
+   private final long b;
 
-   private static <T extends ze<ajj>> zg<T> a(String $$0) {
-      return new zg<>(zf.b, new akm($$0));
+   public ajo(long $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends ze<ajm>> zg<T> b(String $$0) {
-      return new zg<>(zf.a, new akm($$0));
+   private ajo(we $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(we $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zn<ajo> a() {
+      return ajm.b;
+   }
+
+   public void a(ajn $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

@@ -1,46 +1,84 @@
-public class fsq<T extends bru> extends ftf<T> {
-   private final fvw a;
-   private final fvw b;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private static final int j = 6;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-   public fsq(fvw $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.h = $$0.b("left_front_leg");
+public class fsq extends fsp<gao.a> {
+   private static final int y = 120;
+   private static final xe z = xe.c("gui.chatReport.title");
+   private static final xe A = xe.c("gui.chatReport.select_chat");
+   private final fme B = fme.d().a(8);
+   private fjf C;
+   private fin D;
+   private fin E;
+   private fin F;
+
+   private fsq(fon $$0, gav $$1, gao.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   public static fwc a(fwa $$0) {
-      fwe $$1 = new fwe();
-      fwf $$2 = $$1.a();
-      $$2.a("head", fwb.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fvy.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", fwb.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fvy.a(0.0F, 6.0F, 0.0F));
-      fwb $$3 = fwb.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, fvy.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, fvy.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, fvy.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, fvy.a(2.0F, 18.0F, -4.0F));
-      return fwc.a($$1, 64, 32);
+   public fsq(fon $$0, gav $$1, UUID $$2) {
+      this($$0, $$1, new gao.a($$2, $$1.a().b()));
+   }
+
+   public fsq(fon $$0, gav $$1, gao $$2) {
+      this($$0, $$1, new gao.a($$2, $$1.a().b()));
    }
 
    @Override
-   public fvw a() {
-      return this.a;
+   protected void aN_() {
+      this.B.c().b();
+      this.B.a(new fju(this.l, this.p));
+      this.E = this.B.a(fin.a(A, $$0x -> this.m.a(new fss(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.F = fin.a(c, $$0x -> this.m.a(new fsv(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.C();
+         }))).a(280).a();
+      this.B.a(flw.a(this.p, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.C();
+      });
+      this.B.a(flw.a(this.p, this.C, d, $$0x -> $$0x.e(12)));
+      fme $$0 = this.B.a(fme.e().a(8));
+      $$0.a(fin.a(xd.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(fin.a(a, $$0x -> this.B()).a(120).a());
+      this.B.a($$1 -> {
+         fil var10000 = this.c($$1);
+      });
+      this.c();
+      this.C();
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.e = ayd.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ayd.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ayd.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ayd.b($$1 * 0.6662F) * 1.4F * $$2;
+   protected void c() {
+      this.B.a();
+      fly.a(this.B, this.G());
+   }
+
+   private void C() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(xe.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      gat $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
+      }
+
+      gar.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(y.a($$2, gar.b::a));
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

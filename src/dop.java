@@ -1,139 +1,87 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dop extends dog implements bpn {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jg<cto> d = jg.a(6, cto.i);
-   private int e = -1;
+public class dop extends dds {
+   public static final MapCodec<dop> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csy.q.fieldOf("color").forGetter(dds::b), u()).apply($$0, dop::new));
+   public static final dtw b = djc.aE;
+   private static final Map<iw, exn> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         iw.c,
+         dfc.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
+         iw.d,
+         dfc.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
+         iw.e,
+         dfc.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         iw.f,
+         dfc.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
+      )
+   );
 
-   public dop(io $$0, drb $$1) {
-      super(doi.M, $$0, $$1);
+   @Override
+   public MapCodec<dop> a() {
+      return a;
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         drb $$1 = this.n();
+   public dop(csy $$0, dtb.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, iw.c));
+   }
 
-         for (int $$2 = 0; $$2 < dfc.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).e();
-            drs $$4 = dfc.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+   @Override
+   public String g() {
+      return this.q().a();
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = this.n();
+      dcd $$2 = $$0.q();
+      ir $$3 = $$0.a();
+      iw[] $$4 = $$0.f();
+
+      for (iw $$5 : $$4) {
+         if ($$5.o().d()) {
+            iw $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
-
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(dvu.c, this.o, dvu.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
-      }
-   }
-
-   @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      bpo.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(ud $$0, iz.a $$1) {
-      super.b($$0, $$1);
-      bpo.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cto::e)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cto::e);
-   }
-
-   @Override
-   public cto a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cto a(int $$0, int $$1) {
-      cto $$2 = Objects.requireNonNullElse(this.d.get($$0), cto.i);
-      this.d.set($$0, cto.i);
-      if (!$$2.e()) {
-         this.c($$0);
       }
 
-      return $$2;
+      return null;
    }
 
    @Override
-   public cto b(int $$0) {
-      return this.a($$0, 1);
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(int $$0, cto $$1) {
-      if ($$1.a(awe.aW)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.e()) {
-         this.a($$0, 1);
-      }
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(bpn $$0, int $$1, cto $$2) {
-      return $$0.a_($$2x -> $$2x.e() ? true : cto.c($$2, $$2x) && $$2x.I() + $$2.I() <= $$0.e_($$2x));
-   }
-
-   @Override
-   public int ah_() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return bpn.a(this, $$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cto $$1) {
-      return $$1.a(awe.aW) && this.a($$0).e() && $$1.I() == this.ah_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dog.b $$0) {
-      super.a($$0);
-      $$0.a(kb.Z, cwk.a).a(this.d);
-   }
-
-   @Override
-   protected void a(jx.a $$0) {
-      super.a($$0);
-      $$0.a(kb.Z, cwk.a(this.d));
-   }
-
-   @Override
-   public void a(ud $$0) {
-      $$0.r("Items");
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b);
    }
 }

@@ -1,40 +1,51 @@
-class bqv extends bra {
-   protected bqv(brb $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record bqv(String b, bqs c, float d, bqr e, bqx f) {
+   public static final Codec<bqv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bqv::a),
+               bqs.d.fieldOf("scaling").forGetter(bqv::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bqv::c),
+               bqr.g.optionalFieldOf("effects", bqr.a).forGetter(bqv::d),
+               bqx.d.optionalFieldOf("death_message_type", bqx.a).forGetter(bqv::e)
+            )
+            .apply($$0, bqv::new)
+   );
+
+   public bqv(String $$0, bqs $$1, float $$2) {
+      this($$0, $$1, $$2, bqr.a, bqx.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public bqv(String $$0, bqs $$1, float $$2, bqr $$3) {
+      this($$0, $$1, $$2, $$3, bqx.a);
    }
 
-   @Override
-   public boolean a(bso $$0, int $$1) {
-      if ($$0 instanceof aqn $$2 && !$$2.N_()) {
-         aqm $$3 = $$2.z();
-         if (!$$3.J().b(col.c)) {
-            return this.a($$2, $$3);
-         }
-
-         if ($$3.ak() != bpr.a && $$3.c($$2.dp())) {
-            cnh $$4 = $$3.d($$2.dp());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new brc(bre.I, 600, $$1));
-               $$2.d($$2.dp());
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public bqv(String $$0, float $$1, bqr $$2) {
+      this($$0, bqs.b, $$1, $$2);
    }
 
-   private boolean a(aqn $$0, aqm $$1) {
-      io $$2 = $$0.dp();
-      if ($$1.ak() != bpr.a && $$1.c($$2)) {
-         $$1.z().a($$0, $$2);
-      }
+   public bqv(String $$0, float $$1) {
+      this($$0, bqs.b, $$1);
+   }
 
-      return true;
+   public String a() {
+      return this.b;
+   }
+
+   public bqs b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bqr d() {
+      return this.e;
+   }
+
+   public bqx e() {
+      return this.f;
    }
 }

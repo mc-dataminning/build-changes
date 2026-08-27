@@ -1,44 +1,20 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-public record ais(int b, @Nullable aiw c) implements ze<air> {
-   public static final yv<vx, ais> a = ze.a(ais::c, ais::a);
-   private static final int d = 1048576;
-
-   private static ais a(vx $$0) {
-      int $$1 = $$0.l();
-      return new ais($$1, a($$1, $$0));
-   }
-
-   private static aiw a(int $$0, vx $$1) {
-      return b($$1);
-   }
-
-   private static aiw b(vx $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return aiy.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(vx $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-   }
+public record ais(GameProfile b) implements zl<aiq> {
+   public static final zc<ByteBuf, ais> a = za.u.a(ais::new, ais::b);
 
    @Override
-   public zg<ais> a() {
-      return aip.f;
+   public zn<ais> a() {
+      return aiw.b;
    }
 
-   public void a(air $$0) {
+   public void a(aiq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aiw e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

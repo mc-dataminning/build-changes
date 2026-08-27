@@ -1,35 +1,41 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class grq<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public class grq {
+   private static final gry[] a = new gry[]{
+      a("textures/entity/player/slim/alex.png", gry.a.a),
+      a("textures/entity/player/slim/ari.png", gry.a.a),
+      a("textures/entity/player/slim/efe.png", gry.a.a),
+      a("textures/entity/player/slim/kai.png", gry.a.a),
+      a("textures/entity/player/slim/makena.png", gry.a.a),
+      a("textures/entity/player/slim/noor.png", gry.a.a),
+      a("textures/entity/player/slim/steve.png", gry.a.a),
+      a("textures/entity/player/slim/sunny.png", gry.a.a),
+      a("textures/entity/player/slim/zuri.png", gry.a.a),
+      a("textures/entity/player/wide/alex.png", gry.a.b),
+      a("textures/entity/player/wide/ari.png", gry.a.b),
+      a("textures/entity/player/wide/efe.png", gry.a.b),
+      a("textures/entity/player/wide/kai.png", gry.a.b),
+      a("textures/entity/player/wide/makena.png", gry.a.b),
+      a("textures/entity/player/wide/noor.png", gry.a.b),
+      a("textures/entity/player/wide/steve.png", gry.a.b),
+      a("textures/entity/player/wide/sunny.png", gry.a.b),
+      a("textures/entity/player/wide/zuri.png", gry.a.b)
+   };
 
-   public grq(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public static akt a() {
+      return a[6].a();
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   public static gry a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
-      }
+   public static gry a(GameProfile $$0) {
+      return a($$0.getId());
+   }
 
-      return (T)this.endOfData();
+   private static gry a(String $$0, gry.a $$1) {
+      return new gry(new akt($$0), null, null, null, $$1, true);
    }
 }

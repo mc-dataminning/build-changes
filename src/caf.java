@@ -1,79 +1,56 @@
+import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
-public class caf extends bzm {
-   public static final int a = 1;
-   protected final bsx b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class caf<T extends cnn> extends bzl {
+   private static final int a = 20;
+   private static final float b = 1.0F;
+   private final T c;
+   private int d;
 
-   public caf(bsx $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bzm.a.a));
+   public caf(T $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bzl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bQ()) {
-            io $$0 = this.a(this.b.dP(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.em() != null || this.b.dE() || this.b.bQ();
-   }
-
-   protected boolean i() {
-      euk $$0 = cdj.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.K().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
+      return this.c.p() == null && !this.c.cW() && this.c.gN() && !this.c.gM().a() && !((aqt)this.c.dU()).c(this.c.du());
    }
 
    @Override
    public boolean b() {
-      return !this.b.K().l();
+      return this.c.gN() && !this.c.gM().a() && this.c.dU() instanceof aqt && !((aqt)this.c.dU()).c(this.c.du());
    }
 
-   @Nullable
-   protected io a(dad $$0, bru $$1, int $$2) {
-      io $$3 = $$1.dp();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : io.a($$1.dp(), $$2, 1, $$1x -> $$0.b_($$1x).a(awb.a)).orElse(null);
+   @Override
+   public void e() {
+      if (this.c.gN()) {
+         cnm $$0 = this.c.gM();
+         if (this.c.am > this.d) {
+            this.d = this.c.am + 20;
+            this.a($$0);
+         }
+
+         if (!this.c.gu()) {
+            ewu $$1 = cdi.a(this.c, 15, 4, ewu.c($$0.s()), (float) (Math.PI / 2));
+            if ($$1 != null) {
+               this.c.J().a($$1.c, $$1.d, $$1.e, 1.0);
+            }
+         }
+      }
+   }
+
+   private void a(cnm $$0) {
+      if ($$0.u()) {
+         Set<cnn> $$1 = Sets.newHashSet();
+         List<cnn> $$2 = this.c.dU().a(cnn.class, this.c.cP().g(16.0), $$1x -> !$$1x.gN() && cno.a($$1x, $$0));
+         $$1.addAll($$2);
+
+         for (cnn $$3 : $$1) {
+            $$0.a($$0.k(), $$3, null, true);
+         }
+      }
    }
 }

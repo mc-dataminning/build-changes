@@ -1,19 +1,19 @@
-class bqx extends bra {
-   protected bqx(brb $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bqx implements azg {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bqx> d = azg.a(bqx::values);
+   private final String e;
+
+   private bqx(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(bso $$0, int $$1) {
-      if ($$0 instanceof clw $$2) {
-         $$2.C(0.005F * (float)($$1 + 1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public String c() {
+      return this.e;
    }
 }

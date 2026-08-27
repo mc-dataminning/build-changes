@@ -1,84 +1,115 @@
-public abstract class ehh extends ehn {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-   protected ehh(eia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, it $$7) {
-      super($$0, 0, ehn.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
-   }
+public class ehh extends eho {
+   private static final Codec<bpl> b = axu.b(
+      bpl.a,
+      (Function<bpl, DataResult<bpl>>)($$0 -> $$0.b() - $$0.a() < 1
+            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+            : DataResult.success($$0))
+   );
+   public static final Codec<ehh> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bpf.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  bpf.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  bpf.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  bpf.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, ehh::new)
+   );
+   private final bpf h;
+   private final bpf i;
+   private final bpl j;
+   private final bpl k;
+   private final bpf l;
 
-   protected ehh(eia $$0, ud $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public ehh(int $$0, int $$1, int $$2, bpf $$3, bpf $$4, bpl $$5, bpf $$6) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = bpl.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
    }
 
    @Override
-   protected void a(ehz $$0, ud $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   protected ehp<?> a() {
+      return ehp.i;
    }
 
-   protected boolean a(day $$0, ehb $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         io.a $$5 = new io.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dwt.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
+   @Override
+   public List<efw.a> a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
       }
+
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
+      } else {
+         $$11 = $$6 + 1;
+      }
+
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
+      }
+
+      List<efw.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new efw.a($$4.b($$11), 0, false));
+      }
+
+      ir.a $$16 = new ir.a();
+      iw $$17 = iw.c.a.a($$2);
+      Function<dtc, dtc> $$18 = $$1x -> $$1x.b(dmc.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
    }
 
-   protected boolean a(day $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.al();
-         boolean $$3 = false;
-         io.a $$4 = new io.a();
+   private efw.a a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5, Function<dtc, dtc> $$6, iw $$7, int $$8, boolean $$9, ir.a $$10) {
+      $$10.g($$4).c(iw.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      ir $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
 
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dwt.a.f, $$4).v());
-               $$3 = true;
-            }
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.d($$7), $$5, $$6);
+      }
+
+      iw $$17 = $$14.v() > $$10.v() ? iw.b : iw.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new efw.a($$14.c(), 0, false);
          }
 
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.d($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
       }
    }
 }

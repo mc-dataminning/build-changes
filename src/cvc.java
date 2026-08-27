@@ -1,32 +1,34 @@
-public class cvc extends cuf implements cug {
-   public cvc(ctj.a $$0) {
+public class cvc extends cuc {
+   public cvc(cuc.a $$0) {
       super($$0);
    }
 
+   public static cxl d() {
+      return cxl.a().a(btv.c, new btt(e, "Weapon modifier", 10.0, btt.a.a), bsd.b).a(btv.e, new btt(f, "Weapon modifier", 2.0, btt.a.a), bsd.b).a();
+   }
+
+   public static dai h() {
+      dai.a $$0 = new dai.a(dai.a);
+      $$0.a(dag.q, 10);
+      return $$0.b();
+   }
+
    @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      cto $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cna $$4 = new cna($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
+   public boolean a(dtc $$0, dca $$1, ir $$2, cly $$3) {
+      return !$$3.f();
+   }
+
+   @Override
+   public boolean a(cuh $$0, bso $$1, bso $$2) {
+      dca $$3 = $$2.dU();
+      $$0.a(1, $$2, bsc.a);
+      if ($$3.F_().i() < 0.3F) {
+         cne $$4 = new cne($$3, $$2);
+         $$4.a(cwr.a(cuk.xc, cws.F));
+         $$4.a($$1, $$1.dM(), $$1.dK(), -1.0F, 0.0F, 0.0F);
+         $$3.b($$4);
       }
 
-      $$1.b(avr.c.b(this));
-      $$3.a(1, $$1);
-      return bpv.a($$3, $$0.x_());
-   }
-
-   @Override
-   public cmo a(dax $$0, jh $$1, cto $$2, it $$3) {
-      cna $$4 = new cna($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
-
-   @Override
-   public cug.a c() {
-      return cug.a.a().a(cug.a.a.c() * 0.5F).b(cug.a.a.d() * 1.25F).a();
+      return true;
    }
 }

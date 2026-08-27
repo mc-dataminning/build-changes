@@ -1,29 +1,25 @@
-public class zz implements ze<zv> {
-   public static final yv<vx, zz> a = ze.a(zz::a, zz::new);
-   private final int b;
+public record zz(String b, int c) implements zl<zr> {
+   public static final zc<we, zz> a = zl.a(zz::a, zz::new);
 
-   public zz(int $$0) {
-      this.b = $$0;
+   private zz(we $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private zz(vx $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(vx $$0) {
-      $$0.p(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zg<zz> a() {
-      return zu.m;
+   public zn<zz> a() {
+      return aab.h;
    }
 
-   public void a(zv $$0) {
+   public void a(zr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,29 +1,24 @@
-public class agf implements ze<agd> {
-   public static final yv<vx, agf> a = ze.a(agf::a, agf::new);
-   private final int b;
+import java.util.Collection;
+import java.util.List;
 
-   public agf(int $$0) {
-      this.b = $$0;
-   }
+public class agf implements zl<abw> {
+   public static final zc<wp, agf> a = zc.a(czc.a.a(za.a()), $$0 -> $$0.b, agf::new);
+   private final List<czc<?>> b;
 
-   private agf(vx $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vx $$0) {
-      $$0.c(this.b);
+   public agf(Collection<czc<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
    @Override
-   public zg<agf> a() {
-      return agb.be;
+   public zn<agf> a() {
+      return agj.bf;
    }
 
-   public void a(agd $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public List<czc<?>> b() {
       return this.b;
    }
 }

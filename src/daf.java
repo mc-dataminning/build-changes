@@ -1,25 +1,10 @@
-import java.util.function.Predicate;
+public class daf extends bom.a {
+   public final dad a;
+   public final int b;
 
-public class daf {
-   private final euk a;
-   private final euk b;
-   private final Predicate<drb> c;
-
-   public daf(euk $$0, euk $$1, Predicate<drb> $$2) {
+   public daf(dad $$0, int $$1) {
+      super($$0.d());
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-   }
-
-   public euk a() {
-      return this.b;
-   }
-
-   public euk b() {
-      return this.a;
-   }
-
-   public Predicate<drb> c() {
-      return this.c;
    }
 }

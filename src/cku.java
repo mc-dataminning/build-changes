@@ -1,22 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
-public class cku<E extends ckm> {
-   public static bui<bso> a(int $$0) {
-      return bxu.a(
-         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$1 -> $$1.group($$1.b(cbs.ad), $$1.a(cbs.L))
-               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
-                     if (!$$5.eY().e()) {
+public class cku {
+   public static buh<bso> a(int $$0) {
+      return bxt.a(
+         (Function<bxt.b<bso>, ? extends App<bxt.c<bso>, bxw<bso>>>)($$1 -> $$1.group($$1.b(cbr.L), $$1.c(cbr.ad), $$1.c(cbr.ag), $$1.c(cbr.af))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cig $$7 = $$1.b($$2);
+                     if (!ckp.a($$7.p())) {
                         return false;
                      } else {
-                        Optional<cig> $$7 = $$1.a($$3);
-                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
-                           return false;
-                        } else {
-                           $$2.b();
-                           return true;
-                        }
+                        $$3.a(true, (long)$$0);
+                        return true;
                      }
                   }))
       );

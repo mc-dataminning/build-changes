@@ -1,49 +1,75 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class edq extends edn {
-   public static final MapCodec<edq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(boz.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, edq::new)
-   );
-   private final boz b;
-
-   public edq(boz $$0, boz $$1, boz $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+public class edq extends eca<eff> {
+   public edq(Codec<eff> $$0) {
+      super($$0);
    }
 
    @Override
-   protected edo<?> a() {
-      return edo.h;
-   }
-
-   @Override
-   protected void a(dbd $$0, edn.b $$1, ayk $$2, ecx $$3, int $$4, edn.a $$5, int $$6, int $$7, int $$8) {
-      io $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + ayd.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
+   public boolean a(ecc<eff> $$0) {
+      eff $$1 = $$0.f();
+      dcv $$2 = $$0.b();
+      ir $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         dtc $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
          } else {
-            $$14 = $$13;
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
          }
-
-         this.a($$0, $$1, $$2, $$3, new io($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
       }
-   }
-
-   @Override
-   public int a(ayk $$0, int $$1, ecx $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ayk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

@@ -1,26 +1,60 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class dyd implements dya {
-   private final js e;
-   private final it f;
-   public static final MapCodec<dyd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(js.v(16).optionalFieldOf("offset", js.g).forGetter($$0x -> $$0x.e), it.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+public class dyd {
+   public static final Codec<dyd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dyc.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
             .apply($$0, dyd::new)
    );
+   private Optional<Pair<dyc, Long>> b;
 
-   public dyd(js $$0, it $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dyd(Optional<dyc> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   public boolean a(dbs $$0, io $$1) {
-      io $$2 = $$1.a(this.e);
-      return $$0.a_($$2).d($$0, $$2, this.f);
+   public dyd() {
+      this.b = Optional.empty();
    }
 
-   @Override
-   public dyb<?> a() {
-      return dyb.d;
+   public void a(dyc $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
+   }
+
+   private boolean b(dyc $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<dyc, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            dyc $$4 = (dyc)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : dye.a_($$0.a()) > dye.a_($$4.a());
+            }
+         }
+      }
+   }
+
+   public Optional<dyc> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((dyc)this.b.get().getLeft()) : Optional.empty();
+      }
+   }
+
+   public void a() {
+      this.b = Optional.empty();
    }
 }

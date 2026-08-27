@@ -1,18 +1,14 @@
-import java.util.EnumSet;
-
-public class byz extends bzz {
+public class byz extends bzy {
    private final ceh g;
 
-   public byz(ceh $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
+   public byz(ceh $$0, double $$1) {
+      super($$0, $$1, 8);
       this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bzm.a.c, bzm.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.gp() && !this.g.gx() && super.a();
+      return this.g.r() && !this.g.gy() && super.a();
    }
 
    @Override
@@ -22,29 +18,28 @@ public class byz extends bzz {
    }
 
    @Override
-   protected int a(bsx $$0) {
-      return 40;
-   }
-
-   @Override
    public void d() {
       super.d();
-      this.g.z(false);
+      this.g.x(false);
    }
 
    @Override
    public void e() {
       super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gx()) {
-         this.g.z(true);
-      }
+      this.g.x(this.m());
    }
 
    @Override
-   protected boolean a(dba $$0, io $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(avw.R);
+   protected boolean a(dcd $$0, ir $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         dtc $$2 = $$0.a_($$1);
+         if ($$2.a(dfe.dg)) {
+            return dqj.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dfe.dp) && $$2.c(din.b) ? true : $$2.a(awe.R, $$0x -> $$0x.d(deu.b).map($$0xx -> $$0xx != dtp.a).orElse(true));
+         }
+      }
    }
 }

@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.CompletableFuture;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dwa {
+@FunctionalInterface
+public interface dwa {
+   CompletableFuture<duy> apply(duy var1);
 }

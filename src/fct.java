@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fct {
+public class fct extends fcy implements fcs {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
+
+   public fct(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+   }
 }

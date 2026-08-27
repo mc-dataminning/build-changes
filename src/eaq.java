@@ -1,37 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaq extends dzx<ech> {
-   public eaq(Codec<ech> $$0) {
-      super($$0);
+public class eaq extends eas {
+   public static final Codec<eaq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eas.d.forGetter($$0x -> $$0x), bpd.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eaq.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eaq::new)
+   );
+   public final bpd b;
+   public final eaq.a c;
+
+   public eaq(float $$0, ehz $$1, bpd $$2, dzo $$3, eat $$4, je<dfc> $$5, bpd $$6, eaq.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(dzz<ech> $$0) {
-      dbs $$1 = $$0.b();
-      io $$2 = $$0.e();
-      drb $$3 = $$1.a_($$2.d());
-      ech $$4 = $$0.f();
-      ayk $$5 = $$0.d();
-      if (!$$3.a(avw.aL)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.al()) {
-            int $$7 = 0;
+   public eaq(eas $$0, bpd $$1, eaq.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               io $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               drb $$10 = $$4.b.a($$5, $$9);
-               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
-            }
+   public static class a {
+      public static final Codec<eaq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bpd.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bpd.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  axu.i.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bpd.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, eaq.a::new)
+      );
+      public final bpd b;
+      public final bpd c;
+      public final int d;
+      public final bpd e;
+      public final float f;
+      public final float g;
 
-            return $$7 > 0;
-         } else {
-            return false;
-         }
+      public a(bpd $$0, bpd $$1, int $$2, bpd $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

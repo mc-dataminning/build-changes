@@ -1,159 +1,218 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import java.util.stream.IntStream;
+public class elu extends ejr {
+   public static final int h = 12;
+   public static final int i = 15;
+   private boolean j;
+   private boolean k;
+   private boolean l;
+   private boolean m;
+   private static final elu.a n = new elu.a();
 
-public class elu implements dwm.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<elu> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, elu::a)
-   );
-   public static final axx<elu> a = axx.a(f);
-   private final ely g;
-   private final ely h;
-   private final ely i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
-
-   public static elu a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new elu(new dxu(0L), $$0, $$1, $$2, $$3, $$4);
+   public elu(ayt $$0, int $$1, int $$2) {
+      super(ekk.G, $$1, 64, $$2, 12, 10, 15, a($$0));
    }
 
-   private elu(ely $$0, ely $$1, ely $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
-   }
-
-   @VisibleForTesting
-   public elu(ayk $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         ely.a($$0, IntStream.rangeClosed(-15, 0)),
-         ely.a($$0, IntStream.rangeClosed(-15, 0)),
-         ely.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
-   }
-
-   public elu a(ayk $$0) {
-      return new elu($$0, this.p, this.q, this.l, this.m, this.n);
+   public elu(uk $$0) {
+      super(ekk.G, $$0);
+      this.j = $$0.q("placedMainChest");
+      this.k = $$0.q("placedHiddenChest");
+      this.l = $$0.q("placedTrap1");
+      this.m = $$0.q("placedTrap2");
    }
 
    @Override
-   public double a(dwm.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
+   protected void a(ekj $$0, uk $$1) {
+      super.a($$0, $$1);
+      $$1.a("placedMainChest", this.j);
+      $$1.a("placedHiddenChest", this.k);
+      $$1.a("placedTrap1", this.l);
+      $$1.a("placedTrap2", this.m);
+   }
 
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         elv $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(ely.b($$4 * $$13), ely.b($$5 * $$13), ely.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
+   @Override
+   public void a(dcv $$0, dct $$1, duz $$2, ayt $$3, ejl $$4, dbh $$5, ir $$6) {
+      if (this.a($$0, $$4, 0)) {
+         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 2, 9, 2, 2, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 12, 9, 2, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 3, 2, 2, 11, false, $$3, n);
+         this.a($$0, $$4, 9, 1, 3, 9, 2, 11, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 1, 10, 6, 1, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 13, 10, 6, 13, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 2, 1, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 10, 3, 2, 10, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 3, 2, 9, 3, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 6, 2, 9, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 3, 7, 3, 8, 7, 11, false, $$3, n);
+         this.a($$0, $$4, 4, 8, 4, 7, 8, 10, false, $$3, n);
+         this.a($$0, $$4, 3, 1, 3, 8, 2, 11);
+         this.a($$0, $$4, 4, 3, 6, 7, 3, 9);
+         this.a($$0, $$4, 2, 4, 2, 9, 5, 12);
+         this.a($$0, $$4, 4, 6, 5, 7, 6, 9);
+         this.a($$0, $$4, 5, 7, 6, 6, 7, 8);
+         this.a($$0, $$4, 5, 1, 2, 6, 2, 2);
+         this.a($$0, $$4, 5, 2, 12, 6, 2, 12);
+         this.a($$0, $$4, 5, 5, 1, 6, 5, 1);
+         this.a($$0, $$4, 5, 5, 13, 6, 5, 13);
+         this.a($$0, dfe.a.n(), 1, 5, 5, $$4);
+         this.a($$0, dfe.a.n(), 10, 5, 5, $$4);
+         this.a($$0, dfe.a.n(), 1, 5, 9, $$4);
+         this.a($$0, dfe.a.n(), 10, 5, 9, $$4);
+
+         for (int $$7 = 0; $$7 <= 14; $$7 += 14) {
+            this.a($$0, $$4, 2, 4, $$7, 2, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 4, 4, $$7, 4, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 7, 4, $$7, 7, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 9, 4, $$7, 9, 5, $$7, false, $$3, n);
          }
 
-         $$13 /= 2.0;
-      }
+         this.a($$0, $$4, 5, 6, 0, 6, 6, 0, false, $$3, n);
 
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
-
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = ely.b($$1 * $$13);
-         double $$21 = ely.b($$2 * $$13);
-         double $$22 = ely.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            elv $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+         for (int $$8 = 0; $$8 <= 11; $$8 += 11) {
+            for (int $$9 = 2; $$9 <= 12; $$9 += 2) {
+               this.a($$0, $$4, $$8, 4, $$9, $$8, 5, $$9, false, $$3, n);
             }
+
+            this.a($$0, $$4, $$8, 6, 5, $$8, 6, 5, false, $$3, n);
+            this.a($$0, $$4, $$8, 6, 9, $$8, 6, 9, false, $$3, n);
          }
 
-         if (!$$18) {
-            elv $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
+         this.a($$0, $$4, 2, 7, 2, 2, 9, 2, false, $$3, n);
+         this.a($$0, $$4, 9, 7, 2, 9, 9, 2, false, $$3, n);
+         this.a($$0, $$4, 2, 7, 12, 2, 9, 12, false, $$3, n);
+         this.a($$0, $$4, 9, 7, 12, 9, 9, 12, false, $$3, n);
+         this.a($$0, $$4, 4, 9, 4, 4, 9, 4, false, $$3, n);
+         this.a($$0, $$4, 7, 9, 4, 7, 9, 4, false, $$3, n);
+         this.a($$0, $$4, 4, 9, 10, 4, 9, 10, false, $$3, n);
+         this.a($$0, $$4, 7, 9, 10, 7, 9, 10, false, $$3, n);
+         this.a($$0, $$4, 5, 9, 7, 6, 9, 7, false, $$3, n);
+         dtc $$10 = dfe.dC.n().a(dnk.b, iw.f);
+         dtc $$11 = dfe.dC.n().a(dnk.b, iw.e);
+         dtc $$12 = dfe.dC.n().a(dnk.b, iw.d);
+         dtc $$13 = dfe.dC.n().a(dnk.b, iw.c);
+         this.a($$0, $$13, 5, 9, 6, $$4);
+         this.a($$0, $$13, 6, 9, 6, $$4);
+         this.a($$0, $$12, 5, 9, 8, $$4);
+         this.a($$0, $$12, 6, 9, 8, $$4);
+         this.a($$0, $$13, 4, 0, 0, $$4);
+         this.a($$0, $$13, 5, 0, 0, $$4);
+         this.a($$0, $$13, 6, 0, 0, $$4);
+         this.a($$0, $$13, 7, 0, 0, $$4);
+         this.a($$0, $$13, 4, 1, 8, $$4);
+         this.a($$0, $$13, 4, 2, 9, $$4);
+         this.a($$0, $$13, 4, 3, 10, $$4);
+         this.a($$0, $$13, 7, 1, 8, $$4);
+         this.a($$0, $$13, 7, 2, 9, $$4);
+         this.a($$0, $$13, 7, 3, 10, $$4);
+         this.a($$0, $$4, 4, 1, 9, 4, 1, 9, false, $$3, n);
+         this.a($$0, $$4, 7, 1, 9, 7, 1, 9, false, $$3, n);
+         this.a($$0, $$4, 4, 1, 10, 7, 2, 10, false, $$3, n);
+         this.a($$0, $$4, 5, 4, 5, 6, 4, 5, false, $$3, n);
+         this.a($$0, $$10, 4, 4, 5, $$4);
+         this.a($$0, $$11, 7, 4, 5, $$4);
+
+         for (int $$14 = 0; $$14 < 4; $$14++) {
+            this.a($$0, $$12, 5, 0 - $$14, 6 + $$14, $$4);
+            this.a($$0, $$12, 6, 0 - $$14, 6 + $$14, $$4);
+            this.a($$0, $$4, 5, 0 - $$14, 7 + $$14, 6, 0 - $$14, 9 + $$14);
          }
 
-         $$13 /= 2.0;
+         this.a($$0, $$4, 1, -3, 12, 10, -1, 13);
+         this.a($$0, $$4, 1, -3, 1, 3, -1, 13);
+         this.a($$0, $$4, 1, -3, 1, 9, -1, 5);
+
+         for (int $$15 = 1; $$15 <= 13; $$15 += 2) {
+            this.a($$0, $$4, 1, -3, $$15, 1, -2, $$15, false, $$3, n);
+         }
+
+         for (int $$16 = 2; $$16 <= 12; $$16 += 2) {
+            this.a($$0, $$4, 1, -1, $$16, 3, -1, $$16, false, $$3, n);
+         }
+
+         this.a($$0, $$4, 2, -2, 1, 5, -2, 1, false, $$3, n);
+         this.a($$0, $$4, 7, -2, 1, 9, -2, 1, false, $$3, n);
+         this.a($$0, $$4, 6, -3, 1, 6, -3, 1, false, $$3, n);
+         this.a($$0, $$4, 6, -1, 1, 6, -1, 1, false, $$3, n);
+         this.a($$0, dfe.gz.n().a(doi.b, iw.f).a(doi.d, Boolean.valueOf(true)), 1, -3, 8, $$4);
+         this.a($$0, dfe.gz.n().a(doi.b, iw.e).a(doi.d, Boolean.valueOf(true)), 4, -3, 8, $$4);
+         this.a($$0, dfe.gA.n().a(doh.f, Boolean.valueOf(true)).a(doh.h, Boolean.valueOf(true)).a(doh.c, Boolean.valueOf(true)), 2, -3, 8, $$4);
+         this.a($$0, dfe.gA.n().a(doh.f, Boolean.valueOf(true)).a(doh.h, Boolean.valueOf(true)).a(doh.c, Boolean.valueOf(true)), 3, -3, 8, $$4);
+         dtc $$17 = dfe.dh.n().a(dls.b, duh.b).a(dls.d, duh.b);
+         this.a($$0, $$17, 5, -3, 7, $$4);
+         this.a($$0, $$17, 5, -3, 6, $$4);
+         this.a($$0, $$17, 5, -3, 5, $$4);
+         this.a($$0, $$17, 5, -3, 4, $$4);
+         this.a($$0, $$17, 5, -3, 3, $$4);
+         this.a($$0, $$17, 5, -3, 2, $$4);
+         this.a($$0, dfe.dh.n().a(dls.b, duh.b).a(dls.e, duh.b), 5, -3, 1, $$4);
+         this.a($$0, dfe.dh.n().a(dls.c, duh.b).a(dls.e, duh.b), 4, -3, 1, $$4);
+         this.a($$0, dfe.cY.n(), 3, -3, 1, $$4);
+         if (!this.l) {
+            this.l = this.a($$0, $$4, $$3, 3, -2, 1, iw.c, ern.D);
+         }
+
+         this.a($$0, dfe.fX.n().a(doo.e, Boolean.valueOf(true)), 3, -2, 2, $$4);
+         this.a($$0, dfe.gz.n().a(doi.b, iw.c).a(doi.d, Boolean.valueOf(true)), 7, -3, 1, $$4);
+         this.a($$0, dfe.gz.n().a(doi.b, iw.d).a(doi.d, Boolean.valueOf(true)), 7, -3, 5, $$4);
+         this.a($$0, dfe.gA.n().a(doh.e, Boolean.valueOf(true)).a(doh.g, Boolean.valueOf(true)).a(doh.c, Boolean.valueOf(true)), 7, -3, 2, $$4);
+         this.a($$0, dfe.gA.n().a(doh.e, Boolean.valueOf(true)).a(doh.g, Boolean.valueOf(true)).a(doh.c, Boolean.valueOf(true)), 7, -3, 3, $$4);
+         this.a($$0, dfe.gA.n().a(doh.e, Boolean.valueOf(true)).a(doh.g, Boolean.valueOf(true)).a(doh.c, Boolean.valueOf(true)), 7, -3, 4, $$4);
+         this.a($$0, dfe.dh.n().a(dls.c, duh.b).a(dls.e, duh.b), 8, -3, 6, $$4);
+         this.a($$0, dfe.dh.n().a(dls.e, duh.b).a(dls.d, duh.b), 9, -3, 6, $$4);
+         this.a($$0, dfe.dh.n().a(dls.b, duh.b).a(dls.d, duh.a), 9, -3, 5, $$4);
+         this.a($$0, dfe.cY.n(), 9, -3, 4, $$4);
+         this.a($$0, $$17, 9, -2, 4, $$4);
+         if (!this.m) {
+            this.m = this.a($$0, $$4, $$3, 9, -2, 3, iw.e, ern.D);
+         }
+
+         this.a($$0, dfe.fX.n().a(doo.d, Boolean.valueOf(true)), 8, -1, 3, $$4);
+         this.a($$0, dfe.fX.n().a(doo.d, Boolean.valueOf(true)), 8, -2, 3, $$4);
+         if (!this.j) {
+            this.j = this.a($$0, $$4, $$3, 8, -3, 3, ern.C);
+         }
+
+         this.a($$0, dfe.cY.n(), 9, -3, 2, $$4);
+         this.a($$0, dfe.cY.n(), 8, -3, 1, $$4);
+         this.a($$0, dfe.cY.n(), 4, -3, 5, $$4);
+         this.a($$0, dfe.cY.n(), 5, -2, 5, $$4);
+         this.a($$0, dfe.cY.n(), 5, -1, 5, $$4);
+         this.a($$0, dfe.cY.n(), 6, -3, 5, $$4);
+         this.a($$0, dfe.cY.n(), 7, -2, 5, $$4);
+         this.a($$0, dfe.cY.n(), 7, -1, 5, $$4);
+         this.a($$0, dfe.cY.n(), 8, -3, 5, $$4);
+         this.a($$0, $$4, 9, -1, 1, 9, -1, 5, false, $$3, n);
+         this.a($$0, $$4, 8, -3, 8, 10, -1, 10);
+         this.a($$0, dfe.fC.n(), 8, -2, 11, $$4);
+         this.a($$0, dfe.fC.n(), 9, -2, 11, $$4);
+         this.a($$0, dfe.fC.n(), 10, -2, 11, $$4);
+         dtc $$18 = dfe.ek.n().a(djt.aE, iw.c).a(djt.K, dtn.b);
+         this.a($$0, $$18, 8, -2, 12, $$4);
+         this.a($$0, $$18, 9, -2, 12, $$4);
+         this.a($$0, $$18, 10, -2, 12, $$4);
+         this.a($$0, $$4, 8, -3, 8, 8, -3, 10, false, $$3, n);
+         this.a($$0, $$4, 10, -3, 8, 10, -3, 10, false, $$3, n);
+         this.a($$0, dfe.cY.n(), 10, -2, 9, $$4);
+         this.a($$0, $$17, 8, -2, 9, $$4);
+         this.a($$0, $$17, 8, -2, 10, $$4);
+         this.a($$0, dfe.dh.n().a(dls.b, duh.b).a(dls.d, duh.b).a(dls.c, duh.b).a(dls.e, duh.b), 10, -1, 9, $$4);
+         this.a($$0, dfe.cb.n().a(dsv.a, iw.b), 9, -2, 8, $$4);
+         this.a($$0, dfe.cb.n().a(dsv.a, iw.e), 10, -2, 8, $$4);
+         this.a($$0, dfe.cb.n().a(dsv.a, iw.e), 10, -1, 8, $$4);
+         this.a($$0, dfe.eZ.n().a(dlx.aE, iw.c), 10, -2, 10, $$4);
+         if (!this.k) {
+            this.k = this.a($$0, $$4, $$3, 9, -3, 10, ern.C);
+         }
       }
-
-      return ayd.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
    }
 
-   @Override
-   public double a() {
-      return -this.b();
-   }
-
-   @Override
-   public double b() {
-      return this.o;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
-   }
-
-   @Override
-   public axx<? extends dwm> c() {
-      return a;
+   static class a extends ejx.a {
+      @Override
+      public void a(ayt $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         if ($$0.i() < 0.4F) {
+            this.a = dfe.q.n();
+         } else {
+            this.a = dfe.cY.n();
+         }
+      }
    }
 }

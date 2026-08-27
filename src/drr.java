@@ -1,133 +1,251 @@
-public class drr {
-   public static final drs a = drs.a("attached");
-   public static final drs b = drs.a("bottom");
-   public static final drs c = drs.a("conditional");
-   public static final drs d = drs.a("disarmed");
-   public static final drs e = drs.a("drag");
-   public static final drs f = drs.a("enabled");
-   public static final drs g = drs.a("extended");
-   public static final drs h = drs.a("eye");
-   public static final drs i = drs.a("falling");
-   public static final drs j = drs.a("hanging");
-   public static final drs k = drs.a("has_bottle_0");
-   public static final drs l = drs.a("has_bottle_1");
-   public static final drs m = drs.a("has_bottle_2");
-   public static final drs n = drs.a("has_record");
-   public static final drs o = drs.a("has_book");
-   public static final drs p = drs.a("inverted");
-   public static final drs q = drs.a("in_wall");
-   public static final drs r = drs.a("lit");
-   public static final drs s = drs.a("locked");
-   public static final drs t = drs.a("occupied");
-   public static final drs u = drs.a("open");
-   public static final drs v = drs.a("persistent");
-   public static final drs w = drs.a("powered");
-   public static final drs x = drs.a("short");
-   public static final drs y = drs.a("signal_fire");
-   public static final drs z = drs.a("snowy");
-   public static final drs A = drs.a("triggered");
-   public static final drs B = drs.a("unstable");
-   public static final drs C = drs.a("waterlogged");
-   public static final drs D = drs.a("berries");
-   public static final drs E = drs.a("bloom");
-   public static final drs F = drs.a("shrieking");
-   public static final drs G = drs.a("can_summon");
-   public static final drz<it.a> H = drz.a("axis", it.a.class, it.a.a, it.a.c);
-   public static final drz<it.a> I = drz.a("axis", it.a.class);
-   public static final drs J = drs.a("up");
-   public static final drs K = drs.a("down");
-   public static final drs L = drs.a("north");
-   public static final drs M = drs.a("east");
-   public static final drs N = drs.a("south");
-   public static final drs O = drs.a("west");
-   public static final drv P = drv.a("facing", it.c, it.f, it.d, it.e, it.b, it.a);
-   public static final drv Q = drv.a("facing", $$0 -> $$0 != it.b);
-   public static final drv R = drv.a("facing", it.c.a);
-   public static final dsb S = dsb.a("flower_amount", 1, 4);
-   public static final drz<iv> T = drz.a("orientation", iv.class);
-   public static final drz<drm> U = drz.a("face", drm.class);
-   public static final drz<drp> V = drz.a("attachment", drp.class);
-   public static final drz<dsn> W = drz.a("east", dsn.class);
-   public static final drz<dsn> X = drz.a("north", dsn.class);
-   public static final drz<dsn> Y = drz.a("south", dsn.class);
-   public static final drz<dsn> Z = drz.a("west", dsn.class);
-   public static final drz<dsg> aa = drz.a("east", dsg.class);
-   public static final drz<dsg> ab = drz.a("north", dsg.class);
-   public static final drz<dsg> ac = drz.a("south", dsg.class);
-   public static final drz<dsg> ad = drz.a("west", dsg.class);
-   public static final drz<drx> ae = drz.a("half", drx.class);
-   public static final drz<dsa> af = drz.a("half", dsa.class);
-   public static final drz<dsf> ag = drz.a("shape", dsf.class);
-   public static final drz<dsf> ah = drz.a("shape", dsf.class, $$0 -> $$0 != dsf.j && $$0 != dsf.i && $$0 != dsf.g && $$0 != dsf.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dsb aq = dsb.a("age", 0, 1);
-   public static final dsb ar = dsb.a("age", 0, 2);
-   public static final dsb as = dsb.a("age", 0, 3);
-   public static final dsb at = dsb.a("age", 0, 4);
-   public static final dsb au = dsb.a("age", 0, 5);
-   public static final dsb av = dsb.a("age", 0, 7);
-   public static final dsb aw = dsb.a("age", 0, 15);
-   public static final dsb ax = dsb.a("age", 0, 25);
-   public static final dsb ay = dsb.a("bites", 0, 6);
-   public static final dsb az = dsb.a("candles", 1, 4);
-   public static final dsb aA = dsb.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dsb aC = dsb.a("distance", 1, 7);
-   public static final dsb aD = dsb.a("eggs", 1, 4);
-   public static final dsb aE = dsb.a("hatch", 0, 2);
-   public static final dsb aF = dsb.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dsb aK = dsb.a("level", 1, 3);
-   public static final dsb aL = dsb.a("level", 0, 8);
-   public static final dsb aM = dsb.a("level", 1, 8);
-   public static final dsb aN = dsb.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dsb aP = dsb.a("level", 0, 15);
-   public static final dsb aQ = dsb.a("moisture", 0, 7);
-   public static final dsb aR = dsb.a("note", 0, 24);
-   public static final dsb aS = dsb.a("pickles", 1, 4);
-   public static final dsb aT = dsb.a("power", 0, 15);
-   public static final dsb aU = dsb.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dsb aW = dsb.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dsb aZ = dsb.a("charges", 0, 4);
-   public static final dsb ba = dsb.a("rotation", 0, dsh.a());
-   public static final drz<dro> bb = drz.a("part", dro.class);
-   public static final drz<drt> bc = drz.a("type", drt.class);
-   public static final drz<dru> bd = drz.a("mode", dru.class);
-   public static final drz<drw> be = drz.a("hinge", drw.class);
-   public static final drz<dsc> bf = drz.a("instrument", dsc.class);
-   public static final drz<dsd> bg = drz.a("type", dsd.class);
-   public static final drz<dsj> bh = drz.a("type", dsj.class);
-   public static final drz<dsk> bi = drz.a("shape", dsk.class);
-   public static final drz<dsl> bj = drz.a("mode", dsl.class);
-   public static final drz<drn> bk = drz.a("leaves", drn.class);
-   public static final drz<dsm> bl = drz.a("tilt", dsm.class);
-   public static final drv bm = drv.a("vertical_direction", it.b, it.a);
-   public static final drz<dry> bn = drz.a("thickness", dry.class);
-   public static final drz<dsi> bo = drz.a("sculk_sensor_phase", dsi.class);
-   public static final drs bp = drs.a("slot_0_occupied");
-   public static final drs bq = drs.a("slot_1_occupied");
-   public static final drs br = drs.a("slot_2_occupied");
-   public static final drs bs = drs.a("slot_3_occupied");
-   public static final drs bt = drs.a("slot_4_occupied");
-   public static final drs bu = drs.a("slot_5_occupied");
-   public static final dsb bv = dsb.a("dusted", 0, 3);
-   public static final drs bw = drs.a("cracked");
-   public static final drs bx = drs.a("crafting");
-   public static final drz<dqh> by = drz.a("trial_spawner_state", dqh.class);
-   public static final drz<dqo> bz = drz.a("vault_state", dqo.class);
-   public static final drs bA = drs.a("ominous");
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class drr extends dqc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
+   @Nullable
+   private UUID d;
+   private drs e = this.f();
+   private drs f = this.f();
+   private boolean g;
+
+   public drr(ir $$0, dtc $$1) {
+      this(dqe.i, $$0, $$1);
+   }
+
+   public drr(dqe $$0, ir $$1, dtc $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   protected drs f() {
+      return new drs();
+   }
+
+   public boolean a(cly $$0) {
+      if (this.n().b() instanceof dmq $$1) {
+         ewu $$2 = $$1.m(this.n());
+         double $$3 = $$0.dz() - ((double)this.az_().u() + $$2.c);
+         double $$4 = $$0.dF() - ((double)this.az_().w() + $$2.e);
+         float $$5 = $$1.g(this.n());
+         float $$6 = (float)(aym.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return aym.d($$5, $$6) <= 90.0F;
+      } else {
+         return false;
+      }
+   }
+
+   public drs a(boolean $$0) {
+      return $$0 ? this.e : this.f;
+   }
+
+   public drs j() {
+      return this.e;
+   }
+
+   public drs k() {
+      return this.f;
+   }
+
+   public int b() {
+      return 10;
+   }
+
+   public int c() {
+      return 90;
+   }
+
+   @Override
+   protected void b(uk $$0, jc.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<vh> $$2 = $$1.a(uy.a);
+      drs.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      drs.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
+   }
+
+   @Override
+   public void a(uk $$0, jc.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<vh> $$2 = $$1.a(uy.a);
+      if ($$0.e("front_text")) {
+         drs.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         drs.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
+   }
+
+   private drs a(drs $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         xe $$2 = this.a($$0.a($$1, false));
+         xe $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
+   }
+
+   private xe a(xe $$0) {
+      if (this.n instanceof aqt $$1) {
+         try {
+            return xh.a(a(null, $$1, this.o), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(cly $$0, boolean $$1, List<arl> $$2) {
+      if (!this.u() && $$0.cE().equals(this.t()) && this.n != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.n.a(this.az_(), this.n(), this.n(), 3);
+      } else {
+         a.warn("Player {} just tried to change non-editable sign", $$0.af().getString());
+      }
+   }
+
+   public boolean a(UnaryOperator<drs> $$0, boolean $$1) {
+      drs $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private drs a(cly $$0, List<arl> $$1, drs $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         arl $$4 = $$1.get($$3);
+         yb $$5 = $$2.a($$3, $$0.aa()).a();
+         if ($$0.aa()) {
+            $$2 = $$2.a($$3, xe.b($$4.b()).b($$5));
+         } else {
+            $$2 = $$2.a($$3, xe.b($$4.d()).b($$5), xe.b($$4.b()).b($$5));
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean a(drs $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(drs $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(drs $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cly $$1) {
+      return this.u() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cly $$0, dca $$1, ir $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (xe $$5 : this.a($$3).b($$0.aa())) {
+         yb $$6 = $$5.a();
+         xc $$7 = $$6.h();
+         if ($$7 != null && $$7.a() == xc.a.c) {
+            $$0.cT().aH().a(a($$0, $$1, $$2), $$7.b());
+            $$4 = true;
+         }
+      }
+
+      return $$4;
+   }
+
+   private static eh a(@Nullable cly $$0, dca $$1, ir $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.af().getString();
+      xe $$4 = (xe)($$0 == null ? xe.b("Sign") : $$0.P_());
+      return new eh(eg.a, ewu.b($$2), ewt.a, (aqt)$$1, 2, $$3, $$4, $$1.o(), $$0);
+   }
+
+   public ace l() {
+      return ace.a(this);
+   }
+
+   @Override
+   public uk a(jc.a $$0) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID t() {
+      return this.d;
+   }
+
+   private void v() {
+      this.e();
+      this.n.a(this.az_(), this.n(), this.n(), 3);
+   }
+
+   public boolean u() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      cly $$1 = this.n.c($$0);
+      return $$1 == null || $$1.i((double)this.az_().u(), (double)this.az_().v(), (double)this.az_().w()) > 64.0;
+   }
+
+   public static void a(dca $$0, ir $$1, dtc $$2, drr $$3) {
+      UUID $$4 = $$3.t();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(drr $$0, dca $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public avn d() {
+      return avo.Cv;
+   }
 }

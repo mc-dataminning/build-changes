@@ -1,65 +1,60 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record esk(ix<ddy> b, Optional<dl> c) implements esl {
-   public static final MapCodec<esk> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(le.e.r().fieldOf("block").forGetter(esk::c), dl.a.optionalFieldOf("properties").forGetter(esk::d)).apply($$0, esk::new)
-      )
-      .validate(esk::a);
+public class esk extends esh {
+   public static final Codec<esk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awt.a(li.G).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, esk::new)
+   );
+   private final awt<cuc> j;
+   private final boolean k;
 
-   private static DataResult<esk> a(esk $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().m()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   private esk(awt<cuc> $$0, boolean $$1, int $$2, int $$3, List<euu> $$4, List<etb> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public esm b() {
-      return esn.k;
+   public esg a() {
+      return esd.f;
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return Set.of(erx.g);
+   public void a(Consumer<cuh> $$0, erp $$1) {
+      lh.h.c(this.j).forEach($$1x -> $$0.accept(new cuh($$1x)));
    }
 
-   public boolean a(epf $$0) {
-      drb $$1 = $$0.c(erx.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
+   private boolean a(erp $$0, Consumer<ese> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final ja<cuc> $$2 : lh.h.c(this.j)) {
+            $$1.accept(new esh.c() {
+               @Override
+               public void a(Consumer<cuh> $$0, erp $$1) {
+                  $$0.accept(new cuh($$2));
+               }
+            });
+         }
 
-   public static esk.a a(ddy $$0) {
-      return new esk.a($$0);
-   }
-
-   public ix<ddy> c() {
-      return this.b;
-   }
-
-   public Optional<dl> d() {
-      return this.c;
-   }
-
-   public static class a implements esl.a {
-      private final ix<ddy> a;
-      private Optional<dl> b = Optional.empty();
-
-      public a(ddy $$0) {
-         this.a = $$0.r();
+         return true;
       }
+   }
 
-      public esk.a a(dl.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
+   @Override
+   public boolean expand(erp $$0, Consumer<ese> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
 
-      @Override
-      public esl build() {
-         return new esk(this.a, this.b);
-      }
+   public static esh.a<?> a(awt<cuc> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new esk($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static esh.a<?> b(awt<cuc> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new esk($$0, true, $$1, $$2, $$3, $$4));
    }
 }

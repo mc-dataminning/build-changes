@@ -1,34 +1,44 @@
-public class grb extends gqs {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final ciy r;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public grb(ciy $$0) {
-      super(avh.ls, avi.f, grj.t());
-      this.r = $$0;
-      this.k = grj.a.a;
-      this.i = true;
-      this.j = 0;
+@FunctionalInterface
+public interface grb {
+   Logger a = LogUtils.getLogger();
+
+   static grb create(Collection<atc<?>> $$0) {
+      return ($$1, $$2) -> {
+         auf $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fad $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fad.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gsj $$11 = $$3.a(gsj.a).orElse(gsj.e);
+         gsl $$12 = $$11.a($$7.a(), $$7.b());
+         if (aym.c($$7.a(), $$12.a()) && aym.c($$7.b(), $$12.b())) {
+            return new gqs($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public boolean s() {
-      return !this.r.aW();
-   }
-
-   @Override
-   public void q() {
-      if (!this.r.dK() && this.r.p() == null) {
-         this.f = (double)((float)this.r.du());
-         this.g = (double)((float)this.r.dw());
-         this.h = (double)((float)this.r.dA());
-         float $$0 = this.r.I(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
-         this.n();
-      }
-   }
+   @Nullable
+   gqs loadSprite(akt var1, aub var2);
 }

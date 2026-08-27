@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cxc {
+public interface cxc<T, C> {
+   List<ark<T>> a();
+
+   C a(List<ark<T>> var1);
 }

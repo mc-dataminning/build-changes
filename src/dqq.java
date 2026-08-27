@@ -1,150 +1,245 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public final class dqq {
-   private static final Map<String, dqq> k = new Object2ObjectArrayMap();
-   public static final Codec<dqq> a = Codec.stringResolver($$0 -> $$0.l, k::get);
-   public static final dqq b = new dqq(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(ry.g), Optional.of(ry.n), Optional.of(ry.C), Optional.of(ry.I)
-   );
-   public static final dqq c = new dqq(
-      "spruce", 0.5F, Optional.of(ry.q), Optional.of(ry.r), Optional.of(ry.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dqq d = new dqq(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(ry.x), Optional.of(ry.y), Optional.empty(), Optional.empty()
-   );
-   public static final dqq e = new dqq("azalea", Optional.empty(), Optional.of(ry.w), Optional.empty());
-   public static final dqq f = new dqq("birch", Optional.empty(), Optional.of(ry.i), Optional.of(ry.F));
-   public static final dqq g = new dqq("jungle", Optional.of(ry.p), Optional.of(ry.o), Optional.empty());
-   public static final dqq h = new dqq("acacia", Optional.empty(), Optional.of(ry.j), Optional.empty());
-   public static final dqq i = new dqq("cherry", Optional.empty(), Optional.of(ry.z), Optional.of(ry.K));
-   public static final dqq j = new dqq("dark_oak", Optional.of(ry.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<akl<dzk<?, ?>>> n;
-   private final Optional<akl<dzk<?, ?>>> o;
-   private final Optional<akl<dzk<?, ?>>> p;
-   private final Optional<akl<dzk<?, ?>>> q;
-   private final Optional<akl<dzk<?, ?>>> r;
-   private final Optional<akl<dzk<?, ?>>> s;
+public class dqq extends drm implements cpw {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private jj<cuh> q = jj.a(9, cuh.i);
+   private int r = 0;
+   protected final cpq k = new cpq() {
+      private final int[] b = new int[9];
+      private int c = 0;
 
-   public dqq(String $$0, Optional<akl<dzk<?, ?>>> $$1, Optional<akl<dzk<?, ?>>> $$2, Optional<akl<dzk<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
-   }
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.c : this.b[$$0];
+      }
 
-   public dqq(
-      String $$0,
-      float $$1,
-      Optional<akl<dzk<?, ?>>> $$2,
-      Optional<akl<dzk<?, ?>>> $$3,
-      Optional<akl<dzk<?, ?>>> $$4,
-      Optional<akl<dzk<?, ?>>> $$5,
-      Optional<akl<dzk<?, ?>>> $$6,
-      Optional<akl<dzk<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
-   }
-
-   @Nullable
-   private akl<dzk<?, ?>> a(ayk $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.c = $$1;
+         } else {
+            this.b[$$0] = $$1;
          }
       }
 
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
-   }
-
-   @Nullable
-   private akl<dzk<?, ?>> a(ayk $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
-   }
-
-   public boolean a(aqm $$0, dsy $$1, io $$2, drb $$3, ayk $$4) {
-      akl<dzk<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         ix<dzk<?, ?>> $$6 = $$0.H_().d(lf.aC).b($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     dzk<?, ?> $$9 = $$6.a();
-                     drb $$10 = dea.a.n();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
+      @Override
+      public int a() {
+         return 10;
       }
+   };
 
-      akl<dzk<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
+   public dqq(ir $$0, dtc $$1) {
+      super(dqe.Q, $$0, $$1);
+   }
+
+   @Override
+   protected xe k() {
+      return xe.c("container.crafter");
+   }
+
+   @Override
+   protected cpg a(int $$0, clx $$1) {
+      return new cpu($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, cuh $$1) {
+      if (this.k.a($$0) == 1) {
          return false;
       } else {
-         ix<dzk<?, ?>> $$12 = $$0.H_().d(lf.aC).b($$11).orElse(null);
-         if ($$12 == null) {
+         cuh $$2 = this.q.get($$0);
+         int $$3 = $$2.G();
+         if ($$3 >= $$2.i()) {
             return false;
          } else {
-            dzk<?, ?> $$13 = $$12.a();
-            drb $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
+            return $$2.d() ? true : !this.a($$3, $$2, $$0);
          }
       }
    }
 
-   private static boolean a(drb $$0, dad $$1, io $$2, int $$3, int $$4) {
-      ddy $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
-
-   private boolean a(day $$0, io $$1) {
-      for (io $$2 : io.a.c($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(avw.U)) {
-            return true;
+   private boolean a(int $$0, cuh $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cuh $$4 = this.a($$3);
+            if ($$4.d() || $$4.G() < $$0 && cuh.c($$4, $$1)) {
+               return true;
+            }
          }
       }
 
       return false;
+   }
+
+   @Override
+   public void a(uk $$0, jc.a $$1) {
+      super.a($$0, $$1);
+      this.r = $$0.h("crafting_ticks_remaining");
+      this.q = jj.a(this.b(), cuh.i);
+      if (!this.a_($$0)) {
+         bpu.b($$0, this.q, $$1);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.k.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.k.a($$4, 1);
+         }
+      }
+
+      this.k.a(9, $$0.h("triggered"));
+   }
+
+   @Override
+   protected void b(uk $$0, jc.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.r);
+      if (!this.b_($$0)) {
+         bpu.a($$0, this.q, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (cuh $$0 : this.q) {
+         if (!$$0.d()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cuh a(int $$0) {
+      return this.q.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, cuh $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(cly $$0) {
+      return bpt.a(this, $$0);
+   }
+
+   @Override
+   public jj<cuh> j() {
+      return this.q;
+   }
+
+   @Override
+   protected void a(jj<cuh> $$0) {
+      this.q = $$0;
+   }
+
+   @Override
+   public int f() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void a(cmc $$0) {
+      for (cuh $$1 : this.q) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(uk $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
+   }
+
+   private void d(uk $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean l() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(dca $$0, ir $$1, dtc $$2, dqq $$3) {
+      int $$4 = $$3.r - 1;
+      if ($$4 >= 0) {
+         $$3.r = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.a(dgw.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.r = $$0;
+   }
+
+   public int t() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cuh $$2 = this.a($$1);
+         if (!$$2.d() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.q.get($$0).d();
    }
 }

@@ -1,47 +1,45 @@
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@Deprecated
-public class dxm implements dwi {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dwv i = new dwv(this);
+public class dxm<T extends dxc> implements dxl<T> {
+   private final dxe<T> b;
+   private final dxh<T> c;
 
-   public dxm(long $$0) {
-      this.b($$0);
+   public dxm(dxe<T> $$0, dxh<T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.b.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.b.a($$0);
    }
 
    @Override
-   public ayk d() {
-      return new dxm(this.g());
+   public Iterable<T> b() {
+      return this.b.a();
    }
 
    @Override
-   public dxg e() {
-      return new dwu.a(this.g());
+   public <U extends T> void a(dxj<T, U> $$0, awz<U> $$1) {
+      this.b.a($$0, $$1);
    }
 
    @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   public void a(ewp $$0, Consumer<T> $$1) {
+      this.c.b($$0, awz.forConsumer($$1));
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+   public <U extends T> void a(dxj<T, U> $$0, ewp $$1, awz<U> $$2) {
+      this.c.a($$0, $$1, $$2);
    }
 }

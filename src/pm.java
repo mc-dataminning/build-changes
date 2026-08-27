@@ -1,47 +1,61 @@
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class pm<T> extends pr<T> {
-   private final Function<T, akl<T>> d;
+public class pm extends pt<dxv> {
+   @VisibleForTesting
+   static final List<aks<dxv>> d = List.of(
+      dxv.b.h(),
+      dxv.c.h(),
+      dxv.d.h(),
+      dxv.f.h(),
+      dxv.g.h(),
+      dxv.h.h(),
+      dxv.i.h(),
+      dxv.a.h(),
+      dxv.e.h(),
+      dxv.j.h(),
+      dxv.k.h(),
+      dxv.l.h(),
+      dxv.m.h(),
+      dxv.n.h(),
+      dxv.o.h(),
+      dxv.p.h(),
+      dxv.q.h(),
+      dxv.r.h(),
+      dxv.s.h(),
+      dxv.t.h(),
+      dxv.u.h(),
+      dxv.v.h(),
+      dxv.w.h(),
+      dxv.y.h(),
+      dxv.z.h(),
+      dxv.A.h(),
+      dxv.B.h(),
+      dxv.C.h(),
+      dxv.G.h(),
+      dxv.H.h(),
+      dxv.I.h(),
+      dxv.J.h(),
+      dxv.K.h(),
+      dxv.M.h(),
+      dxv.O.h(),
+      dxv.P.h(),
+      dxv.Q.h(),
+      dxv.R.h(),
+      dxv.S.h()
+   );
 
-   public pm(ln $$0, akl<? extends jk<T>> $$1, CompletableFuture<iz.a> $$2, Function<T, akl<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public pm(lq $$0, CompletableFuture<jc.a> $$1) {
+      super($$0, li.C, $$1);
    }
 
-   public pm(ln $$0, akl<? extends jk<T>> $$1, CompletableFuture<iz.a> $$2, CompletableFuture<pr.c<T>> $$3, Function<T, akl<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected pm.a<T> a(awl<T> $$0) {
-      awi $$1 = this.c($$0);
-      return new pm.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends pr.b<T> {
-      private final Function<T, akl<T>> a;
-
-      a(awi $$0, Function<T, akl<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public pm.a<T> a(awl<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final pm.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final pm.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(jc.a $$0) {
+      this.b(awk.a).a(d).a(dye.e_).a(dxv.x.h());
+      this.b(awk.c).a(dxv.L.h());
+      this.b(awk.b).a(d).a(dye.e_).a(dxv.N.h()).b(awk.c);
+      this.b(awk.d).a(dxv.A.h(), dxv.K.h(), dxv.P.h(), dxv.Q.h(), dxv.D.h(), dxv.C.h());
+      this.b(awk.e).a(dxv.H.h());
    }
 }

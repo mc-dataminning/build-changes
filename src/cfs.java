@@ -1,22 +1,22 @@
 import com.google.common.collect.ImmutableMap;
 
-public class cfs extends buh<cfq> {
+public class cfs extends bug<cfq> {
    public cfs() {
-      super(ImmutableMap.of(cbs.N, cbt.a, cbs.y, cbt.a), 200);
+      super(ImmutableMap.of(cbr.N, cbs.a, cbr.y, cbs.a), 200);
    }
 
-   protected boolean a(aqm $$0, cfq $$1) {
-      return $$1.bh();
+   protected boolean a(aqt $$0, cfq $$1) {
+      return $$1.bl();
    }
 
-   protected boolean a(aqm $$0, cfq $$1, long $$2) {
-      return $$1.bh() && $$1.dS().a(cbs.N);
+   protected boolean a(aqt $$0, cfq $$1, long $$2) {
+      return $$1.bl() && $$1.dZ().a(cbr.N);
    }
 
-   protected void b(aqm $$0, cfq $$1, long $$2) {
-      btq<cfq> $$3 = $$1.dS();
-      $$3.b(cbs.m);
-      $$3.b(cbs.n);
-      $$1.b(new brc(bre.j, 200, 0));
+   protected void b(aqt $$0, cfq $$1, long $$2) {
+      btp<cfq> $$3 = $$1.dZ();
+      $$3.b(cbr.m);
+      $$3.b(cbr.n);
+      $$1.b(new brh(brj.j, 200, 0));
    }
 }

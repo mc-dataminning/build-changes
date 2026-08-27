@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class cdx extends bsq {
+   protected cdx(bsb<? extends cdx> $$0, dca $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cdx {
+   @Override
+   public boolean a(cly $$0) {
+      return false;
+   }
 }

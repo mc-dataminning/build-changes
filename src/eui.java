@@ -1,26 +1,41 @@
-public abstract class eui {
-   protected final euk a;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   protected eui(euk $$0) {
-      this.a = $$0;
+public class eui extends eul {
+   public static final Codec<eui> a = a(eui::new);
+   public static final Codec<eui> b = b(eui::new);
+
+   eui(List<euu> $$0) {
+      super($$0, ad.a($$0));
    }
 
-   public double a(bru $$0) {
-      double $$1 = this.a.c - $$0.du();
-      double $$2 = this.a.d - $$0.dw();
-      double $$3 = this.a.e - $$0.dA();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public static eui a(List<euu> $$0) {
+      return new eui(List.copyOf($$0));
    }
 
-   public abstract eui.a c();
-
-   public euk e() {
-      return this.a;
+   @Override
+   public euv b() {
+      return euw.e;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public static eui.a a(euu.a... $$0) {
+      return new eui.a($$0);
+   }
+
+   public static class a extends eul.a {
+      public a(euu.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public eui.a and(euu.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected euu a(List<euu> $$0) {
+         return new eui($$0);
+      }
    }
 }

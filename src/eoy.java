@@ -1,77 +1,140 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class eoy {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = eoq.a();
-
-   public eoy(eov.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(eot.c).toFile();
-      this.c.mkdirs();
+public class eoy extends eos<eoy.a> {
+   protected eoy(dvl $$0) {
+      super(dcj.a, $$0, new eoy.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   public void a(clw $$0) {
-      try {
-         ud $$1 = $$0.f(new ud());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cA() + "-", ".dat");
-         uq.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cA() + ".dat");
-         Path $$5 = $$2.resolve($$0.cA() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.af().getString());
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
+   }
+
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = jt.e($$0);
+      int $$3 = jt.c($$2);
+      eoy.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(jt.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dvd $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = ir.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
+
+               $$2 = jt.a($$2, iw.b);
+            }
+         }
+
+         return $$6.a(jt.b(ir.a($$0)), jt.b(ir.b($$0)), jt.b(ir.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
-   private void a(clw $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cA() + $$1);
-      Path $$4 = $$2.resolve($$0.cA() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.af().getString(), var7);
+   @Override
+   protected void h(long $$0) {
+      int $$1 = jt.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = jt.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = jt.f($$0);
+      int $$2 = jt.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jt.a($$3, iw.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
          }
       }
    }
 
-   private Optional<ud> b(clw $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cA() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(uq.a($$2.toPath(), um.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.af().getString());
+   @Override
+   protected dvd g(long $$0) {
+      dvd $$1 = (dvd)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(jt.f($$0));
+         if ($$2 != this.d.b && jt.c($$0) < $$2) {
+            long $$3 = jt.a($$0, iw.b);
+
+            dvd $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = jt.a($$3, iw.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dvd(15) : new dvd();
          }
       }
-
-      return Optional.empty();
    }
 
-   public Optional<ud> b(clw $$0) {
-      Optional<ud> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
+   private static dvd a(dvd $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dvd($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = jt.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || jt.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends eop<eoy.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dvd> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = us.b($$1x, -1);
-         $$1x = azj.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+      public eoy.a a() {
+         return new eoy.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

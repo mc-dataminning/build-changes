@@ -1,112 +1,133 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-public class dlu extends deh implements deb {
-   public static final MapCodec<dlu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akl.a(lf.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               akl.a(lf.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               akl.a(lf.G).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               u()
-            )
-            .apply($$0, dlu::new)
-   );
-   public static final int b = 7;
-   public static final dsb c = drr.av;
-   protected static final float d = 1.0F;
-   protected static final evd[] e = new evd[]{
-      ddy.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      ddy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final akl<ddy> f;
-   private final akl<ddy> g;
-   private final akl<ctj> h;
+public class dlu extends der {
+   public static final MapCodec<dlu> c = b(dlu::new);
+   public static final dtt d = dts.r;
+   private static final Map<dbg, List<dlu.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
    @Override
-   public MapCodec<dlu> a() {
-      return a;
+   public MapCodec<? extends dlu> a() {
+      return c;
    }
 
-   protected dlu(akl<ddy> $$0, akl<ddy> $$1, akl<ctj> $$2, dra.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected dlu(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return e[$$0.c(c)];
+   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      for (iw $$5 : iw.values()) {
+         $$1.a($$2.a($$5), this);
+      }
    }
 
    @Override
-   protected boolean b(drb $$0, dad $$1, io $$2) {
-      return $$0.a(dea.cC);
-   }
-
-   @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dft.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               it $$6 = it.c.a.a($$3);
-               io $$7 = $$2.a($$6);
-               drb $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(dea.cC) || $$8.a(avw.af))) {
-                  jk<ddy> $$9 = $$1.H_().d(lf.f);
-                  Optional<ddy> $$10 = $$9.e(this.f);
-                  Optional<ddy> $$11 = $$9.e(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().n());
-                     $$1.b($$2, $$11.get().n().a(dhu.aE, $$6));
-                  }
-               }
-            }
+   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      if (!$$4) {
+         for (iw $$5 : iw.values()) {
+            $$1.a($$2.a($$5), this);
          }
       }
    }
 
    @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return new cto((daw)DataFixUtils.orElse($$0.H_().d(lf.G).e(this.h), this));
+   protected int a(dtc $$0, dbg $$1, ir $$2, iw $$3) {
+      return $$0.c(d) && iw.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(dca $$0, ir $$1, dtc $$2) {
+      return $$0.b($$1.d(), iw.a);
    }
 
    @Override
-   public boolean b(dba $$0, io $$1, drb $$2) {
-      return $$2.c(c) != 7;
-   }
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dlu.a> $$5 = h.get($$1);
 
-   @Override
-   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
-      return true;
-   }
+      while ($$5 != null && !$$5.isEmpty() && $$1.Z() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
+      }
 
-   @Override
-   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + ayd.a($$0.z, 2, 5));
-      drb $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c);
+   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.P().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   protected int b(dtc $$0, dbg $$1, ir $$2, iw $$3) {
+      return $$3 == iw.a ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean e_(dtc $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(kv.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(dca $$0, ir $$1, boolean $$2) {
+      List<dlu.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dlu.a($$1.i(), $$0.Z()));
+      }
+
+      int $$4 = 0;
+
+      for (dlu.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static class a {
+      final ir a;
+      final long b;
+
+      public a(ir $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

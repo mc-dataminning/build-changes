@@ -1,70 +1,48 @@
-public class coc extends cnr {
-   private final czz c = new czz() {
-      @Override
-      public void a(dax $$0, io $$1, int $$2) {
-         $$0.a(coc.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
-
-   public coc(bsa<? extends coc> $$0, dax $$1) {
+public class coc extends cnw {
+   public coc(bsb<?> $$0, dca $$1) {
       super($$0, $$1);
-      this.d = this.b($$1);
    }
 
-   public coc(dax $$0, double $$1, double $$2, double $$3) {
-      super(bsa.aU, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
-   }
-
-   @Override
-   protected ctj ag_() {
-      return ctr.nM;
-   }
-
-   private Runnable b(dax $$0) {
-      return $$0 instanceof aqm ? () -> this.c.a((aqm)$$0, this.dp()) : () -> this.c.a($$0, this.dp());
+   public coc(dca $$0, double $$1, double $$2, double $$3) {
+      super(bsb.as, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cnr.a v() {
-      return cnr.a.e;
+   public bqa a(cly $$0, bpz $$1) {
+      if ($$0.ga()) {
+         return bqa.d;
+      } else if (this.bX()) {
+         return bqa.d;
+      } else if (!this.dU().C) {
+         return $$0.n(this) ? bqa.b : bqa.d;
+      } else {
+         return bqa.a;
+      }
    }
 
    @Override
-   public drb x() {
-      return dea.ct.n();
+   protected cuc ah_() {
+      return cuk.pc;
    }
 
    @Override
-   protected void a(ud $$0) {
-      super.a($$0);
-      this.c.a(this.dP(), this.dp(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bX()) {
+            this.bM();
+         }
+
+         if (this.O() == 0) {
+            this.n(-this.P());
+            this.d(10);
+            this.b(50.0F);
+            this.bA();
+         }
+      }
    }
 
    @Override
-   protected void b(ud $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dP(), $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public czz B() {
-      return this.c;
-   }
-
-   @Override
-   public boolean cP() {
-      return true;
+   public cnw.a u() {
+      return cnw.a.a;
    }
 }

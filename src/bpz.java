@@ -1,18 +1,4 @@
-import javax.annotation.Nullable;
-
-public interface bpz {
-   wx af();
-
-   default boolean ag() {
-      return this.ah() != null;
-   }
-
-   default wx O_() {
-      return this.af();
-   }
-
-   @Nullable
-   default wx ah() {
-      return null;
-   }
+public enum bpz {
+   a,
+   b;
 }

@@ -1,273 +1,500 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMap;
+import it.unimi.dsi.fastutil.longs.Long2IntMaps;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aql {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 1;
-   private static final double d = 7.6293945E-6F;
-   public static final int a = 60;
-   private static final int e = 400;
-   private final aqm f;
-   private final bru g;
-   private final int h;
-   private final boolean i;
-   private final Consumer<ze<?>> j;
-   private final aib k = new aib();
-   private int l;
-   private int m;
-   private int n;
-   private euk o = euk.b;
-   private int p;
-   private int q;
-   private List<bru> r = Collections.emptyList();
-   private boolean s;
-   private boolean t;
-   @Nullable
-   private List<ajv.c<?>> u;
+public abstract class aql {
+   static final Logger a = LogUtils.getLogger();
+   static final int b = aqb.a(aqm.d);
+   private static final int c = 4;
+   final Long2ObjectMap<ObjectSet<aqu>> d = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<azd<aqx<?>>> e = new Long2ObjectOpenHashMap();
+   private final aql.a f = new aql.a();
+   private final aql.b g = new aql.b(8);
+   private final aqz h = new aqz();
+   private final aql.c i = new aql.c(32);
+   final Set<aqa> j = Sets.newHashSet();
+   final aqf k;
+   final bos<aqf.a<Runnable>> l;
+   final bos<aqf.b> m;
+   final LongSet n = new LongOpenHashSet();
+   final Executor o;
+   private long p;
+   private int q = 10;
 
-   public aql(aqm $$0, bru $$1, int $$2, boolean $$3, Consumer<ze<?>> $$4) {
-      this.f = $$0;
-      this.j = $$4;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.k.e($$1.do());
-      this.l = ayd.d($$1.dF() * 256.0F / 360.0F);
-      this.m = ayd.d($$1.dH() * 256.0F / 360.0F);
-      this.n = ayd.d($$1.cs() * 256.0F / 360.0F);
-      this.t = $$1.aE();
-      this.u = $$1.ap().c();
+   protected aql(Executor $$0, Executor $$1) {
+      bos<Runnable> $$2 = bos.a("player ticket throttler", $$1::execute);
+      aqf $$3 = new aqf(ImmutableList.of($$2), $$0, 4);
+      this.k = $$3;
+      this.l = $$3.a($$2, true);
+      this.m = $$3.a($$2);
+      this.o = $$1;
    }
 
-   public void a() {
-      List<bru> $$0 = this.g.cS();
-      if (!$$0.equals(this.r)) {
-         this.j.accept(new afb(this.g));
-         a($$0, this.r).forEach($$0x -> {
-            if ($$0x instanceof aqn $$1) {
-               $$1.d.a($$1.du(), $$1.dw(), $$1.dA(), $$1.dF(), $$1.dH());
-            }
-         });
-         this.r = $$0;
-      }
-
-      if (this.g instanceof chz $$1 && this.p % 10 == 0) {
-         cto $$2 = $$1.E();
-         if ($$2.g() instanceof ctw) {
-            eoh $$3 = $$2.a(kb.A);
-            eoj $$4 = ctw.a($$3, this.f);
-            if ($$4 != null) {
-               for (aqn $$5 : this.f.x()) {
-                  $$4.a($$5, $$2);
-                  ze<?> $$6 = $$4.a($$3, $$5);
-                  if ($$6 != null) {
-                     $$5.d.b($$6);
-                  }
-               }
-            }
-         }
-
-         this.b();
-      }
-
-      if (this.p % this.h == 0 || this.g.av || this.g.ap().a()) {
-         if (this.g.bR()) {
-            int $$7 = ayd.d(this.g.dF() * 256.0F / 360.0F);
-            int $$8 = ayd.d(this.g.dH() * 256.0F / 360.0F);
-            boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
-            if ($$9) {
-               this.j.accept(new adk.c(this.g.al(), (byte)$$7, (byte)$$8, this.g.aE()));
-               this.l = $$7;
-               this.m = $$8;
-            }
-
-            this.k.e(this.g.do());
-            this.b();
-            this.s = true;
-         } else {
-            this.q++;
-            int $$10 = ayd.d(this.g.dF() * 256.0F / 360.0F);
-            int $$11 = ayd.d(this.g.dH() * 256.0F / 360.0F);
-            euk $$12 = this.g.do();
-            boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
-            ze<?> $$14 = null;
-            boolean $$15 = $$13 || this.p % 60 == 0;
-            boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
-            boolean $$17 = false;
-            boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cmc) {
-               long $$19 = this.k.a($$12);
-               long $$20 = this.k.b($$12);
-               long $$21 = this.k.c($$12);
-               boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
-               if ($$22 || this.q > 400 || this.s || this.t != this.g.aE()) {
-                  this.t = this.g.aE();
-                  this.q = 0;
-                  $$14 = new afr(this.g);
-                  $$17 = true;
-                  $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cmc)) {
-                  if ($$15) {
-                     $$14 = new adk.a(this.g.al(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aE());
-                     $$17 = true;
-                  } else if ($$16) {
-                     $$14 = new adk.c(this.g.al(), (byte)$$10, (byte)$$11, this.g.aE());
-                     $$18 = true;
-                  }
-               } else {
-                  $$14 = new adk.b(this.g.al(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aE());
-                  $$17 = true;
-                  $$18 = true;
-               }
-            }
-
-            if ((this.i || this.g.av || this.g instanceof bso && ((bso)this.g).fE()) && this.p > 0) {
-               euk $$23 = this.g.ds();
-               double $$24 = $$23.g(this.o);
-               if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
-                  this.o = $$23;
-                  this.j.accept(new aew(this.g.al(), this.o));
-               }
-            }
-
-            if ($$14 != null) {
-               this.j.accept($$14);
-            }
-
-            this.b();
-            if ($$17) {
-               this.k.e($$12);
-            }
-
-            if ($$18) {
-               this.l = $$10;
-               this.m = $$11;
-            }
-
-            this.s = false;
-         }
-
-         int $$25 = ayd.d(this.g.cs() * 256.0F / 360.0F);
-         if (Math.abs($$25 - this.n) >= 1) {
-            this.j.accept(new aee(this.g, (byte)$$25));
-            this.n = $$25;
-         }
-
-         this.g.av = false;
-      }
-
+   protected void a() {
       this.p++;
-      if (this.g.U) {
-         this.a(new aew(this.g));
-         this.g.U = false;
-      }
-   }
+      ObjectIterator<Entry<azd<aqx<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
 
-   private static Stream<bru> a(List<bru> $$0, List<bru> $$1) {
-      return $$1.stream().filter($$1x -> !$$0.contains($$1x));
-   }
+      while ($$0.hasNext()) {
+         Entry<azd<aqx<?>>> $$1 = (Entry<azd<aqx<?>>>)$$0.next();
+         Iterator<aqx<?>> $$2 = ((azd)$$1.getValue()).iterator();
+         boolean $$3 = false;
 
-   public void a(aqn $$0) {
-      this.g.d($$0);
-      $$0.d.b(new aea(this.g.al()));
-   }
-
-   public void b(aqn $$0) {
-      List<ze<? super abq>> $$1 = new ArrayList<>();
-      this.a($$0, $$1::add);
-      $$0.d.b(new acc($$1));
-      this.g.c($$0);
-   }
-
-   public void a(aqn $$0, Consumer<ze<abq>> $$1) {
-      if (this.g.dK()) {
-         b.warn("Fetching packet for removed entity {}", this.g);
-      }
-
-      ze<abq> $$2 = this.g.dl();
-      this.n = ayd.d(this.g.cs() * 256.0F / 360.0F);
-      $$1.accept($$2);
-      if (this.u != null) {
-         $$1.accept(new aeu(this.g.al(), this.u));
-      }
-
-      boolean $$3 = this.i;
-      if (this.g instanceof bso) {
-         Collection<bts> $$4 = ((bso)this.g).eW().b();
-         if (!$$4.isEmpty()) {
-            $$1.accept(new afv(this.g.al(), $$4));
-         }
-
-         if (((bso)this.g).fE()) {
-            $$3 = true;
-         }
-      }
-
-      this.o = this.g.ds();
-      if ($$3 && !(this.g instanceof bso)) {
-         $$1.accept(new aew(this.g.al(), this.o));
-      }
-
-      if (this.g instanceof bso) {
-         List<Pair<bsb, cto>> $$5 = Lists.newArrayList();
-
-         for (bsb $$6 : bsb.values()) {
-            cto $$7 = ((bso)this.g).a($$6);
-            if (!$$7.e()) {
-               $$5.add(Pair.of($$6, $$7.s()));
+         while ($$2.hasNext()) {
+            aqx<?> $$4 = $$2.next();
+            if ($$4.b(this.p)) {
+               $$2.remove();
+               $$3 = true;
+               this.h.b($$1.getLongKey(), $$4);
             }
          }
 
-         if (!$$5.isEmpty()) {
-            $$1.accept(new aex(this.g.al(), $$5));
+         if ($$3) {
+            this.f.b($$1.getLongKey(), a((azd<aqx<?>>)$$1.getValue()), false);
          }
-      }
 
-      if (!this.g.cS().isEmpty()) {
-         $$1.accept(new afb(this.g));
-      }
-
-      if (this.g.bR()) {
-         $$1.accept(new afb(this.g.dc()));
-      }
-
-      if (this.g instanceof bsq $$8 && $$8.gc()) {
-         $$1.accept(new aev($$8, $$8.ge()));
+         if (((azd)$$1.getValue()).isEmpty()) {
+            $$0.remove();
+         }
       }
    }
 
-   private void b() {
-      ajv $$0 = this.g.ap();
-      List<ajv.c<?>> $$1 = $$0.b();
-      if ($$1 != null) {
-         this.u = $$0.c();
-         this.a(new aeu(this.g.al(), $$1));
+   private static int a(azd<aqx<?>> $$0) {
+      return !$$0.isEmpty() ? $$0.b().b() : aqb.a + 1;
+   }
+
+   protected abstract boolean a(long var1);
+
+   @Nullable
+   protected abstract aqa b(long var1);
+
+   @Nullable
+   protected abstract aqa a(long var1, int var3, @Nullable aqa var4, int var5);
+
+   public boolean a(aqc $$0) {
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      int $$1 = Integer.MAX_VALUE - this.f.a(Integer.MAX_VALUE);
+      boolean $$2 = $$1 != 0;
+      if ($$2) {
       }
 
-      if (this.g instanceof bso) {
-         Set<bts> $$2 = ((bso)this.g).eW().a();
-         if (!$$2.isEmpty()) {
-            this.a(new afv(this.g.al(), $$2));
+      if (!this.j.isEmpty()) {
+         this.j.forEach($$1x -> $$1x.a($$0, this.o));
+         this.j.clear();
+         return true;
+      } else {
+         if (!this.n.isEmpty()) {
+            LongIterator $$3 = this.n.iterator();
+
+            while ($$3.hasNext()) {
+               long $$4 = $$3.nextLong();
+               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqy.c)) {
+                  aqa $$5 = $$0.a($$4);
+                  if ($$5 == null) {
+                     throw new IllegalStateException();
+                  }
+
+                  CompletableFuture<aqd<dvi>> $$6 = $$5.b();
+                  $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(aqf.a(() -> {
+                        }, $$4, false))));
+               }
+            }
+
+            this.n.clear();
          }
 
-         $$2.clear();
+         return $$2;
       }
    }
 
-   private void a(ze<?> $$0) {
-      this.j.accept($$0);
-      if (this.g instanceof aqn) {
-         ((aqn)this.g).d.b($$0);
+   void a(long $$0, aqx<?> $$1) {
+      azd<aqx<?>> $$2 = this.g($$0);
+      int $$3 = a($$2);
+      aqx<?> $$4 = $$2.a($$1);
+      $$4.a(this.p);
+      if ($$1.b() < $$3) {
+         this.f.b($$0, $$1.b(), true);
+      }
+   }
+
+   void b(long $$0, aqx<?> $$1) {
+      azd<aqx<?>> $$2 = this.g($$0);
+      if ($$2.remove($$1)) {
+      }
+
+      if ($$2.isEmpty()) {
+         this.e.remove($$0);
+      }
+
+      this.f.b($$0, a($$2), false);
+   }
+
+   public <T> void a(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
+      this.a($$1.a(), new aqx<>($$0, $$2, $$3));
+   }
+
+   public <T> void b(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
+      aqx<T> $$4 = new aqx<>($$0, $$2, $$3);
+      this.b($$1.a(), $$4);
+   }
+
+   public <T> void c(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
+      aqx<T> $$4 = new aqx<>($$0, aqb.a(aqm.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.a($$5, $$4);
+      this.h.a($$5, $$4);
+   }
+
+   public <T> void d(aqy<T> $$0, dbh $$1, int $$2, T $$3) {
+      aqx<T> $$4 = new aqx<>($$0, aqb.a(aqm.b) - $$2, $$3);
+      long $$5 = $$1.a();
+      this.b($$5, $$4);
+      this.h.b($$5, $$4);
+   }
+
+   private azd<aqx<?>> g(long $$0) {
+      return (azd<aqx<?>>)this.e.computeIfAbsent($$0, $$0x -> azd.a(4));
+   }
+
+   protected void a(dbh $$0, boolean $$1) {
+      aqx<dbh> $$2 = new aqx<>(aqy.d, aqc.c, $$0);
+      long $$3 = $$0.a();
+      if ($$1) {
+         this.a($$3, $$2);
+         this.h.a($$3, $$2);
+      } else {
+         this.b($$3, $$2);
+         this.h.b($$3, $$2);
+      }
+   }
+
+   public void a(jt $$0, aqu $$1) {
+      dbh $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
+      this.g.b($$3, 0, true);
+      this.i.b($$3, 0, true);
+      this.h.a(aqy.c, $$2, this.g(), $$2);
+   }
+
+   public void b(jt $$0, aqu $$1) {
+      dbh $$2 = $$0.r();
+      long $$3 = $$2.a();
+      ObjectSet<aqu> $$4 = (ObjectSet<aqu>)this.d.get($$3);
+      $$4.remove($$1);
+      if ($$4.isEmpty()) {
+         this.d.remove($$3);
+         this.g.b($$3, Integer.MAX_VALUE, false);
+         this.i.b($$3, Integer.MAX_VALUE, false);
+         this.h.b(aqy.c, $$2, this.g(), $$2);
+      }
+   }
+
+   private int g() {
+      return Math.max(0, aqb.a(aqm.d) - this.q);
+   }
+
+   public boolean c(long $$0) {
+      return aqb.c(this.h.c($$0));
+   }
+
+   public boolean d(long $$0) {
+      return aqb.d(this.h.c($$0));
+   }
+
+   protected String e(long $$0) {
+      azd<aqx<?>> $$1 = (azd<aqx<?>>)this.e.get($$0);
+      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   }
+
+   protected void a(int $$0) {
+      this.i.a($$0);
+   }
+
+   public void b(int $$0) {
+      if ($$0 != this.q) {
+         this.q = $$0;
+         this.h.a(this.g());
+      }
+   }
+
+   public int b() {
+      this.g.a();
+      return this.g.a.size();
+   }
+
+   public boolean f(long $$0) {
+      this.g.a();
+      return this.g.a.containsKey($$0);
+   }
+
+   public String c() {
+      return this.k.b();
+   }
+
+   private void a(String $$0) {
+      try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+         ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<azd<aqx<?>>> $$2 = (Entry<azd<aqx<?>>>)var3.next();
+            dbh $$3 = new dbh($$2.getLongKey());
+
+            for (aqx<?> $$4 : (azd)$$2.getValue()) {
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
+            }
+         }
+      } catch (IOException var10) {
+         a.error("Failed to dump tickets to {}", $$0, var10);
+      }
+   }
+
+   @VisibleForTesting
+   aqz d() {
+      return this.h;
+   }
+
+   public void e() {
+      ImmutableSet<aqy<?>> $$0 = ImmutableSet.of(aqy.h, aqy.g, aqy.e);
+      ObjectIterator<Entry<azd<aqx<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+
+      while ($$1.hasNext()) {
+         Entry<azd<aqx<?>>> $$2 = (Entry<azd<aqx<?>>>)$$1.next();
+         Iterator<aqx<?>> $$3 = ((azd)$$2.getValue()).iterator();
+         boolean $$4 = false;
+
+         while ($$3.hasNext()) {
+            aqx<?> $$5 = $$3.next();
+            if (!$$0.contains($$5.a())) {
+               $$3.remove();
+               $$4 = true;
+               this.h.b($$2.getLongKey(), $$5);
+            }
+         }
+
+         if ($$4) {
+            this.f.b($$2.getLongKey(), a((azd<aqx<?>>)$$2.getValue()), false);
+         }
+
+         if (((azd)$$2.getValue()).isEmpty()) {
+            $$1.remove();
+         }
+      }
+   }
+
+   public boolean f() {
+      return !this.e.isEmpty();
+   }
+
+   class a extends aqg {
+      private static final int b = aqb.a + 1;
+
+      public a() {
+         super(b + 1, 16, 256);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         azd<aqx<?>> $$1 = (azd<aqx<?>>)aql.this.e.get($$0);
+         if ($$1 == null) {
+            return Integer.MAX_VALUE;
+         } else {
+            return $$1.isEmpty() ? Integer.MAX_VALUE : $$1.b().b();
+         }
+      }
+
+      @Override
+      protected int c(long $$0) {
+         if (!aql.this.a($$0)) {
+            aqa $$1 = aql.this.b($$0);
+            if ($$1 != null) {
+               return $$1.l();
+            }
+         }
+
+         return b;
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         aqa $$2 = aql.this.b($$0);
+         int $$3 = $$2 == null ? b : $$2.l();
+         if ($$3 != $$1) {
+            $$2 = aql.this.a($$0, $$1, $$2, $$3);
+            if ($$2 != null) {
+               aql.this.j.add($$2);
+            }
+         }
+      }
+
+      public int a(int $$0) {
+         return this.b($$0);
+      }
+   }
+
+   class b extends aqg {
+      protected final Long2ByteMap a = new Long2ByteOpenHashMap();
+      protected final int b;
+
+      protected b(int $$0) {
+         super($$0 + 2, 16, 256);
+         this.b = $$0;
+         this.a.defaultReturnValue((byte)($$0 + 2));
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.a.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         byte $$2;
+         if ($$1 > this.b) {
+            $$2 = this.a.remove($$0);
+         } else {
+            $$2 = this.a.put($$0, (byte)$$1);
+         }
+
+         this.a($$0, $$2, $$1);
+      }
+
+      protected void a(long $$0, int $$1, int $$2) {
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return this.d($$0) ? 0 : Integer.MAX_VALUE;
+      }
+
+      private boolean d(long $$0) {
+         ObjectSet<aqu> $$1 = (ObjectSet<aqu>)aql.this.d.get($$0);
+         return $$1 != null && !$$1.isEmpty();
+      }
+
+      public void a() {
+         this.b(Integer.MAX_VALUE);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream(new File($$0))) {
+            ObjectIterator var3 = this.a.long2ByteEntrySet().iterator();
+
+            while (var3.hasNext()) {
+               it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
+               dbh $$3 = new dbh($$2.getLongKey());
+               String $$4 = Byte.toString($$2.getByteValue());
+               $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
+            }
+         } catch (IOException var9) {
+            aql.a.error("Failed to dump chunks to {}", $$0, var9);
+         }
+      }
+   }
+
+   class c extends aql.b {
+      private int g;
+      private final Long2IntMap h = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
+      private final LongSet i = new LongOpenHashSet();
+
+      protected c(int $$0) {
+         super($$0);
+         this.g = 0;
+         this.h.defaultReturnValue($$0 + 2);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1, int $$2) {
+         this.i.add($$0);
+      }
+
+      public void a(int $$0) {
+         ObjectIterator var2 = this.a.long2ByteEntrySet().iterator();
+
+         while (var2.hasNext()) {
+            it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$1 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var2.next();
+            byte $$2 = $$1.getByteValue();
+            long $$3 = $$1.getLongKey();
+            this.a($$3, $$2, this.c($$2), $$2 <= $$0);
+         }
+
+         this.g = $$0;
+      }
+
+      private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
+         if ($$2 != $$3) {
+            aqx<?> $$4 = new aqx<>(aqy.c, aql.b, new dbh($$0));
+            if ($$3) {
+               aql.this.l.a(aqf.a(() -> aql.this.o.execute(() -> {
+                     if (this.c(this.c($$0))) {
+                        aql.this.a($$0, $$4);
+                        aql.this.n.add($$0);
+                     } else {
+                        aql.this.m.a(aqf.a(() -> {
+                        }, $$0, false));
+                     }
+                  }), $$0, () -> $$1));
+            } else {
+               aql.this.m.a(aqf.a(() -> aql.this.o.execute(() -> aql.this.b($$0, $$4)), $$0, true));
+            }
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (!this.i.isEmpty()) {
+            LongIterator $$0 = this.i.iterator();
+
+            while ($$0.hasNext()) {
+               long $$1 = $$0.nextLong();
+               int $$2 = this.h.get($$1);
+               int $$3 = this.c($$1);
+               if ($$2 != $$3) {
+                  aql.this.k.onLevelChange(new dbh($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                     if ($$1x >= this.h.defaultReturnValue()) {
+                        this.h.remove($$1);
+                     } else {
+                        this.h.put($$1, $$1x);
+                     }
+                  });
+                  this.a($$1, $$3, this.c($$2), this.c($$3));
+               }
+            }
+
+            this.i.clear();
+         }
+      }
+
+      private boolean c(int $$0) {
+         return $$0 <= this.g;
       }
    }
 }

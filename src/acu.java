@@ -1,40 +1,55 @@
-import javax.annotation.Nullable;
+public class acu implements zl<abw> {
+   public static final zc<wp, acu> a = zl.a(acu::a, acu::new);
+   public static final int b = -1;
+   public static final int c = -2;
+   private final int d;
+   private final int e;
+   private final int f;
+   private final cuh g;
 
-public class acu implements ze<abq> {
-   public static final yv<vx, acu> a = ze.a(acu::a, acu::new);
-   private final int b;
-   private final byte c;
-
-   public acu(bru $$0, byte $$1) {
-      this.b = $$0.al();
-      this.c = $$1;
+   public acu(int $$0, int $$1, int $$2, cuh $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3.r();
    }
 
-   private acu(vx $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
+   private acu(wp $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = cuh.e.decode($$0);
    }
 
-   private void a(vx $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private void a(wp $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      cuh.e.encode($$0, this.g);
    }
 
    @Override
-   public zg<acu> a() {
-      return agb.D;
+   public zn<acu> a() {
+      return agj.x;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bru a(dax $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.d;
    }
 
-   public byte b() {
-      return this.c;
+   public int e() {
+      return this.f;
+   }
+
+   public cuh f() {
+      return this.g;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

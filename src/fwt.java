@@ -1,13 +1,16 @@
-import java.util.List;
+public class fwt<T extends brv> extends fxc<T> {
+   public fwt(fys $$0) {
+      super($$0, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
+   }
 
-public enum fwt {
-   a,
-   b;
-
-   private static final List<fwt> c = List.of(values());
-   private static final jl.b d = jl.a(le.aw);
-
-   public static je<fwt> a() {
-      return new je<>(c).a(a, d);
+   public static fyy a(fyw $$0) {
+      fza $$1 = fxc.a(6, $$0);
+      fzb $$2 = $$1.a();
+      $$2.a(
+         "head",
+         fyx.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
+         fyu.a(0.0F, 12.0F, -6.0F)
+      );
+      return fyy.a($$1, 64, 32);
    }
 }

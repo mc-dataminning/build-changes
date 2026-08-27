@@ -1,127 +1,62 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class aph extends auj {
-   private static final Logger a = LogUtils.getLogger();
+public class aph implements api {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.data.block.invalid"));
+   public static final Function<String, apj.c> a = $$0 -> new apj.c() {
+         @Override
+         public api a(CommandContext<eh> $$0x) throws CommandSyntaxException {
+            ir $$1 = gd.a($$0, $$0 + "Pos");
+            dqc $$2 = ((eh)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw aph.b.create();
+            } else {
+               return new aph($$2, $$1);
+            }
+         }
 
-   public aph(api $$0, je<akv> $$1, eoy $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      apj $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.W.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
-      }
+         @Override
+         public ArgumentBuilder<eh, ?> a(ArgumentBuilder<eh, ?> $$0x, Function<ArgumentBuilder<eh, ?>, ArgumentBuilder<eh, ?>> $$1) {
+            return $$0.then(ei.a("block").then($$1.apply(ei.a($$0 + "Pos", gd.a()))));
+         }
+      };
+   private final dqc c;
+   private final ir d;
+
+   public aph(dqc $$0, ir $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
+   public void a(uk $$0) {
+      dtc $$1 = this.c.i().a_(this.d);
+      this.c.a($$0, this.c.i().I_());
+      this.c.e();
+      this.c.i().a(this.d, $$1, $$1, 3);
    }
 
    @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
+   public uk a() {
+      return this.c.b(this.c.i().I_());
    }
 
    @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
+   public xe b() {
+      return xe.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
    @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save ip banlist: ", var2);
-      }
-   }
-
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save user banlist: ", var2);
-      }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save white-list: ", var2);
-      }
+   public xe a(vh $$0) {
+      return xe.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), uz.c($$0));
    }
 
    @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public api b() {
-      return (api)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+   public xe a(ez.g $$0, double $$1, int $$2) {
+      return xe.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

@@ -1,105 +1,106 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public interface dwm {
-   Codec<dwm> b = dwn.b;
-   Codec<ix<dwm>> c = aki.a(lf.aD, b);
-   Codec<dwm> d = c.xmap(dwn.j::new, $$0 -> (ix)($$0 instanceof dwn.j $$1 ? $$1.j() : new ix.a<>($$0)));
+public final class dwm implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<dwl> c = new Long2ObjectLinkedOpenHashMap();
+   private final dwo d;
+   private final Path e;
+   private final boolean f;
 
-   double a(dwm.b var1);
-
-   void a(double[] var1, dwm.a var2);
-
-   dwm a(dwm.f var1);
-
-   double a();
-
-   double b();
-
-   axx<? extends dwm> c();
-
-   default dwm a(double $$0, double $$1) {
-      return new dwn.g(this, $$0, $$1);
+   dwm(dwo $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
    }
 
-   default dwm d() {
-      return dwn.a(this, dwn.k.a.a);
-   }
+   private dwl b(dbh $$0) throws IOException {
+      long $$1 = dbh.c($$0.h(), $$0.i());
+      dwl $$2 = (dwl)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((dwl)this.c.removeLast()).close();
+         }
 
-   default dwm e() {
-      return dwn.a(this, dwn.k.a.b);
-   }
-
-   default dwm f() {
-      return dwn.a(this, dwn.k.a.c);
-   }
-
-   default dwm g() {
-      return dwn.a(this, dwn.k.a.d);
-   }
-
-   default dwm h() {
-      return dwn.a(this, dwn.k.a.e);
-   }
-
-   default dwm i() {
-      return dwn.a(this, dwn.k.a.f);
-   }
-
-   public interface a {
-      dwm.b a(int var1);
-
-      void a(double[] var1, dwm var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dxv d() {
-         return dxv.a();
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         dwl $$4 = new dwl(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
    }
 
-   public static record c(ix<elx.a> b, @Nullable elx c) {
-      public static final Codec<dwm.c> a = elx.a.b.xmap($$0 -> new dwm.c($$0, null), dwm.c::b);
+   @Nullable
+   public uk a(dbh $$0) throws IOException {
+      dwl $$1 = this.b($$0);
 
-      public c(ix<elx.a> $$0) {
-         this($$0, null);
+      uk var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = ux.a($$2);
       }
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
+      return var4;
+   }
 
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
+   public void a(dbh $$0, ve $$1) throws IOException {
+      dwl $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            ux.a((DataInput)$$3, $$1, ut.a());
+         }
       }
    }
 
-   public interface d extends dwm {
-      @Override
-      default void a(double[] $$0, dwm.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dwm a(dwm.f $$0) {
-         return $$0.apply(this);
+   protected void a(dbh $$0, @Nullable uk $$1) throws IOException {
+      dwl $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
+      } else {
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            ux.a($$1, (DataOutput)$$3);
+         }
       }
    }
 
-   public static record e(int a, int b, int c) implements dwm.b {
+   @Override
+   public void close() throws IOException {
+      axt<IOException> $$0 = new axt<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         dwl $$1 = (dwl)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
    }
 
-   public interface f {
-      dwm apply(dwm var1);
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
 
-      default dwm.c a(dwm.c $$0) {
-         return $$0;
+      while (var1.hasNext()) {
+         dwl $$0 = (dwl)var1.next();
+         $$0.b();
       }
    }
 }

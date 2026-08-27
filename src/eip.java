@@ -1,129 +1,88 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class eip extends eiq {
-   private static final Codec<Either<akm, elj>> a = Codec.of(eip::a, akm.a.map(Either::left));
-   public static final MapCodec<eip> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, eip::new));
-   protected final Either<akm, elj> c;
-   protected final ix<elh> d;
+@Deprecated
+public class eip extends eja {
+   public static final Codec<eip> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bpf.b(0, 256).fieldOf("count").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("start_offset").forGetter($$0x -> $$0x.d))
+            .apply($$0, eip::new)
+   );
+   private final bpf c;
+   private final int d;
 
-   private static <T> DataResult<T> a(Either<akm, elj> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<akm> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : akm.a.encode($$3.get(), $$1, $$2);
-   }
-
-   protected static <E extends eip> RecordCodecBuilder<E, ix<elh>> b() {
-      return eli.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
-
-   protected static <E extends eip> RecordCodecBuilder<E, Either<akm, elj>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected eip(Either<akm, elj> $$0, ix<elh> $$1, eis.a $$2) {
-      super($$2);
-      this.c = $$0;
+   private eip(bpf $$0, int $$1) {
       this.d = $$1;
+      this.c = $$0;
+   }
+
+   public static eip a(bpf $$0) {
+      return new eip($$0, 0);
+   }
+
+   public static eip a(int $$0) {
+      return a(bpc.a($$0));
+   }
+
+   public static eip a(int $$0, int $$1) {
+      return new eip(bpc.a($$0), $$1);
    }
 
    @Override
-   public js a(elk $$0, dkl $$1) {
-      elj $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
+   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
+      Builder<ir> $$3 = Stream.builder();
+      int $$4 = 0;
 
-   private elj a(elk $$0) {
-      return (elj)this.c.map($$0::a, Function.identity());
-   }
+      boolean $$5;
+      do {
+         $$5 = false;
 
-   public List<elj.c> a(elk $$0, io $$1, dkl $$2, boolean $$3) {
-      elj $$4 = this.a($$0);
-      List<elj.c> $$5 = $$4.a($$1, new elf().a($$2), dea.pa, $$3);
-      List<elj.c> $$6 = Lists.newArrayList();
-
-      for (elj.c $$7 : $$5) {
-         ud $$8 = $$7.c();
-         if ($$8 != null) {
-            dsl $$9 = dsl.valueOf($$8.l("mode"));
-            if ($$9 == dsl.d) {
-               $$6.add($$7);
+         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
+            int $$7 = $$1.a(16) + $$2.u();
+            int $$8 = $$1.a(16) + $$2.w();
+            int $$9 = $$0.a(dyu.a.e, $$7, $$8) + this.d;
+            int $$10 = a($$0, $$7, $$9, $$8, $$4);
+            if ($$10 != Integer.MAX_VALUE) {
+               $$3.add(new ir($$7, $$10, $$8));
+               $$5 = true;
             }
          }
-      }
 
-      return $$6;
+         $$4++;
+      } while ($$5);
+
+      return $$3.build();
    }
 
    @Override
-   public List<elj.c> a(elk $$0, io $$1, dkl $$2, ayk $$3) {
-      elj $$4 = this.a($$0);
-      ObjectArrayList<elj.c> $$5 = $$4.a($$1, new elf().a($$2), dea.pb, true);
-      ac.c($$5, $$3);
-      a($$5);
-      return $$5;
+   public ejb<?> b() {
+      return ejb.i;
    }
 
-   @VisibleForTesting
-   static void a(List<elj.c> $$0) {
-      $$0.sort(Comparator.<elj.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
-   }
+   private static int a(eiy $$0, int $$1, int $$2, int $$3, int $$4) {
+      ir.a $$5 = new ir.a($$1, $$2, $$3);
+      int $$6 = 0;
+      dtc $$7 = $$0.a($$5);
 
-   @Override
-   public ehb a(elk $$0, io $$1, dkl $$2) {
-      elj $$3 = this.a($$0);
-      return $$3.b(new elf().a($$2), $$1);
-   }
+      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
+         $$5.q($$8 - 1);
+         dtc $$9 = $$0.a($$5);
+         if (!a($$9) && a($$7) && !$$9.a(dfe.ak)) {
+            if ($$6 == $$4) {
+               return $$5.v() + 1;
+            }
 
-   @Override
-   public boolean a(elk $$0, dbs $$1, dbq $$2, dsy $$3, io $$4, io $$5, dkl $$6, ehb $$7, ayk $$8, boolean $$9) {
-      elj $$10 = this.a($$0);
-      elf $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (elj.c $$13 : elj.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
+            $$6++;
          }
 
-         return true;
-      }
-   }
-
-   protected elf a(dkl $$0, ehb $$1, boolean $$2) {
-      elf $$3 = new elf();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(ekl.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(ekr.b);
+         $$7 = $$9;
       }
 
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
+      return Integer.MAX_VALUE;
    }
 
-   @Override
-   public eir<?> a() {
-      return eir.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   private static boolean a(dtc $$0) {
+      return $$0.i() || $$0.a(dfe.al) || $$0.a(dfe.am);
    }
 }

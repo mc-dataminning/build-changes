@@ -1,20 +1,28 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
 
-public class euz extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+public record euz(ci b) implements euu {
+   public static final Codec<euz> a = ci.a.xmap(euz::new, euz::c);
 
-   public euz(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Override
+   public euv b() {
+      return euw.u;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   public boolean a(erp $$0) {
+      bqt $$1 = $$0.c(eug.c);
+      if ($$1 != null) {
+         brv $$2 = $$1.d();
+         return $$2 != null && $$2 instanceof bso $$3 ? this.b.a($$3.fg()) : false;
+      } else {
+         return false;
+      }
    }
 
-   public int size() {
-      return this.a.size();
+   public static euu.a a(dbz $$0) {
+      return () -> new euz(ci.a.a().a($$0).b());
+   }
+
+   public ci c() {
+      return this.b;
    }
 }

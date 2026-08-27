@@ -1,61 +1,71 @@
-public class cyf extends cxm {
-   public cyf(cxk $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cyf {
+   @Nullable
+   private final cly a;
+   private final bpz b;
+   private final ewq c;
+   private final dca d;
+   private final cuh e;
+
+   public cyf(cly $$0, bpz $$1, ewq $$2) {
+      this($$0.dU(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cpj $$0, dax $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (ddy.a($$5.g()) instanceof dkx) {
-               $$2++;
-            } else {
-               if (!($$5.g() instanceof csi)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 == 1 && $$3 == 1;
+   protected cyf(dca $$0, @Nullable cly $$1, bpz $$2, cuh $$3, ewq $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cto a(cpj $$0, iz.a $$1) {
-      cto $$2 = cto.i;
-      csi $$3 = (csi)ctr.ri;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            ctj $$6 = $$5.g();
-            if (ddy.a($$6) instanceof dkx) {
-               $$2 = $$5;
-            } else if ($$6 instanceof csi) {
-               $$3 = (csi)$$6;
-            }
-         }
-      }
-
-      ddy $$7 = dkx.a($$3.c());
-      return $$2.a($$7, 1);
+   protected final ewq j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public ir a() {
+      return this.c.a();
    }
 
-   @Override
-   public cxy<?> ao_() {
-      return cxy.m;
+   public iw k() {
+      return this.c.b();
+   }
+
+   public ewu l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cuh n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cly o() {
+      return this.a;
+   }
+
+   public bpz p() {
+      return this.b;
+   }
+
+   public dca q() {
+      return this.d;
+   }
+
+   public iw g() {
+      return this.a == null ? iw.c : this.a.cM();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.ga();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dK();
    }
 }

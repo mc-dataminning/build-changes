@@ -1,132 +1,163 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class flx extends fly {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final wx c = wx.c("recover_world.title").a(n.r);
-   private static final wx d = wx.c("recover_world.bug_tracker");
-   private static final wx r = wx.c("recover_world.restore");
-   private static final wx s = wx.c("recover_world.no_fallback");
-   private static final wx u = wx.c("recover_world.done.title");
-   private static final wx v = wx.c("recover_world.done.success");
-   private static final wx w = wx.c("recover_world.done.failed");
-   private static final wx x = wx.c("recover_world.issue.none").a(n.k);
-   private static final wx y = wx.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer z;
-   private final fjq A = fjq.d().a(8);
-   private final wx B;
-   private final fgt C;
-   private final fgt D;
-   private final eov.c E;
+public class flx extends flv {
+   private final flx.b c;
+   private final List<flx.a> d = new ArrayList<>();
+   private final fmd e = fmd.i();
 
-   public flx(fdz $$0, BooleanConsumer $$1, eov.c $$2) {
-      super(c);
-      this.z = $$1;
-      this.B = wx.a("recover_world.message", wx.b($$2.f()).a(n.h));
-      this.C = new fgt(this.B, $$0.h);
-      this.E = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      wx $$5 = wx.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.D = new fgt($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.A.c().b();
-      this.A.a(new fhg(this.l, $$0.h));
-      this.A.a(this.C.b(true));
-      this.A.a(this.D);
-      fjq $$7 = fjq.e().a(5);
-      $$7.a(ffz.a(d, fkp.b(this, "https://aka.ms/snapshotbugs?ref=game")).b(120, 20).a());
-      $$7.a(ffz.a(r, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fhk.a(s)).a()).j = $$6;
-      this.A.a($$7);
-      this.A.a(ffz.a(ww.k, $$0x -> this.d()).b(120, 20).a());
-      this.A.a(this::c);
+   public flx(int $$0, int $$1, flx.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   private void a(fdz $$0) {
-      Exception $$1 = this.a(this.E, false);
-      Exception $$2 = this.a(this.E, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fle(wx.c("recover_world.restoring")));
-         fqq.a(this.E);
-         if (this.E.n()) {
-            $$0.a(new fkq(this.z, u, v, ww.j, ww.k));
-         } else {
-            $$0.a(new fkk(() -> this.z.accept(false), u, w));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fkk(() -> this.z.accept(false), u, w));
-      }
+   public flx(int $$0, int $$1, int $$2, int $$3, flx.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
-   private wx a(eov.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return wx.i();
-      } else {
-         xl $$3 = wx.i();
-         Instant $$4 = $$0.a($$1);
-         xl $$5 = $$4 != null ? wx.b(fqz.a.format($$4)) : wx.c("recover_world.state_entry.unknown");
-         $$3.b(wx.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(x);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(y);
-         } else if ($$2 instanceof uu) {
-            $$3.b(wx.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(wx.b($$2.toString()).a(n.m));
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (flx.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
          }
 
-         return $$3;
-      }
-   }
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<flx.a> $$5 = this.d.iterator();
+         flx.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
 
-   @Nullable
-   private Exception a(eov.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               flx.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
          }
 
-         return null;
-      } catch (uo | uu | IOException var4) {
-         return var4;
+         int $$9 = this.c.d(this);
+
+         for (flx.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
       }
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.c();
+   public void b(Consumer<fmc> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   protected void c() {
-      this.D.d(this.n - 50);
-      this.C.d(this.n - 50);
-      this.A.a();
-      fjk.a(this.A, this.G());
+   public fmd b() {
+      return this.e.g();
    }
 
-   @Override
-   public wx i() {
-      return ww.a(super.i(), this.B);
+   public fmd c() {
+      return this.e;
    }
 
-   @Override
-   public void d() {
-      this.z.accept(false);
+   public <T extends fmc> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fmc> T a(T $$0, fmd $$1) {
+      this.d.add(new flx.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fmc> T a(T $$0, Consumer<fmd> $$1) {
+      return this.a($$0, ad.a(this.b(), $$1));
+   }
+
+   static class a extends flv.a {
+      protected a(fmc $$0, fmd $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fmc $$0) {
+         return switch (this) {
+            case a -> $$0.x();
+            case b -> $$0.v();
+         };
+      }
+
+      int a(flx.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fmc $$0) {
+         return switch (this) {
+            case a -> $$0.v();
+            case b -> $$0.x();
+         };
+      }
+
+      int b(flx.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(flx.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(flx.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fmc $$0) {
+         return switch (this) {
+            case a -> $$0.C();
+            case b -> $$0.D();
+         };
+      }
+
+      int d(fmc $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.C();
+         };
+      }
    }
 }

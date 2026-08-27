@@ -1,31 +1,22 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bya<E extends cla> extends buh<E> {
+public class bya<E extends clc> extends bug<E> {
    public bya(int $$0) {
-      super(ImmutableMap.of(cbs.o, cbt.b, cbs.m, cbt.b), $$0);
+      super(ImmutableMap.of(cbr.aC, cbs.a, cbr.m, cbs.b, cbr.n, cbs.c), $$0);
    }
 
-   protected boolean a(aqm $$0, E $$1, long $$2) {
-      return $$1.dL() == null;
+   protected boolean a(aqt $$0, E $$1, long $$2) {
+      return true;
    }
 
-   protected boolean a(aqm $$0, E $$1) {
-      return $$1.aE() || $$1.be() || $$1.bs();
+   protected void b(aqt $$0, E $$1, long $$2) {
+      $$1.b(bsz.n);
+      $$1.a(avo.Cg, 5.0F, 1.0F);
    }
 
-   protected void b(aqm $$0, E $$1, long $$2) {
-      if ($$1.aE()) {
-         $$1.b(bta.o);
-         $$1.a(avh.BH, 5.0F, 1.0F);
-      } else {
-         $$1.a(avh.BC, 5.0F, 1.0F);
-         this.c($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(aqm $$0, E $$1, long $$2) {
-      if ($$1.dL() == null) {
-         $$1.a(bru.c.b);
+   protected void c(aqt $$0, E $$1, long $$2) {
+      if ($$1.c(bsz.n)) {
+         $$1.b(bsz.a);
       }
    }
 }

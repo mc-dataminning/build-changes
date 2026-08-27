@@ -1,49 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bul extends buh<clj> {
-   @Nullable
-   private cnh c;
-
-   public bul(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
-   }
-
-   protected boolean a(aqm $$0, clj $$1) {
-      io $$2 = $$1.dp();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && bvq.a($$0, $$1, $$2);
-   }
-
-   protected boolean a(aqm $$0, clj $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(aqm $$0, clj $$1, long $$2) {
-      this.c = null;
-      $$1.dS().a($$0.Z(), $$0.Y());
-   }
-
-   protected void c(aqm $$0, clj $$1, long $$2) {
-      ayk $$3 = $$1.el();
-      if ($$3.a(100) == 0) {
-         $$1.gu();
-      }
-
-      if ($$3.a(200) == 0 && bvq.a($$0, $$1, $$1.dp())) {
-         csh $$4 = ac.a(csh.values(), $$3);
-         int $$5 = $$3.a(3);
-         cto $$6 = this.a($$4, $$5);
-         cmj $$7 = new cmj($$1.dP(), $$1, $$1.du(), $$1.dy(), $$1.dA(), $$6);
-         $$1.dP().b($$7);
-      }
-   }
-
-   private cto a(csh $$0, int $$1) {
-      cto $$2 = new cto(ctr.uu);
-      $$2.b(kb.T, new cwi((byte)$$1, List.of(new cwh(cwh.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+public class bul {
+   public static <E extends bso, T> buh<E> a(Predicate<E> $$0, cbr<? extends T> $$1, cbr<T> $$2, bpl $$3) {
+      return bxt.a(
+         (Function<bxt.b<E>, ? extends App<bxt.c<E>, bxw<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
+                     return true;
+                  }
+               }))
+      );
    }
 }

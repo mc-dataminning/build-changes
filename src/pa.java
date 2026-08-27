@@ -1,122 +1,100 @@
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import com.google.common.hash.HashingOutputStream;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class pa implements ll {
+public class pa implements lo {
    private static final Logger d = LogUtils.getLogger();
-   private final ln e;
-   private final Iterable<Path> f;
-   private final List<pa.a> g = Lists.newArrayList();
+   private final Iterable<Path> e;
+   private final lq f;
 
-   public pa(ln $$0, Iterable<Path> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public pa a(pa.a $$0) {
-      this.g.add($$0);
-      return this;
-   }
-
-   private ud a(String $$0, ud $$1) {
-      ud $$2 = $$1;
-
-      for (pa.a $$3 : this.g) {
-         $$2 = $$3.apply($$0, $$2);
-      }
-
-      return $$2;
+   public pa(lq $$0, Collection<Path> $$1) {
+      this.e = $$1;
+      this.f = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(lj $$0) {
-      Path $$1 = this.e.a();
-      List<CompletableFuture<?>> $$2 = Lists.newArrayList();
+   public CompletableFuture<?> a(lm $$0) {
+      Path $$1 = this.f.a();
+      List<CompletableFuture<?>> $$2 = new ArrayList<>();
 
-      for (Path $$3 : this.f) {
-         $$2.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
-            try {
-               CompletableFuture var5x;
-               try (Stream<Path> $$3x = Files.walk($$3)) {
-                  var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
-                        pa.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
-                        this.a($$0, $$4, $$1);
-                     }, ac.g())).toArray(CompletableFuture[]::new));
-               }
+      for (Path $$3 : this.e) {
+         $$2.add(
+            CompletableFuture.<CompletableFuture>supplyAsync(
+                  () -> {
+                     try {
+                        CompletableFuture var4;
+                        try (Stream<Path> $$3x = Files.walk($$3)) {
+                           var4 = CompletableFuture.allOf(
+                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ad.g()))
+                                 .toArray(CompletableFuture[]::new)
+                           );
+                        }
 
-               return var5x;
-            } catch (Exception var9) {
-               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
-            }
-         }, ac.g()).thenCompose($$0x -> $$0x));
+                        return var4;
+                     } catch (IOException var8) {
+                        d.error("Failed to read structure input directory", var8);
+                        return CompletableFuture.completedFuture(null);
+                     }
+                  },
+                  ad.f()
+               )
+               .thenCompose($$0x -> $$0x)
+         );
       }
 
-      return ac.e($$2);
+      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
    }
 
    @Override
    public final String a() {
-      return "SNBT -> NBT";
+      return "NBT -> SNBT";
    }
 
-   private String a(Path $$0, Path $$1) {
+   private static String a(Path $$0, Path $$1) {
       String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".snbt".length());
+      return $$2.substring(0, $$2.length() - ".nbt".length());
    }
 
-   private pa.c a(Path $$0, String $$1) {
+   @Nullable
+   public static Path a(lm $$0, Path $$1, String $$2, Path $$3) {
       try {
-         pa.c var10;
-         try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
-            String $$3 = IOUtils.toString($$2);
-            ud $$4 = this.a($$1, us.a($$3));
-            ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
-            HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
-            uq.a($$4, $$6);
-            byte[] $$7 = $$5.toByteArray();
-            HashCode $$8 = $$6.hash();
-            var10 = new pa.c($$1, $$7, $$8);
+         Path var7;
+         try (
+            InputStream $$4 = Files.newInputStream($$1);
+            InputStream $$5 = new axv($$4);
+         ) {
+            Path $$6 = $$3.resolve($$2 + ".snbt");
+            a($$0, $$6, uz.a(ux.a($$5, ut.a())));
+            d.info("Converted {} from NBT to SNBT", $$2);
+            var7 = $$6;
          }
 
-         return var10;
-      } catch (Throwable var13) {
-         throw new pa.b($$0, var13);
+         return var7;
+      } catch (IOException var12) {
+         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
+         return null;
       }
    }
 
-   private void a(lj $$0, pa.c $$1, Path $$2) {
-      Path $$3 = $$2.resolve($$1.a + ".nbt");
-
-      try {
-         $$0.writeIfNeeded($$3, $$1.b, $$1.c);
-      } catch (IOException var6) {
-         d.error("Couldn't write structure {} at {}", new Object[]{$$1.a, $$3, var6});
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ud apply(String var1, ud var2);
-   }
-
-   static class b extends RuntimeException {
-      public b(Path $$0, Throwable $$1) {
-         super($$0.toAbsolutePath().toString(), $$1);
-      }
-   }
-
-   static record c(String a, byte[] b, HashCode c) {
+   public static void a(lm $$0, Path $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
+      $$4.write(10);
+      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

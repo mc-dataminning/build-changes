@@ -1,21 +1,24 @@
-public class gmg<T extends bru & bte, M extends fsw<T>> extends gmf<T, M> {
-   private final akm a;
-   private final M b;
+public class gmg extends glz<cjf, fws<cjf>> {
+   private static final akt a = new akt("textures/entity/phantom.png");
 
-   public gmg(gjp<T, M> $$0, M $$1, akm $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gmg(gkq.a $$0) {
+      super($$0, new fws<>($$0.a(fyr.aL)), 0.75F);
+      this.a(new gpf<>(this));
    }
 
-   @Override
-   public void a(eys $$0, gck $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         eyw $$10 = $$1.getBuffer(gcs.e(this.a));
-         this.b.a($$0, $$10, $$2, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public akt a(cjf $$0) {
+      return a;
+   }
+
+   protected void a(cjf $$0, fbc $$1, float $$2) {
+      int $$3 = $$0.r();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cjf $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dM()));
    }
 }

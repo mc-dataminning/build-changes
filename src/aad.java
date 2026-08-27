@@ -1,21 +1,20 @@
-public record aad(String c) implements aaf {
-   public static final yv<vx, aad> a = aaf.a(aad::a, aad::new);
-   public static final aaf.b<aad> b = aaf.a("brand");
+public record aad(aqi b) implements zl<aac> {
+   public static final zc<we, aad> a = zl.a(aad::a, aad::new);
 
-   private aad(vx $$0) {
-      this($$0.p());
+   private aad(we $$0) {
+      this(new aqi($$0));
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.c);
+   private void a(we $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public aaf.b<aad> a() {
-      return b;
+   public zn<aad> a() {
+      return aab.j;
    }
 
-   public String b() {
-      return this.c;
+   public void a(aac $$0) {
+      $$0.a(this);
    }
 }

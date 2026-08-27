@@ -1,205 +1,332 @@
-import java.util.Spliterators.AbstractSpliterator;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class dae {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final dae b = new dae(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+   private static final float a = 0.15F;
 
-   public dae(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static int a(dad $$0, cuh $$1) {
+      dai $$2 = $$1.a(ke.i, dai.a);
+      return $$2.a($$0);
    }
 
-   public dae(io $$0) {
-      this.e = jq.a($$0.u());
-      this.f = jq.a($$0.w());
-   }
-
-   public dae(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
-   }
-
-   public static dae a(int $$0, int $$1) {
-      return new dae($$0 << 5, $$1 << 5);
-   }
-
-   public static dae b(int $$0, int $$1) {
-      return new dae(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.e, this.f);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(io $$0) {
-      return c(jq.a($$0.u()), jq.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public static dai a(cuh $$0, Consumer<dai.a> $$1) {
+      kd<dai> $$2 = l($$0);
+      dai $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         return dai.a;
       } else {
-         return !($$0 instanceof dae $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         dai.a $$4 = new dai.a($$3);
+         $$1.accept($$4);
+         dai $$5 = $$4.b();
+         $$0.b($$2, $$5);
+         return $$5;
       }
    }
 
-   public int b() {
-      return this.a(8);
+   public static boolean a(cuh $$0) {
+      return $$0.b(l($$0));
    }
 
-   public int c() {
-      return this.b(8);
+   public static void a(cuh $$0, dai $$1) {
+      $$0.b(l($$0), $$1);
    }
 
-   public int d() {
-      return jq.c(this.e);
+   public static dai b(cuh $$0) {
+      return $$0.a(l($$0), dai.a);
    }
 
-   public int e() {
-      return jq.c(this.f);
+   private static kd<dai> l(cuh $$0) {
+      return $$0.a(cuk.wh) ? ke.w : ke.i;
    }
 
-   public int f() {
-      return this.a(15);
+   public static boolean c(cuh $$0) {
+      return !$$0.a(ke.i, dai.a).d() || !$$0.a(ke.w, dai.a).d();
    }
 
-   public int g() {
-      return this.b(15);
+   public static float a(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 
-   public int h() {
-      return this.e >> 5;
+   private static void a(dae.a $$0, cuh $$1) {
+      dai $$2 = $$1.a(ke.i, dai.a);
+
+      for (Entry<ja<dad>> $$3 : $$2.b()) {
+         $$0.accept((dad)((ja)$$3.getKey()).a(), $$3.getIntValue());
+      }
    }
 
-   public int i() {
-      return this.f >> 5;
+   private static void a(dae.a $$0, Iterable<cuh> $$1) {
+      for (cuh $$2 : $$1) {
+         a($$0, $$2);
+      }
    }
 
-   public int j() {
-      return this.e & 31;
+   public static int a(Iterable<cuh> $$0, bqt $$1) {
+      MutableInt $$2 = new MutableInt();
+      a(($$2x, $$3) -> $$2.add($$2x.a($$3, $$1)), $$0);
+      return $$2.intValue();
    }
 
-   public int k() {
-      return this.f & 31;
+   public static float a(cuh $$0, @Nullable bsb<?> $$1) {
+      MutableFloat $$2 = new MutableFloat();
+      a(($$2x, $$3) -> $$2.add($$2x.a($$3, $$1)), $$0);
+      return $$2.floatValue();
    }
 
-   public io a(int $$0, int $$1, int $$2) {
-      return new io(this.a($$0), $$1, this.b($$2));
+   public static float a(bso $$0) {
+      int $$1 = a(dag.t, $$0);
+      return $$1 > 0 ? a($$1) : 0.0F;
    }
 
-   public int a(int $$0) {
-      return jq.a(this.e, $$0);
+   public static void a(bso $$0, brv $$1) {
+      dae.a $$2 = ($$2x, $$3) -> $$2x.b($$0, $$1, $$3);
+      if ($$0 != null) {
+         a($$2, $$0.fl());
+      }
+
+      if ($$1 instanceof cly) {
+         a($$2, $$0.fg());
+      }
    }
 
-   public int b(int $$0) {
-      return jq.a(this.f, $$0);
+   public static void b(bso $$0, brv $$1) {
+      dae.a $$2 = ($$2x, $$3) -> $$2x.a($$0, $$1, $$3);
+      if ($$0 != null) {
+         a($$2, $$0.fl());
+      }
+
+      if ($$0 instanceof cly) {
+         a($$2, $$0.fg());
+      }
    }
 
-   public io c(int $$0) {
-      return new io(this.b(), $$0, this.c());
+   public static int a(dad $$0, bso $$1) {
+      Iterable<cuh> $$2 = $$0.a($$1).values();
+      if ($$2 == null) {
+         return 0;
+      } else {
+         int $$3 = 0;
+
+         for (cuh $$4 : $$2) {
+            int $$5 = a($$0, $$4);
+            if ($$5 > $$3) {
+               $$3 = $$5;
+            }
+         }
+
+         return $$3;
+      }
    }
 
-   @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
+   public static float b(bso $$0) {
+      return (float)a(dag.m, $$0) * 0.15F;
    }
 
-   public io l() {
-      return new io(this.d(), 0, this.e());
+   public static int c(bso $$0) {
+      return a(dag.q, $$0);
    }
 
-   public int a(dae $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   public static int d(bso $$0) {
+      return a(dag.r, $$0);
    }
 
-   public int b(dae $$0) {
-      return this.e($$0.e, $$0.f);
+   public static int e(bso $$0) {
+      return a(dag.f, $$0);
    }
 
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
+   public static int f(bso $$0) {
+      return a(dag.i, $$0);
    }
 
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
+   public static int g(bso $$0) {
+      return a(dag.u, $$0);
    }
 
-   public static Stream<dae> a(dae $$0, int $$1) {
-      return a(new dae($$0.e - $$1, $$0.f - $$1), new dae($$0.e + $$1, $$0.f + $$1));
+   public static int d(cuh $$0) {
+      return a(dag.D, $$0);
    }
 
-   public static Stream<dae> a(final dae $$0, final dae $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<dae>((long)($$2 * $$3), 64) {
-         @Nullable
-         private dae e;
+   public static int e(cuh $$0) {
+      return a(dag.E, $$0);
+   }
 
-         @Override
-         public boolean tryAdvance(Consumer<? super dae> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
+   public static int h(bso $$0) {
+      return a(dag.s, $$0);
+   }
 
-                  this.e = new dae($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new dae($$1 + $$4, $$2);
+   public static boolean i(bso $$0) {
+      return a(dag.g, $$0) > 0;
+   }
+
+   public static boolean j(bso $$0) {
+      return a(dag.j, $$0) > 0;
+   }
+
+   public static boolean k(bso $$0) {
+      return a(dag.l, $$0) > 0;
+   }
+
+   public static boolean f(cuh $$0) {
+      return a(dag.k, $$0) > 0;
+   }
+
+   public static boolean g(cuh $$0) {
+      return a(dag.N, $$0) > 0;
+   }
+
+   public static boolean h(cuh $$0) {
+      return a(dag.v, $$0) > 0;
+   }
+
+   public static int i(cuh $$0) {
+      return a(dag.F, $$0);
+   }
+
+   public static int j(cuh $$0) {
+      return a(dag.H, $$0);
+   }
+
+   public static boolean k(cuh $$0) {
+      return a(dag.I, $$0) > 0;
+   }
+
+   @Nullable
+   public static java.util.Map.Entry<bsc, cuh> b(dad $$0, bso $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   @Nullable
+   public static java.util.Map.Entry<bsc, cuh> a(dad $$0, bso $$1, Predicate<cuh> $$2) {
+      Map<bsc, cuh> $$3 = $$0.a($$1);
+      if ($$3.isEmpty()) {
+         return null;
+      } else {
+         List<java.util.Map.Entry<bsc, cuh>> $$4 = Lists.newArrayList();
+
+         for (java.util.Map.Entry<bsc, cuh> $$5 : $$3.entrySet()) {
+            cuh $$6 = $$5.getValue();
+            if (!$$6.d() && a($$0, $$6) > 0 && $$2.test($$6)) {
+               $$4.add($$5);
+            }
+         }
+
+         return $$4.isEmpty() ? null : $$4.get($$1.et().a($$4.size()));
+      }
+   }
+
+   public static int a(ayt $$0, int $$1, int $$2, cuh $$3) {
+      cuc $$4 = $$3.f();
+      int $$5 = $$4.g();
+      if ($$5 <= 0) {
+         return 0;
+      } else {
+         if ($$2 > 15) {
+            $$2 = 15;
+         }
+
+         int $$6 = $$0.a(8) + 1 + ($$2 >> 1) + $$0.a($$2 + 1);
+         if ($$1 == 0) {
+            return Math.max($$6 / 3, 1);
+         } else {
+            return $$1 == 1 ? $$6 * 2 / 3 + 1 : Math.max($$6, $$2 * 2);
+         }
+      }
+   }
+
+   public static cuh a(ayt $$0, cuh $$1, int $$2, boolean $$3) {
+      List<daf> $$4 = b($$0, $$1, $$2, $$3);
+      if ($$1.a(cuk.sm)) {
+         $$1 = new cuh(cuk.wh);
+      }
+
+      for (daf $$5 : $$4) {
+         $$1.a($$5.a, $$5.b);
+      }
+
+      return $$1;
+   }
+
+   public static List<daf> b(ayt $$0, cuh $$1, int $$2, boolean $$3) {
+      List<daf> $$4 = Lists.newArrayList();
+      cuc $$5 = $$1.f();
+      int $$6 = $$5.g();
+      if ($$6 <= 0) {
+         return $$4;
+      } else {
+         $$2 += 1 + $$0.a($$6 / 4 + 1) + $$0.a($$6 / 4 + 1);
+         float $$7 = ($$0.i() + $$0.i() - 1.0F) * 0.15F;
+         $$2 = aym.a(Math.round((float)$$2 + (float)$$2 * $$7), 1, Integer.MAX_VALUE);
+         List<daf> $$8 = a($$2, $$1, $$3);
+         if (!$$8.isEmpty()) {
+            bon.a($$0, $$8).ifPresent($$4::add);
+
+            while ($$0.a(50) <= $$2) {
+               if (!$$4.isEmpty()) {
+                  a($$8, ad.c($$4));
+               }
+
+               if ($$8.isEmpty()) {
+                  break;
+               }
+
+               bon.a($$0, $$8).ifPresent($$4::add);
+               $$2 /= 2;
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public static void a(List<daf> $$0, daf $$1) {
+      Iterator<daf> $$2 = $$0.iterator();
+
+      while ($$2.hasNext()) {
+         if (!$$1.a.b($$2.next().a)) {
+            $$2.remove();
+         }
+      }
+   }
+
+   public static boolean a(Collection<ja<dad>> $$0, dad $$1) {
+      for (ja<dad> $$2 : $$0) {
+         if (!$$2.a().b($$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static List<daf> a(int $$0, cuh $$1, boolean $$2) {
+      List<daf> $$3 = Lists.newArrayList();
+      boolean $$4 = $$1.a(cuk.sm);
+
+      for (dad $$5 : lh.f) {
+         if ((!$$5.a() || $$2) && $$5.k() && ($$4 || $$5.b($$1) && $$5.a($$1))) {
+            for (int $$6 = $$5.g(); $$6 > $$5.f() - 1; $$6--) {
+               if ($$0 >= $$5.c($$6) && $$0 <= $$5.d($$6)) {
+                  $$3.add(new daf($$5, $$6));
+                  break;
                }
             }
-
-            $$0.accept(this.e);
-            return true;
          }
-      }, false);
+      }
+
+      return $$3;
+   }
+
+   @FunctionalInterface
+   interface a {
+      void accept(dad var1, int var2);
    }
 }

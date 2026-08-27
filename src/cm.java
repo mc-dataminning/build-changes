@@ -1,108 +1,91 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public class cm extends df<cm.a> {
+public class cm extends dh<cm.a> {
    @Override
    public Codec<cm.a> a() {
       return cm.a.a;
    }
 
-   public void a(aqn $$0, bru $$1, bqn $$2) {
-      epf $$3 = br.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public void a(aqu $$0, Collection<brv> $$1) {
+      List<erp> $$2 = Lists.newArrayList();
+      Set<bsb<?>> $$3 = Sets.newHashSet();
+
+      for (brv $$4 : $$1) {
+         $$3.add($$4.ak());
+         $$2.add(bs.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bc> b, Optional<bc> c, Optional<bg> d) implements df.a {
+   public static record a(Optional<bd> b, List<bd> c, cu.d d) implements dh.a {
       public static final Codec<cm.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  br.b.optionalFieldOf("player").forGetter(cm.a::a),
-                  br.b.optionalFieldOf("entity").forGetter(cm.a::e),
-                  bg.a.optionalFieldOf("killing_blow").forGetter(cm.a::f)
+                  axu.a(bs.b, "player").forGetter(cm.a::a),
+                  axu.a(bs.b.listOf(), "victims", List.of()).forGetter(cm.a::b),
+                  axu.a(cu.d.d, "unique_entity_types", cu.d.c).forGetter(cm.a::c)
                )
                .apply($$0, cm.a::new)
       );
 
-      public static an<cm.a> a(Optional<br> $$0) {
-         return am.c.a(new cm.a(Optional.empty(), br.a($$0), Optional.empty()));
+      public static ao<cm.a> a(bs.a... $$0) {
+         return an.H.a(new cm.a(Optional.empty(), bs.a($$0), cu.d.c));
       }
 
-      public static an<cm.a> a(br.a $$0) {
-         return am.c.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
+      public static ao<cm.a> a(cu.d $$0) {
+         return an.H.a(new cm.a(Optional.empty(), List.of(), $$0));
       }
 
-      public static an<cm.a> b() {
-         return am.c.a(new cm.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+      public boolean a(Collection<erp> $$0, int $$1) {
+         if (!this.c.isEmpty()) {
+            List<erp> $$2 = Lists.newArrayList($$0);
 
-      public static an<cm.a> a(Optional<br> $$0, Optional<bg> $$1) {
-         return am.c.a(new cm.a(Optional.empty(), br.a($$0), $$1));
-      }
+            for (bd $$3 : this.c) {
+               boolean $$4 = false;
+               Iterator<erp> $$5 = $$2.iterator();
 
-      public static an<cm.a> a(br.a $$0, Optional<bg> $$1) {
-         return am.c.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
-      }
+               while ($$5.hasNext()) {
+                  erp $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
 
-      public static an<cm.a> a(Optional<br> $$0, bg.a $$1) {
-         return am.c.a(new cm.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
-      }
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
 
-      public static an<cm.a> a(br.a $$0, bg.a $$1) {
-         return am.c.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static an<cm.a> c() {
-         return am.Z.a(new cm.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cm.a> b(Optional<br> $$0) {
-         return am.d.a(new cm.a(Optional.empty(), br.a($$0), Optional.empty()));
-      }
-
-      public static an<cm.a> b(br.a $$0) {
-         return am.d.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), Optional.empty()));
-      }
-
-      public static an<cm.a> d() {
-         return am.d.a(new cm.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cm.a> b(Optional<br> $$0, Optional<bg> $$1) {
-         return am.d.a(new cm.a(Optional.empty(), br.a($$0), $$1));
-      }
-
-      public static an<cm.a> b(br.a $$0, Optional<bg> $$1) {
-         return am.d.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), $$1));
-      }
-
-      public static an<cm.a> b(Optional<br> $$0, bg.a $$1) {
-         return am.d.a(new cm.a(Optional.empty(), br.a($$0), Optional.of($$1.b())));
-      }
-
-      public static an<cm.a> b(br.a $$0, bg.a $$1) {
-         return am.d.a(new cm.a(Optional.empty(), Optional.of(br.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(aqn $$0, epf $$1, bqn $$2) {
-         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+         return this.d.d($$1);
       }
 
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.c, ".entity");
+      public void a(be $$0) {
+         dh.a.super.a($$0);
+         $$0.a(this.c, ".victims");
       }
 
       @Override
-      public Optional<bc> a() {
+      public Optional<bd> a() {
          return this.b;
       }
 
-      public Optional<bc> e() {
+      public List<bd> b() {
          return this.c;
       }
 
-      public Optional<bg> f() {
+      public cu.d c() {
          return this.d;
       }
    }

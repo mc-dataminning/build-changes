@@ -1,129 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djh extends ddy {
-   public static final MapCodec<djh> a = b(djh::new);
-   public static final drz<dsc> b = drr.bf;
-   public static final drs c = drr.w;
-   public static final dsb d = drr.aR;
-   public static final int e = 3;
+public class djh extends dgz {
+   public static final MapCodec<djh> i = b(djh::new);
 
    @Override
-   public MapCodec<djh> a() {
-      return a;
+   public MapCodec<? extends djh> a() {
+      return i;
    }
 
-   public djh(dra.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, dsc.a).a(d, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
+   protected djh(dtb.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
-   private drb b(day $$0, io $$1, drb $$2) {
-      dsc $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(b, $$3);
-      } else {
-         dsc $$4 = $$0.a_($$1.d()).A();
-         dsc $$5 = $$4.e() ? dsc.a : $$4;
-         return $$2.a(b, $$5);
+   @Override
+   public dtc a(cyd $$0) {
+      dbg $$1 = $$0.q();
+      ir $$2 = $$0.a();
+      epe $$3 = $$0.q().b_($$0.a());
+      ir $$4 = $$2.e();
+      ir $$5 = $$2.f();
+      ir $$6 = $$2.g();
+      ir $$7 = $$2.h();
+      dtc $$8 = $$1.a_($$4);
+      dtc $$9 = $$1.a_($$5);
+      dtc $$10 = $$1.a_($$6);
+      dtc $$11 = $$1.a_($$7);
+      return this.n()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, iw.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, iw.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, iw.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, iw.e))))
+         .a(e, Boolean.valueOf($$3.a() == epf.c));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, epf.c, epf.c.a($$3));
       }
+
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public drb a(cwz $$0) {
-      return this.b($$0.q(), $$0.a(), this.n());
+   protected exn c(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return exk.a();
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      boolean $$6 = $$1.o() == it.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, ddy $$3, io $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+   protected boolean a(dtc $$0, dtc $$1, iw $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         $$1.a($$2, $$0.a(c, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   private void a(@Nullable bru $$0, drb $$1, dax $$2, io $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dvu.H, $$3);
-      }
-   }
-
-   @Override
-   protected bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
-      return $$0.a(awe.bg) && $$6.b() == it.b ? bpw.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if ($$1.B) {
-         return bpu.a;
-      } else {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(avr.ag);
-         return bpu.b;
-      }
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, clw $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(avr.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean a(drb $$0, dax $$1, io $$2, int $$3, int $$4) {
-      dsc $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(ky.aa, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      ix<avg> $$10;
-      if ($$5.d()) {
-         akm $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
-            return false;
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
-
-         $$10 = ix.a(avg.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, avi.c, 3.0F, $$7, $$1.z.g());
-      return true;
+      return super.a($$0, $$1, $$2);
    }
 
-   @Nullable
-   private akm a(dax $$0, io $$1) {
-      return $$0.c_($$1.c()) instanceof dps $$2 ? $$2.d() : null;
+   public final boolean a(dtc $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof djh || $$0.a(awe.L);
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b, c, d);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

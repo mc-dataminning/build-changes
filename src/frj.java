@@ -1,112 +1,25 @@
-import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import org.joml.Matrix4f;
 
-public class frj implements fre, frf {
-   private static final akm a = new akm("spectator/teleport_to_team");
-   private static final wx b = wx.c("spectatorMenu.team_teleport");
-   private static final wx c = wx.c("spectatorMenu.team_teleport.prompt");
-   private final List<frf> d;
-
-   public frj() {
-      fdz $$0 = fdz.Q();
-      this.d = a($$0, $$0.r.L());
+public interface frj {
+   static frj a(axy $$0) {
+      return new fri($$0);
    }
 
-   private static List<frf> a(fdz $$0, evo $$1) {
-      return $$1.g().stream().flatMap($$1x -> frj.a.a($$0, $$1x).stream()).toList();
-   }
-
-   @Override
-   public List<frf> a() {
-      return this.d;
-   }
-
-   @Override
-   public wx b() {
-      return c;
-   }
-
-   @Override
-   public void a(frd $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public wx aN_() {
-      return b;
-   }
-
-   @Override
-   public void a(ffm $$0, float $$1, int $$2) {
-      $$0.a(a, 0, 0, 16, 16);
-   }
-
-   @Override
-   public boolean aO_() {
-      return !this.d.isEmpty();
-   }
-
-   static class a implements frf {
-      private final evj a;
-      private final Supplier<gov> b;
-      private final List<fxc> c;
-
-      private a(evj $$0, List<fxc> $$1, Supplier<gov> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
+   static frj a(cro $$0) {
+      if ($$0 instanceof crn $$1) {
+         return new frh($$1.a());
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
       }
+   }
 
-      public static Optional<frf> a(fdz $$0, evj $$1) {
-         List<fxc> $$2 = new ArrayList<>();
+   int a();
 
-         for (String $$3 : $$1.g()) {
-            fxc $$4 = $$0.L().a($$3);
-            if ($$4 != null && $$4.e() != dau.d) {
-               $$2.add($$4);
-            }
-         }
+   int a(fhy var1);
 
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(ayk.a().a($$2.size())).a();
-            Supplier<gov> $$6 = $$0.an().a($$5);
-            return Optional.of(new frj.a($$1, $$2, $$6));
-         }
-      }
+   default void a(fhy $$0, int $$1, int $$2, Matrix4f $$3, gfg.a $$4) {
+   }
 
-      @Override
-      public void a(frd $$0) {
-         $$0.a(new fri(this.c));
-      }
-
-      @Override
-      public wx aN_() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(ffm $$0, float $$1, int $$2) {
-         Integer $$3 = this.a.n().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, ayd.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
-         }
-
-         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
-         fgy.a($$0, this.b.get(), 2, 2, 12);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      }
-
-      @Override
-      public boolean aO_() {
-         return true;
-      }
+   default void a(fhy $$0, int $$1, int $$2, fia $$3) {
    }
 }

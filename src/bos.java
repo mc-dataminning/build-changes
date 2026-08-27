@@ -1,53 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class bos extends boz {
-   public static final MapCodec<bos> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  boz.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, bos::new)
-      )
-      .validate(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0)
-      );
-   private final boz b;
-   private final int f;
-   private final int g;
+public interface bos<Msg> extends AutoCloseable {
+   String bx();
 
-   public static bos a(boz $$0, int $$1, int $$2) {
-      return new bos($$0, $$1, $$2);
-   }
-
-   public bos(boz $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   void a(Msg var1);
 
    @Override
-   public int a(ayk $$0) {
-      return ayd.a(this.b.a($$0), this.f, this.g);
+   default void close() {
    }
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
+   default <Source> CompletableFuture<Source> b(Function<? super bos<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
+   default <Source> CompletableFuture<Source> c(Function<? super bos<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public bpa<?> c() {
-      return bpa.d;
+   static <Msg> bos<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bos<Msg>() {
+         @Override
+         public String bx() {
+            return $$0;
+         }
+
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

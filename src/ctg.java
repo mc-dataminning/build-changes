@@ -1,26 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ctg(ix<avg> e, int f, float g) {
-   public static final Codec<ctg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound_event").forGetter(ctg::a), axm.j.fieldOf("use_duration").forGetter(ctg::b), axm.k.fieldOf("range").forGetter(ctg::c)
-            )
-            .apply($$0, ctg::new)
-   );
-   public static final yv<wi, ctg> b = yv.a(avg.d, ctg::a, yt.f, ctg::b, yt.h, ctg::c, ctg::new);
-   public static final Codec<ix<ctg>> c = aki.a(lf.E, a);
-   public static final yv<wi, ix<ctg>> d = yt.a(lf.E, b);
-
-   public ix<avg> a() {
-      return this.e;
+public class ctg extends cuc {
+   public ctg(cuc.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
-   }
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.iG, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      $$1.gI().a(this, 20);
+      if (!$$0.C) {
+         cnc $$4 = new cnc($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dM(), $$1.dK(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   public float c() {
-      return this.g;
+      $$1.b(avz.c.b(this));
+      $$3.a(1, $$1);
+      return bqb.a($$3, $$0.x_());
    }
 }

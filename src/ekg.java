@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface ekg<C extends eek> {
+   void generatePieces(ekl var1, ekg.a<C> var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ekg {
+   public static record a<C extends eek>(C a, duz b, enu c, dbh d, dcc e, dzt f, long g) {
+   }
 }

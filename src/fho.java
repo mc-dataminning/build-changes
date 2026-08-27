@@ -1,89 +1,164 @@
-public abstract class fho {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final ffk d;
-   protected final bky e;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-   protected fho(ffk $$0, bky $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class fho {
+   private static final int a = 256;
+   private final ThreadLocal<fho.b> b = ThreadLocal.withInitial(fho.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fho.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<ir> e;
+
+   public fho(ToIntFunction<ir> $$0) {
+      this.e = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
-   }
-
-   public void a(ffm $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gcs.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   public int a(ir $$0) {
+      int $$1 = jt.a($$0.u());
+      int $$2 = jt.a($$0.w());
+      fho.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
       }
 
-      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gcs.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gcs.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gcs.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
+   }
+
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
+
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dbh.c($$0 + $$2, $$1 + $$3);
+               fho.a $$5 = (fho.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
+         }
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fho.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   private fho.a b(int $$0, int $$1) {
+      long $$2 = dbh.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         fho.a $$3 = (fho.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
       }
 
-      this.d($$0, $$1, $$2, $$3);
+      this.d.writeLock().lock();
+
+      fho.a $$5;
+      try {
+         fho.a $$4 = (fho.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fho.a();
+            if (this.c.size() >= 256) {
+               fho.a $$6 = (fho.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
    }
 
-   protected void a(ffm $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = aym.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
    }
 
-   protected void b(ffm $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gcs.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
-   }
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fho.a c;
 
-   protected void c(ffm $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected long b(int $$0) {
-      return this.e.a($$0);
-   }
-
-   protected void d(ffm $$0, int $$1, int $$2, int $$3) {
-   }
-
-   protected void a(ffm $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gcs.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
-
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = ayd.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axo.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axo.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+      private b() {
+      }
    }
 }

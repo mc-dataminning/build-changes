@@ -1,44 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ehp(List<ehp.a> c, eig d) {
-   public static final Codec<ehp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehp.a.a.listOf().fieldOf("structures").forGetter(ehp::a), eig.b.fieldOf("placement").forGetter(ehp::b)).apply($$0, ehp::new)
-   );
-   public static final Codec<ix<ehp>> b = aki.a(lf.aL, a);
+public class ehp<P extends eho> {
+   public static final ehp<ehn> a = a("straight_trunk_placer", ehn.a);
+   public static final ehp<ehk> b = a("forking_trunk_placer", ehk.a);
+   public static final ehp<ehl> c = a("giant_trunk_placer", ehl.a);
+   public static final ehp<ehm> d = a("mega_jungle_trunk_placer", ehm.b);
+   public static final ehp<ehi> e = a("dark_oak_trunk_placer", ehi.a);
+   public static final ehp<ehj> f = a("fancy_trunk_placer", ehj.a);
+   public static final ehp<ehg> g = a("bending_trunk_placer", ehg.a);
+   public static final ehp<ehq> h = a("upwards_branching_trunk_placer", ehq.a);
+   public static final ehp<ehh> i = a("cherry_trunk_placer", ehh.a);
+   private final Codec<P> j;
 
-   public ehp(ix<ehj> $$0, eig $$1) {
-      this(List.of(new ehp.a($$0, 1)), $$1);
+   private static <P extends eho> ehp<P> a(String $$0, Codec<P> $$1) {
+      return jn.a(lh.X, $$0, new ehp<>($$1));
    }
 
-   public static ehp.a a(ix<ehj> $$0, int $$1) {
-      return new ehp.a($$0, $$1);
+   private ehp(Codec<P> $$0) {
+      this.j = $$0;
    }
 
-   public static ehp.a a(ix<ehj> $$0) {
-      return new ehp.a($$0, 1);
-   }
-
-   public List<ehp.a> a() {
-      return this.c;
-   }
-
-   public eig b() {
-      return this.d;
-   }
-
-   public static record a(ix<ehj> b, int c) {
-      public static final Codec<ehp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ehj.b.fieldOf("structure").forGetter(ehp.a::a), axm.j.fieldOf("weight").forGetter(ehp.a::b)).apply($$0, ehp.a::new)
-      );
-
-      public ix<ehj> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public Codec<P> a() {
+      return this.j;
    }
 }

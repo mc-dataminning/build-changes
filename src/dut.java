@@ -1,232 +1,525 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
+import java.util.List;
 
-public record dut(
-   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awl<ddy> v, akm w, float x, dut.a y
-) {
-   public static final int a = io.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dut> h = axm.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axm.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dut::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dut::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dut::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dut::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dut::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dut::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dut::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dut::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dut::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dut::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dut::p),
-                  awl.b(lf.f).fieldOf("infiniburn").forGetter(dut::q),
-                  akm.a.fieldOf("effects").orElse(dur.e).forGetter(dut::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dut::s),
-                  dut.a.a.forGetter(dut::t)
-               )
-               .apply($$0, dut::new)
-      )
-   );
-   private static final int z = 8;
-   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<ix<dut>> j = aki.a(lf.aE, h);
+public class dut {
+   public static final double c = 5.999997E7F;
+   public static final double d = 2.9999984E7;
+   private final List<dur> a = Lists.newArrayList();
+   private double b = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private dut.a l = new dut.d(5.999997E7F);
+   public static final dut.c e = new dut.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public dut(
-      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awl<ddy> v, akm w, float x, dut.a y
-   ) {
-      if (t < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (s + t > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (u > t) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (s % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
+   public boolean a(ir $$0) {
+      return (double)($$0.u() + 1) > this.e() && (double)$$0.u() < this.g() && (double)($$0.w() + 1) > this.f() && (double)$$0.w() < this.h();
+   }
+
+   public boolean a(dbh $$0) {
+      return (double)$$0.f() > this.e() && (double)$$0.d() < this.g() && (double)$$0.g() > this.f() && (double)$$0.e() < this.h();
+   }
+
+   public boolean a(double $$0, double $$1) {
+      return $$0 > this.e() && $$0 < this.g() && $$1 > this.f() && $$1 < this.h();
+   }
+
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 > this.e() - $$2 && $$0 < this.g() + $$2 && $$1 > this.f() - $$2 && $$1 < this.h() + $$2;
+   }
+
+   public boolean a(ewp $$0) {
+      return $$0.d > this.e() && $$0.a < this.g() && $$0.f > this.f() && $$0.c < this.h();
+   }
+
+   public ir b(double $$0, double $$1, double $$2) {
+      return ir.a(aym.a($$0, this.e(), this.g()), $$1, aym.a($$2, this.f(), this.h()));
+   }
+
+   public double a(brv $$0) {
+      return this.b($$0.dz(), $$0.dF());
+   }
+
+   public exn c() {
+      return this.l.m();
+   }
+
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
+   }
+
+   public boolean a(brv $$0, ewp $$1) {
+      double $$2 = Math.max(aym.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dz(), $$0.dF(), $$2);
+   }
+
+   public dus d() {
+      return this.l.i();
+   }
+
+   public double e() {
+      return this.l.a();
+   }
+
+   public double f() {
+      return this.l.c();
+   }
+
+   public double g() {
+      return this.l.b();
+   }
+
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
+      return this.i;
+   }
+
+   public double b() {
+      return this.j;
+   }
+
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (dur $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   @Deprecated
-   public static DataResult<akl<dax>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dax.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(dax.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(dax.j);
-         }
-      }
-
-      return dax.g.parse($$0);
+   public double i() {
+      return this.l.e();
    }
 
-   public static double a(dut $$0, dut $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(akl<dax> $$0, Path $$1) {
-      if ($$0 == dax.h) {
-         return $$1;
-      } else if ($$0 == dax.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dax.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
-      }
-   }
-
-   public boolean a() {
-      return this.k.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = ayd.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.y.a();
-   }
-
-   public boolean c() {
-      return this.y.b();
-   }
-
-   public boz d() {
-      return this.y.c();
-   }
-
-   public int e() {
-      return this.y.d();
-   }
-
-   public OptionalLong f() {
-      return this.k;
-   }
-
-   public boolean g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.m;
-   }
-
-   public boolean i() {
-      return this.n;
-   }
-
-   public boolean j() {
-      return this.o;
+   public long j() {
+      return this.l.g();
    }
 
    public double k() {
-      return this.p;
+      return this.l.h();
    }
 
-   public boolean l() {
-      return this.q;
+   public void a(double $$0) {
+      this.l = new dut.d($$0);
+
+      for (dur $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
    }
 
-   public boolean m() {
-      return this.r;
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (dut.a)($$0 == $$1 ? new dut.d($$1) : new dut.b($$0, $$1, $$2));
+
+      for (dur $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
    }
 
-   public int n() {
-      return this.s;
+   protected List<dur> l() {
+      return Lists.newArrayList(this.a);
    }
 
-   public int o() {
-      return this.t;
+   public void a(dur $$0) {
+      this.a.add($$0);
    }
 
-   public int p() {
-      return this.u;
+   public void b(dur $$0) {
+      this.a.remove($$0);
    }
 
-   public awl<ddy> q() {
-      return this.v;
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
    }
 
-   public akm r() {
-      return this.w;
+   public int m() {
+      return this.k;
    }
 
-   public float s() {
-      return this.x;
+   public double n() {
+      return this.f;
    }
 
-   public dut.a t() {
-      return this.y;
+   public void b(double $$0) {
+      this.f = $$0;
+
+      for (dur $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
    }
 
-   public static record a(boolean b, boolean c, boz d, int e) {
-      public static final MapCodec<dut.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dut.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dut.a::b),
-                  boz.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dut.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dut.a::d)
-               )
-               .apply($$0, dut.a::new)
-      );
+   public double o() {
+      return this.b;
+   }
 
-      public boolean a() {
-         return this.b;
+   public void c(double $$0) {
+      this.b = $$0;
+
+      for (dur $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (dur $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (dur $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public dut.c t() {
+      return new dut.c(this);
+   }
+
+   public void a(dut.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
+      } else {
+         this.a($$0.g());
+      }
+   }
+
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      dus i();
+
+      void j();
+
+      void k();
+
+      dut.a l();
+
+      exn m();
+   }
+
+   class b implements dut.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
+
+      b(double $$0, double $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = ad.b();
+         this.d = this.e + $$2;
       }
 
-      public boolean b() {
+      @Override
+      public double a() {
+         return aym.a(dut.this.a() - this.e() / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+      }
+
+      @Override
+      public double c() {
+         return aym.a(dut.this.b() - this.e() / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+      }
+
+      @Override
+      public double b() {
+         return aym.a(dut.this.a() + this.e() / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+      }
+
+      @Override
+      public double d() {
+         return aym.a(dut.this.b() + this.e() / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(ad.b() - this.e) / this.f;
+         return $$0 < 1.0 ? aym.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - ad.b();
+      }
+
+      @Override
+      public double h() {
          return this.c;
       }
 
-      public boz c() {
+      @Override
+      public dus i() {
+         return this.c < this.b ? dus.b : dus.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public dut.a l() {
+         return (dut.a)(this.g() <= 0L ? dut.this.new d(this.c) : this);
+      }
+
+      @Override
+      public exn m() {
+         return exk.a(
+            exk.c,
+            exk.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            ewy.e
+         );
+      }
+   }
+
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
+
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
+
+      c(dut $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
+      }
+
+      public double a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public double c() {
+         return this.c;
+      }
+
+      public double d() {
          return this.d;
       }
 
-      public int d() {
+      public int e() {
          return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static dut.c a(DynamicLike<?> $$0, dut.c $$1) {
+         double $$2 = aym.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = aym.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new dut.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(uk $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
+      }
+   }
+
+   class d implements dut.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private exn g;
+
+      public d(double $$0) {
+         this.b = $$0;
+         this.n();
+      }
+
+      @Override
+      public double a() {
+         return this.c;
+      }
+
+      @Override
+      public double b() {
+         return this.e;
+      }
+
+      @Override
+      public double c() {
+         return this.d;
+      }
+
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public dus i() {
+         return dus.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = aym.a(dut.this.a() - this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+         this.d = aym.a(dut.this.b() - this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+         this.e = aym.a(dut.this.a() + this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+         this.f = aym.a(dut.this.b() + this.b / 2.0, (double)(-dut.this.k), (double)dut.this.k);
+         this.g = exk.a(
+            exk.c,
+            exk.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            ewy.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public dut.a l() {
+         return this;
+      }
+
+      @Override
+      public exn m() {
+         return this.g;
       }
    }
 }

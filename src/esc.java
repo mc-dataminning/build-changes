@@ -1,60 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class esc implements esl {
-   protected final List<esl> c;
-   private final Predicate<epf> a;
+public class esc extends esh {
+   public static final Codec<esc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(lh.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, esc::new)
+   );
+   private final ja<cuc> j;
 
-   protected esc(List<esl> $$0, Predicate<epf> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends esc> MapCodec<T> a(Function<List<esl>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(esn.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends esc> Codec<T> b(Function<List<esl>, T> $$0) {
-      return esn.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(epf $$0) {
-      return this.a.test($$0);
+   private esc(ja<cuc> $$0, int $$1, int $$2, List<euu> $$3, List<etb> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public void a(epl $$0) {
-      esl.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public esg a() {
+      return esd.c;
    }
 
-   public abstract static class a implements esl.a {
-      private final Builder<esl> a = ImmutableList.builder();
+   @Override
+   public void a(Consumer<cuh> $$0, erp $$1) {
+      $$0.accept(new cuh(this.j));
+   }
 
-      protected a(esl.a... $$0) {
-         for (esl.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(esl.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public esl build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract esl a(List<esl> var1);
+   public static esh.a<?> a(dbz $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new esc($$0.q().n(), $$1, $$2, $$3, $$4));
    }
 }

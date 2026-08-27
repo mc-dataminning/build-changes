@@ -1,68 +1,214 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public record dqf(int c, float d, float e, float f, float g, int h, boe<dbo> i, boe<akl<epk>> j, akl<epk> k) {
-   public static final dqf a = new dqf(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, boe.b(), boe.<akl<epk>>a().a(epd.aW).a(epd.aV).a(), epd.aZ);
-   public static final Codec<dqf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dqf::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", a.d).forGetter(dqf::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", a.e).forGetter(dqf::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", a.f).forGetter(dqf::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", a.g).forGetter(dqf::f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", a.h).forGetter(dqf::g),
-               dbo.c.lenientOptionalFieldOf("spawn_potentials", boe.b()).forGetter(dqf::h),
-               boe.a(akl.a(lf.aU)).lenientOptionalFieldOf("loot_tables_to_eject", a.j).forGetter(dqf::i),
-               akl.a(lf.aU).lenientOptionalFieldOf("items_to_drop_when_ominous", a.k).forGetter(dqf::j)
-            )
-            .apply($$0, dqf::new)
-   );
+public class dqf extends dpv implements bqm {
+   private static final int g = 3;
+   private static final int h = 4;
+   private static final int[] i = new int[]{3};
+   private static final int[] j = new int[]{0, 1, 2, 3};
+   private static final int[] k = new int[]{0, 1, 2, 4};
+   public static final int b = 20;
+   public static final int c = 0;
+   public static final int d = 1;
+   public static final int e = 2;
+   private jj<cuh> l = jj.a(5, cuh.i);
+   int m;
+   private boolean[] q;
+   private cuc r;
+   int s;
+   protected final cpq f = new cpq() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dqf.this.m;
+            case 1 -> dqf.this.s;
+            default -> 0;
+         };
+      }
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.d + this.f * (float)$$0));
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dqf.this.m = $$1;
+               break;
+            case 1:
+               dqf.this.s = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 2;
+      }
+   };
+
+   public dqf(ir $$0, dtc $$1) {
+      super(dqe.m, $$0, $$1);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   @Override
+   protected xe k() {
+      return xe.c("container.brewing");
    }
 
-   public long a() {
-      return 160L;
-   }
-
+   @Override
    public int b() {
-      return this.c;
+      return this.l.size();
    }
 
-   public float c() {
-      return this.d;
+   @Override
+   protected jj<cuh> j() {
+      return this.l;
    }
 
-   public float d() {
-      return this.e;
+   @Override
+   protected void a(jj<cuh> $$0) {
+      this.l = $$0;
    }
 
-   public float e() {
-      return this.f;
+   public static void a(dca $$0, ir $$1, dtc $$2, dqf $$3) {
+      cuh $$4 = $$3.l.get(4);
+      if ($$3.s <= 0 && $$4.a(cuk.tL)) {
+         $$3.s = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
+
+      boolean $$5 = b($$3.l);
+      boolean $$6 = $$3.m > 0;
+      cuh $$7 = $$3.l.get(3);
+      if ($$6) {
+         $$3.m--;
+         boolean $$8 = $$3.m == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.l);
+            a($$0, $$1, $$2);
+         } else if (!$$5 || !$$7.a($$3.r)) {
+            $$3.m = 0;
+            a($$0, $$1, $$2);
+         }
+      } else if ($$5 && $$3.s > 0) {
+         $$3.s--;
+         $$3.m = 400;
+         $$3.r = $$7.f();
+         a($$0, $$1, $$2);
+      }
+
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.q)) {
+         $$3.q = $$9;
+         dtc $$10 = $$2;
+         if (!($$2.b() instanceof dfg)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < dfg.b.length; $$11++) {
+            $$10 = $$10.a(dfg.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
    }
 
-   public float f() {
-      return this.g;
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.l.get($$1).d()) {
+            $$0[$$1] = true;
+         }
+      }
+
+      return $$0;
    }
 
-   public int g() {
-      return this.h;
+   private static boolean b(jj<cuh> $$0) {
+      cuh $$1 = $$0.get(3);
+      if ($$1.d()) {
+         return false;
+      } else if (!cwq.a($$1)) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            cuh $$3 = $$0.get($$2);
+            if (!$$3.d() && cwq.a($$3, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public boe<dbo> h() {
-      return this.i;
+   private static void a(dca $$0, ir $$1, jj<cuh> $$2) {
+      cuh $$3 = $$2.get(3);
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         $$2.set($$4, cwq.d($$3, $$2.get($$4)));
+      }
+
+      $$3.h(1);
+      if ($$3.f().u()) {
+         cuh $$5 = new cuh($$3.f().t());
+         if ($$3.d()) {
+            $$3 = $$5;
+         } else {
+            bpw.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$5);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
-   public boe<akl<epk>> i() {
-      return this.j;
+   @Override
+   public void a(uk $$0, jc.a $$1) {
+      super.a($$0, $$1);
+      this.l = jj.a(this.b(), cuh.i);
+      bpu.b($$0, this.l, $$1);
+      this.m = $$0.g("BrewTime");
+      this.s = $$0.f("Fuel");
    }
 
-   public akl<epk> j() {
-      return this.k;
+   @Override
+   protected void b(uk $$0, jc.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BrewTime", (short)this.m);
+      bpu.a($$0, this.l, $$1);
+      $$0.a("Fuel", (byte)this.s);
+   }
+
+   @Override
+   public boolean b(int $$0, cuh $$1) {
+      if ($$0 == 3) {
+         return cwq.a($$1);
+      } else {
+         return $$0 == 4 ? $$1.a(cuk.tL) : ($$1.a(cuk.tH) || $$1.a(cuk.wZ) || $$1.a(cuk.xc) || $$1.a(cuk.tI)) && this.a($$0).d();
+      }
+   }
+
+   @Override
+   public int[] a(iw $$0) {
+      if ($$0 == iw.b) {
+         return i;
+      } else {
+         return $$0 == iw.a ? j : k;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, cuh $$1, @Nullable iw $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, cuh $$1, iw $$2) {
+      return $$0 == 3 ? $$1.a(cuk.tI) : true;
+   }
+
+   @Override
+   protected cpg a(int $$0, clx $$1) {
+      return new cpl($$0, $$1, this, this.f);
    }
 }

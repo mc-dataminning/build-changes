@@ -1,12 +1,21 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
-public class op extends og {
-   public op(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, $$1);
+public class op {
+   private final Function<cyo, cza<?>> a;
+
+   public op(Function<cyo, cza<?>> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(of $$0) {
-      oh.a(oe.e, ctr.qU).a('#', ctr.uE).a('-', ctr.ps).b("-#-").b("# #").b("###").b("has_string", a(ctr.ps)).a($$0);
+   public static op a(Function<cyo, cza<?>> $$0) {
+      return new op($$0);
+   }
+
+   public void a(oh $$0, String $$1) {
+      this.a($$0, new akt($$1));
+   }
+
+   public void a(oh $$0, akt $$1) {
+      $$0.a($$1, this.a.apply(cyo.d), null);
    }
 }

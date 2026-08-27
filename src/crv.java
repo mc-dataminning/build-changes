@@ -1,152 +1,88 @@
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Supplier;
 
-public class crv extends ctj {
-   private static final int a = ayd.f(0.4F, 0.4F, 1.0F);
+public class crv {
+   public static final ja<cru> a = a("leather", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 2);
+      $$0.put(crt.a.b, 3);
+      $$0.put(crt.a.a, 1);
+      $$0.put(crt.a.e, 3);
+   }), 15, avo.aA, 0.0F, 0.0F, () -> cyv.a(cuk.sa), List.of(new cru.a(new akt("leather"), "", true), new cru.a(new akt("leather"), "_overlay", false)));
+   public static final ja<cru> b = a("chainmail", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 4);
+      $$0.put(crt.a.b, 5);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 4);
+   }), 12, avo.au, 0.0F, 0.0F, () -> cyv.a(cuk.pX));
+   public static final ja<cru> c = a("iron", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 2);
+      $$0.put(crt.a.c, 5);
+      $$0.put(crt.a.b, 6);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 5);
+   }), 9, avo.az, 0.0F, 0.0F, () -> cyv.a(cuk.pX));
+   public static final ja<cru> d = a("gold", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 3);
+      $$0.put(crt.a.b, 5);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 7);
+   }), 25, avo.ay, 0.0F, 0.0F, () -> cyv.a(cuk.qb));
+   public static final ja<cru> e = a("diamond", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 10, avo.av, 2.0F, 0.0F, () -> cyv.a(cuk.pO));
+   public static final ja<cru> f = a("turtle", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 2);
+      $$0.put(crt.a.c, 5);
+      $$0.put(crt.a.b, 6);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 5);
+   }), 9, avo.aC, 0.0F, 0.0F, () -> cyv.a(cuk.pF));
+   public static final ja<cru> g = a("netherite", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 15, avo.aB, 3.0F, 0.1F, () -> cyv.a(cuk.qc));
+   public static final ja<cru> h = a("armadillo", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 10, avo.aD, 0.0F, 0.0F, () -> cyv.a(cuk.pG));
+   public static final ja<cru> i = a("potato", ad.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 0);
+      $$0.put(crt.a.c, 0);
+      $$0.put(crt.a.b, 0);
+      $$0.put(crt.a.a, 0);
+      $$0.put(crt.a.e, 0);
+   }), 9, avo.aC, 0.0F, 0.0F, () -> cyv.a(cuk.AH));
 
-   public crv(ctj.a $$0) {
-      super($$0);
-   }
-
-   public static float d(cto $$0) {
-      cwb $$1 = $$0.a(kb.E, cwb.b);
-      return (float)$$1.c() / 64.0F;
-   }
-
-   @Override
-   public boolean a(cto $$0, cqo $$1, cpb $$2, clw $$3) {
-      if ($$2 != cpb.b) {
-         return false;
-      } else {
-         cwb $$4 = $$0.a(kb.E);
-         if ($$4 == null) {
-            return false;
-         } else {
-            cto $$5 = $$1.g();
-            cwb.a $$6 = new cwb.a($$4);
-            if ($$5.e()) {
-               this.a($$3);
-               cto $$7 = $$6.a();
-               if ($$7 != null) {
-                  cto $$8 = $$1.d($$7);
-                  $$6.a($$8);
-               }
-            } else if ($$5.g().am_()) {
-               int $$9 = $$6.a($$1, $$3);
-               if ($$9 > 0) {
-                  this.b($$3);
-               }
-            }
-
-            $$0.b(kb.E, $$6.c());
-            return true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(cto $$0, cto $$1, cqo $$2, cpb $$3, clw $$4, btg $$5) {
-      if ($$3 == cpb.b && $$2.b($$4)) {
-         cwb $$6 = $$0.a(kb.E);
-         if ($$6 == null) {
-            return false;
-         } else {
-            cwb.a $$7 = new cwb.a($$6);
-            if ($$1.e()) {
-               cto $$8 = $$7.a();
-               if ($$8 != null) {
-                  this.a($$4);
-                  $$5.a($$8);
-               }
-            } else {
-               int $$9 = $$7.a($$1);
-               if ($$9 > 0) {
-                  this.b($$4);
-               }
-            }
-
-            $$0.b(kb.E, $$7.c());
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      cto $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(avr.c.b(this));
-         return bpv.a($$3, $$0.x_());
-      } else {
-         return bpv.d($$3);
-      }
-   }
-
-   @Override
-   public boolean e(cto $$0) {
-      cwb $$1 = $$0.a(kb.E, cwb.b);
-      return $$1.c() > 0;
-   }
-
-   @Override
-   public int f(cto $$0) {
-      cwb $$1 = $$0.a(kb.E, cwb.b);
-      return Math.min(1 + 12 * $$1.c() / 64, 13);
-   }
-
-   @Override
-   public int g(cto $$0) {
+   public static ja<cru> a(jn<cru> $$0) {
       return a;
    }
 
-   private static boolean a(cto $$0, clw $$1) {
-      cwb $$2 = $$0.a(kb.E);
-      if ($$2 != null && !$$2.d()) {
-         $$0.b(kb.E, cwb.b);
-         if ($$1 instanceof aqn) {
-            $$2.a().forEach($$1x -> $$1.a($$1x, true));
-         }
+   private static ja<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, ja<avn> $$3, float $$4, float $$5, Supplier<cyv> $$6) {
+      List<cru.a> $$7 = List.of(new cru.a(new akt($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-         return true;
-      } else {
-         return false;
+   private static ja<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, ja<avn> $$3, float $$4, float $$5, Supplier<cyv> $$6, List<cru.a> $$7) {
+      EnumMap<crt.a, Integer> $$8 = new EnumMap<>(crt.a.class);
+
+      for (crt.a $$9 : crt.a.values()) {
+         $$8.put($$9, $$1.get($$9));
       }
-   }
 
-   @Override
-   public Optional<cqy> h(cto $$0) {
-      return !$$0.b(kb.p) && !$$0.b(kb.o) ? Optional.ofNullable($$0.a(kb.E)).map(cqx::new) : Optional.empty();
-   }
-
-   @Override
-   public void a(cto $$0, dax $$1, List<wx> $$2, cvh $$3) {
-      cwb $$4 = $$0.a(kb.E);
-      if ($$4 != null) {
-         $$2.add(wx.a("item.minecraft.bundle.fullness", $$4.c(), 64).a(n.h));
-      }
-   }
-
-   @Override
-   public void a(cig $$0) {
-      cwb $$1 = $$0.p().a(kb.E);
-      if ($$1 != null) {
-         $$0.p().b(kb.E, cwb.b);
-         ctq.a($$0, $$1.a());
-      }
-   }
-
-   private void a(bru $$0) {
-      $$0.a(avh.dq, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void b(bru $$0) {
-      $$0.a(avh.dp, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void c(bru $$0) {
-      $$0.a(avh.do, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
+      return jn.b(lh.ar, new akt($$0), new cru($$8, $$2, $$3, $$6, $$7, $$4, $$5));
    }
 }

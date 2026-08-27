@@ -1,37 +1,38 @@
-public class ahd implements ze<agd> {
-   public static final yv<vx, ahd> a = ze.a(ahd::a, ahd::new);
-   private final boolean b;
-   private final boolean c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahd(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahd(int c, List<String> d, Optional<String> e) implements zl<agl> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final zc<we, ahd> b = zc.a(za.g, ahd::b, za.b(8192).a(za.c(200)), ahd::e, za.b(128).a(za::a), ahd::f, ahd::new);
 
-   private ahd(vx $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agd $$0) {
-      $$0.a(this);
+   public ahd(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zg<ahd> a() {
-      return agb.bF;
+   public zn<ahd> a() {
+      return agj.bw;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(agl $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
       return this.c;
+   }
+
+   public List<String> e() {
+      return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

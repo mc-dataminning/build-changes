@@ -1,4 +1,8 @@
-import java.nio.file.Path;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record eub(Path a, Path b) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface eub {
 }

@@ -1,24 +1,46 @@
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class afx implements ze<abq> {
-   public static final yv<wi, afx> a = yv.a(cxw.a.a(yt.a()), $$0 -> $$0.b, afx::new);
-   private final List<cxw<?>> b;
+public class afx implements zl<abw> {
+   public static final zc<we, afx> a = zl.a(afx::a, afx::new);
+   private final int b;
+   @Nullable
+   private final uk c;
 
-   public afx(Collection<cxw<?>> $$0) {
-      this.b = List.copyOf($$0);
+   public afx(int $$0, @Nullable uk $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private afx(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a((vh)this.c);
    }
 
    @Override
-   public zg<afx> a() {
-      return agb.bd;
+   public zn<afx> a() {
+      return agj.aZ;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public List<cxw<?>> b() {
+   public int b() {
       return this.b;
+   }
+
+   @Nullable
+   public uk e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

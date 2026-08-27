@@ -1,104 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dmy extends dky {
-   public static final MapCodec<dmy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dso.a.fieldOf("wood_type").forGetter(dky::d), u()).apply($$0, dmy::new));
-   public static final drv b = dhu.aE;
-   protected static final float c = 2.0F;
-   protected static final float d = 4.5F;
-   protected static final float e = 12.5F;
-   private static final Map<it, evd> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         it.c,
-         ddy.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
-         it.d,
-         ddy.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
-         it.f,
-         ddy.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
-         it.e,
-         ddy.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
-      )
-   );
+public class dmy extends dfc {
+   public static final MapCodec<dmy> a = b(dmy::new);
+   public static final int b = 2;
+   public static final duc c = dts.aE;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final exn g = dfc.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dmy> a() {
       return a;
    }
 
-   public dmy(dso $$0, dra.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, it.c).a(f, Boolean.valueOf(false)));
+   public dmy(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public String g() {
-      return this.q().a();
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return i.get($$0.c(b));
+   public exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return g;
+   }
+
+   public int m(dtc $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean n(dtc $$0) {
+      return this.m($$0) == 2;
    }
 
    @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
-   }
-
-   @Nullable
-   @Override
-   public drb a(cwz $$0) {
-      drb $$1 = this.n();
-      emu $$2 = $$0.q().b_($$0.a());
-      dba $$3 = $$0.q();
-      io $$4 = $$0.a();
-      it[] $$5 = $$0.f();
-
-      for (it $$6 : $$5) {
-         if ($$6.o().d()) {
-            it $$7 = $$6.g();
-            $$1 = $$1.a(b, $$7);
-            if ($$1.a($$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == emv.c));
-            }
+   public void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if (!this.n($$0)) {
+         $$1.a(null, $$2, avo.yT, avq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, avo.yU, avq.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         cgv $$4 = bsb.aU.a((dca)$$1);
+         if ($$4 != null) {
+            ewu $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), aym.g($$1.A.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.x_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(dxv.i, $$2, dxv.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.A.a(300));
    }
 
    @Override
-   public float g(drb $$0) {
-      return $$0.c(b).p();
+   public boolean a(dtc $$0, ept $$1) {
+      return false;
    }
 
-   @Override
-   public euk m(drb $$0) {
-      evd $$1 = i.get($$0.c(b));
-      return $$1.a().f();
-   }
-
-   @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b, f);
+   public static boolean a(dbg $$0, ir $$1) {
+      return $$0.a_($$1.d()).a(awe.cv);
    }
 }

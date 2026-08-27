@@ -8,13 +8,13 @@ public class chl extends chd {
 
    @Override
    public void b() {
-      this.a.dP().a(this.a.du(), this.a.dw(), this.a.dA(), avh.ie, this.a.de(), 2.5F, 0.8F + this.a.el().i() * 0.3F, false);
+      this.a.dU().a(this.a.dz(), this.a.dB(), this.a.dF(), avo.ir, this.a.dj(), 2.5F, 0.8F + this.a.et().i() * 0.3F, false);
    }
 
    @Override
    public void c() {
       if (this.c++ >= 40) {
-         this.a.gm().a(chq.f);
+         this.a.gv().a(chq.f);
       }
    }
 

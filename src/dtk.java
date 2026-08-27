@@ -1,11 +1,18 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public interface dtk {
-   @Nullable
-   dtj c(int var1, int var2);
+public class dtk implements Predicate<dtc> {
+   private final dfc a;
 
-   default void a(dbg $$0, jq $$1) {
+   public dtk(dfc $$0) {
+      this.a = $$0;
    }
 
-   dad q();
+   public static dtk a(dfc $$0) {
+      return new dtk($$0);
+   }
+
+   public boolean a(@Nullable dtc $$0) {
+      return $$0 != null && $$0.a(this.a);
+   }
 }

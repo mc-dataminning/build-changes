@@ -1,41 +1,46 @@
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class amd {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.deop.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.ban.failed"));
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("deop").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("ban").requires($$0x -> $$0x.c(3)))
             .then(
-               ef.a("targets", et.a())
-                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().l(), $$1))
-                  .executes($$0x -> a((ee)$$0x.getSource(), et.a($$0x, "targets")))
+               ((RequiredArgumentBuilder)ei.a("targets", ew.a()).executes($$0x -> a((eh)$$0x.getSource(), ew.a($$0x, "targets"), null)))
+                  .then(ei.a("reason", ey.a()).executes($$0x -> a((eh)$$0x.getSource(), ew.a($$0x, "targets"), ey.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      auj $$2 = $$0.l().ah();
-      int $$3 = 0;
+   private static int a(eh $$0, Collection<GameProfile> $$1, @Nullable xe $$2) throws CommandSyntaxException {
+      auw $$3 = $$0.l().ah().f();
+      int $$4 = 0;
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> wx.a("commands.deop.success", $$1.iterator().next().getName()), true);
+      for (GameProfile $$5 : $$1) {
+         if (!$$3.a($$5)) {
+            auy $$6 = new auy($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            $$3.a($$6);
+            $$4++;
+            $$0.a(() -> xe.a("commands.ban.success", xe.b($$5.getName()), $$6.d()), true);
+            aqu $$7 = $$0.l().ah().a($$5.getId());
+            if ($$7 != null) {
+               $$7.d.b(xe.c("multiplayer.disconnect.banned"));
+            }
          }
       }
 
-      if ($$3 == 0) {
+      if ($$4 == 0) {
          throw a.create();
       } else {
-         $$0.l().a($$0);
-         return $$3;
+         return $$4;
       }
    }
 }

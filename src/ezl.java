@@ -1,289 +1,140 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Objects;
 
-public abstract class ezl<T extends ezl<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class ezl extends ezo {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final ezl.b l = new ezl.b(854, 480);
 
-   public ezl(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = ezj.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+   public ezl(int $$0, int $$1) {
+      super(true);
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0, $$1));
+      } else {
+         this.b($$0, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      ezl.b $$2 = this.c($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   private ezl.b c(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      ezl.a $$2 = ezl.a.a;
+
+      for (ezl.b $$3 : ezl.b.a($$0, $$1)) {
+         $$2 = ezl.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(ezl.a.b);
+         }
+
+         if (this.b($$3)) {
+            $$2 = $$2.a(ezl.a.c);
+         }
+
+         if ($$2 == ezl.a.d) {
+            return $$3;
+         }
+      }
+
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
+   }
+
+   private boolean a(ezl.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   private boolean b(ezl.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final ezl.a[] e = values();
+
+      ezl.a a(ezl.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
+      }
+   }
+
+   static class b {
+      public final int a;
+      public final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      static List<ezl.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new ezl.b($$0, $$1), ezl.l) : ImmutableList.of(ezl.l);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            ezl.b $$1 = (ezl.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
          } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
-         }
-
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new fau(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new fau(var6.getMessage(), var6);
-      }
-   }
-
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
-   }
-
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
-      }
-   }
-
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
-   }
-
-   public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new fau(var2.getMessage(), var2);
-      }
-   }
-
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
-         }
-
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new fau(var2.getMessage(), var2);
-      }
-   }
-
-   private String a(@Nullable InputStream $$0) throws IOException {
-      if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
-
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
-
-         return $$2.toString();
-      }
-   }
-
-   private void f() {
-      byte[] $$0 = new byte[1024];
-
-      try {
-         InputStream $$1 = this.a.getInputStream();
-
-         while ($$1.read($$0) > 0) {
-         }
-
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
-               }
-
-               $$3.close();
-               return;
-            }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
+            return false;
          }
       }
-   }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
-
-   protected abstract T e();
-
-   public static ezl<?> a(String $$0) {
-      return new ezl.b($$0, 5000, 60000);
-   }
-
-   public static ezl<?> a(String $$0, int $$1, int $$2) {
-      return new ezl.b($$0, $$1, $$2);
-   }
-
-   public static ezl<?> b(String $$0, String $$1) {
-      return new ezl.c($$0, $$1, 5000, 60000);
-   }
-
-   public static ezl<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new ezl.c($$0, $$1, $$2, $$3);
-   }
-
-   public static ezl<?> b(String $$0) {
-      return new ezl.a($$0, 5000, 60000);
-   }
-
-   public static ezl<?> c(String $$0, String $$1) {
-      return new ezl.d($$0, $$1, 5000, 60000);
-   }
-
-   public static ezl<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new ezl.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends ezl<ezl.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
       }
 
-      public ezl.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new fau(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends ezl<ezl.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public ezl.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new fau(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends ezl<ezl.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public ezl.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fau(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends ezl<ezl.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public ezl.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fau(var3.getMessage(), var3);
-         }
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
       }
    }
 }

@@ -1,21 +1,21 @@
-public record cei(akm l) {
-   public static final akl<cei> a = a("tabby");
-   public static final akl<cei> b = a("black");
-   public static final akl<cei> c = a("red");
-   public static final akl<cei> d = a("siamese");
-   public static final akl<cei> e = a("british_shorthair");
-   public static final akl<cei> f = a("calico");
-   public static final akl<cei> g = a("persian");
-   public static final akl<cei> h = a("ragdoll");
-   public static final akl<cei> i = a("white");
-   public static final akl<cei> j = a("jellie");
-   public static final akl<cei> k = a("all_black");
+public record cei(akt l) {
+   public static final aks<cei> a = a("tabby");
+   public static final aks<cei> b = a("black");
+   public static final aks<cei> c = a("red");
+   public static final aks<cei> d = a("siamese");
+   public static final aks<cei> e = a("british_shorthair");
+   public static final aks<cei> f = a("calico");
+   public static final aks<cei> g = a("persian");
+   public static final aks<cei> h = a("ragdoll");
+   public static final aks<cei> i = a("white");
+   public static final aks<cei> j = a("jellie");
+   public static final aks<cei> k = a("all_black");
 
-   private static akl<cei> a(String $$0) {
-      return akl.a(lf.l, new akm($$0));
+   private static aks<cei> a(String $$0) {
+      return aks.a(li.l, new akt($$0));
    }
 
-   public static cei a(jk<cei> $$0) {
+   public static cei a(jn<cei> $$0) {
       a($$0, a, "textures/entity/cat/tabby.png");
       a($$0, b, "textures/entity/cat/black.png");
       a($$0, c, "textures/entity/cat/red.png");
@@ -29,11 +29,11 @@ public record cei(akm l) {
       return a($$0, k, "textures/entity/cat/all_black.png");
    }
 
-   private static cei a(jk<cei> $$0, akl<cei> $$1, String $$2) {
-      return jk.a($$0, $$1, new cei(new akm($$2)));
+   private static cei a(jn<cei> $$0, aks<cei> $$1, String $$2) {
+      return jn.a($$0, $$1, new cei(new akt($$2)));
    }
 
-   public akm a() {
+   public akt a() {
       return this.l;
    }
 }

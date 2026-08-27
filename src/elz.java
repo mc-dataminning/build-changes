@@ -1,74 +1,42 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class elz {
-   private final ema[] a;
-   private final double b;
-   private final double c;
+public class elz extends ejt {
+   public static final boo<ddl.c> d = boo.a(
+      new ddl.c(bsb.k, 10, 2, 3), new ddl.c(bsb.bC, 5, 4, 4), new ddl.c(bsb.bu, 8, 5, 5), new ddl.c(bsb.aP, 2, 5, 5), new ddl.c(bsb.aq, 3, 4, 4)
+   );
+   public static final Codec<elz> e = a(elz::new);
 
-   public elz(ayk $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   public elz(ejt.d $$0) {
+      super($$0);
    }
 
-   private elz(ayk $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            ema $$5 = new ema($$0);
-            int $$6 = $$3;
-            this.a = new ema[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
-
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new ema($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               ayk $$9 = new dxs(new dwu($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new ema($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
-         }
-      }
+   @Override
+   public Optional<ejt.c> a(ejt.b $$0) {
+      dbh $$1 = $$0.h();
+      ir $$2 = new ir($$1.d(), 64, $$1.e());
+      return Optional.of(new ejt.c($$2, (Consumer<ekl>)($$1x -> a($$1x, $$0))));
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
+   private static void a(ekl $$0, ejt.b $$1) {
+      ely.q $$2 = new ely.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<ejx> $$3 = $$2.d;
 
-      for (ema $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
-
-         $$4 /= 2.0;
-         $$5 *= 2.0;
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         ejx $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      return $$3;
+      $$0.a($$1.f(), 48, 70);
+   }
+
+   @Override
+   public ekc<?> f() {
+      return ekc.d;
    }
 }

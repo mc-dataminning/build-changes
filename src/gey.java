@@ -1,176 +1,320 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class gey implements gek<dpq> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = ayd.h(16);
-   private static final float d = 0.6666667F;
-   private static final euk e = new euk(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dso, gey.a> f;
-   private final ffk g;
+public class gey {
+   private static final int b = 96;
+   private static final List<gey.e> c = Lists.newArrayList(new gey.e[]{new gey.a(), new gey.b()});
+   public static final float a = 5000.0F;
+   private static float d;
+   private static float e;
+   private static float f;
+   private static int g = -1;
+   private static int h = -1;
+   private static long i = -1L;
 
-   public gey(gel.a $$0) {
-      this.f = dso.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gey.a($$0.a(fvv.a($$1)))));
-      this.g = $$0.f();
-   }
+   public static void a(ffu $$0, float $$1, fzn $$2, int $$3, float $$4) {
+      epg $$5 = $$0.k();
+      brv $$6 = $$0.g();
+      if ($$5 == epg.b) {
+         long $$7 = ad.b();
+         int $$8 = $$2.t(ir.a($$0.b())).a().j();
+         if (i < 0L) {
+            g = $$8;
+            h = $$8;
+            i = $$7;
+         }
 
-   public void a(dpq $$0, float $$1, eys $$2, gck $$3, int $$4, int $$5) {
-      drb $$6 = $$0.n();
-      dky $$7 = (dky)$$6.b();
-      dso $$8 = dky.a($$7);
-      gey.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof dlt;
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   public float b() {
-      return 0.6666667F;
-   }
-
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(dpq $$0, eys $$1, gck $$2, int $$3, int $$4, drb $$5, dky $$6, dso $$7, fts $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.az_(), $$0.j(), $$1, $$2, $$3, $$0.b(), $$0.c(), true);
-      this.a($$0.az_(), $$0.k(), $$1, $$2, $$3, $$0.b(), $$0.c(), false);
-      $$1.b();
-   }
-
-   void a(eys $$0, float $$1, drb $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof dlt)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
-      }
-   }
-
-   void a(eys $$0, gck $$1, int $$2, int $$3, dso $$4, fts $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      gpz $$7 = this.a($$4);
-      eyw $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(eys $$0, int $$1, int $$2, fts $$3, eyw $$4) {
-      gey.a $$5 = (gey.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   gpz a(dso $$0) {
-      return gcz.a($$0);
-   }
-
-   void a(io $$0, dpr $$1, eys $$2, gck $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      axq[] $$10 = $$1.a(fdz.Q().aT(), $$1x -> {
-         List<axq> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? axq.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
+         int $$9 = g >> 16 & 0xFF;
+         int $$10 = g >> 8 & 0xFF;
+         int $$11 = g & 0xFF;
+         int $$12 = h >> 16 & 0xFF;
+         int $$13 = h >> 8 & 0xFF;
+         int $$14 = h & 0xFF;
+         float $$15 = aym.a((float)($$7 - i) / 5000.0F, 0.0F, 1.0F);
+         float $$16 = aym.i($$15, (float)$$12, (float)$$9);
+         float $$17 = aym.i($$15, (float)$$13, (float)$$10);
+         float $$18 = aym.i($$15, (float)$$14, (float)$$11);
+         d = $$16 / 255.0F;
+         e = $$17 / 255.0F;
+         f = $$18 / 255.0F;
+         if (g != $$8) {
+            g = $$8;
+            h = aym.d($$16) << 16 | aym.d($$17) << 8 | aym.d($$18);
+            i = $$7;
+         }
+      } else if ($$5 == epg.a) {
+         d = 0.6F;
+         e = 0.1F;
+         f = 0.0F;
+         i = -1L;
+      } else if ($$5 == epg.c) {
+         d = 0.623F;
+         e = 0.734F;
+         f = 0.785F;
+         i = -1L;
+         RenderSystem.clearColor(d, e, f, 0.0F);
       } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
+         float $$19 = 0.25F + 0.75F * (float)$$3 / 32.0F;
+         $$19 = 1.0F - (float)Math.pow((double)$$19, 0.25);
+         ewu $$20 = $$2.a($$0.b(), $$1);
+         float $$21 = (float)$$20.c;
+         float $$22 = (float)$$20.d;
+         float $$23 = (float)$$20.e;
+         float $$24 = aym.a(aym.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
+         ddb $$25 = $$2.G_();
+         ewu $$26 = $$0.b().a(2.0, 2.0, 2.0).a(0.25);
+         ewu $$27 = axn.a($$26, ($$3x, $$4x, $$5x) -> $$2.d().a(ewu.a($$25.a($$3x, $$4x, $$5x).a().e()), $$24));
+         d = (float)$$27.a();
+         e = (float)$$27.b();
+         f = (float)$$27.c();
+         if ($$3 >= 4) {
+            float $$28 = aym.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
+            Vector3f $$29 = new Vector3f($$28, 0.0F, 0.0F);
+            float $$30 = $$0.l().dot($$29);
+            if ($$30 < 0.0F) {
+               $$30 = 0.0F;
+            }
+
+            if ($$30 > 0.0F) {
+               float[] $$31 = $$2.d().a($$2.f($$1), $$1);
+               if ($$31 != null) {
+                  $$30 *= $$31[3];
+                  d = d * (1.0F - $$30) + $$31[0] * $$30;
+                  e = e * (1.0F - $$30) + $$31[1] * $$30;
+                  f = f * (1.0F - $$30) + $$31[2] * $$30;
+               }
+            }
+         }
+
+         d = d + ($$21 - d) * $$19;
+         e = e + ($$22 - e) * $$19;
+         f = f + ($$23 - f) * $$19;
+         float $$32 = $$2.a($$1, $$0.b().d);
+         if ($$32 > 0.0F) {
+            float $$33 = 1.0F - $$32 * 0.5F;
+            float $$34 = 1.0F - $$32 * 0.4F;
+            d *= $$33;
+            e *= $$33;
+            f *= $$34;
+         }
+
+         float $$35 = $$2.b($$1, $$0.b().d);
+         if ($$35 > 0.0F) {
+            float $$36 = 1.0F - $$35 * 0.5F;
+            d *= $$36;
+            e *= $$36;
+            f *= $$36;
+         }
+
+         i = -1L;
       }
 
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         axq $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+      float $$37 = ((float)$$0.b().d - (float)$$2.J_()) * $$2.k().e();
+      gey.e $$38 = a($$6, $$1);
+      if ($$38 != null) {
+         bso $$39 = (bso)$$6;
+         $$37 = $$38.a($$39, $$39.c($$38.a()), $$37, $$1);
+      }
+
+      if ($$37 < 1.0F && $$5 != epg.a && $$5 != epg.c) {
+         if ($$37 < 0.0F) {
+            $$37 = 0.0F;
+         }
+
+         $$37 *= $$37;
+         d *= $$37;
+         e *= $$37;
+         f *= $$37;
+      }
+
+      if ($$4 > 0.0F) {
+         d = d * (1.0F - $$4) + d * 0.7F * $$4;
+         e = e * (1.0F - $$4) + e * 0.6F * $$4;
+         f = f * (1.0F - $$4) + f * 0.6F * $$4;
+      }
+
+      float $$40;
+      if ($$5 == epg.b) {
+         if ($$6 instanceof gei) {
+            $$40 = ((gei)$$6).D();
          } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ffk.a.c, 0, $$13);
+            $$40 = 1.0F;
+         }
+      } else {
+         label86: {
+            if ($$6 instanceof bso $$42 && $$42.b(brj.p) && !$$42.b(brj.G)) {
+               $$40 = gez.a($$42, $$1);
+               break label86;
+            }
+
+            $$40 = 0.0F;
          }
       }
 
-      $$2.b();
-   }
-
-   private void a(eys $$0, boolean $$1, euk $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
+      if (d != 0.0F && e != 0.0F && f != 0.0F) {
+         float $$45 = Math.min(1.0F / d, Math.min(1.0F / e, 1.0F / f));
+         d = d * (1.0F - $$40) + d * $$45 * $$40;
+         e = e * (1.0F - $$40) + e * $$45 * $$40;
+         f = f * (1.0F - $$40) + f * $$45 * $$40;
       }
 
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
+      RenderSystem.clearColor(d, e, f, 0.0F);
    }
 
-   euk d() {
-      return e;
+   public static void a() {
+      RenderSystem.setShaderFogStart(Float.MAX_VALUE);
    }
 
-   static boolean a(io $$0, int $$1) {
-      if ($$1 == csh.p.g()) {
-         return true;
-      } else {
-         fdz $$2 = fdz.Q();
-         gbm $$3 = $$2.s;
-         if ($$3 != null && $$2.m.aA().a() && $$3.gA()) {
-            return true;
+   @Nullable
+   private static gey.e a(brv $$0, float $$1) {
+      return $$0 instanceof bso $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   }
+
+   public static void a(ffu $$0, gey.d $$1, float $$2, boolean $$3, float $$4) {
+      epg $$5 = $$0.k();
+      brv $$6 = $$0.g();
+      gey.c $$7 = new gey.c($$1);
+      gey.e $$8 = a($$6, $$4);
+      if ($$5 == epg.a) {
+         if ($$6.O_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else if ($$6 instanceof bso && ((bso)$$6).b(brj.l)) {
+            $$7.b = 0.0F;
+            $$7.c = 5.0F;
          } else {
-            bru $$4 = $$2.ao();
-            return $$4 != null && $$4.f(euk.b($$0)) < (double)c;
+            $$7.b = 0.25F;
+            $$7.c = 1.0F;
          }
-      }
-   }
+      } else if ($$5 == epg.c) {
+         if ($$6.O_()) {
+            $$7.b = -8.0F;
+            $$7.c = $$2 * 0.5F;
+         } else {
+            $$7.b = 0.0F;
+            $$7.c = 2.0F;
+         }
+      } else if ($$8 != null) {
+         bso $$9 = (bso)$$6;
+         brh $$10 = $$9.c($$8.a());
+         if ($$10 != null) {
+            $$8.a($$7, $$9, $$10, $$2, $$4);
+         }
+      } else if ($$5 == epg.b) {
+         $$7.b = -8.0F;
+         $$7.c = 96.0F;
+         if ($$6 instanceof gei $$11) {
+            $$7.c = $$7.c * Math.max(0.25F, $$11.D());
+            ja<dcz> $$12 = $$11.dU().t($$11.du());
+            if ($$12.a(awd.ae)) {
+               $$7.c *= 0.85F;
+            }
+         }
 
-   public static int a(dpr $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == csh.p.g() && $$0.a()) {
-         return -988212;
+         if ($$7.c > $$2) {
+            $$7.c = $$2;
+            $$7.d = fap.b;
+         }
+      } else if ($$3) {
+         $$7.b = $$2 * 0.05F;
+         $$7.c = Math.min($$2, 192.0F) * 0.5F;
+      } else if ($$1 == gey.d.a) {
+         $$7.b = 0.0F;
+         $$7.c = $$2;
+         $$7.d = fap.b;
       } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axo.b.b($$1) * 0.4);
-         int $$4 = (int)((double)axo.b.c($$1) * 0.4);
-         int $$5 = (int)((double)axo.b.d($$1) * 0.4);
-         return axo.b.a(0, $$3, $$4, $$5);
+         float $$13 = aym.a($$2 / 10.0F, 4.0F, 64.0F);
+         $$7.b = $$2 - $$13;
+         $$7.c = $$2;
+         $$7.d = fap.b;
       }
+
+      RenderSystem.setShaderFogStart($$7.b);
+      RenderSystem.setShaderFogEnd($$7.c);
+      RenderSystem.setShaderFogShape($$7.d);
    }
 
-   public static gey.a a(fvs $$0, dso $$1) {
-      return new gey.a($$0.a(fvv.a($$1)));
+   public static void b() {
+      RenderSystem.setShaderFogColor(d, e, f);
    }
 
-   public static fwc f() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("sign", fwb.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fvy.a);
-      $$1.a("stick", fwb.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fvy.a);
-      return fwc.a($$0, 64, 32);
-   }
-
-   public static final class a extends fts {
-      public final fvw a;
-      public final fvw b;
-
-      public a(fvw $$0) {
-         super(gcs::e);
-         this.a = $$0;
-         this.b = $$0.b("stick");
+   static class a implements gey.e {
+      @Override
+      public ja<brf> a() {
+         return brj.o;
       }
 
       @Override
-      public void a(eys $$0, eyw $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public void a(gey.c $$0, bso $$1, brh $$2, float $$3, float $$4) {
+         float $$5 = $$2.b() ? 5.0F : aym.i(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
+         if ($$0.a == gey.d.a) {
+            $$0.b = 0.0F;
+            $$0.c = $$5 * 0.8F;
+         } else {
+            $$0.b = $$5 * 0.25F;
+            $$0.c = $$5;
+         }
+      }
+   }
+
+   static class b implements gey.e {
+      @Override
+      public ja<brf> a() {
+         return brj.G;
+      }
+
+      @Override
+      public void a(gey.c $$0, bso $$1, brh $$2, float $$3, float $$4) {
+         float $$5 = aym.i($$2.a($$1, $$4), $$3, 15.0F);
+         $$0.b = $$0.a == gey.d.a ? 0.0F : $$5 * 0.75F;
+         $$0.c = $$5;
+      }
+
+      @Override
+      public float a(bso $$0, brh $$1, float $$2, float $$3) {
+         return 1.0F - $$1.a($$0, $$3);
+      }
+   }
+
+   static class c {
+      public final gey.d a;
+      public float b;
+      public float c;
+      public fap d = fap.a;
+
+      public c(gey.d $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public static enum d {
+      a,
+      b;
+   }
+
+   interface e {
+      ja<brf> a();
+
+      void a(gey.c var1, bso var2, brh var3, float var4, float var5);
+
+      default boolean a(bso $$0, float $$1) {
+         return $$0.b(this.a());
+      }
+
+      default float a(bso $$0, brh $$1, float $$2, float $$3) {
+         brh $$4 = $$0.c(this.a());
+         if ($$4 != null) {
+            if ($$4.a(19)) {
+               $$2 = 1.0F - (float)$$4.d() / 20.0F;
+            } else {
+               $$2 = 0.0F;
+            }
+         }
+
+         return $$2;
       }
    }
 }

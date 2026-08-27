@@ -1,13 +1,7 @@
 import java.util.EnumSet;
 
-public class bzp extends bzu {
-   public bzp(bsq $$0, Class<? extends bso> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bzm.a.b, bzm.a.a));
-   }
-
-   public bzp(bsq $$0, Class<? extends bso> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bzm.a.b, bzm.a.a));
+public abstract class bzp extends bzl {
+   public bzp() {
+      this.a(EnumSet.of(bzl.a.a, bzl.a.c));
    }
 }

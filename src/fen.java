@@ -1,26 +1,76 @@
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fen extends fdx {
-   private final BooleanSupplier h;
+public class fen extends gxb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xe b = xe.c("mco.terms.title");
+   private static final xe c = xe.c("mco.terms.sentence.1");
+   private static final xe B = xd.a().a(xe.c("mco.terms.sentence.2").c(yb.a.c(true)));
+   private final fon C;
+   private final fcj D;
+   private boolean E;
 
-   public fen(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, exn.b.a, $$1, $$2);
-      this.h = $$3;
+   public fen(fon $$0, fcj $$1) {
+      super(b);
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
+   public void aN_() {
+      int $$0 = this.n / 4 - 2;
+      this.c(fin.a(xe.c("mco.terms.buttons.agree"), $$0x -> this.C()).a(this.n / 4, g(12), $$0, 20).a());
+      this.c(fin.a(xe.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.C)).a(this.n / 2 + 4, g(12), $$0, 20).a());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.C);
+         return true;
       } else {
-         super.a($$0);
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   private void C() {
+      fbs $$0 = fbs.a();
+
+      try {
+         $$0.j();
+         this.m.a(new fdz(this.C, new ffi(this.C, this.D)));
+      } catch (fdf var3) {
+         a.error("Couldn't agree to TOS", var3);
       }
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E) {
+         this.m.o.a("https://aka.ms/MinecraftRealmsTerms");
+         ad.j().a("https://aka.ms/MinecraftRealmsTerms");
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public xe i() {
+      return xd.a(super.i(), c).a(xd.v).a(B);
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, c, this.n / 2 - 120, g(5), -1, false);
+      int $$4 = this.p.a(c);
+      int $$5 = this.n / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.p.a(B) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.E = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.a(this.p, B, this.n / 2 - 120 + $$4, g(5), this.E ? 7107012 : 3368635, false);
    }
 }

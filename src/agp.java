@@ -1,37 +1,29 @@
-public class agp implements ze<agd> {
-   public static final yv<vx, agp> a = ze.a(agp::a, agp::new);
-   private final int b;
-   private final String c;
+public class agp implements zl<agl> {
+   public static final zc<we, agp> a = zl.a(agp::a, agp::new);
+   private final bpx b;
 
-   public agp(int $$0, String $$1) {
+   public agp(bpx $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private agp(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.d(32500);
+   private agp(we $$0) {
+      this.b = bpx.a($$0.readUnsignedByte());
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, 32500);
+   private void a(we $$0) {
+      $$0.k(this.b.a());
    }
 
    @Override
-   public zg<agp> a() {
-      return agb.bo;
+   public zn<agp> a() {
+      return agj.bi;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bpx b() {
       return this.b;
-   }
-
-   public String e() {
-      return this.c;
    }
 }

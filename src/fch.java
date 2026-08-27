@@ -1,167 +1,23 @@
-import com.mojang.datafixers.util.Either;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fch {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final azb d;
+public class fch extends fcy {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
-   public fch(Executor $$0, TimeUnit $$1, azb $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   public static fch a(String $$0) {
+      fch $$1 = new fch();
 
-   public <T> fch.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fci $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fch.e<>($$0, $$1, $$4, $$3);
-      }
-   }
-
-   public fch.c a() {
-      return new fch.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fch.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(fch.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fev.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
       }
 
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fch.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void b() {
-         fch.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
-
-      void c() {
-         this.b.a();
-         this.d = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fch.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fch.e<T> $$0, Consumer<T> $$1) {
-         fch.b<T> $$2 = fch.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fch.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fch.b<?> $$0 : this.b) {
-            $$0.a(fch.this.d.get(fch.this.c));
-         }
-      }
-
-      public void c() {
-         for (fch.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fci e;
-      @Nullable
-      private CompletableFuture<fch.a<T>> f;
-      @Nullable
-      fch.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, fci $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fch.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fch.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fch.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fch.this.d.get(fch.this.c);
-                  return new fch.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fch.this.d.get(fch.this.c);
-                  return new fch.a<>(Either.right(var4x), $$3);
-               }
-            }, fch.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+      return $$1;
    }
 }

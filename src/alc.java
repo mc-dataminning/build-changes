@@ -1,9 +1,15 @@
-public interface alc {
-   String af();
+import java.util.List;
 
-   String L();
+public enum alc {
+   a,
+   b,
+   c,
+   d;
 
-   int M();
+   private static final List<alc> e = List.of(values());
+   private static final jo.b f = jo.a(lh.aw);
 
-   int N();
+   public static jh<alc> a() {
+      return new jh<>(e).a(a, f);
+   }
 }

@@ -1,18 +1,7 @@
-import javax.annotation.Nullable;
+public interface jw<T> extends jn<T> {
+   ja.c<T> a(aks<T> var1, T var2, jm var3);
 
-public interface jw {
-   jx a();
+   boolean k();
 
-   @Nullable
-   default <T> T a(ka<? extends T> $$0) {
-      return this.a().a($$0);
-   }
-
-   default <T> T a(ka<? extends T> $$0, T $$1) {
-      return this.a().a($$0, $$1);
-   }
-
-   default boolean b(ka<?> $$0) {
-      return this.a().b($$0);
-   }
+   jb<T> n();
 }

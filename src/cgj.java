@@ -1,34 +1,34 @@
 import javax.annotation.Nullable;
 
 public class cgj extends cgh {
-   public cgj(bsa<? extends cgj> $$0, dax $$1) {
+   public cgj(bsb<? extends cgj> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected avg v() {
-      return avh.hf;
+   protected avn u() {
+      return avo.hf;
    }
 
    @Override
-   protected avg gN() {
-      return avh.hg;
+   protected avn gW() {
+      return avo.hg;
    }
 
    @Override
-   protected avg o_() {
-      return avh.hi;
+   protected avn n_() {
+      return avo.hi;
    }
 
    @Nullable
    @Override
-   protected avg gw() {
-      return avh.hj;
+   protected avn gF() {
+      return avo.hj;
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.hk;
+   protected avn d(bqt $$0) {
+      return avo.hk;
    }
 
    @Override
@@ -36,20 +36,20 @@ public class cgj extends cgh {
       if ($$0 == this) {
          return false;
       } else {
-         return !($$0 instanceof cgj) && !($$0 instanceof cgk) ? false : this.gW() && ((cgi)$$0).gW();
+         return !($$0 instanceof cgj) && !($$0 instanceof cgk) ? false : this.hf() && ((cgi)$$0).hf();
       }
    }
 
    @Override
-   protected void gV() {
-      this.a(avh.hl, 0.4F, 1.0F);
+   protected void he() {
+      this.a(avo.hl, 0.4F, 1.0F);
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
-      bsa<? extends cgi> $$2 = $$1 instanceof cgk ? bsa.at : bsa.z;
-      cgi $$3 = $$2.a((dax)$$0);
+   public brp a(aqt $$0, brp $$1) {
+      bsb<? extends cgi> $$2 = $$1 instanceof cgk ? bsb.au : bsb.B;
+      cgi $$3 = $$2.a((dca)$$0);
       if ($$3 != null) {
          this.a($$1, $$3);
       }

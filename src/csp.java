@@ -1,22 +1,25 @@
-public class csp extends ctj {
-   public csp(ctj.a $$0) {
+public class csp extends cuc {
+   public csp(cuc.a $$0) {
       super($$0);
    }
 
    @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      cto $$3 = $$1.b($$2);
-      $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avh.it, avi.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      $$1.gx().a(this, 20);
-      if (!$$0.B) {
-         cmy $$4 = new cmy($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dH(), $$1.dF(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public bqa a(cyf $$0) {
+      dca $$1 = $$0.q();
+      ir $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if ($$3.a(dfe.n) && $$0.k() == iw.b) {
+         cly $$4 = $$0.o();
+         $$0.n().h(1);
+         $$1.a($$4, $$2, avo.Ev, avq.e, 1.0F, $$1.A.a(0.9F, 1.1F));
+         $$1.b($$2, dfe.l.n());
+         if ($$4 instanceof aqu $$5 && $$4.dU().af().equals(dca.h)) {
+            an.am.a($$5);
+         }
 
-      $$1.b(avr.c.b(this));
-      $$3.a(1, $$1);
-      return bpv.a($$3, $$0.x_());
+         return bqa.a($$1.C);
+      } else {
+         return super.a($$0);
+      }
    }
 }

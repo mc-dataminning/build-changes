@@ -1,15 +1,38 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 
-public class fs extends fo<dkl> {
-   private fs() {
-      super(dkl.e, dkl::values);
+public class fs implements ArgumentType<yb> {
+   private static final Collection<String> b = List.of("{\"bold\": true}\n");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("argument.style.invalid", $$0));
+   private final jc.a c;
+
+   private fs(jc.a $$0) {
+      this.c = $$0;
    }
 
-   public static fs a() {
-      return new fs();
+   public static yb a(CommandContext<eh> $$0, String $$1) {
+      return (yb)$$0.getArgument($$1, yb.class);
    }
 
-   public static dkl a(CommandContext<ee> $$0, String $$1) {
-      return (dkl)$$0.getArgument($$1, dkl.class);
+   public static fs a(ed $$0) {
+      return new fs($$0);
+   }
+
+   public yb a(StringReader $$0) throws CommandSyntaxException {
+      try {
+         return el.a(this.c, $$0, yb.b.b);
+      } catch (Exception var4) {
+         String $$2 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
+         throw a.createWithContext($$0, $$2);
+      }
+   }
+
+   public Collection<String> getExamples() {
+      return b;
    }
 }

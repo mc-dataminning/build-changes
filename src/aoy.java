@@ -1,120 +1,157 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.Arrays;
 
 public class aoy {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wx.c("commands.whitelist.remove.failed"));
+   private static final float a = 10000.0F;
+   private static final String b = String.valueOf(20);
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a(
-                                 "whitelist"
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a(
+                                 "tick"
                               )
                               .requires($$0x -> $$0x.c(3)))
-                           .then(ef.a("on").executes($$0x -> b((ee)$$0x.getSource()))))
-                        .then(ef.a("off").executes($$0x -> c((ee)$$0x.getSource()))))
-                     .then(ef.a("list").executes($$0x -> d((ee)$$0x.getSource()))))
-                  .then(ef.a("add").then(ef.a("targets", et.a()).suggests(($$0x, $$1) -> {
-                     auj $$2 = ((ee)$$0x.getSource()).l().ah();
-                     return ej.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gb())).map($$0xx -> $$0xx.gb().getName()), $$1);
-                  }).executes($$0x -> a((ee)$$0x.getSource(), et.a($$0x, "targets"))))))
-               .then(
-                  ef.a("remove")
+                           .then(ei.a("query").executes($$0x -> a((eh)$$0x.getSource()))))
+                        .then(
+                           ei.a("rate")
+                              .then(
+                                 ei.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
+                                    .suggests(($$0x, $$1) -> em.a(new String[]{b}, $$1))
+                                    .executes($$0x -> a((eh)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
+                              )
+                        ))
                      .then(
-                        ef.a("targets", et.a())
-                           .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().j(), $$1))
-                           .executes($$0x -> b((ee)$$0x.getSource(), et.a($$0x, "targets")))
-                     )
-               ))
-            .then(ef.a("reload").executes($$0x -> a((ee)$$0x.getSource())))
+                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("step").executes($$0x -> b((eh)$$0x.getSource(), 1)))
+                              .then(ei.a("stop").executes($$0x -> b((eh)$$0x.getSource()))))
+                           .then(
+                              ei.a("time", fw.a(1))
+                                 .suggests(($$0x, $$1) -> em.a(new String[]{"1t", "1s"}, $$1))
+                                 .executes($$0x -> b((eh)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           )
+                     ))
+                  .then(
+                     ((LiteralArgumentBuilder)ei.a("sprint").then(ei.a("stop").executes($$0x -> c((eh)$$0x.getSource()))))
+                        .then(
+                           ei.a("time", fw.a(1))
+                              .suggests(($$0x, $$1) -> em.a(new String[]{"60s", "1d", "3d"}, $$1))
+                              .executes($$0x -> a((eh)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  ))
+               .then(ei.a("unfreeze").executes($$0x -> a((eh)$$0x.getSource(), false))))
+            .then(ei.a("freeze").executes($$0x -> a((eh)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(ee $$0) {
-      $$0.l().ah().a();
-      $$0.a(() -> wx.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
+   private static String a(long $$0) {
+      return String.format("%.1f", (float)$$0 / (float)azl.b);
+   }
+
+   private static int a(eh $$0, float $$1) {
+      alm $$2 = $$0.l().aQ();
+      $$2.a($$1);
+      String $$3 = String.format("%.1f", $$1);
+      $$0.a(() -> xe.a("commands.tick.rate.success", $$3), true);
+      return (int)$$1;
+   }
+
+   private static int a(eh $$0) {
+      alm $$1 = $$0.l().aQ();
+      String $$2 = a($$0.l().aR());
+      float $$3 = $$1.f();
+      String $$4 = String.format("%.1f", $$3);
+      if ($$1.a()) {
+         $$0.a(() -> xe.c("commands.tick.status.sprinting"), false);
+         $$0.a(() -> xe.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      } else {
+         if ($$1.l()) {
+            $$0.a(() -> xe.c("commands.tick.status.frozen"), false);
+         } else if ($$1.h() < $$0.l().aR()) {
+            $$0.a(() -> xe.c("commands.tick.status.lagging"), false);
+         } else {
+            $$0.a(() -> xe.c("commands.tick.status.running"), false);
+         }
+
+         String $$5 = a($$1.h());
+         $$0.a(() -> xe.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+      }
+
+      long[] $$6 = Arrays.copyOf($$0.l().aS(), $$0.l().aS().length);
+      Arrays.sort($$6);
+      String $$7 = a($$6[$$6.length / 2]);
+      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
+      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
+      $$0.a(() -> xe.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
+      return (int)$$3;
+   }
+
+   private static int a(eh $$0, int $$1) {
+      boolean $$2 = $$0.l().aQ().b($$1);
+      if ($$2) {
+         $$0.a(() -> xe.c("commands.tick.sprint.stop.success"), true);
+      }
+
+      $$0.a(() -> xe.c("commands.tick.status.sprinting"), true);
       return 1;
    }
 
-   private static int a(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aur $$2 = $$0.l().ah().i();
-      int $$3 = 0;
+   private static int a(eh $$0, boolean $$1) {
+      alm $$2 = $$0.l().aQ();
+      if ($$1) {
+         if ($$2.a()) {
+            $$2.c();
+         }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            aus $$5 = new aus($$4);
-            $$2.a($$5);
-            $$0.a(() -> wx.a("commands.whitelist.add.success", wx.b($$4.getName())), true);
-            $$3++;
+         if ($$2.j()) {
+            $$2.b();
          }
       }
 
-      if ($$3 == 0) {
-         throw c.create();
+      $$2.a($$1);
+      if ($$1) {
+         $$0.a(() -> xe.c("commands.tick.status.frozen"), true);
       } else {
-         return $$3;
+         $$0.a(() -> xe.c("commands.tick.status.running"), true);
       }
+
+      return $$1 ? 1 : 0;
    }
 
-   private static int b(ee $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aur $$2 = $$0.l().ah().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            aus $$5 = new aus($$4);
-            $$2.b($$5);
-            $$0.a(() -> wx.a("commands.whitelist.remove.success", wx.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
+   private static int b(eh $$0, int $$1) {
+      alm $$2 = $$0.l().aQ();
+      boolean $$3 = $$2.a($$1);
+      if ($$3) {
+         $$0.a(() -> xe.a("commands.tick.step.success", $$1), true);
       } else {
-         $$0.l().a($$0);
-         return $$3;
+         $$0.b(xe.c("commands.tick.step.fail"));
       }
+
+      return 1;
    }
 
-   private static int b(ee $$0) throws CommandSyntaxException {
-      auj $$1 = $$0.l().ah();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> wx.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
+   private static int b(eh $$0) {
+      alm $$1 = $$0.l().aQ();
+      boolean $$2 = $$1.b();
+      if ($$2) {
+         $$0.a(() -> xe.c("commands.tick.step.stop.success"), true);
          return 1;
+      } else {
+         $$0.b(xe.c("commands.tick.step.stop.fail"));
+         return 0;
       }
    }
 
-   private static int c(ee $$0) throws CommandSyntaxException {
-      auj $$1 = $$0.l().ah();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> wx.c("commands.whitelist.disabled"), true);
+   private static int c(eh $$0) {
+      alm $$1 = $$0.l().aQ();
+      boolean $$2 = $$1.c();
+      if ($$2) {
+         $$0.a(() -> xe.c("commands.tick.sprint.stop.success"), true);
          return 1;
-      }
-   }
-
-   private static int d(ee $$0) {
-      String[] $$1 = $$0.l().ah().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> wx.c("commands.whitelist.none"), false);
       } else {
-         $$0.a(() -> wx.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+         $$0.b(xe.c("commands.tick.sprint.stop.fail"));
+         return 0;
       }
-
-      return $$1.length;
    }
 }

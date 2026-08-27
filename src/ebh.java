@@ -1,172 +1,45 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
-public class ebh extends dzx<ecv> {
-   public static final int a = 10;
-   private static final int b = 42;
-   private static final LoadingCache<Long, List<ebh.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new ebh.b());
-
-   public ebh(Codec<ecv> $$0) {
+public class ebh extends eca<eec> {
+   public ebh(Codec<eec> $$0) {
       super($$0);
    }
 
-   public static List<ebh.a> a(dbs $$0) {
-      ayk $$1 = ayk.a($$0.C());
-      long $$2 = $$1.g() & 65535L;
-      return (List<ebh.a>)c.getUnchecked($$2);
-   }
-
    @Override
-   public boolean a(dzz<ecv> $$0) {
-      ecv $$1 = $$0.f();
-      dbs $$2 = $$0.b();
-      ayk $$3 = $$0.d();
-      io $$4 = $$0.e();
-      List<ebh.a> $$5 = $$1.b();
-      if ($$5.isEmpty()) {
-         $$5 = a($$2);
-      }
+   public boolean a(ecc<eec> $$0) {
+      ir $$1 = $$0.e();
+      dcv $$2 = $$0.b();
+      ayt $$3 = $$0.d();
+      eec $$4 = $$0.f();
+      if ($$1.v() < $$2.J_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (ebh.a $$6 : $$5) {
-         if ($$6.a($$4)) {
-            this.a($$2, $$3, $$1, $$6);
-         }
-      }
-
-      return true;
-   }
-
-   private void a(dbm $$0, ayk $$1, ecv $$2, ebh.a $$3) {
-      int $$4 = $$3.c();
-
-      for (io $$5 : io.c(new io($$3.a() - $$4, $$0.I_(), $$3.b() - $$4), new io($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
-         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
-            this.a($$0, $$5, dea.co.n());
-         } else if ($$5.v() > 65) {
-            this.a($$0, $$5, dea.a.n());
-         }
-      }
-
-      if ($$3.e()) {
-         int $$6 = -2;
-         int $$7 = 2;
-         int $$8 = 3;
-         io.a $$9 = new io.a();
-
-         for (int $$10 = -2; $$10 <= 2; $$10++) {
-            for (int $$11 = -2; $$11 <= 2; $$11++) {
-               for (int $$12 = 0; $$12 <= 3; $$12++) {
-                  boolean $$13 = ayd.a($$10) == 2;
-                  boolean $$14 = ayd.a($$11) == 2;
-                  boolean $$15 = $$12 == 3;
-                  if ($$13 || $$14 || $$15) {
-                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
-                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
-                     drb $$18 = dea.eW
-                        .n()
-                        .a(dhz.a, Boolean.valueOf($$16 && $$11 != -2))
-                        .a(dhz.c, Boolean.valueOf($$16 && $$11 != 2))
-                        .a(dhz.d, Boolean.valueOf($$17 && $$10 != -2))
-                        .a(dhz.b, Boolean.valueOf($$17 && $$10 != 2));
-                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
-                  }
-               }
+         for (ir $$7 : ir.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
-      }
 
-      cgz $$19 = bsa.E.a((dax)$$0.E());
-      if ($$19 != null) {
-         $$19.a($$2.c());
-         $$19.n($$2.a());
-         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
-         $$0.b($$19);
-         io $$20 = $$19.dp();
-         this.a($$0, $$20.d(), dea.F.n());
-         this.a($$0, $$20, dgy.a($$0, $$20));
+         return true;
       }
    }
 
-   public static class a {
-      public static final Codec<ebh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
-                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
-                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, ebh.a::new)
-      );
-      private final int b;
-      private final int c;
-      private final int d;
-      private final int e;
-      private final boolean f;
-      private final euf g;
-
-      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = new euf((double)($$0 - $$2), (double)dut.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)dut.d, (double)($$1 + $$2));
-      }
-
-      public boolean a(io $$0) {
-         return jq.a($$0.u()) == jq.a(this.b) && jq.a($$0.w()) == jq.a(this.c);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public euf f() {
-         return this.g;
-      }
+   private boolean a(dcb $$0, ir $$1, ayt $$2) {
+      ir $$3 = $$1.d();
+      dtc $$4 = $$0.a_($$3);
+      return !$$4.a(dfe.lB) && !$$4.a(dfe.lC) ? $$4.d($$0, $$3, iw.b) : $$2.h();
    }
 
-   static class b extends CacheLoader<Long, List<ebh.a>> {
-      public List<ebh.a> a(Long $$0) {
-         IntArrayList $$1 = ac.a(IntStream.range(0, 10), ayk.a($$0));
-         List<ebh.a> $$2 = Lists.newArrayList();
-
-         for (int $$3 = 0; $$3 < 10; $$3++) {
-            int $$4 = ayd.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$5 = ayd.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$6 = $$1.get($$3);
-            int $$7 = 2 + $$6 / 3;
-            int $$8 = 76 + $$6 * 3;
-            boolean $$9 = $$6 == 1 || $$6 == 2;
-            $$2.add(new ebh.a($$4, $$5, $$7, $$8, $$9));
-         }
-
-         return $$2;
+   private void a(dcb $$0, ir $$1, ayt $$2, eec $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
    }
 }

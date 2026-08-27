@@ -1,154 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class emj implements emm {
-   public static final int b = 1;
-   protected final daz c;
-   @Nullable
-   private final eml<?, ?> a;
-   @Nullable
-   private final eml<?, ?> d;
+public class emj extends ejt {
+   public static final Codec<emj> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, emj::new)
+   );
+   public final boolean e;
 
-   public emj(dtk $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new emc($$0) : null;
-      this.d = $$2 ? new emn($$0) : null;
+   public emj(ejt.d $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public void a(io $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
+   public Optional<ejt.c> a(ejt.b $$0) {
+      dyu.a $$1 = this.e ? dyu.a.a : dyu.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
 
-      if (this.d != null) {
-         this.d.a($$0);
-      }
+   private void a(ekl $$0, ejt.b $$1) {
+      dmd $$2 = dmd.a($$1.f());
+      ir $$3 = new ir($$1.h().d(), 90, $$1.h().e());
+      emi.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   public boolean K_() {
-      return this.d != null && this.d.K_() ? true : this.a != null && this.a.K_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.d != null) {
-         $$0 += this.d.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(jq $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(dae $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dae $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public emh a(dbg $$0) {
-      if ($$0 == dbg.b) {
-         return (emh)(this.a == null ? emh.a.a : this.a);
-      } else {
-         return (emh)(this.d == null ? emh.a.a : this.d);
-      }
-   }
-
-   public String a(dbg $$0, jq $$1) {
-      if ($$0 == dbg.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
-
-      return "n/a";
-   }
-
-   public emi.b b(dbg $$0, jq $$1) {
-      if ($$0 == dbg.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return emi.b.a;
-   }
-
-   public void a(dbg $$0, jq $$1, @Nullable dtc $$2) {
-      if ($$0 == dbg.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(dae $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
-   }
-
-   public int a(io $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(jq $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.am() + 2;
-   }
-
-   public int d() {
-      return this.c.an() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+   public ekc<?> f() {
+      return ekc.m;
    }
 }

@@ -1,62 +1,57 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
-
-public class gcq {
-   private final gcv a = new gcv();
-   private final gcw b;
-   private final gck.a c;
-   private final gck.a d;
-   private final gcl e;
-
-   public gcq(int $$0) {
-      this.b = gcw.a($$0);
-      SortedMap<gcs, eyn> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gcz.h(), this.a.a(gcs.c()));
-         $$0x.put(gcz.i(), this.a.a(gcs.e()));
-         $$0x.put(gcz.a(), this.a.a(gcs.d()));
-         $$0x.put(gcz.k(), this.a.a(gcs.f()));
-         a($$0x, gcz.b());
-         a($$0x, gcz.c());
-         a($$0x, gcz.d());
-         a($$0x, gcz.e());
-         a($$0x, gcz.f());
-         $$0x.put(gcz.g(), new eyn(786432));
-         a($$0x, gcs.j());
-         a($$0x, gcs.k());
-         a($$0x, gcs.m());
-         a($$0x, gcs.n());
-         a($$0x, gcs.l());
-         a($$0x, gcs.o());
-         a($$0x, gcs.p());
-         a($$0x, gcs.i());
-         gqb.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = gck.a(new eyn(1536));
-      this.c = gck.a($$1, new eyn(786432));
-      this.e = new gcl(this.c);
+public class gcq extends gdu {
+   gcq(fzn $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.u = 0.75F;
+      this.B = 0.999F;
+      this.j *= 0.8F;
+      this.k *= 0.8F;
+      this.l *= 0.8F;
+      this.k = (double)(this.r.i() * 0.4F + 0.05F);
+      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gcs, eyn> $$0, gcs $$1) {
-      $$0.put($$1, new eyn($$1.I()));
+   @Override
+   public gcy b() {
+      return gcy.b;
    }
 
-   public gcv a() {
-      return this.a;
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      int $$2 = 240;
+      int $$3 = $$1 >> 16 & 0xFF;
+      return 240 | $$3 << 16;
    }
 
-   public gcw b() {
-      return this.b;
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1);
    }
 
-   public gck.a c() {
-      return this.c;
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         float $$0 = (float)this.s / (float)this.t;
+         if (this.r.i() > $$0) {
+            this.c.a(lb.ac, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
    }
 
-   public gck.a d() {
-      return this.d;
-   }
+   public static class a implements gcx<le> {
+      private final gdp a;
 
-   public gcl e() {
-      return this.e;
+      public a(gdp $$0) {
+         this.a = $$0;
+      }
+
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcq $$8 = new gcq($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

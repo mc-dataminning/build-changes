@@ -1,29 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmc extends dgg implements deb {
-   public static final MapCodec<dmc> c = b(dmc::new);
+public class dmc extends dfc {
+   public static final MapCodec<dmc> h = b(dmc::new);
+   public static final dua<iw.a> i = dts.I;
 
    @Override
-   public MapCodec<dmc> a() {
-      return c;
+   public MapCodec<? extends dmc> a() {
+      return h;
    }
 
-   public dmc(dra.d $$0) {
+   public dmc(dtb.d $$0) {
       super($$0);
+      this.k(this.n().a(i, iw.a.b));
    }
 
    @Override
-   public boolean b(dba $$0, io $$1, drb $$2) {
-      return true;
+   protected dtc a(dtc $$0, dmd $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dtc b(dtc $$0, dmd $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((iw.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, iw.a.c);
+               case c:
+                  return $$0.a(i, iw.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
-      return true;
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
-      a($$0, $$2, new cto(this));
+   public dtc a(cyd $$0) {
+      return this.n().a(i, $$0.k().o());
    }
 }

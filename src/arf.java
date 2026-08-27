@@ -1,24 +1,43 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class arf {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+public class arf implements arc {
+   private final arc a;
+   private final bot<Runnable> b;
+   private boolean c;
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   private arf(arc $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = bot.a($$1, "progressListener");
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public static arf a(arc $$0, Executor $$1) {
+      arf $$2 = new arf($$0, $$1);
+      $$2.a();
+      return $$2;
+   }
+
+   @Override
+   public void a(dbh $$0) {
+      this.b.a(() -> this.a.a($$0));
+   }
+
+   @Override
+   public void a(dbh $$0, @Nullable dvx $$1) {
+      if (this.c) {
+         this.b.a(() -> this.a.a($$0, $$1));
+      }
+   }
+
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a(this.a::a);
+   }
+
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a(this.a::b);
    }
 }

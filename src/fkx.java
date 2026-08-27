@@ -1,49 +1,151 @@
-public class fkx extends fly {
-   private static final akm a = new akm("textures/gui/demo_background.png");
-   private fgs b = fgs.a;
-   private fgs c = fgs.a;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public fkx() {
-      super(wx.c("demo.help.title"));
+public class fkx {
+   private static final int a = 5;
+   private static final int b = -1;
+   final fgj c;
+   private final List<fkx.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fkw> f = Queues.newArrayDeque();
+
+   public fkx(fgj $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void aM_() {
-      int $$0 = -16;
-      this.c(ffz.a(wx.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ac.k().a("https://aka.ms/BuyMinecraftJava");
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(ffz.a(wx.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.n.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fed $$1 = this.m.m;
-      this.b = fgs.a(
-         this.p,
-         wx.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
-         wx.c("demo.help.movementMouse"),
-         wx.a("demo.help.jump", $$1.B.k()),
-         wx.a("demo.help.inventory", $$1.E.k())
-      );
-      this.c = fgs.a(this.p, wx.c("demo.help.fullWrapped"), 218);
+   public void a(fia $$0) {
+      if (!this.c.m.aa) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new fkx.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+         }
+      }
    }
 
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
+      }
+
+      return -1;
    }
 
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
+   private int d() {
+      return 5 - this.e.cardinality();
+   }
+
+   @Nullable
+   public <T extends fkw> T a(Class<? extends T> $$0, Object $$1) {
+      for (fkx.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (fkw $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fkw $$0) {
+      this.f.add($$0);
+   }
+
+   public fgj b() {
+      return this.c;
+   }
+
+   public double c() {
+      return this.c.m.B().c();
+   }
+
+   class a<T extends fkw> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fkw.a h = fkw.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      private float a(long $$0) {
+         float $$1 = aym.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == fkw.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, fia $$1) {
+         long $$2 = ad.b();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(fkx.this.c.ak());
+         }
+
+         if (this.h == fkw.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
+
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         fkw.a $$3 = this.c.a($$1, fkx.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(fkx.this.c.ak());
+         }
+
+         return this.h == fkw.a.b && $$2 - this.f > 600L;
+      }
    }
 }

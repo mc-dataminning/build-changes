@@ -1,97 +1,108 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class ecx implements ecb {
-   public static final Codec<ecx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eec.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               eff.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               eec.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               edn.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               edz.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               eec.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               edc.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               eet.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, ecx::new)
-   );
-   public final eec b;
-   public final eec c;
-   public final eff d;
-   public final eec e;
-   public final edn f;
-   public final Optional<edz> g;
-   public final edc h;
-   public final List<eet> i;
-   public final boolean j;
-   public final boolean k;
-
-   protected ecx(eec $$0, eff $$1, eec $$2, edn $$3, Optional<edz> $$4, eec $$5, edc $$6, List<eet> $$7, boolean $$8, boolean $$9) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+public class ecx extends eca<eer> {
+   public ecx(Codec<eer> $$0) {
+      super($$0);
    }
 
-   public static class a {
-      public final eec a;
-      private final eff c;
-      public final eec b;
-      private final edn d;
-      private final Optional<edz> e;
-      private eec f;
-      private final edc g;
-      private List<eet> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
+   @Override
+   public boolean a(ecc<eer> $$0) {
+      ir $$1 = $$0.e();
+      dcv $$2 = $$0.b();
+      ayt $$3 = $$0.d();
+      if ($$2.a(dyu.a.a, $$1).v() <= $$1.v() + 2) {
+         return false;
+      } else if (!this.b($$2, $$1)) {
+         return false;
+      } else {
+         iw $$4 = iw.b($$3.a(4));
+         ir.a $$5 = new ir.a();
+         $$2.a($$1.d(), dfe.lC.n(), 2);
+         int $$6 = $$3.b(6, 12);
+         List<ir> $$7 = new ArrayList<>();
 
-      public a(eec $$0, eff $$1, eec $$2, edn $$3, Optional<edz> $$4, edc $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = eec.a(dea.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
+         for (int $$8 = 0; $$8 < 2; $$8++) {
+            $$5.g($$1);
+            float $$9 = 1.0F;
+            int $$10 = 0;
+            $$4 = $$4.g();
 
-      public a(eec $$0, eff $$1, eec $$2, edn $$3, edc $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
+            while ($$3.i() < $$9) {
+               if (++$$10 > 2) {
+                  break;
+               }
 
-      public ecx.a a(eec $$0) {
-         this.f = $$0;
-         return this;
-      }
+               $$5.d($$4);
+               if (!this.b($$2, $$5)) {
+                  break;
+               }
 
-      public ecx.a a(List<eet> $$0) {
-         this.h = $$0;
-         return this;
-      }
+               $$9 *= 0.8F;
+               Function<ir, dtc> $$11 = $$1x -> {
+                  $$7.add($$1x.i());
+                  return dfe.a.n();
+               };
+               Function<ir, dtc> $$12 = $$0x -> dfe.lC.n();
+               this.a($$2, $$3, $$5, $$4.h(), $$12, $$11, $$6);
+               iw $$13 = $$4.i();
+               this.a($$2, $$3, $$5.a($$13), $$13, $$12, $$11, $$6);
+            }
 
-      public ecx.a a() {
-         this.i = true;
-         return this;
-      }
+            if ($$3.a(2) == 0) {
+               $$5.d($$4);
+               if (this.b($$2, $$5)) {
+                  Function<ir, dtc> $$14 = $$3x -> {
+                     $$7.add($$3x.i());
+                     if ($$3.a(10) == 0) {
+                        $$2.a($$3x.c(), dfe.pd.n(), 3);
+                     }
 
-      public ecx.a b() {
-         this.j = true;
-         return this;
-      }
+                     return dfe.pP.n();
+                  };
+                  this.a($$2, $$3, $$5, $$4.h(), $$0x -> dfe.k.n(), $$14, $$6);
+                  iw $$15 = $$4.i();
+                  this.a($$2, $$3, $$5.a($$15), $$15, $$0x -> dfe.k.n(), $$14, $$6);
+               }
+            }
+         }
 
-      public ecx c() {
-         return new ecx(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+         for (ir $$16 : $$7) {
+            $$2.y($$16).e($$16);
+         }
+
+         iw $$17 = $$4.i();
+         this.a($$2, $$3, $$1.a($$17), $$17, $$0x -> dfe.lC.n(), $$0x -> dfe.a.n(), $$6);
+         $$17 = $$17.g();
+         this.a($$2, $$3, $$1.a($$17), $$17, $$0x -> dfe.lC.n(), $$0x -> dfe.a.n(), $$6);
+         return false;
       }
+   }
+
+   private void a(dcv $$0, ayt $$1, ir $$2, iw $$3, Function<ir, dtc> $$4, Function<ir, dtc> $$5, int $$6) {
+      ir.a $$7 = new ir.a($$2);
+      int $$8 = $$6 + $$1.a(3);
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         if (!this.b($$0, $$7)) {
+            $$7.d(iw.b);
+            if (!this.b($$0, $$7)) {
+               $$7.c(iw.a, 2);
+               if (!this.b($$0, $$7)) {
+                  break;
+               }
+            }
+         }
+
+         $$0.a($$7.d(), $$4.apply($$7.d()), 3);
+         $$0.a($$7, $$5.apply($$7), 3);
+         $$7.d($$3);
+      }
+   }
+
+   private boolean b(dcv $$0, ir $$1) {
+      return ($$0.u($$1) || $$0.a_($$1).a(dfe.pP)) && $$0.a_($$1.d()).a(dfe.k);
    }
 }

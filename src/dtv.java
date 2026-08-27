@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dtv implements azg {
+   a("compare"),
+   b("subtract");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dtv {
+   private final String c;
+
+   private dtv(String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

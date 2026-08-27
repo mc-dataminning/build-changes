@@ -1,14 +1,30 @@
-public class ctb extends cur {
-   public ctb(ddy $$0, ddy $$1, ctj.a $$2) {
-      super($$2, $$0, $$1, it.b);
+public class ctb extends cuc implements cth {
+   public ctb(cuc.a $$0) {
+      super($$0);
+      dhi.a(this, crt.a);
+   }
+
+   public static boolean j(cuh $$0) {
+      return $$0.m() < $$0.n() - 1;
    }
 
    @Override
-   protected boolean a(dba $$0, drb $$1, io $$2) {
-      if ($$1.b() instanceof dmx $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
+   public boolean a(cuh $$0, cuh $$1) {
+      return $$1.a(cuk.xB);
+   }
 
-      return super.a($$0, $$1, $$2);
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
+
+   @Override
+   public ja<avn> ap_() {
+      return avo.aw;
+   }
+
+   @Override
+   public bsc k() {
+      return bsc.e;
    }
 }

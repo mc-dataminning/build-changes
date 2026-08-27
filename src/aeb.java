@@ -1,23 +1,21 @@
-import javax.annotation.Nullable;
-
-public record aeb(int b, ix<bra> c) implements ze<abq> {
-   public static final yv<wi, aeb> a = yv.a(yt.f, $$0 -> $$0.b, yt.b(lf.R), aeb::e, aeb::new);
+public record aeb(int b, xe c) implements zl<abw> {
+   public static final zc<wp, aeb> a = zc.a(za.g, aeb::b, xg.d, aeb::e, aeb::new);
 
    @Override
-   public zg<aeb> a() {
-      return agb.ak;
+   public zn<aeb> a() {
+      return agj.ae;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bru a(dax $$0) {
-      return $$0.a(this.b);
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public ix<bra> e() {
+   public xe e() {
       return this.c;
    }
 }

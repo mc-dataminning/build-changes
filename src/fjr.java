@@ -1,61 +1,23 @@
-import java.util.function.Consumer;
+public class fjr {
+   public static final fjr a = new fjr("Merry X-mas!");
+   public static final fjr b = new fjr("Happy new year!");
+   public static final fjr c = new fjr("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 89;
+   private final String f;
 
-public class fjr implements fjo {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
-
-   public fjr(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   public fjr(String $$0) {
+      this.f = $$0;
    }
 
-   public fjr(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static fjr a(int $$0) {
-      return new fjr($$0, 0);
-   }
-
-   public static fjr b(int $$0) {
-      return new fjr(0, $$0);
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int C() {
-      return this.a;
-   }
-
-   @Override
-   public int D() {
-      return this.b;
-   }
-
-   @Override
-   public int x() {
-      return this.c;
-   }
-
-   @Override
-   public int v() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<ffx> $$0) {
+   public void a(fia $$0, int $$1, fhy $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 89.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - aym.e(aym.a((float)(ad.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

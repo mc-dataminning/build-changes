@@ -1,505 +1,213 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.bytes.ByteList;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.IntBuffer;
-import java.util.List;
-import java.util.function.Function;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fjf implements ewv {
-   static final Logger b = LogUtils.getLogger();
-   private static final int c = 16;
-   private static final int d = 2;
-   private static final int e = 32;
-   private static final int f = 64;
-   private static final int g = 96;
-   private static final int h = 128;
-   private final fin<fjf.d> i;
+public class fjf extends fih {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int f = 300;
+   private final fhy m;
+   private final xe n;
+   private final fji o;
+   private long p = ad.b();
 
-   fjf(fin<fjf.d> $$0) {
-      this.i = $$0;
+   public fjf(fhy $$0, int $$1, int $$2, int $$3, int $$4, xe $$5, xe $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new fji($$0, $$3 - this.b());
+      this.o.a(this::k);
    }
 
-   @Nullable
-   @Override
-   public ewu a(int $$0) {
-      return this.i.a($$0);
+   public void a(int $$0) {
+      this.o.a($$0);
+   }
+
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
+   }
+
+   public void a(String $$0) {
+      this.o.a($$0);
+   }
+
+   public String j() {
+      return this.o.c();
    }
 
    @Override
-   public IntSet a() {
-      return this.i.b();
+   public void a(fmj $$0) {
+      $$0.a(fmi.a, xe.a("gui.narrate.editBox", this.y(), this.j()));
    }
 
-   @VisibleForTesting
-   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 32 - $$2 - 1;
-      int $$5 = 32 - $$3 - 1;
-
-      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
-         if ($$6 < 32 && $$6 >= 0) {
-            boolean $$7 = ($$1 >> $$6 & 1) != 0;
-            $$0.put($$7 ? -1 : 0);
-         } else {
-            $$0.put(0);
-         }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(fon.s());
+         this.e($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   static void a(IntBuffer $$0, fjf.f $$1, int $$2, int $$3) {
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         int $$5 = $$1.a($$4);
-         a($$0, $$5, $$2, $$3);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.e($$0, $$1);
+         this.o.a(fon.s());
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @VisibleForTesting
-   static void a(InputStream $$0, fjf.h $$1) throws IOException {
-      int $$2 = 0;
-      ByteList $$3 = new ByteArrayList(128);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
+   }
 
-      while (true) {
-         boolean $$4 = a($$0, $$3, 58);
-         int $$5 = $$3.size();
-         if ($$5 == 0 && !$$4) {
-            return;
-         }
-
-         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
-            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
-         }
-
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
-         }
-
-         $$3.clear();
-         a($$0, $$3, 10);
-         int $$8 = $$3.size();
-
-         fjf.f $$9 = switch ($$8) {
-            case 32 -> fjf.a.a($$2, $$3);
-            case 64 -> fjf.i.a($$2, $$3);
-            case 96 -> fjf.e.b($$2, $$3);
-            case 128 -> fjf.e.a($$2, $$3);
-            default -> throw new IllegalArgumentException(
-            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
-         );
-         };
-         $$1.accept($$6, $$9);
-         $$2++;
-         $$3.clear();
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aI_() && azh.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
       }
    }
 
-   static int a(int $$0, ByteList $$1, int $$2) {
-      return a($$0, $$1.getByte($$2));
-   }
+   @Override
+   protected void c(fia $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aI_()) {
+         $$0.a(this.m, this.n, this.C() + this.a(), this.D() + this.a(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aI_() && (ad.b() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.D() + this.a();
 
-   private static int a(int $$0, byte $$1) {
-      return switch ($$1) {
-         case 48 -> 0;
-         case 49 -> 1;
-         case 50 -> 2;
-         case 51 -> 3;
-         case 52 -> 4;
-         case 53 -> 5;
-         case 54 -> 6;
-         case 55 -> 7;
-         case 56 -> 8;
-         case 57 -> 9;
-         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
-         case 65 -> 10;
-         case 66 -> 11;
-         case 67 -> 12;
-         case 68 -> 13;
-         case 69 -> 14;
-         case 70 -> 15;
-      };
-   }
-
-   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
-      while (true) {
-         int $$3 = $$0.read();
-         if ($$3 == -1) {
-            return false;
-         }
-
-         if ($$3 == $$2) {
-            return true;
-         }
-
-         $$1.add((byte)$$3);
-      }
-   }
-
-   static record a(byte[] a) implements fjf.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 24;
-      }
-
-      static fjf.f a(int $$0, ByteList $$1) {
-         byte[] $$2 = new byte[16];
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = fjf.a($$0, $$1, $$3++);
-            int $$6 = fjf.a($$0, $$1, $$3++);
-            byte $$7 = (byte)($$5 << 4 | $$6);
-            $$2[$$4] = $$7;
-         }
-
-         return new fjf.a($$2);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      public byte[] b() {
-         return this.a;
-      }
-   }
-
-   public static class b implements fjb {
-      public static final MapCodec<fjf.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(akm.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), fjf.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
-               .apply($$0, fjf.b::new)
-      );
-      private final akm c;
-      private final List<fjf.g> d;
-
-      private b(akm $$0, List<fjf.g> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public fjc a() {
-         return fjc.d;
-      }
-
-      @Override
-      public Either<fjb.b, fjb.c> b() {
-         return Either.left(this::a);
-      }
-
-      private ewv a(atw $$0) throws IOException {
-         fjf var3;
-         try (InputStream $$1 = $$0.open(this.c)) {
-            var3 = this.a($$1);
-         }
-
-         return var3;
-      }
-
-      private fjf a(InputStream $$0) throws IOException {
-         fin<fjf.f> $$1 = new fin<>(fjf.f[]::new, fjf.f[][]::new);
-         fjf.h $$2 = $$1::a;
-
-         fjf var17;
-         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
-            ZipEntry $$4;
-            while (($$4 = $$3.getNextEntry()) != null) {
-               String $$5 = $$4.getName();
-               if ($$5.endsWith(".hex")) {
-                  fjf.b.info("Found {}, loading", $$5);
-                  fjf.a(new axn($$3), $$2);
+         for (fji.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.C() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
                }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.C() + this.a(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
             }
 
-            fin<fjf.d> $$6 = new fin<>(fjf.d[]::new, fjf.d[][]::new);
+            $$10 += 9;
+         }
 
-            for (fjf.g $$7 : this.d) {
-               int $$8 = $$7.b;
-               int $$9 = $$7.c;
-               fjf.c $$10 = $$7.d;
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
 
-               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
-                  fjf.f $$12 = $$1.b($$11);
-                  if ($$12 != null) {
-                     $$6.a($$11, new fjf.d($$12, $$10.c, $$10.d));
+         if (this.o.i()) {
+            fji.a $$13 = this.o.e();
+            int $$14 = this.C() + this.a();
+            $$10 = this.D() + this.a();
+
+            for (fji.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
                   }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
                }
             }
-
-            $$1.a(($$1x, $$2x) -> {
-               int $$3x = $$2x.d();
-               int $$4x = fjf.c.a($$3x);
-               int $$5 = fjf.c.b($$3x);
-               $$6.a($$1x, new fjf.d($$2x, $$4x, $$5));
-            });
-            var17 = new fjf($$6);
          }
-
-         return var17;
       }
    }
 
-   public static record c(int c, int d) {
-      public static final MapCodec<fjf.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(fjf.c::b), Codec.INT.fieldOf("right").forGetter(fjf.c::c)).apply($$0, fjf.c::new)
-      );
-      public static final Codec<fjf.c> b = a.codec();
-
-      public int a() {
-         return a(this.c, this.d);
-      }
-
-      public static int a(int $$0, int $$1) {
-         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
-      }
-
-      public static int a(int $$0) {
-         return (byte)($$0 >> 8);
-      }
-
-      public static int b(int $$0) {
-         return (byte)$$0;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   @Override
+   protected void a(fia $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         xe $$2 = xe.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.C() + this.g - this.m.a($$2), this.D() + this.h + 4, 10526880);
       }
    }
 
-   static record d(fjf.f a, int b, int c) implements ewu {
-
-      public int c() {
-         return this.c - this.b + 1;
-      }
-
-      @Override
-      public float getAdvance() {
-         return (float)(this.c() / 2 + 1);
-      }
-
-      @Override
-      public float b() {
-         return 0.5F;
-      }
-
-      @Override
-      public float a() {
-         return 0.5F;
-      }
-
-      @Override
-      public fiu bake(Function<eww, fiu> $$0) {
-         return $$0.apply(new eww() {
-            @Override
-            public float d() {
-               return 2.0F;
-            }
-
-            @Override
-            public int a() {
-               return d.this.c();
-            }
-
-            @Override
-            public int b() {
-               return 16;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
-               fjf.a($$2, d.this.a, d.this.b, d.this.c);
-               $$2.rewind();
-               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, ext.a.a, $$2, MemoryUtil::memFree);
-            }
-
-            @Override
-            public boolean c() {
-               return true;
-            }
-         });
-      }
-
-      public fjf.f d() {
-         return this.a;
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.c;
-      }
+   @Override
+   public int h() {
+      return 9 * this.o.f();
    }
 
-   static record e(int[] a, int b) implements fjf.f {
-      private static final int c = 24;
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.l();
+   }
 
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0];
-      }
+   @Override
+   protected double i() {
+      return 9.0 / 2.0;
+   }
 
-      static fjf.f b(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
+   private void b(fia $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(gfo.G(), $$1, $$2, $$3, $$4, -16776961);
+   }
 
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = fjf.a($$0, $$1, $$4++);
-            int $$7 = fjf.a($$0, $$1, $$4++);
-            int $$8 = fjf.a($$0, $$1, $$4++);
-            int $$9 = fjf.a($$0, $$1, $$4++);
-            int $$10 = fjf.a($$0, $$1, $$4++);
-            int $$11 = fjf.a($$0, $$1, $$4++);
-            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
-            $$2[$$5] = $$12 << 8;
-            $$3 |= $$12;
+   private void k() {
+      double $$0 = this.c();
+      fji.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         fji.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
          }
-
-         return new fjf.e($$2, 24);
       }
 
-      public static fjf.f a(int $$0, ByteList $$1) {
-         int[] $$2 = new int[16];
-         int $$3 = 0;
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            int $$6 = fjf.a($$0, $$1, $$4++);
-            int $$7 = fjf.a($$0, $$1, $$4++);
-            int $$8 = fjf.a($$0, $$1, $$4++);
-            int $$9 = fjf.a($$0, $$1, $$4++);
-            int $$10 = fjf.a($$0, $$1, $$4++);
-            int $$11 = fjf.a($$0, $$1, $$4++);
-            int $$12 = fjf.a($$0, $$1, $$4++);
-            int $$13 = fjf.a($$0, $$1, $$4++);
-            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
-            $$2[$$5] = $$14;
-            $$3 |= $$14;
-         }
-
-         return new fjf.e($$2, 32);
-      }
-
-      public int[] b() {
-         return this.a;
-      }
-
-      @Override
-      public int a() {
-         return this.b;
-      }
+      this.a($$0);
    }
 
-   public interface f {
-      int a(int var1);
-
-      int a();
-
-      default int c() {
-         int $$0 = 0;
-
-         for (int $$1 = 0; $$1 < 16; $$1++) {
-            $$0 |= this.a($$1);
-         }
-
-         return $$0;
-      }
-
-      default int d() {
-         int $$0 = this.c();
-         int $$1 = this.a();
-         int $$2;
-         int $$3;
-         if ($$0 == 0) {
-            $$2 = 0;
-            $$3 = $$1;
-         } else {
-            $$2 = Integer.numberOfLeadingZeros($$0);
-            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
-         }
-
-         return fjf.c.a($$2, $$3);
-      }
+   private double l() {
+      return (double)(this.h - this.b()) / 9.0;
    }
 
-   static record g(int b, int c, fjf.c d) {
-      private static final Codec<fjf.g> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axm.x.fieldOf("from").forGetter(fjf.g::a), axm.x.fieldOf("to").forGetter(fjf.g::b), fjf.c.a.forGetter(fjf.g::c))
-               .apply($$0, fjf.g::new)
-      );
-      public static final Codec<fjf.g> a = e.validate(
-         $$0 -> $$0.b >= $$0.c ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]") : DataResult.success($$0)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public fjf.c c() {
-         return this.d;
-      }
+   private void e(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.C() - (double)this.a();
+      double $$3 = $$1 - (double)this.D() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
    }
 
-   @FunctionalInterface
-   public interface h {
-      void accept(int var1, fjf.f var2);
-   }
-
-   static record i(short[] a) implements fjf.f {
-      @Override
-      public int a(int $$0) {
-         return this.a[$$0] << 16;
-      }
-
-      static fjf.f a(int $$0, ByteList $$1) {
-         short[] $$2 = new short[16];
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < 16; $$4++) {
-            int $$5 = fjf.a($$0, $$1, $$3++);
-            int $$6 = fjf.a($$0, $$1, $$3++);
-            int $$7 = fjf.a($$0, $$1, $$3++);
-            int $$8 = fjf.a($$0, $$1, $$3++);
-            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
-            $$2[$$4] = $$9;
-         }
-
-         return new fjf.i($$2);
-      }
-
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      public short[] b() {
-         return this.a;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.p = ad.b();
       }
    }
 }

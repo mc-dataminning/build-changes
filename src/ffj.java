@@ -1,54 +1,56 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public interface ffj {
-   static ffj a(fhv $$0) {
-      return new ffj.a($$0);
-   }
+public abstract class ffj implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   @Nullable
-   static ffj a(fhu $$0, @Nullable ffj $$1) {
-      return $$1 == null ? null : new ffj.b($$0, $$1);
-   }
-
-   static ffj a(fhv $$0, fhu... $$1) {
-      ffj $$2 = a($$0);
-
-      for (fhu $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fhv a();
-
-   void a(boolean var1);
-
-   public static record a(fhv a) implements ffj {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   public static record b(fhu a, ffj b) implements ffj {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
+   public static void a(fon $$0) {
+      fgj $$1 = fgj.Q();
+      $$1.execute(() -> $$1.a($$0));
+   }
 
-         this.b.a($$0);
-      }
+   protected void a(xe $$0) {
+      this.b();
+      fgj $$1 = fgj.Q();
+      $$1.execute(() -> $$1.a(new fdw($$0, new fbn(new fou()))));
+   }
 
-      public fhu b() {
-         return this.a;
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fdf $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(xe.b($$0.getMessage()));
       }
+   }
 
-      public ffj c() {
-         return this.b;
-      }
+   protected void a(fdf $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract xe a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

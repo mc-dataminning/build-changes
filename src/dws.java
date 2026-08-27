@@ -1,26 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 public class dws {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<dws> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dws::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+   public static final aks<dwu> a = a("overworld");
+   public static final aks<dwu> b = a("the_nether");
+   public static final aks<dwu> c = a("the_end");
+   public static final aks<dwu> d = a("potato");
+   public static final aks<dwu> e = a("overworld_caves");
+   public static final akt f = new akt("overworld");
+   public static final akt g = new akt("the_nether");
+   public static final akt h = new akt("the_end");
+   public static final akt i = new akt("potato");
+   public static final int j = 112;
 
-   public dws(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private static aks<dwu> a(String $$0) {
+      return aks.a(li.aE, new akt($$0));
    }
 }

@@ -1,24 +1,29 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class ccq extends ccy<bsq> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
-
+public class ccq<T extends bso> extends ccx<T> {
    @Override
-   public Set<cbs<?>> a() {
-      return ImmutableSet.of(cbs.L);
+   protected void a(aqt $$0, T $$1) {
+      ewp $$2 = $$1.cP().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bso> $$3 = $$0.a(bso.class, $$2, $$1x -> $$1x != $$1 && $$1x.bI());
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      btp<?> $$4 = $$1.dZ();
+      $$4.a(cbr.g, $$3);
+      $$4.a(cbr.h, new cbt($$1, $$3));
    }
 
-   protected void a(aqm $$0, bsq $$1) {
-      btq<?> $$2 = $$1.dS();
-      List<cig> $$3 = $$0.a(cig.class, $$1.cK().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cig> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.p())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cbs.L, $$4);
+   protected int b() {
+      return 16;
+   }
+
+   protected int c() {
+      return 16;
+   }
+
+   @Override
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.g, cbr.h);
    }
 }

@@ -1,30 +1,49 @@
-import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public record bpx(String d) {
-   public static final bpx a = new bpx("");
-   public static final Codec<bpx> b = Codec.STRING.xmap(bpx::new, bpx::a);
-   public static final String c = "Lock";
+public enum bpx implements azg {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   public boolean a(cto $$0) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         wx $$1 = $$0.a(kb.f);
-         return $$1 != null && this.d.equals($$1.getString());
-      }
+   public static final azg.a<bpx> e = azg.a(bpx::values);
+   private static final IntFunction<bpx> f = axd.a(bpx::a, values(), axd.a.b);
+   private final int g;
+   private final String h;
+
+   private bpx(int $$0, String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void a(ud $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
-      }
+   public int a() {
+      return this.g;
    }
 
-   public static bpx b(ud $$0) {
-      return $$0.b("Lock", 8) ? new bpx($$0.l("Lock")) : a;
+   public xe b() {
+      return xe.c("options.difficulty." + this.h);
    }
 
-   public String a() {
-      return this.d;
+   public xe d() {
+      return xe.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static bpx a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static bpx a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

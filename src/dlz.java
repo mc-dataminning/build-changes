@@ -1,28 +1,44 @@
-public enum dlz {
-   a {
-      @Override
-      public boolean a(drb $$0, dad $$1, io $$2, it $$3) {
-         return ddy.a($$0.l($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final int d = 1;
-      private final evd e = ddy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
+import com.mojang.serialization.MapCodec;
 
-      @Override
-      public boolean a(drb $$0, dad $$1, io $$2, it $$3) {
-         return !eva.c($$0.l($$1, $$2).a($$3), this.e, euo.c);
-      }
-   },
-   c {
-      private final int d = 2;
-      private final evd e = eva.a(eva.b(), ddy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), euo.e);
+public abstract class dlz extends dhg {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final exn h = dfc.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final exn i = dfc.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final exn j = dfc.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-      @Override
-      public boolean a(drb $$0, dad $$1, io $$2, it $$3) {
-         return !eva.c($$0.l($$1, $$2).a($$3), this.e, euo.c);
-      }
-   };
+   protected dlz(dtb.d $$0) {
+      super($$0);
+   }
 
-   public abstract boolean a(drb var1, dad var2, io var3, it var4);
+   @Override
+   protected abstract MapCodec<? extends dlz> a();
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dtc $$0, ept $$1) {
+      return false;
+   }
 }

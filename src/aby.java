@@ -1,53 +1,61 @@
-public class aby implements ze<abq> {
-   public static final yv<wi, aby> a = ze.a(aby::a, aby::new);
-   private final io b;
-   private final int c;
-   private final int d;
-   private final ddy e;
+public class aby implements zl<abw> {
+   public static final zc<we, aby> a = zl.a(aby::a, aby::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-   public aby(io $$0, ddy $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public aby(bse $$0) {
+      this.b = $$0.al();
+      this.c = $$0.dz();
+      this.d = $$0.dB();
+      this.e = $$0.dF();
+      this.f = $$0.p();
    }
 
-   private aby(wi $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = yt.a(lf.f).decode($$0);
+   private aby(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(wi $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.k(this.d);
-      yt.a(lf.f).encode($$0, this.e);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
    }
 
    @Override
-   public zg<aby> a() {
-      return agb.j;
+   public zn<aby> a() {
+      return agj.d;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public io b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public double f() {
       return this.d;
    }
 
-   public ddy g() {
+   public double g() {
       return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

@@ -1,97 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpm extends dog implements dvw.b<dpm.a> {
-   private final dpm.a a;
+public class dpm extends dms {
+   public static final MapCodec<dpm> b = b(dpm::new);
+   @Nullable
+   private static dth h;
+   @Nullable
+   private static dth i;
 
-   public dpm(io $$0, drb $$1) {
-      super(doi.K, $$0, $$1);
-      this.a = new dpm.a($$1, new dvq($$0));
+   @Override
+   public MapCodec<dpm> a() {
+      return b;
    }
 
-   public static void a(dax $$0, io $$1, drb $$2, dpm $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   protected dpm(dtb.d $$0) {
+      super(dms.b.d, $$0);
    }
 
    @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
+   public void a(dca $$0, ir $$1, dtc $$2, @Nullable bso $$3, cuh $$4) {
+      a($$0, $$1);
    }
 
-   @Override
-   protected void b(ud $$0, iz.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   public static void a(dca $$0, ir $$1) {
+      if ($$0.c_($$1) instanceof drt $$2) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   public dpm.a b() {
-      return this.a;
-   }
+   public static void a(dca $$0, ir $$1, drt $$2) {
+      if (!$$0.C) {
+         dtc $$3 = $$2.n();
+         boolean $$4 = $$3.a(dfe.hA) || $$3.a(dfe.hB);
+         if ($$4 && $$1.v() >= $$0.J_() && $$0.al() != bpx.a) {
+            dth.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               chu $$6 = bsb.bt.a($$0);
+               if ($$6 != null) {
+                  dfw.a($$0, $$5);
+                  ir $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == iw.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.bj = $$5.b().o() == iw.a.a ? 0.0F : 90.0F;
+                  $$6.r();
 
-   public static class a implements dvw {
-      public static final int a = 8;
-      final dkt b;
-      private final drb c;
-      private final dvy d;
+                  for (aqu $$8 : $$0.a(aqu.class, $$6.cP().g(50.0))) {
+                     an.o.a($$8, $$6);
+                  }
 
-      public a(drb $$0, dvy $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dkt.a();
-      }
-
-      @Override
-      public dvy a() {
-         return this.d;
-      }
-
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dvw.a c() {
-         return dvw.a.b;
-      }
-
-      @Override
-      public boolean a(aqm $$0, ix<dvu> $$1, dvu.a $$2, euk $$3) {
-         if ($$1.a(dvu.p) && $$2.a() instanceof bso $$4) {
-            if (!$$4.eI()) {
-               int $$5 = $$4.ej();
-               if ($$4.eh() && $$5 > 0) {
-                  this.b.a(io.a($$3.a(it.b, 0.5)), $$5);
-                  this.a($$0, $$4);
+                  $$0.b($$6);
+                  dfw.b($$0, $$5);
                }
-
-               $$4.eH();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, io.a($$1x), this.c, $$0.E_()));
             }
-
-            return true;
-         } else {
-            return false;
          }
       }
+   }
 
-      @VisibleForTesting
-      public dkt d() {
-         return this.b;
+   public static boolean b(dca $$0, ir $$1, cuh $$2) {
+      return $$2.a(cuk.vX) && $$1.v() >= $$0.J_() + 2 && $$0.al() != bpx.a && !$$0.C ? y().a($$0, $$1) != null : false;
+   }
+
+   private static dth s() {
+      if (h == null) {
+         h = dti.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(awe.aG)).a('^', dtg.a(dtl.a(dfe.hA).or(dtl.a(dfe.hB)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      private void a(aqm $$0, io $$1, drb $$2, ayk $$3) {
-         $$0.a($$1, $$2.a(dkq.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(ky.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avh.vX, avi.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      return h;
+   }
+
+   private static dth y() {
+      if (i == null) {
+         i = dti.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(awe.aG)).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      private void a(dax $$0, bso $$1) {
-         if ($$1.em() instanceof aqn $$3) {
-            bqn $$4 = $$1.eC() == null ? $$0.ai().a((clw)$$3) : $$1.eC();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+      return i;
    }
 }

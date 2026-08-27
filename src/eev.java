@@ -1,45 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eev extends eet {
-   public static final MapCodec<eev> a = MapCodec.unit(() -> eev.b);
-   public static final eev b = new eev();
+public class eev implements eek {
+   public static final Codec<eev> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eix.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eix.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, eev::new)
+   );
+   public final ja<eix> b;
+   public final ja<eix> c;
 
-   @Override
-   protected eeu<?> a() {
-      return eeu.a;
+   public eev(ja<eix> $$0, ja<eix> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(eet.a $$0) {
-      ayk $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            io $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dmu.d);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            io $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dmu.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            io $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dmu.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            io $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dmu.c);
-            }
-         }
-      });
+   public Stream<ebm<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

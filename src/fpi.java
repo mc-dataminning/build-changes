@@ -1,60 +1,85 @@
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public abstract class fpi extends fpm {
-   private static final fhm i = new fhm(
-      new akm("recipe_book/furnace_filter_enabled"),
-      new akm("recipe_book/furnace_filter_disabled"),
-      new akm("recipe_book/furnace_filter_enabled_highlighted"),
-      new akm("recipe_book/furnace_filter_disabled_highlighted")
-   );
+public class fpi extends foe {
+   private static final xe s = xe.c("controls.keybinds.title");
    @Nullable
-   private cxr j;
+   public fgh a;
+   public long r;
+   private fph u;
+   private fin v;
 
-   @Override
-   protected void a() {
-      this.f.a(i);
+   public fpi(fon $$0, fgn $$1) {
+      super($$0, $$1, s);
    }
 
    @Override
-   public void a(@Nullable cqo $$0) {
-      super.a($$0);
-      if ($$0 != null && $$0.e < this.g.p()) {
-         this.e.a();
+   protected void aN_() {
+      this.u = this.c(new fph(this, this.m));
+      this.v = fin.a(xe.c("controls.resetAll"), $$0 -> {
+         for (fgh $$1 : this.c.Y) {
+            $$1.b($$1.i());
+         }
+
+         this.u.d();
+      }).a();
+      super.aN_();
+   }
+
+   @Override
+   protected void h() {
+      fme $$0 = this.d.b(fme.e().a(8));
+      $$0.a(this.v);
+      $$0.a(fin.a(xd.d, $$0x -> this.d()).a());
+   }
+
+   @Override
+   protected void c() {
+      this.d.a();
+      this.u.a(this.n, this.d);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.c.a(this.a, ezx.b.c.a($$2));
+         this.a = null;
+         this.u.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void a(cxw<?> $$0, List<cqo> $$1) {
-      cto $$2 = $$0.b().a(this.h.r.H_());
-      this.e.a($$0);
-      this.e.a(cxr.a($$2), $$1.get(2).f, $$1.get(2).g);
-      jg<cxr> $$3 = $$0.b().a();
-      cqo $$4 = $$1.get(1);
-      if ($$4.g().e()) {
-         if (this.j == null) {
-            this.j = cxr.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.J())).map(cto::new));
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.c.a(this.a, ezx.bv);
+         } else {
+            this.c.a(this.a, ezx.a($$0, $$1));
          }
 
-         this.e.a(this.j, $$4.f, $$4.g);
-      }
-
-      Iterator<cxr> $$5 = $$3.iterator();
-
-      for (int $$6 = 0; $$6 < 2; $$6++) {
-         if (!$$5.hasNext()) {
-            return;
-         }
-
-         cxr $$7 = $$5.next();
-         if (!$$7.c()) {
-            cqo $$8 = $$1.get($$6);
-            this.e.a($$7, $$8.f, $$8.g);
-         }
+         this.a = null;
+         this.r = ad.b();
+         this.u.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   protected abstract Set<ctj> b();
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
+
+      for (fgh $$5 : this.c.Y) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.v.j = $$4;
+   }
 }

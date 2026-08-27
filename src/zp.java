@@ -1,23 +1,23 @@
-import java.util.Optional;
-import java.util.UUID;
+import io.netty.buffer.ByteBuf;
 
-public record zp(Optional<UUID> b) implements ze<zk> {
-   public static final yv<vx, zp> a = ze.a(zp::a, zp::new);
+public class zp<B extends ByteBuf, L extends wk> {
+   private final zb.a<B, zl<? super L>, zn<? extends zl<? super L>>> a = zb.a(zl::a);
+   private final zm b;
 
-   private zp(vx $$0) {
-      this($$0.b(jr.g));
+   public zp(zm $$0) {
+      this.b = $$0;
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b, jr.g);
+   public <T extends zl<? super L>> zp<B, L> a(zn<T> $$0, zc<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 
-   @Override
-   public zg<zp> a() {
-      return zu.e;
-   }
-
-   public void a(zk $$0) {
-      $$0.a(this);
+   public zc<B, zl<? super L>> a() {
+      return this.a.a();
    }
 }

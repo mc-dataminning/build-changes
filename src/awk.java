@@ -1,17 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class awk {
+   public static final awt<dxv> a = a("vibrations");
+   public static final awt<dxv> b = a("warden_can_listen");
+   public static final awt<dxv> c = a("shrieker_can_listen");
+   public static final awt<dxv> d = a("ignore_vibrations_sneaking");
+   public static final awt<dxv> e = a("allay_can_listen");
 
-public record awk(List<awj> b, boolean c) {
-   public static final Codec<awk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awj.a.listOf().fieldOf("values").forGetter(awk::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(awk::b)).apply($$0, awk::new)
-   );
-
-   public List<awj> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
+   private static awt<dxv> a(String $$0) {
+      return awt.a(li.C, new akt($$0));
    }
 }

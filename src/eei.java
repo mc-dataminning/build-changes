@@ -1,63 +1,46 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class eei extends eec {
-   public static final MapCodec<eei> b = RecordCodecBuilder.mapCodec(
+public class eei implements eek {
+   public static final Codec<eei> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eec.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               boz.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
+               bpf.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
+               bpf.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
+               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
+               bpf.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
+               bpd.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
+               bpd.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
             )
             .apply($$0, eei::new)
    );
-   private final eec c;
-   private final String d;
-   @Nullable
-   private dsb e;
-   private final boz f;
+   public final int b;
+   public final bpf c;
+   public final bpf d;
+   public final int e;
+   public final int f;
+   public final bpf g;
+   public final bpd h;
+   public final bpd i;
+   public final float j;
+   public final int k;
+   public final int l;
 
-   public eei(eec $$0, dsb $$1, boz $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public eei(eec $$0, String $$1, boz $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   protected eed<?> a() {
-      return eed.g;
-   }
-
-   @Override
-   public drb a(ayk $$0, io $$1) {
-      drb $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         this.e = a($$2, this.d);
-      }
-
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   private static dsb a(drb $$0, String $$1) {
-      Collection<dse<?>> $$2 = $$0.B();
-      Optional<dsb> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dsb).map($$0x -> (dsb)$$0x).findAny();
-      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
+   public eei(int $$0, bpf $$1, bpf $$2, int $$3, int $$4, bpf $$5, bpd $$6, bpd $$7, float $$8, int $$9, int $$10) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
    }
 }

@@ -1,66 +1,50 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum evf implements ayx {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final ayx.a<evf> t = ayx.a(evf::values);
-   public static final IntFunction<evf> u = awv.a(evf::a, values(), awv.a.a);
-   private final int v;
-   private final String w;
-
-   private evf(int $$0, String $$1) {
-      this.v = $$0;
-      this.w = $$1;
-   }
-
-   public int a() {
-      return this.v;
-   }
+public record evf(Optional<Boolean> b, Optional<Boolean> c) implements euu {
+   public static final Codec<evf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axu.a(Codec.BOOL, "raining").forGetter(evf::d), axu.a(Codec.BOOL, "thundering").forGetter(evf::e)).apply($$0, evf::new)
+   );
 
    @Override
-   public String c() {
-      return this.w;
+   public euv b() {
+      return euw.q;
    }
 
-   @Nullable
-   public static evf a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public boolean a(erp $$0) {
+      aqt $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
+   }
+
+   public static evf.a c() {
+      return new evf.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements euu.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public evf.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public evf.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public evf a() {
+         return new evf(this.a, this.b);
+      }
    }
 }

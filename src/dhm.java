@@ -1,73 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public abstract class dhm extends dhl implements deb {
-   protected dhm(dra.d $$0, it $$1, evd $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dhm extends dib {
+   public static final MapCodec<dhm> a = b(dhm::new);
+   protected static final exn b = dfc.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+
+   @Override
+   public MapCodec<dhm> a() {
+      return a;
+   }
+
+   public dhm(dtb.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dhm> a();
-
-   protected drb a(drb $$0, drb $$1) {
-      return $$1;
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return b;
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
+      this.d($$0, $$1, $$2);
+      return bqa.a($$1.C);
+   }
 
-      dhn $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, emv.c, emv.c.a($$3));
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, cly $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dtc $$0, dca $$1, ir $$2) {
+      dut $$3 = $$1.D_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         ir $$5 = $$2.b($$1.A.a(16) - $$1.A.a(16), $$1.A.a(8) - $$1.A.a(8), $$1.A.a(16) - $$1.A.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.C) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.A.j();
+                  float $$8 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.A.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.A.i() - 0.5F) * 0.2F;
+                  double $$11 = aym.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.A.j() - 0.5) + 0.5;
+                  double $$12 = aym.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.A.j() - 0.5;
+                  double $$13 = aym.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.A.j() - 0.5) + 0.5;
+                  $$1.a(lb.aa, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
+            return;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public cto a(dba $$0, io $$1, drb $$2) {
-      return new cto(this.c());
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public boolean b(dba $$0, io $$1, drb $$2) {
-      Optional<io> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
-      Optional<io> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         drb $$5 = $$0.a_($$4.get());
-         ((dhn)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<io> a(dad $$0, io $$1, ddy $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
-   }
-
-   @Override
-   protected boolean a(drb $$0, cwz $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().q()) ? false : $$2;
-   }
-
-   @Override
-   protected ddy b() {
-      return this;
+   protected boolean a(dtc $$0, ept $$1) {
+      return false;
    }
 }

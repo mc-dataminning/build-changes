@@ -1,27 +1,48 @@
 public interface ve {
-   void a(uy var1);
+   ve.b a();
 
-   void a(ub var1);
+   ve.b a(String var1);
 
-   void a(uv var1);
+   ve.b a(byte var1);
 
-   void a(ui var1);
+   ve.b a(short var1);
 
-   void a(ul var1);
+   ve.b a(int var1);
 
-   void a(ug var1);
+   ve.b a(long var1);
 
-   void a(ue var1);
+   ve.b a(float var1);
 
-   void a(ua var1);
+   ve.b a(double var1);
 
-   void a(uh var1);
+   ve.b a(byte[] var1);
 
-   void a(uk var1);
+   ve.b a(int[] var1);
 
-   void a(uj var1);
+   ve.b a(long[] var1);
 
-   void a(ud var1);
+   ve.b a(vj<?> var1, int var2);
 
-   void a(uf var1);
+   ve.a a(vj<?> var1);
+
+   ve.a a(vj<?> var1, String var2);
+
+   ve.a b(vj<?> var1, int var2);
+
+   ve.b b();
+
+   ve.b b(vj<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
+   }
 }

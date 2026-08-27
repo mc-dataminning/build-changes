@@ -1,36 +1,18 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import io.netty.buffer.ByteBuf;
 
-public class aea implements ze<abq> {
-   public static final yv<vx, aea> a = ze.a(aea::a, aea::new);
-   private final IntList b;
+public class aea implements zl<abw> {
+   public static final aea a = new aea();
+   public static final zc<ByteBuf, aea> b = zc.a(a);
 
-   public aea(IntList $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   public aea(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aea(vx $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private aea() {
    }
 
    @Override
-   public zg<aea> a() {
-      return agb.aj;
+   public zn<aea> a() {
+      return agj.ad;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
-   }
-
-   public IntList b() {
-      return this.b;
    }
 }

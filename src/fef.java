@@ -1,158 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fef extends aub<Map<String, List<fef.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fef.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fef.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fef.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fef.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fef.a::d)
-                  )
-                  .apply($$0, fef.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final akm c;
-   private final Object2BooleanFunction<String> d;
+public class fef extends gxb {
+   private static final xe a = xe.c("mco.selectServer.popup");
+   private static final xe b = xe.c("mco.selectServer.close");
+   private static final akt c = new akt("popup/background");
+   private static final akt B = new akt("icon/trial_available");
+   private static final fka C = new fka(new akt("widget/cross_button"), new akt("widget/cross_button_highlighted"));
+   private static final int D = 236;
+   private static final int E = 34;
+   private static final int F = 6;
+   private static final int G = 195;
+   private static final int H = 152;
+   private static final int I = 4;
+   private static final int J = 10;
+   private static final int K = 320;
+   private static final int L = 172;
+   private static final int M = 100;
+   private static final int N = 99;
+   private static final int O = 100;
+   private static List<akt> P = List.of();
+   private final fon Q;
+   private final boolean R;
    @Nullable
-   private Timer e;
-   @Nullable
-   private fef.b f;
+   private fin S;
+   private int T;
+   private int U;
 
-   public fef(akm $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fef(fon $$0, boolean $$1) {
+      super(a);
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   protected Map<String, List<fef.a>> a(atw $$0, bmi $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
+   public static void a(aud $$0) {
+      Collection<akt> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      P = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
+   }
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
+   @Override
+   protected void aN_() {
+      this.Q.a(this.m, this.n, this.o);
+      if (this.R) {
+         this.S = this.c(
+            fin.a(xe.c("mco.selectServer.trial"), fnd.b(this, "https://aka.ms/startjavarealmstrial")).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a()
+         );
       }
+
+      this.c(fin.a(xe.c("mco.selectServer.buy"), fnd.b(this, "https://aka.ms/BuyJavaRealms")).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a());
+      fiz $$0 = this.c(new fiz(this.C() + 4, this.D() + 4, 14, 14, C, $$0x -> this.d(), b));
+      $$0.a(fjy.a(b));
+      int $$1 = 142 - (this.R ? 40 : 20);
+      fix $$2 = new fix(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.p);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
    }
 
-   protected void a(Map<String, List<fef.a>> $$0, atw $$1, bmi $$2) {
-      List<fef.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ac.a("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new fef.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+   @Override
+   public void e() {
+      super.e();
+      if (++this.U > 100) {
+         this.U = 0;
+         this.T = (this.T + 1) % P.size();
       }
    }
 
    @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.S != null) {
+         a($$0, this.S);
       }
    }
 
-   private long a(List<fef.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   public static void a(fia $$0, fin $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(B, $$1.C() + $$1.x() - 8 - 4, $$1.D() + $$1.v() / 2 - 4, 8, 8);
+      $$0.c().b();
    }
 
-   private long a(List<fef.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(long a, long b, String c, String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
+   @Override
+   public void b(fia $$0, int $$1, int $$2, float $$3) {
+      this.Q.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, fgj.a);
+      this.b($$0);
+      $$0.a(c, this.C(), this.D(), 320, 172);
+      if (!P.isEmpty()) {
+         $$0.a(P.get(this.T), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
       }
    }
 
-   static class b extends TimerTask {
-      private final fdz a = fdz.Q();
-      private final List<fef.a> b;
-      private final long c;
-      private final AtomicLong d;
+   private int C() {
+      return (this.n - 320) / 2;
+   }
 
-      public b(List<fef.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
+   private int D() {
+      return (this.o - 172) / 2;
+   }
 
-      public fef.b a(List<fef.a> $$0, long $$1) {
-         this.cancel();
-         return new fef.b($$0, this.d.get(), $$1);
-      }
+   private int E() {
+      return this.C() + 320;
+   }
 
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
+   private int F() {
+      return this.D() + 172;
+   }
 
-         for (fef.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fih.a(fdz.Q().aA(), fih.a.f, wx.a($$2.c, $$3), wx.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
-      }
+   @Override
+   public void d() {
+      this.m.a(this.Q);
    }
 }

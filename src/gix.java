@@ -1,27 +1,41 @@
-public class gix extends giz<cjb, ftm<cjb>> {
-   private static final akm a = new akm("textures/entity/slime/magmacube.png");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public gix(ght.a $$0) {
-      super($$0, new ftm<>($$0.a(fvv.aA)), 0.25F);
+public class gix implements gis.a {
+   private final fgj a;
+   private static final int b = 10;
+
+   public gix(fgj $$0) {
+      this.a = $$0;
    }
 
-   protected int a(cjb $$0, io $$1) {
-      return 15;
-   }
+   @Override
+   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
+      dca $$5 = this.a.r;
+      ir $$6 = ir.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   public akm a(cjb $$0) {
-      return a;
-   }
+      for (ir $$8 : ir.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dcj.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = aym.h($$10, 0.9F, 0.9F);
+         long $$12 = jt.e($$8.a());
+         if ($$7.add($$12)) {
+            gis.a(
+               $$0,
+               $$1,
+               $$5.N().p().a(dcj.a, jt.a($$12)),
+               (double)jt.a(jt.b($$12), 8),
+               (double)jt.a(jt.c($$12), 8),
+               (double)jt.a(jt.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-   public void a(cjb $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gq();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cjb $$0, eys $$1, float $$2) {
-      int $$3 = $$0.gq();
-      float $$4 = ayd.i($$2, $$0.bY, $$0.bX) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+         if ($$9 != 15) {
+            gis.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

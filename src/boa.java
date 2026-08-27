@@ -1,112 +1,141 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
 
-public class boa {
-   public static final Path a = Paths.get("debug/profiling");
-   public static final String b = "metrics";
-   public static final String c = "deviations";
-   public static final String d = "profiling.txt";
-   private static final Logger e = LogUtils.getLogger();
-   private final String f;
+public class boa implements boc {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bnv, List<boh>> c = new Object2ObjectOpenHashMap();
+   private final bmi d;
+   private final Executor e;
+   private final bog f;
+   private final Consumer<bmn> g;
+   private final Consumer<Path> h;
+   private final bnx i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private bmm m;
+   private volatile boolean n;
+   private Set<bnv> o = ImmutableSet.of();
 
-   public boa(String $$0) {
-      this.f = $$0;
+   private boa(bnx $$0, LongSupplier $$1, Executor $$2, bog $$3, Consumer<bmn> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new bmi($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bmh(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public Path a(Set<bnp> $$0, Map<bnp, List<bob>> $$1, bmh $$2) {
-      try {
-         Files.createDirectories(a);
-      } catch (IOException var8) {
-         throw new UncheckedIOException(var8);
+   public static boa a(bnx $$0, LongSupplier $$1, Executor $$2, bog $$3, Consumer<bmn> $$4, Consumer<Path> $$5) {
+      return new boa($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
+      }
+   }
+
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = bml.a;
+         this.g.accept(bmj.a);
+         this.a(this.o);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bnv $$0 : this.o) {
+         $$0.a();
       }
 
-      try {
-         Path $$4 = Files.createTempDirectory("minecraft-profiling");
-         $$4.toFile().deleteOnExit();
-         Files.createDirectories(a);
-         Path $$5 = $$4.resolve(this.f);
-         Path $$6 = $$5.resolve("metrics");
-         this.a($$0, $$6);
-         if (!$$1.isEmpty()) {
-            this.a($$1, $$5.resolve("deviations"));
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bnv $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               boh $$1 = new boh(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
          }
 
-         this.a($$2, $$5);
-         return $$4;
-      } catch (IOException var7) {
-         throw new UncheckedIOException(var7);
-      }
-   }
-
-   private void a(Set<bnp> $$0, Path $$1) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Expected at least one sampler to persist");
-      } else {
-         Map<bno, List<bnp>> $$2 = $$0.stream().collect(Collectors.groupingBy(bnp::e));
-         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
-      }
-   }
-
-   private void a(bno $$0, List<bnp> $$1, Path $$2) {
-      Path $$3 = $$2.resolve(ac.a($$0.a(), akm::b) + ".csv");
-      Writer $$4 = null;
-
-      try {
-         Files.createDirectories($$3.getParent());
-         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
-         axe.a $$5 = axe.a();
-         $$5.a("@tick");
-
-         for (bnp $$6 : $$1) {
-            $$5.a($$6.d());
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bmh(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            bmn $$2 = this.d.e();
+            this.m = bml.a;
+            this.g.accept($$2);
+            this.a($$2);
          }
-
-         axe $$7 = $$5.a($$4);
-         List<bnp.b> $$8 = $$1.stream().map(bnp::f).collect(Collectors.toList());
-         int $$9 = $$8.stream().mapToInt(bnp.b::a).summaryStatistics().getMin();
-         int $$10 = $$8.stream().mapToInt(bnp.b::b).summaryStatistics().getMax();
-
-         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
-            int $$12 = $$11;
-            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
-            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
-            $$7.a($$14);
-         }
-
-         e.info("Flushed metrics to {}", $$3);
-      } catch (Exception var18) {
-         e.error("Could not save profiler results to {}", $$3, var18);
-      } finally {
-         IOUtils.closeQuietly($$4);
       }
    }
 
-   private void a(Map<bnp, List<bob>> $$0, Path $$1) {
-      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
-      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
-            String $$4 = $$2.format($$3x.a);
-            Path $$5 = $$1.resolve(ac.a($$2x.d(), akm::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
-            $$3x.c.a($$5);
-         }));
+   @Override
+   public boolean e() {
+      return this.d.a();
    }
 
-   private void a(bmh $$0, Path $$1) {
-      $$0.a($$1.resolve("profiling.txt"));
+   @Override
+   public bmo f() {
+      return bmo.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(bmn $$0) {
+      HashSet<bnv> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bnv> $$0) {
+      for (bnv $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

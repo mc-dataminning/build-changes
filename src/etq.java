@@ -1,16 +1,30 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class etq {
-   private static final Codec<etp> d = le.K.q().dispatch(etp::a, eto::a);
-   public static final Codec<etp> a = Codec.lazyInitialized(
-      () -> Codec.either(etm.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof etm $$1 ? Either.left($$1) : Either.right($$0))
+public class etq extends eta {
+   public static final Codec<etq> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(awt.b(li.E).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, etq::new)
    );
-   public static final eto b = a("fixed", etn.a);
-   public static final eto c = a("context", etm.a);
+   private final awt<ctz> b;
 
-   private static eto a(String $$0, MapCodec<? extends etp> $$1) {
-      return jk.a(le.K, new akm($$0), new eto($$1));
+   private etq(List<euu> $$0, awt<ctz> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public etc b() {
+      return etd.D;
+   }
+
+   @Override
+   public cuh a(cuh $$0, erp $$1) {
+      cua.a($$0, this.b, $$1.b());
+      return $$0;
+   }
+
+   public static eta.a<?> a(awt<ctz> $$0) {
+      return a($$1 -> new etq($$1, $$0));
    }
 }

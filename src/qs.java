@@ -1,72 +1,11 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class qs {
-   @Deprecated
-   public static final elx.a a = new elx.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qo<elx.a> $$0) {
-      a($$0, 0, dxc.a, dxc.b, dxc.c, dxc.d);
-      a($$0, -2, dxc.e, dxc.f, dxc.g, dxc.h);
-      a($$0, dxc.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dxc.j, a);
-      a($$0, dxc.k, -3, 1.0);
-      a($$0, dxc.l, -7, 1.0);
-      a($$0, dxc.m, -1, 1.0);
-      a($$0, dxc.n, -5, 1.0);
-      a($$0, dxc.o, -7, 1.0, 1.0);
-      a($$0, dxc.p, -8, 1.0);
-      a($$0, dxc.q, -8, 1.0);
-      a($$0, dxc.r, -7, 1.0);
-      a($$0, dxc.s, -8, 1.0);
-      a($$0, dxc.t, -11, 1.0);
-      a($$0, dxc.u, -11, 1.0);
-      a($$0, dxc.v, -7, 1.0);
-      a($$0, dxc.w, -7, 1.0);
-      a($$0, dxc.x, -11, 1.0);
-      a($$0, dxc.y, -8, 1.0);
-      a($$0, dxc.z, -5, 1.0);
-      a($$0, dxc.A, -8, 1.0);
-      a($$0, dxc.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dxc.C, -8, 1.0);
-      a($$0, dxc.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dxc.E, -8, 1.0);
-      a($$0, dxc.F, -7, 1.0);
-      a($$0, dxc.G, -7, 1.0);
-      a($$0, dxc.H, -5, 1.0);
-      a($$0, dxc.I, -8, 1.0);
-      a($$0, dxc.J, -8, 1.0);
-      a($$0, dxc.K, -7, 1.0);
-      a($$0, dxc.L, -7, 1.0);
-      a($$0, dxc.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dxc.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dxc.P, -8, 1.0);
-      a($$0, dxc.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.R, -8, 1.0);
-      a($$0, dxc.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dxc.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.U, -3, 1.0);
-      a($$0, dxc.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dxc.W, -2, 1.0);
-      a($$0, dxc.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dxc.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dxc.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dxc.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dxc.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dxc.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dxc.ah, -4, 1.0);
-   }
-
-   private static void a(qo<elx.a> $$0, int $$1, akl<elx.a> $$2, akl<elx.a> $$3, akl<elx.a> $$4, akl<elx.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qo<elx.a> $$0, akl<elx.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new elx.a($$2, $$3, $$4));
+   public static void a(qq<elc> $$0) {
+      ja<elc> $$1 = $$0.a(li.aM).b(ra.a);
+      ra.a($$0, "colosseum/mobs/toxifin", new elc($$1, ImmutableList.of(Pair.of(ela.b("colosseum/mobs/toxifin"), 1)), elc.a.b));
+      ra.a($$0, "colosseum/mobs/plaguewhale", new elc($$1, ImmutableList.of(Pair.of(ela.b("colosseum/mobs/plaguewhale"), 1)), elc.a.b));
+      ra.a($$0, "colosseum/mobs/mega_spud", new elc($$1, ImmutableList.of(Pair.of(ela.b("colosseum/mobs/mega_spud"), 1)), elc.a.b));
    }
 }

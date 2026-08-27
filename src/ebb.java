@@ -1,60 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class ebb extends dzx<ecs> {
-   public ebb(Codec<ecs> $$0) {
+public abstract class ebb extends eca<eem> {
+   public ebb(Codec<eem> $$0) {
       super($$0);
    }
 
+   protected void a(dcb $$0, ayt $$1, ir $$2, eem $$3, int $$4, ir.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(iw.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
+
+   protected int a(ayt $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dcb $$0, ir $$1, int $$2, ir.a $$3, eem $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.J_() + 1 && $$5 + $$2 + 1 < $$0.am()) {
+         dtc $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(awe.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dtc $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(awe.O)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
    @Override
-   public boolean a(dzz<ecs> $$0) {
-      dbs $$1 = $$0.b();
-      io $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(ecc<eem> $$0) {
+      dcv $$1 = $$0.b();
+      ir $$2 = $$0.e();
+      ayt $$3 = $$0.d();
+      eem $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ir.a $$6 = new ir.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
          return false;
       } else {
-         ecs $$3 = $$0.f();
-         ayk $$4 = $$0.d();
-         dkt $$5 = dkt.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         io $$11 = $$2.d();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
-            $$1.a($$2, dea.qU.n(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            io $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), it.b)) {
-               $$1.a($$14, dea.qV.n().a(dks.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
          return true;
       }
    }
 
-   private boolean a(day $$0, io $$1) {
-      drb $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dko) {
-         return true;
-      } else {
-         return !$$2.i() && (!$$2.a(dea.G) || !$$2.u().b()) ? false : it.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
-      }
-   }
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dcb var1, ayt var2, ir var3, int var4, ir.a var5, eem var6);
 }

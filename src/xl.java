@@ -1,130 +1,71 @@
-import com.google.common.collect.Lists;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class xl implements wx {
-   private final wy c;
-   private final List<wx> d;
-   private xu e;
-   private axq f = axq.a;
-   @Nullable
-   private ty g;
+public record xl(List<xq> d) {
+   public static final Codec<xl> a = xq.a.listOf().xmap(xl::new, xl::a);
+   public static xl b = new xl(List.of());
+   public static final int c = 20;
 
-   xl(wy $$0, List<wx> $$1, xu $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public void a(ayx.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (xq $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public static xl a(wy $$0) {
-      return new xl($$0, Lists.newArrayList(), xu.a);
+   public xl.a a(xr $$0) {
+      return new xl.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   @Override
-   public wy b() {
-      return this.c;
-   }
-
-   @Override
-   public List<wx> c() {
+   public List<xq> a() {
       return this.d;
    }
 
-   public xl b(xu $$0) {
-      this.e = $$0;
-      return this;
-   }
+   public static record a(List<xq.a> b) {
+      public static final xl.a a = new xl.a(List.of());
 
-   @Override
-   public xu a() {
-      return this.e;
-   }
-
-   public xl f(String $$0) {
-      return this.b(wx.b($$0));
-   }
-
-   public xl b(wx $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xl a(UnaryOperator<xu> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xl c(xu $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xl a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xl a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xl b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public axq g() {
-      ty $$0 = ty.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+      public a(we $$0) {
+         this($$0.a(we.a(ArrayList::new, 20), xq.a::a));
       }
 
-      return this.f;
-   }
+      public void a(we $$0) {
+         $$0.a(this.b, xq.a::a);
+      }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof xl $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      public Optional<xl> a(xr $$0) {
+         List<xq> $$1 = new ArrayList<>(this.b.size());
+
+         for (xq.a $$2 : this.b) {
+            Optional<xq> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new xl($$1));
+      }
+
+      public List<xq.a> a() {
+         return this.b;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
+   public static record b(int a, BitSet b) {
+      public b(we $$0) {
+         this($$0.l(), $$0.e(20));
       }
 
-      return $$0.toString();
+      public void a(we $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

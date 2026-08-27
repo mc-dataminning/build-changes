@@ -1,25 +1,24 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
 public class et implements ArgumentType<et.a> {
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("argument.player.unknown"));
+   private static final Collection<String> a = Arrays.asList("eyes", "feet");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("argument.anchor.invalid", $$0));
 
-   public static Collection<GameProfile> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return ((et.a)$$0.getArgument($$1, et.a.class)).getNames((ee)$$0.getSource());
+   public static et.a a(CommandContext<eh> $$0, String $$1) {
+      return (et.a)$$0.getArgument($$1, et.a.class);
    }
 
    public static et a() {
@@ -27,76 +26,54 @@ public class et implements ArgumentType<et.a> {
    }
 
    public et.a a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         gu $$1 = new gu($$0);
-         gt $$2 = $$1.t();
-         if ($$2.b()) {
-            throw er.c.createWithContext($$0);
-         } else {
-            return new et.b($$2);
-         }
+      int $$1 = $$0.getCursor();
+      String $$2 = $$0.readUnquotedString();
+      et.a $$3 = et.a.a($$2);
+      if ($$3 == null) {
+         $$0.setCursor($$1);
+         throw b.createWithContext($$0, $$2);
       } else {
-         int $$3 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-         return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
-            return Collections.singleton($$2.orElseThrow(a::create));
-         };
+         return $$3;
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof ej) {
-         StringReader $$2 = new StringReader($$1.getInput());
-         $$2.setCursor($$1.getStart());
-         gu $$3 = new gu($$2);
-
-         try {
-            $$3.t();
-         } catch (CommandSyntaxException var6) {
-         }
-
-         return $$3.a($$1, $$1x -> ej.b(((ej)$$0.getSource()).q(), $$1x));
-      } else {
-         return Suggestions.empty();
-      }
+      return em.b(et.a.c.keySet(), $$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   @FunctionalInterface
-   public interface a {
-      Collection<GameProfile> getNames(ee var1) throws CommandSyntaxException;
-   }
+   public static enum a {
+      a("feet", ($$0, $$1) -> $$0),
+      b("eyes", ($$0, $$1) -> new ewu($$0.c, $$0.d + (double)$$1.cQ(), $$0.e));
 
-   public static class b implements et.a {
-      private final gt a;
+      static final Map<String, et.a> c = ad.a(Maps.newHashMap(), $$0 -> {
+         for (et.a $$1 : values()) {
+            $$0.put($$1.d, $$1);
+         }
+      });
+      private final String d;
+      private final BiFunction<ewu, brv, ewu> e;
 
-      public b(gt $$0) {
-         this.a = $$0;
+      private a(String $$0, BiFunction<ewu, brv, ewu> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      @Override
-      public Collection<GameProfile> getNames(ee $$0) throws CommandSyntaxException {
-         List<aqn> $$1 = this.a.d($$0);
-         if ($$1.isEmpty()) {
-            throw er.e.create();
-         } else {
-            List<GameProfile> $$2 = Lists.newArrayList();
+      @Nullable
+      public static et.a a(String $$0) {
+         return c.get($$0);
+      }
 
-            for (aqn $$3 : $$1) {
-               $$2.add($$3.gb());
-            }
+      public ewu a(brv $$0) {
+         return this.e.apply($$0.ds(), $$0);
+      }
 
-            return $$2;
-         }
+      public ewu a(eh $$0) {
+         brv $$1 = $$0.f();
+         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }
 }

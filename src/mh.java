@@ -1,99 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
-public abstract class mh implements mj {
-   protected static final br.a a = br.a.a().a(bp.a.a().a(true));
-   private static final Set<bsa<?>> b = ImmutableSet.of(bsa.by, bsa.d, bsa.af, bsa.aS, bsa.bj);
-   private final coj c;
-   private final coj d;
-   private final Map<bsa<?>, Map<akl<epk>, epk.a>> e = Maps.newHashMap();
+public class mh implements lo {
+   private final lq d;
+   private final CompletableFuture<jc.a> e;
 
-   protected mh(coj $$0) {
-      this($$0, $$0);
+   public mh(lq $$0, CompletableFuture<jc.a> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
-
-   protected mh(coj $$0, coj $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected static epk.a a(daw $$0) {
-      return epk.b().a(epj.a().a(ete.a(1.0F)).a(eps.a($$0))).a(epj.a().a(ete.a(1.0F)).a(epy.a(bsa.aJ.k())));
-   }
-
-   public abstract void a();
 
    @Override
-   public void generate(iz.a $$0, BiConsumer<akl<epk>, epk.a> $$1) {
-      this.a();
-      Set<akl<epk>> $$2 = new HashSet<>();
-      le.g
-         .h()
-         .forEach(
-            $$2x -> {
-               bsa<?> $$3 = (bsa<?>)$$2x.a();
-               if ($$3.a(this.c)) {
-                  if (a($$3)) {
-                     Map<akl<epk>, epk.a> $$4 = this.e.remove($$3);
-                     akl<epk> $$5 = $$3.k();
-                     if ($$5 != epd.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
-                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2x.h().a()));
-                     }
-
-                     if ($$4 != null) {
-                        $$4.forEach(($$3x, $$4x) -> {
-                           if (!$$2.add($$3x)) {
-                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2x.h().a()));
-                           } else {
-                              $$1.accept($$3x, $$4x);
-                           }
-                        });
-                     }
-                  } else {
-                     Map<akl<epk>, epk.a> $$6 = this.e.remove($$3);
-                     if ($$6 != null) {
-                        throw new IllegalStateException(
-                           String.format(
-                              Locale.ROOT,
-                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                              $$6.keySet().stream().map($$0xx -> $$0xx.a().toString()).collect(Collectors.joining(",")),
-                              $$2x.h().a()
-                           )
-                        );
-                     }
-                  }
-               }
-            }
-         );
-      if (!this.e.isEmpty()) {
-         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.e.keySet());
-      }
+   public CompletableFuture<?> a(lm $$0) {
+      Path $$1 = this.d.a(lq.b.c).resolve("items.json");
+      return this.e.thenCompose($$2 -> {
+         JsonObject $$3 = new JsonObject();
+         akr<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+         $$2.b(li.G).b().forEach($$2x -> {
+            JsonObject $$3x = new JsonObject();
+            JsonArray $$4x = new JsonArray();
+            ((cuc)$$2x.a()).o().forEach($$2xx -> $$4x.add(a($$2xx, $$4)));
+            $$3x.add("components", $$4x);
+            $$3.add($$2x.g(), $$3x);
+         });
+         return lo.a($$0, $$3, $$1);
+      });
    }
 
-   private static boolean a(bsa<?> $$0) {
-      return b.contains($$0) || $$0.f() != bsr.h;
+   private static <T> JsonElement a(kg<T> $$0, DynamicOps<JsonElement> $$1) {
+      akt $$2 = lh.as.b($$0.a());
+      JsonElement $$3 = ad.a($$0.a($$1), $$1x -> new IllegalStateException("Failed to serialize component " + $$2 + ": " + $$1x));
+      JsonObject $$4 = new JsonObject();
+      $$4.addProperty("type", $$2.toString());
+      $$4.add("value", $$3);
+      return $$4;
    }
 
-   protected esl.a b() {
-      return esf.a(bg.a.a().b(br.a.a().a(bsa.R)));
-   }
-
-   protected esl.a a(akl<cep> $$0) {
-      return esf.a(bg.a.a().b(br.a.a().a(bsa.R).a(bt.b(le.al.g($$0)))));
-   }
-
-   protected void a(bsa<?> $$0, epk.a $$1) {
-      this.a($$0, $$0.k(), $$1);
-   }
-
-   protected void a(bsa<?> $$0, akl<epk> $$1, epk.a $$2) {
-      this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
+   @Override
+   public final String a() {
+      return "Item List";
    }
 }

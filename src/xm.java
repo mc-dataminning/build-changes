@@ -1,35 +1,77 @@
-public interface xm {
-   wx a();
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   void a(aqn var1, boolean var2, wt.a var3);
+public class xm {
+   private final xo[] a;
+   private int b;
+   private int c;
+   @Nullable
+   private xq d;
 
-   static xm a(xn $$0) {
-      return (xm)($$0.h() ? new xm.a($$0.d()) : new xm.b($$0));
+   public xm(int $$0) {
+      this.a = new xo[$$0];
    }
 
-   public static record a(wx a) implements xm {
-      @Override
-      public void a(aqn $$0, boolean $$1, wt.a $$2) {
-         $$0.d.a(this.a, $$2);
+   public boolean a(xq $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new xo($$0, true) : null);
+         return true;
       }
    }
 
-   public static record b(xn a) implements xm {
-      @Override
-      public wx a() {
-         return this.a.d();
-      }
+   private void a(@Nullable xo $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
+   }
 
-      @Override
-      public void a(aqn $$0, boolean $$1, wt.a $$2) {
-         xn $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.d.a($$3, $$2);
+   public void a(xq $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         xo $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
+   }
+
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
+   }
+
+   public xm.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<xq> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         xo $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
          }
       }
 
-      public xn b() {
-         return this.a;
-      }
+      xl $$6 = new xl($$2);
+      xl.b $$7 = new xl.b($$0, $$1);
+      return new xm.a($$6, $$7);
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public static record a(xl a, xl.b b) {
    }
 }

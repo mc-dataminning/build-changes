@@ -1,21 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class goi extends goq<cio, fvk<cio>> {
+   private static final akt a = new akt("textures/entity/creeper/creeper_armor.png");
+   private final fvk<cio> b;
 
-public class goi implements gnz {
-   public static final MapCodec<goi> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayl.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, goi::new));
-   private final ayl c;
-
-   public goi(ayl $$0) {
-      this.c = $$0;
+   public goi(gmp<cio, fvk<cio>> $$0, fyo $$1) {
+      super($$0);
+      this.b = new fvk<>($$1.a(fyr.J));
    }
 
    @Override
-   public void a(atw $$0, gnz.a $$1) {
-      $$1.a(this.c.c());
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
    }
 
    @Override
-   public gob a() {
-      return goc.c;
+   protected akt a() {
+      return a;
+   }
+
+   @Override
+   protected fvq<cio> b() {
+      return this.b;
    }
 }

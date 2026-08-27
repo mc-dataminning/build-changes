@@ -1,79 +1,84 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fky extends fly {
-   private static final wx a = wx.c("addServer.enterIp");
-   private ffz b;
-   private final fxf c;
-   private fgi d;
-   private final BooleanConsumer r;
-   private final fly s;
+public class fky implements fkw {
+   private static final akt g = new akt("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fky.a h;
+   private final xe i;
+   @Nullable
+   private final xe j;
+   private fkw.a k = fkw.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public fky(fly $$0, BooleanConsumer $$1, fxf $$2) {
-      super(wx.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
+   public fky(fky.a $$0, xe $$1, @Nullable xe $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aH_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
+   public fkw.a a(fia $$0, fkx $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
       } else {
-         this.m();
-         return true;
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
+
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aym.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
    }
 
-   @Override
-   protected void aM_() {
-      this.d = new fgi(this.p, this.n / 2 - 100, 116, 200, 20, wx.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.m.aa);
-      this.d.b($$0 -> this.C());
-      this.d(this.d);
-      this.b = this.c(ffz.a(wx.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(ffz.a(ww.e, $$0 -> this.r.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.C();
+   public void c() {
+      this.k = fkw.a.b;
    }
 
-   @Override
-   protected void aC_() {
-      this.b(this.d);
+   public void a(float $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   public void a(fdz $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
+   public static enum a {
+      a(new akt("toast/movement_keys")),
+      b(new akt("toast/mouse")),
+      c(new akt("toast/tree")),
+      d(new akt("toast/recipe_book")),
+      e(new akt("toast/wooden_planks")),
+      f(new akt("toast/social_interactions")),
+      g(new akt("toast/right_click"));
 
-   private void m() {
-      this.c.b = this.d.a();
-      this.r.accept(true);
-   }
+      private final akt h;
 
-   @Override
-   public void d() {
-      this.m.a(this.s);
-   }
+      private a(akt $$0) {
+         this.h = $$0;
+      }
 
-   @Override
-   public void j() {
-      this.m.m.aa = this.d.a();
-      this.m.m.av();
-   }
-
-   private void C() {
-      this.b.j = fyi.b(this.d.a());
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+      public void a(fia $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
+      }
    }
 }

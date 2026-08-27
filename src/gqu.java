@@ -1,16 +1,6 @@
-public class gqu extends gqw {
-   public gqu(cef $$0) {
-      super($$0, avh.bQ, avi.g);
-      this.j = 0;
-   }
+public interface gqu extends AutoCloseable {
+   void a(int var1, int var2);
 
    @Override
-   protected gqs o() {
-      return new gqv(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.Z_();
-   }
+   void close();
 }

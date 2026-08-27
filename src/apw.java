@@ -1,113 +1,25 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Vector;
+import javax.swing.JList;
+import net.minecraft.server.MinecraftServer;
 
-public interface apw<T> {
-   static <T> apw<T> a(T $$0) {
-      return new apw.b<>($$0);
+public class apw extends JList<String> {
+   private final MinecraftServer a;
+   private int b;
+
+   public apw(MinecraftServer $$0) {
+      this.a = $$0;
+      $$0.b(this::a);
    }
 
-   static <T> apw<T> a(String $$0) {
-      return a(() -> $$0);
-   }
+   public void a() {
+      if (this.b++ % 20 == 0) {
+         Vector<String> $$0 = new Vector<>();
 
-   static <T> apw<T> a(Supplier<String> $$0) {
-      return new apw.a<>($$0);
-   }
+         for (int $$1 = 0; $$1 < this.a.ah().t().size(); $$1++) {
+            $$0.add(this.a.ah().t().get($$1).gk().getName());
+         }
 
-   boolean a();
-
-   @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(apw<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   String b();
-
-   apw<T> a(Consumer<T> var1);
-
-   <R> apw<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements apw<T> {
-      @Override
-      public boolean a() {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public apw<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> apw<R> a(Function<T, R> $$0) {
-         return new apw.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
-      }
-   }
-
-   public static record b<T>(T a) implements apw<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
-
-      @Nullable
-      @Override
-      public String b() {
-         return null;
-      }
-
-      @Override
-      public apw<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
-      }
-
-      @Override
-      public <R> apw<R> a(Function<T, R> $$0) {
-         return new apw.b<>($$0.apply(this.a));
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
-
-      public T c() {
-         return this.a;
+         this.setListData($$0);
       }
    }
 }

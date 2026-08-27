@@ -1,37 +1,25 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public abstract class bdu extends DataFix {
+public class bdu extends bff {
    private final String a;
 
-   public bdu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bdu(Schema $$0, String $$1, String $$2) {
+      super($$0, true, "Horse armor fix for " + $$1, bgf.z, $$1);
+      this.a = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bfy.B.typeName(), bhj.a());
-      if (!Objects.equals(this.getInputSchema().getType(bfy.B), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Dynamic<T> $$3 = $$0.remove(this.a);
+         $$3 = $$3.set("body_armor_item", $$2);
+         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
       } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         return $$0;
       }
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bdu($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
    }
 }

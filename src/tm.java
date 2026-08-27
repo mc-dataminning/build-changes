@@ -1,29 +1,40 @@
-public record tm(int a, boolean b) {
-   private static final tm c = new tm(1, true);
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   public static tm a() {
-      return c;
+public class tm {
+   public static final tm a = new tm();
+   private final Collection<tg> b = Lists.newCopyOnWriteArrayList();
+   @Nullable
+   private tj c;
+
+   private tm() {
    }
 
-   public boolean b() {
-      return this.a < 1;
+   public void a(tg $$0) {
+      this.b.add($$0);
    }
 
-   public boolean a(int $$0, int $$1) {
-      boolean $$2 = $$0 != $$1;
-      boolean $$3 = this.b() || $$0 < this.a;
-      return $$3 && (!$$2 || !this.b);
+   public void a() {
+      this.b.clear();
+      if (this.c != null) {
+         this.c.c();
+         this.c = null;
+      }
    }
 
-   public boolean c() {
-      return this.a != 1;
+   public void a(tj $$0) {
+      if (this.c != null) {
+         ad.a("The runner was already set in GameTestTicker");
+      }
+
+      this.c = $$0;
    }
 
-   public int d() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return this.b;
+   public void b() {
+      if (this.c != null) {
+         this.b.forEach($$0 -> $$0.a(this.c));
+         this.b.removeIf(tg::j);
+      }
    }
 }

@@ -1,28 +1,154 @@
-public class eot {
-   public static final eot a = new eot("advancements");
-   public static final eot b = new eot("stats");
-   public static final eot c = new eot("playerdata");
-   public static final eot d = new eot("players");
-   public static final eot e = new eot("level.dat");
-   public static final eot f = new eot("level.dat_old");
-   public static final eot g = new eot("icon.png");
-   public static final eot h = new eot("session.lock");
-   public static final eot i = new eot("generated");
-   public static final eot j = new eot("datapacks");
-   public static final eot k = new eot("resources.zip");
-   public static final eot l = new eot(".");
-   private final String m;
+import javax.annotation.Nullable;
 
-   private eot(String $$0) {
-      this.m = $$0;
-   }
+public class eot implements eow {
+   public static final int b = 1;
+   protected final dcc c;
+   @Nullable
+   private final eov<?, ?> a;
+   @Nullable
+   private final eov<?, ?> d;
 
-   public String a() {
-      return this.m;
+   public eot(dvl $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new eom($$0) : null;
+      this.d = $$2 ? new eox($$0) : null;
    }
 
    @Override
-   public String toString() {
-      return "/" + this.m;
+   public void a(ir $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
+   }
+
+   @Override
+   public boolean L_() {
+      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
+   }
+
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(jt $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(dbh $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(dbh $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public eor a(dcj $$0) {
+      if ($$0 == dcj.b) {
+         return (eor)(this.a == null ? eor.a.a : this.a);
+      } else {
+         return (eor)(this.d == null ? eor.a.a : this.d);
+      }
+   }
+
+   public String a(dcj $$0, jt $$1) {
+      if ($$0 == dcj.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public eos.b b(dcj $$0, jt $$1) {
+      if ($$0 == dcj.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
+      }
+
+      return eos.b.a;
+   }
+
+   public void a(dcj $$0, jt $$1, @Nullable dvd $$2) {
+      if ($$0 == dcj.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dbh $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.b($$0, $$1);
+      }
+   }
+
+   public int a(ir $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(jt $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
+
+   public int c() {
+      return this.c.an() + 2;
+   }
+
+   public int d() {
+      return this.c.ao() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

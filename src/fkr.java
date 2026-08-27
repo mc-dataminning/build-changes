@@ -1,188 +1,208 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fkr extends fly {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long r = 2000L;
-   public static final wx a = wx.c("connect.aborted");
-   public static final wx b = wx.a("disconnect.genericReason", wx.c("disconnect.unknownHost"));
-   @Nullable
-   volatile vv s;
-   @Nullable
-   ChannelFuture u;
-   volatile boolean v;
-   final fly w;
-   private wx x = wx.c("connect.connecting");
-   private long y = -1L;
-   final wx z;
+public class fkr extends fkh implements fjq, fmh {
+   private static final int a = -1;
+   private static final int b = 400;
+   private static final int c = 24;
+   private static final int d = 14;
+   private static final xe e = xe.c("narration.tab_navigation.usage");
+   private final fme f = fme.e();
+   private int g;
+   private final fkq h;
+   private final ImmutableList<fkp> i;
+   private final ImmutableList<fjw> j;
 
-   private fkr(fly $$0, wx $$1) {
-      super(fdr.a);
-      this.w = $$0;
-      this.z = $$1;
+   fkr(int $$0, fkq $$1, Iterable<fkp> $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = ImmutableList.copyOf($$2);
+      this.f.c().b();
+      Builder<fjw> $$3 = ImmutableList.builder();
+
+      for (fkp $$4 : $$2) {
+         $$3.add(this.f.a(new fjw($$1, $$4, 0, 24)));
+      }
+
+      this.j = $$3.build();
    }
 
-   public static void a(fly $$0, fdz $$1, fyi $$2, fxf $$3, boolean $$4, @Nullable fxj $$5) {
-      if ($$1.y instanceof fkr) {
-         d.error("Attempt to connect while already connecting");
+   public static fkr.a a(fkq $$0, int $$1) {
+      return new fkr.a($$0, $$1);
+   }
+
+   public void a(int $$0) {
+      this.g = $$0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (this.aH_() != null) {
+         this.aH_().a($$0);
+      }
+   }
+
+   @Override
+   public void a(@Nullable fkj $$0) {
+      super.a($$0);
+      if ($$0 instanceof fjw $$1) {
+         this.h.a($$1.a(), true);
+      }
+   }
+
+   @Nullable
+   @Override
+   public fhx a(fmp $$0) {
+      if (!this.aI_()) {
+         fjw $$1 = this.d();
+         if ($$1 != null) {
+            return fhx.a(this, fhx.a($$1));
+         }
+      }
+
+      return $$0 instanceof fmp.c ? null : super.a($$0);
+   }
+
+   @Override
+   public List<? extends fkj> aE_() {
+      return this.j;
+   }
+
+   @Override
+   public fmh.a t() {
+      return this.j.stream().map(fil::t).max(Comparator.naturalOrder()).orElse(fmh.a.a);
+   }
+
+   @Override
+   public void b(fmj $$0) {
+      Optional<fjw> $$1 = this.j.stream().filter(fil::z).findFirst().or(() -> Optional.ofNullable(this.d()));
+      $$1.ifPresent($$1x -> {
+         this.a($$0.a(), $$1x);
+         $$1x.b($$0);
+      });
+      if (this.aI_()) {
+         $$0.a(fmi.d, e);
+      }
+   }
+
+   protected void a(fmj $$0, fjw $$1) {
+      if (this.i.size() > 1) {
+         int $$2 = this.j.indexOf($$1);
+         if ($$2 != -1) {
+            $$0.a(fmi.b, xe.a("narrator.position.tab", $$2 + 1, this.i.size()));
+         }
+      }
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(fon.h, 0, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, ((fjw)this.j.get(0)).C(), 2, 32, 2);
+      int $$4 = ((fjw)this.j.get(this.j.size() - 1)).E();
+      $$0.a(fon.h, $$4, this.f.D() + this.f.v() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
+      RenderSystem.disableBlend();
+      UnmodifiableIterator var6 = this.j.iterator();
+
+      while (var6.hasNext()) {
+         fjw $$5 = (fjw)var6.next();
+         $$5.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public fmt G() {
+      return this.f.G();
+   }
+
+   public void b() {
+      int $$0 = Math.min(400, this.g) - 28;
+      int $$1 = aym.d($$0 / this.i.size(), 2);
+      UnmodifiableIterator var3 = this.j.iterator();
+
+      while (var3.hasNext()) {
+         fjw $$2 = (fjw)var3.next();
+         $$2.k($$1);
+      }
+
+      this.f.a();
+      this.f.m(aym.d((this.g - $$0) / 2, 2));
+      this.f.n(0);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.aI_()) {
+         this.a((fkj)this.j.get($$0));
       } else {
-         wx $$6;
-         if ($$5 != null) {
-            $$6 = ww.q;
-         } else if ($$4) {
-            $$6 = gbt.a;
-         } else {
-            $$6 = ww.r;
-         }
-
-         fkr $$9 = new fkr($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(wx.c("connect.transferring"));
-         }
-
-         $$1.y();
-         $$1.aU();
-         $$1.a(fxw.a($$3.b));
-         $$1.bd().a(gbu.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
+         this.h.a((fkp)this.i.get($$0), $$1);
       }
    }
 
-   private void a(final fdz $$0, final fyi $$1, final fxf $$2, @Nullable final fxj $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (fkr.this.v) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fyk.a.a($$1).map(fyh::d);
-               if (fkr.this.v) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fkz(fkr.this.w, fkr.this.z, fkr.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               vv $$2;
-               synchronized (fkr.this) {
-                  if (fkr.this.v) {
-                     return;
-                  }
-
-                  $$2 = new vv(zf.b);
-                  $$2.a($$0.aQ().n());
-                  fkr.this.u = vv.a($$0, $$0.m.az(), $$2);
-               }
-
-               fkr.this.u.syncUninterruptibly();
-               synchronized (fkr.this) {
-                  if (fkr.this.v) {
-                     $$2.a(fkr.a);
-                     return;
-                  }
-
-                  fkr.this.s = $$2;
-                  $$0.ae().a($$2, a($$2.b()));
-               }
-
-               fkr.this.s
-                  .a($$0.getHostName(), $$0.getPort(), aiq.a, aiq.b, new fwq(fkr.this.s, $$0, $$2, fkr.this.w, false, null, fkr.this::a, $$3), $$3 != null);
-               fkr.this.s.a(new ait($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (fkr.this.v) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               fkr.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fkz(fkr.this.w, fkr.this.z, wx.a("disconnect.genericReason", $$8))));
-            }
-         }
-
-         private static gqp.c a(fxf.a $$0x) {
-            return switch ($$0) {
-               case a -> gqp.c.b;
-               case b -> gqp.c.c;
-               case c -> gqp.c.a;
-            };
-         }
-      };
-      $$4.setUncaughtExceptionHandler(new r(d));
-      $$4.start();
-   }
-
-   private void a(wx $$0) {
-      this.x = $$0;
-   }
-
-   @Override
-   public void e() {
-      if (this.s != null) {
-         if (this.s.i()) {
-            this.s.b();
-         } else {
-            this.s.n();
+   public boolean b(int $$0) {
+      if (fon.r()) {
+         int $$1 = this.c($$0);
+         if ($$1 != -1) {
+            this.a(aym.a($$1, 0, this.i.size() - 1), true);
+            return true;
          }
       }
-   }
 
-   @Override
-   public boolean aD_() {
       return false;
    }
 
-   @Override
-   protected void aM_() {
-      this.c(ffz.a(ww.e, $$0 -> {
-         synchronized (this) {
-            this.v = true;
-            if (this.u != null) {
-               this.u.cancel(true);
-               this.u = null;
-            }
-
-            if (this.s != null) {
-               this.s.a(a);
+   private int c(int $$0) {
+      if ($$0 >= 49 && $$0 <= 57) {
+         return $$0 - 49;
+      } else {
+         if ($$0 == 258) {
+            int $$1 = this.c();
+            if ($$1 != -1) {
+               int $$2 = fon.s() ? $$1 - 1 : $$1 + 1;
+               return Math.floorMod($$2, this.i.size());
             }
          }
 
-         this.m.a(this.w);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+         return -1;
+      }
    }
 
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.y > 2000L) {
-         this.y = $$4;
-         this.m.aZ().c(wx.c("narrator.joining"));
+   private int c() {
+      fkp $$0 = this.h.a();
+      int $$1 = this.i.indexOf($$0);
+      return $$1 != -1 ? $$1 : -1;
+   }
+
+   @Nullable
+   private fjw d() {
+      int $$0 = this.c();
+      return $$0 != -1 ? (fjw)this.j.get($$0) : null;
+   }
+
+   public static class a {
+      private final int a;
+      private final fkq b;
+      private final List<fkp> c = new ArrayList<>();
+
+      a(fkq $$0, int $$1) {
+         this.b = $$0;
+         this.a = $$1;
       }
 
-      $$0.a(this.p, this.x, this.n / 2, this.o / 2 - 50, 16777215);
+      public fkr.a a(fkp... $$0) {
+         Collections.addAll(this.c, $$0);
+         return this;
+      }
+
+      public fkr a() {
+         return new fkr(this.a, this.b, this.c);
+      }
    }
 }

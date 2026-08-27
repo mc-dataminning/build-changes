@@ -1,35 +1,33 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnb extends deh {
-   public static final MapCodec<dnb> a = b(dnb::new);
-   protected static final evd b = ddy.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+public class dnb extends deo {
+   public static final MapCodec<dnb> c = b(dnb::new);
 
    @Override
    public MapCodec<dnb> a() {
-      return a;
+      return c;
    }
 
-   protected dnb(dra.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, bru $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$1 instanceof aqm && $$3 instanceof cnt) {
-         $$1.a(new io($$2), true, $$3);
-      }
+   public dnb(dtb.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b;
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      return this.a($$0, $$3, $$4) ? this.n() : dfe.a.n();
    }
 
    @Override
-   protected boolean b(drb $$0, dad $$1, io $$2) {
-      emu $$3 = $$1.b_($$2);
-      emu $$4 = $$1.b_($$2.c());
-      return ($$3.a() == emv.c || $$0.b() instanceof dhw) && $$4.a() == emv.a;
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      return m($$1.a_($$2.d()));
+   }
+
+   public static boolean m(dtc $$0) {
+      return $$0.a(awe.aV);
+   }
+
+   @Override
+   protected boolean f(dtc $$0) {
+      return true;
    }
 }

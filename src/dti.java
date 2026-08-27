@@ -1,181 +1,96 @@
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class dti {
-   public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dtp<drb> h;
-   private dtq<ix<dbw>> i;
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dtg>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dti(dtp<drb> $$0, dtq<ix<dbw>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   private dti() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   public dti(jk<dbw> $$0) {
-      this.h = new dtp<>(ddy.q, dea.a.n(), dtp.d.d);
-      this.i = new dtp<>($$0.t(), $$0.g(dcd.b), dtp.d.e);
-   }
+   public dti a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
+         }
 
-   public drb a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
-   }
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
 
-   public emu b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
-   }
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
+                  }
+               }
+            }
 
-   public void a() {
-      this.h.a();
-   }
-
-   public void b() {
-      this.h.b();
-   }
-
-   public drb a(int $$0, int $$1, int $$2, drb $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
-   }
-
-   public drb a(int $$0, int $$1, int $$2, drb $$3, boolean $$4) {
-      drb $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
+            this.b.add($$0);
+            return this;
+         }
       } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
+         throw new IllegalArgumentException("Empty pattern for aisle");
       }
-
-      emu $$7 = $$5.u();
-      emu $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
-         }
-      }
-
-      if (!$$7.c()) {
-         this.g--;
-      }
-
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
-         }
-      }
-
-      if (!$$8.c()) {
-         this.g++;
-      }
-
-      return $$5;
    }
 
-   public boolean c() {
-      return this.e == 0;
+   public static dti a() {
+      return new dti();
    }
 
-   public boolean d() {
-      return this.e() || this.f();
+   public dti a(char $$0, Predicate<dtg> $$1) {
+      this.c.put($$0, $$1);
+      return this;
    }
 
-   public boolean e() {
-      return this.f > 0;
+   public dth b() {
+      return new dth(this.c());
    }
 
-   public boolean f() {
-      return this.g > 0;
-   }
+   private Predicate<dtg>[][][] c() {
+      this.d();
+      Predicate<dtg>[][][] $$0 = (Predicate<dtg>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
 
-   public void g() {
-      class a implements dtp.b<drb> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(drb $$0, int $$1) {
-            emu $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
             }
          }
       }
 
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
+      return $$0;
    }
 
-   public dtp<drb> h() {
-      return this.h;
-   }
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-   public dtq<ix<dbw>> i() {
-      return this.i;
-   }
-
-   public void a(vx $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dtp<ix<dbw>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void b(vx $$0) {
-      dtp<ix<dbw>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void c(vx $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
-
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<drb> $$0) {
-      return this.h.a($$0);
-   }
-
-   public ix<dbw> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(dbz $$0, dcf.f $$1, int $$2, int $$3, int $$4) {
-      dtp<ix<dbw>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
+      for (Entry<Character, Predicate<dtg>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
          }
       }
 
-      this.i = $$5;
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

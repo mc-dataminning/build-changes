@@ -1,28 +1,39 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class edo<P extends edn> {
-   public static final edo<edi> a = a("blob_foliage_placer", edi.a);
-   public static final edo<edt> b = a("spruce_foliage_placer", edt.a);
-   public static final edo<edr> c = a("pine_foliage_placer", edr.a);
-   public static final edo<edh> d = a("acacia_foliage_placer", edh.a);
-   public static final edo<edj> e = a("bush_foliage_placer", edj.c);
-   public static final edo<edm> f = a("fancy_foliage_placer", edm.c);
-   public static final edo<edp> g = a("jungle_foliage_placer", edp.a);
-   public static final edo<edq> h = a("mega_pine_foliage_placer", edq.a);
-   public static final edo<edl> i = a("dark_oak_foliage_placer", edl.a);
-   public static final edo<eds> j = a("random_spread_foliage_placer", eds.a);
-   public static final edo<edk> k = a("cherry_foliage_placer", edk.a);
-   private final MapCodec<P> l;
-
-   private static <P extends edn> edo<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.W, $$0, new edo<>($$1));
+public class edo extends eca<eer> {
+   public edo(Codec<eer> $$0) {
+      super($$0);
    }
 
-   private edo(MapCodec<P> $$0) {
-      this.l = $$0;
-   }
+   @Override
+   public boolean a(ecc<eer> $$0) {
+      dcv $$1 = $$0.b();
+      ir $$2 = $$0.e();
+      ir.a $$3 = new ir.a();
+      ir.a $$4 = new ir.a();
 
-   public MapCodec<P> a() {
-      return this.l;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dyu.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(iw.a, 1);
+            dcz $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dfe.eC.n(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dfe.eB.n(), 2);
+               dtc $$11 = $$1.a_($$4);
+               if ($$11.b(dna.c)) {
+                  $$1.a($$4, $$11.a(dna.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

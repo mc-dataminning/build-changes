@@ -1,62 +1,126 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
+import java.util.Collection;
 import java.util.function.Function;
 
-public class apa implements apb {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.data.block.invalid"));
-   public static final Function<String, apc.c> a = $$0 -> new apc.c() {
-         @Override
-         public apb a(CommandContext<ee> $$0x) throws CommandSyntaxException {
-            io $$1 = ga.a($$0, $$0 + "Pos");
-            dog $$2 = ((ee)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw apa.b.create();
-            } else {
-               return new apa($$2, $$1);
-            }
-         }
-
-         @Override
-         public ArgumentBuilder<ee, ?> a(ArgumentBuilder<ee, ?> $$0x, Function<ArgumentBuilder<ee, ?>, ArgumentBuilder<ee, ?>> $$1) {
-            return $$0.then(ef.a("block").then($$1.apply(ef.a($$0 + "Pos", ga.a()))));
-         }
-      };
-   private final dog c;
-   private final io d;
-
-   public apa(dog $$0, io $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class apa {
+   public static void a(CommandDispatcher<eh> $$0, ed $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ei.a(
+                                    "targets", eu.d()
+                                 )
+                                 .then(ei.a("clear").executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets")))))
+                              .then(ei.a("reset").executes($$0x -> b((eh)$$0x.getSource(), eu.f($$0x, "targets")))))
+                           .then(
+                              ei.a("title")
+                                 .then(
+                                    ei.a("title", eq.a($$1))
+                                       .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "title", afo::new))
+                                 )
+                           ))
+                        .then(
+                           ei.a("subtitle")
+                              .then(
+                                 ei.a("title", eq.a($$1))
+                                    .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "subtitle", afm::new))
+                              )
+                        ))
+                     .then(
+                        ei.a("actionbar")
+                           .then(
+                              ei.a("title", eq.a($$1))
+                                 .executes($$0x -> a((eh)$$0x.getSource(), eu.f($$0x, "targets"), eq.a($$0x, "title"), "actionbar", aep::new))
+                           )
+                     ))
+                  .then(
+                     ei.a("times")
+                        .then(
+                           ei.a("fadeIn", fw.a())
+                              .then(
+                                 ei.a("stay", fw.a())
+                                    .then(
+                                       ei.a("fadeOut", fw.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (eh)$$0x.getSource(),
+                                                   eu.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(ud $$0) {
-      drb $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().H_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   private static int a(eh $$0, Collection<aqu> $$1) {
+      aco $$2 = new aco(false);
+
+      for (aqu $$3 : $$1) {
+         $$3.d.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.cleared.single", $$1.iterator().next().P_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public ud a() {
-      return this.c.b(this.c.i().H_());
+   private static int b(eh $$0, Collection<aqu> $$1) {
+      aco $$2 = new aco(true);
+
+      for (aqu $$3 : $$1) {
+         $$3.d.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.reset.single", $$1.iterator().next().P_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public wx b() {
-      return wx.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
+   private static int a(eh $$0, Collection<aqu> $$1, xe $$2, String $$3, Function<xe, zl<?>> $$4) throws CommandSyntaxException {
+      for (aqu $$5 : $$1) {
+         $$5.d.b($$4.apply(xh.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().P_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public wx a(va $$0) {
-      return wx.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), us.c($$0));
-   }
+   private static int a(eh $$0, Collection<aqu> $$1, int $$2, int $$3, int $$4) {
+      afp $$5 = new afp($$2, $$3, $$4);
 
-   @Override
-   public wx a(ew.g $$0, double $$1, int $$2) {
-      return wx.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      for (aqu $$6 : $$1) {
+         $$6.d.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.times.single", $$1.iterator().next().P_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

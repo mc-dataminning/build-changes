@@ -6,7 +6,7 @@ public class che extends chc {
    private static final Logger b = LogUtils.getLogger();
    private static final int c = 10;
    @Nullable
-   private euk d;
+   private ewu d;
    private int e;
 
    public che(cha $$0) {
@@ -17,12 +17,12 @@ public class che extends chc {
    public void c() {
       if (this.d == null) {
          b.warn("Aborting charge player as no target was set.");
-         this.a.gm().a(chq.a);
+         this.a.gv().a(chq.a);
       } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gm().a(chq.a);
+         this.a.gv().a(chq.a);
       } else {
-         double $$0 = this.d.c(this.a.du(), this.a.dw(), this.a.dA());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         double $$0 = this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.R || this.a.S) {
             this.e++;
          }
       }
@@ -34,7 +34,7 @@ public class che extends chc {
       this.e = 0;
    }
 
-   public void a(euk $$0) {
+   public void a(ewu $$0) {
       this.d = $$0;
    }
 
@@ -45,7 +45,7 @@ public class che extends chc {
 
    @Nullable
    @Override
-   public euk g() {
+   public ewu g() {
       return this.d;
    }
 

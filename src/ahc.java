@@ -1,61 +1,20 @@
-public class ahc implements ze<agd> {
-   public static final yv<vx, ahc> a = ze.a(ahc::a, ahc::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public record ahc(blb b) implements zl<agl> {
+   public static final zc<we, ahc> a = zl.a(ahc::a, ahc::new);
 
-   public ahc(bru $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+   private ahc(we $$0) {
+      this($$0.b(blb.class));
    }
 
-   private ahc(vx $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(vx $$0) {
+   private void a(we $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
    }
 
    @Override
-   public zg<ahc> a() {
-      return agb.bE;
+   public zn<ahc> a() {
+      return agj.bv;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

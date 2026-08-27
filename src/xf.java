@@ -1,77 +1,27 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class xf {
-   private final xh[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xj d;
-
-   public xf(int $$0) {
-      this.a = new xh[$$0];
+public interface xf {
+   default <T> Optional<T> a(xj.b<T> $$0, yb $$1) {
+      return Optional.empty();
    }
 
-   public boolean a(xj $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xh($$0, true) : null);
-         return true;
+   default <T> Optional<T> a(xj.a<T> $$0) {
+      return Optional.empty();
+   }
+
+   default xs a(@Nullable eh $$0, @Nullable brv $$1, int $$2) throws CommandSyntaxException {
+      return xs.a(this);
+   }
+
+   xf.a<?> a();
+
+   public static record a<T extends xf>(MapCodec<T> a, String b) implements azg {
+      @Override
+      public String c() {
+         return this.b;
       }
-   }
-
-   private void a(@Nullable xh $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
-
-   public void a(xj $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xh $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
-
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public xf.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xj> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xh $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      xe $$6 = new xe($$2);
-      xe.b $$7 = new xe.b($$0, $$1);
-      return new xf.a($$6, $$7);
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xe a, xe.b b) {
    }
 }

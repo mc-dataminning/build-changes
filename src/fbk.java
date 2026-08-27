@@ -1,79 +1,36 @@
-public class fbk extends gty {
-   private static final wx a = wx.c("mco.selectServer.create");
-   private static final wx b = wx.c("mco.configure.world.name");
-   private static final wx c = wx.c("mco.configure.world.description");
-   private static final int B = 10;
-   private static final int C = 210;
-   private final ezd D;
-   private final fjm E = new fjm(this);
-   private fgi F;
-   private fgi G;
-   private final Runnable H;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-   public fbk(ezd $$0, ezz $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
+public interface fbk {
+   fbk a = a(0.0F, 0.0F, 0.0F);
+   fbk b = a((fbk.a)($$0 -> -$$0.z()));
+
+   static fbk a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public fbk(ezd $$0, long $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
+   static fbk a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   @Override
-   public void aM_() {
-      this.E.a(this.l, this.p);
-      fjq $$0 = this.E.c(fjq.d()).a(10);
-      ffz $$1 = ffz.a(ww.j, $$0x -> this.H.run()).a();
-      $$1.j = false;
-      this.F = new fgi(this.p, 210, 20, b);
-      this.F.b($$1x -> $$1.j = !ayy.h($$1x));
-      this.G = new fgi(this.p, 210, 20, c);
-      $$0.a(fji.a(this.p, this.F, b));
-      $$0.a(fji.a(this.p, this.G, c));
-      fjq $$2 = this.E.b(fjq.e().a(10));
-      $$2.a($$1);
-      $$2.a(ffz.a(ww.k, $$0x -> this.d()).a());
-      this.E.a($$1x -> {
-         ffx var10000 = this.c($$1x);
-      });
-      this.c();
-   }
+   static fbk a(fbk.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
 
-   @Override
-   protected void aC_() {
-      this.b(this.F);
-   }
-
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   private void a(ezz $$0) {
-      fdb $$1 = new fdb($$0.a, this.F.a(), this.G.a());
-      fbx $$2 = fbx.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            ezd.g();
-            this.m.a(this.D);
-         }));
-      this.m.a($$2);
-   }
-
-   private void a(long $$0) {
-      fly $$1 = new fbw($$1x -> {
-         if ($$1x == null) {
-            this.m.a(this);
-         } else {
-            this.m.a(new fbp(this, new fcw(this.D, $$0, $$1x, this.F.a(), this.G.a())));
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }, a);
-      this.m.a($$1);
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.D);
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

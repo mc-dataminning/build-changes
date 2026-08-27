@@ -1,26 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public interface eli<P extends elg> {
-   Codec<elg> a = le.ah.q().dispatch("processor_type", elg::a, eli::codec);
-   Codec<elh> b = a.listOf().xmap(elh::new, elh::a);
-   Codec<elh> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<ix<elh>> d = aki.a(lf.aK, c);
-   eli<ekl> e = a("block_ignore", ekl.a);
-   eli<ekn> f = a("block_rot", ekn.a);
-   eli<ekq> g = a("gravity", ekq.a);
-   eli<ekr> h = a("jigsaw_replacement", ekr.a);
-   eli<elc> i = a("rule", elc.a);
-   eli<eku> j = a("nop", eku.a);
-   eli<ekk> k = a("block_age", ekk.a);
-   eli<ekj> l = a("blackstone_replace", ekj.a);
-   eli<eks> m = a("lava_submerged_block", eks.a);
-   eli<ekz> n = a("protected_blocks", ekz.b);
-   eli<ekp> o = a("capped", ekp.a);
+record eli(bok<List<ele>> c) implements ele {
+   static Codec<eli> a = RecordCodecBuilder.create($$0 -> $$0.group(bok.b(Codec.list(ele.b)).fieldOf("groups").forGetter(eli::c)).apply($$0, eli::new));
 
-   MapCodec<P> codec();
+   @Override
+   public void a(ayt $$0, BiConsumer<aks<elc>, aks<elc>> $$1) {
+      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   }
 
-   static <P extends elg> eli<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.ah, $$0, () -> $$1);
+   @Override
+   public Stream<aks<elc>> a() {
+      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ele::a);
+   }
+
+   @Override
+   public Codec<eli> b() {
+      return a;
    }
 }

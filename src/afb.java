@@ -1,44 +1,52 @@
+import java.util.ArrayList;
 import java.util.List;
 
-public class afb implements ze<abq> {
-   public static final yv<vx, afb> a = ze.a(afb::a, afb::new);
-   private final int b;
-   private final int[] c;
+public record afb(int c, List<akc.c<?>> d) implements zl<abw> {
+   public static final zc<wp, afb> a = zl.a(afb::b, afb::new);
+   public static final int b = 255;
 
-   public afb(bru $$0) {
-      this.b = $$0.al();
-      List<bru> $$1 = $$0.cS();
-      this.c = new int[$$1.size()];
+   private afb(wp $$0) {
+      this($$0.l(), a($$0));
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).al();
+   private static void a(List<akc.c<?>> $$0, wp $$1) {
+      for (akc.c<?> $$2 : $$0) {
+         $$2.a($$1);
       }
+
+      $$1.k(255);
    }
 
-   private afb(vx $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private static List<akc.c<?>> a(wp $$0) {
+      List<akc.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(akc.c.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
-   private void a(vx $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void b(wp $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zg<afb> a() {
-      return agb.aJ;
+   public zn<afb> a() {
+      return agj.aD;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
+   public int b() {
       return this.c;
    }
 
-   public int e() {
-      return this.b;
+   public List<akc.c<?>> e() {
+      return this.d;
    }
 }

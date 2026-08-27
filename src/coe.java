@@ -1,84 +1,118 @@
-public abstract class coe extends bru {
-   protected static final ajr<Integer> f = ajv.a(coe.class, ajt.b);
-   protected static final ajr<Integer> g = ajv.a(coe.class, ajt.b);
-   protected static final ajr<Float> h = ajv.a(coe.class, ajt.d);
+public class coe extends cnw {
+   static final ajy<String> c = akc.a(coe.class, aka.e);
+   static final ajy<xe> d = akc.a(coe.class, aka.f);
+   private final dbb e = new coe.a();
+   private static final int i = 4;
+   private int j;
 
-   public coe(bsa<?> $$0, dax $$1) {
+   public coe(bsb<? extends coe> $$0, dca $$1) {
       super($$0, $$1);
    }
 
+   public coe(dca $$0, double $$1, double $$2, double $$3) {
+      super(bsb.x, $$0, $$1, $$2, $$3);
+   }
+
    @Override
-   public boolean a(bqn $$0, float $$1) {
-      if (this.dP().B || this.dK()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.n(-this.P());
-         this.d(10);
-         this.bv();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dvu.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof clw && ((clw)$$0.d()).gd().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.ao();
-            }
-         } else {
-            this.a($$0);
+   protected cuc ah_() {
+      return cuk.pc;
+   }
+
+   @Override
+   protected void a(akc.a $$0) {
+      super.a($$0);
+      $$0.a(c, "");
+      $$0.a(d, xd.a);
+   }
+
+   @Override
+   protected void a(uk $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dY());
+      this.ap().a(c, this.B().m());
+      this.ap().a(d, this.B().l());
+   }
+
+   @Override
+   protected void b(uk $$0) {
+      super.b($$0);
+      this.e.a($$0, this.dY());
+   }
+
+   @Override
+   public cnw.a u() {
+      return cnw.a.g;
+   }
+
+   @Override
+   public dtc x() {
+      return dfe.gG.n();
+   }
+
+   public dbb B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.am - this.j >= 4) {
+         this.B().a(this.dU());
+         this.j = this.am;
+      }
+   }
+
+   @Override
+   public bqa a(cly $$0, bpz $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(ajy<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ap().a(d));
+         } catch (Throwable var3) {
          }
-
-         return true;
-      }
-   }
-
-   boolean d(bqn $$0) {
-      return false;
-   }
-
-   public void b(ctj $$0) {
-      this.an();
-      if (this.dP().aa().b(dat.i)) {
-         cto $$1 = new cto($$0);
-         $$1.b(kb.f, this.ah());
-         this.b($$1);
+      } else if (c.equals($$0)) {
+         this.e.a(this.ap().a(c));
       }
    }
 
    @Override
-   protected void a(ajv.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
+   public boolean cU() {
+      return true;
    }
 
-   public void d(int $$0) {
-      this.ao.a(f, $$0);
-   }
+   public class a extends dbb {
+      @Override
+      public aqt e() {
+         return (aqt)coe.this.dU();
+      }
 
-   public void n(int $$0) {
-      this.ao.a(g, $$0);
-   }
+      @Override
+      public void f() {
+         coe.this.ap().a(coe.c, this.m());
+         coe.this.ap().a(coe.d, this.l());
+      }
 
-   public void b(float $$0) {
-      this.ao.a(h, $$0);
-   }
+      @Override
+      public ewu g() {
+         return coe.this.ds();
+      }
 
-   public float N() {
-      return this.ao.a(h);
-   }
+      public coe h() {
+         return coe.this;
+      }
 
-   public int O() {
-      return this.ao.a(f);
-   }
+      @Override
+      public eh i() {
+         return new eh(this, coe.this.ds(), coe.this.bR(), this.e(), 2, this.n().getString(), coe.this.P_(), this.e().o(), coe.this);
+      }
 
-   public int P() {
-      return this.ao.a(g);
+      @Override
+      public boolean j() {
+         return !coe.this.dP();
+      }
    }
-
-   protected void a(bqn $$0) {
-      this.b(this.ag_());
-   }
-
-   abstract ctj ag_();
 }

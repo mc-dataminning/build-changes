@@ -1,79 +1,196 @@
-public class avv {
-   public static final awl<dbw> a = a("is_deep_ocean");
-   public static final awl<dbw> b = a("is_ocean");
-   public static final awl<dbw> c = a("is_beach");
-   public static final awl<dbw> d = a("is_river");
-   public static final awl<dbw> e = a("is_mountain");
-   public static final awl<dbw> f = a("is_badlands");
-   public static final awl<dbw> g = a("is_hill");
-   public static final awl<dbw> h = a("is_taiga");
-   public static final awl<dbw> i = a("is_jungle");
-   public static final awl<dbw> j = a("is_forest");
-   public static final awl<dbw> k = a("is_savanna");
-   public static final awl<dbw> l = a("is_overworld");
-   public static final awl<dbw> m = a("is_nether");
-   public static final awl<dbw> n = a("is_end");
-   public static final awl<dbw> o = a("stronghold_biased_to");
-   public static final awl<dbw> p = a("has_structure/buried_treasure");
-   public static final awl<dbw> q = a("has_structure/desert_pyramid");
-   public static final awl<dbw> r = a("has_structure/igloo");
-   public static final awl<dbw> s = a("has_structure/jungle_temple");
-   public static final awl<dbw> t = a("has_structure/mineshaft");
-   public static final awl<dbw> u = a("has_structure/mineshaft_mesa");
-   public static final awl<dbw> v = a("has_structure/ocean_monument");
-   public static final awl<dbw> w = a("has_structure/ocean_ruin_cold");
-   public static final awl<dbw> x = a("has_structure/ocean_ruin_warm");
-   public static final awl<dbw> y = a("has_structure/pillager_outpost");
-   public static final awl<dbw> z = a("has_structure/ruined_portal_desert");
-   public static final awl<dbw> A = a("has_structure/ruined_portal_jungle");
-   public static final awl<dbw> B = a("has_structure/ruined_portal_ocean");
-   public static final awl<dbw> C = a("has_structure/ruined_portal_swamp");
-   public static final awl<dbw> D = a("has_structure/ruined_portal_mountain");
-   public static final awl<dbw> E = a("has_structure/ruined_portal_standard");
-   public static final awl<dbw> F = a("has_structure/shipwreck_beached");
-   public static final awl<dbw> G = a("has_structure/shipwreck");
-   public static final awl<dbw> H = a("has_structure/stronghold");
-   public static final awl<dbw> I = a("has_structure/trial_chambers");
-   public static final awl<dbw> J = a("has_structure/swamp_hut");
-   public static final awl<dbw> K = a("has_structure/village_desert");
-   public static final awl<dbw> L = a("has_structure/village_plains");
-   public static final awl<dbw> M = a("has_structure/village_savanna");
-   public static final awl<dbw> N = a("has_structure/village_snowy");
-   public static final awl<dbw> O = a("has_structure/village_taiga");
-   public static final awl<dbw> P = a("has_structure/trail_ruins");
-   public static final awl<dbw> Q = a("has_structure/woodland_mansion");
-   public static final awl<dbw> R = a("has_structure/nether_fortress");
-   public static final awl<dbw> S = a("has_structure/nether_fossil");
-   public static final awl<dbw> T = a("has_structure/bastion_remnant");
-   public static final awl<dbw> U = a("has_structure/ancient_city");
-   public static final awl<dbw> V = a("has_structure/ruined_portal_nether");
-   public static final awl<dbw> W = a("has_structure/end_city");
-   public static final awl<dbw> X = a("required_ocean_monument_surrounding");
-   public static final awl<dbw> Y = a("mineshaft_blocking");
-   public static final awl<dbw> Z = a("plays_underwater_music");
-   public static final awl<dbw> aa = a("has_closer_water_fog");
-   public static final awl<dbw> ab = a("water_on_map_outlines");
-   public static final awl<dbw> ac = a("produces_corals_from_bonemeal");
-   public static final awl<dbw> ad = a("increased_fire_burnout");
-   public static final awl<dbw> ae = a("snow_golem_melts");
-   public static final awl<dbw> af = a("without_zombie_sieges");
-   public static final awl<dbw> ag = a("without_patrol_spawns");
-   public static final awl<dbw> ah = a("without_wandering_trader_spawns");
-   public static final awl<dbw> ai = a("spawns_cold_variant_frogs");
-   public static final awl<dbw> aj = a("spawns_warm_variant_frogs");
-   public static final awl<dbw> ak = a("spawns_gold_rabbits");
-   public static final awl<dbw> al = a("spawns_white_rabbits");
-   public static final awl<dbw> am = a("reduce_water_ambient_spawns");
-   public static final awl<dbw> an = a("allows_tropical_fish_spawns_at_any_height");
-   public static final awl<dbw> ao = a("polar_bears_spawn_on_alternate_blocks");
-   public static final awl<dbw> ap = a("more_frequent_drowned_spawns");
-   public static final awl<dbw> aq = a("allows_surface_slime_spawns");
-   public static final awl<dbw> ar = a("spawns_snow_foxes");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   private avv() {
+public class avv extends awa {
+   private static final Logger b = LogUtils.getLogger();
+   private final MinecraftServer c;
+   private final File d;
+   private final Set<avw<?>> e = Sets.newHashSet();
+
+   public avv(MinecraftServer $$0, File $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aD(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
    }
 
-   private static awl<dbw> a(String $$0) {
-      return awl.a(lf.az, new akm($$0));
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.d, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(cly $$0, avw<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.e.add($$1);
+   }
+
+   private Set<avw<?>> d() {
+      Set<avw<?>> $$0 = Sets.newHashSet(this.e);
+      this.e.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label47: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  uk $$4 = a($$3.getAsJsonObject());
+                  $$4 = azs.g.a($$0, $$4, uz.b($$4, 1343));
+                  if (!$$4.b("stats", 10)) {
+                     break label47;
+                  }
+
+                  uk $$5 = $$4.p("stats");
+                  Iterator var7 = $$5.e().iterator();
+
+                  while (true) {
+                     if (!var7.hasNext()) {
+                        break label47;
+                     }
+
+                     String $$6 = (String)var7.next();
+                     if ($$5.b($$6, 10)) {
+                        ad.a(
+                           lh.x.b(new akt($$6)),
+                           $$2x -> {
+                              uk $$3x = $$5.p($$6);
+
+                              for (String $$4x : $$3x.e()) {
+                                 if ($$3x.b($$4x, 99)) {
+                                    ad.a(
+                                       this.a($$2x, $$4x),
+                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
+                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
+                                    );
+                                 } else {
+                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
+                                 }
+                              }
+                           },
+                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
+                        );
+                     }
+                  }
+               }
+
+               b.error("Unable to parse Stat data from {}", this.d);
+            } catch (Throwable var10) {
+               try {
+                  $$2.close();
+               } catch (Throwable var9) {
+                  var10.addSuppressed(var9);
+               }
+
+               throw var10;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var11) {
+         b.error("Unable to parse Stat data from {}", this.d, var11);
+      }
+   }
+
+   private <T> Optional<avw<T>> a(avy<T> $$0, String $$1) {
+      return Optional.ofNullable(akt.a($$1)).flatMap($$0.b()::b).map($$0::b);
+   }
+
+   private static uk a(JsonObject $$0) {
+      uk $$1 = new uk();
+
+      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
+         JsonElement $$3 = $$2.getValue();
+         if ($$3.isJsonObject()) {
+            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
+         } else if ($$3.isJsonPrimitive()) {
+            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
+            if ($$4.isNumber()) {
+               $$1.a($$2.getKey(), $$4.getAsInt());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   protected String b() {
+      Map<avy<?>, JsonObject> $$0 = Maps.newHashMap();
+      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
+
+      while ($$3.hasNext()) {
+         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<avw<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<avw<?>>)$$3.next();
+         avw<?> $$2 = (avw<?>)$$1.getKey();
+         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      }
+
+      JsonObject $$3x = new JsonObject();
+
+      for (Entry<avy<?>, JsonObject> $$4 : $$0.entrySet()) {
+         $$3x.add(lh.x.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
+      }
+
+      JsonObject $$5 = new JsonObject();
+      $$5.add("stats", $$3x);
+      $$5.addProperty("DataVersion", ab.b().d().c());
+      return $$5.toString();
+   }
+
+   private static <T> akt b(avw<T> $$0) {
+      return $$0.a().b().b($$0.b());
+   }
+
+   public void c() {
+      this.e.addAll(this.a.keySet());
+   }
+
+   public void a(aqu $$0) {
+      Object2IntMap<avw<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (avw<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.d.b(new acb($$1));
    }
 }

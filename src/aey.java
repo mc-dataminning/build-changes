@@ -1,45 +1,29 @@
-public class aey implements ze<abq> {
-   public static final yv<vx, aey> a = ze.a(aey::a, aey::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public class aey implements zl<abw> {
+   public static final zc<we, aey> a = zl.a(aey::a, aey::new);
+   private final int b;
 
-   public aey(float $$0, int $$1, int $$2) {
+   public aey(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private aey(vx $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private aey(we $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(we $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zg<aey> a() {
-      return agb.aG;
+   public zn<aey> a() {
+      return agj.aA;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

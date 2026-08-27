@@ -1,46 +1,47 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class gfd<T extends dpx> implements gek<T> {
-   public static final akm a = new akm("textures/environment/end_sky.png");
-   public static final akm b = new akm("textures/entity/end_portal.png");
+public class gfd {
+   public final Int2ObjectMap<gtg> a = new Int2ObjectOpenHashMap(256);
+   private final Int2ObjectMap<gsz> b = new Int2ObjectOpenHashMap(256);
+   private final gtf c;
 
-   public gfd(gel.a $$0) {
+   public gfd(gtf $$0) {
+      this.c = $$0;
    }
 
-   public void a(T $$0, float $$1, eys $$2, gck $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   public gsz a(cuh $$0) {
+      gsz $$1 = this.a($$0.f());
+      return $$1 == null ? this.c.a() : $$1;
    }
 
-   private void a(T $$0, Matrix4f $$1, eyw $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, it.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, it.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, it.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, it.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, it.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, it.b);
+   @Nullable
+   public gsz a(cuc $$0) {
+      return (gsz)this.b.get(b($$0));
    }
 
-   private void a(T $$0, Matrix4f $$1, eyw $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, it $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   private static int b(cuc $$0) {
+      return cuc.a($$0);
+   }
+
+   public void a(cuc $$0, gtg $$1) {
+      this.a.put(b($$0), $$1);
+   }
+
+   public gtf a() {
+      return this.c;
+   }
+
+   public void b() {
+      this.b.clear();
+      ObjectIterator var1 = this.a.entrySet().iterator();
+
+      while (var1.hasNext()) {
+         Entry<Integer, gtg> $$0 = (Entry<Integer, gtg>)var1.next();
+         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
       }
-   }
-
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gcs d() {
-      return gcs.u();
    }
 }

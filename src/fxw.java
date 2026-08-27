@@ -1,67 +1,38 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
 
-public record fxw(String a, @Nullable fxw.a b) {
-   public static fxw a() {
-      return a(null);
+public class fxw<T extends cgb> extends fuk<T> {
+   private final fys a;
+   private final fys b;
+
+   public fxw(fys $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   public static fxw a(String $$0) {
-      return a(new fxw.a.b($$0));
+   public static fyy c() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      float $$2 = 0.0F;
+      float $$3 = 22.0F;
+      float $$4 = -3.0F;
+      $$1.a("body", fyx.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fyu.a(0.0F, 22.0F, -3.0F));
+      $$1.a("tail", fyx.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fyu.a(0.0F, 22.0F, 0.0F));
+      return fyy.a($$0, 16, 16);
    }
 
-   public static fxw a(ezz $$0) {
-      return a(new fxw.a.a($$0));
+   @Override
+   protected Iterable<fys> a() {
+      return ImmutableList.of(this.a);
    }
 
-   public static fxw a(@Nullable fxw.a $$0) {
-      return new fxw(g(), $$0);
+   @Override
+   protected Iterable<fys> b() {
+      return ImmutableList.of(this.b);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fxw.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fxw.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w13a");
-      if (fdz.e().a()) {
-         $$0.append(" (modded)");
-      }
-
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fxw.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements fxw.a {
-         public a(ezz $$0) {
-            this($$0.a, $$0.n);
-         }
-      }
-
-      public static record b(String a) implements fxw.a {
-      }
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$0.bi() ? 1.0F : 1.5F;
+      this.b.f = -$$6 * 0.25F * aym.a(0.3F * $$3);
    }
 }

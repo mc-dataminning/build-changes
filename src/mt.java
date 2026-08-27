@@ -1,143 +1,17 @@
-import java.util.function.BiConsumer;
+public class mt extends ml {
+   protected mt() {
+      super(cop.a(cor.c));
+   }
 
-public class mt implements mj {
    @Override
-   public void generate(iz.a $$0, BiConsumer<akl<epk>, epk.a> $$1) {
-      $$1.accept(
-         epd.bb,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.xN).a(2))
-                  .a(eps.a(ctr.xP).a(2))
-                  .a(eps.a(ctr.qL))
-                  .a(eps.a(ctr.oz))
-                  .a(eps.a(ctr.pp))
-                  .a(
-                     eps.a(ctr.vU)
-                        .a(
-                           ern.c()
-                              .a(bre.p, etk.a(7.0F, 10.0F))
-                              .a(bre.h, etk.a(7.0F, 10.0F))
-                              .a(bre.r, etk.a(6.0F, 8.0F))
-                              .a(bre.o, etk.a(5.0F, 7.0F))
-                              .a(bre.s, etk.a(10.0F, 20.0F))
-                              .a(bre.w, etk.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$1.accept(
-         epd.bc,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.xM))
-                  .a(eps.a(ctr.xZ))
-                  .a(eps.a(ctr.yc))
-                  .a(eps.a(ctr.yg))
-                  .a(eps.a(ctr.oy))
-                  .a(eps.a(ctr.md))
-                  .a(eps.a(ctr.pu))
-                  .a(eps.a(ctr.oz))
-            )
-      );
-      $$1.accept(
-         epd.bd,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.oz).a(2))
-                  .a(eps.a(ctr.pw).a(2))
-                  .a(eps.a(ctr.oP).a(2))
-                  .a(eps.a(ctr.eX).a(2))
-                  .a(eps.a(ctr.qL).a(2))
-                  .a(eps.a(ctr.rm).a(2))
-                  .a(eps.a(ctr.rt).a(2))
-                  .a(eps.a(ctr.rl).a(2))
-                  .a(eps.a(ctr.ri).a(2))
-                  .a(eps.a(ctr.rj).a(2))
-                  .a(eps.a(ctr.xf).a(2))
-                  .a(eps.a(ctr.xe).a(2))
-                  .a(eps.a(ctr.xb).a(2))
-                  .a(eps.a(ctr.xd).a(2))
-                  .a(eps.a(ctr.iv))
-                  .a(eps.a(ctr.iz))
-                  .a(eps.a(ctr.iE))
-                  .a(eps.a(ctr.iw))
-                  .a(eps.a(ctr.iH))
-                  .a(eps.a(ctr.ix))
-                  .a(eps.a(ctr.iD))
-                  .a(eps.a(ctr.qo))
-                  .a(eps.a(ctr.qn))
-                  .a(eps.a(ctr.si))
-                  .a(eps.a(ctr.ow))
-                  .a(eps.a(ctr.pv))
-                  .a(eps.a(ctr.vl))
-                  .a(eps.a(ctr.cR))
-                  .a(eps.a(ctr.ue))
-                  .a(eps.a(ctr.ps))
-                  .a(eps.a(ctr.uK))
-            )
-      );
-      $$1.accept(
-         epd.be,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.xQ))
-                  .a(eps.a(ctr.xR))
-                  .a(eps.a(ctr.xU))
-                  .a(eps.a(ctr.xW))
-                  .a(eps.a(ctr.xX))
-                  .a(eps.a(ctr.xY))
-                  .a(eps.a(ctr.ye))
-                  .a(eps.a(ctr.xE))
-                  .a(eps.a(ctr.xH))
-                  .a(eps.a(ctr.xF))
-                  .a(eps.a(ctr.xI))
-                  .a(eps.a(ctr.vL))
-            )
-      );
-      $$1.accept(
-         epd.bf,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.xL))
-                  .a(eps.a(ctr.yf))
-                  .a(eps.a(ctr.yh))
-                  .a(eps.a(ctr.kq))
-                  .a(eps.a(ctr.pd))
-                  .a(eps.a(ctr.oz).a(2))
-                  .a(eps.a(ctr.pw).a(2))
-                  .a(eps.a(ctr.oP).a(2))
-                  .a(eps.a(ctr.ow).a(2))
-                  .a(eps.a(ctr.si).a(2))
-            )
-      );
-      $$1.accept(
-         epd.bg,
-         epk.b()
-            .a(
-               epj.a()
-                  .a(ete.a(1.0F))
-                  .a(eps.a(ctr.xO))
-                  .a(eps.a(ctr.xS))
-                  .a(eps.a(ctr.ya))
-                  .a(eps.a(ctr.yb))
-                  .a(eps.a(ctr.pd))
-                  .a(eps.a(ctr.oz).a(2))
-                  .a(eps.a(ctr.pw).a(2))
-                  .a(eps.a(ctr.oP).a(2))
-                  .a(eps.a(ctr.ow).a(2))
-                  .a(eps.a(ctr.si).a(2))
-            )
+   public void a() {
+      this.a(bsb.o, eru.b().a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.Ao).a(etr.a(evu.a(1.0F, 2.0F))).a(ete.a(evu.a(1.0F, 2.0F)))).a(euy.c())));
+      this.a(
+         bsb.n,
+         eru.b()
+            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.pL).a(etr.a(evu.a(0.0F, 2.0F))).a(ete.a(evu.a(0.0F, 1.0F)))))
+            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.sW).a(etr.a(evu.a(0.0F, 2.0F))).a(ete.a(evu.a(0.0F, 1.0F)))))
+            .a(ert.a().a(evo.a(1.0F)).a(esc.a(cuk.xb).a(etr.a(evu.a(0.0F, 1.0F))).a(ete.a(evu.a(0.0F, 1.0F)).a(1)).a(etv.a(cws.E))).a(euy.c()))
       );
    }
 }

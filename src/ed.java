@@ -1,34 +1,18 @@
-public interface ed {
-   ed a = new ed() {
-      @Override
-      public void a(wx $$0) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public boolean l_() {
-         return false;
-      }
+public interface ed extends jc.a {
+   static ed a(final jc.a $$0, final cop $$1) {
+      return new ed() {
+         @Override
+         public Stream<aks<? extends jn<?>>> a() {
+            return $$0.a();
+         }
 
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
-      }
-   };
-
-   void a(wx var1);
-
-   boolean l_();
-
-   boolean w_();
-
-   boolean U_();
-
-   default boolean m_() {
-      return false;
+         @Override
+         public <T> Optional<jc.b<T>> a(aks<? extends jn<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
+      };
    }
 }

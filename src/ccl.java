@@ -1,43 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class ccl extends ccy<ckg> {
+public class ccl extends ccx<bso> {
    @Override
-   public Set<cbs<?>> a() {
-      return ImmutableSet.of(cbs.h, cbs.aw, cbs.aq, cbs.ap, cbs.as, cbs.at, new cbs[0]);
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.x, cbr.y);
    }
 
-   protected void a(aqm $$0, ckg $$1) {
-      btq<?> $$2 = $$1.dS();
-      $$2.a(cbs.aw, this.b($$0, $$1));
-      Optional<ckm> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<ckg> $$5 = Lists.newArrayList();
-      cbu $$6 = $$2.c(cbs.h).orElse(cbu.a());
-
-      for (bso $$7 : $$6.b($$0x -> !$$0x.p_() && ($$0x instanceof ckm || $$0x instanceof ckg))) {
-         if ($$7 instanceof ckm $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
+   @Override
+   protected void a(aqt $$0, bso $$1) {
+      btp<?> $$2 = $$1.dZ();
+      bqt $$3 = $$1.eK();
+      if ($$3 != null) {
+         $$2.a(cbr.x, $$1.eK());
+         brv $$4 = $$3.d();
+         if ($$4 instanceof bso) {
+            $$2.a(cbr.y, (bso)$$4);
          }
-
-         if ($$7 instanceof ckg $$9) {
-            $$5.add($$9);
-         }
+      } else {
+         $$2.b(cbr.x);
       }
 
-      $$2.a(cbs.aq, $$3);
-      $$2.a(cbs.ap, $$5);
-      $$2.a(cbs.as, $$4);
-      $$2.a(cbs.at, $$5.size());
-   }
-
-   private Optional<io> b(aqm $$0, ckg $$1) {
-      return io.a($$1.dp(), 8, 4, $$1x -> $$0.a_($$1x).a(avw.aS));
+      $$2.c(cbr.y).ifPresent($$2x -> {
+         if (!$$2x.bI() || $$2x.dU() != $$0) {
+            $$2.b(cbr.y);
+         }
+      });
    }
 }

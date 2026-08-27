@@ -1,44 +1,184 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class eqy extends eqq {
-   public static final MapCodec<eqy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ard.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  axm.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eqy::new)
-   );
-   private final Optional<String> b;
-   private final Optional<ard<String>> c;
-   private final Optional<Integer> d;
+public class eqy implements erk {
+   private final erl a;
+   private final erk b;
 
-   public eqy(List<esl> $$0, Optional<ard<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
-      super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   public eqy(erl $$0, erk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   protected cto a(cto $$0, epf $$1) {
-      $$0.a(kb.I, cwx.a, this::a);
-      return $$0;
-   }
-
-   private cwx a(cwx $$0) {
-      return new cwx(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
+   public ir a() {
+      return this.b.a();
    }
 
    @Override
-   public eqs b() {
-      return eqt.J;
+   public float b() {
+      return this.b.b();
+   }
+
+   @Override
+   public long c() {
+      return this.b.c();
+   }
+
+   @Override
+   public long d() {
+      return this.b.d();
+   }
+
+   @Override
+   public String e() {
+      return this.a.e();
+   }
+
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dbx k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ir $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dbx $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dbw o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dut.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dut.c $$0) {
+   }
+
+   @Override
+   public bpx q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public ewh<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dcc $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

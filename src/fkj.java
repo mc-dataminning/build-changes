@@ -1,53 +1,58 @@
-public class fkj extends fma {
-   public static final wx a = wx.c("options.accessibility.title");
+import javax.annotation.Nullable;
 
-   private static fec<?>[] a(fed $$0) {
-      return new fec[]{
-         $$0.as(),
-         $$0.W(),
-         $$0.t(),
-         $$0.H(),
-         $$0.p(),
-         $$0.r(),
-         $$0.Y(),
-         $$0.n(),
-         $$0.o(),
-         $$0.A(),
-         $$0.B(),
-         $$0.ac(),
-         $$0.ad(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.ao(),
-         $$0.am(),
-         $$0.an(),
-         $$0.b(),
-         $$0.a(),
-         $$0.s(),
-         $$0.c(),
-         $$0.u()
-      };
+public interface fkj extends fjx {
+   long t = 250L;
+
+   default void f(double $$0, double $$1) {
    }
 
-   public fkj(fly $$0, fed $$1) {
-      super($$0, $$1, a, a($$1));
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   protected void aM_() {
-      super.aM_();
-      ffx $$0 = this.s.b(this.c.t());
-      if ($$0 != null && !this.m.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fhk.a(wx.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   protected void h() {
-      fjq $$0 = this.d.b(fjq.e().a(8));
-      $$0.a(ffz.a(wx.c("options.accessibility.link"), fkp.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a());
-      $$0.a(ffz.a(ww.d, $$0x -> this.m.a(this.b)).a());
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default fhx a(fmp $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aI_();
+
+   @Nullable
+   default fhx aJ_() {
+      return this.aI_() ? fhx.a(this) : null;
+   }
+
+   default fmt G() {
+      return fmt.a();
    }
 }

@@ -1,450 +1,224 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Consumer;
 
-public class fel {
-   final fel.f a;
+public class fel extends gxb {
+   private static final int B = 2;
+   public static final List<bpx> a = ImmutableList.of(bpx.a, bpx.b, bpx.c, bpx.d);
+   private static final int C = 0;
+   public static final List<dbx> b = ImmutableList.of(dbx.a, dbx.b, dbx.c);
+   private static final xe D = xe.c("mco.configure.world.edit.slot.name");
+   static final xe E = xe.c("mco.configure.world.spawnProtection");
+   private static final xe F = xe.c("mco.configure.world.spawn_toggle.title").a(n.m, n.r);
+   private fiw G;
+   protected final fds c;
+   private int H;
+   private int I;
+   private final fcq J;
+   private final fcj.d K;
+   private bpx L;
+   private dbx M;
+   private final String N;
+   private String O;
+   private boolean P;
+   private boolean Q;
+   private boolean R;
+   private boolean S;
+   int T;
+   private boolean U;
+   private boolean V;
+   fel.a W;
 
-   public fel(fel.f $$0) {
-      this.a = $$0;
-   }
-
-   public float a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return 0.0F;
+   public fel(fds $$0, fcq $$1, fcj.d $$2, int $$3) {
+      super(xe.c("mco.configure.world.buttons.options"));
+      this.c = $$0;
+      this.J = $$1;
+      this.K = $$2;
+      this.L = a(a, $$1.h, 2);
+      this.M = a(b, $$1.i, 0);
+      this.N = $$1.b($$3);
+      this.a($$1.a($$3));
+      if ($$2 == fcj.d.a) {
+         this.P = $$1.a;
+         this.T = $$1.e;
+         this.V = $$1.g;
+         this.R = $$1.b;
+         this.S = $$1.c;
+         this.Q = $$1.d;
+         this.U = $$1.f;
       } else {
-         MutableFloat $$1 = new MutableFloat();
-         ayw.c($$0, xu.a, ($$1x, $$2, $$3) -> {
-            $$1.add(this.a.getWidth($$3, $$2));
-            return true;
-         });
-         return $$1.floatValue();
+         this.P = true;
+         this.T = 0;
+         this.V = false;
+         this.R = true;
+         this.S = true;
+         this.Q = true;
+         this.U = true;
       }
    }
 
-   public float a(xc $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      ayw.a($$0, xu.a, ($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.c);
          return true;
-      });
-      return $$1.floatValue();
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   public float a(axq $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      $$0.accept(($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
+   private static <T> T a(List<T> $$0, int $$1, int $$2) {
+      try {
+         return $$0.get($$1);
+      } catch (IndexOutOfBoundsException var4) {
+         return $$0.get($$2);
+      }
    }
 
-   public int a(String $$0, int $$1, xu $$2) {
-      fel.e $$3 = new fel.e((float)$$1);
-      ayw.a($$0, $$2, $$3);
-      return $$3.a();
+   private static <T> int a(List<T> $$0, T $$1, int $$2) {
+      int $$3 = $$0.indexOf($$1);
+      return $$3 == -1 ? $$2 : $$3;
    }
 
-   public String b(String $$0, int $$1, xu $$2) {
-      return $$0.substring(0, this.a($$0, $$1, $$2));
-   }
-
-   public String c(String $$0, int $$1, xu $$2) {
-      MutableFloat $$3 = new MutableFloat();
-      MutableInt $$4 = new MutableInt($$0.length());
-      ayw.b($$0, $$2, ($$3x, $$4x, $$5) -> {
-         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
-         if ($$6 > (float)$$1) {
-            return false;
+   @Override
+   public void aN_() {
+      this.I = 170;
+      this.H = this.n / 2 - this.I;
+      int $$0 = this.n / 2 + 10;
+      if (this.K != fcj.d.a) {
+         xe $$1;
+         if (this.K == fcj.d.c) {
+            $$1 = xe.c("mco.configure.world.edit.subscreen.adventuremap");
+         } else if (this.K == fcj.d.e) {
+            $$1 = xe.c("mco.configure.world.edit.subscreen.inspiration");
          } else {
-            $$4.setValue($$3x);
-            return true;
+            $$1 = xe.c("mco.configure.world.edit.subscreen.experience");
          }
-      });
-      return $$0.substring($$4.intValue());
+
+         this.a(new gwz($$1, this.n / 2, 26, 16711680));
+      }
+
+      this.G = this.d(new fiw(this.m.h, this.H, g(1), this.I, 20, null, xe.c("mco.configure.world.edit.slot.name")));
+      this.G.f(10);
+      this.G.a(this.O);
+      this.G.b(this::a);
+      fiu<Boolean> $$4 = this.c(fiu.b(this.P).a($$0, g(1), this.I, 20, xe.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.P = $$1));
+      this.c(fiu.a(dbx::e).a(b).a(this.M).a(this.H, g(3), this.I, 20, xe.c("selectWorld.gameMode"), ($$0x, $$1) -> this.M = $$1));
+      xe $$5 = xe.c("mco.configure.world.spawn_toggle.message");
+      fiu<Boolean> $$6 = this.c(fiu.b(this.R).a($$0, g(3), this.I, 20, xe.c("mco.configure.world.spawnAnimals"), this.a($$5, $$0x -> this.R = $$0x)));
+      fiu<Boolean> $$7 = fiu.b(this.L != bpx.a && this.S)
+         .a($$0, g(5), this.I, 20, xe.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.S = $$0x));
+      this.c(fiu.a(bpx::b).a(a).a(this.L).a(this.H, g(5), this.I, 20, xe.c("options.difficulty"), ($$1, $$2) -> {
+         this.L = $$2;
+         if (this.K == fcj.d.a) {
+            boolean $$3 = this.L != bpx.a;
+            $$7.j = $$3;
+            $$7.a($$3 && this.S);
+         }
+      }));
+      this.c($$7);
+      this.W = this.c(new fel.a(this.H, g(7), this.I, this.T, 0.0F, 16.0F));
+      fiu<Boolean> $$8 = this.c(
+         fiu.b(this.Q)
+            .a(
+               $$0,
+               g(7),
+               this.I,
+               20,
+               xe.c("mco.configure.world.spawnNPCs"),
+               this.a(xe.c("mco.configure.world.spawn_toggle.message.npc"), $$0x -> this.Q = $$0x)
+            )
+      );
+      fiu<Boolean> $$9 = this.c(fiu.b(this.V).a(this.H, g(9), this.I, 20, xe.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.V = $$1));
+      fiu<Boolean> $$10 = this.c(fiu.b(this.U).a($$0, g(9), this.I, 20, xe.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.U = $$1));
+      if (this.K != fcj.d.a) {
+         $$4.j = false;
+         $$6.j = false;
+         $$8.j = false;
+         $$7.j = false;
+         this.W.j = false;
+         $$10.j = false;
+         $$9.j = false;
+      }
+
+      if (this.L == bpx.a) {
+         $$7.j = false;
+      }
+
+      this.c(fin.a(xe.c("mco.configure.world.buttons.done"), $$0x -> this.C()).a(this.H, g(13), this.I, 20).a());
+      this.c(fin.a(xd.e, $$0x -> this.m.a(this.c)).a($$0, g(13), this.I, 20).a());
    }
 
-   public int d(String $$0, int $$1, xu $$2) {
-      fel.e $$3 = new fel.e((float)$$1);
-      ayw.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   @Nullable
-   public xu a(xc $$0, int $$1) {
-      fel.e $$2 = new fel.e((float)$$1);
-      return $$0.<xu>a(($$1x, $$2x) -> ayw.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), xu.a).orElse(null);
-   }
-
-   @Nullable
-   public xu a(axq $$0, int $$1) {
-      fel.e $$2 = new fel.e((float)$$1);
-      MutableObject<xu> $$3 = new MutableObject();
-      $$0.accept(($$2x, $$3x, $$4) -> {
-         if (!$$2.accept($$2x, $$3x, $$4)) {
-            $$3.setValue($$3x);
-            return false;
+   private fiu.b<Boolean> a(xe $$0, Consumer<Boolean> $$1) {
+      return ($$2, $$3) -> {
+         if ($$3) {
+            $$1.accept(true);
          } else {
-            return true;
-         }
-      });
-      return (xu)$$3.getValue();
-   }
-
-   public String e(String $$0, int $$1, xu $$2) {
-      return $$0.substring(0, this.d($$0, $$1, $$2));
-   }
-
-   public xc a(xc $$0, int $$1, xu $$2) {
-      final fel.e $$3 = new fel.e((float)$$1);
-      return $$0.a(new xc.b<xc>() {
-         private final fdp c = new fdp();
-
-         @Override
-         public Optional<xc> accept(xu $$0, String $$1) {
-            $$3.b();
-            if (!ayw.c($$1, $$0, $$3)) {
-               String $$2 = $$1.substring(0, $$3.a());
-               if (!$$2.isEmpty()) {
-                  this.c.a(xc.a($$2, $$0));
+            this.m.a(new fne($$1xx -> {
+               if ($$1xx) {
+                  $$1.accept(false);
                }
 
-               return Optional.of(this.c.b());
-            } else {
-               if (!$$1.isEmpty()) {
-                  this.c.a(xc.a($$1, $$0));
-               }
-
-               return Optional.empty();
-            }
+               this.m.a(this);
+            }, F, $$0, xd.i, xd.e));
          }
-      }, $$2).orElse($$0);
+      };
    }
 
-   public int f(String $$0, int $$1, xu $$2) {
-      fel.b $$3 = new fel.b((float)$$1);
-      ayw.c($$0, $$2, $$3);
-      return $$3.a();
+   @Override
+   public xe i() {
+      return xd.a(this.n(), this.B());
    }
 
-   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$2;
-      boolean $$5 = $$1 < 0;
-      int $$6 = Math.abs($$1);
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         if ($$5) {
-            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
-               $$4--;
-            }
-
-            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
-               $$4--;
-            }
-         } else {
-            int $$8 = $$0.length();
-            int $$9 = $$0.indexOf(32, $$4);
-            int $$10 = $$0.indexOf(10, $$4);
-            if ($$9 == -1 && $$10 == -1) {
-               $$4 = -1;
-            } else if ($$9 != -1 && $$10 != -1) {
-               $$4 = Math.min($$9, $$10);
-            } else if ($$9 != -1) {
-               $$4 = $$9;
-            } else {
-               $$4 = $$10;
-            }
-
-            if ($$4 == -1) {
-               $$4 = $$8;
-            } else {
-               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
-                  $$4++;
-               }
-            }
-         }
-      }
-
-      return $$4;
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, D, this.H + this.I / 2 - this.p.a(D) / 2, g(0) - 5, -1, false);
+      this.G.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(String $$0, int $$1, xu $$2, boolean $$3, fel.d $$4) {
-      int $$5 = 0;
-      int $$6 = $$0.length();
-      xu $$7 = $$2;
-
-      while ($$5 < $$6) {
-         fel.b $$8 = new fel.b((float)$$1);
-         boolean $$9 = ayw.a($$0, $$5, $$7, $$2, $$8);
-         if ($$9) {
-            $$4.accept($$7, $$5, $$6);
-            break;
-         }
-
-         int $$10 = $$8.a();
-         char $$11 = $$0.charAt($$10);
-         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
-         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
-         $$5 = $$12;
-         $$7 = $$8.b();
+   private void a(String $$0) {
+      if ($$0.equals(this.N)) {
+         this.O = "";
+      } else {
+         this.O = $$0;
       }
    }
 
-   public List<xc> g(String $$0, int $$1, xu $$2) {
-      List<xc> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(xc.a($$0.substring($$3x, $$4), $$2x)));
-      return $$3;
-   }
-
-   public List<xc> b(xc $$0, int $$1, xu $$2) {
-      List<xc> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
-      return $$3;
-   }
-
-   public List<xc> a(xc $$0, int $$1, xu $$2, xc $$3) {
-      List<xc> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? xc.a($$3, $$2x) : $$2x));
-      return $$4;
-   }
-
-   public void a(xc $$0, int $$1, xu $$2, BiConsumer<xc, Boolean> $$3) {
-      List<fel.c> $$4 = Lists.newArrayList();
-      $$0.a(($$1x, $$2x) -> {
-         if (!$$2x.isEmpty()) {
-            $$4.add(new fel.c($$2x, $$1x));
-         }
-
-         return Optional.empty();
-      }, $$2);
-      fel.a $$5 = new fel.a($$4);
-      boolean $$6 = true;
-      boolean $$7 = false;
-      boolean $$8 = false;
-
-      while ($$6) {
-         $$6 = false;
-         fel.b $$9 = new fel.b((float)$$1);
-
-         for (fel.c $$10 : $$5.a) {
-            boolean $$11 = ayw.a($$10.c, 0, $$10.d, $$2, $$9);
-            if (!$$11) {
-               int $$12 = $$9.a();
-               xu $$13 = $$9.b();
-               char $$14 = $$5.a($$12);
-               boolean $$15 = $$14 == '\n';
-               boolean $$16 = $$15 || $$14 == ' ';
-               $$7 = $$15;
-               xc $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
-               $$3.accept($$17, $$8);
-               $$8 = !$$15;
-               $$6 = true;
-               break;
-            }
-
-            $$9.a($$10.c.length());
-         }
-      }
-
-      xc $$18 = $$5.a();
-      if ($$18 != null) {
-         $$3.accept($$18, $$8);
-      } else if ($$7) {
-         $$3.accept(xc.b, false);
+   private void C() {
+      int $$0 = a(a, this.L, 2);
+      int $$1 = a(b, this.M, 0);
+      if (this.K != fcj.d.c && this.K != fcj.d.d && this.K != fcj.d.e) {
+         boolean $$2 = this.K == fcj.d.a && this.L != bpx.a && this.S;
+         this.c.a(new fcq(this.P, this.R, $$2, this.Q, this.T, this.U, $$0, $$1, this.V, this.O, this.J.j, this.J.k));
+      } else {
+         this.c.a(new fcq(this.J.a, this.J.b, this.J.c, this.J.d, this.J.e, this.J.f, $$0, $$1, this.J.g, this.O, this.J.j, this.J.k));
       }
    }
 
-   static class a {
-      final List<fel.c> a;
-      private String b;
+   class a extends fij {
+      private final double d;
+      private final double e;
 
-      public a(List<fel.c> $$0) {
-         this.a = $$0;
-         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
-      }
-
-      public char a(int $$0) {
-         return this.b.charAt($$0);
-      }
-
-      public xc a(int $$0, int $$1, xu $$2) {
-         fdp $$3 = new fdp();
-         ListIterator<fel.c> $$4 = this.a.listIterator();
-         int $$5 = $$0;
-         boolean $$6 = false;
-
-         while ($$4.hasNext()) {
-            fel.c $$7 = $$4.next();
-            String $$8 = $$7.c;
-            int $$9 = $$8.length();
-            if (!$$6) {
-               if ($$5 > $$9) {
-                  $$3.a($$7);
-                  $$4.remove();
-                  $$5 -= $$9;
-               } else {
-                  String $$10 = $$8.substring(0, $$5);
-                  if (!$$10.isEmpty()) {
-                     $$3.a(xc.a($$10, $$7.d));
-                  }
-
-                  $$5 += $$1;
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               if ($$5 <= $$9) {
-                  String $$11 = $$8.substring($$5);
-                  if ($$11.isEmpty()) {
-                     $$4.remove();
-                  } else {
-                     $$4.set(new fel.c($$11, $$2));
-                  }
-                  break;
-               }
-
-               $$4.remove();
-               $$5 -= $$9;
-            }
-         }
-
-         this.b = this.b.substring($$0 + $$1);
-         return $$3.b();
-      }
-
-      @Nullable
-      public xc a() {
-         fdp $$0 = new fdp();
-         this.a.forEach($$0::a);
-         this.a.clear();
-         return $$0.a();
-      }
-   }
-
-   class b implements axr {
-      private final float b;
-      private int c = -1;
-      private xu d = xu.a;
-      private boolean e;
-      private float f;
-      private int g = -1;
-      private xu h = xu.a;
-      private int i;
-      private int j;
-
-      public b(float $$0) {
-         this.b = Math.max($$0, 1.0F);
+      public a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5) {
+         super($$0, $$1, $$2, 20, xd.a, 0.0);
+         this.d = (double)$$4;
+         this.e = (double)$$5;
+         this.c = (double)((aym.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
+         this.b();
       }
 
       @Override
-      public boolean accept(int $$0, xu $$1, int $$2) {
-         int $$3 = $$0 + this.j;
-         switch ($$2) {
-            case 10:
-               return this.a($$3, $$1);
-            case 32:
-               this.g = $$3;
-               this.h = $$1;
-            default:
-               float $$4 = fel.this.a.getWidth($$2, $$1);
-               this.f += $$4;
-               if (!this.e || !(this.f > this.b)) {
-                  this.e |= $$4 != 0.0F;
-                  this.i = $$3 + Character.charCount($$2);
-                  return true;
-               } else {
-                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
-               }
+      public void a() {
+         if (fel.this.W.j) {
+            fel.this.T = (int)aym.d(aym.a(this.c, 0.0, 1.0), this.d, this.e);
          }
       }
 
-      private boolean a(int $$0, xu $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return false;
-      }
-
-      private boolean c() {
-         return this.c != -1;
-      }
-
-      public int a() {
-         return this.c() ? this.c : this.i;
-      }
-
-      public xu b() {
-         return this.d;
-      }
-
-      public void a(int $$0) {
-         this.j += $$0;
-      }
-   }
-
-   static class c implements xc {
-      final String c;
-      final xu d;
-
-      public c(String $$0, xu $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
       @Override
-      public <T> Optional<T> a(xc.a<T> $$0) {
-         return $$0.accept(this.c);
+      protected void b() {
+         this.b(xd.a(fel.E, (xe)(fel.this.T == 0 ? xd.c : xe.b(String.valueOf(fel.this.T)))));
       }
-
-      @Override
-      public <T> Optional<T> a(xc.b<T> $$0, xu $$1) {
-         return $$0.accept(this.d.a($$1), this.c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void accept(xu var1, int var2, int var3);
-   }
-
-   class e implements axr {
-      private float b;
-      private int c;
-
-      public e(float $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean accept(int $$0, xu $$1, int $$2) {
-         this.b = this.b - fel.this.a.getWidth($$2, $$1);
-         if (this.b >= 0.0F) {
-            this.c = $$0 + Character.charCount($$2);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public void b() {
-         this.c = 0;
-      }
-   }
-
-   @FunctionalInterface
-   public interface f {
-      float getWidth(int var1, xu var2);
    }
 }

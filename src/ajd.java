@@ -1,3 +1,3 @@
-public interface ajd extends wd {
-   void a(aje var1);
+public interface ajd {
+   void a(we var1);
 }

@@ -1,46 +1,44 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import java.io.IOException;
-import java.util.List;
-import org.slf4j.Logger;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public class wb<T extends wd> extends ByteToMessageDecoder implements wg {
-   private static final Logger a = LogUtils.getLogger();
-   private final wf<T> b;
+public class wb extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-   public wb(wf<T> $$0) {
-      this.b = $$0;
+   public wb(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
       int $$3 = $$1.readableBytes();
-      if ($$3 != 0) {
-         ze<? super T> $$4 = this.b.c().decode($$1);
-         zg<? extends ze<? super T>> $$5 = $$4.a();
-         bmo.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
-         if ($$1.readableBytes() > 0) {
-            throw new IOException(
-               "Packet "
-                  + this.b.a().a()
-                  + "/"
-                  + $$5
-                  + " ("
-                  + $$4.getClass().getSimpleName()
-                  + ") was larger than I expected, found "
-                  + $$1.readableBytes()
-                  + " bytes extra whilst reading packet "
-                  + $$5
-            );
-         } else {
-            $$2.add($$4);
-            if (a.isDebugEnabled()) {
-               a.debug(vv.c, " IN: [{}:{}] {}", new Object[]{this.b.a().a(), $$5, $$4.getClass().getName()});
-            }
+      if ($$3 < this.c) {
+         wv.a($$2, 0);
+         $$2.writeBytes($$1);
+      } else {
+         byte[] $$4 = new byte[$$3];
+         $$1.readBytes($$4);
+         wv.a($$2, $$4.length);
+         this.b.setInput($$4, 0, $$3);
+         this.b.finish();
 
-            wg.a($$0, $$4);
+         while (!this.b.finished()) {
+            int $$5 = this.b.deflate(this.a);
+            $$2.writeBytes(this.a, 0, $$5);
          }
+
+         this.b.reset();
       }
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

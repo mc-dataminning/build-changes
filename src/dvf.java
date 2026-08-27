@@ -1,72 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dvf<T extends dvb> {
-   private static final Logger a = LogUtils.getLogger();
-   private final aww<T> b;
-   private dvo c;
+public class dvf<T> implements dvo<T> {
+   private final jf<T> a;
 
-   public dvf(Class<T> $$0, dvo $$1) {
-      this.c = $$1;
-      this.b = new aww<>($$0);
+   public dvf(jf<T> $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   public static <A> dvo<A> a(int $$0, jf<A> $$1, dvp<A> $$2, List<A> $$3) {
+      return new dvf<>($$1);
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.a.a($$0);
+      return $$1 == -1 ? 0 : $$1;
    }
 
-   public awr.a a(euf $$0, awr<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cK().c($$0) && $$1.accept($$2).a()) {
-            return awr.a.b;
-         }
-      }
-
-      return awr.a.a;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return true;
    }
 
-   public <U extends T> awr.a a(dvi<T, U> $$0, euf $$1, awr<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return awr.a.a;
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.a.a($$0);
+      if ($$1 == null) {
+         throw new dvn($$0);
       } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cK().c($$1) && $$2.accept($$5).a()) {
-               return awr.a.b;
-            }
-         }
-
-         return awr.a.a;
+         return $$1;
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   @Override
+   public void a(we $$0) {
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
+   @Override
+   public void b(we $$0) {
    }
 
-   public dvo c() {
-      return this.c;
+   @Override
+   public int a() {
+      return 0;
    }
 
-   public dvo a(dvo $$0) {
-      dvo $$1 = this.c;
-      this.c = $$0;
-      return $$1;
+   @Override
+   public int b() {
+      return this.a.b();
    }
 
-   @azg
-   public int d() {
-      return this.b.size();
+   @Override
+   public dvo<T> c() {
+      return this;
    }
 }

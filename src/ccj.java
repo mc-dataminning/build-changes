@@ -1,22 +1,41 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableSet;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.Set;
 
-public class ccj extends ccs {
-   public static final float a = 10.0F;
+public class ccj extends ccx<bso> {
+   private static final int a = 200;
+   private static final int c = 599;
 
-   @Override
-   protected boolean a(bso $$0, bso $$1) {
-      return !$$0.dS().a(cbs.U) && ccy.c($$0, $$1) && cfy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public ccj() {
+      this(200);
    }
 
-   private boolean e(bso $$0, bso $$1) {
-      List<UUID> $$2 = $$0.dS().c(cbs.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cz());
+   public ccj(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected cbs<bso> b() {
-      return cbs.B;
+   protected void a(aqt $$0, bso $$1) {
+      a($$1);
+   }
+
+   @Override
+   public Set<cbr<?>> a() {
+      return ImmutableSet.of(cbr.g);
+   }
+
+   public static void a(bso $$0) {
+      Optional<List<bso>> $$1 = $$0.dZ().c(cbr.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ak().equals(bsb.ah));
+         if ($$2) {
+            b($$0);
+         }
+      }
+   }
+
+   public static void b(bso $$0) {
+      $$0.dZ().a(cbr.F, true, 599L);
    }
 }

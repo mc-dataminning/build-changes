@@ -1,79 +1,181 @@
-public class gad extends gay {
-   private final gat a;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   gad(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gat $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.a = $$7;
-      float $$8 = 2.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
-      this.v = $$9;
-      this.w = $$9;
-      this.x = $$9;
-      this.D *= 1.875F;
-      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
-      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
-      this.n = false;
-      this.b($$7);
+public class gad {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xe b = xe.c("multiplayer.status.cannot_connect").b(-65536);
+   private final List<wc> c = Collections.synchronizedList(Lists.newArrayList());
+
+   public void a(final gab $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
+      final gbe $$3 = gbe.a($$0.b);
+      Optional<InetSocketAddress> $$4 = gbg.a.a($$3).map(gbd::d);
+      if ($$4.isEmpty()) {
+         this.a(fnf.b, $$0);
+      } else {
+         final InetSocketAddress $$5 = $$4.get();
+         final wc $$6 = wc.a($$5, false, null);
+         this.c.add($$6);
+         $$0.d = xe.c("multiplayer.status.pinging");
+         $$0.i = Collections.emptyList();
+         ajq $$7 = new ajq() {
+            private boolean h;
+            private boolean i;
+            private long j;
+
+            @Override
+            public void a(ajr $$0x) {
+               if (this.i) {
+                  $$6.a(xe.c("multiplayer.status.unrequested"));
+               } else {
+                  this.i = true;
+                  ajs $$1 = $$0.b();
+                  $$0.d = $$1.a();
+                  $$1.c().ifPresentOrElse($$1xxx -> {
+                     $$0.h = xe.b($$1xxx.b());
+                     $$0.g = $$1xxx.c();
+                  }, () -> {
+                     $$0.h = xe.c("multiplayer.status.old");
+                     $$0.g = 0;
+                  });
+                  $$1.b().ifPresentOrElse($$1xxx -> {
+                     $$0.c = gad.a($$1xxx.b(), $$1xxx.a());
+                     $$0.e = $$1xxx;
+                     if (!$$1xxx.c().isEmpty()) {
+                        List<xe> $$2xx = new ArrayList<>($$1xxx.c().size());
+
+                        for (GameProfile $$3xx : $$1xxx.c()) {
+                           $$2xx.add(xe.b($$3xx.getName()));
+                        }
+
+                        if ($$1xxx.c().size() < $$1xxx.b()) {
+                           $$2xx.add(xe.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
+                        }
+
+                        $$0.i = $$2xx;
+                     } else {
+                        $$0.i = List.of();
+                     }
+                  }, () -> $$0.c = xe.c("multiplayer.status.unknown").a(n.i));
+                  $$1.d().ifPresent($$2xx -> {
+                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
+                        $$0.a(gab.b($$2xx.a()));
+                        $$1.run();
+                     }
+                  });
+                  this.j = ad.b();
+                  $$6.a(new ajo(this.j));
+                  this.h = true;
+               }
+            }
+
+            @Override
+            public void a(ajl $$0x) {
+               long $$1 = this.j;
+               long $$2 = ad.b();
+               $$0.f = $$2 - $$1;
+               $$6.a(xe.c("multiplayer.status.finished"));
+               $$2.run();
+            }
+
+            @Override
+            public void a(xe $$0x) {
+               if (!this.h) {
+                  gad.this.a($$0, $$0);
+                  gad.this.a($$5, $$3, $$0);
+               }
+            }
+
+            @Override
+            public boolean c() {
+               return $$6.i();
+            }
+         };
+
+         try {
+            $$6.a($$3.a(), $$3.b(), $$7);
+            $$6.a(aju.a);
+         } catch (Throwable var10) {
+            a.error("Failed to ping server {}", $$3, var10);
+         }
+      }
    }
 
-   @Override
-   public gac b() {
-      return gac.c;
+   void a(xe $$0, gab $$1) {
+      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
+      $$1.d = b;
+      $$1.c = xd.a;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayd.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   void a(InetSocketAddress $$0, final gbe $$1, final gab $$2) {
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)wc.e.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            $$0.pipeline().addLast(new ChannelHandler[]{new fzu($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
+               $$2.a(gab.b.d);
+               $$2.h = xe.b($$2xx);
+               $$2.d = xe.b($$3);
+               $$2.c = gad.a($$4, $$5);
+               $$2.e = new ajs.b($$5, $$4, List.of());
+            })});
+         }
+      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
    }
 
-   @Override
+   public static xe a(int $$0, int $$1) {
+      xe $$2 = xe.b(Integer.toString($$0)).a(n.h);
+      xe $$3 = xe.b(Integer.toString($$1)).a(n.h);
+      return xe.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
+   }
+
    public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         clw $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
-         if ($$0 != null) {
-            double $$1 = $$0.dw();
-            if (this.h > $$1) {
-               this.h = this.h + ($$1 - this.h) * 0.2;
-               this.k = this.k + ($$0.ds().d - this.k) * 0.2;
-               this.c(this.g, this.h, this.i);
+      synchronized (this.c) {
+         Iterator<wc> $$0 = this.c.iterator();
+
+         while ($$0.hasNext()) {
+            wc $$1 = $$0.next();
+            if ($$1.i()) {
+               $$1.b();
+            } else {
+               $$0.remove();
+               $$1.n();
             }
          }
       }
    }
 
-   public static class a implements gab<lb> {
-      private final gat a;
+   public void b() {
+      synchronized (this.c) {
+         Iterator<wc> $$0 = this.c.iterator();
 
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gad($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements gab<lb> {
-      private final gat a;
-
-      public b(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzy $$8 = new gad($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(200.0F, 50.0F, 120.0F);
-         $$8.e(0.4F);
-         return $$8;
+         while ($$0.hasNext()) {
+            wc $$1 = $$0.next();
+            if ($$1.i()) {
+               $$0.remove();
+               $$1.a(xe.c("multiplayer.status.cancelled"));
+            }
+         }
       }
    }
 }

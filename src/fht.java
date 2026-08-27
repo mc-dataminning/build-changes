@@ -1,36 +1,16 @@
-import javax.annotation.Nullable;
+public class fht extends cpa implements AutoCloseable {
+   private final fhv d = new fhv(this);
 
-public abstract class fht implements fhu {
-   @Nullable
-   private fhv a;
-   private boolean b;
+   public fht(fzn $$0, coz $$1) {
+      super($$0, $$1);
+   }
 
-   @Override
-   public final boolean aG_() {
-      return this.b;
+   public fhv b() {
+      return this.d;
    }
 
    @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fhv aH_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable fhv $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
+   public void close() {
+      this.d.close();
    }
 }

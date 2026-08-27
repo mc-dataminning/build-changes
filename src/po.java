@@ -1,40 +1,47 @@
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class po extends pr<cic> {
-   public po(ln $$0, CompletableFuture<iz.a> $$1) {
-      super($$0, lf.S, $$1);
+public abstract class po<T> extends pt<T> {
+   private final Function<T, aks<T>> d;
+
+   public po(lq $$0, aks<? extends jn<T>> $$1, CompletableFuture<jc.a> $$2, Function<T, aks<T>> $$3) {
+      super($$0, $$1, $$2);
+      this.d = $$3;
    }
 
-   @Override
-   protected void a(iz.a $$0) {
-      this.b(awf.a)
-         .a(
-            cid.a,
-            cid.b,
-            cid.c,
-            cid.d,
-            cid.e,
-            cid.f,
-            cid.g,
-            cid.h,
-            cid.i,
-            cid.j,
-            cid.k,
-            cid.l,
-            cid.m,
-            cid.n,
-            cid.o,
-            cid.p,
-            cid.q,
-            cid.r,
-            cid.s,
-            cid.t,
-            cid.u,
-            cid.v,
-            cid.w,
-            cid.x,
-            cid.y,
-            cid.z
-         );
+   public po(lq $$0, aks<? extends jn<T>> $$1, CompletableFuture<jc.a> $$2, CompletableFuture<pt.c<T>> $$3, Function<T, aks<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
+   }
+
+   protected po.a<T> a(awt<T> $$0) {
+      awq $$1 = this.c($$0);
+      return new po.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends pt.b<T> {
+      private final Function<T, aks<T>> a;
+
+      a(awq $$0, Function<T, aks<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public po.a<T> a(awt<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final po.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final po.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

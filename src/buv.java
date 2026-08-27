@@ -1,113 +1,122 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class buv<E extends bso> implements bui<E> {
-   private final Map<cbs<?>, cbt> a;
-   private final Set<cbs<?>> b;
-   private final buv.a c;
-   private final buv.b d;
-   private final bwq<bui<? super E>> e = new bwq<>();
-   private buh.a f = buh.a.a;
+public class buv extends bug<cll> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<clo, aks<eru>> g = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(clo.c, ern.aT);
+      $$0.put(clo.d, ern.aU);
+      $$0.put(clo.e, ern.aV);
+      $$0.put(clo.f, ern.aW);
+      $$0.put(clo.g, ern.aX);
+      $$0.put(clo.h, ern.aY);
+      $$0.put(clo.i, ern.aZ);
+      $$0.put(clo.j, ern.ba);
+      $$0.put(clo.k, ern.bb);
+      $$0.put(clo.l, ern.bc);
+      $$0.put(clo.n, ern.bd);
+      $$0.put(clo.o, ern.be);
+      $$0.put(clo.p, ern.bf);
+   });
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
 
-   public buv(Map<cbs<?>, cbt> $$0, Set<cbs<?>> $$1, buv.a $$2, buv.b $$3, List<Pair<? extends bui<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((bui<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   public buv(int $$0) {
+      super(ImmutableMap.of(cbr.m, cbs.c, cbr.n, cbs.c, cbr.q, cbs.c, cbr.k, cbs.a), $$0);
    }
 
-   @Override
-   public buh.a a() {
-      return this.f;
-   }
-
-   private boolean a(E $$0) {
-      for (Entry<cbs<?>, cbt> $$1 : this.a.entrySet()) {
-         cbs<?> $$2 = $$1.getKey();
-         cbt $$3 = $$1.getValue();
-         if (!$$0.dS().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public final boolean e(aqm $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = buh.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
+   protected boolean a(aqt $$0, cll $$1) {
+      if (!this.b($$1)) {
          return false;
+      } else if (this.i > 0) {
+         this.i--;
+         return false;
+      } else {
+         return true;
       }
    }
 
-   @Override
-   public final void f(aqm $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == buh.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == buh.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
+   protected void a(aqt $$0, cll $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      cly $$3 = this.c($$1).get();
+      $$1.dZ().a(cbr.q, $$3);
+      bui.a($$1, $$3);
    }
 
-   @Override
-   public final void g(aqm $$0, E $$1, long $$2) {
-      this.f = buh.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == buh.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dS()::b);
+   protected boolean b(aqt $$0, cll $$1, long $$2) {
+      return this.b($$1) && !this.j;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends bui<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == buh.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(bwq::a);
-
-      private final Consumer<bwq<?>> c;
-
-      private a(Consumer<bwq<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bwq<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends bso> void a(Stream<bui<? super E>> $$0, aqm $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == buh.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+   protected void c(aqt $$0, cll $$1, long $$2) {
+      cly $$3 = this.c($$1).get();
+      bui.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$1, (bso)$$3);
+            this.j = true;
          }
-      },
-      b {
-         @Override
-         public <E extends bso> void a(Stream<bui<? super E>> $$0, aqm $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == buh.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
+      } else {
+         bui.a($$1, $$3, 0.5F, 5);
+      }
+   }
 
-      public abstract <E extends bso> void a(Stream<bui<? super E>> var1, aqm var2, E var3, long var4);
+   protected void d(aqt $$0, cll $$1, long $$2) {
+      this.i = a($$0);
+      $$1.dZ().b(cbr.q);
+      $$1.dZ().b(cbr.m);
+      $$1.dZ().b(cbr.n);
+   }
+
+   private void a(cll $$0, bso $$1) {
+      for (cuh $$3 : this.a($$0)) {
+         bui.a($$0, $$3, $$1.ds());
+      }
+   }
+
+   private List<cuh> a(cll $$0) {
+      if ($$0.o_()) {
+         return ImmutableList.of(new cuh(cuk.es));
+      } else {
+         clo $$1 = $$0.gL().b();
+         if (g.containsKey($$1)) {
+            eru $$2 = $$0.dU().o().be().b(g.get($$1));
+            ers $$3 = new ers.a((aqt)$$0.dU()).a(eug.f, $$0.ds()).a(eug.a, $$0).a(euf.i);
+            return $$2.a($$3);
+         } else {
+            return ImmutableList.of(new cuh(cuk.qO));
+         }
+      }
+   }
+
+   private boolean b(cll $$0) {
+      return this.c($$0).isPresent();
+   }
+
+   private Optional<cly> c(cll $$0) {
+      return $$0.dZ().c(cbr.k).filter(this::a);
+   }
+
+   private boolean a(cly $$0) {
+      return $$0.b(brj.F);
+   }
+
+   private boolean a(cll $$0, cly $$1) {
+      ir $$2 = $$1.du();
+      ir $$3 = $$0.du();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(aqt $$0) {
+      return 600 + $$0.A.a(6001);
    }
 }

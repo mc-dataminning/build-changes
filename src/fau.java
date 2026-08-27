@@ -1,5 +1,8 @@
-public class fau extends RuntimeException {
-   public fau(String $$0, Exception $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@eyv
+@eyu
+interface fau {
 }

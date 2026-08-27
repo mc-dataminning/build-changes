@@ -1,89 +1,107 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+public abstract class fpo<T extends cph> extends fpn<T> implements fsl {
+   public final fsb D;
+   private boolean E;
+   private final akt F;
+   private final akt G;
+   private final akt H;
 
-public class fpo extends fhf {
-   private static final fhm c = new fhm(new akm("recipe_book/tab"), new akm("recipe_book/tab_selected"));
-   private final fei d;
-   private static final float e = 15.0F;
-   private float f;
-
-   public fpo(fei $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public fpo(T $$0, fsb $$1, clx $$2, xe $$3, akt $$4, akt $$5, akt $$6) {
+      super($$0, $$2, $$3);
+      this.D = $$1;
+      this.F = $$4;
+      this.G = $$5;
+      this.H = $$6;
    }
 
-   public void a(fdz $$0) {
-      fdm $$1 = $$0.s.m();
-      List<fpq> $$2 = $$1.a(this.d);
-      if ($$0.s.cc instanceof cqg) {
-         for (fpq $$3 : $$2) {
-            for (cxw<?> $$4 : $$3.a($$1.a((cqg<?>)$$0.s.cc))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
-            }
-         }
+   @Override
+   public void aN_() {
+      super.aN_();
+      this.E = this.n < 379;
+      this.D.a(this.n, this.o, this.m, this.E, this.w);
+      this.z = this.D.a(this.n, this.c);
+      this.c(new fiz(this.z + 20, this.o / 2 - 49, 20, 18, fsf.a, $$0 -> {
+         this.D.e();
+         this.z = this.D.a(this.n, this.c);
+         $$0.c(this.z + 20, this.o / 2 - 49);
+      }));
+      this.r = (this.c - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void C() {
+      super.C();
+      this.D.h();
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      if (this.D.f() && this.E) {
+         this.b($$0, $$1, $$2, $$3);
+         this.D.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.D.a($$0, $$1, $$2, $$3);
+         this.D.a($$0, this.z, this.A, true, $$3);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.D.a($$0, this.z, this.A, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fia $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = this.A;
+      $$0.a(this.F, $$4, $$5, 0, 0, this.c, this.d);
+      if (this.w.s()) {
+         int $$6 = 14;
+         int $$7 = aym.f(this.w.r() * 13.0F) + 1;
+         $$0.a(this.G, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = aym.f(this.w.q() * 24.0F);
+      $$0.a(this.H, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.D.a($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.E && this.D.f() ? true : super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.C() + 8), (float)(this.D() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.C() + 8)), (float)(-(this.D() + 12)), 0.0F);
-         }
-
-         fdz $$5 = fdz.Q();
-         RenderSystem.disableDepthTest();
-         akm $$6 = this.a.a(true, this.b);
-         int $$7 = this.C();
-         if (this.b) {
-            $$7 -= 2;
-         }
-
-         $$0.a($$6, $$7, this.D(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.as());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
-      }
+   protected void a(cre $$0, int $$1, int $$2, cpp $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D.a($$0);
    }
 
-   private void a(ffm $$0, gir $$1) {
-      List<cto> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.C() + 9 + $$3, this.D() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.C() + 3 + $$3, this.D() + 5);
-         $$0.b($$2.get(1), this.C() + 14 + $$3, this.D() + 5);
-      }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.D.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
-   public fei b() {
-      return this.d;
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.d);
+      return this.D.a($$0, $$1, this.z, this.A, this.c, this.d, $$4) && $$5;
    }
 
-   public boolean a(fdm $$0) {
-      List<fpq> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fpq $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
-            }
-         }
-      }
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.D.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
 
-      return this.k;
+   @Override
+   public void E() {
+      this.D.i();
+   }
+
+   @Override
+   public fsf F() {
+      return this.D;
    }
 }

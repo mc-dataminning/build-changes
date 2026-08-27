@@ -1,29 +1,29 @@
-public class ahl implements ze<agd> {
-   public static final yv<vx, ahl> a = ze.a(ahl::a, ahl::new);
-   private final akm b;
+public class ahl implements zl<agl> {
+   public static final zc<we, ahl> a = zl.a(ahl::a, ahl::new);
+   private final int b;
 
-   public ahl(cxw<?> $$0) {
-      this.b = $$0.a();
+   public ahl(int $$0) {
+      this.b = $$0;
    }
 
-   private ahl(vx $$0) {
-      this.b = $$0.q();
+   private ahl(we $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zg<ahl> a() {
-      return agb.bN;
+   public zn<ahl> a() {
+      return agj.bH;
    }
 
-   public void a(agd $$0) {
+   public void a(agl $$0) {
       $$0.a(this);
    }
 
-   public akm b() {
+   public int b() {
       return this.b;
    }
 }

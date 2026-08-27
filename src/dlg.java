@@ -1,79 +1,104 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlg extends ddy {
-   public static final MapCodec<dlg> a = b(dlg::new);
-   public static final int b = 2;
-   public static final dsb c = drr.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final evd g = ddy.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+public class dlg extends den {
+   public static final dtw a = djc.aE;
+   public static final dtt b = dts.r;
+   public static final MapCodec<dlg> c = b(dlg::new);
+
+   public dlg(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, iw.c).a(b, Boolean.valueOf(false)));
+   }
 
    @Override
    public MapCodec<dlg> a() {
-      return a;
-   }
-
-   public dlg(dra.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+      return c;
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return g;
-   }
-
-   public int m(drb $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean n(drb $$0) {
-      return this.m($$0) == 2;
-   }
-
-   @Override
-   public void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, avh.yv, avi.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(c, Integer.valueOf(this.m($$0) + 1)), 2);
+   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
+      if ($$1.C) {
+         return bqa.a;
       } else {
-         $$1.a(null, $$2, avh.yw, avi.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         cgv $$4 = bsa.aR.a((dax)$$1);
-         if ($$4 != null) {
-            euk $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), ayd.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
+         this.a($$1, $$2, $$3);
+         return bqa.b;
+      }
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dqc $$5 = $$1.c_($$2);
+         if ($$5 instanceof dpp) {
+            if ($$1 instanceof aqt) {
+               bpw.a($$1, $$2, (dpp)$$5);
+               ((dpp)$$5).a((aqt)$$1, ewu.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
          }
       }
    }
 
    @Override
-   public void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.x_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dvu.i, $$2, dvu.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+   protected boolean c_(dtc $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(drb $$0, enj $$1) {
-      return false;
+   protected int a(dtc $$0, dca $$1, ir $$2) {
+      return cpg.a($$1.c_($$2));
    }
 
-   public static boolean a(dad $$0, io $$1) {
-      return $$0.a_($$1.d()).a(avw.cs);
+   @Override
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dqc> dqd<T> a(dca $$0, dqe<T> $$1, dqe<? extends dpp> $$2) {
+      return $$0.C ? null : a($$1, $$2, dpp::a);
+   }
+
+   @Override
+   public dqc a(ir $$0, dtc $$1) {
+      return new drl($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dqc> dqd<T> a(dca $$0, dtc $$1, dqe<T> $$2) {
+      return $$0.C ? null : a($$2, dqe.U, drl::a);
+   }
+
+   private void a(dca $$0, ir $$1, cly $$2) {
+      dqc $$3 = $$0.c_($$1);
+      if ($$3 instanceof drl) {
+         $$2.a((bqe)$$3);
+      }
    }
 }

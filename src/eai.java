@@ -1,53 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eai extends dza {
-   public eai(Codec<ecd> $$0) {
+class eai extends eam {
+   private final je<epd> e;
+   public static final Codec<eai> a = RecordCodecBuilder.create($$0 -> a($$0).and(jp.a(li.z).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eai::new));
+
+   public eai(jv $$0, je<epd> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected void a(day $$0, ayk $$1, io $$2, int $$3, io.a $$4, ecd $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
-
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).i($$0, $$4)) {
-                     drb $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dhv.e) && $$17.b(dhv.c) && $$17.b(dhv.b) && $$17.b(dhv.d) && $$17.b(dhv.f)) {
-                        $$17 = $$17.a(dhv.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .a(dhv.e, Boolean.valueOf($$9 < -$$8))
-                           .a(dhv.c, Boolean.valueOf($$9 > $$8))
-                           .a(dhv.b, Boolean.valueOf($$10 < -$$8))
-                           .a(dhv.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
-               }
-            }
-         }
-      }
+   protected boolean a(dtc $$0) {
+      return $$0.u().a(this.e);
    }
 
    @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
+   public eac<?> a() {
+      return eac.c;
    }
 }

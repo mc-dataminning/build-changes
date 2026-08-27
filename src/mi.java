@@ -1,82 +1,46 @@
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
 
-public class mi implements ll {
-   private static final Logger d = LogUtils.getLogger();
-   private final ln.a e;
-   private final Set<akl<epk>> f;
-   private final List<mi.a> g;
-   private final CompletableFuture<iz.a> h;
+public class mi implements lo {
+   private final lq d;
 
-   public mi(ln $$0, Set<akl<epk>> $$1, List<mi.a> $$2, CompletableFuture<iz.a> $$3) {
-      this.e = $$0.a(ln.b.a, "loot_tables");
-      this.g = $$2;
-      this.f = $$1;
-      this.h = $$3;
+   public mi(lq $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(lj $$0) {
-      return this.h.thenCompose($$1 -> this.a($$0, $$1));
+   public CompletableFuture<?> a(lm $$0) {
+      JsonObject $$1 = new JsonObject();
+      lh.aw.h().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((jn)$$1x.a())));
+      Path $$2 = this.d.a(lq.b.c).resolve("registries.json");
+      return lo.a($$0, $$1, $$2);
    }
 
-   private CompletableFuture<?> a(lj $$0, iz.a $$1) {
-      jt<epk> $$2 = new jf<>(lf.aU, Lifecycle.experimental());
-      Map<dxi.a, akm> $$3 = new Object2ObjectOpenHashMap();
-      this.g.forEach($$3x -> $$3x.a().get().generate($$1, ($$3xx, $$4x) -> {
-            akm $$5x = a($$3xx);
-            akm $$6x = $$3.put(bqa.a($$5x), $$5x);
-            if ($$6x != null) {
-               ac.a("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
-            }
-
-            $$4x.a($$5x);
-            epk $$7 = $$4x.a($$3x.b).b();
-            $$2.a($$3xx, $$7, jj.a);
-         }));
-      $$2.l();
-      ayi.a $$4 = new ayi.a();
-      iy.a $$5 = new jl.c(List.of($$2)).d().b();
-      epl $$6 = new epl($$4, erw.q, $$5);
-
-      for (akl<epk> $$8 : Sets.difference(this.f, $$2.f())) {
-         $$4.b("Missing built-in table: " + $$8.a());
+   private static <T> JsonElement a(jn<T> $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 instanceof iv) {
+         akt $$2 = ((iv)$$0).a();
+         $$1.addProperty("default", $$2.toString());
       }
 
-      $$2.h().forEach($$1x -> ((epk)$$1x.a()).a($$6.a(((epk)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
-      Multimap<String, String> $$9 = $$4.a();
-      if (!$$9.isEmpty()) {
-         $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf($$2.g().stream().map($$2x -> {
-            akl<epk> $$3x = (akl<epk>)$$2x.getKey();
-            epk $$4x = (epk)$$2x.getValue();
-            Path $$5x = this.e.a($$3x.a());
-            return ll.a($$0, $$1, epk.d, $$4x, $$5x);
-         }).toArray(CompletableFuture[]::new));
-      }
-   }
-
-   private static akm a(akl<epk> $$0) {
-      return $$0.a();
+      int $$3 = lh.aw.a($$0);
+      $$1.addProperty("protocol_id", $$3);
+      JsonObject $$4 = new JsonObject();
+      $$0.h().forEach($$2 -> {
+         T $$3x = $$2.a();
+         int $$4x = $$0.a($$3x);
+         JsonObject $$5 = new JsonObject();
+         $$5.addProperty("protocol_id", $$4x);
+         $$4.add($$2.h().a().toString(), $$5);
+      });
+      $$1.add("entries", $$4);
+      return $$1;
    }
 
    @Override
    public final String a() {
-      return "Loot Tables";
-   }
-
-   public static record a(Supplier<mj> a, erv b) {
+      return "Registry Dump";
    }
 }

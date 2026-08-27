@@ -1,43 +1,59 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public record esr(float b, float c) implements esl {
-   public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(esr::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(esr::d)).apply($$0, esr::new)
-   );
+public class esr extends eta {
+   public static final Codec<esr> a = RecordCodecBuilder.create($$0 -> a($$0).and(esr.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, esr::new));
+   private final esr.a b;
 
-   @Override
-   public esm b() {
-      return esn.g;
+   private esr(List<euu> $$0, esr.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return ImmutableSet.of(erx.d);
+   public etc b() {
+      return etd.r;
    }
 
-   public boolean a(epf $$0) {
-      bru $$1 = $$0.c(erx.d);
-      int $$2 = 0;
-      if ($$1 instanceof bso) {
-         $$2 = cza.h((bso)$$1);
+   @Override
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(this.b.g);
+   }
+
+   @Override
+   public cuh a(cuh $$0, erp $$1) {
+      if ($$1.c(this.b.g) instanceof bqf $$3) {
+         $$0.b(ke.f, $$3.ah());
       }
 
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+      return $$0;
    }
 
-   public static esl.a a(float $$0, float $$1) {
-      return () -> new esr($$0, $$1);
+   public static eta.a<?> a(esr.a $$0) {
+      return a($$1 -> new esr($$1, $$0));
    }
 
-   public float c() {
-      return this.b;
-   }
+   public static enum a implements azg {
+      a("this", eug.a),
+      b("killer", eug.d),
+      c("killer_player", eug.b),
+      d("block_entity", eug.h);
 
-   public float d() {
-      return this.c;
+      public static final Codec<esr.a> e = azg.a(esr.a::values);
+      private final String f;
+      final eud<?> g;
+
+      private a(String $$0, eud<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

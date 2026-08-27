@@ -1,3 +1,5 @@
-public interface ajg extends wd {
-   void a(ajh var1);
+public record ajg(akt a) implements aje {
+   @Override
+   public void a(we $$0) {
+   }
 }

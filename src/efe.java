@@ -1,29 +1,43 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class efe extends eff {
-   public static final MapCodec<efe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, efe::new));
+public class efe implements eek {
+   public static final Codec<efe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               edp.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ir.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, efe::new)
+   );
+   private final boolean b;
+   private final List<edp.a> c;
+   @Nullable
+   private final ir d;
 
-   public efe(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public efe(boolean $$0, List<edp.a> $$1, @Nullable ir $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected efg<?> a() {
-      return efg.a;
+   private efe(boolean $$0, List<edp.a> $$1, Optional<ir> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   public List<edn.a> a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, int $$3, io $$4, ecx $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
+   public boolean a() {
+      return this.b;
+   }
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
+   public List<edp.a> b() {
+      return this.c;
+   }
 
-      return ImmutableList.of(new edn.a($$4.b($$3), 0, false));
+   @Nullable
+   public ir c() {
+      return this.d;
    }
 }

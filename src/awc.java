@@ -1,11 +1,18 @@
 public class awc {
-   public static final awl<dvu> a = a("vibrations");
-   public static final awl<dvu> b = a("warden_can_listen");
-   public static final awl<dvu> c = a("shrieker_can_listen");
-   public static final awl<dvu> d = a("ignore_vibrations_sneaking");
-   public static final awl<dvu> e = a("allay_can_listen");
+   public static final awt<dpr> a = a("no_item_required");
+   public static final awt<dpr> b = a("pattern_item/flower");
+   public static final awt<dpr> c = a("pattern_item/creeper");
+   public static final awt<dpr> d = a("pattern_item/skull");
+   public static final awt<dpr> e = a("pattern_item/mojang");
+   public static final awt<dpr> f = a("pattern_item/globe");
+   public static final awt<dpr> g = a("pattern_item/piglin");
+   public static final awt<dpr> h = a("pattern_item/flow");
+   public static final awt<dpr> i = a("pattern_item/guster");
 
-   private static awl<dvu> a(String $$0) {
-      return awl.a(lf.C, new akm($$0));
+   private awc() {
+   }
+
+   private static awt<dpr> a(String $$0) {
+      return awt.a(li.d, new akt($$0));
    }
 }

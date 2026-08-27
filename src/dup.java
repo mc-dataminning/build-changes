@@ -1,45 +1,58 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dup implements AutoCloseable {
-   private final dug a;
-   private final DataFixer b;
-   private final azj c;
+public record dup(String n, dtr o, dnd p, dnd q, avn r, avn s) {
+   private static final Map<String, dup> t = new Object2ObjectArrayMap();
+   public static final Codec<dup> a = axu.a(dup::b, t::get);
+   public static final dup b = a(new dup("oak", dtr.g));
+   public static final dup c = a(new dup("spruce", dtr.h));
+   public static final dup d = a(new dup("birch", dtr.i));
+   public static final dup e = a(new dup("acacia", dtr.j));
+   public static final dup f = a(new dup("cherry", dtr.k, dnd.aZ, dnd.bc, avo.eR, avo.eS));
+   public static final dup g = a(new dup("jungle", dtr.l));
+   public static final dup h = a(new dup("dark_oak", dtr.m));
+   public static final dup i = a(new dup("crimson", dtr.n, dnd.aT, dnd.aQ, avo.rs, avo.rt));
+   public static final dup j = a(new dup("warped", dtr.o, dnd.aT, dnd.aQ, avo.rs, avo.rt));
+   public static final dup k = a(new dup("potato", dtr.p, dnd.aT, dnd.aQ, avo.rs, avo.rt));
+   public static final dup l = a(new dup("mangrove", dtr.q));
+   public static final dup m = a(new dup("bamboo", dtr.r, dnd.aS, dnd.aR, avo.bB, avo.bC));
 
-   public dup(dun $$0, Path $$1, DataFixer $$2, boolean $$3, azj $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dug($$0, $$1, $$3);
+   public dup(String $$0, dtr $$1) {
+      this($$0, $$1, dnd.b, dnd.aP, avo.iV, avo.iW);
    }
 
-   public CompletableFuture<Optional<ud>> a(dae $$0) {
-      return this.a.a($$0);
+   private static dup a(dup $$0) {
+      t.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public CompletableFuture<Void> a(dae $$0, @Nullable ud $$1) {
-      return this.a.a($$0, $$1);
+   public static Stream<dup> a() {
+      return t.values().stream();
    }
 
-   public ud a(ud $$0, int $$1) {
-      int $$2 = us.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   public String b() {
+      return this.n;
    }
 
-   public Dynamic<va> a(Dynamic<va> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   public dtr c() {
+      return this.o;
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
+   public dnd d() {
+      return this.p;
    }
 
-   @Override
-   public void close() throws IOException {
-      this.a.close();
+   public dnd e() {
+      return this.q;
+   }
+
+   public avn f() {
+      return this.r;
+   }
+
+   public avn g() {
+      return this.s;
    }
 }

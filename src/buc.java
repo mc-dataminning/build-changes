@@ -1,79 +1,38 @@
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import net.minecraft.server.MinecraftServer;
 
-public class buc<E extends bsx> extends buh<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bsx> g = $$0 -> $$0.em() != null || $$0.dE() || $$0.bQ();
-   private final float h;
-   private final Predicate<E> i;
-
-   public buc(float $$0) {
-      this($$0, g::test);
-   }
-
-   public buc(float $$0, Predicate<E> $$1) {
-      super(Map.of(cbs.Z, cbt.c, cbs.x, cbt.c), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   protected boolean a(aqm $$0, E $$1) {
-      return this.i.test($$1) && ($$1.dS().a(cbs.x) || $$1.dS().a(cbs.Z));
-   }
-
-   protected boolean a(aqm $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aqm $$0, E $$1, long $$2) {
-      $$1.dS().a(cbs.Z, true);
-      $$1.dS().b(cbs.m);
-   }
-
-   protected void c(aqm $$0, E $$1, long $$2) {
-      btq<?> $$3 = $$1.dS();
-      $$3.b(cbs.Z);
-   }
-
-   protected void d(aqm $$0, E $$1, long $$2) {
-      if ($$1.K().l()) {
-         euk $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dS().a(cbs.m, new cbv($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private euk a(E $$0, aqm $$1) {
-      if ($$0.bQ()) {
-         Optional<euk> $$2 = this.a((dad)$$1, $$0).map(euk::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cdm.a($$0, 5, 4);
-   }
-
-   private Optional<io> a(dad $$0, bru $$1) {
-      io $$2 = $$1.dp();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<io> $$3;
-         if (ayd.f($$1.dj()) == 2) {
-            $$3 = $$1x -> io.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awb.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(awb.a);
-         }
-
-         return io.a($$2, 5, 1, $$3);
-      }
+public class buc {
+   public static buh<cll> a() {
+      return bxt.a(
+         (Function<bxt.b<cll>, ? extends App<bxt.c<cll>, bxw<cll>>>)($$0 -> $$0.group($$0.b(cbr.d), $$0.a(cbr.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        iz $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.ds(), 2.0) && !$$4.gI()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gL().b() != clo.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> lh.z.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gL().a($$2xx));
+                                    $$4.a($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

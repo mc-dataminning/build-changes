@@ -1,23 +1,30 @@
-public class enx implements eny {
-   private final dax b;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public enx(dax $$0) {
-      this.b = $$0;
+public class enx implements eob {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<enx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aks.a(li.aU).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, enx::new)
+   );
+   private final aks<eru> d;
+
+   public enx(aks<eru> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(it $$0, drb $$1, io $$2, io $$3, int $$4, int $$5) {
-      eny.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   public uk a(ayt $$0, @Nullable uk $$1) {
+      uk $$2 = $$1 == null ? new uk() : $$1.h();
+      aks.a(li.aU).encodeStart(uy.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
    @Override
-   public void a(io $$0, ddy $$1, io $$2) {
-      drb $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
-   }
-
-   @Override
-   public void a(drb $$0, io $$1, ddy $$2, io $$3, boolean $$4) {
-      eny.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public eoc<?> a() {
+      return eoc.d;
    }
 }

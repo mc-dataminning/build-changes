@@ -1,33 +1,23 @@
-public class gki extends giy<cod> {
-   private final gde f;
+public class gki extends gjk<ciq, fvm<ciq>> {
+   private static final akt a = new akt("textures/entity/zombie/drowned.png");
 
-   public gki(ght.a $$0) {
-      super($$0, fvv.bG);
-      this.f = $$0.c();
+   public gki(gkq.a $$0) {
+      super($$0, new fvm<>($$0.a(fyr.S)), new fvm<>($$0.a(fyr.T)), new fvm<>($$0.a(fyr.U)));
+      this.a(new gon<>(this, $$0.f()));
    }
 
-   protected void a(cod $$0, float $$1, drb $$2, eys $$3, gck $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayd.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   @Override
+   public akt a(cjx $$0) {
+      return a;
    }
 
-   public static void a(gde $$0, drb $$1, eys $$2, gck $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gnm.a(gnm.a(1.0F), 10);
-      } else {
-         $$6 = gnm.d;
+   protected void a(ciq $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$0.a($$4);
+      if ($$6 > 0.0F) {
+         float $$7 = -10.0F - $$0.dM();
+         float $$8 = aym.i($$6, 0.0F, $$7);
+         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dp() / 2.0F / $$5, 0.0F);
       }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

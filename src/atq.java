@@ -1,14 +1,6 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
+@FunctionalInterface
 public interface atq {
-   CompletableFuture<Void> a(atq.a var1, atw var2, bmi var3, bmi var4, Executor var5, Executor var6);
-
-   default String c() {
-      return this.getClass().getSimpleName();
-   }
-
-   public interface a {
-      <T> CompletableFuture<T> a(T var1);
-   }
+   void loadPacks(Consumer<atl> var1);
 }

@@ -1,49 +1,97 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
 
-public class etw<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final etw<MinecraftServer> a = new etw<MinecraftServer>().a(new ett.a()).a(new etu.a());
-   private final Map<akm, etv.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, etv.a<C, ?>> d = Maps.newHashMap();
+public class etw extends eta {
+   private static final Codec<List<etw.b>> b = axu.b(etw.b.a.listOf(), (Function<List<etw.b>, DataResult<List<etw.b>>>)($$0 -> {
+      Set<ja<brf>> $$1 = new ObjectOpenHashSet();
 
-   public etw<C> a(etv.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
-   }
-
-   private <T extends etv<C>> etv.a<C, T> a(Class<?> $$0) {
-      return (etv.a<C, T>)this.d.get($$0);
-   }
-
-   public <T extends etv<C>> ud a(T $$0) {
-      etv.a<C, T> $$1 = this.a($$0.getClass());
-      ud $$2 = new ud();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
-   }
-
-   @Nullable
-   public etv<C> a(ud $$0) {
-      akm $$1 = akm.a($$0.l("Type"));
-      etv.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
+      for (etw.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
          }
+      }
+
+      return DataResult.success($$0);
+   }));
+   public static final Codec<etw> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(axu.a(b, "effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, etw::new)
+   );
+   private final List<etw.b> c;
+
+   etw(List<euu> $$0, List<etw.b> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   @Override
+   public etc b() {
+      return etd.q;
+   }
+
+   @Override
+   public Set<eud<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cuh a(cuh $$0, erp $$1) {
+      if ($$0.a(cuk.xF) && !this.c.isEmpty()) {
+         etw.b $$2 = ad.a(this.c, $$1.b());
+         ja<brf> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
+         }
+
+         cxv.a $$5 = new cxv.a($$3, $$4);
+         $$0.a(ke.F, cxv.a, $$5, cxv::a);
+         return $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public static etw.a c() {
+      return new etw.a();
+   }
+
+   public static class a extends eta.a<etw.a> {
+      private final Builder<etw.b> a = ImmutableList.builder();
+
+      protected etw.a a() {
+         return this;
+      }
+
+      public etw.a a(ja<brf> $$0, evq $$1) {
+         this.a.add(new etw.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public etb b() {
+         return new etw(this.g(), this.a.build());
+      }
+   }
+
+   static record b(ja<brf> b, evq c) {
+      public static final Codec<etw.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(lh.d.r().fieldOf("type").forGetter(etw.b::a), evr.a.fieldOf("duration").forGetter(etw.b::b)).apply($$0, etw.b::new)
+      );
+
+      public ja<brf> a() {
+         return this.b;
+      }
+
+      public evq b() {
+         return this.c;
       }
    }
 }

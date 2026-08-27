@@ -1,77 +1,50 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class byy extends bzm {
-   private static final cdf d = cdf.b().a(8.0).d();
-   protected final cee a;
-   private final Class<? extends cee> e;
-   protected final dax b;
-   @Nullable
-   protected cee c;
-   private int f;
-   private final double g;
+public class byy extends bzy {
+   private final ceh g;
 
-   public byy(cee $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cee>)$$0.getClass());
-   }
-
-   public byy(cee $$0, double $$1, Class<? extends cee> $$2) {
-      this.a = $$0;
-      this.b = $$0.dP();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
+   public byy(ceh $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bzl.a.c, bzl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gt()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
+      return this.g.r() && !this.g.gy() && !this.g.gG() && super.a();
    }
 
    @Override
-   public boolean b() {
-      return this.c.bD() && this.c.gt() && this.f < 60 && !this.c.gm();
+   public void c() {
+      super.c();
+      this.g.x(false);
+   }
+
+   @Override
+   protected int a(bsw $$0) {
+      return 40;
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.f = 0;
+      super.d();
+      this.g.z(false);
    }
 
    @Override
    public void e() {
-      this.a.G().a(this.c, 10.0F, (float)this.a.Z());
-      this.a.K().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
+      super.e();
+      this.g.x(false);
+      if (!this.m()) {
+         this.g.z(false);
+      } else if (!this.g.gG()) {
+         this.g.z(true);
       }
    }
 
-   @Nullable
-   private cee h() {
-      List<? extends cee> $$0 = this.b.a(this.e, d, this.a, this.a.cK().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cee $$2 = null;
-
-      for (cee $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gm() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((aqm)this.b, this.c);
+   @Override
+   protected boolean a(dcd $$0, ir $$1) {
+      return $$0.u($$1.c()) && $$0.a_($$1).a(awe.R);
    }
 }

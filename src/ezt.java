@@ -1,33 +1,17 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.OptionalInt;
 
-public class ezt extends fao {
-   private static final Logger b = LogUtils.getLogger();
-   public List<ezs> a = Lists.newArrayList();
+public class ezt {
+   public final int a;
+   public final int b;
+   public final OptionalInt c;
+   public final OptionalInt d;
+   public final boolean e;
 
-   public static ezt a(String $$0) {
-      ezt $$1 = new ezt();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(ezs.a($$4.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
-      }
-
-      return $$1;
+   public ezt(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

@@ -1,97 +1,231 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.BitSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dwh {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dtw> e = le.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dtw.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dwh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dwh::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dwh::new)
-   );
-   private static final Set<akl<dbw>> f = Set.of(dcd.aa, dcd.Z, dcd.ab);
-   public static final daz b = new daz() {
-      @Override
-      public int J_() {
-         return 64;
-      }
+public class dwh implements dwd, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bot<bov.b> c;
+   private final dwm d;
+   private final Map<dbh, dwh.a> e = Maps.newLinkedHashMap();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dtw g;
-   private final BitSet h;
-
-   private dwh(dtw $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   protected dwh(dwo $$0, Path $$1, boolean $$2) {
+      this.d = new dwm($$0, $$1, $$2);
+      this.c = new bot<>(new bov.a(dwh.b.values().length), ad.g(), "IOWorker-" + $$0.c());
    }
 
-   @Nullable
-   public static dwh a(ud $$0) {
-      dtw $$1 = dtw.a($$0.l("target_status"));
-      return $$1 == dtw.c ? null : new dwh($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   public boolean a(dbh $$0, int $$1) {
+      dbh $$2 = new dbh($$0.e - $$1, $$0.f - $$1);
+      dbh $$3 = new dbh($$0.e + $$1, $$0.f + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               dbh $$7 = dbh.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
    }
 
-   public static void a(dtr $$0) {
-      int $$1 = 4;
-      io.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dea.F)) {
-            $$0.a($$1x, dea.sJ.n(), false);
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = dbh.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
+
+         return $$3;
+      }
+   }
+
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         dbh $$2 = dbh.a($$0, $$1);
+         dbh $$3 = dbh.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         dbh.a($$2, $$3).forEach($$1xx -> {
+            vo $$2x = new vo(new vq(up.a, "DataVersion"), new vq(uk.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof uk $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ad.f());
+   }
+
+   private boolean a(uk $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
+   }
+
+   public CompletableFuture<Void> a(dbh $$0, @Nullable uk $$1) {
+      return this.a(() -> {
+         dwh.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dwh.a($$1));
+         $$2.a = $$1;
+         return Either.left($$2.b);
+      }).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<uk>> a(dbh $$0) {
+      return this.a(() -> {
+         dwh.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a));
+         } else {
+            try {
+               uk $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
          }
       });
    }
 
-   public void b(dtr $$0) {
-      daz $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.al() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               io.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dea.a.n(), false));
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
             }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(dbh $$0, ve $$1) {
+      return this.a(() -> {
+         try {
+            dwh.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bov.b(dwh.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.b();
+         }));
+   }
+
+   private void a() {
+      if (!this.e.isEmpty()) {
+         Iterator<Entry<dbh, dwh.a>> $$0 = this.e.entrySet().iterator();
+         Entry<dbh, dwh.a> $$1 = $$0.next();
+         $$0.remove();
+         this.a($$1.getKey(), $$1.getValue());
+         this.b();
+      }
+   }
+
+   private void b() {
+      this.c.a(new bov.b(dwh.b.b.ordinal(), this::a));
+   }
+
+   private void a(dbh $$0, dwh.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bov.b(dwh.b.c.ordinal(), () -> $$0.a(azo.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
          }
       }
    }
 
-   public dtw a() {
-      return this.g;
-   }
+   static class a {
+      @Nullable
+      uk a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
 
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static dbz a(dbz $$0, dsx $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<akl<dbw>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            ix<dbw> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+      public a(@Nullable uk $$0) {
+         this.a = $$0;
       }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

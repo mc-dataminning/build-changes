@@ -1,151 +1,127 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fij {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fdz c;
-   private final List<fij.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fii> f = Queues.newArrayDeque();
+public abstract class fij extends fil {
+   private static final akt a = new akt("widget/slider");
+   private static final akt d = new akt("widget/slider_highlighted");
+   private static final akt e = new akt("widget/slider_handle");
+   private static final akt f = new akt("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-   public fij(fdz $$0) {
-      this.c = $$0;
+   public fij(int $$0, int $$1, int $$2, int $$3, xe $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
    }
 
-   public void a(ffm $$0) {
-      if (!this.c.m.Z) {
-         int $$1 = $$0.a();
-         this.d.removeIf($$2 -> {
-            if ($$2 != null && $$2.a($$1, $$0)) {
-               this.e.clear($$2.d, $$2.d + $$2.e);
+   private akt d() {
+      return this.aI_() && !this.o ? d : a;
+   }
+
+   private akt e() {
+      return !this.i && !this.o ? e : f;
+   }
+
+   @Override
+   protected xs aK_() {
+      return xe.a("gui.narrate.slider", this.y());
+   }
+
+   @Override
+   public void a(fmj $$0) {
+      $$0.a(fmi.a, this.aK_());
+      if (this.j) {
+         if (this.aI_()) {
+            $$0.a(fmi.d, xe.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(fmi.d, xe.c("narration.slider.usage.hovered"));
+         }
+      }
+   }
+
+   @Override
+   public void b(fia $$0, int $$1, int $$2, float $$3) {
+      fgj $$4 = fgj.Q();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.d(), this.C(), this.D(), this.x(), this.v());
+      $$0.a(this.e(), this.C() + (int)(this.c * (double)(this.g - 8)), this.D(), 8, this.v());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | aym.f(this.l * 255.0F) << 24);
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         fgg $$1 = fgj.Q().aY();
+         if ($$1 == fgg.b || $$1 == fgg.d) {
+            this.o = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fmo.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
                return true;
-            } else {
-               return false;
-            }
-         });
-         if (!this.f.isEmpty() && this.d() > 0) {
-            this.f.removeIf($$0x -> {
-               int $$1x = $$0x.f();
-               int $$2 = this.a($$1x);
-               if ($$2 != -1) {
-                  this.d.add(new fij.a<>($$0x, $$2, $$1x));
-                  this.e.set($$2, $$2 + $$1x);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.d() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
             }
          }
-      }
 
-      return -1;
-   }
-
-   private int d() {
-      return 5 - this.e.cardinality();
-   }
-
-   @Nullable
-   public <T extends fii> T a(Class<? extends T> $$0, Object $$1) {
-      for (fij.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
-            return (T)$$2.a();
-         }
-      }
-
-      for (fii $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
-            return (T)$$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fii $$0) {
-      this.f.add($$0);
-   }
-
-   public fdz b() {
-      return this.c;
-   }
-
-   public double c() {
-      return this.c.m.B().c();
-   }
-
-   class a<T extends fii> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fii.a h = fii.a.a;
-
-      a(T $$0, int $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      private float a(long $$0) {
-         float $$1 = ayd.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         return this.h == fii.a.b ? 1.0F - $$1 : $$1;
-      }
-
-      public boolean a(int $$0, ffm $$1) {
-         long $$2 = ac.c();
-         if (this.f == -1L) {
-            this.f = $$2;
-            this.h.a(fij.this.c.ak());
-         }
-
-         if (this.h == fii.a.a && $$2 - this.f <= 600L) {
-            this.g = $$2;
-         }
-
-         $$1.c().a();
-         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
-         fii.a $$3 = this.c.a($$1, fij.this, $$2 - this.g);
-         $$1.c().b();
-         if ($$3 != this.h) {
-            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
-            this.h = $$3;
-            this.h.a(fij.this.c.ak());
-         }
-
-         return this.h == fii.a.b && $$2 - this.f > 600L;
+         return false;
       }
    }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.C() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = aym.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gvq $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(fgj.Q().ak());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

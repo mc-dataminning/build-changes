@@ -1,5 +1,4 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public interface ffc {
-   int getColor(drb var1, @Nullable daa var2, @Nullable io var3, int var4);
+public record ffc(String a, few b, boolean c, Set<String> d) {
 }

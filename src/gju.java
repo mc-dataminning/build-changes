@@ -1,15 +1,71 @@
-public class gju extends giz<cjj, fuq<cjj>> {
-   private static final akm a = new akm("textures/entity/silverfish.png");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.stream.Stream;
+import org.joml.Quaternionf;
 
-   public gju(ght.a $$0) {
-      super($$0, new fuq<>($$0.a(fvv.bm)), 0.3F);
+public class gju extends gkp<cny> {
+   private final Map<cny.b, Pair<akt, fwi<cny>>> a;
+
+   public gju(gkq.a $$0, boolean $$1) {
+      super($$0);
+      this.e = 0.8F;
+      this.a = Stream.of(cny.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new akt(a($$2, $$1)), this.a($$0, $$2, $$1))));
    }
 
-   protected float a(cjj $$0) {
-      return 180.0F;
+   private fwi<cny> a(gkq.a $$0, cny.b $$1, boolean $$2) {
+      fyq $$3 = $$2 ? fyr.d($$1) : fyr.c($$1);
+      fys $$4 = $$0.a($$3);
+      if ($$1 == cny.b.i) {
+         return (fwi<cny>)($$2 ? new fvd($$4) : new fxe($$4));
+      } else {
+         return (fwi<cny>)($$2 ? new fvc($$4) : new fuw($$4));
+      }
    }
 
-   public akm b(cjj $$0) {
-      return a;
+   private static String a(cny.b $$0, boolean $$1) {
+      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   }
+
+   public void a(cny $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      float $$6 = (float)$$0.O() - $$2;
+      float $$7 = $$0.M() - $$2;
+      if ($$7 < 0.0F) {
+         $$7 = 0.0F;
+      }
+
+      if ($$6 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(aym.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
+      }
+
+      float $$8 = $$0.a($$2);
+      if (!aym.a($$8, 0.0F)) {
+         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      }
+
+      Pair<akt, fwi<cny>> $$9 = this.a.get($$0.x());
+      akt $$10 = (akt)$$9.getFirst();
+      fwi<cny> $$11 = (fwi<cny>)$$9.getSecond();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      fbg $$12 = $$4.getBuffer($$11.a($$10));
+      $$11.a($$3, $$12, $$5, gqp.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      if (!$$0.bn()) {
+         fbg $$13 = $$4.getBuffer(gfo.i());
+         if ($$11 instanceof fyf $$14) {
+            $$14.c().a($$3, $$13, $$5, gqp.d);
+         }
+      }
+
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akt a(cny $$0) {
+      return (akt)this.a.get($$0.x()).getFirst();
    }
 }

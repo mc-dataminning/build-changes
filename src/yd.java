@@ -1,131 +1,89 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class yd implements wy {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<yd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(yd::b),
-               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(yd::c),
-               wz.a.lenientOptionalFieldOf("separator").forGetter(yd::d),
-               xz.c.forGetter(yd::e)
-            )
-            .apply($$0, yd::new)
-   );
-   public static final wy.a<yd> b = new wy.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<wx> f;
-   private final String g;
-   private final xz h;
+public final class yd {
+   private static final String b = "#";
+   public static final Codec<yd> a = Codec.STRING.comapFlatMap(yd::a, yd::b);
+   private static final Map<n, yd> c = Stream.of(n.values())
+      .filter(n::e)
+      .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new yd($$0.f(), $$0.g())));
+   private static final Map<String, yd> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
+   private final int e;
    @Nullable
-   protected final ew.g c;
+   private final String f;
 
-   public yd(String $$0, boolean $$1, Optional<wx> $$2, xz $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+   private yd(int $$0, String $$1) {
+      this.e = $$0 & 16777215;
+      this.f = $$1;
    }
 
-   private yd(String $$0, @Nullable ew.g $$1, boolean $$2, Optional<wx> $$3, xz $$4) {
-      this.g = $$0;
-      this.c = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.h = $$4;
+   private yd(int $$0) {
+      this.e = $$0 & 16777215;
+      this.f = null;
    }
 
-   @Nullable
-   private static ew.g a(String $$0) {
-      try {
-         return new ew().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   public String b() {
-      return this.g;
-   }
-
-   public boolean c() {
+   public int a() {
       return this.e;
    }
 
-   public Optional<wx> d() {
-      return this.f;
+   public String b() {
+      return this.f != null ? this.f : this.c();
    }
 
-   public xz e() {
-      return this.h;
+   private String c() {
+      return String.format(Locale.ROOT, "#%06X", this.e);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         yd $$1 = (yd)$$0;
+         return this.e == $$1.e;
       } else {
-         if ($$0 instanceof yd $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
-            return true;
-         }
-
          return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
+      return Objects.hash(this.e, this.f);
    }
 
    @Override
    public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
+      return this.b();
    }
 
-   @Override
-   public xl a(@Nullable ee $$0, @Nullable bru $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(va::s_);
-         if (this.e) {
-            wx $$4 = (wx)DataFixUtils.orElse(xa.a($$0, this.f, $$1, $$2), xa.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  xl $$4x = wx.a.a($$3x, $$0.v());
-                  return Stream.of(xa.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(wx::i);
-         } else {
-            return xa.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(wx::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(wx::i))
-               .orElseGet(() -> wx.b($$3.collect(Collectors.joining(", "))));
+   @Nullable
+   public static yd a(n $$0) {
+      return c.get($$0);
+   }
+
+   public static yd a(int $$0) {
+      return new yd($$0);
+   }
+
+   public static DataResult<yd> a(String $$0) {
+      if ($$0.startsWith("#")) {
+         try {
+            int $$1 = Integer.parseInt($$0.substring(1), 16);
+            return $$1 >= 0 && $$1 <= 16777215 ? DataResult.success(a($$1), Lifecycle.stable()) : DataResult.error(() -> "Color value out of range: " + $$0);
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Invalid color value: " + $$0);
          }
       } else {
-         return wx.i();
+         yd $$3 = d.get($$0);
+         return $$3 == null ? DataResult.error(() -> "Invalid color name: " + $$0) : DataResult.success($$3, Lifecycle.stable());
       }
-   }
-
-   @Override
-   public wy.a<?> a() {
-      return b;
    }
 }

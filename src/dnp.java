@@ -1,61 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnp extends ddy {
+public class dnp extends den implements dio {
    public static final MapCodec<dnp> a = b(dnp::new);
+   public static final dua<dum> b = dts.bj;
 
    @Override
    public MapCodec<dnp> a() {
       return a;
    }
 
-   protected dnp(dra.d $$0) {
+   protected dnp(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, dum.b));
    }
 
    @Override
-   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, dea.aO.n(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, avh.Ch, avi.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
+   public dqc a(ir $$0, dtc $$1) {
+      return new drw($$0, $$1);
+   }
+
+   @Override
+   protected bqa a(dtc $$0, dca $$1, ir $$2, cly $$3, ewq $$4) {
+      dqc $$5 = $$1.c_($$2);
+      if ($$5 instanceof drw) {
+         return ((drw)$$5).a($$3) ? bqa.a($$1.C) : bqa.d;
+      } else {
+         return bqa.d;
       }
    }
 
    @Override
-   public void a(drb $$0, dax $$1, io $$2, ayk $$3) {
-      it $$4 = it.b($$3);
-      if ($$4 != it.b) {
-         io $$5 = $$2.a($$4);
-         drb $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == it.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == it.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == it.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == it.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
+   public void a(dca $$0, ir $$1, dtc $$2, @Nullable bso $$3, cuh $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            dqc $$5 = $$0.c_($$1);
+            if ($$5 instanceof drw) {
+               ((drw)$$5).a($$3);
             }
-
-            $$1.a(ky.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
          }
+      }
+   }
+
+   @Override
+   protected dlw a_(dtc $$0) {
+      return dlw.c;
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, dfc $$3, ir $$4, boolean $$5) {
+      if ($$1 instanceof aqt) {
+         if ($$1.c_($$2) instanceof drw $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.C();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((aqt)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
+   }
+
+   private void a(aqt $$0, drw $$1) {
+      switch ($$1.u()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.A();
+         case d:
       }
    }
 }

@@ -1,96 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dib extends ddk {
-   public static final MapCodec<dib> a = b(dib::new);
-   public static final drs b = drr.n;
-
-   @Override
-   public MapCodec<dib> a() {
-      return a;
-   }
-
-   protected dib(dra.d $$0) {
+public abstract class dib extends dfc implements dia {
+   public dib(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dax $$0, io $$1, drb $$2, @Nullable bso $$3, cto $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cwd $$5 = $$4.a(kb.N, cwd.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+   protected abstract MapCodec<? extends dib> a();
+
+   @Override
+   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      $$3.a($$4, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
+         cif $$4 = cif.a($$1, $$2, $$0);
+         this.a($$4);
       }
    }
 
-   @Override
-   protected bpu a(drb $$0, dax $$1, io $$2, clw $$3, eug $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dph $$5) {
-         $$5.l();
-         return bpu.a($$1.B);
-      } else {
-         return bpu.d;
-      }
+   protected void a(cif $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean m(dtc $$0) {
+      return $$0.i() || $$0.a(awe.aM) || $$0.k() || $$0.r();
    }
 
    @Override
-   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dph $$5) {
-            $$5.l();
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      if ($$3.a(16) == 0) {
+         ir $$4 = $$2.d();
+         if (m($$1.a_($$4))) {
+            ayp.a($$1, $$2, $$3, new ks(lb.B, $$0));
          }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
-   @Override
-   public dog a(io $$0, drb $$1) {
-      return new dph($$0, $$1);
-   }
-
-   @Override
-   public boolean e_(drb $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(drb $$0, dad $$1, io $$2, it $$3) {
-      if ($$1.c_($$2) instanceof dph $$4 && $$4.j()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(drb $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(drb $$0, dax $$1, io $$2) {
-      if ($$1.c_($$2) instanceof dph $$3 && $$3.f().g() instanceof cuj $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected dke a_(drb $$0) {
-      return dke.c;
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return $$1.c(b) ? a($$2, doi.e, dph::a) : null;
+   public int b(dtc $$0, dbg $$1, ir $$2) {
+      return -16777216;
    }
 }

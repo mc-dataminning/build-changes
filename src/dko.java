@@ -1,52 +1,57 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dko {
-   dko s_ = new dko() {
-      @Override
-      public boolean a(day $$0, io $$1, drb $$2, @Nullable Collection<it> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dku)dea.qT).l().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(emv.c) ? false : dku.a($$0, $$1, $$2, $$3);
-         } else {
-            return dko.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
-
-      @Override
-      public int a(dkt.a $$0, day $$1, io $$2, ayk $$3, dkt $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
+public class dko extends dfl {
+   public static final MapCodec<dko> a = b(dko::new);
+   public static final int b = 3;
+   public static final duc c = dts.as;
+   private static final exn[] d = new exn[]{
+      dfc.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dfc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
    };
 
-   default byte b() {
-      return 1;
+   @Override
+   public MapCodec<dko> a() {
+      return a;
    }
 
-   default void a(day $$0, drb $$1, io $$2, ayk $$3) {
+   protected dko(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
-   default boolean a(day $$0, io $$1, ayk $$2) {
-      return false;
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return d[$$0.c(c)];
    }
 
-   default boolean a(day $$0, io $$1, drb $$2, @Nullable Collection<it> $$3, boolean $$4) {
-      return ((diy)dea.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   @Override
+   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
+      return $$0.a(dfe.eK);
    }
 
-   default boolean d() {
-      return true;
+   @Override
+   protected boolean d_(dtc $$0) {
+      return $$0.c(c) < 3;
    }
 
-   default int i_(int $$0) {
-      return 1;
+   @Override
+   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
+      }
    }
 
-   int a(dkt.a var1, day var2, io var3, ayk var4, dkt var5, boolean var6);
+   @Override
+   public cuh a(dcd $$0, ir $$1, dtc $$2) {
+      return new cuh(cuk.tG);
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(c);
+   }
 }

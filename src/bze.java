@@ -1,72 +1,70 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bze extends bzm {
-   private static final int a = 40;
-   private static final Predicate<drb> b = drk.a(dea.bt);
-   private final bsq c;
-   private final dax d;
-   private int e;
+public class bze extends bzl {
+   protected final bsw a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dca f;
 
-   public bze(bsq $$0) {
-      this.c = $$0;
-      this.d = $$0.dP();
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b, bzm.a.c));
+   public bze(bsw $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dU();
+      this.a(EnumSet.of(bzl.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.c.el().a(this.c.p_() ? 50 : 1000) != 0) {
+      if (this.a.p() != null) {
+         return false;
+      } else if (!this.f.R()) {
+         return false;
+      } else if (!this.a.bV()) {
+         return false;
+      } else if (!this.f.h(this.a.du())) {
          return false;
       } else {
-         io $$0 = this.c.dp();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(dea.i);
+         return !this.a.d(bsc.f).d() ? false : this.h();
       }
    }
 
-   @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.K().n();
-   }
-
-   @Override
-   public void d() {
-      this.e = 0;
+   protected boolean h() {
+      ewu $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
+      return !this.a.J().l();
    }
 
    @Override
-   public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         io $$0 = this.c.dp();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.aa().b(dat.c)) {
-               this.d.b($$0, false);
-            }
+   public void c() {
+      this.a.J().a(this.b, this.c, this.d, this.e);
+   }
 
-            this.c.N();
-         } else {
-            io $$1 = $$0.d();
-            if (this.d.a_($$1).a(dea.i)) {
-               if (this.d.aa().b(dat.c)) {
-                  this.d.c(2001, $$1, ddy.i(dea.i.n()));
-                  this.d.a($$1, dea.j.n(), 2);
-               }
+   @Nullable
+   protected ewu i() {
+      ayt $$0 = this.a.et();
+      ir $$1 = this.a.du();
 
-               this.c.N();
-            }
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ir $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.d($$3) < 0.0F) {
+            return ewu.c($$3);
          }
       }
+
+      return null;
    }
 }

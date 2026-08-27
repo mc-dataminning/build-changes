@@ -1,29 +1,48 @@
-public record afs(float b, boolean c) implements ze<abq> {
-   public static final yv<vx, afs> a = ze.a(afs::a, afs::new);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.List;
 
-   private afs(vx $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class afs implements zl<abw> {
+   public static final zc<wp, afs> a = zl.a(afs::a, afs::new);
+   private final List<afs.a> b;
+
+   public afs(List<afs.a> $$0) {
+      this.b = $$0;
    }
 
-   public static afs a(bqf $$0) {
-      return new afs($$0.f(), $$0.l());
+   private afs(wp $$0) {
+      int $$1 = $$0.readInt();
+      Builder<afs.a> $$2 = ImmutableList.builder();
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         $$2.add(new afs.a($$0.readInt(), afr.a.decode($$0)));
+      }
+
+      this.b = $$2.build();
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wp $$0) {
+      $$0.p(this.b.size());
+
+      for (afs.a $$1 : this.b) {
+         $$0.p($$1.a);
+         afr.a.encode($$0, $$1.b);
+      }
    }
 
    @Override
-   public zg<afs> a() {
-      return agb.ce;
+   public zn<afs> a() {
+      return agj.aU;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   public List<afs.a> b() {
+      return this.b;
+   }
+
+   public static record a(int a, afr b) {
    }
 }

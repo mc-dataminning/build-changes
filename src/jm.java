@@ -1,19 +1,14 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class jm {
-   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0, Codec<E> $$1) {
-      return a($$0, $$1, false);
+public record jm(Optional<atk> b, Lifecycle c) {
+   public static final jm a = new jm(Optional.empty(), Lifecycle.stable());
+
+   public Optional<atk> a() {
+      return this.b;
    }
 
-   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0, Codec<E> $$1, boolean $$2) {
-      return akg.a($$0, aki.a($$0, $$1), $$2);
-   }
-
-   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0) {
-      return a($$0, false);
-   }
-
-   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0, boolean $$1) {
-      return akg.a($$0, akj.a($$0), $$1);
+   public Lifecycle b() {
+      return this.c;
    }
 }

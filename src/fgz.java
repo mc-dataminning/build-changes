@@ -1,84 +1,37 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fgz extends ffx {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fgz.a n;
-   private final Supplier<gov> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
-
-   public fgz(int $$0, int $$1, fvs $$2, Supplier<gov> $$3) {
-      super(0, 0, $$0, $$1, ww.a);
-      this.n = fgz.a.a($$2);
-      this.o = $$3;
+public record fgz(fgz.c a, fhb... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, fhb[] var3, int var4, int var5, float var6);
    }
 
-   @Override
-   protected void b(ffm $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.C() + (float)this.x() / 2.0F, (float)(this.D() + this.v()), 100.0F);
-      float $$4 = (float)this.v() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      exo.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      exo.d();
-      $$0.c().b();
+   public static class b {
+      public static final fgz.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final fgz.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            aym.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            aym.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            aym.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
    }
 
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = ayd.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
+   public interface c {
+      void apply(fys var1, Vector3f var2);
    }
 
-   @Override
-   public void a(gsn $$0) {
-   }
-
-   @Override
-   protected void a(fjv $$0) {
-   }
-
-   @Override
-   public boolean B() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public ffj a(fkb $$0) {
-      return null;
-   }
-
-   static record a(fub<?> a, fub<?> b) {
-      public static fgz.a a(fvs $$0) {
-         fub<?> $$1 = new fub($$0.a(fvv.aS), false);
-         fub<?> $$2 = new fub($$0.a(fvv.aW), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fgz.a($$1, $$2);
-      }
-
-      public void a(ffm $$0, gov $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fub<?> $$2 = $$1.e() == gov.a.a ? this.b : this.a;
-         gcs $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gnm.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-      }
+   public static class d {
+      public static final fgz.c a = fys::a;
+      public static final fgz.c b = fys::b;
+      public static final fgz.c c = fys::c;
    }
 }

@@ -1,43 +1,42 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import java.util.Comparator;
 
-public class aqy implements aqv {
-   private final aqv a;
-   private final bon<Runnable> b;
-   private boolean c;
+public class aqy<T> {
+   private final String i;
+   private final Comparator<T> j;
+   private final long k;
+   public static final aqy<azo> a = a("start", ($$0, $$1) -> 0);
+   public static final aqy<azo> b = a("dragon", ($$0, $$1) -> 0);
+   public static final aqy<dbh> c = a("player", Comparator.comparingLong(dbh::a));
+   public static final aqy<dbh> d = a("forced", Comparator.comparingLong(dbh::a));
+   public static final aqy<dbh> e = a("light", Comparator.comparingLong(dbh::a));
+   public static final aqy<ir> f = a("portal", jv::i, 300);
+   public static final aqy<Integer> g = a("post_teleport", Integer::compareTo, 5);
+   public static final aqy<dbh> h = a("unknown", Comparator.comparingLong(dbh::a), 1);
 
-   private aqy(aqv $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = bon.a($$1, "progressListener");
+   public static <T> aqy<T> a(String $$0, Comparator<T> $$1) {
+      return new aqy<>($$0, $$1, 0L);
    }
 
-   public static aqy a(aqv $$0, Executor $$1) {
-      aqy $$2 = new aqy($$0, $$1);
-      $$2.a();
-      return $$2;
+   public static <T> aqy<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new aqy<>($$0, $$1, (long)$$2);
    }
 
-   @Override
-   public void a(dae $$0) {
-      this.b.a(() -> this.a.a($$0));
-   }
-
-   @Override
-   public void a(dae $$0, @Nullable dtw $$1) {
-      if (this.c) {
-         this.b.a(() -> this.a.a($$0, $$1));
-      }
-   }
-
-   @Override
-   public void a() {
-      this.c = true;
-      this.b.a(this.a::a);
+   protected aqy(String $$0, Comparator<T> $$1, long $$2) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
    }
 
    @Override
-   public void b() {
-      this.c = false;
-      this.b.a(this.a::b);
+   public String toString() {
+      return this.i;
+   }
+
+   public Comparator<T> a() {
+      return this.j;
+   }
+
+   public long b() {
+      return this.k;
    }
 }

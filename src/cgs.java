@@ -1,57 +1,57 @@
 import javax.annotation.Nullable;
 
 public class cgs extends cgi {
-   private static final brx bY = bsa.bv.n().a(brw.a().a(brv.a, 0.0F, bsa.bv.m() - 0.03125F, 0.0F)).a(0.5F);
+   private static final bry ch = bsb.bA.n().a(brx.a().a(brw.a, 0.0F, bsb.bA.l() - 0.03125F, 0.0F)).a(0.5F);
 
-   public cgs(bsa<? extends cgs> $$0, dax $$1) {
+   public cgs(bsb<? extends cgs> $$0, dca $$1) {
       super($$0, $$1);
    }
 
-   public static btv.a s() {
-      return gO().a(btw.q, 15.0).a(btw.r, 0.2F);
+   public static btu.a r() {
+      return gX().a(btv.q, 15.0).a(btv.r, 0.2F);
    }
 
-   public static boolean c(bsa<? extends cee> $$0, day $$1, bss $$2, io $$3, ayk $$4) {
+   public static boolean c(bsb<? extends cee> $$0, dcb $$1, bss $$2, ir $$3, ayt $$4) {
       return !bss.a($$2) ? cee.b($$0, $$1, $$2, $$3, $$4) : bss.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected void a(ayk $$0) {
-      this.f(btw.m).a(a($$0::j));
+   protected void a(ayt $$0) {
+      this.f(btv.m).a(a($$0::j));
    }
 
    @Override
-   protected avg v() {
-      return avh.Dw;
+   protected avn u() {
+      return avo.DU;
    }
 
    @Override
-   protected avg o_() {
-      return avh.Dx;
+   protected avn n_() {
+      return avo.DV;
    }
 
    @Override
-   protected avg d(bqn $$0) {
-      return avh.Dy;
+   protected avn d(bqt $$0) {
+      return avo.DW;
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
-      return bsa.bv.a((dax)$$0);
+   public brp a(aqt $$0, brp $$1) {
+      return bsb.bA.a((dca)$$0);
    }
 
    @Override
-   public bpu b(clw $$0, bpt $$1) {
-      return !this.gE() ? bpu.d : super.b($$0, $$1);
+   public bqa b(cly $$0, bpz $$1) {
+      return !this.gN() ? bqa.d : super.b($$0, $$1);
    }
 
    @Override
-   protected void gF() {
+   protected void gO() {
    }
 
    @Override
-   public brx e(bta $$0) {
-      return this.p_() ? bY : super.e($$0);
+   public bry e(bsz $$0) {
+      return this.o_() ? ch : super.e($$0);
    }
 }

@@ -1,30 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public final class axt {
-   private axt() {
+public class axt<T extends Throwable> {
+   @Nullable
+   private T a;
+
+   public void a(T $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      } else {
+         this.a.addSuppressed($$0);
+      }
    }
 
-   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
-      if ($$1.contains($$4)) {
-         return false;
-      } else if ($$2.contains($$4)) {
-         return true;
-      } else {
-         $$2.add($$4);
-
-         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
-            if (a($$0, $$1, $$2, $$3, $$5)) {
-               return true;
-            }
-         }
-
-         $$2.remove($$4);
-         $$1.add($$4);
-         $$3.accept($$4);
-         return false;
+   public void a() throws T {
+      if (this.a != null) {
+         throw this.a;
       }
    }
 }

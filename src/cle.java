@@ -1,212 +1,117 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public abstract class cle extends bro implements clh, cli, czu {
-   private static final ajr<Integer> ca = ajv.a(cle.class, ajt.b);
-   private static final Logger cb = LogUtils.getLogger();
-   public static final int bY = 300;
-   private static final int cc = 8;
-   @Nullable
-   private clw cd;
-   @Nullable
-   protected czw bZ;
-   private final bqd ce = new bqd(8);
+public class cle {
+   public static final Codec<cle> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axu.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               axu.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               axu.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cle::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   public cle(bsa<? extends cle> $$0, dax $$1) {
-      super($$0, $$1);
-      this.a(enl.n, 16.0F);
-      this.a(enl.o, -1.0F);
+   public cle(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   @Override
-   public bth a(dbm $$0, bps $$1, bss $$2, @Nullable bth $$3) {
-      if ($$3 == null) {
-         $$3 = new bro.a(false);
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
       }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   public int s() {
-      return this.ao.a(ca);
-   }
-
-   public void t(int $$0) {
-      this.ao.a(ca, $$0);
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   protected void a(ajv.a $$0) {
-      super.a($$0);
-      $$0.a(ca, 0);
-   }
-
-   @Override
-   public void f(@Nullable clw $$0) {
-      this.cd = $$0;
-   }
-
-   @Nullable
-   @Override
-   public clw gp() {
-      return this.cd;
-   }
-
-   public boolean gq() {
-      return this.cd != null;
-   }
-
-   @Override
-   public czw gr() {
-      if (this.bZ == null) {
-         this.bZ = new czw();
-         this.gw();
-      }
-
-      return this.bZ;
-   }
-
-   @Override
-   public void a(@Nullable czw $$0) {
-   }
-
-   @Override
-   public void u(int $$0) {
-   }
-
-   @Override
-   public void a(czv $$0) {
-      $$0.l();
-      this.bM = -this.O();
-      this.b($$0);
-      if (this.cd instanceof aqn) {
-         am.t.a((aqn)this.cd, this, $$0.f());
+      if (this.i > 0) {
+         this.i--;
       }
    }
 
-   protected abstract void b(czv var1);
-
-   @Override
-   public boolean gs() {
-      return true;
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   @Override
-   public void n(cto $$0) {
-      if (!this.dP().B && this.bM > -this.O() + 20) {
-         this.bM = -this.O();
-         this.b(this.w(!$$0.e()));
-      }
-   }
+   public static OptionalInt a(aqt $$0, ir $$1, aqu $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<aqu> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
 
-   @Override
-   public avg gt() {
-      return avh.AU;
-   }
-
-   protected avg w(boolean $$0) {
-      return $$0 ? avh.AU : avh.AS;
-   }
-
-   public void gu() {
-      this.b(avh.AP);
-   }
-
-   @Override
-   public void b(ud $$0) {
-      super.b($$0);
-      czw $$1 = this.gr();
-      if (!$$1.isEmpty()) {
-         $$0.a("Offers", (va)czw.a.encodeStart(this.dR().a(ur.a), $$1).getOrThrow());
-      }
-
-      this.b($$0, this.dR());
-   }
-
-   @Override
-   public void a(ud $$0) {
-      super.a($$0);
-      if ($$0.e("Offers")) {
-         czw.a.parse(this.dR().a(ur.a), $$0.c("Offers")).resultOrPartial(ac.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
-      }
-
-      this.a($$0, this.dR());
-   }
-
-   @Nullable
-   @Override
-   public bru b(aqm $$0) {
-      this.gv();
-      return super.b($$0);
-   }
-
-   protected void gv() {
-      this.f(null);
-   }
-
-   @Override
-   public void a(bqn $$0) {
-      super.a($$0);
-      this.gv();
-   }
-
-   protected void a(kw $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.ah.k() * 0.02;
-         double $$3 = this.ah.k() * 0.02;
-         double $$4 = this.ah.k() * 0.02;
-         this.dP().a($$0, this.d(1.0), this.dx() + 1.0, this.g(1.0), $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return false;
-   }
-
-   @Override
-   public bqd y() {
-      return this.ce;
-   }
-
-   @Override
-   public btg a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.ce.b() ? btg.a(this.ce, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gw();
-
-   protected void a(czw $$0, cln.g[] $$1, int $$2) {
-      ArrayList<cln.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         czv $$5 = $$3.remove(this.ah.a($$3.size())).a(this, this.ah);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cle::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cle> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cle::c));
+            if ($$4.isPresent()) {
+               cle $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
          }
       }
    }
 
-   @Override
-   public euk q(float $$0) {
-      float $$1 = ayd.i($$0, this.ba, this.aZ) * (float) (Math.PI / 180.0);
-      euk $$2 = new euk(0.0, this.cK().c() - 1.0, 0.2);
-      return this.l($$0).e($$2.b(-$$1));
+   private boolean d() {
+      return this.i > 0;
    }
 
-   @Override
-   public boolean gx() {
-      return this.dP().B;
+   private static boolean a(aqt $$0, ir $$1) {
+      ewp $$2 = ewp.a(ewu.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(clc.class, $$2).isEmpty();
+   }
+
+   private static List<aqu> b(aqt $$0, ir $$1) {
+      ewu $$2 = ewu.b($$1);
+      Predicate<aqu> $$3 = $$1x -> $$1x.ds().a((jk)$$2, 16.0);
+      return $$0.a($$3.and(bso::bI).and(bsa.f));
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = aym.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cle $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

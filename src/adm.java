@@ -1,29 +1,48 @@
-public class adm implements ze<abq> {
-   public static final yv<vx, adm> a = ze.a(adm::a, adm::new);
-   private final bpt b;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public adm(bpt $$0) {
-      this.b = $$0;
+public class adm implements zl<abw> {
+   public static final zc<we, adm> a = zl.a(adm::a, adm::new);
+   private final int b;
+   private final int c;
+   private final adn d;
+
+   public adm(dbh $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adn($$0, $$1, $$2, $$3);
    }
 
-   private adm(vx $$0) {
-      this.b = $$0.b(bpt.class);
+   private adm(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adn($$0, this.b, this.c);
    }
 
-   private void a(vx $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public zg<adm> a() {
-      return agb.V;
+   public zn<adm> a() {
+      return agj.O;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public bpt b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public adn f() {
+      return this.d;
    }
 }

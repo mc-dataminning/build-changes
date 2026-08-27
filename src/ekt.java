@@ -1,42 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.List;
 
-public class ekt extends ekw {
-   public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ekt::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class ekt extends ela {
+   public static final Codec<ekt> a = Codec.unit(() -> ekt.b);
+   public static final ekt b = new ekt();
 
-   public ekt(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
+   private ekt() {
+      super(elc.a.a);
    }
 
    @Override
-   public boolean a(io $$0, io $$1, io $$2, ayk $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= ayd.b(this.b, this.d, ayd.g((float)$$4, (float)this.e, (float)this.f));
+   public jv a(enu $$0, dmd $$1) {
+      return jv.g;
    }
 
    @Override
-   protected ekx<?> a() {
-      return ekx.b;
+   public List<ent.c> a(enu $$0, ir $$1, dmd $$2, ayt $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public ejl a(enu $$0, ir $$1, dmd $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(enu $$0, dcv $$1, dct $$2, duz $$3, ir $$4, ir $$5, dmd $$6, ejl $$7, ayt $$8, boolean $$9) {
+      return true;
+   }
+
+   @Override
+   public elb<?> a() {
+      return elb.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

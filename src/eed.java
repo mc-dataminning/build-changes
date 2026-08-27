@@ -1,24 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eed<P extends eec> {
-   public static final eed<eel> a = a("simple_state_provider", eel.b);
-   public static final eed<eem> b = a("weighted_state_provider", eem.b);
-   public static final eed<eeh> c = a("noise_threshold_provider", eeh.b);
-   public static final eed<eeg> d = a("noise_provider", eeg.g);
-   public static final eed<eee> e = a("dual_noise_provider", eee.b);
-   public static final eed<eej> f = a("rotated_block_provider", eej.b);
-   public static final eed<eei> g = a("randomized_int_state_provider", eei.b);
-   private final MapCodec<P> h;
+public class eed implements eek {
+   public static final Codec<eed> a = dtc.b.fieldOf("state").xmap(eed::new, $$0 -> $$0.b).codec();
+   public final dtc b;
 
-   private static <P extends eec> eed<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.V, $$0, new eed<>($$1));
-   }
-
-   private eed(MapCodec<P> $$0) {
-      this.h = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.h;
+   public eed(dtc $$0) {
+      this.b = $$0;
    }
 }

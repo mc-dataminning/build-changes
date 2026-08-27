@@ -1,57 +1,53 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bew extends DataFix {
-   public bew(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bew extends azz {
+   private static final Logger b = LogUtils.getLogger();
+
+   public bew(Schema $$0) {
+      super($$0, bgf.a);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      if (!"MobSpawner".equals($$0.get("id").asString(""))) {
-         return $$0;
-      } else {
-         Optional<String> $$1 = $$0.get("EntityId").asString().result();
-         if ($$1.isPresent()) {
-            Dynamic<?> $$2 = (Dynamic<?>)DataFixUtils.orElse($$0.get("SpawnData").result(), $$0.emptyMap());
-            $$2 = $$2.set("id", $$2.createString($$1.get().isEmpty() ? "Pig" : $$1.get()));
-            $$0 = $$0.set("SpawnData", $$2);
-            $$0 = $$0.remove("EntityId");
-         }
-
-         Optional<? extends Stream<? extends Dynamic<?>>> $$3 = $$0.get("SpawnPotentials").asStreamOpt().result();
-         if ($$3.isPresent()) {
-            $$0 = $$0.set("SpawnPotentials", $$0.createList($$3.get().map($$0x -> {
-               Optional<String> $$1x = $$0x.get("Type").asString().result();
-               if ($$1x.isPresent()) {
-                  Dynamic<?> $$2 = ((Dynamic)DataFixUtils.orElse($$0x.get("Properties").result(), $$0x.emptyMap())).set("id", $$0x.createString($$1x.get()));
-                  return $$0x.set("Entity", $$2).remove("Type").remove("Properties");
-               } else {
-                  return $$0x;
-               }
-            })));
-         }
-
-         return $$0;
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "LevelUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  $$0xx = this.d($$0xx);
+                  $$0xx = this.c($$0xx);
+                  return this.b($$0xx);
+               }))
+      );
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bfy.D);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bfy.D), $$0, $$1 -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         $$2 = $$2.set("id", $$2.createString("MobSpawner"));
-         DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));
-         return $$3.result().isEmpty() ? $$1 : (Typed)((Pair)$$3.result().get()).getFirst();
-      });
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
+            )
+      );
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update(
+         "CustomBossEvents",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
+                                 b.warn("CustomBossEvents contains invalid UUIDs.");
+                                 return $$0xxxxx;
+                              }))))
+                  )
+            )
+      );
    }
 }

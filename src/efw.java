@@ -1,8 +1,146 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.Products.P2;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface efw {
+public abstract class efw {
+   public static final Codec<efw> d = lh.W.q().dispatch(efw::a, efx::a);
+   protected final bpf e;
+   protected final bpf f;
+
+   protected static <P extends efw> P2<Mu<P>, bpf, bpf> b(Instance<P> $$0) {
+      return $$0.group(bpf.b(0, 16).fieldOf("radius").forGetter($$0x -> $$0x.e), bpf.b(0, 16).fieldOf("offset").forGetter($$0x -> $$0x.f));
+   }
+
+   public efw(bpf $$0, bpf $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   protected abstract efx<?> a();
+
+   public void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, int $$4, efw.a $$5, int $$6, int $$7) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$2));
+   }
+
+   protected abstract void a(dcg var1, efw.b var2, ayt var3, efg var4, int var5, efw.a var6, int var7, int var8, int var9);
+
+   public abstract int a(ayt var1, int var2, efg var3);
+
+   public int a(ayt $$0, int $$1) {
+      return this.e.a($$0);
+   }
+
+   private int a(ayt $$0) {
+      return this.f.a($$0);
+   }
+
+   protected abstract boolean a(ayt var1, int var2, int var3, int var4, int var5, boolean var6);
+
+   protected boolean b(ayt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6;
+      int $$7;
+      if ($$5) {
+         $$6 = Math.min(Math.abs($$1), Math.abs($$1 - 1));
+         $$7 = Math.min(Math.abs($$3), Math.abs($$3 - 1));
+      } else {
+         $$6 = Math.abs($$1);
+         $$7 = Math.abs($$3);
+      }
+
+      return this.a($$0, $$6, $$2, $$7, $$4, $$5);
+   }
+
+   protected void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, ir $$4, int $$5, int $$6, boolean $$7) {
+      int $$8 = $$7 ? 1 : 0;
+      ir.a $$9 = new ir.a();
+
+      for (int $$10 = -$$5; $$10 <= $$5 + $$8; $$10++) {
+         for (int $$11 = -$$5; $$11 <= $$5 + $$8; $$11++) {
+            if (!this.b($$2, $$10, $$6, $$11, $$5, $$7)) {
+               $$9.a($$4, $$10, $$6, $$11);
+               a($$0, $$1, $$2, $$3, $$9);
+            }
+         }
+      }
+   }
+
+   protected final void a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, ir $$4, int $$5, int $$6, boolean $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      int $$10 = $$7 ? 1 : 0;
+      ir $$11 = $$4.d();
+      ir.a $$12 = new ir.a();
+
+      for (iw $$13 : iw.c.a) {
+         iw $$14 = $$13.h();
+         int $$15 = $$14.f() == iw.b.a ? $$5 + $$10 : $$5;
+         $$12.a($$4, 0, $$6 - 1, 0).c($$14, $$15).c($$13, -$$5);
+         int $$16 = -$$5;
+
+         while ($$16 < $$5 + $$10) {
+            boolean $$17 = $$1.a($$12.d(iw.b));
+            $$12.d(iw.a);
+            if ($$17 && a($$0, $$1, $$2, $$3, $$8, $$11, $$12)) {
+               $$12.d(iw.a);
+               a($$0, $$1, $$2, $$3, $$9, $$11, $$12);
+               $$12.d(iw.b);
+            }
+
+            $$16++;
+            $$12.d($$13);
+         }
+      }
+   }
+
+   private static boolean a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, float $$4, ir $$5, ir.a $$6) {
+      if ($$6.k($$5) >= 7) {
+         return false;
+      } else {
+         return $$2.i() > $$4 ? false : a($$0, $$1, $$2, $$3, $$6);
+      }
+   }
+
+   protected static boolean a(dcg $$0, efw.b $$1, ayt $$2, efg $$3, ir $$4) {
+      if (!edr.c($$0, $$4)) {
+         return false;
+      } else {
+         dtc $$5 = $$3.e.a($$2, $$4);
+         if ($$5.b(dts.C)) {
+            $$5 = $$5.a(dts.C, Boolean.valueOf($$0.b($$4, $$0x -> $$0x.a(epf.c))));
+         }
+
+         $$1.a($$4, $$5);
+         return true;
+      }
+   }
+
+   public static final class a {
+      private final ir a;
+      private final int b;
+      private final boolean c;
+
+      public a(ir $$0, int $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public ir a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public boolean c() {
+         return this.c;
+      }
+   }
+
+   public interface b {
+      void a(ir var1, dtc var2);
+
+      boolean a(ir var1);
+   }
 }

@@ -1,62 +1,125 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class dgj extends dgd {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dgj> e = b(dgj::new);
-   private static final ki g = new kh();
+public class dgj extends djc implements dff {
+   public static final MapCodec<dgj> a = b(dgj::new);
+   public static final int b = 2;
+   public static final duc c = dts.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final exn[] m = new exn[]{
+      dfc.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dfc.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dfc.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final exn[] n = new exn[]{
+      dfc.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dfc.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dfc.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final exn[] o = new exn[]{
+      dfc.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dfc.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dfc.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final exn[] F = new exn[]{
+      dfc.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dfc.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dfc.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<dgj> a() {
-      return e;
+      return a;
    }
 
-   public dgj(dra.d $$0) {
+   public dgj(dtb.d $$0) {
       super($$0);
+      this.k(this.E.b().a(aE, iw.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected ki a(cto $$0) {
-      return g;
+   protected boolean d_(dtc $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public dog a(io $$0, drb $$1) {
-      return new doz($$0, $$1);
+   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if ($$1.A.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
    }
 
    @Override
-   protected void a(aqm $$0, drb $$1, io $$2) {
-      doy $$3 = $$0.a($$2, doi.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         kf $$4 = new kf($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cto $$6 = $$3.a($$5);
-            if (!$$6.e()) {
-               it $$7 = $$0.a_($$2).c(b);
-               bpn $$8 = dpf.a($$0, $$2.a($$7));
-               cto $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = dpf.a($$3, $$8, $$6.s().a(1), $$7.g());
-                  if ($$9.e()) {
-                     $$9 = $$6.s();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.s();
-                  }
-               }
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      dtc $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(awe.z);
+   }
 
-               $$3.a($$5, $$9);
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      int $$4 = $$0.c(c);
+      switch ((iw)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = this.n();
+      dcd $$2 = $$0.q();
+      ir $$3 = $$0.a();
+
+      for (iw $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
+
+      return null;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b(dcd $$0, ir $$1, dtc $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dca $$0, ayt $$1, ir $$2, dtc $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayt $$1, ir $$2, dtc $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, ept $$1) {
+      return false;
    }
 }

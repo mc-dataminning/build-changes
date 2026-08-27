@@ -1,323 +1,452 @@
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ListIterator;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fio implements atq, AutoCloseable {
-   static final Logger b = LogUtils.getLogger();
-   private static final String c = "fonts.json";
-   public static final akm a = new akm("minecraft", "missing");
-   private static final akf d = akf.a("font");
-   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private final fiq f;
-   private final List<ewv> g = new ArrayList<>();
-   private final Map<akm, fiq> h = new HashMap<>();
-   private final gnw i;
-   @Nullable
-   private volatile fiq j;
+public class fio {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 100;
+   private static final int c = -1;
+   private static final int d = 4;
+   private static final int e = 4;
+   private static final int f = 40;
+   private static final int g = 60;
+   private static final xe h = xe.c("chat.deleted_marker").a(n.h, n.u);
+   private final fgj i;
+   private final axa<String> j = new axa<>(100);
+   private final List<fgd> k = Lists.newArrayList();
+   private final List<fgd.a> l = Lists.newArrayList();
+   private int m;
+   private boolean n;
+   private final List<fio.a> o = new ArrayList<>();
 
-   public fio(gnw $$0) {
+   public fio(fgj $$0) {
       this.i = $$0;
-      this.f = ac.a(new fiq($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+      this.j.addAll($$0.be().a());
    }
 
-   private static ewv.a d() {
-      return new ewv.a(new fim(), fip.a.b);
-   }
-
-   @Override
-   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmi $$2, bmi $$3, Executor $$4, Executor $$5) {
-      $$2.a();
-      $$2.b();
-      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private CompletableFuture<fio.d> a(atw $$0, Executor $$1) {
-      List<CompletableFuture<fio.e>> $$2 = new ArrayList<>();
-
-      for (Entry<akm, List<atu>> $$3 : d.b($$0).entrySet()) {
-         akm $$4 = d.b($$3.getKey());
-         $$2.add(CompletableFuture.supplyAsync(() -> {
-            List<Pair<fio.a, fjb.a>> $$4x = a($$3.getValue(), $$4);
-            fio.e $$5 = new fio.e($$4);
-
-            for (Pair<fio.a, fjb.a> $$6 : $$4x) {
-               fio.a $$7 = (fio.a)$$6.getFirst();
-               fip.a $$8 = ((fjb.a)$$6.getSecond()).b();
-               ((fjb.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
-                  CompletableFuture<Optional<ewv>> $$6x = this.a($$7, $$5x, $$0, $$1);
-                  $$5.a($$7, $$8, $$6x);
-               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
-            }
-
-            return $$5;
-         }, $$1));
+   public void a() {
+      if (!this.o.isEmpty()) {
+         this.l();
       }
+   }
 
-      return ac.d($$2)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<Optional<ewv>>> $$2x = $$1x.stream().flatMap(fio.e::d).collect(Collectors.toCollection(ArrayList::new));
-               ewv.a $$3x = d();
-               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
-               return ac.d($$2x)
-                  .thenCompose(
-                     $$3xx -> {
-                        Map<akm, List<ewv.a>> $$4x = this.a($$1x);
-                        CompletableFuture<?>[] $$5 = $$4x.values()
-                           .stream()
-                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
-                           .toArray(CompletableFuture[]::new);
-                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
-                           List<ewv> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
-                           return new fio.d($$4x, $$3xxx);
-                        });
+   public void a(fia $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if (!this.k()) {
+         int $$5 = this.j();
+         int $$6 = this.l.size();
+         if ($$6 > 0) {
+            this.i.aJ().a("chat");
+            float $$7 = (float)this.h();
+            int $$8 = aym.f((float)this.f() / $$7);
+            int $$9 = $$0.b();
+            $$0.c().a();
+            $$0.c().b($$7, $$7, 1.0F);
+            $$0.c().a(4.0F, 0.0F, 0.0F);
+            int $$10 = aym.d((float)($$9 - 40) / $$7);
+            int $$11 = this.d(this.c((double)$$2), this.d((double)$$3));
+            double $$12 = this.i.m.n().c() * 0.9F + 0.1F;
+            double $$13 = this.i.m.r().c();
+            double $$14 = this.i.m.o().c();
+            int $$15 = this.n();
+            int $$16 = (int)Math.round(-8.0 * ($$14 + 1.0) + 4.0 * $$14);
+            int $$17 = 0;
+
+            for (int $$18 = 0; $$18 + this.m < this.l.size() && $$18 < $$5; $$18++) {
+               int $$19 = $$18 + this.m;
+               fgd.a $$20 = this.l.get($$19);
+               if ($$20 != null) {
+                  int $$21 = $$1 - $$20.a();
+                  if ($$21 < 200 || $$4) {
+                     double $$22 = $$4 ? 1.0 : b($$21);
+                     int $$23 = (int)(255.0 * $$22 * $$12);
+                     int $$24 = (int)(255.0 * $$22 * $$13);
+                     $$17++;
+                     if ($$23 > 3) {
+                        int $$25 = 0;
+                        int $$26 = $$10 - $$18 * $$15;
+                        int $$27 = $$26 + $$16;
+                        $$0.a(-4, $$26 - $$15, 0 + $$8 + 4 + 4, $$26, $$24 << 24);
+                        fge $$28 = $$20.c();
+                        if ($$28 != null) {
+                           int $$29 = $$28.e() | $$23 << 24;
+                           $$0.a(-4, $$26 - $$15, -2, $$26, $$29);
+                           if ($$19 == $$11 && $$28.f() != null) {
+                              int $$30 = this.a($$20);
+                              int $$31 = $$27 + 9;
+                              this.a($$0, $$30, $$31, $$28.f());
+                           }
+                        }
+
+                        $$0.c().a();
+                        $$0.c().a(0.0F, 0.0F, 50.0F);
+                        $$0.b(this.i.h, $$20.b(), 0, $$27, 16777215 + ($$23 << 24));
+                        $$0.c().b();
                      }
-                  );
-            }
-         );
-   }
-
-   private CompletableFuture<Optional<ewv>> a(fio.a $$0, fjb.b $$1, atw $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            return Optional.of($$1.load($$2));
-         } catch (Exception var4x) {
-            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
-            return Optional.empty();
-         }
-      }, $$3);
-   }
-
-   private Map<akm, List<ewv.a>> a(List<fio.e> $$0) {
-      Map<akm, List<ewv.a>> $$1 = new HashMap<>();
-      axj<akm, fio.e> $$2 = new axj<>();
-      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
-      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
-      return $$1;
-   }
-
-   private void a(List<ewv.a> $$0, ewv.a $$1) {
-      $$0.add(0, $$1);
-      IntSet $$2 = new IntOpenHashSet();
-
-      for (ewv.a $$3 : $$0) {
-         $$2.addAll($$3.a().a());
-      }
-
-      $$2.forEach($$1x -> {
-         if ($$1x != 32) {
-            for (ewv.a $$2x : Lists.reverse($$0)) {
-               if ($$2x.a().a($$1x) != null) {
-                  break;
+                  }
                }
             }
-         }
-      });
-   }
 
-   private static Set<fip> b(fed $$0) {
-      Set<fip> $$1 = EnumSet.noneOf(fip.class);
-      if ($$0.P().c()) {
-         $$1.add(fip.a);
-      }
-
-      if ($$0.Q().c()) {
-         $$1.add(fip.b);
-      }
-
-      return $$1;
-   }
-
-   private void a(fio.d $$0, bmi $$1) {
-      $$1.a();
-      $$1.a("closing");
-      this.h.values().forEach(fiq::close);
-      this.h.clear();
-      this.g.forEach(ewv::close);
-      this.g.clear();
-      Set<fip> $$2 = b(fdz.Q().m);
-      $$1.b("reloading");
-      $$0.a().forEach(($$1x, $$2x) -> {
-         fiq $$3 = new fiq(this.i, $$1x);
-         $$3.a(Lists.reverse($$2x), $$2);
-         this.h.put($$1x, $$3);
-      });
-      this.g.addAll($$0.b);
-      this.j = null;
-      $$1.c();
-      $$1.b();
-      if (!this.h.containsKey(fdz.b)) {
-         throw new IllegalStateException("Default font failed to load");
-      }
-   }
-
-   public void a(fed $$0) {
-      Set<fip> $$1 = b($$0);
-
-      for (fiq $$2 : this.h.values()) {
-         $$2.a($$1);
-      }
-   }
-
-   private static List<Pair<fio.a, fjb.a>> a(List<atu> $$0, akm $$1) {
-      List<Pair<fio.a, fjb.a>> $$2 = new ArrayList<>();
-
-      for (atu $$3 : $$0) {
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
-            fio.c $$6 = (fio.c)fio.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
-            List<fjb.a> $$7 = $$6.b;
-
-            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
-               fio.a $$9 = new fio.a($$1, $$3.b(), $$8);
-               $$2.add(Pair.of($$9, $$7.get($$8)));
+            long $$32 = this.i.ba().c();
+            if ($$32 > 0L) {
+               int $$33 = (int)(128.0 * $$12);
+               int $$34 = (int)(255.0 * $$13);
+               $$0.c().a();
+               $$0.c().a(0.0F, (float)$$10, 0.0F);
+               $$0.a(-2, 0, $$8 + 4, 9, $$34 << 24);
+               $$0.c().a(0.0F, 0.0F, 50.0F);
+               $$0.b(this.i.h, xe.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
+               $$0.c().b();
             }
-         } catch (Exception var13) {
-            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+
+            if ($$4) {
+               int $$35 = this.n();
+               int $$36 = $$6 * $$35;
+               int $$37 = $$17 * $$35;
+               int $$38 = this.m * $$37 / $$6 - $$10;
+               int $$39 = $$37 * $$37 / $$36;
+               if ($$36 != $$37) {
+                  int $$40 = $$38 > 0 ? 170 : 96;
+                  int $$41 = this.n ? 13382451 : 3355562;
+                  int $$42 = $$8 + 4;
+                  $$0.a($$42, -$$38, $$42 + 2, -$$38 - $$39, 100, $$41 + ($$40 << 24));
+                  $$0.a($$42 + 2, -$$38, $$42 + 1, -$$38 - $$39, 100, 13421772 + ($$40 << 24));
+               }
+            }
+
+            $$0.c().b();
+            this.i.aJ().c();
+         }
+      }
+   }
+
+   private void a(fia $$0, int $$1, int $$2, fge.a $$3) {
+      int $$4 = $$2 - $$3.d - 1;
+      $$3.a($$0, $$1, $$4);
+   }
+
+   private int a(fgd.a $$0) {
+      return this.i.h.a($$0.b()) + 4;
+   }
+
+   private boolean k() {
+      return this.i.m.m().c() == clw.c;
+   }
+
+   private static double b(int $$0) {
+      double $$1 = (double)$$0 / 200.0;
+      $$1 = 1.0 - $$1;
+      $$1 *= 10.0;
+      $$1 = aym.a($$1, 0.0, 1.0);
+      return $$1 * $$1;
+   }
+
+   public void a(boolean $$0) {
+      this.i.ba().d();
+      this.o.clear();
+      this.l.clear();
+      this.k.clear();
+      if ($$0) {
+         this.j.clear();
+         this.j.addAll(this.i.be().a());
+      }
+   }
+
+   public void a(xe $$0) {
+      this.a($$0, null, this.i.W() ? fge.b() : fge.a());
+   }
+
+   public void a(xe $$0, @Nullable xq $$1, @Nullable fge $$2) {
+      this.a($$0, $$2);
+      this.a($$0, $$1, this.i.l.e(), $$2, false);
+   }
+
+   private void a(xe $$0, @Nullable fge $$1) {
+      String $$2 = $$0.getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
+      String $$3 = y.a($$1, fge::h);
+      if ($$3 != null) {
+         a.info("[{}] [CHAT] {}", $$3, $$2);
+      } else {
+         a.info("[CHAT] {}", $$2);
+      }
+   }
+
+   private void a(xe $$0, @Nullable xq $$1, int $$2, @Nullable fge $$3, boolean $$4) {
+      int $$5 = aym.a((double)this.f() / this.h());
+      if ($$3 != null && $$3.f() != null) {
+         $$5 -= $$3.f().c + 4 + 2;
+      }
+
+      List<axy> $$6 = fis.a($$0, $$5, this.i.h);
+      boolean $$7 = this.e();
+
+      for (int $$8 = 0; $$8 < $$6.size(); $$8++) {
+         axy $$9 = $$6.get($$8);
+         if ($$7 && this.m > 0) {
+            this.n = true;
+            this.a(1);
+         }
+
+         boolean $$10 = $$8 == $$6.size() - 1;
+         this.l.add(0, new fgd.a($$2, $$9, $$3, $$10));
+      }
+
+      while (this.l.size() > 100) {
+         this.l.remove(this.l.size() - 1);
+      }
+
+      if (!$$4) {
+         this.k.add(0, new fgd($$2, $$0, $$1, $$3));
+
+         while (this.k.size() > 100) {
+            this.k.remove(this.k.size() - 1);
+         }
+      }
+   }
+
+   private void l() {
+      int $$0 = this.i.l.e();
+      this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
+   }
+
+   public void a(xq $$0) {
+      fio.a $$1 = this.b($$0);
+      if ($$1 != null) {
+         this.o.add($$1);
+      }
+   }
+
+   @Nullable
+   private fio.a b(xq $$0) {
+      int $$1 = this.i.l.e();
+      ListIterator<fgd> $$2 = this.k.listIterator();
+
+      while ($$2.hasNext()) {
+         fgd $$3 = $$2.next();
+         if ($$0.equals($$3.c())) {
+            int $$4 = $$3.a() + 60;
+            if ($$1 >= $$4) {
+               $$2.set(this.a($$3));
+               this.m();
+               return null;
+            }
+
+            return new fio.a($$0, $$4);
          }
       }
 
-      return $$2;
+      return null;
    }
 
-   public ffk a() {
-      return new ffk(this::b, false);
+   private fgd a(fgd $$0) {
+      return new fgd($$0.a(), h, null, fge.a());
    }
 
-   public ffk b() {
-      return new ffk(this::b, true);
+   public void b() {
+      this.d();
+      this.m();
    }
 
-   private fiq a(akm $$0) {
-      return this.h.getOrDefault($$0, this.f);
+   private void m() {
+      this.l.clear();
+
+      for (int $$0 = this.k.size() - 1; $$0 >= 0; $$0--) {
+         fgd $$1 = this.k.get($$0);
+         this.a($$1.b(), $$1.c(), $$1.a(), $$1.d(), true);
+      }
    }
 
-   private fiq b(akm $$0) {
-      fiq $$1 = this.j;
-      if ($$1 != null && $$0.equals($$1.a())) {
-         return $$1;
+   public axa<String> c() {
+      return this.j;
+   }
+
+   public void a(String $$0) {
+      if (!$$0.equals(this.j.peekLast())) {
+         if (this.j.size() >= 100) {
+            this.j.removeFirst();
+         }
+
+         this.j.addLast($$0);
+      }
+
+      if ($$0.startsWith("/")) {
+         this.i.be().a($$0);
+      }
+   }
+
+   public void d() {
+      this.m = 0;
+      this.n = false;
+   }
+
+   public void a(int $$0) {
+      this.m += $$0;
+      int $$1 = this.l.size();
+      if (this.m > $$1 - this.j()) {
+         this.m = $$1 - this.j();
+      }
+
+      if (this.m <= 0) {
+         this.m = 0;
+         this.n = false;
+      }
+   }
+
+   public boolean a(double $$0, double $$1) {
+      if (this.e() && !this.i.m.aa && !this.k()) {
+         gag $$2 = this.i.ba();
+         if ($$2.c() == 0L) {
+            return false;
+         } else {
+            double $$3 = $$0 - 2.0;
+            double $$4 = (double)this.i.aP().p() - $$1 - 40.0;
+            if ($$3 <= (double)aym.a((double)this.f() / this.h()) && $$4 < 0.0 && $$4 > (double)aym.a(-9.0 * this.h())) {
+               $$2.b();
+               return true;
+            } else {
+               return false;
+            }
+         }
       } else {
-         fiq $$2 = this.a($$0);
-         this.j = $$2;
+         return false;
+      }
+   }
+
+   @Nullable
+   public yb b(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.e($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         fgd.a $$5 = this.l.get($$4);
+         return this.i.h.b().a($$5.b(), aym.a($$2));
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   public fge c(double $$0, double $$1) {
+      double $$2 = this.c($$0);
+      double $$3 = this.d($$1);
+      int $$4 = this.d($$2, $$3);
+      if ($$4 >= 0 && $$4 < this.l.size()) {
+         fgd.a $$5 = this.l.get($$4);
+         fge $$6 = $$5.c();
+         if ($$6 != null && this.a($$2, $$5, $$6)) {
+            return $$6;
+         }
+      }
+
+      return null;
+   }
+
+   private boolean a(double $$0, fgd.a $$1, fge $$2) {
+      if ($$0 < 0.0) {
+         return true;
+      } else {
+         fge.a $$3 = $$2.f();
+         if ($$3 == null) {
+            return false;
+         } else {
+            int $$4 = this.a($$1);
+            int $$5 = $$4 + $$3.c;
+            return $$0 >= (double)$$4 && $$0 <= (double)$$5;
+         }
+      }
+   }
+
+   private double c(double $$0) {
+      return $$0 / this.h() - 4.0;
+   }
+
+   private double d(double $$0) {
+      double $$1 = (double)this.i.aP().p() - $$0 - 40.0;
+      return $$1 / (this.h() * (double)this.n());
+   }
+
+   private int d(double $$0, double $$1) {
+      int $$2 = this.e($$0, $$1);
+      if ($$2 == -1) {
+         return -1;
+      } else {
+         while ($$2 >= 0) {
+            if (this.l.get($$2).d()) {
+               return $$2;
+            }
+
+            $$2--;
+         }
+
          return $$2;
       }
    }
 
-   @Override
-   public void close() {
-      this.h.values().forEach(fiq::close);
-      this.g.forEach(ewv::close);
-      this.f.close();
-   }
-
-   static record a(akm a, String b, int c) {
-      @Override
-      public String toString() {
-         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
-      }
-   }
-
-   static record b(fio.a a, fip.a b, Either<CompletableFuture<Optional<ewv>>, akm> c) {
-
-      public Optional<List<ewv.a>> a(Function<akm, List<ewv.a>> $$0) {
-         return (Optional<List<ewv.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new ewv.a($$0xx, this.b))), $$1 -> {
-            List<ewv.a> $$2 = $$0.apply($$1);
-            if ($$2 == null) {
-               fio.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
-               return Optional.empty();
-            } else {
-               return Optional.of($$2.stream().map(this::a).toList());
-            }
-         });
-      }
-
-      private ewv.a a(ewv.a $$0) {
-         return new ewv.a($$0.a(), this.b.a($$0.b()));
-      }
-   }
-
-   static record c(List<fjb.a> b) {
-      public static final Codec<fio.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fjb.a.a.listOf().fieldOf("providers").forGetter(fio.c::a)).apply($$0, fio.c::new)
-      );
-
-      public List<fjb.a> a() {
-         return this.b;
-      }
-   }
-
-   static record d(Map<akm, List<ewv.a>> a, List<ewv> b) {
-   }
-
-   static record e(akm a, List<fio.b> b, Set<akm> c) implements axj.a<akm> {
-
-      public e(akm $$0) {
-         this($$0, new ArrayList<>(), new HashSet<>());
-      }
-
-      public void a(fio.a $$0, fip.a $$1, fjb.c $$2) {
-         this.b.add(new fio.b($$0, $$1, Either.right($$2.a())));
-         this.c.add($$2.a());
-      }
-
-      public void a(fio.a $$0, fip.a $$1, CompletableFuture<Optional<ewv>> $$2) {
-         this.b.add(new fio.b($$0, $$1, Either.left($$2)));
-      }
-
-      private Stream<CompletableFuture<Optional<ewv>>> d() {
-         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
-      }
-
-      public Optional<List<ewv.a>> a(Function<akm, List<ewv.a>> $$0) {
-         List<ewv.a> $$1 = new ArrayList<>();
-
-         for (fio.b $$2 : this.b) {
-            Optional<List<ewv.a>> $$3 = $$2.a($$0);
-            if (!$$3.isPresent()) {
-               return Optional.empty();
+   private int e(double $$0, double $$1) {
+      if (this.e() && !this.k()) {
+         if (!($$0 < -4.0) && !($$0 > (double)aym.a((double)this.f() / this.h()))) {
+            int $$2 = Math.min(this.j(), this.l.size());
+            if ($$1 >= 0.0 && $$1 < (double)$$2) {
+               int $$3 = aym.a($$1 + (double)this.m);
+               if ($$3 >= 0 && $$3 < this.l.size()) {
+                  return $$3;
+               }
             }
 
-            $$1.addAll($$3.get());
+            return -1;
+         } else {
+            return -1;
          }
-
-         return Optional.of($$1);
+      } else {
+         return -1;
       }
+   }
 
-      @Override
-      public void a(Consumer<akm> $$0) {
-         this.c.forEach($$0);
-      }
+   public boolean e() {
+      return this.i.y instanceof fnc;
+   }
 
-      @Override
-      public void b(Consumer<akm> $$0) {
-      }
+   public int f() {
+      return a(this.i.m.x().c());
+   }
+
+   public int g() {
+      return b(this.e() ? this.i.m.z().c() : this.i.m.y().c());
+   }
+
+   public double h() {
+      return this.i.m.w().c();
+   }
+
+   public static int a(double $$0) {
+      int $$1 = 320;
+      int $$2 = 40;
+      return aym.a($$0 * 280.0 + 40.0);
+   }
+
+   public static int b(double $$0) {
+      int $$1 = 180;
+      int $$2 = 20;
+      return aym.a($$0 * 160.0 + 20.0);
+   }
+
+   public static double i() {
+      int $$0 = 180;
+      int $$1 = 20;
+      return 70.0 / (double)(b(1.0) - 20);
+   }
+
+   public int j() {
+      return this.g() / this.n();
+   }
+
+   private int n() {
+      return (int)(9.0 * (this.i.m.o().c() + 1.0));
+   }
+
+   static record a(xq a, int b) {
    }
 }

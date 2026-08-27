@@ -1,9 +1,26 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import java.util.Map;
 
-public record ash(String a, wx b, ati c, Optional<atd> d) {
-   public wx a(boolean $$0, wx $$1) {
-      return xa.a(this.c.a(wx.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xd(xd.a.a, wx.i().b(this.b).f("\n").b($$1))));
+public class ash {
+   private static final ash a = new ash(Map.of());
+   private final Map<atc<?>, ?> b;
+
+   private ash(Map<atc<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(atc<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static ash a() {
+      return a;
+   }
+
+   public static <T> ash a(atc<T> $$0, T $$1) {
+      return new ash(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> ash a(atc<T1> $$0, T1 $$1, atc<T2> $$2, T2 $$3) {
+      return new ash(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

@@ -1,28 +1,29 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class grh {
-   private final List<grg> a;
-   private final boolean b;
-   @Nullable
+public class grh implements grc {
+   public static final Codec<grh> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, grh::new)
+   );
    private final String c;
+   private final String d;
 
-   public grh(List<grg> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public grh(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public List<grg> a() {
-      return this.a;
+   @Override
+   public void a(aud $$0, grc.a $$1) {
+      akm $$2 = new akm("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         akt $$4 = $$2.b($$2x).d(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public gre a() {
+      return grf.b;
    }
 }

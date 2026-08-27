@@ -1,41 +1,54 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class fcp {
-   private static final wx a = wx.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static wx a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
+   private fcp(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public xe a(xe $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public xe a() {
+      if (!gse.a(this.c)) {
+         return null;
       } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return wx.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return wx.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return wx.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return wx.a("mco.time.daysAgo", $$4);
-         }
+         return this.d == null ? xe.c(this.c) : xe.a(this.c, this.d);
       }
    }
 
-   public static wx a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   public static fcp a(JsonObject $$0) {
+      String $$1 = fev.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new fcp($$1, $$5);
    }
 
-   public static void a(ffm $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      fdz $$5 = fdz.Q();
-      ProfileResult $$6 = $$5.am().fetchProfile($$4, false);
-      gov $$7 = $$6 != null ? $$5.an().b($$6.profile()) : gon.a($$4);
-      fgy.a($$0, $$7.a(), $$1, $$2, $$3);
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

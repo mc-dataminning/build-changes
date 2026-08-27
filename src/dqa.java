@@ -1,77 +1,54 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class dqa extends dqc {
+   public static final String a = "amount";
+   private static final double b = 10.0;
+   private static final int c = 5;
+   private static final String d = "delay";
+   private int e = 5;
+   private int f;
 
-public class dqa extends dog implements dbp, dqe.b {
-   private static final Logger a = LogUtils.getLogger();
-   private dqe b;
-
-   public dqa(io $$0, drb $$1) {
-      super(doi.Q, $$0, $$1);
-      dqd $$2 = dqd.a;
-      dqd.a $$3 = dqd.a.a;
-      this.b = new dqe(this, $$2, $$3);
+   public dqa(ir $$0, dtc $$1) {
+      super(dqe.T, $$0, $$1);
    }
 
    @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("normal_config")) {
-         ud $$2 = $$0.p("normal_config").h();
-         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
-      }
-
-      this.b.a().parse(ur.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.n != null) {
-         this.f();
-      }
+   public void a(uk $$0, jc.a $$1) {
+      this.f = $$0.h("amount");
+      this.e = $$0.h("delay");
    }
 
    @Override
-   protected void b(ud $$0, iz.a $$1) {
-      super.b($$0, $$1);
-      this.b.a().encodeStart(ur.a, this.b).ifSuccess($$1x -> $$0.a((ud)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+   protected void b(uk $$0, jc.a $$1) {
+      $$0.a("amount", this.f);
+      $$0.a("delay", this.e);
    }
 
-   public abx b() {
-      return abx.a(this);
+   public int b() {
+      return this.f;
    }
 
-   @Override
-   public ud a(iz.a $$0) {
-      return this.b.f().a(this.n().c(dmn.b));
-   }
-
-   @Override
-   public boolean q() {
-      return true;
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void a(bsa<?> $$0, ayk $$1) {
-      this.b.f().a(this.b, $$1, $$0);
-      this.e();
-   }
-
-   public dqe c() {
-      return this.b;
+   public void a(ka.a $$0) {
+      super.a($$0);
+      $$0.a(ke.ae, new cyb(this.f));
    }
 
    @Override
-   public dqh d() {
-      return !this.n().b(drr.by) ? dqh.a : this.n().c(drr.by);
+   public void a(uk $$0) {
+      $$0.r("amount");
    }
 
-   @Override
-   public void a(dax $$0, dqh $$1) {
-      this.e();
-      $$0.b(this.o, this.n().a(drr.by, $$1));
-   }
+   public static void a(dca $$0, ir $$1, dtc $$2, dqa $$3) {
+      if (--$$3.e <= 0) {
+         $$3.e = 5;
+         ewp $$4 = ewp.a(ewu.b($$1), 10.0, 10.0, 10.0);
 
-   @Override
-   public void f() {
-      this.e();
-      if (this.n != null) {
-         this.n.a(this.o, this.n(), this.n(), 3);
+         for (bse $$5 : $$0.a(dxj.a(bse.class), $$4, $$0x -> true)) {
+            $$5.a($$1);
+         }
       }
    }
 }

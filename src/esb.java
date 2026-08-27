@@ -1,48 +1,70 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record esb(ix<cyz> b, List<Float> c) implements esl {
-   public static final MapCodec<esb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(le.f.r().fieldOf("enchantment").forGetter(esb::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(esb::d)).apply($$0, esb::new)
-   );
+public class esb extends ery {
+   public static final Codec<esb> a = a(esb::new);
 
-   @Override
-   public esm b() {
-      return esn.m;
+   esb(List<esf> $$0, List<euu> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return ImmutableSet.of(erx.i);
+   public esg a() {
+      return esd.i;
    }
 
-   public boolean a(epf $$0) {
-      cto $$1 = $$0.c(erx.i);
-      int $$2 = $$1 != null ? cza.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   protected erx a(List<? extends erx> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (erx)$$0.get(0);
+         case 2 -> {
+            erx $$1 = $$0.get(0);
+            erx $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (erx $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static esl.a a(cyz $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
+   public static esb.a a(esf.a<?>... $$0) {
+      return new esb.a($$0);
+   }
 
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+   public static class a extends esf.a<esb.a> {
+      private final Builder<esf> a = ImmutableList.builder();
+
+      public a(esf.a<?>... $$0) {
+         for (esf.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return () -> new esb($$0.m(), $$2);
-   }
+      protected esb.a a() {
+         return this;
+      }
 
-   public ix<cyz> c() {
-      return this.b;
-   }
+      @Override
+      public esb.a b(esf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public List<Float> d() {
-      return this.c;
+      @Override
+      public esf b() {
+         return new esb(this.a.build(), this.f());
+      }
    }
 }

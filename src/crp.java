@@ -1,15 +1,8 @@
-public class crp extends ctj {
-   public crp(ctj.a $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public boolean a(cto $$0) {
-      return $$0.I() == 1;
-   }
-
-   @Override
-   public int g() {
-      return 1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@u
+@x
+interface crp {
 }

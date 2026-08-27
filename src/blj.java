@@ -1,6 +1,8 @@
-public interface blj {
-   blj a = () -> {
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void cut();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface blj {
 }

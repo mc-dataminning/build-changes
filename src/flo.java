@@ -1,58 +1,64 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class flo extends fma {
-   private static final wx a = wx.c("options.online.title");
-   @Nullable
-   private final fec<Unit> u;
+public class flo {
+   private static long a = 0L;
 
-   public static flo a(fdz $$0, fly $$1, fed $$2) {
-      List<fec<?>> $$3 = new ArrayList<>();
-      $$3.add($$2.T());
-      $$3.add($$2.U());
-      fec<Unit> $$4 = x.a(
-         $$0.r,
-         $$0x -> {
-            bpr $$1x = $$0x.ak();
-            return new fec<>(
-               "options.difficulty.online",
-               fec.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fec.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
+   public static long a() {
+      if (a == 0L) {
+         MemoryStack $$0 = MemoryStack.stackPush();
+
+         try {
+            PointerBuffer $$1 = $$0.mallocPointer(1);
+            a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+            a = $$1.get();
+         } catch (Throwable var4) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var3) {
+                  var4.addSuppressed(var3);
                }
-            );
+            }
+
+            throw var4;
          }
-      );
-      if ($$4 != null) {
-         $$3.add($$4);
-      }
 
-      return new flo($$1, $$2, $$3.toArray(new fec[0]), $$4);
-   }
-
-   private flo(fly $$0, fed $$1, fec<?>[] $$2, @Nullable fec<Unit> $$3) {
-      super($$0, $$1, a, $$2);
-      this.u = $$3;
-   }
-
-   @Override
-   protected void aM_() {
-      super.aM_();
-      if (this.u != null) {
-         ffx $$0 = this.s.b(this.u);
          if ($$0 != null) {
-            $$0.j = false;
+            $$0.close();
          }
       }
 
-      ffx $$1 = this.s.b(this.c.ai());
-      if ($$1 != null) {
-         $$1.j = this.m.D();
+      return a;
+   }
+
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
+   }
+
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   }
+
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
+   }
+
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
+   }
+
+   public static void b() {
+      if (a != 0L) {
+         FreeType.FT_Done_Library(a);
+         a = 0L;
       }
    }
 }

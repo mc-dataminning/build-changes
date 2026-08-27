@@ -1,56 +1,27 @@
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fcz implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fcz extends fcy {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   protected static void a(long $$0) {
+   public static fcz a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fcz $$3 = new fcz();
+
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         $$3.a = fev.b("downloadLink", $$2, "");
+         $$3.b = fev.b("resourcePackUrl", $$2, "");
+         $$3.c = fev.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
-   }
 
-   public static void a(fly $$0) {
-      fdz $$1 = fdz.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(wx $$0) {
-      this.b();
-      fdz $$1 = fdz.Q();
-      $$1.execute(() -> $$1.a(new fbm($$0, new ezd(new fmd()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fav $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wx.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(fav $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract wx a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+      return $$3;
    }
 }

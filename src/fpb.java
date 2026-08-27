@@ -1,63 +1,133 @@
-import javax.annotation.Nullable;
+enum fpb {
+   a(
+      new fpb.a(
+         new akt("advancements/tab_above_left_selected"), new akt("advancements/tab_above_middle_selected"), new akt("advancements/tab_above_right_selected")
+      ),
+      new fpb.a(new akt("advancements/tab_above_left"), new akt("advancements/tab_above_middle"), new akt("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fpb.a(
+         new akt("advancements/tab_below_left_selected"), new akt("advancements/tab_below_middle_selected"), new akt("advancements/tab_below_right_selected")
+      ),
+      new fpb.a(new akt("advancements/tab_below_left"), new akt("advancements/tab_below_middle"), new akt("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fpb.a(
+         new akt("advancements/tab_left_top_selected"), new akt("advancements/tab_left_middle_selected"), new akt("advancements/tab_left_bottom_selected")
+      ),
+      new fpb.a(new akt("advancements/tab_left_top"), new akt("advancements/tab_left_middle"), new akt("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fpb.a(
+         new akt("advancements/tab_right_top_selected"), new akt("advancements/tab_right_middle_selected"), new akt("advancements/tab_right_bottom_selected")
+      ),
+      new fpb.a(new akt("advancements/tab_right_top"), new akt("advancements/tab_right_middle"), new akt("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-public abstract class fpb extends fly {
-   private static final int b = 100;
-   private final wx c;
-   @Nullable
-   private final wx d;
-   private final wx r;
-   @Nullable
-   protected fgb a;
-   @Nullable
-   private fgk s;
-   private final fjk u;
+   private final fpb.a e;
+   private final fpb.a f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   protected fpb(wx $$0, wx $$1, wx $$2) {
-      this($$0, $$1, null, $$2);
+   private fpb(fpb.a $$0, fpb.a $$1, int $$2, int $$3, int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   protected fpb(wx $$0, wx $$1, @Nullable wx $$2, wx $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.r = $$3;
-      this.u = new fjk(0, 0, this.n, this.o);
+   public int a() {
+      return this.i;
    }
 
-   protected abstract fjn m();
-
-   @Override
-   protected void aM_() {
-      fjq $$0 = this.u.a(fjq.d().a(8));
-      $$0.c().b();
-      $$0.a(new fhg(this.n(), this.p));
-      this.s = $$0.a(new fgk(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.s.b(false);
-      fjq $$1 = $$0.a(fjq.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fgb.a(this.d, this.p).a());
+   public void a(fia $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fpb.a $$5 = $$3 ? this.e : this.f;
+      akt $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
+      } else {
+         $$6 = $$5.b();
       }
 
-      $$1.a(this.m());
-      this.u.a($$1x -> {
-         ffx var10000 = this.c($$1x);
-      });
-      this.c();
+      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void c() {
-      if (this.s != null) {
-         this.s.d(this.n - 100);
+   public void a(fia $$0, int $$1, int $$2, int $$3, cuh $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
       }
 
-      this.u.a();
-      fjk.a(this.u, this.G());
+      $$0.b($$4, $$5, $$6);
    }
 
-   @Override
-   public wx i() {
-      return this.r;
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(akt a, akt b, akt c) {
    }
 }

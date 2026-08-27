@@ -1,42 +1,21 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class egs extends egq {
-   public static final MapCodec<egs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(boz.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), boz.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, egs::new)
-   );
-   private final boz c;
-   private final boz d;
+public class egs extends egl {
+   public static final Codec<egs> b = dtc.b.fieldOf("state").xmap(dtb.a::b, dfc::n).xmap(egs::new, $$0 -> $$0.c).codec();
+   private final dfc c;
 
-   public static egs a(boz $$0, boz $$1) {
-      return new egs($$0, $$1);
-   }
-
-   public static egs a(boz $$0) {
-      return new egs(bow.a(0), $$0);
-   }
-
-   public static egs b(boz $$0) {
-      return new egs($$0, bow.a(0));
-   }
-
-   private egs(boz $$0, boz $$1) {
+   public egs(dfc $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
    @Override
-   public Stream<io> a_(ego $$0, ayk $$1, io $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new io($$3, $$4, $$5));
+   protected egm<?> a() {
+      return egm.f;
    }
 
    @Override
-   public egr<?> b() {
-      return egr.n;
+   public dtc a(ayt $$0, ir $$1) {
+      iw.a $$2 = iw.a.a($$0);
+      return this.c.n().a(dmc.i, $$2);
    }
 }

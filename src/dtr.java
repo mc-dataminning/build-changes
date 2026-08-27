@@ -1,283 +1,102 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class dtr extends dsx {
-   @Nullable
-   private volatile emj n;
-   private volatile dtw o = dtw.c;
-   private final List<ud> p = Lists.newArrayList();
-   private final Map<dwp.a, dsw> q = new Object2ObjectArrayMap();
-   @Nullable
-   private dwh r;
-   private final evz<ddy> s;
-   private final evz<emt> t;
+public record dtr(String s, boolean t, boolean u, boolean v, dtr.a w, dnd x, avn y, avn z, avn A, avn B, avn C, avn D, avn E, avn F) {
+   private static final Map<String, dtr> G = new Object2ObjectArrayMap();
+   public static final Codec<dtr> a = axu.a(dtr::b, G::get);
+   public static final dtr b = a(new dtr("iron", false, false, false, dtr.a.a, dnd.g, avo.nC, avo.nD, avo.nK, avo.nL, avo.ph, avo.pi, avo.zz, avo.zA));
+   public static final dtr c = a(new dtr("copper", true, true, false, dtr.a.a, dnd.aj, avo.fN, avo.fO, avo.fU, avo.fV, avo.ph, avo.pi, avo.zz, avo.zA));
+   public static final dtr d = a(new dtr("gold", false, true, false, dtr.a.a, dnd.g, avo.nC, avo.nD, avo.nK, avo.nL, avo.ph, avo.pi, avo.zz, avo.zA));
+   public static final dtr e = a(new dtr("stone", true, true, false, dtr.a.b, dnd.f, avo.nC, avo.nD, avo.nK, avo.nL, avo.zE, avo.zF, avo.zz, avo.zA));
+   public static final dtr f = a(
+      new dtr("polished_blackstone", true, true, false, dtr.a.b, dnd.f, avo.nC, avo.nD, avo.nK, avo.nL, avo.zE, avo.zF, avo.zz, avo.zA)
+   );
+   public static final dtr g = a(new dtr("oak"));
+   public static final dtr h = a(new dtr("spruce"));
+   public static final dtr i = a(new dtr("birch"));
+   public static final dtr j = a(new dtr("acacia"));
+   public static final dtr k = a(new dtr("cherry", true, true, true, dtr.a.a, dnd.aZ, avo.eJ, avo.eK, avo.eL, avo.eM, avo.eP, avo.eQ, avo.eN, avo.eO));
+   public static final dtr l = a(new dtr("jungle"));
+   public static final dtr m = a(new dtr("dark_oak"));
+   public static final dtr n = a(new dtr("crimson", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
+   public static final dtr o = a(new dtr("warped", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
+   public static final dtr p = a(new dtr("potato", true, true, true, dtr.a.a, dnd.aT, avo.rk, avo.rl, avo.rm, avo.rn, avo.rq, avo.rr, avo.ro, avo.rp));
+   public static final dtr q = a(new dtr("mangrove"));
+   public static final dtr r = a(new dtr("bamboo", true, true, true, dtr.a.a, dnd.aS, avo.bt, avo.bu, avo.bv, avo.bw, avo.bz, avo.bA, avo.bx, avo.by));
 
-   public dtr(dae $$0, dtu $$1, daz $$2, jk<dbw> $$3, @Nullable dxw $$4) {
-      this($$0, $$1, null, new evz<>(), new evz<>(), $$2, $$3, $$4);
+   public dtr(String $$0) {
+      this($$0, true, true, true, dtr.a.a, dnd.b, avo.Dp, avo.Dq, avo.Dr, avo.Ds, avo.Dv, avo.Dw, avo.Dt, avo.Du);
    }
 
-   public dtr(dae $$0, dtu $$1, @Nullable dti[] $$2, evz<ddy> $$3, evz<emt> $$4, daz $$5, jk<dbw> $$6, @Nullable dxw $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
+   private static dtr a(dtr $$0) {
+      G.put($$0.s, $$0);
+      return $$0;
    }
 
-   @Override
-   public ewe<ddy> o() {
+   public static Stream<dtr> a() {
+      return G.values().stream();
+   }
+
+   public String b() {
       return this.s;
    }
 
-   @Override
-   public ewe<emt> p() {
+   public boolean c() {
       return this.t;
    }
 
-   @Override
-   public dsx.a q() {
-      return new dsx.a(this.s, this.t);
+   public boolean d() {
+      return this.u;
    }
 
-   @Override
-   public drb a_(io $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return dea.nb.n();
-      } else {
-         dti $$2 = this.b(this.e($$1));
-         return $$2.c() ? dea.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
+   public boolean e() {
+      return this.v;
    }
 
-   @Override
-   public emu b_(io $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return emv.a.g();
-      } else {
-         dti $$2 = this.b(this.e($$1));
-         return $$2.c() ? emv.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
-      }
+   public dtr.a f() {
+      return this.w;
    }
 
-   @Nullable
-   @Override
-   public drb a(io $$0, drb $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.I_() && $$4 < this.al()) {
-         int $$6 = this.e($$4);
-         dti $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(dea.a)) {
-            return $$1;
-         } else {
-            int $$9 = jq.b($$3);
-            int $$10 = jq.b($$4);
-            int $$11 = jq.b($$5);
-            drb $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dtw.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
-
-               if (eml.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
-            }
-
-            EnumSet<dwt.a> $$14 = this.j().h();
-            EnumSet<dwt.a> $$15 = null;
-
-            for (dwt.a $$16 : $$14) {
-               dwt $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dwt.a.class);
-                  }
-
-                  $$15.add($$16);
-               }
-            }
-
-            if ($$15 != null) {
-               dwt.a(this, $$15);
-            }
-
-            for (dwt.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
-         }
-      } else {
-         return dea.nb.n();
-      }
+   public dnd g() {
+      return this.x;
    }
 
-   @Override
-   public void a(dog $$0) {
-      this.k.put($$0.az_(), $$0);
+   public avn h() {
+      return this.y;
    }
 
-   @Nullable
-   @Override
-   public dog c_(io $$0) {
-      return this.k.get($$0);
+   public avn i() {
+      return this.z;
    }
 
-   public Map<io, dog> D() {
-      return this.k;
+   public avn j() {
+      return this.A;
    }
 
-   public void b(ud $$0) {
-      this.p.add($$0);
+   public avn k() {
+      return this.B;
    }
 
-   @Override
-   public void a(bru $$0) {
-      if (!$$0.bR()) {
-         ud $$1 = new ud();
-         $$0.e($$1);
-         this.b($$1);
-      }
+   public avn l() {
+      return this.C;
    }
 
-   @Override
-   public void a(ehj $$0, ehr $$1) {
-      dwh $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         ehb $$3 = $$1.a();
-         daz $$4 = this.z();
-         if ($$3.i() < $$4.I_() || $$3.l() >= $$4.al()) {
-            return;
-         }
-      }
-
-      super.a($$0, $$1);
+   public avn m() {
+      return this.D;
    }
 
-   public List<ud> E() {
-      return this.p;
+   public avn n() {
+      return this.E;
    }
 
-   @Override
-   public dtw j() {
-      return this.o;
+   public avn o() {
+      return this.F;
    }
 
-   public void a(dtw $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
-      }
-
-      this.a(true);
-   }
-
-   @Override
-   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dtw.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
-      }
-   }
-
-   public static short g(io $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
-
-   public static io a(short $$0, int $$1, dae $$2) {
-      int $$3 = jq.a($$2.e, $$0 & 15);
-      int $$4 = jq.a($$1, $$0 >>> 4 & 15);
-      int $$5 = jq.a($$2.f, $$0 >>> 8 & 15);
-      return new io($$3, $$4, $$5);
-   }
-
-   @Override
-   public void e(io $$0) {
-      if (!this.s($$0)) {
-         dsx.a(this.b, this.e($$0.v())).add(g($$0));
-      }
-   }
-
-   @Override
-   public void a(short $$0, int $$1) {
-      dsx.a(this.b, $$1).add($$0);
-   }
-
-   public Map<io, ud> F() {
-      return Collections.unmodifiableMap(this.j);
-   }
-
-   @Nullable
-   @Override
-   public ud a(io $$0, iz.a $$1) {
-      dog $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
-   }
-
-   @Override
-   public void d(io $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public dsw a(dwp.a $$0) {
-      return this.q.get($$0);
-   }
-
-   public dsw b(dwp.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new dsw(this.J_(), this.I_()));
-   }
-
-   public void a(dwp.a $$0, dsw $$1) {
-      this.q.put($$0, $$1);
-   }
-
-   public void a(emj $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable dwh $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dwh x() {
-      return this.r;
-   }
-
-   private static <T> evw<T> a(evz<T> $$0) {
-      return new evw<>($$0.b());
-   }
-
-   public evw<ddy> G() {
-      return a(this.s);
-   }
-
-   public evw<emt> H() {
-      return a(this.t);
-   }
-
-   @Override
-   public daz z() {
-      return (daz)(this.y() ? dwh.b : this);
+   public static enum a {
+      a,
+      b;
    }
 }

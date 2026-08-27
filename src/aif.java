@@ -1,7 +1,33 @@
-public class aif {
-   public static final zg<aie> a = a("intention");
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private static <T extends ze<aih>> zg<T> a(String $$0) {
-      return new zg<>(zf.a, new akm($$0));
+public class aif implements zl<agl> {
+   public static final zc<we, aif> a = zl.a(aif::a, aif::new);
+   private final UUID b;
+
+   public aif(UUID $$0) {
+      this.b = $$0;
+   }
+
+   private aif(we $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zn<aif> a() {
+      return agj.cb;
+   }
+
+   public void a(agl $$0) {
+      $$0.a(this);
+   }
+
+   @Nullable
+   public brv a(aqt $$0) {
+      return $$0.a(this.b);
    }
 }

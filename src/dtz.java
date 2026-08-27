@@ -1,6 +1,23 @@
-import java.util.concurrent.CompletableFuture;
+public enum dtz implements azg {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-@FunctionalInterface
-public interface dtz {
-   CompletableFuture<dsx> apply(dsx var1);
+   private final String f;
+
+   private dtz(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

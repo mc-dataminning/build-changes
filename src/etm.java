@@ -1,31 +1,29 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record etm(epf.b c) implements etp {
-   public static final MapCodec<etm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(epf.b.e.fieldOf("target").forGetter(etm::c)).apply($$0, etm::new));
-   public static final Codec<etm> b = epf.b.e.xmap(etm::new, etm::c);
+public class etm extends eta {
+   public static final Codec<etm> a = RecordCodecBuilder.create($$0 -> a($$0).and(vi.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, etm::new));
+   private final uk b;
 
-   public static etp a(epf.b $$0) {
-      return new etm($$0);
+   private etm(List<euu> $$0, uk $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eto a() {
-      return etq.c;
-   }
-
-   @Nullable
-   @Override
-   public evn a(epf $$0) {
-      return $$0.c(this.c.a());
+   public etc b() {
+      return etd.i;
    }
 
    @Override
-   public Set<eru<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public cuh a(cuh $$0, erp $$1) {
+      cxf.a(ke.a, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
+   }
+
+   @Deprecated
+   public static eta.a<?> a(uk $$0) {
+      return a($$1 -> new etm($$1, $$0));
    }
 }

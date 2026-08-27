@@ -1,65 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+public class axw {
+   public static class a {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-public record axw<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<axw<Integer>> a = a(Codec.INT);
+      public static int b(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   public axw(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
+
+      public static int d(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
+
+      public static int e(int $$0) {
+         return $$0 & 16777215;
+      }
+
+      public static int f(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
+
+      public static int a(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
       }
    }
 
-   public axw(T $$0) {
-      this($$0, $$0);
-   }
+   public static class b {
+      public static int a(int $$0) {
+         return $$0 >>> 24;
+      }
 
-   public static <T extends Comparable<T>> Codec<axw<T>> a(Codec<T> $$0) {
-      return axm.a($$0, "min_inclusive", "max_inclusive", axw::a, axw::a, axw::b);
-   }
+      public static int b(int $$0) {
+         return $$0 >> 16 & 0xFF;
+      }
 
-   public static <T extends Comparable<T>> Codec<axw<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return a($$0)
-         .validate(
-            $$2x -> {
-               if ($$2x.a().compareTo($$1) < 0) {
-                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-               } else {
-                  return $$2x.b().compareTo($$2) > 0
-                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                     : DataResult.success($$2x);
-               }
-            }
-         );
-   }
+      public static int c(int $$0) {
+         return $$0 >> 8 & 0xFF;
+      }
 
-   public static <T extends Comparable<T>> DataResult<axw<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new axw($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
+      public static int d(int $$0) {
+         return $$0 & 0xFF;
+      }
 
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
+      public static int a(int $$0, int $$1, int $$2, int $$3) {
+         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+      }
 
-   public boolean a(axw<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
-   }
+      public static int a(int $$0, int $$1, int $$2) {
+         return a(255, $$0, $$1, $$2);
+      }
 
-   @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
+      public static int a(int $$0, int $$1) {
+         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
 
-   public T a() {
-      return this.b;
-   }
+      public static int a(float $$0, int $$1, int $$2) {
+         int $$3 = aym.a($$0, a($$1), a($$2));
+         int $$4 = aym.a($$0, b($$1), b($$2));
+         int $$5 = aym.a($$0, c($$1), c($$2));
+         int $$6 = aym.a($$0, d($$1), d($$2));
+         return a($$3, $$4, $$5, $$6);
+      }
 
-   public T b() {
-      return this.c;
+      public static int e(int $$0) {
+         return $$0 | 0xFF000000;
+      }
+
+      public static int b(int $$0, int $$1) {
+         return $$0 << 24 | $$1 & 16777215;
+      }
    }
 }

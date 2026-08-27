@@ -1,45 +1,61 @@
-import java.util.List;
+import java.util.UUID;
 
-public record aal(int c, io d, List<aal.a> e) implements aaf {
-   public static final yv<vx, aal> a = aaf.a(aal::a, aal::new);
-   public static final aaf.b<aal> b = aaf.a("debug/goal_selector");
+public record aal(aal.a c) implements aam {
+   public static final zc<we, aal> a = aam.a(aal::a, aal::new);
+   public static final aam.b<aal> b = aam.a("debug/breeze");
 
-   private aal(vx $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(aal.a::new));
+   private aal(we $$0) {
+      this(new aal.a($$0));
    }
 
-   private void a(vx $$0) {
-      $$0.p(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(we $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aaf.b<aal> a() {
+   public aam.b<aal> a() {
       return b;
    }
 
-   public int b() {
+   public aal.a b() {
       return this.c;
    }
 
-   public io c() {
-      return this.d;
-   }
-
-   public List<aal.a> d() {
-      return this.e;
-   }
-
-   public static record a(int a, boolean b, String c) {
-      public a(vx $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+   public static record a(UUID a, int b, Integer c, ir d) {
+      public a(we $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(we::readInt), $$0.c(ir.b));
       }
 
-      public void a(vx $$0) {
-         $$0.p(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
+      public void a(we $$0) {
+         $$0.a(this.a);
+         $$0.p(this.b);
+         $$0.a(this.c, we::p);
+         $$0.a(this.d, ir.b);
+      }
+
+      public String a() {
+         return agh.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public ir e() {
+         return this.d;
       }
    }
 }

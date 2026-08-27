@@ -1,13 +1,25 @@
-public class dpx extends dog {
-   protected dpx(doi<?> $$0, io $$1, drb $$2) {
-      super($$0, $$1, $$2);
+public class dpx extends dqc {
+   private csy a;
+
+   public dpx(ir $$0, dtc $$1) {
+      super(dqe.z, $$0, $$1);
+      this.a = ((deu)$$1.b()).b();
    }
 
-   public dpx(io $$0, drb $$1) {
-      this(doi.n, $$0, $$1);
+   public dpx(ir $$0, dtc $$1, csy $$2) {
+      super(dqe.z, $$0, $$1);
+      this.a = $$2;
    }
 
-   public boolean a(it $$0) {
-      return $$0.o() == it.a.b;
+   public ace b() {
+      return ace.a(this);
+   }
+
+   public csy c() {
+      return this.a;
+   }
+
+   public void a(csy $$0) {
+      this.a = $$0;
    }
 }

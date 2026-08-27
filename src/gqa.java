@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gqa {
-   gqh a(akm var1);
-
-   @Nullable
-   gpw a(akm var1, gqe var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface gqa {
 }

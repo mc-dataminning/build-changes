@@ -1,48 +1,22 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkk extends ddy {
-   public static final MapCodec<dkk> h = b(dkk::new);
-   public static final drz<it.a> i = drr.I;
+public class dkk extends dnh {
+   public static final MapCodec<dkk> a = b(dkk::new);
 
    @Override
-   public MapCodec<? extends dkk> a() {
-      return h;
+   public MapCodec<dkk> a() {
+      return a;
    }
 
-   public dkk(dra.d $$0) {
+   public dkk(dtb.d $$0) {
       super($$0);
-      this.k(this.n().a(i, it.a.b));
    }
 
    @Override
-   protected drb a(drb $$0, dkl $$1) {
-      return b($$0, $$1);
-   }
-
-   public static drb b(drb $$0, dkl $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((it.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, it.a.c);
-               case c:
-                  return $$0.a(i, it.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(lb.X, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public drb a(cwz $$0) {
-      return this.n().a(i, $$0.k().o());
    }
 }

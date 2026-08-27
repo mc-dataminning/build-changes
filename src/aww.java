@@ -1,77 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class aww<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
-
-   public aww(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
+public class aww {
+   public static Map<aks<? extends jn<?>>, aww.a> a(jh<alc> $$0) {
+      return jr.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> ((aww.a)$$0x.getSecond()).a() > 0)
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
+   private static <T> aww.a a(jn<T> $$0) {
+      Map<akt, IntList> $$1 = new HashMap<>();
+      $$0.i().forEach($$2 -> {
+         je<T> $$3 = (je<T>)$$2.getSecond();
+         IntList $$4 = new IntArrayList($$3.b());
 
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
+         for (ja<T> $$5 : $$3) {
+            if ($$5.f() != ja.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
+            }
+
+            $$4.add($$0.a($$5.a()));
+         }
+
+         $$1.put(((awt)$$2.getFirst()).b(), $$4);
+      });
+      return new aww.a($$1);
+   }
+
+   static <T> void a(aks<? extends jn<T>> $$0, jn<T> $$1, aww.a $$2, aww.b<T> $$3) {
+      $$2.a.forEach(($$3x, $$4) -> {
+         awt<T> $$5 = awt.a($$0, $$3x);
+         List<ja<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.accept($$5, $$6);
+      });
+   }
+
+   public static final class a {
+      final Map<akt, IntList> a;
+
+      a(Map<akt, IntList> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(we $$0) {
+         $$0.a(this.a, we::a, we::a);
+      }
+
+      public static aww.a b(we $$0) {
+         return new aww.a($$0.a(we::q, we::a));
+      }
+
+      public int a() {
+         return this.a.size();
+      }
+
+      public <T> void a(jn<T> $$0) {
+         if (this.a() != 0) {
+            Map<awt<T>, List<ja<T>>> $$1 = new HashMap<>(this.a());
+            aww.a($$0.c(), $$0, this, $$1::put);
+            $$0.a($$1);
          }
       }
-
-      return $$1;
    }
 
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
-      } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ac.b()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
-      }
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
-   }
-
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
-   }
-
-   @Override
-   public int size() {
-      return this.c.size();
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(awt<T> var1, List<ja<T>> var2);
    }
 }

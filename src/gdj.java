@@ -1,49 +1,44 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class gdj extends gdu {
+   private final gdp a;
 
-public class gdj {
-   public static final int a = -1;
-   public final it b;
-   public final int c;
-   public final String d;
-   public final gdl e;
-
-   public gdj(@Nullable it $$0, int $$1, String $$2, gdl $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   protected gdj(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   protected static class a implements JsonDeserializer<gdj> {
-      private static final int a = -1;
+   @Override
+   public gcy b() {
+      return gcy.b;
+   }
 
-      public gdj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         it $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gdl $$7 = (gdl)$$2.deserialize($$3, gdl.class);
-         return new gdj($$4, $$5, $$6, $$7);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
+
+   public static class a implements gcx<le> {
+      private final gdp a;
+
+      public a(gdp $$0) {
+         this.a = $$0;
       }
 
-      protected int a(JsonObject $$0) {
-         return axu.a($$0, "tintindex", -1);
-      }
-
-      private String b(JsonObject $$0) {
-         return axu.i($$0, "texture");
-      }
-
-      @Nullable
-      private it c(JsonObject $$0) {
-         String $$1 = axu.a($$0, "cullface", "");
-         return it.a($$1);
+      public gcu a(le $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
    }
 }

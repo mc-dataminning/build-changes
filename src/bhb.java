@@ -1,22 +1,26 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
-public class bhb extends bex {
-   public bhb(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", bfy.s, "minecraft:chest");
+public class bhb extends bfe {
+   private final Map<String, String> a;
+
+   public bhb(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
       return $$0.update(
          DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+            )
       );
    }
 }

@@ -1,74 +1,67 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.Function;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class gtc {
-   public static final gtc a = new gtc(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<gsy<gtc.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   public static final Comparator<gtc> a = Comparator.<gtc, akt>comparing(gtc::a).thenComparing(gtc::b);
+   private final akt b;
+   private final akt c;
+   @Nullable
+   private gfo d;
 
-   protected gtc(Ticker $$0) {
-      this.c = $$0;
+   public gtc(akt $$0, akt $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public synchronized void a(gsy<gtc.a> $$0) {
-      this.a($$0, (Function<gsy<gtc.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   public akt a() {
+      return this.b;
    }
 
-   public synchronized void a(gsy<gtc.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<gsy<gtc.a>, Stopwatch>)($$1x -> $$1));
+   public akt b() {
+      return this.c;
    }
 
-   private synchronized void a(gsy<gtc.a> $$0, Function<gsy<gtc.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
+   public gqy c() {
+      return fgj.Q().a(this.a()).apply(this.b());
    }
 
-   public synchronized void b(gsy<gtc.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+   public gfo a(Function<akt, gfo> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
+   }
+
+   public fbg a(gfg $$0, Function<akt, gfo> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public fbg a(gfg $$0, Function<akt, gfo> $$1, boolean $$2) {
+      return this.c().a(glp.c($$0, this.a($$1), true, $$2));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gtc $$1 = (gtc)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+         return false;
       }
    }
 
-   public void a(gsv $$0) {
-      $$0.send(gsw.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((gsy<gtc.a>)$$1, new gtc.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gsw.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(gsy.B, new gtc.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<gtc.a> a = Codec.INT.xmap(gtc.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

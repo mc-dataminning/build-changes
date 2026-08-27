@@ -1,27 +1,46 @@
-public class ghz extends ghs<cmj> {
-   private final gir a;
+import org.joml.Matrix4f;
 
-   public ghz(ght.a $$0) {
-      super($$0);
-      this.a = $$0.b();
+public class ghz<T extends dry> implements ghg<T> {
+   public static final akt a = new akt("textures/environment/end_sky.png");
+   public static final akt b = new akt("textures/entity/end_portal.png");
+
+   public ghz(ghh.a $$0) {
    }
 
-   public void a(cmj $$0, float $$1, float $$2, eys $$3, gck $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.u()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
+   public void a(T $$0, float $$1, fbc $$2, gfg $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fbg $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, iw.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, iw.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, iw.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, iw.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, iw.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, iw.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fbg $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, iw $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
-
-      this.a.a($$0.p(), ctl.h, $$5, gnm.d, $$3, $$4, $$0.dP(), $$0.al());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akm a(cmj $$0) {
-      return gnu.e;
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gfo d() {
+      return gfo.u();
    }
 }

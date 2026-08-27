@@ -3,23 +3,36 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bwm {
-   private static final int a = 1;
+   public static bvr<cll> a(cbr<iz> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bxt.a(
+         (Function<bxt.b<cll>, ? extends App<bxt.c<cll>, bxw<cll>>>)($$5 -> $$5.group($$5.a(cbr.E), $$5.c(cbr.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     iz $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.du()) > $$3) {
+                           ewu $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static bui<bsq> a(float $$0) {
-      return a($$1 -> $$0);
-   }
+                           while ($$14 == null || ir.a($$14).k($$10.du()) > $$3) {
+                              $$14 = cdi.a($$10, 15, 7, ewu.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   public static bui<bsq> a(Function<bso, Float> $$0) {
-      return bxu.a(
-         (Function<bxu.b<bsq>, ? extends App<bxu.c<bsq>, bxx<bsq>>>)($$1 -> $$1.group($$1.a(cbs.m), $$1.a(cbs.n), $$1.b(cbs.o), $$1.a(cbs.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bso $$9 = $$1.b($$4);
-                     Optional<cbu> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && buj.a($$7, $$9, 1)) {
-                        $$2.b();
+                           $$7.a(new cbu($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.du()) > $$2) {
+                           $$7.a(new cbu($$12.b(), $$1, $$2));
+                        }
                      } else {
-                        $$3.a(new bus($$9, true));
-                        $$2.a(new cbv(new bus($$9, false), $$0.apply($$7), 0));
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
                      }
 
                      return true;

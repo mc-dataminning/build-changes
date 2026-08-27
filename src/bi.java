@@ -1,58 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record bi(ct.c b, ct.c c, ct.c d, ct.c e, ct.c f) {
-   public static final Codec<bi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ct.c.d.optionalFieldOf("x", ct.c.c).forGetter(bi::a),
-               ct.c.d.optionalFieldOf("y", ct.c.c).forGetter(bi::b),
-               ct.c.d.optionalFieldOf("z", ct.c.c).forGetter(bi::c),
-               ct.c.d.optionalFieldOf("horizontal", ct.c.c).forGetter(bi::d),
-               ct.c.d.optionalFieldOf("absolute", ct.c.c).forGetter(bi::e)
-            )
-            .apply($$0, bi::new)
-   );
-
-   public static bi a(ct.c $$0) {
-      return new bi(ct.c.c, ct.c.c, ct.c.c, $$0, ct.c.c);
+public class bi extends dh<bi.a> {
+   @Override
+   public Codec<bi.a> a() {
+      return bi.a.a;
    }
 
-   public static bi b(ct.c $$0) {
-      return new bi(ct.c.c, $$0, ct.c.c, ct.c.c, ct.c.c);
+   public void a(aqu $$0, ir $$1) {
+      aqt $$2 = $$0.B();
+      dtc $$3 = $$2.a_($$1);
+      ers $$4 = new ers.a($$2).a(eug.f, $$1.b()).a(eug.a, $$0).a(eug.g, $$3).a(euf.o);
+      erp $$5 = new erp.a($$4).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$5));
    }
 
-   public static bi c(ct.c $$0) {
-      return new bi(ct.c.c, ct.c.c, ct.c.c, ct.c.c, $$0);
-   }
+   public static record a(Optional<bd> b, Optional<bd> c) implements dh.a {
+      public static final Codec<bi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axu.a(bs.b, "player").forGetter(bi.a::a), axu.a(bd.a, "location").forGetter(bi.a::b)).apply($$0, bi.a::new)
+      );
 
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)ayd.e($$6)) || !this.c.d((double)ayd.e($$7)) || !this.d.d((double)ayd.e($$8))) {
-         return false;
-      } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+      public boolean a(erp $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
-   }
 
-   public ct.c a() {
-      return this.b;
-   }
+      @Override
+      public void a(be $$0) {
+         dh.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, euf.o, ".location"));
+      }
 
-   public ct.c b() {
-      return this.c;
-   }
+      @Override
+      public Optional<bd> a() {
+         return this.b;
+      }
 
-   public ct.c c() {
-      return this.d;
-   }
-
-   public ct.c d() {
-      return this.e;
-   }
-
-   public ct.c e() {
-      return this.f;
+      public Optional<bd> b() {
+         return this.c;
+      }
    }
 }

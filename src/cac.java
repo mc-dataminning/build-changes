@@ -1,65 +1,49 @@
 import java.util.EnumSet;
 
-public class cac extends bzm {
-   private final bsq a;
-   private bso b;
-   private int c;
+public class cac extends bzl {
+   private static final cde b = cde.b().a(6.0);
+   public static final int a = 400;
+   private final ceq c;
+   private cll d;
+   private int e;
 
-   public cac(bsq $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzm.a.a, bzm.a.b));
+   public cac(ceq $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(bzl.a.a, bzl.a.b));
    }
 
    @Override
    public boolean a() {
-      bso $$0 = this.a.p();
-      if ($$0 == null) {
+      if (!this.c.dU().R()) {
+         return false;
+      } else if (this.c.et().a(8000) != 0) {
          return false;
       } else {
-         this.b = $$0;
-         return true;
+         this.d = this.c.dU().a(cll.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cP().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bD()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.K().l() || this.a();
-      }
+      return this.e > 0;
+   }
+
+   @Override
+   public void c() {
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.K().n();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+      this.c.w(false);
+      this.d = null;
    }
 
    @Override
    public void e() {
-      this.a.G().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dj() * 2.0F * this.a.dj() * 2.0F);
-      double $$1 = this.a.i(this.b.du(), this.b.dw(), this.b.dA());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.K().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.C(this.b);
-         }
-      }
+      this.c.F().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

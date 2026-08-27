@@ -1,24 +1,45 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class afy implements zl<abw> {
+   public static final zc<we, afy> a = zl.a(afy::a, afy::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record afy(ix<dut> a, akl<dax> b, long c, dau d, @Nullable dau e, boolean f, boolean g, Optional<iw> h, int i) {
-   private static final yv<wi, ix<dut>> j = yt.b(lf.aE);
-
-   public afy(wi $$0) {
-      this(
-         j.decode($$0), $$0.a(lf.aS), $$0.readLong(), dau.a($$0.readByte()), dau.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(vx::h), $$0.l()
-      );
+   public afy(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(wi $$0) {
-      j.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(dau.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, vx::a);
-      $$0.c(this.i);
+   private afy(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public zn<afy> a() {
+      return agj.ba;
+   }
+
+   public void a(abw $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

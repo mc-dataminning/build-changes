@@ -1,54 +1,50 @@
 import java.util.List;
 
-public class cun extends ctj {
-   public cun(ctj.a $$0) {
+public class cun extends cuc {
+   public cun(cuc.a $$0) {
       super($$0);
    }
 
-   public static cwt h() {
-      return new cwt(List.of(cwt.a.a(List.of(dea.bs), 15.0F), cwt.a.b(avw.O, 15.0F), cwt.a.b(avw.a, 5.0F), cwt.a.b(List.of(dea.ff, dea.fg), 2.0F)), 1.0F, 1);
-   }
-
    @Override
-   public boolean a(cto $$0, dax $$1, drb $$2, io $$3, bso $$4) {
-      if (!$$1.B && !$$2.a(avw.aK)) {
-         $$0.a(1, $$4, bsb.a);
-      }
-
-      return $$2.a(avw.O)
-         || $$2.a(dea.bs)
-         || $$2.a(dea.bt)
-         || $$2.a(dea.bu)
-         || $$2.a(dea.bv)
-         || $$2.a(dea.sG)
-         || $$2.a(dea.ff)
-         || $$2.a(dea.fI)
-         || $$2.a(avw.a);
-   }
-
-   @Override
-   public bpu a(cxb $$0) {
-      dax $$1 = $$0.q();
-      io $$2 = $$0.a();
-      drb $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dhn $$5 && !$$5.o($$3)) {
-         clw $$6 = $$0.o();
-         cto $$7 = $$0.n();
-         if ($$6 instanceof aqn) {
-            am.N.a((aqn)$$6, $$2, $$7);
+   public bqa a(cyf $$0) {
+      dca $$1 = $$0.q();
+      ir $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if ($$3.a(awe.S)) {
+         cly $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            a($$4, $$1, $$2);
          }
 
-         $$1.a($$6, $$2, avh.lp, avi.e, 1.0F, 1.0F);
-         drb $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(dvu.c, $$2, dvu.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bso.d($$0.p()));
+         return bqa.a($$1.C);
+      } else {
+         return bqa.d;
+      }
+   }
+
+   public static bqa a(cly $$0, dca $$1, ir $$2) {
+      cia $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      ewp $$8 = new ewp((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<bsq> $$9 = $$1.a(bsq.class, $$8, $$1x -> $$1x.gn() == $$0);
+
+      for (bsq $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cia.b($$1, $$2);
+            $$3.C();
          }
 
-         return bpu.a($$1.B);
+         $$10.b($$3, true);
       }
 
-      return super.a($$0);
+      if (!$$9.isEmpty()) {
+         $$1.a(dxv.b, $$2, dxv.a.a($$0));
+         return bqa.a;
+      } else {
+         return bqa.d;
+      }
    }
 }

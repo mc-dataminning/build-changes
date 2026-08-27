@@ -1,121 +1,111 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dvg<T extends dvb> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dvo> b;
-   private final Long2ObjectMap<dvf<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public class dvg<T> implements dvo<T> {
+   private final jf<T> a;
+   private final axj<T> b;
+   private final dvp<T> c;
+   private final int d;
 
-   public dvg(Class<T> $$0, Long2ObjectFunction<dvo> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public dvg(jf<T> $$0, int $$1, dvp<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   public void a(euf $$0, awr<dvf<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = jq.a($$0.a - 2.0);
-      int $$4 = jq.a($$0.b - 4.0);
-      int $$5 = jq.a($$0.c - 2.0);
-      int $$6 = jq.a($$0.d + 2.0);
-      int $$7 = jq.a($$0.e + 0.0);
-      int $$8 = jq.a($$0.f + 2.0);
+   public dvg(jf<T> $$0, int $$1, dvp<T> $$2) {
+      this($$0, $$1, $$2, axj.c(1 << $$1));
+   }
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = jq.b($$9, 0, 0);
-         long $$11 = jq.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+   private dvg(jf<T> $$0, int $$1, dvp<T> $$2, axj<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
+   }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = jq.c($$13);
-            int $$15 = jq.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               dvf<T> $$16 = (dvf<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
-            }
+   public static <A> dvo<A> a(int $$0, jf<A> $$1, dvp<A> $$2, List<A> $$3) {
+      return new dvg<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
          }
       }
+
+      return $$1;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = dae.a($$0);
-      int $$2 = dae.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
-      if ($$3.isEmpty()) {
-         return LongStream.empty();
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dvn($$0);
       } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+         return $$1;
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = jq.b($$0, 0, $$1);
-      long $$3 = jq.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
+   @Override
+   public void a(we $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
    }
 
-   public Stream<dvf<T>> b(long $$0) {
-      return this.a($$0).<dvf<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   @Override
+   public void b(we $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
    }
 
-   private static long f(long $$0) {
-      return dae.c(jq.b($$0), jq.d($$0));
-   }
+   @Override
+   public int a() {
+      int $$0 = wv.a(this.b());
 
-   public dvf<T> c(long $$0) {
-      return (dvf<T>)this.c.computeIfAbsent($$0, this::g);
-   }
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wv.a(this.a.a(this.b.a($$1)));
+      }
 
-   @Nullable
-   public dvf<T> d(long $$0) {
-      return (dvf<T>)this.c.get($$0);
-   }
-
-   private dvf<T> g(long $$0) {
-      long $$1 = f($$0);
-      dvo $$2 = (dvo)this.b.get($$1);
-      this.d.add($$0);
-      return new dvf<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
       return $$0;
    }
 
-   public void b(euf $$0, awr<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   public List<T> d() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
    }
 
-   public <U extends T> void a(dvi<T, U> $$0, euf $$1, awr<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
-   }
-
-   @azg
+   @Override
    public int b() {
-      return this.d.size();
+      return this.b.b();
+   }
+
+   @Override
+   public dvo<T> c() {
+      return new dvg<>(this.a, this.d, this.c, this.b.c());
    }
 }

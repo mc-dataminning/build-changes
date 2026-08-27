@@ -1,58 +1,132 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amf {
-   public static void a(CommandDispatcher<ee> $$0) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, aks<dca>> a = ImmutableBiMap.of("o", dca.h, "n", dca.i, "e", dca.j);
+   @Nullable
+   private static alx g;
+   @Nullable
+   private static alw h;
+
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("debugconfig").requires($$0x -> $$0x.c(3)))
-               .then(ef.a("config").then(ef.a("target", er.c()).executes($$0x -> a((ee)$$0x.getSource(), er.e($$0x, "target"))))))
-            .then(
-               ef.a("unconfig")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("chase")
                   .then(
-                     ef.a("target", fu.a())
-                        .suggests(($$0x, $$1) -> ej.b(a(((ee)$$0x.getSource()).l()), $$1))
-                        .executes($$0x -> a((ee)$$0x.getSource(), fu.a($$0x, "target")))
-                  )
-            )
+                     ((LiteralArgumentBuilder)ei.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)ei.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    ei.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (eh)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((eh)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ei.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)ei.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((eh)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 ei.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (eh)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
+                                    )
+                              )
+                        ))
+                     .executes($$0x -> a((eh)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(ei.a("stop").executes($$0x -> a((eh)$$0x.getSource())))
       );
    }
 
-   private static Iterable<String> a(MinecraftServer $$0) {
-      Set<String> $$1 = new HashSet<>();
-
-      for (vv $$2 : $$0.ai().e()) {
-         if ($$2.k() instanceof ark $$3) {
-            $$1.add($$3.k().getId().toString());
-         }
+   private static int a(eh $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> xe.b("You have now stopped chasing"), false);
+         h = null;
       }
 
-      return $$1;
-   }
-
-   private static int a(ee $$0, aqn $$1) {
-      GameProfile $$2 = $$1.gb();
-      $$1.d.o();
-      $$0.a(() -> wx.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
-      return 1;
-   }
-
-   private static int a(ee $$0, UUID $$1) {
-      for (vv $$2 : $$0.l().ai().e()) {
-         wd var5 = $$2.k();
-         if (var5 instanceof ark) {
-            ark $$3 = (ark)var5;
-            if ($$3.k().getId().equals($$1)) {
-               $$3.n();
-            }
-         }
+      if (g != null) {
+         g.b();
+         $$0.a(() -> xe.b("You are no longer being chased"), false);
+         g = null;
       }
 
-      $$0.b(wx.b("Can't find player to unconfig"));
       return 0;
+   }
+
+   private static boolean b(eh $$0) {
+      if (g != null) {
+         $$0.b(xe.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(xe.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static int a(eh $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new alx($$1, $$2, $$0.l().ah(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> xe.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(xe.b("Failed to start chase server on port " + $$2));
+            g = null;
+         }
+
+         return 0;
+      }
+   }
+
+   private static int b(eh $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new alw($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> xe.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
+      }
    }
 }

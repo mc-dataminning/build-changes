@@ -1,126 +1,422 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
+import it.unimi.dsi.fastutil.shorts.ShortSet;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
 
-public interface aqa {
-   aqa a = new aqa() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
+public class aqa {
+   public static final aqd<duy> a = aqd.a("Unloaded chunk");
+   public static final CompletableFuture<aqd<duy>> b = CompletableFuture.completedFuture(a);
+   public static final aqd<dvi> c = aqd.a("Unloaded level chunk");
+   public static final aqd<duy> d = aqd.a("Not done yet");
+   private static final CompletableFuture<aqd<dvi>> e = CompletableFuture.completedFuture(c);
+   private static final List<dvx> f = dvx.a();
+   private final AtomicReferenceArray<CompletableFuture<aqd<duy>>> g = new AtomicReferenceArray<>(f.size());
+   private final dcc h;
+   private volatile CompletableFuture<aqd<dvi>> i = e;
+   private volatile CompletableFuture<aqd<dvi>> j = e;
+   private volatile CompletableFuture<aqd<dvi>> k = e;
+   private CompletableFuture<duy> l = CompletableFuture.completedFuture(null);
+   @Nullable
+   private final axp<aqa.a> m = null;
+   private int n;
+   private int o;
+   private int p;
+   private final dbh q;
+   private boolean r;
+   private final ShortSet[] s;
+   private final BitSet t = new BitSet();
+   private final BitSet u = new BitSet();
+   private final eot v;
+   private final aqa.b w;
+   private final aqa.c x;
+   private boolean y;
+   private CompletableFuture<Void> z = CompletableFuture.completedFuture(null);
+   private CompletableFuture<?> A = CompletableFuture.completedFuture(null);
 
-      @Override
-      public void a(Consumer<dae> $$0) {
-      }
-   };
-
-   static aqa a(dae $$0, int $$1) {
-      return new aqa.a($$0, $$1);
+   public aqa(dbh $$0, int $$1, dcc $$2, eot $$3, aqa.b $$4, aqa.c $$5) {
+      this.q = $$0;
+      this.h = $$2;
+      this.v = $$3;
+      this.w = $$4;
+      this.x = $$5;
+      this.n = aqb.a + 1;
+      this.o = this.n;
+      this.p = this.n;
+      this.a($$1);
+      this.s = new ShortSet[$$2.an()];
    }
 
-   static void a(aqa $$0, aqa $$1, Consumer<dae> $$2, Consumer<dae> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof aqa.a $$4 && $$1 instanceof aqa.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
+   public CompletableFuture<aqd<duy>> a(dvx $$0) {
+      CompletableFuture<aqd<duy>> $$1 = this.g.get($$0.c());
+      return $$1 == null ? b : $$1;
+   }
 
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new dae($$10, $$11));
+   public CompletableFuture<aqd<duy>> b(dvx $$0) {
+      return aqb.a(this.o).b($$0) ? this.a($$0) : b;
+   }
+
+   public CompletableFuture<aqd<dvi>> a() {
+      return this.j;
+   }
+
+   public CompletableFuture<aqd<dvi>> b() {
+      return this.k;
+   }
+
+   public CompletableFuture<aqd<dvi>> c() {
+      return this.i;
+   }
+
+   @Nullable
+   public dvi d() {
+      return this.a().getNow(c).b(null);
+   }
+
+   public CompletableFuture<?> e() {
+      return this.A;
+   }
+
+   @Nullable
+   public dvi f() {
+      return !this.A.isDone() ? null : this.d();
+   }
+
+   @Nullable
+   public dvx g() {
+      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
+         dvx $$1 = f.get($$0);
+         CompletableFuture<aqd<duy>> $$2 = this.a($$1);
+         if ($$2.getNow(a).a()) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public duy h() {
+      for (int $$0 = f.size() - 1; $$0 >= 0; $$0--) {
+         dvx $$1 = f.get($$0);
+         CompletableFuture<aqd<duy>> $$2 = this.a($$1);
+         if (!$$2.isCompletedExceptionally()) {
+            duy $$3 = $$2.getNow(a).b(null);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public CompletableFuture<duy> i() {
+      return this.l;
+   }
+
+   public void a(ir $$0) {
+      dvi $$1 = this.d();
+      if ($$1 != null) {
+         int $$2 = this.h.e($$0.v());
+         if (this.s[$$2] == null) {
+            this.r = true;
+            this.s[$$2] = new ShortOpenHashSet();
+         }
+
+         this.s[$$2].add(jt.b($$0));
+      }
+   }
+
+   public void a(dcj $$0, int $$1) {
+      duy $$2 = this.b(dvx.k).getNow(a).b(null);
+      if ($$2 != null) {
+         $$2.a(true);
+         dvi $$3 = this.d();
+         if ($$3 != null) {
+            int $$4 = this.v.d();
+            int $$5 = this.v.e();
+            if ($$1 >= $$4 && $$1 <= $$5) {
+               int $$6 = $$1 - $$4;
+               if ($$0 == dcj.a) {
+                  this.u.set($$6);
+               } else {
+                  this.t.set($$6);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(dvi $$0) {
+      if (this.r || !this.u.isEmpty() || !this.t.isEmpty()) {
+         dca $$1 = $$0.G();
+         if (!this.u.isEmpty() || !this.t.isEmpty()) {
+            List<aqu> $$2 = this.x.a(this.q, true);
+            if (!$$2.isEmpty()) {
+               adm $$3 = new adm($$0.g(), this.v, this.u, this.t);
+               this.a($$2, $$3);
+            }
+
+            this.u.clear();
+            this.t.clear();
+         }
+
+         if (this.r) {
+            List<aqu> $$4 = this.x.a(this.q, false);
+
+            for (int $$5 = 0; $$5 < this.s.length; $$5++) {
+               ShortSet $$6 = this.s[$$5];
+               if ($$6 != null) {
+                  this.s[$$5] = null;
+                  if (!$$4.isEmpty()) {
+                     int $$7 = this.h.g($$5);
+                     jt $$8 = jt.a($$0.g(), $$7);
+                     if ($$6.size() == 1) {
+                        ir $$9 = $$8.g($$6.iterator().nextShort());
+                        dtc $$10 = $$1.a_($$9);
+                        this.a($$4, new acg($$9, $$10));
+                        this.a($$4, $$1, $$9, $$10);
                      } else {
-                        $$3.accept(new dae($$10, $$11));
+                        dvj $$11 = $$0.b($$5);
+                        aem $$12 = new aem($$8, $$6, $$11);
+                        this.a($$4, $$12);
+                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
                      }
                   }
                }
             }
 
-            return;
+            this.r = false;
+         }
+      }
+   }
+
+   private void a(List<aqu> $$0, dca $$1, ir $$2, dtc $$3) {
+      if ($$3.t()) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   private void a(List<aqu> $$0, dca $$1, ir $$2) {
+      dqc $$3 = $$1.c_($$2);
+      if ($$3 != null) {
+         zl<?> $$4 = $$3.av_();
+         if ($$4 != null) {
+            this.a($$0, $$4);
+         }
+      }
+   }
+
+   private void a(List<aqu> $$0, zl<?> $$1) {
+      $$0.forEach($$1x -> $$1x.d.b($$1));
+   }
+
+   public CompletableFuture<aqd<duy>> a(dvx $$0, aqc $$1) {
+      int $$2 = $$0.c();
+      CompletableFuture<aqd<duy>> $$3 = this.g.get($$2);
+      if ($$3 != null) {
+         aqd<duy> $$4 = $$3.getNow(d);
+         if ($$4 == null) {
+            String $$5 = "value in future for status: " + $$0 + " was incorrectly set to null at chunk: " + this.q;
+            throw $$1.a(new IllegalStateException("null value previously set for chunk status"), $$5);
          }
 
-         $$0.a($$3);
-         $$1.a($$2);
+         if ($$4 == d || $$4.a()) {
+            return $$3;
+         }
+      }
+
+      if (aqb.a(this.o).b($$0)) {
+         CompletableFuture<aqd<duy>> $$6 = $$1.a(this, $$0);
+         this.a($$6, "schedule " + $$0);
+         this.g.set($$2, $$6);
+         return $$6;
+      } else {
+         return $$3 == null ? b : $$3;
       }
    }
 
-   default boolean a(dae $$0) {
-      return this.a($$0.e, $$0.f);
+   protected void a(String $$0, CompletableFuture<?> $$1) {
+      if (this.m != null) {
+         this.m.a(new aqa.a(Thread.currentThread(), $$1, $$0));
+      }
+
+      this.l = this.l.thenCombine((CompletionStage<? extends Object>)$$1, ($$0x, $$1x) -> $$0x);
    }
 
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
+   private void a(CompletableFuture<? extends aqd<? extends duy>> $$0, String $$1) {
+      if (this.m != null) {
+         this.m.a(new aqa.a(Thread.currentThread(), $$0, $$1));
+      }
+
+      this.l = this.l.thenCombine($$0, ($$0x, $$1x) -> aqd.a($$1x, $$0x));
    }
 
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<dae> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public void a(CompletableFuture<?> $$0) {
+      if (this.A.isDone()) {
+         this.A = $$0;
+      } else {
+         this.A = this.A.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
+      }
    }
 
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
+   public aqm j() {
+      return aqb.b(this.o);
    }
 
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
+   public dbh k() {
+      return this.q;
    }
 
-   public static record a(dae b, int c) implements aqa {
-      int c() {
-         return this.b.e - this.c - 1;
-      }
+   public int l() {
+      return this.o;
+   }
 
-      int d() {
-         return this.b.f - this.c - 1;
-      }
+   public int m() {
+      return this.p;
+   }
 
-      int e() {
-         return this.b.e + this.c + 1;
-      }
+   private void b(int $$0) {
+      this.p = $$0;
+   }
 
-      int f() {
-         return this.b.f + this.c + 1;
-      }
+   public void a(int $$0) {
+      this.o = $$0;
+   }
 
-      @VisibleForTesting
-      protected boolean a(aqa.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
+   private void a(aqc $$0, CompletableFuture<aqd<dvi>> $$1, Executor $$2, aqm $$3) {
+      this.z.cancel(false);
+      CompletableFuture<Void> $$4 = new CompletableFuture<>();
+      $$4.thenRunAsync(() -> $$0.a(this.q, $$3), $$2);
+      this.z = $$4;
+      $$1.thenAccept($$1x -> $$1x.a($$1xx -> $$4.complete(null)));
+   }
 
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return aqa.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
-      }
+   private void a(aqc $$0, aqm $$1) {
+      this.z.cancel(false);
+      $$0.a(this.q, $$1);
+   }
 
-      @Override
-      public void a(Consumer<dae> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new dae($$1, $$2));
-               }
+   protected void a(aqc $$0, Executor $$1) {
+      dvx $$2 = aqb.a(this.n);
+      dvx $$3 = aqb.a(this.o);
+      boolean $$4 = aqb.e(this.n);
+      boolean $$5 = aqb.e(this.o);
+      aqm $$6 = aqb.b(this.n);
+      aqm $$7 = aqb.b(this.o);
+      if ($$4) {
+         aqd<duy> $$8 = aqd.a(() -> "Unloaded ticket level " + this.q);
+
+         for (int $$9 = $$5 ? $$3.c() + 1 : 0; $$9 <= $$2.c(); $$9++) {
+            CompletableFuture<aqd<duy>> $$10 = this.g.get($$9);
+            if ($$10 == null) {
+               this.g.set($$9, CompletableFuture.completedFuture($$8));
             }
          }
       }
 
-      public dae a() {
-         return this.b;
+      boolean $$11 = $$6.a(aqm.b);
+      boolean $$12 = $$7.a(aqm.b);
+      this.y |= $$12;
+      if (!$$11 && $$12) {
+         this.i = $$0.c(this);
+         this.a($$0, this.i, $$1, aqm.b);
+         this.a(this.i, "full");
       }
 
-      public int b() {
-         return this.c;
+      if ($$11 && !$$12) {
+         this.i.complete(c);
+         this.i = e;
       }
+
+      boolean $$13 = $$6.a(aqm.c);
+      boolean $$14 = $$7.a(aqm.c);
+      if (!$$13 && $$14) {
+         this.j = $$0.b(this);
+         this.a($$0, this.j, $$1, aqm.c);
+         this.a(this.j, "ticking");
+      }
+
+      if ($$13 && !$$14) {
+         this.j.complete(c);
+         this.j = e;
+      }
+
+      boolean $$15 = $$6.a(aqm.d);
+      boolean $$16 = $$7.a(aqm.d);
+      if (!$$15 && $$16) {
+         if (this.k != e) {
+            throw (IllegalStateException)ad.b(new IllegalStateException());
+         }
+
+         this.k = $$0.a(this);
+         this.a($$0, this.k, $$1, aqm.d);
+         this.a(this.k, "entity ticking");
+      }
+
+      if ($$15 && !$$16) {
+         this.k.complete(c);
+         this.k = e;
+      }
+
+      if (!$$7.a($$6)) {
+         this.a($$0, $$7);
+      }
+
+      this.w.onLevelChange(this.q, this::m, this.o, this::b);
+      this.n = this.o;
+   }
+
+   public boolean n() {
+      return this.y;
+   }
+
+   public void o() {
+      this.y = aqb.b(this.o).a(aqm.b);
+   }
+
+   public void a(dvh $$0) {
+      for (int $$1 = 0; $$1 < this.g.length(); $$1++) {
+         CompletableFuture<aqd<duy>> $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            duy $$3 = $$2.getNow(a).b(null);
+            if ($$3 instanceof dvs) {
+               this.g.set($$1, CompletableFuture.completedFuture(aqd.a($$0)));
+            }
+         }
+      }
+
+      this.a(CompletableFuture.completedFuture(aqd.a($$0.D())), "replaceProto");
+   }
+
+   public List<Pair<dvx, CompletableFuture<aqd<duy>>>> p() {
+      List<Pair<dvx, CompletableFuture<aqd<duy>>>> $$0 = new ArrayList<>();
+
+      for (int $$1 = 0; $$1 < f.size(); $$1++) {
+         $$0.add(Pair.of(f.get($$1), this.g.get($$1)));
+      }
+
+      return $$0;
+   }
+
+   static record a(Thread a, CompletableFuture<?> b, String c) {
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void onLevelChange(dbh var1, IntSupplier var2, int var3, IntConsumer var4);
+   }
+
+   public interface c {
+      List<aqu> a(dbh var1, boolean var2);
    }
 }

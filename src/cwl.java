@@ -1,33 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+public class cwl extends cuc {
+   private static final xe a = xe.c("item.minecraft.snektato.revealed");
 
-public record cwl(List<wx> e, List<wx> f) implements cwu {
-   public static final cwl a = new cwl(List.of());
-   public static final int b = 256;
-   private static final xu g = xu.a.a(n.f).b(true);
-   public static final Codec<cwl> c = wz.g.sizeLimitedListOf(256).xmap(cwl::new, cwl::a);
-   public static final yv<wi, cwl> d = wz.b.a(yt.c(256)).a(cwl::new, cwl::a);
-
-   public cwl(List<wx> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xa.a($$0x.f(), g)));
-   }
-
-   public cwl a(wx $$0) {
-      return new cwl(ac.a(this.e, $$0));
+   public cwl(cuc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(Consumer<wx> $$0, cvh $$1) {
-      this.f.forEach($$0);
+   public int b(cuh $$0) {
+      return 20;
    }
 
-   public List<wx> a() {
-      return this.e;
+   @Override
+   public cwk c(cuh $$0) {
+      return cwk.b;
    }
 
-   public List<wx> b() {
-      return this.f;
+   @Override
+   public xe o(cuh $$0) {
+      cxu $$1 = $$0.a(ke.af);
+      return $$1 != null && $$1.a() ? a : super.o($$0);
+   }
+
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      $$1.c($$2);
+      cuh $$3 = $$1.b($$2);
+      return bqb.a($$3, $$0.C);
+   }
+
+   @Override
+   public cuh a(cuh $$0, dca $$1, bso $$2) {
+      $$1.a(null, $$2.dz(), $$2.dB(), $$2.dF(), avo.zg, avq.h, 1.0F, 1.0F + ($$1.A.i() - $$1.A.i()) * 0.4F);
+      cin.a($$2, null);
+      $$2.a(dxv.m);
+      $$2.a($$1.aj().p(), 2.0F);
+      $$0.b(ke.af, new cxu(true));
+      return $$0;
    }
 }

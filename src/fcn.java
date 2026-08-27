@@ -1,58 +1,54 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fcn {
-   private static final String a = "realms_persistence.json";
-   private static final ezq b = new ezq();
+public class fcn extends fcy {
    private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
-   public fcn.a a() {
-      return b();
-   }
-
-   public void a(fcn.a $$0) {
-      b($$0);
-   }
-
-   public static fcn.a b() {
-      Path $$0 = c();
+   public static fcn a(JsonObject $$0) {
+      fcn $$1 = new fcn();
 
       try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fcn.a $$2 = b.a($$1, fcn.a.class);
+         $$1.a = fev.a("serverId", $$0, -1L);
+         String $$2 = fev.b("playerList", $$0, null);
          if ($$2 != null) {
-            return $$2;
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
          }
-      } catch (NoSuchFileException var3) {
       } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
 
-      return new fcn.a();
+      return $$1;
    }
 
-   public static void b(fcn.a $$0) {
-      Path $$1 = c();
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
 
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = fev.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
       }
-   }
 
-   private static Path c() {
-      return fdz.Q().p.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements fai {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+      return $$1;
    }
 }

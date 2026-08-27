@@ -1,28 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
 
-public class cdb extends ccy<bso> {
+public class cdb extends ccr {
+   private static final ImmutableMap<bsb<?>, Float> a = ImmutableMap.builder()
+      .put(bsb.D, 8.0F)
+      .put(bsb.L, 12.0F)
+      .put(bsb.ae, 8.0F)
+      .put(bsb.af, 12.0F)
+      .put(bsb.aD, 15.0F)
+      .put(bsb.aJ, 12.0F)
+      .put(bsb.bm, 8.0F)
+      .put(bsb.bo, 10.0F)
+      .put(bsb.bx, 10.0F)
+      .put(bsb.by, 8.0F)
+      .put(bsb.bB, 8.0F)
+      .build();
+
    @Override
-   public Set<cbs<?>> a() {
-      return ImmutableSet.of(cbs.i);
+   protected boolean a(bso $$0, bso $$1) {
+      return this.b($$1) && this.e($$0, $$1);
+   }
+
+   private boolean e(bso $$0, bso $$1) {
+      float $$2 = (Float)a.get($$1.ak());
+      return $$1.g((brv)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   protected void a(aqm $$0, bso $$1) {
-      $$1.dS().a(cbs.i, this.a($$1));
-   }
-
-   private List<bso> a(bso $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   protected cbr<bso> b() {
+      return cbr.A;
    }
 
    private boolean b(bso $$0) {
-      return $$0.ak() == bsa.bj && $$0.p_();
-   }
-
-   private cbu c(bso $$0) {
-      return $$0.dS().c(cbs.h).orElse(cbu.a());
+      return a.containsKey($$0.ak());
    }
 }

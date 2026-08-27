@@ -1,57 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public abstract class bzm {
-   private final EnumSet<bzm.a> a = EnumSet.noneOf(bzm.a.class);
+public class bzm {
+   private static final caz a = new caz(Integer.MAX_VALUE, new bzl() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bzl.a, caz> b = new EnumMap<>(bzl.a.class);
+   private final Set<caz> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bmo> d;
+   private final EnumSet<bzl.a> e = EnumSet.noneOf(bzl.a.class);
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
+   public bzm(Supplier<bmo> $$0) {
+      this.d = $$0;
    }
 
-   public boolean Q_() {
-      return true;
+   public void a(int $$0, bzl $$1) {
+      this.c.add(new caz($$0, $$1));
    }
 
-   public void c() {
+   @VisibleForTesting
+   public void a(Predicate<bzl> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
    }
 
-   public void d() {
+   public void a(bzl $$0) {
+      for (caz $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
+         }
+      }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   public boolean R_() {
+   private static boolean a(caz $$0, EnumSet<bzl.a> $$1) {
+      for (bzl.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
       return false;
    }
 
-   public void e() {
+   private static boolean a(caz $$0, Map<bzl.a, caz> $$1) {
+      for (bzl.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public void a(EnumSet<bzm.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public void a() {
+      bmo $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (caz $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((caz)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (caz $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (bzl.a $$3 : $$2.j()) {
+               caz $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
    }
 
-   @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public void a(boolean $$0) {
+      bmo $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (caz $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.S_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
    }
 
-   public EnumSet<bzm.a> j() {
-      return this.a;
+   public Set<caz> b() {
+      return this.c;
    }
 
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
+   public void a(bzl.a $$0) {
+      this.e.add($$0);
    }
 
-   protected static int b(int $$0) {
-      return ayd.e($$0, 2);
+   public void b(bzl.a $$0) {
+      this.e.remove($$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void a(bzl.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

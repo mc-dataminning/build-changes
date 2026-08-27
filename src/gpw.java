@@ -1,20 +1,24 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gpw extends goq<chu, fyi<chu>> {
+   private static final akt a = new akt("textures/entity/wither/wither_armor.png");
+   private final fyi<chu> b;
 
-public interface gpw {
-   List<gdh> a(@Nullable drb var1, @Nullable it var2, ayk var3);
+   public gpw(gmp<chu, fyi<chu>> $$0, fyo $$1) {
+      super($$0);
+      this.b = new fyi<>($$1.a(fyr.cc));
+   }
 
-   boolean a();
+   @Override
+   protected float a(float $$0) {
+      return aym.b($$0 * 0.02F) * 3.0F;
+   }
 
-   boolean b();
+   @Override
+   protected akt a() {
+      return a;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   gnv e();
-
-   gdt f();
-
-   gdr g();
+   @Override
+   protected fvq<chu> b() {
+      return this.b;
+   }
 }

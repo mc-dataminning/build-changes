@@ -1,57 +1,36 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class fco {
-   private static final Map<String, fco.a> a = Maps.newHashMap();
+public class fco extends fcy {
    private static final Logger b = LogUtils.getLogger();
-   private static final akm c = new akm("textures/gui/presets/isles.png");
+   public List<fcn> a;
 
-   public static akm a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
-   }
-
-   private static akm b(String $$0, String $$1) {
-      fco.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ext $$3 = a($$1);
-         if ($$3 == null) {
-            akm $$4 = gnl.b();
-            a.put($$0, new fco.a($$1, $$4));
-            return $$4;
-         } else {
-            akm $$5 = new akm("realms", "dynamic/" + $$0);
-            fdz.Q().aa().a($$5, new gni($$3));
-            a.put($$0, new fco.a($$1, $$5));
-            return $$5;
-         }
-      }
-   }
-
-   @Nullable
-   private static ext a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   public static fco a(String $$0) {
+      fco $$1 = new fco();
+      $$1.a = Lists.newArrayList();
 
       try {
-         return ext.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("lists").isJsonArray()) {
+            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(fcn.a($$5.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var6) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
       }
 
-      return null;
-   }
-
-   public static record a(String a, akm b) {
+      return $$1;
    }
 }

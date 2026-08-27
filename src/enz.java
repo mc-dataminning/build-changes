@@ -1,5 +1,17 @@
-public class enz {
-   public static final int a = 0;
-   public static final int b = 15;
-   public static final int c = 0;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
+
+public class enz implements eob {
+   private static final enz b = new enz();
+   public static final Codec<enz> a = Codec.unit(b);
+
+   @Override
+   public uk a(ayt $$0, @Nullable uk $$1) {
+      return new uk();
+   }
+
+   @Override
+   public eoc<?> a() {
+      return eoc.a;
+   }
 }

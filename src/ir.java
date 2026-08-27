@@ -1,66 +1,574 @@
-import com.mojang.serialization.Lifecycle;
+import com.google.common.collect.AbstractIterator;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayDeque;
 import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.Queue;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.concurrent.Immutable;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public class ir<T> extends jf<T> implements is<T> {
-   private final akm b;
-   private ix.c<T> c;
-
-   public ir(String $$0, akl<? extends jk<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = new akm($$0);
-   }
-
-   @Override
-   public ix.c<T> a(akl<T> $$0, T $$1, jj $$2) {
-      ix.c<T> $$3 = super.a($$0, $$1, $$2);
-      if (this.b.equals($$0.a())) {
-         this.c = $$3;
+@Immutable
+public class ir extends jv {
+   public static final Codec<ir> a = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ad.a($$0, 3).map($$0x -> new ir($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()))
+      .stable();
+   public static final zc<ByteBuf, ir> b = new zc<ByteBuf, ir>() {
+      public ir a(ByteBuf $$0) {
+         return we.b($$0);
       }
 
-      return $$3;
+      public void a(ByteBuf $$0, ir $$1) {
+         we.a($$0, $$1);
+      }
+   };
+   private static final Logger e = LogUtils.getLogger();
+   public static final ir c = new ir(0, 0, 0);
+   private static final int h = 1 + aym.f(aym.c(30000000));
+   private static final int i = h;
+   public static final int d = 64 - h - i;
+   private static final long j = (1L << h) - 1L;
+   private static final long k = (1L << d) - 1L;
+   private static final long l = (1L << i) - 1L;
+   private static final int m = 0;
+   private static final int n = d;
+   private static final int o = d + i;
+
+   public ir(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
+   public ir(jv $$0) {
+      this($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Nonnull
-   @Override
-   public akm b(T $$0) {
-      akm $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
+   public static long a(long $$0, iw $$1) {
+      return a($$0, $$1.j(), $$1.k(), $$1.l());
    }
 
-   @Nonnull
-   @Override
-   public T a(@Nullable akm $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
+   public static long a(long $$0, int $$1, int $$2, int $$3) {
+      return a(a($$0) + $$1, b($$0) + $$2, c($$0) + $$3);
    }
 
-   @Override
-   public Optional<T> b(@Nullable akm $$0) {
-      return Optional.ofNullable(super.a($$0));
+   public static int a(long $$0) {
+      return (int)($$0 << 64 - o - h >> 64 - h);
    }
 
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
+   public static int b(long $$0) {
+      return (int)($$0 << 64 - d >> 64 - d);
    }
 
-   @Override
-   public Optional<ix.c<T>> a(ayk $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
+   public static int c(long $$0) {
+      return (int)($$0 << 64 - n - i >> 64 - i);
    }
 
-   @Override
-   public akm a() {
-      return this.b;
+   public static ir d(long $$0) {
+      return new ir(a($$0), b($$0), c($$0));
+   }
+
+   public static ir a(double $$0, double $$1, double $$2) {
+      return new ir(aym.a($$0), aym.a($$1), aym.a($$2));
+   }
+
+   public static ir a(jk $$0) {
+      return a($$0.a(), $$0.b(), $$0.c());
+   }
+
+   public static ir a(ir $$0, ir $$1) {
+      return new ir(Math.min($$0.u(), $$1.u()), Math.min($$0.v(), $$1.v()), Math.min($$0.w(), $$1.w()));
+   }
+
+   public static ir b(ir $$0, ir $$1) {
+      return new ir(Math.max($$0.u(), $$1.u()), Math.max($$0.v(), $$1.v()), Math.max($$0.w(), $$1.w()));
+   }
+
+   public long a() {
+      return a(this.u(), this.v(), this.w());
+   }
+
+   public static long a(int $$0, int $$1, int $$2) {
+      long $$3 = 0L;
+      $$3 |= ((long)$$0 & j) << o;
+      $$3 |= ((long)$$1 & k) << 0;
+      return $$3 | ((long)$$2 & l) << n;
+   }
+
+   public static long e(long $$0) {
+      return $$0 & -16L;
+   }
+
+   public ir b(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ir(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   }
+
+   public ewu b() {
+      return ewu.b(this);
+   }
+
+   public ir a(jv $$0) {
+      return this.b($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public ir b(jv $$0) {
+      return this.b(-$$0.u(), -$$0.v(), -$$0.w());
+   }
+
+   public ir a(int $$0) {
+      if ($$0 == 1) {
+         return this;
+      } else {
+         return $$0 == 0 ? c : new ir(this.u() * $$0, this.v() * $$0, this.w() * $$0);
+      }
+   }
+
+   public ir c() {
+      return this.a(iw.b);
+   }
+
+   public ir b(int $$0) {
+      return this.a(iw.b, $$0);
+   }
+
+   public ir d() {
+      return this.a(iw.a);
+   }
+
+   public ir c(int $$0) {
+      return this.a(iw.a, $$0);
+   }
+
+   public ir e() {
+      return this.a(iw.c);
+   }
+
+   public ir d(int $$0) {
+      return this.a(iw.c, $$0);
+   }
+
+   public ir f() {
+      return this.a(iw.d);
+   }
+
+   public ir e(int $$0) {
+      return this.a(iw.d, $$0);
+   }
+
+   public ir g() {
+      return this.a(iw.e);
+   }
+
+   public ir f(int $$0) {
+      return this.a(iw.e, $$0);
+   }
+
+   public ir h() {
+      return this.a(iw.f);
+   }
+
+   public ir g(int $$0) {
+      return this.a(iw.f, $$0);
+   }
+
+   public ir a(iw $$0) {
+      return new ir(this.u() + $$0.j(), this.v() + $$0.k(), this.w() + $$0.l());
+   }
+
+   public ir a(iw $$0, int $$1) {
+      return $$1 == 0 ? this : new ir(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public ir a(iw.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         int $$2 = $$0 == iw.a.a ? $$1 : 0;
+         int $$3 = $$0 == iw.a.b ? $$1 : 0;
+         int $$4 = $$0 == iw.a.c ? $$1 : 0;
+         return new ir(this.u() + $$2, this.v() + $$3, this.w() + $$4);
+      }
+   }
+
+   public ir a(dmd $$0) {
+      switch ($$0) {
+         case a:
+         default:
+            return this;
+         case b:
+            return new ir(-this.w(), this.v(), this.u());
+         case c:
+            return new ir(-this.u(), this.v(), -this.w());
+         case d:
+            return new ir(this.w(), this.v(), -this.u());
+      }
+   }
+
+   public ir c(jv $$0) {
+      return new ir(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
+   }
+
+   public ir h(int $$0) {
+      return new ir(this.u(), $$0, this.w());
+   }
+
+   public ir i() {
+      return this;
+   }
+
+   public ir.a j() {
+      return new ir.a(this.u(), this.v(), this.w());
+   }
+
+   public ir b(iw $$0) {
+      return this.a($$0.q());
+   }
+
+   public static Iterable<ir> a(ayt $$0, int $$1, ir $$2, int $$3) {
+      return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
+   }
+
+   @Deprecated
+   public static Stream<ir> a(ir $$0) {
+      return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
+   }
+
+   public static Iterable<ir> a(ayt $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 - $$3 + 1;
+      int $$10 = $$7 - $$4 + 1;
+      return () -> new AbstractIterator<ir>() {
+            final ir.a a = new ir.a();
+            int b = $$1;
+
+            protected ir a() {
+               if (this.b <= 0) {
+                  return (ir)this.endOfData();
+               } else {
+                  ir $$0 = this.a.d($$2 + $$0.a($$8), $$3 + $$0.a($$9), $$4 + $$0.a($$10));
+                  this.b--;
+                  return $$0;
+               }
+            }
+         };
+   }
+
+   public static Iterable<ir> a(ir $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 + $$2 + $$3;
+      int $$5 = $$0.u();
+      int $$6 = $$0.v();
+      int $$7 = $$0.w();
+      return () -> new AbstractIterator<ir>() {
+            private final ir.a h = new ir.a();
+            private int i;
+            private int j;
+            private int k;
+            private int l;
+            private int m;
+            private boolean n;
+
+            protected ir a() {
+               if (this.n) {
+                  this.n = false;
+                  this.h.r($$7 - (this.h.w() - $$7));
+                  return this.h;
+               } else {
+                  ir $$0;
+                  for ($$0 = null; $$0 == null; this.m++) {
+                     if (this.m > this.k) {
+                        this.l++;
+                        if (this.l > this.j) {
+                           this.i++;
+                           if (this.i > $$4) {
+                              return (ir)this.endOfData();
+                           }
+
+                           this.j = Math.min($$1, this.i);
+                           this.l = -this.j;
+                        }
+
+                        this.k = Math.min($$2, this.i - Math.abs(this.l));
+                        this.m = -this.k;
+                     }
+
+                     int $$1 = this.l;
+                     int $$2 = this.m;
+                     int $$3 = this.i - Math.abs($$1) - Math.abs($$2);
+                     if ($$3 <= $$3) {
+                        this.n = $$3 != 0;
+                        $$0 = this.h.d($$5 + $$1, $$6 + $$2, $$7 + $$3);
+                     }
+                  }
+
+                  return $$0;
+               }
+            }
+         };
+   }
+
+   public static Optional<ir> a(ir $$0, int $$1, int $$2, Predicate<ir> $$3) {
+      for (ir $$4 : a($$0, $$1, $$2, $$1)) {
+         if ($$3.test($$4)) {
+            return Optional.of($$4);
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public static Stream<ir> b(ir $$0, int $$1, int $$2, int $$3) {
+      return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
+   }
+
+   public static Iterable<ir> c(ir $$0, ir $$1) {
+      return b(
+         Math.min($$0.u(), $$1.u()),
+         Math.min($$0.v(), $$1.v()),
+         Math.min($$0.w(), $$1.w()),
+         Math.max($$0.u(), $$1.u()),
+         Math.max($$0.v(), $$1.v()),
+         Math.max($$0.w(), $$1.w())
+      );
+   }
+
+   public static Stream<ir> d(ir $$0, ir $$1) {
+      return StreamSupport.stream(c($$0, $$1).spliterator(), false);
+   }
+
+   public static Stream<ir> a(ejl $$0) {
+      return a(
+         Math.min($$0.h(), $$0.k()),
+         Math.min($$0.i(), $$0.l()),
+         Math.min($$0.j(), $$0.m()),
+         Math.max($$0.h(), $$0.k()),
+         Math.max($$0.i(), $$0.l()),
+         Math.max($$0.j(), $$0.m())
+      );
+   }
+
+   public static Stream<ir> a(ewp $$0) {
+      return a(aym.a($$0.a), aym.a($$0.b), aym.a($$0.c), aym.a($$0.d), aym.a($$0.e), aym.a($$0.f));
+   }
+
+   public static Stream<ir> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return StreamSupport.stream(b($$0, $$1, $$2, $$3, $$4, $$5).spliterator(), false);
+   }
+
+   public static Iterable<ir> b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$3 - $$0 + 1;
+      int $$7 = $$4 - $$1 + 1;
+      int $$8 = $$5 - $$2 + 1;
+      int $$9 = $$6 * $$7 * $$8;
+      return () -> new AbstractIterator<ir>() {
+            private final ir.a g = new ir.a();
+            private int h;
+
+            protected ir a() {
+               if (this.h == $$9) {
+                  return (ir)this.endOfData();
+               } else {
+                  int $$0 = this.h % $$6;
+                  int $$1 = this.h / $$6;
+                  int $$2 = $$1 % $$7;
+                  int $$3 = $$1 / $$7;
+                  this.h++;
+                  return this.g.d($$0 + $$0, $$1 + $$2, $$2 + $$3);
+               }
+            }
+         };
+   }
+
+   public static Iterable<ir.a> a(ir $$0, int $$1, iw $$2, iw $$3) {
+      Validate.validState($$2.o() != $$3.o(), "The two directions cannot be on the same axis", new Object[0]);
+      return () -> new AbstractIterator<ir.a>() {
+            private final iw[] e = new iw[]{$$2, $$3, $$2.g(), $$3.g()};
+            private final ir.a f = $$0.j().d($$3);
+            private final int g = 4 * $$1;
+            private int h = -1;
+            private int i;
+            private int j;
+            private int k = this.f.u();
+            private int l = this.f.v();
+            private int m = this.f.w();
+
+            protected ir.a a() {
+               this.f.d(this.k, this.l, this.m).d(this.e[(this.h + 4) % 4]);
+               this.k = this.f.u();
+               this.l = this.f.v();
+               this.m = this.f.w();
+               if (this.j >= this.i) {
+                  if (this.h >= this.g) {
+                     return (ir.a)this.endOfData();
+                  }
+
+                  this.h++;
+                  this.j = 0;
+                  this.i = this.h / 2 + 1;
+               }
+
+               this.j++;
+               return this.f;
+            }
+         };
+   }
+
+   public static int a(ir $$0, int $$1, int $$2, BiConsumer<ir, Consumer<ir>> $$3, Predicate<ir> $$4) {
+      Queue<Pair<ir, Integer>> $$5 = new ArrayDeque<>();
+      LongSet $$6 = new LongOpenHashSet();
+      $$5.add(Pair.of($$0, 0));
+      int $$7 = 0;
+
+      while (!$$5.isEmpty()) {
+         Pair<ir, Integer> $$8 = $$5.poll();
+         ir $$9 = (ir)$$8.getLeft();
+         int $$10 = (Integer)$$8.getRight();
+         long $$11 = $$9.a();
+         if ($$6.add($$11) && $$4.test($$9)) {
+            if (++$$7 >= $$2) {
+               return $$7;
+            }
+
+            if ($$10 < $$1) {
+               $$3.accept($$9, $$2x -> $$5.add(Pair.of($$2x, $$10 + 1)));
+            }
+         }
+      }
+
+      return $$7;
+   }
+
+   public static class a extends ir {
+      public a() {
+         this(0, 0, 0);
+      }
+
+      public a(int $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public a(double $$0, double $$1, double $$2) {
+         this(aym.a($$0), aym.a($$1), aym.a($$2));
+      }
+
+      public a(ir $$0) {
+         super($$0);
+      }
+
+      @Override
+      public ir b(int $$0, int $$1, int $$2) {
+         return super.b($$0, $$1, $$2).i();
+      }
+
+      @Override
+      public ir a(int $$0) {
+         return super.a($$0).i();
+      }
+
+      @Override
+      public ir a(iw $$0, int $$1) {
+         return super.a($$0, $$1).i();
+      }
+
+      @Override
+      public ir a(iw.a $$0, int $$1) {
+         return super.a($$0, $$1).i();
+      }
+
+      @Override
+      public ir a(dmd $$0) {
+         return super.a($$0).i();
+      }
+
+      public ir.a d(int $$0, int $$1, int $$2) {
+         this.p($$0);
+         this.q($$1);
+         this.r($$2);
+         return this;
+      }
+
+      public ir.a b(double $$0, double $$1, double $$2) {
+         return this.d(aym.a($$0), aym.a($$1), aym.a($$2));
+      }
+
+      public ir.a g(jv $$0) {
+         return this.d($$0.u(), $$0.v(), $$0.w());
+      }
+
+      public ir.a f(long $$0) {
+         return this.d(a($$0), b($$0), c($$0));
+      }
+
+      public ir.a a(io $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.a($$1, $$2, $$3, iw.a.a), $$0.a($$1, $$2, $$3, iw.a.b), $$0.a($$1, $$2, $$3, iw.a.c));
+      }
+
+      public ir.a a(jv $$0, iw $$1) {
+         return this.d($$0.u() + $$1.j(), $$0.v() + $$1.k(), $$0.w() + $$1.l());
+      }
+
+      public ir.a a(jv $$0, int $$1, int $$2, int $$3) {
+         return this.d($$0.u() + $$1, $$0.v() + $$2, $$0.w() + $$3);
+      }
+
+      public ir.a a(jv $$0, jv $$1) {
+         return this.d($$0.u() + $$1.u(), $$0.v() + $$1.v(), $$0.w() + $$1.w());
+      }
+
+      public ir.a d(iw $$0) {
+         return this.c($$0, 1);
+      }
+
+      public ir.a c(iw $$0, int $$1) {
+         return this.d(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+      }
+
+      public ir.a e(int $$0, int $$1, int $$2) {
+         return this.d(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+      }
+
+      public ir.a h(jv $$0) {
+         return this.d(this.u() + $$0.u(), this.v() + $$0.v(), this.w() + $$0.w());
+      }
+
+      public ir.a a(iw.a $$0, int $$1, int $$2) {
+         switch ($$0) {
+            case a:
+               return this.d(aym.a(this.u(), $$1, $$2), this.v(), this.w());
+            case b:
+               return this.d(this.u(), aym.a(this.v(), $$1, $$2), this.w());
+            case c:
+               return this.d(this.u(), this.v(), aym.a(this.w(), $$1, $$2));
+            default:
+               throw new IllegalStateException("Unable to clamp axis " + $$0);
+         }
+      }
+
+      public ir.a p(int $$0) {
+         super.u($$0);
+         return this;
+      }
+
+      public ir.a q(int $$0) {
+         super.t($$0);
+         return this;
+      }
+
+      public ir.a r(int $$0) {
+         super.s($$0);
+         return this;
+      }
+
+      @Override
+      public ir i() {
+         return new ir(this);
+      }
    }
 }

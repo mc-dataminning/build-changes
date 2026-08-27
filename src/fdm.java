@@ -1,113 +1,59 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
 
-public class fdm extends avk {
-   private static final Logger c = LogUtils.getLogger();
-   private Map<fei, List<fpq>> d = ImmutableMap.of();
-   private List<fpq> e = ImmutableList.of();
+public abstract class fdm {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public void a(Iterable<cxw<?>> $$0, jl $$1) {
-      Map<fei, List<List<cxw<?>>>> $$2 = a($$0);
-      Map<fei, List<fpq>> $$3 = Maps.newHashMap();
-      Builder<fpq> $$4 = ImmutableList.builder();
-      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fpq($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
-      fei.w
-         .forEach(
-            ($$1x, $$2x) -> $$3.put(
-                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
-               )
-         );
-      this.d = ImmutableMap.copyOf($$3);
-      this.e = $$4.build();
+   public fdm(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static Map<fei, List<List<cxw<?>>>> a(Iterable<cxw<?>> $$0) {
-      Map<fei, List<List<cxw<?>>>> $$1 = Maps.newHashMap();
-      Table<fei, String, List<cxw<?>>> $$2 = HashBasedTable.create();
-
-      for (cxw<?> $$3 : $$0) {
-         cxu<?> $$4 = $$3.b();
-         if (!$$4.an_() && !$$4.i()) {
-            fei $$5 = g($$3);
-            String $$6 = $$4.c();
-            if ($$6.isEmpty()) {
-               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
-            } else {
-               List<cxw<?>> $$7 = (List<cxw<?>>)$$2.get($$5, $$6);
-               if ($$7 == null) {
-                  $$7 = Lists.newArrayList();
-                  $$2.put($$5, $$6, $$7);
-                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
-               }
-
-               $$7.add($$3);
-            }
-         }
-      }
-
-      return $$1;
+   public void a(fia $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   private static fei g(cxw<?> $$0) {
-      cxu<?> $$1 = $$0.b();
-      if ($$1 instanceof cxl $$2) {
-         return switch ($$2.d()) {
-            case a -> fei.b;
-            case c -> fei.d;
-            case b -> fei.c;
-            case d -> fei.e;
-         };
-      } else {
-         cxz<?> $$3 = $$1.e();
-         if ($$1 instanceof cxd $$4) {
-            cxj $$5 = $$4.f();
-            if ($$3 == cxz.b) {
-               return switch ($$5) {
-                  case b -> fei.h;
-                  case a -> fei.g;
-                  case c -> fei.i;
-               };
-            }
+   protected abstract void a(fia var1, int var2, int var3, boolean var4);
 
-            if ($$3 == cxz.c) {
-               return $$5 == cxj.b ? fei.k : fei.l;
-            }
+   public int a() {
+      return this.c + this.a;
+   }
 
-            if ($$3 == cxz.d) {
-               return fei.n;
-            }
+   public int b() {
+      return this.d + this.b;
+   }
 
-            if ($$3 == cxz.e) {
-               return fei.q;
-            }
-         }
+   public abstract void a(int var1);
 
-         if ($$3 == cxz.f) {
-            return fei.o;
-         } else if ($$3 == cxz.g) {
-            return fei.p;
-         } else {
-            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> le.s.b($$1.e())), LogUtils.defer($$0::a));
-            return fei.r;
+   public static void a(fia $$0, List<fdm> $$1, gxa<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fdm $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
       }
    }
 
-   public List<fpq> b() {
-      return this.e;
-   }
+   public static void a(gxa<?> $$0, fjj.a<?> $$1, List<fdm> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aE_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.r();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   public List<fpq> a(fei $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+         for (fdm $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

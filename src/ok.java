@@ -3,33 +3,58 @@ import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ok implements od {
-   private final oe b;
-   private final ctj c;
-   private final cxr d;
-   private final int e;
-   private final Map<String, an<?>> f = new LinkedHashMap<>();
+public class ok implements of {
+   private final og b;
+   private final cuc c;
+   private final int d;
+   private final jj<cyv> e = jj.a();
+   private final Map<String, ao<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final cyi.a<?> h;
 
-   public ok(oe $$0, cyi.a<?> $$1, cxr $$2, daw $$3, int $$4) {
+   public ok(og $$0, dbz $$1, int $$2) {
       this.b = $$0;
-      this.h = $$1;
-      this.c = $$3.q();
+      this.c = $$1.q();
       this.d = $$2;
-      this.e = $$4;
    }
 
-   public static ok a(cxr $$0, oe $$1, daw $$2) {
-      return new ok($$1, cyo::new, $$0, $$2, 1);
+   public static ok a(og $$0, dbz $$1) {
+      return new ok($$0, $$1, 1);
    }
 
-   public static ok a(cxr $$0, oe $$1, daw $$2, int $$3) {
-      return new ok($$1, cyo::new, $$0, $$2, $$3);
+   public static ok a(og $$0, dbz $$1, int $$2) {
+      return new ok($$0, $$1, $$2);
    }
 
-   public ok b(String $$0, an<?> $$1) {
+   public ok a(awt<cuc> $$0) {
+      return this.a(cyv.a($$0));
+   }
+
+   public ok b(dbz $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ok a(dbz $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(cyv.a($$0));
+      }
+
+      return this;
+   }
+
+   public ok a(cyv $$0) {
+      return this.a($$0, 1);
+   }
+
+   public ok a(cyv $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public ok b(String $$0, ao<?> $$1) {
       this.f.put($$0, $$1);
       return this;
    }
@@ -40,20 +65,20 @@ public class ok implements od {
    }
 
    @Override
-   public ctj a() {
+   public cuc a() {
       return this.c;
    }
 
    @Override
-   public void a(of $$0, akm $$1) {
+   public void a(oh $$0, akt $$1) {
       this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", dd.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
+      af.a $$2 = $$0.a().a("has_the_recipe", df.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
       this.f.forEach($$2::a);
-      cyi $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cto(this.c, this.e));
+      czj $$3 = new czj(Objects.requireNonNullElse(this.g, ""), of.a(this.b), new cuh(this.c, this.d), this.e);
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(akm $$0) {
+   private void a(akt $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }

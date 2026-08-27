@@ -1,425 +1,196 @@
-import com.google.gson.JsonArray;
-import com.mojang.logging.LogUtils;
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Bitmap;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FT_GlyphSlot;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
 
-public class ezi {
-   public static final ezi.b a = Optional.ofNullable(System.getenv("realms.environment"))
-      .or(() -> Optional.ofNullable(System.getProperty("realms.environment")))
-      .flatMap(ezi.b::a)
-      .orElse(ezi.b.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final String c;
-   private final String d;
-   private final fdz e;
-   private static final String f = "worlds";
-   private static final String g = "invites";
-   private static final String h = "mco";
-   private static final String i = "subscriptions";
-   private static final String j = "activities";
-   private static final String k = "ops";
-   private static final String l = "regions/ping/stat";
-   private static final String m = "trial";
-   private static final String n = "notifications";
-   private static final String o = "/listUserWorldsOfType/any";
-   private static final String p = "/$PARENT_WORLD_ID/createPrereleaseRealm";
-   private static final String q = "/listPrereleaseEligibleWorlds";
-   private static final String r = "/$WORLD_ID/initialize";
-   private static final String s = "/$WORLD_ID";
-   private static final String t = "/liveplayerlist";
-   private static final String u = "/$WORLD_ID";
-   private static final String v = "/$WORLD_ID/$PROFILE_UUID";
-   private static final String w = "/minigames/$MINIGAME_ID/$WORLD_ID";
-   private static final String x = "/available";
-   private static final String y = "/templates/$WORLD_TYPE";
-   private static final String z = "/v1/$ID/join/pc";
-   private static final String A = "/$ID";
-   private static final String B = "/$WORLD_ID";
-   private static final String C = "/$WORLD_ID/invite/$UUID";
-   private static final String D = "/count/pending";
-   private static final String E = "/pending";
-   private static final String F = "/accept/$INVITATION_ID";
-   private static final String G = "/reject/$INVITATION_ID";
-   private static final String H = "/$WORLD_ID";
-   private static final String I = "/$WORLD_ID";
-   private static final String J = "/$WORLD_ID/slot/$SLOT_ID";
-   private static final String K = "/$WORLD_ID/open";
-   private static final String L = "/$WORLD_ID/close";
-   private static final String M = "/$WORLD_ID/reset";
-   private static final String N = "/$WORLD_ID";
-   private static final String O = "/$WORLD_ID/backups";
-   private static final String P = "/$WORLD_ID/slot/$SLOT_ID/download";
-   private static final String Q = "/$WORLD_ID/backups/upload";
-   private static final String R = "/client/compatible";
-   private static final String S = "/tos/agreed";
-   private static final String T = "/v1/news";
-   private static final String U = "/seen";
-   private static final String V = "/dismiss";
-   private static final ezq W = new ezq();
+public class ezi implements ezf {
+   @Nullable
+   private ByteBuffer b;
+   @Nullable
+   private FT_Face c;
+   final float d;
+   private final IntSet e = new IntArraySet();
 
-   public static ezi a() {
-      fdz $$0 = fdz.Q();
-      return a($$0);
-   }
-
-   public static ezi a(fdz $$0) {
-      String $$1 = $$0.X().c();
-      String $$2 = $$0.X().a();
-      return new ezi($$2, $$1, $$0);
-   }
-
-   public ezi(String $$0, String $$1, fdz $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      ezj.a($$2.Z());
-   }
-
-   public fab b() throws fav {
-      String $$0 = this.c("worlds");
-      if (ezd.b()) {
-         $$0 = $$0 + "/listUserWorldsOfType/any";
-      }
-
-      String $$1 = this.a(ezl.a($$0));
-      return fab.a($$1);
-   }
-
-   public List<ezz> c() throws fav {
-      String $$0 = this.c("worlds/listPrereleaseEligibleWorlds");
-      String $$1 = this.a(ezl.a($$0));
-      return fab.a($$1).a;
-   }
-
-   public ezz a(Long $$0) throws fav {
-      String $$1 = String.valueOf($$0);
-      String $$2 = this.c("worlds" + "/$PARENT_WORLD_ID/createPrereleaseRealm".replace("$PARENT_WORLD_ID", $$1));
-      return ezz.c(this.a(ezl.b($$2, $$1)));
-   }
-
-   public List<ezy> d() throws fav {
-      String $$0 = this.c("notifications");
-      String $$1 = this.a(ezl.a($$0));
-      return ezy.a($$1);
-   }
-
-   private static JsonArray c(List<UUID> $$0) {
-      JsonArray $$1 = new JsonArray();
-
-      for (UUID $$2 : $$0) {
-         if ($$2 != null) {
-            $$1.add($$2.toString());
-         }
-      }
-
-      return $$1;
-   }
-
-   public void a(List<UUID> $$0) throws fav {
-      String $$1 = this.c("notifications/seen");
-      this.a(ezl.b($$1, W.a(c($$0))));
-   }
-
-   public void b(List<UUID> $$0) throws fav {
-      String $$1 = this.c("notifications/dismiss");
-      this.a(ezl.b($$1, W.a(c($$0))));
-   }
-
-   public ezz a(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/$ID".replace("$ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.a($$1));
-      return ezz.c($$2);
-   }
-
-   public fal b(long $$0) throws fav {
-      String $$1 = this.c("activities" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.a($$1));
-      return fal.a($$2);
-   }
-
-   public fae e() throws fav {
-      String $$0 = this.c("activities/liveplayerlist");
-      String $$1 = this.a(ezl.a($$0));
-      return fae.a($$1);
-   }
-
-   public faa c(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/v1/$ID/join/pc".replace("$ID", $$0 + ""));
-      String $$2 = this.a(ezl.a($$1, 5000, 30000));
-      return faa.a($$2);
-   }
-
-   public void a(long $$0, String $$1, String $$2) throws fav {
-      ezw $$3 = new ezw($$1, $$2);
-      String $$4 = this.c("worlds" + "/$WORLD_ID/initialize".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$5 = W.a($$3);
-      this.a(ezl.a($$4, $$5, 5000, 10000));
-   }
-
-   public boolean f() throws fav {
-      String $$0 = this.c("mco/available");
-      String $$1 = this.a(ezl.a($$0));
-      return Boolean.parseBoolean($$1);
-   }
-
-   public ezi.a g() throws fav {
-      String $$0 = this.c("mco/client/compatible");
-      String $$1 = this.a(ezl.a($$0));
+   public ezi(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      $$6.codePoints().forEach(this.e::add);
+      int $$7 = Math.round($$2 * $$3);
+      FreeType.FT_Set_Pixel_Sizes($$1, $$7, $$7);
+      float $$8 = $$4 * $$3;
+      float $$9 = -$$5 * $$3;
+      MemoryStack $$10 = MemoryStack.stackPush();
 
       try {
-         return ezi.a.valueOf($$1);
-      } catch (IllegalArgumentException var5) {
-         throw new fav(ezk.b.a($$1));
+         FT_Vector $$11 = flo.a(FT_Vector.malloc($$10), $$8, $$9);
+         FreeType.FT_Set_Transform($$1, null, $$11);
+      } catch (Throwable var15) {
+         if ($$10 != null) {
+            try {
+               $$10.close();
+            } catch (Throwable var14) {
+               var15.addSuppressed(var14);
+            }
+         }
+
+         throw var15;
       }
-   }
 
-   public void a(long $$0, UUID $$1) throws fav {
-      String $$2 = this.c("invites" + "/$WORLD_ID/invite/$UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$UUID", UndashedUuid.toString($$1)));
-      this.a(ezl.b($$2));
-   }
-
-   public void d(long $$0) throws fav {
-      String $$1 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(ezl.b($$1));
-   }
-
-   public ezz a(long $$0, String $$1) throws fav {
-      ezv $$2 = new ezv();
-      $$2.a($$1);
-      String $$3 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(ezl.b($$3, W.a($$2)));
-      return ezz.c($$4);
-   }
-
-   public ezp e(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.a($$1));
-      return ezp.a($$2);
-   }
-
-   public void b(long $$0, String $$1, String $$2) throws fav {
-      ezw $$3 = new ezw($$1, $$2);
-      String $$4 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(ezl.b($$4, W.a($$3)));
-   }
-
-   public void a(long $$0, int $$1, fag $$2) throws fav {
-      String $$3 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$4 = $$2.c();
-      this.a(ezl.b($$3, $$4));
-   }
-
-   public boolean a(long $$0, int $$1) throws fav {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$3 = this.a(ezl.c($$2, ""));
-      return Boolean.valueOf($$3);
-   }
-
-   public void b(long $$0, String $$1) throws fav {
-      String $$2 = this.a("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)), "backupId=" + $$1);
-      this.a(ezl.b($$2, "", 40000, 600000));
-   }
-
-   public far a(int $$0, int $$1, ezz.d $$2) throws fav {
-      String $$3 = this.a(
-         "worlds" + "/templates/$WORLD_TYPE".replace("$WORLD_TYPE", $$2.toString()), String.format(Locale.ROOT, "page=%d&pageSize=%d", $$0, $$1)
-      );
-      String $$4 = this.a(ezl.a($$3));
-      return far.a($$4);
-   }
-
-   public Boolean c(long $$0, String $$1) throws fav {
-      String $$2 = "/minigames/$MINIGAME_ID/$WORLD_ID".replace("$MINIGAME_ID", $$1).replace("$WORLD_ID", String.valueOf($$0));
-      String $$3 = this.c("worlds" + $$2);
-      return Boolean.valueOf(this.a(ezl.c($$3, "")));
-   }
-
-   public ezr b(long $$0, UUID $$1) throws fav {
-      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
-      String $$3 = this.c("ops" + $$2);
-      return ezr.a(this.a(ezl.b($$3, "")));
-   }
-
-   public ezr c(long $$0, UUID $$1) throws fav {
-      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
-      String $$3 = this.c("ops" + $$2);
-      return ezr.a(this.a(ezl.b($$3)));
-   }
-
-   public Boolean f(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/open".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.c($$1, ""));
-      return Boolean.valueOf($$2);
-   }
-
-   public Boolean g(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/$WORLD_ID/close".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.c($$1, ""));
-      return Boolean.valueOf($$2);
-   }
-
-   public Boolean a(long $$0, fcs $$1) throws fav {
-      fah $$2 = new fah($$1.a(), -1L, $$1.b().b(), $$1.c(), $$1.d());
-      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(ezl.a($$3, W.a($$2), 30000, 80000));
-      return Boolean.valueOf($$4);
-   }
-
-   public Boolean d(long $$0, String $$1) throws fav {
-      fah $$2 = new fah(null, Long.valueOf($$1), -1, false, Set.of());
-      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$4 = this.a(ezl.a($$3, W.a($$2), 30000, 80000));
-      return Boolean.valueOf($$4);
-   }
-
-   public fam h(long $$0) throws fav {
-      String $$1 = this.c("subscriptions" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      String $$2 = this.a(ezl.a($$1));
-      return fam.a($$2);
-   }
-
-   public int h() throws fav {
-      return this.i().a.size();
-   }
-
-   public ezt i() throws fav {
-      String $$0 = this.c("invites/pending");
-      String $$1 = this.a(ezl.a($$0));
-      ezt $$2 = ezt.a($$1);
-      $$2.a.removeIf(this::a);
-      return $$2;
-   }
-
-   private boolean a(ezs $$0) {
-      return this.e.aN().e($$0.d);
-   }
-
-   public void a(String $$0) throws fav {
-      String $$1 = this.c("invites" + "/accept/$INVITATION_ID".replace("$INVITATION_ID", $$0));
-      this.a(ezl.c($$1, ""));
-   }
-
-   public fap b(long $$0, int $$1) throws fav {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID/download".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
-      String $$3 = this.a(ezl.a($$2));
-      return fap.a($$3);
+      if ($$10 != null) {
+         $$10.close();
+      }
    }
 
    @Nullable
-   public fan e(long $$0, @Nullable String $$1) throws fav {
-      String $$2 = this.c("worlds" + "/$WORLD_ID/backups/upload".replace("$WORLD_ID", String.valueOf($$0)));
-      return fan.a(this.a(ezl.c($$2, fan.b($$1))));
-   }
-
-   public void b(String $$0) throws fav {
-      String $$1 = this.c("invites" + "/reject/$INVITATION_ID".replace("$INVITATION_ID", $$0));
-      this.a(ezl.c($$1, ""));
-   }
-
-   public void j() throws fav {
-      String $$0 = this.c("mco/tos/agreed");
-      this.a(ezl.b($$0, ""));
-   }
-
-   public ezx k() throws fav {
-      String $$0 = this.c("mco/v1/news");
-      String $$1 = this.a(ezl.a($$0, 5000, 10000));
-      return ezx.a($$1);
-   }
-
-   public void a(ezu $$0) throws fav {
-      String $$1 = this.c("regions/ping/stat");
-      this.a(ezl.b($$1, W.a($$0)));
-   }
-
-   public Boolean l() throws fav {
-      String $$0 = this.c("trial");
-      String $$1 = this.a(ezl.a($$0));
-      return Boolean.valueOf($$1);
-   }
-
-   public void i(long $$0) throws fav {
-      String $$1 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
-      this.a(ezl.b($$1));
-   }
-
-   private String c(String $$0) {
-      return this.a($$0, null);
-   }
-
-   private String a(String $$0, @Nullable String $$1) {
-      try {
-         return new URI(a.e, a.d, "/" + $$0, $$1, null).toASCIIString();
-      } catch (URISyntaxException var4) {
-         throw new IllegalArgumentException($$0, var4);
-      }
-   }
-
-   private String a(ezl<?> $$0) throws fav {
-      $$0.a("sid", this.c);
-      $$0.a("user", this.d);
-      $$0.a("version", aa.b().c());
-      $$0.a(ezd.b());
-
-      try {
-         int $$1 = $$0.b();
-         if ($$1 != 503 && $$1 != 277) {
-            String $$3 = $$0.c();
-            if ($$1 >= 200 && $$1 < 300) {
-               return $$3;
-            } else if ($$1 == 401) {
-               String $$4 = $$0.c("WWW-Authenticate");
-               b.info("Could not authorize you against Realms server: {}", $$4);
-               throw new fav(new ezk.a($$4));
-            } else {
-               ezk $$5 = ezk.a($$1, $$3);
-               throw new fav($$5);
-            }
+   @Override
+   public eze a(int $$0) {
+      FT_Face $$1 = this.b();
+      if (this.e.contains($$0)) {
+         return null;
+      } else {
+         int $$2 = FreeType.FT_Get_Char_Index($$1, (long)$$0);
+         if ($$2 == 0) {
+            return null;
          } else {
-            int $$2 = $$0.a();
-            throw new faw($$2, $$1);
+            flo.a(FreeType.FT_Load_Glyph($$1, $$2, 4194312), "Loading glyph");
+            FT_GlyphSlot $$3 = Objects.requireNonNull($$1.glyph(), "Glyph not initialized");
+            float $$4 = flo.a($$3.advance());
+            FT_Bitmap $$5 = $$3.bitmap();
+            int $$6 = $$3.bitmap_left();
+            int $$7 = $$3.bitmap_top();
+            int $$8 = $$5.width();
+            int $$9 = $$5.rows();
+            return (eze)($$8 > 0 && $$9 > 0 ? new ezi.a((float)$$6, (float)$$7, $$8, $$9, $$4, $$2) : () -> $$4 / this.d);
          }
-      } catch (fau var5) {
-         throw new fav(ezk.b.a(var5));
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   FT_Face b() {
+      if (this.b != null && this.c != null) {
+         return this.c;
+      } else {
+         throw new IllegalStateException("Provider already closed");
+      }
    }
 
-   public static enum b {
-      a("pc.realms.minecraft.net", "https"),
-      b("pc-stage.realms.minecraft.net", "https"),
-      c("localhost:8080", "http");
-
-      public final String d;
-      public final String e;
-
-      private b(String $$0, String $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   @Override
+   public void close() {
+      if (this.c != null) {
+         flo.a(FreeType.FT_Done_Face(this.c), "Deleting face");
+         this.c = null;
       }
 
-      public static Optional<ezi.b> a(String $$0) {
-         String var1 = $$0.toLowerCase(Locale.ROOT);
+      MemoryUtil.memFree(this.b);
+      this.b = null;
+   }
 
-         return switch (var1) {
-            case "production" -> Optional.of(a);
-            case "local" -> Optional.of(c);
-            case "stage", "staging" -> Optional.of(b);
-            default -> Optional.empty();
-         };
+   @Override
+   public IntSet a() {
+      FT_Face $$0 = this.b();
+      IntSet $$1 = new IntOpenHashSet();
+      MemoryStack $$2 = MemoryStack.stackPush();
+
+      try {
+         IntBuffer $$3 = $$2.mallocInt(1);
+
+         for (long $$4 = FreeType.FT_Get_First_Char($$0, $$3); $$3.get(0) != 0; $$4 = FreeType.FT_Get_Next_Char($$0, $$4, $$3)) {
+            $$1.add((int)$$4);
+         }
+      } catch (Throwable var8) {
+         if ($$2 != null) {
+            try {
+               $$2.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+         }
+
+         throw var8;
+      }
+
+      if ($$2 != null) {
+         $$2.close();
+      }
+
+      $$1.removeAll(this.e);
+      return $$1;
+   }
+
+   class a implements eze {
+      final int b;
+      final int c;
+      final float d;
+      final float e;
+      private final float f;
+      final int g;
+
+      a(float $$0, float $$1, int $$2, int $$3, float $$4, int $$5) {
+         this.b = $$2;
+         this.c = $$3;
+         this.f = $$4 / ezi.this.d;
+         this.d = $$0 / ezi.this.d;
+         this.e = $$1 / ezi.this.d;
+         this.g = $$5;
+      }
+
+      @Override
+      public float getAdvance() {
+         return this.f;
+      }
+
+      @Override
+      public fli bake(Function<ezg, fli> $$0) {
+         return $$0.apply(new ezg() {
+            @Override
+            public int a() {
+               return a.this.b;
+            }
+
+            @Override
+            public int b() {
+               return a.this.c;
+            }
+
+            @Override
+            public float d() {
+               return ezi.this.d;
+            }
+
+            @Override
+            public float i() {
+               return a.this.d;
+            }
+
+            @Override
+            public float j() {
+               return a.this.e;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               FT_Face $$2 = ezi.this.b();
+               fad $$3 = new fad(fad.a.d, a.this.b, a.this.c, false);
+               $$3.a($$2, a.this.g);
+               $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
+            }
+
+            @Override
+            public boolean c() {
+               return false;
+            }
+         });
       }
    }
 }

@@ -1,80 +1,73 @@
-public class cqk extends cqo {
-   private final cpj a;
-   private final clw b;
-   private int c;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public cqk(clw $$0, cpj $$1, bpn $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
-   }
+public class cqk {
+   private final List<cqk.b> a;
+   private final cqk.b b;
 
-   @Override
-   public boolean a(cto $$0) {
-      return false;
-   }
-
-   @Override
-   public cto a(int $$0) {
-      if (this.h()) {
-         this.c = this.c + Math.min($$0, this.g().I());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cto $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(cto $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dP(), this.b, this.c);
-      }
-
-      if (this.d instanceof cqi $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.c = 0;
-   }
-
-   @Override
-   public void a(clw $$0, cto $$1) {
-      this.b_($$1);
-      jg<cto> $$2 = $$0.dP().r().c(cxz.a, this.a, $$0.dP());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         cto $$4 = this.a.a($$3);
-         cto $$5 = $$2.get($$3);
-         if (!$$4.e()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
-         }
-
-         if (!$$5.e()) {
-            if ($$4.e()) {
-               this.a.a($$3, $$5);
-            } else if (cto.c($$4, $$5)) {
-               $$5.g($$4.I());
-               this.a.a($$3, $$5);
-            } else if (!this.b.gc().f($$5)) {
-               this.b.a($$5, false);
-            }
-         }
+   cqk(List<cqk.b> $$0, cqk.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cqk.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   @Override
-   public boolean f() {
-      return true;
+   public static cqk.a a() {
+      return new cqk.a();
+   }
+
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
+   }
+
+   public cqk.b b(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cqk.b b() {
+      return this.b;
+   }
+
+   public List<cqk.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cqk.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cqk.b> a = new ArrayList<>();
+      private cqk.b b = cqk.b.e;
+
+      public cqk.a a(int $$0, int $$1, int $$2, Predicate<cuh> $$3) {
+         this.a.add(new cqk.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cqk.a a(int $$0, int $$1, int $$2) {
+         this.b = new cqk.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cqk a() {
+         return new cqk(this.a, this.b);
+      }
+   }
+
+   public static record b(int a, int b, int c, Predicate<cuh> d) {
+      static final cqk.b e = new cqk.b(0, 0, 0, $$0 -> true);
    }
 }

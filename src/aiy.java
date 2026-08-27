@@ -1,7 +1,14 @@
-public record aiy() implements aiw {
-   public static final aiy a = new aiy();
-
+public interface aiy extends abt, agm {
    @Override
-   public void a(vx $$0) {
+   default wd b() {
+      return wd.d;
    }
+
+   void a(aja var1);
+
+   void a(ajb var1);
+
+   void a(aiz var1);
+
+   void a(ajc var1);
 }

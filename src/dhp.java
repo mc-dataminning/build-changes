@@ -1,65 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dhp extends ddy implements dkz {
-   public static final MapCodec<dhp> a = b(dhp::new);
-   private static final drs c = drr.C;
-   protected static final evd b = ddy.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public class dhp extends dhi {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dhp> d = b(dhp::new);
+   private static final km f = new kl();
 
    @Override
    public MapCodec<dhp> a() {
-      return a;
+      return d;
    }
 
-   protected dhp(dra.d $$0) {
+   public dhp(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c);
+   protected km a(cuh $$0) {
+      return f;
    }
 
    @Override
-   protected emu b_(drb $$0) {
-      return $$0.c(c) ? emv.c.a(false) : super.b_($$0);
+   public dqc a(ir $$0, dtc $$1) {
+      return new dqv($$0, $$1);
    }
 
-   @Nullable
    @Override
-   public drb a(cwz $$0) {
-      drb $$1 = super.a($$0);
-      if ($$1 != null) {
-         emu $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == emv.c));
+   protected void a(aqt $$0, dtc $$1, ir $$2) {
+      dqu $$3 = $$0.a($$2, dqe.h).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         return null;
-      }
-   }
+         kj $$4 = new kj($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cuh $$6 = $$3.a($$5);
+            if (!$$6.d()) {
+               iw $$7 = $$0.a_($$2).c(b);
+               bpt $$8 = drc.a($$0, $$2.a($$7));
+               cuh $$9;
+               if ($$8 == null) {
+                  $$9 = f.dispense($$4, $$6);
+               } else {
+                  $$9 = drc.a($$3, $$8, $$6.r().a(1), $$7.g());
+                  if ($$9.d()) {
+                     $$9 = $$6.r();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.r();
+                  }
+               }
 
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      io $$3 = $$2.c();
-      drb $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, it.a);
-   }
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return b;
-   }
-
-   @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      if ($$1 == it.b && !this.a($$0, $$3, $$4)) {
-         return dea.a.n();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, emv.c, emv.c.a($$3));
+               $$3.a($$5, $$9);
+            }
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

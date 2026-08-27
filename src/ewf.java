@@ -1,29 +1,26 @@
-public enum ewf {
-   a(-3),
-   b(-2),
-   c(-1),
-   d(0),
-   e(1),
-   f(2),
-   g(3);
+@FunctionalInterface
+public interface ewf<T> {
+   void handle(T var1, ewh<T> var2, long var3);
 
-   private final int h;
+   public abstract static class a<T, C extends ewf<T>> {
+      private final akt a;
+      private final Class<?> b;
 
-   private ewf(int $$0) {
-      this.h = $$0;
-   }
-
-   public static ewf a(int $$0) {
-      for (ewf $$1 : values()) {
-         if ($$1.h == $$0) {
-            return $$1;
-         }
+      public a(akt $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$0 < a.h ? a : g;
-   }
+      public akt a() {
+         return this.a;
+      }
 
-   public int a() {
-      return this.h;
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(uk var1, C var2);
+
+      public abstract C b(uk var1);
    }
 }

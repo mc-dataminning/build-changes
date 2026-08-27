@@ -1,72 +1,111 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+import java.util.function.Consumer;
 
-public class fme extends fly {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final wx d;
-   private final xc r;
-   private final ImmutableList<fme.a> s;
-   private fgs u = fgs.a;
-   private int v;
-   private int w;
+public class fme implements fmb {
+   private final flz a;
+   private final fme.a b;
+   private int c = 0;
 
-   protected fme(wx $$0, List<wx> $$1, ImmutableList<fme.a> $$2) {
-      super($$0);
-      this.r = xc.a($$1);
-      this.d = ww.a($$0, xa.a($$1, ww.a));
-      this.s = $$2;
+   private fme(fme.a $$0) {
+      this(0, 0, $$0);
+   }
+
+   public fme(int $$0, int $$1, fme.a $$2) {
+      this.a = new flz($$0, $$1);
+      this.b = $$2;
+   }
+
+   public fme a(int $$0) {
+      this.b.a(this.a, $$0);
+      return this;
+   }
+
+   public fmd b() {
+      return this.a.b();
+   }
+
+   public fmd c() {
+      return this.a.c();
+   }
+
+   public <T extends fmc> T a(T $$0, fmd $$1) {
+      return this.b.a(this.a, $$0, this.c++, $$1);
+   }
+
+   public <T extends fmc> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fmc> T a(T $$0, Consumer<fmd> $$1) {
+      return this.b.a(this.a, $$0, this.c++, ad.a(this.b(), $$1));
    }
 
    @Override
-   public wx i() {
-      return this.d;
+   public void b(Consumer<fmc> $$0) {
+      this.a.b($$0);
    }
 
    @Override
-   public void aM_() {
-      UnmodifiableIterator $$1 = this.s.iterator();
+   public void a() {
+      this.a.a();
+   }
 
-      while ($$1.hasNext()) {
-         fme.a $$0 = (fme.a)$$1.next();
-         this.w = Math.max(this.w, 20 + this.p.a($$0.a) + 20);
+   @Override
+   public int x() {
+      return this.a.x();
+   }
+
+   @Override
+   public int v() {
+      return this.a.v();
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a.m($$0);
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.a.n($$0);
+   }
+
+   @Override
+   public int C() {
+      return this.a.C();
+   }
+
+   @Override
+   public int D() {
+      return this.a.D();
+   }
+
+   public static fme d() {
+      return new fme(fme.a.b);
+   }
+
+   public static fme e() {
+      return new fme(fme.a.a);
+   }
+
+   public static enum a {
+      a,
+      b;
+
+      void a(flz $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1);
+               break;
+            case b:
+               $$0.b($$1);
+         }
       }
 
-      int $$1x = 5 + this.w + 5;
-      int $$2 = $$1x * this.s.size();
-      this.u = fgs.a(this.p, this.r, $$2);
-      int $$3 = this.u.a() * 9;
-      this.v = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.v + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.s.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fme.a $$6 = (fme.a)var6.next();
-         this.c(ffz.a($$6.a, $$6.b).a($$5, $$4, this.w, 20).a());
-      }
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.v - 9 * 2, -1);
-      this.u.a($$0, this.n / 2, this.v);
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   public static final class a {
-      final wx a;
-      final ffz.c b;
-
-      public a(wx $$0, ffz.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public <T extends fmc> T a(flz $$0, T $$1, int $$2, fmd $$3) {
+         return (T)(switch (this) {
+            case a -> $$0.a($$1, 0, $$2, $$3);
+            case b -> $$0.a($$1, $$2, 0, $$3);
+         });
       }
    }
 }

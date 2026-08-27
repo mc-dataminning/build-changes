@@ -1,35 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
 
-public class dce extends dca {
-   public static final MapCodec<dce> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dbw.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, dce::new)
-   );
-   private final jb<dbw> c;
-   private final int d;
-   private final int e;
+public final class dce {
+   private final String a;
+   private final dbx b;
+   private final boolean c;
+   private final bpx d;
+   private final boolean e;
+   private final dbw f;
+   private final dcu g;
 
-   public dce(jb<dbw> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   public dce(String $$0, dbx $$1, boolean $$2, bpx $$3, boolean $$4, dbw $$5, dcu $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   @Override
-   protected Stream<ix<dbw>> b() {
-      return this.c.a();
+   public static dce a(Dynamic<?> $$0, dcu $$1) {
+      dbx $$2 = dbx.a($$0.get("GameType").asInt(0));
+      return new dce(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bpx.a($$0x.byteValue())).result().orElse(bpx.c),
+         $$0.get("allowCommands").asBoolean($$2 == dbx.b),
+         new dbw($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   @Override
-   protected MapCodec<? extends dca> a() {
-      return b;
+   public String a() {
+      return this.a;
    }
 
-   @Override
-   public ix<dbw> getNoiseBiome(int $$0, int $$1, int $$2, dcf.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public dbx b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public bpx d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public dbw f() {
+      return this.f;
+   }
+
+   public dcu g() {
+      return this.g;
+   }
+
+   public dce a(dbx $$0) {
+      return new dce(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public dce a(bpx $$0) {
+      return new dce(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public dce a(dcu $$0) {
+      return new dce(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public dce h() {
+      return new dce(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

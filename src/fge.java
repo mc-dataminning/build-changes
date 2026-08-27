@@ -1,25 +1,74 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fge {
-   private static final axq a = axq.codepoint(32, xu.a);
+public record fge(int a, @Nullable fge.a b, @Nullable xe c, @Nullable String d) {
+   private static final xe e = xe.c("chat.tag.system");
+   private static final xe f = xe.c("chat.tag.system_single_player");
+   private static final xe g = xe.c("chat.tag.not_secure");
+   private static final xe h = xe.c("chat.tag.modified");
+   private static final xe i = xe.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fge l = new fge(13684944, null, e, "System");
+   private static final fge m = new fge(13684944, null, f, "System");
+   private static final fge n = new fge(13684944, null, g, "Not Secure");
+   private static final fge o = new fge(16733525, null, i, "Chat Error");
 
-   private static String a(String $$0) {
-      return fdz.Q().m.K().c() ? $$0 : n.a($$0);
+   public static fge a() {
+      return l;
    }
 
-   public static List<axq> a(xc $$0, int $$1, ffk $$2) {
-      fdp $$3 = new fdp();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(xc.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, xu.a);
-      List<axq> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, xu.a, ($$1x, $$2x) -> {
-         axq $$3x = ty.a().a($$1x);
-         $$4.add($$2x ? axq.composite(a, $$3x) : $$3x);
-      });
-      return (List<axq>)($$4.isEmpty() ? Lists.newArrayList(new axq[]{axq.a}) : $$4);
+   public static fge b() {
+      return m;
+   }
+
+   public static fge c() {
+      return n;
+   }
+
+   public static fge a(String $$0) {
+      xe $$1 = xe.b($$0).a(n.h);
+      xe $$2 = xe.i().a(h).a(xd.s).a($$1);
+      return new fge(6316128, fge.a.a, $$2, "Modified");
+   }
+
+   public static fge d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public fge.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public xe g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new akt("icon/chat_modified"), 9, 9);
+
+      public final akt b;
+      public final int c;
+      public final int d;
+
+      private a(akt $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(fia $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

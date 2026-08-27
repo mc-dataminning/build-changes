@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class bsn extends bru {
+public class bsn extends brv {
    private static final int c = 2;
    private static final double d = 3.0;
    private static final double e = 15.0;
@@ -14,16 +14,16 @@ public class bsn extends bru {
    private int g;
    private boolean h;
    @Nullable
-   private aqn i;
-   private final Set<bru> j = Sets.newHashSet();
+   private aqu i;
+   private final Set<brv> j = Sets.newHashSet();
    private int k;
 
-   public bsn(bsa<? extends bsn> $$0, dax $$1) {
+   public bsn(bsb<? extends bsn> $$0, dca $$1) {
       super($$0, $$1);
-      this.au = true;
+      this.ay = true;
       this.f = 2;
-      this.b = this.ah.g();
-      this.g = this.ah.a(3) + 1;
+      this.b = this.al.g();
+      this.g = this.al.a(3) + 1;
    }
 
    public void a(boolean $$0) {
@@ -31,24 +31,24 @@ public class bsn extends bru {
    }
 
    @Override
-   public avi de() {
-      return avi.d;
+   public avq dj() {
+      return avq.d;
    }
 
    @Nullable
-   public aqn p() {
+   public aqu p() {
       return this.i;
    }
 
-   public void b(@Nullable aqn $$0) {
+   public void b(@Nullable aqu $$0) {
       this.i = $$0;
    }
 
-   private void v() {
-      io $$0 = this.w();
-      drb $$1 = this.dP().a_($$0);
-      if ($$1.a(dea.ss)) {
-         ((din)$$1.b()).d($$1, this.dP(), $$0);
+   private void u() {
+      ir $$0 = this.w();
+      dtc $$1 = this.dU().a_($$0);
+      if ($$1.a(dfe.tD)) {
+         ((djv)$$1.b()).d($$1, this.dU(), $$0);
       }
    }
 
@@ -56,119 +56,119 @@ public class bsn extends bru {
    public void l() {
       super.l();
       if (this.f == 2) {
-         if (this.dP().x_()) {
-            this.dP().a(this.du(), this.dw(), this.dA(), avh.nW, avi.d, 10000.0F, 0.8F + this.ah.i() * 0.2F, false);
-            this.dP().a(this.du(), this.dw(), this.dA(), avh.nV, avi.d, 2.0F, 0.5F + this.ah.i() * 0.2F, false);
+         if (this.dU().x_()) {
+            this.dU().a(this.dz(), this.dB(), this.dF(), avo.om, avq.d, 10000.0F, 0.8F + this.al.i() * 0.2F, false);
+            this.dU().a(this.dz(), this.dB(), this.dF(), avo.ol, avq.d, 2.0F, 0.5F + this.al.i() * 0.2F, false);
          } else {
-            bpr $$0 = this.dP().ak();
-            if ($$0 == bpr.c || $$0 == bpr.d) {
+            bpx $$0 = this.dU().al();
+            if ($$0 == bpx.c || $$0 == bpx.d) {
                this.b(4);
             }
 
-            this.v();
-            b(this.dP(), this.w());
-            this.a(dvu.G);
+            this.u();
+            b(this.dU(), this.w());
+            this.a(dxv.G);
          }
       }
 
       this.f--;
       if (this.f < 0) {
          if (this.g == 0) {
-            if (this.dP() instanceof aqm) {
-               List<bru> $$1 = this.dP()
+            if (this.dU() instanceof aqt) {
+               List<brv> $$1 = this.dU()
                   .a(
                      this,
-                     new euf(this.du() - 15.0, this.dw() - 15.0, this.dA() - 15.0, this.du() + 15.0, this.dw() + 6.0 + 15.0, this.dA() + 15.0),
-                     $$0 -> $$0.bD() && !this.j.contains($$0)
+                     new ewp(this.dz() - 15.0, this.dB() - 15.0, this.dF() - 15.0, this.dz() + 15.0, this.dB() + 6.0 + 15.0, this.dF() + 15.0),
+                     $$0 -> $$0.bI() && !this.j.contains($$0)
                   );
 
-               for (aqn $$2 : ((aqm)this.dP()).a($$0 -> $$0.f(this) < 256.0F)) {
-                  am.V.a($$2, this, $$1);
+               for (aqu $$2 : ((aqt)this.dU()).a($$0 -> $$0.f(this) < 256.0F)) {
+                  an.V.a($$2, this, $$1);
                }
             }
 
             this.ao();
-         } else if (this.f < -this.ah.a(10)) {
+         } else if (this.f < -this.al.a(10)) {
             this.g--;
             this.f = 1;
-            this.b = this.ah.g();
+            this.b = this.al.g();
             this.b(0);
          }
       }
 
       if (this.f >= 0) {
-         if (!(this.dP() instanceof aqm)) {
-            this.dP().c(2);
+         if (!(this.dU() instanceof aqt)) {
+            this.dU().c(2);
          } else if (!this.h) {
-            List<bru> $$3 = this.dP()
-               .a(this, new euf(this.du() - 3.0, this.dw() - 3.0, this.dA() - 3.0, this.du() + 3.0, this.dw() + 6.0 + 3.0, this.dA() + 3.0), bru::bD);
+            List<brv> $$3 = this.dU()
+               .a(this, new ewp(this.dz() - 3.0, this.dB() - 3.0, this.dF() - 3.0, this.dz() + 3.0, this.dB() + 6.0 + 3.0, this.dF() + 3.0), brv::bI);
 
-            for (bru $$4 : $$3) {
-               $$4.a((aqm)this.dP(), this);
+            for (brv $$4 : $$3) {
+               $$4.a((aqt)this.dU(), this);
             }
 
             this.j.addAll($$3);
             if (this.i != null) {
-               am.F.a(this.i, $$3);
+               an.F.a(this.i, $$3);
             }
          }
       }
    }
 
-   private io w() {
-      euk $$0 = this.dn();
-      return io.a($$0.c, $$0.d - 1.0E-6, $$0.e);
+   private ir w() {
+      ewu $$0 = this.ds();
+      return ir.a($$0.c, $$0.d - 1.0E-6, $$0.e);
    }
 
    private void b(int $$0) {
-      if (!this.h && !this.dP().B && this.dP().aa().b(dat.b)) {
-         io $$1 = this.dp();
-         drb $$2 = ddl.a(this.dP(), $$1);
-         if (this.dP().a_($$1).i() && $$2.a((dba)this.dP(), $$1)) {
-            this.dP().b($$1, $$2);
+      if (!this.h && !this.dU().C && this.dU().ab().b(dbw.b)) {
+         ir $$1 = this.du();
+         dtc $$2 = deo.a(this.dU(), $$1);
+         if (this.dU().a_($$1).i() && $$2.a((dcd)this.dU(), $$1)) {
+            this.dU().b($$1, $$2);
             this.k++;
          }
 
          for (int $$3 = 0; $$3 < $$0; $$3++) {
-            io $$4 = $$1.b(this.ah.a(3) - 1, this.ah.a(3) - 1, this.ah.a(3) - 1);
-            $$2 = ddl.a(this.dP(), $$4);
-            if (this.dP().a_($$4).i() && $$2.a((dba)this.dP(), $$4)) {
-               this.dP().b($$4, $$2);
+            ir $$4 = $$1.b(this.al.a(3) - 1, this.al.a(3) - 1, this.al.a(3) - 1);
+            $$2 = deo.a(this.dU(), $$4);
+            if (this.dU().a_($$4).i() && $$2.a((dcd)this.dU(), $$4)) {
+               this.dU().b($$4, $$2);
                this.k++;
             }
          }
       }
    }
 
-   private static void b(dax $$0, io $$1) {
-      drb $$2 = $$0.a_($$1);
-      io $$3;
-      drb $$4;
-      if ($$2.a(dea.ss)) {
-         $$3 = $$1.a($$2.c(din.a).g());
+   private static void b(dca $$0, ir $$1) {
+      dtc $$2 = $$0.a_($$1);
+      ir $$3;
+      dtc $$4;
+      if ($$2.a(dfe.tD)) {
+         $$3 = $$1.a($$2.c(djv.a).g());
          $$4 = $$0.a_($$3);
       } else {
          $$3 = $$1;
          $$4 = $$2;
       }
 
-      if ($$4.b() instanceof dnd) {
-         $$0.b($$3, dnd.c($$0.a_($$3)));
-         io.a $$7 = $$1.j();
-         int $$8 = $$0.z.a(3) + 3;
+      if ($$4.b() instanceof doy) {
+         $$0.b($$3, doy.c($$0.a_($$3)));
+         ir.a $$7 = $$1.j();
+         int $$8 = $$0.A.a(3) + 3;
 
          for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$0.z.a(8) + 1;
+            int $$10 = $$0.A.a(8) + 1;
             a($$0, $$3, $$7, $$10);
          }
       }
    }
 
-   private static void a(dax $$0, io $$1, io.a $$2, int $$3) {
+   private static void a(dca $$0, ir $$1, ir.a $$2, int $$3) {
       $$2.g($$1);
 
       for (int $$4 = 0; $$4 < $$3; $$4++) {
-         Optional<io> $$5 = c($$0, $$2);
+         Optional<ir> $$5 = c($$0, $$2);
          if ($$5.isEmpty()) {
             break;
          }
@@ -177,11 +177,11 @@ public class bsn extends bru {
       }
    }
 
-   private static Optional<io> c(dax $$0, io $$1) {
-      for (io $$2 : io.a($$0.z, 10, $$1, 1)) {
-         drb $$3 = $$0.a_($$2);
-         if ($$3.b() instanceof dnd) {
-            dnd.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
+   private static Optional<ir> c(dca $$0, ir $$1) {
+      for (ir $$2 : ir.a($$0.A, 10, $$1, 1)) {
+         dtc $$3 = $$0.a_($$2);
+         if ($$3.b() instanceof doy) {
+            doy.b($$3).ifPresent($$2x -> $$0.b($$2, $$2x));
             $$0.c(3002, $$2, -1);
             return Optional.of($$2);
          }
@@ -192,27 +192,27 @@ public class bsn extends bru {
 
    @Override
    public boolean a(double $$0) {
-      double $$1 = 64.0 * cD();
+      double $$1 = 64.0 * cI();
       return $$0 < $$1 * $$1;
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
    }
 
    @Override
-   protected void a(ud $$0) {
+   protected void a(uk $$0) {
    }
 
    @Override
-   protected void b(ud $$0) {
+   protected void b(uk $$0) {
    }
 
-   public int s() {
+   public int r() {
       return this.k;
    }
 
-   public Stream<bru> u() {
-      return this.j.stream().filter(bru::bD);
+   public Stream<brv> t() {
+      return this.j.stream().filter(brv::bI);
    }
 }

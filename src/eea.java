@@ -1,18 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eea<P extends edz> {
-   public static final eea<edy> a = a("mangrove_root_placer", edy.c);
-   private final MapCodec<P> b;
+public class eea {
+   public static final Codec<eea> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eix.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, eea::new)
+   );
+   public final ja<eix> b;
+   public final float c;
 
-   private static <P extends edz> eea<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.Y, $$0, new eea<>($$1));
-   }
-
-   private eea(MapCodec<P> $$0) {
+   public eea(ja<eix> $$0, float $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   public boolean a(dcv $$0, duz $$1, ayt $$2, ir $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

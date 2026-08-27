@@ -1,71 +1,52 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public abstract class ffr extends ffx implements fhu {
-   @Nullable
-   private fhv a;
-   private boolean b;
+public class ffr extends ffj {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xe c = xe.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public ffr(int $$0, int $$1, int $$2, int $$3, wx $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public ffr(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public final boolean aG_() {
-      return this.b;
-   }
+   public void run() {
+      fbs $$0 = fbs.a();
 
-   @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
 
-   @Nullable
-   @Override
-   public fhv aH_() {
-      return this.a;
-   }
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fdg var4) {
+            if (this.d()) {
+               return;
+            }
 
-   @Override
-   public void a(@Nullable fhv $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ffj a(fkb $$0) {
-      return fhu.super.a($$0);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return fhu.super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return fhu.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return fhu.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aI_() {
-      return fhu.super.aI_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      fhu.super.a($$0);
+   public xe a() {
+      return c;
    }
 }

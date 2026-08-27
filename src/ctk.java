@@ -1,65 +1,51 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ctk {
-   private final Map<ctj, ctk.a> a = Maps.newHashMap();
-   private int b;
+public class ctk extends cuc {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
 
-   public boolean a(ctj $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public ctk(cuc.a $$0) {
+      super($$0);
    }
 
-   public float a(ctj $$0, float $$1) {
-      ctk.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return ayd.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
+   @Override
+   public bqa a(cyf $$0) {
+      dca $$1 = $$0.q();
+      if (!$$1.C) {
+         cuh $$2 = $$0.n();
+         ewu $$3 = $$0.l();
+         iw $$4 = $$0.k();
+         cmm $$5 = new cmm($$1, $$0.o(), $$3.c + (double)$$4.j() * 0.15, $$3.d + (double)$$4.k() * 0.15, $$3.e + (double)$$4.l() * 0.15, $$2);
+         $$1.b($$5);
+         $$2.h(1);
       }
+
+      return bqa.a($$1.C);
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ctj, ctk.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ctj, ctk.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      if ($$1.fN()) {
+         cuh $$3 = $$1.b($$2);
+         if (!$$0.C) {
+            cmm $$4 = new cmm($$0, $$3, $$1);
+            $$0.b($$4);
+            $$3.a(1, $$1);
+            $$1.b(avz.c.b(this));
          }
+
+         return bqb.a($$1.b($$2), $$0.x_());
+      } else {
+         return bqb.c($$1.b($$2));
       }
    }
 
-   public void a(ctj $$0, int $$1) {
-      this.a.put($$0, new ctk.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(ctj $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(ctj $$0, int $$1) {
-   }
-
-   protected void c(ctj $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
+      cxk $$4 = $$0.a(ke.T);
+      if ($$4 != null) {
+         $$4.a($$2::add, $$3);
       }
    }
 }

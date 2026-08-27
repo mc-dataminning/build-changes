@@ -1,42 +1,30 @@
-import java.util.Optional;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ego extends dxq {
-   private final dbs a;
-   private final dsy b;
-   private final Optional<egn> c;
+public abstract class ego extends egl {
+   protected final long c;
+   protected final eoh.a d;
+   protected final float e;
+   protected final eoh f;
 
-   public ego(dbs $$0, dsy $$1, Optional<egn> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected static <P extends ego> P3<Mu<P>, Long, eoh.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         eoh.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         axu.k.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public int a(dwt.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   protected ego(long $$0, eoh.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = eoh.b(new dzt(new dyv($$0)), $$1);
    }
 
-   public dsw a(dae $$0, dwp.a $$1) {
-      return ((dtr)this.a.a($$0.e, $$0.f)).b($$1);
-   }
-
-   public drb a(io $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public dbs d() {
-      return this.a;
-   }
-
-   public Optional<egn> e() {
-      return this.c;
-   }
-
-   public dsy f() {
-      return this.b;
+   protected double a(ir $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

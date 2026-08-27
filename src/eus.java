@@ -1,38 +1,45 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public final class eus implements euw {
-   private final euq a;
-   private final int b;
-   private final int c;
-
-   eus(int $$0, int $$1) {
-      this.a = new euq((int)eva.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(euw.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
+public record eus(Optional<cs> b, ir c) implements euu {
+   private static final MapCodec<ir> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               axu.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jv::u),
+               axu.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jv::v),
+               axu.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jv::w)
+            )
+            .apply($$0, ir::new)
+   );
+   public static final Codec<eus> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axu.a(cs.a, "predicate").forGetter(eus::c), d.forGetter(eus::d)).apply($$0, eus::new)
+   );
 
    @Override
-   public int size() {
-      return this.a.size();
+   public euv b() {
+      return euw.p;
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public boolean a(erp $$0) {
+      ewu $$1 = $$0.c(eug.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
+
+   public static euu.a a(cs.a $$0) {
+      return () -> new eus(Optional.of($$0.b()), ir.c);
+   }
+
+   public static euu.a a(cs.a $$0, ir $$1) {
+      return () -> new eus(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<cs> c() {
+      return this.b;
+   }
+
+   public ir d() {
+      return this.c;
    }
 }

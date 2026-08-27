@@ -1,109 +1,125 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
-public class fg<T> implements ArgumentType<ix<T>> {
-   private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wx.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("argument.resource_or_id.invalid"));
-   private final iz.a d;
-   private final boolean e;
-   private final Codec<ix<T>> f;
+public class fg<T> implements ArgumentType<ja.c<T>> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xe.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("argument.resource.not_found", $$0, $$1));
+   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> xe.b("argument.resource.invalid_type", $$0, $$1, $$2)
+   );
+   final aks<? extends jn<T>> e;
+   private final jc<T> f;
 
-   protected fg(ea $$0, akl<jk<T>> $$1, Codec<ix<T>> $$2) {
-      this.d = $$0;
-      this.e = $$0.a($$1).isPresent();
-      this.f = $$2;
+   public fg(ed $$0, aks<? extends jn<T>> $$1) {
+      this.e = $$1;
+      this.f = $$0.b($$1);
    }
 
-   public static fg.c a(ea $$0) {
-      return new fg.c($$0);
+   public static <T> fg<T> a(ed $$0, aks<? extends jn<T>> $$1) {
+      return new fg<>($$0, $$1);
    }
 
-   public static ix<epk> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return d($$0, $$1);
-   }
-
-   public static fg.a b(ea $$0) {
-      return new fg.a($$0);
-   }
-
-   public static ix<eqr> b(CommandContext<ee> $$0, String $$1) {
-      return d($$0, $$1);
-   }
-
-   public static fg.b c(ea $$0) {
-      return new fg.b($$0);
-   }
-
-   public static ix<esl> c(CommandContext<ee> $$0, String $$1) {
-      return d($$0, $$1);
-   }
-
-   private static <T> ix<T> d(CommandContext<ee> $$0, String $$1) {
-      return (ix<T>)$$0.getArgument($$1, ix.class);
-   }
-
-   @Nullable
-   public ix<T> a(StringReader $$0) throws CommandSyntaxException {
-      va $$1 = b($$0);
-      if (!this.e) {
-         return null;
+   public static <T> ja.c<T> a(CommandContext<eh> $$0, String $$1, aks<jn<T>> $$2) throws CommandSyntaxException {
+      ja.c<T> $$3 = (ja.c<T>)$$0.getArgument($$1, ja.c.class);
+      aks<?> $$4 = $$3.h();
+      if ($$4.c($$2)) {
+         return $$3;
       } else {
-         akk<va> $$2 = this.d.a(ur.a);
-         return (ix<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+         throw b.create($$4.a(), $$4.b(), $$2.a());
       }
    }
 
-   @VisibleForTesting
-   static va b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      va $$2 = new vb($$0).d();
-      if (c($$0)) {
+   public static ja.c<btq> a(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.c);
+   }
+
+   public static ja.c<ebm<?, ?>> b(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.aC);
+   }
+
+   public static ja.c<ejt> c(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.aJ);
+   }
+
+   public static ja.c<bsb<?>> d(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.v);
+   }
+
+   public static ja.c<bsb<?>> e(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      ja.c<bsb<?>> $$2 = a($$0, $$1, li.v);
+      if (!$$2.a().c()) {
+         throw d.create($$2.h().a().toString());
+      } else {
          return $$2;
-      } else {
-         $$0.setCursor($$1);
-         akm $$3 = akm.a($$0);
-         if (c($$0)) {
-            return uy.a($$3.toString());
-         } else {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
       }
    }
 
-   private static boolean c(StringReader $$0) {
-      return !$$0.canRead() || $$0.peek() == ' ';
+   public static ja.c<brf> f(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.R);
+   }
+
+   public static ja.c<dad> g(CommandContext<eh> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, li.u);
+   }
+
+   public ja.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      akt $$1 = akt.a($$0);
+      aks<T> $$2 = aks.a(this.e, $$1);
+      return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return em.a(this.f.c().map(aks::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return c;
    }
 
-   public static class a extends fg<eqr> {
-      protected a(ea $$0) {
-         super($$0, lf.aV, eqt.d);
+   public static class a<T> implements ib<fg<T>, fg.a<T>.a> {
+      public void a(fg.a<T>.a $$0, we $$1) {
+         $$1.b($$0.b);
       }
-   }
 
-   public static class b extends fg<esl> {
-      protected b(ea $$0) {
-         super($$0, lf.aW, esn.b);
+      public fg.a<T>.a a(we $$0) {
+         return new fg.a.a($$0.r());
       }
-   }
 
-   public static class c extends fg<epk> {
-      protected c(ea $$0) {
-         super($$0, lf.aU, epk.e);
+      public void a(fg.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
+      }
+
+      public fg.a<T>.a a(fg<T> $$0) {
+         return new fg.a.a($$0.e);
+      }
+
+      public final class a implements ib.a<fg<T>> {
+         final aks<? extends jn<T>> b;
+
+         a(aks<? extends jn<T>> $$1) {
+            this.b = $$1;
+         }
+
+         public fg<T> a(ed $$0) {
+            return new fg<>($$0, this.b);
+         }
+
+         @Override
+         public ib<fg<T>, ?> a() {
+            return a.this;
+         }
       }
    }
 }

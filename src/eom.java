@@ -1,84 +1,113 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
 
-public class eom {
-   private static final String a = "command_storage_";
-   private final Map<String, eom.a> b = Maps.newHashMap();
-   private final eop c;
+public final class eom extends eov<eon.a, eon> {
+   private final ir.a g = new ir.a();
 
-   public eom(eop $$0) {
-      this.c = $$0;
+   public eom(dvl $$0) {
+      this($$0, new eon($$0));
    }
 
-   private eom.a a(String $$0) {
-      eom.a $$1 = new eom.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   @VisibleForTesting
+   public eom(dvl $$0, eon $$1) {
+      super($$0, $$1);
    }
 
-   private eob.a<eom.a> b(String $$0) {
-      return new eob.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), azj.h);
-   }
-
-   public ud a(akm $$0) {
-      String $$1 = $$0.b();
-      eom.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new ud();
-   }
-
-   public void a(akm $$0, ud $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
-   }
-
-   public Stream<akm> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
-   }
-
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eob {
-      private static final String a = "contents";
-      private final Map<String, ud> b = Maps.newHashMap();
-
-      eom.a a(ud $$0) {
-         ud $$1 = $$0.p("contents");
-
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
-
-         return this;
-      }
-
-      @Override
-      public ud a(ud $$0, iz.a $$1) {
-         ud $$2 = new ud();
-         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.h()));
-         $$0.a("contents", $$2);
-         return $$0;
-      }
-
-      public ud a(String $$0) {
-         ud $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new ud();
-      }
-
-      public void a(String $$0, ud $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
+   @Override
+   protected void a(long $$0) {
+      long $$1 = jt.e($$0);
+      if (this.f.b($$1)) {
+         dtc $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, eov.a.a($$4));
          } else {
-            this.b.put($$0, $$1);
+            this.b($$0, c);
          }
 
-         this.c();
+         if ($$3 > 0) {
+            this.c($$0, eov.a.a($$3, a($$2)));
+         }
       }
+   }
 
-      public Stream<akm> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new akm($$0, $$1));
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dtc $$3 = null;
+
+      for (iw $$4 : d) {
+         if (eov.a.a($$1, $$4)) {
+            long $$5 = ir.a($$0, $$4);
+            if (this.f.b(jt.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dtc $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = eov.a.b($$1) ? dfe.a.n() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, eov.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = eov.a.a($$1);
+
+      for (iw $$3 : d) {
+         if (eov.a.a($$1, $$3)) {
+            long $$4 = ir.a($$0, $$3);
+            if (this.f.b(jt.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dtc $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, eov.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, eov.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, eov.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int a(long $$0, dtc $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(jt.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(dbh $$0) {
+      this.a($$0, true);
+      dvk $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), eov.a.a($$2, a($$1x)));
+         });
       }
    }
 }

@@ -1,33 +1,119 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class ym implements yn {
-   public static final yo<ym> a = new yo<ym>() {
-      private static final MapCodec<ym> a = wz.a.fieldOf("value").xmap(ym::new, $$0 -> $$0.b);
-      private static final yv<wi, ym> b = yv.a(wz.d, $$0 -> $$0.b, ym::new);
+public class ym implements xf {
+   public static final MapCodec<ym> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ym::b), Codec.STRING.fieldOf("objective").forGetter(ym::d)).apply($$0, ym::new)
+   );
+   public static final MapCodec<ym> b = a.fieldOf("score");
+   public static final xf.a<ym> c = new xf.a<>(b, "score");
+   private final String d;
+   @Nullable
+   private final gw e;
+   private final String f;
 
-      @Override
-      public MapCodec<ym> a() {
-         return a;
+   @Nullable
+   private static gw a(String $$0) {
+      try {
+         return new gx(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
+   }
 
-      @Override
-      public yv<wi, ym> b() {
-         return b;
-      }
-   };
-   final wx b;
-
-   public ym(wx $$0) {
-      this.b = $$0;
+   public ym(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = a($$0);
+      this.f = $$1;
    }
 
    @Override
-   public xl a(int $$0) {
-      return this.b.f();
+   public xf.a<?> a() {
+      return c;
+   }
+
+   public String b() {
+      return this.d;
+   }
+
+   @Nullable
+   public gw c() {
+      return this.e;
+   }
+
+   public String d() {
+      return this.f;
+   }
+
+   private exx a(eh $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends brv> $$1 = this.e.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw eu.a.create();
+            }
+
+            return $$1.get(0);
+         }
+      }
+
+      return exx.e(this.d);
+   }
+
+   private xs a(exx $$0, eh $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         exy $$3 = $$2.aK();
+         exq $$4 = $$3.a(this.f);
+         if ($$4 != null) {
+            exu $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yx.b));
+            }
+         }
+      }
+
+      return xe.i();
    }
 
    @Override
-   public yo<ym> a() {
-      return a;
+   public xs a(@Nullable eh $$0, @Nullable brv $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return xe.i();
+      } else {
+         exx $$3 = this.a($$0);
+         exx $$4 = (exx)($$1 != null && $$3.equals(exx.cP) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof ym $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      return 31 * $$0 + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "score{name='" + this.d + "', objective='" + this.f + "'}";
    }
 }

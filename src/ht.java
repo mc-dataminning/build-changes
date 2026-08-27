@@ -1,150 +1,95 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.function.UnaryOperator;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ht<T extends eg<T>> implements hq<T> {
-   private static final DecimalFormat a = ac.a(new DecimalFormat("#"), $$0 -> {
-      $$0.setMaximumFractionDigits(15);
-      $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.US));
-   });
-   private static final int b = 8;
-   private final List<String> c;
-   private final Object2ObjectLinkedOpenHashMap<List<String>, hs<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final akm e;
-   private final List<ht.a<T>> f;
+public interface ht<T> {
+   akt a();
 
-   public ht(akm $$0, List<ht.a<T>> $$1, List<String> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
+   hv<T> a(@Nullable uk var1, CommandDispatcher<T> var2) throws ek;
+
+   private static boolean b(CharSequence $$0) {
+      int $$1 = $$0.length();
+      return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   @Override
-   public akm a() {
-      return this.e;
-   }
+   static <T extends ej<T>> ht<T> a(akt $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+      hu<T> $$4 = new hu<>();
 
-   @Override
-   public hs<T> a(@Nullable ud $$0, CommandDispatcher<T> $$1) throws eh {
-      if ($$0 == null) {
-         throw new eh(wx.a("commands.function.error.missing_arguments", wx.a(this.a())));
-      } else {
-         List<String> $$2 = new ArrayList<>(this.c.size());
+      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
+         int $$6 = $$5 + 1;
+         String $$7 = $$3.get($$5).trim();
+         String $$10;
+         if (b($$7)) {
+            StringBuilder $$8 = new StringBuilder($$7);
 
-         for (String $$3 : this.c) {
-            va $$4 = $$0.c($$3);
-            if ($$4 == null) {
-               throw new eh(wx.a("commands.function.error.missing_argument", wx.a(this.a()), $$3));
-            }
+            do {
+               if (++$$5 == $$3.size()) {
+                  throw new IllegalArgumentException("Line continuation at end of file");
+               }
 
-            $$2.add(a($$4));
-         }
+               $$8.deleteCharAt($$8.length() - 1);
+               String $$9 = $$3.get($$5).trim();
+               $$8.append($$9);
+               a($$8);
+            } while (b($$8));
 
-         hs<T> $$5 = (hs<T>)this.d.getAndMoveToLast($$2);
-         if ($$5 != null) {
-            return $$5;
+            $$10 = $$8.toString();
          } else {
-            if (this.d.size() >= 8) {
-               this.d.removeFirst();
+            $$10 = $$7;
+         }
+
+         a($$10);
+         StringReader $$12 = new StringReader($$10);
+         if ($$12.canRead() && $$12.peek() != '#') {
+            if ($$12.peek() == '/') {
+               $$12.skip();
+               if ($$12.peek() == '/') {
+                  throw new IllegalArgumentException(
+                     "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (if you intended to make a comment, use '#' not '//')"
+                  );
+               }
+
+               String $$13 = $$12.readUnquotedString();
+               throw new IllegalArgumentException(
+                  "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (did you mean '" + $$13 + "'? Do not use a preceding forwards slash.)"
+               );
             }
 
-            hs<T> $$6 = this.a(this.c, $$2, $$1);
-            this.d.put($$2, $$6);
-            return $$6;
+            if ($$12.peek() == '$') {
+               $$4.a($$10.substring(1), $$6, $$2);
+            } else {
+               try {
+                  $$4.a(a($$1, $$2, $$12));
+               } catch (CommandSyntaxException var11) {
+                  throw new IllegalArgumentException("Whilst parsing command on line " + $$6 + ": " + var11.getMessage());
+               }
+            }
          }
+      }
+
+      return $$4.a($$0);
+   }
+
+   static void a(CharSequence $$0) {
+      if ($$0.length() > 2000000) {
+         CharSequence $$1 = $$0.subSequence(0, Math.min(512, 2000000));
+         throw new IllegalStateException("Command too long: " + $$0.length() + " characters, contents: " + $$1 + "...");
       }
    }
 
-   private static String a(va $$0) {
-      if ($$0 instanceof ug $$1) {
-         return a.format((double)$$1.k());
-      } else if ($$0 instanceof ue $$2) {
-         return a.format($$2.j());
-      } else if ($$0 instanceof ub $$3) {
-         return String.valueOf($$3.i());
-      } else if ($$0 instanceof uv $$4) {
-         return String.valueOf($$4.h());
+   static <T extends ej<T>> hk<T> a(CommandDispatcher<T> $$0, T $$1, StringReader $$2) throws CommandSyntaxException {
+      ParseResults<T> $$3 = $$0.parse($$2, $$1);
+      ei.a($$3);
+      Optional<ContextChain<T>> $$4 = ContextChain.tryFlatten($$3.getContext().build($$2.getString()));
+      if ($$4.isEmpty()) {
+         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$3.getReader());
       } else {
-         return $$0 instanceof ul $$5 ? String.valueOf($$5.f()) : $$0.s_();
-      }
-   }
-
-   private static void a(List<String> $$0, IntList $$1, List<String> $$2) {
-      $$2.clear();
-      $$1.forEach($$2x -> $$2.add($$0.get($$2x)));
-   }
-
-   private hs<T> a(List<String> $$0, List<String> $$1, CommandDispatcher<T> $$2) throws eh {
-      List<hh<T>> $$3 = new ArrayList<>(this.f.size());
-      List<String> $$4 = new ArrayList<>($$1.size());
-
-      for (ht.a<T> $$5 : this.f) {
-         a($$1, $$5.a(), $$4);
-         $$3.add($$5.a($$4, $$2, this.e));
-      }
-
-      return new hu<>(this.a().a((UnaryOperator<String>)($$1x -> $$1x + "/" + $$0.hashCode())), $$3);
-   }
-
-   interface a<T> {
-      IntList a();
-
-      hh<T> a(List<String> var1, CommandDispatcher<T> var2, akm var3) throws eh;
-   }
-
-   static class b<T extends eg<T>> implements ht.a<T> {
-      private final hv a;
-      private final IntList b;
-      private final T c;
-
-      public b(hv $$0, IntList $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public IntList a() {
-         return this.b;
-      }
-
-      @Override
-      public hh<T> a(List<String> $$0, CommandDispatcher<T> $$1, akm $$2) throws eh {
-         String $$3 = this.a.a($$0);
-
-         try {
-            return hq.a($$1, this.c, new StringReader($$3));
-         } catch (CommandSyntaxException var6) {
-            throw new eh(wx.a("commands.function.error.parse", wx.a($$2), $$3, var6.getMessage()));
-         }
-      }
-   }
-
-   static class c<T> implements ht.a<T> {
-      private final hh<T> a;
-
-      public c(hh<T> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public IntList a() {
-         return IntLists.emptyList();
-      }
-
-      @Override
-      public hh<T> a(List<String> $$0, CommandDispatcher<T> $$1, akm $$2) {
-         return this.a;
+         return new hm.c<>($$2.getString(), $$4.get());
       }
    }
 }

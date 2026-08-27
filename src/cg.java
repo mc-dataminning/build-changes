@@ -1,24 +1,63 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
 
-public record cg(jb<cvn> c) implements dg<cvp> {
-   public static final Codec<cg> a = jm.a(lf.Y).xmap(cg::new, cg::b);
+public abstract class cg implements di<dai> {
+   private final List<bn> a;
 
-   @Override
-   public ka<cvp> a() {
-      return kb.F;
+   protected cg(List<bn> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(cto $$0, cvp $$1) {
-      Optional<ix<cvn>> $$2 = $$1.f();
-      return !$$2.isEmpty() && this.c.a($$2.get());
+   public static <T extends cg> Codec<T> a(Function<List<bn>, T> $$0) {
+      return bn.a.listOf().xmap($$0, cg::b);
    }
 
-   public static ci a(jb<cvn> $$0) {
-      return new cg($$0);
+   protected List<bn> b() {
+      return this.a;
    }
 
-   public jb<cvn> b() {
-      return this.c;
+   public boolean a(cuh $$0, dai $$1) {
+      for (bn $$2 : this.a) {
+         if (!$$2.a($$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static cg.a a(List<bn> $$0) {
+      return new cg.a($$0);
+   }
+
+   public static cg.b b(List<bn> $$0) {
+      return new cg.b($$0);
+   }
+
+   public static class a extends cg {
+      public static final Codec<cg.a> a = a(cg.a::new);
+
+      protected a(List<bn> $$0) {
+         super($$0);
+      }
+
+      @Override
+      public kd<dai> a() {
+         return ke.i;
+      }
+   }
+
+   public static class b extends cg {
+      public static final Codec<cg.b> a = a(cg.b::new);
+
+      protected b(List<bn> $$0) {
+         super($$0);
+      }
+
+      @Override
+      public kd<dai> a() {
+         return ke.w;
+      }
    }
 }

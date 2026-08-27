@@ -1,49 +1,16 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class bpg extends boz {
-   public static final MapCodec<bpg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(boe.b(boz.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bpg::new)
-   );
-   private final boe<boz> b;
-   private final int f;
-   private final int g;
+public interface bpg<P extends bpf> {
+   bpg<bpc> a = a("constant", bpc.b);
+   bpg<bpl> b = a("uniform", bpl.a);
+   bpg<box> c = a("biased_to_bottom", box.a);
+   bpg<boy> d = a("clamped", boy.a);
+   bpg<bpm> e = a("weighted_list", bpm.a);
+   bpg<bpa> f = a("clamped_normal", bpa.a);
 
-   public bpg(boe<boz> $$0) {
-      this.b = $$0;
-      List<bog.b<boz>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   Codec<P> codec();
 
-      for (bog.b<boz> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public int a(ayk $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bpa<?> c() {
-      return bpa.e;
+   static <P extends bpf> bpg<P> a(String $$0, Codec<P> $$1) {
+      return jn.a(lh.M, $$0, () -> $$1);
    }
 }

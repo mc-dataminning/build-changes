@@ -1,66 +1,25 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eet {
-   public static final Codec<eet> h = le.Z.q().dispatch(eet::a, eeu::a);
+public class eet implements eek {
+   public static final Codec<eet> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eet::new)
+   );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   protected abstract eeu<?> a();
-
-   public abstract void a(eet.a var1);
-
-   public static final class a {
-      private final dbd a;
-      private final BiConsumer<io, drb> b;
-      private final ayk c;
-      private final ObjectArrayList<io> d;
-      private final ObjectArrayList<io> e;
-      private final ObjectArrayList<io> f;
-
-      public a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, Set<io> $$3, Set<io> $$4, Set<io> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(js::v));
-         this.e.sort(Comparator.comparingInt(js::v));
-         this.f.sort(Comparator.comparingInt(js::v));
-      }
-
-      public void a(io $$0, drs $$1) {
-         this.a($$0, dea.ff.n().a($$1, Boolean.valueOf(true)));
-      }
-
-      public void a(io $$0, drb $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(io $$0) {
-         return this.a.a($$0, dra.a::i);
-      }
-
-      public dbd a() {
-         return this.a;
-      }
-
-      public ayk b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<io> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<io> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<io> e() {
-         return this.f;
-      }
+   public eet(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

@@ -1,25 +1,69 @@
-public class ayt {
-   private double a;
-   private double b;
-   private double c;
+import io.netty.util.internal.ThreadLocalRandom;
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = ayd.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
+public interface ayt {
+   @Deprecated
+   double a = 2.297;
 
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
+   static ayt a() {
+      return a(dzj.a());
    }
 
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
+   @Deprecated
+   static ayt b() {
+      return new dzn(dzj.a());
+   }
+
+   static ayt a(long $$0) {
+      return new dyv($$0);
+   }
+
+   static ayt c() {
+      return new dzk(ThreadLocalRandom.current().nextLong());
+   }
+
+   ayt d();
+
+   dzh e();
+
+   void b(long var1);
+
+   int f();
+
+   int a(int var1);
+
+   default int a(int $$0, int $$1) {
+      return this.a($$1 - $$0 + 1) + $$0;
+   }
+
+   long g();
+
+   boolean h();
+
+   float i();
+
+   double j();
+
+   double k();
+
+   default double a(double $$0, double $$1) {
+      return $$0 + $$1 * (this.j() - this.j());
+   }
+
+   default void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.f();
+      }
+   }
+
+   default int b(int $$0, int $$1) {
+      if ($$0 >= $$1) {
+         throw new IllegalArgumentException("bound - origin is non positive");
+      } else {
+         return $$0 + this.a($$1 - $$0);
+      }
+   }
+
+   default float a(float $$0, float $$1) {
+      return $$0 + this.i() * ($$1 - $$0);
    }
 }

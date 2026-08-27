@@ -1,138 +1,147 @@
-public class coa extends cnr {
-   private static final ajr<Boolean> e = ajv.a(coa.class, ajt.k);
-   private int i;
-   public double c;
-   public double d;
-   private static final cxr j = cxr.a(ctr.ow, ctr.ox);
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public coa(bsa<? extends coa> $$0, dax $$1) {
-      super($$0, $$1);
-   }
+public interface coa extends bpt, bqe {
+   ewu ds();
 
-   public coa(dax $$0, double $$1, double $$2, double $$3) {
-      super(bsa.S, $$0, $$1, $$2, $$3);
-   }
+   ewp cP();
+
+   @Nullable
+   aks<eru> B();
+
+   void a(@Nullable aks<eru> var1);
+
+   long C();
+
+   void a(long var1);
+
+   jj<cuh> D();
+
+   void E();
+
+   dca dU();
+
+   boolean dP();
 
    @Override
-   public cnr.a v() {
-      return cnr.a.c;
+   default boolean c() {
+      return this.g();
    }
 
-   @Override
-   protected void a(ajv.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dP().x_()) {
-         if (this.i > 0) {
-            this.i--;
+   default void a(uk $$0, jc.a $$1) {
+      if (this.B() != null) {
+         $$0.a("LootTable", this.B().a().toString());
+         if (this.C() != 0L) {
+            $$0.a("LootTableSeed", this.C());
          }
-
-         if (this.i <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.b(this.i > 0);
-      }
-
-      if (this.B() && this.ah.a(4) == 0) {
-         this.dP().a(ky.X, this.du(), this.dw() + 0.8, this.dA(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected double p() {
-      return (this.be() ? 3.0 : 4.0) / 20.0;
-   }
-
-   @Override
-   protected ctj ag_() {
-      return ctr.nO;
-   }
-
-   @Override
-   protected void c(io $$0, drb $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      euk $$4 = this.ds();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
-      }
-   }
-
-   @Override
-   protected void u() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         euk $$1 = this.ds().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.be()) {
-            $$1 = $$1.a(0.1);
-         }
-
-         this.g($$1);
       } else {
-         this.g(this.ds().d(0.98, 0.0, 0.98));
+         bpu.a($$0, this.D(), $$1);
+      }
+   }
+
+   default void b(uk $$0, jc.a $$1) {
+      this.E();
+      if ($$0.b("LootTable", 8)) {
+         this.a(aks.a(li.aU, new akt($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bpu.b($$0, this.D(), $$1);
+      }
+   }
+
+   default void a(bqt $$0, dca $$1, brv $$2) {
+      if ($$1.ab().b(dbw.i)) {
+         bpw.a($$1, $$2, this);
+         if (!$$1.C) {
+            brv $$3 = $$0.c();
+            if ($$3 != null && $$3.ak() == bsb.bE) {
+               ckp.a((cly)$$3, true);
+            }
+         }
+      }
+   }
+
+   default bqa c_(cly $$0) {
+      $$0.a(this);
+      return !$$0.dU().C ? bqa.b : bqa.a;
+   }
+
+   default void f(@Nullable cly $$0) {
+      MinecraftServer $$1 = this.dU().o();
+      if (this.B() != null && $$1 != null) {
+         eru $$2 = $$1.be().b(this.B());
+         if ($$0 != null) {
+            an.Q.a((aqu)$$0, this.B());
+         }
+
+         this.a(null);
+         ers.a $$3 = new ers.a((aqt)this.dU()).a(eug.f, this.ds());
+         if ($$0 != null) {
+            $$3.a($$0.gJ()).a(eug.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(euf.c), this.C());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.D().clear();
+   }
+
+   default boolean g() {
+      for (cuh $$0 : this.D()) {
+         if (!$$0.d()) {
+            return false;
+         }
       }
 
-      super.u();
+      return true;
    }
 
-   @Override
-   public bpu a(clw $$0, bpt $$1) {
-      cto $$2 = $$0.b($$1);
-      if (j.a($$2) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
+   default cuh e_(int $$0) {
+      this.f(null);
+      cuh $$1 = this.D().get($$0);
+      if ($$1.d()) {
+         return cuh.i;
+      } else {
+         this.D().set($$0, cuh.i);
+         return $$1;
       }
-
-      if (this.i > 0) {
-         this.c = this.du() - $$0.du();
-         this.d = this.dA() - $$0.dA();
-      }
-
-      return bpu.a(this.dP().B);
    }
 
-   @Override
-   protected void b(ud $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.i);
+   default cuh f_(int $$0) {
+      this.f(null);
+      return this.D().get($$0);
    }
 
-   @Override
-   protected void a(ud $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.i = $$0.g("Fuel");
+   default cuh b(int $$0, int $$1) {
+      this.f(null);
+      return bpu.a(this.D(), $$0, $$1);
    }
 
-   protected boolean B() {
-      return this.ao.a(e);
+   default void c(int $$0, cuh $$1) {
+      this.f(null);
+      this.D().set($$0, $$1);
+      $$1.f(this.a($$1));
    }
 
-   protected void b(boolean $$0) {
-      this.ao.a(e, $$0);
+   default btf g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new btf() {
+         @Override
+         public cuh a() {
+            return coa.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cuh $$0x) {
+            coa.this.c($$0, $$0);
+            return true;
+         }
+      } : btf.b;
    }
 
-   @Override
-   public drb x() {
-      return dea.cD.n().a(dhf.a, it.c).a(dhf.b, Boolean.valueOf(this.B()));
+   default boolean g(cly $$0) {
+      return !this.dP() && $$0.a(this.cP(), 4.0);
    }
 }

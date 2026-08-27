@@ -1,53 +1,29 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.Set;
 
-public class euy extends AbstractDoubleList implements euw {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class euy implements euu {
+   private static final euy b = new euy();
+   public static final Codec<euy> a = Codec.unit(b);
 
-   protected euy(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private euy() {
    }
 
    @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public euv b() {
+      return euw.i;
    }
 
    @Override
-   public boolean a(euw.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   public Set<eud<?>> a() {
+      return ImmutableSet.of(eug.b);
    }
 
-   private boolean b(euw.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   public boolean a(erp $$0) {
+      return $$0.a(eug.b);
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
-      return this;
+   public static euu.a c() {
+      return () -> b;
    }
 }

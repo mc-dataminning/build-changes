@@ -1,172 +1,71 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cow {
+   public static final cov a = new cov.a().a(4).a(0.3F).c();
+   public static final cov b = new cov.a().a(5).a(0.6F).c();
+   public static final cov c = new cov.a().a(5).a(0.6F).a().c();
+   public static final cov d = new cov.a().a(1).a(0.6F).a(avo.ih).c();
+   public static final cov e = new cov.a().a(1).a(0.6F).a(avo.ih).c();
+   public static final cov f = new cov.a().a(10).a(0.6F).a(avo.ih).c();
+   public static final cov g = new cov.a().a(8).a(0.6F).a(avo.ih).c();
+   public static final cov h = new cov.a().a(3).a(0.3F).c();
+   public static final cov i = new cov.a().a(1).a(0.6F).c();
+   public static final cov j = a(6).c();
+   public static final cov k = new cov.a().a(5).a(0.6F).c();
+   public static final cov l = new cov.a().a(3).a(0.6F).c();
+   public static final cov m = new cov.a().a(2).a(0.3F).a(new brh(brj.q, 600, 0), 0.3F).c();
+   public static final cov n = new cov.a().a(4).a(0.3F).a().c();
+   public static final cov o = new cov.a().a(2).a(0.1F).c();
+   public static final cov p = new cov.a().a(8).a(0.8F).c();
+   public static final cov q = new cov.a().a(6).a(0.6F).c();
+   public static final cov r = new cov.a().a(5).a(0.6F).c();
+   public static final cov s = new cov.a().a(6).a(0.8F).c();
+   public static final cov t = new cov.a().a(8).a(0.8F).c();
+   public static final cov u = new cov.a().a(5).a(0.6F).c();
+   public static final cov v = new cov.a().a(6).a(0.8F).c();
+   public static final cov w = new cov.a().a(2).a(0.1F).c();
+   public static final cov x = new cov.a().a(1).a(0.3F).b().c();
+   public static final cov y = new cov.a()
+      .a(4)
+      .a(1.2F)
+      .a(new brh(brj.j, 400, 1), 1.0F)
+      .a(new brh(brj.k, 6000, 0), 1.0F)
+      .a(new brh(brj.l, 6000, 0), 1.0F)
+      .a(new brh(brj.v, 2400, 3), 1.0F)
+      .a()
+      .c();
+   public static final cov z = new cov.a().a(4).a(1.2F).a(new brh(brj.j, 100, 1), 1.0F).a(new brh(brj.v, 2400, 0), 1.0F).a().c();
+   public static final cov A = new cov.a().a(2).a(1.2F).a(new brh(brj.s, 100, 1), 1.0F).a(new brh(brj.v, 2400, 0), 1.0F).a().c();
+   public static final cov B = new cov.a()
+      .a(2)
+      .a(1.2F)
+      .a(new brh(brj.s, 400, 7), 1.0F)
+      .a(new brh(brj.z, 6000, 4), 1.0F)
+      .a(new brh(brj.A, 6000, 4), 1.0F)
+      .a(new brh(brj.v, 2400, 3), 1.0F)
+      .a()
+      .c();
+   public static final cov C = new cov.a().a(6).a(1.2F).c();
+   public static final cov D = new cov.a().a(6).a(0.1F).a(avo.mT).c();
+   public static final cov E = new cov.a().a(2).a(0.3F).c();
+   public static final cov F = a(6).c();
+   public static final cov G = new cov.a().a(2).a(0.3F).c();
+   public static final cov H = new cov.a().a(2).a(0.3F).a(new brh(brj.s, 100, 0), 0.6F).c();
+   public static final cov I = new cov.a().a(6).a(1.2F).a(new brh(brj.s, 40, 0), 1.0F).c();
+   public static final cov J = new cov.a().a(3).a(0.3F).c();
+   public static final cov K = new cov.a().a(1).a(0.3F).c();
+   public static final cov L = new cov.a().a(1).a(0.1F).a(new brh(brj.s, 1200, 1), 1.0F).a(new brh(brj.q, 300, 2), 1.0F).a(new brh(brj.i, 300, 0), 1.0F).c();
+   public static final cov M = new cov.a().a(8).a(0.3F).c();
+   public static final cov N = new cov.a().a(3).a(0.3F).c();
+   public static final cov O = a(10).c();
+   public static final cov P = new cov.a().a(4).a(0.1F).a(new brh(brj.q, 600, 0), 0.8F).c();
+   public static final cov Q = new cov.a().a(2).a(0.1F).c();
+   public static final cov R = new cov.a().a(2).a(0.8F).a(new brh(brj.s, 100, 0), 1.0F).c();
+   public static final cov S = a(6).a().c();
+   public static final cov T = new cov.a().a(2).a(0.1F).c();
+   public static final cov U = new cov.a().a(2).a(0.1F).c();
+   public static final cov V = new cov.a().a(1).a(0.1F).c();
+   public static final cov W = new cov.a().a(2).a(0.6F).c();
 
-public class cow extends cot {
-   private static final int k = 0;
-   private static final int l = 1;
-   private static final int m = 3;
-   private static final int n = 1;
-   private static final int o = 28;
-   private static final int p = 28;
-   private static final int q = 37;
-   private static final int r = 0;
-   private final bpn s = new bqd(1) {
-      @Override
-      public boolean b(int $$0, cto $$1) {
-         return $$1.a(awe.aX);
-      }
-
-      @Override
-      public int ah_() {
-         return 1;
-      }
-   };
-   private final cow.a t;
-   private final cpe u;
-   private final cpd v;
-
-   public cow(int $$0, bpn $$1) {
-      this($$0, $$1, new cqn(3), cpe.a);
-   }
-
-   public cow(int $$0, bpn $$1, cpd $$2, cpe $$3) {
-      super(cqa.j, $$0);
-      a($$2, 3);
-      this.v = $$2;
-      this.u = $$3;
-      this.t = new cow.a(this.s, 0, 136, 110);
-      this.a(this.t);
-      this.a($$2);
-      int $$4 = 36;
-      int $$5 = 137;
-
-      for (int $$6 = 0; $$6 < 3; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cqo($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 9; $$8++) {
-         this.a(new cqo($$1, $$8, 36 + $$8 * 18, 195));
-      }
-   }
-
-   @Override
-   public void b(clw $$0) {
-      super.b($$0);
-      if (!$$0.dP().B) {
-         cto $$1 = this.t.a(this.t.a());
-         if (!$$1.e()) {
-            $$0.a($$1, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return a(this.u, $$0, dea.fO);
-   }
-
-   @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public cto a(clw $$0, int $$1) {
-      cto $$2 = cto.i;
-      cqo $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cto $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cto.i;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.t.h() && this.t.a($$4) && $$4.I() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cto.i;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cto.i;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cto.i;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cto.i;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cto.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.I() == $$2.I()) {
-            return cto.i;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.v.a(0);
-   }
-
-   public static int a(@Nullable ix<bra> $$0) {
-      return $$0 == null ? 0 : le.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static ix<bra> e(int $$0) {
-      return $$0 == 0 ? null : le.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public ix<bra> m() {
-      return e(this.v.a(1));
-   }
-
-   @Nullable
-   public ix<bra> n() {
-      return e(this.v.a(2));
-   }
-
-   public void a(Optional<ix<bra>> $$0, Optional<ix<bra>> $$1) {
-      if (this.t.h()) {
-         this.v.a(1, a($$0.orElse(null)));
-         this.v.a(2, a($$1.orElse(null)));
-         this.t.a(1);
-         this.u.a(dax::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.s.a(0).e();
-   }
-
-   class a extends cqo {
-      public a(bpn $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cto $$0) {
-         return $$0.a(awe.aX);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   private static cov.a a(int $$0) {
+      return new cov.a().a($$0).a(0.6F);
    }
 }

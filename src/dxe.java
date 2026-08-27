@@ -1,95 +1,61 @@
-public class dxe implements dak {
-   private int a;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   @Override
-   public int a(aqm $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.aa().b(dat.K)) {
-         return 0;
-      } else {
-         ayk $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.Z() / 24000L;
-            if ($$4 < 5L || !$$0.Q()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  clw $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.N_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dp(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     io.a $$9 = $$6.dp().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        ix<dbw> $$11 = $$0.t($$9);
-                        if ($$11.a(avv.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public class dxe<T extends dxc> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dwt.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+   public <U extends T> void a(dxj<T, U> $$0, awz<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
          }
       }
    }
 
-   private boolean a(aqm $$0, io $$1, ayk $$2, boolean $$3) {
-      drb $$4 = $$0.a_($$1);
-      if (!dbi.a($$0, $$1, $$4, $$4.u(), bsa.aC)) {
-         return false;
-      } else if (!cjd.b(bsa.aC, $$0, bss.p, $$1, $$2)) {
-         return false;
-      } else {
-         cjd $$5 = bsa.aC.a((dax)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gx();
-            }
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bss.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+   public void a(T $$0) {
+      UUID $$1 = $$0.cE();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.al(), $$0);
       }
+   }
+
+   public void b(T $$0) {
+      this.c.remove($$0.cE());
+      this.b.remove($$0.al());
+   }
+
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public int b() {
+      return this.c.size();
    }
 }

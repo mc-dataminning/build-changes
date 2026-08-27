@@ -1,6 +1,109 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fwv<T extends bsq> extends fww<T> {
+   public final fys a = this.k.b("right_ear");
+   private final fys A = this.k.b("left_ear");
+   private final fyu B = this.m.a();
+   private final fyu C = this.k.a();
+   private final fyu D = this.o.a();
+   private final fyu E = this.n.a();
 
-public record fwv(GameProfile a, gta b, jl.b c, coj d, @Nullable String e, @Nullable fxf f, @Nullable fly g, Map<akm, byte[]> h, @Nullable fga.b i) {
+   public fwv(fys $$0) {
+      super($$0, false);
+   }
+
+   public static fza a(fyw $$0) {
+      fza $$1 = fww.a($$0, false);
+      fzb $$2 = $$1.a();
+      $$2.a("body", fyx.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fyu.a);
+      a($$0, $$1);
+      $$2.a("hat", fyx.c(), fyu.a);
+      return $$1;
+   }
+
+   public static void a(fyw $$0, fza $$1) {
+      fzb $$2 = $$1.a();
+      fzb $$3 = $$2.a(
+         "head",
+         fyx.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         fyu.a
+      );
+      $$3.a("left_ear", fyx.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fyu.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", fyx.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), fyu.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.m.b(this.B);
+      this.k.b(this.C);
+      this.o.b(this.D);
+      this.n.b(this.E);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = (float) (Math.PI / 6);
+      float $$7 = $$3 * 0.1F + $$1 * 0.5F;
+      float $$8 = 0.08F + $$2 * 0.4F;
+      this.A.g = (float) (-Math.PI / 6) - aym.b($$7 * 1.2F) * $$8;
+      this.a.g = (float) (Math.PI / 6) + aym.b($$7) * $$8;
+      if ($$0 instanceof ckn $$9) {
+         ckq $$10 = $$9.gA();
+         if ($$10 == ckq.e) {
+            float $$11 = $$3 / 60.0F;
+            this.a.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * aym.a($$11 * 30.0F) * 10.0F;
+            this.A.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * aym.b($$11 * 30.0F) * 10.0F;
+            this.k.b = aym.a($$11 * 10.0F);
+            this.k.c = aym.a($$11 * 40.0F) + 0.4F;
+            this.n.g = (float) (Math.PI / 180.0) * (70.0F + aym.b($$11 * 40.0F) * 10.0F);
+            this.o.g = this.n.g * -1.0F;
+            this.n.c = aym.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.o.c = aym.a($$11 * 40.0F) * 0.5F + 1.5F;
+            this.m.c = aym.a($$11 * 40.0F) * 0.35F;
+         } else if ($$10 == ckq.a && this.c == 0.0F) {
+            this.a($$0);
+         } else if ($$10 == ckq.b) {
+            fum.a(this.n, this.o, this.k, !$$0.gp());
+         } else if ($$10 == ckq.c) {
+            fum.a(this.n, this.o, $$0, !$$0.gp());
+         } else if ($$10 == ckq.d) {
+            this.k.e = 0.5F;
+            this.k.f = 0.0F;
+            if ($$0.gp()) {
+               this.n.f = -0.5F;
+               this.n.e = -0.9F;
+            } else {
+               this.o.f = 0.5F;
+               this.o.e = -0.9F;
+            }
+         }
+      } else if ($$0.ak() == bsb.bC) {
+         fum.a(this.o, this.n, $$0.gq(), this.c, $$3);
+      }
+
+      this.x.a(this.q);
+      this.y.a(this.p);
+      this.b.a(this.o);
+      this.w.a(this.n);
+      this.z.a(this.m);
+      this.l.a(this.k);
+   }
+
+   protected void a(T $$0, float $$1) {
+      if (this.c > 0.0F && $$0 instanceof cko && ((cko)$$0).gA() == ckq.a) {
+         fum.a(this.n, this.o, $$0, this.c, $$1);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void a(T $$0) {
+      if ($$0.gp()) {
+         this.o.e = -1.8F;
+      } else {
+         this.n.e = -1.8F;
+      }
+   }
 }

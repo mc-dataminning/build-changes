@@ -1,26 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ehs<S extends ehj> {
-   ehs<ejc> a = a("buried_treasure", ejc.d);
-   ehs<eje> b = a("desert_pyramid", eje.d);
-   ehs<ejg> c = a("end_city", ejg.d);
-   ehs<ejp> d = a("fortress", ejp.e);
-   ehs<eji> e = a("igloo", eji.d);
-   ehs<ejj> f = a("jigsaw", ejj.g);
-   ehs<ejl> g = a("jungle_temple", ejl.d);
-   ehs<ejn> h = a("mineshaft", ejn.d);
-   ehs<ejr> i = a("nether_fossil", ejr.d);
-   ehs<ejt> j = a("ocean_monument", ejt.d);
-   ehs<ejv> k = a("ocean_ruin", ejv.d);
-   ehs<ejx> l = a("ruined_portal", ejx.d);
-   ehs<ejz> m = a("shipwreck", ejz.d);
-   ehs<ekb> n = a("stronghold", ekb.d);
-   ehs<ekd> o = a("swamp_hut", ekd.d);
-   ehs<ekf> p = a("woodland_mansion", ekf.d);
+public class ehs {
+   public static final Codec<ehs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dwu.c).fieldOf("height").forGetter(ehs::a), lh.e.q().fieldOf("block").orElse(dfe.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, ehs::new)
+   );
+   private final dfc b;
+   private final int c;
 
-   MapCodec<S> codec();
+   public ehs(int $$0, dfc $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
 
-   private static <S extends ehj> ehs<S> a(String $$0, MapCodec<S> $$1) {
-      return jk.a(le.T, $$0, () -> $$1);
+   public int a() {
+      return this.c;
+   }
+
+   public dtc b() {
+      return this.b.n();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + lh.e.b(this.b);
    }
 }

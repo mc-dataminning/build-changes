@@ -1,77 +1,232 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.OptionalLong;
 
-public class dwu implements dwi {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dwv i = new dwv(this);
+public record dwu(
+   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awt<dfc> v, akt w, float x, dwu.a y
+) {
+   public static final int a = ir.d;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<dwu> h = axu.c(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axu.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dwu::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(dwu::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dwu::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dwu::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(dwu::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dwu::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(dwu::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dwu::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dwu::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(dwu::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dwu::p),
+                  awt.b(li.f).fieldOf("infiniburn").forGetter(dwu::q),
+                  akt.a.fieldOf("effects").orElse(dws.f).forGetter(dwu::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dwu::s),
+                  dwu.a.a.forGetter(dwu::t)
+               )
+               .apply($$0, dwu::new)
+      )
+   );
+   private static final int z = 8;
+   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<ja<dwu>> j = akp.a(li.aE, h);
 
-   public dwu(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public ayk d() {
-      return new dwu(this.g());
-   }
-
-   @Override
-   public dxg e() {
-      return new dwu.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw aza.a("LegacyRandomSource", null);
+   public dwu(
+      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, awt<dfc> v, akt w, float x, dwu.a y
+   ) {
+      if (t < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (s + t > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (u > t) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (t % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (s % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         this.i.a();
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw aza.a("LegacyRandomSource", null);
+   @Deprecated
+   public static DataResult<aks<dca>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dca.i);
+         }
+
+         if ($$2 == 0) {
+            return DataResult.success(dca.h);
+         }
+
+         if ($$2 == 1) {
+            return DataResult.success(dca.j);
+         }
+      }
+
+      return dca.g.parse($$0);
+   }
+
+   public static double a(dwu $$0, dwu $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
+
+   public static Path a(aks<dca> $$0, Path $$1) {
+      if ($$0 == dca.h) {
+         return $$1;
+      } else if ($$0 == dca.j) {
+         return $$1.resolve("DIM1");
       } else {
-         return (int)($$2 >> 48 - $$0);
+         return $$0 == dca.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   @Override
+   public boolean a() {
+      return this.k.isPresent();
+   }
+
+   public float a(long $$0) {
+      double $$1 = aym.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
+
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.y.a();
+   }
+
+   public boolean c() {
+      return this.y.b();
+   }
+
+   public bpf d() {
+      return this.y.c();
+   }
+
+   public int e() {
+      return this.y.d();
+   }
+
+   public OptionalLong f() {
+      return this.k;
+   }
+
+   public boolean g() {
+      return this.l;
+   }
+
+   public boolean h() {
+      return this.m;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public boolean j() {
+      return this.o;
+   }
+
    public double k() {
-      return this.i.b();
+      return this.p;
    }
 
-   public static class a implements dxg {
-      private final long a;
+   public boolean l() {
+      return this.q;
+   }
 
-      public a(long $$0) {
-         this.a = $$0;
+   public boolean m() {
+      return this.r;
+   }
+
+   public int n() {
+      return this.s;
+   }
+
+   public int o() {
+      return this.t;
+   }
+
+   public int p() {
+      return this.u;
+   }
+
+   public awt<dfc> q() {
+      return this.v;
+   }
+
+   public akt r() {
+      return this.w;
+   }
+
+   public float s() {
+      return this.x;
+   }
+
+   public dwu.a t() {
+      return this.y;
+   }
+
+   public static record a(boolean b, boolean c, bpf d, int e) {
+      public static final MapCodec<dwu.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dwu.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(dwu.a::b),
+                  bpf.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dwu.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dwu.a::d)
+               )
+               .apply($$0, dwu.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
       }
 
-      @Override
-      public ayk a(int $$0, int $$1, int $$2) {
-         long $$3 = ayd.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dwu($$4);
+      public boolean b() {
+         return this.c;
       }
 
-      @Override
-      public ayk a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dwu((long)$$1 ^ this.a);
+      public bpf c() {
+         return this.d;
       }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public int d() {
+         return this.e;
       }
    }
 }

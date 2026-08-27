@@ -1,149 +1,49 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class ub extends ut {
-   private static final int w = 9;
-   public static final vc<ub> a = new vc.a<ub>() {
-      public ub a(DataInput $$0, um $$1) throws IOException {
-         return ub.a(d($$0, $$1));
+public class ub implements ArgumentType<ua> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+
+   public ua a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<ua> $$2 = ti.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = xe.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
-
-      @Override
-      public ux.b a(DataInput $$0, ux $$1, um $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte d(DataInput $$0, um $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
-      }
-
-      @Override
-      public int c() {
-         return 1;
-      }
-
-      @Override
-      public String a() {
-         return "BYTE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final ub b = a((byte)0);
-   public static final ub c = a((byte)1);
-   private final byte x;
-
-   ub(byte $$0) {
-      this.x = $$0;
    }
 
-   public static ub a(byte $$0) {
-      return ub.a.a[128 + $$0];
+   public static ub a() {
+      return new ub();
    }
 
-   public static ub a(boolean $$0) {
-      return $$0 ? c : b;
+   public static ua a(CommandContext<eh> $$0, String $$1) {
+      return (ua)$$0.getArgument($$1, ua.class);
    }
 
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return a($$0, $$1);
    }
 
-   @Override
-   public int a() {
-      return 9;
+   public static <S> CompletableFuture<Suggestions> a(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = ti.a().stream().map(ua::c);
+      return em.b($$2, $$1);
    }
 
-   @Override
-   public byte b() {
-      return 1;
-   }
-
-   @Override
-   public vc<ub> c() {
+   public Collection<String> getExamples() {
       return a;
-   }
-
-   public ub e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ub && this.x == ((ub)$$0).x;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.x;
-   }
-
-   @Override
-   public void a(ve $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.x;
-   }
-
-   @Override
-   public int g() {
-      return this.x;
-   }
-
-   @Override
-   public short h() {
-      return (short)this.x;
-   }
-
-   @Override
-   public byte i() {
-      return this.x;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.x;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.x;
-   }
-
-   @Override
-   public Number l() {
-      return this.x;
-   }
-
-   @Override
-   public ux.b a(ux $$0) {
-      return $$0.a(this.x);
-   }
-
-   static class a {
-      static final ub[] a = new ub[256];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ub((byte)($$0 - 128));
-         }
-      }
    }
 }

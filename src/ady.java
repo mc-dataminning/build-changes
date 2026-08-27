@@ -1,79 +1,60 @@
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class ady implements ze<abq> {
-   public static final yv<vx, ady> a = ze.a(ady::a, ady::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final Set<btc> g;
-   private final int h;
+public record ady(UUID b, int c, @Nullable xq d, xx.a e, @Nullable xe f, xi g, xa.a h) implements zl<abw> {
+   public static final zc<wp, ady> a = zl.a(ady::a, ady::new);
 
-   public ady(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btc> $$5, int $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
+   private ady(wp $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xq::a), new xx.a($$0), we.a($$0, xg.d), xi.a($$0), xa.a.a.decode($$0));
    }
 
-   private ady(vx $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = btc.a($$0.readUnsignedByte());
-      this.h = $$0.l();
-   }
-
-   private void a(vx $$0) {
+   private void a(wp $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.k(btc.a(this.g));
-      $$0.c(this.h);
+      $$0.c(this.c);
+      $$0.a(this.d, xq::a);
+      this.e.a($$0);
+      we.a($$0, this.f, xg.d);
+      xi.a($$0, this.g);
+      xa.a.a.encode($$0, this.h);
    }
 
    @Override
-   public zg<ady> a() {
-      return agb.ah;
+   public zn<ady> a() {
+      return agj.ab;
    }
 
-   public void a(abq $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
    }
 
-   public double f() {
+   @Nullable
+   public xq f() {
       return this.d;
    }
 
-   public float g() {
+   public xx.a g() {
       return this.e;
    }
 
-   public float h() {
+   @Nullable
+   public xe h() {
       return this.f;
    }
 
-   public int i() {
-      return this.h;
+   public xi i() {
+      return this.g;
    }
 
-   public Set<btc> j() {
-      return this.g;
+   public xa.a j() {
+      return this.h;
    }
 }

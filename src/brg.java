@@ -1,20 +1,15 @@
-class brg extends bra {
-   protected brg(brb $$0, int $$1) {
-      super($$0, $$1);
+public enum brg {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private brg(n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(bso $$0, int $$1) {
-      if ($$0.eA() > 1.0F) {
-         $$0.a($$0.dQ().o(), 1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public n a() {
+      return this.d;
    }
 }

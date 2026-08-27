@@ -1,99 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dja extends deh implements deb {
-   public static final MapCodec<dja> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akl.a(lf.aC).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dja::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final evd c = ddy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final akl<dzk<?, ?>> d;
+public class dja extends diw {
+   public static final MapCodec<dja> a = b(dja::new);
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final exn b = dfc.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
    @Override
    public MapCodec<dja> a() {
       return a;
    }
 
-   public dja(akl<dzk<?, ?>> $$0, dra.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dja(dtb.d $$0) {
+      super($$0);
+   }
+
+   private static boolean c(brv $$0) {
+      return $$0 instanceof bso || $$0 instanceof cnw || $$0 instanceof cih || $$0 instanceof cny;
    }
 
    @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return c;
+   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return b;
    }
 
    @Override
-   protected void b(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   public void a(dca $$0, dtc $$1, ir $$2, brv $$3, float $$4) {
+      $$3.a(avo.mQ, 1.0F, 1.0F);
+      if (!$$0.C) {
+         $$0.a($$3, (byte)54);
+      }
 
-         for (io $$6 : io.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         io $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+      if ($$3.a($$4, 0.2F, $$0.aj().l())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
       }
    }
 
    @Override
-   protected boolean b(drb $$0, dad $$1, io $$2) {
-      return $$0.i($$1, $$2);
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      io $$3 = $$2.d();
-      drb $$4 = $$1.a_($$3);
-      return $$4.a(avw.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(aqm $$0, io $$1, drb $$2, ayk $$3) {
-      Optional<? extends ix<dzk<?, ?>>> $$4 = $$0.H_().d(lf.aC).b(this.d);
-      if ($$4.isEmpty()) {
+   private boolean a(ir $$0, brv $$1) {
+      if ($$1.aE()) {
+         return false;
+      } else if ($$1.dB() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dx().d >= -0.08) {
          return false;
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dz());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dF());
+         double $$4 = 0.4375 + (double)($$1.do() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(brv $$0, ir $$1) {
+      if ($$0 instanceof aqu && $$0.dU().Z() % 20L == 0L) {
+         an.K.a((aqu)$$0, $$0.dU().a_($$1));
+      }
+   }
+
+   private void d(brv $$0) {
+      ewu $$1 = $$0.dx();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.g(new ewu($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.g(new ewu($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(dca $$0, brv $$1) {
+      if (c($$1)) {
+         if ($$0.A.a(5) == 0) {
+            $$1.a(avo.mQ, 1.0F, 1.0F);
+         }
+
+         if (!$$0.C && $$0.A.a(5) == 0) {
+            $$0.a($$1, (byte)53);
          }
       }
    }
 
-   @Override
-   public boolean b(dba $$0, io $$1, drb $$2) {
-      return true;
+   public static void a(brv $$0) {
+      a($$0, 5);
    }
 
-   @Override
-   public boolean a(dax $$0, ayk $$1, io $$2, drb $$3) {
-      return (double)$$1.i() < 0.4;
+   public static void b(brv $$0) {
+      a($$0, 10);
    }
 
-   @Override
-   public void a(aqm $$0, ayk $$1, io $$2, drb $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   private static void a(brv $$0, int $$1) {
+      if ($$0.dU().C) {
+         dtc $$2 = dfe.qr.n();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dU().a(new ks(lb.b, $$2), $$0.dz(), $$0.dB(), $$0.dF(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

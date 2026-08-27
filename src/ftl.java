@@ -1,68 +1,103 @@
-public class ftl<T extends ceq> extends ftf<T> {
-   private final fvw a;
-   private final fvw b;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ftl(fvw $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
-   }
+public class ftl extends fon {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<aks<dca>> b = ad.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(dca.h, -13408734);
+      $$0.put(dca.i, -10075085);
+      $$0.put(dca.j, -8943531);
+      $$0.put(dca.k, -559038737);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bpo d;
 
-   public static fwc b() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a("head", fwb.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fvy.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         fwb.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fwa(0.5F)),
-         fvy.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", fwb.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fvy.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fwb.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fvy.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fwb.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fvy.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fwb.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fvy.a(5.0F, 11.0F, 0.0F));
-      return fwc.a($$0, 128, 128);
-   }
+   @Nullable
+   public static ftl a(fgj $$0, BooleanConsumer $$1, DataFixer $$2, erf.c $$3, boolean $$4) {
+      try {
+         ftr $$5 = $$0.x();
+         ato $$6 = atr.a($$3);
 
-   @Override
-   public fvw a() {
-      return this.a;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * ayd.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * ayd.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.y();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * ayd.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * ayd.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.gp();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * ayd.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * ayd.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * ayd.e($$1, 13.0F)) * $$2;
+         ftl var10;
+         try (alq $$7 = $$5.a($$3.h(), false, $$6)) {
+            erl $$8 = $$7.d();
+            jo.b $$9 = $$7.c().a();
+            $$3.a($$9, $$8);
+            var10 = new ftl($$1, $$2, $$3, $$8.J(), $$4, $$9);
          }
+
+         return var10;
+      } catch (Exception var13) {
+         a.warn("Failed to load datapacks, can't optimize world", var13);
+         return null;
       }
    }
 
-   public fvw c() {
-      return this.f;
+   private ftl(BooleanConsumer $$0, DataFixer $$1, erf.c $$2, dce $$3, boolean $$4, jo $$5) {
+      super(xe.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.d = new bpo($$2, $$1, $$5, $$4, false);
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.c(fin.a(xd.e, $$0 -> {
+         this.d.a();
+         this.c.accept(false);
+      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.d.b()) {
+         this.c.accept(true);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c.accept(false);
+   }
+
+   @Override
+   public void j() {
+      this.d.a();
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      int $$4 = this.n / 2 - 150;
+      int $$5 = this.n / 2 + 150;
+      int $$6 = this.o / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
+      if (this.d.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.p, xe.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
+         $$0.b(this.p, xe.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.p, xe.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
+
+         for (aks<dca> $$9 : this.d.c()) {
+            int $$10 = aym.d(this.d.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
+         }
+
+         int $$11 = this.d.f() + this.d.g();
+         xe $$12 = xe.a("optimizeWorld.progress.counter", $$11, this.d.e());
+         xe $$13 = xe.a("optimizeWorld.progress.percentage", aym.d(this.d.d() * 100.0F));
+         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      }
    }
 }

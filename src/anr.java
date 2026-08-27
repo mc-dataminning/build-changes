@@ -1,137 +1,219 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.datafixers.util.Unit;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import java.util.Optional;
 
 public class anr {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xe.b("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xe.c("commands.place.template.failed"));
+   private static final SuggestionProvider<eh> f = ($$0, $$1) -> {
+      enu $$2 = ((eh)$$0.getSource()).e().q();
+      return em.a($$2.a(), $$1);
+   };
 
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("resetchunks").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ee)$$0x.getSource(), 0, true)))
-            .then(
-               ((RequiredArgumentBuilder)ef.a("range", IntegerArgumentType.integer(0, 5))
-                     .executes($$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("place")
+                        .requires($$0x -> $$0x.c(2)))
+                     .then(
+                        ei.a("feature")
+                           .then(
+                              ((RequiredArgumentBuilder)ei.a("feature", fh.a(li.aC))
+                                    .executes($$0x -> a((eh)$$0x.getSource(), fh.a($$0x, "feature"), ir.a(((eh)$$0x.getSource()).d()))))
+                                 .then(ei.a("pos", gd.a()).executes($$0x -> a((eh)$$0x.getSource(), fh.a($$0x, "feature"), gd.a($$0x, "pos"))))
+                           )
+                     ))
                   .then(
-                     ef.a("skipOldChunks", BoolArgumentType.bool())
-                        .executes(
-                           $$0x -> a((ee)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "range"), BoolArgumentType.getBool($$0x, "skipOldChunks"))
+                     ei.a("jigsaw")
+                        .then(
+                           ei.a("pool", fh.a(li.aM))
+                              .then(
+                                 ei.a("target", fi.a())
+                                    .then(
+                                       ((RequiredArgumentBuilder)ei.a("max_depth", IntegerArgumentType.integer(1, 20))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eh)$$0x.getSource(),
+                                                      fh.c($$0x, "pool"),
+                                                      fi.c($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      ir.a(((eh)$$0x.getSource()).d())
+                                                   )
+                                             ))
+                                          .then(
+                                             ei.a("position", gd.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (eh)$$0x.getSource(),
+                                                         fh.c($$0x, "pool"),
+                                                         fi.c($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         gd.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  ei.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)ei.a("structure", fh.a(li.aJ))
+                              .executes($$0x -> b((eh)$$0x.getSource(), fh.b($$0x, "structure"), ir.a(((eh)$$0x.getSource()).d()))))
+                           .then(ei.a("pos", gd.a()).executes($$0x -> b((eh)$$0x.getSource(), fh.b($$0x, "structure"), gd.a($$0x, "pos"))))
+                     )
+               ))
+            .then(
+               ei.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)ei.a("template", fi.a())
+                           .suggests(f)
+                           .executes($$0x -> a((eh)$$0x.getSource(), fi.c($$0x, "template"), ir.a(((eh)$$0x.getSource()).d()), dmd.a, dke.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)ei.a("pos", gd.a())
+                                 .executes($$0x -> a((eh)$$0x.getSource(), fi.c($$0x, "template"), gd.a($$0x, "pos"), dmd.a, dke.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)ei.a("rotation", fv.a())
+                                       .executes(
+                                          $$0x -> a((eh)$$0x.getSource(), fi.c($$0x, "template"), gd.a($$0x, "pos"), fv.a($$0x, "rotation"), dke.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)ei.a("mirror", fu.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eh)$$0x.getSource(),
+                                                      fi.c($$0x, "template"),
+                                                      gd.a($$0x, "pos"),
+                                                      fv.a($$0x, "rotation"),
+                                                      fu.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)ei.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (eh)$$0x.getSource(),
+                                                            fi.c($$0x, "template"),
+                                                            gd.a($$0x, "pos"),
+                                                            fv.a($$0x, "rotation"),
+                                                            fu.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ei.a("seed", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (eh)$$0x.getSource(),
+                                                               fi.c($$0x, "template"),
+                                                               gd.a($$0x, "pos"),
+                                                               fv.a($$0x, "rotation"),
+                                                               fu.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(ee $$0, int $$1, boolean $$2) {
-      aqm $$3 = $$0.e();
-      aqk $$4 = $$3.l();
-      $$4.a.d();
-      euk $$5 = $$0.d();
-      dae $$6 = new dae(io.a($$5));
-      int $$7 = $$6.f - $$1;
-      int $$8 = $$6.f + $$1;
-      int $$9 = $$6.e - $$1;
-      int $$10 = $$6.e + $$1;
+   public static int a(eh $$0, ja.c<ebm<?, ?>> $$1, ir $$2) throws CommandSyntaxException {
+      aqt $$3 = $$0.e();
+      ebm<?, ?> $$4 = $$1.a();
+      dbh $$5 = new dbh($$2);
+      a($$3, new dbh($$5.e - 1, $$5.f - 1), new dbh($$5.e + 1, $$5.f + 1));
+      if (!$$4.a($$3, $$3.l().g(), $$3.F_(), $$2)) {
+         throw a.create();
+      } else {
+         String $$6 = $$1.h().a().toString();
+         $$0.a(() -> xe.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
 
-      for (int $$11 = $$7; $$11 <= $$8; $$11++) {
-         for (int $$12 = $$9; $$12 <= $$10; $$12++) {
-            dae $$13 = new dae($$12, $$11);
-            dth $$14 = $$4.a($$12, $$11, false);
-            if ($$14 != null && (!$$2 || !$$14.s())) {
-               for (io $$15 : io.b($$13.d(), $$3.I_(), $$13.e(), $$13.f(), $$3.al() - 1, $$13.g())) {
-                  $$3.a($$15, dea.a.n(), 16);
-               }
-            }
-         }
+   public static int a(eh $$0, ja<elc> $$1, akt $$2, int $$3, ir $$4) throws CommandSyntaxException {
+      aqt $$5 = $$0.e();
+      if (!ekw.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> xe.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(eh $$0, ja.c<ejt> $$1, ir $$2) throws CommandSyntaxException {
+      aqt $$3 = $$0.e();
+      ejt $$4 = $$1.a();
+      duz $$5 = $$3.l().g();
+      ekb $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new dbh($$2), 0, $$3, $$0x -> true, List.of());
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         ejl $$7 = $$6.a();
+         dbh $$8 = new dbh(jt.a($$7.h()), jt.a($$7.j()));
+         dbh $$9 = new dbh(jt.a($$7.k()), jt.a($$7.m()));
+         a($$3, $$8, $$9);
+         dbh.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new ejl($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.am(), $$3x.g()), $$3x));
+         String $$10 = $$1.h().a().toString();
+         $$0.a(() -> xe.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(eh $$0, akt $$1, ir $$2, dmd $$3, dke $$4, float $$5, int $$6) throws CommandSyntaxException {
+      aqt $$7 = $$0.e();
+      enu $$8 = $$7.q();
+
+      Optional<ent> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (aa var13) {
+         throw d.create($$1);
       }
 
-      bon<Runnable> $$16 = bon.a(ac.g(), "worldgen-resetchunks");
-      long $$17 = System.currentTimeMillis();
-      int $$18 = ($$1 * 2 + 1) * ($$1 * 2 + 1);
-      UnmodifiableIterator var34 = ImmutableList.of(dtw.f, dtw.g, dtw.h, dtw.i, dtw.j, dtw.k).iterator();
-
-      while (var34.hasNext()) {
-         dtw $$19 = (dtw)var34.next();
-         long $$20 = System.currentTimeMillis();
-         CompletableFuture<Unit> $$21 = CompletableFuture.supplyAsync(() -> Unit.INSTANCE, $$16::a);
-         dua $$22 = new dua($$3, $$4.g(), $$3.q(), $$4.a());
-
-         for (int $$23 = $$6.f - $$1; $$23 <= $$6.f + $$1; $$23++) {
-            for (int $$24 = $$6.e - $$1; $$24 <= $$6.e + $$1; $$24++) {
-               dae $$25 = new dae($$24, $$23);
-               dth $$26 = $$4.a($$24, $$23, false);
-               if ($$26 != null && (!$$2 || !$$26.s())) {
-                  List<dsx> $$27 = Lists.newArrayList();
-                  int $$28 = Math.max(1, $$19.e());
-
-                  for (int $$29 = $$25.f - $$28; $$29 <= $$25.f + $$28; $$29++) {
-                     for (int $$30 = $$25.e - $$28; $$30 <= $$25.e + $$28; $$30++) {
-                        dsx $$31 = $$4.a($$30, $$29, $$19.d(), true);
-                        dsx $$32;
-                        if ($$31 instanceof dtg) {
-                           $$32 = new dtg(((dtg)$$31).C(), true);
-                        } else if ($$31 instanceof dth) {
-                           $$32 = new dtg((dth)$$31, true);
-                        } else {
-                           $$32 = $$31;
-                        }
-
-                        $$27.add($$32);
-                     }
-                  }
-
-                  $$21 = $$21.thenComposeAsync($$4x -> $$19.a($$22, $$16::a, $$0xx -> {
-                        throw new UnsupportedOperationException("Not creating full chunks here");
-                     }, $$27).thenApply($$1xx -> {
-                        if ($$19 == dtw.g) {
-                           dwt.a($$1xx, dtw.b);
-                        }
-
-                        return Unit.INSTANCE;
-                     }), $$16::a);
-               }
-            }
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         ent $$12 = $$9.get();
+         a($$7, new dbh($$2), new dbh($$2.a($$12.a())));
+         enp $$13 = new enp().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new emx($$5)).a(drw.b((long)$$6));
          }
 
-         $$0.l().c($$21::isDone);
-         a.debug($$19 + " took " + (System.currentTimeMillis() - $$20) + " ms");
-      }
-
-      long $$35 = System.currentTimeMillis();
-
-      for (int $$36 = $$6.f - $$1; $$36 <= $$6.f + $$1; $$36++) {
-         for (int $$37 = $$6.e - $$1; $$37 <= $$6.e + $$1; $$37++) {
-            dae $$38 = new dae($$37, $$36);
-            dth $$39 = $$4.a($$37, $$36, false);
-            if ($$39 != null && (!$$2 || !$$39.s())) {
-               for (io $$40 : io.b($$38.d(), $$3.I_(), $$38.e(), $$38.f(), $$3.al() - 1, $$38.g())) {
-                  $$4.a($$40);
-               }
-            }
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, drw.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
+         } else {
+            $$0.a(() -> xe.a("commands.place.template.success", xe.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
          }
       }
+   }
 
-      a.debug("blockChanged took " + (System.currentTimeMillis() - $$35) + " ms");
-      long $$41 = System.currentTimeMillis() - $$17;
-      $$0.a(
-         () -> wx.b(
-               String.format(
-                  Locale.ROOT, "%d chunks have been reset. This took %d ms for %d chunks, or %02f ms per chunk", $$18, $$41, $$18, (float)$$41 / (float)$$18
-               )
-            ),
-         true
-      );
-      return 1;
+   private static void a(aqt $$0, dbh $$1, dbh $$2) throws CommandSyntaxException {
+      if (dbh.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+         throw gd.a.create();
+      }
    }
 }

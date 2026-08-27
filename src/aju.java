@@ -1,7 +1,18 @@
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public interface aju {
-   void a(ajr<?> var1);
+public class aju implements zl<ajt> {
+   public static final aju a = new aju();
+   public static final zc<ByteBuf, aju> b = zc.a(a);
 
-   void a(List<ajv.c<?>> var1);
+   private aju() {
+   }
+
+   @Override
+   public zn<aju> a() {
+      return ajv.b;
+   }
+
+   public void a(ajt $$0) {
+      $$0.a(this);
+   }
 }

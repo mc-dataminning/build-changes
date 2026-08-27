@@ -1,31 +1,29 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejg extends ehj {
-   public static final MapCodec<ejg> d = a(ejg::new);
+public class ejg extends eiz {
+   public static final Codec<ejg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ejg::new)
+   );
+   private final int c;
 
-   public ejg(ehj.c $$0) {
-      super($$0);
+   private ejg(int $$0) {
+      this.c = $$0;
+   }
+
+   public static ejg a(int $$0) {
+      return new ejg($$0);
    }
 
    @Override
-   public Optional<ehj.b> a(ehj.a $$0) {
-      dkl $$1 = dkl.a($$0.f());
-      io $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ehj.b($$2, (Consumer<eib>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(eib $$0, io $$1, dkl $$2, ehj.a $$3) {
-      List<ehn> $$4 = Lists.newArrayList();
-      ejf.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   protected boolean a(eiy $$0, ayt $$1, ir $$2) {
+      int $$3 = $$0.a(dyu.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dyu.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
    }
 
    @Override
-   public ehs<?> e() {
-      return ehs.c;
+   public ejb<?> b() {
+      return ejb.d;
    }
 }

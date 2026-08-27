@@ -1,58 +1,25 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+public final class bmq implements Comparable<bmq> {
+   public final double a;
+   public final double b;
+   public final long c;
+   public final String d;
 
-public class bmq {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
-
-   protected bmq(Runnable $$0) {
-      this.b = $$0;
+   public bmq(String $$0, double $$1, double $$2, long $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
-
-         bmy $$1;
-         try {
-            $$1 = bmx.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
-      }
-   }
-
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
+   public int a(bmq $$0) {
+      if ($$0.a < this.a) {
+         return -1;
       } else {
-         ako.a($$0.get());
+         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
       }
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         ako.a($$0.get());
-         $$1.printStackTrace(ako.a);
-      }
+   public int a() {
+      return (this.d.hashCode() & 11184810) + 4473924;
    }
 }

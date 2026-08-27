@@ -1,7 +1,8 @@
-import java.util.function.BiConsumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dtj extends dad {
-   void a(BiConsumer<io, drb> var1);
-
-   eme B();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface dtj {
 }

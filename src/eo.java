@@ -1,29 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eo implements ArgumentType<ud> {
-   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
+public record eo(List<eo.a> b) {
+   public static final eo a = new eo(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   private eo() {
+   public eo(we $$0) {
+      this($$0.a(we.a(ArrayList::new, 8), eo.a::new));
    }
 
-   public static eo a() {
-      return new eo();
+   @Nullable
+   public xq a(String $$0) {
+      for (eo.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
+         }
+      }
+
+      return null;
    }
 
-   public static <S> ud a(CommandContext<S> $$0, String $$1) {
-      return (ud)$$0.getArgument($$1, ud.class);
+   public void a(we $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public ud a(StringReader $$0) throws CommandSyntaxException {
-      return new vb($$0).f();
+   public static eo a(xw<?> $$0, eo.b $$1) {
+      List<eo.a> $$2 = $$0.a().stream().map($$1x -> {
+         xq $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new eo.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new eo($$2);
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public List<eo.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, xq b) {
+
+      public a(we $$0) {
+         this($$0.d(16), xq.a($$0));
+      }
+
+      public void a(we $$0) {
+         $$0.a(this.a, 16);
+         xq.a($$0, this.b);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      xq sign(String var1);
    }
 }

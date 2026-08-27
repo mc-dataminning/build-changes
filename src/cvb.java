@@ -1,29 +1,55 @@
-import java.util.List;
-
-public class cvb extends cve {
-   public cvb(cvd $$0, ctj.a $$1) {
-      super($$0, $$1.a(kb.w, j()));
-   }
-
-   private static cwt j() {
-      return new cwt(List.of(cwt.a.a(List.of(dea.bs), 15.0F), cwt.a.b(avw.bE, 1.5F)), 1.0F, 2);
-   }
-
-   public static cwj a(cvd $$0, int $$1, float $$2) {
-      return cwj.a()
-         .a(btw.c, new btu(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), btu.a.a), bsc.b)
-         .a(btw.e, new btu(f, "Weapon modifier", (double)$$2, btu.a.a), bsc.b)
-         .a();
+public class cvb extends cuc {
+   public cvb(cuc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(drb $$0, dax $$1, io $$2, clw $$3) {
-      return !$$3.f();
-   }
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      if (!($$0 instanceof aqt $$4)) {
+         return bqb.b($$3);
+      } else {
+         if ($$1.b("crafted_eyes", 2)) {
+            $$1.c("thrown_eye");
+         }
 
-   @Override
-   public boolean a(cto $$0, bso $$1, bso $$2) {
-      $$0.a(1, $$2, bsb.a);
-      return true;
+         if ($$1.b("potato_village", 7)) {
+            $$1.c("thrown_eye_part_two");
+         }
+
+         ir $$6;
+         if (!$$4.af().equals(dca.h) && !$$4.z_()) {
+            $$6 = null;
+         } else {
+            $$6 = $$4.a($$4.z_() ? awp.v : awp.u, $$1.du(), 100, false);
+         }
+
+         if ($$6 != null) {
+            if ($$1 instanceof aqu $$7) {
+               if ($$0.z_()) {
+                  $$7.e($$6);
+               } else {
+                  $$7.d($$6);
+               }
+            }
+
+            cmk $$8 = new cmk($$0, $$1.dz(), $$1.e(0.5), $$1.dF());
+            $$8.a($$3);
+            $$8.a($$6);
+            $$0.a(dxv.K, $$8.ds(), dxv.a.a($$1));
+            $$0.b($$8);
+            $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.iv, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+            $$0.a(null, 1003, $$1.du(), 0);
+            $$3.a(1, $$1);
+            $$1.b(avz.c.b(this));
+            $$1.a($$2, true);
+         } else {
+            $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), avo.iv, avq.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+            $$3.a(1, $$1);
+            $$1.a(new cuh(cuk.AB), true);
+         }
+
+         return bqb.a($$3);
+      }
    }
 }

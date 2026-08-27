@@ -1,103 +1,73 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import org.joml.Matrix4f;
 
-public class fli extends fly {
-   private static final long a = 2000L;
-   private final aqz b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<dtw> r = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dtw.c, 5526612);
-      $$0.put(dtw.d, 10066329);
-      $$0.put(dtw.e, 6250897);
-      $$0.put(dtw.f, 8434258);
-      $$0.put(dtw.g, 13750737);
-      $$0.put(dtw.h, 7497737);
-      $$0.put(dtw.i, 3159410);
-      $$0.put(dtw.j, 2213376);
-      $$0.put(dtw.k, 13421772);
-      $$0.put(dtw.l, 16769184);
-      $$0.put(dtw.m, 15884384);
-      $$0.put(dtw.n, 16777215);
-   });
+public class fli {
+   private final flg a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public fli(aqz $$0) {
-      super(fdr.a);
-      this.b = $$0;
+   public fli(flg $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fbg $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   @Override
-   protected boolean aL_() {
-      return false;
+   public void a(fli.a $$0, Matrix4f $$1, fbg $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   @Override
-   public void j() {
-      this.d = true;
-      this.d(true);
+   public gfo a(fhy.a $$0) {
+      return this.a.a($$0);
    }
 
-   @Override
-   protected void b(fjv $$0) {
-      if (this.d) {
-         $$0.a(fju.a, wx.c("narrator.loading.done"));
-      } else {
-         $$0.a(fju.a, this.m());
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
+
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
-   }
-
-   private wx m() {
-      return wx.a("loading.progress", ayd.a(this.b.f(), 0, 100));
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
-   }
-
-   public static void a(ffm $$0, aqz $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dtw $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, r.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
    }
 }

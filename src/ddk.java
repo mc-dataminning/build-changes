@@ -1,35 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class ddk extends ddy implements dgq {
-   protected ddk(dra.d $$0) {
-      super($$0);
+public class ddk extends ddd implements ddb.a {
+   public static final Codec<ddk> b = dcz.c.fieldOf("biome").xmap(ddk::new, $$0 -> $$0.c).stable().codec();
+   private final ja<dcz> c;
+
+   public ddk(ja<dcz> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends ddk> a();
-
-   @Override
-   protected dke a_(drb $$0) {
-      return dke.a;
+   protected Stream<ja<dcz>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected boolean a(drb $$0, dax $$1, io $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dog $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   protected Codec<? extends ddd> a() {
+      return b;
+   }
+
+   @Override
+   public ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2, ddi.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
    @Nullable
    @Override
-   protected bpy b(drb $$0, dax $$1, io $$2) {
-      dog $$3 = $$1.c_($$2);
-      return $$3 instanceof bpy ? (bpy)$$3 : null;
+   public Pair<ir, ja<dcz>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<ja<dcz>> $$5, ayt $$6, boolean $$7, ddi.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new ir($$0, $$1, $$2), this.c) : Pair.of(new ir($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
    }
 
    @Nullable
-   protected static <E extends dog, A extends dog> doh<A> a(doi<A> $$0, doi<E> $$1, doh<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   public Pair<ir, ja<dcz>> a(ir $$0, int $$1, int $$2, int $$3, Predicate<ja<dcz>> $$4, ddi.f $$5, dcd $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<ja<dcz>> a(int $$0, int $$1, int $$2, int $$3, ddi.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

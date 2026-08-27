@@ -1,62 +1,112 @@
-public class fuc<T extends cew> extends fug<T> {
-   public fuc(fvw $$0) {
-      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class fuc implements ftx, fty {
+   private static final akt a = new akt("spectator/teleport_to_team");
+   private static final xe b = xe.c("spectatorMenu.team_teleport");
+   private static final xe c = xe.c("spectatorMenu.team_teleport.prompt");
+   private final List<fty> d;
+
+   public fuc() {
+      fgj $$0 = fgj.Q();
+      this.d = a($$0, $$0.r.M());
    }
 
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      $$1.a(
-         "head",
-         fwb.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         fvy.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         fwb.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         fvy.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      fwb $$3 = fwb.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, fvy.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, fvy.a(4.5F, 14.0F, 6.0F));
-      fwb $$4 = fwb.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, fvy.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, fvy.a(3.5F, 14.0F, -8.0F));
-      return fwc.a($$0, 128, 64);
+   private static List<fty> a(fgj $$0, exy $$1) {
+      return $$1.g().stream().flatMap($$1x -> fuc.a.a($$0, $$1x).stream()).toList();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$3 - (float)$$0.ai;
-      float $$7 = $$0.G($$6);
-      $$7 *= $$7;
-      float $$8 = 1.0F - $$7;
-      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
-      this.b.c = 9.0F * $$8 + 11.0F * $$7;
-      this.h.c = 14.0F * $$8 - 6.0F * $$7;
-      this.h.d = -8.0F * $$8 - 4.0F * $$7;
-      this.h.e -= $$7 * (float) Math.PI * 0.45F;
-      this.i.c = this.h.c;
-      this.i.d = this.h.d;
-      this.i.e -= $$7 * (float) Math.PI * 0.45F;
-      if (this.e) {
-         this.a.c = 10.0F * $$8 - 9.0F * $$7;
-         this.a.d = -16.0F * $$8 - 7.0F * $$7;
-      } else {
-         this.a.c = 10.0F * $$8 - 14.0F * $$7;
-         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+   @Override
+   public List<fty> a() {
+      return this.d;
+   }
+
+   @Override
+   public xe b() {
+      return c;
+   }
+
+   @Override
+   public void a(ftw $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public xe aO_() {
+      return b;
+   }
+
+   @Override
+   public void a(fia $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aP_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fty {
+      private final ext a;
+      private final Supplier<gry> b;
+      private final List<fzy> c;
+
+      private a(ext $$0, List<fzy> $$1, Supplier<gry> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      this.a.e += $$7 * (float) Math.PI * 0.15F;
+      public static Optional<fty> a(fgj $$0, ext $$1) {
+         List<fzy> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fzy $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dbx.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ayt.a().a($$2.size())).a();
+            Supplier<gry> $$6 = $$0.an().a($$5);
+            return Optional.of(new fuc.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(ftw $$0) {
+         $$0.a(new fub(this.c));
+      }
+
+      @Override
+      public xe aO_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fia $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, aym.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fjm.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
    }
 }

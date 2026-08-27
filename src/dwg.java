@@ -1,148 +1,100 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class dwg implements dwn.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = ac.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
-            }
-         }
-      }
-   });
-   private final ObjectListIterator<dwg.a> h;
-   private final ObjectListIterator<eil> i;
+public class dwg implements dxf<brv> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final aqt d;
+   private final dwq e;
+   private final LongSet f = new LongOpenHashSet();
+   private final bot<Runnable> g;
 
-   public static dwg a(dbq $$0, dae $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<dwg.a> $$4 = new ObjectArrayList(10);
-      ObjectList<eil> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != ehu.a).forEach($$5x -> {
-         ehu $$6 = $$5x.h().d();
+   public dwg(dwq $$0, aqt $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = bot.a($$2, "entity-deserializer");
+   }
 
-         for (ehn $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof ehf) {
-                  ehf $$8 = (ehf)$$7;
-                  eis.a $$9 = $$8.b().e();
-                  if ($$9 == eis.a.b) {
-                     $$4.add(new dwg.a($$8.f(), $$6, $$8.d()));
-                  }
-
-                  for (eil $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new dwg.a($$7.f(), $$6, 0));
+   @Override
+   public CompletableFuture<dxa<brv>> a(dbh $$0) {
+      return this.f.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.e.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.f.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               dbh $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
                }
+            } catch (Exception var6) {
+               a.warn("Failed to parse chunk {} position info", $$0, var6);
             }
+
+            uk $$4 = this.e.a($$1.get(), -1);
+            uq $$5 = $$4.c("Entities", 10);
+            List<brv> $$6 = bsb.a($$5, this.d).collect(ImmutableList.toImmutableList());
+            return new dxa<>($$0, $$6);
          }
-      });
-      return new dwg($$4.iterator(), $$5.iterator());
+      }, this.g::a);
    }
 
-   @VisibleForTesting
-   public dwg(ObjectListIterator<dwg.a> $$0, ObjectListIterator<eil> $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   private static dbh a(uk $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new dbh($$1[0], $$1[1]);
    }
 
-   @Override
-   public double a(dwm.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
+   private static void a(uk $$0, dbh $$1) {
+      $$0.a("Position", new uo(new int[]{$$1.e, $$1.f}));
+   }
 
-      while (this.h.hasNext()) {
-         dwg.a $$5 = (dwg.a)this.h.next();
-         ehb $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a($$8, $$12, $$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-         };
-      }
-
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         eil $$13 = (eil)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
-      }
-
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
+   private static dxa<brv> b(dbh $$0) {
+      return new dxa<>($$0, ImmutableList.of());
    }
 
    @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
-
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
-
-   private static double a(int $$0, int $$1, int $$2) {
-      double $$3 = ayd.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
-      return ayd.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = ayd.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * ayd.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+   public void a(dxa<brv> $$0) {
+      dbh $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.e.a($$1, null);
+         }
       } else {
-         return 0.0;
+         uq $$2 = new uq();
+         $$0.b().forEach($$1x -> {
+            uk $$2x = new uk();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         uk $$3 = uz.e(new uk());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.e.a($$1, $$3).exceptionally($$1x -> {
+            a.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.f.remove($$1.a());
       }
    }
 
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
    }
 
-   private static double b(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
-   }
-
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = ayd.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
-   }
-
-   @VisibleForTesting
-   public static record a(ehb a, ehu b, int c) {
+   @Override
+   public void close() throws IOException {
+      this.e.close();
    }
 }

@@ -1,74 +1,79 @@
-import javax.annotation.Nullable;
+public class fdu extends gxb {
+   private static final xe a = xe.c("mco.selectServer.create");
+   private static final xe b = xe.c("mco.configure.world.name");
+   private static final xe c = xe.c("mco.configure.world.description");
+   private static final int B = 10;
+   private static final int C = 210;
+   private final fbn D;
+   private final fma E = new fma(this);
+   private fiw F;
+   private fiw G;
+   private final Runnable H;
 
-public record fdu(int a, @Nullable fdu.a b, @Nullable wx c, @Nullable String d) {
-   private static final wx e = wx.c("chat.tag.system");
-   private static final wx f = wx.c("chat.tag.system_single_player");
-   private static final wx g = wx.c("chat.tag.not_secure");
-   private static final wx h = wx.c("chat.tag.modified");
-   private static final wx i = wx.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fdu l = new fdu(13684944, null, e, "System");
-   private static final fdu m = new fdu(13684944, null, f, "System");
-   private static final fdu n = new fdu(13684944, null, g, "Not Secure");
-   private static final fdu o = new fdu(16733525, null, i, "Chat Error");
-
-   public static fdu a() {
-      return l;
+   public fdu(fbn $$0, fcj $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
    }
 
-   public static fdu b() {
-      return m;
+   public fdu(fbn $$0, long $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
    }
 
-   public static fdu c() {
-      return n;
+   @Override
+   public void aN_() {
+      this.E.a(this.l, this.p);
+      fme $$0 = this.E.c(fme.d()).a(10);
+      fin $$1 = fin.a(xd.j, $$0x -> this.H.run()).a();
+      $$1.j = false;
+      this.F = new fiw(this.p, 210, 20, b);
+      this.F.b($$1x -> $$1.j = !azh.h($$1x));
+      this.G = new fiw(this.p, 210, 20, c);
+      $$0.a(flw.a(this.p, this.F, b));
+      $$0.a(flw.a(this.p, this.G, c));
+      fme $$2 = this.E.b(fme.e().a(10));
+      $$2.a($$1);
+      $$2.a(fin.a(xd.k, $$0x -> this.d()).a());
+      this.E.a($$1x -> {
+         fil var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static fdu a(String $$0) {
-      wx $$1 = wx.b($$0).a(n.h);
-      wx $$2 = wx.i().b(h).b(ww.s).b($$1);
-      return new fdu(6316128, fdu.a.a, $$2, "Modified");
+   @Override
+   protected void aC_() {
+      this.b(this.F);
    }
 
-   public static fdu d() {
-      return o;
+   @Override
+   protected void c() {
+      this.E.a();
    }
 
-   public int e() {
-      return this.a;
+   private void a(fcj $$0) {
+      ffl $$1 = new ffl($$0.a, this.F.a(), this.G.a());
+      feh $$2 = feh.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            fbn.g();
+            this.m.a(this.D);
+         }));
+      this.m.a($$2);
    }
 
-   @Nullable
-   public fdu.a f() {
-      return this.b;
+   private void a(long $$0) {
+      fon $$1 = new feg($$1x -> {
+         if ($$1x == null) {
+            this.m.a(this);
+         } else {
+            this.m.a(new fdz(this, new ffg(this.D, $$0, $$1x, this.F.a(), this.G.a())));
+         }
+      }, a);
+      this.m.a($$1);
    }
 
-   @Nullable
-   public wx g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new akm("icon/chat_modified"), 9, 9);
-
-      public final akm b;
-      public final int c;
-      public final int d;
-
-      private a(akm $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(ffm $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
-      }
+   @Override
+   public void d() {
+      this.m.a(this.D);
    }
 }

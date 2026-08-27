@@ -1,28 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eav extends dzx<eco> {
-   public eav(Codec<eco> $$0) {
-      super($$0);
+public class eav extends eas {
+   public static final Codec<eav> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eas.d.forGetter($$0x -> $$0x),
+               bpd.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bpd.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bpd.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, eav::new)
+   );
+   public final bpd b;
+   public final bpd c;
+   final bpd j;
+
+   public eav(float $$0, ehz $$1, bpd $$2, dzo $$3, eat $$4, je<dfc> $$5, bpd $$6, bpd $$7, bpd $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(dzz<eco> $$0) {
-      eco $$1 = $$0.f();
-      ayk $$2 = $$0.d();
-      io $$3 = $$0.e();
-      dbs $$4 = $$0.b();
-      int $$5 = 0;
-      io.a $$6 = new io.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public eav(float $$0, ehz $$1, bpd $$2, dzo $$3, je<dfc> $$4, bpd $$5, bpd $$6, bpd $$7) {
+      this($$0, $$1, $$2, $$3, eat.a, $$4, $$5, $$6, $$7);
+   }
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
-         }
-      }
-
-      return $$5 > 0;
+   public eav(eas $$0, bpd $$1, bpd $$2, bpd $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

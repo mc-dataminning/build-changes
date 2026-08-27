@@ -1,44 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-
-public record cwn(Map<String, cwn.a> c) {
-   public static final cwn a = new cwn(Map.of());
-   public static final Codec<cwn> b = Codec.unboundedMap(Codec.STRING, cwn.a.a).xmap(cwn::new, cwn::a);
-
-   public cwn a(String $$0, cwn.a $$1) {
-      return new cwn(ac.a(this.c, $$0, $$1));
+public class cwn extends cuc {
+   public cwn(cuc.a $$0) {
+      super($$0);
    }
 
-   public Map<String, cwn.a> a() {
-      return this.c;
-   }
-
-   public static record a(ix<eoe> b, double c, double d, float e) {
-      public static final Codec<cwn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eoe.b.fieldOf("type").forGetter(cwn.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cwn.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cwn.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cwn.a::d)
-               )
-               .apply($$0, cwn.a::new)
-      );
-
-      public ix<eoe> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   @Override
+   public bqb<cuh> a(dca $$0, cly $$1, bpz $$2) {
+      cuh $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(avz.c.b(this));
+      return bqb.a($$3, $$0.x_());
    }
 }

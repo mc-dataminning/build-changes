@@ -1,54 +1,125 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class fdo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final aws<String> e = new aws<>(50);
+public class fdo extends gxb {
+   private static final xe a = xe.c("mco.backup.info.title");
+   private static final xe b = xe.c("mco.backup.unknown");
+   private final fon c;
+   final fby B;
+   final fma C = new fma(this);
+   private fdo.a D;
 
-   public fdo(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+   public fdo(fon $$0, fby $$1) {
+      super(a);
+      this.c = $$0;
+      this.B = $$1;
+   }
+
+   @Override
+   public void aN_() {
+      this.C.a(a, this.p);
+      this.D = this.C.c(new fdo.a(this.m));
+      this.C.b(fin.a(xd.k, $$0 -> this.d()).a());
+      this.c();
+      this.C.a($$1 -> {
+         fil var10000 = this.c($$1);
+      });
+   }
+
+   @Override
+   protected void c() {
+      this.D.b(this.n, this.C.d());
+      this.C.a();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.c);
+   }
+
+   xe a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (xe)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xe.b($$1));
+      }
+   }
+
+   private xe a(String $$0) {
+      try {
+         return fel.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private xe b(String $$0) {
+      try {
+         return fel.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends fjj<fdo.b> {
+      public a(fgj $$0) {
+         super($$0, fdo.this.n, fdo.this.C.d(), fdo.this.C.c(), 36);
+         if (fdo.this.B.e != null) {
+            fdo.this.B.e.forEach(($$0x, $$1) -> this.b(fdo.this.new b($$0x, $$1)));
          }
       }
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
+   class b extends fjj.a<fdo.b> {
+      private static final xe b = xe.c("mco.backup.entry.templateName");
+      private static final xe c = xe.c("mco.backup.entry.gameDifficulty");
+      private static final xe d = xe.c("mco.backup.entry.name");
+      private static final xe e = xe.c("mco.backup.entry.gameServerVersion");
+      private static final xe f = xe.c("mco.backup.entry.uploaded");
+      private static final xe g = xe.c("mco.backup.entry.enabledPack");
+      private static final xe h = xe.c("mco.backup.entry.description");
+      private static final xe i = xe.c("mco.backup.entry.gameMode");
+      private static final xe j = xe.c("mco.backup.entry.seed");
+      private static final xe k = xe.c("mco.backup.entry.worldType");
+      private static final xe l = xe.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
 
-         this.e.addLast($$0);
-         this.b();
+      public b(String $$0, String $$1) {
+         this.m = $$0;
+         this.n = $$1;
       }
-   }
 
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
+      @Override
+      public void a(fia $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fdo.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fdo.this.p, fdo.this.a(this.m, this.n), $$3, $$2 + 12, -1);
       }
-   }
 
-   public Collection<String> a() {
-      return this.e;
+      private xe a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public xe a() {
+         return xe.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

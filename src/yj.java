@@ -1,15 +1,10 @@
-import java.util.Locale;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class yj extends IllegalArgumentException {
-   public yj(yi $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
-   }
+public class yj {
+   static Function<String, Supplier<xe>> a = $$0 -> () -> xe.b($$0);
 
-   public yj(yi $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
-   }
-
-   public yj(yi $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   public static void a(Function<String, Supplier<xe>> $$0) {
+      a = $$0;
    }
 }

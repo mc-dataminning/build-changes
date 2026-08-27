@@ -1,175 +1,120 @@
-public abstract class cou extends cqg<bpn> {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   public static final int n = 3;
-   public static final int o = 4;
-   private static final int q = 3;
-   private static final int r = 30;
-   private static final int s = 30;
-   private static final int t = 39;
-   private final bpn u;
-   private final cpd v;
-   protected final dax p;
-   private final cxz<? extends cxd> w;
-   private final cqh x;
+public class cou {
+   private int a = 20;
+   private float b;
+   private float c;
+   private int d;
+   private int e = 20;
 
-   protected cou(cqa<?> $$0, cxz<? extends cxd> $$1, cqh $$2, int $$3, clv $$4) {
-      this($$0, $$1, $$2, $$3, $$4, new bqd(3), new cqn(4));
+   public cou() {
+      this.b = 5.0F;
    }
 
-   protected cou(cqa<?> $$0, cxz<? extends cxd> $$1, cqh $$2, int $$3, clv $$4, bpn $$5, cpd $$6) {
-      super($$0, $$3);
-      this.w = $$1;
-      this.x = $$2;
-      a($$5, 3);
-      a($$6, 4);
-      this.u = $$5;
-      this.v = $$6;
-      this.p = $$4.l.dP();
-      this.a(new cqo($$5, 0, 56, 17));
-      this.a(new cpo(this, $$5, 1, 56, 53));
-      this.a(new cpq($$4.l, $$5, 2, 116, 35));
+   public void a(int $$0, float $$1) {
+      this.a = Math.min($$0 + this.a, 20);
+      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
+   }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cqo($$4, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+   public void a(cuh $$0) {
+      cov $$1 = $$0.a(ke.t);
+      if ($$1 != null) {
+         this.a($$1.b(), $$1.c());
+      }
+   }
+
+   public void a(cly $$0) {
+      bpx $$1 = $$0.dU().al();
+      this.e = this.a;
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$1 != bpx.a) {
+            boolean $$2 = $$0.eS();
+            if (!$$2) {
+               this.a = Math.max(this.a - 1, 0);
+            }
          }
       }
 
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cqo($$4, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a($$6);
-   }
-
-   @Override
-   public void a(cma $$0) {
-      if (this.u instanceof cqt) {
-         ((cqt)this.u).a($$0);
-      }
-   }
-
-   @Override
-   public void l() {
-      this.b(0).f(cto.i);
-      this.b(2).f(cto.i);
-   }
-
-   @Override
-   public boolean a(cxw<? extends cxu<bpn>> $$0) {
-      return $$0.b().a(this.u, this.p);
-   }
-
-   @Override
-   public int m() {
-      return 2;
-   }
-
-   @Override
-   public int n() {
-      return 1;
-   }
-
-   @Override
-   public int o() {
-      return 1;
-   }
-
-   @Override
-   public int p() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return this.u.a($$0);
-   }
-
-   @Override
-   public cto a(clw $$0, int $$1) {
-      cto $$2 = cto.i;
-      cqo $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cto $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return cto.i;
+      boolean $$3 = $$0.dU().ab().b(dbw.k);
+      if ($$3 && this.b > 0.0F && $$0.gy() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
+         }
+      } else if ($$3 && this.a >= 18 && $$0.gy()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eI() > 10.0F || $$1 == bpx.d || $$0.eI() > 1.0F && $$1 == bpx.c) {
+               $$0.a($$0.dX().j(), 1.0F);
             }
 
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cto.i;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return cto.i;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return cto.i;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cto.i;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cto.i;
+            this.d = 0;
          }
-
-         if ($$4.e()) {
-            $$3.e(cto.i);
-         } else {
-            $$3.b();
-         }
-
-         if ($$4.I() == $$2.I()) {
-            return cto.i;
-         }
-
-         $$3.a($$0, $$4);
+      } else {
+         this.d = 0;
       }
-
-      return $$2;
    }
 
-   protected boolean c(cto $$0) {
-      return this.p.r().a(this.w, new bqd($$0), this.p).isPresent();
-   }
-
-   protected boolean d(cto $$0) {
-      return dnu.c($$0);
-   }
-
-   public float q() {
-      int $$0 = this.v.a(2);
-      int $$1 = this.v.a(3);
-      return $$1 != 0 && $$0 != 0 ? ayd.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
-
-   public float r() {
-      int $$0 = this.v.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
+   public void a(uk $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
       }
-
-      return ayd.a((float)this.v.a(0) / (float)$$0, 0.0F, 1.0F);
    }
 
-   public boolean s() {
-      return this.v.a(0) > 0;
+   public void b(uk $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   @Override
-   public cqh t() {
-      return this.x;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public boolean e(int $$0) {
-      return $$0 != 1;
+   public int b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.a < 20;
+   }
+
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
+
+   public float d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
+   }
+
+   public void c(float $$0) {
+      this.c = $$0;
    }
 }

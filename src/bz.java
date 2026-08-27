@@ -1,57 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
 
-public record bz(Optional<jb<emt>> b, Optional<dl> c) {
-   public static final Codec<bz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jm.a(lf.z).optionalFieldOf("fluids").forGetter(bz::a), dl.a.optionalFieldOf("state").forGetter(bz::b)).apply($$0, bz::new)
-   );
-
-   public boolean a(aqm $$0, io $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         emu $$2 = $$0.b_($$1);
-         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
-      }
+public class bz extends dh<bz.a> {
+   @Override
+   public Codec<bz.a> a() {
+      return bz.a.a;
    }
 
-   public Optional<jb<emt>> a() {
-      return this.b;
+   public void a(aqu $$0, cuh $$1, cmn $$2, Collection<cuh> $$3) {
+      erp $$4 = bs.b($$0, (brv)($$2.u() != null ? $$2.u() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public Optional<dl> b() {
-      return this.c;
-   }
+   public static record a(Optional<bd> b, Optional<ci> c, Optional<bd> d, Optional<ci> e) implements dh.a {
+      public static final Codec<bz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  axu.a(bs.b, "player").forGetter(bz.a::a),
+                  axu.a(ci.a, "rod").forGetter(bz.a::b),
+                  axu.a(bs.b, "entity").forGetter(bz.a::c),
+                  axu.a(ci.a, "item").forGetter(bz.a::d)
+               )
+               .apply($$0, bz.a::new)
+      );
 
-   public static class a {
-      private Optional<jb<emt>> a = Optional.empty();
-      private Optional<dl> b = Optional.empty();
-
-      private a() {
+      public static ao<bz.a> a(Optional<ci> $$0, Optional<bs> $$1, Optional<ci> $$2) {
+         return an.E.a(new bz.a(Optional.empty(), $$0, bs.a($$1), $$2));
       }
 
-      public static bz.a a() {
-         return new bz.a();
+      public boolean a(cuh $$0, erp $$1, Collection<cuh> $$2) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
+            return false;
+         } else {
+            if (this.e.isPresent()) {
+               boolean $$3 = false;
+               brv $$4 = $$1.c(eug.a);
+               if ($$4 instanceof cig $$5 && this.e.get().a($$5.p())) {
+                  $$3 = true;
+               }
+
+               for (cuh $$6 : $$2) {
+                  if (this.e.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public bz.a a(emt $$0) {
-         this.a = Optional.of(jb.a($$0.k()));
-         return this;
+      @Override
+      public void a(be $$0) {
+         dh.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
-      public bz.a a(jb<emt> $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      @Override
+      public Optional<bd> a() {
+         return this.b;
       }
 
-      public bz.a a(dl $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      public Optional<ci> b() {
+         return this.c;
       }
 
-      public bz b() {
-         return new bz(this.a, this.b);
+      public Optional<bd> c() {
+         return this.d;
+      }
+
+      public Optional<ci> d() {
+         return this.e;
       }
    }
 }

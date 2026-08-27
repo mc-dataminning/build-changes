@@ -1,32 +1,40 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
 
-public abstract class fao {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
-
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
-         }
+public class fao extends faq {
+   private static final faj a = new faj() {
+      @Override
+      public String a(boolean $$0, String $$1) {
+         return "#error Import statement not supported";
       }
+   };
+   private int b;
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
+   private fao(faq.a $$0, int $$1, String $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
+   public void a(fan $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.b++;
+      this.a($$0);
    }
 
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+   @Override
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      this.b--;
+      if (this.b <= 0) {
+         super.a();
+      }
+   }
+
+   public static fao a(faq.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
+      RenderSystem.assertOnRenderThread();
+      int $$4 = b($$0, $$1, $$2, $$3, a);
+      fao $$5 = new fao($$0, $$4, $$1);
+      $$0.c().put($$1, $$5);
+      return $$5;
    }
 }

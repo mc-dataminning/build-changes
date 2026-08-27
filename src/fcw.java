@@ -1,69 +1,40 @@
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fcw extends fcz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wx c = wx.c("mco.snapshot.creating");
-   private final long d;
-   private final fcs e;
-   private final String f;
-   private final String g;
-   private final ezd h;
-   @Nullable
-   private fdb i;
-   @Nullable
-   private fdc j;
+public class fcw extends fcy {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fcw.a c = fcw.a.a;
 
-   public fcw(ezd $$0, long $$1, fcs $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
-   }
-
-   @Override
-   public void run() {
-      ezi $$0 = ezi.a();
+   public static fcw a(String $$0) {
+      fcw $$1 = new fcw();
 
       try {
-         ezz $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new fdb($$1.a, this.f, this.g);
-         this.j = new fdc(this.e, $$1.a, fbx.a, () -> fdz.Q().execute(() -> ezd.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (fav var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fev.a("startDate", $$3, 0L);
+         $$1.b = fev.a("daysLeft", $$3, 0);
+         $$1.c = b(fev.b("subscriptionType", $$3, fcw.a.a.name()));
       } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
+   }
+
+   private static fcw.a b(String $$0) {
+      try {
+         return fcw.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fcw.a.a;
       }
    }
 
-   @Override
-   public wx a() {
-      return c;
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

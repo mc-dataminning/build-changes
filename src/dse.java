@@ -1,110 +1,51 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public abstract class dse<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dse.a<T>> e = this.d.xmap(this::b, dse.a::b);
+public interface dse {
+   dse a = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.du().a($$2, $$3) && !$$2x.f() && !$$2x.O_()).stream().map(brv::cE).toList();
+   dse b = ($$0, $$1, $$2, $$3) -> $$1.a($$0, $$2x -> $$2x.du().a($$2, $$3) && !$$2x.O_()).stream().map(brv::cE).toList();
+   dse c = ($$0, $$1, $$2, $$3) -> {
+      ewp $$4 = new ewp($$2).g($$3);
+      return $$1.a($$0, bsb.aL, $$4, bso::bI).stream().map(brv::cE).toList();
+   };
 
-   protected dse(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
-   }
+   List<UUID> detect(aqt var1, dse.a var2, ir var3, double var4);
 
-   public dse.a<T> b(T $$0) {
-      return new dse.a<>(this, $$0);
-   }
-
-   public dse.a<T> a(drd<?, ?> $$0) {
-      return new dse.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dse.a<T>> c() {
-      return this.a().stream().map(this::b);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dse.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dse<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends drd<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.a(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dse<T> a, T b) {
-      public a(dse<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
+   public interface a {
+      dse.a a = new dse.a() {
+         @Override
+         public List<aqu> a(aqt $$0, Predicate<? super cly> $$1) {
+            return $$0.a($$1);
          }
+
+         @Override
+         public <T extends brv> List<T> a(aqt $$0, dxj<brv, T> $$1, ewp $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
+
+      List<? extends cly> a(aqt var1, Predicate<? super cly> var2);
+
+      <T extends brv> List<T> a(aqt var1, dxj<brv, T> var2, ewp var3, Predicate<? super T> var4);
+
+      static dse.a a(cly $$0) {
+         return a(List.of($$0));
       }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
+      static dse.a a(final List<cly> $$0) {
+         return new dse.a() {
+            @Override
+            public List<cly> a(aqt $$0x, Predicate<? super cly> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
+
+            @Override
+            public <T extends brv> List<T> a(aqt $$0x, dxj<brv, T> $$1, ewp $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
    }
 }

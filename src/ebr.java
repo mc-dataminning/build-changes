@@ -1,20 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebr {
-   public static final Codec<ebr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egn.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
-            .apply($$0, ebr::new)
-   );
-   public final ix<egn> b;
-   public final float c;
+public class ebr extends eca<eeg> {
+   private static final ImmutableList<dfc> a = ImmutableList.of(dfe.ak, dfe.gf, dfe.gg, dfe.gh, dfe.gi, dfe.dg, dfe.de);
+   private static final iw[] b = iw.values();
+   private static final double c = 0.9;
 
-   public ebr(ix<egn> $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ebr(Codec<eeg> $$0) {
+      super($$0);
    }
 
-   public boolean a(dbs $$0, dsy $$1, ayk $$2, io $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(ecc<eeg> $$0) {
+      boolean $$1 = false;
+      ayt $$2 = $$0.d();
+      dcv $$3 = $$0.b();
+      eeg $$4 = $$0.f();
+      ir $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
+
+      for (ir $$13 : ir.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            ir $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(dcb $$0, ir $$1, eeg $$2) {
+      dtc $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (iw $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).i();
+            if ($$5 && $$4 != iw.b || !$$5 && $$4 == iw.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

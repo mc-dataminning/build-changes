@@ -1,9 +1,13 @@
-public class flj {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+import org.joml.Matrix4f;
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+public class flj extends fli {
+   public static final flj a = new flj();
+
+   public flj() {
+      super(flg.b(new akt("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   }
+
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fbg $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

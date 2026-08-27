@@ -1,49 +1,49 @@
 import javax.annotation.Nullable;
 
 public class cgn extends cgh {
-   public cgn(bsa<? extends cgn> $$0, dax $$1) {
+   public cgn(bsb<? extends cgn> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected avg v() {
-      return avh.px;
+   protected avn u() {
+      return avo.pW;
    }
 
    @Override
-   protected avg gN() {
-      return avh.py;
+   protected avn gW() {
+      return avo.pX;
    }
 
    @Override
-   protected avg o_() {
-      return avh.pA;
-   }
-
-   @Nullable
-   @Override
-   protected avg gw() {
-      return avh.pB;
-   }
-
-   @Override
-   protected avg d(bqn $$0) {
-      return avh.pC;
-   }
-
-   @Override
-   protected void gV() {
-      this.a(avh.pD, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void gp() {
-      this.a(avh.pz, 1.0F, (this.ah.i() - this.ah.i()) * 0.2F + 1.0F);
+   protected avn n_() {
+      return avo.pZ;
    }
 
    @Nullable
    @Override
-   public bro a(aqm $$0, bro $$1) {
-      return bsa.at.a((dax)$$0);
+   protected avn gF() {
+      return avo.qa;
+   }
+
+   @Override
+   protected avn d(bqt $$0) {
+      return avo.qb;
+   }
+
+   @Override
+   protected void he() {
+      this.a(avo.qc, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void gy() {
+      this.a(avo.pY, 1.0F, (this.al.i() - this.al.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public brp a(aqt $$0, brp $$1) {
+      return bsb.au.a((dca)$$0);
    }
 }

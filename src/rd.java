@@ -1,203 +1,271 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class rd {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final azd<Float> e = azd.a;
-   private static final azd<Float> f = azd.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final azd<Float> g = azd.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final azd<Float> h = azd.a($$0 -> $$0 * 2.0F);
+   public static final aks<elc> a = ra.a("village/savanna/town_centers");
+   private static final aks<elc> b = ra.a("village/savanna/terminators");
+   private static final aks<elc> c = ra.a("village/savanna/zombie/terminators");
 
-   public static <C, I extends azd<C>> axg<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      azd<Float> $$4 = $$3 ? f : e;
-      axg<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      axg<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      axg<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      axg<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return axg.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
-   }
-
-   public static <C, I extends azd<C>> axg<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      azd<Float> $$5 = $$4 ? g : e;
-      return axg.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
-   }
-
-   public static <C, I extends azd<C>> axg<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      azd<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return axg.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, azd<Float> $$7) {
-      float $$8 = -0.5775F;
-      axg<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      axg<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return axg.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, I $$1, float $$2, float $$3, azd<Float> $$4) {
-      float $$5 = dxa.a(0.4F);
-      float $$6 = dxa.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      axg.b<C, I> $$8 = axg.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
-      }
-
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
-      }
-
-      return $$8.a();
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, float $$1, azd<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return axg.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, azd<Float> $$5) {
-      axg<C, I> $$6 = axg.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      axg.b<C, I> $$7 = axg.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, axg.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, axg.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         axg<C, I> $$8 = axg.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         axg<C, I> $$9 = axg.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         axg<C, I> $$10 = axg.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         axg<C, I> $$11 = axg.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, float $$1, boolean $$2, azd<Float> $$3) {
-      axg.b<C, I> $$4 = axg.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, ayd.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends azd<C>> axg<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, azd<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      axg<C, I> $$14 = a($$1, ayd.i($$5, 0.6F, 1.5F), $$9, $$10);
-      axg<C, I> $$15 = a($$1, ayd.i($$5, 0.6F, 1.0F), $$9, $$10);
-      axg<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      axg<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, ayd.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      axg<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      axg<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      axg<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      axg<C, I> $$21 = axg.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      axg<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      axg.b<C, I> $$23 = axg.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends azd<C>> axg<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, azd<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return axg.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   public static void a(qq<elc> $$0) {
+      jb<eix> $$1 = $$0.a(li.aI);
+      ja<eix> $$2 = $$1.b(ss.i);
+      ja<eix> $$3 = $$1.b(ss.a);
+      ja<eix> $$4 = $$1.b(ss.b);
+      jb<enr> $$5 = $$0.a(li.aK);
+      ja<enr> $$6 = $$5.b(rc.c);
+      ja<enr> $$7 = $$5.b(rc.o);
+      ja<enr> $$8 = $$5.b(rc.s);
+      jb<elc> $$9 = $$0.a(li.aM);
+      ja<elc> $$10 = $$9.b(ra.a);
+      ja<elc> $$11 = $$9.b(b);
+      ja<elc> $$12 = $$9.b(c);
+      $$0.a(
+         a,
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
+               Pair.of(ela.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
+               Pair.of(ela.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
+               Pair.of(ela.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
+               Pair.of(ela.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
+               Pair.of(ela.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
+               Pair.of(ela.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/streets",
+         new elc(
+            $$11,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/streets/corner_01", $$7), 2),
+               Pair.of(ela.a("village/savanna/streets/corner_03", $$7), 2),
+               Pair.of(ela.a("village/savanna/streets/straight_02", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/straight_04", $$7), 7),
+               Pair.of(ela.a("village/savanna/streets/straight_05", $$7), 3),
+               Pair.of(ela.a("village/savanna/streets/straight_06", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/straight_08", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/straight_09", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/straight_10", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/straight_11", $$7), 4),
+               Pair.of(ela.a("village/savanna/streets/crossroad_02", $$7), 1),
+               Pair.of(ela.a("village/savanna/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(ela.a("village/savanna/streets/crossroad_04", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/crossroad_05", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/crossroad_06", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/crossroad_07", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/split_01", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/split_02", $$7), 2),
+                  Pair.of(ela.a("village/savanna/streets/turn_01", $$7), 3)
+               }
+            ),
+            elc.a.a
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/zombie/streets",
+         new elc(
+            $$12,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/zombie/streets/corner_01", $$7), 2),
+               Pair.of(ela.a("village/savanna/zombie/streets/corner_03", $$7), 2),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_02", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_04", $$7), 7),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_05", $$7), 3),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_06", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_08", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_09", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_10", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/straight_11", $$7), 4),
+               Pair.of(ela.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
+               Pair.of(ela.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(ela.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/split_01", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/split_02", $$7), 2),
+                  Pair.of(ela.a("village/savanna/zombie/streets/turn_01", $$7), 3)
+               }
+            ),
+            elc.a.a
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/houses",
+         new elc(
+            $$11,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_1"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_2"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_3"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_4"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_5"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_6"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_7"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_small_house_8"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_medium_house_1"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_medium_house_2"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
+               new Pair[]{
+                  Pair.of(ela.a("village/savanna/houses/savanna_tool_smith_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_shepherd_1"), 7),
+                  Pair.of(ela.a("village/savanna/houses/savanna_armorer_1"), 1),
+                  Pair.of(ela.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
+                  Pair.of(ela.a("village/savanna/houses/savanna_tannery_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_cartographer_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_library_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_mason_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_temple_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_temple_2"), 3),
+                  Pair.of(ela.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
+                  Pair.of(ela.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
+                  Pair.of(ela.a("village/savanna/houses/savanna_small_farm", $$8), 4),
+                  Pair.of(ela.a("village/savanna/houses/savanna_animal_pen_1"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_animal_pen_2"), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_animal_pen_3"), 2),
+                  Pair.of(ela.g(), 5)
+               }
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/zombie/houses",
+         new elc(
+            $$12,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
+               Pair.of(ela.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
+               Pair.of(ela.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
+               new Pair[]{
+                  Pair.of(ela.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
+                  Pair.of(ela.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_library_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_mason_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
+                  Pair.of(ela.a("village/savanna/houses/savanna_temple_1", $$6), 1),
+                  Pair.of(ela.a("village/savanna/houses/savanna_temple_2", $$6), 3),
+                  Pair.of(ela.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
+                  Pair.of(ela.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
+                  Pair.of(ela.a("village/savanna/houses/savanna_small_farm", $$6), 4),
+                  Pair.of(ela.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
+                  Pair.of(ela.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
+                  Pair.of(ela.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
+                  Pair.of(ela.g(), 5)
+               }
+            ),
+            elc.a.b
+         )
+      );
+      $$0.a(
+         b,
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(ela.a("village/savanna/terminators/terminator_05", $$7), 1)
+            ),
+            elc.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(ela.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(ela.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
+            ),
+            elc.a.a
+         )
+      );
+      ra.a($$0, "village/savanna/trees", new elc($$10, ImmutableList.of(Pair.of(ela.a($$2), 1)), elc.a.b));
+      ra.a(
+         $$0,
+         "village/savanna/decor",
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/savanna_lamp_post_01"), 4),
+               Pair.of(ela.a($$2), 4),
+               Pair.of(ela.a($$3), 4),
+               Pair.of(ela.a($$4), 1),
+               Pair.of(ela.g(), 4)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/zombie/decor",
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/savanna_lamp_post_01", $$6), 4),
+               Pair.of(ela.a($$2), 4),
+               Pair.of(ela.a($$3), 4),
+               Pair.of(ela.a($$4), 1),
+               Pair.of(ela.g(), 4)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/villagers",
+         new elc(
+            $$10,
+            ImmutableList.of(
+               Pair.of(ela.a("village/savanna/villagers/nitwit"), 1),
+               Pair.of(ela.a("village/savanna/villagers/baby"), 1),
+               Pair.of(ela.a("village/savanna/villagers/unemployed"), 10)
+            ),
+            elc.a.b
+         )
+      );
+      ra.a(
+         $$0,
+         "village/savanna/zombie/villagers",
+         new elc(
+            $$10,
+            ImmutableList.of(Pair.of(ela.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(ela.a("village/savanna/zombie/villagers/unemployed"), 10)),
+            elc.a.b
+         )
+      );
    }
 }

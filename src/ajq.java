@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ajq extends ajk, vz {
+   @Override
+   default wd b() {
+      return wd.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajq {
+   void a(ajr var1);
 }

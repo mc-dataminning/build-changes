@@ -1,61 +1,40 @@
-import java.util.Map;
-import java.util.Map.Entry;
+public class gdd extends gdu {
+   private final gdp a;
 
-public class gdd {
-   private Map<drb, gpw> a = Map.of();
-   private final gqc b;
-
-   public gdd(gqc $$0) {
-      this.b = $$0;
+   gdd(fzn $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdp $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public gnv a(drb $$0) {
-      return this.b($$0).e();
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public gpw b(drb $$0) {
-      gpw $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+   @Override
+   public gcy b() {
+      return gcy.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gdp a) implements gcx<lc> {
+      public gcu a(lc $$0, fzn $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdd $$8 = new gdd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
+         return $$8;
       }
-
-      return $$1;
-   }
-
-   public gqc a() {
-      return this.b;
-   }
-
-   public void a(Map<drb, gpw> $$0) {
-      this.a = $$0;
-   }
-
-   public static gqd c(drb $$0) {
-      return a(le.e.b($$0.b()), $$0);
-   }
-
-   public static gqd a(akm $$0, drb $$1) {
-      return new gqd($$0, b($$1.C()));
-   }
-
-   public static String b(Map<dse<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dse<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dse<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dse<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
    }
 }

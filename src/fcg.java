@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.annotations.SerializedName;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fcg {
+public class fcg extends fcy implements fcs {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public fcg(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

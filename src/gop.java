@@ -1,17 +1,12 @@
-import java.io.IOException;
+public class gop<T extends bso> extends gor<T, fvo<T>> {
+   private static final gfo a = gfo.p(new akt("textures/entity/enderman/enderman_eyes.png"));
 
-public class gop extends aub<int[]> {
-   private static final akm a = new akm("textures/colormap/grass.png");
-
-   protected int[] a(atw $$0, bmi $$1) {
-      try {
-         return gor.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
+   public gop(gmp<T, fvo<T>> $$0) {
+      super($$0);
    }
 
-   protected void a(int[] $$0, atw $$1, bmi $$2) {
-      dav.a($$0);
+   @Override
+   public gfo a() {
+      return a;
    }
 }

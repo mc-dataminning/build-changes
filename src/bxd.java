@@ -1,28 +1,42 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxd {
-   public static <E extends bso> bvs<E> a(List<Pair<? extends bxx<? super E>, Integer>> $$0) {
-      return a($$0, buv.a.b, buv.b.a);
-   }
+   private static final int a = 60;
 
-   public static <E extends bso> bvs<E> a(List<Pair<? extends bxx<? super E>, Integer>> $$0, buv.a $$1, buv.b $$2) {
-      bwq<bxx<? super E>> $$3 = new bwq<>();
-      $$0.forEach($$1x -> $$3.a((bxx<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bxu.a((Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$3x -> $$3x.a((bxx<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == buv.a.b) {
-               $$3.a();
-            }
+   public static buh<bsw> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bxt.a(
+         (Function<bxt.b<bsw>, ? extends App<bxt.c<bsw>, bxw<bsw>>>)($$3 -> $$3.group($$3.c(cbr.o), $$3.c(cbr.m), $$3.a(cbr.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.du()).a(awj.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        ir $$8 = $$6.du();
+                        ir.a $$9 = new ir.a();
+                        ewz $$10 = ewz.a($$6);
 
-            for (bxx<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == buv.b.a) {
-                  break;
-               }
-            }
+                        for (ir $$11 : ir.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dtc $$12 = $$5x.a_($$11);
+                              dtc $$13 = $$5x.a_($$9.a($$11, iw.a));
+                              if (!$$12.a(dfe.al) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, iw.b)) {
+                                 ir $$14 = $$11.i();
+                                 $$5.a(new buj($$14));
+                                 $$4.a(new cbu(new buj($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-            return true;
-         }))));
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

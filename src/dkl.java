@@ -1,105 +1,115 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dkl implements ayx {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dkl extends dfc {
+   public static final MapCodec<dkl> a = b(dkl::new);
+   public static final dua<iw.a> b = dts.H;
+   protected static final int c = 2;
+   protected static final exn d = dfc.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final exn e = dfc.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
-   public static final Codec<dkl> e = ayx.a(dkl::values);
-   private final String f;
-   private final h g;
-
-   private dkl(String $$0, h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dkl> a() {
+      return a;
    }
 
-   public dkl a(dkl $$0) {
-      switch ($$0) {
+   public dkl(dtb.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, iw.a.a));
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      switch ((iw.a)$$0.c(b)) {
          case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
+            return e;
+         case a:
          default:
-            return this;
+            return d;
       }
    }
 
-   public h a() {
-      return this.g;
-   }
+   @Override
+   protected void b(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      if ($$1.E_().j() && $$1.ab().b(dbw.e) && $$3.a(2000) < $$1.al().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.d();
+         }
 
-   public it a(it $$0) {
-      if ($$0.o() == it.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
+         if ($$1.a_($$2).a($$1, $$2, bsb.bC)) {
+            brv $$4 = bsb.bC.a($$1, $$2.c(), bss.d);
+            if ($$4 != null) {
+               $$4.aw();
+            }
          }
       }
    }
 
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      iw.a $$6 = $$1.o();
+      iw.a $$7 = $$0.c(b);
+      boolean $$8 = $$7 != $$6 && $$6.d();
+      return !$$8 && !$$2.a(this) && !new eqe($$3, $$4, $$7).c() ? dfe.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if ($$3.cB()) {
+         $$3.h($$2);
+      }
+   }
+
+   @Override
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avo.vc, avq.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+         } else {
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+         }
+
+         $$1.a(lb.aa, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   @Override
+   public cuh a(dcd $$0, ir $$1, dtc $$2) {
+      return cuh.i;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, dmd $$1) {
+      switch ($$1) {
          case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
+         case b:
+            switch ((iw.a)$$0.c(b)) {
+               case c:
+                  return $$0.a(b, iw.a.a);
+               case a:
+                  return $$0.a(b, iw.a.c);
+               default:
+                  return $$0;
+            }
          default:
             return $$0;
       }
    }
 
-   public static dkl a(ayk $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dkl> b(ayk $$0) {
-      return ac.b(values(), $$0);
-   }
-
    @Override
-   public String c() {
-      return this.f;
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b);
    }
 }

@@ -1,90 +1,99 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class bhk extends Schema {
-   public bhk(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bhk extends DataFix {
+   private static final String b = "WorldGenSettingsHeightAndBiomeFix";
+   public static final String a = "has_increased_height_already";
+
+   public bhk(Schema $$0) {
+      super($$0, true);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("ArmorItems", DSL.list(bfy.t.in($$0)), "HandItems", DSL.list(bfy.t.in($$0)), "body_armor_item", bfy.t.in($$0));
-   }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgf.K);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      Type<?> $$2 = this.getOutputSchema().getType(bgf.K);
+      Type<?> $$3 = $$2.findFieldType("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsHeightAndBiomeFix",
+         $$0,
+         $$2,
+         $$2x -> {
+            OptionalDynamic<?> $$3x = ((Dynamic)$$2x.get(DSL.remainderFinder())).get("has_increased_height_already");
+            boolean $$4 = $$3x.result().isEmpty();
+            boolean $$5 = $$3x.asBoolean(true);
+            return $$2x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("has_increased_height_already"))
+               .updateTyped(
+                  $$1,
+                  $$3,
+                  $$3xx -> ad.a(
+                        $$3xx,
+                        $$3,
+                        $$2xxx -> $$2xxx.update(
+                              "minecraft:overworld",
+                              $$2xxxx -> $$2xxxx.update(
+                                    "generator",
+                                    $$2xxxxx -> {
+                                       String $$3xxx = $$2xxxxx.get("type").asString("");
+                                       if ("minecraft:noise".equals($$3xxx)) {
+                                          MutableBoolean $$4x = new MutableBoolean();
+                                          $$2xxxxx = $$2xxxxx.update(
+                                             "biome_source",
+                                             $$2xxxxxx -> {
+                                                String $$3xxxx = $$2xxxxxx.get("type").asString("");
+                                                if ("minecraft:vanilla_layered".equals($$3xxxx) || $$4 && "minecraft:multi_noise".equals($$3xxxx)) {
+                                                   if ($$2xxxxxx.get("large_biomes").asBoolean(false)) {
+                                                      $$4x.setTrue();
+                                                   }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "ArmorStand");
-      a($$0, $$1, "Creeper");
-      a($$0, $$1, "Skeleton");
-      a($$0, $$1, "Spider");
-      a($$0, $$1, "Giant");
-      a($$0, $$1, "Zombie");
-      a($$0, $$1, "Slime");
-      a($$0, $$1, "Ghast");
-      a($$0, $$1, "PigZombie");
-      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bfy.A.in($$0), a($$0)));
-      a($$0, $$1, "CaveSpider");
-      a($$0, $$1, "Silverfish");
-      a($$0, $$1, "Blaze");
-      a($$0, $$1, "LavaSlime");
-      a($$0, $$1, "EnderDragon");
-      a($$0, $$1, "WitherBoss");
-      a($$0, $$1, "Bat");
-      a($$0, $$1, "Witch");
-      a($$0, $$1, "Endermite");
-      a($$0, $$1, "Guardian");
-      a($$0, $$1, "Pig");
-      a($$0, $$1, "Sheep");
-      a($$0, $$1, "Cow");
-      a($$0, $$1, "Chicken");
-      a($$0, $$1, "Squid");
-      a($$0, $$1, "Wolf");
-      a($$0, $$1, "MushroomCow");
-      a($$0, $$1, "SnowMan");
-      a($$0, $$1, "Ozelot");
-      a($$0, $$1, "VillagerGolem");
-      $$0.register(
-         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bfy.t.in($$0)), "ArmorItem", bfy.t.in($$0), "SaddleItem", bfy.t.in($$0), a($$0))
+                                                   return $$2xxxxxx.createMap(
+                                                      ImmutableMap.of(
+                                                         $$2xxxxxx.createString("preset"),
+                                                         $$2xxxxxx.createString("minecraft:overworld"),
+                                                         $$2xxxxxx.createString("type"),
+                                                         $$2xxxxxx.createString("minecraft:multi_noise")
+                                                      )
+                                                   );
+                                                } else {
+                                                   return $$2xxxxxx;
+                                                }
+                                             }
+                                          );
+                                          return $$4x.booleanValue()
+                                             ? $$2xxxxx.update(
+                                                "settings",
+                                                $$0xxxxxx -> "minecraft:overworld".equals($$0xxxxxx.asString(""))
+                                                      ? $$0xxxxxx.createString("minecraft:large_biomes")
+                                                      : $$0xxxxxx
+                                             )
+                                             : $$2xxxxx;
+                                       } else if ("minecraft:flat".equals($$3xxx)) {
+                                          return $$5 ? $$2xxxxx : $$2xxxxx.update("settings", $$0xxxxxx -> $$0xxxxxx.update("layers", bhk::a));
+                                       } else {
+                                          return $$2xxxxx;
+                                       }
+                                    }
+                                 )
+                           )
+                     )
+               );
+         }
       );
-      a($$0, $$1, "Rabbit");
-      $$0.register(
-         $$1,
-         "Villager",
-         $$1x -> DSL.optionalFields(
-               "Inventory",
-               DSL.list(bfy.t.in($$0)),
-               "Offers",
-               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bfy.t.in($$0), "buyB", bfy.t.in($$0), "sell", bfy.t.in($$0)))),
-               a($$0)
-            )
-      );
-      a($$0, $$1, "Shulker");
-      $$0.registerSimple($$1, "AreaEffectCloud");
-      $$0.registerSimple($$1, "ShulkerBullet");
-      return $$1;
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bfy.f,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(DSL.optionalFields("nbt", bfy.y.in($$0))),
-               "blocks",
-               DSL.list(DSL.optionalFields("nbt", bfy.s.in($$0))),
-               "palette",
-               DSL.list(bfy.u.in($$0))
-            )
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Dynamic<?> $$1 = $$0.createMap(
+         ImmutableMap.of($$0.createString("height"), $$0.createInt(64), $$0.createString("block"), $$0.createString("minecraft:air"))
       );
-      $$0.registerType(false, bfy.u, DSL::remainder);
-      $$0.registerType(false, bfy.v, DSL::remainder);
+      return $$0.createList(Stream.concat(Stream.of($$1), $$0.asStream()));
    }
 }

@@ -1,14 +1,15 @@
-public class dus {
-   public static final int a = -64;
-   public static final int b = 384;
-   public static final int c = 384;
-   public static final int d = 384;
-   public static final int e = 0;
-   public static final int f = 256;
-   public static final int g = 128;
-   public static final int h = 128;
-   public static final int i = 0;
-   public static final int j = 256;
-   public static final int k = 128;
-   public static final int l = 256;
+public enum dus {
+   a(4259712),
+   b(16724016),
+   c(2138367);
+
+   private final int d;
+
+   private dus(int $$0) {
+      this.d = $$0;
+   }
+
+   public int a() {
+      return this.d;
+   }
 }

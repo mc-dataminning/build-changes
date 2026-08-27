@@ -1,49 +1,238 @@
-public class fyp extends gay {
-   private final gat a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   fyp(fwr $$0, double $$1, double $$2, double $$3, double $$4, gat $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
+public class fyp {
+   private static final fyw a = new fyw(0.008F);
+   private static final fyw b = new fyw(1.0F);
+   private static final fyw c = new fyw(0.5F);
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static Map<fyq, fyy> a() {
+      Builder<fyq, fyy> $$0 = ImmutableMap.builder();
+      fyy $$1 = fyy.a(fwd.a(fyw.a, 0.0F), 64, 64);
+      fyy $$2 = fyy.a(fwc.a(b), 64, 32);
+      fyy $$3 = fyy.a(fwc.a(new fyw(1.02F)), 64, 32);
+      fyy $$4 = fyy.a(fwc.a(c), 64, 32);
+      fyy $$5 = fwm.b();
+      fyy $$6 = fxo.c();
+      fyy $$7 = fyy.a(fwb.a(fyw.a), 64, 64);
+      fyy $$8 = fwe.b();
+      fyy $$9 = fvj.c();
+      fyy $$10 = fyy.a(fwp.a(fyw.a), 64, 32);
+      fyy $$11 = fyy.a(fwv.a(fyw.a), 64, 64);
+      fyy $$12 = fyy.a(fwu.a(), 64, 64);
+      fyy $$13 = fxo.b();
+      fyy $$14 = fwj.a(fyw.a);
+      fyy $$15 = fxv.b();
+      fyy $$16 = fwa.c();
+      fyy $$17 = fxn.e();
+      fyy $$18 = fyy.a(fyd.b(), 64, 64);
+      fyy $$19 = fxt.b();
+      $$0.put(fyr.a, ful.b());
+      $$0.put(fyr.b, fun.b());
+      $$0.put(fyr.c, fuq.c());
+      $$0.put(fyr.d, fup.a(c));
+      $$0.put(fyr.e, fup.a(b));
+      $$0.put(fyr.f, fur.c());
+      $$0.put(fyr.g, ghb.a());
+      $$0.put(fyr.i, fus.b());
+      $$0.put(fyr.h, fut.b());
+      $$0.put(fyr.j, ghd.c());
+      $$0.put(fyr.k, ghd.b());
+      $$0.put(fyr.l, fuu.c());
+      $$0.put(fyr.m, ghe.b());
+      $$0.put(fyr.n, fuv.b());
+      $$0.put(fyr.o, fux.c());
+      $$0.put(fyr.p, $$4);
+      $$0.put(fyr.q, $$2);
+      $$0.put(fyr.r, fyy.a(fwd.a(new fyw(0.2F), 0.0F), 64, 32));
+      $$0.put(fyr.s, fuy.a());
+      $$0.put(fyr.t, fuz.a(32, 32));
+      $$0.put(fyr.u, $$10);
+      $$0.put(fyr.v, fyy.a(fwp.a(new fyw(0.01F)), 64, 32));
+      $$0.put(fyr.w, fva.b());
+      $$0.put(fyr.x, $$19);
+      $$0.put(fyr.y, ghm.b());
+      $$0.put(fyr.z, $$5);
+      $$0.put(fyr.A, fvf.c());
+      $$0.put(fyr.B, fvg.b());
+      $$0.put(fyr.C, $$5);
+      $$0.put(fyr.E, ghn.b());
+      $$0.put(fyr.G, ghn.c());
+      $$0.put(fyr.F, ghn.d());
+      $$0.put(fyr.D, ghn.e());
+      $$0.put(fyr.H, $$9);
+      $$0.put(fyr.I, fvk.a(fyw.a));
+      $$0.put(fyr.J, fvk.a(new fyw(2.0F)));
+      $$0.put(fyr.K, $$6);
+      $$0.put(fyr.L, gho.b());
+      $$0.put(fyr.M, gho.c());
+      $$0.put(fyr.N, fvl.b());
+      $$0.put(fyr.O, fve.c());
+      $$0.put(fyr.P, ghm.d());
+      $$0.put(fyr.Q, ghm.c());
+      $$0.put(fyr.R, fym.a());
+      $$0.put(fyr.S, fvm.a(fyw.a));
+      $$0.put(fyr.T, $$4);
+      $$0.put(fyr.U, $$4);
+      $$0.put(fyr.V, fvm.a(new fyw(0.25F)));
+      $$0.put(fyr.W, fvx.a(false));
+      $$0.put(fyr.X, fvx.a(true));
+      $$0.put(fyr.Y, fvn.c());
+      $$0.put(fyr.Z, fvn.c());
+      $$0.put(fyr.aa, fvo.c());
+      $$0.put(fyr.ab, fvp.b());
+      $$0.put(fyr.ac, gkl.a());
+      $$0.put(fyr.ad, gkk.a());
+      $$0.put(fyr.ae, $$8);
+      $$0.put(fyr.af, fvr.b());
+      $$0.put(fyr.ag, fvs.c());
+      $$0.put(fyr.ah, fvt.b());
+      $$0.put(fyr.ai, $$5);
+      $$0.put(fyr.aj, fvu.b());
+      $$0.put(fyr.ak, $$1);
+      $$0.put(fyr.al, $$4);
+      $$0.put(fyr.am, $$2);
+      $$0.put(fyr.an, fxu.b());
+      $$0.put(fyr.ao, fvw.c());
+      $$0.put(fyr.ap, fvx.a(false));
+      $$0.put(fyr.aq, fvx.a(true));
+      $$0.put(fyr.ar, $$16);
+      $$0.put(fyr.as, $$5);
+      $$0.put(fyr.at, $$7);
+      $$0.put(fyr.au, fyy.a(fwb.a(new fyw(0.1F)), 64, 64));
+      $$0.put(fyr.av, $$1);
+      $$0.put(fyr.aw, $$4);
+      $$0.put(fyr.ax, $$2);
+      $$0.put(fyr.ay, $$8);
+      $$0.put(fyr.az, fwf.b());
+      $$0.put(fyr.aA, fwh.b());
+      $$0.put(fyr.aB, $$14);
+      $$0.put(fyr.aC, fwj.a(new fyw(0.5F)));
+      $$0.put(fyr.aD, fwk.b());
+      $$0.put(fyr.aE, fwg.b());
+      $$0.put(fyr.aF, $$5);
+      $$0.put(fyr.aG, $$9);
+      $$0.put(fyr.aH, fve.c());
+      $$0.put(fyr.aI, $$10);
+      $$0.put(fyr.aJ, fwq.c());
+      $$0.put(fyr.aK, fwr.b());
+      $$0.put(fyr.aL, fws.b());
+      $$0.put(fyr.aM, fwt.a(fyw.a));
+      $$0.put(fyr.aU, fwt.a(new fyw(0.5F)));
+      $$0.put(fyr.aN, $$11);
+      $$0.put(fyr.aS, $$4);
+      $$0.put(fyr.aT, $$3);
+      $$0.put(fyr.aO, $$11);
+      $$0.put(fyr.aP, $$4);
+      $$0.put(fyr.aQ, $$3);
+      $$0.put(fyr.aR, $$12);
+      $$0.put(fyr.aV, $$8);
+      $$0.put(fyr.aW, fyy.a(fww.a(fyw.a, false), 64, 64));
+      $$0.put(fyr.aX, $$13);
+      $$0.put(fyr.aY, $$4);
+      $$0.put(fyr.aZ, $$2);
+      $$0.put(fyr.ba, fyy.a(fww.a(fyw.a, true), 64, 64));
+      $$0.put(fyr.bb, $$4);
+      $$0.put(fyr.bc, $$2);
+      $$0.put(fyr.bd, gpq.a());
+      $$0.put(fyr.be, fwy.c());
+      $$0.put(fyr.bf, fwz.b());
+      $$0.put(fyr.bg, fxa.b());
+      $$0.put(fyr.bh, fxb.b());
+      $$0.put(fyr.bi, fxd.a());
+      $$0.put(fyr.bj, fxf.b());
+      $$0.put(fyr.bk, fxg.b());
+      $$0.put(fyr.bl, fxi.c());
+      $$0.put(fyr.bm, fxh.c());
+      $$0.put(fyr.bn, fxj.a());
+      $$0.put(fyr.bo, fxl.a());
+      $$0.put(fyr.bp, fxk.b());
+      $$0.put(fyr.bq, fxm.b());
+      $$0.put(fyr.br, $$17);
+      $$0.put(fyr.bt, $$4);
+      $$0.put(fyr.bu, $$2);
+      $$0.put(fyr.bs, $$7);
+      $$0.put(fyr.bv, $$6);
+      $$0.put(fyr.bw, fxq.c());
+      $$0.put(fyr.bx, fxq.b());
+      $$0.put(fyr.by, fwl.c());
+      $$0.put(fyr.bz, fwl.b());
+      $$0.put(fyr.bA, fxr.b());
+      $$0.put(fyr.bB, fxs.b());
+      $$0.put(fyr.bC, $$5);
+      $$0.put(fyr.bD, $$19);
+      $$0.put(fyr.bE, fxu.b());
+      $$0.put(fyr.bF, $$17);
+      $$0.put(fyr.bG, $$4);
+      $$0.put(fyr.bH, $$2);
+      $$0.put(fyr.bI, fyy.a(fwd.a(new fyw(0.25F), 0.0F), 64, 32));
+      $$0.put(fyr.bJ, $$15);
+      $$0.put(fyr.bK, $$15);
+      $$0.put(fyr.bL, fxw.c());
+      $$0.put(fyr.bM, $$5);
+      $$0.put(fyr.bN, $$14);
+      $$0.put(fyr.bO, fxx.a());
+      $$0.put(fyr.bP, fxz.a(fyw.a));
+      $$0.put(fyr.bQ, fxz.a(a));
+      $$0.put(fyr.bR, fxy.a(fyw.a));
+      $$0.put(fyr.bS, fxy.a(a));
+      $$0.put(fyr.bT, fya.c());
+      $$0.put(fyr.bU, fyb.b());
+      $$0.put(fyr.bV, $$18);
+      $$0.put(fyr.bW, $$8);
+      $$0.put(fyr.bX, fye.b());
+      $$0.put(fyr.bY, $$18);
+      $$0.put(fyr.bZ, fyg.b());
+      $$0.put(fyr.ca, fyh.c());
+      $$0.put(fyr.cb, fyi.a(fyw.a));
+      $$0.put(fyr.cc, fyi.a(c));
+      $$0.put(fyr.ch, gnw.a());
+      $$0.put(fyr.cd, $$17);
+      $$0.put(fyr.ce, $$4);
+      $$0.put(fyr.cf, $$2);
+      $$0.put(fyr.cg, $$6);
+      $$0.put(fyr.ci, fyy.a(fyj.a(fyw.a), 64, 32));
+      $$0.put(fyr.cj, fyy.a(fyj.a(new fyw(0.2F)), 64, 32));
+      $$0.put(fyr.ck, $$16);
+      $$0.put(fyr.cl, $$1);
+      $$0.put(fyr.co, $$4);
+      $$0.put(fyr.cp, $$2);
+      $$0.put(fyr.cm, $$13);
+      $$0.put(fyr.cn, $$7);
+      $$0.put(fyr.cq, fyl.c());
+      $$0.put(fyr.cr, fyl.a(c));
+      $$0.put(fyr.cs, fyl.a(b));
+      $$0.put(fyr.ct, $$11);
+      $$0.put(fyr.cu, $$4);
+      $$0.put(fyr.cv, $$3);
+      fyy $$20 = fuw.a();
+      fyy $$21 = fvc.e();
+      fyy $$22 = fxe.b();
+      fyy $$23 = fvd.a();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+      for (cny.b $$24 : cny.b.values()) {
+         if ($$24 == cny.b.i) {
+            $$0.put(fyr.c($$24), $$22);
+            $$0.put(fyr.d($$24), $$23);
+         } else {
+            $$0.put(fyr.c($$24), $$20);
+            $$0.put(fyr.d($$24), $$21);
+         }
+      }
+
+      fyy $$25 = ghu.f();
+      dup.a().forEach($$2x -> $$0.put(fyr.a($$2x), $$25));
+      fyy $$26 = ghq.e();
+      dup.a().forEach($$2x -> $$0.put(fyr.b($$2x), $$26));
+      ImmutableMap<fyq, fyy> $$27 = $$0.build();
+      List<fyq> $$28 = fyr.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gac b() {
-      return gac.d;
-   }
-
-   public static class a implements gab<lb> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fyp($$1, $$2, $$3, $$4, $$5, this.a);
+         return $$27;
       }
    }
 }

@@ -1,125 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public abstract class ddm extends ddy {
-   protected static final evd a = ddy.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final evd b = ddy.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final euf c = new euf(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final drq d;
+public class ddm extends ddd {
+   private static final MapCodec<ja<dcz>> d = dcz.c.fieldOf("biome");
+   public static final MapCodec<ddi.c<ja<dcz>>> b = ddi.c.a(d).fieldOf("biomes");
+   private static final MapCodec<ja<ddn>> e = ddn.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final Codec<ddm> c = Codec.mapEither(b, e).xmap(ddm::new, $$0 -> $$0.f).codec();
+   private final Either<ddi.c<ja<dcz>>, ja<ddn>> f;
 
-   protected ddm(dra.d $$0, drq $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   private ddm(Either<ddi.c<ja<dcz>>, ja<ddn>> $$0) {
+      this.f = $$0;
+   }
+
+   public static ddm a(ddi.c<ja<dcz>> $$0) {
+      return new ddm(Either.left($$0));
+   }
+
+   public static ddm a(ja<ddn> $$0) {
+      return new ddm(Either.right($$0));
+   }
+
+   private ddi.c<ja<dcz>> d() {
+      return (ddi.c<ja<dcz>>)this.f.map($$0 -> $$0, $$0 -> ((ddn)$$0.a()).a());
    }
 
    @Override
-   protected abstract MapCodec<? extends ddm> a();
-
-   @Override
-   protected evd a(drb $$0, dad $$1, io $$2, eup $$3) {
-      return this.g($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
+   protected Stream<ja<dcz>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   public boolean a(drb $$0) {
-      return true;
+   protected Codec<? extends ddd> a() {
+      return c;
+   }
+
+   public boolean a(aks<ddn> $$0) {
+      Optional<ja<ddn>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   protected drb a(drb $$0, it $$1, drb $$2, day $$3, io $$4, io $$5) {
-      return $$1 == it.a && !$$0.a($$3, $$4) ? dea.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ja<dcz> getNoiseBiome(int $$0, int $$1, int $$2, ddi.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @azp
+   public ja<dcz> a(ddi.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   protected boolean a(drb $$0, dba $$1, io $$2) {
-      io $$3 = $$2.d();
-      return c($$1, $$3) || a($$1, $$3, it.b);
+   public void a(List<String> $$0, ir $$1, ddi.f $$2) {
+      int $$3 = jl.a($$1.u());
+      int $$4 = jl.a($$1.v());
+      int $$5 = jl.a($$1.w());
+      ddi.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = ddi.a($$6.d());
+      float $$8 = ddi.a($$6.e());
+      float $$9 = ddi.a($$6.b());
+      float $$10 = ddi.a($$6.c());
+      float $$11 = ddi.a($$6.g());
+      double $$12 = (double)dzb.a($$11);
+      ddp $$13 = new ddp();
+      $$0.add(
+         "Biome builder PV: "
+            + ddp.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
-
-   @Override
-   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      int $$4 = this.g($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
-      }
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, bru $$3) {
-      if (!$$1.B) {
-         int $$4 = this.g($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
-         }
-      }
-   }
-
-   private void a(@Nullable bru $$0, dax $$1, io $$2, drb $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         drb $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), avi.e);
-         $$1.a($$0, dvu.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), avi.e);
-         $$1.a($$0, dvu.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new io($$2), this, this.b());
-      }
-   }
-
-   @Override
-   protected void a(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.g($$0) > 0) {
-            this.a($$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected void a(dax $$0, io $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.d(), this);
-   }
-
-   @Override
-   protected int a(drb $$0, dad $$1, io $$2, it $$3) {
-      return this.g($$0);
-   }
-
-   @Override
-   protected int b(drb $$0, dad $$1, io $$2, it $$3) {
-      return $$3 == it.b ? this.g($$0) : 0;
-   }
-
-   @Override
-   protected boolean e_(drb $$0) {
-      return true;
-   }
-
-   protected static int a(dax $$0, euf $$1, Class<? extends bru> $$2) {
-      return $$0.a($$2, $$1, brz.f.and($$0x -> !$$0x.r_())).size();
-   }
-
-   protected abstract int b(dax var1, io var2);
-
-   protected abstract int g(drb var1);
-
-   protected abstract drb a(drb var1, int var2);
 }

@@ -1,7 +1,8 @@
-import com.mojang.authlib.GameProfile;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record arb(GameProfile a, int b, aqb c, boolean d) {
-   public static arb a(GameProfile $$0, boolean $$1) {
-      return new arb($$0, 0, aqb.a(), $$1);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface arb {
 }

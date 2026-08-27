@@ -1,45 +1,50 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class bmd implements bmh {
-   public static final bmd a = new bmd();
-
-   private bmd() {
+public interface bmd {
+   static blx<StringReader> a(String $$0) {
+      return new bmd.b($$0);
    }
 
-   @Override
-   public List<bmk> a(String $$0) {
-      return Collections.emptyList();
+   static blx<StringReader> a(char $$0) {
+      return new bmd.a($$0);
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
+   public static record a(char a) implements blx<StringReader> {
+      @Override
+      public boolean a(blt<StringReader> $$0, blv $$1, blp $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
+         } else {
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         }
+      }
+
+      public char c() {
+         return this.a;
+      }
    }
 
-   @Override
-   public long a() {
-      return 0L;
-   }
+   public static record b(String a) implements blx<StringReader> {
+      @Override
+      public boolean a(blt<StringReader> $$0, blv $$1, blp $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
+      }
 
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+      public String c() {
+         return this.a;
+      }
    }
 }

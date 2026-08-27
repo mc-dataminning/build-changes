@@ -1,66 +1,46 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class gri implements JsonDeserializer<grh> {
-   private static final box a = bov.a(1.0F);
+public class gri {
+   private final akt a;
+   private final aub b;
+   private final AtomicReference<fad> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public grh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = axu.m($$0, "entry");
-      boolean $$4 = axu.a($$3, "replace", false);
-      String $$5 = axu.a($$3, "subtitle", null);
-      List<grg> $$6 = this.a($$3);
-      return new grh($$6, $$4, $$5);
+   public gri(akt $$0, aub $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   private List<grg> a(JsonObject $$0) {
-      List<grg> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = axu.v($$0, "sounds");
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (axu.a($$4)) {
-               String $$5 = axu.a($$4, "sound");
-               $$1.add(new grg($$5, a, a, 1, grg.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(axu.m($$4, "sound")));
+   public fad a() throws IOException {
+      fad $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fad.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
             }
          }
       }
 
-      return $$1;
+      return $$0;
    }
 
-   private grg b(JsonObject $$0) {
-      String $$1 = axu.i($$0, "name");
-      grg.a $$2 = this.a($$0, grg.a.a);
-      float $$3 = axu.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = axu.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = axu.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = axu.a($$0, "preload", false);
-      boolean $$7 = axu.a($$0, "stream", false);
-      int $$8 = axu.a($$0, "attenuation_distance", 16);
-      return new grg($$1, bov.a($$3), bov.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private grg.a a(JsonObject $$0, grg.a $$1) {
-      grg.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = grg.a.a(axu.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fad $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
       }
-
-      return $$2;
    }
 }

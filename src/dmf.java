@@ -1,91 +1,151 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmf extends ddy {
+public class dmf extends dfc implements dmr {
    public static final MapCodec<dmf> a = b(dmf::new);
-   private static final dsb b = drr.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+   private static final int f = 1;
+   private static final exn g;
+   private static final exn h;
+   private static final exn i = dfc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final exn j = exk.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final duc c = dts.aW;
+   public static final dtt d = dts.C;
+   public static final dtt e = dts.b;
 
    @Override
    public MapCodec<dmf> a() {
       return a;
    }
 
-   public dmf(dra.d $$0) {
+   protected dmf(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dax $$0, drb $$1, eug $$2, cmo $$3) {
-      int $$4 = a((day)$$0, $$1, $$2, (bru)$$3);
-      if ($$3.s() instanceof aqn $$6) {
-         $$6.a(avr.aE);
-         am.M.a($$6, $$3, $$2.e(), $$4);
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(c, d, e);
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      if (!$$3.a($$0.b().q())) {
+         return $$0.c(e) ? h : g;
+      } else {
+         return exk.b();
       }
    }
 
-   private static int a(day $$0, drb $$1, eug $$2, bru $$3) {
-      int $$4 = a($$2, $$2.e());
-      int $$5 = $$3 instanceof cmc ? 20 : 8;
-      if (!$$0.O().a($$2.a(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.a(), $$5);
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2) {
+      return exk.b();
+   }
+
+   @Override
+   protected boolean a(dtc $$0, cyd $$1) {
+      return $$1.n().a(this.q());
+   }
+
+   @Override
+   public dtc a(cyd $$0) {
+      ir $$1 = $$0.a();
+      dca $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.n().a(d, Boolean.valueOf($$2.b_($$1).a() == epf.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   protected void b(dtc $$0, dca $$1, ir $$2, dtc $$3, boolean $$4) {
+      if (!$$1.C) {
+         $$1.a($$2, this, 1);
+      }
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, epf.c, epf.c.a($$3));
+      }
+
+      if (!$$3.x_()) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   protected void a(dtc $$0, aqt $$1, ir $$2, ayt $$3) {
+      int $$4 = a($$1, $$2);
+      dtc $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            cif.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   protected exn b(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      if ($$3.a(exk.b(), $$2, true) && !$$3.b()) {
+         return g;
+      } else {
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : exk.a();
+      }
+   }
+
+   @Override
+   protected epe b_(dtc $$0) {
+      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
+   }
+
+   private boolean a(dbg $$0, ir $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
+   }
+
+   public static int a(dbg $$0, ir $$1) {
+      ir.a $$2 = $$1.j().d(iw.a);
+      dtc $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(dfe.oQ)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.d($$0, $$2, iw.b)) {
+         return 0;
+      }
+
+      for (iw $$5 : iw.c.a) {
+         dtc $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(dfe.oQ)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
+         }
       }
 
       return $$4;
    }
 
-   private static int a(eug $$0, euk $$1) {
-      it $$2 = $$0.b();
-      double $$3 = Math.abs(ayd.e($$1.c) - 0.5);
-      double $$4 = Math.abs(ayd.e($$1.d) - 0.5);
-      double $$5 = Math.abs(ayd.e($$1.e) - 0.5);
-      it.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == it.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == it.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, ayd.c(15.0 * ayd.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(day $$0, drb $$1, int $$2, io $$3, int $$4) {
-      $$0.a($$3, $$1.a(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
-   }
-
-   @Override
-   protected void a(drb $$0, aqm $$1, io $$2, ayk $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 3);
-      }
-   }
-
-   @Override
-   protected int a(drb $$0, dad $$1, io $$2, it $$3) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected boolean e_(drb $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(drb $$0, dax $$1, io $$2, drb $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.O().a($$2, this)) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 18);
-         }
-      }
+   static {
+      exn $$0 = dfc.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      exn $$1 = dfc.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      exn $$2 = dfc.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      exn $$3 = dfc.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      exn $$4 = dfc.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = exk.a($$0, $$1, $$2, $$3, $$4);
+      exn $$5 = dfc.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      exn $$6 = dfc.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      exn $$7 = dfc.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      exn $$8 = dfc.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = exk.a(dmf.i, g, $$6, $$5, $$8, $$7);
    }
 }

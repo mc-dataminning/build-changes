@@ -1,304 +1,103 @@
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fzi {
-   public static class a implements gab<lb> {
-      private final gat a;
+   private static final Logger a = LogUtils.getLogger();
+   private final fgj b;
+   private final gwd c;
+   private final al d = new al();
+   private final Map<ag, ai> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private fzi.a f;
+   @Nullable
+   private ag g;
 
-      public a(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzi.b $$8 = new fzi.b($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public fzi(fgj $$0, gwd $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static class b extends gay {
-      b(fwr $$0, double $$1, double $$2, double $$3) {
-         super($$0, $$1, $$2, $$3);
-         this.t = 4;
+   public void a(agc $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      @Override
-      public gac b() {
-         return gac.c;
-      }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-      @Override
-      public void a(eyw $$0, fdk $$1, float $$2) {
-         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
-         super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public float b(float $$0) {
-         return 7.1F * ayd.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
-      }
-   }
-
-   static class c extends gak {
-      private boolean b;
-      private boolean F;
-      private final gaa G;
-      private float H;
-      private float I;
-      private float J;
-      private boolean K;
-
-      c(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gaa $$7, gat $$8) {
-         super($$0, $$1, $$2, $$3, $$8, 0.1F);
-         this.j = $$4;
-         this.k = $$5;
-         this.l = $$6;
-         this.G = $$7;
-         this.D *= 0.75F;
-         this.t = 48 + this.r.a(12);
-         this.b($$8);
-      }
-
-      public void a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      public void b(boolean $$0) {
-         this.F = $$0;
-      }
-
-      @Override
-      public void a(eyw $$0, fdk $$1, float $$2) {
-         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
-            super.a($$0, $$1, $$2);
-         }
-      }
-
-      @Override
-      public void a() {
-         super.a();
-         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
-            fzi.c $$0 = new fzi.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
-            $$0.e(0.99F);
-            $$0.a(this.v, this.w, this.x);
-            $$0.s = $$0.t / 2;
-            if (this.K) {
-               $$0.K = true;
-               $$0.H = this.H;
-               $$0.I = this.I;
-               $$0.J = this.J;
+      for (Entry<akt, ai> $$1 : $$0.f().entrySet()) {
+         ah $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ai $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
             }
 
-            $$0.F = this.F;
-            this.G.a($$0);
-         }
-      }
-   }
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.r != null) {
+                  this.c.a(this.b.r, $$2.b());
+               }
 
-   public static class d implements gab<lb> {
-      private final gat a;
-
-      public d(gat $$0) {
-         this.a = $$0;
-      }
-
-      public fzy a(lb $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fzi.c $$8 = new fzi.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, fdz.Q().g, this.a);
-         $$8.e(0.99F);
-         return $$8;
-      }
-   }
-
-   public static class e extends fzw {
-      private static final double[][] a = new double[][]{
-         {0.0, 0.2}, {0.2, 0.2}, {0.2, 0.6}, {0.6, 0.6}, {0.6, 0.2}, {0.2, 0.2}, {0.2, 0.0}, {0.4, 0.0}, {0.4, -0.6}, {0.2, -0.6}, {0.2, -0.4}, {0.0, -0.4}
-      };
-      private static final double[][] b = new double[][]{
-         {0.0, 1.0},
-         {0.3455, 0.309},
-         {0.9511, 0.309},
-         {0.3795918367346939, -0.12653061224489795},
-         {0.6122448979591837, -0.8040816326530612},
-         {0.0, -0.35918367346938773}
-      };
-      private int D;
-      private final gaa E;
-      private final List<cwh> F;
-      private boolean G;
-
-      public e(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gaa $$7, List<cwh> $$8) {
-         super($$0, $$1, $$2, $$3);
-         this.j = $$4;
-         this.k = $$5;
-         this.l = $$6;
-         this.E = $$7;
-         if ($$8.isEmpty()) {
-            throw new IllegalArgumentException("Cannot create firework starter with no explosions");
+               Optional<as> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fkt($$2.b()));
+               }
+            }
          } else {
-            this.F = $$8;
-            this.t = $$8.size() * 2 - 1;
-
-            for (cwh $$9 : $$8) {
-               if ($$9.e()) {
-                  this.G = true;
-                  this.t += 15;
-                  break;
-               }
-            }
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
+   }
 
-      @Override
-      public void a() {
-         if (this.D == 0) {
-            boolean $$0 = this.c();
-            boolean $$1 = false;
-            if (this.F.size() >= 3) {
-               $$1 = true;
-            } else {
-               for (cwh $$2 : this.F) {
-                  if ($$2.a() == cwh.a.b) {
-                     $$1 = true;
-                     break;
-                  }
-               }
-            }
+   public al a() {
+      return this.d;
+   }
 
-            avg $$3;
-            if ($$1) {
-               $$3 = $$0 ? avh.iO : avh.iN;
-            } else {
-               $$3 = $$0 ? avh.iM : avh.iL;
-            }
-
-            this.c.a(this.g, this.h, this.i, $$3, avi.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
-         }
-
-         if (this.D % 2 == 0 && this.D / 2 < this.F.size()) {
-            int $$5 = this.D / 2;
-            cwh $$6 = this.F.get($$5);
-            boolean $$7 = $$6.d();
-            boolean $$8 = $$6.e();
-            IntList $$9 = $$6.b();
-            IntList $$10 = $$6.c();
-            if ($$9.isEmpty()) {
-               $$9 = IntList.of(csh.p.f());
-            }
-
-            switch ($$6.a()) {
-               case a:
-                  this.a(0.25, 2, $$9, $$10, $$7, $$8);
-                  break;
-               case b:
-                  this.a(0.5, 4, $$9, $$10, $$7, $$8);
-                  break;
-               case c:
-                  this.a(0.5, b, $$9, $$10, $$7, $$8, false);
-                  break;
-               case d:
-                  this.a(0.5, a, $$9, $$10, $$7, $$8, true);
-                  break;
-               case e:
-                  this.a($$9, $$10, $$7, $$8);
-            }
-
-            int $$11 = $$9.getInt(0);
-            fzy $$12 = this.E.a(ky.N, this.g, this.h, this.i, 0.0, 0.0, 0.0);
-            $$12.a((float)axo.b.b($$11) / 255.0F, (float)axo.b.c($$11) / 255.0F, (float)axo.b.d($$11) / 255.0F);
-         }
-
-         this.D++;
-         if (this.D > this.t) {
-            if (this.G) {
-               boolean $$13 = this.c();
-               avg $$14 = $$13 ? avh.iS : avh.iR;
-               this.c.a(this.g, this.h, this.i, $$14, avi.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
-            }
-
-            this.k();
-         }
+   public void a(@Nullable ag $$0, boolean $$1) {
+      fzo $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahu.a($$0));
       }
 
-      private boolean c() {
-         fdz $$0 = fdz.Q();
-         return $$0.j.m().b().c(this.g, this.h, this.i) >= 256.0;
-      }
-
-      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, IntList $$6, IntList $$7, boolean $$8, boolean $$9) {
-         fzi.c $$10 = (fzi.c)this.E.a(ky.D, $$0, $$1, $$2, $$3, $$4, $$5);
-         $$10.a($$8);
-         $$10.b($$9);
-         $$10.e(0.99F);
-         $$10.b(ac.<Integer>a($$6, this.r));
-         if (!$$7.isEmpty()) {
-            $$10.c(ac.<Integer>a($$7, this.r));
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
          }
       }
+   }
 
-      private void a(double $$0, int $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5) {
-         double $$6 = this.g;
-         double $$7 = this.h;
-         double $$8 = this.i;
-
-         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
-            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
-               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
-                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
-                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
-                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
-                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
-                     $$11 += $$1 * 2 - 1;
-                  }
-               }
+   public void a(@Nullable fzi.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ah $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
             }
-         }
+         });
+         $$0.a(this.g);
       }
+   }
 
-      private void a(double $$0, double[][] $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5, boolean $$6) {
-         double $$7 = $$1[0][0];
-         double $$8 = $$1[0][1];
-         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
-         float $$9 = this.r.i() * (float) Math.PI;
-         double $$10 = $$6 ? 0.034 : 0.34;
+   @Nullable
+   public ag a(akt $$0) {
+      ah $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
 
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
-            double $$13 = $$7;
-            double $$14 = $$8;
+   public interface a extends al.a {
+      void a(ah var1, ai var2);
 
-            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
-               double $$16 = $$1[$$15][0];
-               double $$17 = $$1[$$15][1];
-
-               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
-                  double $$19 = ayd.d($$18, $$13, $$16) * $$0;
-                  double $$20 = ayd.d($$18, $$14, $$17) * $$0;
-                  double $$21 = $$19 * Math.sin($$12);
-                  $$19 *= Math.cos($$12);
-
-                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
-                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
-                  }
-               }
-
-               $$13 = $$16;
-               $$14 = $$17;
-            }
-         }
-      }
-
-      private void a(IntList $$0, IntList $$1, boolean $$2, boolean $$3) {
-         double $$4 = this.r.k() * 0.05;
-         double $$5 = this.r.k() * 0.05;
-
-         for (int $$6 = 0; $$6 < 70; $$6++) {
-            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
-            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
-            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
-            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
-         }
-      }
+      void a(@Nullable ag var1);
    }
 }

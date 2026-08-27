@@ -1,32 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import java.util.List;
 import java.util.function.Function;
 
 public class ckv {
-   public static bui<bso> a(int $$0, int $$1) {
-      return bxu.a(
-         (Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$2 -> $$2.group($$2.b(cbs.ad), $$2.b(cbs.L), $$2.a(cbs.ae), $$2.a(cbs.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eY().e()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
+   public static bvr<cko> a() {
+      return bxt.a(
+         (Function<bxt.b<cko>, ? extends App<bxt.c<cko>, bxw<cko>>>)($$0 -> $$0.group($$0.b(cbr.ak), $$0.c(cbr.ab), $$0.c(cbr.ah), $$0.a(cbr.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.o_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(ckv::a)).isPresent()) {
+                        cki $$6 = $$0.b($$1);
+                        ckp.c($$4x, $$6);
+                        ckp.c((ckn)$$4x);
+                        ckp.b($$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(ckp::c));
                         return true;
+                     } else {
+                        return false;
                      }
                   }))
       );
+   }
+
+   private static boolean a(ckn $$0) {
+      return $$0.dZ().a(cbr.ah);
    }
 }

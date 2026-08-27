@@ -1,74 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmt extends ddk {
+public class dmt extends dfc implements dmr {
    public static final MapCodec<dmt> a = b(dmt::new);
-   public static final dse<dqo> b = drr.bz;
-   public static final drv c = dhu.aE;
-   public static final drs d = drr.bA;
+   public static final dua<duk> b = dts.bh;
+   public static final dtt c = dts.C;
+   protected static final exn d = dfc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final exn e = dfc.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dmt> a() {
+   public MapCodec<? extends dmt> a() {
       return a;
    }
 
-   public dmt(dra.d $$0) {
+   public dmt(dtb.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, it.c).a(b, dqo.a).a(d, Boolean.valueOf(false)));
+      this.k(this.n().a(b, duk.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public bpw a(cto $$0, drb $$1, dax $$2, io $$3, clw $$4, bpt $$5, eug $$6) {
-      if ($$0.e() || $$1.c(b) != dqo.b) {
-         return bpw.d;
-      } else if ($$2 instanceof aqm $$7) {
-         if ($$7.c_($$3) instanceof dqj $$9) {
-            dqj.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return bpw.a;
-         } else {
-            return bpw.d;
-         }
-      } else {
-         return bpw.b;
+   protected boolean f_(dtc $$0) {
+      return $$0.c(b) != duk.c;
+   }
+
+   @Override
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      duk $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return exk.b();
+         case a:
+            return e;
+         default:
+            return d;
       }
    }
 
    @Nullable
    @Override
-   public dog a(io $$0, drb $$1) {
-      return new dqj($$0, $$1);
+   public dtc a(cyd $$0) {
+      ir $$1 = $$0.a();
+      dtc $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, duk.c).a(c, Boolean.valueOf(false));
+      } else {
+         epe $$3 = $$0.q().b_($$1);
+         dtc $$4 = this.n().a(b, duk.b).a(c, Boolean.valueOf($$3.a() == epf.c));
+         iw $$5 = $$0.k();
+         return $$5 != iw.a && ($$5 == iw.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, duk.a);
+      }
    }
 
    @Override
-   protected void a(drc.a<ddy, drb> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dog> doh<T> a(dax $$0, drb $$1, doi<T> $$2) {
-      return $$0 instanceof aqm $$3
-         ? a($$2, doi.R, ($$1x, $$2x, $$3x, $$4) -> dqj.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, doi.R, ($$0x, $$1x, $$2x, $$3x) -> dqj.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
-   }
-
-   @Override
-   public drb a(cwz $$0) {
-      return this.n().a(c, $$0.g().g());
+   protected boolean a(dtc $$0, cyd $$1) {
+      cuh $$2 = $$1.n();
+      duk $$3 = $$0.c(b);
+      if ($$3 == duk.c || !$$2.a(this.q())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         iw $$5 = $$1.k();
+         return $$3 == duk.b ? $$5 == iw.b || $$4 && $$5.o().d() : $$5 == iw.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
    }
 
    @Override
-   public drb a(drb $$0, dkl $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   protected epe b_(dtc $$0) {
+      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public drb a(drb $$0, div $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public boolean a(dcb $$0, ir $$1, dtc $$2, epe $$3) {
+      return $$2.c(b) != duk.c ? dmr.super.a($$0, $$1, $$2, $$3) : false;
    }
 
    @Override
-   public dke a_(drb $$0) {
-      return dke.c;
+   public boolean a(@Nullable cly $$0, dbg $$1, ir $$2, dtc $$3, epd $$4) {
+      return $$3.c(b) != duk.c ? dmr.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, epf.c, epf.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dtc $$0, ept $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.u().a(awj.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

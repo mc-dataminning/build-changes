@@ -1,38 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
-public interface eiu {
-   Codec<eiu> b = le.aj.q().dispatch(eiu::b, Function.identity());
+public class eiu extends eja {
+   private static final eiu c = new eiu();
+   public static final Codec<eiu> a = Codec.unit(() -> c);
 
-   void a(ayk var1, BiConsumer<akl<eis>, akl<eis>> var2);
-
-   Stream<akl<eis>> a();
-
-   static eit a(String $$0, String $$1) {
-      return a(qv.a($$0), qv.a($$1));
+   public static eiu a() {
+      return c;
    }
 
-   static eit a(akl<eis> $$0, akl<eis> $$1) {
-      return new eit($$0, $$1);
+   @Override
+   public Stream<ir> a_(eiy $$0, ayt $$1, ir $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new ir($$3, $$2.v(), $$4));
    }
 
-   static eix a(String $$0, boe<String> $$1) {
-      boe.a<akl<eis>> $$2 = boe.a();
-      $$1.e().forEach($$1x -> $$2.a(qv.a((String)$$1x.b()), $$1x.a().a()));
-      return a(qv.a($$0), $$2.a());
+   @Override
+   public ejb<?> b() {
+      return ejb.n;
    }
-
-   static eix a(akl<eis> $$0, boe<akl<eis>> $$1) {
-      return new eix($$0, $$1);
-   }
-
-   static eiy a(boe<List<eiu>> $$0) {
-      return new eiy($$0);
-   }
-
-   MapCodec<? extends eiu> b();
 }

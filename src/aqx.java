@@ -1,61 +1,60 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class aqx implements aqv {
-   private static final Logger a = LogUtils.getLogger();
+public final class aqx<T> implements Comparable<aqx<?>> {
+   private final aqy<T> a;
    private final int b;
-   private int c;
+   private final T c;
    private long d;
-   private long e = Long.MAX_VALUE;
 
-   private aqx(int $$0) {
-      this.b = $$0;
+   protected aqx(aqy<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static aqx b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
-   }
-
-   public static aqx c(int $$0) {
-      int $$1 = aqv.a($$0);
-      return new aqx($$1 * $$1);
-   }
-
-   public static aqx c() {
-      return new aqx(0);
-   }
-
-   @Override
-   public void a(dae $$0) {
-      this.e = ac.c();
-      this.d = this.e;
-   }
-
-   @Override
-   public void a(dae $$0, @Nullable dtw $$1) {
-      if ($$1 == dtw.n) {
-         this.c++;
-      }
-
-      int $$2 = this.d();
-      if (ac.c() > this.e) {
-         this.e += 500L;
-         a.info(wx.a("menu.preparingSpawn", ayd.a($$2, 0, 100)).getString());
+   public int a(aqx<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
+      } else {
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
    @Override
-   public void a() {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof aqx<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+      }
    }
 
    @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ac.c() - this.d);
-      this.e = Long.MAX_VALUE;
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   public int d() {
-      return this.b == 0 ? 100 : ayd.d((float)this.c * 100.0F / (float)this.b);
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
+
+   public aqy<T> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

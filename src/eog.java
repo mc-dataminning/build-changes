@@ -1,54 +1,15 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
 public class eog {
-   private final io a;
-   private final int b;
-   private final int c;
-
-   public eog(io $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
    }
 
-   @Nullable
-   public static eog a(ud $$0) {
-      Optional<io> $$1 = us.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new eog($$1.get(), $$2, $$3);
-      }
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 
-   public ud a() {
-      ud $$0 = new ud();
-      $$0.a("pos", us.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
-   }
-
-   public io b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(io $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 }

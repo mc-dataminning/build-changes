@@ -1,31 +1,38 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dyr extends ecl {
-   public static final MapCodec<dyr> d = RecordCodecBuilder.mapCodec(
+public class dyr {
+   public final egl a;
+   public final egl b;
+   public final egl c;
+   public final egl d;
+   public final egl e;
+   public final List<dtc> f;
+   public final awt<dfc> g;
+   public final awt<dfc> h;
+   public static final Codec<dyr> i = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               efq.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               box.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               dxn.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               dys.b.optionalFieldOf("debug_settings", dys.a).forGetter($$0x -> $$0x.h),
-               jm.a(lf.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+               egl.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               egl.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               egl.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               egl.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               egl.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               dtc.b.listOf().fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               awt.b(li.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               awt.b(li.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, dyr::new)
    );
-   public final efq e;
-   public final box f;
-   public final dxn g;
-   public final dys h;
-   public final jb<ddy> i;
 
-   public dyr(float $$0, efq $$1, box $$2, dxn $$3, dys $$4, jb<ddy> $$5) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public dyr(egl $$0, egl $$1, egl $$2, egl $$3, egl $$4, List<dtc> $$5, awt<dfc> $$6, awt<dfc> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

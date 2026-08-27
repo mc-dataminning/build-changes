@@ -1,121 +1,508 @@
-import java.util.function.Supplier;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.bytes.ByteList;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.IntBuffer;
+import java.util.List;
+import java.util.function.Function;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class flt extends fly {
-   private static final akm a = new akm("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int r = 204;
-   private static final int s = 98;
-   private static final wx u = wx.c("menu.returnToGame");
-   private static final wx v = wx.c("gui.advancements");
-   private static final wx w = wx.c("gui.stats");
-   private static final wx x = wx.c("menu.sendFeedback");
-   private static final wx y = wx.c("menu.reportBugs");
-   private static final wx z = wx.c("menu.options");
-   private static final wx A = wx.c("menu.shareToLan");
-   private static final wx B = wx.c("menu.playerReporting");
-   private static final wx C = wx.c("menu.returnToMenu");
-   private static final wx D = wx.c("menu.savingLevel");
-   private static final wx E = wx.c("menu.game");
-   private static final wx F = wx.c("menu.paused");
-   private final boolean G;
+public class flt implements ezf {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 16;
+   private static final int d = 2;
+   private static final int e = 32;
+   private static final int f = 64;
+   private static final int g = 96;
+   private static final int h = 128;
+   private final flb<flt.d> i;
+
+   flt(flb<flt.d> $$0) {
+      this.i = $$0;
+   }
+
    @Nullable
-   private ffz H;
-
-   public flt(boolean $$0) {
-      super($$0 ? E : F);
-      this.G = $$0;
-   }
-
-   public boolean m() {
-      return this.G;
+   @Override
+   public eze a(int $$0) {
+      return this.i.a($$0);
    }
 
    @Override
-   protected void aM_() {
-      if (this.G) {
-         this.C();
-      }
-
-      this.c(new fhg(0, this.G ? 40 : 10, this.n, 9, this.l, this.p));
+   public IntSet a() {
+      return this.i.b();
    }
 
-   private void C() {
-      fjl $$0 = new fjl();
-      $$0.c().a(4, 4, 4, 0);
-      fjl.b $$1 = $$0.d(2);
-      $$1.a(ffz.a(u, $$0x -> {
-         this.m.a(null);
-         this.m.n.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(v, () -> new fmn(this.m.s.h.q(), this)));
-      $$1.a(this.a(w, () -> new fmh(this, this.m.s.j())));
-      $$1.a(this.a(x, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
-      $$1.a(this.a(y, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
-      $$1.a(this.a(z, () -> new flp(this, this.m.m)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(A, () -> new flz(this)));
-      } else {
-         $$1.a(this.a(B, () -> new fqi(this)));
-      }
+   @VisibleForTesting
+   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 32 - $$2 - 1;
+      int $$5 = 32 - $$3 - 1;
 
-      wx $$2 = this.m.T() ? C : ww.p;
-      this.H = $$1.a(ffz.a($$2, $$0x -> {
-         $$0x.j = false;
-         this.m.bb().a(this.m, this, this::D, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fjk.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
-   }
-
-   private void D() {
-      boolean $$0 = this.m.T();
-      fxf $$1 = this.m.S();
-      this.m.r.X();
-      if ($$0) {
-         this.m.b(new fle(D));
-      } else {
-         this.m.y();
-      }
-
-      fmd $$2 = new fmd();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new ezd($$2));
-      } else {
-         this.m.a(new fow($$2));
+      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
+         if ($$6 < 32 && $$6 >= 0) {
+            boolean $$7 = ($$1 >> $$6 & 1) != 0;
+            $$0.put($$7 ? -1 : 0);
+         } else {
+            $$0.put(0);
+         }
       }
    }
 
-   @Override
-   public void e() {
-      super.e();
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.G && this.m != null && this.m.bb().c() && this.H != null) {
-         $$0.a(a, this.H.C() + this.H.x() - 17, this.H.D() + 3, 15, 15);
+   static void a(IntBuffer $$0, flt.f $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         int $$5 = $$1.a($$4);
+         a($$0, $$5, $$2, $$3);
       }
    }
 
-   @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      if (this.G) {
-         super.b($$0, $$1, $$2, $$3);
+   @VisibleForTesting
+   static void a(InputStream $$0, flt.h $$1) throws IOException {
+      int $$2 = 0;
+      ByteList $$3 = new ByteArrayList(128);
+
+      while (true) {
+         boolean $$4 = a($$0, $$3, 58);
+         int $$5 = $$3.size();
+         if ($$5 == 0 && !$$4) {
+            return;
+         }
+
+         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
+            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
+         }
+
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
+         }
+
+         $$3.clear();
+         a($$0, $$3, 10);
+         int $$8 = $$3.size();
+
+         flt.f $$9 = switch ($$8) {
+            case 32 -> flt.a.a($$2, $$3);
+            case 64 -> flt.i.a($$2, $$3);
+            case 96 -> flt.e.b($$2, $$3);
+            case 128 -> flt.e.a($$2, $$3);
+            default -> throw new IllegalArgumentException(
+            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
+         );
+         };
+         $$1.accept($$6, $$9);
+         $$2++;
+         $$3.clear();
       }
    }
 
-   private ffz a(wx $$0, Supplier<fly> $$1) {
-      return ffz.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   static int a(int $$0, ByteList $$1, int $$2) {
+      return a($$0, $$1.getByte($$2));
    }
 
-   private ffz a(wx $$0, String $$1) {
-      return ffz.a($$0, fkp.b(this, $$1)).a(98).a();
+   private static int a(int $$0, byte $$1) {
+      return switch ($$1) {
+         case 48 -> 0;
+         case 49 -> 1;
+         case 50 -> 2;
+         case 51 -> 3;
+         case 52 -> 4;
+         case 53 -> 5;
+         case 54 -> 6;
+         case 55 -> 7;
+         case 56 -> 8;
+         case 57 -> 9;
+         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
+         case 65 -> 10;
+         case 66 -> 11;
+         case 67 -> 12;
+         case 68 -> 13;
+         case 69 -> 14;
+         case 70 -> 15;
+      };
+   }
+
+   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
+      while (true) {
+         int $$3 = $$0.read();
+         if ($$3 == -1) {
+            return false;
+         }
+
+         if ($$3 == $$2) {
+            return true;
+         }
+
+         $$1.add((byte)$$3);
+      }
+   }
+
+   static record a(byte[] a) implements flt.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 24;
+      }
+
+      static flt.f a(int $$0, ByteList $$1) {
+         byte[] $$2 = new byte[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = flt.a($$0, $$1, $$3++);
+            int $$6 = flt.a($$0, $$1, $$3++);
+            byte $$7 = (byte)($$5 << 4 | $$6);
+            $$2[$$4] = $$7;
+         }
+
+         return new flt.a($$2);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      public byte[] b() {
+         return this.a;
+      }
+   }
+
+   public static class b implements flp {
+      public static final MapCodec<flt.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(akt.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), flt.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
+               .apply($$0, flt.b::new)
+      );
+      private final akt c;
+      private final List<flt.g> d;
+
+      private b(akt $$0, List<flt.g> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public flq a() {
+         return flq.d;
+      }
+
+      @Override
+      public Either<flp.b, flp.c> b() {
+         return Either.left(this::a);
+      }
+
+      private ezf a(aud $$0) throws IOException {
+         flt var3;
+         try (InputStream $$1 = $$0.open(this.c)) {
+            var3 = this.a($$1);
+         }
+
+         return var3;
+      }
+
+      private flt a(InputStream $$0) throws IOException {
+         flb<flt.f> $$1 = new flb<>(flt.f[]::new, flt.f[][]::new);
+         flt.h $$2 = $$1::a;
+
+         flt var17;
+         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
+            ZipEntry $$4;
+            while (($$4 = $$3.getNextEntry()) != null) {
+               String $$5 = $$4.getName();
+               if ($$5.endsWith(".hex")) {
+                  flt.b.info("Found {}, loading", $$5);
+                  flt.a(new axv($$3), $$2);
+               }
+            }
+
+            flb<flt.d> $$6 = new flb<>(flt.d[]::new, flt.d[][]::new);
+
+            for (flt.g $$7 : this.d) {
+               int $$8 = $$7.b;
+               int $$9 = $$7.c;
+               flt.c $$10 = $$7.d;
+
+               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
+                  flt.f $$12 = $$1.b($$11);
+                  if ($$12 != null) {
+                     $$6.a($$11, new flt.d($$12, $$10.c, $$10.d));
+                  }
+               }
+            }
+
+            $$1.a(($$1x, $$2x) -> {
+               int $$3x = $$2x.d();
+               int $$4x = flt.c.a($$3x);
+               int $$5 = flt.c.b($$3x);
+               $$6.a($$1x, new flt.d($$2x, $$4x, $$5));
+            });
+            var17 = new flt($$6);
+         }
+
+         return var17;
+      }
+   }
+
+   public static record c(int c, int d) {
+      public static final MapCodec<flt.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(flt.c::b), Codec.INT.fieldOf("right").forGetter(flt.c::c)).apply($$0, flt.c::new)
+      );
+      public static final Codec<flt.c> b = a.codec();
+
+      public int a() {
+         return a(this.c, this.d);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
+      }
+
+      public static int a(int $$0) {
+         return (byte)($$0 >> 8);
+      }
+
+      public static int b(int $$0) {
+         return (byte)$$0;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+   }
+
+   static record d(flt.f a, int b, int c) implements eze {
+
+      public int c() {
+         return this.c - this.b + 1;
+      }
+
+      @Override
+      public float getAdvance() {
+         return (float)(this.c() / 2 + 1);
+      }
+
+      @Override
+      public float b() {
+         return 0.5F;
+      }
+
+      @Override
+      public float a() {
+         return 0.5F;
+      }
+
+      @Override
+      public fli bake(Function<ezg, fli> $$0) {
+         return $$0.apply(new ezg() {
+            @Override
+            public float d() {
+               return 2.0F;
+            }
+
+            @Override
+            public int a() {
+               return d.this.c();
+            }
+
+            @Override
+            public int b() {
+               return 16;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
+               flt.a($$2, d.this.a, d.this.b, d.this.c);
+               $$2.rewind();
+               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, fad.a.a, $$2, MemoryUtil::memFree);
+            }
+
+            @Override
+            public boolean c() {
+               return true;
+            }
+         });
+      }
+
+      public flt.f d() {
+         return this.a;
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.c;
+      }
+   }
+
+   static record e(int[] a, int b) implements flt.f {
+      private static final int c = 24;
+
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0];
+      }
+
+      static flt.f b(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = flt.a($$0, $$1, $$4++);
+            int $$7 = flt.a($$0, $$1, $$4++);
+            int $$8 = flt.a($$0, $$1, $$4++);
+            int $$9 = flt.a($$0, $$1, $$4++);
+            int $$10 = flt.a($$0, $$1, $$4++);
+            int $$11 = flt.a($$0, $$1, $$4++);
+            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
+            $$2[$$5] = $$12 << 8;
+            $$3 |= $$12;
+         }
+
+         return new flt.e($$2, 24);
+      }
+
+      public static flt.f a(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = flt.a($$0, $$1, $$4++);
+            int $$7 = flt.a($$0, $$1, $$4++);
+            int $$8 = flt.a($$0, $$1, $$4++);
+            int $$9 = flt.a($$0, $$1, $$4++);
+            int $$10 = flt.a($$0, $$1, $$4++);
+            int $$11 = flt.a($$0, $$1, $$4++);
+            int $$12 = flt.a($$0, $$1, $$4++);
+            int $$13 = flt.a($$0, $$1, $$4++);
+            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
+            $$2[$$5] = $$14;
+            $$3 |= $$14;
+         }
+
+         return new flt.e($$2, 32);
+      }
+
+      public int[] b() {
+         return this.a;
+      }
+
+      @Override
+      public int a() {
+         return this.b;
+      }
+   }
+
+   public interface f {
+      int a(int var1);
+
+      int a();
+
+      default int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 16; $$1++) {
+            $$0 |= this.a($$1);
+         }
+
+         return $$0;
+      }
+
+      default int d() {
+         int $$0 = this.c();
+         int $$1 = this.a();
+         int $$2;
+         int $$3;
+         if ($$0 == 0) {
+            $$2 = 0;
+            $$3 = $$1;
+         } else {
+            $$2 = Integer.numberOfLeadingZeros($$0);
+            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
+         }
+
+         return flt.c.a($$2, $$3);
+      }
+   }
+
+   static record g(int b, int c, flt.c d) {
+      private static final Codec<flt.g> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(axu.y.fieldOf("from").forGetter(flt.g::a), axu.y.fieldOf("to").forGetter(flt.g::b), flt.c.a.forGetter(flt.g::c))
+               .apply($$0, flt.g::new)
+      );
+      public static final Codec<flt.g> a = axu.b(
+         e,
+         (Function<flt.g, DataResult<flt.g>>)($$0 -> $$0.b >= $$0.c
+               ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]")
+               : DataResult.success($$0))
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public flt.c c() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface h {
+      void accept(int var1, flt.f var2);
+   }
+
+   static record i(short[] a) implements flt.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 16;
+      }
+
+      static flt.f a(int $$0, ByteList $$1) {
+         short[] $$2 = new short[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = flt.a($$0, $$1, $$3++);
+            int $$6 = flt.a($$0, $$1, $$3++);
+            int $$7 = flt.a($$0, $$1, $$3++);
+            int $$8 = flt.a($$0, $$1, $$3++);
+            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
+            $$2[$$4] = $$9;
+         }
+
+         return new flt.i($$2);
+      }
+
+      @Override
+      public int a() {
+         return 16;
+      }
+
+      public short[] b() {
+         return this.a;
+      }
    }
 }

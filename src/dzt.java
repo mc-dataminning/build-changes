@@ -1,111 +1,84 @@
-import java.util.function.Consumer;
+import java.util.function.LongFunction;
 
-public class dzt {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public class dzt extends dyv {
+   private final ayt d;
+   private int e;
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   public dzt(ayt $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   protected static boolean a(dbs $$0, io $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayd.b($$5) * (float)$$2);
-            int $$7 = (int)(ayd.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public int l() {
+      return this.e;
    }
 
-   protected static boolean a(day $$0, io $$1) {
-      return $$0.a($$1, dzt::c);
+   @Override
+   public ayt d() {
+      return this.d.d();
    }
 
-   protected static boolean b(day $$0, io $$1) {
-      return $$0.a($$1, dzt::e);
+   @Override
+   public dzh e() {
+      return this.d.e();
    }
 
-   protected static void a(it $$0, int $$1, boolean $$2, Consumer<drb> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dry.e));
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dyv $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
 
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dry.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dry.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dry.a : dry.b));
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
       }
    }
 
-   protected static void a(day $$0, io $$1, it $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         io.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dea.st)) {
-               $$3x = $$3x.a(djq.d, Boolean.valueOf($$0.z($$5)));
-            }
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
 
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static ayt a(int $$0, int $$1, long $$2, long $$3) {
+      return ayt.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dyv::new),
+      b(dzv::new);
+
+      private final LongFunction<ayt> c;
+
+      private a(LongFunction<ayt> $$0) {
+         this.c = $$0;
       }
-   }
 
-   protected static boolean c(day $$0, io $$1) {
-      drb $$2 = $$0.a_($$1);
-      if ($$2.a(avw.bs)) {
-         $$0.a($$1, dea.su.n(), 2);
-         return true;
-      } else {
-         return false;
+      public ayt a(long $$0) {
+         return this.c.apply($$0);
       }
-   }
-
-   private static drb a(it $$0, dry $$1) {
-      return dea.st.n().a(djq.b, $$0).a(djq.c, $$1);
-   }
-
-   public static boolean a(drb $$0) {
-      return b($$0) || $$0.a(dea.H);
-   }
-
-   public static boolean b(drb $$0) {
-      return $$0.a(dea.su) || $$0.a(avw.bs);
-   }
-
-   public static boolean c(drb $$0) {
-      return $$0.i() || $$0.a(dea.G);
-   }
-
-   public static boolean d(drb $$0) {
-      return !$$0.i() && !$$0.a(dea.G);
-   }
-
-   public static boolean e(drb $$0) {
-      return $$0.i() || $$0.a(dea.G) || $$0.a(dea.H);
    }
 }

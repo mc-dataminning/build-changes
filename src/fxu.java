@@ -1,65 +1,49 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Arrays;
 
-public class fxu extends fxv {
-   private final String f;
+public class fxu<T extends brv> extends fvz<T> {
+   private final fys[] a = new fys[8];
+   private final fys b;
 
-   fxu(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   public fxu(fys $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   public String a() {
-      return this.f;
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public fxu c() {
-      fxu $$0 = new fxu(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+   public static fyy b() {
+      fza $$0 = new fza();
+      fzb $$1 = $$0.a();
+      fyw $$2 = new fyw(0.02F);
+      int $$3 = -16;
+      $$1.a("body", fyx.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fyu.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      fyx $$5 = fyx.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, fyu.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      }
+
+      return fyy.a($$0, 64, 32);
    }
 
    @Override
-   public fly a(fly $$0, fxz $$1) {
-      return new fqa($$0, $$1, this);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (fys $$6 : this.a) {
+         $$6.e = $$3;
+      }
    }
 
-   public static class a extends fxv.a<fxu> {
-      public a(fxu $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fxu(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fxv.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fxv.b.d : null;
-      }
-
-      @Override
-      public Either<fxv.c, fxv.b> a(fxz $$0) {
-         fxv.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fxv.c(this.a.a, fxy.c, $$3));
-         }
-      }
+   @Override
+   public fys a() {
+      return this.b;
    }
 }

@@ -1,70 +1,63 @@
 import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import java.util.List;
 
-public class cxe extends cxm {
-   public cxe(cxk $$0) {
-      super($$0);
+public final class cxe {
+   public static final cxe a = new cxe(List.of());
+   public static final Codec<cxe> b = cuh.a.listOf().xmap(cxe::new, $$0 -> $$0.d);
+   public static final zc<wp, cxe> c = cuh.f.a(za.a()).a(cxe::new, $$0 -> $$0.d);
+   private final List<cuh> d;
+
+   private cxe(List<cuh> $$0) {
+      this.d = $$0;
    }
 
-   public boolean a(cpj $$0, dax $$1) {
-      cto $$2 = cto.i;
-      List<cto> $$3 = Lists.newArrayList();
+   public static cxe a(cuh $$0) {
+      return new cxe(List.of($$0.r()));
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awe.bz)) {
-               if (!$$2.e()) {
-                  return false;
-               }
+   public static cxe a(List<cuh> $$0) {
+      return new cxe(Lists.transform($$0, cuh::r));
+   }
 
-               $$2 = $$5;
-            } else {
-               if (!($$5.g() instanceof csi)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
+   public boolean a(cuc $$0) {
+      for (cuh $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
          }
       }
 
-      return !$$2.e() && !$$3.isEmpty();
+      return false;
    }
 
-   public cto a(cpj $$0, iz.a $$1) {
-      List<csi> $$2 = Lists.newArrayList();
-      cto $$3 = cto.i;
+   public List<cuh> a() {
+      return Lists.transform(this.d, cuh::r);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awe.bz)) {
-               if (!$$3.e()) {
-                  return cto.i;
-               }
+   public boolean b() {
+      return this.d.isEmpty();
+   }
 
-               $$3 = $$5.s();
-            } else {
-               if (!($$5.g() instanceof csi $$6)) {
-                  return cto.i;
-               }
-
-               $$2.add($$6);
-            }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxe $$1 && cuh.a(this.d, $$1.d)) {
+            return true;
          }
+
+         return false;
       }
-
-      return !$$3.e() && !$$2.isEmpty() ? cwg.a($$3, $$2) : cto.i;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public int hashCode() {
+      return cuh.a(this.d);
    }
 
    @Override
-   public cxy<?> ao_() {
-      return cxy.c;
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

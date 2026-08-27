@@ -1,74 +1,62 @@
-public class cye extends cxm {
-   public cye(cxk $$0) {
-      super($$0);
+public class cye extends cyd {
+   private final iw b;
+
+   public cye(dca $$0, ir $$1, iw $$2, cuh $$3, iw $$4) {
+      super($$0, null, bpz.a, $$3, new ewq(ewu.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
-   public boolean a(cpj $$0, dax $$1) {
-      cto $$2 = cto.i;
-      cto $$3 = cto.i;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.g() instanceof crj) {
-               if (!$$3.e()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(ctr.vs)) {
-                  return false;
-               }
-
-               if (!$$2.e()) {
-                  return false;
-               }
-
-               dnx $$6 = $$5.a(kb.W, dnx.a);
-               if (!$$6.b().isEmpty()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            }
-         }
-      }
-
-      return !$$2.e() && !$$3.e();
+   @Override
+   public ir a() {
+      return this.j().a();
    }
 
-   public cto a(cpj $$0, iz.a $$1) {
-      cto $$2 = cto.i;
-      cto $$3 = cto.i;
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cto $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.g() instanceof crj) {
-               $$2 = $$5;
-            } else if ($$5.a(ctr.vs)) {
-               $$3 = $$5.s();
-            }
-         }
-      }
+   @Override
+   public boolean c() {
+      return this.b();
+   }
 
-      if ($$3.e()) {
-         return $$3;
-      } else {
-         $$3.b(kb.W, $$2.a(kb.W));
-         $$3.b(kb.X, ((crj)$$2.g()).b());
-         return $$3;
+   @Override
+   public iw d() {
+      return iw.a;
+   }
+
+   @Override
+   public iw[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new iw[]{iw.a, iw.c, iw.f, iw.d, iw.e, iw.b};
+         case b:
+            return new iw[]{iw.a, iw.b, iw.c, iw.f, iw.d, iw.e};
+         case c:
+            return new iw[]{iw.a, iw.c, iw.f, iw.e, iw.b, iw.d};
+         case d:
+            return new iw[]{iw.a, iw.d, iw.f, iw.e, iw.b, iw.c};
+         case e:
+            return new iw[]{iw.a, iw.e, iw.d, iw.b, iw.c, iw.f};
+         case f:
+            return new iw[]{iw.a, iw.f, iw.d, iw.b, iw.c, iw.e};
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public iw g() {
+      return this.b.o() == iw.a.b ? iw.c : this.b;
    }
 
    @Override
-   public cxy<?> ao_() {
-      return cxy.l;
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

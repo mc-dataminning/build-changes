@@ -1,48 +1,28 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public record etj(akm b, ew.g c) implements etg {
-   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akm.a.fieldOf("storage").forGetter(etj::c), ew.g.a.fieldOf("path").forGetter(etj::d)).apply($$0, etj::new)
-   );
+public class etj extends eta {
+   public static final Codec<etj> a = RecordCodecBuilder.create($$0 -> a($$0).and(kb.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, etj::new));
+   private final kb b;
 
-   @Override
-   public etf b() {
-      return eth.f;
-   }
-
-   private Optional<ut> c(epf $$0) {
-      ud $$1 = $$0.d().o().aL().a(this.b);
-
-      try {
-         List<va> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof ut $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   private etj(List<euu> $$0, kb $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public float b(epf $$0) {
-      return this.c($$0).map(ut::k).orElse(0.0F);
+   public etc b() {
+      return etd.j;
    }
 
    @Override
-   public int a(epf $$0) {
-      return this.c($$0).map(ut::g).orElse(0);
+   public cuh a(cuh $$0, erp $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   public akm c() {
-      return this.b;
-   }
-
-   public ew.g d() {
-      return this.c;
+   public static <T> eta.a<?> a(kd<T> $$0, T $$1) {
+      return a($$2 -> new etj($$2, kb.a().a($$0, $$1).a()));
    }
 }

@@ -1,32 +1,21 @@
-public class grl implements gqt {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gbm e;
-   private final gsn f;
-   private int g = 0;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public grl(gbm $$0, gsn $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class grl implements grc {
+   public static final Codec<grl> b = RecordCodecBuilder.create($$0 -> $$0.group(ayu.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, grl::new));
+   private final ayu c;
+
+   public grl(ayu $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bj()) {
-         float $$0 = this.e.dP().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((grj)(new grm.a(this.e, avh.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((grj)(new grm.a(this.e, avh.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((grj)(new grm.a(this.e, avh.A)));
-         }
-      }
+   public void a(aud $$0, grc.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gre a() {
+      return grf.c;
    }
 }

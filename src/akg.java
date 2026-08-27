@@ -1,90 +1,53 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.Iterator;
 
-public class akg<E> implements Codec<jb<E>> {
-   private final akl<? extends jk<E>> a;
-   private final Codec<ix<E>> b;
-   private final Codec<List<ix<E>>> c;
-   private final Codec<Either<awl<E>, List<ix<E>>>> d;
-
-   private static <E> Codec<List<ix<E>>> a(Codec<ix<E>> $$0, boolean $$1) {
-      Codec<List<ix<E>>> $$2 = $$0.listOf().validate(axm.b(ix::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((ix)$$0x.get(0)) : Either.left($$0x));
-   }
-
-   public static <E> Codec<jb<E>> a(akl<? extends jk<E>> $$0, Codec<ix<E>> $$1, boolean $$2) {
-      return new akg<>($$0, $$1, $$2);
-   }
-
-   private akg(akl<? extends jk<E>> $$0, Codec<ix<E>> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(awl.b($$0), this.c);
-   }
-
-   public <T> DataResult<Pair<jb<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof akk<T> $$2) {
-         Optional<iy<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            iy<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<jb<E>> $$2x = (DataResult<jb<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jb.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
-         }
+public interface akg<T> {
+   default void a(int $$0, int $$1, int $$2, czc<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof czh $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
       }
 
-      return this.a($$0, $$1);
-   }
+      int $$10 = 0;
 
-   private static <E> DataResult<jb<E>> a(iy<E> $$0, awl<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<jb<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
-   }
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
 
-   public <T> DataResult<T> a(jb<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof akk<T> $$3) {
-         Optional<ja<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = aym.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
             }
 
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = aym.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4, $$10, $$5, $$11, $$14);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
          }
       }
-
-      return this.b($$0, $$1, $$2);
    }
 
-   private <T> DataResult<Pair<jb<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<ix.a<E>> $$1x = new ArrayList<>();
-
-         for (ix<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof ix.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
-            }
-
-            $$1x.add($$3);
-         }
-
-         return DataResult.success(new Pair(jb.a($$1x), $$0x.getSecond()));
-      });
-   }
-
-   private <T> DataResult<T> b(jb<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
-   }
+   void a(Iterator<T> var1, int var2, int var3, int var4, int var5);
 }

@@ -1,23 +1,13 @@
-public enum dry implements ayx {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
-
-   private final String f;
-
-   private dry(String $$0) {
-      this.f = $$0;
+public class dry extends dqc {
+   protected dry(dqe<?> $$0, ir $$1, dtc $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public String toString() {
-      return this.f;
+   public dry(ir $$0, dtc $$1) {
+      this(dqe.o, $$0, $$1);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public boolean a(iw $$0) {
+      return $$0.o() == iw.a.b;
    }
 }

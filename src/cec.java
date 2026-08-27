@@ -1,25 +1,25 @@
 import javax.annotation.Nullable;
 
-public abstract class cec extends bsx {
-   protected cec(bsa<? extends cec> $$0, dax $$1) {
+public abstract class cec extends bsw {
+   protected cec(bsb<? extends cec> $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Nullable
    @Override
-   protected avg v() {
+   protected avn u() {
       return null;
    }
 
    @Nullable
    @Override
-   protected avg d(bqn $$0) {
+   protected avn d(bqt $$0) {
       return null;
    }
 
    @Nullable
    @Override
-   protected avg o_() {
+   protected avn n_() {
       return null;
    }
 

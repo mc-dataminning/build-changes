@@ -1,31 +1,24 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+public class gpa extends goq<cjc, fwl<cjc>> {
+   private static final akt a = new akt("textures/entity/wither/wither_armor.png");
+   private final fwl<cjc> b;
 
-public class gpa {
-   public static axq a(xc $$0, boolean $$1) {
-      xv $$2 = xv.a($$0, UCharacter::getMirror, gpa::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<axq> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
-
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
-      }
-
-      return axq.composite($$4);
+   public gpa(gmp<cjc, fwl<cjc>> $$0, fyo $$1) {
+      super($$0);
+      this.b = new fwl<>($$1.a(fyr.bz));
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
-      }
+   @Override
+   protected float a(float $$0) {
+      return aym.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected akt a() {
+      return a;
+   }
+
+   @Override
+   protected fvq<cjc> b() {
+      return this.b;
    }
 }

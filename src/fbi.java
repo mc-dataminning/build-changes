@@ -1,367 +1,182 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GlStateManager;
 
-public class fbi extends gty {
-   private static final akm a = new akm("realm_status/expired");
-   private static final akm b = new akm("realm_status/expires_soon");
-   private static final akm c = new akm("realm_status/open");
-   private static final akm B = new akm("realm_status/closed");
-   private static final Logger C = LogUtils.getLogger();
-   private static final wx D = wx.c("mco.configure.worlds.title");
-   private static final wx E = wx.c("mco.configure.world.title");
-   private static final wx F = wx.c("mco.selectServer.expired");
-   private static final wx G = wx.c("mco.selectServer.expires.soon");
-   private static final wx H = wx.c("mco.selectServer.expires.day");
-   private static final wx I = wx.c("mco.selectServer.open");
-   private static final wx J = wx.c("mco.selectServer.closed");
-   private static final int K = 80;
-   private static final int L = 5;
-   @Nullable
-   private wx M;
-   private final ezd N;
-   @Nullable
-   private ezz O;
-   private final long P;
-   private int Q;
-   private int R;
-   private ffz S;
-   private ffz T;
-   private ffz U;
-   private ffz V;
-   private ffz W;
-   private ffz X;
-   private ffz Y;
-   private boolean Z;
-   private final List<fbb> aa = Lists.newArrayList();
+public class fbi {
+   private final fbi.a a;
+   private final fbi.b b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-   public fbi(ezd $$0, long $$1) {
-      super(E);
-      this.N = $$0;
-      this.P = $$1;
+   public fbi(int $$0, fbi.a $$1, fbi.b $$2, int $$3) {
+      if (this.a($$0, $$2)) {
+         this.b = $$2;
+         this.a = $$1;
+         this.c = $$0;
+         this.d = $$3;
+         this.e = $$1.a() * this.d;
+      } else {
+         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
+      }
+   }
+
+   private boolean a(int $$0, fbi.b $$1) {
+      return $$0 == 0 || $$1 == fbi.b.d;
+   }
+
+   public final fbi.a a() {
+      return this.a;
+   }
+
+   public final fbi.b b() {
+      return this.b;
+   }
+
+   public final int c() {
+      return this.d;
+   }
+
+   public final int d() {
+      return this.c;
    }
 
    @Override
-   public void aM_() {
-      if (this.O == null) {
-         this.a(this.P);
-      }
-
-      this.Q = this.n / 2 - 187;
-      this.R = this.n / 2 + 190;
-      this.S = this.c(ffz.a(wx.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new fbu(this, this.O))).a(this.a(0, 3), g(0), 100, 20).a());
-      this.T = this.c(ffz.a(wx.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fca(this, this.O.g()))).a(this.a(1, 3), g(0), 100, 20).a());
-      this.U = this.c(
-         ffz.a(wx.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fcc(this, this.O.g(), this.N))).a(this.a(2, 3), g(0), 100, 20).a()
-      );
-      this.aa.clear();
-
-      for (int $$0 = 1; $$0 < 5; $$0++) {
-         this.aa.add(this.a($$0));
-      }
-
-      this.Y = this.c(
-         ffz.a(wx.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fbz(wx.c("mco.template.title.minigame"), this::a, ezz.d.b)))
-            .a(this.b(0), g(13) - 5, 100, 20)
-            .a()
-      );
-      this.V = this.c(
-         ffz.a(wx.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fcb(this, this.O.i.get(this.O.n).d(), this.O.m, this.O.n)))
-            .a(this.b(0), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.W = this.c(ffz.a(wx.c("mco.configure.world.backup"), $$0x -> this.m.a(new fbf(this, this.O.g(), this.O.n))).a(this.b(1), g(13) - 5, 90, 20).a());
-      this.X = this.c(
-         ffz.a(wx.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fbx.a(this, this.O.g(), () -> this.m.execute(() -> this.m.a(this.f())))))
-            .a(this.b(2), g(13) - 5, 90, 20)
-            .a()
-      );
-      this.c(ffz.a(ww.k, $$0x -> this.d()).a(this.R - 80 + 8, g(13) - 5, 70, 20).a());
-      this.W.j = true;
-      if (this.O == null) {
-         this.I();
-         this.F();
-         this.S.j = false;
-         this.T.j = false;
-         this.U.j = false;
-      } else {
-         this.C();
-         if (this.E()) {
-            this.F();
-         } else {
-            this.I();
-         }
-      }
+   public String toString() {
+      return this.d + "," + this.b.a() + "," + this.a.b();
    }
 
-   private fbb a(int $$0) {
-      int $$1 = this.h($$0);
-      int $$2 = g(5) + 5;
-      fbb $$3 = new fbb($$1, $$2, 80, 80, $$0, $$1x -> {
-         fbb.b $$2x = ((fbb)$$1x).a();
-         if ($$2x != null) {
-            switch ($$2x.c) {
-               case a:
-                  break;
-               case c:
-                  this.a(this.O);
-                  break;
-               case b:
-                  if ($$2x.b) {
-                     this.D();
-                  } else if ($$2x.a) {
-                     this.b($$0, this.O);
-                  } else {
-                     this.a($$0, this.O);
-                  }
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown action " + $$2x.c);
-            }
-         }
-      });
-      if (this.O != null) {
-         $$3.a(this.O);
-      }
-
-      return this.c($$3);
+   public final int e() {
+      return this.e;
    }
 
-   private int b(int $$0) {
-      return this.Q + $$0 * 95;
-   }
-
-   private int a(int $$0, int $$1) {
-      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+   public final boolean f() {
+      return this.b == fbi.b.a;
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.M = null;
-      $$0.a(this.p, D, this.n / 2, g(4), -1);
-      if (this.O == null) {
-         $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      } else {
-         String $$4 = this.O.b();
-         int $$5 = this.p.b($$4);
-         int $$6 = this.O.e == ezz.c.a ? -6250336 : 8388479;
-         int $$7 = this.p.a(this.l);
-         $$0.a(this.p, this.l, this.n / 2, 12, -1);
-         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
-         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
-         this.b($$0, $$8, 7, $$1, $$2);
-         if (this.E()) {
-            String $$9 = this.O.c();
-            if ($$9 != null) {
-               $$0.a(this.p, wx.a("mco.configure.world.minigame", $$9), this.Q + 80 + 20 + 10, g(13), -1, false);
-            }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         fbi $$1 = (fbi)$$0;
+         if (this.d != $$1.d) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.a != $$1.a ? false : this.b == $$1.b;
          }
+      } else {
+         return false;
       }
-   }
-
-   private int h(int $$0) {
-      return this.Q + ($$0 - 1) * 98;
    }
 
    @Override
-   public void d() {
-      this.m.a(this.N);
-      if (this.Z) {
-         this.N.h();
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + this.c;
+      return 31 * $$0 + this.d;
+   }
+
+   public void a(int $$0, long $$1, int $$2) {
+      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   }
+
+   public void a(int $$0) {
+      this.b.a(this.c, $$0);
+   }
+
+   public static enum a {
+      a(4, "Float", 5126),
+      b(1, "Unsigned Byte", 5121),
+      c(1, "Byte", 5120),
+      d(2, "Unsigned Short", 5123),
+      e(2, "Short", 5122),
+      f(4, "Unsigned Int", 5125),
+      g(4, "Int", 5124);
+
+      private final int h;
+      private final String i;
+      private final int j;
+
+      private a(int $$0, String $$1, int $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      public String b() {
+         return this.i;
+      }
+
+      public int c() {
+         return this.j;
       }
    }
 
-   private void a(long $$0) {
-      new Thread(() -> {
-         ezi $$1 = ezi.a();
-
-         try {
-            ezz $$2 = $$1.a($$0);
-            this.m.execute(() -> {
-               this.O = $$2;
-               this.C();
-               if (this.E()) {
-                  this.b(this.Y);
-               } else {
-                  this.b(this.V);
-                  this.b(this.W);
-                  this.b(this.X);
-               }
-
-               for (fbb $$1x : this.aa) {
-                  $$1x.a($$2);
-               }
-            });
-         } catch (fav var5) {
-            C.error("Couldn't get own world", var5);
-            this.m.execute(() -> this.m.a(new fbm(var5, this.N)));
-         }
-      }).start();
-   }
-
-   private void C() {
-      this.S.j = !this.O.j;
-      this.T.j = !this.O.j;
-      this.U.j = true;
-      this.Y.j = !this.O.j;
-      this.V.j = !this.O.j;
-      this.X.j = !this.O.j;
-   }
-
-   private void a(ezz $$0) {
-      if (this.O.e == ezz.c.b) {
-         ezd.a($$0, new fbi(this.N, this.P));
-      } else {
-         this.a(true, new fbi(this.N, this.P));
-      }
-   }
-
-   private void D() {
-      fbz $$0 = new fbz(wx.c("mco.template.title.minigame"), this::a, ezz.d.b);
-      $$0.a(wx.c("mco.minigame.world.info.line1"), wx.c("mco.minigame.world.info.line2"));
-      this.m.a($$0);
-   }
-
-   private void a(int $$0, ezz $$1) {
-      wx $$2 = wx.c("mco.configure.world.slot.switch.question.line1");
-      wx $$3 = wx.c("mco.configure.world.slot.switch.question.line2");
-      this.m.a(new fbo($$2x -> {
-         if ($$2x) {
-            this.b();
-            this.m.a(new fbp(this.N, new fdh($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.f())))));
+   public static enum b {
+      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         if ($$1 == 5126) {
+            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
          } else {
-            this.m.a(this);
+            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
          }
-      }, fbo.a.b, $$2, $$3, true));
-   }
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
+      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+      }, ($$0, $$1) -> {
+      }),
+      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         GlStateManager._enableVertexAttribArray($$5);
+         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
+      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
 
-   private void b(int $$0, ezz $$1) {
-      wx $$2 = wx.c("mco.configure.world.slot.switch.question.line1");
-      wx $$3 = wx.c("mco.configure.world.slot.switch.question.line2");
-      this.m.a(new fbo($$2x -> {
-         if ($$2x) {
-            this.b();
-            fbx $$3x = fbx.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.f())));
-            this.m.a($$3x);
-         } else {
-            this.m.a(this);
-         }
-      }, fbo.a.b, $$2, $$3, true));
-   }
+      private final String g;
+      private final fbi.b.b h;
+      private final fbi.b.a i;
 
-   private void b(ffm $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.O.j) {
-         this.a($$0, $$1, $$2, $$3, $$4, a, () -> F);
-      } else if (this.O.e == ezz.c.a) {
-         this.a($$0, $$1, $$2, $$3, $$4, B, () -> J);
-      } else if (this.O.e == ezz.c.b) {
-         if (this.O.l < 7) {
-            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
-               if (this.O.l <= 0) {
-                  return G;
-               } else {
-                  return (wx)(this.O.l == 1 ? H : wx.a("mco.selectServer.expires.days", this.O.l));
-               }
-            });
-         } else {
-            this.a($$0, $$1, $$2, $$3, $$4, c, () -> I);
-         }
-      }
-   }
-
-   private void a(ffm $$0, int $$1, int $$2, int $$3, int $$4, akm $$5, Supplier<wx> $$6) {
-      $$0.a($$5, $$1, $$2, 10, 28);
-      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
-         this.d($$6.get());
-      }
-   }
-
-   private boolean E() {
-      return this.O != null && this.O.m == ezz.d.b;
-   }
-
-   private void F() {
-      this.a(this.V);
-      this.a(this.W);
-      this.a(this.X);
-   }
-
-   private void a(ffz $$0) {
-      $$0.k = false;
-   }
-
-   private void b(ffz $$0) {
-      $$0.k = true;
-   }
-
-   private void I() {
-      this.a(this.Y);
-   }
-
-   public void a(fag $$0) {
-      fag $$1 = this.O.i.get(this.O.n);
-      $$0.l = $$1.l;
-      $$0.m = $$1.m;
-      ezi $$2 = ezi.a();
-
-      try {
-         $$2.a(this.O.a, this.O.n, $$0);
-         this.O.i.put(this.O.n, $$0);
-      } catch (fav var5) {
-         C.error("Couldn't save slot settings", var5);
-         this.m.a(new fbm(var5, this));
-         return;
+      private b(String $$0, fbi.b.b $$1, fbi.b.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      this.m.a(this);
-   }
-
-   public void a(String $$0, String $$1) {
-      String $$2 = ayy.h($$1) ? null : $$1;
-      ezi $$3 = ezi.a();
-
-      try {
-         $$3.b(this.O.a, $$0, $$2);
-         this.O.a($$0);
-         this.O.b($$2);
-         this.b();
-      } catch (fav var6) {
-         C.error("Couldn't save settings", var6);
-         this.m.a(new fbm(var6, this));
-         return;
+      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
+         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      this.m.a(this);
-   }
-
-   public void a(boolean $$0, fly $$1) {
-      this.m.a(new fbp($$1, new fda(this.O, this, $$0, this.m)));
-   }
-
-   public void a(fly $$0) {
-      this.m.a(new fbp($$0, new fcu(this.O, this)));
-   }
-
-   public void b() {
-      this.Z = true;
-   }
-
-   private void a(@Nullable faq $$0) {
-      if ($$0 != null && faq.a.b == $$0.i) {
-         this.b();
-         this.m.a(new fbp(this.N, new fdg(this.O.a, $$0, this.f())));
-      } else {
-         this.m.a(this);
+      public void a(int $$0, int $$1) {
+         this.i.clearBufferState($$0, $$1);
       }
-   }
 
-   public fbi f() {
-      fbi $$0 = new fbi(this.N, this.P);
-      $$0.Z = this.Z;
-      return $$0;
+      public String a() {
+         return this.g;
+      }
+
+      @FunctionalInterface
+      interface a {
+         void clearBufferState(int var1, int var2);
+      }
+
+      @FunctionalInterface
+      interface b {
+         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      }
    }
 }

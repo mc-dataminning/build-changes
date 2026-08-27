@@ -1,61 +1,63 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record est(Optional<Long> b, epe c) implements esl {
-   public static final MapCodec<est> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(est::c), epe.a.fieldOf("value").forGetter(est::d)).apply($$0, est::new)
+public class est extends eta {
+   public static final Codec<est> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(evr.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, est::new)
    );
+   private final evq b;
+   private final boolean c;
 
-   @Override
-   public esm b() {
-      return esn.s;
+   est(List<euu> $$0, evq $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return this.c.a();
+   public etc b() {
+      return etd.f;
    }
 
-   public boolean a(epf $$0) {
-      aqm $$1 = $$0.d();
-      long $$2 = $$1.Z();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public Set<eud<?>> a() {
+      return this.b.a();
    }
 
-   public static est.a a(epe $$0) {
+   @Override
+   public cuh a(cuh $$0, erp $$1) {
+      ayt $$2 = $$1.b();
+      return dae.a($$2, $$0, this.b.a($$1), this.c);
+   }
+
+   public static est.a a(evq $$0) {
       return new est.a($$0);
    }
 
-   public Optional<Long> c() {
-      return this.b;
-   }
+   public static class a extends eta.a<est.a> {
+      private final evq a;
+      private boolean b;
 
-   public epe d() {
-      return this.c;
-   }
-
-   public static class a implements esl.a {
-      private Optional<Long> a = Optional.empty();
-      private final epe b;
-
-      public a(epe $$0) {
-         this.b = $$0;
+      public a(evq $$0) {
+         this.a = $$0;
       }
 
-      public est.a a(long $$0) {
-         this.a = Optional.of($$0);
+      protected est.a a() {
          return this;
       }
 
-      public est a() {
-         return new est(this.a, this.b);
+      public est.a e() {
+         this.b = true;
+         return this;
+      }
+
+      @Override
+      public etb b() {
+         return new est(this.g(), this.a, this.b);
       }
    }
 }

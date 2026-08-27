@@ -1,30 +1,27 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class bfk extends DataFix {
+public class bfk extends bfe {
    public bfk(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgf.s, "minecraft:banner");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsKeyTranslationFix",
-         this.getInputSchema().getType(bfy.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
-                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
-                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
-                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
-                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
-                        }
-                     }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
 
-                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
-      );
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("CustomName").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get();
+         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
+         return $$0.set("CustomName", $$0.createString($$2));
+      } else {
+         return $$0;
+      }
    }
 }

@@ -1,103 +1,47 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dpl extends doa implements bqc {
-   @Nullable
-   protected akl<epk> l;
-   protected long m = 0L;
-
-   protected dpl(doi<?> $$0, io $$1, drb $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public akl<epk> ax_() {
-      return this.l;
-   }
+public class dpl extends dii {
+   public static final MapCodec<dpl> g = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dii::getSuspiciousEffects), u()).apply($$0, dpl::new));
 
    @Override
-   public void a(@Nullable akl<epk> $$0) {
-      this.l = $$0;
+   public MapCodec<dpl> a() {
+      return g;
+   }
+
+   public dpl(ja<brf> $$0, float $$1, dtb.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dpl(cxv $$0, dtb.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public long ay_() {
-      return this.m;
+   protected boolean b(dtc $$0, dbg $$1, ir $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dfe.eJ) || $$0.a(dfe.eK) || $$0.a(dfe.eL);
    }
 
    @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      exn $$4 = this.a($$0, $$1, $$2, ewz.a());
+      ewu $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.c;
+      double $$7 = (double)$$2.w() + $$5.e;
 
-   @Override
-   public boolean c() {
-      this.e_(null);
-      return super.c();
-   }
-
-   @Override
-   public cto a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public cto a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cto b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cto $$1) {
-      this.e_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(clw $$0) {
-      return super.d($$0) && (this.l == null || !$$0.N_());
-   }
-
-   @Nullable
-   @Override
-   public cot createMenu(int $$0, clv $$1, clw $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.l);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(lb.ac, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(dog.b $$0) {
-      super.a($$0);
-      cwr $$1 = $$0.a(kb.ad);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+   protected void a(dtc $$0, dca $$1, ir $$2, brv $$3) {
+      if (!$$1.C && $$1.al() != bpx.a) {
+         if ($$3 instanceof bso $$4 && !$$4.b($$1.aj().r())) {
+            $$4.b(new brh(brj.t, 40));
+         }
       }
-   }
-
-   @Override
-   protected void a(jx.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kb.ad, new cwr(this.l, this.m));
-      }
-   }
-
-   @Override
-   public void a(ud $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
    }
 }

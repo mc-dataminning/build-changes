@@ -1,19 +1,28 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class edd<P extends edc> {
-   public static final edd<edf> a = a("two_layers_feature_size", edf.d);
-   public static final edd<ede> b = a("three_layers_feature_size", ede.d);
-   private final MapCodec<P> c;
-
-   private static <P extends edc> edd<P> a(String $$0, MapCodec<P> $$1) {
-      return jk.a(le.aa, $$0, new edd<>($$1));
+public class edd extends eca<eex> {
+   public edd(Codec<eex> $$0) {
+      super($$0);
    }
 
-   private edd(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
+   @Override
+   public boolean a(ecc<eex> $$0) {
+      eex $$1 = $$0.f();
+      ayt $$2 = $$0.d();
+      ir $$3 = $$0.e();
+      dcv $$4 = $$0.b();
+      int $$5 = 0;
+      ir.a $$6 = new ir.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public MapCodec<P> a() {
-      return this.c;
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
+
+      return $$5 > 0;
    }
 }

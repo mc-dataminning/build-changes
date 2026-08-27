@@ -1,26 +1,15 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class bwd {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+public class bwd<E extends bso> extends buu<E> {
+   public bwd(List<Pair<? extends buh<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
+   }
 
-   public static bui<bso> a() {
-      return bxu.a((Function<bxu.b<bso>, ? extends App<bxu.c<bso>, bxx<bso>>>)($$0 -> $$0.group($$0.b(cbs.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  io $$5 = $$0.<iw>b($$1).b();
-                  if ($$5.a($$3.dp(), 3.0)) {
-                     drb $$6 = $$2.a_($$5);
-                     if ($$6.a(dea.od)) {
-                        ddu $$7 = (ddu)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
-
-                  return true;
-               }
-            })));
+   public bwd(Map<cbr<?>, cbs> $$0, List<Pair<? extends buh<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), buu.a.b, buu.b.a, $$1);
    }
 }

@@ -1,12 +1,8 @@
-public class cok {
-   private final String a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public cok(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@u
+interface cok {
 }

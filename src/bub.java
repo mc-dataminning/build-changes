@@ -1,84 +1,79 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bub extends buh<cee> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bsa<? extends cee> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class bub<E extends bsw> extends bug<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<bsw> g = $$0 -> $$0.eu() != null || $$0.dJ() || $$0.bV();
+   private final float h;
+   private final Predicate<E> i;
 
-   public bub(bsa<? extends cee> $$0) {
-      this($$0, 1.0F, 2);
+   public bub(float $$0) {
+      this($$0, g::test);
    }
 
-   public bub(bsa<? extends cee> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(cbs.h, cbt.a, cbs.r, cbt.b, cbs.m, cbt.c, cbs.n, cbt.c, cbs.Z, cbt.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public bub(float $$0, Predicate<E> $$1) {
+      super(Map.of(cbr.Z, cbs.c, cbr.x, cbs.c), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   protected boolean a(aqm $$0, cee $$1) {
-      return $$1.gt() && this.c($$1).isPresent();
+   protected boolean a(aqt $$0, E $$1) {
+      return this.i.test($$1) && ($$1.dZ().a(cbr.x) || $$1.dZ().a(cbr.Z));
    }
 
-   protected void a(aqm $$0, cee $$1, long $$2) {
-      cee $$3 = this.c($$1).get();
-      $$1.dS().a(cbs.r, $$3);
-      $$3.dS().a(cbs.r, $$1);
-      buj.a($$1, (bso)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.el().a(50);
-      this.j = $$2 + (long)$$4;
+   protected boolean a(aqt $$0, E $$1, long $$2) {
+      return true;
    }
 
-   protected boolean b(aqm $$0, cee $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   protected void b(aqt $$0, E $$1, long $$2) {
+      $$1.dZ().a(cbr.Z, true);
+      $$1.dZ().b(cbr.m);
+   }
+
+   protected void c(aqt $$0, E $$1, long $$2) {
+      btp<?> $$3 = $$1.dZ();
+      $$3.b(cbr.Z);
+   }
+
+   protected void d(aqt $$0, E $$1, long $$2) {
+      if ($$1.J().l()) {
+         ewu $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dZ().a(cbr.m, new cbu($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private ewu a(E $$0, aqt $$1) {
+      if ($$0.bV()) {
+         Optional<ewu> $$2 = this.a((dbg)$$1, $$0).map(ewu::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return cdl.a($$0, 5, 4);
+   }
+
+   private Optional<ir> a(dbg $$0, brv $$1) {
+      ir $$2 = $$1.du();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
       } else {
-         cee $$3 = this.a($$1);
-         return $$3.bD() && $$1.a($$3) && buj.a($$1.dS(), $$3) && $$2 <= this.j && !$$1.gm() && !$$3.gm();
-      }
-   }
-
-   protected void c(aqm $$0, cee $$1, long $$2) {
-      cee $$3 = this.a($$1);
-      buj.a($$1, (bso)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dS().b(cbs.r);
-            $$3.dS().b(cbs.r);
-         }
-      }
-   }
-
-   protected void d(aqm $$0, cee $$1, long $$2) {
-      $$1.dS().b(cbs.r);
-      $$1.dS().b(cbs.m);
-      $$1.dS().b(cbs.n);
-      this.j = 0L;
-   }
-
-   private cee a(cee $$0) {
-      return (cee)$$0.dS().c(cbs.r).get();
-   }
-
-   private boolean b(cee $$0) {
-      btq<?> $$1 = $$0.dS();
-      return $$1.a(cbs.r) && $$1.c(cbs.r).get().ak() == this.f;
-   }
-
-   private Optional<? extends cee> c(cee $$0) {
-      return $$0.dS().c(cbs.h).get().a($$1 -> {
-         if ($$1.ak() == this.f && $$1 instanceof cee $$2 && $$0.a($$2) && !$$2.gm()) {
-            return true;
+         Predicate<ir> $$3;
+         if (aym.f($$1.do()) == 2) {
+            $$3 = $$1x -> ir.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awj.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(awj.a);
          }
 
-         return false;
-      }).map(cee.class::cast);
+         return ir.a($$2, 5, 1, $$3);
+      }
    }
 }

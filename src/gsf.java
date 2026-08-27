@@ -1,10 +1,17 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface gsf extends Closeable {
-   AudioFormat a();
+public record gsf(String b, String c, boolean d) {
+   public static final Codec<gsf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axu.x.fieldOf("region").forGetter(gsf::b),
+               axu.x.fieldOf("name").forGetter(gsf::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gsf::d)
+            )
+            .apply($$0, gsf::new)
+   );
 
-   ByteBuffer a(int var1) throws IOException;
+   public xe a() {
+      return xe.b(this.c + " (" + this.b + ")");
+   }
 }

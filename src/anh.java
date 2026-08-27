@@ -1,37 +1,28 @@
-import com.google.common.net.InetAddresses;
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class anh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wx.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wx.c("commands.pardonip.failed"));
-
-   public static void a(CommandDispatcher<ee> $$0) {
+   public static void a(CommandDispatcher<eh> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ef.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> ej.a(((ee)$$0x.getSource()).l().ah().g().a(), $$1))
-                  .executes($$0x -> a((ee)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ei.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((eh)$$0x.getSource(), ImmutableList.of(((eh)$$0x.getSource()).g()))))
+            .then(ei.a("targets", eu.b()).executes($$0x -> a((eh)$$0x.getSource(), eu.b($$0x, "targets"))))
       );
    }
 
-   private static int a(ee $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
-         throw a.create();
-      } else {
-         aug $$2 = $$0.l().ah().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> wx.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
+   private static int a(eh $$0, Collection<? extends brv> $$1) {
+      for (brv $$2 : $$1) {
+         $$2.an();
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.kill.success.single", $$1.iterator().next().P_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.kill.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

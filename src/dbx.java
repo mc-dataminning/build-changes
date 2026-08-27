@@ -1,111 +1,103 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class dbx {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dbx a = new dbx(ImmutableMap.of(), ImmutableList.of());
-   public static final MapCodec<dbx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.simpleMap(dwp.a.c, dyw.c.promotePartial(ac.a("Carver: ", c::error)), ayx.a(dwp.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               egn.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dbx::new)
-   );
-   private final Map<dwp.a, jb<dyw<?>>> d;
-   private final List<jb<egn>> e;
-   private final Supplier<List<dzk<?, ?>>> f;
-   private final Supplier<Set<egn>> g;
+public enum dbx implements azg {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   dbx(Map<dwp.a, jb<dyw<?>>> $$0, List<jb<egn>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(jb::a).map(ix::a).flatMap(egn::a).filter($$0xx -> $$0xx.b() == dzx.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jb::a).map(ix::a).collect(Collectors.toSet()));
+   public static final dbx e = a;
+   public static final azg.a<dbx> f = azg.a(dbx::values);
+   private static final IntFunction<dbx> g = axd.a(dbx::a, values(), axd.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final xe k;
+   private final xe l;
+
+   private dbx(int $$0, String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = xe.c("selectWorld.gameMode." + $$1);
+      this.l = xe.c("gameMode." + $$1);
    }
 
-   public Iterable<ix<dyw<?>>> a(dwp.a $$0) {
-      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   public int a() {
+      return this.i;
    }
 
-   public List<dzk<?, ?>> a() {
-      return this.f.get();
+   public String b() {
+      return this.j;
    }
 
-   public List<jb<egn>> b() {
-      return this.e;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   public boolean a(egn $$0) {
-      return this.g.get().contains($$0);
+   public xe d() {
+      return this.l;
    }
 
-   public static class a extends dbx.b {
-      private final iy<egn> a;
-      private final iy<dyw<?>> b;
-
-      public a(iy<egn> $$0, iy<dyw<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dbx.a a(dwp.b $$0, akl<egn> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public dbx.a a(dwp.a $$0, akl<dyw<?>> $$1) {
-         this.a($$0, this.b.b($$1));
-         return this;
-      }
+   public xe e() {
+      return this.k;
    }
 
-   public static class b {
-      private final Map<dwp.a, List<ix<dyw<?>>>> a = Maps.newLinkedHashMap();
-      private final List<List<ix<egn>>> b = Lists.newArrayList();
-
-      public dbx.b a(dwp.b $$0, ix<egn> $$1) {
-         return this.a($$0.ordinal(), $$1);
+   public void a(clv $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
 
-      public dbx.b a(int $$0, ix<egn> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
+      $$0.e = !this.f();
+   }
 
-      public dbx.b a(dwp.a $$0, ix<dyw<?>> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-         return this;
-      }
+   public boolean f() {
+      return this == c || this == d;
+   }
 
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
-         }
-      }
+   public boolean g() {
+      return this == b;
+   }
 
-      public dbx a() {
-         return new dbx(
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> jb.a((List)$$0.getValue()))),
-            this.b.stream().map(jb::a).collect(ImmutableList.toImmutableList())
-         );
-      }
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static dbx a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static dbx a(String $$0) {
+      return a($$0, a);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dbx a(String $$0, @Nullable dbx $$1) {
+      dbx $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dbx $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static dbx b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

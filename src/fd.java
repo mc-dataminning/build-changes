@@ -1,125 +1,95 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fd<T> implements ArgumentType<ix.c<T>> {
-   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wx.b("entity.not_summonable", $$0));
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("argument.resource.not_found", $$0, $$1));
-   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wx.b("argument.resource.invalid_type", $$0, $$1, $$2)
-   );
-   final akl<? extends jk<T>> e;
-   private final iz<T> f;
+public class fd implements ArgumentType<fd.a> {
+   private static final Collection<String> a = Arrays.asList("=", ">", "<");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("arguments.operation.div0"));
 
-   public fd(ea $$0, akl<? extends jk<T>> $$1) {
-      this.e = $$1;
-      this.f = $$0.b($$1);
+   public static fd a() {
+      return new fd();
    }
 
-   public static <T> fd<T> a(ea $$0, akl<? extends jk<T>> $$1) {
-      return new fd<>($$0, $$1);
+   public static fd.a a(CommandContext<eh> $$0, String $$1) {
+      return (fd.a)$$0.getArgument($$1, fd.a.class);
    }
 
-   public static <T> ix.c<T> a(CommandContext<ee> $$0, String $$1, akl<jk<T>> $$2) throws CommandSyntaxException {
-      ix.c<T> $$3 = (ix.c<T>)$$0.getArgument($$1, ix.c.class);
-      akl<?> $$4 = $$3.h();
-      if ($$4.c($$2)) {
-         return $$3;
+   public fd.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
       } else {
-         throw b.create($$4.a(), $$4.b(), $$2.a());
+         int $$1 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         return a($$0.getString().substring($$1, $$0.getCursor()));
       }
-   }
-
-   public static ix.c<btr> a(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.c);
-   }
-
-   public static ix.c<dzk<?, ?>> b(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.aC);
-   }
-
-   public static ix.c<ehj> c(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.aJ);
-   }
-
-   public static ix.c<bsa<?>> d(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.v);
-   }
-
-   public static ix.c<bsa<?>> e(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      ix.c<bsa<?>> $$2 = a($$0, $$1, lf.v);
-      if (!$$2.a().c()) {
-         throw d.create($$2.h().a().toString());
-      } else {
-         return $$2;
-      }
-   }
-
-   public static ix.c<bra> f(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.R);
-   }
-
-   public static ix.c<cyz> g(CommandContext<ee> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lf.u);
-   }
-
-   public ix.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      akm $$1 = akm.a($$0);
-      akl<T> $$2 = akl.a(this.e, $$1);
-      return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ej.a(this.f.c().map(akl::a), $$1);
+      return em.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return a;
    }
 
-   public static class a<T> implements hy<fd<T>, fd.a<T>.a> {
-      public void a(fd.a<T>.a $$0, vx $$1) {
-         $$1.b($$0.b);
-      }
+   private static fd.a a(String $$0) throws CommandSyntaxException {
+      return (fd.a)($$0.equals("><") ? ($$0x, $$1) -> {
+         int $$2 = $$0x.a();
+         $$0x.a($$1.a());
+         $$1.a($$2);
+      } : b($$0));
+   }
 
-      public fd.a<T>.a a(vx $$0) {
-         return new fd.a.a($$0.r());
-      }
-
-      public void a(fd.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public fd.a<T>.a a(fd<T> $$0) {
-         return new fd.a.a($$0.e);
-      }
-
-      public final class a implements hy.a<fd<T>> {
-         final akl<? extends jk<T>> b;
-
-         a(akl<? extends jk<T>> $$1) {
-            this.b = $$1;
+   private static fd.b b(String $$0) throws CommandSyntaxException {
+      return switch ($$0) {
+         case "=" -> ($$0x, $$1) -> $$1;
+         case "+=" -> Integer::sum;
+         case "-=" -> ($$0x, $$1) -> $$0x - $$1;
+         case "*=" -> ($$0x, $$1) -> $$0x * $$1;
+         case "/=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return aym.a($$0x, $$1);
          }
-
-         public fd<T> a(ea $$0) {
-            return new fd<>($$0, this.b);
+      };
+         case "%=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return aym.b($$0x, $$1);
          }
+      };
+         case "<" -> Math::min;
+         case ">" -> Math::max;
+         default -> throw b.create();
+      };
+   }
 
-         @Override
-         public hy<fd<T>, ?> a() {
-            return a.this;
-         }
+   @FunctionalInterface
+   public interface a {
+      void apply(exw var1, exw var2) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface b extends fd.a {
+      int apply(int var1, int var2) throws CommandSyntaxException;
+
+      @Override
+      default void apply(exw $$0, exw $$1) throws CommandSyntaxException {
+         $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }
 }

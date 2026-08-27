@@ -1,28 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+public class buq implements buh<bso> {
+   private final int a;
+   private final int b;
+   private bug.a c = bug.a.a;
+   private long d;
 
-public class buq {
-   public static <E extends bso> bui<E> a(int $$0, BiPredicate<E, bru> $$1) {
-      return bxu.a((Function<bxu.b<E>, ? extends App<bxu.c<E>, bxx<E>>>)($$2 -> $$2.group($$2.a(cbs.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bru $$7 = $$5.dc();
-               bru $$8 = $$2.<bru>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bru $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.ac();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+   public buq(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static boolean a(bso $$0, bru $$1, int $$2) {
-      return $$1.bD() && $$1.a($$0, (double)$$2) && $$1.dP() == $$0.dP();
+   @Override
+   public bug.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(aqt $$0, bso $$1, long $$2) {
+      this.c = bug.a.b;
+      int $$3 = this.a + $$0.F_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(aqt $$0, bso $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(aqt $$0, bso $$1, long $$2) {
+      this.c = bug.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

@@ -1,44 +1,164 @@
-public class bpq {
-   public static void a(dax $$0, io $$1, bpn $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.UUID;
+
+public abstract class bpq {
+   private final UUID j;
+   protected xe a;
+   protected float b;
+   protected bpq.a c;
+   protected bpq.b d;
+   protected ewu e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+
+   public bpq(UUID $$0, xe $$1, bpq.a $$2, bpq.b $$3, ewu $$4, int $$5) {
+      this.j = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.b = 1.0F;
    }
 
-   public static void a(dax $$0, bru $$1, bpn $$2) {
-      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
+   public UUID h() {
+      return this.j;
    }
 
-   private static void a(dax $$0, double $$1, double $$2, double $$3, bpn $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public xe i() {
+      return this.a;
+   }
+
+   public void a(xe $$0) {
+      this.a = $$0;
+   }
+
+   public float j() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bpq.a k() {
+      return this.c;
+   }
+
+   public void a(bpq.a $$0) {
+      this.c = $$0;
+   }
+
+   public bpq.b l() {
+      return this.d;
+   }
+
+   public void a(bpq.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.g;
+   }
+
+   public bpq a(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.h;
+   }
+
+   public bpq b(boolean $$0) {
+      this.h = $$0;
+      return this;
+   }
+
+   public bpq c(boolean $$0) {
+      this.i = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.i;
+   }
+
+   public void a(ewu $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public ewu p() {
+      return this.e;
+   }
+
+   public int q() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
-   }
 
-   public static void a(dax $$0, io $$1, jg<cto> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
-
-   public static void a(dax $$0, double $$1, double $$2, double $$3, cto $$4) {
-      double $$5 = (double)bsa.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.e()) {
-         cig $$11 = new cig($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      public n a() {
+         return this.i;
       }
-   }
 
-   public static void a(drb $$0, drb $$1, dax $$2, io $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bpn $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+      public String b() {
+         return this.h;
+      }
+
+      public static bpq.a a(String $$0) {
+         for (bpq.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return g;
+      }
+   }
+
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
+
+      private final String f;
+
+      private b(String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bpq.b a(String $$0) {
+         for (bpq.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

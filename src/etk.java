@@ -1,42 +1,74 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record etk(etg b, etg c) implements etg {
-   public static final MapCodec<etk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eth.a.fieldOf("min").forGetter(etk::c), eth.a.fieldOf("max").forGetter(etk::d)).apply($$0, etk::new)
+public class etk extends eta {
+   public static final Codec<etk> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(lh.k.r().fieldOf("type").forGetter($$0x -> $$0x.b), esd.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .apply($$0, etk::new)
    );
+   private final ja<dqe<?>> b;
+   private final List<esf> c;
 
-   @Override
-   public etf b() {
-      return eth.c;
-   }
-
-   public static etk a(float $$0, float $$1) {
-      return new etk(ete.a($$0), ete.a($$1));
-   }
-
-   @Override
-   public int a(epf $$0) {
-      return ayd.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   etk(List<euu> $$0, ja<dqe<?>> $$1, List<esf> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public float b(epf $$0) {
-      return ayd.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public etc b() {
+      return etd.s;
    }
 
    @Override
-   public Set<eru<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public cuh a(cuh $$0, erp $$1) {
+      if ($$0.d()) {
+         return $$0;
+      } else {
+         jj<cuh> $$2 = jj.a();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eru.a($$1.d(), $$2::add), $$1)));
+         $$0.b(ke.Z, cxm.a($$2));
+         return $$0;
+      }
    }
 
-   public etg c() {
-      return this.b;
+   @Override
+   public void a(erv $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   public etg d() {
-      return this.c;
+   public static etk.a a(dqe<?> $$0) {
+      return new etk.a($$0);
+   }
+
+   public static class a extends eta.a<etk.a> {
+      private final Builder<esf> a = ImmutableList.builder();
+      private final dqe<?> b;
+
+      public a(dqe<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected etk.a a() {
+         return this;
+      }
+
+      public etk.a a(esf.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public etb b() {
+         return new etk(this.g(), this.b.a(), this.a.build());
+      }
    }
 }

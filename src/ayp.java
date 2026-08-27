@@ -1,54 +1,84 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
-public interface ayp {
-   ayp a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
-
-   boolean validate(ayo var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+public class ayp {
+   public static void a(dca $$0, ir $$1, kz $$2, bpf $$3) {
+      for (iw $$4 : iw.values()) {
+         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.A), 0.55);
+      }
    }
 
-   private static boolean a(ayo $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   public static void a(dca $$0, ir $$1, kz $$2, bpf $$3, iw $$4, Supplier<ewu> $$5, double $$6) {
+      int $$7 = $$3.a($$0.A);
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
+      }
    }
 
-   static ayp a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
+   private static ewu a(ayt $$0) {
+      return new ewu(aym.a($$0, -0.5, 0.5), aym.a($$0, -0.5, 0.5), aym.a($$0, -0.5, 0.5));
+   }
+
+   public static void a(iw.a $$0, dca $$1, ir $$2, double $$3, kz $$4, bpl $$5) {
+      ewu $$6 = ewu.b($$2);
+      boolean $$7 = $$0 == iw.a.a;
+      boolean $$8 = $$0 == iw.a.b;
+      boolean $$9 = $$0 == iw.a.c;
+      int $$10 = $$5.a($$1.A);
+
+      for (int $$11 = 0; $$11 < $$10; $$11++) {
+         double $$12 = $$6.c + aym.a($$1.A, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
+         double $$13 = $$6.d + aym.a($$1.A, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
+         double $$14 = $$6.e + aym.a($$1.A, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
+         double $$15 = $$7 ? aym.a($$1.A, -1.0, 1.0) : 0.0;
+         double $$16 = $$8 ? aym.a($$1.A, -1.0, 1.0) : 0.0;
+         double $$17 = $$9 ? aym.a($$1.A, -1.0, 1.0) : 0.0;
+         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
+      }
+   }
+
+   public static void a(dca $$0, ir $$1, iw $$2, kz $$3, ewu $$4, double $$5) {
+      ewu $$6 = ewu.b($$1);
+      int $$7 = $$2.j();
+      int $$8 = $$2.k();
+      int $$9 = $$2.l();
+      double $$10 = $$6.c + ($$7 == 0 ? aym.a($$0.A, -0.5, 0.5) : (double)$$7 * $$5);
+      double $$11 = $$6.d + ($$8 == 0 ? aym.a($$0.A, -0.5, 0.5) : (double)$$8 * $$5);
+      double $$12 = $$6.e + ($$9 == 0 ? aym.a($$0.A, -0.5, 0.5) : (double)$$9 * $$5);
+      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
+      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
+      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
+      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
+   }
+
+   public static void a(dca $$0, ir $$1, ayt $$2, kz $$3) {
+      double $$4 = (double)$$1.u() + $$2.j();
+      double $$5 = (double)$$1.v() - 0.05;
+      double $$6 = (double)$$1.w() + $$2.j();
+      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   public static void a(dcb $$0, ir $$1, int $$2, kz $$3) {
+      double $$4 = 0.5;
+      dtc $$5 = $$0.a_($$1);
+      double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(iw.a.b);
+      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
+   }
+
+   public static void a(dcb $$0, ir $$1, int $$2, double $$3, double $$4, boolean $$5, kz $$6) {
+      ayt $$7 = $$0.F_();
+
+      for (int $$8 = 0; $$8 < $$2; $$8++) {
+         double $$9 = $$7.k() * 0.02;
+         double $$10 = $$7.k() * 0.02;
+         double $$11 = $$7.k() * 0.02;
+         double $$12 = 0.5 - $$3;
+         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
+         double $$14 = (double)$$1.v() + $$7.j() * $$4;
+         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
+         if ($$5 || !$$0.a_(ir.a($$13, $$14, $$15).d()).i()) {
+            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
          }
-      };
-   }
-
-   @Nullable
-   static ayp a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
-
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+      }
    }
 }

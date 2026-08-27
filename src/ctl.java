@@ -1,37 +1,16 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum ctl implements ayx {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<ctl> j = ayx.a(ctl::values);
-   public static final IntFunction<ctl> k = awv.a(ctl::a, values(), awv.a.a);
-   private final byte l;
-   private final String m;
-
-   private ctl(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class ctl extends cuc {
+   public ctl(cuc.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   public void a(cuh $$0, @Nullable dca $$1, List<xe> $$2, cwi $$3) {
+      cxj $$4 = $$0.a(ke.S);
+      if ($$4 != null) {
+         $$4.a($$2::add, $$3);
+      }
    }
 }

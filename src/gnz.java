@@ -1,25 +1,9 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
-
-public interface gnz {
-   akf a = new akf("textures", ".png");
-
-   void a(atw var1, gnz.a var2);
-
-   gob a();
-
-   public interface a {
-      default void a(akm $$0, atu $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(akm var1, gnz.b var2);
-
-      void a(Predicate<akm> var1);
+public class gnz extends gjk<cjx, fyk<cjx>> {
+   public gnz(gkq.a $$0) {
+      this($$0, fyr.cl, fyr.co, fyr.cp);
    }
 
-   public interface b extends Function<gny, gnp> {
-      default void a() {
-      }
+   public gnz(gkq.a $$0, fyq $$1, fyq $$2, fyq $$3) {
+      super($$0, new fyk<>($$0.a($$1)), new fyk<>($$0.a($$2)), new fyk<>($$0.a($$3)));
    }
 }

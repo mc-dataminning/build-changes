@@ -1,101 +1,126 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class eyg {
-   private static final int a = 32768;
-   private final eyg.a b;
-   private final String c;
-   private int d;
+public class eyg<T> implements eym<T>, eyo<T> {
+   private final Queue<eyl<T>> a = new PriorityQueue<>(eyl.a);
+   @Nullable
+   private List<eyk<T>> b;
+   private final Set<eyl<?>> c = new ObjectOpenCustomHashSet(eyl.c);
+   @Nullable
+   private BiConsumer<eyg<T>, eyl<T>> d;
 
-   protected eyg(eyg.a $$0, int $$1, String $$2) {
+   public eyg() {
+   }
+
+   public eyg(List<eyk<T>> $$0) {
       this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-   }
 
-   public void a(eyi $$0) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager.glAttachShader($$0.a(), this.c());
-   }
-
-   public void a() {
-      if (this.d != -1) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.d);
-         this.d = -1;
-         this.b.c().remove(this.c);
+      for (eyk<T> $$1 : $$0) {
+         this.c.add(eyl.a($$1.a(), $$1.b()));
       }
    }
 
-   public String b() {
-      return this.c;
+   public void a(@Nullable BiConsumer<eyg<T>, eyl<T>> $$0) {
+      this.d = $$0;
    }
 
-   public static eyg a(eyg.a $$0, String $$1, InputStream $$2, String $$3, exz $$4) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$5 = b($$0, $$1, $$2, $$3, $$4);
-      eyg $$6 = new eyg($$0, $$5, $$1);
-      $$0.c().put($$1, $$6);
-      return $$6;
+   @Nullable
+   public eyl<T> b() {
+      return this.a.peek();
    }
 
-   protected static int b(eyg.a $$0, String $$1, InputStream $$2, String $$3, exz $$4) throws IOException {
-      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
-      if ($$5 == null) {
-         throw new IOException("Could not load program " + $$0.a());
-      } else {
-         int $$6 = GlStateManager.glCreateShader($$0.d());
-         GlStateManager.glShaderSource($$6, $$4.a($$5));
-         GlStateManager.glCompileShader($$6);
-         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
-            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
-            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
-         } else {
-            return $$6;
+   @Nullable
+   public eyl<T> c() {
+      eyl<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(eyl<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(eyl<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(ir $$0, T $$1) {
+      return this.c.contains(eyl.a($$1, $$0));
+   }
+
+   public void a(Predicate<eyl<T>> $$0) {
+      Iterator<eyl<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         eyl<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
    }
 
-   protected int c() {
-      return this.d;
+   public Stream<eyl<T>> d() {
+      return this.a.stream();
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
 
-      private final String c;
-      private final String d;
-      private final int e;
-      private final Map<String, eyg> f = Maps.newHashMap();
-
-      private a(String $$0, String $$1, int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   public uq a(long $$0, Function<T, String> $$1) {
+      uq $$2 = new uq();
+      if (this.b != null) {
+         for (eyk<T> $$3 : this.b) {
+            $$2.add($$3.a($$1));
+         }
       }
 
-      public String a() {
-         return this.c;
+      for (eyl<T> $$4 : this.a) {
+         $$2.add(eyk.a($$4, $$1, $$0));
       }
 
-      public String b() {
-         return this.d;
+      return $$2;
+   }
+
+   public void a(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (eyk<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
       }
 
-      int d() {
-         return this.e;
-      }
+      this.b = null;
+   }
 
-      public Map<String, eyg> c() {
-         return this.f;
-      }
+   public static <T> eyg<T> a(uq $$0, Function<String, Optional<T>> $$1, dbh $$2) {
+      Builder<eyk<T>> $$3 = ImmutableList.builder();
+      eyk.a($$0, $$1, $$2, $$3::add);
+      return new eyg<>($$3.build());
    }
 }

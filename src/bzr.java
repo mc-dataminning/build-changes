@@ -1,36 +1,48 @@
-public class bzr extends bzm {
-   private final cfb a;
-   private aqn b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public bzr(cfb $$0) {
+public class bzr extends bzl {
+   private final bsq a;
+   private bso b;
+   private final float c;
+
+   public bzr(bsq $$0, float $$1) {
       this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(bzl.a.c, bzl.a.a));
    }
 
    @Override
    public boolean a() {
-      aqn $$0 = (aqn)this.a.P_();
-      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.gd().b && !$$0.be() && !$$0.aB;
-      return !this.a.gp() && $$1 && this.a.gy();
+      if (this.a.cW()) {
+         return false;
+      } else {
+         this.b = this.a.p();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aE() ? false : this.a.et().a(b(5)) == 0;
+            }
+         }
+      }
    }
 
    @Override
-   public boolean Q_() {
-      return !this.c;
+   public boolean b() {
+      return !this.a.aE();
    }
 
    @Override
    public void c() {
-      this.b = (aqn)this.a.P_();
-      this.c = false;
-   }
-
-   @Override
-   public void e() {
-      if (!this.c && !this.a.y() && !this.a.gc()) {
-         if (this.a.cK().c(this.b.cK())) {
-            this.c = this.a.b(this.b);
-         }
+      ewu $$0 = this.a.dx();
+      ewu $$1 = new ewu(this.b.dz() - this.a.dz(), 0.0, this.b.dF() - this.a.dF());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }
+
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

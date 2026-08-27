@@ -1,29 +1,29 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cgz extends bru {
-   private static final ajr<Optional<io>> c = ajv.a(cgz.class, ajt.p);
-   private static final ajr<Boolean> d = ajv.a(cgz.class, ajt.k);
+public class cgz extends brv {
+   private static final ajy<Optional<ir>> c = akc.a(cgz.class, aka.p);
+   private static final ajy<Boolean> d = akc.a(cgz.class, aka.k);
    public int b;
 
-   public cgz(bsa<? extends cgz> $$0, dax $$1) {
+   public cgz(bsb<? extends cgz> $$0, dca $$1) {
       super($$0, $$1);
-      this.J = true;
-      this.b = this.ah.a(100000);
+      this.K = true;
+      this.b = this.al.a(100000);
    }
 
-   public cgz(dax $$0, double $$1, double $$2, double $$3) {
-      this(bsa.E, $$0);
+   public cgz(dca $$0, double $$1, double $$2, double $$3) {
+      this(bsb.G, $$0);
       this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected bru.b bb() {
-      return bru.b.a;
+   protected brv.c bf() {
+      return brv.c.a;
    }
 
    @Override
-   protected void a(ajv.a $$0) {
+   protected void a(akc.a $$0) {
       $$0.a(c, Optional.empty());
       $$0.a(d, true);
    }
@@ -31,48 +31,48 @@ public class cgz extends bru {
    @Override
    public void l() {
       this.b++;
-      if (this.dP() instanceof aqm) {
-         io $$0 = this.dp();
-         if (((aqm)this.dP()).D() != null && this.dP().a_($$0).i()) {
-            this.dP().b($$0, ddl.a(this.dP(), $$0));
+      if (this.dU() instanceof aqt) {
+         ir $$0 = this.du();
+         if (((aqt)this.dU()).D() != null && this.dU().a_($$0).i()) {
+            this.dU().b($$0, deo.a(this.dU(), $$0));
          }
       }
    }
 
    @Override
-   protected void b(ud $$0) {
+   protected void b(uk $$0) {
       if (this.p() != null) {
-         $$0.a("beam_target", us.a(this.p()));
+         $$0.a("beam_target", uz.a(this.p()));
       }
 
-      $$0.a("ShowBottom", this.s());
+      $$0.a("ShowBottom", this.r());
    }
 
    @Override
-   protected void a(ud $$0) {
-      us.a($$0, "beam_target").ifPresent(this::a);
+   protected void a(uk $$0) {
+      uz.a($$0, "beam_target").ifPresent(this::a);
       if ($$0.b("ShowBottom", 1)) {
          this.a($$0.q("ShowBottom"));
       }
    }
 
    @Override
-   public boolean bz() {
+   public boolean bE() {
       return true;
    }
 
    @Override
-   public boolean a(bqn $$0, float $$1) {
+   public boolean a(bqt $$0, float $$1) {
       if (this.b($$0)) {
          return false;
       } else if ($$0.d() instanceof cha) {
          return false;
       } else {
-         if (!this.dK() && !this.dP().B) {
-            this.a(bru.c.a);
-            if (!$$0.a(avy.m)) {
-               bqn $$2 = $$0.d() != null ? this.dQ().d(this, $$0.d()) : null;
-               this.dP().a(this, $$2, null, this.du(), this.dw(), this.dA(), 6.0F, false, dax.a.b);
+         if (!this.dP() && !this.dU().C) {
+            this.a(brv.d.a);
+            if (!$$0.a(awg.m)) {
+               bqt $$2 = $$0.d() != null ? this.dX().d(this, $$0.d()) : null;
+               this.dU().a(this, $$2, null, this.dz(), this.dB(), this.dF(), 6.0F, false, dca.a.b);
             }
 
             this.a($$0);
@@ -84,25 +84,25 @@ public class cgz extends bru {
 
    @Override
    public void an() {
-      this.a(this.dQ().n());
+      this.a(this.dX().o());
       super.an();
    }
 
-   private void a(bqn $$0) {
-      if (this.dP() instanceof aqm) {
-         duw $$1 = ((aqm)this.dP()).D();
+   private void a(bqt $$0) {
+      if (this.dU() instanceof aqt) {
+         dwx $$1 = ((aqt)this.dU()).D();
          if ($$1 != null) {
             $$1.a(this, $$0);
          }
       }
    }
 
-   public void a(@Nullable io $$0) {
+   public void a(@Nullable ir $$0) {
       this.ap().a(c, Optional.ofNullable($$0));
    }
 
    @Nullable
-   public io p() {
+   public ir p() {
       return this.ap().a(c).orElse(null);
    }
 
@@ -110,7 +110,7 @@ public class cgz extends bru {
       this.ap().a(d, $$0);
    }
 
-   public boolean s() {
+   public boolean r() {
       return this.ap().a(d);
    }
 
@@ -120,7 +120,7 @@ public class cgz extends bru {
    }
 
    @Override
-   public cto dC() {
-      return new cto(ctr.vf);
+   public cuh dH() {
+      return new cuh(cuk.wQ);
    }
 }

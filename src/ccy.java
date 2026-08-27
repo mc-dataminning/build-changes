@@ -1,47 +1,43 @@
-import java.util.Set;
+import java.util.function.Supplier;
 
-public abstract class ccy<E extends bso> {
-   private static final ayk a = ayk.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final cdf d = cdf.b().a(16.0);
-   private static final cdf e = cdf.b().a(16.0).e();
-   private static final cdf f = cdf.a().a(16.0);
-   private static final cdf g = cdf.a().a(16.0).e();
-   private static final cdf h = cdf.a().a(16.0).d();
-   private static final cdf i = cdf.a().a(16.0).d().e();
-   private final int j;
-   private long k;
+public class ccy<U extends ccx<?>> {
+   public static final ccy<cch> a = a("dummy", cch::new);
+   public static final ccy<ccp> b = a("nearest_items", ccp::new);
+   public static final ccy<ccq<bso>> c = a("nearest_living_entities", ccq::new);
+   public static final ccy<ccu> d = a("nearest_players", ccu::new);
+   public static final ccy<cco> e = a("nearest_bed", cco::new);
+   public static final ccy<ccl> f = a("hurt_by", ccl::new);
+   public static final ccy<cdb> g = a("villager_hostiles", cdb::new);
+   public static final ccy<cda> h = a("villager_babies", cda::new);
+   public static final ccy<ccv> i = a("secondary_pois", ccv::new);
+   public static final ccy<ccj> j = a("golem_detected", ccj::new);
+   public static final ccy<ccn<cfn>> k = a("armadillo_scare_detected", () -> new ccn<>(5, cfn::j, cfn::gJ, cbr.G, 80));
+   public static final ccy<cct> l = a("piglin_specific_sensor", cct::new);
+   public static final ccy<ccs> m = a("piglin_brute_specific_sensor", ccs::new);
+   public static final ccy<cck> n = a("hoglin_specific_sensor", cck::new);
+   public static final ccy<cce> o = a("nearest_adult", cce::new);
+   public static final ccy<ccf> p = a("axolotl_attackables", ccf::new);
+   public static final ccy<ccz> q = a("axolotl_temptations", () -> new ccz(cfr.a()));
+   public static final ccy<ccz> r = a("goat_temptations", () -> new ccz(cgf.a()));
+   public static final ccy<ccz> s = a("frog_temptations", () -> new ccz(cfz.a()));
+   public static final ccy<ccz> t = a("camel_temptations", () -> new ccz(cfw.b()));
+   public static final ccy<ccz> u = a("armadillo_temptations", () -> new ccz(cfo.b()));
+   public static final ccy<cci> v = a("frog_attackables", cci::new);
+   public static final ccy<ccm> w = a("is_in_water", ccm::new);
+   public static final ccy<cdc> x = a("warden_entity_sensor", cdc::new);
+   public static final ccy<ccz> y = a("sniffer_temptations", () -> new ccz(cgw.a()));
+   public static final ccy<ccg> z = a("breeze_attack_entity_sensor", ccg::new);
+   private final Supplier<U> A;
 
-   public ccy(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   private ccy(Supplier<U> $$0) {
+      this.A = $$0;
    }
 
-   public ccy() {
-      this(20);
+   public U a() {
+      return this.A.get();
    }
 
-   public final void b(aqm $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
-   }
-
-   protected abstract void a(aqm var1, E var2);
-
-   public abstract Set<cbs<?>> a();
-
-   public static boolean b(bso $$0, bso $$1) {
-      return $$0.dS().b(cbs.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(bso $$0, bso $$1) {
-      return $$0.dS().b(cbs.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(bso $$0, bso $$1) {
-      return $$0.dS().b(cbs.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   private static <U extends ccx<?>> ccy<U> a(String $$0, Supplier<U> $$1) {
+      return jn.a(lh.C, new akt($$0), new ccy<>($$1));
    }
 }

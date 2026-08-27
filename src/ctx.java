@@ -1,37 +1,33 @@
-public class ctx extends ctj {
-   private static final int a = 32;
+public class ctx extends cuc {
+   public static final int a = 1000000;
+   public static final int b = 20;
+   public static final int c = 200;
 
-   public ctx(ctj.a $$0) {
+   public ctx(cuc.a $$0) {
       super($$0);
    }
 
    @Override
-   public cto a(cto $$0, dax $$1, bso $$2) {
-      if ($$2 instanceof aqn $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(avr.c.b(this));
+   public cuh a(cuh $$0, dca $$1, bso $$2) {
+      $$2.i($$2.aB() + 1000000);
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(cuh $$0, dca $$1, brv $$2, int $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      drd $$5 = $$0.a(ke.ao);
+      if ($$5 != null && $$2.cE() == $$5.a() && $$3 == $$5.b()) {
+         if ($$5.c() < 200) {
+            $$0.b(ke.ao, new drd($$2.cE(), $$3, $$5.c() + 1));
+         }
+
+         int $$6 = aym.b((float)($$5.c() - 20) / 180.0F, 0, 5);
+         if ($$6 > 0) {
+            $$2.a($$2.dX().e(), (float)$$6);
+         }
+      } else {
+         $$0.b(ke.ao, new drd($$2.cE(), $$3, 0));
       }
-
-      $$0.a(1, $$2);
-      if (!$$1.B) {
-         $$2.ew();
-      }
-
-      return $$0.e() ? new cto(ctr.qy) : $$0;
-   }
-
-   @Override
-   public int b(cto $$0) {
-      return 32;
-   }
-
-   @Override
-   public cvj c(cto $$0) {
-      return cvj.c;
-   }
-
-   @Override
-   public bpv<cto> a(dax $$0, clw $$1, bpt $$2) {
-      return ctq.a($$0, $$1, $$2);
    }
 }

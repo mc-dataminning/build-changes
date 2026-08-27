@@ -1,82 +1,115 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class flf extends fly {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
+public class flf extends gqj implements gqk {
+   private static final int e = 256;
+   private final flg f;
+   private final boolean g;
+   private final flf.a h;
+
+   public flf(flg $$0, boolean $$1) {
+      this.g = $$1;
+      this.h = new flf.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? fad.b.a : fad.b.d, this.a(), 256, 256);
+      this.f = $$0;
+   }
+
+   @Override
+   public void a(aud $$0) {
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
    @Nullable
-   private final wx d;
-   private final wx r;
-   private final Runnable s;
-   @Nullable
-   private fgs u;
-   private ffz v;
-   private int w;
-
-   public static flf a(wx $$0, wx $$1, Runnable $$2) {
-      return new flf($$0, null, $$1, $$2, 0);
-   }
-
-   public static flf a(wx $$0, wx $$1, wx $$2, Runnable $$3) {
-      return new flf($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected flf(wx $$0, @Nullable wx $$1, wx $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.w = $$4;
-   }
-
-   @Override
-   protected void aM_() {
-      super.aM_();
-      if (this.d != null) {
-         this.u = fgs.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.u != null ? this.u.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.v = this.c(ffz.a(this.r, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.w > 0) {
-         this.w--;
-      }
-
-      this.v.j = this.w == 0;
-   }
-
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.u == null) {
-         String $$4 = flj.a(ac.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+   public fli a(ezg $$0) {
+      if ($$0.c() != this.g) {
+         return null;
       } else {
-         this.u.a($$0, this.n / 2, 120);
+         flf.a $$1 = this.h.a($$0);
+         if ($$1 != null) {
+            this.c();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fli(
+               this.f,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
       }
    }
 
    @Override
-   public boolean aD_() {
-      return this.u != null && this.v.j;
+   public void a(akt $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   @Override
-   public void d() {
-      this.s.run();
-   }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private flf.a e;
+      @Nullable
+      private flf.a f;
+      private boolean g;
 
-   @Override
-   public wx i() {
-      return ww.a(this.l, this.d != null ? this.d : ww.a);
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Nullable
+      flf.a a(ezg $$0) {
+         if (this.e != null && this.f != null) {
+            flf.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
+
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new flf.a(this.a, this.b, $$2, this.d);
+                  this.f = new flf.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new flf.a(this.a, this.b, this.c, $$3);
+                  this.f = new flf.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
+      }
    }
 }

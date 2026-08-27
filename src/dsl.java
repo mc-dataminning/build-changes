@@ -1,23 +1,21 @@
-public enum dsl implements ayx {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public class dsl {
+   public static final float a = 10.0F;
+   private float b;
+   private float c;
 
-   private final String e;
-   private final wx f;
-
-   private dsl(String $$0) {
-      this.e = $$0;
-      this.f = wx.c("structure_block.mode_info." + $$0);
+   dsl() {
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public float a() {
+      return this.b;
    }
 
-   public wx a() {
-      return this.f;
+   public float b() {
+      return this.c;
+   }
+
+   void c() {
+      this.c = this.b;
+      this.b = aym.g(this.b + 10.0F);
    }
 }

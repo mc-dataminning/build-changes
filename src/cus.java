@@ -1,107 +1,81 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cus extends cuc {
+   private static final km a = new kl() {
+      private final kl c = new kl();
 
-public class cus extends ctj {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final wx c = wx.c(ac.a("item", new akm("smithing_template.ingredients"))).a(a);
-   private static final wx j = wx.c(ac.a("item", new akm("smithing_template.applies_to"))).a(a);
-   private static final wx k = wx.c(ac.a("upgrade", new akm("netherite_upgrade"))).a(a);
-   private static final wx l = wx.c(ac.a("item", new akm("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final wx m = wx.c(ac.a("item", new akm("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final wx n = wx.c(ac.a("item", new akm("smithing_template.armor_trim.base_slot_description")));
-   private static final wx o = wx.c(ac.a("item", new akm("smithing_template.armor_trim.additions_slot_description")));
-   private static final wx p = wx.c(ac.a("item", new akm("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final wx q = wx.c(ac.a("item", new akm("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final wx r = wx.c(ac.a("item", new akm("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final wx s = wx.c(ac.a("item", new akm("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final akm t = new akm("item/empty_armor_slot_helmet");
-   private static final akm u = new akm("item/empty_armor_slot_chestplate");
-   private static final akm v = new akm("item/empty_armor_slot_leggings");
-   private static final akm w = new akm("item/empty_armor_slot_boots");
-   private static final akm x = new akm("item/empty_slot_hoe");
-   private static final akm y = new akm("item/empty_slot_axe");
-   private static final akm z = new akm("item/empty_slot_sword");
-   private static final akm A = new akm("item/empty_slot_shovel");
-   private static final akm B = new akm("item/empty_slot_pickaxe");
-   private static final akm C = new akm("item/empty_slot_ingot");
-   private static final akm D = new akm("item/empty_slot_redstone_dust");
-   private static final akm E = new akm("item/empty_slot_quartz");
-   private static final akm F = new akm("item/empty_slot_emerald");
-   private static final akm G = new akm("item/empty_slot_diamond");
-   private static final akm H = new akm("item/empty_slot_lapis_lazuli");
-   private static final akm I = new akm("item/empty_slot_amethyst_shard");
-   private final wx J;
-   private final wx K;
-   private final wx L;
-   private final wx M;
-   private final wx N;
-   private final List<akm> O;
-   private final List<akm> P;
+      @Override
+      public cuh a(kj $$0, cuh $$1) {
+         iw $$2 = $$0.d().c(dhi.b);
+         aqt $$3 = $$0.b();
+         ewu $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         ir $$8 = $$0.c().a($$2);
+         dtc $$9 = $$3.a_($$8);
+         dug $$10 = $$9.b() instanceof deq ? $$9.c(((deq)$$9.b()).c()) : dug.a;
+         double $$11;
+         if ($$9.a(awe.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
+            } else {
+               $$11 = 0.1;
+            }
+         } else {
+            if (!$$9.i() || !$$3.a_($$8.d()).a(awe.N)) {
+               return this.c.dispense($$0, $$1);
+            }
 
-   public cus(wx $$0, wx $$1, wx $$2, wx $$3, wx $$4, List<akm> $$5, List<akm> $$6, coh... $$7) {
-      super(new ctj.a().a($$7));
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
+            dtc $$13 = $$3.a_($$8.d());
+            dug $$14 = $$13.b() instanceof deq ? $$13.c(((deq)$$13.b()).c()) : dug.a;
+            if ($$2 != iw.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
+            }
+         }
 
-   public static cus a(akl<cvv> $$0, coh... $$1) {
-      return a($$0.a(), $$1);
-   }
+         cnw $$18 = cnw.a($$3, $$5, $$6 + $$11, $$7, ((cus)$$1.f()).b, $$1, null);
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
+      }
 
-   public static cus a(akm $$0, coh... $$1) {
-      return new cus(l, m, wx.c(ac.a("trim_pattern", $$0)).a(a), n, o, w(), x(), $$1);
-   }
+      @Override
+      protected void a(kj $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
+      }
+   };
+   final cnw.a b;
 
-   public static cus h() {
-      return new cus(p, q, k, r, s, y(), z());
-   }
-
-   private static List<akm> w() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<akm> x() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<akm> y() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<akm> z() {
-      return List.of(C);
+   public cus(cnw.a $$0, cuc.a $$1) {
+      super($$1);
+      this.b = $$0;
+      dhi.a(this, a);
    }
 
    @Override
-   public void a(cto $$0, @Nullable dax $$1, List<wx> $$2, cvh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(ww.a);
-      $$2.add(j);
-      $$2.add(ww.a().b(this.J));
-      $$2.add(c);
-      $$2.add(ww.a().b(this.K));
-   }
+   public bqa a(cyf $$0) {
+      dca $$1 = $$0.q();
+      ir $$2 = $$0.a();
+      dtc $$3 = $$1.a_($$2);
+      if (!$$3.a(awe.N)) {
+         return bqa.e;
+      } else {
+         cuh $$4 = $$0.n();
+         if ($$1 instanceof aqt $$5) {
+            dug $$6 = $$3.b() instanceof deq ? $$3.c(((deq)$$3.b()).c()) : dug.a;
+            double $$7 = 0.0;
+            if ($$6.b()) {
+               $$7 = 0.5;
+            }
 
-   public wx j() {
-      return this.M;
-   }
+            cnw $$8 = cnw.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
+            $$5.b($$8);
+            $$5.a(dxv.t, $$2, dxv.a.a($$0.o(), $$5.a_($$2.d())));
+         }
 
-   public wx k() {
-      return this.N;
-   }
-
-   public List<akm> l() {
-      return this.O;
-   }
-
-   public List<akm> m() {
-      return this.P;
+         $$4.h(1);
+         return bqa.a($$1.C);
+      }
    }
 }

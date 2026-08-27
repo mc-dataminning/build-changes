@@ -1,38 +1,26 @@
-public enum enl {
-   a(-1.0F),
-   b(0.0F),
-   c(0.0F),
-   d(0.0F),
-   e(0.0F),
-   f(-1.0F),
-   g(0.0F),
-   h(-1.0F),
-   i(-1.0F),
-   j(8.0F),
-   k(8.0F),
-   l(0.0F),
-   m(-1.0F),
-   n(8.0F),
-   o(16.0F),
-   p(8.0F),
-   q(-1.0F),
-   r(0.0F),
-   s(-1.0F),
-   t(-1.0F),
-   u(4.0F),
-   v(-1.0F),
-   w(8.0F),
-   x(0.0F),
-   y(0.0F),
-   z(0.0F);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private final float A;
+public class enl extends enn {
+   public static final Codec<enl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dtc.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, enl::new)
+   );
+   private final dtc b;
+   private final float d;
 
-   private enl(float $$0) {
-      this.A = $$0;
+   public enl(dtc $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   public float a() {
-      return this.A;
+   @Override
+   public boolean a(dtc $$0, ayt $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
+
+   @Override
+   protected eno<?> a() {
+      return eno.f;
    }
 }

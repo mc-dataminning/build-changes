@@ -1,245 +1,113 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dou extends dpl implements cpj {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jg<cto> q = jg.a(9, cto.i);
-   private int r = 0;
-   protected final cpd k = new cpd() {
-      private final int[] b = new int[9];
-      private int c = 0;
+public class dou extends dob {
+   public static final MapCodec<dou> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dou::new));
+   public static final dtw g = djc.aE;
+   protected static final float h = 2.5F;
+   private static final Map<iw, exn> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         iw.c,
+         dfc.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         iw.d,
+         dfc.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         iw.e,
+         dfc.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         iw.f,
+         dfc.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
+   );
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.c : this.b[$$0];
-      }
+   @Override
+   public MapCodec<dou> a() {
+      return f;
+   }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.c = $$1;
-         } else {
-            this.b[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dou(io $$0, drb $$1) {
-      super(doi.P, $$0, $$1);
+   protected dou(le $$0, dtb.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, iw.c));
    }
 
    @Override
-   protected wx k() {
-      return wx.c("container.crafter");
+   public String g() {
+      return this.q().a();
    }
 
    @Override
-   protected cot a(int $$0, clv $$1) {
-      return new cph($$0, $$1, this, this.k);
+   protected exn a(dtc $$0, dbg $$1, ir $$2, ewz $$3) {
+      return m($$0);
    }
 
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   public static exn m(dtc $$0) {
+      return i.get($$0.c(g));
    }
 
    @Override
-   public boolean b(int $$0, cto $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cto $$2 = this.q.get($$0);
-         int $$3 = $$2.I();
-         if ($$3 >= $$2.j()) {
-            return false;
-         } else {
-            return $$2.e() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
+   protected boolean a(dtc $$0, dcd $$1, ir $$2) {
+      return b($$1, $$2, $$0.c(g));
    }
 
-   private boolean a(int $$0, cto $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cto $$4 = this.a($$3);
-            if ($$4.e() || $$4.I() < $$0 && cto.c($$4, $$1)) {
-               return true;
+   public static boolean b(dcd $$0, ir $$1, iw $$2) {
+      ir $$3 = $$1.a($$2.g());
+      dtc $$4 = $$0.a_($$3);
+      return $$4.d($$0, $$3, $$2);
+   }
+
+   @Nullable
+   @Override
+   public dtc a(cyd $$0) {
+      dtc $$1 = this.n();
+      dcd $$2 = $$0.q();
+      ir $$3 = $$0.a();
+      iw[] $$4 = $$0.f();
+
+      for (iw $$5 : $$4) {
+         if ($$5.o().d()) {
+            iw $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
             }
          }
       }
 
-      return false;
+      return null;
    }
 
    @Override
-   protected void a(ud $$0, iz.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jg.a(this.b(), cto.i);
-      if (!this.a_($$0)) {
-         bpo.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
+   protected dtc a(dtc $$0, iw $$1, dtc $$2, dcb $$3, ir $$4, ir $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dfe.a.n() : $$0;
    }
 
    @Override
-   protected void b(ud $$0, iz.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.b_($$0)) {
-         bpo.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
+   public void a(dtc $$0, dca $$1, ir $$2, ayt $$3) {
+      iw $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      iw $$10 = $$4.g();
+      $$1.a(lb.ac, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected dtc a(dtc $$0, dmd $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
    }
 
    @Override
-   public boolean c() {
-      for (cto $$0 : this.q) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
+   protected dtc a(dtc $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(g)));
    }
 
    @Override
-   public cto a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cto $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(clw $$0) {
-      return bpn.a(this, $$0);
-   }
-
-   @Override
-   public jg<cto> j() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jg<cto> $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(cma $$0) {
-      for (cto $$1 : this.q) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(ud $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(ud $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dax $$0, io $$1, drb $$2, dou $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dfr.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int u() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cto $$2 = this.a($$1);
-         if (!$$2.e() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).e();
+   protected void a(dtd.a<dfc, dtc> $$0) {
+      $$0.a(g);
    }
 }

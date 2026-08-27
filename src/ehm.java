@@ -1,54 +1,41 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ehm extends eob {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public class ehm extends ehl {
+   public static final Codec<ehm> b = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, ehm::new));
 
-   public static eob.a<ehm> a() {
-      return new eob.a<>(ehm::new, ehm::b, azj.o);
-   }
-
-   private ehm(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public ehm() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static ehm b(ud $$0, iz.a $$1) {
-      return new ehm(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   public ehm(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public ud a(ud $$0, iz.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
+   protected ehp<?> a() {
+      return ehp.d;
    }
 
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
+   @Override
+   public List<efw.a> a(dcg $$0, BiConsumer<ir, dtc> $$1, ayt $$2, int $$3, ir $$4, efg $$5) {
+      List<efw.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
 
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
 
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + aym.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + aym.a($$8) * (float)$$11);
+            ir $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
 
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
+         $$6.add(new efw.a($$4.b($$9, $$7, $$10), -2, false));
+      }
 
-   public LongSet b() {
-      return this.c;
+      return $$6;
    }
 }

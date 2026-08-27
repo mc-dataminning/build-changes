@@ -1,14 +1,15 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public interface arc {
-   void a(Consumer<ze<?>> var1);
+   void a(dbh var1);
 
-   arc.a a();
+   void a(dbh var1, @Nullable dvx var2);
 
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+   void a();
+
+   void b();
+
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

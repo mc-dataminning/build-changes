@@ -1,26 +1,52 @@
-public class fnn extends fmw<cpm> {
-   private static final akm D = new akm("textures/gui/container/dispenser.png");
+public class fnn extends fon {
+   private static final xe a = xe.c("gui.toMenu");
+   private static final xe b = xe.c("gui.toTitle");
+   private final fon c;
+   private final xe d;
+   private final xe r;
+   private final fme s = fme.d();
 
-   public fnn(cpm $$0, clv $$1, wx $$2) {
-      super($$0, $$1, $$2);
+   public fnn(fon $$0, xe $$1, xe $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fnn(fon $$0, xe $$1, xe $$2, xe $$3) {
+      super($$1);
+      this.c = $$0;
+      this.d = $$2;
+      this.r = $$3;
    }
 
    @Override
-   protected void aM_() {
-      super.aM_();
-      this.r = (this.c - this.p.a(this.l)) / 2;
+   protected void aN_() {
+      this.s.c().b().a(10);
+      this.s.a(new fju(this.l, this.p));
+      this.s.a(new fjh(this.d, this.p).d(this.n - 50).b(true));
+      fin $$0;
+      if (this.m.F()) {
+         $$0 = fin.a(this.r, $$0x -> this.m.a(this.c)).a();
+      } else {
+         $$0 = fin.a(b, $$0x -> this.m.a(new fou())).a();
+      }
+
+      this.s.a($$0);
+      this.s.a();
+      this.s.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void c() {
+      fly.a(this.s, this.G());
    }
 
    @Override
-   protected void a(ffm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.c) / 2;
-      int $$5 = (this.o - this.d) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.d);
+   public xe i() {
+      return xd.a(this.l, this.d);
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

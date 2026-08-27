@@ -1,23 +1,20 @@
-public record ajr<T>(int a, ajs<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ajr<?> $$1 = (ajr<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+public record ajr(ajs b) implements zl<ajq> {
+   public static final zc<we, ajr> a = zl.a(ajr::a, ajr::new);
+
+   private ajr(we $$0) {
+      this($$0.a(ajs.a));
+   }
+
+   private void a(we $$0) {
+      $$0.a(ajs.a, this.b);
    }
 
    @Override
-   public int hashCode() {
-      return this.a;
+   public zn<ajr> a() {
+      return ajv.a;
    }
 
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public void a(ajq $$0) {
+      $$0.a(this);
    }
 }

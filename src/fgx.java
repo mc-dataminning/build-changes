@@ -1,18 +1,26 @@
-public class fgx extends ffz {
-   private final ffk a;
-   private final wx b;
-   private final wx c;
+import java.util.function.BooleanSupplier;
 
-   public fgx(int $$0, int $$1, int $$2, int $$3, wx $$4, ffz.c $$5, ffk $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xa.a($$4.f(), xu.a.c(true));
+public class fgx extends fgh {
+   private final BooleanSupplier h;
+
+   public fgx(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, ezx.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public void b(ffm $$0, int $$1, int $$2, float $$3) {
-      wx $$4 = this.A() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.C(), this.D(), 16777215 | ayd.f(this.l * 255.0F) << 24);
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

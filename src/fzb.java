@@ -1,43 +1,44 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class fzb extends fzd<kr> {
-   private final Vector3f a;
-   private final Vector3f b;
+public class fzb {
+   private final List<fyv> a;
+   private final fyu b;
+   private final Map<String, fzb> c = Maps.newHashMap();
 
-   protected fzb(fwr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, kr $$7, gat $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
+   fzb(List<fyv> $$0, fyu $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
-
-   @Override
-   public void a(eyw $$0, fdk $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements gab<kr> {
-      private final gat a;
-
-      public a(gat $$0) {
-         this.a = $$0;
+   public fzb a(String $$0, fyx $$1, fyu $$2) {
+      fzb $$3 = new fzb($$1.b(), $$2);
+      fzb $$4 = this.c.put($$0, $$3);
+      if ($$4 != null) {
+         $$3.c.putAll($$4.c);
       }
 
-      public fzy a(kr $$0, fwr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fzb($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+      return $$3;
+   }
+
+   public fys a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, fys> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fzb)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<fys.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      fys $$4 = new fys($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
+   }
+
+   public fzb a(String $$0) {
+      return this.c.get($$0);
    }
 }

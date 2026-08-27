@@ -1,38 +1,157 @@
-public class enp extends eng {
-   private float m = Float.MAX_VALUE;
-   private eng n;
-   private boolean o;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public enp(eng $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class enp {
+   private dke a;
+   private dmd b;
+   private ir c;
+   private boolean d;
+   @Nullable
+   private ejl e;
+   private boolean f;
+   @Nullable
+   private ayt g;
+   private int h;
+   private final List<enq> i;
+   private boolean j;
+   private boolean k;
+
+   public enp() {
+      this.a = dke.a;
+      this.b = dmd.a;
+      this.c = ir.c;
+      this.f = true;
+      this.i = Lists.newArrayList();
    }
 
-   public enp(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public enp a() {
+      enp $$0 = new enp();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
    }
 
-   public void a(float $$0, eng $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   public enp a(dke $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public enp a(dmd $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public enp a(ir $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public enp a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public enp a(ejl $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public enp a(@Nullable ayt $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public enp b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public enp c(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public enp b() {
+      this.i.clear();
+      return this;
+   }
+
+   public enp a(enq $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public enp b(enq $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dke c() {
+      return this.a;
+   }
+
+   public dmd d() {
+      return this.b;
+   }
+
+   public ir e() {
+      return this.c;
+   }
+
+   public ayt b(@Nullable ir $$0) {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return $$0 == null ? ayt.a(ad.b()) : ayt.a(aym.a($$0));
       }
    }
 
-   public eng d() {
-      return this.n;
-   }
-
-   public void e() {
-      this.o = true;
-   }
-
    public boolean f() {
-      return this.o;
+      return this.d;
    }
 
-   public static enp c(vx $$0) {
-      enp $$1 = new enp($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Nullable
+   public ejl g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<enq> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public ent.a a(List<ent.a> $$0, @Nullable ir $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
+      }
+   }
+
+   public enp d(boolean $$0) {
+      this.k = $$0;
+      return this;
+   }
+
+   public boolean k() {
+      return this.k;
    }
 }

@@ -7,7 +7,7 @@ public enum cgm {
    d(3),
    e(4);
 
-   private static final IntFunction<cgm> f = awv.a(cgm::a, values(), awv.a.b);
+   private static final IntFunction<cgm> f = axd.a(cgm::a, values(), axd.a.b);
    private final int g;
 
    private cgm(int $$0) {

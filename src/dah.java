@@ -1,123 +1,37 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+public class dah extends dad {
+   public dah(dad.b $$0) {
+      super($$0);
+   }
 
-public interface dah extends dad {
-   dss C_();
-
-   @Nullable
-   dad c(int var1, int var2);
-
-   default boolean a(@Nullable bru $$0, evd $$1) {
+   @Override
+   public boolean a() {
       return true;
    }
 
-   default boolean a(drb $$0, io $$1, eup $$2) {
-      evd $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
+   public static void a(bso $$0, dca $$1, ir $$2, int $$3) {
+      if ($$0.aE()) {
+         dtc $$4 = dfe.lG.n();
+         int $$5 = Math.min(16, 2 + $$3);
+         ir.a $$6 = new ir.a();
 
-   default boolean f(bru $$0) {
-      return this.a($$0, eva.a($$0.cK()));
-   }
-
-   default boolean b(euf $$0) {
-      return this.a(null, $$0);
-   }
-
-   default boolean g(bru $$0) {
-      return this.a($$0, $$0.cK());
-   }
-
-   default boolean a(@Nullable bru $$0, euf $$1) {
-      for (evd $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
+         for (ir $$7 : ir.c($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
+            if ($$7.a($$0.ds(), (double)$$5)) {
+               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
+               dtc $$8 = $$1.a_($$6);
+               if ($$8.i()) {
+                  dtc $$9 = $$1.a_($$7);
+                  if ($$9 == dil.b() && $$4.a((dcd)$$1, $$7) && $$1.a($$4, $$7, ewz.a())) {
+                     $$1.b($$7, $$4);
+                     $$1.a($$7, dfe.lG, aym.a($$0.et(), 60, 120));
+                  }
+               }
+            }
          }
       }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         evd $$3 = this.h($$0, $$1);
-         return $$3 == null || !eva.c($$3, eva.a($$1), euo.i);
-      }
    }
 
-   default boolean b(@Nullable bru $$0, euf $$1) {
-      for (evd $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<evd> c(@Nullable bru var1, euf var2);
-
-   default Iterable<evd> d(@Nullable bru $$0, euf $$1) {
-      List<evd> $$2 = this.c($$0, $$1);
-      Iterable<evd> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<evd> e(@Nullable bru $$0, euf $$1) {
-      return () -> new dab<evd>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   @Nullable
-   private evd h(bru $$0, euf $$1) {
-      dss $$2 = this.C_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable bru $$0, euf $$1) {
-      dab<evd> $$2 = new dab<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((evd)$$2.next()).c()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<io> g(bru $$0, euf $$1) {
-      io $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dab<io> $$4 = new dab<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         io $$5 = (io)$$4.next();
-         double $$6 = $$5.b($$0.dn());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<euk> a(@Nullable bru $$0, evd $$1, euk $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         euf $$6 = $$1.a().c($$3, $$4, $$5);
-         evd $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(eva::a)
-            .reduce(eva.a(), eva::a);
-         evd $$8 = eva.a($$1, $$7, euo.e);
-         return $$8.a($$2);
-      }
+   @Override
+   public boolean a(dad $$0) {
+      return super.a($$0) && $$0 != dag.i;
    }
 }

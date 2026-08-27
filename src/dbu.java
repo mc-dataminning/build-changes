@@ -1,42 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 public class dbu {
-   public static final Codec<dbu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dbu::new)
-   );
-   public static final dbu b = new dbu(avh.h, 6000, 8, 2.0);
-   private final ix<avg> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   private static int[] a = new int[65536];
 
-   public dbu(ix<avg> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public ix<avg> a() {
-      return this.c;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   public int b() {
-      return this.d;
+   public static int a() {
+      return -10380959;
    }
 
-   public int c() {
-      return this.e;
+   public static int b() {
+      return -8345771;
    }
 
-   public double d() {
-      return this.f;
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
    }
 }

@@ -1,90 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
 
-public class eyl {
-   private int a;
-
-   public static Optional<eyl> a() {
-      return eyl.b.a;
-   }
-
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
+public record eyl<T>(T d, ir e, long f, eyp g, long h) {
+   public static final Comparator<eyl<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
       } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
       }
-   }
-
-   public eyl.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         eyl.a $$0 = new eyl.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
-   }
-
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
+   };
+   public static final Comparator<eyl<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<eyl<?>> c = new Strategy<eyl<?>>() {
+      public int a(eyl<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
       }
 
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
+      public boolean a(@Nullable eyl<?> $$0, @Nullable eyl<?> $$1) {
+         if ($$0 == $$1) {
             return true;
          } else {
-            return false;
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
          }
       }
+   };
 
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   public eyl(T $$0, ir $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, eyp.d, $$3);
    }
 
-   static class b {
-      static final Optional<eyl> a = Optional.ofNullable(a());
+   public eyl(T d, ir e, long f, eyp g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
+   }
 
-      private b() {
-      }
+   public static <T> eyl<T> a(T $$0, ir $$1) {
+      return new eyl<>($$0, $$1, 0L, eyp.d, 0L);
+   }
 
-      @Nullable
-      private static eyl a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new eyl();
-      }
+   public T a() {
+      return this.d;
+   }
+
+   public ir b() {
+      return this.e;
+   }
+
+   public long c() {
+      return this.f;
+   }
+
+   public eyp d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

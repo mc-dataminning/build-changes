@@ -1,16 +1,21 @@
-public abstract class kj extends kh {
-   private boolean c = true;
+public record kj(aqt a, ir b, dtc c, dqu d) {
+   public ewu a() {
+      return this.b.b();
+   }
 
-   public boolean b() {
+   public aqt b() {
+      return this.a;
+   }
+
+   public ir c() {
+      return this.b;
+   }
+
+   public dtc d() {
       return this.c;
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected void a(kf $$0) {
-      $$0.b().c(this.b() ? 1000 : 1001, $$0.c(), 0);
+   public dqu e() {
+      return this.d;
    }
 }

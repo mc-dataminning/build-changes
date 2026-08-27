@@ -1,15 +1,22 @@
-import java.util.Collection;
-import java.util.Locale;
+public class gnt extends glz<cju, fyh<cju>> {
+   private static final akt a = new akt("textures/entity/witch.png");
 
-public class gnt extends RuntimeException {
-   private final Collection<gns.a> a;
-
-   public gnt(gns.a $$0, Collection<gns.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   public gnt(gkq.a $$0) {
+      super($$0, new fyh<>($$0.a(fyr.ca)), 0.5F);
+      this.a(new gpv<>(this, $$0.d()));
    }
 
-   public Collection<gns.a> a() {
-      return this.a;
+   public void a(cju $$0, float $$1, float $$2, fbc $$3, gfg $$4, int $$5) {
+      this.h.b(!$$0.fg().d());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akt a(cju $$0) {
+      return a;
+   }
+
+   protected void a(cju $$0, fbc $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

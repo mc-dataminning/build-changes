@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
+public interface btn<T> {
+   void a(T var1);
 
-public interface btn {
-   @Nullable
-   bru s();
+   T d();
 }

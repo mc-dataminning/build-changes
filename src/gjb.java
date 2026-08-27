@@ -1,10 +1,45 @@
-public class gjb<T extends bru> extends ghs<T> {
-   public gjb(ght.a $$0) {
-      super($$0);
+import com.google.common.collect.Lists;
+import java.util.Collection;
+
+public class gjb implements gis.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fgj c;
+   private Collection<ir> d = Lists.newArrayList();
+
+   public gjb(fgj $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<ir> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public akm a(T $$0) {
-      return gnu.e;
+   public void a(fbc $$0, gfg $$1, double $$2, double $$3, double $$4) {
+      ir $$5 = this.b().c();
+
+      for (ir $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+   }
+
+   private static void a(fbc $$0, gfg $$1, ir $$2) {
+      gis.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      int $$3 = -65536;
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fbc $$0, gfg $$1, String $$2, ir $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gis.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private ffu b() {
+      return this.c.j.m();
    }
 }

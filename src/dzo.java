@@ -1,44 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.function.Function;
 
-public class dzo extends dzm {
-   public dzo(Codec<eci> $$0) {
-      super($$0);
+public interface dzo {
+   Codec<dzo> a = axu.a(dzo.b.d, axu.a(dzo.a.d, dzo.c.d)).xmap(dzo::a, dzo::a);
+   dzo b = b(0);
+   dzo c = c(0);
+
+   static dzo a(int $$0) {
+      return new dzo.b($$0);
    }
 
-   @Override
-   protected boolean a(day $$0, ayk $$1, io $$2, drb $$3) {
-      io.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   static dzo b(int $$0) {
+      return new dzo.a($$0);
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   static dzo c(int $$0) {
+      return new dzo.c($$0);
+   }
 
-         $$4.c(it.b);
+   static dzo a() {
+      return b;
+   }
+
+   static dzo b() {
+      return c;
+   }
+
+   private static dzo a(Either<dzo.b, Either<dzo.a, dzo.c>> $$0) {
+      return (dzo)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
+
+   private static Either<dzo.b, Either<dzo.a, dzo.c>> a(dzo $$0) {
+      return $$0 instanceof dzo.b ? Either.left((dzo.b)$$0) : Either.right($$0 instanceof dzo.a ? Either.left((dzo.a)$$0) : Either.right((dzo.c)$$0));
+   }
+
+   int a(dzr var1);
+
+   public static record a(int e) implements dzo {
+      public static final Codec<dzo.a> d = Codec.intRange(dwu.e, dwu.d).fieldOf("above_bottom").xmap(dzo.a::new, dzo.a::c).codec();
+
+      @Override
+      public int a(dzr $$0) {
+         return $$0.a() + this.e;
       }
 
-      io $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<it> $$9 = it.c.a.c($$1);
-
-      for (it $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(it.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
       }
 
-      return true;
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements dzo {
+      public static final Codec<dzo.b> d = Codec.intRange(dwu.e, dwu.d).fieldOf("absolute").xmap(dzo.b::new, dzo.b::c).codec();
+
+      @Override
+      public int a(dzr $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dzo {
+      public static final Codec<dzo.c> d = Codec.intRange(dwu.e, dwu.d).fieldOf("below_top").xmap(dzo.c::new, dzo.c::c).codec();
+
+      @Override
+      public int a(dzr $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

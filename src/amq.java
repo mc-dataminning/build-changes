@@ -1,162 +1,34 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class amq {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wx.b("commands.fill.toobig", $$0, $$1));
-   static final fv b = new fv(dea.a.n(), Collections.emptySet(), null);
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wx.c("commands.fill.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<ee> $$0, ea $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ef.a("fill").requires($$0x -> $$0x.c(2)))
-            .then(
-               ef.a("from", ga.a())
-                  .then(
-                     ef.a("to", ga.a())
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ef.a(
-                                                "block", fx.a($$1)
-                                             )
-                                             .executes(
-                                                $$0x -> a((ee)$$0x.getSource(), ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amq.a.a, null)
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)ef.a("replace")
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ee)$$0x.getSource(),
-                                                            ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                            fx.a($$0x, "block"),
-                                                            amq.a.a,
-                                                            null
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ef.a("filter", fw.a($$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (ee)$$0x.getSource(),
-                                                               ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                               fx.a($$0x, "block"),
-                                                               amq.a.a,
-                                                               fw.a($$0x, "filter")
-                                                            )
-                                                      )
-                                                )
-                                          ))
-                                       .then(
-                                          ef.a("keep")
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ee)$$0x.getSource(),
-                                                      ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")),
-                                                      fx.a($$0x, "block"),
-                                                      amq.a.a,
-                                                      $$0xx -> $$0xx.c().u($$0xx.d())
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       ef.a("outline")
-                                          .executes(
-                                             $$0x -> a((ee)$$0x.getSource(), ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amq.a.b, null)
-                                          )
-                                    ))
-                                 .then(
-                                    ef.a("hollow")
-                                       .executes(
-                                          $$0x -> a((ee)$$0x.getSource(), ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amq.a.c, null)
-                                       )
-                                 ))
-                              .then(
-                                 ef.a("destroy")
-                                    .executes($$0x -> a((ee)$$0x.getSource(), ehb.a(ga.a($$0x, "from"), ga.a($$0x, "to")), fx.a($$0x, "block"), amq.a.d, null))
-                              )
-                        )
-                  )
-            )
-      );
-   }
+   public static void a(CommandDispatcher<eh> $$0) {
+      LiteralArgumentBuilder<eh> $$1 = ei.a("difficulty");
 
-   private static int a(ee $$0, ehb $$1, fv $$2, amq.a $$3, @Nullable Predicate<drf> $$4) throws CommandSyntaxException {
-      int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().aa().c(dat.z);
-      if ($$5 > $$6) {
-         throw a.create($$6, $$5);
-      } else {
-         List<io> $$7 = Lists.newArrayList();
-         aqm $$8 = $$0.e();
-         int $$9 = 0;
-
-         for (io $$10 : io.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new drf($$8, $$10, true))) {
-               fv $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
-               if ($$11 != null) {
-                  dog $$12 = $$8.c_($$10);
-                  bpl.a_($$12);
-                  if ($$11.a($$8, $$10, 2)) {
-                     $$7.add($$10.i());
-                     $$9++;
-                  }
-               }
-            }
-         }
-
-         for (io $$13 : $$7) {
-            ddy $$14 = $$8.a_($$13).b();
-            $$8.b($$13, $$14);
-         }
-
-         if ($$9 == 0) {
-            throw c.create();
-         } else {
-            int $$15 = $$9;
-            $$0.a(() -> wx.a("commands.fill.success", $$15), true);
-            return $$9;
-         }
+      for (bpx $$2 : bpx.values()) {
+         $$1.then(ei.a($$2.e()).executes($$1x -> a((eh)$$1x.getSource(), $$2)));
       }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bpx $$1x = ((eh)$$0x.getSource()).e().al();
+         ((eh)$$0x.getSource()).a(() -> xe.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   static enum a {
-      a(($$0, $$1, $$2, $$3) -> $$2),
-      b(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? null
-               : $$2
-      ),
-      c(
-         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
-                  && $$1.u() != $$0.k()
-                  && $$1.v() != $$0.i()
-                  && $$1.v() != $$0.l()
-                  && $$1.w() != $$0.j()
-                  && $$1.w() != $$0.m()
-               ? amq.b
-               : $$2
-      ),
-      d(($$0, $$1, $$2, $$3) -> {
-         $$3.b($$1, true);
-         return $$2;
-      });
-
-      public final aoc.a e;
-
-      private a(aoc.a $$0) {
-         this.e = $$0;
+   public static int a(eh $$0, bpx $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.bb().q() == $$1) {
+         throw a.create($$1.e());
+      } else {
+         $$2.a($$1, true);
+         $$0.a(() -> xe.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

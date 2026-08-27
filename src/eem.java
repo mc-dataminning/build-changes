@@ -1,29 +1,22 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eem extends eec {
-   public static final MapCodec<eem> b = boe.b(drb.b).comapFlatMap(eem::a, $$0 -> $$0.c).fieldOf("entries");
-   private final boe<drb> c;
+public class eem implements eek {
+   public static final Codec<eem> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egl.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               egl.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, eem::new)
+   );
+   public final egl b;
+   public final egl c;
+   public final int d;
 
-   private static DataResult<eem> a(boe<drb> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eem($$0));
-   }
-
-   public eem(boe<drb> $$0) {
-      this.c = $$0;
-   }
-
-   public eem(boe.a<drb> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected eed<?> a() {
-      return eed.b;
-   }
-
-   @Override
-   public drb a(ayk $$0, io $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public eem(egl $$0, egl $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

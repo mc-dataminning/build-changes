@@ -1,258 +1,326 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import org.joml.Vector3f;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class fry<T extends cfq & bsm> extends frr<T> {
-   public static final float a = 1.8849558F;
-   private final fvw b;
-   private final fvw f;
-   private final fvw g;
-   private final fvw h;
-   private final fvw i;
-   private final fvw j;
-   private final fvw k;
-   private final fvw l;
-   private final fvw m;
-   private final fvw n;
+public class fry extends fon {
+   static final Logger a = LogUtils.getLogger();
+   private static final xe b = xe.c("pack.available.title");
+   private static final xe c = xe.c("pack.selected.title");
+   private static final xe d = xe.c("pack.openFolder");
+   private static final int r = 200;
+   private static final xe s = xe.c("pack.dropInfo").a(n.h);
+   private static final xe u = xe.c("pack.folderInfo");
+   private static final int v = 20;
+   private static final akt w = new akt("textures/misc/unknown_pack.png");
+   private final fma x = new fma(this);
+   private final frx y;
+   @Nullable
+   private fry.a z;
+   private long A;
+   private frz B;
+   private frz C;
+   private final Path D;
+   private fin E;
+   private final Map<String, akt> F = Maps.newHashMap();
 
-   public fry(fvw $$0) {
-      super(true, 8.0F, 3.35F);
-      this.j = $$0.b("body");
-      this.k = this.j.b("head");
-      this.g = this.j.b("right_hind_leg");
-      this.f = this.j.b("left_hind_leg");
-      this.i = this.j.b("right_front_leg");
-      this.h = this.j.b("left_front_leg");
-      this.b = this.j.b("tail");
-      this.l = this.k.b("top_gills");
-      this.m = this.k.b("left_gills");
-      this.n = this.k.b("right_gills");
-   }
-
-   public static fwc c() {
-      fwe $$0 = new fwe();
-      fwf $$1 = $$0.a();
-      fwf $$2 = $$1.a(
-         "body", fwb.c().a(0, 11).a(-4.0F, -2.0F, -9.0F, 8.0F, 4.0F, 10.0F).a(2, 17).a(0.0F, -3.0F, -8.0F, 0.0F, 5.0F, 9.0F), fvy.a(0.0F, 20.0F, 5.0F)
-      );
-      fwa $$3 = new fwa(0.001F);
-      fwf $$4 = $$2.a("head", fwb.c().a(0, 1).a(-4.0F, -3.0F, -5.0F, 8.0F, 5.0F, 5.0F, $$3), fvy.a(0.0F, 0.0F, -9.0F));
-      fwb $$5 = fwb.c().a(3, 37).a(-4.0F, -3.0F, 0.0F, 8.0F, 3.0F, 0.0F, $$3);
-      fwb $$6 = fwb.c().a(0, 40).a(-3.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      fwb $$7 = fwb.c().a(11, 40).a(0.0F, -5.0F, 0.0F, 3.0F, 7.0F, 0.0F, $$3);
-      $$4.a("top_gills", $$5, fvy.a(0.0F, -3.0F, -1.0F));
-      $$4.a("left_gills", $$6, fvy.a(-4.0F, 0.0F, -1.0F));
-      $$4.a("right_gills", $$7, fvy.a(4.0F, 0.0F, -1.0F));
-      fwb $$8 = fwb.c().a(2, 13).a(-1.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      fwb $$9 = fwb.c().a(2, 13).a(-2.0F, 0.0F, 0.0F, 3.0F, 5.0F, 0.0F, $$3);
-      $$2.a("right_hind_leg", $$9, fvy.a(-3.5F, 1.0F, -1.0F));
-      $$2.a("left_hind_leg", $$8, fvy.a(3.5F, 1.0F, -1.0F));
-      $$2.a("right_front_leg", $$9, fvy.a(-3.5F, 1.0F, -8.0F));
-      $$2.a("left_front_leg", $$8, fvy.a(3.5F, 1.0F, -8.0F));
-      $$2.a("tail", fwb.c().a(2, 19).a(0.0F, -3.0F, 0.0F, 0.0F, 5.0F, 12.0F), fvy.a(0.0F, 0.0F, 1.0F));
-      return fwc.a($$0, 64, 64);
+   public fry(ato $$0, Consumer<ato> $$1, Path $$2, xe $$3) {
+      super($$3);
+      this.y = new frx(this::D, this::a, $$0, $$1);
+      this.D = $$2;
+      this.z = fry.a.a($$2);
    }
 
    @Override
-   protected Iterable<fvw> a() {
-      return ImmutableList.of();
+   public void d() {
+      this.y.c();
+      this.C();
    }
 
-   @Override
-   protected Iterable<fvw> b() {
-      return ImmutableList.of(this.j);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a($$0, $$4, $$5);
-      if ($$0.gv()) {
-         this.b($$4);
-         this.a($$0);
-      } else {
-         boolean $$6 = $$2 > 1.0E-5F || $$0.dH() != $$0.P || $$0.dF() != $$0.O;
-         if ($$0.bh()) {
-            if ($$6) {
-               this.d($$3, $$5);
-            } else {
-               this.a($$3);
-            }
-
-            this.a($$0);
-         } else {
-            if ($$0.aE()) {
-               if ($$6) {
-                  this.c($$3, $$4);
-               } else {
-                  this.b($$3, $$4);
-               }
-            }
-
-            this.a($$0);
+   private void C() {
+      if (this.z != null) {
+         try {
+            this.z.close();
+            this.z = null;
+         } catch (Exception var2) {
          }
       }
    }
 
-   private void a(T $$0) {
-      Map<String, Vector3f> $$1 = $$0.a();
-      $$1.put("body", this.a(this.j));
-      $$1.put("head", this.a(this.k));
-      $$1.put("right_hind_leg", this.a(this.g));
-      $$1.put("left_hind_leg", this.a(this.f));
-      $$1.put("right_front_leg", this.a(this.i));
-      $$1.put("left_front_leg", this.a(this.h));
-      $$1.put("tail", this.a(this.b));
-      $$1.put("top_gills", this.a(this.l));
-      $$1.put("left_gills", this.a(this.m));
-      $$1.put("right_gills", this.a(this.n));
+   @Override
+   protected void aN_() {
+      fme $$0 = this.x.a(fme.d().a(5));
+      $$0.c().b();
+      $$0.a(new fju(this.n(), this.p));
+      $$0.a(new fju(s, this.p));
+      this.B = this.c(new frz(this.m, this, 200, this.o - 66, b));
+      this.C = this.c(new frz(this.m, this, 200, this.o - 66, c));
+      fme $$1 = this.x.b(fme.e().a(8));
+      $$1.a(fin.a(d, $$0x -> ad.j().a(this.D.toUri())).a(fjy.a(u)).a());
+      this.E = $$1.a(fin.a(xd.d, $$0x -> this.d()).a());
+      this.E();
+      this.x.a($$1x -> {
+         fil var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   private Vector3f a(fvw $$0) {
-      return new Vector3f($$0.e, $$0.f, $$0.g);
+   @Override
+   protected void c() {
+      this.x.a();
+      this.B.a(200, this.x);
+      this.B.m(this.n / 2 - 15 - 200);
+      this.C.a(200, this.x);
+      this.C.m(this.n / 2 + 15);
    }
 
-   private void a(fvw $$0, Vector3f $$1) {
-      $$0.b($$1.x(), $$1.y(), $$1.z());
-   }
+   @Override
+   public void e() {
+      if (this.z != null) {
+         try {
+            if (this.z.a()) {
+               this.A = 20L;
+            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.D);
+            this.C();
+         }
+      }
 
-   private void a(T $$0, float $$1, float $$2) {
-      this.j.b = 0.0F;
-      this.k.c = 0.0F;
-      this.j.c = 20.0F;
-      Map<String, Vector3f> $$3 = $$0.a();
-      if ($$3.isEmpty()) {
-         this.j.b($$2 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
-         this.k.b(0.0F, 0.0F, 0.0F);
-         this.f.b(0.0F, 0.0F, 0.0F);
-         this.g.b(0.0F, 0.0F, 0.0F);
-         this.h.b(0.0F, 0.0F, 0.0F);
-         this.i.b(0.0F, 0.0F, 0.0F);
-         this.m.b(0.0F, 0.0F, 0.0F);
-         this.n.b(0.0F, 0.0F, 0.0F);
-         this.l.b(0.0F, 0.0F, 0.0F);
-         this.b.b(0.0F, 0.0F, 0.0F);
-      } else {
-         this.a(this.j, $$3.get("body"));
-         this.a(this.k, $$3.get("head"));
-         this.a(this.f, $$3.get("left_hind_leg"));
-         this.a(this.g, $$3.get("right_hind_leg"));
-         this.a(this.h, $$3.get("left_front_leg"));
-         this.a(this.i, $$3.get("right_front_leg"));
-         this.a(this.m, $$3.get("left_gills"));
-         this.a(this.n, $$3.get("right_gills"));
-         this.a(this.l, $$3.get("top_gills"));
-         this.a(this.b, $$3.get("tail"));
+      if (this.A > 0L && --this.A == 0L) {
+         this.E();
       }
    }
 
-   private float a(float $$0, float $$1) {
-      return this.a(0.05F, $$0, $$1);
+   private void D() {
+      this.a(this.C, this.y.b());
+      this.a(this.B, this.y.a());
+      this.E.j = !this.C.aE_().isEmpty();
    }
 
-   private float a(float $$0, float $$1, float $$2) {
-      return ayd.j($$0, $$1, $$2);
+   private void a(frz $$0, Stream<frx.a> $$1) {
+      $$0.aE_().clear();
+      frz.a $$2 = $$0.h();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         frz.a $$3x = new frz.a(this.m, $$0, $$2x);
+         $$0.aE_().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
+         }
+      });
    }
 
-   private void a(fvw $$0, float $$1, float $$2, float $$3) {
-      $$0.b(this.a($$0.e, $$1), this.a($$0.f, $$2), this.a($$0.g, $$3));
+   public void a(frz $$0) {
+      frz $$1 = this.C == $$0 ? this.B : this.C;
+      this.a(fhx.a($$1.i(), $$1, this));
    }
 
-   private void b(float $$0, float $$1) {
-      float $$2 = $$0 * 0.09F;
-      float $$3 = ayd.a($$2);
-      float $$4 = ayd.b($$2);
-      float $$5 = $$3 * $$3 - 2.0F * $$3;
-      float $$6 = $$4 * $$4 - 3.0F * $$3;
-      this.k.e = this.a(this.k.e, -0.09F * $$5);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, -0.2F);
-      this.b.f = this.a(this.b.f, -0.1F + 0.1F * $$5);
-      this.l.e = this.a(this.l.e, 0.6F + 0.05F * $$6);
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 1.1F, 1.0F, 0.0F);
-      this.a(this.h, 0.8F, 2.3F, -0.5F);
-      this.d();
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   public void B() {
+      this.C.a(null);
+      this.B.a(null);
    }
 
-   private void c(float $$0, float $$1) {
-      float $$2 = $$0 * 0.11F;
-      float $$3 = ayd.b($$2);
-      float $$4 = ($$3 * $$3 - 2.0F * $$3) / 5.0F;
-      float $$5 = 0.7F * $$3;
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.09F * $$3);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, this.k.f);
-      this.l.e = this.a(this.l.e, 0.6F - 0.08F * ($$3 * $$3 + 2.0F * ayd.a($$2)));
-      this.m.f = this.a(this.m.f, -this.l.e);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, 0.9424779F, 1.5F - $$4, -0.1F);
-      this.a(this.h, 1.0995574F, (float) (Math.PI / 2) - $$5, 0.0F);
-      this.a(this.g, this.f.e, -1.0F - $$4, 0.0F);
-      this.a(this.i, this.h.e, (float) (-Math.PI / 2) - $$5, 0.0F);
-      this.j.e = this.a(0.2F, this.j.e, 0.0F);
-      this.j.f = this.a(this.j.f, $$1 * (float) (Math.PI / 180.0));
-      this.j.g = this.a(this.j.g, 0.0F);
+   private void E() {
+      this.y.d();
+      this.D();
+      this.A = 0L;
+      this.F.clear();
    }
 
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.075F;
-      float $$2 = ayd.b($$1);
-      float $$3 = ayd.a($$1) * 0.15F;
-      this.j.e = this.a(this.j.e, -0.15F + 0.075F * $$2);
-      this.j.c -= $$3;
-      this.k.e = this.a(this.k.e, -this.j.e);
-      this.l.e = this.a(this.l.e, 0.2F * $$2);
-      this.m.f = this.a(this.m.f, -0.3F * $$2 - 0.19F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.a(this.f, (float) (Math.PI * 3.0 / 4.0) - $$2 * 0.11F, 0.47123894F, 1.7278761F);
-      this.a(this.h, (float) (Math.PI / 4) - $$2 * 0.2F, 2.042035F, 0.0F);
-      this.d();
-      this.b.f = this.a(this.b.f, 0.5F * $$2);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   protected static void a(fgj $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  ad.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         fkv.c($$0, $$2.toString());
+      }
    }
 
-   private void d(float $$0, float $$1) {
-      float $$2 = $$0 * 0.33F;
-      float $$3 = ayd.a($$2);
-      float $$4 = ayd.b($$2);
-      float $$5 = 0.13F * $$3;
-      this.j.e = this.a(0.1F, this.j.e, $$1 * (float) (Math.PI / 180.0) + $$5);
-      this.k.e = -$$5 * 1.8F;
-      this.j.c -= 0.45F * $$4;
-      this.l.e = this.a(this.l.e, -0.5F * $$3 - 0.8F);
-      this.m.f = this.a(this.m.f, 0.3F * $$3 + 0.9F);
-      this.n.f = this.a(this.n.f, -this.m.f);
-      this.b.f = this.a(this.b.f, 0.3F * ayd.b($$2 * 0.9F));
-      this.a(this.f, 1.8849558F, -0.4F * $$3, (float) (Math.PI / 2));
-      this.a(this.h, 1.8849558F, -0.2F * $$4 - 0.1F, (float) (Math.PI / 2));
-      this.d();
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
+   @Override
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.m.a(new fne($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            atn<Path> $$4 = new atn<Path>(this.m.bf()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<ewl> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.m.a(fob.b(() -> this.m.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.m, $$2, this.D);
+               this.E();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.m.a(new fmy(() -> this.m.a(this), xe.c("pack.dropRejected.title"), xe.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.m.a(this);
+      }, xe.c("pack.dropConfirm"), xe.b($$1)));
    }
 
-   private void b(float $$0) {
-      this.a(this.f, 1.4137167F, 1.0995574F, (float) (Math.PI / 4));
-      this.a(this.h, (float) (Math.PI / 4), 2.042035F, 0.0F);
-      this.j.e = this.a(this.j.e, -0.15F);
-      this.j.g = this.a(this.j.g, 0.35F);
-      this.d();
-      this.j.f = this.a(this.j.f, $$0 * (float) (Math.PI / 180.0));
-      this.k.e = this.a(this.k.e, 0.0F);
-      this.k.f = this.a(this.k.f, 0.0F);
-      this.k.g = this.a(this.k.g, 0.0F);
-      this.b.f = this.a(this.b.f, 0.0F);
-      this.a(this.l, 0.0F, 0.0F, 0.0F);
-      this.a(this.m, 0.0F, 0.0F, 0.0F);
-      this.a(this.n, 0.0F, 0.0F, 0.0F);
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
    }
 
-   private void d() {
-      this.a(this.g, this.f.e, -this.f.f, -this.f.g);
-      this.a(this.i, this.h.e, -this.h.f, -this.h.g);
+   private akt a(gqz $$0, atl $$1) {
+      try {
+         akt var9;
+         try (asp $$2 = $$1.f()) {
+            atv<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return w;
+            }
+
+            String $$4 = $$1.g();
+            akt $$5 = new akt("minecraft", "pack/" + ad.a($$4, akt::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
+
+            try (InputStream $$6 = $$3.get()) {
+               fad $$7 = fad.a($$6);
+               $$0.a($$5, new gql($$7));
+               var9 = $$5;
+            }
+         }
+
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.g(), var14);
+         return w;
+      }
+   }
+
+   private akt a(atl $$0) {
+      return this.F.computeIfAbsent($$0.g(), $$1 -> this.a(this.m.aa(), $$0));
+   }
+
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
+
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
+
+         try {
+            this.b($$0);
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
+      }
+
+      @Nullable
+      public static fry.a a(Path $$0) {
+         try {
+            return new fry.a($$0);
+         } catch (IOException var2) {
+            fry.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
+      }
+
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+      }
+
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.a.close();
+      }
    }
 }

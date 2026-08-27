@@ -1,108 +1,52 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class edy extends edz {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<edy> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(edx.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, edy::new)
-   );
-   private final edx h;
-
-   public edy(boz $$0, eec $$1, Optional<edw> $$2, edx $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+public class edy extends edv {
+   public edy(Codec<efj> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, io $$3, io $$4, ecx $$5) {
-      List<io> $$6 = Lists.newArrayList();
-      io.a $$7 = $$3.j();
+   protected Set<ir> a(dcv $$0, efj $$1, ayt $$2, ir $$3, Predicate<dtc> $$4, int $$5, int $$6) {
+      Set<ir> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<ir> $$8 = new HashSet<>();
+      ir.a $$9 = new ir.a();
 
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
+      for (ir $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
          }
-
-         $$7.c(it.b);
       }
 
-      $$6.add($$4.d());
-
-      for (it $$8 : it.c.a) {
-         io $$9 = $$4.a($$8);
-         List<io> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
+      for (ir $$11 : $$8) {
+         $$0.a($$11, dfe.al.n(), 2);
       }
 
-      for (io $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+      return $$8;
    }
 
-   private boolean a(dbd $$0, ayk $$1, io $$2, it $$3, io $$4, List<io> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (io $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
+   private static boolean a(dcv $$0, Set<ir> $$1, ir $$2, ir.a $$3) {
+      return a($$0, $$2, $$3, iw.c) || a($$0, $$2, $$3, iw.f) || a($$0, $$2, $$3, iw.d) || a($$0, $$2, $$3, iw.e) || a($$0, $$2, $$3, iw.a);
+   }
+
+   private static boolean a(dcv $$0, ir $$1, ir.a $$2, iw $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dcv $$0, efj $$1, duz $$2, ayt $$3, ir $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dtc $$5 = $$0.a_($$4);
+         if ($$5.b(dts.C) && !$$5.c(dts.C)) {
+            $$0.a($$4, $$5.a(dts.C, Boolean.valueOf(true)), 2);
          }
 
          return true;
       } else {
          return false;
       }
-   }
-
-   protected List<io> a(io $$0, it $$1, ayk $$2, io $$3) {
-      io $$4 = $$0.d();
-      io $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.d()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
-   }
-
-   @Override
-   protected boolean a(dbd $$0, io $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(dbd $$0, BiConsumer<io, drb> $$1, ayk $$2, io $$3, ecx $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         drb $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected eea<?> a() {
-      return eea.a;
    }
 }

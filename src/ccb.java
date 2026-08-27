@@ -1,50 +1,43 @@
-import javax.annotation.Nullable;
-
 public class ccb extends cbz {
-   @Nullable
-   private io p;
+   private boolean p;
 
-   public ccb(bsq $$0, dax $$1) {
+   public ccb(bsq $$0, dca $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public eni a(io $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   protected epu a(int $$0) {
+      this.p = this.a.ak() == bsb.A;
+      this.o = new epy(this.p);
+      return new epu(this.o, $$0);
    }
 
    @Override
-   public eni a(bru $$0, int $$1) {
-      this.p = $$0.dp();
-      return super.a($$0, $$1);
+   protected boolean a() {
+      return this.p || this.a.bm();
    }
 
    @Override
-   public boolean a(bru $$0, double $$1) {
-      eni $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dp();
-         this.d = $$1;
-         return true;
-      }
+   protected ewu b() {
+      return new ewu(this.a.dz(), this.a.e(0.5), this.a.dF());
    }
 
    @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dn(), (double)this.a.dj())
-               && (!(this.a.dw() > (double)this.p.v()) || !io.a((double)this.p.u(), this.a.dw(), (double)this.p.w()).a(this.a.dn(), (double)this.a.dj()))) {
-               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   protected double a(ewu $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(ewu $$0, ewu $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ir $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

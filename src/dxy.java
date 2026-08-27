@@ -1,25 +1,34 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-
-class dxy extends dyc {
-   public static final MapCodec<dxy> a = a(dxy::new);
-
-   public dxy(List<dya> $$0) {
-      super($$0);
-   }
-
-   public boolean a(dbs $$0, io $$1) {
-      for (dya $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
+public interface dxy {
+   dxy a = new dxy() {
+      @Override
+      public boolean a() {
+         return true;
       }
 
-      return true;
-   }
+      @Override
+      public void a(dxx $$0) {
+      }
 
-   @Override
-   public dyb<?> a() {
-      return dyb.j;
+      @Override
+      public void b(dxx $$0) {
+      }
+
+      @Override
+      public boolean a(ja<dxv> $$0, ewu $$1, dxv.a $$2, dxy.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dxx var1);
+
+   void b(dxx var1);
+
+   boolean a(ja<dxv> var1, ewu var2, dxv.a var3, dxy.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dxx var1, ewu var2);
    }
 }

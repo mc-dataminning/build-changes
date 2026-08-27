@@ -1,63 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class az extends df<az.a> {
+public class az extends dh<az.a> {
    @Override
    public Codec<az.a> a() {
       return az.a.a;
    }
 
-   public void a(aqn $$0, Collection<? extends bru> $$1) {
-      List<epf> $$2 = $$1.stream().map($$1x -> br.b($$0, $$1x)).collect(Collectors.toList());
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(aqu $$0, aks<dca> $$1, aks<dca> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bc> b, List<bc> c) implements df.a {
+   public static record a(Optional<bd> b, Optional<aks<dca>> c, Optional<aks<dca>> d) implements dh.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(br.b.optionalFieldOf("player").forGetter(az.a::a), br.b.listOf().optionalFieldOf("victims", List.of()).forGetter(az.a::b))
+         $$0 -> $$0.group(
+                  axu.a(bs.b, "player").forGetter(az.a::a), axu.a(aks.a(li.aS), "from").forGetter(az.a::c), axu.a(aks.a(li.aS), "to").forGetter(az.a::d)
+               )
                .apply($$0, az.a::new)
       );
 
-      public static an<az.a> a(br.a... $$0) {
-         return am.F.a(new az.a(Optional.empty(), br.a($$0)));
+      public static ao<az.a> b() {
+         return an.w.a(new az.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(Collection<? extends epf> $$0) {
-         for (bc $$1 : this.c) {
-            boolean $$2 = false;
+      public static ao<az.a> a(aks<dca> $$0, aks<dca> $$1) {
+         return an.w.a(new az.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
+      }
 
-            for (epf $$3 : $$0) {
-               if ($$1.a($$3)) {
-                  $$2 = true;
-                  break;
-               }
-            }
+      public static ao<az.a> a(aks<dca> $$0) {
+         return an.w.a(new az.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
 
-            if (!$$2) {
-               return false;
-            }
-         }
+      public static ao<az.a> b(aks<dca> $$0) {
+         return an.w.a(new az.a(Optional.empty(), Optional.of($$0), Optional.empty()));
+      }
 
-         return true;
+      public boolean b(aks<dca> $$0, aks<dca> $$1) {
+         return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 
       @Override
-      public void a(bd $$0) {
-         df.a.super.a($$0);
-         $$0.a(this.c, ".victims");
-      }
-
-      @Override
-      public Optional<bc> a() {
+      public Optional<bd> a() {
          return this.b;
-      }
-
-      public List<bc> b() {
-         return this.c;
       }
    }
 }

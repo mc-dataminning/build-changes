@@ -1,94 +1,188 @@
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fnf extends fmw<coz> {
-   private static final akm D = new akm("container/cartography_table/error");
-   private static final akm E = new akm("container/cartography_table/scaled_map");
-   private static final akm F = new akm("container/cartography_table/duplicated_map");
-   private static final akm G = new akm("container/cartography_table/map");
-   private static final akm H = new akm("container/cartography_table/locked");
-   private static final akm I = new akm("textures/gui/container/cartography_table.png");
+public class fnf extends fon {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long r = 2000L;
+   public static final xe a = xe.c("connect.aborted");
+   public static final xe b = xe.a("disconnect.genericReason", xe.c("disconnect.unknownHost"));
+   @Nullable
+   volatile wc s;
+   @Nullable
+   ChannelFuture u;
+   volatile boolean v;
+   final fon w;
+   private xe x = xe.c("connect.connecting");
+   private long y = -1L;
+   final xe z;
 
-   public fnf(coz $$0, clv $$1, wx $$2) {
-      super($$0, $$1, $$2);
-      this.s -= 2;
+   private fnf(fon $$0, xe $$1) {
+      super(fgb.a);
+      this.w = $$0;
+      this.z = $$1;
    }
 
-   @Override
-   public void a(ffm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public static void a(fon $$0, fgj $$1, gbe $$2, gab $$3, boolean $$4, @Nullable gaf $$5) {
+      if ($$1.y instanceof fnf) {
+         d.error("Attempt to connect while already connecting");
+      } else {
+         xe $$6;
+         if ($$5 != null) {
+            $$6 = xd.q;
+         } else if ($$4) {
+            $$6 = gep.a;
+         } else {
+            $$6 = xd.r;
+         }
+
+         fnf $$9 = new fnf($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(xe.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aU();
+         $$1.a(gas.a($$3.b));
+         $$1.bd().a(geq.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
    }
 
-   @Override
-   protected void a(ffm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      $$0.a(I, $$4, $$5, 0, 0, this.c, this.d);
-      cto $$6 = this.w.b(1).g();
-      boolean $$7 = $$6.a(ctr.uj);
-      boolean $$8 = $$6.a(ctr.qO);
-      boolean $$9 = $$6.a(ctr.fT);
-      cto $$10 = this.w.b(0).g();
-      eoh $$11 = $$10.a(kb.A);
-      boolean $$12 = false;
-      eoj $$13;
-      if ($$11 != null) {
-         $$13 = ctw.a($$11, this.m.r);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+   private void a(final fgj $$0, final gbe $$1, final gab $$2, @Nullable final gaf $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fnf.this.v) {
+                  return;
                }
-            }
 
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(D, $$4 + 35, $$5 + 31, 28, 21);
+               Optional<InetSocketAddress> $$1 = gbg.a.a($$1).map(gbd::d);
+               if (fnf.this.v) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fnn(fnf.this.w, fnf.this.z, fnf.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               wc $$2;
+               synchronized (fnf.this) {
+                  if (fnf.this.v) {
+                     return;
+                  }
+
+                  $$2 = new wc(zm.b);
+                  $$2.a($$0.aQ().n());
+                  fnf.this.u = wc.a($$0, $$0.m.az(), $$2);
+               }
+
+               fnf.this.u.syncUninterruptibly();
+               synchronized (fnf.this) {
+                  if (fnf.this.v) {
+                     $$2.a(fnf.a);
+                     return;
+                  }
+
+                  fnf.this.s = $$2;
+                  $$0.ae().a($$2, a($$2.b()));
+               }
+
+               fnf.this.s
+                  .a($$0.getHostName(), $$0.getPort(), aix.a, aix.b, new fzm(fnf.this.s, $$0, $$2, fnf.this.w, false, null, fnf.this::a, $$3), $$3 != null);
+               fnf.this.s.a(new aja($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fnf.this.v) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fnf.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fnn(fnf.this.w, fnf.this.z, xe.a("disconnect.genericReason", $$8))));
             }
          }
-      } else {
-         $$13 = null;
-      }
 
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+         private static gts.c a(gab.a $$0x) {
+            return switch ($$0) {
+               case a -> gts.c.b;
+               case b -> gts.c.c;
+               case c -> gts.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
    }
 
-   private void a(ffm $$0, @Nullable eoh $$1, @Nullable eoj $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.z;
-      int $$8 = this.A;
-      if ($$4 && !$$6) {
-         $$0.a(E, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(F, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(F, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(H, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(G, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+   private void a(xe $$0) {
+      this.x = $$0;
+   }
+
+   @Override
+   public void e() {
+      if (this.s != null) {
+         if (this.s.i()) {
+            this.s.b();
+         } else {
+            this.s.n();
+         }
       }
    }
 
-   private void a(ffm $$0, @Nullable eoh $$1, @Nullable eoj $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         this.m.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
-         $$0.e();
-         $$0.c().b();
+   @Override
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected void aN_() {
+      this.c(fin.a(xd.e, $$0 -> {
+         synchronized (this) {
+            this.v = true;
+            if (this.u != null) {
+               this.u.cancel(true);
+               this.u = null;
+            }
+
+            if (this.s != null) {
+               this.s.a(a);
+            }
+         }
+
+         this.m.a(this.w);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   }
+
+   @Override
+   public void a(fia $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ad.b();
+      if ($$4 - this.y > 2000L) {
+         this.y = $$4;
+         this.m.aZ().c(xe.c("narrator.joining"));
       }
+
+      $$0.a(this.p, this.x, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }
