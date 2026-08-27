@@ -164,27 +164,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "5d6f13aed7cf733fed301cc01aedcc7f1488d2e2",
-      "size": 28984335,
-      "url": "https://piston-data.mojang.com/v1/objects/5d6f13aed7cf733fed301cc01aedcc7f1488d2e2/client.jar"
+      "sha1": "bbb50717bcd6373ad78ad5df4b16e60761d25881",
+      "size": 28984607,
+      "url": "https://piston-data.mojang.com/v1/objects/bbb50717bcd6373ad78ad5df4b16e60761d25881/client.jar"
     },
     "client_mappings": {
-      "sha1": "132fe3f2aa63b0ee2f158cfbec7276218ce4affd",
+      "sha1": "b0176c39099bef3241e1cc7c45b3a42ba6118b28",
       "size": 10670987,
-      "url": "https://piston-data.mojang.com/v1/objects/132fe3f2aa63b0ee2f158cfbec7276218ce4affd/client.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/b0176c39099bef3241e1cc7c45b3a42ba6118b28/client.txt"
     },
     "server": {
-      "sha1": "6e5564e9b1a0a45d3cb028d5af591cd30e53b404",
-      "size": 57270715,
-      "url": "https://piston-data.mojang.com/v1/objects/6e5564e9b1a0a45d3cb028d5af591cd30e53b404/server.jar"
+      "sha1": "82b8d395a4984987224b97c7df08ced03f78bdff",
+      "size": 57268666,
+      "url": "https://piston-data.mojang.com/v1/objects/82b8d395a4984987224b97c7df08ced03f78bdff/server.jar"
     },
     "server_mappings": {
-      "sha1": "98b3204950e85ebe385b41eae4d7ef88c9e91ff8",
+      "sha1": "0759ea91fce0c7d83a363a425d175c2324af8ae6",
       "size": 8027211,
-      "url": "https://piston-data.mojang.com/v1/objects/98b3204950e85ebe385b41eae4d7ef88c9e91ff8/server.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/0759ea91fce0c7d83a363a425d175c2324af8ae6/server.txt"
     }
   },
-  "id": "1.21.5-rc1",
+  "id": "1.21.5-rc2",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -1880,7 +1880,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-03-20T13:45:48+00:00",
-  "time": "2025-03-20T13:45:48+00:00",
+  "releaseTime": "2025-03-24T13:07:03+00:00",
+  "time": "2025-03-24T13:07:03+00:00",
   "type": "snapshot"
 }
