@@ -154,37 +154,37 @@
     ]
   },
   "assetIndex": {
-    "id": "16",
-    "sha1": "0f490f0618b9426f51f7f0d21b9d6818a6c9647d",
-    "size": 446564,
-    "totalSize": 656884650,
-    "url": "https://piston-meta.mojang.com/v1/packages/0f490f0618b9426f51f7f0d21b9d6818a6c9647d/16.json"
+    "id": "17",
+    "sha1": "1f22f8f4b4575831ce8d1d74b5656eb1bc04732c",
+    "size": 449557,
+    "totalSize": 824474118,
+    "url": "https://piston-meta.mojang.com/v1/packages/1f22f8f4b4575831ce8d1d74b5656eb1bc04732c/17.json"
   },
-  "assets": "16",
+  "assets": "17",
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "05b6f1c6b46a29d6ea82b4e0d42190e42402030f",
-      "size": 26565641,
-      "url": "https://piston-data.mojang.com/v1/objects/05b6f1c6b46a29d6ea82b4e0d42190e42402030f/client.jar"
+      "sha1": "96a3d9cf921ac4e9f804b59562b27d2635e3b3e6",
+      "size": 26742016,
+      "url": "https://piston-data.mojang.com/v1/objects/96a3d9cf921ac4e9f804b59562b27d2635e3b3e6/client.jar"
     },
     "client_mappings": {
-      "sha1": "de46c8f33d7826eb83e8ef0e9f80dc1f08cb9498",
-      "size": 9422442,
-      "url": "https://piston-data.mojang.com/v1/objects/de46c8f33d7826eb83e8ef0e9f80dc1f08cb9498/client.txt"
+      "sha1": "b257021b6b34731ca9d3a40035509d6c976400e4",
+      "size": 9519933,
+      "url": "https://piston-data.mojang.com/v1/objects/b257021b6b34731ca9d3a40035509d6c976400e4/client.txt"
     },
     "server": {
-      "sha1": "145ff0858209bcfc164859ba735d4199aafa1eea",
-      "size": 51420480,
-      "url": "https://piston-data.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar"
+      "sha1": "22618c686c86be630601e5d9fcf581674105c899",
+      "size": 51533893,
+      "url": "https://piston-data.mojang.com/v1/objects/22618c686c86be630601e5d9fcf581674105c899/server.jar"
     },
     "server_mappings": {
-      "sha1": "9e96100f573a46ef44caab3e716d5eb974594bb7",
-      "size": 7283803,
-      "url": "https://piston-data.mojang.com/v1/objects/9e96100f573a46ef44caab3e716d5eb974594bb7/server.txt"
+      "sha1": "0469fa703be270956360ee9a9d08f4473a939d7b",
+      "size": 7381841,
+      "url": "https://piston-data.mojang.com/v1/objects/0469fa703be270956360ee9a9d08f4473a939d7b/server.txt"
     }
   },
-  "id": "1.20.6",
+  "id": "24w18a",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -300,13 +300,13 @@
     {
       "downloads": {
         "artifact": {
-          "path": "com/mojang/datafixerupper/7.0.14/datafixerupper-7.0.14.jar",
-          "sha1": "db3485dc1e6b712bd81170d5ce6dca2fb2f8bd86",
-          "size": 722976,
-          "url": "https://libraries.minecraft.net/com/mojang/datafixerupper/7.0.14/datafixerupper-7.0.14.jar"
+          "path": "com/mojang/datafixerupper/7.1.15/datafixerupper-7.1.15.jar",
+          "sha1": "3ce3fd9d21c7c5421d1c6ad7c9f92ac06d4e5503",
+          "size": 723249,
+          "url": "https://libraries.minecraft.net/com/mojang/datafixerupper/7.1.15/datafixerupper-7.1.15.jar"
         }
       },
-      "name": "com.mojang:datafixerupper:7.0.14"
+      "name": "com.mojang:datafixerupper:7.1.15"
     },
     {
       "downloads": {
@@ -1680,7 +1680,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2024-04-29T12:40:45+00:00",
-  "time": "2024-04-29T12:40:45+00:00",
-  "type": "release"
+  "releaseTime": "2024-05-03T12:08:27+00:00",
+  "time": "2024-05-03T12:08:27+00:00",
+  "type": "snapshot"
 }
