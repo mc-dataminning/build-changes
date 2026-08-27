@@ -5,7 +5,7 @@ import java.nio.file.Path;
 
 public interface kd {
    kd a = ($$0, $$1, $$2) -> {
-      Files.createDirectories($$0.getParent());
+      v.c($$0.getParent());
       Files.write($$0, $$1);
    };
 

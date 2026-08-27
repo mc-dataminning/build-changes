@@ -442,7 +442,7 @@ public class rp {
          return 1;
       } else {
          try {
-            Files.createDirectories($$5.getParent());
+            v.c($$5.getParent());
          } catch (IOException var7) {
             b($$0, "Could not create folder " + $$5.getParent());
             a.error("Could not create export folder", var7);

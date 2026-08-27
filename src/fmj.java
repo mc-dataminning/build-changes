@@ -37,7 +37,7 @@ public record fmj(String a, @Nullable fmj.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("23w43a");
+      $$0.append("23w43b");
       if (etd.e().a()) {
          $$0.append(" (modded)");
       }

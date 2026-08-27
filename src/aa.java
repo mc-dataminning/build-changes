@@ -10,15 +10,15 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3686;
+   public static final int b = 3687;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "23w43a";
+   public static final String d = "23w43b";
    @Deprecated
    public static final int e = 765;
    @Deprecated
-   public static final int f = 159;
+   public static final int f = 160;
    public static final int g = 3678;
    private static final int bj = 30;
    public static final boolean h = true;
@@ -178,7 +178,7 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741983;
+      return 1073741984;
    }
 
    public static boolean a(crh $$0) {

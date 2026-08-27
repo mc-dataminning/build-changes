@@ -166,11 +166,10 @@ public class eqm extends ghr {
 
    @Override
    public void aF_() {
+      this.f.a(this.H);
       if (this.T) {
          this.H.g();
       }
-
-      this.f.a(this.H);
    }
 
    private void a(long $$0) {
