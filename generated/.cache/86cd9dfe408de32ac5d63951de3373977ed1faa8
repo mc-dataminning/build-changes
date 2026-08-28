@@ -1,4 +1,4 @@
-// 24w19a	2026-08-28T02:28:06.1406728	vanilla/Tags for minecraft:block
+// 24w19b	2026-08-28T02:30:03.8835265	vanilla/Tags for minecraft:block
 1b34690c952fb0cae947d85b752e19a7a83a453b data\minecraft\tags\block\oak_logs.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data\minecraft\tags\block\emerald_ores.json
 3c79ca784535e4edb6ad3bf6da109ba0a651018b data\minecraft\tags\block\walls.json
@@ -141,8 +141,8 @@ fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\block\wool.json
 51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\block\sword_efficient.json
 b5b3e2fe97bef01741a9b3e3b0aeb5aaac962f4b data\minecraft\tags\block\mineable\pickaxe.json
 11fe8bc74aee9eac795481b12cf9d92e57ce4b78 data\minecraft\tags\block\incorrect_for_gold_tool.json
-b7d959a4eef7bbd9e6ce12e26764c3931088f42c data\minecraft\tags\block\wooden_buttons.json
 f8376cab397acf16d638e5a8595dc07d123925c5 data\minecraft\tags\block\planks.json
+b7d959a4eef7bbd9e6ce12e26764c3931088f42c data\minecraft\tags\block\wooden_buttons.json
 dcfcde0b3716705215c339c3ed7bb1fe6da2cdb2 data\minecraft\tags\block\vibration_resonators.json
 e395b02c1ea8040c23269be0d37b137cbe42f27d data\minecraft\tags\block\dead_bush_may_place_on.json
 af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\block\dirt.json
@@ -158,8 +158,8 @@ e6ec9c5c82db2c7ca6c3a9f643df2dac9f4967db data\minecraft\tags\block\slabs.json
 e2feff85afb7e4871204d6f5d72b8760e2780187 data\minecraft\tags\block\shulker_boxes.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\block\diamond_ores.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\incorrect_for_netherite_tool.json
-3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data\minecraft\tags\block\spruce_logs.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\block\jungle_logs.json
+3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data\minecraft\tags\block\spruce_logs.json
 e85d473045cf55c6f706798af73a74b69875c186 data\minecraft\tags\block\smelts_to_glass.json
 f8f437f299af14e5c9c0453089d4e03d42015d2e data\minecraft\tags\block\terracotta.json
 1b50a67efc31f461ce0bca94ec806cbf528412db data\minecraft\tags\block\coal_ores.json

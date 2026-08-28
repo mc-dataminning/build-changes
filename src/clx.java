@@ -259,8 +259,10 @@ public class clx extends cls implements btq, clz {
    }
 
    private void gL() {
-      for (dbd $$0 : this.gq()) {
-         $$0.n();
+      if (!this.dQ().x_()) {
+         for (dbd $$0 : this.gq()) {
+            $$0.n();
+         }
       }
    }
 

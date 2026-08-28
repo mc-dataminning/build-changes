@@ -1,4 +1,4 @@
-// 24w19a	2026-08-28T02:28:06.1263996	vanilla/Tags for minecraft:item
+// 24w19b	2026-08-28T02:30:03.868209	vanilla/Tags for minecraft:item
 42391f34e30718f153c7725335e30a59aae6c473 data\minecraft\tags\item\leg_armor.json
 ec2899376b25012fc2e4564e53e9079392925e8f data\minecraft\tags\item\enchantable\equippable.json
 f8fefc25b1df4fbf75b2f1db5237ce04d2d50cc1 data\minecraft\tags\item\parrot_food.json
@@ -36,8 +36,8 @@ e6756cdd6fb03cf772eba210ae3f93335e83dcd6 data\minecraft\tags\item\enchantable\sw
 cefc090b8dcff422ad66b2068860ce1910cbc9b2 data\minecraft\tags\item\boats.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\item\wooden_fences.json
 3c647a6853d5b268c6fdda9851a909e7258858ae data\minecraft\tags\item\freeze_immune_wearables.json
-04346ff78e5919b94c527de4177239c2e0be5212 data\minecraft\tags\item\llama_food.json
 75df44deafb1f627b674575d499833e104a43f2b data\minecraft\tags\item\piglin_food.json
+04346ff78e5919b94c527de4177239c2e0be5212 data\minecraft\tags\item\llama_food.json
 4ab2fe5a762b59023e074a73499c0195dc4fb1c4 data\minecraft\tags\item\trimmable_armor.json
 a6c8bad401aae8576742844c87f1b8717cf253b7 data\minecraft\tags\item\noteblock_top_instruments.json
 53c528d880bafa4b87443f610db9f1ad05996ce6 data\minecraft\tags\item\banners.json
@@ -91,8 +91,8 @@ a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\item\jungle_logs.js
 a62188adba8d65fe5971b95f4c552a1072086c31 data\minecraft\tags\item\parrot_poisonous_food.json
 ddddcd9ef8cd706876a4c5b9fb1bb011516a430c data\minecraft\tags\item\enchantable\sharp_weapon.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data\minecraft\tags\item\emerald_ores.json
-2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data\minecraft\tags\item\rails.json
 090e10929cf921bcfe7ca9e263679610ff359335 data\minecraft\tags\item\wart_blocks.json
+2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data\minecraft\tags\item\rails.json
 6f62a3e03de3843da6fc2f7b46bfdd5d1f4fd02d data\minecraft\tags\item\compasses.json
 642497f10f9b4cd17f0596ccd068a662779a5143 data\minecraft\tags\item\logs_that_burn.json
 30cba093322f9f2391402da95a9ae4b07afeea00 data\minecraft\tags\item\stone_crafting_materials.json

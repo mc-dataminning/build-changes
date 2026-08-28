@@ -37,7 +37,7 @@ public record fzp(String a, @Nullable fzp.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w19a");
+      $$0.append("24w19b");
       if (fft.e().a()) {
          $$0.append(" (modded)");
       }
