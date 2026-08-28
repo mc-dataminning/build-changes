@@ -1,36 +1,37 @@
-public record aeq(ago e, byte f) implements zj<aby> {
-   public static final za<wn, aeq> a = zj.a(aeq::a, aeq::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+public class aeq implements zo<acf> {
+   public static final ze<vy, aeq> a = zo.a(aeq::a, aeq::new);
+   private final int b;
+   private final double c;
 
-   private aeq(wn $$0) {
-      this(new ago($$0), $$0.readByte());
+   public aeq(int $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wn $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   private aeq(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zl<aeq> a() {
-      return agr.ap;
+   public zq<aeq> a() {
+      return agy.bj;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public int b() {
+      return this.b;
    }
 
-   public ago b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public double e() {
+      return this.c;
    }
 }

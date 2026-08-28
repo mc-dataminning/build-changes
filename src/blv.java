@@ -1,17 +1,17 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blv extends bky {
+public class blv extends blh {
    public blv(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:command_block", () -> DSL.optionalFields("CustomName", bjd.z.in($$0), "LastOutput", bjd.z.in($$0)));
+      $$1.remove("minecraft:flower_pot");
+      $$1.remove("minecraft:noteblock");
       return $$1;
    }
 }

@@ -1,28 +1,34 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class fdw implements fds {
-   private static final fdw b = new fdw();
-   public static final MapCodec<fdw> a = MapCodec.unit(b);
+public record fdw(boolean b) implements fec {
+   public static final MapCodec<fdw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(fdw::e)).apply($$0, fdw::new));
 
-   private fdw() {
+   public boolean a(fat $$0) {
+      return $$0.b(fdn.l) == this.b;
    }
 
    @Override
-   public fdt b() {
-      return fdu.g;
+   public fed b() {
+      return fee.s;
    }
 
    @Override
-   public Set<bbb<?>> a() {
-      return Set.of(fdd.b);
+   public Set<bbk<?>> a() {
+      return Set.of(fdn.l);
    }
 
-   public boolean a(faj $$0) {
-      return $$0.a(fdd.b);
+   public static fec.a c() {
+      return () -> new fdw(true);
    }
 
-   public static fds.a c() {
-      return () -> b;
+   public static fec.a d() {
+      return () -> new fdw(false);
+   }
+
+   public boolean e() {
+      return this.b;
    }
 }

@@ -1,103 +1,94 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cga extends ces {
-   private static final cil c = cil.b().d();
-   private final cil d;
-   protected final bye a;
-   private final double e;
-   private double f;
-   private double g;
-   private double h;
-   private double i;
-   private double j;
+public class cga extends cfb {
+   private final byh a;
+   private final cpo b;
    @Nullable
-   protected crz b;
-   private int k;
-   private boolean l;
-   private final Predicate<daa> m;
-   private final boolean n;
+   private byf c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public cga(bye $$0, double $$1, Predicate<daa> $$2, boolean $$3) {
-      this.a = $$0;
-      this.e = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.a(EnumSet.of(ces.a.a, ces.a.b));
-      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
+   public cga(cpo $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public cga(cpo $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof byf)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (byh)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(cfb.a.a, cfb.a.b));
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.k > 0) {
-         this.k--;
-         return false;
+      byf $$0 = this.a.f();
+      if ($$0 != null && $$0.bJ()) {
+         this.c = $$0;
+         return true;
       } else {
-         this.b = a(this.a).a(this.d.a(this.a.h(bzc.E)), this.a);
-         return this.b != null;
+         return false;
       }
-   }
-
-   private boolean a(bxw $$0) {
-      return this.m.test($$0.fb()) || this.m.test($$0.fc());
    }
 
    @Override
    public boolean c() {
-      if (this.h()) {
-         if (this.a.g(this.b) < 36.0) {
-            if (this.b.h(this.f, this.g, this.h) > 0.010000000000000002) {
-               return false;
-            }
-
-            if (Math.abs((double)this.b.dN() - this.i) > 5.0 || Math.abs((double)this.b.dL() - this.j) > 5.0) {
-               return false;
-            }
-         } else {
-            this.f = this.b.dA();
-            this.g = this.b.dC();
-            this.h = this.b.dG();
-         }
-
-         this.i = (double)this.b.dN();
-         this.j = (double)this.b.dL();
-      }
-
-      return this.b();
-   }
-
-   protected boolean h() {
-      return this.n;
-   }
-
-   @Override
-   public void d() {
-      this.f = this.b.dA();
-      this.g = this.b.dC();
-      this.h = this.b.dG();
-      this.l = true;
+      return this.b() || this.c.bJ() && !this.a.O().k();
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.a.O().m();
-      this.k = b(100);
-      this.l = false;
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
+   }
+
+   @Override
+   public boolean W_() {
+      return true;
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.b, (float)(this.a.af() + 20), (float)this.a.ad());
-      if (this.a.g(this.b) < 6.25) {
+      double $$0 = this.a.h(this.c.dA(), this.c.dC(), this.c.dG());
+      boolean $$1 = this.a.P().a(this.c);
+      if ($$1) {
+         this.f++;
+      } else {
+         this.f = 0;
+      }
+
+      if (!($$0 > (double)this.j) && this.f >= 5) {
          this.a.O().m();
       } else {
-         this.a.O().a(this.b, this.e);
+         this.a.O().a(this.c, this.e);
       }
-   }
 
-   public boolean i() {
-      return this.l;
+      this.a.J().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
+         }
+
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = azz.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = azz.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = azz.a(azz.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
+      }
    }
 }

@@ -1,11 +1,21 @@
-public class hfh extends hes {
-   public cme a;
-   public clz h;
-   public daa i;
+import javax.annotation.Nullable;
 
-   public hfh() {
-      this.a = cme.a;
-      this.h = clz.a;
-      this.i = daa.k;
-   }
+public class hfh extends hec {
+   public float a;
+   public float b;
+   public long c;
+   public int d;
+   public float e;
+   public float f;
+   public int g;
+   public ebq h = dnq.a.m();
+   public boolean i;
+   @Nullable
+   public fgc j;
+   @Nullable
+   public fgc k;
+   @Nullable
+   public fgc l;
+   @Nullable
+   public fgc m;
 }

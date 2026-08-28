@@ -1,159 +1,290 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import java.util.stream.IntStream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class ewq implements egy.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<ewq> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, ewq::a)
-   );
-   public static final azj<ewq> a = azj.a(f);
-   private final ewu g;
-   private final ewu h;
-   private final ewu i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
+public class ewq {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "structure";
+   private static final String c = "structures";
+   private static final String d = ".nbt";
+   private static final String e = ".snbt";
+   private final Map<alr, Optional<ewp>> f = Maps.newConcurrentMap();
+   private final DataFixer g;
+   private avo h;
+   private final Path i;
+   private final List<ewq.b> j;
+   private final jh<dno> k;
+   private static final alk l = new alk("structure", ".nbt");
 
-   public static ewq a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new ewq(new eig(0L), $$0, $$1, $$2, $$3, $$4);
-   }
-
-   private ewq(ewu $$0, ewu $$1, ewu $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
-   }
-
-   @VisibleForTesting
-   public ewq(azz $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         ewu.a($$0, IntStream.rangeClosed(-15, 0)),
-         ewu.a($$0, IntStream.rangeClosed(-15, 0)),
-         ewu.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
-   }
-
-   public ewq a(azz $$0) {
-      return new ewq($$0, this.p, this.q, this.l, this.m, this.n);
-   }
-
-   @Override
-   public double a(egy.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
-
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         ewr $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(ewu.b($$4 * $$13), ewu.b($$5 * $$13), ewu.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
-         }
-
-         $$13 /= 2.0;
+   public ewq(avo $$0, fah.c $$1, DataFixer $$2, jh<dno> $$3) {
+      this.h = $$0;
+      this.g = $$2;
+      this.i = $$1.a(faf.i).normalize();
+      this.k = $$3;
+      Builder<ewq.b> $$4 = ImmutableList.builder();
+      $$4.add(new ewq.b(this::h, this::d));
+      if (ac.aU) {
+         $$4.add(new ewq.b(this::g, this::c));
       }
 
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
+      $$4.add(new ewq.b(this::f, this::b));
+      this.j = $$4.build();
+   }
 
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = ewu.b($$1 * $$13);
-         double $$21 = ewu.b($$2 * $$13);
-         double $$22 = ewu.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            ewr $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
+   public ewp a(alr $$0) {
+      Optional<ewp> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         return $$1.get();
+      } else {
+         ewp $$2 = new ewp();
+         this.f.put($$0, Optional.of($$2));
+         return $$2;
+      }
+   }
+
+   public Optional<ewp> b(alr $$0) {
+      return this.f.computeIfAbsent($$0, this::e);
+   }
+
+   public Stream<alr> a() {
+      return this.j.stream().flatMap($$0 -> $$0.b().get()).distinct();
+   }
+
+   private Optional<ewp> e(alr $$0) {
+      for (ewq.b $$1 : this.j) {
+         try {
+            Optional<ewp> $$2 = $$1.a().apply($$0);
+            if ($$2.isPresent()) {
+               return $$2;
             }
+         } catch (Exception var5) {
          }
-
-         if (!$$18) {
-            ewr $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
-
-         $$13 /= 2.0;
       }
 
-      return azq.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
+      return Optional.empty();
    }
 
-   @Override
-   public double a() {
-      return -this.b();
+   public void a(avo $$0) {
+      this.h = $$0;
+      this.f.clear();
    }
 
-   @Override
-   public double b() {
-      return this.o;
+   private Optional<ewp> f(alr $$0) {
+      alr $$1 = l.a($$0);
+      return this.a(() -> this.h.open($$1), $$1x -> b.error("Couldn't load structure {}", $$0, $$1x));
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
+   private Stream<alr> b() {
+      return l.a(this.h).keySet().stream().map(l::b);
    }
 
-   @Override
-   public azj<? extends egy> c() {
-      return a;
+   private Optional<ewp> g(alr $$0) {
+      return this.a($$0, tj.c);
+   }
+
+   private Stream<alr> c() {
+      if (!Files.isDirectory(tj.c)) {
+         return Stream.empty();
+      } else {
+         List<alr> $$0 = new ArrayList<>();
+         this.a(tj.c, "minecraft", ".snbt", $$0::add);
+         return $$0.stream();
+      }
+   }
+
+   private Optional<ewp> h(alr $$0) {
+      if (!Files.isDirectory(this.i)) {
+         return Optional.empty();
+      } else {
+         Path $$1 = this.a($$0, ".nbt");
+         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> b.error("Couldn't load structure from {}", $$1, $$1x));
+      }
+   }
+
+   private Stream<alr> d() {
+      if (!Files.isDirectory(this.i)) {
+         return Stream.empty();
+      } else {
+         try {
+            List<alr> $$0 = new ArrayList<>();
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream(this.i, $$0x -> Files.isDirectory($$0x))) {
+               for (Path $$2 : $$1) {
+                  String $$3 = $$2.getFileName().toString();
+                  Path $$4 = $$2.resolve("structures");
+                  this.a($$4, $$3, ".nbt", $$0::add);
+               }
+            }
+
+            return $$0.stream();
+         } catch (IOException var9) {
+            return Stream.empty();
+         }
+      }
+   }
+
+   private void a(Path $$0, String $$1, String $$2, Consumer<alr> $$3) {
+      int $$4 = $$2.length();
+      Function<String, String> $$5 = $$1x -> $$1x.substring(0, $$1x.length() - $$4);
+
+      try (Stream<Path> $$6 = Files.find($$0, Integer.MAX_VALUE, ($$1x, $$2x) -> $$2x.isRegularFile() && $$1x.toString().endsWith($$2))) {
+         $$6.forEach($$4x -> {
+            try {
+               $$3.accept(alr.a($$1, $$5.apply(this.a($$0, $$4x))));
+            } catch (ab var7x) {
+               b.error("Invalid location while listing folder {} contents", $$0, var7x);
+            }
+         });
+      } catch (IOException var12) {
+         b.error("Failed to list folder {} contents", $$0, var12);
+      }
+   }
+
+   private String a(Path $$0, Path $$1) {
+      return $$0.relativize($$1).toString().replace(File.separator, "/");
+   }
+
+   private Optional<ewp> a(alr $$0, Path $$1) {
+      if (!Files.isDirectory($$1)) {
+         return Optional.empty();
+      } else {
+         Path $$2 = w.b($$1, $$0.a(), ".snbt");
+
+         try {
+            Optional var6;
+            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
+               String $$4 = IOUtils.toString($$3);
+               var6 = Optional.of(this.a(up.a($$4)));
+            }
+
+            return var6;
+         } catch (NoSuchFileException var9) {
+            return Optional.empty();
+         } catch (CommandSyntaxException | IOException var10) {
+            b.error("Couldn't load structure from {}", $$2, var10);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private Optional<ewp> a(ewq.a $$0, Consumer<Throwable> $$1) {
+      try {
+         Optional var5;
+         try (
+            InputStream $$2 = $$0.open();
+            InputStream $$3 = new azh($$2);
+         ) {
+            var5 = Optional.of(this.a($$3));
+         }
+
+         return var5;
+      } catch (FileNotFoundException var11) {
+         return Optional.empty();
+      } catch (Throwable var12) {
+         $$1.accept(var12);
+         return Optional.empty();
+      }
+   }
+
+   private ewp a(InputStream $$0) throws IOException {
+      ua $$1 = un.a($$0, uj.a());
+      return this.a($$1);
+   }
+
+   public ewp a(ua $$0) {
+      ewp $$1 = new ewp();
+      int $$2 = up.b($$0, 500);
+      $$1.a(this.k, bbo.f.a(this.g, $$0, $$2));
+      return $$1;
+   }
+
+   public boolean c(alr $$0) {
+      Optional<ewp> $$1 = this.f.get($$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         ewp $$2 = $$1.get();
+         Path $$3 = this.a($$0, ".nbt");
+         Path $$4 = $$3.getParent();
+         if ($$4 == null) {
+            return false;
+         } else {
+            try {
+               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
+            } catch (IOException var13) {
+               b.error("Failed to create parent directory: {}", $$4);
+               return false;
+            }
+
+            ua $$6 = $$2.a(new ua());
+
+            try {
+               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
+                  un.a($$6, $$7);
+               }
+
+               return true;
+            } catch (Throwable var12) {
+               return false;
+            }
+         }
+      }
+   }
+
+   public Path a(alr $$0, String $$1) {
+      if ($$0.a().contains("//")) {
+         throw new ab("Invalid resource path: " + $$0);
+      } else {
+         try {
+            Path $$2 = this.i.resolve($$0.b());
+            Path $$3 = $$2.resolve("structures");
+            Path $$4 = w.b($$3, $$0.a(), $$1);
+            if ($$4.startsWith(this.i) && w.a($$4) && w.b($$4)) {
+               return $$4;
+            } else {
+               throw new ab("Invalid resource path: " + $$4);
+            }
+         } catch (InvalidPathException var6) {
+            throw new ab("Invalid resource path: " + $$0, var6);
+         }
+      }
+   }
+
+   public void d(alr $$0) {
+      this.f.remove($$0);
+   }
+
+   @FunctionalInterface
+   interface a {
+      InputStream open() throws IOException;
+   }
+
+   static record b(Function<alr, Optional<ewp>> a, Supplier<Stream<alr>> b) {
    }
 }

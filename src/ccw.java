@@ -2,14 +2,33 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class ccw {
-   public static bzo<bxw> a() {
-      return cda.a((Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$0 -> $$0.a((cdd<bxw>)(($$0x, $$1, $$2) -> {
-            if (!$$1.ec().c(ctt.e) && $$1.fR()) {
-               $$1.fS();
-               return true;
-            } else {
-               return false;
-            }
-         }))));
+   public static bzx<byf> a(dno $$0) {
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$1 -> $$1.group($$1.c(chh.p), $$1.b(chh.n), $$1.b(chh.Z))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bi() && $$3x.aH()) {
+                        iw $$5 = $$3x.dv().e();
+
+                        for (jc $$6 : jc.c.a) {
+                           iw $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(jc.b).c() && $$2x.b_($$7).b(eyb.c)) {
+                              iw $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 ebq $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(egq.i, $$8, egq.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, awy.kt, awz.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
+
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

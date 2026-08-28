@@ -1,42 +1,60 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record dct(List<xc> e, List<xc> f) implements ddf {
-   public static final dct a = new dct(List.of());
-   public static final int b = 256;
-   private static final xz g = xz.a.a(o.f).b(true);
-   public static final Codec<dct> c = xe.a.sizeLimitedListOf(256).xmap(dct::new, dct::a);
-   public static final za<wn, dct> d = xe.b.a(yy.c(256)).a(dct::new, dct::a);
+public record dct(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
+   public static final dct a = new dct(List.of(), List.of(), List.of(), List.of());
+   public static final Codec<dct> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(dct::a),
+               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(dct::b),
+               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(dct::c),
+               azg.i.listOf().optionalFieldOf("colors", List.of()).forGetter(dct::d)
+            )
+            .apply($$0, dct::new)
+   );
+   public static final ze<ByteBuf, dct> c = ze.a(zc.l.a(zc.a()), dct::a, zc.b.a(zc.a()), dct::b, zc.p.a(zc.a()), dct::c, zc.g.a(zc.a()), dct::d, dct::new);
 
-   public dct(List<xc> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xf.a($$0x.f(), g)));
+   @Nullable
+   private static <T> T a(List<T> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
    }
 
-   public dct(List<xc> e, List<xc> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
-      } else {
-         this.e = e;
-         this.f = f;
-      }
+   @Nullable
+   public Float a(int $$0) {
+      return a(this.d, $$0);
    }
 
-   public dct a(xc $$0) {
-      return new dct(ag.a(this.e, $$0));
+   @Nullable
+   public Boolean b(int $$0) {
+      return a(this.e, $$0);
    }
 
-   @Override
-   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
-      this.f.forEach($$1);
+   @Nullable
+   public String c(int $$0) {
+      return a(this.f, $$0);
    }
 
-   public List<xc> a() {
+   @Nullable
+   public Integer d(int $$0) {
+      return a(this.g, $$0);
+   }
+
+   public List<Float> a() {
+      return this.d;
+   }
+
+   public List<Boolean> b() {
       return this.e;
    }
 
-   public List<xc> b() {
+   public List<String> c() {
       return this.f;
+   }
+
+   public List<Integer> d() {
+      return this.g;
    }
 }

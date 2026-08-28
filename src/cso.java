@@ -1,64 +1,52 @@
-public abstract class cso extends csi implements csr {
-   private static final float d = 12.25F;
-   private static final akn<daa> e = akr.a(cso.class, akp.h);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cso(bxe<? extends cso> $$0, djz $$1) {
-      super($$0, $$1);
-   }
+public class cso {
+   private final csn<jg<dag>> a = new csn<>();
 
-   public cso(bxe<? extends cso> $$0, double $$1, double $$2, double $$3, ffs $$4, djz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cso(bxe<? extends cso> $$0, bxw $$1, ffs $$2, djz $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   public void a(daa $$0) {
-      if ($$0.f()) {
-         this.ar().a(e, this.o());
-      } else {
-         this.ar().a(e, $$0.c(1));
+   public void a(dak $$0) {
+      if (csh.e($$0)) {
+         this.b($$0);
       }
    }
 
-   @Override
-   protected void aL() {
+   public void b(dak $$0) {
+      this.a($$0, $$0.k());
    }
 
-   @Override
-   public daa f() {
-      return this.ar().a(e);
+   public void a(dak $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
+      }
    }
 
-   @Override
-   protected void a(akr.a $$0) {
-      $$0.a(e, this.o());
+   public boolean a(dfb<?> $$0, @Nullable csn.b<jg<dag>> $$1) {
+      return this.a($$0, 1, $$1);
    }
 
-   @Override
-   public void b(ua $$0) {
-      ali<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Item", daa.b, $$1, this.f());
+   public boolean a(dfb<?> $$0, int $$1, @Nullable csn.b<jg<dag>> $$2) {
+      dfa $$3 = $$0.aq_();
+      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
    }
 
-   @Override
-   public void a(ua $$0) {
-      ali<va> $$1 = this.dX().a(uo.a);
-      this.a($$0.<daa>a("Item", daa.b, $$1).orElse(this.o()));
+   public boolean a(List<? extends csn.a<jg<dag>>> $$0, @Nullable csn.b<jg<dag>> $$1) {
+      return this.a($$0, 1, $$1);
    }
 
-   private daa o() {
-      return new daa(dae.vg);
+   private boolean a(List<? extends csn.a<jg<dag>>> $$0, int $$1, @Nullable csn.b<jg<dag>> $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   public byn a_(int $$0) {
-      return $$0 == 0 ? byn.a(this::f, this::a) : super.a_($$0);
+   public int b(dfb<?> $$0, @Nullable csn.b<jg<dag>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
    }
 
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
+   public int b(dfb<?> $$0, int $$1, @Nullable csn.b<jg<dag>> $$2) {
+      return this.a.b($$0.aq_().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

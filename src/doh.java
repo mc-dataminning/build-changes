@@ -1,51 +1,30 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface doh<T extends Enum<T>> {
-   int v_ = 4;
+public class doh extends dno {
+   public static final MapCodec<doh> a = b(doh::new);
+   private static final fgw b = dno.b(16.0, 0.0, 1.0);
 
-   Optional<ebg> k_(ebg var1);
-
-   float av_();
-
-   default void a_(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<? extends doh> a() {
+      return a;
    }
 
-   T c();
+   public doh(ebp.d $$0) {
+      super($$0);
+   }
 
-   default Optional<ebg> c(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return b;
+   }
 
-      for (iw $$7 : iw.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      return !$$0.a($$1, $$3) ? dnq.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof doh<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
-
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.av_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+   @Override
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      return !$$1.v($$2.e());
    }
 }

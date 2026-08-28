@@ -33,7 +33,7 @@ public final class ka {
       }
    }, UndashedUuid::toString), a);
    public static final Codec<UUID> f = Codec.withAlternative(a, d);
-   public static final za<ByteBuf, UUID> g = new za<ByteBuf, UUID>() {
+   public static final ze<ByteBuf, UUID> g = new ze<ByteBuf, UUID>() {
       public UUID a(ByteBuf $$0) {
          return vy.h($$0);
       }

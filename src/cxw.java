@@ -1,97 +1,61 @@
-import java.util.List;
+public class cxw extends cwb {
+   private static final int m = 27;
+   private final buv n;
 
-public class cxw implements cwk {
-   private final jp<daa> b;
-   private final int c;
-   private final int d;
-   private final cvs e;
-
-   public cxw(cvs $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jp.a($$1 * $$2, daa.k));
+   public cxw(int $$0, csh $$1) {
+      this($$0, $$1, new bvj(27));
    }
 
-   private cxw(cvs $$0, int $$1, int $$2, jp<daa> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   public cxw(int $$0, csh $$1, buv $$2) {
+      super(cxk.u, $$0);
+      a($$2, 27);
+      this.n = $$2;
+      $$2.c_($$1.h);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   @Override
-   public int b() {
-      return this.b.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (daa $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cxx($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
 
-      return true;
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public daa a(int $$0) {
-      return $$0 >= this.b() ? daa.k : this.b.get($$0);
+   public boolean b(csi $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   public daa b(int $$0) {
-      return bun.a(this.b, $$0);
-   }
+   public dak b(csi $$0, int $$1) {
+      dak $$2 = dak.l;
+      cxz $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         dak $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return dak.l;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return dak.l;
+         }
 
-   @Override
-   public daa a(int $$0, int $$1) {
-      daa $$2 = bun.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
+         if ($$4.f()) {
+            $$3.e(dak.l);
+         } else {
+            $$3.d();
+         }
       }
 
       return $$2;
    }
 
    @Override
-   public void a(int $$0, daa $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int az_() {
-      return this.c;
-   }
-
-   @Override
-   public List<daa> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(csf $$0) {
-      for (daa $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public void a(csi $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

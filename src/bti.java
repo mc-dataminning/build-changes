@@ -1,13 +1,13 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
+import java.time.Instant;
 
-public class bti extends btg<Runnable> {
-   public bti(Executor $$0, String $$1) {
-      super(new btn.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
-   }
+public final class bti {
+   public final Instant a;
+   public final int b;
+   public final brk c;
 
-   @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
+   public bti(Instant $$0, int $$1, brk $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

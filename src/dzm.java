@@ -1,63 +1,69 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-
-public record dzm(Optional<czw> d, Optional<czw> e, Optional<czw> f, Optional<czw> g) implements ddf {
-   public static final dzm a = new dzm(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dzm> b = mh.g.q().sizeLimitedListOf(4).xmap(dzm::new, dzm::a);
-   public static final za<wn, dzm> c = yy.a(mi.K).a(yy.c(4)).a(dzm::new, dzm::a);
-
-   private dzm(List<czw> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
-   }
-
-   public dzm(czw $$0, czw $$1, czw $$2, czw $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
-   }
-
-   private static Optional<czw> a(List<czw> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         czw $$2 = $$0.get($$1);
-         return $$2 == dae.rB ? Optional.empty() : Optional.of($$2);
+public class dzm extends dyo implements dzv {
+   private final dyx a = new dyx();
+   private final dzc b = new dzc() {
+      @Override
+      protected void a(dkj $$0, iw $$1, ebq $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awy.ix, awz.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
       }
+
+      @Override
+      protected void b(dkj $$0, iw $$1, ebq $$2) {
+         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awy.iw, awz.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
+
+      @Override
+      protected void a(dkj $$0, iw $$1, ebq $$2, int $$3, int $$4) {
+         $$0.a(dzm.this.o, dnq.gf, 1, $$4);
+      }
+
+      @Override
+      protected boolean a(csi $$0) {
+         return $$0.gx().b(dzm.this);
+      }
+   };
+
+   public dzm(iw $$0, ebq $$1) {
+      super(dyq.d, $$0, $$1);
    }
 
-   public List<czw> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(dae.rB)).toList();
+   public static void a(dkj $$0, iw $$1, ebq $$2, dzm $$3) {
+      $$3.a.a();
    }
 
    @Override
-   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
-      if (!this.equals(a)) {
-         $$1.accept(xb.a);
-         a($$1, this.g);
-         a($$1, this.e);
-         a($$1, this.f);
-         a($$1, this.d);
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.a.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   private static void a(Consumer<xc> $$0, Optional<czw> $$1) {
-      $$0.accept(new daa($$1.orElse(dae.rB), 1).y().e().a(o.h));
+   public void a(csi $$0) {
+      if (!this.p && !$$0.aa_()) {
+         this.b.a($$0, this.i(), this.aC_(), this.m());
+      }
    }
 
-   public Optional<czw> b() {
-      return this.d;
+   public void b(csi $$0) {
+      if (!this.p && !$$0.aa_()) {
+         this.b.b($$0, this.i(), this.aC_(), this.m());
+      }
    }
 
-   public Optional<czw> c() {
-      return this.e;
+   public boolean c(csi $$0) {
+      return buv.a(this, $$0);
    }
 
-   public Optional<czw> d() {
-      return this.f;
+   public void a() {
+      if (!this.p) {
+         this.b.c(this.i(), this.aC_(), this.m());
+      }
    }
 
-   public Optional<czw> e() {
-      return this.g;
+   @Override
+   public float a(float $$0) {
+      return this.a.a($$0);
    }
 }

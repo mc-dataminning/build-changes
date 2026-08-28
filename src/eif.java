@@ -1,32 +1,40 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+public class eif implements ehe {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final ehr i = new ehr(this);
 
-public class eif {
-   private long b;
-   private long c;
-   public static final Codec<eif> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new eif($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
-
-   public eif(ehu.a $$0) {
-      this($$0.b(), $$0.c());
+   public eif(long $$0) {
+      this.b($$0);
    }
 
-   public eif(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
+   @Override
+   public bai d() {
+      return new eif(this.g());
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   @Override
+   public eic e() {
+      return new ehq.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

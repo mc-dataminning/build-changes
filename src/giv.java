@@ -1,91 +1,37 @@
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+public class giv extends ghn<hec> {
+   private final gkr a;
+   private final gkr b;
 
-public class giv extends gic<hfs> {
-   public static final glp a = giv::a;
-   private final glg b;
-   private final glg c;
-   private final glg d;
-   private final glg e;
-   private final glg f;
-   private final glg g;
-   private final glg i;
-
-   public giv(glg $$0) {
+   public giv(gkr $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.g = $$0.b("right_chest");
-      this.i = $$0.b("left_chest");
-      this.c = $$0.b("right_hind_leg");
-      this.d = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.f = $$0.b("left_front_leg");
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static glm a(glk $$0) {
-      glo $$1 = new glo();
-      glq $$2 = $$1.a();
-      $$2.a(
-         "head",
-         gll.c()
-            .a(0, 0)
-            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
-            .a(0, 14)
-            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
-            .a(17, 0)
-            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
-            .a(17, 0)
-            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
-         gli.a(0.0F, 7.0F, -6.0F)
-      );
-      $$2.a("body", gll.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gli.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("right_chest", gll.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gli.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$2.a("left_chest", gll.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gli.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      int $$3 = 4;
-      int $$4 = 14;
-      gll $$5 = gll.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$5, gli.a(-3.5F, 10.0F, 6.0F));
-      $$2.a("left_hind_leg", $$5, gli.a(3.5F, 10.0F, 6.0F));
-      $$2.a("right_front_leg", $$5, gli.a(-3.5F, 10.0F, -5.0F));
-      $$2.a("left_front_leg", $$5, gli.a(3.5F, 10.0F, -5.0F));
-      return glm.a($$1, 128, 64);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gkw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gkt.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gkw.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gkt.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gkw.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gkt.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gkw.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gkt.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gkw.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gkt.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gkw.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gkt.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gkw.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gkt.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gkw.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gkt.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gkw.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gkt.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gkw.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gkt.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gkw.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gkt.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gkw.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gkt.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gkw.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gkt.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gkx.a($$0, 32, 32);
    }
 
-   private static glo a(glo $$0) {
-      float $$1 = 2.0F;
-      float $$2 = 0.7F;
-      float $$3 = 1.1F;
-      UnaryOperator<gli> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
-      UnaryOperator<gli> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
-      UnaryOperator<gli> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
-      glo $$7 = new glo();
-
-      for (Entry<String, glq> $$8 : $$0.a().a()) {
-         String $$9 = $$8.getKey();
-         glq $$10 = $$8.getValue();
-
-         UnaryOperator<gli> $$11 = switch ($$9) {
-            case "head" -> $$4;
-            case "body" -> $$5;
-            default -> $$6;
-         };
-         $$7.a().a($$9, $$10.a($$11));
-      }
-
-      return $$7;
-   }
-
-   public void a(hfs $$0) {
+   @Override
+   public void a(hec $$0) {
       super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      this.c.e = azq.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.d.e = azq.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = azq.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.f.e = azq.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.g.k = $$0.b;
-      this.i.k = $$0.b;
+      this.b.g = -0.2F + 0.4F * azz.a($$0.v * 0.2F);
+      this.a.g = 0.2F - 0.4F * azz.a($$0.v * 0.2F);
    }
 }

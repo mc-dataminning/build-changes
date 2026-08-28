@@ -25,8 +25,8 @@ public class Main {
          Path $$7 = Paths.get((String)$$5.value($$6));
          boolean $$8 = $$6.has($$4);
          boolean $$9 = $$8 || $$6.has($$3);
-         alm.a();
-         fqp.a();
+         alt.a();
+         fqa.a();
          mn $$10 = new mn($$7, ac.b(), true);
          a($$10, $$9);
          $$10.a();
@@ -37,8 +37,8 @@ public class Main {
 
    public static void a(mn $$0, boolean $$1) {
       mn.a $$2 = $$0.a($$1);
-      $$2.a(fta::new);
-      $$2.a(fsx::new);
-      $$2.a(fsv::new);
+      $$2.a(fsl::new);
+      $$2.a(fsi::new);
+      $$2.a(fsg::new);
    }
 }

@@ -1,50 +1,67 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public interface bav<C> {
-   bav<Float> a = a($$0 -> $$0);
+public class bav<T> {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final Object[] e;
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static bav<Float> a(final Float2FloatFunction $$0) {
-      return new bav<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+   public static <T> bav<T> a(int $$0, int $$1, int $$2, bav.a<T> $$3) {
+      int $$4 = $$0 - $$2;
+      int $$5 = $$1 - $$2;
+      int $$6 = 2 * $$2 + 1;
+      return new bav<>($$4, $$5, $$6, $$6, $$3);
    }
 
-   default <C2> bav<C2> a(final Function<C2, C> $$0) {
-      final bav<C> $$1 = this;
-      return new bav<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
+   private bav(int $$0, int $$1, int $$2, int $$3, bav.a<T> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = new Object[this.c * this.d];
 
-         @Override
-         public float b() {
-            return $$1.b();
+      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
+         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
+            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
          }
+      }
+   }
 
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+   public void a(Consumer<T> $$0) {
+      for (Object $$1 : this.e) {
+         $$0.accept((T)$$1);
+      }
+   }
+
+   public T a(int $$0, int $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+      } else {
+         return (T)this.e[this.c($$0, $$1)];
+      }
+   }
+
+   public boolean b(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
+   }
+
+   private int c(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 * this.d + $$3;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      T get(int var1, int var2);
    }
 }

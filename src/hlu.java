@@ -1,45 +1,56 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class hlu {
-   private static final hme[] a = new hme[]{
-      a("textures/entity/player/slim/alex.png", hme.a.a),
-      a("textures/entity/player/slim/ari.png", hme.a.a),
-      a("textures/entity/player/slim/efe.png", hme.a.a),
-      a("textures/entity/player/slim/kai.png", hme.a.a),
-      a("textures/entity/player/slim/makena.png", hme.a.a),
-      a("textures/entity/player/slim/noor.png", hme.a.a),
-      a("textures/entity/player/slim/steve.png", hme.a.a),
-      a("textures/entity/player/slim/sunny.png", hme.a.a),
-      a("textures/entity/player/slim/zuri.png", hme.a.a),
-      a("textures/entity/player/wide/alex.png", hme.a.b),
-      a("textures/entity/player/wide/ari.png", hme.a.b),
-      a("textures/entity/player/wide/efe.png", hme.a.b),
-      a("textures/entity/player/wide/kai.png", hme.a.b),
-      a("textures/entity/player/wide/makena.png", hme.a.b),
-      a("textures/entity/player/wide/noor.png", hme.a.b),
-      a("textures/entity/player/wide/steve.png", hme.a.b),
-      a("textures/entity/player/wide/sunny.png", hme.a.b),
-      a("textures/entity/player/wide/zuri.png", hme.a.b)
-   };
+public class hlu extends avt<List<String>> {
+   private static final alr a = alr.b("texts/splashes.txt");
+   private static final bai b = bai.a();
+   private final List<String> c = Lists.newArrayList();
+   private final frc d;
 
-   public static alk a() {
-      return b().a();
+   public hlu(frc $$0) {
+      this.d = $$0;
    }
 
-   public static hme b() {
-      return a[6];
+   protected List<String> a(avo $$0, brm $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = fqq.Q().ac().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   public static hme a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   protected void a(List<String> $$0, avo $$1, brm $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
-   public static hme a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static hme a(String $$0, hme.a $$1) {
-      return new hme(alk.b($$0), null, null, null, $$1, true);
+   @Nullable
+   public fvc a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fvc.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fvc.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fvc.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fvc(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fvc(this.c.get(b.a(this.c.size())));
+      }
    }
 }

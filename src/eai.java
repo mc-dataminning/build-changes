@@ -1,142 +1,115 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record eai(int d, float e, float f, float g, float h, int i, btd<dkt> j, btd<alj<fao>> k, alj<fao> l) {
-   public static final eai a = b().a();
-   public static final Codec<eai> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(eai::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(eai::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(eai::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(eai::f),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(eai::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(eai::h),
-               dkt.c.optionalFieldOf("spawn_potentials", btd.a()).forGetter(eai::i),
-               btd.a(fao.a).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(eai::j),
-               fao.a.optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(eai::k)
-            )
-            .apply($$0, eai::new)
-   );
-   public static final Codec<jg<eai>> c = alg.a(mi.bi, b);
+public class eai extends dyo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "";
+   private static final boolean c = false;
+   private edb d;
+   private String e = "";
+   private boolean f = false;
+   private boolean g;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   public eai(iw $$0, ebq $$1) {
+      super(dyq.T, $$0, $$1);
+      this.d = $$1.c(dwi.b);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   @Override
+   public void b(ua $$0, ji.a $$1) {
+      $$0.a("mode", edb.e, this.d);
+      $$0.a("message", this.e);
+      $$0.a("powered", this.f);
    }
 
-   public long a() {
-      return 160L;
+   @Override
+   public void a(ua $$0, ji.a $$1) {
+      this.d = $$0.<edb>a("mode", edb.e).orElse(edb.c);
+      this.e = $$0.b("message", "");
+      this.f = $$0.b("powered", false);
    }
 
-   public static eai.a b() {
-      return new eai.a();
+   private void u() {
+      if (this.n != null) {
+         iw $$0 = this.aC_();
+         ebq $$1 = this.n.a_($$0);
+         if ($$1.a(dnq.pI)) {
+            this.n.a($$0, $$1.b(dwi.b, this.d), 2);
+         }
+      }
    }
 
-   public eai a(bxe<?> $$0) {
-      ua $$1 = new ua();
-      $$1.a("id", mh.f.b($$0).toString());
-      dkt $$2 = new dkt($$1, Optional.empty(), Optional.empty());
-      return new eai(this.d, this.e, this.f, this.g, this.h, this.i, btd.a($$2), this.k, this.l);
+   @Nullable
+   public acl a() {
+      return acl.a(this);
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public ua a(ji.a $$0) {
+      return this.e($$0);
    }
 
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
+   public boolean c() {
       return this.f;
    }
 
-   public float f() {
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public edb d() {
+      return this.d;
+   }
+
+   public void a(edb $$0) {
+      this.d = $$0;
+      this.u();
+   }
+
+   private dno v() {
+      return this.m().b();
+   }
+
+   public void f() {
+      this.g = false;
+      if (this.d == edb.a && this.n != null) {
+         this.a(false);
+         this.n.a(this.aC_(), this.v());
+      }
+   }
+
+   public void j() {
+      if (this.d == edb.a && this.n != null) {
+         this.a(true);
+         iw $$0 = this.aC_();
+         this.n.a($$0, this.v());
+         this.n.U().b($$0, this.v());
+         this.k();
+      } else {
+         if (this.d == edb.b) {
+            this.k();
+         }
+
+         this.g = true;
+      }
+   }
+
+   public void k() {
+      if (!this.e.isBlank()) {
+         a.info("Test {} (at {}): {}", new Object[]{this.d.c(), this.aC_(), this.e});
+      }
+   }
+
+   public boolean s() {
       return this.g;
    }
 
-   public float g() {
-      return this.h;
+   public String t() {
+      return this.e;
    }
 
-   public int h() {
-      return this.i;
-   }
-
-   public btd<dkt> i() {
-      return this.j;
-   }
-
-   public btd<alj<fao>> j() {
-      return this.k;
-   }
-
-   public alj<fao> k() {
-      return this.l;
-   }
-
-   public static class a {
-      private int a = 4;
-      private float b = 6.0F;
-      private float c = 2.0F;
-      private float d = 2.0F;
-      private float e = 1.0F;
-      private int f = 40;
-      private btd<dkt> g = btd.a();
-      private btd<alj<fao>> h = btd.<alj<fao>>b().a(faf.aM).a(faf.aL).a();
-      private alj<fao> i = faf.aP;
-
-      public eai.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public eai.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public eai.a b(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eai.a c(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eai.a d(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eai.a b(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public eai.a a(btd<dkt> $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public eai.a b(btd<alj<fao>> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public eai.a a(alj<fao> $$0) {
-         this.i = $$0;
-         return this;
-      }
-
-      public eai a() {
-         return new eai(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
-      }
+   public void a(String $$0) {
+      this.e = $$0;
    }
 }

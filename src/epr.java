@@ -1,69 +1,51 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class epr extends epz {
-   public static final MapCodec<epr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ayy.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bty.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, epr::new)
-   );
-   private final int b;
-   private final bty h;
+public class epr extends epx {
+   public static final MapCodec<epr> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(epr::new, $$0 -> $$0.d);
+   private static final jc b = jc.d;
+   private static final jc[] c = jc.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jc[]::new);
+   private final float d;
 
-   public epr(int $$0, int $$1, int $$2, int $$3, bty $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public epr(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected eqa<?> a() {
-      return eqa.g;
+   protected epy<?> a() {
+      return epy.f;
    }
 
    @Override
-   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
-      jc $$6 = jc.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      iw.a $$8 = $$4.k();
-      iw $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<eod.a> $$10 = Lists.newArrayList();
+   public void a(epx.a $$0) {
+      List<iw> $$1 = $$0.d();
+      List<iw> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         bai $$3 = $$0.b();
+         if (!($$3.i() >= this.d)) {
+            int $$4 = !$$1.isEmpty()
+               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
+               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
+            List<iw> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+            if (!$$5.isEmpty()) {
+               ag.c($$5, $$3);
+               Optional<iw> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+               if (!$$6.isEmpty()) {
+                  $$0.a($$6.get(), dnq.pM.m().b(dni.b, b));
+                  $$0.a().a($$6.get(), dyq.I).ifPresent($$1x -> {
+                     int $$2x = 2 + $$3.a(2);
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
+                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                        $$1x.a(dyl.c.a($$3.a(599)));
+                     }
+                  });
+               }
+            }
          }
-
-         if (ely.d($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new eod.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jc.b);
       }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (ely.d($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new eod.a($$8.j(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
    }
 }

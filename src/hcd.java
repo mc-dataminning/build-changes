@@ -1,64 +1,28 @@
-import java.util.function.Function;
+public class hcd extends hcj<hff, gig> {
+   private final gig a;
+   private final gig b;
+   private final hbu c;
 
-public class hcd<S extends hfr, M extends gic<S> & gim> extends hcy<S, M> {
-   private static final float a = 0.625F;
-   private static final float b = 1.1875F;
-   private final hcd.a c;
-   private final Function<duq.a, gka> d;
-
-   public hcd(hah<S, M> $$0, glc $$1) {
-      this($$0, $$1, hcd.a.a);
-   }
-
-   public hcd(hah<S, M> $$0, glc $$1, hcd.a $$2) {
+   public hcd(gzs<hff, gig> $$0, gkn $$1, hbu $$2) {
       super($$0);
       this.c = $$2;
-      this.d = ag.b($$1x -> gvf.a($$1, $$1x));
+      this.a = new gig($$1.a(gkq.bH));
+      this.b = new gig($$1.a(gkq.bG));
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.as.c() || $$3.au != null) {
-         $$0.a();
-         $$0.b(this.c.c(), 1.0F, this.c.c());
-         M $$6 = this.d();
-         $$6.e().a($$0);
-         $$6.b().a($$0);
-         if ($$3.au != null) {
-            $$0.a(0.0F, this.c.b(), 0.0F);
-            $$0.b(1.1875F, -1.1875F, -1.1875F);
-            $$0.a(-0.5, 0.0, -0.5);
-            duq.a $$7 = $$3.au;
-            gka $$8 = this.d.apply($$7);
-            gsn $$9 = gvf.a($$7, $$3.av);
-            gvf.a(null, 180.0F, $$3.at, $$0, $$1, $$2, $$8, $$9);
-         } else {
-            a($$0, this.c);
-            $$3.as.a($$0, $$1, $$2, hks.d);
-         }
-
-         $$0.b();
+   public void a(fld $$0, grn $$1, int $$2, hff $$3, float $$4, float $$5) {
+      dak $$6 = $$3.c;
+      dit $$7 = $$6.a(kl.D);
+      if ($$7 != null && $$7.d().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.d().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, dak.l, dis.m, $$2);
       }
    }
 
-   public static void a(flq $$0, hcd.a $$1) {
-      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
-      $$0.a(a.d.rotationDegrees(180.0F));
-      $$0.b(0.625F, -0.625F, -0.625F);
-   }
-
-   public static record a(float b, float c, float d) {
-      public static final hcd.a a = new hcd.a(0.0F, 0.0F, 1.0F);
-
-      public float a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
+   private void a(fld $$0, grn $$1, hff $$2, dak $$3, alq<dir> $$4, int $$5) {
+      gig $$6 = $$2.am ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(hmw.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

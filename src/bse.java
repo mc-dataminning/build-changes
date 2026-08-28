@@ -1,56 +1,105 @@
 import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class bse<T> {
-   private final bse.a a;
-   private final List<Pair<T, bse.a>> b;
-   private final Duration c;
-
-   public bse(Duration $$0, List<Pair<T, bse.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<bse.a>map(Pair::getSecond).reduce(new bse.a(0L, 0L), bse.a::a);
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bse.a.c)).limit(10L).toList();
+public record bse(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bsr> e,
+   List<bsk> f,
+   bsm.a g,
+   bsq.a h,
+   bsn<bso> i,
+   bsn<bso> j,
+   bsn<bsj> k,
+   bsn<bsj> l,
+   bsl.a m,
+   bsl.a n,
+   List<bsi> o,
+   List<bsp> p
+) {
+   public List<Pair<eeo, bst<bsi>>> a() {
+      Map<eeo, List<bsi>> $$0 = this.o.stream().collect(Collectors.groupingBy(bsi::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((eeo)$$0x.getKey(), bst.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<eeo, bst<bsi>>, Duration>comparing($$0x -> ((bst)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
+   public String b() {
+      return new bsg().a(this);
    }
 
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
+   public Instant c() {
+      return this.a;
    }
 
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<T, bse.a>> e() {
+   public Instant d() {
       return this.b;
    }
 
-   public static record a(long a, long b) {
-      static final Comparator<bse.a> c = Comparator.comparing(bse.a::c).thenComparing(bse.a::b).reversed();
+   public Duration e() {
+      return this.c;
+   }
 
-      bse.a a(bse.a $$0) {
-         return new bse.a(this.a + $$0.a, this.b + $$0.b);
-      }
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
 
-      public float a() {
-         return (float)this.b / (float)this.a;
-      }
+   public List<bsr> g() {
+      return this.e;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public List<bsk> h() {
+      return this.f;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   public bsm.a i() {
+      return this.g;
+   }
+
+   public bsq.a j() {
+      return this.h;
+   }
+
+   public bsn<bso> k() {
+      return this.i;
+   }
+
+   public bsn<bso> l() {
+      return this.j;
+   }
+
+   public bsn<bsj> m() {
+      return this.k;
+   }
+
+   public bsn<bsj> n() {
+      return this.l;
+   }
+
+   public bsl.a o() {
+      return this.m;
+   }
+
+   public bsl.a p() {
+      return this.n;
+   }
+
+   public List<bsi> q() {
+      return this.o;
+   }
+
+   public List<bsp> r() {
+      return this.p;
    }
 }

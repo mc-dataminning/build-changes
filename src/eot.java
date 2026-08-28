@@ -1,24 +1,48 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eot<P extends eos> {
-   public static final eot<epb> a = a("simple_state_provider", epb.b);
-   public static final eot<epc> b = a("weighted_state_provider", epc.b);
-   public static final eot<eox> c = a("noise_threshold_provider", eox.b);
-   public static final eot<eow> d = a("noise_provider", eow.g);
-   public static final eot<eou> e = a("dual_noise_provider", eou.b);
-   public static final eot<eoz> f = a("rotated_block_provider", eoz.b);
-   public static final eot<eoy> g = a("randomized_int_state_provider", eoy.b);
-   private final MapCodec<P> h;
+public class eot extends eon {
+   public static final MapCodec<eot> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(buh.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eot::new)
+   );
+   private final buh b;
 
-   private static <P extends eos> eot<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.T, $$0, new eot<>($$1));
+   public eot(buh $$0, buh $$1, buh $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private eot(MapCodec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected eoo<?> a() {
+      return eoo.b;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected void a(dkp $$0, eon.b $$1, bai $$2, enx $$3, int $$4, eon.a $$5, int $$6, int $$7, int $$8) {
+      iw $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(bai $$0, int $$1, enx $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(bai $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,8 +1,8 @@
-public class akz {
-   public static final alj<czw> a = a("pumpkin_seeds");
-   public static final alj<czw> b = a("melon_seeds");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static alj<czw> a(String $$0) {
-      return alj.a(mi.K, alk.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface akz {
 }

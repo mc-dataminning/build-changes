@@ -1,119 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
+import com.mojang.datafixers.kinds.App;
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
 public class cre {
-   public static final Codec<cre> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayy.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayy.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayy.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cre::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
-
-   public cre(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public static cbh<cqx> a() {
+      return cdj.a(
+         (Function<cdj.b<cqx>, ? extends App<cdj.c<cqx>, cdm<cqx>>>)($$0 -> $$0.group($$0.b(chh.al), $$0.c(chh.ac), $$0.c(chh.ai), $$0.a(chh.ap))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.n_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cre::a)).isPresent()) {
+                        cqr $$6 = $$0.b($$1);
+                        cqy.c($$3x, $$4x, $$6);
+                        cqy.b((cqw)$$4x);
+                        cqy.b($$3x, $$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cqy::b));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public cre() {
-      this(0, 0, 0);
-   }
-
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
-      }
-
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(aru $$0, iw $$1, arv $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<arv> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(cre::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cre> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(cre::c));
-            if ($$4.isPresent()) {
-               cre $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(aru $$0, iw $$1) {
-      ffn $$2 = ffn.a(ffs.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(crc.class, $$2).isEmpty();
-   }
-
-   private static List<arv> b(aru $$0, iw $$1) {
-      ffs $$2 = ffs.b($$1);
-      return $$0.a($$1x -> !$$1x.Z_() && $$1x.dt().a((jq)$$2, 16.0) && $$1x.bJ());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = azq.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cre $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
+   private static boolean a(cqw $$0) {
+      return $$0.ec().a(chh.ai);
    }
 }

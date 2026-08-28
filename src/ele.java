@@ -1,73 +1,41 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ele extends ekm<emw> {
-   public ele(Codec<emw> $$0) {
+public class ele extends ejx {
+   public ele(Codec<end> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emw> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      azz $$3 = $$0.d();
-      emw $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jc> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            iw.a $$6 = $$2.k();
+   protected void a(dkk $$0, bai $$1, iw $$2, int $$3, iw.a $$4, end $$5) {
+      int $$6 = $$5.d;
 
-            for (jc $$7 : $$5) {
-               $$6.g($$2);
-               List<jc> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  ebg $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+               boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+               boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+               boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+               ebq $$19 = $$5.b.a($$1, $$2);
+               if ($$19.b(drq.e) && $$19.b(drq.c) && $$19.b(drq.b) && $$19.b(drq.d)) {
+                  $$19 = $$19.b(drq.e, Boolean.valueOf($$15)).b(drq.c, Boolean.valueOf($$16)).b(drq.b, Boolean.valueOf($$17)).b(drq.d, Boolean.valueOf($$18));
                }
-            }
 
-            return false;
+               this.a($$0, $$4, $$19);
+            }
          }
       }
    }
 
-   public static boolean a(dky $$0, iw $$1, ebg $$2, emw $$3, azz $$4, List<jc> $$5) {
-      iw.a $$6 = $$1.k();
-
-      for (jc $$7 : $$5) {
-         ebg $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            ebg $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.z($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean c(ebg $$0) {
-      return $$0.l() || $$0.a(dng.J);
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

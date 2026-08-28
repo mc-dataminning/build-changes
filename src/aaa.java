@@ -1,31 +1,29 @@
-import java.util.Map;
+public class aaa implements zo<zw> {
+   public static final ze<vy, aaa> a = zo.a(aaa::a, aaa::new);
+   private final long b;
 
-public class aaa implements zj<zp> {
-   public static final za<vy, aaa> a = zj.a(aaa::a, aaa::new);
-   private final Map<alj<? extends jt<?>>, axx.a> b;
-
-   public aaa(Map<alj<? extends jt<?>>, axx.a> $$0) {
+   public aaa(long $$0) {
       this.b = $$0;
    }
 
    private aaa(vy $$0) {
-      this.b = $$0.a(vy::r, axx.a::b);
+      this.b = $$0.readLong();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b, vy::b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.b(this.b);
    }
 
    @Override
-   public zl<aaa> a() {
-      return aab.k;
+   public zq<aaa> a() {
+      return aai.d;
    }
 
-   public void a(zp $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public Map<alj<? extends jt<?>>, axx.a> b() {
+   public long b() {
       return this.b;
    }
 }

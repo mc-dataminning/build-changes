@@ -1,45 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class btu extends btw {
-   public static final btu a = new btu(0.0F);
-   public static final MapCodec<btu> b = Codec.FLOAT.fieldOf("value").xmap(btu::a, btu::d);
-   private final float d;
-
-   public static btu a(float $$0) {
-      return $$0 == 0.0F ? a : new btu($$0);
+public class btu extends btp<btw.c> {
+   public btu(int $$0, Executor $$1, String $$2) {
+      super(new btw.a($$0), $$1, $$2);
+      bsx.a.a(this);
    }
 
-   private btu(float $$0) {
-      this.d = $$0;
+   public btw.c b(Runnable $$0) {
+      return new btw.c(0, $$0);
    }
 
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(azz $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public btx<?> c() {
-      return btx.a;
-   }
-
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
+      CompletableFuture<Source> $$2 = new CompletableFuture<>();
+      this.a_(new btw.c($$0, () -> $$1.accept($$2)));
+      return $$2;
    }
 }

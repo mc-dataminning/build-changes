@@ -4,20 +4,16 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnr extends bky {
+public class bnr extends blh {
    public bnr(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("inBlockState", bjd.u.in($$0), "item", bjd.t.in($$0));
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:trident", () -> a($$0));
-      $$0.register($$1, "minecraft:spectral_arrow", () -> a($$0));
-      $$0.register($$1, "minecraft:arrow", () -> a($$0));
+      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bjm.t.in($$0)));
+      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bjm.u.in($$0)));
+      $$0.register($$1, "minecraft:text_display", () -> DSL.optionalFields("text", bjm.z.in($$0)));
       return $$1;
    }
 }

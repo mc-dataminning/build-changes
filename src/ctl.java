@@ -1,127 +1,88 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public abstract class ctl extends ctd {
+   private static final float a = 12.25F;
 
-public abstract class ctl extends csi implements csr {
-   public static final djt d = new dks(true, false, Optional.empty(), mh.e.a(axg.cF).map(Function.identity()));
-   public static final double e = 0.25;
-
-   public ctl(bxe<? extends ctl> $$0, djz $$1) {
+   protected ctl(bxn<? extends ctl> $$0, dkj $$1) {
       super($$0, $$1);
-      this.c = 0.0;
    }
 
-   public ctl(bxe<? extends ctl> $$0, djz $$1, bwv $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-      this.c = 0.0;
-   }
-
-   ctl(bxe<? extends ctl> $$0, double $$1, double $$2, double $$3, ffs $$4, djz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.c = 0.0;
+   protected ctl(bxn<? extends ctl> $$0, double $$1, double $$2, double $$3, dkj $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected ffn c(ffs $$0) {
-      float $$1 = this.an().n().a() / 2.0F;
-      float $$2 = this.an().n().b();
-      float $$3 = 0.15F;
-      return new ffn($$0.d - (double)$$1, $$0.e - 0.15F, $$0.f - (double)$$1, $$0.d + (double)$$1, $$0.e - 0.15F + (double)$$2, $$0.f + (double)$$1);
-   }
-
-   @Override
-   public boolean i(bwv $$0) {
-      return $$0 instanceof ctl ? false : super.i($$0);
-   }
-
-   @Override
-   protected boolean b(bwv $$0) {
-      if ($$0 instanceof ctl) {
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
          return false;
       } else {
-         return $$0.an() == bxe.S ? false : super.b($$0);
-      }
-   }
-
-   @Override
-   protected void a(ffp $$0) {
-      super.a($$0);
-      if (this.dV() instanceof aru $$1) {
-         bxw $$4 = this.q() instanceof bxw $$3 ? $$3 : null;
-         bwv $$5 = $$0.a();
-         if ($$4 != null) {
-            $$4.B($$5);
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
          }
 
-         bvk $$6 = this.dW().c(this, $$4);
-         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bxw $$7) {
-            dgp.a($$1, (bwv)$$7, $$6);
-         }
-
-         this.a(this.dt());
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
       }
    }
 
    @Override
-   public void i(double $$0, double $$1, double $$2) {
-   }
-
-   protected abstract void a(ffs var1);
-
-   @Override
-   protected void a(ffo $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         kb $$1 = $$0.c().q();
-         ffs $$2 = ffs.a($$1).d(0.25, 0.25, 0.25);
-         ffs $$3 = $$0.g().e($$2);
-         this.a($$3);
-         this.aq();
-      }
-   }
-
-   @Override
-   protected void a(ffq $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         this.aq();
-      }
-   }
-
-   @Override
-   protected boolean g() {
-      return false;
-   }
-
-   @Override
-   public daa f() {
-      return daa.k;
-   }
-
-   @Override
-   protected float m() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float n() {
-      return this.m();
-   }
-
-   @Nullable
-   @Override
-   protected lx j() {
-      return null;
+   public boolean n(boolean $$0) {
+      return true;
    }
 
    @Override
    public void h() {
-      if (!this.dV().C && this.dB() > this.dV().ao() + 30) {
-         this.a(this.dt());
-         this.aq();
+      this.j();
+      this.be();
+      this.g();
+      fga $$0 = ctf.a(this, this::b);
+      fgc $$1;
+      if ($$0.d() != fga.a.a) {
+         $$1 = $$0.g();
       } else {
-         super.h();
+         $$1 = this.dt().e(this.dy());
       }
+
+      this.b($$1);
+      this.A();
+      this.aI();
+      super.h();
+      if ($$0.d() != fga.a.a && this.bJ()) {
+         this.b($$0);
+      }
+   }
+
+   private void g() {
+      fgc $$0 = this.dy();
+      fgc $$1 = this.dt();
+      float $$4;
+      if (this.bi()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(lz.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
+      }
+
+      this.i($$0.c((double)$$4));
+   }
+
+   private void j() {
+      if (this.ak) {
+         for (iw $$0 : iw.a(this.cR())) {
+            ebq $$1 = this.dV().a_($$0);
+            if ($$1.a(dnq.nJ)) {
+               $$1.a(this.dV(), $$0, this, bxx.a);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected double bc() {
+      return 0.03;
    }
 }

@@ -1,20 +1,8 @@
-public class fox extends fow {
-   private final fqd a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fox(gaf $$0, fqd $$1) {
-      super($$0, $$1);
-      this.a = $$1;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
-
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fox {
 }

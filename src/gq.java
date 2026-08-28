@@ -13,15 +13,15 @@ public class gq implements gj {
    }
 
    @Override
-   public ffs a(ek $$0) {
-      ffs $$1 = $$0.d();
-      return new ffs(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public fgc a(ek $$0) {
+      fgc $$1 = $$0.d();
+      return new fgc(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public ffr b(ek $$0) {
-      ffr $$1 = $$0.k();
-      return new ffr((float)this.a.a((double)$$1.j), (float)this.b.a((double)$$1.k));
+   public fgb b(ek $$0) {
+      fgb $$1 = $$0.k();
+      return new fgb((float)this.a.a((double)$$1.j), (float)this.b.a((double)$$1.k));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gq implements gj {
       return new gq(new gp(false, $$0), new gp(false, $$1), new gp(false, $$2));
    }
 
-   public static gq a(ffr $$0) {
+   public static gq a(fgb $$0) {
       return new gq(new gp(false, (double)$$0.j), new gp(false, (double)$$0.k), new gp(true, 0.0));
    }
 

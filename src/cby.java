@@ -1,24 +1,21 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cby {
-   private static final float a = 0.3F;
-
-   public static cay<bxw> a() {
-      return cda.a(
-         (Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$0 -> $$0.group($$0.a(cgy.n), $$0.a(cgy.o), $$0.b(cgy.e), $$0.b(cgy.h), $$0.c(cgy.r))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     jf $$9 = $$0.b($$3);
-                     cha $$10 = $$0.b($$4);
-                     if ($$6.G_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bxe.bE.equals($$0xxx.an()))) {
-                        $$10.a($$1xx -> bxe.bE.equals($$1xx.an()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bzy($$3xx, true));
-                           $$1.a(new chb(new bzy($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
+   public static bzx<byf> a(bxn<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$2x -> $$2x.group($$2x.a(chh.o), $$2x.c(chh.r), $$2x.b(chh.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<byf> $$9 = $$2x.<chj>b($$5).a($$3xx -> $$3xx.g($$7) <= (double)$$2 && $$0.equals($$3xx.an()));
+                     if ($$9.isEmpty()) {
                         return false;
+                     } else {
+                        byf $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new cah($$10, true));
+                        return true;
                      }
                   }))
       );

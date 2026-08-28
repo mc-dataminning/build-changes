@@ -1,25 +1,11 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ffh extends Exception {
-   private final Path a;
-   private final List<ffj> b;
+public interface ffh {
+   @Nullable
+   fhg a(fat var1);
 
-   public ffh(Path $$0, List<ffj> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   ffg a();
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<ffj> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
-   }
+   Set<bbk<?>> b();
 }

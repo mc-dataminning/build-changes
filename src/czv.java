@@ -1,32 +1,28 @@
-public interface czv {
-   int a = 256;
-   float b = 7.0F;
-   alj<czt> c = a("ponder_goat_horn");
-   alj<czt> d = a("sing_goat_horn");
-   alj<czt> e = a("seek_goat_horn");
-   alj<czt> f = a("feel_goat_horn");
-   alj<czt> g = a("admire_goat_horn");
-   alj<czt> h = a("call_goat_horn");
-   alj<czt> i = a("yearn_goat_horn");
-   alj<czt> j = a("dream_goat_horn");
+public class czv<T extends bxe & byc> extends dag {
+   private final bxn<T> a;
+   private final int b;
 
-   private static alj<czt> a(String $$0) {
-      return alj.a(mi.aU, alk.b($$0));
+   public czv(bxn<T> $$0, int $$1, dag.a $$2) {
+      super($$2);
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static void a(qi<czt> $$0) {
-      a($$0, c, (jg<awq>)awr.nh.get(0), 7.0F, 256.0F);
-      a($$0, d, (jg<awq>)awr.nh.get(1), 7.0F, 256.0F);
-      a($$0, e, (jg<awq>)awr.nh.get(2), 7.0F, 256.0F);
-      a($$0, f, (jg<awq>)awr.nh.get(3), 7.0F, 256.0F);
-      a($$0, g, (jg<awq>)awr.nh.get(4), 7.0F, 256.0F);
-      a($$0, h, (jg<awq>)awr.nh.get(5), 7.0F, 256.0F);
-      a($$0, i, (jg<awq>)awr.nh.get(6), 7.0F, 256.0F);
-      a($$0, j, (jg<awq>)awr.nh.get(7), 7.0F, 256.0F);
-   }
+   @Override
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bvc.e;
+      } else {
+         bxe $$4 = $$1.dl();
+         if ($$1.bY() && $$4 instanceof byc $$5 && $$4.an() == this.a && $$5.a()) {
+            bxo $$6 = byf.d($$2);
+            dak $$7 = $$3.a(this.b, dao.sd, $$1, $$6);
+            return bvc.b.a($$7);
+         }
 
-   static void a(qi<czt> $$0, alj<czt> $$1, jg<awq> $$2, float $$3, float $$4) {
-      xq $$5 = xc.c(ag.a("instrument", $$1.a()));
-      $$0.a($$1, new czt($$2, $$3, $$4, $$5));
+         $$1.b(axi.c.b(this));
+         return bvc.e;
+      }
    }
 }

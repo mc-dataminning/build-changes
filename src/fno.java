@@ -1,2 +1,8 @@
-public interface fno {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fno {
 }

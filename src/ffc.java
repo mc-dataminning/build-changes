@@ -1,20 +1,42 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
 
-public record ffc(alk b) implements ffd<MinecraftServer> {
-   public static final MapCodec<ffc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alk.a.fieldOf("Name").forGetter(ffc::b)).apply($$0, ffc::new));
+public record ffc(fey b, fey c) implements fey {
+   public static final MapCodec<ffc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fez.a.fieldOf("min").forGetter(ffc::c), fez.a.fieldOf("max").forGetter(ffc::d)).apply($$0, ffc::new)
+   );
 
-   public void a(MinecraftServer $$0, fff<MinecraftServer> $$1, long $$2) {
-      alz $$3 = $$0.aE();
+   @Override
+   public fex b() {
+      return fez.c;
+   }
 
-      for (hy<ek> $$5 : $$3.b(this.b)) {
-         $$3.a($$5, $$3.c());
-      }
+   public static ffc a(float $$0, float $$1) {
+      return new ffc(fev.a($$0), fev.a($$1));
    }
 
    @Override
-   public MapCodec<ffc> a() {
-      return a;
+   public int a(fat $$0) {
+      return azz.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(fat $$0) {
+      return azz.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<bbk<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fey c() {
+      return this.b;
+   }
+
+   public fey d() {
+      return this.c;
    }
 }

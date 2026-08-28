@@ -1,57 +1,89 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class eli extends ekm<ena> {
-   public eli(Codec<ena> $$0) {
+public class eli extends ekw<eni> {
+   public eli(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<ena> $$0) {
-      dka $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      azz $$3 = $$0.d();
-      ena $$4 = $$0.f();
-      Optional<jc> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+   public boolean a(eky<eni> $$0) {
+      iw $$1 = $$0.e();
+      bai $$2 = $$0.d();
+      dli $$3 = $$0.b();
+
+      while ($$3.v($$1) && $$1.v() > $$3.K_() + 2) {
+         $$1 = $$1.e();
+      }
+
+      if (!$$3.a_($$1).a(dnq.ef)) {
          return false;
       } else {
-         iw $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && ekg.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         ekg.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
 
-   private static Optional<jc> a(dka $$0, iw $$1, azz $$2) {
-      boolean $$3 = ekg.b($$0.a_($$1.d()));
-      boolean $$4 = ekg.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jc.a : jc.b);
-      } else if ($$3) {
-         return Optional.of(jc.a);
-      } else {
-         return $$4 ? Optional.of(jc.b) : Optional.empty();
-      }
-   }
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = azz.f($$7);
 
-   private static void a(dka $$0, azz $$1, iw $$2, ena $$3) {
-      ekg.c($$0, $$2);
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)azz.a($$9) - 0.25F;
 
-      for (jc $$4 : jc.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            iw $$5 = $$2.a($$4);
-            ekg.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               iw $$6 = $$5.a(jc.b($$1));
-               ekg.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  iw $$7 = $$6.a(jc.b($$1));
-                  ekg.c($$0, $$7);
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)azz.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     ebq $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.l() || b($$13) || $$13.a(dnq.ef) || $$13.a(dnq.ee)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dnq.je.m());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.l() || b($$13) || $$13.a(dnq.ef) || $$13.a(dnq.ee)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dnq.je.m());
+                        }
+                     }
+                  }
                }
             }
          }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               iw $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  ebq $$19 = $$3.a_($$17);
+                  if (!$$19.l() && !b($$19) && !$$19.a(dnq.ef) && !$$19.a(dnq.ee) && !$$19.a(dnq.je)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, dnq.je.m());
+                  $$17 = $$17.e();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
+            }
+         }
+
+         return true;
       }
    }
 }

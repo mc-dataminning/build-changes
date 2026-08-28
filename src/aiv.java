@@ -1,45 +1,85 @@
-public class aiv implements zj<agt> {
-   public static final za<vy, aiv> a = zj.a(aiv::a, aiv::new);
-   private final ffo b;
-   private final bus c;
-   private final int d;
+public class aiv implements zo<aha> {
+   public static final ze<vy, aiv> a = zo.a(aiv::a, aiv::new);
+   private final iw b;
+   private final alr c;
+   private final alr d;
+   private final alr e;
+   private final String f;
+   private final dzs.a g;
+   private final int h;
+   private final int i;
 
-   public aiv(bus $$0, ffo $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
+   public aiv(iw $$0, alr $$1, alr $$2, alr $$3, String $$4, dzs.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
    private aiv(vy $$0) {
-      this.c = $$0.b(bus.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dzs.a.c.a($$0.p(), dzs.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.d);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zl<aiv> a() {
-      return agr.cn;
+   public zq<aiv> a() {
+      return agy.cg;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public bus b() {
-      return this.c;
-   }
-
-   public ffo e() {
+   public iw b() {
       return this.b;
    }
 
-   public int f() {
+   public alr e() {
+      return this.c;
+   }
+
+   public alr f() {
       return this.d;
+   }
+
+   public alr g() {
+      return this.e;
+   }
+
+   public String h() {
+      return this.f;
+   }
+
+   public dzs.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

@@ -1,31 +1,15 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhf {
-   Codec<dhf> c = mh.at.q().dispatch(dhf::a, Function.identity());
+public record dhf(jk<dag> c) {
+   public static final Codec<dhf> a = RecordCodecBuilder.create($$0 -> $$0.group(jv.a(mi.K).fieldOf("items").forGetter(dhf::a)).apply($$0, dhf::new));
+   public static final ze<wp, dhf> b = ze.a(zc.c(mi.K), dhf::a, dhf::new);
 
-   static MapCodec<? extends dhf> b(jt<MapCodec<? extends dhf>> $$0) {
-      jt.a($$0, "all_of", dgy.b.a);
-      jt.a($$0, "apply_mob_effect", dgz.a);
-      jt.a($$0, "attribute", dhd.a);
-      jt.a($$0, "change_item_damage", dha.a);
-      jt.a($$0, "damage_entity", dhb.a);
-      jt.a($$0, "explode", dhh.a);
-      jt.a($$0, "ignite", dhi.a);
-      jt.a($$0, "play_sound", dhk.a);
-      jt.a($$0, "replace_block", dhm.a);
-      jt.a($$0, "replace_disk", dhn.a);
-      jt.a($$0, "run_function", dho.a);
-      jt.a($$0, "set_block_properties", dhp.a);
-      jt.a($$0, "spawn_particles", dhr.a);
-      return jt.a($$0, "summon_entity", dhs.a);
+   public boolean a(dak $$0) {
+      return $$0.a(this.c);
    }
 
-   void a(aru var1, int var2, dgm var3, bwv var4, ffs var5, boolean var6);
-
-   default void a(dgm $$0, bwv $$1, ffs $$2, int $$3) {
+   public jk<dag> a() {
+      return this.c;
    }
-
-   MapCodec<? extends dhf> a();
 }

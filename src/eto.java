@@ -1,25 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Collections;
+import java.util.List;
 
-public record eto(alj<etn> c, alj<etn> d) implements etp {
-   static MapCodec<eto> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alj.a(mi.bf).fieldOf("alias").forGetter(eto::c), alj.a(mi.bf).fieldOf("target").forGetter(eto::d)).apply($$0, eto::new)
-   );
+public class eto extends etv {
+   public static final MapCodec<eto> a = MapCodec.unit(() -> eto.b);
+   public static final eto b = new eto();
 
-   @Override
-   public void a(azz $$0, BiConsumer<alj<etn>, alj<etn>> $$1) {
-      $$1.accept(this.c, this.d);
+   private eto() {
+      super(etx.a.a);
    }
 
    @Override
-   public Stream<alj<etn>> a() {
-      return Stream.of(this.d);
+   public kb a(ewq $$0, dui $$1) {
+      return kb.i;
    }
 
    @Override
-   public MapCodec<eto> b() {
-      return a;
+   public List<ewp.a> a(ewq $$0, iw $$1, dui $$2, bai $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public esf a(ewq $$0, iw $$1, dui $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(ewq $$0, dli $$1, dlf $$2, edo $$3, iw $$4, iw $$5, dui $$6, esf $$7, bai $$8, evz $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public etw<?> a() {
+      return etw.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

@@ -3,15 +3,16 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hik(kk<?> b, boolean c) implements hif {
+public record hik(boolean b) implements hiq {
    public static final MapCodec<hik> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mh.am.q().fieldOf("component").forGetter(hik::b), Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(hik::c))
-            .apply($$0, hik::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hik::b)).apply($$0, hik::new)
    );
 
    @Override
-   public boolean get(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
-      return this.c ? $$0.d(this.b) : $$0.c(this.b);
+   public float a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3) {
+      float $$4 = (float)$$0.M();
+      float $$5 = (float)$$0.k();
+      return this.b ? azz.a($$4 / $$5, 0.0F, 1.0F) : azz.a($$4, 0.0F, $$5);
    }
 
    @Override

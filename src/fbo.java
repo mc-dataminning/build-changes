@@ -1,95 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class fbo extends fbw {
-   public static final int a = 0;
-   public static final MapCodec<fbo> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  dgn.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  fep.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
-               )
-            )
+public class fbo extends fbl {
+   public static final MapCodec<fbo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayc.a(mi.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, fbo::new)
    );
-   private final jg<dgn> c;
-   private final feo d;
-   private final int e;
+   private final ayc<dag> j;
+   private final boolean k;
 
-   fbo(List<fds> $$0, jg<dgn> $$1, feo $$2, int $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private fbo(ayc<dag> $$0, boolean $$1, int $$2, int $$3, List<fec> $$4, List<fch> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public fby<fbo> b() {
-      return fbz.m;
+   public fbk a() {
+      return fbh.f;
    }
 
    @Override
-   public Set<bbb<?>> a() {
-      return Sets.union(ImmutableSet.of(fdd.d), this.d.a());
+   public void a(Consumer<dak> $$0, fat $$1) {
+      mh.g.c(this.j).forEach($$1x -> $$0.accept(new dak($$1x)));
    }
 
-   private boolean c() {
-      return this.e > 0;
-   }
-
-   @Override
-   public daa a(daa $$0, faj $$1) {
-      bwv $$2 = $$1.c(fdd.d);
-      if ($$2 instanceof bxw $$3) {
-         int $$4 = dgp.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
+   private boolean a(fat $$0, Consumer<fbi> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final jg<dag> $$2 : mh.g.c(this.j)) {
+            $$1.accept(new fbl.c() {
+               @Override
+               public void a(Consumer<dak> $$0, fat $$1) {
+                  $$0.accept(new dak($$2));
+               }
+            });
          }
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
-         }
+         return true;
       }
-
-      return $$0;
    }
 
-   public static fbo.a a(ji.a $$0, feo $$1) {
-      ji.b<dgn> $$2 = $$0.e(mi.aR);
-      return new fbo.a($$2.b(dgs.s), $$1);
+   @Override
+   public boolean expand(fat $$0, Consumer<fbi> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static class a extends fbw.a<fbo.a> {
-      private final jg<dgn> a;
-      private final feo b;
-      private int c = 0;
+   public static fbl.a<?> a(ayc<dag> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fbo($$0, false, $$1, $$2, $$3, $$4));
+   }
 
-      public a(jg<dgn> $$0, feo $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      protected fbo.a a() {
-         return this;
-      }
-
-      public fbo.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      @Override
-      public fbx b() {
-         return new fbo(this.g(), this.a, this.b, this.c);
-      }
+   public static fbl.a<?> b(ayc<dag> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fbo($$0, true, $$1, $$2, $$3, $$4));
    }
 }

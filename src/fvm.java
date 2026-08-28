@@ -1,35 +1,55 @@
+import java.time.Duration;
+import javax.annotation.Nullable;
+
 public class fvm {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+   @Nullable
+   private fvj a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public static void a(ftz $$0, hme $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   public static void a(ftz $$0, hme $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   public void a(@Nullable fvj $$0) {
+      this.a = $$0;
    }
 
-   public static void a(ftz $$0, alk $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(gsn::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+   @Nullable
+   public fvj a() {
+      return this.a;
+   }
+
+   public void a(boolean $$0, boolean $$1, fyf $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fqq.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ag.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ag.c() - this.c > this.b.toMillis()) {
+            fzq $$4 = fqq.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
    }
 
-   private static void a(ftz $$0, alk $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(gsn::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   private gcd a(fyf $$0, boolean $$1, boolean $$2) {
+      return (gcd)(!$$1 && $$2 && fqq.Q().aX().b() ? new gby($$0) : new gcf($$0));
+   }
+
+   public void a(fxv $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
    }
 }

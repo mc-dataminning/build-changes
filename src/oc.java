@@ -15,7 +15,7 @@ public class oc implements mo {
       this.d = $$0;
    }
 
-   public <T> oc a(aug<T> $$0, T $$1) {
+   public <T> oc a(aun<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> ((JsonElement)$$0.b().encodeStart(JsonOps.INSTANCE, $$1).getOrThrow(IllegalArgumentException::new)).getAsJsonObject());
       return this;
    }
@@ -32,11 +32,11 @@ public class oc implements mo {
       return "Pack Metadata";
    }
 
-   public static oc a(mq $$0, xc $$1) {
-      return new oc($$0).a(auh.b, new auh($$1, u.a.a(atv.b), Optional.empty()));
+   public static oc a(mq $$0, xg $$1) {
+      return new oc($$0).a(auo.b, new auo($$1, u.a.a(auc.b), Optional.empty()));
    }
 
-   public static oc a(mq $$0, xc $$1, cvj $$2) {
-      return a($$0, $$1).a(atp.a, new atp($$2));
+   public static oc a(mq $$0, xg $$1, cvs $$2) {
+      return a($$0, $$1).a(atw.a, new atw($$2));
    }
 }

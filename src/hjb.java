@@ -1,19 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hjb {
-   private static final ayy.b<alk, MapCodec<? extends hjc>> b = new ayy.b<>();
-   public static final MapCodec<hjc> a = b.a(alk.a).dispatchMap("property", hjc::a, $$0 -> $$0);
+public record hjb() implements hjg<dai> {
+   public static final Codec<dai> a = dai.j;
+   public static final hjg.a<hjb, dai> b = hjg.a.a(MapCodec.unit(new hjb()), a);
 
-   public static void a() {
-      b.a(alk.b("custom_model_data"), hiy.a);
-      b.a(alk.b("bundle/fullness"), his.a);
-      b.a(alk.b("damage"), hiz.a);
-      b.a(alk.b("cooldown"), hiv.a);
-      b.a(alk.b("time"), hjd.a);
-      b.a(alk.b("compass"), hit.a);
-      b.a(alk.b("crossbow/pull"), hix.a);
-      b.a(alk.b("use_cycle"), hje.a);
-      b.a(alk.b("use_duration"), hjf.a);
-      b.a(alk.b("count"), hiw.a);
+   public dai a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      return $$4;
+   }
+
+   @Override
+   public hjg.a<hjb, dai> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<dai> b() {
+      return a;
    }
 }

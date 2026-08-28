@@ -1,53 +1,744 @@
-public class gvd implements gup<dzr> {
-   private final gvd.a a;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.buffers.BufferType;
+import com.mojang.blaze3d.buffers.BufferUsage;
+import com.mojang.blaze3d.buffers.GpuBuffer;
+import com.mojang.blaze3d.systems.CommandEncoder;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.Set;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.Nullable;
 
-   public gvd(guq.a $$0) {
-      this($$0.f());
+public class gvd {
+   private final guy a = new guy();
+   final Queue<Runnable> b = Queues.newConcurrentLinkedQueue();
+   final gsb c;
+   private final gsc d;
+   private volatile int e;
+   volatile boolean f;
+   private final btr g;
+   private final af h;
+   glo i;
+   final gri j;
+   private fgc k = fgc.c;
+   final gvc l;
+
+   public gvd(glo $$0, gri $$1, af $$2, grv $$3, gsq $$4, gtz $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.c = $$3.a();
+      this.d = $$3.b();
+      this.h = $$2;
+      this.g = new btr($$2, "Section Renderer");
+      this.g.a_(this::j);
+      this.l = new gvc($$4, $$5);
    }
 
-   public gvd(glc $$0) {
-      this.a = new gvd.a($$0.a(glf.cV));
+   public void a(glo $$0) {
+      this.i = $$0;
    }
 
-   public void a(dzr $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
-      jc $$7 = $$0.m().a(dun.c, jc.b);
-      cyy $$8 = $$0.s();
-      hnj $$9;
-      if ($$8 == null) {
-         $$9 = gsw.s;
-      } else {
-         $$9 = gsw.d($$8);
+   private void j() {
+      if (!this.f && !this.d.b()) {
+         gvd.b.a $$0 = this.a.a(this.e());
+         if ($$0 != null) {
+            gsb $$1 = Objects.requireNonNull(this.d.a());
+            this.e = this.a.a();
+            CompletableFuture.<CompletableFuture<gvd.d>>supplyAsync(() -> $$0.a($$1), this.h.a($$0.b())).thenCompose($$0x -> $$0x).whenComplete(($$2, $$3) -> {
+               if ($$3 != null) {
+                  fqq.Q().a(p.a($$3, "Batching sections"));
+               } else {
+                  $$0.b.set(true);
+                  this.g.a_(() -> {
+                     if ($$2 == gvd.d.a) {
+                        $$1.a();
+                     } else {
+                        $$1.b();
+                     }
+
+                     this.d.a($$1);
+                     this.j();
+                  });
+               }
+            });
+         }
+      }
+   }
+
+   public String a() {
+      return String.format(Locale.ROOT, "pC: %03d, pU: %02d, aB: %02d", this.e, this.b.size(), this.d.c());
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public int c() {
+      return this.b.size();
+   }
+
+   public int d() {
+      return this.d.c();
+   }
+
+   public void a(fgc $$0) {
+      this.k = $$0;
+   }
+
+   public fgc e() {
+      return this.k;
+   }
+
+   public void f() {
+      Runnable $$0;
+      while (($$0 = this.b.poll()) != null) {
+         $$0.run();
+      }
+   }
+
+   public void a(gvd.b $$0, gvb $$1) {
+      $$0.b($$1);
+   }
+
+   public void g() {
+      this.k();
+   }
+
+   public void a(gvd.b.a $$0) {
+      if (!this.f) {
+         this.g.a_(() -> {
+            if (!this.f) {
+               this.a.a($$0);
+               this.e = this.a.a();
+               this.j();
+            }
+         });
+      }
+   }
+
+   private void k() {
+      this.a.b();
+      this.e = 0;
+   }
+
+   public boolean h() {
+      return this.e == 0 && this.b.isEmpty();
+   }
+
+   public void i() {
+      this.f = true;
+      this.k();
+      this.f();
+   }
+
+   public static class a {
+      public static final gvd.a a = new gvd.a() {
+         @Override
+         public boolean a(jc $$0, jc $$1) {
+            return false;
+         }
+      };
+      public static final gvd.a b = new gvd.a() {
+         @Override
+         public boolean a(jc $$0, jc $$1) {
+            return true;
+         }
+      };
+      final Set<gry> c = new ObjectArraySet(gry.N().size());
+      final List<dyo> d = Lists.newArrayList();
+      gvf e = new gvf();
+      @Nullable
+      flc.b f;
+
+      public boolean a() {
+         return !this.c.isEmpty();
       }
 
-      float $$11 = $$0.a($$1);
-      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
-   }
-
-   public void a(flq $$0, gsc $$1, int $$2, int $$3, jc $$4, float $$5, hnj $$6) {
-      $$0.a();
-      $$0.a(0.5F, 0.5F, 0.5F);
-      float $$7 = 0.9995F;
-      $$0.b(0.9995F, 0.9995F, 0.9995F);
-      $$0.a($$4.b());
-      $$0.b(1.0F, -1.0F, -1.0F);
-      $$0.a(0.0F, -1.0F, 0.0F);
-      this.a.a($$5);
-      flt $$8 = $$6.a($$1, this.a::a);
-      this.a.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   static class a extends giy {
-      private final glg a;
-
-      public a(glg $$0) {
-         super($$0, gsn::g);
-         this.a = $$0.b("lid");
+      public boolean a(gry $$0) {
+         return !this.c.contains($$0);
       }
 
-      public void a(float $$0) {
-         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
-         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      public List<dyo> b() {
+         return this.d;
+      }
+
+      public boolean a(jc $$0, jc $$1) {
+         return this.e.a($$0, $$1);
+      }
+   }
+
+   public class b {
+      public static final int a = 16;
+      public final int b;
+      public final AtomicReference<gvd.a> c = new AtomicReference<>(gvd.a.a);
+      public final AtomicReference<gvd.e> d = new AtomicReference<>(null);
+      @Nullable
+      private gvd.b.b f;
+      @Nullable
+      private gvd.b.c g;
+      private final Set<dyo> h = Sets.newHashSet();
+      private final Map<gry, gvd.c> i = new HashMap<>();
+      private ffx j;
+      private boolean k = true;
+      volatile long l = jz.b(-1, -1, -1);
+      final iw.a m = new iw.a(-1, -1, -1);
+      private boolean n;
+
+      public b(final int $$1, final long $$2) {
+         this.b = $$1;
+         this.a($$2);
+      }
+
+      private boolean b(long $$0) {
+         edn $$1 = gvd.this.i.a(jz.b($$0), jz.d($$0), eeo.n, false);
+         return $$1 != null && gvd.this.i.B_().a(jz.f($$0));
+      }
+
+      public boolean a() {
+         int $$0 = 24;
+         return !(this.c() > 576.0)
+            ? true
+            : this.b(jz.a(this.l, jc.e))
+               && this.b(jz.a(this.l, jc.c))
+               && this.b(jz.a(this.l, jc.f))
+               && this.b(jz.a(this.l, jc.d))
+               && this.b(jz.a(this.l, -1, 0, -1))
+               && this.b(jz.a(this.l, -1, 0, 1))
+               && this.b(jz.a(this.l, 1, 0, -1))
+               && this.b(jz.a(this.l, 1, 0, 1));
+      }
+
+      public ffx b() {
+         return this.j;
+      }
+
+      @Nullable
+      public gvd.c a(gry $$0) {
+         return this.i.get($$0);
+      }
+
+      public CompletableFuture<Void> a(gry $$0, flc $$1) {
+         if (gvd.this.f) {
+            $$1.close();
+            return CompletableFuture.completedFuture(null);
+         } else {
+            return CompletableFuture.runAsync(
+               () -> {
+                  try (brr $$2 = brl.a().d("Upload Section Layer")) {
+                     CommandEncoder $$3 = RenderSystem.getDevice().createCommandEncoder();
+                     if (this.i.containsKey($$0)) {
+                        gvd.c $$4 = this.i.get($$0);
+                        if ($$4.a.size() < $$1.a().remaining()) {
+                           $$4.a.close();
+                           $$4.b(
+                              RenderSystem.getDevice()
+                                 .createBuffer(
+                                    () -> "Section vertex buffer - layer: " + $$0.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
+                                    BufferType.VERTICES,
+                                    BufferUsage.STATIC_WRITE,
+                                    $$1.a()
+                                 )
+                           );
+                        } else if (!$$4.a.isClosed()) {
+                           $$3.writeToBuffer($$4.a, $$1.a(), 0);
+                        }
+
+                        if ($$1.b() != null) {
+                           if ($$4.b != null && $$4.b.size() >= $$1.b().remaining()) {
+                              if (!$$4.b.isClosed()) {
+                                 $$3.writeToBuffer($$4.b, $$1.b(), 0);
+                              }
+                           } else {
+                              if ($$4.b != null) {
+                                 $$4.b.close();
+                              }
+
+                              $$4.a(
+                                 RenderSystem.getDevice()
+                                    .createBuffer(
+                                       () -> "Section index buffer - layer: "
+                                             + $$0.c()
+                                             + "; cords: "
+                                             + jz.b(this.l)
+                                             + ", "
+                                             + jz.c(this.l)
+                                             + ", "
+                                             + jz.d(this.l),
+                                       BufferType.INDICES,
+                                       BufferUsage.STATIC_WRITE,
+                                       $$1.b()
+                                    )
+                              );
+                           }
+                        } else if ($$4.b != null) {
+                           $$4.b.close();
+                           $$4.a(null);
+                        }
+
+                        $$4.a($$1.c().c());
+                        $$4.a($$1.c().e());
+                     } else {
+                        GpuBuffer $$5 = RenderSystem.getDevice()
+                           .createBuffer(
+                              () -> "Section vertex buffer - layer: " + $$0.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
+                              BufferType.VERTICES,
+                              BufferUsage.STATIC_WRITE,
+                              $$1.a()
+                           );
+                        GpuBuffer $$6 = $$1.b() != null
+                           ? RenderSystem.getDevice()
+                              .createBuffer(
+                                 () -> "Section index buffer - layer: " + $$0.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
+                                 BufferType.INDICES,
+                                 BufferUsage.STATIC_WRITE,
+                                 $$1.b()
+                              )
+                           : null;
+                        gvd.c $$7 = new gvd.c($$5, $$6, $$1.c().c(), $$1.c().e());
+                        this.i.put($$0, $$7);
+                     }
+
+                     $$1.close();
+                  }
+               },
+               gvd.this.b::add
+            );
+         }
+      }
+
+      public CompletableFuture<Void> a(fla.a $$0, gry $$1) {
+         if (gvd.this.f) {
+            $$0.close();
+            return CompletableFuture.completedFuture(null);
+         } else {
+            return CompletableFuture.runAsync(
+               () -> {
+                  try (brr $$2 = brl.a().d("Upload Section Indices")) {
+                     gvd.c $$3 = this.a($$1);
+                     if ($$3.b == null) {
+                        $$3.a(
+                           RenderSystem.getDevice()
+                              .createBuffer(
+                                 () -> "Section index buffer - layer: " + $$1.c() + "; cords: " + jz.b(this.l) + ", " + jz.c(this.l) + ", " + jz.d(this.l),
+                                 BufferType.INDICES,
+                                 BufferUsage.STATIC_WRITE,
+                                 $$0.a()
+                              )
+                        );
+                     } else {
+                        CommandEncoder $$4 = RenderSystem.getDevice().createCommandEncoder();
+                        if (!$$3.b.isClosed()) {
+                           $$4.writeToBuffer($$3.b, $$0.a(), 0);
+                        }
+                     }
+
+                     $$0.close();
+                  }
+               },
+               gvd.this.b::add
+            );
+         }
+      }
+
+      public void a(long $$0) {
+         this.e();
+         this.l = $$0;
+         int $$1 = jz.c(jz.b($$0));
+         int $$2 = jz.c(jz.c($$0));
+         int $$3 = jz.c(jz.d($$0));
+         this.m.d($$1, $$2, $$3);
+         this.j = new ffx((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 16), (double)($$2 + 16), (double)($$3 + 16));
+      }
+
+      protected double c() {
+         fpy $$0 = fqq.Q().j.k();
+         double $$1 = this.j.a + 8.0 - $$0.b().d;
+         double $$2 = this.j.b + 8.0 - $$0.b().e;
+         double $$3 = this.j.c + 8.0 - $$0.b().f;
+         return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+      }
+
+      public gvd.a d() {
+         return this.c.get();
+      }
+
+      public void e() {
+         this.m();
+         this.c.set(gvd.a.a);
+         this.d.set(null);
+         this.k = true;
+         this.i.values().forEach(gvd.c::close);
+         this.i.clear();
+      }
+
+      public iw f() {
+         return this.m;
+      }
+
+      public long g() {
+         return this.l;
+      }
+
+      public void a(boolean $$0) {
+         boolean $$1 = this.k;
+         this.k = true;
+         this.n = $$0 | ($$1 && this.n);
+      }
+
+      public void h() {
+         this.k = false;
+         this.n = false;
+      }
+
+      public boolean i() {
+         return this.k;
+      }
+
+      public boolean j() {
+         return this.k && this.n;
+      }
+
+      public long a(jc $$0) {
+         return jz.a(this.l, $$0);
+      }
+
+      public void a(gvd $$0) {
+         this.g = new gvd.b.c(this.d());
+         $$0.a(this.g);
+      }
+
+      public boolean k() {
+         return this.d().c.contains(gry.g());
+      }
+
+      public boolean l() {
+         return this.g != null && !this.g.b.get();
+      }
+
+      protected void m() {
+         if (this.f != null) {
+            this.f.a();
+            this.f = null;
+         }
+
+         if (this.g != null) {
+            this.g.a();
+            this.g = null;
+         }
+      }
+
+      public gvd.b.a a(gvb $$0) {
+         this.m();
+         gva $$1 = $$0.a(gvd.this.i, jz.a(this.l));
+         boolean $$2 = this.c.get() != gvd.a.a;
+         this.f = new gvd.b.b($$1, $$2);
+         return this.f;
+      }
+
+      public void a(gvd $$0, gvb $$1) {
+         gvd.b.a $$2 = this.a($$1);
+         $$0.a($$2);
+      }
+
+      void a(Collection<dyo> $$0) {
+         Set<dyo> $$1 = Sets.newHashSet($$0);
+         Set<dyo> $$2;
+         synchronized (this.h) {
+            $$2 = Sets.newHashSet(this.h);
+            $$1.removeAll(this.h);
+            $$2.removeAll($$0);
+            this.h.clear();
+            this.h.addAll($$0);
+         }
+
+         gvd.this.j.a($$2, $$1);
+      }
+
+      public void b(gvb $$0) {
+         gvd.b.a $$1 = this.a($$0);
+         $$1.a(gvd.this.c);
+      }
+
+      void a(gvd.a $$0) {
+         this.c.set($$0);
+         gvd.this.j.a(this);
+      }
+
+      fli a(jz $$0) {
+         fgc $$1 = gvd.this.e();
+         return fli.a((float)($$1.d - (double)$$0.d()), (float)($$1.e - (double)$$0.e()), (float)($$1.f - (double)$$0.f()));
+      }
+
+      public abstract class a {
+         protected final AtomicBoolean a = new AtomicBoolean(false);
+         protected final AtomicBoolean b = new AtomicBoolean(false);
+         protected final boolean c;
+
+         public a(final boolean $$1) {
+            this.c = $$1;
+         }
+
+         public abstract CompletableFuture<gvd.d> a(gsb var1);
+
+         public abstract void a();
+
+         protected abstract String b();
+
+         public boolean c() {
+            return this.c;
+         }
+
+         public iw d() {
+            return b.this.m;
+         }
+      }
+
+      class b extends gvd.b.a {
+         @Nullable
+         protected volatile gva e;
+
+         public b(@Nullable final gva $$0, final boolean $$1) {
+            super($$1);
+            this.e = $$0;
+         }
+
+         @Override
+         protected String b() {
+            return "rend_chk_rebuild";
+         }
+
+         @Override
+         public CompletableFuture<gvd.d> a(gsb $$0) {
+            if (this.a.get()) {
+               return CompletableFuture.completedFuture(gvd.d.b);
+            } else {
+               gva $$1 = this.e;
+               this.e = null;
+               if ($$1 == null) {
+                  b.this.a(gvd.a.b);
+                  return CompletableFuture.completedFuture(gvd.d.a);
+               } else {
+                  long $$2 = b.this.l;
+                  jz $$3 = jz.a($$2);
+                  if (this.a.get()) {
+                     return CompletableFuture.completedFuture(gvd.d.b);
+                  } else {
+                     gvc.a $$5;
+                     try (brr $$4 = brl.a().d("Compile Section")) {
+                        $$5 = gvd.this.l.a($$3, $$1, b.this.a($$3), $$0);
+                     }
+
+                     gvd.e $$7 = gvd.e.a(gvd.this.e(), $$2);
+                     b.this.a($$5.a);
+                     if (this.a.get()) {
+                        $$5.a();
+                        return CompletableFuture.completedFuture(gvd.d.b);
+                     } else {
+                        gvd.a $$8 = new gvd.a();
+                        $$8.e = $$5.d;
+                        $$8.d.addAll($$5.b);
+                        $$8.f = $$5.e;
+                        List<CompletableFuture<Void>> $$9 = new ArrayList<>($$5.c.size());
+                        $$5.c.forEach(($$2x, $$3x) -> {
+                           $$9.add(b.this.a($$2x, $$3x));
+                           $$8.c.add($$2x);
+                        });
+                        return ag.e($$9).handle(($$2x, $$3x) -> {
+                           if ($$3x != null && !($$3x instanceof CancellationException) && !($$3x instanceof InterruptedException)) {
+                              fqq.Q().a(p.a($$3x, "Rendering section"));
+                           }
+
+                           if (this.a.get()) {
+                              return gvd.d.b;
+                           } else {
+                              b.this.a($$8);
+                              b.this.d.set($$7);
+                              return gvd.d.a;
+                           }
+                        });
+                     }
+                  }
+               }
+            }
+         }
+
+         @Override
+         public void a() {
+            this.e = null;
+            if (this.a.compareAndSet(false, true)) {
+               b.this.a(false);
+            }
+         }
+      }
+
+      class c extends gvd.b.a {
+         private final gvd.a f;
+
+         public c(final gvd.a $$0) {
+            super(true);
+            this.f = $$0;
+         }
+
+         @Override
+         protected String b() {
+            return "rend_chk_sort";
+         }
+
+         @Override
+         public CompletableFuture<gvd.d> a(gsb $$0) {
+            if (this.a.get()) {
+               return CompletableFuture.completedFuture(gvd.d.b);
+            } else {
+               flc.b $$1 = this.f.f;
+               if ($$1 != null && !this.f.a(gry.g())) {
+                  long $$2 = b.this.l;
+                  fli $$3 = b.this.a(jz.a($$2));
+                  gvd.e $$4 = gvd.e.a(gvd.this.e(), $$2);
+                  if ($$4.equals(b.this.d.get()) && !$$4.a()) {
+                     return CompletableFuture.completedFuture(gvd.d.b);
+                  } else {
+                     fla.a $$5 = $$1.a($$0.a(gry.g()), $$3);
+                     if ($$5 == null) {
+                        return CompletableFuture.completedFuture(gvd.d.b);
+                     } else if (this.a.get()) {
+                        $$5.close();
+                        return CompletableFuture.completedFuture(gvd.d.b);
+                     } else {
+                        CompletableFuture<gvd.d> $$6 = b.this.a($$5, gry.g()).thenApply($$0x -> gvd.d.b);
+                        return $$6.handle(($$1x, $$2x) -> {
+                           if ($$2x != null && !($$2x instanceof CancellationException) && !($$2x instanceof InterruptedException)) {
+                              fqq.Q().a(p.a($$2x, "Rendering section"));
+                           }
+
+                           if (this.a.get()) {
+                              return gvd.d.b;
+                           } else {
+                              b.this.d.set($$4);
+                              return gvd.d.a;
+                           }
+                        });
+                     }
+                  }
+               } else {
+                  return CompletableFuture.completedFuture(gvd.d.b);
+               }
+            }
+         }
+
+         @Override
+         public void a() {
+            this.a.set(true);
+         }
+      }
+   }
+
+   public static final class c implements AutoCloseable {
+      GpuBuffer a;
+      @Nullable
+      GpuBuffer b;
+      private int c;
+      private VertexFormat.a d;
+
+      public c(GpuBuffer $$0, @Nullable GpuBuffer $$1, int $$2, VertexFormat.a $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public GpuBuffer a() {
+         return this.a;
+      }
+
+      @Nullable
+      public GpuBuffer b() {
+         return this.b;
+      }
+
+      public void a(@Nullable GpuBuffer $$0) {
+         this.b = $$0;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public VertexFormat.a d() {
+         return this.d;
+      }
+
+      public void a(VertexFormat.a $$0) {
+         this.d = $$0;
+      }
+
+      public void a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void b(GpuBuffer $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void close() {
+         this.a.close();
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+   }
+
+   static enum d {
+      a,
+      b;
+   }
+
+   public static final class e {
+      private int a;
+      private int b;
+      private int c;
+
+      public static gvd.e a(fgc $$0, long $$1) {
+         return new gvd.e().b($$0, $$1);
+      }
+
+      public gvd.e b(fgc $$0, long $$1) {
+         this.a = a($$0.a(), jz.b($$1));
+         this.b = a($$0.b(), jz.c($$1));
+         this.c = a($$0.c(), jz.d($$1));
+         return this;
+      }
+
+      private static int a(double $$0, int $$1) {
+         int $$2 = jz.b($$0) - $$1;
+         return azz.a($$2, -1, 1);
+      }
+
+      public boolean a() {
+         return this.a == 0 || this.b == 0 || this.c == 0;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if ($$0 == this) {
+            return true;
+         } else {
+            return !($$0 instanceof gvd.e $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+         }
       }
    }
 }

@@ -1,20 +1,37 @@
-public record ahd(float b) implements zj<agt> {
-   public static final za<vy, ahd> a = zj.a(ahd::a, ahd::new);
+public class ahd implements zo<aha> {
+   public static final ze<vy, ahd> a = zo.a(ahd::a, ahd::new);
+   private final int b;
+   private final iw c;
+
+   public ahd(int $$0, iw $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
    private ahd(vy $$0) {
-      this($$0.readFloat());
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zl<ahd> a() {
-      return agr.bt;
+   public zq<ahd> a() {
+      return agy.bl;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public iw e() {
+      return this.c;
    }
 }

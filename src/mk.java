@@ -3,225 +3,225 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class mk {
-   private static final Map<dne, ml> ar = Maps.newHashMap();
+   private static final Map<dno, ml> ar = Maps.newHashMap();
    private static final String as = "wooden";
    private static final String at = "has_planks";
-   public static final ml a = a(dng.r)
-      .a(dng.gZ)
-      .h(dng.kK)
-      .j(dng.kB)
-      .m(dng.dS)
-      .a(dng.cS, dng.dg)
-      .k(dng.jZ)
-      .l(dng.iq)
-      .f(dng.kT)
-      .o(dng.eT)
+   public static final ml a = a(dnq.r)
+      .a(dnq.gZ)
+      .h(dnq.kK)
+      .j(dnq.kB)
+      .m(dnq.dS)
+      .a(dnq.cS, dnq.dg)
+      .k(dnq.jZ)
+      .l(dnq.iq)
+      .f(dnq.kT)
+      .o(dnq.eT)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml b = a(dng.s)
-      .a(dng.ha)
-      .h(dng.kL)
-      .j(dng.kC)
-      .m(dng.dT)
-      .a(dng.cT, dng.dh)
-      .k(dng.ka)
-      .l(dng.ir)
-      .f(dng.kU)
-      .o(dng.eU)
+   public static final ml b = a(dnq.s)
+      .a(dnq.ha)
+      .h(dnq.kL)
+      .j(dnq.kC)
+      .m(dnq.dT)
+      .a(dnq.cT, dnq.dh)
+      .k(dnq.ka)
+      .l(dnq.ir)
+      .f(dnq.kU)
+      .o(dnq.eU)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml c = a(dng.p)
-      .a(dng.gX)
-      .h(dng.kI)
-      .j(dng.kz)
-      .m(dng.dQ)
-      .a(dng.cR, dng.df)
-      .k(dng.jX)
-      .l(dng.gk)
-      .f(dng.kR)
-      .o(dng.eR)
+   public static final ml c = a(dnq.p)
+      .a(dnq.gX)
+      .h(dnq.kI)
+      .j(dnq.kz)
+      .m(dnq.dQ)
+      .a(dnq.cR, dnq.df)
+      .k(dnq.jX)
+      .l(dnq.gk)
+      .f(dnq.kR)
+      .o(dnq.eR)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml d = a(dng.pk)
-      .a(dng.py)
-      .h(dng.pq)
-      .j(dng.pu)
-      .m(dng.po)
-      .a(dng.pC, dng.pE)
-      .k(dng.pm)
-      .l(dng.pw)
-      .f(dng.pA)
-      .o(dng.ps)
+   public static final ml d = a(dnq.pk)
+      .a(dnq.py)
+      .h(dnq.pq)
+      .j(dnq.pu)
+      .m(dnq.po)
+      .a(dnq.pC, dnq.pE)
+      .k(dnq.pm)
+      .l(dnq.pw)
+      .f(dnq.pA)
+      .o(dnq.ps)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml e = a(dng.q)
-      .a(dng.gY)
-      .h(dng.kJ)
-      .j(dng.kA)
-      .m(dng.dR)
-      .a(dng.cU, dng.di)
-      .k(dng.jY)
-      .l(dng.gl)
-      .f(dng.kS)
-      .o(dng.eS)
+   public static final ml e = a(dnq.q)
+      .a(dnq.gY)
+      .h(dnq.kJ)
+      .j(dnq.kA)
+      .m(dnq.dR)
+      .a(dnq.cU, dnq.di)
+      .k(dnq.jY)
+      .l(dnq.gl)
+      .f(dnq.kS)
+      .o(dnq.eS)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml f = a(dng.n)
-      .a(dng.gV)
-      .h(dng.el)
-      .j(dng.fA)
-      .m(dng.dO)
-      .a(dng.cP, dng.dd)
-      .k(dng.jV)
-      .l(dng.cF)
-      .f(dng.cZ)
-      .o(dng.eP)
+   public static final ml f = a(dnq.n)
+      .a(dnq.gV)
+      .h(dnq.el)
+      .j(dnq.fA)
+      .m(dnq.dO)
+      .a(dnq.cP, dnq.dd)
+      .k(dnq.jV)
+      .l(dnq.cF)
+      .f(dnq.cZ)
+      .o(dnq.eP)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml g = a(dng.t)
-      .a(dng.hb)
-      .h(dng.kM)
-      .j(dng.kD)
-      .m(dng.dU)
-      .a(dng.cV, dng.dj)
-      .k(dng.kb)
-      .l(dng.is)
-      .f(dng.kV)
-      .o(dng.eV)
+   public static final ml g = a(dnq.t)
+      .a(dnq.hb)
+      .h(dnq.kM)
+      .j(dnq.kD)
+      .m(dnq.dU)
+      .a(dnq.cV, dnq.dj)
+      .k(dnq.kb)
+      .l(dnq.is)
+      .f(dnq.kV)
+      .o(dnq.eV)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml h = a(dng.v)
-      .a(dng.hc)
-      .h(dng.kN)
-      .j(dng.kE)
-      .m(dng.dV)
-      .a(dng.cW, dng.dk)
-      .k(dng.kc)
-      .l(dng.it)
-      .f(dng.kW)
-      .o(dng.eW)
+   public static final ml h = a(dnq.v)
+      .a(dnq.hc)
+      .h(dnq.kN)
+      .j(dnq.kE)
+      .m(dnq.dV)
+      .a(dnq.cW, dnq.dk)
+      .k(dnq.kc)
+      .l(dnq.it)
+      .f(dnq.kW)
+      .o(dnq.eW)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml i = a(dng.o)
-      .a(dng.gW)
-      .h(dng.kH)
-      .j(dng.ky)
-      .m(dng.dP)
-      .a(dng.cQ, dng.de)
-      .k(dng.jW)
-      .l(dng.gj)
-      .f(dng.kQ)
-      .o(dng.eQ)
+   public static final ml i = a(dnq.o)
+      .a(dnq.gW)
+      .h(dnq.kH)
+      .j(dnq.ky)
+      .m(dnq.dP)
+      .a(dnq.cQ, dnq.de)
+      .k(dnq.jW)
+      .l(dnq.gj)
+      .f(dnq.kQ)
+      .o(dnq.eQ)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml j = a(dng.pl)
-      .a(dng.pz)
-      .h(dng.pr)
-      .j(dng.pv)
-      .m(dng.pp)
-      .a(dng.pD, dng.pF)
-      .k(dng.pn)
-      .l(dng.px)
-      .f(dng.pB)
-      .o(dng.pt)
+   public static final ml j = a(dnq.pl)
+      .a(dnq.pz)
+      .h(dnq.pr)
+      .j(dnq.pv)
+      .m(dnq.pp)
+      .a(dnq.pD, dnq.pF)
+      .k(dnq.pn)
+      .l(dnq.px)
+      .f(dnq.pB)
+      .o(dnq.pt)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml k = a(dng.w)
-      .a(dng.hd)
-      .k(dng.kd)
-      .l(dng.iu)
-      .h(dng.kO)
-      .j(dng.kF)
-      .m(dng.dW)
-      .a(dng.cX, dng.dl)
-      .f(dng.kX)
-      .o(dng.eX)
+   public static final ml k = a(dnq.w)
+      .a(dnq.hd)
+      .k(dnq.kd)
+      .l(dnq.iu)
+      .h(dnq.kO)
+      .j(dnq.kF)
+      .m(dnq.dW)
+      .a(dnq.cX, dnq.dl)
+      .f(dnq.kX)
+      .o(dnq.eX)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml l = a(dng.x)
-      .a(dng.he)
-      .k(dng.ke)
-      .l(dng.iv)
-      .g(dng.kP)
-      .i(dng.kG)
-      .m(dng.dX)
-      .a(dng.cY, dng.dm)
-      .f(dng.kY)
-      .o(dng.eY)
-      .c(dng.y)
+   public static final ml l = a(dnq.x)
+      .a(dnq.he)
+      .k(dnq.ke)
+      .l(dnq.iv)
+      .g(dnq.kP)
+      .i(dnq.kG)
+      .m(dnq.dX)
+      .a(dnq.cY, dnq.dm)
+      .f(dnq.kY)
+      .o(dnq.eY)
+      .c(dnq.y)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final ml m = a(dng.y).k(dng.kf).l(dng.iw).a();
-   public static final ml n = a(dng.fe).p(dng.or).l(dng.fD).k(dng.ko).a();
-   public static final ml o = a(dng.g).p(dng.ot).l(dng.nU).k(dng.oh).n(dng.h).a();
-   public static final ml p = a(dng.h).l(dng.nW).k(dng.oj).a();
-   public static final ml q = a(dng.pZ).p(dng.qb).l(dng.qa).k(dng.qc).n(dng.qd).a();
-   public static final ml r = a(dng.qd).p(dng.qp).m(dng.qn).a(dng.qo).l(dng.ql).k(dng.qm).n(dng.qe).b(dng.qg).a();
-   public static final ml s = a(dng.qe).p(dng.qj).l(dng.qi).k(dng.qh).d(dng.qf).a();
-   public static final ml t = a(dng.ct).p(dng.ol).l(dng.fB).k(dng.km).a();
-   public static final ml u = a(dng.lf).p(dng.ow).l(dng.nP).k(dng.od).a();
-   public static final ml v = a(dng.fa).p(dng.oo).l(dng.nM).k(dng.oa).a();
-   public static final ml w = a(dng.rE).e(dng.rN).b().a();
-   public static final ml x = a(dng.rN).k(dng.sd).l(dng.rZ).b(dng.rR).b().a();
-   public static final ml y = a(dng.se).e(dng.sl).a("waxed_cut_copper").b().a();
-   public static final ml z = a(dng.sl).k(dng.st).l(dng.sp).b(dng.rV).a("waxed_cut_copper").b().a();
-   public static final ml A = a(dng.rF).e(dng.rM).b().a();
-   public static final ml B = a(dng.rM).k(dng.sc).l(dng.rY).b(dng.rQ).b().a();
-   public static final ml C = a(dng.sg).e(dng.sk).a("waxed_exposed_cut_copper").b().a();
-   public static final ml D = a(dng.sk).k(dng.ss).l(dng.so).b(dng.rU).a("waxed_exposed_cut_copper").b().a();
-   public static final ml E = a(dng.rG).e(dng.rL).b().a();
-   public static final ml F = a(dng.rL).k(dng.sb).l(dng.rX).b(dng.rP).b().a();
-   public static final ml G = a(dng.sf).e(dng.sj).a("waxed_weathered_cut_copper").b().a();
-   public static final ml H = a(dng.sj).k(dng.sr).l(dng.sn).b(dng.rT).a("waxed_weathered_cut_copper").b().a();
-   public static final ml I = a(dng.rH).e(dng.rK).b().a();
-   public static final ml J = a(dng.rK).k(dng.sa).l(dng.rW).b(dng.rO).b().a();
-   public static final ml K = a(dng.sh).e(dng.si).a("waxed_oxidized_cut_copper").b().a();
-   public static final ml L = a(dng.si).k(dng.sq).l(dng.sm).b(dng.rS).a("waxed_oxidized_cut_copper").b().a();
-   public static final ml M = a(dng.m).p(dng.go).l(dng.dc).k(dng.kl).a();
-   public static final ml N = a(dng.cx).p(dng.gp).l(dng.nO).k(dng.oc).a();
-   public static final ml O = a(dng.e).p(dng.ox).l(dng.nX).k(dng.ok).n(dng.f).a();
-   public static final ml P = a(dng.f).l(dng.nN).k(dng.ob).a();
-   public static final ml Q = a(dng.c).p(dng.op).l(dng.nT).k(dng.og).n(dng.d).a();
-   public static final ml R = a(dng.d).l(dng.nK).k(dng.nY).a();
-   public static final ml S = a(dng.rh).p(dng.rk).l(dng.rj).k(dng.ri).b(dng.rp).n(dng.rl).a();
-   public static final ml T = a(dng.rl).p(dng.ro).l(dng.rn).k(dng.rm).n(dng.rq).a();
-   public static final ml U = a(dng.rq).p(dng.rt).l(dng.rs).k(dng.rr).b(dng.ru).a();
-   public static final ml V = a(dng.fH).p(dng.fK).l(dng.fI).k(dng.fJ).b(dng.fL).a();
-   public static final ml W = a(dng.fM).h(dng.fN).p(dng.os).l(dng.fO).k(dng.kp).b(dng.qq).d(dng.qr).a();
-   public static final ml X = a(dng.lr).k(dng.oi).l(dng.nV).p(dng.ou).a();
-   public static final ml Y = a(dng.iB).p(dng.om).l(dng.iE).k(dng.iH).a();
-   public static final ml Z = a(dng.lc).l(dng.le).k(dng.kt).c().a();
-   public static final ml aa = a(dng.iC).l(dng.iF).k(dng.iI).a();
-   public static final ml ab = a(dng.iD).l(dng.iG).k(dng.iJ).a();
-   public static final ml ac = a(dng.hE).l(dng.hH).k(dng.kq).b(dng.hF).c().a();
-   public static final ml ad = a(dng.kw).l(dng.nS).k(dng.of).a();
-   public static final ml ae = a(dng.bc).p(dng.ov).l(dng.gc).k(dng.ki).b(dng.bd).e(dng.be).c().a();
-   public static final ml af = a(dng.be).k(dng.kj).a();
-   public static final ml ag = a(dng.kv).k(dng.oe).l(dng.nR).a();
-   public static final ml ah = a(dng.jR).p(dng.on).l(dng.jU).k(dng.kr).b(dng.jS).e(dng.jT).c().a();
-   public static final ml ai = a(dng.jT).k(dng.ks).a();
-   public static final ml aj = a(dng.kx).k(dng.nZ).l(dng.nL).a();
-   public static final ml ak = a(dng.b).k(dng.kg).m(dng.dM).a(dng.ec).l(dng.nQ).a();
-   public static final ml al = a(dng.eZ).p(dng.oq).l(dng.fC).k(dng.kn).b(dng.fc).d(dng.fb).c().a();
-   public static final ml am = a(dng.tt).a();
-   public static final ml an = a(dng.tu).k(dng.tw).l(dng.tv).p(dng.tx).b(dng.tK).n(dng.ty).a();
-   public static final ml ao = a(dng.ty).k(dng.tA).l(dng.tz).p(dng.tB).a();
-   public static final ml ap = a(dng.tG).k(dng.tI).l(dng.tH).p(dng.tJ).d(dng.tL).a();
-   public static final ml aq = a(dng.tC).k(dng.tE).l(dng.tD).p(dng.tF).d(dng.tM).a();
+   public static final ml m = a(dnq.y).k(dnq.kf).l(dnq.iw).a();
+   public static final ml n = a(dnq.fe).p(dnq.or).l(dnq.fD).k(dnq.ko).a();
+   public static final ml o = a(dnq.g).p(dnq.ot).l(dnq.nU).k(dnq.oh).n(dnq.h).a();
+   public static final ml p = a(dnq.h).l(dnq.nW).k(dnq.oj).a();
+   public static final ml q = a(dnq.pZ).p(dnq.qb).l(dnq.qa).k(dnq.qc).n(dnq.qd).a();
+   public static final ml r = a(dnq.qd).p(dnq.qp).m(dnq.qn).a(dnq.qo).l(dnq.ql).k(dnq.qm).n(dnq.qe).b(dnq.qg).a();
+   public static final ml s = a(dnq.qe).p(dnq.qj).l(dnq.qi).k(dnq.qh).d(dnq.qf).a();
+   public static final ml t = a(dnq.ct).p(dnq.ol).l(dnq.fB).k(dnq.km).a();
+   public static final ml u = a(dnq.lf).p(dnq.ow).l(dnq.nP).k(dnq.od).a();
+   public static final ml v = a(dnq.fa).p(dnq.oo).l(dnq.nM).k(dnq.oa).a();
+   public static final ml w = a(dnq.rE).e(dnq.rN).b().a();
+   public static final ml x = a(dnq.rN).k(dnq.sd).l(dnq.rZ).b(dnq.rR).b().a();
+   public static final ml y = a(dnq.se).e(dnq.sl).a("waxed_cut_copper").b().a();
+   public static final ml z = a(dnq.sl).k(dnq.st).l(dnq.sp).b(dnq.rV).a("waxed_cut_copper").b().a();
+   public static final ml A = a(dnq.rF).e(dnq.rM).b().a();
+   public static final ml B = a(dnq.rM).k(dnq.sc).l(dnq.rY).b(dnq.rQ).b().a();
+   public static final ml C = a(dnq.sg).e(dnq.sk).a("waxed_exposed_cut_copper").b().a();
+   public static final ml D = a(dnq.sk).k(dnq.ss).l(dnq.so).b(dnq.rU).a("waxed_exposed_cut_copper").b().a();
+   public static final ml E = a(dnq.rG).e(dnq.rL).b().a();
+   public static final ml F = a(dnq.rL).k(dnq.sb).l(dnq.rX).b(dnq.rP).b().a();
+   public static final ml G = a(dnq.sf).e(dnq.sj).a("waxed_weathered_cut_copper").b().a();
+   public static final ml H = a(dnq.sj).k(dnq.sr).l(dnq.sn).b(dnq.rT).a("waxed_weathered_cut_copper").b().a();
+   public static final ml I = a(dnq.rH).e(dnq.rK).b().a();
+   public static final ml J = a(dnq.rK).k(dnq.sa).l(dnq.rW).b(dnq.rO).b().a();
+   public static final ml K = a(dnq.sh).e(dnq.si).a("waxed_oxidized_cut_copper").b().a();
+   public static final ml L = a(dnq.si).k(dnq.sq).l(dnq.sm).b(dnq.rS).a("waxed_oxidized_cut_copper").b().a();
+   public static final ml M = a(dnq.m).p(dnq.go).l(dnq.dc).k(dnq.kl).a();
+   public static final ml N = a(dnq.cx).p(dnq.gp).l(dnq.nO).k(dnq.oc).a();
+   public static final ml O = a(dnq.e).p(dnq.ox).l(dnq.nX).k(dnq.ok).n(dnq.f).a();
+   public static final ml P = a(dnq.f).l(dnq.nN).k(dnq.ob).a();
+   public static final ml Q = a(dnq.c).p(dnq.op).l(dnq.nT).k(dnq.og).n(dnq.d).a();
+   public static final ml R = a(dnq.d).l(dnq.nK).k(dnq.nY).a();
+   public static final ml S = a(dnq.rh).p(dnq.rk).l(dnq.rj).k(dnq.ri).b(dnq.rp).n(dnq.rl).a();
+   public static final ml T = a(dnq.rl).p(dnq.ro).l(dnq.rn).k(dnq.rm).n(dnq.rq).a();
+   public static final ml U = a(dnq.rq).p(dnq.rt).l(dnq.rs).k(dnq.rr).b(dnq.ru).a();
+   public static final ml V = a(dnq.fH).p(dnq.fK).l(dnq.fI).k(dnq.fJ).b(dnq.fL).a();
+   public static final ml W = a(dnq.fM).h(dnq.fN).p(dnq.os).l(dnq.fO).k(dnq.kp).b(dnq.qq).d(dnq.qr).a();
+   public static final ml X = a(dnq.lr).k(dnq.oi).l(dnq.nV).p(dnq.ou).a();
+   public static final ml Y = a(dnq.iB).p(dnq.om).l(dnq.iE).k(dnq.iH).a();
+   public static final ml Z = a(dnq.lc).l(dnq.le).k(dnq.kt).c().a();
+   public static final ml aa = a(dnq.iC).l(dnq.iF).k(dnq.iI).a();
+   public static final ml ab = a(dnq.iD).l(dnq.iG).k(dnq.iJ).a();
+   public static final ml ac = a(dnq.hE).l(dnq.hH).k(dnq.kq).b(dnq.hF).c().a();
+   public static final ml ad = a(dnq.kw).l(dnq.nS).k(dnq.of).a();
+   public static final ml ae = a(dnq.bc).p(dnq.ov).l(dnq.gc).k(dnq.ki).b(dnq.bd).e(dnq.be).c().a();
+   public static final ml af = a(dnq.be).k(dnq.kj).a();
+   public static final ml ag = a(dnq.kv).k(dnq.oe).l(dnq.nR).a();
+   public static final ml ah = a(dnq.jR).p(dnq.on).l(dnq.jU).k(dnq.kr).b(dnq.jS).e(dnq.jT).c().a();
+   public static final ml ai = a(dnq.jT).k(dnq.ks).a();
+   public static final ml aj = a(dnq.kx).k(dnq.nZ).l(dnq.nL).a();
+   public static final ml ak = a(dnq.b).k(dnq.kg).m(dnq.dM).a(dnq.ec).l(dnq.nQ).a();
+   public static final ml al = a(dnq.eZ).p(dnq.oq).l(dnq.fC).k(dnq.kn).b(dnq.fc).d(dnq.fb).c().a();
+   public static final ml am = a(dnq.tt).a();
+   public static final ml an = a(dnq.tu).k(dnq.tw).l(dnq.tv).p(dnq.tx).b(dnq.tK).n(dnq.ty).a();
+   public static final ml ao = a(dnq.ty).k(dnq.tA).l(dnq.tz).p(dnq.tB).a();
+   public static final ml ap = a(dnq.tG).k(dnq.tI).l(dnq.tH).p(dnq.tJ).d(dnq.tL).a();
+   public static final ml aq = a(dnq.tC).k(dnq.tE).l(dnq.tD).p(dnq.tF).d(dnq.tM).a();
 
-   private static ml.a a(dne $$0) {
+   private static ml.a a(dno $$0) {
       ml.a $$1 = new ml.a($$0);
       ml $$2 = ar.put($$0, $$1.a());
       if ($$2 != null) {

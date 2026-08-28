@@ -1,53 +1,19 @@
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class chu<T extends bxw> extends cie<T> {
-   private final BiPredicate<T, bxw> a;
-   private final Predicate<T> b;
-   private final cgy<Boolean> c;
-   private final int d;
-
-   public chu(int $$0, BiPredicate<T, bxw> $$1, Predicate<T> $$2, cgy<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-   }
-
+public class chu extends cin<bwu> {
    @Override
-   protected void a(aru $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(chh.L, chh.h);
    }
 
-   @Override
-   public Set<cgy<?>> a() {
-      return Set.of(cgy.g);
+   protected void a(asb $$0, bwu $$1) {
+      $$1.ec().c(chh.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bxw>> $$1 = $$0.ec().c(cgy.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public void b(T $$0) {
-      $$0.ec().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.ec().b(this.c);
+   private void a(bwu $$0, chj $$1) {
+      Optional<bwu> $$2 = $$1.a($$1x -> $$1x.an() == $$0.an() && !$$1x.n_()).map(bwu.class::cast);
+      $$0.ec().a(chh.L, $$2);
    }
 }

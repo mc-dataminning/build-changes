@@ -1,73 +1,77 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cxg extends bva {
-   @Nullable
-   private dzc b;
+public class cxg {
+   private final List<cxg.b> a;
+   private final cxg.b b;
 
-   public cxg() {
-      super(27);
+   cxg(List<cxg.b> $$0, cxg.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cxg.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   public void a(dzc $$0) {
-      this.b = $$0;
+   public static cxg.a a() {
+      return new cxg.a();
    }
 
-   public boolean b(dzc $$0) {
-      return this.b == $$0;
+   public cxg.b a(int $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public void a(ug $$0, ji.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, daa.k);
+   public cxg.b b() {
+      return this.b;
+   }
+
+   public List<cxg.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public static class a {
+      private final List<cxg.b> a = new ArrayList<>();
+      private cxg.b b = cxg.b.e;
+
+      public cxg.a a(int $$0, int $$1, int $$2, Predicate<dak> $$3) {
+         this.a.add(new cxg.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ua $$4 = $$0.b($$3);
-         int $$5 = $$4.b("Slot", (byte)0) & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, daa.a($$1, $$4).orElse(daa.k));
+      public cxg.a a(int $$0, int $$1, int $$2) {
+         this.b = new cxg.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cxg a() {
+         int $$0 = this.a.size();
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            cxg.b $$2 = this.a.get($$1);
+            if ($$2.a != $$1) {
+               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+            }
+         }
+
+         if (this.b.a != $$0) {
+            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         } else {
+            return new cxg(this.a, this.b);
          }
       }
    }
 
-   @Override
-   public ug a(ji.a $$0) {
-      ug $$1 = new ug();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         daa $$3 = this.a($$2);
-         if (!$$3.f()) {
-            ua $$4 = new ua();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void c_(crz $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      super.c_($$0);
-   }
-
-   @Override
-   public void c(crz $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
-
-      super.c($$0);
-      this.b = null;
+   public static record b(int a, int b, int c, Predicate<dak> d) {
+      static final cxg.b e = new cxg.b(0, 0, 0, $$0 -> true);
    }
 }

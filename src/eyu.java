@@ -1,26 +1,122 @@
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class eyu {
-   @Nullable
-   public static eyy a(djz $$0, @Nullable jc $$1, @Nullable jc $$2) {
-      if ($$0.K().b(cvl.c)) {
-         eyy $$3 = eyy.a($$0.A).a(eyy.a.a);
-         if ($$2 != null) {
-            $$3 = $$3.a($$2);
-         }
+public class eyu extends eyn {
+   private final boolean a;
+   private final Long2ObjectMap<eyr> l = new Long2ObjectOpenHashMap();
 
-         if ($$1 != null) {
-            $$3 = $$3.b($$1);
-         }
+   public eyu(boolean $$0) {
+      this.a = $$0;
+   }
 
-         return $$3;
-      } else {
-         return null;
+   @Override
+   public void a(dkw $$0, byh $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
+   }
+
+   @Override
+   public eym a() {
+      return this.c(azz.a(this.c.cR().a), azz.a(this.c.cR().b + 0.5), azz.a(this.c.cR().c));
+   }
+
+   @Override
+   public eyv a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(eym[] $$0, eym $$1) {
+      int $$2 = 0;
+      Map<jc, eym> $$3 = Maps.newEnumMap(jc.class);
+
+      for (jc $$4 : jc.values()) {
+         eym $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
+         }
       }
+
+      for (jc $$6 : jc.c.a) {
+         jc $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            eym $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean a(@Nullable eym $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable eym $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
    }
 
    @Nullable
-   public static eyy a(@Nullable eyy $$0, jc $$1) {
-      return $$0 == null ? null : $$0.b($$1);
+   protected eym a(int $$0, int $$1, int $$2) {
+      eym $$3 = null;
+      eyr $$4 = this.b($$0, $$1, $$2);
+      if (this.a && $$4 == eyr.u || $$4 == eyr.j) {
+         float $$5 = this.c.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.b.a().b_(new iw($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   protected eyr b(int $$0, int $$1, int $$2) {
+      return (eyr)this.l.computeIfAbsent(iw.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   }
+
+   @Override
+   public eyr a(eyt $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.c);
+   }
+
+   @Override
+   public eyr a(eyt $$0, int $$1, int $$2, int $$3, byh $$4) {
+      iw.a $$5 = new iw.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
+               ebq $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               eya $$10 = $$9.y();
+               if ($$10.c() && $$9.a(eyp.b) && $$9.l()) {
+                  return eyr.u;
+               }
+
+               if (!$$10.a(axs.a)) {
+                  return eyr.a;
+               }
+            }
+         }
+      }
+
+      ebq $$11 = $$0.a($$5);
+      return $$11.a(eyp.b) ? eyr.j : eyr.a;
    }
 }

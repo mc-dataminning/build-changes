@@ -1,172 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.jtracy.Zone;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.locks.LockSupport;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.CheckReturnValue;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public abstract class bth<R extends Runnable> implements bsq, bto<R>, Executor {
-   public static final long k = 100000L;
-   private final String b;
-   private static final Logger c = LogUtils.getLogger();
-   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
-   private int e;
+public class bth {
+   public static final Path a = Paths.get("debug/profiling");
+   public static final String b = "metrics";
+   public static final String c = "deviations";
+   public static final String d = "profiling.txt";
+   private static final Logger e = LogUtils.getLogger();
+   private final String f;
 
-   protected bth(String $$0) {
-      this.b = $$0;
-      bso.a.a(this);
+   public bth(String $$0) {
+      this.f = $$0;
    }
 
-   protected abstract boolean e(R var1);
-
-   public boolean bx() {
-      return Thread.currentThread() == this.ay();
-   }
-
-   protected abstract Thread ay();
-
-   protected boolean ax() {
-      return !this.bx();
-   }
-
-   public int by() {
-      return this.d.size();
-   }
-
-   @Override
-   public String z_() {
-      return this.b;
-   }
-
-   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
-      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
-   }
-
-   private CompletableFuture<Void> b(Runnable $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$0.run();
-         return null;
-      }, this);
-   }
-
-   @CheckReturnValue
-   public CompletableFuture<Void> g(Runnable $$0) {
-      if (this.ax()) {
-         return this.b($$0);
-      } else {
-         $$0.run();
-         return CompletableFuture.completedFuture(null);
+   public Path a(Set<bsw> $$0, Map<bsw, List<bti>> $$1, brk $$2) {
+      try {
+         Files.createDirectories(a);
+      } catch (IOException var8) {
+         throw new UncheckedIOException(var8);
       }
-   }
-
-   public void h(Runnable $$0) {
-      if (!this.bx()) {
-         this.b($$0).join();
-      } else {
-         $$0.run();
-      }
-   }
-
-   @Override
-   public void a_(R $$0) {
-      this.d.add($$0);
-      LockSupport.unpark(this.ay());
-   }
-
-   @Override
-   public void execute(Runnable $$0) {
-      if (this.ax()) {
-         this.a_(this.f($$0));
-      } else {
-         $$0.run();
-      }
-   }
-
-   public void c(Runnable $$0) {
-      this.execute($$0);
-   }
-
-   protected void bz() {
-      this.d.clear();
-   }
-
-   protected void bA() {
-      while (this.B()) {
-      }
-   }
-
-   public boolean B() {
-      R $$0 = this.d.peek();
-      if ($$0 == null) {
-         return false;
-      } else if (this.e == 0 && !this.e($$0)) {
-         return false;
-      } else {
-         this.d(this.d.remove());
-         return true;
-      }
-   }
-
-   public void b(BooleanSupplier $$0) {
-      this.e++;
 
       try {
-         while (!$$0.getAsBoolean()) {
-            if (!this.B()) {
-               this.A();
-            }
+         Path $$4 = Files.createTempDirectory("minecraft-profiling");
+         $$4.toFile().deleteOnExit();
+         Files.createDirectories(a);
+         Path $$5 = $$4.resolve(this.f);
+         Path $$6 = $$5.resolve("metrics");
+         this.a($$0, $$6);
+         if (!$$1.isEmpty()) {
+            this.a($$1, $$5.resolve("deviations"));
          }
+
+         this.a($$2, $$5);
+         return $$4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
+   }
+
+   private void a(Set<bsw> $$0, Path $$1) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Expected at least one sampler to persist");
+      } else {
+         Map<bsv, List<bsw>> $$2 = $$0.stream().collect(Collectors.groupingBy(bsw::e));
+         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
+      }
+   }
+
+   private void a(bsv $$0, List<bsw> $$1, Path $$2) {
+      Path $$3 = $$2.resolve(ag.a($$0.a(), alr::b) + ".csv");
+      Writer $$4 = null;
+
+      try {
+         Files.createDirectories($$3.getParent());
+         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
+         ayx.a $$5 = ayx.a();
+         $$5.a("@tick");
+
+         for (bsw $$6 : $$1) {
+            $$5.a($$6.d());
+         }
+
+         ayx $$7 = $$5.a($$4);
+         List<bsw.b> $$8 = $$1.stream().map(bsw::f).collect(Collectors.toList());
+         int $$9 = $$8.stream().mapToInt(bsw.b::a).summaryStatistics().getMin();
+         int $$10 = $$8.stream().mapToInt(bsw.b::b).summaryStatistics().getMax();
+
+         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
+            int $$12 = $$11;
+            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
+            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
+            $$7.a($$14);
+         }
+
+         e.info("Flushed metrics to {}", $$3);
+      } catch (Exception var18) {
+         e.error("Could not save profiler results to {}", $$3, var18);
       } finally {
-         this.e--;
+         IOUtils.closeQuietly($$4);
       }
    }
 
-   protected void A() {
-      Thread.yield();
-      LockSupport.parkNanos("waiting for tasks", 100000L);
+   private void a(Map<bsw, List<bti>> $$0, Path $$1) {
+      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
+      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
+            String $$4 = $$2.format($$3x.a);
+            Path $$5 = $$1.resolve(ag.a($$2x.d(), alr::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
+            $$3x.c.a($$5);
+         }));
    }
 
-   protected void d(R $$0) {
-      try {
-         Zone $$1 = TracyClient.beginZone("Task", ac.aU);
-
-         try {
-            $$0.run();
-         } catch (Throwable var6) {
-            if ($$1 != null) {
-               try {
-                  $$1.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$1 != null) {
-            $$1.close();
-         }
-      } catch (Exception var7) {
-         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.z_(), var7);
-         throw var7;
-      }
-   }
-
-   @Override
-   public List<bsn> bw() {
-      return ImmutableList.of(bsn.a(this.b + "-pending-tasks", bsm.b, this::by));
-   }
-
-   public static boolean a(Throwable $$0) {
-      return $$0 instanceof aa $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
+   private void a(brk $$0, Path $$1) {
+      $$0.a($$1.resolve("profiling.txt"));
    }
 }

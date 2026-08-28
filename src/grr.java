@@ -1,320 +1,307 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.blaze3d.systems.RenderPass;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import org.joml.Matrix4f;
 
 public class grr {
-   private static final int b = 96;
-   private static final List<grr.e> c = Lists.newArrayList(new grr.e[]{new grr.a(), new grr.b()});
-   public static final float a = 5000.0F;
-   private static int d = -1;
-   private static int e = -1;
-   private static long f = -1L;
-   private static boolean g = true;
+   public static final alr a = alr.b("main");
+   private final List<grt> b;
+   private final Map<alr, grs.d> c;
+   private final Set<alr> d;
 
-   public static Vector4f a(fqn $$0, float $$1, gmd $$2, int $$3, float $$4) {
-      exs $$5 = $$0.k();
-      bwv $$6 = $$0.g();
-      float $$19;
-      float $$20;
-      float $$21;
-      if ($$5 == exs.b) {
-         long $$7 = ag.c();
-         int $$8 = $$2.u(iw.a((jq)$$0.b())).a().k();
-         if (f < 0L) {
-            d = $$8;
-            e = $$8;
-            f = $$7;
-         }
-
-         int $$9 = d >> 16 & 0xFF;
-         int $$10 = d >> 8 & 0xFF;
-         int $$11 = d & 0xFF;
-         int $$12 = e >> 16 & 0xFF;
-         int $$13 = e >> 8 & 0xFF;
-         int $$14 = e & 0xFF;
-         float $$15 = azq.a((float)($$7 - f) / 5000.0F, 0.0F, 1.0F);
-         float $$16 = azq.h($$15, (float)$$12, (float)$$9);
-         float $$17 = azq.h($$15, (float)$$13, (float)$$10);
-         float $$18 = azq.h($$15, (float)$$14, (float)$$11);
-         $$19 = $$16 / 255.0F;
-         $$20 = $$17 / 255.0F;
-         $$21 = $$18 / 255.0F;
-         if (d != $$8) {
-            d = $$8;
-            e = azq.d($$16) << 16 | azq.d($$17) << 8 | azq.d($$18);
-            f = $$7;
-         }
-      } else if ($$5 == exs.a) {
-         $$19 = 0.6F;
-         $$20 = 0.1F;
-         $$21 = 0.0F;
-         f = -1L;
-      } else if ($$5 == exs.c) {
-         $$19 = 0.623F;
-         $$20 = 0.734F;
-         $$21 = 0.785F;
-         f = -1L;
-      } else {
-         float $$28 = 0.25F + 0.75F * (float)$$3 / 32.0F;
-         $$28 = 1.0F - (float)Math.pow((double)$$28, 0.25);
-         int $$29 = $$2.a($$0.b(), $$1);
-         float $$30 = aya.j($$29);
-         float $$31 = aya.k($$29);
-         float $$32 = aya.l($$29);
-         float $$33 = azq.a(azq.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
-         dle $$34 = $$2.H_();
-         ffs $$35 = $$0.b().a(2.0, 2.0, 2.0).c(0.25);
-         ffs $$36 = ayq.a($$35, ($$3x, $$4x, $$5x) -> $$2.c().a(ffs.a($$34.a($$3x, $$4x, $$5x).a().e()), $$33));
-         $$19 = (float)$$36.a();
-         $$20 = (float)$$36.b();
-         $$21 = (float)$$36.c();
-         if ($$3 >= 4) {
-            float $$40 = azq.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
-            Vector3f $$41 = new Vector3f($$40, 0.0F, 0.0F);
-            float $$42 = $$0.l().dot($$41);
-            if ($$42 < 0.0F) {
-               $$42 = 0.0F;
-            }
-
-            if ($$42 > 0.0F && $$2.c().a($$2.f($$1))) {
-               int $$43 = $$2.c().b($$2.f($$1));
-               $$42 *= aya.i($$43);
-               $$19 = $$19 * (1.0F - $$42) + aya.j($$43) * $$42;
-               $$20 = $$20 * (1.0F - $$42) + aya.k($$43) * $$42;
-               $$21 = $$21 * (1.0F - $$42) + aya.l($$43) * $$42;
-            }
-         }
-
-         $$19 += ($$30 - $$19) * $$28;
-         $$20 += ($$31 - $$20) * $$28;
-         $$21 += ($$32 - $$21) * $$28;
-         float $$44 = $$2.d($$1);
-         if ($$44 > 0.0F) {
-            float $$45 = 1.0F - $$44 * 0.5F;
-            float $$46 = 1.0F - $$44 * 0.4F;
-            $$19 *= $$45;
-            $$20 *= $$45;
-            $$21 *= $$46;
-         }
-
-         float $$47 = $$2.b($$1);
-         if ($$47 > 0.0F) {
-            float $$48 = 1.0F - $$47 * 0.5F;
-            $$19 *= $$48;
-            $$20 *= $$48;
-            $$21 *= $$48;
-         }
-
-         f = -1L;
-      }
-
-      float $$49 = ((float)$$0.b().e - (float)$$2.K_()) * $$2.k().e();
-      grr.e $$50 = a($$6, $$1);
-      if ($$50 != null) {
-         bxw $$51 = (bxw)$$6;
-         $$49 = $$50.a($$51, $$51.c($$50.a()), $$49, $$1);
-      }
-
-      if ($$49 < 1.0F && $$5 != exs.a && $$5 != exs.c) {
-         if ($$49 < 0.0F) {
-            $$49 = 0.0F;
-         }
-
-         $$49 *= $$49;
-         $$19 *= $$49;
-         $$20 *= $$49;
-         $$21 *= $$49;
-      }
-
-      if ($$4 > 0.0F) {
-         $$19 = $$19 * (1.0F - $$4) + $$19 * 0.7F * $$4;
-         $$20 = $$20 * (1.0F - $$4) + $$20 * 0.6F * $$4;
-         $$21 = $$21 * (1.0F - $$4) + $$21 * 0.6F * $$4;
-      }
-
-      float $$52;
-      if ($$5 == exs.b) {
-         if ($$6 instanceof grb) {
-            $$52 = ((grb)$$6).D();
-         } else {
-            $$52 = 1.0F;
-         }
-      } else {
-         label86: {
-            if ($$6 instanceof bxw $$54 && $$54.b(bwb.p) && !$$54.b(bwb.G)) {
-               $$52 = grs.a($$54, $$1);
-               break label86;
-            }
-
-            $$52 = 0.0F;
-         }
-      }
-
-      if ($$19 != 0.0F && $$20 != 0.0F && $$21 != 0.0F) {
-         float $$57 = Math.min(1.0F / $$19, Math.min(1.0F / $$20, 1.0F / $$21));
-         $$19 = $$19 * (1.0F - $$52) + $$19 * $$57 * $$52;
-         $$20 = $$20 * (1.0F - $$52) + $$20 * $$57 * $$52;
-         $$21 = $$21 * (1.0F - $$52) + $$21 * $$57 * $$52;
-      }
-
-      return new Vector4f($$19, $$20, $$21, 1.0F);
+   private grr(List<grt> $$0, Map<alr, grs.d> $$1, Set<alr> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static boolean a() {
-      return g = !g;
-   }
-
-   @Nullable
-   private static grr.e a(bwv $$0, float $$1) {
-      return $$0 instanceof bxw $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
-   }
-
-   public static grq a(fqn $$0, grr.d $$1, Vector4f $$2, float $$3, boolean $$4, float $$5) {
-      if (!g) {
-         return grq.a;
+   public static grr a(grs $$0, hks $$1, Set<alr> $$2, alr $$3) throws gsf.b {
+      Stream<alr> $$4 = $$0.b().stream().flatMap(grs.e::a);
+      Set<alr> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<alr> $$6 = Sets.difference($$5, $$2);
+      if (!$$6.isEmpty()) {
+         throw new gsf.b("Referenced external targets are not available in this context: " + $$6);
       } else {
-         exs $$6 = $$0.k();
-         bwv $$7 = $$0.g();
-         grr.c $$8 = new grr.c($$1);
-         grr.e $$9 = a($$7, $$5);
-         if ($$6 == exs.a) {
-            if ($$7.Z_()) {
-               $$8.b = -8.0F;
-               $$8.c = $$3 * 0.5F;
-            } else if ($$7 instanceof bxw && ((bxw)$$7).b(bwb.l)) {
-               $$8.b = 0.0F;
-               $$8.c = 5.0F;
-            } else {
-               $$8.b = 0.25F;
-               $$8.c = 1.0F;
+         Builder<grt> $$7 = ImmutableList.builder();
+
+         for (int $$8 = 0; $$8 < $$0.b().size(); $$8++) {
+            grs.e $$9 = $$0.b().get($$8);
+            $$7.add(a($$1, $$9, $$3.g("/" + $$8)));
+         }
+
+         return new grr($$7.build(), $$0.a(), $$5);
+      }
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static grt a(hks $$0, grs.e $$1, alr $$2) throws gsf.b {
+      RenderPipeline.Builder $$3 = RenderPipeline.builder(grw.a).withFragmentShader($$1.c()).withVertexShader($$1.b()).withLocation($$2);
+
+      for (grs.c $$4 : $$1.d()) {
+         $$3.withSampler($$4.a() + "Sampler");
+         $$3.withUniform($$4.a() + "Size", fku.d);
+      }
+
+      for (grs.h $$5 : $$1.f()) {
+         $$3.withUniform($$5.a(), Objects.requireNonNull(fku.h.a($$5.b())));
+      }
+
+      RenderPipeline $$6 = $$3.build();
+      CompiledRenderPipeline $$7 = RenderSystem.getDevice().precompilePipeline($$6);
+
+      for (grs.h $$8 : $$1.f()) {
+         String $$9 = $$8.a();
+         if (!$$7.containsUniform($$9)) {
+            throw new gsf.b("Uniform '" + $$9 + "' does not exist for " + $$2);
+         }
+      }
+
+      grt $$10 = new grt($$6, $$1.e(), $$1.f());
+
+      for (grs.c $$11 : $$1.d()) {
+         Objects.requireNonNull($$11);
+         Throwable var49;
+         switch ($$11) {
+            case grs.g var11:
+               grs.g var57 = var11;
+
+               try {
+                  var58 = var57.a();
+               } catch (Throwable var31) {
+                  var49 = var31;
+                  boolean var70 = false;
+                  break;
+               }
+
+               String var40 = var58;
+               grs.g var59 = var11;
+
+               try {
+                  var60 = var59.c();
+               } catch (Throwable var30) {
+                  var49 = var30;
+                  boolean var71 = false;
+                  break;
+               }
+
+               alr var41 = var60;
+               grs.g var61 = var11;
+
+               try {
+                  var62 = var61.d();
+               } catch (Throwable var29) {
+                  var49 = var29;
+                  boolean var72 = false;
+                  break;
+               }
+
+               int var42 = var62;
+               grs.g var63 = var11;
+
+               try {
+                  var64 = var63.e();
+               } catch (Throwable var28) {
+                  var49 = var28;
+                  boolean var73 = false;
+                  break;
+               }
+
+               int var43 = var64;
+               grs.g var65 = var11;
+
+               try {
+                  var66 = var65.f();
+               } catch (Throwable var27) {
+                  var49 = var27;
+                  boolean var74 = false;
+                  break;
+               }
+
+               boolean var44 = var66;
+               hkb $$17x = $$0.b(var41.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$17x.a(var44, false);
+               $$10.a(new grt.c(var40, $$17x, var42, var43));
+               continue;
+            case grs.f $$17:
+               grs.f var10000 = $$17;
+
+               try {
+                  var50 = var10000.a();
+               } catch (Throwable var26) {
+                  var49 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var50;
+               grs.f var51 = $$17;
+
+               try {
+                  var52 = var51.c();
+               } catch (Throwable var25) {
+                  var49 = var25;
+                  boolean var67 = false;
+                  break;
+               }
+
+               alr var46 = var52;
+               grs.f var53 = $$17;
+
+               try {
+                  var54 = var53.d();
+               } catch (Throwable var24) {
+                  var49 = var24;
+                  boolean var68 = false;
+                  break;
+               }
+
+               boolean var47 = var54;
+               grs.f var55 = $$17;
+
+               try {
+                  var56 = var55.e();
+               } catch (Throwable var23) {
+                  var49 = var23;
+                  boolean var69 = false;
+                  break;
+               }
+
+               boolean var48 = var56;
+               $$10.a(new grt.b(var22, var46, var47, var48));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var38 = var49;
+         throw new MatchException(var38.toString(), var38);
+      }
+
+      return $$10;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fix $$0, int $$1, int $$2, grr.a $$3, @Nullable Consumer<RenderPass> $$4) {
+      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<alr, fkr<fjr>> $$6 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (alr $$7 : this.d) {
+         $$6.put($$7, $$3.b($$7));
+      }
+
+      for (Entry<alr, grs.d> $$8 : this.c.entrySet()) {
+         alr $$9 = $$8.getKey();
+         grs.d var36;
+         Objects.requireNonNull(var36);
+         Object var12 = var36;
+
+         var36 = $$8.getValue();
+         fkp $$12 = switch (var12) {
+            case grs.a var14 -> {
+               grs.a var30 = var14;
+
+               int var27;
+               label56: {
+                  label76: {
+                     try {
+                        var32 = var30.a();
+                     } catch (Throwable var19) {
+                        var31 = var19;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var27 = var32;
+                     grs.a var33 = var14;
+
+                     try {
+                        var34 = var33.b();
+                        break label56;
+                     } catch (Throwable var18) {
+                        var31 = var18;
+                        boolean var35 = false;
+                     }
+                  }
+
+                  Throwable var21 = var31;
+                  throw new MatchException(var21.toString(), var21);
+               }
+
+               int var28 = var34;
+               yield new fkp(var27, var28, true, 0);
             }
-         } else if ($$6 == exs.c) {
-            if ($$7.Z_()) {
-               $$8.b = -8.0F;
-               $$8.c = $$3 * 0.5F;
-            } else {
-               $$8.b = 0.0F;
-               $$8.c = 2.0F;
-            }
-         } else if ($$9 != null) {
-            bxw $$10 = (bxw)$$7;
-            bvz $$11 = $$10.c($$9.a());
-            if ($$11 != null) {
-               $$9.a($$8, $$10, $$11, $$3, $$5);
-            }
-         } else if ($$6 == exs.b) {
-            $$8.b = -8.0F;
-            $$8.c = 96.0F;
-            if ($$7 instanceof grb $$12) {
-               $$8.c = $$8.c * Math.max(0.25F, $$12.D());
-               jg<dlc> $$13 = $$12.dV().u($$12.dv());
-               if ($$13.a(axf.aa)) {
-                  $$8.c *= 0.85F;
+            case grs.b var17 -> new fkp($$1, $$2, true, 0);
+            default -> throw new MatchException(null, null);
+         };
+         $$6.put($$9, $$0.a($$9.toString(), $$12));
+      }
+
+      for (grt $$13 : this.b) {
+         $$13.a($$0, $$6, $$5, $$4);
+      }
+
+      for (alr $$14 : this.d) {
+         $$3.a($$14, $$6.get($$14));
+      }
+   }
+
+   @Deprecated
+   public void a(fjr $$0, fko $$1, @Nullable Consumer<RenderPass> $$2) {
+      fix $$3 = new fix();
+      grr.a $$4 = grr.a.b(a, $$3.a("main", $$0));
+      this.a($$3, $$0.c, $$0.d, $$4, $$2);
+      $$3.a($$1);
+   }
+
+   public interface a {
+      static grr.a b(final alr $$0, final fkr<fjr> $$1) {
+         return new grr.a() {
+            private fkr<fjr> c = $$1;
+
+            @Override
+            public void a(alr $$0x, fkr<fjr> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
                }
             }
 
-            if ($$8.c > $$3) {
-               $$8.c = $$3;
-               $$8.d = fkx.b;
+            @Nullable
+            @Override
+            public fkr<fjr> a(alr $$0x) {
+               return $$0.equals($$0) ? this.c : null;
             }
-         } else if ($$4) {
-            $$8.b = $$3 * 0.05F;
-            $$8.c = Math.min($$3, 192.0F) * 0.5F;
-         } else if ($$1 == grr.d.a) {
-            $$8.b = 0.0F;
-            $$8.c = $$3;
-            $$8.d = fkx.b;
-         } else if ($$1 == grr.d.b) {
-            float $$14 = azq.a($$3 / 10.0F, 4.0F, 64.0F);
-            $$8.b = $$3 - $$14;
-            $$8.c = $$3;
-            $$8.d = fkx.b;
-         }
-
-         return new grq($$8.b, $$8.c, $$8.d, $$2.x, $$2.y, $$2.z, $$2.w);
-      }
-   }
-
-   static class a implements grr.e {
-      @Override
-      public jg<bvx> a() {
-         return bwb.o;
-      }
-
-      @Override
-      public void a(grr.c $$0, bxw $$1, bvz $$2, float $$3, float $$4) {
-         float $$5 = $$2.b() ? 5.0F : azq.h(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
-         if ($$0.a == grr.d.a) {
-            $$0.b = 0.0F;
-            $$0.c = $$5 * 0.8F;
-         } else if ($$0.a == grr.d.b) {
-            $$0.b = $$5 * 0.25F;
-            $$0.c = $$5;
-         }
-      }
-   }
-
-   static class b implements grr.e {
-      @Override
-      public jg<bvx> a() {
-         return bwb.G;
-      }
-
-      @Override
-      public void a(grr.c $$0, bxw $$1, bvz $$2, float $$3, float $$4) {
-         float $$5 = azq.h($$2.a($$1, $$4), $$3, 15.0F);
-
-         $$0.b = switch ($$0.a) {
-            case a -> 0.0F;
-            case b -> $$5 * 0.75F;
          };
-         $$0.c = $$5;
       }
 
-      @Override
-      public float a(bxw $$0, bvz $$1, float $$2, float $$3) {
-         return 1.0F - $$1.a($$0, $$3);
-      }
-   }
+      void a(alr var1, fkr<fjr> var2);
 
-   static class c {
-      public final grr.d a;
-      public float b;
-      public float c;
-      public fkx d = fkx.a;
+      @Nullable
+      fkr<fjr> a(alr var1);
 
-      public c(grr.d $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public static enum d {
-      a,
-      b;
-   }
-
-   interface e {
-      jg<bvx> a();
-
-      void a(grr.c var1, bxw var2, bvz var3, float var4, float var5);
-
-      default boolean a(bxw $$0, float $$1) {
-         return $$0.b(this.a());
-      }
-
-      default float a(bxw $$0, bvz $$1, float $$2, float $$3) {
-         bvz $$4 = $$0.c(this.a());
-         if ($$4 != null) {
-            if ($$4.a(19)) {
-               $$2 = 1.0F - (float)$$4.d() / 20.0F;
-            } else {
-               $$2 = 0.0F;
-            }
+      default fkr<fjr> b(alr $$0) {
+         fkr<fjr> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
          }
-
-         return $$2;
       }
    }
 }

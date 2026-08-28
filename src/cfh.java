@@ -1,55 +1,48 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cfh extends ces {
-   private final bye a;
-   @Nullable
-   private bxw b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
+public class cfh extends cfb {
+   private final byh a;
+   private byf b;
+   private final float c;
 
-   public cfh(bye $$0, double $$1, float $$2) {
+   public cfh(byh $$0, float $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(ces.a.a));
+      this.c = $$1;
+      this.a(EnumSet.of(cfb.a.c, cfb.a.a));
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.f();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      if (this.a.cX()) {
          return false;
       } else {
-         ffs $$0 = cip.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         this.b = this.a.f();
+         if (this.b == null) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
+            double $$0 = this.a.g((bxe)this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aH() ? false : this.a.dY().a(b(5)) == 0;
+            }
          }
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+      return !this.a.aH();
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.f);
+      fgc $$0 = this.a.dy();
+      fgc $$1 = new fgc(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
+
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

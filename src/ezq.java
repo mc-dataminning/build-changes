@@ -1,184 +1,31 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
 
-public class ezq implements fac {
-   private final fad a;
-   private final fac b;
+public record ezq(alr d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<jg<ezq>> b = mh.ap.r();
+   public static final ze<wp, jg<ezq>> c = zc.b(mi.R);
 
-   public ezq(fad $$0, fac $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public boolean a() {
+      return this.f != -1;
    }
 
-   @Override
-   public iw a() {
-      return this.b.a();
+   public alr b() {
+      return this.d;
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
+   public boolean c() {
+      return this.e;
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   public int d() {
+      return this.f;
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public boolean e() {
+      return this.g;
    }
 
-   @Override
-   public String e() {
-      return this.a.e();
-   }
-
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public djw k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(iw $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(djw $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public djv o() {
-      return this.a.o();
-   }
-
-   @Override
-   public ecy.d p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(ecy.d $$0) {
-   }
-
-   @Override
-   public buq q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public fff<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(q $$0, dkb $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   public boolean f() {
+      return this.h;
    }
 }

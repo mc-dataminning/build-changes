@@ -1,16 +1,44 @@
-public record ahi(int b, int c) implements zj<agt> {
-   public static final za<vy, ahi> a = za.a(yy.x, ahi::b, yy.h, ahi::e, ahi::new);
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   @Override
-   public zl<ahi> a() {
-      return agr.by;
+public record ahi(String b, Instant c, long d, @Nullable xs e, xn.b f) implements zo<aha> {
+   public static final ze<vy, ahi> a = zo.a(ahi::a, ahi::new);
+
+   private ahi(vy $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xs::a), new xn.b($$0));
    }
 
-   public void a(agt $$0) {
+   private void a(vy $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xs::a);
+      this.f.a($$0);
+   }
+
+   @Override
+   public zq<ahi> a() {
+      return agy.br;
+   }
+
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public Instant e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xs g() {
+      return this.e;
+   }
+
+   public xn.b h() {
+      return this.f;
    }
 }

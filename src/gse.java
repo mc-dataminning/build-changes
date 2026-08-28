@@ -1,81 +1,108 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gse implements gsc {
-   private final gsc.a a;
-   private final gsc.a b = gsc.a(new fln(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public record gse(Map<String, String> c, Set<String> d) {
+   public static final gse a = new gse(Map.of(), Set.of());
+   public static final Codec<gse> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gse::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gse::e)
+            )
+            .apply($$0, gse::new)
+   );
 
-   public gse(gsc.a $$0) {
-      this.a = $$0;
+   public static gse.a a() {
+      return new gse.a();
    }
 
-   @Override
-   public flt getBuffer(gsn $$0) {
-      if ($$0.S()) {
-         flt $$1 = this.b.getBuffer($$0);
-         return new gse.a($$1, this.c, this.d, this.e, this.f);
+   public gse a(gse $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
       } else {
-         flt $$2 = this.a.getBuffer($$0);
-         Optional<gsn> $$3 = $$0.R();
-         if ($$3.isPresent()) {
-            flt $$4 = this.b.getBuffer($$3.get());
-            gse.a $$5 = new gse.a($$4, this.c, this.d, this.e, this.f);
-            return flw.a($$5, $$2);
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gse($$1.buildKeepingLast(), $$2.build());
+      }
+   }
+
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
+      return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
+      }
+
+      public gse.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
          } else {
-            return $$2;
+            this.a.put($$0, b($$1));
+            return this;
          }
       }
-   }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public void a() {
-      this.b.b();
-   }
-
-   static record a(flt a, int b) implements flt {
-      public a(flt $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, aya.a($$4, $$1, $$2, $$3));
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
       }
 
-      @Override
-      public flt a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
+      public gse.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
          return this;
       }
 
-      @Override
-      public flt a(int $$0, int $$1, int $$2, int $$3) {
+      public gse.a a(String $$0, int $$1) {
+         this.a.put($$0, String.valueOf($$1));
          return this;
       }
 
-      @Override
-      public flt a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
+      public gse.a a(String $$0) {
+         this.b.add($$0);
          return this;
       }
 
-      @Override
-      public flt a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public flt b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public flt b(float $$0, float $$1, float $$2) {
-         return this;
+      public gse a() {
+         return new gse(this.a.build(), this.b.build());
       }
    }
 }

@@ -1,169 +1,155 @@
-import com.google.common.collect.Iterables;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import io.netty.buffer.ByteBuf;
+import java.util.UUID;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dcs implements ddf {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final dcs a = new dcs(jp.a());
-   public static final Codec<dcs> b = dcs.a.a.sizeLimitedListOf(256).xmap(dcs::b, dcs::f);
-   public static final za<wn, dcs> c = daa.h.a(yy.c(256)).a(dcs::new, $$0 -> $$0.f);
-   private final jp<daa> f;
-   private final int g;
+public final class dcs {
+   private static final Logger e = LogUtils.getLogger();
+   public static final dcs a = new dcs(new ua());
+   private static final String f = "id";
+   public static final Codec<dcs> b = Codec.withAlternative(ua.a, vb.e).xmap(dcs::new, $$0 -> $$0.g);
+   public static final Codec<dcs> c = b.validate(
+      $$0 -> $$0.e().i("id").isPresent() ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
+   );
+   @Deprecated
+   public static final ze<ByteBuf, dcs> d = zc.s.a(dcs::new, $$0 -> $$0.g);
+   private final ua g;
 
-   private dcs(jp<daa> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
+   private dcs(ua $$0) {
+      this.g = $$0;
+   }
+
+   public static dcs a(ua $$0) {
+      return new dcs($$0.l());
+   }
+
+   public boolean b(ua $$0) {
+      return up.a($$0, this.g, true);
+   }
+
+   public static void a(kk<dcs> $$0, dak $$1, Consumer<ua> $$2) {
+      dcs $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.g.j()) {
+         $$1.e($$0);
       } else {
-         this.f = $$0;
-         this.g = daa.a($$0);
+         $$1.b($$0, $$3);
       }
    }
 
-   private dcs(int $$0) {
-      this(jp.a($$0, daa.k));
-   }
-
-   private dcs(List<daa> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static dcs b(List<dcs.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(dcs.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
+   public static void a(kk<dcs> $$0, dak $$1, ua $$2) {
+      if (!$$2.j()) {
+         $$1.b($$0, a($$2));
       } else {
-         dcs $$2 = new dcs($$1.getAsInt() + 1);
+         $$1.e($$0);
+      }
+   }
 
-         for (dcs.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
+   public dcs a(Consumer<ua> $$0) {
+      ua $$1 = this.g.l();
+      $$0.accept($$1);
+      return new dcs($$1);
+   }
+
+   @Nullable
+   public alr a() {
+      return this.g.<alr>a("id", alr.a).orElse(null);
+   }
+
+   @Nullable
+   public <T> T a(ji.a $$0, alq<? extends jt<T>> $$1) {
+      alr $$2 = this.a();
+      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alq.a($$1, $$2))).map(jg::a).orElse(null);
+   }
+
+   public void a(bxe $$0) {
+      ua $$1 = $$0.h(new ua());
+      UUID $$2 = $$0.cG();
+      $$1.a(this.g);
+      $$0.i($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(dyo $$0, ji.a $$1) {
+      ua $$2 = $$0.e($$1);
+      ua $$3 = $$2.l();
+      $$2.a(this.g);
+      if (!$$2.equals($$3)) {
+         try {
+            $$0.d($$2, $$1);
+            $$0.e();
+            return true;
+         } catch (Exception var8) {
+            e.warn("Failed to apply custom data to block entity at {}", $$0.aC_(), var8);
+
+            try {
+               $$0.d($$3, $$1);
+            } catch (Exception var7) {
+               e.warn("Failed to rollback block entity at {} after failure", $$0.aC_(), var7);
+            }
          }
-
-         return $$2;
-      }
-   }
-
-   public static dcs a(List<daa> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         dcs $$2 = new dcs($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).v());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<daa> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).f()) {
-            return $$1;
-         }
       }
 
-      return -1;
+      return false;
    }
 
-   private List<dcs.a> f() {
-      List<dcs.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         daa $$2 = this.f.get($$1);
-         if (!$$2.f()) {
-            $$0.add(new dcs.a($$1, $$2));
-         }
-      }
-
-      return $$0;
+   public <T> DataResult<dcs> a(DynamicOps<va> $$0, MapEncoder<T> $$1, T $$2) {
+      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.g).map($$0x -> new dcs((ua)$$0x));
    }
 
-   public void a(jp<daa> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         daa $$2 = $$1 < this.f.size() ? this.f.get($$1) : daa.k;
-         $$0.set($$1, $$2.v());
-      }
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      return this.a(uo.a, $$0);
    }
 
-   public daa a() {
-      return this.f.isEmpty() ? daa.k : this.f.get(0).v();
+   public <T> DataResult<T> a(DynamicOps<va> $$0, MapDecoder<T> $$1) {
+      MapLike<va> $$2 = (MapLike<va>)$$0.getMap(this.g).getOrThrow();
+      return $$1.decode($$0, $$2);
    }
 
-   public Stream<daa> b() {
-      return this.f.stream().map(daa::v);
+   public int b() {
+      return this.g.i();
    }
 
-   public Stream<daa> c() {
-      return this.f.stream().filter($$0 -> !$$0.f()).map(daa::v);
+   public boolean c() {
+      return this.g.j();
    }
 
-   public Iterable<daa> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.f());
+   public ua d() {
+      return this.g.l();
    }
 
-   public Iterable<daa> e() {
-      return Iterables.transform(this.d(), daa::v);
+   public boolean a(String $$0) {
+      return this.g.b($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if (this == $$0) {
+      if ($$0 == this) {
          return true;
       } else {
-         if ($$0 instanceof dcs $$1 && daa.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
+         return $$0 instanceof dcs $$1 ? this.g.equals($$1.g) : false;
       }
    }
 
    @Override
    public int hashCode() {
-      return this.g;
+      return this.g.hashCode();
    }
 
    @Override
-   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
-      int $$4 = 0;
-      int $$5 = 0;
-
-      for (daa $$6 : this.d()) {
-         $$5++;
-         if ($$4 <= 4) {
-            $$4++;
-            $$1.accept(xc.a("item.container.item_count", $$6.y(), $$6.M()));
-         }
-      }
-
-      if ($$5 - $$4 > 0) {
-         $$1.accept(xc.a("item.container.more_items", $$5 - $$4).a(o.u));
-      }
+   public String toString() {
+      return this.g.toString();
    }
 
-   static record a(int b, daa c) {
-      public static final Codec<dcs.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(dcs.a::a), daa.b.fieldOf("item").forGetter(dcs.a::b)).apply($$0, dcs.a::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public daa b() {
-         return this.c;
-      }
+   @Deprecated
+   public ua e() {
+      return this.g;
    }
 }

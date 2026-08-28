@@ -1,29 +1,21 @@
-public record adh(int b, float c) implements zj<aby> {
-   public static final za<vy, adh> a = zj.a(adh::a, adh::new);
-
-   public adh(bxw $$0) {
-      this($$0.ao(), $$0.eM());
-   }
-
-   private adh(vy $$0) {
-      this($$0.l(), $$0.readFloat());
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
+public record adh(xg b, xc.a c) implements zo<acf> {
+   public static final ze<wp, adh> a = ze.a(xi.d, adh::b, xc.a.a, adh::e, adh::new);
 
    @Override
-   public zl<adh> a() {
-      return agr.I;
+   public zq<adh> a() {
+      return agy.B;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public xc.a e() {
       return this.c;
    }
 }

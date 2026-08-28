@@ -1,22 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hiw(boolean b) implements hjc {
-   public static final MapCodec<hiw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hiw::b)).apply($$0, hiw::new)
-   );
+public record hiw() implements hjg<czd.a> {
+   public static final Codec<czd.a> a = czd.a.d;
+   public static final hjg.a<hiw, czd.a> b = hjg.a.a(MapCodec.unit(new hiw()), a);
 
-   @Override
-   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
-      float $$4 = (float)$$0.M();
-      float $$5 = (float)$$0.k();
-      return this.b ? azq.a($$4 / $$5, 0.0F, 1.0F) : azq.a($$4, 0.0F, $$5);
+   public czd.a a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      dco $$5 = $$0.a(kl.P);
+      if ($$5 == null || $$5.b()) {
+         return czd.a.a;
+      } else {
+         return $$5.a(dao.vE) ? czd.a.c : czd.a.b;
+      }
    }
 
    @Override
-   public MapCodec<hiw> a() {
+   public hjg.a<hiw, czd.a> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<czd.a> b() {
       return a;
    }
 }

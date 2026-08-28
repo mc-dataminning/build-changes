@@ -1,13 +1,57 @@
-public interface byg extends byf {
-   void b(int var1);
+public class byg extends bxe {
+   public byg(bxn<?> $$0, dkj $$1) {
+      super($$0, $$1);
+      this.ad = true;
+   }
 
-   boolean a();
+   @Override
+   public void h() {
+   }
 
-   void c(int var1);
+   @Override
+   protected void a(aky.a $$0) {
+   }
 
-   void b();
+   @Override
+   protected void a(ua $$0) {
+   }
 
-   default int c() {
-      return 0;
+   @Override
+   protected void b(ua $$0) {
+   }
+
+   @Override
+   public zo<acf> a(arz $$0) {
+      throw new IllegalStateException("Markers should never be sent");
+   }
+
+   @Override
+   protected boolean r(bxe $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bP() {
+      return false;
+   }
+
+   @Override
+   protected void p(bxe $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public eyf j_() {
+      return eyf.d;
+   }
+
+   @Override
+   public boolean g_() {
+      return true;
+   }
+
+   @Override
+   public final boolean a(asb $$0, bvt $$1, float $$2) {
+      return false;
    }
 }

@@ -1,114 +1,94 @@
-public interface agt extends aac, akc {
-   @Override
-   default vw b() {
-      return vw.b;
+public class agt implements zo<acf> {
+   public static final ze<wp, agt> a = zo.a(agt::a, agt::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final jg<bwg> g;
+   private final int h;
+   private final int i;
+   private final byte j;
+
+   public agt(int $$0, bwi $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
+      }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
    }
 
-   void a(ais var1);
+   private agt(wp $$0) {
+      this.f = $$0.l();
+      this.g = bwg.b.decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
+   }
 
-   void a(ahb var1);
+   private void a(wp $$0) {
+      $$0.c(this.f);
+      bwg.b.encode($$0, this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
+      $$0.l(this.j);
+   }
 
-   void a(agz var1);
+   @Override
+   public zq<agt> a() {
+      return agy.bh;
+   }
 
-   void a(aha var1);
+   public void a(acf $$0) {
+      $$0.a(this);
+   }
 
-   void a(agy var1);
+   public int b() {
+      return this.f;
+   }
 
-   void a(ahe var1);
+   public jg<bwg> e() {
+      return this.g;
+   }
 
-   void a(ahi var1);
+   public int f() {
+      return this.h;
+   }
 
-   void a(ahj var1);
+   public int g() {
+      return this.i;
+   }
 
-   void a(ahx var1);
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
 
-   void a(ahk var1);
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
 
-   void a(ahp var1);
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
 
-   void a(ahs var1);
-
-   void a(ahy var1);
-
-   void a(ahz var1);
-
-   void a(aia var1);
-
-   void a(aib var1);
-
-   void a(aik var1);
-
-   void a(ain var1);
-
-   void a(air var1);
-
-   void a(aiv var1);
-
-   void a(aiw var1);
-
-   void a(ait var1);
-
-   void a(ahu var1);
-
-   void a(aht var1);
-
-   void a(agv var1);
-
-   void a(aic var1);
-
-   void a(aie var1);
-
-   void a(aih var1);
-
-   void a(aid var1);
-
-   void a(aig var1);
-
-   void a(ahg var1);
-
-   void a(ail var1);
-
-   void a(aim var1);
-
-   void a(ahv var1);
-
-   void a(ahw var1);
-
-   void a(aif var1);
-
-   void a(aij var1);
-
-   void a(aip var1);
-
-   void a(aiq var1);
-
-   void a(aiu var1);
-
-   void a(aii var1);
-
-   void a(ahn var1);
-
-   void a(aho var1);
-
-   void a(ahl var1);
-
-   void a(agw var1);
-
-   void a(aio var1);
-
-   void a(ahq var1);
-
-   void a(agx var1);
-
-   void a(ahr var1);
-
-   void a(ahc var1);
-
-   void a(ahh var1);
-
-   void a(ahd var1);
-
-   void a(ahm var1);
-
-   void a(ahf var1);
+   public boolean k() {
+      return (this.j & 8) != 0;
+   }
 }

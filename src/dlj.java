@@ -1,71 +1,23 @@
-public abstract class dlj {
-   public static final alj<dlc> a = a("the_void");
-   public static final alj<dlc> b = a("plains");
-   public static final alj<dlc> c = a("sunflower_plains");
-   public static final alj<dlc> d = a("snowy_plains");
-   public static final alj<dlc> e = a("ice_spikes");
-   public static final alj<dlc> f = a("desert");
-   public static final alj<dlc> g = a("swamp");
-   public static final alj<dlc> h = a("mangrove_swamp");
-   public static final alj<dlc> i = a("forest");
-   public static final alj<dlc> j = a("flower_forest");
-   public static final alj<dlc> k = a("birch_forest");
-   public static final alj<dlc> l = a("dark_forest");
-   public static final alj<dlc> m = a("pale_garden");
-   public static final alj<dlc> n = a("old_growth_birch_forest");
-   public static final alj<dlc> o = a("old_growth_pine_taiga");
-   public static final alj<dlc> p = a("old_growth_spruce_taiga");
-   public static final alj<dlc> q = a("taiga");
-   public static final alj<dlc> r = a("snowy_taiga");
-   public static final alj<dlc> s = a("savanna");
-   public static final alj<dlc> t = a("savanna_plateau");
-   public static final alj<dlc> u = a("windswept_hills");
-   public static final alj<dlc> v = a("windswept_gravelly_hills");
-   public static final alj<dlc> w = a("windswept_forest");
-   public static final alj<dlc> x = a("windswept_savanna");
-   public static final alj<dlc> y = a("jungle");
-   public static final alj<dlc> z = a("sparse_jungle");
-   public static final alj<dlc> A = a("bamboo_jungle");
-   public static final alj<dlc> B = a("badlands");
-   public static final alj<dlc> C = a("eroded_badlands");
-   public static final alj<dlc> D = a("wooded_badlands");
-   public static final alj<dlc> E = a("meadow");
-   public static final alj<dlc> F = a("cherry_grove");
-   public static final alj<dlc> G = a("grove");
-   public static final alj<dlc> H = a("snowy_slopes");
-   public static final alj<dlc> I = a("frozen_peaks");
-   public static final alj<dlc> J = a("jagged_peaks");
-   public static final alj<dlc> K = a("stony_peaks");
-   public static final alj<dlc> L = a("river");
-   public static final alj<dlc> M = a("frozen_river");
-   public static final alj<dlc> N = a("beach");
-   public static final alj<dlc> O = a("snowy_beach");
-   public static final alj<dlc> P = a("stony_shore");
-   public static final alj<dlc> Q = a("warm_ocean");
-   public static final alj<dlc> R = a("lukewarm_ocean");
-   public static final alj<dlc> S = a("deep_lukewarm_ocean");
-   public static final alj<dlc> T = a("ocean");
-   public static final alj<dlc> U = a("deep_ocean");
-   public static final alj<dlc> V = a("cold_ocean");
-   public static final alj<dlc> W = a("deep_cold_ocean");
-   public static final alj<dlc> X = a("frozen_ocean");
-   public static final alj<dlc> Y = a("deep_frozen_ocean");
-   public static final alj<dlc> Z = a("mushroom_fields");
-   public static final alj<dlc> aa = a("dripstone_caves");
-   public static final alj<dlc> ab = a("lush_caves");
-   public static final alj<dlc> ac = a("deep_dark");
-   public static final alj<dlc> ad = a("nether_wastes");
-   public static final alj<dlc> ae = a("warped_forest");
-   public static final alj<dlc> af = a("crimson_forest");
-   public static final alj<dlc> ag = a("soul_sand_valley");
-   public static final alj<dlc> ah = a("basalt_deltas");
-   public static final alj<dlc> ai = a("the_end");
-   public static final alj<dlc> aj = a("end_highlands");
-   public static final alj<dlc> ak = a("end_midlands");
-   public static final alj<dlc> al = a("small_end_islands");
-   public static final alj<dlc> am = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static alj<dlc> a(String $$0) {
-      return alj.a(mi.aG, alk.b($$0));
+public class dlj {
+   public static final Codec<dlj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(awx.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dlj::new)
+   );
+   private final jg<awx> b;
+   private final double c;
+
+   public dlj(jg<awx> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public jg<awx> a() {
+      return this.b;
+   }
+
+   public double b() {
+      return this.c;
    }
 }

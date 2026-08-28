@@ -1,15 +1,44 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-public interface bpw<T extends Exception> {
-   T create(String var1, int var2);
+public interface bpw<T> extends Closeable {
+   static <T> bpw<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bpw<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   static bpw<CommandSyntaxException> a(SimpleCommandExceptionType $$0) {
-      return ($$1, $$2) -> $$0.createWithContext(bqq.a($$1, $$2));
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   static bpw<CommandSyntaxException> a(DynamicCommandExceptionType $$0, String $$1) {
-      return ($$2, $$3) -> $$0.createWithContext(bqq.a($$2, $$3), $$1);
-   }
+   @Nullable
+   T a() throws IOException;
 }

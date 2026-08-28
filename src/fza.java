@@ -1,92 +1,74 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-public class fza {
-   private static final xc b = xc.c("gui.banned.title.temporary").a(o.r);
-   private static final xc c = xc.c("gui.banned.title.permanent").a(o.r);
-   public static final xc a = xc.c("gui.banned.name.title").a(o.r);
-   private static final xc d = xc.c("gui.banned.skin.title").a(o.r);
-   private static final xc e = xc.a("gui.banned.skin.description", xc.a(ayl.n));
+public class fza implements AutoCloseable {
+   private static final alr a = alr.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final hks d;
+   private final alr e;
+   @Nullable
+   private hkd f;
+   private boolean g;
 
-   public static fzc a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fzc($$0, a($$1), b($$1), ayl.n, xb.m, true);
+   private fza(hks $$0, alr $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static fzc a(Runnable $$0) {
-      URI $$1 = ayl.n;
-      return new fzc($$2 -> {
-         if ($$2) {
-            ag.n().a($$1);
+   public static fza a(hks $$0, String $$1) {
+      return new fza($$0, alr.b("worlds/" + ag.a($$1, alr::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fza b(hks $$0, String $$1) {
+      return new fza($$0, alr.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(fkf $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new hkd(() -> "Favicon " + this.e, $$0);
+            } else {
+               this.f.a($$0);
+               this.f.b();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
          }
-
-         $$0.run();
-      }, d, e, $$1, xb.m, true);
-   }
-
-   public static fzc a(String $$0, Runnable $$1) {
-      URI $$2 = ayl.n;
-      return new fzc($$2x -> {
-         if ($$2x) {
-            ag.n().a($$2);
-         }
-
-         $$1.run();
-      }, a, xc.a("gui.banned.name.description", xc.b($$0).a(o.o), xc.a(ayl.n)), $$2, xb.m, true);
-   }
-
-   private static xc a(BanDetails $$0) {
-      return f($$0) ? b : c;
-   }
-
-   private static xc b(BanDetails $$0) {
-      return xc.a("gui.banned.description", c($$0), d($$0), xc.a(ayl.n));
-   }
-
-   private static xc c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         gne $$4 = gne.a($$3);
-         xc $$5;
-         if ($$4 != null) {
-            $$5 = xf.a($$4.a().f(), xz.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = xc.a("gui.banned.description.reason_id_message", $$3, $$2).a(o.r);
-         } else {
-            $$5 = xc.a("gui.banned.description.reason_id", $$3).a(o.r);
-         }
-
-         return xc.a("gui.banned.description.reason", $$5);
       } else {
-         return xc.c("gui.banned.description.unknownreason");
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
       }
    }
 
-   private static xc d(BanDetails $$0) {
-      if (f($$0)) {
-         xc $$1 = e($$0);
-         return xc.a("gui.banned.description.temporary", xc.a("gui.banned.description.temporary.duration", $$1).a(o.r));
-      } else {
-         return xc.c("gui.banned.description.permanent").a(o.r);
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
       }
    }
 
-   private static xc e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return xb.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? xb.c($$1.toMinutes()) : xb.b($$1.toHours());
-      }
+   public alr b() {
+      return this.f != null ? this.e : a;
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   @Override
+   public void close() {
+      this.a();
+      this.g = true;
+   }
+
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

@@ -1,17 +1,98 @@
-public record aap(egk c, int d) implements aam {
-   public static final za<wn, aap> a = za.a(egk.d, aap::b, yy.h, aap::c, aap::new);
-   public static final aam.b<aap> b = aam.a("debug/game_event_listeners");
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+public record aap(aap.a c) implements aat {
+   public static final ze<vy, aap> a = aat.a(aap::a, aap::new);
+   public static final aat.b<aap> b = aat.a("debug/bee");
+
+   private aap(vy $$0) {
+      this(new aap.a($$0));
+   }
+
+   private void a(vy $$0) {
+      this.c.a($$0);
+   }
 
    @Override
-   public aam.b<aap> a() {
+   public aat.b<aap> a() {
       return b;
    }
 
-   public egk b() {
+   public aap.a b() {
       return this.c;
    }
 
-   public int c() {
-      return this.d;
+   public static record a(UUID a, int b, fgc c, @Nullable eyo d, @Nullable iw e, @Nullable iw f, int g, Set<String> h, List<iw> i) {
+      public a(vy $$0) {
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eyo::b), $$0.c(iw.b), $$0.c(iw.b), $$0.readInt(), $$0.a(HashSet::new, vy::p), $$0.a(iw.b));
+      }
+
+      public void a(vy $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.e, iw.b);
+         $$0.a(this.f, iw.b);
+         $$0.q(this.g);
+         $$0.a(this.h, vy::a);
+         $$0.a(this.i, iw.b);
+      }
+
+      public boolean a(iw $$0) {
+         return Objects.equals($$0, this.e);
+      }
+
+      public String a() {
+         return agw.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public fgc d() {
+         return this.c;
+      }
+
+      @Nullable
+      public eyo e() {
+         return this.d;
+      }
+
+      @Nullable
+      public iw f() {
+         return this.e;
+      }
+
+      @Nullable
+      public iw g() {
+         return this.f;
+      }
+
+      public int h() {
+         return this.g;
+      }
+
+      public Set<String> i() {
+         return this.h;
+      }
+
+      public List<iw> j() {
+         return this.i;
+      }
    }
 }

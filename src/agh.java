@@ -1,18 +1,23 @@
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
 
-public record agh(xc b, Optional<kb> c) implements zj<aby> {
-   public static final za<wn, agh> a = za.a(xe.b, agh::b, yy.a(kb.h), agh::e, agh::new);
+public class agh implements zo<acf> {
+   public static final agh a = new agh();
+   public static final ze<ByteBuf, agh> b = ze.a(a);
 
-   @Override
-   public zl<agh> a() {
-      return agr.be;
+   private agh() {
    }
 
-   public void a(aby $$0) {
+   @Override
+   public zq<agh> a() {
+      return agy.aX;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public Optional<kb> e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

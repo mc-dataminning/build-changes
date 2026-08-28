@@ -1,93 +1,112 @@
-import java.util.ArrayList;
+import com.mojang.logging.LogUtils;
+import java.lang.management.ManagementFactory;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.DynamicMBean;
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanAttributeInfo;
+import javax.management.MBeanInfo;
+import javax.management.MBeanNotificationInfo;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
+import javax.management.ObjectName;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface bpy<S> {
-   void a(int var1, bqe<S> var2, Object var3);
+public final class bpy implements DynamicMBean {
+   private static final Logger a = LogUtils.getLogger();
+   private final MinecraftServer b;
+   private final MBeanInfo c;
+   private final Map<String, bpy.a> d = Stream.of(
+         new bpy.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
+         new bpy.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
+      )
+      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
 
-   default void a(int $$0, Object $$1) {
-      this.a($$0, bqe.b(), $$1);
+   private bpy(MinecraftServer $$0) {
+      this.b = $$0;
+      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bpy.a::a).toArray(MBeanAttributeInfo[]::new);
+      this.c = new MBeanInfo(bpy.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
    }
 
-   void a(int var1);
-
-   public static class a<S> implements bpy<S> {
-      private bpy.a.a<S>[] a = new bpy.a.a[16];
-      private int b;
-      private int c = -1;
-
-      private void b(int $$0) {
-         if ($$0 > this.c) {
-            this.c = $$0;
-            this.b = 0;
-         }
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
-
-      @Override
-      public void a(int $$0, bqe<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.c) {
-            this.a($$1, $$2);
-         }
-      }
-
-      private void a(bqe<S> $$0, Object $$1) {
-         int $$2 = this.a.length;
-         if (this.b >= $$2) {
-            int $$3 = ag.a($$2, this.b + 1);
-            bpy.a.a<S>[] $$4 = new bpy.a.a[$$3];
-            System.arraycopy(this.a, 0, $$4, 0, $$2);
-            this.a = $$4;
-         }
-
-         int $$5 = this.b++;
-         bpy.a.a<S> $$6 = this.a[$$5];
-         if ($$6 == null) {
-            $$6 = new bpy.a.a<>();
-            this.a[$$5] = $$6;
-         }
-
-         $$6.a = $$0;
-         $$6.b = $$1;
-      }
-
-      public List<bpz<S>> a() {
-         int $$0 = this.b;
-         if ($$0 == 0) {
-            return List.of();
-         } else {
-            List<bpz<S>> $$1 = new ArrayList<>($$0);
-
-            for (int $$2 = 0; $$2 < $$0; $$2++) {
-               bpy.a.a<S> $$3 = this.a[$$2];
-               $$1.add(new bpz<>(this.c, $$3.a, $$3.b));
-            }
-
-            return $$1;
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      static class a<S> {
-         bqe<S> a = bqe.b();
-         Object b = "empty";
+   public static void a(MinecraftServer $$0) {
+      try {
+         ManagementFactory.getPlatformMBeanServer().registerMBean(new bpy($$0), new ObjectName("net.minecraft.server:type=Server"));
+      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
+         a.warn("Failed to initialise server as JMX bean", var2);
       }
    }
 
-   public static class b<S> implements bpy<S> {
-      @Override
-      public void a(int $$0, bqe<S> $$1, Object $$2) {
+   private float a() {
+      return this.b.aO();
+   }
+
+   private long[] b() {
+      return this.b.aR();
+   }
+
+   @Nullable
+   @Override
+   public Object getAttribute(String $$0) {
+      bpy.a $$1 = this.d.get($$0);
+      return $$1 == null ? null : $$1.b.get();
+   }
+
+   @Override
+   public void setAttribute(Attribute $$0) {
+   }
+
+   @Override
+   public AttributeList getAttributes(String[] $$0) {
+      List<Attribute> $$1 = Arrays.stream($$0)
+         .map(this.d::get)
+         .filter(Objects::nonNull)
+         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
+         .collect(Collectors.toList());
+      return new AttributeList($$1);
+   }
+
+   @Override
+   public AttributeList setAttributes(AttributeList $$0) {
+      return new AttributeList();
+   }
+
+   @Nullable
+   @Override
+   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
+      return null;
+   }
+
+   @Override
+   public MBeanInfo getMBeanInfo() {
+      return this.c;
+   }
+
+   static final class a {
+      final String a;
+      final Supplier<Object> b;
+      private final String c;
+      private final Class<?> d;
+
+      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      @Override
-      public void a(int $$0) {
+      private MBeanAttributeInfo a() {
+         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
       }
    }
 }

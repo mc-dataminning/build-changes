@@ -1,65 +1,95 @@
-import java.util.EnumSet;
+public abstract class ces extends cfb {
+   protected byh d;
+   protected iw e = iw.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public abstract class ces {
-   private final EnumSet<ces.a> a = EnumSet.noneOf(ces.a.class);
-
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public ces(byh $$0) {
+      this.d = $$0;
+      if (!ciz.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   public boolean U_() {
-      return true;
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         ebq $$0 = this.d.dV().a_(this.e);
+         if (!($$0.b() instanceof dpv)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dpv.e);
+         }
+      }
    }
 
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<ces.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   protected void a(boolean $$0) {
+      if (this.f) {
+         ebq $$1 = this.d.dV().a_(this.e);
+         if ($$1.b() instanceof dpv) {
+            ((dpv)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (!ciz.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
+         return false;
+      } else {
+         cho $$0 = (cho)this.d.O();
+         eyo $$1 = $$0.i();
+         if ($$1 != null && !$$1.c()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eym $$3 = $$1.a($$2);
+               this.e = new iw($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.h((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
+                  this.f = dpv.a(this.d.dV(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dv().d();
+            this.f = dpv.a(this.d.dV(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
+      }
    }
 
-   public EnumSet<ces.a> j() {
-      return this.a;
+   @Override
+   public boolean c() {
+      return !this.a;
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public void d() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
    }
 
-   protected static int b(int $$0) {
-      return azq.e($$0, 2);
+   @Override
+   public boolean W_() {
+      return true;
    }
 
-   protected static aru a(bwv $$0) {
-      return (aru)$$0.dV();
-   }
-
-   protected static aru a(djz $$0) {
-      return (aru)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
+      }
    }
 }

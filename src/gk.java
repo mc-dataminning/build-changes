@@ -15,27 +15,27 @@ public class gk implements gj {
    }
 
    @Override
-   public ffs a(ek $$0) {
-      ffr $$1 = $$0.k();
-      ffs $$2 = $$0.m().a($$0);
-      float $$3 = azq.b(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = azq.a(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = azq.b(-$$1.j * (float) (Math.PI / 180.0));
-      float $$6 = azq.a(-$$1.j * (float) (Math.PI / 180.0));
-      float $$7 = azq.b((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = azq.a((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      ffs $$9 = new ffs((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ffs $$10 = new ffs((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ffs $$11 = $$9.c($$10).c(-1.0);
+   public fgc a(ek $$0) {
+      fgb $$1 = $$0.k();
+      fgc $$2 = $$0.m().a($$0);
+      float $$3 = azz.b(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azz.a(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azz.b(-$$1.j * (float) (Math.PI / 180.0));
+      float $$6 = azz.a(-$$1.j * (float) (Math.PI / 180.0));
+      float $$7 = azz.b((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azz.a((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      fgc $$9 = new fgc((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      fgc $$10 = new fgc((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      fgc $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new ffs($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new fgc($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public ffr b(ek $$0) {
-      return ffr.a;
+   public fgb b(ek $$0) {
+      return fgb.a;
    }
 
    @Override

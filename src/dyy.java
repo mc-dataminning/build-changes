@@ -1,95 +1,140 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dyy {
-   public static final alj<dyx> a = a("blank");
-   public static final alj<dyx> b = a("angler");
-   public static final alj<dyx> c = a("archer");
-   public static final alj<dyx> d = a("arms_up");
-   public static final alj<dyx> e = a("blade");
-   public static final alj<dyx> f = a("brewer");
-   public static final alj<dyx> g = a("burn");
-   public static final alj<dyx> h = a("danger");
-   public static final alj<dyx> i = a("explorer");
-   public static final alj<dyx> j = a("flow");
-   public static final alj<dyx> k = a("friend");
-   public static final alj<dyx> l = a("guster");
-   public static final alj<dyx> m = a("heart");
-   public static final alj<dyx> n = a("heartbreak");
-   public static final alj<dyx> o = a("howl");
-   public static final alj<dyx> p = a("miner");
-   public static final alj<dyx> q = a("mourner");
-   public static final alj<dyx> r = a("plenty");
-   public static final alj<dyx> s = a("prize");
-   public static final alj<dyx> t = a("scrape");
-   public static final alj<dyx> u = a("sheaf");
-   public static final alj<dyx> v = a("shelter");
-   public static final alj<dyx> w = a("skull");
-   public static final alj<dyx> x = a("snort");
-   private static final Map<czw, alj<dyx>> y = Map.ofEntries(
-      Map.entry(dae.rB, a),
-      Map.entry(dae.za, b),
-      Map.entry(dae.zb, c),
-      Map.entry(dae.zc, d),
-      Map.entry(dae.zd, e),
-      Map.entry(dae.ze, f),
-      Map.entry(dae.zf, g),
-      Map.entry(dae.zg, h),
-      Map.entry(dae.zh, i),
-      Map.entry(dae.zi, j),
-      Map.entry(dae.zj, k),
-      Map.entry(dae.zk, l),
-      Map.entry(dae.zl, m),
-      Map.entry(dae.zm, n),
-      Map.entry(dae.zn, o),
-      Map.entry(dae.zo, p),
-      Map.entry(dae.zp, q),
-      Map.entry(dae.zq, r),
-      Map.entry(dae.zr, s),
-      Map.entry(dae.zs, t),
-      Map.entry(dae.zt, u),
-      Map.entry(dae.zu, v),
-      Map.entry(dae.zv, w),
-      Map.entry(dae.zw, x)
-   );
+public class dyy extends dyo implements buv {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = -1;
+   private final jp<dak> e = jp.a(6, dak.l);
+   private int f = -1;
 
-   @Nullable
-   public static alj<dyx> a(czw $$0) {
-      return y.get($$0);
+   public dyy(iw $$0, ebq $$1) {
+      super(dyq.N, $$0, $$1);
    }
 
-   private static alj<dyx> a(String $$0) {
-      return alj.a(mi.s, alk.b($$0));
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.f = $$0;
+         ebq $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dot.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            ech $$4 = dot.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(egq.c, this.o, egq.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
-   public static dyx a(jt<dyx> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.e.clear();
+      buw.b($$0, this.e, $$1);
+      this.f = $$0.b("last_interacted_slot", -1);
    }
 
-   private static dyx a(jt<dyx> $$0, alj<dyx> $$1, String $$2) {
-      return jt.a($$0, $$1, new dyx(alk.b($$2)));
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      buw.a($$0, this.e, true, $$1);
+      $$0.a("last_interacted_slot", this.f);
+   }
+
+   public int f() {
+      return (int)this.e.stream().filter(Predicate.not(dak::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.e.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e.stream().allMatch(dak::f);
+   }
+
+   @Override
+   public dak a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Override
+   public dak a(int $$0, int $$1) {
+      dak $$2 = Objects.requireNonNullElse(this.e.get($$0), dak.l);
+      this.e.set($$0, dak.l);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public dak b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, dak $$1) {
+      if ($$1.a(axv.bb)) {
+         this.e.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(buv $$0, int $$1, dak $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : dak.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.f_($$2x));
+   }
+
+   @Override
+   public int ap_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(csi $$0) {
+      return buv.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, dak $$1) {
+      return $$1.a(axv.bb) && this.a($$0).f() && $$1.M() == this.ap_();
+   }
+
+   public int j() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(kg $$0) {
+      super.a($$0);
+      $$0.a(kl.ap, ddc.a).a(this.e);
+   }
+
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(kl.ap, ddc.a(this.e));
+   }
+
+   @Override
+   public void a(ua $$0) {
+      $$0.r("Items");
    }
 }

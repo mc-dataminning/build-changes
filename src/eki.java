@@ -1,29 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eki extends ekm<emy> {
-   public eki(Codec<emy> $$0) {
+public class eki extends ekj {
+   public eki(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emy> $$0) {
-      dky $$1 = $$0.b();
-      azz $$2 = $$0.d();
-      iw $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   protected boolean a(dkk $$0, bai $$1, iw $$2, ebq $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jc $$4 = jc.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jc> $$6 = ag.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = azq.d(-$$4); $$6 <= azq.f($$4); $$6++) {
-            for (int $$7 = azq.d(-$$4); $$7 <= azq.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dng.fY.m());
+         for (jc $$8 : $$6.subList(0, $$5)) {
+            iw.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jc $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jc.b);
+               jc[] $$13 = new jc[]{$$8, jc.b};
+               $$11 = ag.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jc.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jc.b);
                }
             }
          }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
+         return true;
       }
-
-      return true;
    }
 }

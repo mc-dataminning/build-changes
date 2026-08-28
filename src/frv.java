@@ -1,49 +1,22 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class frv {
-   public static void a(giy $$0, frt $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+public record frv(int b) implements fsa {
+   public static final MapCodec<frv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azg.i.fieldOf("value").forGetter(frv::b)).apply($$0, frv::new));
 
-      for (Entry<String, List<frs>> $$6 : $$1.c().entrySet()) {
-         Optional<glg> $$7 = $$0.a($$6.getKey());
-         List<frs> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fru[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, azq.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fru $$8x = $$5x[$$6x];
-               fru $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = azq.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
-
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
-      }
+   public frv(int b) {
+      b = ayh.f(b);
+      this.b = b;
    }
 
-   private static float a(frt $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
+   @Override
+   public int a(dak $$0, @Nullable glo $$1, @Nullable byf $$2) {
+      return this.b;
    }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
-   }
-
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   @Override
+   public MapCodec<frv> a() {
+      return a;
    }
 }

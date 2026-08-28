@@ -1,16 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public interface ewa<P extends evz> {
-   ewa<evc> a = a("always_true", evc.a);
-   ewa<evh> b = a("block_match", evh.a);
-   ewa<evj> c = a("blockstate_match", evj.a);
-   ewa<ewh> d = a("tag_match", ewh.a);
-   ewa<evw> e = a("random_block_match", evw.a);
-   ewa<evx> f = a("random_blockstate_match", evx.a);
+public class ewa extends ewm {
+   public static final MapCodec<ewa> a = MapCodec.unit(() -> ewa.b);
+   public static final ewa b = new ewa();
 
-   MapCodec<P> codec();
+   private ewa() {
+   }
 
-   static <P extends evz> ewa<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.m, $$0, () -> $$1);
+   @Override
+   protected ewo<?> a() {
+      return ewo.j;
    }
 }

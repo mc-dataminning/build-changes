@@ -1,13 +1,19 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bfw extends bdv {
-   public bfw(Schema $$0) {
-      super($$0, "FireResistantToDamageResistantComponentFix", "minecraft:fire_resistant", "minecraft:damage_resistant");
+public class bfw extends big {
+   public bfw(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityWolfColorFix", bjm.D, "minecraft:wolf");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("types", $$0.createString("#minecraft:is_fire"));
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

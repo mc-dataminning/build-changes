@@ -1,109 +1,147 @@
-public class cuw extends cum {
-   static final akn<String> b = akr.a(cuw.class, akp.e);
-   static final akn<xc> c = akr.a(cuw.class, akp.f);
-   private final diy d = new cuw.a();
-   private static final int h = 4;
-   private int i;
+import javax.annotation.Nullable;
 
-   public cuw(bxe<? extends cuw> $$0, djz $$1) {
+public abstract class cuw extends cuv implements cva {
+   private jp<dak> b = jp.a(36, dak.l);
+   @Nullable
+   private alq<fay> c;
+   private long d;
+
+   protected cuw(bxn<?> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected czw o() {
-      return dae.ov;
+   public void a(asb $$0, bvt $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
    @Override
-   public daa dI() {
-      return new daa(dae.vX);
+   public dak a(int $$0) {
+      return this.g_($$0);
    }
 
    @Override
-   protected void a(akr.a $$0) {
+   public dak a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public dak b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, dak $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public byw a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(csi $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bxe.d $$0) {
+      if (!this.dV().C && $$0.a()) {
+         buy.a(this.dV(), this, this);
+      }
+
       super.a($$0);
-      $$0.a(b, "");
-      $$0.a(c, xb.a);
-   }
-
-   @Override
-   protected void a(ua $$0) {
-      super.a($$0);
-      this.d.b($$0, this.dX());
-      this.ar().a(b, this.q().m());
-      this.ar().a(c, this.q().l());
    }
 
    @Override
    protected void b(ua $$0) {
       super.b($$0);
-      this.d.a($$0, this.dX());
+      this.a($$0, this.dX());
    }
 
    @Override
-   public ebg v() {
-      return dng.gm.m();
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.b($$0, this.dX());
    }
 
-   public diy q() {
+   @Override
+   public bvc a(csi $$0, bvb $$1) {
+      return this.b_($$0);
+   }
+
+   @Override
+   protected fgc a(fgc $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - cwb.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bi()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.al_();
+   }
+
+   public void a(alq<fay> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Nullable
+   @Override
+   public cwb createMenu(int $$0, csh $$1, csi $$2) {
+      if (this.c != null && $$2.aa_()) {
+         return null;
+      } else {
+         this.f($$1.h);
+         return this.a($$0, $$1);
+      }
+   }
+
+   protected abstract cwb a(int var1, csh var2);
+
+   @Nullable
+   @Override
+   public alq<fay> q() {
+      return this.c;
+   }
+
+   @Override
+   public void a(@Nullable alq<fay> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public long s() {
       return this.d;
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.af - this.i >= 4) {
-         this.q().a(this.dV());
-         this.i = this.af;
-      }
+   public void a(long $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public but a(crz $$0, bus $$1) {
-      return this.d.a($$0);
+   public jp<dak> t() {
+      return this.b;
    }
 
    @Override
-   public void a(akn<?> $$0) {
-      super.a($$0);
-      if (c.equals($$0)) {
-         try {
-            this.d.c(this.ar().a(c));
-         } catch (Throwable var3) {
-         }
-      } else if (b.equals($$0)) {
-         this.d.a(this.ar().a(b));
-      }
-   }
-
-   public class a extends diy {
-      @Override
-      public aru e() {
-         return (aru)cuw.this.dV();
-      }
-
-      @Override
-      public void f() {
-         cuw.this.ar().a(cuw.b, this.m());
-         cuw.this.ar().a(cuw.c, this.l());
-      }
-
-      @Override
-      public ffs g() {
-         return cuw.this.dt();
-      }
-
-      public cuw h() {
-         return cuw.this;
-      }
-
-      @Override
-      public ek i() {
-         return new ek(this, cuw.this.dt(), cuw.this.bT(), this.e(), 2, this.n().getString(), cuw.this.m_(), this.e().p(), cuw.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cuw.this.dQ();
-      }
+   public void u() {
+      this.b = jp.a(this.b(), dak.l);
    }
 }

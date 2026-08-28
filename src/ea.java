@@ -8,7 +8,7 @@ public class ea extends dl<ea.a> {
       return ea.a.a;
    }
 
-   public void a(arv $$0, daa $$1) {
+   public void a(asc $$0, dak $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class ea extends dl<ea.a> {
          return aq.W.a(new ea.a(Optional.of(bz.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(daa $$0) {
+      public boolean a(dak $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

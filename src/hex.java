@@ -1,8 +1,4 @@
-public class hex extends hfr {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class hex extends hew {
+   public fgc[] a = new fgc[0];
+   public boolean n;
 }

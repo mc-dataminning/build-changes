@@ -1,33 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+public class gnt extends gpx {
+   private final gps a;
 
-public interface gnt {
-   boolean a(gnu var1);
+   gnt(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gps $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
+   }
 
-   boolean a(gnv var1);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
+      }
+   }
 
-   static gnt a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new gnt() {
-         @Override
-         public boolean a(gnu $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
-         }
+   @Override
+   public gpb b() {
+      return gpb.b;
+   }
 
-         @Override
-         public boolean a(gnv $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
-         }
-      };
+   public static class a implements gpa<md> {
+      private final gps a;
+
+      public a(gps $$0) {
+         this.a = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

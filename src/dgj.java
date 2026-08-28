@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import io.netty.buffer.ByteBuf;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface dgj {
+public record dgj(int b) {
+   public static final ze<ByteBuf, dgj> a = ze.a(zc.h, dgj::a, dgj::new);
+
+   public int a() {
+      return this.b;
+   }
 }

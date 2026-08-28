@@ -1,9 +1,13 @@
-import javax.annotation.Nullable;
+public interface byp extends byo {
+   void b(int var1);
 
-public interface byp {
-   boolean isSpawnPositionOk(dkc var1, iw var2, @Nullable bxe<?> var3);
+   boolean a();
 
-   default iw a(dkc $$0, iw $$1) {
-      return $$1;
+   void c(int var1);
+
+   void b();
+
+   default int c() {
+      return 0;
    }
 }

@@ -1,25 +1,41 @@
 public class glx {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ag.d();
+   private final gqm a;
+   private final glo b;
+   private final gri c;
+   private glx.a d = glx.a.a;
 
-   public void a() {
-      this.e = ag.d();
+   public glx(gqm $$0, glo $$1, gri $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ag.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azq.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
+   public void a() {
+      switch (this.d) {
+         case b:
+            iw $$0 = this.a.dv();
+            boolean $$1 = this.b.e($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.aa_() || !this.a.bJ()) {
+               this.d = glx.a.c;
+            }
+         case a:
+         case c:
       }
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public boolean b() {
+      return this.d == glx.a.c;
+   }
+
+   public void c() {
+      if (this.d == glx.a.a) {
+         this.d = glx.a.b;
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

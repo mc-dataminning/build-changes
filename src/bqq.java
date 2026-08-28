@@ -1,90 +1,76 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import it.unimi.dsi.fastutil.chars.CharList;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public interface bqq {
-   static bqf<StringReader> a(String $$0) {
-      return new bqq.b($$0);
+public record bqq<T>(bqg<StringReader> a, bqj<StringReader, T> b) implements bqp<T> {
+   public bqq(bqg<StringReader> a, bqj<StringReader, T> b) {
+      a.a();
+      this.a = a;
+      this.b = b;
    }
 
-   static bqf<StringReader> a(final char $$0) {
-      return new bqq.a(CharList.of($$0)) {
-         @Override
-         protected boolean a(char $$0x) {
-            return $$0 == $$0;
+   public Optional<T> a(bqk<StringReader> $$0) {
+      return $$0.b(this.b);
+   }
+
+   @Override
+   public T a(StringReader $$0) throws CommandSyntaxException {
+      bqh.a<StringReader> $$1 = new bqh.a<>();
+      bqy $$2 = new bqy($$1, $$0);
+      Optional<T> $$3 = this.a($$2);
+      if ($$3.isPresent()) {
+         return $$3.get();
+      } else {
+         List<bqi<StringReader>> $$4 = $$1.a();
+         List<Exception> $$5 = $$4.stream().<Exception>mapMulti(($$1x, $$2x) -> {
+            if ($$1x.c() instanceof bqf<?> $$4x) {
+               $$2x.accept($$4x.create($$0.getString(), $$1x.a()));
+            } else if ($$1x.c() instanceof Exception $$6x) {
+               $$2x.accept($$6x);
+            }
+         }).toList();
+
+         for (Exception $$6 : $$5) {
+            if ($$6 instanceof CommandSyntaxException $$7) {
+               throw $$7;
+            }
          }
-      };
-   }
 
-   static bqf<StringReader> a(final char $$0, final char $$1) {
-      return new bqq.a(CharList.of($$0, $$1)) {
-         @Override
-         protected boolean a(char $$0x) {
-            return $$0 == $$0 || $$0 == $$1;
-         }
-      };
-   }
-
-   static StringReader a(String $$0, int $$1) {
-      StringReader $$2 = new StringReader($$0);
-      $$2.setCursor($$1);
-      return $$2;
-   }
-
-   public abstract static class a implements bqf<StringReader> {
-      private final bpw<CommandSyntaxException> a;
-      private final bqe<StringReader> b;
-
-      public a(CharList $$0) {
-         String $$1 = $$0.intStream().mapToObj(Character::toString).collect(Collectors.joining("|"));
-         this.a = bpw.a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), String.valueOf($$1));
-         this.b = $$1x -> $$0.intStream().mapToObj(Character::toString);
-      }
-
-      @Override
-      public boolean a(bqb<StringReader> $$0, bqd $$1, bpv $$2) {
-         $$0.f().skipWhitespace();
-         int $$3 = $$0.g();
-         if ($$0.f().canRead() && this.a($$0.f().read())) {
-            return true;
+         if ($$5.size() == 1 && $$5.get(0) instanceof RuntimeException $$8) {
+            throw $$8;
          } else {
-            $$0.b().a($$3, this.b, this.a);
-            return false;
+            throw new IllegalStateException("Failed to parse: " + $$4.stream().map(bqi::toString).collect(Collectors.joining(", ")));
          }
       }
-
-      protected abstract boolean a(char var1);
    }
 
-   public static final class b implements bqf<StringReader> {
-      private final String a;
-      private final bpw<CommandSyntaxException> b;
-      private final bqe<StringReader> c;
+   @Override
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      StringReader $$1 = new StringReader($$0.getInput());
+      $$1.setCursor($$0.getStart());
+      bqh.a<StringReader> $$2 = new bqh.a<>();
+      bqy $$3 = new bqy($$2, $$1);
+      this.a($$3);
+      List<bqi<StringReader>> $$4 = $$2.a();
+      if ($$4.isEmpty()) {
+         return $$0.buildFuture();
+      } else {
+         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
 
-      public b(String $$0) {
-         this.a = $$0;
-         this.b = bpw.a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect(), $$0);
-         this.c = $$1 -> Stream.of($$0);
-      }
-
-      @Override
-      public boolean a(bqb<StringReader> $$0, bqd $$1, bpv $$2) {
-         $$0.f().skipWhitespace();
-         int $$3 = $$0.g();
-         String $$4 = $$0.f().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.b().a($$3, this.c, this.b);
-            return false;
-         } else {
-            return true;
+         for (bqi<StringReader> $$6 : $$4) {
+            if ($$6.b() instanceof bqx $$7) {
+               ep.a($$7.a(), $$5);
+            } else {
+               ep.b($$6.b().possibleValues($$3), $$5);
+            }
          }
-      }
 
-      @Override
-      public String toString() {
-         return "terminal[" + this.a + "]";
+         return $$5.buildFuture();
       }
    }
 }

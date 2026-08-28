@@ -1,54 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dhr(lx d, dhr.a e, dhr.a f, dhr.c g, dhr.c h, btw i) implements dhe {
+public record dhr(boolean d, Optional<jg<bvv>> e, Optional<dhe> f, Optional<jk<dno>> g, fgc h, dhe i, boolean j, dkj.a k, lx l, lx m, jg<awx> n) implements dho {
    public static final MapCodec<dhr> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               lz.bk.fieldOf("particle").forGetter(dhr::c),
-               dhr.a.a.fieldOf("horizontal_position").forGetter(dhr::d),
-               dhr.a.a.fieldOf("vertical_position").forGetter(dhr::e),
-               dhr.c.a.fieldOf("horizontal_velocity").forGetter(dhr::f),
-               dhr.c.a.fieldOf("vertical_velocity").forGetter(dhr::g),
-               btw.c.optionalFieldOf("speed", btu.a).forGetter(dhr::h)
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dhr::b),
+               bvv.b.optionalFieldOf("damage_type").forGetter(dhr::c),
+               dhe.b.optionalFieldOf("knockback_multiplier").forGetter(dhr::d),
+               jv.a(mi.i).optionalFieldOf("immune_blocks").forGetter(dhr::e),
+               fgc.a.optionalFieldOf("offset", fgc.c).forGetter(dhr::f),
+               dhe.b.fieldOf("radius").forGetter(dhr::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dhr::h),
+               dkj.a.f.fieldOf("block_interaction").forGetter(dhr::i),
+               lz.bk.fieldOf("small_particle").forGetter(dhr::j),
+               lz.bk.fieldOf("large_particle").forGetter(dhr::k),
+               awx.b.fieldOf("sound").forGetter(dhr::l)
             )
             .apply($$0, dhr::new)
    );
 
-   public static dhr.a a(float $$0) {
-      return new dhr.a(dhr.b.a, $$0, 1.0F);
-   }
-
-   public static dhr.a b() {
-      return new dhr.a(dhr.b.b, 0.0F, 1.0F);
-   }
-
-   public static dhr.c b(float $$0) {
-      return new dhr.c($$0, btu.a);
-   }
-
-   public static dhr.c a(btw $$0) {
-      return new dhr.c(0.0F, $$0);
-   }
-
    @Override
-   public void a(aru $$0, int $$1, dgm $$2, bwv $$3, ffs $$4) {
-      azz $$5 = $$3.dY();
-      ffs $$6 = $$3.ae();
-      float $$7 = $$3.dq();
-      float $$8 = $$3.dr();
+   public void a(asb $$0, int $$1, dgw $$2, bxe $$3, fgc $$4) {
+      fgc $$5 = $$4.e(this.h);
       $$0.a(
-         this.d,
-         this.e.a($$4.a(), $$4.a(), $$7, $$5),
-         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
-         this.e.a($$4.c(), $$4.c(), $$7, $$5),
-         0,
-         this.g.a($$6.a(), $$5),
-         this.h.a($$6.b(), $$5),
-         this.g.a($$6.c(), $$5),
-         (double)this.i.a($$5)
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dlc(this.k != dkj.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
       );
+   }
+
+   @Nullable
+   private bvt a(bxe $$0, fgc $$1) {
+      if (this.e.isEmpty()) {
+         return null;
+      } else {
+         return this.d ? new bvt(this.e.get(), $$0) : new bvt(this.e.get(), $$1);
+      }
    }
 
    @Override
@@ -56,106 +55,47 @@ public record dhr(lx d, dhr.a e, dhr.a f, dhr.c g, dhr.c h, btw i) implements dh
       return a;
    }
 
-   public lx c() {
+   public boolean b() {
       return this.d;
    }
 
-   public dhr.a d() {
+   public Optional<jg<bvv>> c() {
       return this.e;
    }
 
-   public dhr.a e() {
+   public Optional<dhe> d() {
       return this.f;
    }
 
-   public dhr.c f() {
+   public Optional<jk<dno>> e() {
       return this.g;
    }
 
-   public dhr.c g() {
+   public fgc f() {
       return this.h;
    }
 
-   public btw h() {
+   public dhe g() {
       return this.i;
    }
 
-   public static record a(dhr.b b, float c, float d) {
-      public static final MapCodec<dhr.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     dhr.b.c.fieldOf("type").forGetter(dhr.a::a),
-                     Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(dhr.a::b),
-                     ayy.o.optionalFieldOf("scale", 1.0F).forGetter(dhr.a::c)
-                  )
-                  .apply($$0, dhr.a::new)
-         )
-         .validate(
-            $$0 -> $$0.a() == dhr.b.a && $$0.c() != 1.0F
-                  ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
-                  : DataResult.success($$0)
-         );
-
-      public double a(double $$0, double $$1, float $$2, azz $$3) {
-         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
-      }
-
-      public dhr.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
-      }
+   public boolean h() {
+      return this.j;
    }
 
-   public static enum b implements bao {
-      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
-      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
-
-      public static final Codec<dhr.b> c = bao.a(dhr.b::values);
-      private final String d;
-      private final dhr.b.a e;
-
-      private b(final String $$0, final dhr.b.a $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public double a(double $$0, double $$1, float $$2, azz $$3) {
-         return this.e.getCoordinate($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      @FunctionalInterface
-      interface a {
-         double getCoordinate(double var1, double var3, float var5, azz var6);
-      }
+   public dkj.a i() {
+      return this.k;
    }
 
-   public static record c(float b, btw c) {
-      public static final MapCodec<dhr.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(dhr.c::a), btw.c.optionalFieldOf("base", btu.a).forGetter(dhr.c::b))
-               .apply($$0, dhr.c::new)
-      );
+   public lx j() {
+      return this.l;
+   }
 
-      public double a(double $$0, azz $$1) {
-         return $$0 * (double)this.b + (double)this.c.a($$1);
-      }
+   public lx k() {
+      return this.m;
+   }
 
-      public float a() {
-         return this.b;
-      }
-
-      public btw b() {
-         return this.c;
-      }
+   public jg<awx> l() {
+      return this.n;
    }
 }

@@ -1,41 +1,11 @@
-public class bzx implements bzo<bxw> {
-   private final int a;
-   private final int b;
-   private bzn.a c = bzn.a.a;
-   private long d;
+public interface bzx<E extends byf> {
+   bzw.a a();
 
-   public bzx(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   boolean e(asb var1, E var2, long var3);
 
-   @Override
-   public bzn.a a() {
-      return this.c;
-   }
+   void f(asb var1, E var2, long var3);
 
-   @Override
-   public final boolean e(aru $$0, bxw $$1, long $$2) {
-      this.c = bzn.a.b;
-      int $$3 = this.a + $$0.G_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
+   void g(asb var1, E var2, long var3);
 
-   @Override
-   public final void f(aru $$0, bxw $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(aru $$0, bxw $$1, long $$2) {
-      this.c = bzn.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
+   String b();
 }

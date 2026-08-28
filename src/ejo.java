@@ -1,59 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejo extends ekm<enb> {
-   private static final ebg a = dng.nF.m().b(dmi.b, Integer.valueOf(1)).b(dmi.c, ebs.a).b(dmi.d, Integer.valueOf(0));
-   private static final ebg b = a.b(dmi.c, ebs.c).b(dmi.d, Integer.valueOf(1));
-   private static final ebg c = a.b(dmi.c, ebs.c);
-   private static final ebg d = a.b(dmi.c, ebs.b);
+public class ejo extends enl {
+   public static final MapCodec<ejo> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               equ.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               buf.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               eij.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               ejp.b.optionalFieldOf("debug_settings", ejp.a).forGetter($$0x -> $$0x.h),
+               jv.a(mi.i).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, ejo::new)
+   );
+   public final equ e;
+   public final buf f;
+   public final eij g;
+   public final ejp h;
+   public final jk<dno> i;
 
-   public ejo(Codec<enb> $$0) {
+   public ejo(float $$0, equ $$1, buf $$2, eij $$3, ejp $$4, jk<dno> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(eko<enb> $$0) {
-      int $$1 = 0;
-      iw $$2 = $$0.e();
-      dky $$3 = $$0.b();
-      azz $$4 = $$0.d();
-      enb $$5 = $$0.f();
-      iw.a $$6 = $$2.k();
-      iw.a $$7 = $$2.k();
-      if ($$3.v($$6)) {
-         if (dng.nF.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
-
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(ehf.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dng.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jc.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jc.a, 1), c, 2);
-               $$3.a($$6.c(jc.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

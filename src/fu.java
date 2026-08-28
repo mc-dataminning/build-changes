@@ -9,21 +9,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fu implements ArgumentType<cxq> {
+public class fu implements ArgumentType<cya> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xc.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("slot.unknown", $$0));
 
    public static fu a() {
       return new fu();
    }
 
-   public static cxq a(CommandContext<ek> $$0, String $$1) {
-      return (cxq)$$0.getArgument($$1, cxq.class);
+   public static cya a(CommandContext<ek> $$0, String $$1) {
+      return (cya)$$0.getArgument($$1, cya.class);
    }
 
-   public cxq a(StringReader $$0) throws CommandSyntaxException {
+   public cya a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = eo.a($$0, $$0x -> $$0x != ' ');
-      cxq $$2 = cxr.a($$1);
+      cya $$2 = cyb.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class fu implements ArgumentType<cxq> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ep.b(cxr.a(), $$1);
+      return ep.b(cyb.a(), $$1);
    }
 
    public Collection<String> getExamples() {

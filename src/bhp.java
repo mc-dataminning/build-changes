@@ -1,21 +1,21 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bhp extends bdv {
+public class bhp extends big {
    public bhp(Schema $$0) {
-      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
+      super($$0, false, "JukeboxTicksSinceSongStartedFix", bjm.s, "minecraft:jukebox");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      long $$1 = $$0.get("TickCount").asLong(0L) - $$0.get("RecordStartTick").asLong(0L);
+      Dynamic<?> $$2 = $$0.remove("IsPlaying").remove("TickCount").remove("RecordStartTick");
+      return $$1 > 0L ? $$2.set("ticks_since_song_started", $$0.createLong($$1)) : $$2;
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
-      $$0 = $$0.remove("pos").remove("dimension");
-      if ($$1.isPresent() && $$2.isPresent()) {
-         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
-      }
-
-      return $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

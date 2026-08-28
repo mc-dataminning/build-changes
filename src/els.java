@@ -1,40 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class els extends ekm<enb> {
-   public els(Codec<enb> $$0) {
+public class els extends ekw<enk> {
+   public els(Codec<enk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<enb> $$0) {
-      boolean $$1 = false;
-      azz $$2 = $$0.d();
-      dky $$3 = $$0.b();
-      iw $$4 = $$0.e();
-      enb $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(ehf.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      iw $$9 = new iw($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dng.J)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         ebg $$11 = $$10 ? dng.bH.m() : dng.bG.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               ebg $$12 = $$11.b(dvv.d, ecc.a);
-               iw $$13 = $$9.d();
-               if ($$3.a_($$13).a(dng.J)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   public boolean a(eky<enk> $$0) {
+      dkk $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      bai $$3 = $$0.d();
+      enk $$4 = $$0.f();
+      Optional<jc> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         iw $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && ekq.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         ekq.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-            $$1 = true;
+   private static Optional<jc> a(dkk $$0, iw $$1, bai $$2) {
+      boolean $$3 = ekq.b($$0.a_($$1.d()));
+      boolean $$4 = ekq.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jc.a : jc.b);
+      } else if ($$3) {
+         return Optional.of(jc.a);
+      } else {
+         return $$4 ? Optional.of(jc.b) : Optional.empty();
+      }
+   }
+
+   private static void a(dkk $$0, bai $$1, iw $$2, enk $$3) {
+      ekq.c($$0, $$2);
+
+      for (jc $$4 : jc.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            iw $$5 = $$2.a($$4);
+            ekq.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               iw $$6 = $$5.a(jc.b($$1));
+               ekq.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  iw $$7 = $$6.a(jc.b($$1));
+                  ekq.c($$0, $$7);
+               }
+            }
          }
       }
-
-      return $$1;
    }
 }

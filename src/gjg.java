@@ -1,36 +1,32 @@
-import org.joml.Quaternionf;
+public class gjg extends ghn<hfy> {
+   private static final String a = "main";
+   private final gkr b;
 
-public class gjg<T extends hgd> extends giq<T> {
-   private static final String a = "cape";
-   private final glg b = this.q.b("cape");
-
-   public gjg(glg $$0) {
+   public gjg(gkr $$0) {
       super($$0);
+      this.b = $$0.b("main");
    }
 
-   public static glm a() {
-      glo $$0 = giq.a(glk.a, 0.0F);
-      glq $$1 = $$0.a();
-      glq $$2 = $$1.a("head");
-      $$2.a("hat");
-      glq $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", gll.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, glk.a, 1.0F, 0.5F), gli.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return glm.a($$0, 64, 64);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a(
+         "main",
+         gkw.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         gkt.a
+      );
+      return gkx.a($$0, 64, 32);
    }
 
-   public void a(T $$0) {
+   public void a(hfy $$0) {
       super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+      this.b.f = $$0.b * (float) (Math.PI / 180.0);
+      this.b.e = $$0.a * (float) (Math.PI / 180.0);
    }
 }

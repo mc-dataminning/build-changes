@@ -1,145 +1,127 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class eya {
-   private eyc[] a = new eyc[128];
-   private int b;
+public final class eya extends ebs<exz, eya> {
+   public static final Codec<eya> a = a(mh.c.q(), exz::g).stable();
+   public static final int f = 9;
+   public static final int g = 8;
 
-   public eyc a(eyc $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            eyc[] $$1 = new eyc[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
+   public eya(exz $$0, Reference2ObjectArrayMap<ect<?>, Comparable<?>> $$1, MapCodec<eya> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a() {
-      this.b = 0;
+   public exz a() {
+      return this.d;
    }
 
-   public eyc b() {
-      return this.a[0];
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   public eyc c() {
-      eyc $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
+   public boolean a(exz $$0) {
+      return this.d == $$0 && this.d.c(this);
    }
 
-   public void b(eyc $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
-      }
-
-      $$0.d = -1;
+   public boolean c() {
+      return this.a().b();
    }
 
-   public void a(eyc $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
+   public float a(djn $$0, iw $$1) {
+      return this.a().a(this, $$0, $$1);
    }
 
-   public int d() {
-      return this.b;
+   public float d() {
+      return this.a().a(this);
    }
 
-   private void a(int $$0) {
-      eyc $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         eyc $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
+   public int e() {
+      return this.a().d(this);
    }
 
-   private void b(int $$0) {
-      eyc $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         eyc $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         eyc $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
+   public boolean b(djn $$0, iw $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            iw $$4 = $$1.b($$2, 0, $$3);
+            eya $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
+               return true;
             }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
          }
       }
 
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
+      return false;
    }
 
-   public boolean e() {
-      return this.b == 0;
+   public void a(asb $$0, iw $$1, ebq $$2) {
+      this.a().b($$0, $$1, $$2, this);
    }
 
-   public eyc[] f() {
-      return Arrays.copyOf(this.a, this.b);
+   public void a(dkj $$0, iw $$1, bai $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void a(asb $$0, iw $$1, bai $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public fgc c(djn $$0, iw $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public ebq g() {
+      return this.a().b(this);
+   }
+
+   @Nullable
+   public lx h() {
+      return this.a().h();
+   }
+
+   public boolean a(ayc<exz> $$0) {
+      return this.a().k().a($$0);
+   }
+
+   public boolean a(jk<exz> $$0) {
+      return $$0.a(this.a().k());
+   }
+
+   public boolean b(exz $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(djn $$0, iw $$1, exz $$2, jc $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public fgw d(djn $$0, iw $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   @Nullable
+   public ffx e(djn $$0, iw $$1) {
+      return this.a().c(this, $$0, $$1);
+   }
+
+   public jg<exz> j() {
+      return this.d.k();
+   }
+
+   public Stream<ayc<exz>> k() {
+      return this.d.k().c();
+   }
+
+   public void a(dkj $$0, iw $$1, bxe $$2, bxx $$3) {
+      this.a().a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,65 +1,47 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record fdr(jg<dne> b, Optional<ds> c) implements fds {
+public record fdr(jg<dgx> b, List<Float> c) implements fec {
    public static final MapCodec<fdr> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(mh.e.r().fieldOf("block").forGetter(fdr::c), ds.a.optionalFieldOf("properties").forGetter(fdr::d)).apply($$0, fdr::new)
-      )
-      .validate(fdr::a);
+      $$0 -> $$0.group(dgx.c.fieldOf("enchantment").forGetter(fdr::c), azg.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(fdr::d)).apply($$0, fdr::new)
+   );
 
-   private static DataResult<fdr> a(fdr $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public fed b() {
+      return fee.k;
    }
 
    @Override
-   public fdt b() {
-      return fdu.i;
+   public Set<bbk<?>> a() {
+      return Set.of(fdn.i);
    }
 
-   @Override
-   public Set<bbb<?>> a() {
-      return Set.of(fdd.g);
+   public boolean a(fat $$0) {
+      dak $$1 = $$0.c(fdn.i);
+      int $$2 = $$1 != null ? dgz.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public boolean a(faj $$0) {
-      ebg $$1 = $$0.c(fdd.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static fec.a a(jg<dgx> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new fdr($$0, $$2);
    }
 
-   public static fdr.a a(dne $$0) {
-      return new fdr.a($$0);
-   }
-
-   public jg<dne> c() {
+   public jg<dgx> c() {
       return this.b;
    }
 
-   public Optional<ds> d() {
+   public List<Float> d() {
       return this.c;
-   }
-
-   public static class a implements fds.a {
-      private final jg<dne> a;
-      private Optional<ds> b = Optional.empty();
-
-      public a(dne $$0) {
-         this.a = $$0.p();
-      }
-
-      public fdr.a a(ds.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public fds build() {
-         return new fdr(this.a, this.b);
-      }
    }
 }

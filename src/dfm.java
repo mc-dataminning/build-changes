@@ -1,26 +1,18 @@
-import java.util.Optional;
+public interface dfm<T extends dfb<?>> {
+   dfm<deq> a = a("crafting");
+   dfm<dfv> b = a("smelting");
+   dfm<dek> c = a("blasting");
+   dfm<dga> d = a("smoking");
+   dfm<dem> e = a("campfire_cooking");
+   dfm<dgb> f = a("stonecutting");
+   dfm<dfw> g = a("smithing");
 
-public interface dfm extends der<dfn> {
-   @Override
-   default dfc<dfm> b() {
-      return dfc.g;
-   }
-
-   @Override
-   dfb<? extends dfm> a();
-
-   default boolean a(dfn $$0, djz $$1) {
-      return den.a(this.c(), $$0.c()) && this.f().a($$0.d()) && den.a(this.k(), $$0.e());
-   }
-
-   Optional<den> c();
-
-   den f();
-
-   Optional<den> k();
-
-   @Override
-   default deu h() {
-      return det.l;
+   static <T extends dfb<?>> dfm<T> a(final String $$0) {
+      return jt.a(mh.q, alr.b($$0), new dfm<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

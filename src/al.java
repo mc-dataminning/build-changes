@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class al implements Comparable<al> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = ayy.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Instant> c = azg.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, as>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
          $$0 -> ag.a($$0, as::new),
@@ -122,7 +122,7 @@ public class al implements Comparable<al> {
    }
 
    @Nullable
-   public xc d() {
+   public xg d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class al implements Comparable<al> {
             return null;
          } else {
             int $$1 = this.h();
-            return xc.a("advancements.progress", $$1, $$0);
+            return xg.a("advancements.progress", $$1, $$0);
          }
       }
    }

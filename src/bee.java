@@ -1,33 +1,41 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.DoubleUnaryOperator;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bee extends bhx {
+public abstract class bee extends DataFix {
+   private final String a;
+   private final String b;
    private final String c;
-   private final DoubleUnaryOperator d;
 
-   public bee(Schema $$0, String $$1, String $$2, String $$3, DoubleUnaryOperator $$4) {
-      super($$0, false, $$1, bjd.D, $$2);
+   public bee(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
+   }
+
+   public bee(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
       this.c = $$3;
-      this.d = $$4;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("attributes", $$1 -> $$0.createList($$1.asStream().map($$0xx -> {
-            String $$1x = bky.a($$0xx.get("id").asString(""));
-            if (!$$1x.equals(this.c)) {
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.w);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<? extends Dynamic<?>> $$1 = $$0xx.get(this.b).result();
+            if ($$1.isEmpty()) {
                return $$0xx;
             } else {
-               double $$2 = $$0xx.get("base").asDouble(0.0);
-               return $$0xx.set("base", $$0xx.createDouble(this.d.applyAsDouble($$2)));
+               Dynamic<?> $$2 = this.a($$1.get());
+               return $$0xx.remove(this.b).setFieldIfPresent(this.c, Optional.ofNullable($$2));
             }
-         })));
+         }));
    }
+
+   @Nullable
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

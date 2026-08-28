@@ -1,27 +1,9 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class ewj implements ewn {
-   public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fao.a.fieldOf("loot_table").forGetter($$0x -> $$0x.b)).apply($$0, ewj::new)
-   );
-   private final alj<fao> b;
+public abstract class ewj {
+   public static final Codec<ewj> c = mh.m.q().dispatch("predicate_type", ewj::a, ewk::codec);
 
-   public ewj(alj<fao> $$0) {
-      this.b = $$0;
-   }
+   public abstract boolean a(ebq var1, bai var2);
 
-   @Override
-   public ua a(azz $$0, @Nullable ua $$1) {
-      ua $$2 = $$1 == null ? new ua() : $$1.l();
-      $$2.a("LootTable", fao.a, this.b);
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public ewo<?> a() {
-      return ewo.d;
-   }
+   protected abstract ewk<?> a();
 }

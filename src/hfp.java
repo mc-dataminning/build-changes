@@ -1,11 +1,6 @@
-import javax.annotation.Nullable;
-
-public class hfp extends her {
-   public jc a = jc.c;
-   public final hhu b = new hhu();
-   public int c;
-   public boolean d;
-   @Nullable
-   public ezj e;
-   public final hkl f = new hkl();
+public class hfp extends hev {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public cqz d = cqz.f;
 }

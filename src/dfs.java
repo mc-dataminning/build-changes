@@ -1,46 +1,73 @@
-public class dfs extends deh {
-   public dfs(dee $$0) {
+public class dfs extends der {
+   public dfs(deo $$0) {
       super($$0);
    }
 
-   public boolean a(def $$0, djz $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               daa $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
+   public boolean a(dep $$0, dkj $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(dae.wC)) {
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            dak $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cyq) {
+                  if ($$3) {
                      return false;
                   }
-               } else if (!$$4.a(dae.pk)) {
-                  return false;
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(dao.wD)) {
+                     return false;
+                  }
+
+                  if ($$2) {
+                     return false;
+                  }
+
+                  dye $$6 = $$5.a(kl.am, dye.a);
+                  if (!$$6.b().isEmpty()) {
+                     return false;
+                  }
+
+                  $$2 = true;
                }
             }
          }
 
-         return true;
-      } else {
-         return false;
+         return $$2 && $$3;
       }
    }
 
-   public daa a(def $$0, ji.a $$1) {
-      daa $$2 = $$0.a(1, 1);
-      if (!$$2.a(dae.wC)) {
-         return daa.k;
+   public dak a(dep $$0, ji.a $$1) {
+      dak $$2 = dak.l;
+      dak $$3 = dak.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         dak $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cyq) {
+               $$2 = $$5;
+            } else if ($$5.a(dao.wD)) {
+               $$3 = $$5.v();
+            }
+         }
+      }
+
+      if ($$3.f()) {
+         return $$3;
       } else {
-         daa $$3 = new daa(dae.wB, 8);
-         $$3.b(kl.R, $$2.a(kl.R));
+         $$3.b(kl.am, $$2.a(kl.am));
+         $$3.b(kl.an, ((cyq)$$2.h()).a());
          return $$3;
       }
    }
 
    @Override
-   public dfb<dfs> a() {
-      return dfb.j;
+   public dfl<dfs> a() {
+      return dfl.l;
    }
 }

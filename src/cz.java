@@ -33,11 +33,11 @@ public record cz(cx.c b, cx.c c, cx.c d, cx.c e, cx.c f, cx.c g, cx.c h) {
 
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
       if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = azq.f($$0, $$1, $$2);
+         double $$4 = azz.f($$0, $$1, $$2);
          if (!this.e.e($$4)) {
             return false;
          } else {
-            double $$5 = azq.e($$0, $$2);
+            double $$5 = azz.e($$0, $$2);
             if (!this.f.e($$5)) {
                return false;
             } else {

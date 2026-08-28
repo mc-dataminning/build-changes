@@ -1,74 +1,38 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
 
-public abstract class bcu extends DataFix {
-   private final String a;
-
-   public bcu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class bcu extends big {
+   public bcu(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntityJukeboxFix", bjm.s, "minecraft:jukebox");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.E);
-      Type<Pair<String, String>> $$1 = DSL.named(bjd.E.typeName(), bky.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bjd.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
-         );
-         TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
-            this.a + " for flat_block_state",
-            this.getInputSchema().getType(bjd.v),
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bjm.s, "minecraft:jukebox");
+      Type<?> $$2 = $$1.findFieldType("RecordItem");
+      OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("Record").asInt(0);
+      if ($$5 > 0) {
+         $$4.remove("Record");
+         String $$6 = bhk.a(bgw.a($$5), 0);
+         if ($$6 != null) {
+            Dynamic<?> $$7 = $$4.emptyMap();
+            $$7 = $$7.set("id", $$7.createString($$6));
+            $$7 = $$7.set("Count", $$7.createByte((byte)1));
+            return $$0.set(
+                  $$3,
+                  (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not create record item stack."))).getFirst()
                )
-         );
-         return TypeRewriteRule.seq($$2, new TypeRewriteRule[]{$$3, $$4});
-      }
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.isPresent() ? $$0.set("Name", $$0.createString(this.a($$1.get()))) : $$0;
-   }
-
-   private String b(String $$0) {
-      int $$1 = $$0.indexOf(91);
-      int $$2 = $$0.indexOf(123);
-      int $$3 = $$0.length();
-      if ($$1 > 0) {
-         $$3 = $$1;
-      }
-
-      if ($$2 > 0) {
-         $$3 = Math.min($$3, $$2);
-      }
-
-      String $$4 = $$0.substring(0, $$3);
-      String $$5 = this.a($$4);
-      return $$5 + $$0.substring($$3);
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bcu($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
+               .set(DSL.remainderFinder(), $$4);
          }
-      };
+      }
+
+      return $$0;
    }
 }

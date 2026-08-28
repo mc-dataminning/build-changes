@@ -1,168 +1,245 @@
-import java.net.URI;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gaa extends gaf {
-   private static final alk a = alk.b("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int s = 204;
-   private static final int u = 98;
-   private static final xc v = xc.c("menu.returnToGame");
-   private static final xc w = xc.c("gui.advancements");
-   private static final xc x = xc.c("gui.stats");
-   private static final xc y = xc.c("menu.sendFeedback");
-   private static final xc z = xc.c("menu.reportBugs");
-   private static final xc A = xc.c("menu.feedback");
-   private static final xc B = xc.c("menu.server_links");
-   private static final xc C = xc.c("menu.options");
-   private static final xc D = xc.c("menu.shareToLan");
-   private static final xc E = xc.c("menu.playerReporting");
-   private static final xc F = xc.c("menu.returnToMenu");
-   private static final xc G = xc.c("menu.savingLevel");
-   private static final xc H = xc.c("menu.game");
-   private static final xc I = xc.c("menu.paused");
-   private final boolean J;
+public class gaa extends fzq implements glj.a {
+   private static final alr x = alr.b("textures/gui/advancements/window.png");
+   public static final int a = 252;
+   public static final int b = 140;
+   private static final int y = 9;
+   private static final int z = 18;
+   public static final int c = 234;
+   public static final int d = 113;
+   private static final int A = 8;
+   private static final int B = 6;
+   private static final int C = 256;
+   private static final int D = 256;
+   public static final int s = 16;
+   public static final int u = 16;
+   public static final int v = 14;
+   public static final int w = 7;
+   private static final double E = 16.0;
+   private static final xg F = xg.c("advancements.sad_label");
+   private static final xg G = xg.c("advancements.empty");
+   private static final xg H = xg.c("gui.advancements");
+   private final fxm I = new fxm(this);
    @Nullable
-   private fun K;
+   private final fzq J;
+   private final glj K;
+   private final Map<aj, fzw> L = Maps.newLinkedHashMap();
+   @Nullable
+   private fzw M;
+   private boolean N;
 
-   public gaa(boolean $$0) {
-      super($$0 ? H : I);
-      this.J = $$0;
+   public gaa(glj $$0) {
+      this($$0, null);
    }
 
-   public boolean m() {
-      return this.J;
+   public gaa(glj $$0, @Nullable fzq $$1) {
+      super(H);
+      this.K = $$0;
+      this.J = $$1;
    }
 
    @Override
-   protected void aS_() {
-      if (this.J) {
-         this.E();
+   protected void aT_() {
+      this.I.a(H, this.p);
+      this.L.clear();
+      this.M = null;
+      this.K.a(this);
+      if (this.M == null && !this.L.isEmpty()) {
+         fzw $$0 = this.L.values().iterator().next();
+         this.K.a($$0.c().b(), true);
+      } else {
+         this.K.a(this.M == null ? null : this.M.c().b(), true);
       }
 
-      this.c(new fvu(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+      this.I.b(fty.a(xf.d, $$0x -> this.aQ_()).a(200).a());
+      this.I.a($$1 -> {
+         ftw var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   private void E() {
-      fya $$0 = new fya();
-      $$0.c().a(4, 4, 4, 0);
-      fya.b $$1 = $$0.d(2);
-      $$1.a(fun.a(v, $$0x -> {
+   @Override
+   protected void c() {
+      this.I.a();
+   }
+
+   @Override
+   public void aQ_() {
+      this.m.a(this.J);
+   }
+
+   @Override
+   public void aK_() {
+      this.K.a(null);
+      glp $$0 = this.m.L();
+      if ($$0 != null) {
+         $$0.b(ain.b());
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         int $$3 = (this.n - 252) / 2;
+         int $$4 = (this.o - 140) / 2;
+
+         for (fzw $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, $$0, $$1)) {
+               this.K.a($$5.c().b(), true);
+               break;
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.m.n.R.a($$0, $$1)) {
          this.m.a(null);
          this.m.o.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(w, () -> new gap(this.m.t.j.p(), this)));
-      $$1.a(this.a(x, () -> new gaj(this, this.m.t.l())));
-      amc $$2 = this.m.t.j.E();
-      if ($$2.a()) {
-         a(this, $$1);
+         return true;
       } else {
-         $$1.a(this.a(A, () -> new gaa.a(this)));
-         $$1.a(this.a(B, () -> new gcz(this, $$2)));
-      }
-
-      $$1.a(this.a(C, () -> new gdk(this, this.m.n)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(D, () -> new gag(this)));
-      } else {
-         $$1.a(this.a(E, () -> new gez(this)));
-      }
-
-      xc $$3 = this.m.T() ? F : xb.p;
-      this.K = $$1.a(fun.a($$3, $$0x -> {
-         $$0x.j = false;
-         this.m.ba().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fxz.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
-   }
-
-   static void a(gaf $$0, fya.b $$1) {
-      $$1.a(a($$0, y, ac.b().g() ? ayl.i : ayl.h));
-      $$1.a(a($$0, z, ayl.j)).j = !ac.b().d().a();
-   }
-
-   private void F() {
-      boolean $$0 = this.m.T();
-      gms $$1 = this.m.S();
-      this.m.s.ad();
-      if ($$0) {
-         this.m.b(new fzq(G));
-      } else {
-         this.m.y();
-      }
-
-      gah $$2 = new gah();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fma($$2));
-      } else {
-         this.m.a(new gcx($$2));
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void e() {
-      super.e();
-   }
-
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
-         $$0.a(gsn::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
+      int $$4 = (this.n - 252) / 2;
+      int $$5 = (this.o - 140) / 2;
+      this.b($$0, $$1, $$2, $$4, $$5);
+      this.a($$0, $$4, $$5);
+      this.c($$0, $$1, $$2, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if ($$2 != 0) {
+         this.N = false;
+         return false;
+      } else {
+         if (!this.N) {
+            this.N = true;
+         } else if (this.M != null) {
+            this.M.a($$3, $$4);
+         }
+
+         return true;
       }
    }
 
    @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      if (this.J) {
-         super.b($$0, $$1, $$2, $$3);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.M != null) {
+         this.M.a($$2 * 16.0, $$3 * 16.0);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private fun a(xc $$0, Supplier<gaf> $$1) {
-      return fun.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   private void b(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
+      fzw $$5 = this.M;
+      if ($$5 == null) {
+         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
+         int $$6 = $$3 + 9 + 117;
+         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
+         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
+      } else {
+         $$5.b($$0, $$3 + 9, $$4 + 18);
+      }
    }
 
-   private static fun a(gaf $$0, xc $$1, URI $$2) {
-      return fun.a($$1, fzc.b($$0, $$2)).a(98).a();
+   public void a(ftk $$0, int $$1, int $$2) {
+      $$0.a(gry::H, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
+      if (this.L.size() > 1) {
+         for (fzw $$3 : this.L.values()) {
+            $$3.a($$0, $$1, $$2, $$3 == this.M);
+         }
+
+         for (fzw $$4 : this.L.values()) {
+            $$4.a($$0, $$1, $$2);
+         }
+      }
+
+      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
    }
 
-   static class a extends gaf {
-      private static final xc b = xc.c("menu.feedback.title");
-      public final gaf a;
-      private final fyb c = new fyb(this);
-
-      protected a(gaf $$0) {
-         super(b);
-         this.a = $$0;
+   private void c(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.M != null) {
+         $$0.c().a();
+         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
+         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         $$0.c().b();
       }
 
-      @Override
-      protected void aS_() {
-         this.c.a(b, this.p);
-         fya $$0 = this.c.c(new fya());
-         $$0.c().a(4, 4, 4, 0);
-         fya.b $$1 = $$0.d(2);
-         gaa.a(this, $$1);
-         this.c.b(fun.a(xb.k, $$0x -> this.aP_()).a(200).a());
-         this.c.a(this::c);
-         this.c();
+      if (this.L.size() > 1) {
+         for (fzw $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
+               $$0.a(this.p, $$5.d(), $$1, $$2);
+            }
+         }
       }
+   }
 
-      @Override
-      protected void c() {
-         this.c.a();
+   @Override
+   public void a(ak $$0) {
+      fzw $$1 = fzw.a(this.m, this, this.L.size(), $$0);
+      if ($$1 != null) {
+         this.L.put($$0.b(), $$1);
       }
+   }
 
-      @Override
-      public void aP_() {
-         this.m.a(this.a);
+   @Override
+   public void b(ak $$0) {
+   }
+
+   @Override
+   public void c(ak $$0) {
+      fzw $$1 = this.f($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
       }
+   }
+
+   @Override
+   public void d(ak $$0) {
+   }
+
+   @Override
+   public void a(ak $$0, al $$1) {
+      fzy $$2 = this.e($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   @Override
+   public void a(@Nullable aj $$0) {
+      this.M = this.L.get($$0);
+   }
+
+   @Override
+   public void a() {
+      this.L.clear();
+      this.M = null;
+   }
+
+   @Nullable
+   public fzy e(ak $$0) {
+      fzw $$1 = this.f($$0);
+      return $$1 == null ? null : $$1.a($$0.b());
+   }
+
+   @Nullable
+   private fzw f(ak $$0) {
+      ak $$1 = $$0.d();
+      return this.L.get($$1.b());
    }
 }

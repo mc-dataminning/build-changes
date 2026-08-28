@@ -1,45 +1,36 @@
-public class aex implements zj<aby> {
-   public static final za<vy, aex> a = zj.a(aex::a, aex::new);
-   private final double b;
-   private final double c;
-   private final long d;
+public record aex(agv e, byte f) implements zo<acf> {
+   public static final ze<wp, aex> a = zo.a(aex::a, aex::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aex(ecy $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   private aex(wp $$0) {
+      this(new agv($$0), $$0.readByte());
    }
 
-   private aex(vy $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(wp $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zl<aex> a() {
-      return agr.aw;
+   public zq<aex> a() {
+      return agy.ap;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public double e() {
-      return this.c;
+   public agv b() {
+      return this.e;
    }
 
-   public long f() {
-      return this.d;
+   public byte e() {
+      return this.f;
    }
 }

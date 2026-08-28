@@ -1,173 +1,145 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.mojang.blaze3d.buffers.GpuBuffer;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
+import com.mojang.blaze3d.textures.FilterMode;
+import com.mojang.blaze3d.textures.GpuTexture;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class grt extends avm<grt.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alk b = alk.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+public class grt {
+   private final String a;
+   private final RenderPipeline b;
+   private final alr c;
+   private final List<grs.h> d;
+   private final List<grt.a> e = new ArrayList<>();
 
-   public boolean a() {
-      return !this.c.isEmpty();
+   public grt(RenderPipeline $$0, alr $$1, List<grs.h> $$2) {
+      this.b = $$0;
+      this.a = $$0.getLocation().toString();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
+   public void a(grt.a $$0) {
+      this.e.add($$0);
    }
 
-   public void c() {
-      this.d = true;
-   }
+   public void a(fix $$0, Map<alr, fkr<fjr>> $$1, Matrix4f $$2, @Nullable Consumer<RenderPass> $$3) {
+      fiy $$4 = $$0.a(this.a);
 
-   public void d() {
-      this.e = true;
-   }
-
-   public void e() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean f() {
-      return this.d && !this.e;
-   }
-
-   public boolean g() {
-      return this.f;
-   }
-
-   public void h() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String i() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String l() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected grt.a a(avh $$0, brd $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (bri $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
-         }
+      for (grt.a $$5 : this.e) {
+         $$5.a($$4, $$1);
       }
 
-      return new grt.a($$2, $$3, $$4);
-   }
+      fkr<fjr> $$6 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$4.b($$2x));
+      if ($$6 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
+      } else {
+         $$4.a(
+            () -> {
+               fjr $$4x = $$6.get();
+               RenderSystem.backupProjectionMatrix();
+               RenderSystem.setProjectionMatrix($$2, fig.b);
+               GpuBuffer $$5x = RenderSystem.getQuadVertexBuffer();
+               RenderSystem.a $$6x = RenderSystem.getSequentialBuffer(VertexFormat.b.h);
+               GpuBuffer $$7 = $$6x.b(6);
 
-   protected void a(grt.a $$0, avh $$1, brd $$2) {
-      this.c = $$0.a();
-   }
+               try (RenderPass $$8 = RenderSystem.getDevice()
+                     .createCommandEncoder()
+                     .createRenderPass($$4x.c(), OptionalInt.empty(), $$4x.h ? $$4x.d() : null, OptionalDouble.empty())) {
+                  $$8.setPipeline(this.b);
+                  $$8.setUniform("OutSize", (float)$$4x.c, (float)$$4x.d);
+                  $$8.setVertexBuffer(0, $$5x);
+                  $$8.setIndexBuffer($$7, $$6x.a());
 
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
+                  for (grt.a $$9 : this.e) {
+                     $$9.a($$8, $$1);
+                  }
 
-   @Nullable
-   private static JsonObject c(avh $$0, brd $$1) {
-      try {
-         JsonObject var4;
-         try (
-            bri $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
-         }
+                  if ($$3 != null) {
+                     $$3.accept($$8);
+                  }
 
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
+                  for (grs.h $$10 : this.d) {
+                     $$10.a($$8);
+                  }
+
+                  $$8.drawIndexed(0, 6);
+               }
+
+               RenderSystem.restoreProjectionMatrix();
+
+               for (grt.a $$11 : this.e) {
+                  $$11.a($$1);
+               }
+            }
+         );
       }
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public interface a {
+      void a(fiy var1, Map<alr, fkr<fjr>> var2);
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      void a(RenderPass var1, Map<alr, fkr<fjr>> var2);
+
+      default void a(Map<alr, fkr<fjr>> $$0) {
+      }
+   }
+
+   public static record b(String a, alr b, boolean c, boolean d) implements grt.a {
+      private fkr<fjr> b(Map<alr, fkr<fjr>> $$0) {
+         fkr<fjr> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
+         }
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
+      @Override
+      public void a(fiy $$0, Map<alr, fkr<fjr>> $$1) {
+         $$0.a(this.b($$1));
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         flc $$1 = RenderSystem.getDevice();
-         if ($$1.h().equals("OpenGL")) {
-            String $$2 = a(this.a, $$1.f());
-            if (!$$2.isEmpty()) {
-               $$0.put("renderer", $$2);
-            }
-
-            String $$3 = a(this.b, $$1.i());
-            if (!$$3.isEmpty()) {
-               $$0.put("version", $$3);
-            }
-
-            String $$4 = a(this.c, $$1.g());
-            if (!$$4.isEmpty()) {
-               $$0.put("vendor", $$4);
-            }
+      @Override
+      public void a(RenderPass $$0, Map<alr, fkr<fjr>> $$1) {
+         fkr<fjr> $$2 = this.b($$1);
+         fjr $$3 = $$2.get();
+         $$3.a(this.d ? FilterMode.LINEAR : FilterMode.NEAREST);
+         GpuTexture $$4 = this.c ? $$3.d() : $$3.c();
+         if ($$4 == null) {
+            throw new IllegalStateException("Missing " + (this.c ? "depth" : "color") + "texture for target " + this.b);
+         } else {
+            $$0.bindSampler(this.a + "Sampler", $$4);
+            $$0.setUniform(this.a + "Size", (float)$$3.c, (float)$$3.d);
          }
+      }
 
-         return $$0.build();
+      @Override
+      public void a(Map<alr, fkr<fjr>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(FilterMode.NEAREST);
+         }
+      }
+   }
+
+   public static record c(String a, hkb b, int c, int d) implements grt.a {
+      @Override
+      public void a(fiy $$0, Map<alr, fkr<fjr>> $$1) {
+      }
+
+      @Override
+      public void a(RenderPass $$0, Map<alr, fkr<fjr>> $$1) {
+         $$0.bindSampler(this.a + "Sampler", this.b.a());
+         $$0.setUniform(this.a + "Size", (float)this.c, (float)this.d);
       }
    }
 }

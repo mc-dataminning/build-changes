@@ -1,47 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class buf extends bty {
-   public static final MapCodec<buf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btd.b(bty.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, buf::new)
+public abstract class buf implements buk {
+   private static final Codec<Either<Float, buf>> a = Codec.either(Codec.FLOAT, mh.J.q().dispatch(buf::c, bug::codec));
+   public static final Codec<buf> c = a.xmap(
+      $$0 -> (buf)$$0.map(bud::a, $$0x -> $$0x), $$0 -> $$0.c() == bug.a ? Either.left(((bud)$$0).d()) : Either.right($$0)
    );
-   private final btd<bty> b;
-   private final int f;
-   private final int g;
 
-   public buf(btd<bty> $$0) {
-      this.b = $$0;
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = Integer.MIN_VALUE;
-
-      for (btc<bty> $$3 : $$0.d()) {
-         int $$4 = $$3.a().a();
-         int $$5 = $$3.a().b();
-         $$1 = Math.min($$1, $$4);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      this.f = $$1;
-      this.g = $$2;
+   public static Codec<buf> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
 
-   @Override
-   public int a(azz $$0) {
-      return this.b.b($$0).a($$0);
-   }
+   public abstract float a();
 
-   @Override
-   public int a() {
-      return this.f;
-   }
+   public abstract float b();
 
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public btz<?> c() {
-      return btz.e;
-   }
+   public abstract bug<?> c();
 }

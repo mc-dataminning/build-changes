@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dhq(dgu c) implements dhg {
-   public static final MapCodec<dhq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgu.b.fieldOf("value").forGetter(dhq::b)).apply($$0, dhq::new));
+public interface dhq {
+   Codec<dhq> b = mh.au.q().dispatch(dhq::a, Function.identity());
 
-   @Override
-   public float a(int $$0, azz $$1, float $$2) {
-      return this.c.a($$0);
+   static MapCodec<? extends dhq> a(jt<MapCodec<? extends dhq>> $$0) {
+      jt.a($$0, "add", dhh.a);
+      jt.a($$0, "all_of", dhi.c.a);
+      jt.a($$0, "multiply", dht.a);
+      jt.a($$0, "remove_binomial", dhv.a);
+      return jt.a($$0, "set", dia.a);
    }
 
-   @Override
-   public MapCodec<dhq> a() {
-      return a;
-   }
+   float a(int var1, bai var2, float var3);
 
-   public dgu b() {
-      return this.c;
-   }
+   MapCodec<? extends dhq> a();
 }

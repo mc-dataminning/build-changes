@@ -1,21 +1,27 @@
-public class gce extends gau<cxm> {
-   private static final alk G = alk.b("textures/gui/container/shulker_box.png");
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public gce(cxm $$0, cry $$1, xc $$2) {
-      super($$0, $$1, $$2);
-      this.u++;
+public class gce implements gcd {
+   public static final gcd a = new gce();
+
+   private gce() {
    }
 
    @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   protected void a(ftz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gsn::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

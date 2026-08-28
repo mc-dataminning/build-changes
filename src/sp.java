@@ -3,5 +3,5 @@ public abstract class sp extends RuntimeException {
       super($$0);
    }
 
-   public abstract xc a();
+   public abstract xg a();
 }

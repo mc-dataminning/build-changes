@@ -1,95 +1,294 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bzb {
-   private final Map<jg<byx>, byy> a;
+public abstract class bzb extends cjv implements bym {
+   public static final int bI = 144;
+   private static final int bM = 2;
+   private static final int bN = 3;
+   private static final int bO = 1;
+   private static final boolean bP = false;
+   protected static final aku<Byte> bJ = aky.a(bzb.class, akw.a);
+   protected static final aku<Optional<bxk<byf>>> bK = aky.a(bzb.class, akw.r);
+   private boolean bQ = false;
 
-   bzb(Map<jg<byx>, byy> $$0) {
-      this.a = $$0;
+   protected bzb(bxn<? extends bzb> $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   private byy d(jg<byx> $$0) {
-      byy $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+   @Override
+   protected void a(aky.a $$0) {
+      super.a($$0);
+      $$0.a(bJ, (byte)0);
+      $$0.a(bK, Optional.empty());
+   }
+
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      bxk<byf> $$1 = this.d();
+      if ($$1 != null) {
+         $$1.a($$0, "Owner");
+      }
+
+      $$0.a("Sitting", this.bQ);
+   }
+
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      bxk<byf> $$1 = bxk.a($$0, "Owner", this.dV());
+      if ($$1 != null) {
+         try {
+            this.al.a(bK, Optional.of($$1));
+            this.a(true, false);
+         } catch (Throwable var4) {
+            this.a(false, true);
+         }
       } else {
-         return $$1;
+         this.al.a(bK, Optional.empty());
+         this.a(false, true);
+      }
+
+      this.bQ = $$0.b("Sitting", false);
+      this.x(this.bQ);
+   }
+
+   @Override
+   public boolean w() {
+      return true;
+   }
+
+   @Override
+   public boolean a(bxe $$0, float $$1) {
+      if (this.x()) {
+         if ($$1 > 10.0F) {
+            this.y();
+         }
+
+         return false;
+      } else {
+         return super.a($$0, $$1);
       }
    }
 
-   public double a(jg<byx> $$0) {
-      return this.d($$0).g();
+   protected void w(boolean $$0) {
+      lx $$1 = lz.S;
+      if (!$$0) {
+         $$1 = lz.ah;
+      }
+
+      for (int $$2 = 0; $$2 < 7; $$2++) {
+         double $$3 = this.ae.k() * 0.02;
+         double $$4 = this.ae.k() * 0.02;
+         double $$5 = this.ae.k() * 0.02;
+         this.dV().a($$1, this.d(1.0), this.dD() + 0.5, this.g(1.0), $$3, $$4, $$5);
+      }
    }
 
-   public double b(jg<byx> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jg<byx> $$0, alk $$1) {
-      bza $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 7) {
+         this.w(true);
+      } else if ($$0 == 6) {
+         this.w(false);
       } else {
-         return $$2.b();
+         super.b($$0);
+      }
+   }
+
+   public boolean q() {
+      return (this.al.a(bJ) & 4) != 0;
+   }
+
+   public void a(boolean $$0, boolean $$1) {
+      byte $$2 = this.al.a(bJ);
+      if ($$0) {
+         this.al.a(bJ, (byte)($$2 | 4));
+      } else {
+         this.al.a(bJ, (byte)($$2 & -5));
+      }
+
+      if ($$1) {
+         this.t();
+      }
+   }
+
+   protected void t() {
+   }
+
+   public boolean x() {
+      return (this.al.a(bJ) & 1) != 0;
+   }
+
+   public void x(boolean $$0) {
+      byte $$1 = this.al.a(bJ);
+      if ($$0) {
+         this.al.a(bJ, (byte)($$1 | 1));
+      } else {
+         this.al.a(bJ, (byte)($$1 & -2));
       }
    }
 
    @Nullable
-   public byy a(Consumer<byy> $$0, jg<byx> $$1) {
-      byy $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
+   @Override
+   public bxk<byf> d() {
+      return this.al.a(bK).orElse(null);
+   }
+
+   public void i(@Nullable byf $$0) {
+      this.al.a(bK, Optional.ofNullable($$0).map(bxk::new));
+   }
+
+   public void a(@Nullable bxk<byf> $$0) {
+      this.al.a(bK, Optional.ofNullable($$0));
+   }
+
+   public void a(csi $$0) {
+      this.a(true, true);
+      this.i($$0);
+      if ($$0 instanceof asc $$1) {
+         aq.y.a($$1, this);
+      }
+   }
+
+   @Override
+   public boolean c(byf $$0) {
+      return this.j($$0) ? false : super.c($$0);
+   }
+
+   public boolean j(byf $$0) {
+      return $$0 == this.e();
+   }
+
+   public boolean a(byf $$0, byf $$1) {
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public fhc cq() {
+      fhc $$0 = super.cq();
+      if ($$0 != null) {
+         return $$0;
       } else {
-         byy $$3 = new byy($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
-   }
-
-   public static bzb.a a() {
-      return new bzb.a();
-   }
-
-   public boolean c(jg<byx> $$0) {
-      return this.a.containsKey($$0);
-   }
-
-   public boolean b(jg<byx> $$0, alk $$1) {
-      byy $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
-   }
-
-   public static class a {
-      private final Builder<jg<byx>, byy> a = ImmutableMap.builder();
-      private boolean b;
-
-      private byy b(jg<byx> $$0) {
-         byy $$1 = new byy($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+         if (this.q()) {
+            byf $$1 = this.U_();
+            if ($$1 != null) {
+               return $$1.cq();
             }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean t(bxe $$0) {
+      if (this.q()) {
+         byf $$1 = this.U_();
+         if ($$0 == $$1) {
+            return true;
+         }
+
+         if ($$1 != null) {
+            return $$1.t($$0);
+         }
       }
 
-      public bzb.a a(jg<byx> $$0) {
-         this.b($$0);
-         return this;
+      return super.t($$0);
+   }
+
+   @Override
+   public void a(bvt $$0) {
+      if (this.dV() instanceof asb $$1 && $$1.O().c(dkf.o) && this.e() instanceof asc $$2) {
+         $$2.a(this.eS().a());
       }
 
-      public bzb.a a(jg<byx> $$0, double $$1) {
-         byy $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      super.a($$0);
+   }
+
+   public boolean gu() {
+      return this.bQ;
+   }
+
+   public void y(boolean $$0) {
+      this.bQ = $$0;
+   }
+
+   public void gv() {
+      byf $$0 = this.e();
+      if ($$0 != null) {
+         this.h($$0.dv());
+      }
+   }
+
+   public boolean gw() {
+      byf $$0 = this.e();
+      return $$0 != null && this.g((bxe)this.e()) >= 144.0;
+   }
+
+   private void h(iw $$0) {
+      for (int $$1 = 0; $$1 < 10; $$1++) {
+         int $$2 = this.ae.a(-3, 3);
+         int $$3 = this.ae.a(-3, 3);
+         if (Math.abs($$2) >= 2 || Math.abs($$3) >= 2) {
+            int $$4 = this.ae.a(-1, 1);
+            if (this.a($$0.u() + $$2, $$0.v() + $$4, $$0.w() + $$3)) {
+               return;
+            }
+         }
+      }
+   }
+
+   private boolean a(int $$0, int $$1, int $$2) {
+      if (!this.i(new iw($$0, $$1, $$2))) {
+         return false;
+      } else {
+         this.b((double)$$0 + 0.5, (double)$$1, (double)$$2 + 0.5, this.dL(), this.dN());
+         this.bE.m();
+         return true;
+      }
+   }
+
+   private boolean i(iw $$0) {
+      eyr $$1 = eyw.b(this, $$0);
+      if ($$1 != eyr.c) {
+         return false;
+      } else {
+         ebq $$2 = this.dV().a_($$0.e());
+         if (!this.gy() && $$2.b() instanceof dse) {
+            return false;
+         } else {
+            iw $$3 = $$0.b(this.dv());
+            return this.dV().a(this, this.cR().a($$3));
+         }
+      }
+   }
+
+   public final boolean gx() {
+      return this.gu() || this.bY() || this.R_() || this.e() != null && this.e().aa_();
+   }
+
+   protected boolean gy() {
+      return false;
+   }
+
+   public class a extends cfu {
+      public a(final double param3, final ayc<bvv> bzb.this) {
+         super(bzb.this, $$1, $$2);
       }
 
-      public bzb a() {
-         this.b = true;
-         return new bzb(this.a.buildKeepingLast());
+      public a(final double $$1) {
+         super(bzb.this, $$1);
+      }
+
+      @Override
+      public void a() {
+         if (!bzb.this.gx() && bzb.this.gw()) {
+            bzb.this.gv();
+         }
+
+         super.a();
       }
    }
 }

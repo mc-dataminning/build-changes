@@ -1,132 +1,251 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import javax.annotation.Nullable;
 
-public abstract class gro {
-   private static final Object2ObjectMap<alk, gro> a = ag.a(new Object2ObjectArrayMap(), $$0 -> {
-      gro.c $$1 = new gro.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(efb.e, $$1);
-      $$0.put(efb.f, new gro.b());
-      $$0.put(efb.g, new gro.a());
-   });
-   private final float b;
-   private final boolean c;
-   private final gro.d d;
-   private final boolean e;
-   private final boolean f;
+public class gro {
+   private final gro.b a;
+   final iw b;
 
-   public gro(float $$0, boolean $$1, gro.d $$2, boolean $$3, boolean $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public gro(jz $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = azz.c($$4);
+      int $$6 = $$1 * 16;
+      iw $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new gro.b(new esf($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   public static gro a(efd $$0) {
-      return (gro)a.get($$0.r());
+   public boolean a(gvd.b $$0) {
+      return this.a.a($$0);
    }
 
-   public boolean a(float $$0) {
-      return false;
+   public void a(gro.e $$0, gvh $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
    }
 
-   public int b(float $$0) {
-      return 0;
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
    }
 
-   public float a() {
-      return this.b;
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
+
+      final int g;
+      final int h;
+      final int i;
+
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      public static gro.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
+         } else {
+            return $$0 > $$1 ? e : f;
+         }
+      }
    }
 
-   public boolean b() {
-      return this.c;
-   }
+   class b implements gro.d {
+      private final gro.d[] b = new gro.d[8];
+      private final esf c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final gro.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
 
-   public abstract ffs a(ffs var1, float var2);
+      public b(final esf $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = gro.this.b.u() - this.d;
+         int $$2 = gro.this.b.v() - this.e;
+         int $$3 = gro.this.b.w() - this.f;
+         this.g = gro.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
+      }
 
-   public abstract boolean a(int var1, int var2);
+      public boolean a(gvd.b $$0) {
+         long $$1 = $$0.g();
+         boolean $$2 = jz.c(jz.b($$1)) - this.d < 0;
+         boolean $$3 = jz.c(jz.c($$1)) - this.e < 0;
+         boolean $$4 = jz.c(jz.d($$1)) - this.f < 0;
+         boolean $$5 = $$2 != this.h;
+         boolean $$6 = $$3 != this.i;
+         boolean $$7 = $$4 != this.j;
+         int $$8 = a(this.g, $$5, $$6, $$7);
+         if (this.c()) {
+            boolean $$9 = this.b[$$8] != null;
+            this.b[$$8] = gro.this.new c($$0);
+            return !$$9;
+         } else if (this.b[$$8] != null) {
+            gro.b $$10 = (gro.b)this.b[$$8];
+            return $$10.a($$0);
+         } else {
+            esf $$11 = this.a($$2, $$3, $$4);
+            gro.b $$12 = gro.this.new b($$11);
+            this.b[$$8] = $$12;
+            return $$12.a($$0);
+         }
+      }
 
-   public gro.d c() {
-      return this.d;
-   }
+      private static int a(gro.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
 
-   public boolean d() {
-      return this.e;
-   }
+         if ($$2) {
+            $$4 += $$0.h;
+         }
 
-   public boolean e() {
-      return this.f;
-   }
+         if ($$3) {
+            $$4 += $$0.i;
+         }
 
-   public static class a extends gro {
-      public a() {
-         super(Float.NaN, false, gro.d.c, true, false);
+         return $$4;
+      }
+
+      private boolean c() {
+         return this.c.d() == 32;
+      }
+
+      private esf a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
+         } else {
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
+
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new esf($$3, $$7, $$11, $$4, $$8, $$12);
       }
 
       @Override
-      public ffs a(ffs $$0, float $$1) {
-         return $$0.c(0.15F);
+      public void a(gro.e $$0, boolean $$1, gvh $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && gro.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (gro.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+               }
+            }
+         }
+      }
+
+      @Nullable
+      @Override
+      public gvd.b a() {
+         return null;
       }
 
       @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
+      public ffx b() {
+         return new ffx(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
       }
    }
 
-   public static class b extends gro {
-      public b() {
-         super(Float.NaN, true, gro.d.a, false, true);
+   final class c implements gro.d {
+      private final gvd.b b;
+
+      c(final gvd.b $$0) {
+         this.b = $$0;
       }
 
       @Override
-      public ffs a(ffs $$0, float $$1) {
-         return $$0;
+      public void a(gro.e $$0, boolean $$1, gvh $$2, int $$3, int $$4, boolean $$5) {
+         ffx $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && gro.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+         }
       }
 
       @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
+      public gvd.b a() {
+         return this.b;
+      }
+
+      @Override
+      public ffx b() {
+         return this.b.b();
       }
    }
 
-   public static class c extends gro {
-      public static final int a = 192;
-      private static final float b = 0.4F;
+   public interface d {
+      void a(gro.e var1, boolean var2, gvh var3, int var4, int var5, boolean var6);
 
-      public c() {
-         super(192.0F, true, gro.d.b, false, false);
-      }
+      @Nullable
+      gvd.b a();
 
-      @Override
-      public boolean a(float $$0) {
-         float $$1 = azq.b($$0 * (float) (Math.PI * 2));
-         return $$1 >= -0.4F && $$1 <= 0.4F;
-      }
-
-      @Override
-      public int b(float $$0) {
-         float $$1 = azq.b($$0 * (float) (Math.PI * 2));
-         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
-         float $$3 = azq.l(1.0F - (1.0F - azq.a($$2 * (float) Math.PI)) * 0.99F);
-         return aya.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
-      }
-
-      @Override
-      public ffs a(ffs $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
+      ffx b();
    }
 
-   public static enum d {
-      a,
-      b,
-      c;
+   @FunctionalInterface
+   public interface e {
+      void visit(gro.d var1, boolean var2, int var3, boolean var4);
    }
 }

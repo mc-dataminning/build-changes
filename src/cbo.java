@@ -1,33 +1,71 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class cbo {
-   private static final int a = 300;
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
 
-   public static bzo<bxw> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return cda.a(
-         (Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$3x -> $$3x.group($$3x.b(cgy.D), $$3x.b(cgy.E))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        iw $$11 = $$3x.<jf>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public static cbh<byn> a(float $$0) {
+      return a($$0, true);
+   }
 
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.ec().a($$6.af(), $$6.ae());
-                        $$3.setValue(0);
-                        return true;
-                     }
-                  }))
-      );
+   public static cbh<byn> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> cjb.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bi());
+   }
+
+   public static bzx<byn> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> cjb.a($$2x, $$1, $$2), $$0x -> true);
+   }
+
+   public static bzx<byn> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
+
+   public static bzx<byn> c(float $$0) {
+      return a($$0, cbo::a, bxe::bi);
+   }
+
+   private static cbh<byn> a(float $$0, Function<byn, fgc> $$1, Predicate<byn> $$2) {
+      return cdj.a((Function<cdj.b<byn>, ? extends App<cdj.c<byn>, cdm<byn>>>)($$3 -> $$3.group($$3.c(chh.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<fgc> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new chk($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static fgc a(byn $$0) {
+      fgc $$1 = null;
+      fgc $$2 = null;
+
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bzy.a($$0, $$3[0], $$3[1]);
+         } else {
+            $$2 = $$0.dt().e($$0.dt().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+         }
+
+         if ($$2 == null || $$0.dV().b_(iw.a((jq)$$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
+      }
+
+      return $$2;
+   }
+
+   @Nullable
+   private static fgc a(byn $$0, int $$1, int $$2) {
+      fgc $$3 = $$0.h(0.0F);
+      return ciw.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
    }
 }

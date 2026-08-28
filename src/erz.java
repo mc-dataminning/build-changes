@@ -1,106 +1,40 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class erz extends esh {
-   protected final etl a;
-   protected iw b;
+public class erz extends ert {
+   public static final MapCodec<erz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ehp.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, erz::new)
+   );
+   private final ehp.a c;
    private final int d;
-   protected final dty c;
-   private final List<etg> h = Lists.newArrayList();
-   private final ewg i;
-   private final evp j;
+   private final int e;
 
-   public erz(ewg $$0, etl $$1, iw $$2, int $$3, dty $$4, erv $$5, evp $$6) {
-      super(esu.ad, 0, $$5);
-      this.i = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.d = $$3;
-      this.c = $$4;
-      this.j = $$6;
+   private erz(ehp.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public erz(est $$0, ua $$1) {
-      super(esu.ad, $$1);
-      this.i = $$0.c();
-      this.b = new iw($$1.b("PosX", 0), $$1.b("PosY", 0), $$1.b("PosZ", 0));
-      this.d = $$1.b("ground_level_delta", 0);
-      DynamicOps<va> $$2 = $$0.b().a(uo.a);
-      this.a = $$1.<etl>a("pool_element", etl.f, $$2).orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
-      this.c = $$1.<dty>a("rotation", dty.h).orElseThrow();
-      this.f = this.a.a(this.i, this.b, this.c);
-      ug $$3 = $$1.p("junctions");
-      this.h.clear();
-      $$3.forEach($$1x -> this.h.add(etg.a(new Dynamic($$2, $$1x))));
-      this.j = $$1.<evp>a("liquid_settings", evp.c).orElse(eue.e);
+   public static erz a(ehp.a $$0, int $$1, int $$2) {
+      return new erz($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(est $$0, ua $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.d);
-      DynamicOps<va> $$2 = $$0.b().a(uo.a);
-      $$1.a("pool_element", etl.f, $$2, this.a);
-      $$1.a("rotation", dty.h, this.c);
-      ug $$3 = new ug();
-
-      for (etg $$4 : this.h) {
-         $$3.add((va)$$4.a($$2).getValue());
-      }
-
-      $$1.a("junctions", $$3);
-      if (this.j != eue.e) {
-         $$1.a("liquid_settings", evp.c, $$2, this.j);
-      }
+   protected boolean a(ers $$0, bai $$1, iw $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
    }
 
    @Override
-   public void a(dky $$0, dkv $$1, ede $$2, azz $$3, erv $$4, dje $$5, iw $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
-
-   public void a(dky $$0, dkv $$1, ede $$2, azz $$3, erv $$4, iw $$5, boolean $$6) {
-      this.a.a(this.i, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.j, $$6);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dty a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public etl b() {
-      return this.a;
-   }
-
-   public iw c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void a(etg $$0) {
-      this.h.add($$0);
-   }
-
-   public List<etg> e() {
-      return this.h;
+   public erv<?> b() {
+      return erv.c;
    }
 }

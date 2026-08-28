@@ -1,35 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+public final class axs {
+   public static final ayc<exz> a = a("water");
+   public static final ayc<exz> b = a("lava");
 
-public class axs {
-   private final List<axt> a = new ArrayList<>();
-
-   public static axs a() {
-      return new axs();
+   private axs() {
    }
 
-   public List<axt> b() {
-      return List.copyOf(this.a);
-   }
-
-   public axs a(axt $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public axs a(alk $$0) {
-      return this.a(axt.a($$0));
-   }
-
-   public axs b(alk $$0) {
-      return this.a(axt.b($$0));
-   }
-
-   public axs c(alk $$0) {
-      return this.a(axt.c($$0));
-   }
-
-   public axs d(alk $$0) {
-      return this.a(axt.d($$0));
+   private static ayc<exz> a(String $$0) {
+      return ayc.a(mi.F, alr.b($$0));
    }
 }

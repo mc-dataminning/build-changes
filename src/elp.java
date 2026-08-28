@@ -1,44 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class elp extends ekm<emz> {
-   private static final int a = 7;
-
-   elp(Codec<emz> $$0) {
+public class elp extends ekw<enh> {
+   public elp(Codec<enh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emz> $$0) {
-      dky $$1 = $$0.b();
-      azz $$2 = $$0.d();
-      emz $$3 = $$0.f();
-      iw $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      iw.a $$6 = new iw.a();
+   public boolean a(eky<enh> $$0) {
+      dli $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      ebq $$3 = $$1.a_($$2.e());
+      enh $$4 = $$0.f();
+      bai $$5 = $$0.d();
+      if (!$$3.a(axn.aO)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.K_() + 1 && $$6 + 1 <= $$1.ao()) {
+            int $$7 = 0;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         ebg $$8 = $$1.a_($$6);
-
-         for (emz.a $$9 : $$3.b) {
-            if (elh.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               iw $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               ebq $$10 = $$4.b.a($$5, $$9);
+               if ($$1.v($$9) && $$9.v() > $$1.K_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
             }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
-
-      return true;
-   }
-
-   private void a(iw.a $$0, azz $$1, iw $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azz $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

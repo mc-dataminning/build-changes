@@ -1,22 +1,13 @@
-public class glr {
-   private final float a;
-   private final float b;
+import java.util.List;
 
-   public glr(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public enum glr {
+   a,
+   b;
 
-   public float a() {
-      return this.a;
-   }
+   private static final List<glr> c = List.of(values());
+   private static final ju.b d = ju.a(mh.aF);
 
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static jn<glr> a() {
+      return new jn<>(c).a(a, d);
    }
 }

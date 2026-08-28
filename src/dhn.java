@@ -1,34 +1,44 @@
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dhn(dgu d, dgu e, kb f, Optional<eim> g, eos h, Optional<jg<egg>> i) implements dhe {
+public record dhn(alr b, jg<bzg> d, dhe e, bzj.a f) implements dhp {
    public static final MapCodec<dhn> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dgu.b.fieldOf("radius").forGetter(dhn::b),
-               dgu.b.fieldOf("height").forGetter(dhn::c),
-               kb.g.optionalFieldOf("offset", kb.i).forGetter(dhn::d),
-               eim.b.optionalFieldOf("predicate").forGetter(dhn::e),
-               eos.a.fieldOf("block_state").forGetter(dhn::f),
-               egg.aj.optionalFieldOf("trigger_game_event").forGetter(dhn::g)
+               alr.a.fieldOf("id").forGetter(dhn::b),
+               bzg.a.fieldOf("attribute").forGetter(dhn::c),
+               dhe.b.fieldOf("amount").forGetter(dhn::d),
+               bzj.a.f.fieldOf("operation").forGetter(dhn::e)
             )
             .apply($$0, dhn::new)
    );
 
-   @Override
-   public void a(aru $$0, int $$1, dgm $$2, bwv $$3, ffs $$4) {
-      iw $$5 = iw.a((jq)$$4).a(this.f);
-      azz $$6 = $$3.dY();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
+   private alr a(bax $$0) {
+      return this.b.g("/" + $$0.c());
+   }
 
-      for (iw $$9 : iw.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azq.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   public bzj a(int $$0, bax $$1) {
+      return new bzj(this.a($$1), (double)this.d().a($$0), this.e());
+   }
+
+   @Override
+   public void a(asb $$0, int $$1, dgw $$2, bxe $$3, fgc $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof byf $$6) {
+         $$6.fa().a(this.a($$1, $$2.b()));
       }
+   }
+
+   @Override
+   public void a(dgw $$0, bxe $$1, fgc $$2, int $$3) {
+      if ($$1 instanceof byf $$4) {
+         $$4.fa().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<jg<bzg>, bzj> a(int $$0, bxo $$1) {
+      HashMultimap<jg<bzg>, bzj> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (bax)$$1));
+      return $$2;
    }
 
    @Override
@@ -36,27 +46,15 @@ public record dhn(dgu d, dgu e, kb f, Optional<eim> g, eos h, Optional<jg<egg>> 
       return a;
    }
 
-   public dgu b() {
+   public jg<bzg> c() {
       return this.d;
    }
 
-   public dgu c() {
+   public dhe d() {
       return this.e;
    }
 
-   public kb d() {
+   public bzj.a e() {
       return this.f;
-   }
-
-   public Optional<eim> e() {
-      return this.g;
-   }
-
-   public eos f() {
-      return this.h;
-   }
-
-   public Optional<jg<egg>> g() {
-      return this.i;
    }
 }

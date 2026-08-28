@@ -1,26 +1,29 @@
-public enum aiz {
-   a,
-   b,
-   c;
+public class aiz implements zo<aha> {
+   public static final ze<vy, aiz> a = zo.a(aiz::a, aiz::new);
+   private final bvb b;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static aiz a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public aiz(bvb $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private aiz(vy $$0) {
+      this.b = $$0.b(bvb.class);
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zq<aiz> a() {
+      return agy.cl;
+   }
+
+   public void a(aha $$0) {
+      $$0.a(this);
+   }
+
+   public bvb b() {
+      return this.b;
    }
 }

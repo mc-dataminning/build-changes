@@ -1,12 +1,19 @@
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cuq extends cul {
-   public cuq(bxe<? extends cuq> $$0, djz $$1, Supplier<czw> $$2) {
-      super($$0, $$1, $$2);
+public record cuq(jk<esn> c) implements cum {
+   public static final MapCodec<cuq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jv.a(mi.be).fieldOf("structures").forGetter(cuq::b)).apply($$0, cuq::new));
+
+   public boolean a(cuo $$0) {
+      return $$0.b().a().b().a($$0.a(), this.c).b();
    }
 
    @Override
-   protected double b(bwy $$0) {
-      return (double)($$0.b() * 0.8888889F);
+   public MapCodec<cuq> a() {
+      return a;
+   }
+
+   public jk<esn> b() {
+      return this.c;
    }
 }

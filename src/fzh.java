@@ -1,42 +1,82 @@
-public class fzh extends gaf {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final xc c = xc.c("credits_and_attribution.screen.title");
-   private static final xc d = xc.c("credits_and_attribution.button.credits");
-   private static final xc s = xc.c("credits_and_attribution.button.attribution");
-   private static final xc u = xc.c("credits_and_attribution.button.licenses");
-   private final gaf v;
-   private final fyb w = new fyb(this);
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fzh(gaf $$0) {
-      super(c);
-      this.v = $$0;
+public class fzh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<cxk<?>, fzh.a<?, ?>> b = Maps.newHashMap();
+
+   public static <T extends cwb> void a(cxk<T> $$0, fqq $$1, int $$2, xg $$3) {
+      fzh.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", mh.p.b($$0));
+      } else {
+         $$4.a($$3, $$0, $$1, $$2);
+      }
    }
 
-   @Override
-   protected void aS_() {
-      this.w.a(c, this.p);
-      fyf $$0 = this.w.c(fyf.d()).a(8);
-      $$0.c().b();
-      $$0.a(fun.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fun.a(s, fzc.b(this, ayl.d)).a(210).a());
-      $$0.a(fun.a(u, fzc.b(this, ayl.e)).a(210).a());
-      this.w.b(fun.a(xb.d, $$0x -> this.aP_()).a(200).a());
-      this.w.a();
-      this.w.a(this::c);
+   @Nullable
+   private static <T extends cwb> fzh.a<T, ?> a(cxk<T> $$0) {
+      return (fzh.a<T, ?>)b.get($$0);
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
+   private static <M extends cwb, U extends fzq & gbl<M>> void a(cxk<? extends M> $$0, fzh.a<M, U> $$1) {
+      fzh.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + mh.p.b($$0));
+      }
    }
 
-   private void m() {
-      this.m.a(new gai(false, () -> this.m.a(this)));
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (cxk<?> $$1 : mh.p) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", mh.p.b($$1));
+            $$0 = true;
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.v);
+   static {
+      a(cxk.a, gar::new);
+      a(cxk.b, gar::new);
+      a(cxk.c, gar::new);
+      a(cxk.d, gar::new);
+      a(cxk.e, gar::new);
+      a(cxk.f, gar::new);
+      a(cxk.g, gax::new);
+      a(cxk.h, gas::new);
+      a(cxk.i, gaj::new);
+      a(cxk.j, gak::new);
+      a(cxk.k, gal::new);
+      a(cxk.l, gao::new);
+      a(cxk.m, gat::new);
+      a(cxk.n, gba::new);
+      a(cxk.o, gbb::new);
+      a(cxk.p, gbc::new);
+      a(cxk.q, gbe::new);
+      a(cxk.r, gbj::new);
+      a(cxk.s, gbk::new);
+      a(cxk.t, gbm::new);
+      a(cxk.u, gbp::new);
+      a(cxk.v, gbr::new);
+      a(cxk.w, gbs::new);
+      a(cxk.x, gap::new);
+      a(cxk.y, gbt::new);
+   }
+
+   interface a<T extends cwb, U extends fzq & gbl<T>> {
+      default void a(xg $$0, cxk<T> $$1, fqq $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.t.gj()), $$2.t.gj(), $$0);
+         $$2.t.bR = $$4.F();
+         $$2.a($$4);
+      }
+
+      U create(T var1, csh var2, xg var3);
    }
 }

@@ -1,19 +1,32 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
+public interface dbz {
+   dbz.a a = new dbz.a(false, false);
+   dbz.a b = new dbz.a(true, false);
 
-public record dbz(List<dyb.c> d) implements ddf {
-   public static final Codec<dbz> a = dyb.c.b.xmap(dbz::new, dbz::a);
-   public static final za<ByteBuf, dbz> b = dyb.c.c.a(yy.a()).a(dbz::new, dbz::a);
-   public static final dbz c = new dbz(List.of());
+   boolean a();
 
-   @Override
-   public void a(czw.b $$0, Consumer<xc> $$1, dbp $$2, kg $$3) {
-      $$1.accept(xc.a("container.beehive.bees", this.d.size(), 3).a(o.h));
-   }
+   boolean b();
 
-   public List<dyb.c> a() {
-      return this.d;
+   public static record a(boolean c, boolean d) implements dbz {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
+
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public dbz.a c() {
+         return new dbz.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

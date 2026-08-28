@@ -1,70 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class fav extends fas {
-   public static final MapCodec<fav> a = a(fav::new);
+public record fav<T>(alq<jt<T>> d, Codec<T> e, fav.a<T> f) {
+   public static final fav<fec> a = new fav<>(mi.bt, fec.e, e());
+   public static final fav<fch> b = new fav<>(mi.bs, fcj.c, e());
+   public static final fav<fay> c = new fav<>(mi.br, fay.d, f());
 
-   fav(List<faz> $$0, List<fds> $$1) {
-      super($$0, $$1);
+   public void a(faz $$0, alq<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public fba a() {
-      return fax.i;
+   public static Stream<fav<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   protected far a(List<? extends far> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (far)$$0.get(0);
-         case 2 -> {
-            far $$1 = $$0.get(0);
-            far $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (far $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   private static <T extends fau> fav.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static fav.a a(faz.a<?>... $$0) {
-      return new fav.a($$0);
+   private static fav.a<fay> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static class a extends faz.a<fav.a> {
-      private final Builder<faz> a = ImmutableList.builder();
+   public alq<jt<T>> b() {
+      return this.d;
+   }
 
-      public a(faz.a<?>... $$0) {
-         for (faz.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      protected fav.a a() {
-         return this;
-      }
+   public fav.a<T> d() {
+      return this.f;
+   }
 
-      @Override
-      public fav.a b(faz.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public faz b() {
-         return new fav(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(faz var1, alq<T> var2, T var3);
    }
 }

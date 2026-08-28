@@ -1,50 +1,141 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
 
 public class bdx extends DataFix {
-   private static final List<String> a = List.of("feet", "legs", "chest", "head");
-   private static final List<String> b = List.of("mainhand", "offhand");
-   private static final float c = 0.085F;
+   private static final ImmutableMap<String, Pair<String, ImmutableMap<String, String>>> a = ImmutableMap.builder()
+      .put(
+         "EndCity",
+         Pair.of(
+            "ECP",
+            ImmutableMap.builder().put("second_floor", "second_floor_1").put("third_floor", "third_floor_1").put("third_floor_c", "third_floor_2").build()
+         )
+      )
+      .put(
+         "Mansion",
+         Pair.of(
+            "WMP",
+            ImmutableMap.builder()
+               .put("carpet_south", "carpet_south_1")
+               .put("carpet_west", "carpet_west_1")
+               .put("indoors_door", "indoors_door_1")
+               .put("indoors_wall", "indoors_wall_1")
+               .build()
+         )
+      )
+      .put(
+         "Igloo",
+         Pair.of(
+            "Iglu",
+            ImmutableMap.builder()
+               .put("minecraft:igloo/igloo_bottom", "minecraft:igloo/bottom")
+               .put("minecraft:igloo/igloo_middle", "minecraft:igloo/middle")
+               .put("minecraft:igloo/igloo_top", "minecraft:igloo/top")
+               .build()
+         )
+      )
+      .put(
+         "Ocean_Ruin",
+         Pair.of(
+            "ORP",
+            ImmutableMap.builder()
+               .put("minecraft:ruin/big_ruin1_brick", "minecraft:underwater_ruin/big_brick_1")
+               .put("minecraft:ruin/big_ruin2_brick", "minecraft:underwater_ruin/big_brick_2")
+               .put("minecraft:ruin/big_ruin3_brick", "minecraft:underwater_ruin/big_brick_3")
+               .put("minecraft:ruin/big_ruin8_brick", "minecraft:underwater_ruin/big_brick_8")
+               .put("minecraft:ruin/big_ruin1_cracked", "minecraft:underwater_ruin/big_cracked_1")
+               .put("minecraft:ruin/big_ruin2_cracked", "minecraft:underwater_ruin/big_cracked_2")
+               .put("minecraft:ruin/big_ruin3_cracked", "minecraft:underwater_ruin/big_cracked_3")
+               .put("minecraft:ruin/big_ruin8_cracked", "minecraft:underwater_ruin/big_cracked_8")
+               .put("minecraft:ruin/big_ruin1_mossy", "minecraft:underwater_ruin/big_mossy_1")
+               .put("minecraft:ruin/big_ruin2_mossy", "minecraft:underwater_ruin/big_mossy_2")
+               .put("minecraft:ruin/big_ruin3_mossy", "minecraft:underwater_ruin/big_mossy_3")
+               .put("minecraft:ruin/big_ruin8_mossy", "minecraft:underwater_ruin/big_mossy_8")
+               .put("minecraft:ruin/big_ruin_warm4", "minecraft:underwater_ruin/big_warm_4")
+               .put("minecraft:ruin/big_ruin_warm5", "minecraft:underwater_ruin/big_warm_5")
+               .put("minecraft:ruin/big_ruin_warm6", "minecraft:underwater_ruin/big_warm_6")
+               .put("minecraft:ruin/big_ruin_warm7", "minecraft:underwater_ruin/big_warm_7")
+               .put("minecraft:ruin/ruin1_brick", "minecraft:underwater_ruin/brick_1")
+               .put("minecraft:ruin/ruin2_brick", "minecraft:underwater_ruin/brick_2")
+               .put("minecraft:ruin/ruin3_brick", "minecraft:underwater_ruin/brick_3")
+               .put("minecraft:ruin/ruin4_brick", "minecraft:underwater_ruin/brick_4")
+               .put("minecraft:ruin/ruin5_brick", "minecraft:underwater_ruin/brick_5")
+               .put("minecraft:ruin/ruin6_brick", "minecraft:underwater_ruin/brick_6")
+               .put("minecraft:ruin/ruin7_brick", "minecraft:underwater_ruin/brick_7")
+               .put("minecraft:ruin/ruin8_brick", "minecraft:underwater_ruin/brick_8")
+               .put("minecraft:ruin/ruin1_cracked", "minecraft:underwater_ruin/cracked_1")
+               .put("minecraft:ruin/ruin2_cracked", "minecraft:underwater_ruin/cracked_2")
+               .put("minecraft:ruin/ruin3_cracked", "minecraft:underwater_ruin/cracked_3")
+               .put("minecraft:ruin/ruin4_cracked", "minecraft:underwater_ruin/cracked_4")
+               .put("minecraft:ruin/ruin5_cracked", "minecraft:underwater_ruin/cracked_5")
+               .put("minecraft:ruin/ruin6_cracked", "minecraft:underwater_ruin/cracked_6")
+               .put("minecraft:ruin/ruin7_cracked", "minecraft:underwater_ruin/cracked_7")
+               .put("minecraft:ruin/ruin8_cracked", "minecraft:underwater_ruin/cracked_8")
+               .put("minecraft:ruin/ruin1_mossy", "minecraft:underwater_ruin/mossy_1")
+               .put("minecraft:ruin/ruin2_mossy", "minecraft:underwater_ruin/mossy_2")
+               .put("minecraft:ruin/ruin3_mossy", "minecraft:underwater_ruin/mossy_3")
+               .put("minecraft:ruin/ruin4_mossy", "minecraft:underwater_ruin/mossy_4")
+               .put("minecraft:ruin/ruin5_mossy", "minecraft:underwater_ruin/mossy_5")
+               .put("minecraft:ruin/ruin6_mossy", "minecraft:underwater_ruin/mossy_6")
+               .put("minecraft:ruin/ruin7_mossy", "minecraft:underwater_ruin/mossy_7")
+               .put("minecraft:ruin/ruin8_mossy", "minecraft:underwater_ruin/mossy_8")
+               .put("minecraft:ruin/ruin_warm1", "minecraft:underwater_ruin/warm_1")
+               .put("minecraft:ruin/ruin_warm2", "minecraft:underwater_ruin/warm_2")
+               .put("minecraft:ruin/ruin_warm3", "minecraft:underwater_ruin/warm_3")
+               .put("minecraft:ruin/ruin_warm4", "minecraft:underwater_ruin/warm_4")
+               .put("minecraft:ruin/ruin_warm5", "minecraft:underwater_ruin/warm_5")
+               .put("minecraft:ruin/ruin_warm6", "minecraft:underwater_ruin/warm_6")
+               .put("minecraft:ruin/ruin_warm7", "minecraft:underwater_ruin/warm_7")
+               .put("minecraft:ruin/ruin_warm8", "minecraft:underwater_ruin/warm_8")
+               .put("minecraft:ruin/big_brick_1", "minecraft:underwater_ruin/big_brick_1")
+               .put("minecraft:ruin/big_brick_2", "minecraft:underwater_ruin/big_brick_2")
+               .put("minecraft:ruin/big_brick_3", "minecraft:underwater_ruin/big_brick_3")
+               .put("minecraft:ruin/big_brick_8", "minecraft:underwater_ruin/big_brick_8")
+               .put("minecraft:ruin/big_mossy_1", "minecraft:underwater_ruin/big_mossy_1")
+               .put("minecraft:ruin/big_mossy_2", "minecraft:underwater_ruin/big_mossy_2")
+               .put("minecraft:ruin/big_mossy_3", "minecraft:underwater_ruin/big_mossy_3")
+               .put("minecraft:ruin/big_mossy_8", "minecraft:underwater_ruin/big_mossy_8")
+               .put("minecraft:ruin/big_cracked_1", "minecraft:underwater_ruin/big_cracked_1")
+               .put("minecraft:ruin/big_cracked_2", "minecraft:underwater_ruin/big_cracked_2")
+               .put("minecraft:ruin/big_cracked_3", "minecraft:underwater_ruin/big_cracked_3")
+               .put("minecraft:ruin/big_cracked_8", "minecraft:underwater_ruin/big_cracked_8")
+               .put("minecraft:ruin/big_warm_4", "minecraft:underwater_ruin/big_warm_4")
+               .put("minecraft:ruin/big_warm_5", "minecraft:underwater_ruin/big_warm_5")
+               .put("minecraft:ruin/big_warm_6", "minecraft:underwater_ruin/big_warm_6")
+               .put("minecraft:ruin/big_warm_7", "minecraft:underwater_ruin/big_warm_7")
+               .build()
+         )
+      )
+      .build();
 
-   public bdx(Schema $$0) {
-      super($$0, false);
+   public bdx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("DropChancesFormatFix", this.getInputSchema().getType(bjd.D), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            List<Float> $$1 = a($$0x.get("ArmorDropChances"));
-            List<Float> $$2 = a($$0x.get("HandDropChances"));
-            float $$3 = $$0x.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);
-            $$0x = $$0x.remove("ArmorDropChances").remove("HandDropChances").remove("body_armor_drop_chance");
-            Dynamic<?> $$4 = $$0x.emptyMap();
-            $$4 = a($$4, $$1, a);
-            $$4 = a($$4, $$2, b);
-            if ($$3 != 0.085F) {
-               $$4 = $$4.set("body", $$0x.createFloat($$3));
-            }
-
-            return !$$4.equals($$0x.emptyMap()) ? $$0x.set("drop_chances", $$4) : $$0x;
-         }));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.I);
+      return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, List<Float> $$1, List<String> $$2) {
-      for (int $$3 = 0; $$3 < $$2.size() && $$3 < $$1.size(); $$3++) {
-         String $$4 = $$2.get($$3);
-         float $$5 = $$1.get($$3);
-         if ($$5 != 0.085F) {
-            $$0 = $$0.set($$4, $$0.createFloat($$5));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Children", $$1 -> $$0.createList($$1.asStream().map($$1x -> this.a($$0, $$1x))));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1) {
+      String $$2 = $$0.get("id").asString("");
+      if (a.containsKey($$2)) {
+         Pair<String, ImmutableMap<String, String>> $$3 = (Pair<String, ImmutableMap<String, String>>)a.get($$2);
+         if (((String)$$3.getFirst()).equals($$1.get("id").asString(""))) {
+            String $$4 = $$1.get("Template").asString("");
+            $$1 = $$1.set("Template", $$1.createString((String)((ImmutableMap)$$3.getSecond()).getOrDefault($$4, $$4)));
          }
       }
 
-      return $$0;
-   }
-
-   private static List<Float> a(OptionalDynamic<?> $$0) {
-      return $$0.asStream().map($$0x -> $$0x.asFloat(0.085F)).toList();
+      return $$1;
    }
 }

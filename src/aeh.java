@@ -1,26 +1,65 @@
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aeh(int b, byj c, Set<byk> d) implements zj<aby> {
-   public static final za<vy, aeh> a = za.a(yy.h, aeh::b, byj.a, aeh::e, byk.m, aeh::f, aeh::new);
+public record aeh(int b, UUID c, int d, @Nullable xs e, xz.a f, @Nullable xg g, xk h, xc.a i) implements zo<acf> {
+   public static final ze<wp, aeh> a = zo.a(aeh::a, aeh::new);
 
-   public static aeh a(int $$0, byj $$1, Set<byk> $$2) {
-      return new aeh($$0, $$1, $$2);
+   private aeh(wp $$0) {
+      this($$0.l(), $$0.n(), $$0.l(), $$0.c(xs::a), new xz.a($$0), vy.a($$0, xi.d), xk.a($$0), xc.a.a.decode($$0));
+   }
+
+   private void a(wp $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e, xs::a);
+      this.f.a($$0);
+      vy.a($$0, this.g, xi.d);
+      xk.a($$0, this.h);
+      xc.a.a.encode($$0, this.i);
    }
 
    @Override
-   public zl<aeh> a() {
-      return agr.ai;
+   public zq<aeh> a() {
+      return agy.ab;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public byj e() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public UUID e() {
       return this.c;
    }
 
-   public Set<byk> f() {
+   public int f() {
       return this.d;
+   }
+
+   @Nullable
+   public xs g() {
+      return this.e;
+   }
+
+   public xz.a h() {
+      return this.f;
+   }
+
+   @Nullable
+   public xg i() {
+      return this.g;
+   }
+
+   public xk j() {
+      return this.h;
+   }
+
+   public xc.a k() {
+      return this.i;
    }
 }

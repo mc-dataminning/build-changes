@@ -1,111 +1,58 @@
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Supplier;
 
-public abstract class fvs extends fun {
-   protected final alk a;
-   protected final int b;
-   protected final int c;
+public class fvs extends fvn {
+   private static final int f = -6745839;
+   private static final int g = -4548257;
+   private static final int h = -10547572;
+   private final Supplier<Float> i;
 
-   fvs(int $$0, int $$1, xc $$2, int $$3, int $$4, alk $$5, fun.c $$6, @Nullable fun.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fvs(fti $$0, bpr $$1, Supplier<Float> $$2) {
+      super($$0, $$1);
+      this.i = $$2;
    }
 
-   public static fvs.a a(xc $$0, fun.c $$1, boolean $$2) {
-      return new fvs.a($$0, $$1, $$2);
+   @Override
+   protected void d(ftk $$0, int $$1, int $$2, int $$3) {
+      float $$4 = (float)bbd.c / this.i.get();
+      this.a($$0, String.format(Locale.ROOT, "%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
    }
 
-   public static class a {
-      private final xc b;
-      private final fun.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private alk g;
-      private int h;
-      private int i;
-      @Nullable
-      fun.b a;
-
-      public a(xc $$0, fun.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fvs.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fvs.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fvs.a a(alk $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fvs.a a(fun.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fvs a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fvs)(this.d
-               ? new fvs.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fvs.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
+   @Override
+   protected void c(ftk $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3, bps.b.ordinal());
+      int $$5 = this.b((double)$$4);
+      $$0.a(gry.G(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
+      long $$6 = this.e.a($$3, bps.c.ordinal());
+      int $$7 = this.b((double)$$6);
+      $$0.a(gry.G(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
+      long $$8 = this.e.a($$3) - this.e.a($$3, bps.d.ordinal()) - $$4 - $$6;
+      int $$9 = this.b((double)$$8);
+      $$0.a(gry.G(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
    }
 
-   public static class b extends fvs {
-      protected b(int $$0, int $$1, xc $$2, int $$3, int $$4, alk $$5, fun.c $$6, @Nullable fun.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(ftz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.F() + this.A() / 2 - this.b / 2;
-         int $$5 = this.G() + this.y() / 2 - this.c / 2;
-         $$0.a(gsn::H, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(ftz $$0, ftx $$1, int $$2) {
-      }
+   @Override
+   protected long b(int $$0) {
+      return this.e.a($$0) - this.e.a($$0, bps.d.ordinal());
    }
 
-   public static class c extends fvs {
-      protected c(int $$0, int $$1, xc $$2, int $$3, int $$4, alk $$5, fun.c $$6, @Nullable fun.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
 
-      @Override
-      public void b(ftz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.F() + this.A() - this.b - 2;
-         int $$5 = this.G() + this.y() / 2 - this.c / 2;
-         $$0.a(gsn::H, this.a, $$4, $$5, this.b, this.c);
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
+   }
 
-      @Override
-      public void a(ftz $$0, ftx $$1, int $$2) {
-         int $$3 = this.F() + 2;
-         int $$4 = this.F() + this.A() - this.b - 4;
-         int $$5 = this.F() + this.A() / 2;
-         a($$0, $$1, this.B(), $$5, $$3, this.G(), $$4, this.G() + this.y(), $$2);
-      }
+   @Override
+   protected int a(long $$0) {
+      float $$1 = this.i.get();
+      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

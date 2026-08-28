@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface hnn {
-   String debugName();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hnn {
 }

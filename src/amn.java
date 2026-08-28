@@ -1,58 +1,78 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Queue;
 
 public class amn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Codec<Map<alk, amm.a>> b = Codec.unboundedMap(alk.a, amm.a.a);
-   private final Map<alk, amm> c = Maps.newHashMap();
+   private static final int a = 8;
+   private final Queue<amn.a> b = new ayk<>();
+   private final Object2IntLinkedOpenHashMap<amn.b> c = new Object2IntLinkedOpenHashMap();
 
-   @Nullable
-   public amm a(alk $$0) {
-      return this.c.get($$0);
+   private static long b() {
+      return System.currentTimeMillis();
    }
 
-   public amm a(alk $$0, xc $$1) {
-      amm $$2 = new amm($$0, $$1);
-      this.c.put($$0, $$2);
-      return $$2;
-   }
+   public synchronized void a(String $$0, Throwable $$1) {
+      long $$2 = b();
+      String $$3 = $$1.getMessage();
+      this.b.add(new amn.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
 
-   public void a(amm $$0) {
-      this.c.remove($$0.a());
-   }
-
-   public Collection<alk> a() {
-      return this.c.keySet();
-   }
-
-   public Collection<amm> b() {
-      return this.c.values();
-   }
-
-   public ua a(ji.a $$0) {
-      Map<alk, amm.a> $$1 = ag.a(this.c, amm::f);
-      return (ua)b.encodeStart($$0.a(uo.a), $$1).getOrThrow();
-   }
-
-   public void a(ua $$0, ji.a $$1) {
-      Map<alk, amm.a> $$2 = b.parse($$1.a(uo.a), $$0).resultOrPartial($$0x -> a.error("Failed to parse boss bar events: {}", $$0x)).orElse(Map.of());
-      $$2.forEach(($$0x, $$1x) -> this.c.put($$0x, amm.a($$0x, $$1x)));
-   }
-
-   public void a(arv $$0) {
-      for (amm $$1 : this.c.values()) {
-         $$1.c($$0);
+      while (this.b.size() > 8) {
+         this.b.remove();
       }
+
+      amn.b $$4 = new amn.b($$0, (Class<? extends Throwable>)$$1.getClass());
+      int $$5 = this.c.getInt($$4);
+      this.c.putAndMoveToFirst($$4, $$5 + 1);
    }
 
-   public void b(arv $$0) {
-      for (amm $$1 : this.c.values()) {
-         $$1.d($$0);
+   public synchronized String a() {
+      long $$0 = b();
+      StringBuilder $$1 = new StringBuilder();
+      if (!this.b.isEmpty()) {
+         $$1.append("\n\t\tLatest entries:\n");
+
+         for (amn.a $$2 : this.b) {
+            $$1.append("\t\t\t")
+               .append($$2.b)
+               .append(":")
+               .append($$2.c)
+               .append(": ")
+               .append($$2.d)
+               .append(" (")
+               .append($$0 - $$2.a)
+               .append("ms ago)")
+               .append("\n");
+         }
       }
+
+      if (!this.c.isEmpty()) {
+         if ($$1.isEmpty()) {
+            $$1.append("\n");
+         }
+
+         $$1.append("\t\tEntry counts:\n");
+         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
+
+         while (var6.hasNext()) {
+            Entry<amn.b> $$3 = (Entry<amn.b>)var6.next();
+            $$1.append("\t\t\t")
+               .append(((amn.b)$$3.getKey()).a)
+               .append(":")
+               .append(((amn.b)$$3.getKey()).b)
+               .append(" x ")
+               .append($$3.getIntValue())
+               .append("\n");
+         }
+      }
+
+      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+   }
+
+   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   }
+
+   static record b(String a, Class<? extends Throwable> b) {
    }
 }

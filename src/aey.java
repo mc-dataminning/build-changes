@@ -1,29 +1,37 @@
-public class aey implements zj<aby> {
-   public static final za<vy, aey> a = zj.a(aey::a, aey::new);
-   private final double b;
+public class aey implements zo<acf> {
+   public static final ze<vy, aey> a = zo.a(aey::a, aey::new);
+   private final int b;
+   private final byte c;
 
-   public aey(ecy $$0) {
-      this.b = $$0.k();
+   public aey(bxe $$0, byte $$1) {
+      this.b = $$0.ao();
+      this.c = $$1;
    }
 
    private aey(vy $$0) {
-      this.b = $$0.readDouble();
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zl<aey> a() {
-      return agr.ax;
+   public zq<aey> a() {
+      return agy.aq;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public bxe a(dkj $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return azz.a(this.c);
    }
 }

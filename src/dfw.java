@@ -1,55 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dfw(dgd f, dgd g, dgd h, dgd i, int j, float k) implements dfx {
-   public static final MapCodec<dfw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dgd.a.fieldOf("ingredient").forGetter(dfw::b),
-               dgd.a.fieldOf("fuel").forGetter(dfw::c),
-               dgd.a.fieldOf("result").forGetter(dfw::d),
-               dgd.a.fieldOf("crafting_station").forGetter(dfw::e),
-               Codec.INT.fieldOf("duration").forGetter(dfw::f),
-               Codec.FLOAT.fieldOf("experience").forGetter(dfw::g)
-            )
-            .apply($$0, dfw::new)
-   );
-   public static final za<wn, dfw> b = za.a(dgd.b, dfw::b, dgd.b, dfw::c, dgd.b, dfw::d, dgd.b, dfw::e, yy.h, dfw::f, yy.l, dfw::g, dfw::new);
-   public static final dfx.a<dfw> c = new dfx.a<>(a, b);
-
+public interface dfw extends dfb<dfx> {
    @Override
-   public dfx.a<dfw> a() {
-      return c;
+   default dfm<dfw> b() {
+      return dfm.g;
    }
 
    @Override
-   public boolean a(cvj $$0) {
-      return this.f.a($$0) && this.c().a($$0) && dfx.super.a($$0);
+   dfl<? extends dfw> a();
+
+   default boolean a(dfx $$0, dkj $$1) {
+      return dex.a(this.c(), $$0.c()) && this.f().a($$0.d()) && dex.a(this.k(), $$0.e());
    }
 
-   public dgd b() {
-      return this.f;
-   }
+   Optional<dex> c();
 
-   public dgd c() {
-      return this.g;
-   }
+   dex f();
 
-   @Override
-   public dgd d() {
-      return this.h;
-   }
+   Optional<dex> k();
 
    @Override
-   public dgd e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
-   }
-
-   public float g() {
-      return this.k;
+   default dfe h() {
+      return dfd.l;
    }
 }

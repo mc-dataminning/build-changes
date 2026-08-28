@@ -1,37 +1,48 @@
-public abstract class cay<E extends bxw> implements bzo<E>, cdd<E> {
-   private bzn.a a;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-   public cay() {
-      this.a = bzn.a.a;
+public class cay<E extends byh> extends caz<E> {
+   private final ayc<dno> m;
+   private final float n;
+   private final List<caz.a> o = new ArrayList<>();
+   private boolean p;
+
+   public cay(bun $$0, int $$1, int $$2, float $$3, Function<E, awx> $$4, ayc<dno> $$5, float $$6, BiPredicate<E, iw> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
    @Override
-   public final bzn.a a() {
-      return this.a;
+   protected void a(asb $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dY().i() < this.n;
    }
 
    @Override
-   public final boolean e(aru $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bzn.a.b;
-         return true;
+   protected Optional<caz.a> a(asb $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         return false;
+         iw.a $$1 = new iw.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<caz.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               caz.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.a(), jc.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-   }
-
-   @Override
-   public final void f(aru $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(aru $$0, E $$1, long $$2) {
-      this.a = bzn.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
    }
 }

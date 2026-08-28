@@ -1,122 +1,122 @@
-import java.util.List;
+import java.util.EnumSet;
+import java.util.Optional;
 
-public abstract class guj implements gup<dzs> {
-   private static final int a = -988212;
-   private static final int b = azq.h(16);
-   private final ftx c;
+public class guj implements gua<dzg> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final gkr h;
+   private final gkr i;
+   private final gkr j;
+   private final gkr k;
+   private final gkr l;
+   private final gkr m;
+   private final gkr n;
+   private static final float o = 0.125F;
 
-   public guj(guq.a $$0) {
-      this.c = $$0.g();
+   public guj(gub.a $$0) {
+      this($$0.f());
    }
 
-   protected abstract giy a(ebg var1, ecu var2);
-
-   protected abstract hnj a(ecu var1);
-
-   protected abstract float a();
-
-   protected abstract float b();
-
-   protected abstract ffs c();
-
-   protected abstract void a(flq var1, float var2, ebg var3);
-
-   public void a(dzs $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
-      ebg $$7 = $$0.m();
-      duo $$8 = (duo)$$7.b();
-      giy $$9 = this.a($$7, $$8.d());
-      this.a($$0, $$2, $$3, $$4, $$5, $$7, $$8, $$8.d(), $$9);
+   public guj(gkn $$0) {
+      gkr $$1 = $$0.a(gkq.av);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      gkr $$2 = $$0.a(gkq.aw);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   private void a(dzs $$0, flq $$1, gsc $$2, int $$3, int $$4, ebg $$5, duo $$6, ecu $$7, giy $$8) {
-      $$1.a();
-      this.a($$1, -$$6.h($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aB_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
-      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
-      $$1.b();
+   public static gkx b() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      gkv $$2 = new gkv(0.2F);
+      gkv $$3 = new gkv(-0.1F);
+      $$1.a(
+         "neck",
+         gkw.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         gkt.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      gkw $$4 = gkw.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, gkt.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, gkt.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return gkx.a($$0, 32, 32);
    }
 
-   protected void a(flq $$0, gsc $$1, int $$2, int $$3, ecu $$4, giy $$5) {
-      $$0.a();
-      float $$6 = this.a();
-      $$0.b($$6, -$$6, -$$6);
-      hnj $$7 = this.a($$4);
-      flt $$8 = $$7.a($$1, $$5::a);
-      $$5.a($$0, $$8, $$2, $$3);
-      $$0.b();
+   public static gkx c() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      gkw $$2 = gkw.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jc.c));
+      $$1.a("back", $$2, gkt.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, gkt.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, gkt.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, gkt.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return gkx.a($$0, 16, 16);
    }
 
-   private void a(iw $$0, dzt $$1, flq $$2, gsc $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.c());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      azc[] $$10 = $$1.a(frf.Q().aT(), $$1x -> {
-         List<azc> $$2x = this.c.c($$1x, $$6);
-         return $$2x.isEmpty() ? azc.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         azc $$18 = $$10[$$17];
-         float $$19 = (float)(-this.c.a($$18) / 2);
-         if ($$12) {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ftx.a.c, 0, $$13);
+   private static hmx a(Optional<dag> $$0) {
+      if ($$0.isPresent()) {
+         hmx $$1 = gsh.a(dzi.a($$0.get()));
+         if ($$1 != null) {
+            return $$1;
          }
       }
 
+      return gsh.A;
+   }
+
+   public void a(dzg $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      $$2.a();
+      jc $$7 = $$0.k();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$7.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dzg.a $$8 = $$0.h;
+      if ($$8 != null && $$0.i() != null) {
+         float $$9 = ((float)($$0.i().ae() - $$0.g) + $$1) / (float)$$8.c;
+         if ($$9 >= 0.0F && $$9 <= 1.0F) {
+            if ($$8 == dzg.a.a) {
+               float $$10 = 0.015625F;
+               float $$11 = $$9 * (float) (Math.PI * 2);
+               float $$12 = -1.5F * (azz.b($$11) + 0.5F) * azz.a($$11 / 2.0F);
+               $$2.a(a.b.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$13 = azz.a($$11);
+               $$2.a(a.f.rotation($$13 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$14 = azz.a(-$$9 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$15 = 1.0F - $$9;
+               $$2.a(a.d.rotation($$14 * $$15), 0.5F, 0.0F, 0.5F);
+            }
+         }
+      }
+
+      this.b($$2, $$3, $$4, $$5, $$0.s());
       $$2.b();
    }
 
-   private void a(flq $$0, boolean $$1, ffs $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
-      }
-
-      float $$3 = 0.015625F * this.b();
-      $$0.a($$2);
-      $$0.b($$3, -$$3, $$3);
+   public void a(fld $$0, grn $$1, int $$2, int $$3, dzw $$4) {
+      this.b($$0, $$1, $$2, $$3, $$4);
    }
 
-   private static boolean a(iw $$0, int $$1) {
-      if ($$1 == cyy.p.g()) {
-         return true;
-      } else {
-         frf $$2 = frf.Q();
-         grb $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
-            return true;
-         } else {
-            bwv $$4 = $$2.ao();
-            return $$4 != null && $$4.g(ffs.b($$0)) < (double)b;
-         }
-      }
+   private void b(fld $$0, grn $$1, int $$2, int $$3, dzw $$4) {
+      flg $$5 = gsh.z.a($$1, gry::d);
+      this.h.a($$0, $$5, $$2, $$3);
+      this.m.a($$0, $$5, $$2, $$3);
+      this.n.a($$0, $$5, $$2, $$3);
+      this.a(this.i, $$0, $$1, $$2, $$3, a($$4.e()));
+      this.a(this.j, $$0, $$1, $$2, $$3, a($$4.b()));
+      this.a(this.k, $$0, $$1, $$2, $$3, a($$4.c()));
+      this.a(this.l, $$0, $$1, $$2, $$3, a($$4.d()));
    }
 
-   public static int a(dzt $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cyy.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)aya.b($$1) * 0.4);
-         int $$4 = (int)((double)aya.c($$1) * 0.4);
-         int $$5 = (int)((double)aya.d($$1) * 0.4);
-         return aya.a(0, $$3, $$4, $$5);
-      }
+   private void a(gkr $$0, fld $$1, grn $$2, int $$3, int $$4, hmx $$5) {
+      $$0.a($$1, $$5.a($$2, gry::d), $$3, $$4);
    }
 }

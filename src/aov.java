@@ -1,52 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class aov {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("commands.publish.alreadyPublished", $$0));
+
    public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("rotate").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ek)$$0x.getSource(), azq.a(), false, null)))
             .then(
-               ((RequiredArgumentBuilder)el.a("target", ex.a())
-                     .then(el.a("rotation", gl.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), gl.a($$0x, "rotation")))))
+               ((RequiredArgumentBuilder)el.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ek)$$0x.getSource(), azq.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
-                     ((LiteralArgumentBuilder)el.a("facing")
-                           .then(
-                              el.a("entity")
-                                 .then(
-                                    ((RequiredArgumentBuilder)el.a("facingEntity", ex.a())
-                                          .executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), new aoe.a(ex.a($$0x, "facingEntity"), ew.a.a))))
-                                       .then(
-                                          el.a("facingAnchor", ew.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ek)$$0x.getSource(),
-                                                      ex.a($$0x, "target"),
-                                                      new aoe.a(ex.a($$0x, "facingEntity"), ew.a($$0x, "facingAnchor"))
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
+                     ((RequiredArgumentBuilder)el.a("gamemode", ey.a())
+                           .executes($$0x -> a((ek)$$0x.getSource(), azq.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ey.a($$0x, "gamemode"))))
                         .then(
-                           el.a("facingLocation", go.a())
-                              .executes($$0x -> a((ek)$$0x.getSource(), ex.a($$0x, "target"), new aoe.b(go.a($$0x, "facingLocation"))))
+                           el.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (ek)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       ey.a($$0x, "gamemode")
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(ek $$0, bwv $$1, gj $$2) {
-      ffr $$3 = $$2.b($$0);
-      $$1.a($$3.k, $$3.j);
-      $$0.a(() -> xc.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   private static int a(ek $$0, int $$1, boolean $$2, @Nullable dkg $$3) throws CommandSyntaxException {
+      if ($$0.l().r()) {
+         throw b.create($$0.l().S());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
+         throw a.create();
+      } else {
+         $$0.a(() -> a($$1), true);
+         return $$1;
+      }
    }
 
-   private static int a(ek $$0, bwv $$1, aoe $$2) {
-      $$2.perform($$0, $$1);
-      $$0.a(() -> xc.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   public static xu a(int $$0) {
+      xg $$1 = xj.a(String.valueOf($$0));
+      return xg.a("commands.publish.started", $$1);
    }
 }

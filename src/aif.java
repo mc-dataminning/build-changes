@@ -1,29 +1,36 @@
-public class aif implements zj<agt> {
-   public static final za<vy, aif> a = zj.a(aif::a, aif::new);
-   private final String b;
+public class aif implements zo<aha> {
+   public static final ze<vy, aif> a = zo.a(aif::a, aif::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public aif(String $$0) {
-      this.b = $$0;
+   public aif(cse $$0) {
+      this.c = $$0.b;
    }
 
    private aif(vy $$0) {
-      this.b = $$0.p();
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public zl<aif> a() {
-      return agr.bY;
+   public zq<aif> a() {
+      return agy.bR;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
+   public boolean b() {
+      return this.c;
    }
 }

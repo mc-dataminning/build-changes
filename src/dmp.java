@@ -1,76 +1,77 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dmp extends dmm {
-   public static final MapCodec<dmp> c = b(dmp::new);
-   public static final ece<jc> d = drf.e;
-   private static final Map<jc, fgm> e = fgj.c(dne.b(16.0, 8.0, 5.0, 16.0));
-
-   @Override
-   public MapCodec<? extends dmp> a() {
-      return c;
-   }
-
-   protected dmp(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(d, jc.c).b(b, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e.get($$0.c(d));
-   }
+public class dmp extends dxa {
+   public static final MapCodec<dmp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alq.a(mi.i).fieldOf("fruit").forGetter($$0x -> $$0x.d),
+               alq.a(mi.i).fieldOf("stem").forGetter($$0x -> $$0x.e),
+               alq.a(mi.K).fieldOf("seed").forGetter($$0x -> $$0x.f),
+               t()
+            )
+            .apply($$0, dmp::new)
+   );
+   public static final eco<jc> b = drp.e;
+   private static final Map<jc, fgw> c = fgt.c(dno.a(4.0, 0.0, 10.0, 0.0, 10.0));
+   private final alq<dno> d;
+   private final alq<dno> e;
+   private final alq<dag> f;
 
    @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   public MapCodec<dmp> a() {
+      return a;
    }
 
-   @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(d, b);
+   protected dmp(alq<dno> $$0, alq<dno> $$1, alq<dag> $$2, ebp.d $$3) {
+      super($$3);
+      this.l(this.C.b().b(b, jc.c));
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
-      }
-
-      return $$4.g() == $$0.c(d) && !$$0.a($$1, $$3) ? dng.a.m() : $$0;
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return c.get($$0.c(b));
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      jc $$3 = $$0.c(d);
-      iw $$4 = $$2.a($$3.g());
-      ebg $$5 = $$1.a_($$4);
-      return $$5.c($$1, $$4, $$3);
-   }
-
-   @Nullable
-   @Override
-   public ebg a(ddt $$0) {
-      ebg $$1 = super.a($$0);
-      dkc $$2 = $$0.q();
-      iw $$3 = $$0.a();
-      jc[] $$4 = $$0.f();
-
-      for (jc $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.b(d, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      if (!$$6.a(this.d) && $$4 == $$0.c(b)) {
+         Optional<dno> $$8 = $$1.J_().f(mi.i).f(this.e);
+         if ($$8.isPresent()) {
+            return $$8.get().m().c(dvu.c, Integer.valueOf(7));
          }
       }
 
-      return null;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean b(ebq $$0, djn $$1, iw $$2) {
+      return $$0.a(dnq.cN);
+   }
+
+   @Override
+   protected dak a(dkm $$0, iw $$1, ebq $$2, boolean $$3) {
+      return new dak((dki)DataFixUtils.orElse($$0.J_().f(mi.K).f(this.f), this));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b);
    }
 }

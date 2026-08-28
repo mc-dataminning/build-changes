@@ -1,42 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class evo extends evs {
-   public static final MapCodec<evo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, evo::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class evo extends ewm {
+   public static final MapCodec<evo> a = MapCodec.unit(() -> evo.b);
+   public static final evo b = new evo();
+   private final Map<dno, dno> c = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dnq.m, dnq.pZ);
+      $$0.put(dnq.cx, dnq.pZ);
+      $$0.put(dnq.b, dnq.qd);
+      $$0.put(dnq.eZ, dnq.qe);
+      $$0.put(dnq.fa, dnq.qe);
+      $$0.put(dnq.dc, dnq.qa);
+      $$0.put(dnq.nO, dnq.qa);
+      $$0.put(dnq.nQ, dnq.ql);
+      $$0.put(dnq.fC, dnq.qi);
+      $$0.put(dnq.nM, dnq.qi);
+      $$0.put(dnq.kl, dnq.qc);
+      $$0.put(dnq.oc, dnq.qc);
+      $$0.put(dnq.kh, dnq.qm);
+      $$0.put(dnq.kg, dnq.qm);
+      $$0.put(dnq.kn, dnq.qh);
+      $$0.put(dnq.oa, dnq.qh);
+      $$0.put(dnq.oq, dnq.qj);
+      $$0.put(dnq.oo, dnq.qj);
+      $$0.put(dnq.go, dnq.qb);
+      $$0.put(dnq.gp, dnq.qb);
+      $$0.put(dnq.fc, dnq.qg);
+      $$0.put(dnq.fb, dnq.qf);
+      $$0.put(dnq.fo, dnq.fp);
+   });
 
-   public evo(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private evo() {
+   }
+
+   @Override
+   public ewp.d a(dkm $$0, iw $$1, iw $$2, ewp.d $$3, ewp.d $$4, ewl $$5) {
+      dno $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         ebq $$7 = $$4.b();
+         ebq $$8 = $$6.m();
+         if ($$7.b(dvs.b)) {
+            $$8 = $$8.b(dvs.b, $$7.c(dvs.b));
+         }
+
+         if ($$7.b(dvs.c)) {
+            $$8 = $$8.b(dvs.c, $$7.c(dvs.c));
+         }
+
+         if ($$7.b(dvb.b)) {
+            $$8 = $$8.b(dvb.b, $$7.c(dvb.b));
+         }
+
+         return new ewp.d($$4.a(), $$8, $$4.c());
       }
    }
 
    @Override
-   public boolean a(iw $$0, iw $$1, iw $$2, azz $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azq.b(this.b, this.d, azq.f((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected evt<?> a() {
-      return evt.b;
+   protected ewo<?> a() {
+      return ewo.l;
    }
 }

@@ -1,5 +1,8 @@
-public interface bqa<S, T> {
-   bpt<T> a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   bqc<S, T> b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bqa {
 }

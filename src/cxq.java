@@ -1,28 +1,16 @@
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public interface cxq extends bao {
-   IntList a();
-
-   default int b() {
-      return this.a().size();
+public abstract class cxq extends cwb {
+   public cxq(cxk<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   static cxq a(final String $$0, final IntList $$1) {
-      return new cxq() {
-         @Override
-         public IntList a() {
-            return $$1;
-         }
+   public abstract cxq.a a(boolean var1, boolean var2, dfg<?> var3, asb var4, csh var5);
 
-         @Override
-         public String c() {
-            return $$0;
-         }
+   public abstract void a(cso var1);
 
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public abstract cxr ao_();
+
+   public static enum a {
+      a,
+      b;
    }
 }

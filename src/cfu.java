@@ -1,125 +1,90 @@
+import java.util.EnumSet;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class cfu extends cff {
-   private final dne g;
-   private final bxy h;
-   private int i;
-   private static final int j = 20;
+public class cfu extends cfb {
+   public static final int b = 1;
+   protected final byn c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<byn, ayc<bvv>> a;
 
-   public cfu(dne $$0, bye $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public cfu(byn $$0, double $$1) {
+      this($$0, $$1, axo.F);
+   }
+
+   public cfu(byn $$0, double $$1, ayc<bvv> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public cfu(byn $$0, double $$1, Function<byn, ayc<bvv>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(cfb.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!a(this.h).O().c(djv.d)) {
+      if (!this.h()) {
          return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
       } else {
-         this.c = this.a(this.a);
-         return false;
+         if (this.c.bX()) {
+            iw $$0 = this.a(this.c.dV(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
       }
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.h.Z = 1.0;
+   protected boolean h() {
+      return this.c.eI() != null && this.c.eI().a(this.a.apply(this.c));
+   }
+
+   protected boolean i() {
+      fgc $$0 = ciy.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.i = 0;
-   }
-
-   public void a(dka $$0, iw $$1) {
-   }
-
-   public void a(djz $$0, iw $$1) {
+      this.c.O().a(this.e, this.f, this.g, this.d);
+      this.h = true;
    }
 
    @Override
-   public void a() {
-      super.a();
-      djz $$0 = this.h.dV();
-      iw $$1 = this.h.dv();
-      iw $$2 = this.a($$1, $$0);
-      azz $$3 = this.h.dY();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            ffs $$4 = this.h.dy();
-            this.h.n($$4.d, 0.3, $$4.f);
-            if (!$$0.C) {
-               double $$5 = 0.08;
-               ((aru)$$0)
-                  .a(
-                     new lv(lz.U, new daa(dae.rH)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
-         }
+   public void e() {
+      this.h = false;
+   }
 
-         if (this.i % 2 == 0) {
-            ffs $$6 = this.h.dy();
-            this.h.n($$6.d, -0.3, $$6.f);
-            if (this.i % 6 == 0) {
-               this.a((dka)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.C) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((aru)$$0).a(lz.ae, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
-      }
+   @Override
+   public boolean c() {
+      return !this.c.O().k();
    }
 
    @Nullable
-   private iw a(iw $$0, djd $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         iw[] $$2 = new iw[]{$$0.e(), $$0.h(), $$0.i(), $$0.f(), $$0.g(), $$0.e().e()};
-
-         for (iw $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   @Override
-   protected boolean a(dkc $$0, iw $$1) {
-      edd $$2 = $$0.a(jz.a($$1.u()), jz.a($$1.w()), eee.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.d()).l() && $$2.a_($$1.b(2)).l();
+   protected iw a(djn $$0, bxe $$1, int $$2) {
+      iw $$3 = $$1.dv();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : iw.a($$1.dv(), $$2, 1, $$1x -> $$0.b_($$1x).a(axs.a)).orElse(null);
    }
 }

@@ -1,7 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dsb {
-   boolean a(@Nullable bxw var1, djd var2, iw var3, ebg var4, exp var5);
+public class dsb extends dmh {
+   public static final MapCodec<dsb> c = b(dsb::new);
 
-   boolean a(dka var1, iw var2, ebg var3, exq var4);
+   @Override
+   public MapCodec<dsb> a() {
+      return c;
+   }
+
+   public dsb(ebp.d $$0) {
+      super($$0, kd.e);
+   }
+
+   @Override
+   protected double b(ebq $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(ebq $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(ebq $$0, dkj $$1, iw $$2, bxe $$3, bxx $$4) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.aB();
+         $$3.aC();
+      }
+   }
+
+   @Override
+   protected int a(ebq $$0, dkj $$1, iw $$2) {
+      return 3;
+   }
 }

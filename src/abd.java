@@ -1,22 +1,19 @@
-public record abd(iw c, float d, float e, float f, float g, float h) implements aam {
-   public static final za<vy, abd> a = aam.a(abd::a, abd::new);
-   public static final aam.b<abd> b = aam.a("debug/worldgen_attempt");
+public record abd(iw c, String d, int e) implements aat {
+   public static final ze<vy, abd> a = aat.a(abd::a, abd::new);
+   public static final aat.b<abd> b = aat.a("debug/poi_added");
 
    private abd(vy $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
    private void a(vy $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+      $$0.q(this.e);
    }
 
    @Override
-   public aam.b<abd> a() {
+   public aat.b<abd> a() {
       return b;
    }
 
@@ -24,23 +21,11 @@ public record abd(iw c, float d, float e, float f, float g, float h) implements 
       return this.c;
    }
 
-   public float c() {
+   public String c() {
       return this.d;
    }
 
-   public float d() {
+   public int d() {
       return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

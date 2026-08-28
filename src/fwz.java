@@ -1,123 +1,242 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.textures.GpuTexture;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fwz implements fwx {
-   private static final alk h = alk.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final fwz.a n;
-   private final List<azc> o;
-   private fwx.a p = fwx.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public class fwz implements fis {
+   static final Logger b = LogUtils.getLogger();
+   private final fkf c;
+   private final fwn<fwz.b> d;
 
-   public fwz(ftx $$0, fwz.a $$1, xc $$2, @Nullable xc $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
-
-      this.t = $$4;
-      this.u = $$5;
-   }
-
-   public fwz(ftx $$0, fwz.a $$1, xc $$2, @Nullable xc $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
+   fwz(fkf $$0, fwn<fwz.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public fwx.a a() {
-      return this.p;
+   public void close() {
+      this.c.close();
+   }
+
+   @Nullable
+   @Override
+   public fir a(int $$0) {
+      return this.d.a($$0);
    }
 
    @Override
-   public void a(fwy $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.e();
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
+
+   public static record a(alr c, int d, int e, int[][] f) implements fxb {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
          }
-      } else if (this.t) {
-         this.r = azq.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
-      }
-   }
 
-   @Override
-   public int d() {
-      return 7 + this.f() + 3;
-   }
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
 
-   private int f() {
-      return Math.max(this.o.size(), 2) * 11;
-   }
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
 
-   @Override
-   public void a(ftz $$0, ftx $$1, long $$2) {
-      int $$3 = this.d();
-      $$0.a(gsn::H, h, 0, 0, this.c(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.f() - $$4) / 2;
+         return $$1;
+      }).validate(fwz.a::a);
+      public static final MapCodec<fwz.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alr.a.fieldOf("file").forGetter(fwz.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fwz.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fwz.a::e),
+                     g.fieldOf("chars").forGetter(fwz.a::f)
+                  )
+                  .apply($$0, fwz.a::new)
+         )
+         .validate(fwz.a::a);
 
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
-      }
-
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
          } else {
-            $$8 = -11206656;
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
+         }
+      }
+
+      private static DataResult<fwz.a> a(fwz.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fxc a() {
+         return fxc.a;
+      }
+
+      @Override
+      public Either<fxb.b, fxb.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fis a(avo $$0) throws IOException {
+         alr $$1 = this.c.f("textures/");
+
+         fwz var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            fkf $$3 = fkf.a(fkf.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fwn<fwz.b> $$9 = new fwn<>(fwz.b[]::new, fwz.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fwz.b $$15 = $$9.a($$12, new fwz.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fwz.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fwz($$3, $$9);
          }
 
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
+         return var22;
+      }
+
+      private int a(fkf $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.b($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
+            }
+         }
+
+         return $$5 + 1;
       }
    }
 
-   public void e() {
-      this.p = fwx.a.b;
-   }
+   static record b(float a, fkf b, int c, int d, int e, int f, int g, int h) implements fir {
 
-   public void a(float $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a(alk.b("toast/movement_keys")),
-      b(alk.b("toast/mouse")),
-      c(alk.b("toast/tree")),
-      d(alk.b("toast/recipe_book")),
-      e(alk.b("toast/wooden_planks")),
-      f(alk.b("toast/social_interactions")),
-      g(alk.b("toast/right_click"));
-
-      private final alk h;
-
-      private a(final alk $$0) {
-         this.h = $$0;
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
       }
 
-      public void a(ftz $$0, int $$1, int $$2) {
-         $$0.a(gsn::H, this.h, $$1, $$2, 20, 20);
+      @Override
+      public fwu bake(Function<fit, fwu> $$0) {
+         return $$0.apply(new fit() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1, GpuTexture $$2) {
+               RenderSystem.getDevice().createCommandEncoder().writeToTexture($$2, b.this.b, 0, $$0, $$1, b.this.e, b.this.f, b.this.c, b.this.d);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public fkf d() {
+         return this.b;
+      }
+
+      public int e() {
+         return this.c;
+      }
+
+      public int f() {
+         return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

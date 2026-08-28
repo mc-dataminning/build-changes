@@ -1,123 +1,110 @@
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class fwn implements ggb {
-   private static final alk a = alk.b("hud/hotbar");
-   private static final alk b = alk.b("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final frf e;
-   private long f;
+public class fwn<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
+
+   public fwn(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
+   }
+
+   public void a() {
+      Arrays.fill(this.g, this.f);
+   }
+
    @Nullable
-   private gfy g;
-
-   public fwn(frf $$0) {
-      this.e = $$0;
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   public void a(int $$0) {
-      this.f = ag.c();
-      if (this.g != null) {
-         this.g.b($$0);
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
       } else {
-         this.g = new gfy(this);
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
       }
    }
 
-   private float c() {
-      long $$0 = this.f - ag.c() + 5000L;
-      return azq.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void a(ftz $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = azq.d((float)$$0.b() - 22.0F * $$1);
-            ggc $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
-   }
-
-   protected void a(ftz $$0, float $$1, int $$2, int $$3, ggc $$4) {
-      int $$5 = aya.a($$1);
-      $$0.a(gsn::H, a, $$2 - 91, $$3, 182, 22, $$5);
-      if ($$4.a() >= 0) {
-         $$0.a(gsn::H, b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23, $$5);
-      }
-
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a($$0, $$6, $$0.a() / 2 - 90 + $$6 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$6));
-      }
-   }
-
-   private void a(ftz $$0, int $$1, int $$2, float $$3, float $$4, gga $$5) {
-      if ($$5 != gfy.a) {
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$6 = $$5.aU_() ? 1.0F : 0.25F;
-         $$5.a($$0, $$6, $$4);
-         $$0.c().b();
-         int $$7 = (int)($$4 * 255.0F);
-         if ($$7 > 3 && $$5.aU_()) {
-            xc $$8 = this.e.n.S[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
-         }
-      }
-   }
-
-   public void b(ftz $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         gga $$2 = this.g.b();
-         xc $$3 = $$2 == gfy.a ? this.g.c().b() : $$2.aT_();
-         if ($$3 != null) {
-            int $$4 = this.e.h.a($$3);
-            int $$5 = ($$0.a() - $$4) / 2;
-            int $$6 = $$0.b() - 35;
-            $$0.a(this.e.h, $$3, $$5, $$6, $$4, aya.c($$1, -1));
-         }
-      }
-   }
-
-   @Override
-   public void a(gfy $$0) {
-      this.g = null;
-      this.f = 0L;
-   }
-
-   public boolean a() {
-      return this.g != null;
-   }
-
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == gfy.a || !this.g.a($$1).aU_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ag.c();
-      }
-   }
-
-   public void b() {
-      this.f = ag.c();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
       } else {
-         this.g = new gfy(this);
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
       }
+   }
+
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(fwn.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

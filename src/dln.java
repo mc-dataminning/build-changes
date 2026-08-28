@@ -1,57 +1,103 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class dln extends dlg implements dle.a {
-   public static final MapCodec<dln> b = dlc.c.fieldOf("biome").xmap(dln::new, $$0 -> $$0.c).stable();
-   private final jg<dlc> c;
+public class dln {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dln a = new dln(jk.a(), List.of());
+   public static final MapCodec<dln> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ejt.c.promotePartial(ag.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               err.d.promotePartial(ag.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dln::new)
+   );
+   private final jk<ejt<?>> d;
+   private final List<jk<err>> e;
+   private final Supplier<List<ekh<?, ?>>> f;
+   private final Supplier<Set<err>> g;
 
-   public dln(jg<dlc> $$0) {
-      this.c = $$0;
+   dln(jk<ejt<?>> $$0, List<jk<err>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jk::a).map(jg::a).flatMap(err::a).filter($$0xx -> $$0xx.b() == ekw.h).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jk::a).map(jg::a).collect(Collectors.toSet()));
    }
 
-   @Override
-   protected Stream<jg<dlc>> b() {
-      return Stream.of(this.c);
+   public Iterable<jg<ejt<?>>> a() {
+      return this.d;
    }
 
-   @Override
-   protected MapCodec<? extends dlg> a() {
-      return b;
+   public List<ekh<?, ?>> b() {
+      return this.f.get();
    }
 
-   @Override
-   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2, dll.f $$3) {
-      return this.c;
+   public List<jk<err>> c() {
+      return this.e;
    }
 
-   @Override
-   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
+   public boolean a(err $$0) {
+      return this.g.get().contains($$0);
    }
 
-   @Nullable
-   @Override
-   public Pair<iw, jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jg<dlc>> $$5, azz $$6, boolean $$7, dll.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new iw($$0, $$1, $$2), this.c) : Pair.of(new iw($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
+   public static class a extends dln.b {
+      private final jh<err> a;
+      private final jh<ejt<?>> b;
+
+      public a(jh<err> $$0, jh<ejt<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dln.a a(ehl.a $$0, alq<err> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dln.a a(alq<ejt<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
       }
    }
 
-   @Nullable
-   @Override
-   public Pair<iw, jg<dlc>> a(iw $$0, int $$1, int $$2, int $$3, Predicate<jg<dlc>> $$4, dll.f $$5, dkc $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
-   }
+   public static class b {
+      private final List<jg<ejt<?>>> a = new ArrayList<>();
+      private final List<List<jg<err>>> b = new ArrayList<>();
 
-   @Override
-   public Set<jg<dlc>> a(int $$0, int $$1, int $$2, int $$3, dll.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+      public dln.b a(ehl.a $$0, jg<err> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dln.b a(int $$0, jg<err> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dln.b a(jg<ejt<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dln a() {
+         return new dln(jk.a(this.a), this.b.stream().map(jk::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

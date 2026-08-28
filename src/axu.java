@@ -1,17 +1,9 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public interface axu {
+   ayc<dad> a = a("regular_goat_horns");
+   ayc<dad> b = a("screaming_goat_horns");
+   ayc<dad> c = a("goat_horns");
 
-public record axu(List<axt> b, boolean c) {
-   public static final Codec<axu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axt.a.listOf().fieldOf("values").forGetter(axu::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axu::b)).apply($$0, axu::new)
-   );
-
-   public List<axt> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
+   private static ayc<dad> a(String $$0) {
+      return ayc.a(mi.aU, alr.b($$0));
    }
 }

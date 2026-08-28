@@ -6,21 +6,21 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class gv {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xc.b("arguments.item.overstacked", $$0, $$1));
-   private final jg<czw> b;
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xg.b("arguments.item.overstacked", $$0, $$1));
+   private final jg<dag> b;
    private final kj c;
 
-   public gv(jg<czw> $$0, kj $$1) {
+   public gv(jg<dag> $$0, kj $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public czw a() {
+   public dag a() {
       return this.b.a();
    }
 
-   public daa a(int $$0, boolean $$1) throws CommandSyntaxException {
-      daa $$2 = new daa(this.b, $$0);
+   public dak a(int $$0, boolean $$1) throws CommandSyntaxException {
+      dak $$2 = new dak(this.b, $$0);
       $$2.b(this.c);
       if ($$1 && $$0 > $$2.k()) {
          throw a.create(this.b(), $$2.k());
@@ -45,7 +45,7 @@ public class gv {
       DynamicOps<va> $$1 = $$0.a(uo.a);
       return this.c.b().stream().flatMap($$1x -> {
          kk<?> $$2 = (kk<?>)$$1x.getKey();
-         alk $$3 = mh.am.b($$2);
+         alr $$3 = mh.am.b($$2);
          if ($$3 == null) {
             return Stream.empty();
          } else {
@@ -61,6 +61,6 @@ public class gv {
    }
 
    private String b() {
-      return this.b.e().map(alj::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+      return this.b.e().map(alq::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

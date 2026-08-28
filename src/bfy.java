@@ -1,42 +1,38 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.Dynamic;
 
-public class bfy extends bhx {
-   private static final String c = "minecraft:wolf";
-   private static final String d = "minecraft:generic.max_health";
+public class bfy extends big {
+   private static final int c = 6;
 
-   public bfy(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bjd.D, "minecraft:wolf");
+   public bfy(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bjm.D, "Zombie");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("IsVillager").asBoolean(false)) {
+         if ($$0.get("ZombieType").result().isEmpty()) {
+            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
+            if ($$1 == -1) {
+               $$1 = this.a(bai.a().a(6));
+            }
+
+            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+         }
+
+         $$0 = $$0.remove("IsVillager");
+      }
+
+      return $$0;
+   }
+
+   private int a(int $$0) {
+      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bky.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
-
-            return $$0x;
-         }
-      );
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

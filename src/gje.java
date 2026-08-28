@@ -1,27 +1,23 @@
-public class gje extends gka {
-   private final glg a;
-   private final glg b;
-   private final glg c;
+import java.util.Set;
 
-   public gje(glg $$0) {
+public class gje extends giy<hfx> {
+   public static final gla a = new ggi(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
+
+   public gje(gkr $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
    }
 
-   public static glo a() {
-      glo $$0 = new glo();
-      gjf.a(glk.a, $$0);
-      return $$0;
+   public static gkx a() {
+      gkz $$0 = giy.a(12, gkv.a);
+      glb $$1 = $$0.a();
+      $$1.a("head", gkw.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gkt.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gkw.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gkt.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gkx.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public void a(hfx $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.aj;
+      this.b.e = $$0.b;
    }
 }

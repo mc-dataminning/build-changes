@@ -8,8 +8,8 @@ public class dd extends dl<dd.a> {
       return dd.a.a;
    }
 
-   public void a(arv $$0, daa $$1, bwv $$2) {
-      faj $$3 = bz.b($$0, $$2);
+   public void a(asc $$0, dak $$1, bxe $$2) {
+      fat $$3 = bz.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class dd extends dl<dd.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(daa $$0, faj $$1) {
+      public boolean a(dak $$0, fat $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

@@ -1,82 +1,61 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-public class bpm<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
+public class bpm {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final awb c;
+   private final Map<bpo, Map<asc, bpm.b>> d;
+   private final Queue<bpm.a> e = new LinkedList<>();
 
-   public bpm(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bpm(awb $$0) {
+      this.c = $$0;
+      this.d = ag.a(bpo.class, $$0x -> Maps.newHashMap());
    }
 
-   public static <T> bpm<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bpm<>($$0, $$2);
+   public boolean a(bpo $$0) {
+      return !this.d.get($$0).isEmpty();
    }
 
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public bpn<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
-      } else {
-         this.d.incrementAndGet();
-         final bpn<T> $$0 = bpn.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bpn<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bpm.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bpm.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               bpm.this.b();
-            }
-         };
+   public void a(adf $$0) {
+      for (asc $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.f.b($$0);
       }
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b();
+   public void a(asc $$0, bpo $$1) {
+      if (this.c.f($$0.gi())) {
+         this.e.add(new bpm.a($$0, $$1));
+      }
    }
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+   public void a(int $$0) {
+      long $$1 = ag.c();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (bpm.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new bpm.b($$0, $$1));
       }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<asc, bpm.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((asc)$$2x.getKey()).gi());
+            bpm.b $$4 = (bpm.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(asc a, bpo b) {
+   }
+
+   static record b(long a, int b) {
    }
 }

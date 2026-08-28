@@ -1,17 +1,26 @@
-public record fwa(alk a, alk b, alk c, alk d) {
-   public fwa(alk $$0, alk $$1) {
-      this($$0, $$0, $$1, $$1);
+import java.util.function.Consumer;
+
+public class fwa implements fwb {
+   private final xg b;
+   protected final fxl a = new fxl();
+
+   public fwa(xg $$0) {
+      this.b = $$0;
    }
 
-   public fwa(alk $$0, alk $$1, alk $$2) {
-      this($$0, $$1, $$2, $$1);
+   @Override
+   public xg a() {
+      return this.b;
    }
 
-   public alk a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
-      }
+   @Override
+   public void a(Consumer<ftw> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fyf $$0) {
+      this.a.a();
+      fxk.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

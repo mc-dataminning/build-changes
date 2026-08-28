@@ -6,11 +6,11 @@ public class ls implements lx {
    private final int b;
 
    public static MapCodec<ls> a(ly<ls> $$0) {
-      return ayy.j.xmap($$1 -> new ls($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+      return azg.j.xmap($$1 -> new ls($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public static za<? super ByteBuf, ls> b(ly<ls> $$0) {
-      return yy.g.a($$1 -> new ls($$0, $$1), $$0x -> $$0x.b);
+   public static ze<? super ByteBuf, ls> b(ly<ls> $$0) {
+      return zc.g.a($$1 -> new ls($$0, $$1), $$0x -> $$0x.b);
    }
 
    private ls(ly<ls> $$0, int $$1) {
@@ -24,19 +24,19 @@ public class ls implements lx {
    }
 
    public float b() {
-      return (float)aya.b(this.b) / 255.0F;
+      return (float)ayh.b(this.b) / 255.0F;
    }
 
    public float c() {
-      return (float)aya.c(this.b) / 255.0F;
+      return (float)ayh.c(this.b) / 255.0F;
    }
 
    public float d() {
-      return (float)aya.d(this.b) / 255.0F;
+      return (float)ayh.d(this.b) / 255.0F;
    }
 
    public float e() {
-      return (float)aya.a(this.b) / 255.0F;
+      return (float)ayh.a(this.b) / 255.0F;
    }
 
    public static ls a(ly<ls> $$0, int $$1) {
@@ -44,6 +44,6 @@ public class ls implements lx {
    }
 
    public static ls a(ly<ls> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, aya.a(1.0F, $$1, $$2, $$3));
+      return a($$0, ayh.a(1.0F, $$1, $$2, $$3));
    }
 }

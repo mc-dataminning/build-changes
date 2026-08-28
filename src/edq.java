@@ -1,11 +1,9 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface edq {
-   @Nullable
-   edp c(int var1, int var2);
-
-   default void a(dki $$0, jz $$1) {
+public class edq {
+   public static MapCodec<? extends edo> a(jt<MapCodec<? extends edo>> $$0) {
+      jt.a($$0, "noise", ehs.c);
+      jt.a($$0, "flat", ehk.c);
+      return jt.a($$0, "debug", ehg.c);
    }
-
-   djd r();
 }

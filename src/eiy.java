@@ -1,18 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class eiy implements eim {
-   public static eiy a = new eiy();
-   public static final MapCodec<eiy> e = MapCodec.unit(() -> a);
+abstract class eiy implements eiw {
+   protected final List<eiw> e;
 
-   private eiy() {
+   protected eiy(List<eiw> $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(dky $$0, iw $$1) {
-      return true;
-   }
-
-   @Override
-   public ein<?> a() {
-      return ein.l;
+   public static <T extends eiy> MapCodec<T> a(Function<List<eiw>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(eiw.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

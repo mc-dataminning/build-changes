@@ -1,72 +1,103 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class dmo extends dne implements dup {
-   public static final ebx b = ebw.I;
-   private static final fgm a = dne.b(12.0, 0.0, 4.0);
+public class dmo extends dqm {
+   public static final MapCodec<dmo> a = b(dmo::new);
+   public static final eco<jc> b = drp.e;
+   private static final Map<jc.a, fgw> c = fgt.a(
+      fgt.a(dno.b(12.0, 0.0, 4.0), dno.a(8.0, 10.0, 4.0, 5.0), dno.a(4.0, 8.0, 5.0, 10.0), dno.a(10.0, 16.0, 10.0, 16.0))
+   );
+   private static final xg d = xg.c("container.repair");
+   private static final float e = 2.0F;
+   private static final int f = 40;
 
-   protected dmo(ebf.d $$0) {
+   @Override
+   public MapCodec<dmo> a() {
+      return a;
+   }
+
+   public dmo(ebp.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
+      this.l(this.C.b().b(b, jc.c));
    }
 
    @Override
-   protected abstract MapCodec<? extends dmo> a();
-
-   protected void a(ebg $$0, djd $$1, dko $$2, azz $$3, iw $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
+   public ebq a(ded $$0) {
+      return this.m().b(b, $$0.g().h());
    }
 
-   protected static boolean d(ebg $$0, djd $$1, iw $$2) {
-      if ($$0.c(b)) {
-         return true;
-      } else {
-         for (jc $$3 : jc.values()) {
-            if ($$1.b_($$2.a($$3)).a(axl.a)) {
-               return true;
-            }
-         }
-
-         return false;
+   @Override
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(axi.aC);
       }
+
+      return bvc.a;
    }
 
    @Nullable
    @Override
-   public ebg a(ddt $$0) {
-      exq $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axl.a) && $$1.e() == 8));
+   protected bve b(ebq $$0, dkj $$1, iw $$2) {
+      return new bvk(($$2x, $$3, $$4) -> new cwe($$2x, $$3, cwo.a($$1, $$2)), d);
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return a;
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return c.get($$0.c(b).o());
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
+   protected void a(com $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(dkj $$0, iw $$1, ebq $$2, ebq $$3, com $$4) {
+      if (!$$4.ba()) {
+         $$0.c(1031, $$1, 0);
       }
-
-      return $$4 == jc.a && !this.a($$0, $$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      iw $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jc.b);
+   public void a(dkj $$0, iw $$1, com $$2) {
+      if (!$$2.ba()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
+   public bvt a(bxe $$0) {
+      return $$0.dW().b($$0);
+   }
+
+   @Nullable
+   public static ebq e(ebq $$0) {
+      if ($$0.a(dnq.ht)) {
+         return dnq.hu.m().b(b, $$0.c(b));
+      } else {
+         return $$0.a(dnq.hu) ? dnq.hv.m().b(b, $$0.c(b)) : null;
+      }
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
       $$0.a(b);
    }
 
    @Override
-   protected exq b_(ebg $$0) {
-      return $$0.c(b) ? exr.c.a(false) : super.b_($$0);
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
+   }
+
+   @Override
+   public int b(ebq $$0, djn $$1, iw $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

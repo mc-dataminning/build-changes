@@ -1,128 +1,300 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.ListBuilder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class ali<T> extends alb<T> {
-   private final ali.c b;
+public abstract class ali<T> implements DynamicOps<T> {
+   protected final DynamicOps<T> a;
 
-   public static <T> ali<T> a(DynamicOps<T> $$0, ji.a $$1) {
-      return a($$0, new ali.a($$1));
+   protected ali(DynamicOps<T> $$0) {
+      this.a = $$0;
    }
 
-   public static <T> ali<T> a(DynamicOps<T> $$0, ali.c $$1) {
-      return new ali<>($$0, $$1);
+   public T empty() {
+      return (T)this.a.empty();
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, ji.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
+   public T emptyMap() {
+      return (T)this.a.emptyMap();
    }
 
-   private ali(DynamicOps<T> $$0, ali.c $$1) {
-      super($$0);
-      this.b = $$1;
+   public T emptyList() {
+      return (T)this.a.emptyList();
    }
 
-   public <U> ali<U> a(DynamicOps<U> $$0) {
-      return (ali<U>)($$0 == this.a ? this : new ali((DynamicOps<T>)$$0, this.b));
+   public <U> U convertTo(DynamicOps<U> $$0, T $$1) {
+      return (U)(Objects.equals($$0, this.a) ? $$1 : this.a.convertTo($$0, $$1));
    }
 
-   public <E> Optional<jj<E>> a(alj<? extends jt<? extends E>> $$0) {
-      return this.b.a($$0).map(ali.b::a);
+   public DataResult<Number> getNumberValue(T $$0) {
+      return this.a.getNumberValue($$0);
    }
 
-   public <E> Optional<jh<E>> b(alj<? extends jt<? extends E>> $$0) {
-      return this.b.a($$0).map(ali.b::b);
+   public T createNumeric(Number $$0) {
+      return (T)this.a.createNumeric($$0);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ali<?> $$1 = (ali<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
-      } else {
-         return false;
+   public T createByte(byte $$0) {
+      return (T)this.a.createByte($$0);
+   }
+
+   public T createShort(short $$0) {
+      return (T)this.a.createShort($$0);
+   }
+
+   public T createInt(int $$0) {
+      return (T)this.a.createInt($$0);
+   }
+
+   public T createLong(long $$0) {
+      return (T)this.a.createLong($$0);
+   }
+
+   public T createFloat(float $$0) {
+      return (T)this.a.createFloat($$0);
+   }
+
+   public T createDouble(double $$0) {
+      return (T)this.a.createDouble($$0);
+   }
+
+   public DataResult<Boolean> getBooleanValue(T $$0) {
+      return this.a.getBooleanValue($$0);
+   }
+
+   public T createBoolean(boolean $$0) {
+      return (T)this.a.createBoolean($$0);
+   }
+
+   public DataResult<String> getStringValue(T $$0) {
+      return this.a.getStringValue($$0);
+   }
+
+   public T createString(String $$0) {
+      return (T)this.a.createString($$0);
+   }
+
+   public DataResult<T> mergeToList(T $$0, T $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToList(T $$0, List<T> $$1) {
+      return this.a.mergeToList($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, T $$1, T $$2) {
+      return this.a.mergeToMap($$0, $$1, $$2);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, MapLike<T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToMap(T $$0, Map<T, T> $$1) {
+      return this.a.mergeToMap($$0, $$1);
+   }
+
+   public DataResult<T> mergeToPrimitive(T $$0, T $$1) {
+      return this.a.mergeToPrimitive($$0, $$1);
+   }
+
+   public DataResult<Stream<Pair<T, T>>> getMapValues(T $$0) {
+      return this.a.getMapValues($$0);
+   }
+
+   public DataResult<Consumer<BiConsumer<T, T>>> getMapEntries(T $$0) {
+      return this.a.getMapEntries($$0);
+   }
+
+   public T createMap(Map<T, T> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public T createMap(Stream<Pair<T, T>> $$0) {
+      return (T)this.a.createMap($$0);
+   }
+
+   public DataResult<MapLike<T>> getMap(T $$0) {
+      return this.a.getMap($$0);
+   }
+
+   public DataResult<Stream<T>> getStream(T $$0) {
+      return this.a.getStream($$0);
+   }
+
+   public DataResult<Consumer<Consumer<T>>> getList(T $$0) {
+      return this.a.getList($$0);
+   }
+
+   public T createList(Stream<T> $$0) {
+      return (T)this.a.createList($$0);
+   }
+
+   public DataResult<ByteBuffer> getByteBuffer(T $$0) {
+      return this.a.getByteBuffer($$0);
+   }
+
+   public T createByteList(ByteBuffer $$0) {
+      return (T)this.a.createByteList($$0);
+   }
+
+   public DataResult<IntStream> getIntStream(T $$0) {
+      return this.a.getIntStream($$0);
+   }
+
+   public T createIntList(IntStream $$0) {
+      return (T)this.a.createIntList($$0);
+   }
+
+   public DataResult<LongStream> getLongStream(T $$0) {
+      return this.a.getLongStream($$0);
+   }
+
+   public T createLongList(LongStream $$0) {
+      return (T)this.a.createLongList($$0);
+   }
+
+   public T remove(T $$0, String $$1) {
+      return (T)this.a.remove($$0, $$1);
+   }
+
+   public boolean compressMaps() {
+      return this.a.compressMaps();
+   }
+
+   public ListBuilder<T> listBuilder() {
+      return new ali.a(this.a.listBuilder());
+   }
+
+   public RecordBuilder<T> mapBuilder() {
+      return new ali.b(this.a.mapBuilder());
+   }
+
+   protected class a implements ListBuilder<T> {
+      private final ListBuilder<T> b;
+
+      protected a(final ListBuilder<T> $$1) {
+         this.b = $$1;
+      }
+
+      public DynamicOps<T> ops() {
+         return ali.this;
+      }
+
+      public DataResult<T> build(T $$0) {
+         return this.b.build($$0);
+      }
+
+      public ListBuilder<T> add(T $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public ListBuilder<T> add(DataResult<T> $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public <E> ListBuilder<T> add(E $$0, Encoder<E> $$1) {
+         this.b.add($$1.encodeStart(this.ops(), $$0));
+         return this;
+      }
+
+      public <E> ListBuilder<T> addAll(Iterable<E> $$0, Encoder<E> $$1) {
+         $$0.forEach($$1x -> this.b.add($$1.encode($$1x, this.ops(), this.ops().empty())));
+         return this;
+      }
+
+      public ListBuilder<T> withErrorsFrom(DataResult<?> $$0) {
+         this.b.withErrorsFrom($$0);
+         return this;
+      }
+
+      public ListBuilder<T> mapError(UnaryOperator<String> $$0) {
+         this.b.mapError($$0);
+         return this;
+      }
+
+      public DataResult<T> build(DataResult<T> $$0) {
+         return this.b.build($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode() * 31 + this.b.hashCode();
-   }
+   protected class b implements RecordBuilder<T> {
+      private final RecordBuilder<T> b;
 
-   public static <E, O> RecordCodecBuilder<O, jh<E>> c(alj<? extends jt<? extends E>> $$0) {
-      return ayy.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ali<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, jg.c<E>> d(alj<E> $$0) {
-      alj<? extends jt<E>> $$1 = alj.a($$0.b());
-      return ayy.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ali<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   static final class a implements ali.c {
-      private final ji.a a;
-      private final Map<alj<? extends jt<?>>, Optional<? extends ali.b<?>>> b = new ConcurrentHashMap<>();
-
-      public a(ji.a $$0) {
-         this.a = $$0;
+      protected b(final RecordBuilder<T> $$1) {
+         this.b = $$1;
       }
 
-      @Override
-      public <E> Optional<ali.b<E>> a(alj<? extends jt<? extends E>> $$0) {
-         return (Optional<ali.b<E>>)this.b.computeIfAbsent($$0, this::b);
+      public DynamicOps<T> ops() {
+         return ali.this;
       }
 
-      private Optional<ali.b<Object>> b(alj<? extends jt<?>> $$0) {
-         return this.a.a($$0).map(ali.b::a);
+      public RecordBuilder<T> add(T $$0, T $$1) {
+         this.b.add($$0, $$1);
+         return this;
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof ali.a $$1 && this.a.equals($$1.a)) {
-               return true;
-            }
-
-            return false;
-         }
+      public RecordBuilder<T> add(T $$0, DataResult<T> $$1) {
+         this.b.add($$0, $$1);
+         return this;
       }
 
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
+      public RecordBuilder<T> add(DataResult<T> $$0, DataResult<T> $$1) {
+         this.b.add($$0, $$1);
+         return this;
       }
-   }
 
-   public static record b<T>(jj<T> a, jh<T> b, Lifecycle c) {
-      public static <T> ali.b<T> a(ji.b<T> $$0) {
-         return new ali.b<>($$0, $$0, $$0.h());
+      public RecordBuilder<T> add(String $$0, T $$1) {
+         this.b.add($$0, $$1);
+         return this;
       }
-   }
 
-   public interface c {
-      <T> Optional<ali.b<T>> a(alj<? extends jt<? extends T>> var1);
+      public RecordBuilder<T> add(String $$0, DataResult<T> $$1) {
+         this.b.add($$0, $$1);
+         return this;
+      }
+
+      public <E> RecordBuilder<T> add(String $$0, E $$1, Encoder<E> $$2) {
+         return this.b.add($$0, $$2.encodeStart(this.ops(), $$1));
+      }
+
+      public RecordBuilder<T> withErrorsFrom(DataResult<?> $$0) {
+         this.b.withErrorsFrom($$0);
+         return this;
+      }
+
+      public RecordBuilder<T> setLifecycle(Lifecycle $$0) {
+         this.b.setLifecycle($$0);
+         return this;
+      }
+
+      public RecordBuilder<T> mapError(UnaryOperator<String> $$0) {
+         this.b.mapError($$0);
+         return this;
+      }
+
+      public DataResult<T> build(T $$0) {
+         return this.b.build($$0);
+      }
+
+      public DataResult<T> build(DataResult<T> $$0) {
+         return this.b.build($$0);
+      }
    }
 }

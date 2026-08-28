@@ -1,36 +1,53 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface der<T extends dex> {
-   Codec<der<?>> a = mh.r.q().dispatch(der::a, dfb::a);
-   Codec<alj<der<?>>> b = alj.a(mi.bv);
-   za<wn, der<?>> c = yy.a(mi.ah).b(der::a, dfb::b);
+public abstract class der implements deq {
+   private final deo d;
 
-   boolean a(T var1, djz var2);
-
-   daa a(T var1, ji.a var2);
-
-   default boolean aq_() {
-      return false;
+   public der(deo $$0) {
+      this.d = $$0;
    }
 
-   default boolean i() {
+   @Override
+   public boolean ar_() {
       return true;
    }
 
-   default String j() {
-      return "";
+   @Override
+   public deo c() {
+      return this.d;
    }
 
-   dfb<? extends der<T>> a();
-
-   dfc<? extends der<T>> b();
-
-   deq ap_();
-
-   default List<dfx> g() {
-      return List.of();
+   @Override
+   public dfa aq_() {
+      return dfa.b;
    }
 
-   deu h();
+   @Override
+   public abstract dfl<? extends der> a();
+
+   public static class a<T extends deq> implements dfl<T> {
+      private final MapCodec<T> w;
+      private final ze<wp, T> x;
+
+      public a(der.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(deo.e.fieldOf("category").orElse(deo.d).forGetter(deq::c)).apply($$1, $$0::create));
+         this.x = ze.a(deo.g, deq::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public ze<wp, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends deq> {
+         T create(deo var1);
+      }
+   }
 }

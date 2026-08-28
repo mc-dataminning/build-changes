@@ -1,54 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dmz extends dpb {
-   public static final MapCodec<dmz> a = b(dmz::new);
-   public static final int b = 3;
-   public static final ecg c = ebw.av;
-   private static final fgm[] g = dne.a(3, $$0 -> dne.b(16.0, 0.0, (double)(2 + $$0 * 2)));
-
-   @Override
-   public MapCodec<dmz> a() {
-      return a;
-   }
-
-   public dmz(ebf.d $$0) {
-      super($$0);
-   }
+public class dmz extends dmw {
+   public static final MapCodec<dmz> c = b(dmz::new);
+   public static final eco<jc> d = drp.e;
+   private static final Map<jc, fgw> e = fgt.c(dno.b(16.0, 8.0, 5.0, 16.0));
 
    @Override
-   protected ecg b() {
+   public MapCodec<? extends dmz> a() {
       return c;
    }
 
-   @Override
-   public int c() {
-      return 3;
+   protected dmz(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(d, jc.c).b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected djy d() {
-      return dae.ww;
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return e.get($$0.c(d));
    }
 
    @Override
-   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(d, b);
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eyb.c, eyb.c.a($$1));
       }
+
+      return $$4.g() == $$0.c(d) && !$$0.a($$1, $$3) ? dnq.a.m() : $$0;
    }
 
    @Override
-   protected int a(djz $$0) {
-      return super.a($$0) / 3;
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      jc $$3 = $$0.c(d);
+      iw $$4 = $$2.a($$3.g());
+      ebq $$5 = $$1.a_($$4);
+      return $$5.c($$1, $$4, $$3);
    }
 
+   @Nullable
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(c);
-   }
+   public ebq a(ded $$0) {
+      ebq $$1 = super.a($$0);
+      dkm $$2 = $$0.q();
+      iw $$3 = $$0.a();
+      jc[] $$4 = $$0.f();
 
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return g[this.h($$0)];
+      for (jc $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.b(d, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 }

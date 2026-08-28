@@ -3,70 +3,141 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class anv {
-   public static final int a = 100;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("commands.experience.set.points.invalid"));
 
-   public static void a(CommandDispatcher<ek> $$0, eg $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               el.a("targets", ex.d())
+   public static void a(CommandDispatcher<ek> $$0) {
+      LiteralCommandNode<ek> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("experience").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((RequiredArgumentBuilder)el.a("item", gu.a($$1)).executes($$0x -> a((ek)$$0x.getSource(), gu.a($$0x, "item"), ex.f($$0x, "targets"), 1)))
+                     el.a("add")
                         .then(
-                           el.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ek)$$0x.getSource(), gu.a($$0x, "item"), ex.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                           el.a("target", ex.d())
+                              .then(
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a("amount", IntegerArgumentType.integer())
+                                          .executes(
+                                             $$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.a)
+                                          ))
+                                       .then(
+                                          el.a("points")
+                                             .executes(
+                                                $$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       el.a("levels")
+                                          .executes(
+                                             $$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.b)
+                                          )
+                                    )
                               )
                         )
+                  ))
+               .then(
+                  el.a("set")
+                     .then(
+                        el.a("target", ex.d())
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a("amount", IntegerArgumentType.integer(0))
+                                       .executes($$0x -> b((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.a)))
+                                    .then(
+                                       el.a("points")
+                                          .executes(
+                                             $$0x -> b((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.a)
+                                          )
+                                    ))
+                                 .then(
+                                    el.a("levels")
+                                       .executes($$0x -> b((ek)$$0x.getSource(), ex.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), anv.a.b))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               el.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)el.a("target", ex.c())
+                           .then(el.a("points").executes($$0x -> a((ek)$$0x.getSource(), ex.e($$0x, "target"), anv.a.a))))
+                        .then(el.a("levels").executes($$0x -> a((ek)$$0x.getSource(), ex.e($$0x, "target"), anv.a.b)))
                   )
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ek $$0, gv $$1, Collection<arv> $$2, int $$3) throws CommandSyntaxException {
-      daa $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xc.a("commands.give.failed.toomanyitems", $$6, $$4.K()));
-         return 0;
+   private static int a(ek $$0, asc $$1, anv.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> xg.a("commands.experience.query." + $$2.e, $$1.m_(), $$3), false);
+      return $$3;
+   }
+
+   private static int a(ek $$0, Collection<? extends asc> $$1, int $$2, anv.a $$3) {
+      for (asc $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xg.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
       } else {
-         for (arv $$7 : $$2) {
-            int $$8 = $$3;
+         $$0.a(() -> xg.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               daa $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gj().g($$10);
-               if ($$11 && $$10.f()) {
-                  coe $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.u();
-                  }
+      return $$1.size();
+   }
 
-                  $$7.dV().a(null, $$7.dA(), $$7.dC(), $$7.dG(), awr.oj, aws.h, 0.2F, (($$7.dY().i() - $$7.dY().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bR.d();
-               } else {
-                  coe $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.m();
-                     $$12.b($$7.cG());
-                  }
-               }
-            }
+   private static int b(ek $$0, Collection<? extends asc> $$1, int $$2, anv.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (asc $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
          }
+      }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> xc.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().m_()), true);
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xg.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
          } else {
-            $$0.a(() -> xc.a("commands.give.success.single", $$3, $$4.K(), $$2.size()), true);
+            $$0.a(() -> xg.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
 
-         return $$2.size();
+         return $$1.size();
+      }
+   }
+
+   static enum a {
+      a("points", csi::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.gt()) {
+            return false;
+         } else {
+            $$0.a($$1);
+            return true;
+         }
+      }, $$0 -> azz.d($$0.ch * (float)$$0.gt())),
+      b("levels", asc::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cf);
+
+      public final BiConsumer<asc, Integer> c;
+      public final BiPredicate<asc, Integer> d;
+      public final String e;
+      final ToIntFunction<asc> f;
+
+      private a(final String $$0, final BiConsumer<asc, Integer> $$1, final BiPredicate<asc, Integer> $$2, final ToIntFunction<asc> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

@@ -3,13 +3,13 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cn(Optional<jk<czw>> b, cx.d c, bo d) implements Predicate<daa> {
+public record cn(Optional<jk<dag>> b, cx.d c, bo d) implements Predicate<dak> {
    public static final Codec<cn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(jv.a(mi.K).optionalFieldOf("items").forGetter(cn::a), cx.d.d.optionalFieldOf("count", cx.d.c).forGetter(cn::b), bo.b.forGetter(cn::c))
             .apply($$0, cn::new)
    );
 
-   public boolean a(daa $$0) {
+   public boolean a(dak $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else {
@@ -17,7 +17,7 @@ public record cn(Optional<jk<czw>> b, cx.d c, bo d) implements Predicate<daa> {
       }
    }
 
-   public Optional<jk<czw>> a() {
+   public Optional<jk<dag>> a() {
       return this.b;
    }
 
@@ -30,7 +30,7 @@ public record cn(Optional<jk<czw>> b, cx.d c, bo d) implements Predicate<daa> {
    }
 
    public static class a {
-      private Optional<jk<czw>> a = Optional.empty();
+      private Optional<jk<dag>> a = Optional.empty();
       private cx.d b = cx.d.c;
       private bo c = bo.a;
 
@@ -38,12 +38,12 @@ public record cn(Optional<jk<czw>> b, cx.d c, bo d) implements Predicate<daa> {
          return new cn.a();
       }
 
-      public cn.a a(jh<czw> $$0, djy... $$1) {
+      public cn.a a(jh<dag> $$0, dki... $$1) {
          this.a = Optional.of(jk.a($$0x -> $$0x.h().e(), $$1));
          return this;
       }
 
-      public cn.a a(jh<czw> $$0, axv<czw> $$1) {
+      public cn.a a(jh<dag> $$0, ayc<dag> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }

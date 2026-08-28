@@ -1,83 +1,88 @@
-import javax.annotation.Nullable;
-
-public class aeg implements zj<aby> {
-   public static final za<vy, aeg> a = zj.a(aeg::a, aeg::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
-   private final ew.a f;
-   private final ew.a g;
+public class aeg implements zo<acf> {
+   public static final ze<vy, aeg> a = zo.a(aeg::a, aeg::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final boolean f;
+   private final boolean g;
    private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-   public aeg(ew.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
-   }
-
-   public aeg(ew.a $$0, bwv $$1, ew.a $$2) {
-      this.f = $$0;
-      this.e = $$1.ao();
-      this.g = $$2;
-      ffs $$3 = $$2.a($$1);
-      this.b = $$3.d;
-      this.c = $$3.e;
-      this.d = $$3.f;
-      this.h = true;
+   public aeg(cse $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
    }
 
    private aeg(vy $$0) {
-      this.f = $$0.b(ew.a.class);
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(ew.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.f);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
       }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.l($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
    }
 
    @Override
-   public zl<aeg> a() {
-      return agr.ah;
+   public zq<aeg> a() {
+      return agy.aa;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public ew.a b() {
+   public boolean b() {
       return this.f;
    }
 
-   @Nullable
-   public ffs a(djz $$0) {
-      if (this.h) {
-         bwv $$1 = $$0.a(this.e);
-         return $$1 == null ? new ffs(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new ffs(this.b, this.c, this.d);
-      }
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
+   }
+
+   public float i() {
+      return this.k;
    }
 }

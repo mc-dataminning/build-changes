@@ -1,45 +1,80 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cno {
-   private static final Logger a = LogUtils.getLogger();
-   private final cmx b;
-   private final cnh[] c = new cnh[cnn.c()];
+public class cno extends cni {
+   private static final ciu b = ciu.a().d();
    @Nullable
-   private cnh d;
+   private eyo c;
+   @Nullable
+   private fgc d;
 
-   public cno(cmx $$0) {
-      this.b = $$0;
-      this.a(cnn.k);
+   public cno(cng $$0) {
+      super($$0);
    }
 
-   public void a(cnn<?> $$0) {
-      if (this.d == null || $$0 != this.d.h()) {
-         if (this.d != null) {
-            this.d.d();
-         }
+   @Override
+   public cnw<cno> h() {
+      return cnw.c;
+   }
 
-         this.d = this.b((cnn<cnh>)$$0);
-         if (!this.b.dV().C) {
-            this.b.ar().a(cmx.a, $$0.b());
-         }
+   @Override
+   public void c() {
+      this.c = null;
+      this.d = null;
+   }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dV().C ? "client" : "server");
-         this.d.c();
+   @Override
+   public void a(asb $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
    }
 
-   public cnh a() {
+   @Nullable
+   @Override
+   public fgc f() {
       return this.d;
    }
 
-   public <T extends cnh> T b(cnn<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+   private void b(asb $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.n();
+         iw $$2 = $$0.a(ehp.a.f, eku.a(this.a.j()));
+         csi $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fgc $$4 = new fgc($$3.dA(), 0.0, $$3.dG()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+         } else {
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+         }
+
+         eym $$7 = new eym($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
+         }
       }
 
-      return (T)this.c[$$1];
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.t().a(cnw.d);
+      }
+   }
+
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         kb $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new fgc($$1, $$3, $$2);
+      }
    }
 }

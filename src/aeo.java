@@ -1,23 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public record aeo(int b, jg<bvx> c) implements zj<aby> {
-   public static final za<wn, aeo> a = za.a(yy.h, aeo::b, bvx.b, aeo::e, aeo::new);
+public record aeo(int b, bys c, Set<byt> d) implements zo<acf> {
+   public static final ze<vy, aeo> a = ze.a(zc.h, aeo::b, bys.a, aeo::e, byt.m, aeo::f, aeo::new);
 
-   @Override
-   public zl<aeo> a() {
-      return agr.ao;
+   public static aeo a(int $$0, bys $$1, Set<byt> $$2) {
+      return new aeo($$0, $$1, $$2);
    }
 
-   public void a(aby $$0) {
+   @Override
+   public zq<aeo> a() {
+      return agy.ai;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwv a(djz $$0) {
-      return $$0.a(this.b);
+   public bys e() {
+      return this.c;
    }
 
-   public jg<bvx> e() {
-      return this.c;
+   public Set<byt> f() {
+      return this.d;
    }
 }

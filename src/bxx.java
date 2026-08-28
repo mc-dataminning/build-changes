@@ -1,57 +1,90 @@
-public class bxx extends bwv {
-   public bxx(bxe<?> $$0, djz $$1) {
-      super($$0, $$1);
-      this.ad = true;
-   }
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-   @Override
-   public void h() {
-   }
+public interface bxx {
+   bxx a = new bxx() {
+      @Override
+      public void a(bxy $$0) {
+      }
 
-   @Override
-   protected void a(akr.a $$0) {
-   }
+      @Override
+      public void a(bxy $$0, Consumer<bxe> $$1) {
+      }
 
-   @Override
-   protected void a(ua $$0) {
-   }
+      @Override
+      public void b(bxy $$0, Consumer<bxe> $$1) {
+      }
+   };
 
-   @Override
-   protected void b(ua $$0) {
-   }
+   void a(bxy var1);
 
-   @Override
-   public zj<aby> a(ars $$0) {
-      throw new IllegalStateException("Markers should never be sent");
-   }
+   void a(bxy var1, Consumer<bxe> var2);
 
-   @Override
-   protected boolean r(bwv $$0) {
-      return false;
-   }
+   void b(bxy var1, Consumer<bxe> var2);
 
-   @Override
-   protected boolean bP() {
-      return false;
-   }
+   public static class a implements bxx {
+      private static final bxy[] b = bxy.values();
+      private static final int c = -1;
+      private final Set<bxy> d = EnumSet.noneOf(bxy.class);
+      private final Map<bxy, List<Consumer<bxe>>> e = ag.a(bxy.class, $$0 -> new ArrayList<>());
+      private final Map<bxy, List<Consumer<bxe>>> f = ag.a(bxy.class, $$0 -> new ArrayList<>());
+      private final List<Consumer<bxe>> g = new ArrayList<>();
+      private int h = -1;
 
-   @Override
-   protected void p(bwv $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
+      public void a(int $$0) {
+         if (this.h != $$0) {
+            this.h = $$0;
+            this.a();
+         }
+      }
 
-   @Override
-   public exv j_() {
-      return exv.d;
-   }
+      public void a(bxe $$0) {
+         this.a();
 
-   @Override
-   public boolean g_() {
-      return true;
-   }
+         for (Consumer<bxe> $$1 : this.g) {
+            if (!$$0.bJ()) {
+               break;
+            }
 
-   @Override
-   public final boolean a(aru $$0, bvk $$1, float $$2) {
-      return false;
+            $$1.accept($$0);
+         }
+
+         this.g.clear();
+         this.h = -1;
+      }
+
+      private void a() {
+         for (bxy $$0 : b) {
+            List<Consumer<bxe>> $$1 = this.e.get($$0);
+            this.g.addAll($$1);
+            $$1.clear();
+            if (this.d.remove($$0)) {
+               this.g.add($$0.a());
+            }
+
+            List<Consumer<bxe>> $$2 = this.f.get($$0);
+            this.g.addAll($$2);
+            $$2.clear();
+         }
+      }
+
+      @Override
+      public void a(bxy $$0) {
+         this.d.add($$0);
+      }
+
+      @Override
+      public void a(bxy $$0, Consumer<bxe> $$1) {
+         this.e.get($$0).add($$1);
+      }
+
+      @Override
+      public void b(bxy $$0, Consumer<bxe> $$1) {
+         this.f.get($$0).add($$1);
+      }
    }
 }

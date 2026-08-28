@@ -1,45 +1,42 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public class fys extends fzq {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xg c = xg.c("credits_and_attribution.screen.title");
+   private static final xg d = xg.c("credits_and_attribution.button.credits");
+   private static final xg s = xg.c("credits_and_attribution.button.attribution");
+   private static final xg u = xg.c("credits_and_attribution.button.licenses");
+   private final fzq v;
+   private final fxm w = new fxm(this);
 
-public enum fys {
-   a,
-   b,
-   c,
-   d;
-
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fyr a() {
-      return switch (this) {
-         case a, b -> fyr.b;
-         case c, d -> fyr.a;
-      };
+   public fys(fzq $$0) {
+      super(c);
+      this.v = $$0;
    }
 
-   public fys b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   @Override
+   protected void aT_() {
+      this.w.a(c, this.p);
+      fxq $$0 = this.w.c(fxq.d()).a(8);
+      $$0.c().b();
+      $$0.a(fty.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fty.a(s, fyn.b(this, ayt.d)).a(210).a());
+      $$0.a(fty.a(u, fyn.b(this, ayt.e)).a(210).a());
+      this.w.b(fty.a(xf.d, $$0x -> this.aQ_()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   @Override
+   protected void c() {
+      this.w.a();
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   private void m() {
+      this.m.a(new fzt(false, () -> this.m.a(this)));
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+   @Override
+   public void aQ_() {
+      this.m.a(this.v);
    }
 }

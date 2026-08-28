@@ -1,85 +1,69 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class dah {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jg<dag> c;
-   private final iw d;
-   private final dah.a e;
+   private final Map<alr, dah.a> a = Maps.newHashMap();
+   private int b;
 
-   public dah(dah.a $$0, iw $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public boolean a(dak $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
-
-   @Nullable
-   public dag b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jg<dag> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
+   public float a(dak $$0, float $$1) {
+      alr $$2 = this.b($$0);
+      dah.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return azz.a($$5 / $$4, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
       }
    }
 
-   public void a(dka $$0, jg<dag> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.J_().f(mi.aV).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alr, dah.a>> $$0 = this.a.entrySet().iterator();
 
-   public void a(dka $$0, @Nullable ebg $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(egg.F, this.d, egg.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dka $$0, @Nullable ebg $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(egg.E, this.d, egg.a.a($$1));
-               a($$0, this.d);
+         while ($$0.hasNext()) {
+            Entry<alr, dah.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
             }
-
-            this.b++;
          }
       }
    }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
+   public alr b(dak $$0) {
+      ddq $$1 = $$0.a(kl.y);
+      alr $$2 = mh.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
    }
 
-   private static void a(dka $$0, iw $$1) {
-      if ($$0 instanceof aru $$2) {
-         ffs $$3 = ffs.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.G_().a(4) / 24.0F;
-         $$2.a(lz.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
+   public void a(dak $$0, int $$1) {
+      this.a(this.b($$0), $$1);
    }
 
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   public void a(alr $$0, int $$1) {
+      this.a.put($$0, new dah.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alr $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alr $$0, int $$1) {
+   }
+
+   protected void b(alr $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

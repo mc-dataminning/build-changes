@@ -1,29 +1,18 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-@FunctionalInterface
 public interface avk {
-   avk b = $$0 -> Optional.empty();
+   CompletableFuture<?> a();
 
-   Optional<avf> getResource(alk var1);
+   float b();
 
-   default avf getResourceOrThrow(alk $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   default InputStream open(alk $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
-
-   default BufferedReader openAsReader(alk $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static avk fromMap(Map<alk, avf> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
    }
 }

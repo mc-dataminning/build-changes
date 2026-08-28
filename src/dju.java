@@ -1,15 +1,25 @@
-public class dju {
-   public static final int a = -10380959;
-   public static final int b = -8345771;
-   public static final int c = -12012264;
-   public static final int d = -7158200;
-   private static int[] e = new int[65536];
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      e = $$0;
+public interface dju extends dkb, dkm, dko {
+   @Override
+   default <T extends dyo> Optional<T> a(iw $$0, dyq<T> $$1) {
+      return dkm.super.a($$0, $$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      return dji.a($$0, $$1, e, -12012264);
+   @Override
+   default List<fgw> c(@Nullable bxe $$0, ffx $$1) {
+      return dkb.super.c($$0, $$1);
+   }
+
+   @Override
+   default boolean a(@Nullable bxe $$0, fgw $$1) {
+      return dkb.super.a($$0, $$1);
+   }
+
+   @Override
+   default iw a(ehp.a $$0, iw $$1) {
+      return dkm.super.a($$0, $$1);
    }
 }

@@ -1,233 +1,399 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Optional;
-import java.util.OptionalLong;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record efd(
-   OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axv<dne> x, alk y, float z, efd.a A
-) {
-   public static final int a = iw.e;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<efd> h = ayy.e(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayy.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(efd::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(efd::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(efd::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(efd::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(efd::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(efd::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(efd::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(efd::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(efd::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(efd::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(efd::p),
-                  axv.b(mi.i).fieldOf("infiniburn").forGetter(efd::q),
-                  alk.a.fieldOf("effects").orElse(efb.e).forGetter(efd::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(efd::s),
-                  efd.a.a.forGetter(efd::t)
-               )
-               .apply($$0, efd::new)
-      )
-   );
-   public static final za<wn, jg<efd>> i = yy.b(mi.aP);
-   public static final int j = 8;
-   public static final float[] k = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<jg<efd>> l = alg.a(mi.aP, h);
+public class efd implements AutoCloseable {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 4096;
+   @VisibleForTesting
+   protected static final int a = 1024;
+   private static final int e = 5;
+   private static final int f = 0;
+   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
+   private static final String h = ".mcc";
+   private static final int i = 128;
+   private static final int j = 256;
+   private static final int k = 0;
+   final efg l;
+   private final Path m;
+   private final FileChannel n;
+   private final Path o;
+   final eff p;
+   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
+   private final IntBuffer r;
+   private final IntBuffer s;
+   @VisibleForTesting
+   protected final efc b = new efc();
 
-   public efd(
-      OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axv<dne> x, alk y, float z, efd.a A
-   ) {
-      if (v < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (u + v > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (w > v) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (v % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (u % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
+   public efd(efg $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
+      this($$0, $$1, $$2, eff.a(), $$3);
+   }
+
+   public efd(efg $$0, Path $$1, Path $$2, eff $$3, boolean $$4) throws IOException {
+      this.l = $$0;
+      this.m = $$1;
+      this.p = $$3;
+      if (!Files.isDirectory($$2)) {
+         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
       } else {
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-         this.z = z;
-         this.A = A;
+         this.o = $$2;
+         this.r = this.q.asIntBuffer();
+         this.r.limit(1024);
+         this.q.position(4096);
+         this.s = this.q.asIntBuffer();
+         if ($$4) {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
+         } else {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
+         }
+
+         this.b.a(0, 2);
+         this.q.position(0);
+         int $$5 = this.n.read(this.q, 0L);
+         if ($$5 != -1) {
+            if ($$5 != 8192) {
+               c.warn("Region file {} has truncated header: {}", $$1, $$5);
+            }
+
+            long $$6 = Files.size($$1);
+
+            for (int $$7 = 0; $$7 < 1024; $$7++) {
+               int $$8 = this.r.get($$7);
+               if ($$8 != 0) {
+                  int $$9 = b($$8);
+                  int $$10 = a($$8);
+                  if ($$9 < 2) {
+                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else if ($$10 == 0) {
+                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
+                     this.r.put($$7, 0);
+                  } else if ((long)$$9 * 4096L > $$6) {
+                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else {
+                     this.b.a($$9, $$10);
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Deprecated
-   public static DataResult<alj<djz>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(djz.j);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(djz.i);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(djz.k);
-         }
-      }
-
-      return djz.h.parse($$0);
-   }
-
-   public static double a(efd $$0, efd $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
-
-   public static Path a(alj<djz> $$0, Path $$1) {
-      if ($$0 == djz.i) {
-         return $$1;
-      } else if ($$0 == djz.k) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == djz.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
-      }
-   }
-
-   public boolean a() {
-      return this.m.isPresent();
-   }
-
-   public float a(long $$0) {
-      double $$1 = azq.e((double)this.m.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
-   }
-
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.A.a();
-   }
-
-   public boolean c() {
-      return this.A.b();
-   }
-
-   public bty d() {
-      return this.A.c();
-   }
-
-   public int e() {
-      return this.A.d();
-   }
-
-   public OptionalLong f() {
+   public Path a() {
       return this.m;
    }
 
-   public boolean g() {
-      return this.n;
+   private Path f(djo $$0) {
+      String $$1 = "c." + $$0.h + "." + $$0.i + ".mcc";
+      return this.o.resolve($$1);
    }
 
-   public boolean h() {
-      return this.o;
+   @Nullable
+   public synchronized DataInputStream a(djo $$0) throws IOException {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return null;
+      } else {
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         int $$4 = $$3 * 4096;
+         ByteBuffer $$5 = ByteBuffer.allocate($$4);
+         this.n.read($$5, (long)($$2 * 4096));
+         $$5.flip();
+         if ($$5.remaining() < 5) {
+            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
+            return null;
+         } else {
+            int $$6 = $$5.getInt();
+            byte $$7 = $$5.get();
+            if ($$6 == 0) {
+               c.warn("Chunk {} is allocated, but stream is missing", $$0);
+               return null;
+            } else {
+               int $$8 = $$6 - 1;
+               if (a($$7)) {
+                  if ($$8 != 0) {
+                     c.warn("Chunk has both internal and external streams");
+                  }
+
+                  return this.a($$0, b($$7));
+               } else if ($$8 > $$5.remaining()) {
+                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
+                  return null;
+               } else if ($$8 < 0) {
+                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
+                  return null;
+               } else {
+                  bru.f.a(this.l, $$0, this.p, $$8);
+                  return this.a($$0, $$7, a($$5, $$8));
+               }
+            }
+         }
+      }
    }
 
-   public boolean i() {
-      return this.p;
+   private static int c() {
+      return (int)(ag.e() / 1000L);
    }
 
-   public boolean j() {
-      return this.q;
+   private static boolean a(byte $$0) {
+      return ($$0 & 128) != 0;
    }
 
-   public double k() {
-      return this.r;
+   private static byte b(byte $$0) {
+      return (byte)($$0 & -129);
    }
 
-   public boolean l() {
-      return this.s;
+   @Nullable
+   private DataInputStream a(djo $$0, byte $$1, InputStream $$2) throws IOException {
+      eff $$3 = eff.a($$1);
+      if ($$3 == eff.e) {
+         String $$4 = new DataInputStream($$2).readUTF();
+         alr $$5 = alr.c($$4);
+         if ($$5 != null) {
+            c.error("Unrecognized custom compression {}", $$5);
+            return null;
+         } else {
+            c.error("Invalid custom compression id {}", $$4);
+            return null;
+         }
+      } else if ($$3 == null) {
+         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
+         return null;
+      } else {
+         return new DataInputStream($$3.a($$2));
+      }
    }
 
-   public boolean m() {
-      return this.t;
+   @Nullable
+   private DataInputStream a(djo $$0, byte $$1) throws IOException {
+      Path $$2 = this.f($$0);
+      if (!Files.isRegularFile($$2)) {
+         c.error("External chunk path {} is not file", $$2);
+         return null;
+      } else {
+         return this.a($$0, $$1, Files.newInputStream($$2));
+      }
    }
 
-   public int n() {
-      return this.u;
+   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
+      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
    }
 
-   public int o() {
-      return this.v;
+   private int a(int $$0, int $$1) {
+      return $$0 << 8 | $$1;
    }
 
-   public int p() {
-      return this.w;
+   private static int a(int $$0) {
+      return $$0 & 0xFF;
    }
 
-   public axv<dne> q() {
-      return this.x;
+   private static int b(int $$0) {
+      return $$0 >> 8 & 16777215;
    }
 
-   public alk r() {
-      return this.y;
+   private static int c(int $$0) {
+      return ($$0 + 4096 - 1) / 4096;
    }
 
-   public float s() {
-      return this.z;
+   public boolean b(djo $$0) {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         ByteBuffer $$4 = ByteBuffer.allocate(5);
+
+         try {
+            this.n.read($$4, (long)($$2 * 4096));
+            $$4.flip();
+            if ($$4.remaining() != 5) {
+               return false;
+            } else {
+               int $$5 = $$4.getInt();
+               byte $$6 = $$4.get();
+               if (a($$6)) {
+                  if (!eff.b(b($$6))) {
+                     return false;
+                  }
+
+                  if (!Files.isRegularFile(this.f($$0))) {
+                     return false;
+                  }
+               } else {
+                  if (!eff.b($$6)) {
+                     return false;
+                  }
+
+                  if ($$5 == 0) {
+                     return false;
+                  }
+
+                  int $$7 = $$5 - 1;
+                  if ($$7 < 0 || $$7 > 4096 * $$3) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         } catch (IOException var9) {
+            return false;
+         }
+      }
    }
 
-   public efd.a t() {
-      return this.A;
+   public DataOutputStream c(djo $$0) throws IOException {
+      return new DataOutputStream(this.p.a(new efd.a($$0)));
    }
 
-   public static record a(boolean b, boolean c, bty d, int e) {
-      public static final MapCodec<efd.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(efd.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(efd.a::b),
-                  bty.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(efd.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(efd.a::d)
-               )
-               .apply($$0, efd.a::new)
-      );
+   public void b() throws IOException {
+      this.n.force(true);
+   }
 
-      public boolean a() {
-         return this.b;
+   public void d(djo $$0) throws IOException {
+      int $$1 = h($$0);
+      int $$2 = this.r.get($$1);
+      if ($$2 != 0) {
+         this.r.put($$1, 0);
+         this.s.put($$1, c());
+         this.e();
+         Files.deleteIfExists(this.f($$0));
+         this.b.b(b($$2), a($$2));
+      }
+   }
+
+   protected synchronized void a(djo $$0, ByteBuffer $$1) throws IOException {
+      int $$2 = h($$0);
+      int $$3 = this.r.get($$2);
+      int $$4 = b($$3);
+      int $$5 = a($$3);
+      int $$6 = $$1.remaining();
+      int $$7 = c($$6);
+      int $$9;
+      efd.b $$10;
+      if ($$7 >= 256) {
+         Path $$8 = this.f($$0);
+         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
+         $$7 = 1;
+         $$9 = this.b.a($$7);
+         $$10 = this.a($$8, $$1);
+         ByteBuffer $$11 = this.d();
+         this.n.write($$11, (long)($$9 * 4096));
+      } else {
+         $$9 = this.b.a($$7);
+         $$10 = () -> Files.deleteIfExists(this.f($$0));
+         this.n.write($$1, (long)($$9 * 4096));
       }
 
-      public boolean b() {
-         return this.c;
+      this.r.put($$2, this.a($$9, $$7));
+      this.s.put($$2, c());
+      this.e();
+      $$10.run();
+      if ($$4 != 0) {
+         this.b.b($$4, $$5);
+      }
+   }
+
+   private ByteBuffer d() {
+      ByteBuffer $$0 = ByteBuffer.allocate(5);
+      $$0.putInt(1);
+      $$0.put((byte)(this.p.b() | 128));
+      $$0.flip();
+      return $$0;
+   }
+
+   private efd.b a(Path $$0, ByteBuffer $$1) throws IOException {
+      Path $$2 = Files.createTempFile(this.o, "tmp", null);
+
+      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+         $$1.position(5);
+         $$3.write($$1);
       }
 
-      public bty c() {
-         return this.d;
+      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
+   }
+
+   private void e() throws IOException {
+      this.q.position(0);
+      this.n.write(this.q, 0L);
+   }
+
+   private int g(djo $$0) {
+      return this.r.get(h($$0));
+   }
+
+   public boolean e(djo $$0) {
+      return this.g($$0) != 0;
+   }
+
+   private static int h(djo $$0) {
+      return $$0.j() + $$0.k() * 32;
+   }
+
+   @Override
+   public void close() throws IOException {
+      try {
+         this.f();
+      } finally {
+         try {
+            this.n.force(true);
+         } finally {
+            this.n.close();
+         }
+      }
+   }
+
+   private void f() throws IOException {
+      int $$0 = (int)this.n.size();
+      int $$1 = c($$0) * 4096;
+      if ($$0 != $$1) {
+         ByteBuffer $$2 = g.duplicate();
+         $$2.position(0);
+         this.n.write($$2, (long)($$1 - 1));
+      }
+   }
+
+   class a extends ByteArrayOutputStream {
+      private final djo b;
+
+      public a(final djo $$0) {
+         super(8096);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(efd.this.p.b());
+         this.b = $$0;
       }
 
-      public int d() {
-         return this.e;
+      @Override
+      public void close() throws IOException {
+         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
+         int $$1 = this.count - 5 + 1;
+         bru.f.b(efd.this.l, this.b, efd.this.p, $$1);
+         $$0.putInt(0, $$1);
+         efd.this.a(this.b, $$0);
       }
+   }
+
+   interface b {
+      void run() throws IOException;
    }
 }

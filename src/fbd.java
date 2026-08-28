@@ -1,64 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class fbd extends fas {
-   public static final MapCodec<fbd> a = a(fbd::new);
+public class fbd extends fbl {
+   public static final MapCodec<fbd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alr.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, fbd::new)
+   );
+   private final alr j;
 
-   fbd(List<faz> $$0, List<fds> $$1) {
-      super($$0, $$1);
+   private fbd(alr $$0, int $$1, int $$2, List<fec> $$3, List<fch> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public fba a() {
-      return fax.h;
+   public fbk a() {
+      return fbh.e;
    }
 
    @Override
-   protected far a(List<? extends far> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (far)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (far $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<dak> $$0, fat $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static fbd.a a(faz.a<?>... $$0) {
-      return new fbd.a($$0);
-   }
-
-   public static class a extends faz.a<fbd.a> {
-      private final Builder<faz> a = ImmutableList.builder();
-
-      public a(faz.a<?>... $$0) {
-         for (faz.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected fbd.a a() {
-         return this;
-      }
-
-      @Override
-      public fbd.a c(faz.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public faz b() {
-         return new fbd(this.a.build(), this.f());
-      }
+   public static fbl.a<?> a(alr $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fbd($$0, $$1, $$2, $$3, $$4));
    }
 }

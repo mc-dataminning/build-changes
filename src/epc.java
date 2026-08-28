@@ -1,29 +1,17 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class epc extends eos {
-   public static final MapCodec<epc> b = btd.b(ebg.a).comapFlatMap(epc::a, $$0 -> $$0.c).fieldOf("entries");
-   private final btd<ebg> c;
+public abstract class epc {
+   public static final Codec<epc> a = mh.T.q().dispatch(epc::a, epd::a);
 
-   private static DataResult<epc> a(btd<ebg> $$0) {
-      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new epc($$0));
+   public static epl a(ebq $$0) {
+      return new epl($$0);
    }
 
-   public epc(btd<ebg> $$0) {
-      this.c = $$0;
+   public static epl a(dno $$0) {
+      return new epl($$0.m());
    }
 
-   public epc(btd.a<ebg> $$0) {
-      this($$0.a());
-   }
+   protected abstract epd<?> a();
 
-   @Override
-   protected eot<?> a() {
-      return eot.b;
-   }
-
-   @Override
-   public ebg a(azz $$0, iw $$1) {
-      return this.c.b($$0);
-   }
+   public abstract ebq a(bai var1, iw var2);
 }

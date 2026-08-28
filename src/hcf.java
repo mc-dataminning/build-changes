@@ -1,22 +1,21 @@
-public class hcf extends hcy<hem, ghv> {
-   public hcf(hah<hem, ghv> $$0) {
+public class hcf extends hcj<hfl, gil> {
+   public hcf(gzs<hfl, gil> $$0) {
       super($$0);
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hem $$3, float $$4, float $$5) {
-      hhu $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = azq.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
+   public void a(fld $$0, grn $$1, int $$2, hfl $$3, float $$4, float $$5) {
+      hhi $$6 = $$3.i;
+      if (!$$6.c() && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * azz.a($$3.v * 0.6F) + 0.2F;
+            $$8 -= 0.09F * azz.a($$3.v * 0.6F);
          }
 
-         $$6.a($$0, $$1, $$2, hks.d);
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         $$6.a($$0, $$1, $$2, hkg.d);
          $$0.b();
       }
    }

@@ -1,10 +1,3 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
-
-public interface hps extends Closeable {
-   AudioFormat a();
-
-   ByteBuffer a(int var1) throws IOException;
+public interface hps {
+   void a(hon var1, hpu var2, float var3);
 }

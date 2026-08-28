@@ -1,14 +1,15 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public interface asl {
-   void a(Consumer<zj<?>> var1);
+   void a(djo var1);
 
-   asl.a a();
+   void a(djo var1, @Nullable eeo var2);
 
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+   void a();
+
+   void b();
+
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

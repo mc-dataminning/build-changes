@@ -1,45 +1,75 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Map;
 
-public class bci extends DataFix {
-   private static final Set<String> a = Set.of(
-      "minecraft:beacon",
-      "minecraft:banner",
-      "minecraft:brewing_stand",
-      "minecraft:chest",
-      "minecraft:trapped_chest",
-      "minecraft:dispenser",
-      "minecraft:dropper",
-      "minecraft:enchanting_table",
-      "minecraft:furnace",
-      "minecraft:hopper",
-      "minecraft:shulker_box"
+public class bci extends big {
+   private static final Map<String, String> c = Map.ofEntries(
+      Map.entry("b", "minecraft:base"),
+      Map.entry("bl", "minecraft:square_bottom_left"),
+      Map.entry("br", "minecraft:square_bottom_right"),
+      Map.entry("tl", "minecraft:square_top_left"),
+      Map.entry("tr", "minecraft:square_top_right"),
+      Map.entry("bs", "minecraft:stripe_bottom"),
+      Map.entry("ts", "minecraft:stripe_top"),
+      Map.entry("ls", "minecraft:stripe_left"),
+      Map.entry("rs", "minecraft:stripe_right"),
+      Map.entry("cs", "minecraft:stripe_center"),
+      Map.entry("ms", "minecraft:stripe_middle"),
+      Map.entry("drs", "minecraft:stripe_downright"),
+      Map.entry("dls", "minecraft:stripe_downleft"),
+      Map.entry("ss", "minecraft:small_stripes"),
+      Map.entry("cr", "minecraft:cross"),
+      Map.entry("sc", "minecraft:straight_cross"),
+      Map.entry("bt", "minecraft:triangle_bottom"),
+      Map.entry("tt", "minecraft:triangle_top"),
+      Map.entry("bts", "minecraft:triangles_bottom"),
+      Map.entry("tts", "minecraft:triangles_top"),
+      Map.entry("ld", "minecraft:diagonal_left"),
+      Map.entry("rd", "minecraft:diagonal_up_right"),
+      Map.entry("lud", "minecraft:diagonal_up_left"),
+      Map.entry("rud", "minecraft:diagonal_right"),
+      Map.entry("mc", "minecraft:circle"),
+      Map.entry("mr", "minecraft:rhombus"),
+      Map.entry("vh", "minecraft:half_vertical"),
+      Map.entry("hh", "minecraft:half_horizontal"),
+      Map.entry("vhr", "minecraft:half_vertical_right"),
+      Map.entry("hhb", "minecraft:half_horizontal_bottom"),
+      Map.entry("bo", "minecraft:border"),
+      Map.entry("cbo", "minecraft:curly_border"),
+      Map.entry("gra", "minecraft:gradient"),
+      Map.entry("gru", "minecraft:gradient_up"),
+      Map.entry("bri", "minecraft:bricks"),
+      Map.entry("glb", "minecraft:globe"),
+      Map.entry("cre", "minecraft:creeper"),
+      Map.entry("sku", "minecraft:skull"),
+      Map.entry("flo", "minecraft:flower"),
+      Map.entry("moj", "minecraft:mojang"),
+      Map.entry("pig", "minecraft:piglin")
    );
 
    public bci(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "BannerPatternFormatFix", bjm.s, "minecraft:banner");
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bky.a());
-      Type<?> $$1 = this.getInputSchema().getType(bjd.s);
-      Type<?> $$2 = this.getOutputSchema().getType(bjd.s);
-      Type<?> $$3 = bbh.a($$1, $$1, $$2);
-      return this.fixTypeEverywhereTyped("BlockEntityCustomNameToComponentFix", $$1, $$2, $$3x -> {
-         Optional<String> $$4 = $$3x.getOptional($$0);
-         return $$4.isPresent() && !a.contains($$4.get()) ? bbh.a($$2, $$3x) : ag.a(bbh.a($$3, $$3x), $$2, bci::a);
-      });
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bci::a);
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", bbi.a($$0.getOps(), $$1));
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameAndFixField("Patterns", "patterns", $$0x -> $$0x.createList($$0x.asStream().map(bci::b)));
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.renameAndFixField(
+         "Pattern",
+         "pattern",
+         $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map($$0xx -> c.getOrDefault($$0xx, $$0xx)).map($$0x::createString).result(), $$0x)
+      );
+      $$0 = $$0.set("color", $$0.createString(bbq.a($$0.get("Color").asInt(0))));
+      return $$0.remove("Color");
    }
 }

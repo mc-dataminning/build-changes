@@ -1,17 +1,47 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.server.MinecraftServer;
+import java.util.List;
 
-public record ffb(alk b) implements ffd<MinecraftServer> {
-   public static final MapCodec<ffb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alk.a.fieldOf("Name").forGetter(ffb::b)).apply($$0, ffb::new));
+public record ffb(alr b, fc.g c) implements fey {
+   public static final MapCodec<ffb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alr.a.fieldOf("storage").forGetter(ffb::c), fc.g.a.fieldOf("path").forGetter(ffb::d)).apply($$0, ffb::new)
+   );
 
-   public void a(MinecraftServer $$0, fff<MinecraftServer> $$1, long $$2) {
-      alz $$3 = $$0.aE();
-      $$3.a(this.b).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public fex b() {
+      return fez.f;
+   }
+
+   private Number a(fat $$0, Number $$1) {
+      ua $$2 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<va> $$3 = this.c.a($$2);
+         if ($$3.size() == 1 && $$3.getFirst() instanceof uq $$4) {
+            return $$4.m();
+         }
+      } catch (CommandSyntaxException var7) {
+      }
+
+      return $$1;
    }
 
    @Override
-   public MapCodec<ffb> a() {
-      return a;
+   public float b(fat $$0) {
+      return this.a($$0, 0.0F).floatValue();
+   }
+
+   @Override
+   public int a(fat $$0) {
+      return this.a($$0, 0).intValue();
+   }
+
+   public alr c() {
+      return this.b;
+   }
+
+   public fc.g d() {
+      return this.c;
    }
 }

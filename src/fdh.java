@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record fdh(jg<dgn> b, List<Float> c) implements fds {
+public class fdh extends fcg {
    public static final MapCodec<fdh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dgn.c.fieldOf("enchantment").forGetter(fdh::c), ayy.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(fdh::d)).apply($$0, fdh::new)
+      $$0 -> a($$0).and($$0.group(ddu.h.fieldOf("pages").forGetter($$0x -> $$0x.b), fcf.a.forGetter($$0x -> $$0x.c))).apply($$0, fdh::new)
    );
+   private final List<ast<xg>> b;
+   private final fcf c;
 
-   @Override
-   public fdt b() {
-      return fdu.k;
+   protected fdh(List<fec> $$0, List<ast<xg>> $$1, fcf $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<bbb<?>> a() {
-      return Set.of(fdd.i);
+   protected dak a(dak $$0, fat $$1) {
+      $$0.a(kl.V, ddu.a, this::a);
+      return $$0;
    }
 
-   public boolean a(faj $$0) {
-      daa $$1 = $$0.c(fdd.i);
-      int $$2 = $$1 != null ? dgp.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @VisibleForTesting
+   public ddu a(ddu $$0) {
+      List<ast<xg>> $$1 = this.c.a($$0.a(), this.b);
+      return $$0.b($$1);
    }
 
-   public static fds.a a(jg<dgn> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new fdh($$0, $$2);
-   }
-
-   public jg<dgn> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public fci<fdh> b() {
+      return fcj.N;
    }
 }

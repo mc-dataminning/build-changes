@@ -1,26 +1,33 @@
-import java.util.Optional;
+import java.util.List;
 
-public record add(ffs b, Optional<ffs> c, lx d, jg<awq> e) implements zj<aby> {
-   public static final za<wn, add> a = za.a(ffs.b, add::b, ffs.b.a(yy::a), add::e, lz.bl, add::f, awq.d, add::g, add::new);
+public record add(add.a b, List<String> c) implements zo<acf> {
+   public static final ze<vy, add> a = zo.a(add::a, add::new);
 
-   @Override
-   public zl<add> a() {
-      return agr.E;
+   private add(vy $$0) {
+      this($$0.b(add.a.class), $$0.a(vy::p));
    }
 
-   public void a(aby $$0) {
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vy::a);
+   }
+
+   @Override
+   public zq<add> a() {
+      return agy.x;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public Optional<ffs> e() {
+   public List<String> e() {
       return this.c;
    }
 
-   public lx f() {
-      return this.d;
-   }
-
-   public jg<awq> g() {
-      return this.e;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

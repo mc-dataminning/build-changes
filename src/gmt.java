@@ -1,164 +1,101 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gmt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bti b = new bti(ag.h(), "server-list-io");
-   private static final int c = 16;
-   private final frf d;
-   private final List<gms> e = Lists.newArrayList();
-   private final List<gms> f = Lists.newArrayList();
-
-   public gmt(frf $$0) {
-      this.d = $$0;
-   }
-
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         ua $$0 = un.a(this.d.q.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         $$0.p("servers").j().forEach($$0x -> {
-            gms $$1x = gms.a($$0x);
-            if ($$0x.b("hidden", false)) {
-               this.f.add($$1x);
-            } else {
-               this.e.add($$1x);
-            }
-         });
-      } catch (Exception var2) {
-         a.error("Couldn't load server list", var2);
-      }
-   }
-
-   public void b() {
-      try {
-         ug $$0 = new ug();
-
-         for (gms $$1 : this.e) {
-            ua $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (gms $$3 : this.f) {
-            ua $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         ua $$5 = new ua();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.q.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         un.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         ag.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public gms a(int $$0) {
-      return this.e.get($$0);
-   }
-
+public abstract class gmt {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
    @Nullable
-   public gms a(String $$0) {
-      for (gms $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
+   protected gmv e;
+   protected boolean f;
+
+   public gmt(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
+   }
+
+   public abstract gmt b();
+
+   public abstract fzq a(fzq var1, gmx var2);
+
+   public abstract static class a<R extends gmt> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      for (gms $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
+      public R e() {
+         return this.a;
       }
 
-      return null;
-   }
-
-   @Nullable
-   public gms b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         gms $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
+      public UUID f() {
+         return this.a.c;
       }
 
-      return null;
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public gmv i() {
+         return this.a.e;
+      }
+
+      public void a(gmv $$0) {
+         this.a.e = $$0;
+      }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public gmt.b c() {
+         return !this.e().f ? gmt.b.e : null;
+      }
+
+      public abstract Either<gmt.c, gmt.b> a(gmx var1);
    }
 
-   public void a(gms $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
+   public static record b(xg f) {
+      public static final gmt.b a = new gmt.b(xg.c("gui.abuseReport.send.no_reason"));
+      public static final gmt.b b = new gmt.b(xg.c("gui.chatReport.send.no_reported_messages"));
+      public static final gmt.b c = new gmt.b(xg.c("gui.chatReport.send.too_many_messages"));
+      public static final gmt.b d = new gmt.b(xg.c("gui.abuseReport.send.comment_too_long"));
+      public static final gmt.b e = new gmt.b(xg.c("gui.abuseReport.send.not_attested"));
+
+      public fvj a() {
+         return fvj.a(this.f);
+      }
+
+      public xg b() {
+         return this.f;
       }
    }
 
-   public void a(gms $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      gms $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, gms $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(gms $$0, List<gms> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         gms $$3 = $$1.get($$2);
-         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(gms $$0) {
-      b.a_(() -> {
-         gmt $$1 = new gmt(frf.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+   public static record c(UUID a, gmw b, AbuseReport c) {
    }
 }

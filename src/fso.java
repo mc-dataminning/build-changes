@@ -1,24 +1,33 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record fso(float b, float c) implements fsp {
-   public static final MapCodec<fso> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayy.a(0.0F, 1.0F).fieldOf("temperature").forGetter(fso::b), ayy.a(0.0F, 1.0F).fieldOf("downfall").forGetter(fso::c))
-            .apply($$0, fso::new)
-   );
+public class fso {
+   private final Builder<String, gto.b> a = ImmutableMap.builder();
 
-   public fso() {
-      this(0.5F, 1.0F);
+   private <T extends Comparable<T>> void a(ect<T> $$0, gto.b $$1) {
+      this.a.put($$0.f(), $$1);
    }
 
-   @Override
-   public int a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2) {
-      return djx.a((double)this.b, (double)this.c);
+   public final <T extends Comparable<T>> fso a(ect<T> $$0, T $$1) {
+      this.a($$0, new gto.b(List.of(new gto.a($$0.b($$1), false))));
+      return this;
    }
 
-   @Override
-   public MapCodec<fso> a() {
-      return a;
+   @SafeVarargs
+   public final <T extends Comparable<T>> fso a(ect<T> $$0, T $$1, T... $$2) {
+      List<gto.a> $$3 = Stream.concat(Stream.of($$1), Stream.of($$2)).map($$0::b).sorted().distinct().map($$0x -> new gto.a($$0x, false)).toList();
+      this.a($$0, new gto.b($$3));
+      return this;
+   }
+
+   public final <T extends Comparable<T>> fso b(ect<T> $$0, T $$1) {
+      this.a($$0, new gto.b(List.of(new gto.a($$0.b($$1), true))));
+      return this;
+   }
+
+   public gtn a() {
+      return new gto(this.a.buildOrThrow());
    }
 }

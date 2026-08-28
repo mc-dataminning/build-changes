@@ -1,106 +1,160 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class exp {
-   public static final jm<exq> c = new jm<>();
-   protected final ebh<exp, exq> d;
-   private exq a;
-   private final jg.c<exp> b = mh.c.f(this);
-
-   protected exp() {
-      ebh.a<exp, exq> $$0 = new ebh.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(exp::g, exq::new);
-      this.f(this.d.b());
-   }
-
-   protected void a(ebh.a<exp, exq> $$0) {
-   }
-
-   public ebh<exp, exq> f() {
-      return this.d;
-   }
-
-   protected final void f(exq $$0) {
-      this.a = $$0;
-   }
-
-   public final exq g() {
-      return this.a;
-   }
-
-   public abstract czw a();
-
-   protected void a(djz $$0, iw $$1, exq $$2, azz $$3) {
-   }
-
-   protected void b(aru $$0, iw $$1, ebg $$2, exq $$3) {
-   }
-
-   protected void a(aru $$0, iw $$1, exq $$2, azz $$3) {
-   }
-
-   protected void a(djz $$0, iw $$1, bwv $$2, bxo $$3) {
-   }
-
+public class exp implements exs {
+   public static final int b = 1;
+   public static final exp c = new exp();
+   protected final dkl d;
    @Nullable
-   protected lx h() {
-      return null;
-   }
-
-   protected abstract boolean a(exq var1, djd var2, iw var3, exp var4, jc var5);
-
-   protected abstract ffs a(djd var1, iw var2, exq var3);
-
-   public abstract int a(dkc var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(exq var1, djd var2, iw var3);
-
-   public abstract float a(exq var1);
-
-   protected abstract ebg b(exq var1);
-
-   public abstract boolean c(exq var1);
-
-   public abstract int d(exq var1);
-
-   public boolean a(exp $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(axv<exp> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract fgm b(exq var1, djd var2, iw var3);
-
+   private final exr<?, ?> a;
    @Nullable
-   public ffn c(exq $$0, djd $$1, iw $$2) {
-      if (this.b()) {
-         return null;
-      } else {
-         float $$3 = $$0.a($$1, $$2);
-         return new ffn((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
+   private final exr<?, ?> e;
+
+   public exp(eea $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.r();
+      this.a = $$1 ? new exi($$0) : null;
+      this.e = $$2 ? new ext($$0) : null;
+   }
+
+   private exp() {
+      this.d = dkl.e(0, 0);
+      this.a = null;
+      this.e = null;
+   }
+
+   @Override
+   public void a(iw $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
       }
    }
 
-   public Optional<awq> j() {
-      return Optional.empty();
+   @Override
+   public boolean M_() {
+      return this.e != null && this.e.M_() ? true : this.a != null && this.a.M_();
    }
 
-   @Deprecated
-   public jg.c<exp> k() {
-      return this.b;
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(jz $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(djo $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void b(djo $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
+   }
+
+   public exn a(dks $$0) {
+      if ($$0 == dks.b) {
+         return (exn)(this.a == null ? exn.a.a : this.a);
+      } else {
+         return (exn)(this.e == null ? exn.a.a : this.e);
+      }
+   }
+
+   public String a(dks $$0, jz $$1) {
+      if ($$0 == dks.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public exo.b b(dks $$0, jz $$1) {
+      if ($$0 == dks.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return exo.b.a;
+   }
+
+   public void a(dks $$0, jz $$1, @Nullable eds $$2) {
+      if ($$0 == dks.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(djo $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(iw $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(long $$0) {
+      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   }
+
+   public int c() {
+      return this.d.ap() + 2;
+   }
+
+   public int d() {
+      return this.d.aq() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

@@ -1,5 +1,8 @@
-public enum fvz {
-   a,
-   b,
-   c;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fvz {
 }

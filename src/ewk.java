@@ -1,22 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class ewk implements ewn {
-   public static final MapCodec<ewk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ua.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, ewk::new));
-   private final ua b;
+public interface ewk<P extends ewj> {
+   ewk<evm> a = a("always_true", evm.a);
+   ewk<evr> b = a("block_match", evr.a);
+   ewk<evt> c = a("blockstate_match", evt.a);
+   ewk<ewr> d = a("tag_match", ewr.a);
+   ewk<ewg> e = a("random_block_match", ewg.a);
+   ewk<ewh> f = a("random_blockstate_match", ewh.a);
 
-   public ewk(ua $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public ua a(azz $$0, @Nullable ua $$1) {
-      return $$1 == null ? this.b.l() : $$1.a(this.b);
-   }
-
-   @Override
-   public ewo<?> a() {
-      return ewo.c;
+   static <P extends ewj> ewk<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.m, $$0, () -> $$1);
    }
 }

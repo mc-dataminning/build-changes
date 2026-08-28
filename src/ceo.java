@@ -1,61 +1,50 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class ceo extends ces {
-   private static final int a = 200;
-   private final cjk b;
-   private int c;
-   private int d;
+public class ceo extends cfo {
+   private final cjy g;
 
-   public ceo(cjk $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cjk $$0) {
-      return b(200 + $$0.dY().a(200) % 20);
+   public ceo(cjy $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(cfb.a.c, cfb.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.gx()) {
-         return false;
-      } else if (this.b.gu()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<cjk> $$0 = $$0x -> $$0x.gw() || !$$0x.gu();
-         List<? extends cjk> $$1 = this.b.dV().a((Class<? extends cjk>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
-         cjk $$2 = (cjk)DataFixUtils.orElse($$1.stream().filter(cjk::gw).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gu()));
-         return this.b.gu();
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.gu() && this.b.gy();
+      return this.g.q() && !this.g.gu() && !this.g.gH() && super.b();
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      super.d();
+      this.g.x(false);
+   }
+
+   @Override
+   protected int a(byn $$0) {
+      return 40;
    }
 
    @Override
    public void e() {
-      this.b.gv();
+      super.e();
+      this.g.z(false);
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gz();
+      super.a();
+      this.g.x(false);
+      if (!this.m()) {
+         this.g.z(false);
+      } else if (!this.g.gH()) {
+         this.g.z(true);
       }
+   }
+
+   @Override
+   protected boolean a(dkm $$0, iw $$1) {
+      return $$0.v($$1.d()) && $$0.a_($$1).a(axn.T);
    }
 }

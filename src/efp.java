@@ -1,72 +1,91 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class efp<T extends efl> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ayh<T> b;
-   private ega c;
+public enum efp {
+   a {
+      @Override
+      public void a(asb $$0, efq $$1, List<cnf> $$2, int $$3, iw $$4) {
+         iw $$5 = new iw(0, 128, 0);
 
-   public efp(Class<T> $$0, ega $$1) {
-      this.c = $$1;
-      this.b = new ayh<>($$0);
-   }
+         for (cnf $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   public void a(T $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public ayb.a a(ffn $$0, ayb<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
-            return ayb.a.b;
+         $$1.a(b);
+      }
+   },
+   b {
+      @Override
+      public void a(asb $$0, efq $$1, List<cnf> $$2, int $$3, iw $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new iw(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
          }
       }
+   },
+   c {
+      @Override
+      public void a(asb $$0, efq $$1, List<cnf> $$2, int $$3, iw $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<emg.a> $$8 = emg.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               emg.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cnf $$11 : $$2) {
+                     $$11.a(new iw($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-      return ayb.a.a;
-   }
+                  for (iw $$13 : iw.c(new iw($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new iw($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   public <U extends T> ayb.a a(efs<T, U> $$0, ffn $$1, ayb<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return ayb.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
-               return ayb.a.b;
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dkj.a.b);
+                  env $$14 = new env(true, ImmutableList.of($$10), new iw(0, 128, 0));
+                  ekw.L.a($$14, $$0, $$0.m().g(), bai.a(), new iw($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
             }
          }
-
-         return ayb.a.a;
       }
-   }
+   },
+   d {
+      @Override
+      public void a(asb $$0, efq $$1, List<cnf> $$2, int $$3, iw $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   public boolean a() {
-      return this.b.isEmpty();
-   }
+            for (cnf $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dA(), $$5.dC(), $$5.dG(), 6.0F, dkj.a.a);
+               $$5.aq();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new iw(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cnf $$6 : $$2) {
+               $$6.a(new iw(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new iw(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(asb $$0, efq $$1, List<cnf> $$2, int $$3, iw $$4) {
+      }
+   };
 
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public ega c() {
-      return this.c;
-   }
-
-   public ega a(ega $$0) {
-      ega $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @baz
-   public int d() {
-      return this.b.size();
-   }
+   public abstract void a(asb var1, efq var2, List<cnf> var3, int var4, iw var5);
 }

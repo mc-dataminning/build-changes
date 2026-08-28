@@ -1,61 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxm extends dne {
-   public static final MapCodec<dxm> a = b(dxm::new);
+public class dxm extends dpv implements dxk {
+   public static final MapCodec<dxm> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ecf.a.fieldOf("block_set_type").forGetter(dpv::b), dxk.a.e.fieldOf("weathering_state").forGetter(dxm::q), t()).apply($$0, dxm::new)
+   );
+   private final dxk.a h;
 
    @Override
    public MapCodec<dxm> a() {
-      return a;
+      return g;
    }
 
-   protected dxm(ebf.d $$0) {
-      super($$0);
+   protected dxm(ecf $$0, dxk.a $$1, ebp.d $$2) {
+      super($$0, $$2);
+      this.h = $$1;
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
-      if ($$1.F_().i()) {
-         $$1.a($$2, dng.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awr.Dp, aws.e, 1.0F, (1.0F + $$1.G_().i() * 0.2F) * 0.7F);
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if ($$0.c(dpv.c) == ecm.b) {
+         this.a_($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
-      jc $$4 = jc.b($$3);
-      if ($$4 != jc.b) {
-         iw $$5 = $$2.a($$4);
-         ebg $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == jc.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == jc.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == jc.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == jc.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   protected boolean f(ebq $$0) {
+      return dxk.c($$0.b()).isPresent();
+   }
 
-            $$1.a(lz.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   public dxk.a q() {
+      return this.h;
    }
 }

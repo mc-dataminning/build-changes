@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ewx {
+public interface ewx {
+   Codec<ewx> c = mh.n.q().dispatch(ewx::a, ewy::codec);
+
+   @Nullable
+   ua a(bai var1, @Nullable ua var2);
+
+   ewy<?> a();
 }

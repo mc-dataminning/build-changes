@@ -1,121 +1,194 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dms extends dne {
-   private static final fgm c = dne.b(14.0, 0.0, 0.5);
-   private static final fgm d = dne.b(14.0, 0.0, 1.0);
-   protected static final ffn a = dne.b(14.0, 0.0, 4.0).e().getFirst();
-   protected final ebv b;
+public class dms extends dno implements dnr {
+   public static final MapCodec<dms> a = b(dms::new);
+   private static final fgw D = dno.b(6.0, 0.0, 16.0);
+   private static final fgw R = dno.b(10.0, 0.0, 16.0);
+   private static final fgw S = dno.b(3.0, 0.0, 16.0);
+   public static final ecq b = ecg.at;
+   public static final eco<ecc> c = ecg.bn;
+   public static final ecq d = ecg.aX;
+   public static final int e = 16;
+   public static final int f = 0;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 1;
 
-   protected dms(ebf.d $$0, ebv $$1) {
-      super($$0.a($$1.g()));
-      this.b = $$1;
+   @Override
+   public MapCodec<dms> a() {
+      return a;
+   }
+
+   public dms(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, ecc.a).b(d, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dms> a();
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return this.h($$0) > 0 ? c : d;
-   }
-
-   protected int b() {
-      return 20;
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b, c, d);
    }
 
    @Override
-   public boolean a(ebg $$0) {
+   protected boolean e_(ebq $$0) {
       return true;
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return $$4 == jc.a && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      fgw $$4 = $$0.c(c) == ecc.c ? R : D;
+      return $$4.a($$0.a($$2));
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      iw $$3 = $$2.e();
-      return c($$1, $$3) || a($$1, $$3, jc.b);
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      int $$4 = this.h($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
-      }
+   protected fgw b(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return S.a($$0.a($$2));
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
-      if (!$$1.C) {
-         int $$5 = this.h($$0);
-         if ($$5 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$5);
+   protected boolean a_(ebq $$0, djn $$1, iw $$2) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public ebq a(ded $$0) {
+      eya $$1 = $$0.q().b_($$0.a());
+      if (!$$1.c()) {
+         return null;
+      } else {
+         ebq $$2 = $$0.q().a_($$0.a().e());
+         if ($$2.a(axn.ax)) {
+            if ($$2.a(dnq.nE)) {
+               return this.m().b(b, Integer.valueOf(0));
+            } else if ($$2.a(dnq.nF)) {
+               int $$3 = $$2.c(b) > 0 ? 1 : 0;
+               return this.m().b(b, Integer.valueOf($$3));
+            } else {
+               ebq $$4 = $$0.q().a_($$0.a().d());
+               return $$4.a(dnq.nF) ? this.m().b(b, $$4.c(b)) : dnq.nE.m();
+            }
+         } else {
+            return null;
          }
       }
    }
 
-   private void a(@Nullable bwv $$0, djz $$1, iw $$2, ebg $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         ebg $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.b.l(), aws.e);
-         $$1.a($$0, egg.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.b.m(), aws.e);
-         $$1.a($$0, egg.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new iw($$2), this, this.b());
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
-      if (!$$3 && this.h($$0) > 0) {
-         this.a($$1, $$2);
+   protected boolean f(ebq $$0) {
+      return $$0.c(d) == 0;
+   }
+
+   @Override
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if ($$0.c(d) == 0) {
+         if ($$3.a(3) == 0 && $$1.v($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+            int $$4 = this.b($$1, $$2) + 1;
+            if ($$4 < 16) {
+               this.a($$0, $$1, $$2, $$3, $$4);
+            }
+         }
       }
    }
 
-   protected void a(djz $$0, iw $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.e(), this);
+   @Override
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      return $$1.a_($$2.e()).a(axn.ax);
    }
 
    @Override
-   protected int a(ebg $$0, djd $$1, iw $$2, jc $$3) {
-      return this.h($$0);
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$4 == jc.b && $$6.a(dnq.nF) && $$6.c(b) > $$0.c(b) ? $$0.a(b) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected int b(ebg $$0, djd $$1, iw $$2, jc $$3) {
-      return $$3 == jc.b ? this.h($$0) : 0;
+   public boolean a(dkm $$0, iw $$1, ebq $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b($$0, $$1);
+      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(d) != 1;
    }
 
    @Override
-   protected boolean f_(ebg $$0) {
+   public boolean a(dkj $$0, bai $$1, iw $$2, ebq $$3) {
       return true;
    }
 
-   protected static int a(djz $$0, ffn $$1, Class<? extends bwv> $$2) {
-      return $$0.a($$2, $$1, bxc.f.and($$0x -> !$$0x.g_())).size();
+   @Override
+   public void a(asb $$0, bai $$1, iw $$2, ebq $$3) {
+      int $$4 = this.a($$0, $$2);
+      int $$5 = this.b($$0, $$2);
+      int $$6 = $$4 + $$5 + 1;
+      int $$7 = 1 + $$1.a(2);
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         iw $$9 = $$2.b($$4);
+         ebq $$10 = $$0.a_($$9);
+         if ($$6 >= 16 || $$10.c(d) == 1 || !$$0.v($$9.d())) {
+            return;
+         }
+
+         this.a($$10, $$0, $$9, $$1, $$6);
+         $$4++;
+         $$6++;
+      }
    }
 
-   protected abstract int b(djz var1, iw var2);
+   protected void a(ebq $$0, dkj $$1, iw $$2, bai $$3, int $$4) {
+      ebq $$5 = $$1.a_($$2.e());
+      iw $$6 = $$2.c(2);
+      ebq $$7 = $$1.a_($$6);
+      ecc $$8 = ecc.a;
+      if ($$4 >= 1) {
+         if (!$$5.a(dnq.nF) || $$5.c(c) == ecc.a) {
+            $$8 = ecc.b;
+         } else if ($$5.a(dnq.nF) && $$5.c(c) != ecc.a) {
+            $$8 = ecc.c;
+            if ($$7.a(dnq.nF)) {
+               $$1.a($$2.e(), $$5.b(c, ecc.b), 3);
+               $$1.a($$6, $$7.b(c, ecc.a), 3);
+            }
+         }
+      }
 
-   protected abstract int h(ebg var1);
+      int $$9 = $$0.c(b) != 1 && !$$7.a(dnq.nF) ? 0 : 1;
+      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
+      $$1.a($$2.d(), this.m().b(b, Integer.valueOf($$9)).b(c, $$8).b(d, Integer.valueOf($$10)), 3);
+   }
 
-   protected abstract ebg a(ebg var1, int var2);
+   protected int a(djn $$0, iw $$1) {
+      int $$2 = 0;
+
+      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(dnq.nF)) {
+         $$2++;
+      }
+
+      return $$2;
+   }
+
+   protected int b(djn $$0, iw $$1) {
+      int $$2 = 0;
+
+      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(dnq.nF)) {
+         $$2++;
+      }
+
+      return $$2;
+   }
 }

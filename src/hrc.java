@@ -1,69 +1,34 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class hrc implements hri {
-   private static final int a = 1200;
-   private static final xc b = xc.c("tutorial.craft_planks.title");
-   private static final xc c = xc.c("tutorial.craft_planks.description");
-   private final hrh d;
-   @Nullable
-   private fwz e;
-   private int f;
+public abstract class hrc extends fzq {
+   protected static final int d = 17;
+   protected static final int s = 7;
+   protected static final long u = 5368709120L;
+   protected static final int v = 5000268;
+   protected static final int w = 7105644;
+   protected static final int x = 8388479;
+   protected static final int y = 3368635;
+   protected static final int z = 7107012;
+   protected static final int A = 32;
+   protected static final int B = 8;
+   private final List<hrb> a = Lists.newArrayList();
 
-   public hrc(hrh $$0) {
-      this.d = $$0;
+   public hrc(xg $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hrj.f);
-      } else {
-         frf $$0 = this.d.e();
-         if (this.f == 1) {
-            grb $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gj().a(axo.b)) {
-                  this.d.a(hrj.f);
-                  return;
-               }
-
-               if (a($$1, axo.b)) {
-                  this.d.a(hrj.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fwz($$0.h, fwz.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+   protected static int g(int $$0) {
+      return 40 + $$0 * 13;
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+   protected hrb a(hrb $$0) {
+      this.a.add($$0);
+      return this.a($$0);
    }
 
-   @Override
-   public void a(daa $$0) {
-      if ($$0.a(axo.b)) {
-         this.d.a(hrj.f);
-      }
-   }
-
-   public static boolean a(grb $$0, axv<czw> $$1) {
-      for (jg<czw> $$2 : mh.g.c($$1)) {
-         if ($$0.l().a(axb.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public xg m() {
+      return xf.a(this.a.stream().map(hrb::a).collect(Collectors.toList()));
    }
 }

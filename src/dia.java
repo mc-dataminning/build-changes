@@ -1,78 +1,20 @@
-public interface dia {
-   alj<dhv> a = dib.a("trades/desert_armorer_boots_4");
-   alj<dhv> b = dib.a("trades/desert_armorer_leggings_4");
-   alj<dhv> c = dib.a("trades/desert_armorer_chestplate_4");
-   alj<dhv> d = dib.a("trades/desert_armorer_helmet_4");
-   alj<dhv> e = dib.a("trades/desert_armorer_leggings_5");
-   alj<dhv> f = dib.a("trades/desert_armorer_chestplate_5");
-   alj<dhv> g = dib.a("trades/plains_armorer_boots_4");
-   alj<dhv> h = dib.a("trades/plains_armorer_leggings_4");
-   alj<dhv> i = dib.a("trades/plains_armorer_chestplate_4");
-   alj<dhv> j = dib.a("trades/plains_armorer_helmet_4");
-   alj<dhv> k = dib.a("trades/plains_armorer_boots_5");
-   alj<dhv> l = dib.a("trades/plains_armorer_leggings_5");
-   alj<dhv> m = dib.a("trades/savanna_armorer_boots_4");
-   alj<dhv> n = dib.a("trades/savanna_armorer_leggings_4");
-   alj<dhv> o = dib.a("trades/savanna_armorer_chestplate_4");
-   alj<dhv> p = dib.a("trades/savanna_armorer_helmet_4");
-   alj<dhv> q = dib.a("trades/savanna_armorer_chestplate_5");
-   alj<dhv> r = dib.a("trades/savanna_armorer_helmet_5");
-   alj<dhv> s = dib.a("trades/snow_armorer_boots_4");
-   alj<dhv> t = dib.a("trades/snow_armorer_helmet_4");
-   alj<dhv> u = dib.a("trades/snow_armorer_boots_5");
-   alj<dhv> v = dib.a("trades/snow_armorer_helmet_5");
-   alj<dhv> w = dib.a("trades/jungle_armorer_boots_4");
-   alj<dhv> x = dib.a("trades/jungle_armorer_leggings_4");
-   alj<dhv> y = dib.a("trades/jungle_armorer_chestplate_4");
-   alj<dhv> z = dib.a("trades/jungle_armorer_helmet_4");
-   alj<dhv> A = dib.a("trades/jungle_armorer_boots_5");
-   alj<dhv> B = dib.a("trades/jungle_armorer_helmet_5");
-   alj<dhv> C = dib.a("trades/swamp_armorer_boots_4");
-   alj<dhv> D = dib.a("trades/swamp_armorer_leggings_4");
-   alj<dhv> E = dib.a("trades/swamp_armorer_chestplate_4");
-   alj<dhv> F = dib.a("trades/swamp_armorer_helmet_4");
-   alj<dhv> G = dib.a("trades/swamp_armorer_boots_5");
-   alj<dhv> H = dib.a("trades/swamp_armorer_helmet_5");
-   alj<dhv> I = dib.a("trades/taiga_armorer_leggings_5");
-   alj<dhv> J = dib.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qi<dhv> $$0) {
-      jh<dgn> $$1 = $$0.a(mi.aR);
-      $$0.a(a, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(b, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(c, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(d, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(e, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(f, new dhz($$1.b(dgs.h), btv.a(1)));
-      $$0.a(g, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(h, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(i, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(j, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(k, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(l, new dhz($$1.b(dgs.a), btv.a(1)));
-      $$0.a(m, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(n, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(o, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(p, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(q, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(r, new dhz($$1.b(dgs.k), btv.a(1)));
-      $$0.a(s, new dhz($$1.b(dgs.j), btv.a(1)));
-      $$0.a(t, new dhz($$1.b(dgs.g), btv.a(1)));
-      $$0.a(u, new dhz($$1.b(dgs.j), btv.a(1)));
-      $$0.a(v, new dhz($$1.b(dgs.g), btv.a(1)));
-      $$0.a(w, new dhz($$1.b(dgs.w), btv.a(1)));
-      $$0.a(x, new dhz($$1.b(dgs.w), btv.a(1)));
-      $$0.a(y, new dhz($$1.b(dgs.w), btv.a(1)));
-      $$0.a(z, new dhz($$1.b(dgs.w), btv.a(1)));
-      $$0.a(A, new dhz($$1.b(dgs.c), btv.a(1)));
-      $$0.a(B, new dhz($$1.b(dgs.e), btv.a(1)));
-      $$0.a(C, new dhz($$1.b(dgs.O), btv.a(1)));
-      $$0.a(D, new dhz($$1.b(dgs.O), btv.a(1)));
-      $$0.a(E, new dhz($$1.b(dgs.O), btv.a(1)));
-      $$0.a(F, new dhz($$1.b(dgs.O), btv.a(1)));
-      $$0.a(G, new dhz($$1.b(dgs.i), btv.a(1)));
-      $$0.a(H, new dhz($$1.b(dgs.f), btv.a(1)));
-      $$0.a(I, new dhz($$1.b(dgs.d), btv.a(1)));
-      $$0.a(J, new dhz($$1.b(dgs.d), btv.a(1)));
+public record dia(dhe c) implements dhq {
+   public static final MapCodec<dia> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dhe.b.fieldOf("value").forGetter(dia::b)).apply($$0, dia::new));
+
+   @Override
+   public float a(int $$0, bai $$1, float $$2) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public MapCodec<dia> a() {
+      return a;
+   }
+
+   public dhe b() {
+      return this.c;
    }
 }

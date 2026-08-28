@@ -1,43 +1,9 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import java.util.Optional;
 
-abstract class atz implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
-
-   @Override
-   public FileTime lastModifiedTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+public record atz(String a, xg b, ava c, Optional<auu> d) {
+   public xg a(boolean $$0, xg $$1) {
+      return xj.a(this.c.a(xg.b(this.a)))
+         .a($$2 -> $$2.a($$0 ? o.k : o.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xm.e(xg.i().b(this.b).f("\n").b($$1))));
    }
 }

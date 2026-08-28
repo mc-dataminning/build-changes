@@ -8,16 +8,16 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class il {
-   private static final Map<alk, SuggestionProvider<ep>> d = Maps.newHashMap();
-   private static final alk e = alk.b("ask_server");
+   private static final Map<alr, SuggestionProvider<ep>> d = Maps.newHashMap();
+   private static final alr e = alr.b("ask_server");
    public static final SuggestionProvider<ep> a = a(e, ($$0, $$1) -> ((ep)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ek> b = a(alk.b("available_sounds"), ($$0, $$1) -> ep.a(((ep)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<ek> b = a(alr.b("available_sounds"), ($$0, $$1) -> ep.a(((ep)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<ek> c = a(
-      alk.b("summonable_entities"),
-      ($$0, $$1) -> ep.a(mh.f.s().filter($$1x -> $$1x.a(((ep)$$0.getSource()).v()) && $$1x.c()), $$1, bxe::a, $$0x -> xc.c(ag.a("entity", bxe.a($$0x))))
+      alr.b("summonable_entities"),
+      ($$0, $$1) -> ep.a(mh.f.s().filter($$1x -> $$1x.a(((ep)$$0.getSource()).v()) && $$1x.c()), $$1, bxn::a, $$0x -> xg.c(ag.a("entity", bxn.a($$0x))))
    );
 
-   public static <S extends ep> SuggestionProvider<S> a(alk $$0, SuggestionProvider<ep> $$1) {
+   public static <S extends ep> SuggestionProvider<S> a(alr $$0, SuggestionProvider<ep> $$1) {
       if (d.containsKey($$0)) {
          throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
       } else {
@@ -26,11 +26,11 @@ public class il {
       }
    }
 
-   public static SuggestionProvider<ep> a(alk $$0) {
+   public static SuggestionProvider<ep> a(alr $$0) {
       return d.getOrDefault($$0, a);
    }
 
-   public static alk a(SuggestionProvider<ep> $$0) {
+   public static alr a(SuggestionProvider<ep> $$0) {
       return $$0 instanceof il.a ? ((il.a)$$0).b : e;
    }
 
@@ -40,9 +40,9 @@ public class il {
 
    protected static class a implements SuggestionProvider<ep> {
       private final SuggestionProvider<ep> a;
-      final alk b;
+      final alr b;
 
-      public a(alk $$0, SuggestionProvider<ep> $$1) {
+      public a(alr $$0, SuggestionProvider<ep> $$1) {
          this.a = $$1;
          this.b = $$0;
       }

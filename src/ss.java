@@ -11,7 +11,7 @@ public abstract class ss {
    }
 
    private static MapCodec<? extends ss> a(jt<MapCodec<? extends ss>> $$0, String $$1, MapCodec<? extends ss> $$2) {
-      return jt.a($$0, alj.a(mi.az, alk.b($$1)), $$2);
+      return jt.a($$0, alq.a(mi.az, alr.b($$1)), $$2);
    }
 
    protected ss(tl<jg<tm>> $$0) {
@@ -26,7 +26,7 @@ public abstract class ss {
       return this.a.a();
    }
 
-   public alk e() {
+   public alr e() {
       return this.a.b();
    }
 
@@ -58,7 +58,7 @@ public abstract class ss {
       return this.a.j();
    }
 
-   public dty m() {
+   public dui m() {
       return this.a.f();
    }
 
@@ -66,25 +66,25 @@ public abstract class ss {
       return this.a;
    }
 
-   protected abstract xq b();
+   protected abstract xu b();
 
-   public xc c() {
+   public xg c() {
       return this.o().b(this.p());
    }
 
-   protected xq o() {
+   protected xu o() {
       return this.a("test_instance.description.type", this.b());
    }
 
-   protected xc p() {
+   protected xg p() {
       return this.a("test_instance.description.structure", this.a.b().toString()).b(this.a("test_instance.description.batch", this.a.a().g()));
    }
 
-   protected xq a(String $$0, String $$1) {
-      return this.a($$0, xc.b($$1));
+   protected xu a(String $$0, String $$1) {
+      return this.a($$0, xg.b($$1));
    }
 
-   protected xq a(String $$0, xq $$1) {
-      return xc.a($$0, $$1.a(o.j)).b(xc.b("\n"));
+   protected xu a(String $$0, xu $$1) {
+      return xg.a($$0, $$1.a(o.j)).b(xg.b("\n"));
    }
 }

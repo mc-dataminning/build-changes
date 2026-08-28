@@ -1,23 +1,20 @@
-public record akn<T>(int a, ako<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         akn<?> $$1 = (akn<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+public record akn(ako b) implements zo<akm> {
+   public static final ze<vy, akn> a = zo.a(akn::a, akn::new);
+
+   private akn(vy $$0) {
+      this($$0.a(ako.a));
+   }
+
+   private void a(vy $$0) {
+      $$0.a(ako.a, this.b);
    }
 
    @Override
-   public int hashCode() {
-      return this.a;
+   public zq<akn> a() {
+      return akr.a;
    }
 
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public void a(akm $$0) {
+      $$0.a(this);
    }
 }

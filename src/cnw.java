@@ -1,103 +1,63 @@
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public abstract class cnw extends cnu {
-   protected static final Predicate<bwv> b = $$0 -> $$0 instanceof cnw;
-   protected jc c = jc.d;
+public class cnw<T extends cnq> {
+   private static cnw<?>[] l = new cnw[0];
+   public static final cnw<cnm> a = a(cnm.class, "HoldingPattern");
+   public static final cnw<cnu> b = a(cnu.class, "StrafePlayer");
+   public static final cnw<cno> c = a(cno.class, "LandingApproach");
+   public static final cnw<cnp> d = a(cnp.class, "Landing");
+   public static final cnw<cnv> e = a(cnv.class, "Takeoff");
+   public static final cnw<cns> f = a(cns.class, "SittingFlaming");
+   public static final cnw<cnt> g = a(cnt.class, "SittingScanning");
+   public static final cnw<cnr> h = a(cnr.class, "SittingAttacking");
+   public static final cnw<cnk> i = a(cnk.class, "ChargingPlayer");
+   public static final cnw<cnl> j = a(cnl.class, "Dying");
+   public static final cnw<cnn> k = a(cnn.class, "Hover");
+   private final Class<? extends cnq> m;
+   private final int n;
+   private final String o;
 
-   protected cnw(bxe<? extends cnw> $$0, djz $$1) {
-      super($$0, $$1);
+   private cnw(int $$0, Class<? extends cnq> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   protected cnw(bxe<? extends cnw> $$0, djz $$1, iw $$2) {
-      this($$0, $$1);
-      this.a = $$2;
-   }
-
-   protected void a(jc $$0) {
-      Objects.requireNonNull($$0);
-      Validate.isTrue($$0.o().d());
-      this.c = $$0;
-      this.w((float)(this.c.e() * 90));
-      this.N = this.dL();
-      this.f();
-   }
-
-   @Override
-   protected final void f() {
-      if (this.c != null) {
-         ffn $$0 = this.a(this.a, this.c);
-         ffs $$1 = $$0.f();
-         this.o($$1.d, $$1.e, $$1.f);
-         this.a($$0);
+   public cnq a(cng $$0) {
+      try {
+         Constructor<? extends cnq> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   protected abstract ffn a(iw var1, jc var2);
-
-   @Override
-   public boolean g() {
-      if (!this.dV().g(this)) {
-         return false;
-      } else {
-         boolean $$0 = iw.b(this.u()).allMatch($$0x -> {
-            ebg $$1 = this.dV().a_($$0x);
-            return $$1.e() || dph.n($$1);
-         });
-         return !$$0 ? false : this.dV().a(this, this.cR(), b).isEmpty();
-      }
+   protected Constructor<? extends cnq> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cng.class);
    }
 
-   protected ffn u() {
-      return this.cR().a(this.c.m().mul(-0.5F)).h(1.0E-7);
+   public int b() {
+      return this.n;
    }
 
    @Override
-   public jc cO() {
-      return this.c;
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
    }
 
-   @Override
-   public abstract void v();
-
-   @Override
-   public coe a(aru $$0, daa $$1, float $$2) {
-      coe $$3 = new coe(
-         this.dV(), this.dA() + (double)((float)this.c.j() * 0.15F), this.dC() + (double)$$2, this.dG() + (double)((float)this.c.l() * 0.15F), $$1
-      );
-      $$3.j();
-      this.dV().b($$3);
-      return $$3;
+   public static cnw<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
    }
 
-   @Override
-   public float a(dty $$0) {
-      if (this.c.o() != jc.a.b) {
-         switch ($$0) {
-            case c:
-               this.c = this.c.g();
-               break;
-            case d:
-               this.c = this.c.i();
-               break;
-            case b:
-               this.c = this.c.h();
-         }
-      }
-
-      float $$1 = azq.h(this.dL());
-
-      return switch ($$0) {
-         case c -> $$1 + 180.0F;
-         case d -> $$1 + 90.0F;
-         case b -> $$1 + 270.0F;
-         default -> $$1;
-      };
+   public static int c() {
+      return l.length;
    }
 
-   @Override
-   public float a(dsh $$0) {
-      return this.a($$0.a(this.c));
+   private static <T extends cnq> cnw<T> a(Class<T> $$0, String $$1) {
+      cnw<T> $$2 = new cnw<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

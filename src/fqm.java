@@ -1,22 +1,23 @@
-import java.util.function.IntFunction;
+import com.mojang.serialization.Codec;
 
-public enum fqm implements azt {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public enum fqm implements bac, bax {
+   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
+   b(1, "afk", "options.inactivityFpsLimit.afk");
 
-   private static final IntFunction<fqm> d = ayg.a(fqm::b, values(), ayg.a.b);
-   private final int e;
+   public static final Codec<fqm> c = bax.a(fqm::values);
+   private final int d;
+   private final String e;
    private final String f;
 
-   private fqm(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private fqm(final int $$0, final String $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
    public int b() {
-      return this.e;
+      return this.d;
    }
 
    @Override
@@ -24,7 +25,8 @@ public enum fqm implements azt {
       return this.f;
    }
 
-   public static fqm a(int $$0) {
-      return d.apply($$0);
+   @Override
+   public String c() {
+      return this.e;
    }
 }

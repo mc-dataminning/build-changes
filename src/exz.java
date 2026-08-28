@@ -1,100 +1,106 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class exz extends eym {
-   private final boolean a;
-   private float m;
-   private float n;
+public abstract class exz {
+   public static final jm<eya> c = new jm<>();
+   protected final ebr<exz, eya> d;
+   private eya a;
+   private final jg.c<exz> b = mh.c.f(this);
 
-   public exz(boolean $$0) {
+   protected exz() {
+      ebr.a<exz, eya> $$0 = new ebr.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(exz::g, eya::new);
+      this.f(this.d.b());
+   }
+
+   protected void a(ebr.a<exz, eya> $$0) {
+   }
+
+   public ebr<exz, eya> f() {
+      return this.d;
+   }
+
+   protected final void f(eya $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public void a(dkm $$0, bxy $$1) {
-      super.a($$0, $$1);
-      $$1.a(eyh.j, 0.0F);
-      this.m = $$1.a(eyh.c);
-      $$1.a(eyh.c, 6.0F);
-      this.n = $$1.a(eyh.k);
-      $$1.a(eyh.k, 4.0F);
+   public final eya g() {
+      return this.a;
    }
 
-   @Override
-   public void b() {
-      this.c.a(eyh.c, this.m);
-      this.c.a(eyh.k, this.n);
-      super.b();
+   public abstract dag a();
+
+   protected void a(dkj $$0, iw $$1, eya $$2, bai $$3) {
    }
 
-   @Override
-   public eyc a() {
-      return !this.c.bi() ? super.a() : this.c(new iw(azq.a(this.c.cR().a), azq.a(this.c.cR().b + 0.5), azq.a(this.c.cR().c)));
+   protected void b(asb $$0, iw $$1, ebq $$2, eya $$3) {
    }
 
-   @Override
-   public eyl a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
+   protected void a(asb $$0, iw $$1, eya $$2, bai $$3) {
    }
 
-   @Override
-   public int a(eyc[] $$0, eyc $$1) {
-      int $$2 = super.a($$0, $$1);
-      eyh $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      eyh $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.c.a($$3) >= 0.0F && $$4 != eyh.w) {
-         $$5 = azq.d(Math.max(1.0F, this.c.dP()));
+   protected void a(dkj $$0, iw $$1, bxe $$2, bxx $$3) {
+   }
+
+   @Nullable
+   protected lx h() {
+      return null;
+   }
+
+   protected abstract boolean a(eya var1, djn var2, iw var3, exz var4, jc var5);
+
+   protected abstract fgc a(djn var1, iw var2, eya var3);
+
+   public abstract int a(dkm var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(eya var1, djn var2, iw var3);
+
+   public abstract float a(eya var1);
+
+   protected abstract ebq b(eya var1);
+
+   public abstract boolean c(eya var1);
+
+   public abstract int d(eya var1);
+
+   public boolean a(exz $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(ayc<exz> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract fgw b(eya var1, djn var2, iw var3);
+
+   @Nullable
+   public ffx c(eya $$0, djn $$1, iw $$2) {
+      if (this.b()) {
+         return null;
       } else {
-         $$5 = 0;
+         float $$3 = $$0.a($$1, $$2);
+         return new ffx((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
       }
-
-      double $$7 = this.d(new iw($$1.a, $$1.b, $$1.c));
-      eyc $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jc.b, $$4);
-      eyc $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jc.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != eyh.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         eyc $$11 = $$0[$$10];
-         if ($$11.l == eyh.j && this.a && $$11.b < this.c.dV().P() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
    }
 
-   private boolean b(@Nullable eyc $$0, eyc $$1) {
-      return this.a($$0, $$1) && $$0.l == eyh.j;
+   public Optional<awx> j() {
+      return Optional.empty();
    }
 
-   @Override
-   protected boolean c() {
-      return true;
-   }
-
-   @Override
-   public eyh a(eyj $$0, int $$1, int $$2, int $$3) {
-      eyh $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == eyh.j) {
-         iw.a $$5 = new iw.a();
-
-         for (jc $$6 : jc.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            eyh $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == eyh.a) {
-               return eyh.k;
-            }
-         }
-
-         return eyh.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
+   @Deprecated
+   public jg.c<exz> k() {
+      return this.b;
    }
 }

@@ -8,9 +8,9 @@ public class bl extends dl<bl.a> {
       return bl.a.a;
    }
 
-   public void a(arv $$0, cpu $$1, crl $$2) {
-      faj $$3 = bz.b($$0, $$1);
-      faj $$4 = bz.b($$0, $$2);
+   public void a(asc $$0, cqd $$1, cru $$2) {
+      fat $$3 = bz.b($$0, $$1);
+      fat $$4 = bz.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bl extends dl<bl.a> {
          return aq.s.a(new bl.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(faj $$0, faj $$1) {
+      public boolean a(fat $$0, fat $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

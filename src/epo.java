@@ -1,27 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class epo<P extends epn> {
-   public static final epo<epp> a = a("trunk_vine", epp.a);
-   public static final epo<epk> b = a("leave_vine", epk.a);
-   public static final epo<epl> c = a("pale_moss", epl.a);
-   public static final epo<epj> d = a("creaking_heart", epj.a);
-   public static final epo<epi> e = a("cocoa", epi.a);
-   public static final epo<eph> f = a("beehive", eph.a);
-   public static final epo<epe> g = a("alter_ground", epe.a);
-   public static final epo<epf> h = a("attached_to_leaves", epf.a);
-   public static final epo<epm> i = a("place_on_ground", epm.a);
-   public static final epo<epg> j = a("attached_to_logs", epg.a);
-   private final MapCodec<P> k;
+public class epo extends epx {
+   public static final MapCodec<epo> a = epc.a.fieldOf("provider").xmap(epo::new, $$0 -> $$0.b);
+   private final epc b;
 
-   private static <P extends epn> epo<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.X, $$0, new epo<>($$1));
+   public epo(epc $$0) {
+      this.b = $$0;
    }
 
-   private epo(MapCodec<P> $$0) {
-      this.k = $$0;
+   @Override
+   protected epy<?> a() {
+      return epy.g;
    }
 
-   public MapCodec<P> a() {
-      return this.k;
+   @Override
+   public void a(epx.a $$0) {
+      List<iw> $$1 = emi.a($$0);
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3 = $$0.b().a(64);
+               int $$4 = $$3 % 8;
+               int $$5 = $$3 / 8;
+               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(epx.a $$0, iw $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(epx.a $$0, iw $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         iw $$3 = $$1.b($$2);
+         if (ekw.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
+      }
    }
 }

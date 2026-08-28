@@ -1,7 +1,13 @@
 package com.mojang.blaze3d.systems;
 
+import com.mojang.blaze3d.buffers.BufferType;
+import com.mojang.blaze3d.buffers.BufferUsage;
+import com.mojang.blaze3d.buffers.GpuBuffer;
+import com.mojang.blaze3d.buffers.GpuFence;
 import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.shaders.ShaderType;
+import com.mojang.blaze3d.textures.GpuTexture;
+import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.logging.LogUtils;
 import java.nio.ByteBuffer;
 import java.util.Locale;
@@ -18,15 +24,15 @@ import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fhs
+@fic
 public class RenderSystem {
-   public static final fle SCISSOR_STATE = new fle();
+   public static final ScissorState SCISSOR_STATE = new ScissorState();
    static final Logger LOGGER = LogUtils.getLogger();
    public static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    @Nullable
    private static Thread renderThread;
    @Nullable
-   private static flc DEVICE;
+   private static GpuDevice DEVICE;
    private static double lastDrawTime = Double.MIN_VALUE;
    private static final RenderSystem.a sharedSequential = new RenderSystem.a(1, 1, IntConsumer::accept);
    private static final RenderSystem.a sharedSequentialQuad = new RenderSystem.a(4, 6, ($$0, $$1) -> {
@@ -47,14 +53,15 @@ public class RenderSystem {
    });
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static fhw projectionType = fhw.a;
-   private static fhw savedProjectionType = fhw.a;
+   private static fig projectionType = fig.a;
+   private static fig savedProjectionType = fig.a;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
    private static Matrix4f textureMatrix = new Matrix4f();
-   private static final flj[] shaderTextures = new flj[12];
+   public static final int TEXTURE_COUNT = 12;
+   private static final GpuTexture[] shaderTextures = new GpuTexture[12];
    private static final float[] shaderColor = new float[]{1.0F, 1.0F, 1.0F, 1.0F};
    private static float shaderGlintAlpha = 1.0F;
-   private static grq shaderFog = grq.a;
+   private static grb shaderFog = grb.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
    private static final Vector3f modelOffset = new Vector3f();
@@ -63,8 +70,8 @@ public class RenderSystem {
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
    @Nullable
-   private static fii QUAD_VERTEX_BUFFER;
-   private static final ayc<RenderSystem.b> PENDING_FENCES = new ayc<>();
+   private static GpuBuffer QUAD_VERTEX_BUFFER;
+   private static final ayk<RenderSystem.b> PENDING_FENCES = new ayk<>();
 
    public static void initRenderThread() {
       if (renderThread != null) {
@@ -99,9 +106,9 @@ public class RenderSystem {
       return pollingEvents.get() && ag.c() - pollEventsWaitStart.get() > 200L;
    }
 
-   public static void flipFrame(long $$0, @Nullable fhy $$1) {
+   public static void flipFrame(long $$0, @Nullable fii $$1) {
       pollEvents();
-      fls.b().c();
+      flf.b().c();
       GLFW.glfwSwapBuffers($$0);
       if ($$1 != null) {
          $$1.b();
@@ -122,24 +129,19 @@ public class RenderSystem {
    }
 
    public static void enableScissor(int $$0, int $$1, int $$2, int $$3) {
-      SCISSOR_STATE.a($$0, $$1, $$2, $$3);
+      SCISSOR_STATE.enable($$0, $$1, $$2, $$3);
    }
 
    public static void disableScissor() {
-      SCISSOR_STATE.a();
+      SCISSOR_STATE.disable();
    }
 
-   public static void activeTexture(int $$0) {
-      assertOnRenderThread();
-      GlStateManager._activeTexture($$0);
-   }
-
-   public static void setShaderFog(grq $$0) {
+   public static void setShaderFog(grb $$0) {
       assertOnRenderThread();
       shaderFog = $$0;
    }
 
-   public static grq getShaderFog() {
+   public static grb getShaderFog() {
       assertOnRenderThread();
       return shaderFog;
    }
@@ -199,13 +201,13 @@ public class RenderSystem {
       return apiDescription;
    }
 
-   public static bat.a initBackendSystem() {
+   public static bbc.a initBackendSystem() {
       return GLX._initGlfw()::getAsLong;
    }
 
-   public static void initRenderer(long $$0, int $$1, boolean $$2, BiFunction<alk, fky, String> $$3, boolean $$4) {
-      DEVICE = new fiz($$0, $$1, $$2, $$3, $$4);
-      apiDescription = getDevice().c();
+   public static void initRenderer(long $$0, int $$1, boolean $$2, BiFunction<alr, ShaderType, String> $$3, boolean $$4) {
+      DEVICE = new fjg($$0, $$1, $$2, $$3, $$4);
+      apiDescription = getDevice().getImplementationInformation();
    }
 
    public static void setErrorCallback(GLFWErrorCallbackI $$0) {
@@ -219,7 +221,7 @@ public class RenderSystem {
       textureMatrix.identity();
    }
 
-   public static void setupOverlayColor(@Nullable flj $$0) {
+   public static void setupOverlayColor(@Nullable GpuTexture $$0) {
       assertOnRenderThread();
       setShaderTexture(1, $$0);
    }
@@ -236,15 +238,20 @@ public class RenderSystem {
 
    public static void setupGuiFlatDiffuseLighting(Vector3f $$0, Vector3f $$1) {
       assertOnRenderThread();
-      GlStateManager.setupGuiFlatDiffuseLighting($$0, $$1);
+      Matrix4f $$2 = new Matrix4f().rotationY((float) (-Math.PI / 8)).rotateX((float) (Math.PI * 3.0 / 4.0));
+      setShaderLights($$2.transformDirection($$0, new Vector3f()), $$2.transformDirection($$1, new Vector3f()));
    }
 
    public static void setupGui3DDiffuseLighting(Vector3f $$0, Vector3f $$1) {
       assertOnRenderThread();
-      GlStateManager.setupGui3DDiffuseLighting($$0, $$1);
+      Matrix4f $$2 = new Matrix4f()
+         .scaling(1.0F, -1.0F, 1.0F)
+         .rotateYXZ(1.0821041F, 3.2375858F, 0.0F)
+         .rotateYXZ((float) (-Math.PI / 8), (float) (Math.PI * 3.0 / 4.0), 0.0F);
+      setShaderLights($$2.transformDirection($$0, new Vector3f()), $$2.transformDirection($$1, new Vector3f()));
    }
 
-   public static void setShaderTexture(int $$0, @Nullable flj $$1) {
+   public static void setShaderTexture(int $$0, @Nullable GpuTexture $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
          shaderTextures[$$0] = $$1;
@@ -252,12 +259,12 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static flj getShaderTexture(int $$0) {
+   public static GpuTexture getShaderTexture(int $$0) {
       assertOnRenderThread();
       return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : null;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, fhw $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, fig $$1) {
       assertOnRenderThread();
       projectionMatrix = new Matrix4f($$0);
       projectionType = $$1;
@@ -305,7 +312,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(flu.c $$0) {
+   public static RenderSystem.a getSequentialBuffer(VertexFormat.b $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -325,22 +332,22 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static fhw getProjectionType() {
+   public static fig getProjectionType() {
       assertOnRenderThread();
       return projectionType;
    }
 
-   public static fii getQuadVertexBuffer() {
+   public static GpuBuffer getQuadVertexBuffer() {
       if (QUAD_VERTEX_BUFFER == null) {
-         try (fln $$0 = new fln(flo.e.b() * 4)) {
-            flm $$1 = new flm($$0, flu.c.h, flo.e);
+         try (fla $$0 = new fla(flb.e.getVertexSize() * 4)) {
+            fkz $$1 = new fkz($$0, VertexFormat.b.h, flb.e);
             $$1.a(0.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 1.0F, 0.0F);
             $$1.a(0.0F, 1.0F, 0.0F);
 
-            try (flp $$2 = $$1.b()) {
-               QUAD_VERTEX_BUFFER = getDevice().a(() -> "Quad", fig.a, fih.b, $$2.a());
+            try (flc $$2 = $$1.b()) {
+               QUAD_VERTEX_BUFFER = getDevice().createBuffer(() -> "Quad", BufferType.VERTICES, BufferUsage.STATIC_WRITE, $$2.a());
             }
          }
       }
@@ -364,12 +371,12 @@ public class RenderSystem {
    }
 
    public static void queueFencedTask(Runnable $$0) {
-      PENDING_FENCES.addLast(new RenderSystem.b($$0, new fij()));
+      PENDING_FENCES.addLast(new RenderSystem.b($$0, new GpuFence()));
    }
 
    public static void executePendingTasks() {
       for (RenderSystem.b $$0 = PENDING_FENCES.peekFirst(); $$0 != null; $$0 = PENDING_FENCES.peekFirst()) {
-         if (!$$0.b.a(0L)) {
+         if (!$$0.b.awaitCompletion(0L)) {
             return;
          }
 
@@ -383,7 +390,7 @@ public class RenderSystem {
       }
    }
 
-   public static flc getDevice() {
+   public static GpuDevice getDevice() {
       if (DEVICE == null) {
          throw new IllegalStateException("Can't getDevice() before it was initialized");
       } else {
@@ -392,7 +399,7 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static flc tryGetDevice() {
+   public static GpuDevice tryGetDevice() {
       return DEVICE;
    }
 
@@ -401,8 +408,8 @@ public class RenderSystem {
       private final int b;
       private final RenderSystem.a.a c;
       @Nullable
-      private fii d;
-      private flu.b e = flu.b.a;
+      private GpuBuffer d;
+      private VertexFormat.a e = VertexFormat.a.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -415,23 +422,19 @@ public class RenderSystem {
          return $$0 <= this.f;
       }
 
-      public fii b(int $$0) {
-         if (this.d == null) {
-            this.d = RenderSystem.getDevice().a(() -> "Auto Storage index buffer", fig.b, fih.a, 0);
-         }
-
+      public GpuBuffer b(int $$0) {
          this.c($$0);
          return this.d;
       }
 
       private void c(int $$0) {
          if (!this.a($$0)) {
-            $$0 = azq.d($$0 * 2, this.b);
+            $$0 = azz.d($$0 * 2, this.b);
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
             int $$1 = $$0 / this.b;
             int $$2 = $$1 * this.a;
-            flu.b $$3 = flu.b.a($$2);
-            int $$4 = azq.d($$0 * $$3.c, 4);
+            VertexFormat.a $$3 = VertexFormat.a.a($$2);
+            int $$4 = azz.d($$0 * $$3.c, 4);
             ByteBuffer $$5 = MemoryUtil.memAlloc($$4);
 
             try {
@@ -447,7 +450,7 @@ public class RenderSystem {
                   this.d.close();
                }
 
-               this.d = RenderSystem.getDevice().a(() -> "Auto Storage index buffer", fig.b, fih.a, $$5);
+               this.d = RenderSystem.getDevice().createBuffer(() -> "Auto Storage index buffer", BufferType.INDICES, BufferUsage.DYNAMIC_WRITE, $$5);
             } finally {
                MemoryUtil.memFree($$5);
             }
@@ -466,7 +469,7 @@ public class RenderSystem {
          }
       }
 
-      public flu.b a() {
+      public VertexFormat.a a() {
          return this.e;
       }
 
@@ -475,6 +478,6 @@ public class RenderSystem {
       }
    }
 
-   static record b(Runnable a, fij b) {
+   static record b(Runnable a, GpuFence b) {
    }
 }

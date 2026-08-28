@@ -1,36 +1,16 @@
 import javax.annotation.Nullable;
 
-public class cgn<T extends bxw> extends cgl<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public cgn(ctq $$0, Class<T> $$1, boolean $$2, @Nullable cil.a $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+public class cgn extends cgo {
+   public cgn(byn $$0, double $$1) {
+      super($$0, $$1);
    }
 
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
-   }
-
+   @Nullable
    @Override
-   public boolean b() {
-      if (this.j > 0 || !this.e.dY().h()) {
-         return false;
-      } else if (!((ctq)this.e).gI()) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.j = b(200);
-      super.d();
+   protected fgc h() {
+      fgc $$0 = this.b.h(0.0F);
+      int $$1 = 8;
+      fgc $$2 = cja.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : ciw.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

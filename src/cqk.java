@@ -1,43 +1,67 @@
-public interface cqk {
-   int l_ = 10;
-   float m_ = 0.2F;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
 
-   int q();
+public class cqk extends bzw<cqg> {
+   private static final int c = 256;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final float f = 0.7F;
+   private static final int g = Math.round(15.0F);
+   private static final int h = Math.round(4.0F);
+   private static final int i = Math.round(10.0F);
 
-   static boolean a(aru $$0, bxw $$1, bxw $$2) {
-      float $$3 = (float)$$1.h(bzc.c);
-      float $$4;
-      if (!$$1.n_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      bvk $$6 = $$1.dW().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dgp.a($$0, (bwv)$$2, $$6);
-         if (!$$1.n_()) {
-            a($$1, $$2);
-         }
-      }
-
-      return $$7;
+   @VisibleForTesting
+   public cqk() {
+      super(ImmutableMap.of(chh.p, chi.a, chh.aZ, chi.b, chh.aX, chi.b, chh.aY, chi.b, chh.aW, chi.a, chh.n, chi.b, chh.bb, chi.b), g + 1 + h);
    }
 
-   static void a(bxw $$0, bxw $$1) {
-      double $$2 = $$0.h(bzc.d);
-      double $$3 = $$1.h(bzc.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dA() - $$0.dA();
-         double $$6 = $$1.dG() - $$0.dG();
-         float $$7 = (float)($$0.dV().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
-         ffs $$9 = new ffs($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
-         $$1.i($$9.d, $$10, $$9.f);
-         $$1.T = true;
+   protected boolean a(asb $$0, cqg $$1) {
+      return $$1.at() != byr.a ? false : $$1.ec().c(chh.p).map($$1x -> a($$1, $$1x)).map($$1x -> {
+         if (!$$1x) {
+            $$1.ec().b(chh.aW);
+         }
+
+         return $$1x;
+      }).orElse(false);
+   }
+
+   protected boolean a(asb $$0, cqg $$1, long $$2) {
+      return $$1.ec().a(chh.p) && $$1.ec().a(chh.aW);
+   }
+
+   protected void b(asb $$0, cqg $$1, long $$2) {
+      $$1.ec().c(chh.p).ifPresent($$1x -> $$1.b(byr.q));
+      $$1.ec().a(chh.aX, bbh.a, (long)g);
+      $$1.a(awy.cG, 1.0F, 1.0F);
+   }
+
+   protected void c(asb $$0, cqg $$1, long $$2) {
+      if ($$1.at() == byr.q) {
+         $$1.b(byr.a);
       }
+
+      $$1.ec().a(chh.aZ, bbh.a, (long)i);
+      $$1.ec().b(chh.aW);
+   }
+
+   protected void d(asb $$0, cqg $$1, long $$2) {
+      bzf<cqg> $$3 = $$1.ec();
+      byf $$4 = $$3.c(chh.p).orElse(null);
+      if ($$4 != null) {
+         $$1.a(ew.a.b, $$4.dt());
+         if (!$$3.c(chh.aX).isPresent() && !$$3.c(chh.aY).isPresent()) {
+            $$3.a(chh.aY, bbh.a, (long)h);
+            double $$5 = $$4.dA() - $$1.dA();
+            double $$6 = $$4.e($$4.bY() ? 0.8 : 0.3) - $$1.x();
+            double $$7 = $$4.dG() - $$1.dG();
+            ctd.a(new ctv($$1, $$0), $$0, dak.l, $$5, $$6, $$7, 0.7F, (float)(5 - $$0.an().a() * 4));
+            $$1.a(awy.cJ, 1.5F, 1.0F);
+         }
+      }
+   }
+
+   private static boolean a(cqg $$0, byf $$1) {
+      double $$2 = $$0.dt().g($$1.dt());
+      return $$2 < 256.0;
    }
 }

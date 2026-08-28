@@ -1,35 +1,72 @@
-import java.util.Collection;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class dfa {
-   public static final alj<? extends jt<dfa>> a = alj.a(alk.b("recipe_property_set"));
-   public static final alj<dfa> b = a("smithing_base");
-   public static final alj<dfa> c = a("smithing_template");
-   public static final alj<dfa> d = a("smithing_addition");
-   public static final alj<dfa> e = a("furnace_input");
-   public static final alj<dfa> f = a("blast_furnace_input");
-   public static final alj<dfa> g = a("smoker_input");
-   public static final alj<dfa> h = a("campfire_input");
-   public static final za<wn, dfa> i = czw.f.a(yy.a()).a($$0 -> new dfa(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final dfa j = new dfa(Set.of());
-   private final Set<jg<czw>> k;
+   public static final int a = -1;
+   public static final dfa b = new dfa(List.of(), IntList.of());
+   private final List<dex> c;
+   private final IntList d;
 
-   private dfa(Set<jg<czw>> $$0) {
-      this.k = $$0;
+   private dfa(List<dex> $$0, IntList $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static alj<dfa> a(String $$0) {
-      return alj.a(a, alk.b($$0));
+   public static dfa a(dex $$0) {
+      return $$0.b() ? b : new dfa(List.of($$0), IntList.of(0));
    }
 
-   public boolean a(daa $$0) {
-      return this.k.contains($$0.i());
+   public static dfa a(List<Optional<dex>> $$0) {
+      int $$1 = $$0.size();
+      List<dex> $$2 = new ArrayList<>($$1);
+      IntList $$3 = new IntArrayList($$1);
+      int $$4 = 0;
+
+      for (Optional<dex> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            dex $$6 = $$5.get();
+            if ($$6.b()) {
+               return b;
+            }
+
+            $$2.add($$6);
+            $$3.add($$4++);
+         } else {
+            $$3.add(-1);
+         }
+      }
+
+      return new dfa($$2, $$3);
    }
 
-   static dfa a(Collection<den> $$0) {
-      Set<jg<czw>> $$1 = $$0.stream().flatMap(den::a).collect(Collectors.toUnmodifiableSet());
-      return new dfa($$1);
+   public static dfa b(List<dex> $$0) {
+      int $$1 = $$0.size();
+      IntList $$2 = new IntArrayList($$1);
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         dex $$4 = $$0.get($$3);
+         if ($$4.b()) {
+            return b;
+         }
+
+         $$2.add($$3);
+      }
+
+      return new dfa($$0, $$2);
+   }
+
+   public IntList a() {
+      return this.d;
+   }
+
+   public List<dex> b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
    }
 }

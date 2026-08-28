@@ -1,31 +1,24 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Objects;
 
-public class eub extends esd {
-   public static final MapCodec<eub> d = a(eub::new);
+@FunctionalInterface
+public interface eub {
+   eub a = $$0 -> $$0;
 
-   public eub(esd.c $$0) {
-      super($$0);
-   }
+   alq<etx> lookup(alq<etx> var1);
 
-   @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      dty $$1 = dty.a($$0.f());
-      iw $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new esd.b($$2, (Consumer<esv>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(esv $$0, iw $$1, dty $$2, esd.a $$3) {
-      List<esh> $$4 = Lists.newArrayList();
-      eua.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public esm<?> e() {
-      return esm.c;
+   static eub create(List<etz> $$0, iw $$1, long $$2) {
+      if ($$0.isEmpty()) {
+         return a;
+      } else {
+         bai $$3 = bai.a($$2).e().a($$1);
+         Builder<alq<etx>, alq<etx>> $$4 = ImmutableMap.builder();
+         $$0.forEach($$2x -> $$2x.a($$3, $$4::put));
+         Map<alq<etx>, alq<etx>> $$5 = $$4.build();
+         return $$1x -> Objects.requireNonNull($$5.getOrDefault($$1x, $$1x), () -> "alias " + $$1x.a() + " was mapped to null value");
+      }
    }
 }

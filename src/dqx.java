@@ -1,113 +1,88 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dqx extends dqv implements dnh {
-   public static final ecg e = ebw.aA;
-   public static final int f = 25;
-   private final double c;
+public class dqx extends drr {
+   public static final MapCodec<dqx> a = b(dqx::new);
+   public static final int b = 3;
+   public static final ecq c = ecg.av;
+   private static final int f = 4;
+   private static final int g = 2;
 
-   protected dqx(ebf.d $$0, jc $$1, fgm $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.C.b().b(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dqx> a() {
+      return a;
+   }
+
+   public dqx(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dqx> a();
-
-   @Override
-   public ebg b(azz $$0) {
-      return this.m().b(e, Integer.valueOf($$0.a(25)));
+   public void a(ebq $$0, dkj $$1, iw $$2, ebq $$3, boolean $$4) {
+      $$1.a($$2, this, azz.a($$1.G_(), 60, 120));
    }
 
    @Override
-   protected boolean f(ebg $$0) {
-      return $$0.c(e) < 25;
-   }
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.B($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
+         iw.a $$4 = new iw.a();
 
-   @Override
-   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         iw $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.A));
+         for (jc $$5 : jc.values()) {
+            $$4.a($$2, $$5);
+            ebq $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
+               $$1.a($$4, this, azz.a($$3, 20, 40));
+            }
          }
+      } else {
+         $$1.a($$2, this, azz.a($$3, 20, 40));
       }
    }
 
-   protected ebg a(ebg $$0, azz $$1) {
-      return $$0.a(e);
-   }
-
-   public ebg p(ebg $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(ebg $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected ebg a(ebg $$0, ebg $$1) {
-      return $$1;
+   private boolean e(ebq $$0, dkj $$1, iw $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.d($$0, $$1, $$2);
+         return true;
+      }
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$4 == this.a.g()) {
-         if (!$$0.a($$1, $$3)) {
-            $$2.a($$3, this, 1);
-         } else {
-            ebg $$8 = $$1.a_($$3.a(this.a));
-            if ($$8.a(this) || $$8.a(this.b())) {
-               return this.a($$0, this.b().m());
+   protected void a(ebq $$0, dkj $$1, iw $$2, dno $$3, @Nullable ezi $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.d($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(djn $$0, iw $$1, int $$2) {
+      int $$3 = 0;
+      iw.a $$4 = new iw.a();
+
+      for (jc $$5 : jc.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
             }
          }
       }
 
-      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
-         if (this.b) {
-            $$2.a($$3, exr.c, exr.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         return this.a($$0, this.b().m());
-      }
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean a(dkc $$0, iw $$1, ebg $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
       return true;
    }
 
    @Override
-   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
-      iw $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
-      }
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(c);
    }
 
-   protected abstract int a(azz var1);
-
-   protected abstract boolean h(ebg var1);
-
    @Override
-   protected dqx c() {
-      return this;
+   protected dak a(dkm $$0, iw $$1, ebq $$2, boolean $$3) {
+      return dak.l;
    }
 }

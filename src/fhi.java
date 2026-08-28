@@ -1,46 +1,65 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
-public class fhi<T> implements fhl<T>, fhn<T> {
-   private final List<fhj<T>> a = Lists.newArrayList();
-   private final Set<fhj<?>> b = new ObjectOpenCustomHashSet(fhj.a);
+public class fhi extends ezm {
+   public static final String a = "scoreboard";
+   private final fhh b;
 
-   @Override
-   public void a(fhk<T> $$0) {
-      fhj<T> $$1 = new fhj<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   public fhi(fhh $$0) {
+      this.b = $$0;
    }
 
-   private void a(fhj<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public void a(fhi.a $$0) {
+      $$0.a().forEach(this.b::a);
+      $$0.b().forEach(this.b::a);
+      $$0.c().forEach(($$0x, $$1) -> {
+         fgz $$2 = this.b.a($$1);
+         this.b.a($$0x, $$2);
+      });
+      $$0.d().forEach(this.b::a);
+   }
+
+   public fhi.a a() {
+      Map<fgy, String> $$0 = new EnumMap<>(fgy.class);
+
+      for (fgy $$1 : fgy.values()) {
+         fgz $$2 = this.b.a($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2.c());
+         }
       }
+
+      return new fhi.a(this.b.b().stream().map(fgz::a).toList(), this.b.g(), $$0, this.b.f().stream().map(fhc::a).toList());
    }
 
-   @Override
-   public boolean a(iw $$0, T $$1) {
-      return this.b.contains(fhj.a($$1, $$0));
-   }
+   public static record a(List<fgz.a> b, List<fhh.a> c, Map<fgy, String> d, List<fhc.a> e) {
+      public static final Codec<fhi.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  fgz.a.a.listOf().optionalFieldOf("Objectives", List.of()).forGetter(fhi.a::a),
+                  fhh.a.a.listOf().optionalFieldOf("PlayerScores", List.of()).forGetter(fhi.a::b),
+                  Codec.unboundedMap(fgy.t, Codec.STRING).optionalFieldOf("DisplaySlots", Map.of()).forGetter(fhi.a::c),
+                  fhc.a.a.listOf().optionalFieldOf("Teams", List.of()).forGetter(fhi.a::d)
+               )
+               .apply($$0, fhi.a::new)
+      );
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
+      public List<fgz.a> a() {
+         return this.b;
+      }
 
-   @Override
-   public List<fhj<T>> a(long $$0) {
-      return this.a;
-   }
+      public List<fhh.a> b() {
+         return this.c;
+      }
 
-   public List<fhj<T>> b() {
-      return List.copyOf(this.a);
-   }
+      public Map<fgy, String> c() {
+         return this.d;
+      }
 
-   public static <T> fhi<T> a(List<fhj<T>> $$0) {
-      fhi<T> $$1 = new fhi<>();
-      $$0.forEach($$1::a);
-      return $$1;
+      public List<fhc.a> d() {
+         return this.e;
+      }
    }
 }

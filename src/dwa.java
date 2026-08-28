@@ -1,24 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwa extends dwf {
-   public static final MapCodec<dwa> a = b(dwa::new);
+public interface dwa {
+   ddm c();
 
-   @Override
-   public MapCodec<dwa> a() {
-      return a;
+   static List<dwa> d() {
+      return mh.g.s().map(dwa::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public dwa(ebf.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static dwa a(dki $$0) {
+      if ($$0.h() instanceof cys $$1) {
+         dno var6 = $$1.c();
+         if (var6 instanceof dwa) {
+            return (dwa)var6;
+         }
+      }
 
-   @Override
-   protected boolean e_(ebg $$0) {
-      return false;
-   }
-
-   @Override
-   protected int i_(ebg $$0) {
-      return 15;
+      dag $$2 = $$0.h();
+      return $$2 instanceof dwa ? (dwa)$$2 : null;
    }
 }

@@ -1,36 +1,49 @@
 import javax.annotation.Nullable;
 
-public abstract class fwi implements fwj {
-   @Nullable
-   private fwk a;
-   private boolean b;
+public interface fwi {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-   @Override
-   public final boolean aL_() {
-      return this.b;
-   }
+   fwi.a a();
 
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
-   }
+   void a(fwj var1, long var2);
 
    @Nullable
-   @Override
-   public fwk aM_() {
-      return this.a;
+   default awx b() {
+      return null;
    }
 
-   @Override
-   public void a(@Nullable fwk $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   void a(ftk var1, fti var2, long var3);
+
+   default Object g() {
+      return b;
+   }
+
+   default int c() {
+      return 160;
+   }
+
+   default int d() {
+      return 32;
+   }
+
+   default int h() {
+      return azz.e(this.d(), 32);
+   }
+
+   public static enum a {
+      a(awy.BC),
+      b(awy.BD);
+
+      private final awx c;
+
+      private a(final awx $$0) {
+         this.c = $$0;
       }
 
-      if ($$0 != null) {
-         $$0.a(true);
+      public void a(hpt $$0) {
+         $$0.a(hoi.a(this.c, 1.0F, 1.0F));
       }
-
-      this.a = $$0;
    }
 }

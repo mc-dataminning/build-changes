@@ -1,37 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record awq(alk e, Optional<Float> f) {
-   public static final Codec<awq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alk.a.fieldOf("sound_id").forGetter(awq::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awq::b)).apply($$0, awq::a)
-   );
-   public static final Codec<jg<awq>> b = alg.a(mi.ap, a);
-   public static final za<ByteBuf, awq> c = za.a(alk.b, awq::a, yy.l.a(yy::a), awq::b, awq::a);
-   public static final za<wn, jg<awq>> d = yy.a(mi.ap, c);
+public abstract class awq implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
 
-   private static awq a(alk $$0, Optional<Float> $$1) {
-      return $$1.<awq>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   protected awq(String $$0) {
+      this.b = $$0;
    }
 
-   public static awq a(alk $$0) {
-      return new awq($$0, Optional.empty());
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new t(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
+      }
    }
 
-   public static awq a(alk $$0, float $$1) {
-      return new awq($$0, Optional.of($$1));
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
    }
 
-   public float a(float $$0) {
-      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
-   }
-
-   public alk a() {
-      return this.e;
-   }
-
-   public Optional<Float> b() {
-      return this.f;
+   public boolean c() {
+      return this.a;
    }
 }

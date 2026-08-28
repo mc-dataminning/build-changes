@@ -1,42 +1,86 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import com.google.common.collect.Sets;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public abstract class bbm extends DataFix {
-   private final String a;
+public class bbm {
+   private final Map<bbk<?>, Object> a;
 
-   public bbm(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   bbm(Map<bbk<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bjd.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bjd.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
+   public boolean a(bbk<?> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public <T> T b(bbk<T> $$0) {
+      T $$1 = (T)this.a.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
       } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         return $$1;
       }
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   @Nullable
+   public <T> T c(bbk<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   @Nullable
+   @Contract("_,!null->!null; _,_->_")
+   public <T> T a(bbk<T> $$0, @Nullable T $$1) {
+      return (T)this.a.getOrDefault($$0, $$1);
    }
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
+   public static class a {
+      private final Map<bbk<?>, Object> a = new IdentityHashMap<>();
 
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
+      public <T> bbm.a a(bbk<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> bbm.a b(bbk<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.a.remove($$0);
+         } else {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(bbk<T> $$0) {
+         T $$1 = (T)this.a.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(bbk<T> $$0) {
+         return (T)this.a.get($$0);
+      }
+
+      public bbm a(bbl $$0) {
+         Set<bbk<?>> $$1 = Sets.difference(this.a.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<bbk<?>> $$2 = Sets.difference($$0.a(), this.a.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new bbm(this.a);
+            }
+         }
+      }
+   }
 }

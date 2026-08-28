@@ -20,11 +20,11 @@ public record cf(Optional<Boolean> d) implements ca {
    }
 
    @Override
-   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
+   public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof csq $$3 ? this.d.get() == $$3.f() : false;
+         return $$0 instanceof csz $$3 ? this.d.get() == $$3.f() : false;
       }
    }
 

@@ -1,23 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bbu extends bbw {
-   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
+public abstract class bbu extends DataFix {
+   private final String a;
 
-   public bbu(Schema $$0) {
-      super($$0, "AttributeIdPrefixFix", bbu::a);
+   public bbu(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   private static String a(String $$0) {
-      String $$1 = bky.a($$0);
-
-      for (String $$2 : a) {
-         String $$3 = bky.a($$2);
-         if ($$1.startsWith($$3)) {
-            return "minecraft:" + $$1.substring($$3.length());
-         }
-      }
-
-      return $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bjm.u), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Name").asString().result().map(blh::a);
+      return $$1.isPresent() && this.a($$1.get()) ? $$0.update("Properties", $$1x -> this.a($$1.get(), $$1x)) : $$0;
+   }
+
+   protected abstract boolean a(String var1);
+
+   protected abstract <T> Dynamic<T> a(String var1, Dynamic<T> var2);
 }

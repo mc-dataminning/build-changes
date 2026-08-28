@@ -1,24 +1,16 @@
-public record adc(int b, byj c, boolean d) implements zj<aby> {
-   public static final za<vy, adc> a = za.a(yy.h, adc::b, byj.a, adc::e, yy.b, adc::f, adc::new);
-
-   public static adc a(bwv $$0) {
-      return new adc($$0.ao(), new byj($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aH());
-   }
+public record adc(alr b, int c) implements zo<acf> {
+   public static final ze<wp, adc> a = ze.a(alr.b, adc::b, zc.h, adc::e, adc::new);
 
    @Override
-   public zl<adc> a() {
-      return agr.D;
+   public zq<adc> a() {
+      return agy.w;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public byj e() {
+   public int e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

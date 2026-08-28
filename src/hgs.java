@@ -1,13 +1,6 @@
-import javax.annotation.Nullable;
-
-public class hgs extends hel {
-   @Nullable
-   public bws.k.e a;
-   @Nullable
-   public bws.k.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class hgs extends hfe {
+   public float[] a = new float[2];
+   public float[] b = new float[2];
+   public float c;
+   public boolean d;
 }

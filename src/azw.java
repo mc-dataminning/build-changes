@@ -1,54 +1,52 @@
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.HexFormat;
+import java.util.Locale;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public record azw(int a, int b) {
-   private static final HexFormat c = HexFormat.of().withUpperCase().withPrefix("0x");
-   private static final long d = -8552249625308161526L;
-   private static final int e = 1229472850;
-   private static final int f = 13;
-
-   public static azw a(InputStream $$0) throws IOException {
-      DataInputStream $$1 = new DataInputStream($$0);
-      long $$2 = $$1.readLong();
-      if ($$2 != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature: " + c.toHexDigits($$2));
+public class azw implements TypeAdapterFactory {
+   @Nullable
+   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
+      Class<T> $$2 = $$1.getRawType();
+      if (!$$2.isEnum()) {
+         return null;
       } else {
-         int $$3 = $$1.readInt();
-         if ($$3 != 13) {
-            throw new IOException("Bad length for IHDR chunk: " + $$3);
-         } else {
-            int $$4 = $$1.readInt();
-            if ($$4 != 1229472850) {
-               throw new IOException("Bad type for IHDR chunk: " + c.toHexDigits($$4));
-            } else {
-               int $$5 = $$1.readInt();
-               int $$6 = $$1.readInt();
-               return new azw($$5, $$6);
-            }
+         final Map<String, T> $$3 = Maps.newHashMap();
+
+         for (T $$4 : $$2.getEnumConstants()) {
+            $$3.put(this.a($$4), $$4);
          }
+
+         return new TypeAdapter<T>() {
+            public void write(JsonWriter $$0, T $$1) throws IOException {
+               if ($$1 == null) {
+                  $$0.nullValue();
+               } else {
+                  $$0.value(azw.this.a($$1));
+               }
+            }
+
+            @Nullable
+            public T read(JsonReader $$0) throws IOException {
+               if ($$0.peek() == JsonToken.NULL) {
+                  $$0.nextNull();
+                  return null;
+               } else {
+                  return $$3.get($$0.nextString());
+               }
+            }
+         };
       }
    }
 
-   public static azw a(byte[] $$0) throws IOException {
-      return a(new ByteArrayInputStream($$0));
-   }
-
-   public static void a(ByteBuffer $$0) throws IOException {
-      ByteOrder $$1 = $$0.order();
-      $$0.order(ByteOrder.BIG_ENDIAN);
-      if ($$0.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$0.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$0.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         $$0.order($$1);
-      }
+   String a(Object $$0) {
+      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
    }
 }

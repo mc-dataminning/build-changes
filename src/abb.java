@@ -1,57 +1,26 @@
-import java.util.List;
-
-public record abb(alj<djz> c, erv d, List<abb.a> e) implements aam {
-   public static final za<vy, abb> a = aam.a(abb::a, abb::new);
-   public static final aam.b<abb> b = aam.a("debug/structures");
+public record abb(long c, iw d) implements aat {
+   public static final ze<vy, abb> a = aat.a(abb::a, abb::new);
+   public static final aat.b<abb> b = aat.a("debug/neighbors_update");
 
    private abb(vy $$0) {
-      this($$0.a(mi.bp), b($$0), $$0.a(abb.a::new));
+      this($$0.m(), $$0.e());
    }
 
    private void a(vy $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aam.b<abb> a() {
+   public aat.b<abb> a() {
       return b;
    }
 
-   static erv b(vy $$0) {
-      return new erv($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vy $$0, erv $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public alj<djz> b() {
+   public long b() {
       return this.c;
    }
 
-   public erv c() {
+   public iw c() {
       return this.d;
-   }
-
-   public List<abb.a> d() {
-      return this.e;
-   }
-
-   public static record a(erv a, boolean b) {
-      public a(vy $$0) {
-         this(abb.b($$0), $$0.readBoolean());
-      }
-
-      public void a(vy $$0) {
-         abb.a($$0, this.a);
-         $$0.a(this.b);
-      }
    }
 }

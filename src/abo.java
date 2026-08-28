@@ -1,10 +1,23 @@
-public interface abo extends aac {
-   @Override
-   default vw b() {
-      return vw.e;
+import io.netty.buffer.ByteBuf;
+
+public class abo implements zo<abn> {
+   public static final abo a = new abo();
+   public static final ze<ByteBuf, abo> b = ze.a(a);
+
+   private abo() {
    }
 
-   void a(abp var1);
+   @Override
+   public zq<abo> a() {
+      return abt.a;
+   }
 
-   void a(abq var1);
+   public void a(abn $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
+   }
 }

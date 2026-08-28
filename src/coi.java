@@ -1,189 +1,176 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class coi extends cpb implements cpf {
-   private static final int a = 20;
-   private static final int b = 40;
-   private final cfs<coi> c = new cfs<>(this, 1.0, 20, 15.0F);
-   private final cfc d = new cfc(this, 1.2, false) {
-      @Override
-      public void e() {
-         super.e();
-         coi.this.v(false);
-      }
+public class coi extends cof {
+   private static final aku<jg<coj>> e = aky.a(coi.class, akw.E);
+   public static final float d = 0.0625F;
 
-      @Override
-      public void d() {
-         super.d();
-         coi.this.v(true);
-      }
-   };
-
-   protected coi(bxe<? extends coi> $$0, djz $$1) {
+   public coi(bxn<? extends coi> $$0, dkj $$1) {
       super($$0, $$1);
-      this.n();
    }
 
    @Override
-   protected void D() {
-      this.bF.a(2, new cfv(this));
-      this.bF.a(3, new cel(this, 1.0));
-      this.bF.a(3, new cdz<>(this, cmo.class, 6.0F, 1.0, 1.2));
-      this.bF.a(5, new cgf(this, 1.0));
-      this.bF.a(6, new cfa(this, crz.class, 8.0F));
-      this.bF.a(6, new cfn(this));
-      this.bG.a(1, new cgk(this));
-      this.bG.a(2, new cgl<>(this, crz.class, true));
-      this.bG.a(3, new cgl<>(this, ckc.class, true));
-      this.bG.a(3, new cgl<>(this, ckt.class, 10, true, false, ckt.bI));
-   }
-
-   public static bzb.a j() {
-      return cpb.gx().a(bzc.v, 0.25);
+   protected void a(aky.a $$0) {
+      $$0.a(e, cur.b(this.dX(), mi.aZ));
    }
 
    @Override
-   protected void b(iw $$0, ebg $$1) {
-      this.a(this.m(), 0.15F, 1.0F);
-   }
-
-   abstract awq m();
-
-   @Override
-   public void k_() {
-      boolean $$0 = this.go();
-      if ($$0) {
-         daa $$1 = this.a(bxf.f);
-         if (!$$1.f()) {
-            if ($$1.m()) {
-               czw $$2 = $$1.h();
-               $$1.b($$1.o() + this.ae.a(2));
-               if ($$1.o() >= $$1.p()) {
-                  this.a($$2, bxf.f);
-                  this.a(bxf.f, daa.k);
-               }
-            }
-
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.e(8.0F);
-         }
-      }
-
-      super.k_();
-   }
-
-   @Override
-   public void r() {
-      super.r();
-      if (this.dl() instanceof bye $$0) {
-         this.aV = $$0.aV;
+   public void a(aku<?> $$0) {
+      if (e.equals($$0)) {
+         this.f();
       }
    }
 
-   @Override
-   protected void a(azz $$0, bur $$1) {
-      super.a($$0, $$1);
-      this.a(bxf.a, new daa(dae.pj));
+   private void b(jg<coj> $$0) {
+      this.al.a(e, $$0);
+   }
+
+   public jg<coj> m() {
+      return this.al.a(e);
    }
 
    @Nullable
    @Override
-   public byo a(dkq $$0, bur $$1, bxd $$2, @Nullable byo $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azz $$4 = $$0.G_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      this.n();
-      this.a_($$4.i() < 0.55F * $$1.d());
-      if (this.a(bxf.f).f()) {
-         LocalDate $$5 = LocalDate.now();
-         int $$6 = $$5.get(ChronoField.DAY_OF_MONTH);
-         int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
-         if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
-            this.a(bxf.f, new daa($$4.i() < 0.1F ? dng.ew : dng.ev));
-            this.a(bxf.f, 0.0F);
-         }
-      }
-
-      return $$3;
+   public <T> T a(kk<? extends T> $$0) {
+      return $$0 == kl.aM ? c((kk<T>)$$0, this.m()) : super.a($$0);
    }
 
-   public void n() {
-      if (this.dV() != null && !this.dV().C) {
-         this.bF.a(this.d);
-         this.bF.a(this.c);
-         daa $$0 = this.b(csw.a(this, dae.pj));
-         if ($$0.a(dae.pj)) {
-            int $$1 = this.q();
-            if (this.dV().an() != buq.d) {
-               $$1 = this.t();
-            }
+   @Override
+   protected void a(kg $$0) {
+      this.a($$0, kl.aM);
+      super.a($$0);
+   }
 
-            this.c.c($$1);
-            this.bF.a(4, this.c);
+   @Override
+   protected <T> boolean b(kk<T> $$0, T $$1) {
+      if ($$0 == kl.aM) {
+         this.b(c(kl.aM, $$1));
+         return true;
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   public static Optional<coi> a(dkj $$0, iw $$1, jc $$2) {
+      coi $$3 = new coi($$0, $$1);
+      List<jg<coj>> $$4 = new ArrayList<>();
+      $$0.J_().f(mi.aZ).c(axw.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.b($$1x);
+            return !$$3.g();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
          } else {
-            this.bF.a(4, this.d);
+            int $$5 = $$4.stream().mapToInt(coi::c).max().orElse(0);
+            $$4.removeIf($$1x -> c($$1x) < $$5);
+            Optional<jg<coj>> $$6 = ag.b($$4, $$3.ae);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.b($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
          }
       }
    }
 
-   protected int q() {
-      return 20;
+   private static int c(jg<coj> $$0) {
+      return $$0.a().a();
    }
 
-   protected int t() {
-      return 40;
+   private coi(dkj $$0, iw $$1) {
+      super(bxn.aL, $$0, $$1);
    }
 
-   @Override
-   public void a(bxw $$0, float $$1) {
-      daa $$2 = this.b(csw.a(this, dae.pj));
-      daa $$3 = this.d($$2);
-      csh $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.dA() - this.dA();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dC();
-      double $$7 = $$0.dG() - this.dG();
-      double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dV() instanceof aru $$9) {
-         csu.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - $$9.an().a() * 4));
-      }
-
-      this.a(awr.yd, 1.0F, 1.0F / (this.dY().i() * 0.4F + 0.8F));
-   }
-
-   protected csh a(daa $$0, float $$1, @Nullable daa $$2) {
-      return csw.a(this, $$0, $$1, $$2);
+   public coi(dkj $$0, iw $$1, jc $$2, jg<coj> $$3) {
+      this($$0, $$1);
+      this.b($$3);
+      this.a($$2);
    }
 
    @Override
-   public boolean a(dav $$0) {
-      return $$0 == dae.pj;
-   }
-
-   @Override
-   public axv<czw> Y() {
-      return axo.bU;
+   public void b(ua $$0) {
+      $$0.a("facing", jc.l, this.c);
+      super.b($$0);
+      cur.a($$0, this.m());
    }
 
    @Override
    public void a(ua $$0) {
+      this.c = $$0.<jc>a("facing", jc.l).orElse(jc.d);
       super.a($$0);
-      this.n();
+      this.a(this.c);
+      cur.a($$0, this.dX(), mi.aZ).ifPresent(this::b);
    }
 
    @Override
-   public void a(bxf $$0, daa $$1, daa $$2) {
-      super.a($$0, $$1, $$2);
-      if (!this.dV().C) {
-         this.n();
+   protected ffx a(iw $$0, jc $$1) {
+      float $$2 = 0.46875F;
+      fgc $$3 = fgc.b($$0).a($$1, -0.46875);
+      coj $$4 = this.m().a();
+      double $$5 = this.b($$4.b());
+      double $$6 = this.b($$4.c());
+      jc $$7 = $$1.i();
+      fgc $$8 = $$3.a($$7, $$5).a(jc.b, $$6);
+      jc.a $$9 = $$1.o();
+      double $$10 = $$9 == jc.a.a ? 0.0625 : (double)$$4.b();
+      double $$11 = (double)$$4.c();
+      double $$12 = $$9 == jc.a.c ? 0.0625 : (double)$$4.b();
+      return ffx.a($$8, $$10, $$11, $$12);
+   }
+
+   private double b(int $$0) {
+      return $$0 % 2 == 0 ? 0.5 : 0.0;
+   }
+
+   @Override
+   public void a(asb $$0, @Nullable bxe $$1) {
+      if ($$0.O().c(dkf.j)) {
+         this.a(awy.te, 1.0F, 1.0F);
+         if ($$1 instanceof csi $$2 && $$2.fV()) {
+            return;
+         }
+
+         this.a($$0, dao.qN);
       }
    }
 
-   public boolean x() {
-      return this.cw();
+   @Override
+   public void v() {
+      this.a(awy.tf, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public fgc du() {
+      return fgc.a(this.a);
+   }
+
+   @Override
+   public zo<acf> a(arz $$0) {
+      return new acg(this, this.c.d(), this.j());
+   }
+
+   @Override
+   public void a(acg $$0) {
+      super.a($$0);
+      this.a(jc.a($$0.p()));
+   }
+
+   @Override
+   public dak dI() {
+      return new dak(dao.qN);
    }
 }

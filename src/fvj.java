@@ -1,71 +1,47 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fvj<E extends fvj.a<E>> extends fuh<E> {
-   private static final xc a = xc.c("narration.selection.usage");
-
-   public fvj(frf $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public fvj(frf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
+public class fvj implements fxw {
+   private static final int a = 170;
+   private final xg b;
    @Nullable
-   @Override
-   public ftw a(fyq $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aN_() && $$0 instanceof fyq.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return ftw.a(this, ftw.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aN_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
+   private List<azk> c;
+   @Nullable
+   private tv d;
+   @Nullable
+   private final xg e;
 
-         return $$3 == null ? null : ftw.a(this, ftw.a($$3));
-      } else {
-         return null;
-      }
+   private fvj(xg $$0, @Nullable xg $$1) {
+      this.b = $$0;
+      this.e = $$1;
+   }
+
+   public static fvj a(xg $$0, @Nullable xg $$1) {
+      return new fvj($$0, $$1);
+   }
+
+   public static fvj a(xg $$0) {
+      return new fvj($$0, $$0);
    }
 
    @Override
-   public void a(fyk $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aN_()) {
-         $$0.a(fyj.d, a);
+   public void b(fxv $$0) {
+      if (this.e != null) {
+         $$0.a(fxu.c, this.e);
       }
    }
 
-   public abstract static class a<E extends fvj.a<E>> extends fuh.a<E> implements fyl {
-      public abstract xc a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
+   public List<azk> a(fqq $$0) {
+      tv $$1 = tv.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
       }
 
-      @Override
-      public void b(fyk $$0) {
-         $$0.a(fyj.a, this.a());
-      }
+      return this.c;
+   }
+
+   public static List<azk> a(fqq $$0, xg $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

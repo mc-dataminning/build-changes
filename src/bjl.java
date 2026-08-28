@@ -1,68 +1,45 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
 
 public class bjl extends DataFix {
-   private static final Set<String> a = Set.of(
-      "minecraft:horse",
-      "minecraft:skeleton_horse",
-      "minecraft:zombie_horse",
-      "minecraft:donkey",
-      "minecraft:mule",
-      "minecraft:camel",
-      "minecraft:llama",
-      "minecraft:trader_llama"
-   );
-   private static final Set<String> b = Set.of("minecraft:pig", "minecraft:strider");
-   private static final String c = "Saddle";
-   private static final String d = "saddle";
-
    public bjl(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bjd.D);
-      OpticFinder<Pair<String, ?>> $$1 = DSL.typeFinder($$0);
-      Type<?> $$2 = this.getInputSchema().getType(bjd.D);
-      Type<?> $$3 = this.getOutputSchema().getType(bjd.D);
-      Type<?> $$4 = bbh.a($$2, $$2, $$3);
-      return this.fixTypeEverywhereTyped("SaddleEquipmentSlotFix", $$2, $$3, $$3x -> {
-         String $$4x = $$3x.getOptional($$1).<String>map(Pair::getFirst).map(bky::a).orElse("");
-         Typed<?> $$5 = bbh.a($$4, $$3x);
-         if (a.contains($$4x)) {
-            return ag.a($$5, $$3, bjl::a);
-         } else {
-            return b.contains($$4x) ? ag.a($$5, $$3, bjl::b) : bbh.a($$3, $$3x);
-         }
-      });
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("RedstoneConnectionsFix", $$0.getType(bjm.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("SaddleItem").result().isEmpty() ? $$0 : c($$0.renameField("SaddleItem", "saddle"));
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter("minecraft:redstone_wire"::equals).isPresent();
+      return !$$1
+         ? $$0
+         : $$0.update(
+            "Properties",
+            $$0x -> {
+               String $$1x = $$0x.get("east").asString("none");
+               String $$2 = $$0x.get("west").asString("none");
+               String $$3 = $$0x.get("north").asString("none");
+               String $$4 = $$0x.get("south").asString("none");
+               boolean $$5 = a($$1x) || a($$2);
+               boolean $$6 = a($$3) || a($$4);
+               String $$7 = !a($$1x) && !$$6 ? "side" : $$1x;
+               String $$8 = !a($$2) && !$$6 ? "side" : $$2;
+               String $$9 = !a($$3) && !$$5 ? "side" : $$3;
+               String $$10 = !a($$4) && !$$5 ? "side" : $$4;
+               return $$0x.update("east", $$1xx -> $$1xx.createString($$7))
+                  .update("west", $$1xx -> $$1xx.createString($$8))
+                  .update("north", $$1xx -> $$1xx.createString($$9))
+                  .update("south", $$1xx -> $$1xx.createString($$10));
+            }
+         );
    }
 
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      boolean $$1 = $$0.get("Saddle").asBoolean(false);
-      $$0 = $$0.remove("Saddle");
-      if (!$$1) {
-         return $$0;
-      } else {
-         Dynamic<?> $$2 = $$0.emptyMap().set("id", $$0.createString("minecraft:saddle")).set("count", $$0.createInt(1));
-         return c($$0.set("saddle", $$2));
-      }
-   }
-
-   private static Dynamic<?> c(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("drop_chances").orElseEmptyMap().set("saddle", $$0.createFloat(2.0F));
-      return $$0.set("drop_chances", $$1);
+   private static boolean a(String $$0) {
+      return !"none".equals($$0);
    }
 }

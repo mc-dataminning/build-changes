@@ -1,51 +1,103 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cgj extends cgs {
-   private final ckc a;
+public class cgj extends cfb {
+   private static final ciu c = ciu.b().d();
+   private final ciu d;
+   protected final byn a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
    @Nullable
-   private bxw b;
-   private final cil c = cil.a().a(64.0);
+   protected csi b;
+   private int k;
+   private boolean l;
+   private final Predicate<dak> m;
+   private final boolean n;
 
-   public cgj(ckc $$0) {
-      super($$0, false, true);
+   public cgj(byn $$0, double $$1, Predicate<dak> $$2, boolean $$3) {
       this.a = $$0;
-      this.a(EnumSet.of(ces.a.d));
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(cfb.a.a, cfb.a.b));
+      this.d = c.c().a(($$0x, $$1x) -> this.a($$0x));
    }
 
    @Override
    public boolean b() {
-      ffn $$0 = this.a.cR().c(10.0, 8.0, 10.0);
-      aru $$1 = a(this.a);
-      List<? extends bxw> $$2 = $$1.a(crl.class, this.c, this.a, $$0);
-      List<crz> $$3 = $$1.a(this.c, this.a, $$0);
-
-      for (bxw $$4 : $$2) {
-         crl $$5 = (crl)$$4;
-
-         for (crz $$6 : $$3) {
-            int $$7 = $$5.f($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
-         }
-      }
-
-      if (this.b == null) {
+      if (this.k > 0) {
+         this.k--;
          return false;
       } else {
-         if (this.b instanceof crz $$8 && ($$8.Z_() || $$8.b())) {
-            return false;
+         this.b = a(this.a).a(this.d.a(this.a.h(bzl.E)), this.a);
+         return this.b != null;
+      }
+   }
+
+   private boolean a(byf $$0) {
+      return this.m.test($$0.fb()) || this.m.test($$0.fc());
+   }
+
+   @Override
+   public boolean c() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.h(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dN() - this.i) > 5.0 || Math.abs((double)this.b.dL() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dA();
+            this.g = this.b.dC();
+            this.h = this.b.dG();
          }
 
-         return true;
+         this.i = (double)this.b.dN();
+         this.j = (double)this.b.dL();
       }
+
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
    }
 
    @Override
    public void d() {
-      this.a.g(this.b);
-      super.d();
+      this.f = this.b.dA();
+      this.g = this.b.dC();
+      this.h = this.b.dG();
+      this.l = true;
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.O().m();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void a() {
+      this.a.J().a(this.b, (float)(this.a.af() + 20), (float)this.a.ad());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.O().m();
+      } else {
+         this.a.O().a(this.b, this.e);
+      }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

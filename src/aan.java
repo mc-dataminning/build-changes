@@ -1,23 +1,29 @@
-public record aan(alk a) implements aam {
-   public static <T extends vy> za<T, aan> a(alk $$0, int $$1) {
-      return aam.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.k($$3);
-            return new aan($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+public class aan implements zo<aaj> {
+   public static final ze<vy, aan> a = zo.a(aan::a, aan::new);
+   private final int b;
+
+   public aan(int $$0) {
+      this.b = $$0;
+   }
+
+   private aan(vy $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(vy $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public aam.b<aan> a() {
-      return new aam.b<>(this.a);
+   public zq<aan> a() {
+      return aai.o;
    }
 
-   public alk b() {
-      return this.a;
+   public void a(aaj $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

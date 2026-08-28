@@ -1,71 +1,212 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class gac extends gaf implements azy {
-   @Nullable
-   private xc a;
-   @Nullable
-   private xc b;
-   private int c;
-   private boolean d;
-   private final boolean s;
+public class gac extends fzq {
+   static final alr a = alr.b("gamemode_switcher/slot");
+   static final alr b = alr.b("gamemode_switcher/selection");
+   private static final alr c = alr.b("textures/gui/container/gamemode_switcher.png");
+   private static final int d = 128;
+   private static final int s = 128;
+   private static final int u = 26;
+   private static final int v = 5;
+   private static final int w = 31;
+   private static final int x = 5;
+   private static final int y = gac.a.values().length * 31 - 5;
+   private static final xg z = xg.a("debug.gamemodes.select_next", xg.c("debug.gamemodes.press_f4").a(o.l));
+   private final gac.a A;
+   private gac.a B;
+   private int C;
+   private int D;
+   private boolean E;
+   private final List<gac.b> F = Lists.newArrayList();
 
-   public gac(boolean $$0) {
-      super(fqw.a);
-      this.s = $$0;
+   public gac() {
+      super(fqh.a);
+      this.A = gac.a.a(this.m());
+      this.B = this.A;
    }
 
-   @Override
-   public boolean aH_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aR_() {
-      return false;
-   }
-
-   @Override
-   public void a(xc $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(xc $$0) {
-      this.a = $$0;
-      this.c(xc.c("menu.working"));
-   }
-
-   @Override
-   public void c(xc $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.s) {
-            this.m.a(null);
-         }
+   private dkg m() {
+      gly $$0 = fqq.Q().r;
+      dkg $$1 = $$0.h();
+      if ($$1 != null) {
+         return $$1;
       } else {
+         return $$0.i() == dkg.b ? dkg.a : dkg.b;
+      }
+   }
+
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.B = this.A;
+
+      for (int $$0 = 0; $$0 < gac.a.e.length; $$0++) {
+         gac.a $$1 = gac.a.e[$$0];
+         this.F.add(new gac.b($$1, this.n / 2 - y / 2 + $$0 * 31, this.o / 2 - 31));
+      }
+   }
+
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      if (!this.F()) {
+         $$0.c().a();
+         int $$4 = this.n / 2 - 62;
+         int $$5 = this.o / 2 - 31 - 27;
+         $$0.a(gry::H, c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
+         $$0.c().b();
          super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
+         $$0.a(this.p, this.B.a(), this.n / 2, this.o / 2 - 31 - 20, -1);
+         $$0.a(this.p, z, this.n / 2, this.o / 2 + 5, 16777215);
+         if (!this.E) {
+            this.C = $$1;
+            this.D = $$2;
+            this.E = true;
          }
 
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, xc.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
+         boolean $$6 = this.C == $$1 && this.D == $$2;
+
+         for (gac.b $$7 : this.F) {
+            $$7.a($$0, $$1, $$2, $$3);
+            $$7.b(this.B == $$7.a);
+            if (!$$6 && $$7.D()) {
+               this.B = $$7.a;
+            }
          }
+      }
+   }
+
+   @Override
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void E() {
+      a(this.m, this.B);
+   }
+
+   private static void a(fqq $$0, gac.a $$1) {
+      if ($$0.r != null && $$0.t != null) {
+         gac.a $$2 = gac.a.a($$0.r.i());
+         if ($$0.t.s(2) && $$1 != $$2) {
+            $$0.t.j.d($$1.b());
+         }
+      }
+   }
+
+   private boolean F() {
+      if (!fka.a(this.m.aO().h(), 292)) {
+         this.E();
+         this.m.a(null);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 293) {
+         this.E = false;
+         this.B = this.B.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   static enum a {
+      a(xg.c("gameMode.creative"), "gamemode creative", new dak(dnq.i)),
+      b(xg.c("gameMode.survival"), "gamemode survival", new dak(dao.pP)),
+      c(xg.c("gameMode.adventure"), "gamemode adventure", new dak(dao.vt)),
+      d(xg.c("gameMode.spectator"), "gamemode spectator", new dak(dao.tA));
+
+      protected static final gac.a[] e = values();
+      private static final int j = 16;
+      protected static final int f = 5;
+      final xg g;
+      final String h;
+      final dak i;
+
+      private a(final xg $$0, final String $$1, final dak $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      void a(ftk $$0, int $$1, int $$2) {
+         $$0.a(this.i, $$1, $$2);
+      }
+
+      xg a() {
+         return this.g;
+      }
+
+      String b() {
+         return this.h;
+      }
+
+      gac.a c() {
+         return switch (this) {
+            case a -> b;
+            case b -> c;
+            case c -> d;
+            case d -> a;
+         };
+      }
+
+      static gac.a a(dkg $$0) {
+         return switch ($$0) {
+            case d -> d;
+            case a -> b;
+            case b -> a;
+            case c -> c;
+         };
+      }
+   }
+
+   public static class b extends ftw {
+      final gac.a a;
+      private boolean b;
+
+      public b(gac.a $$0, int $$1, int $$2) {
+         super($$1, $$2, 26, 26, $$0.a());
+         this.a = $$0;
+      }
+
+      @Override
+      public void b(ftk $$0, int $$1, int $$2, float $$3) {
+         this.a($$0);
+         this.a.a($$0, this.F() + 5, this.G() + 5);
+         if (this.b) {
+            this.b($$0);
+         }
+      }
+
+      @Override
+      public void a(fxv $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public boolean D() {
+         return super.D() || this.b;
+      }
+
+      public void b(boolean $$0) {
+         this.b = $$0;
+      }
+
+      private void a(ftk $$0) {
+         $$0.a(gry::H, gac.a, this.F(), this.G(), 26, 26);
+      }
+
+      private void b(ftk $$0) {
+         $$0.a(gry::H, gac.b, this.F(), this.G(), 26, 26);
       }
    }
 }

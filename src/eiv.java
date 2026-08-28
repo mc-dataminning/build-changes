@@ -1,20 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class eiv extends eix {
-   public static final MapCodec<eiv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiv::new));
+class eiv extends eiy {
+   public static final MapCodec<eiv> a = a(eiv::new);
 
-   public eiv(kb $$0) {
+   public eiv(List<eiw> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(ebg $$0) {
-      return $$0.v();
+   public boolean a(dli $$0, iw $$1) {
+      for (eiw $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public ein<?> a() {
-      return ein.f;
+   public eix<?> a() {
+      return eix.i;
    }
 }

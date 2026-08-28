@@ -1,97 +1,22 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class enn implements emr {
+public class enn implements enb {
    public static final Codec<enn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eos.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               epz.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               eos.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               eod.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               eop.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               eos.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               ens.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               epn.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, enn::new)
+      $$0 -> $$0.apply2(enn::new, emq.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), err.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public final eos b;
-   public final eos c;
-   public final epz d;
-   public final eos e;
-   public final eod f;
-   public final Optional<eop> g;
-   public final ens h;
-   public final List<epn> i;
-   public final boolean j;
-   public final boolean k;
+   public final List<emq> b;
+   public final jg<err> c;
 
-   protected enn(eos $$0, epz $$1, eos $$2, eod $$3, Optional<eop> $$4, eos $$5, ens $$6, List<epn> $$7, boolean $$8, boolean $$9) {
+   public enn(List<emq> $$0, jg<err> $$1) {
       this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+      this.c = $$1;
    }
 
-   public static class a {
-      public final eos a;
-      private final epz c;
-      public final eos b;
-      private final eod d;
-      private final Optional<eop> e;
-      private eos f;
-      private final ens g;
-      private List<epn> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
-
-      public a(eos $$0, epz $$1, eos $$2, eod $$3, Optional<eop> $$4, ens $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = eos.a(dng.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(eos $$0, epz $$1, eos $$2, eod $$3, ens $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public enn.a a(eos $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public enn.a a(List<epn> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public enn.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public enn.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public enn c() {
-         return new enn(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+   @Override
+   public Stream<ekh<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

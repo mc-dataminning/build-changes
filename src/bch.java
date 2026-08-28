@@ -1,33 +1,51 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
-public class bch extends bhx {
-   public bch(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bjd.s, "minecraft:piston");
+public class bch extends DataFix {
+   public bch(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bjd.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = bcv.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bjm.s);
+      OpticFinder<?> $$2 = $$0.findField("CustomName");
+      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(bjm.z));
+      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$3x -> {
+         Object $$4 = ((Pair)$$3x.get($$1.finder())).getFirst();
+         return $$4.equals("minecraft:banner") ? this.a($$3x, $$3, $$2) : $$3x;
+      });
+   }
+
+   private Typed<?> a(Typed<?> $$0, OpticFinder<Pair<String, String>> $$1, OpticFinder<?> $$2) {
+      Optional<String> $$3 = $$0.getOptionalTyped($$2).flatMap($$1x -> $$1x.getOptional($$1).map(Pair::getSecond));
+      boolean $$4 = $$3.flatMap(bbr::d).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
+      return $$4
+         ? ag.a(
+            $$0,
+            $$0.getType(),
+            $$1x -> {
+               Dynamic<?> $$2x = $$1x.createMap(
+                  Map.of(
+                     $$1x.createString("minecraft:item_name"),
+                     $$1x.createString($$3.get()),
+                     $$1x.createString("minecraft:hide_additional_tooltip"),
+                     $$1x.emptyMap()
+                  )
+               );
+               return $$1x.set("components", $$2x).remove("CustomName");
+            }
+         )
+         : $$0;
    }
 }

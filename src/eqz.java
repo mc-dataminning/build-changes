@@ -1,28 +1,23 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eqz extends ero {
-   public static final MapCodec<eqz> a = bty.b(0, 256).fieldOf("count").xmap(eqz::new, $$0 -> $$0.c);
-   private final bty c;
+public class eqz extends equ {
+   public static final MapCodec<eqz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btm.b(equ.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, eqz::new)
+   );
+   private final btm<equ> b;
 
-   private eqz(bty $$0) {
-      this.c = $$0;
-   }
-
-   public static eqz a(bty $$0) {
-      return new eqz($$0);
-   }
-
-   public static eqz a(int $$0) {
-      return a(btv.a($$0));
+   public eqz(btm<equ> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected int a(azz $$0, iw $$1) {
-      return this.c.a($$0);
+   public int a(bai $$0, eim $$1) {
+      return this.b.b($$0).a($$0, $$1);
    }
 
    @Override
-   public erl<?> b() {
-      return erl.f;
+   public eqv<?> a() {
+      return eqv.f;
    }
 }

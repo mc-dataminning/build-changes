@@ -1,22 +1,65 @@
-public class cxo implements cwe {
-   private final int[] a;
+import java.util.Optional;
 
-   public cxo(int $$0) {
-      this.a = new int[$$0];
+public class cxo extends cxz {
+   public cxo(buv $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public void b(dak $$0, dak $$1) {
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
+   public boolean a(csi $$0) {
+      return false;
    }
 
    @Override
-   public int a() {
-      return this.a.length;
+   public Optional<dak> a(int $$0, int $$1, csi $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public dak b(int $$0, int $$1, csi $$2) {
+      return dak.l;
+   }
+
+   @Override
+   public dak d(dak $$0) {
+      return $$0;
+   }
+
+   @Override
+   public dak b(dak $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(csi $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dak $$0) {
+      return false;
+   }
+
+   @Override
+   public dak a(int $$0) {
+      return dak.l;
+   }
+
+   @Override
+   public void a(csi $$0, dak $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

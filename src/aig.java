@@ -1,60 +1,67 @@
-import javax.annotation.Nullable;
+public class aig implements zo<aha> {
+   public static final ze<vy, aig> a = zo.a(aig::a, aig::new);
+   private final iw b;
+   private final jc c;
+   private final aig.a d;
+   private final int e;
 
-public class aig implements zj<agt> {
-   public static final za<vy, aig> a = zj.a(aig::a, aig::new);
-   private final aig.a b;
-   @Nullable
-   private final alk c;
-
-   public aig(aig.a $$0, @Nullable alk $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aig(aig.a $$0, iw $$1, jc $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   public static aig a(aj $$0) {
-      return new aig(aig.a.a, $$0.a());
-   }
-
-   public static aig b() {
-      return new aig(aig.a.b, null);
+   public aig(aig.a $$0, iw $$1, jc $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
    private aig(vy $$0) {
-      this.b = $$0.b(aig.a.class);
-      if (this.b == aig.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
+      this.d = $$0.b(aig.a.class);
+      this.b = $$0.e();
+      this.c = jc.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
    private void a(vy $$0) {
+      $$0.a(this.d);
       $$0.a(this.b);
-      if (this.b == aig.a.a) {
-         $$0.a(this.c);
-      }
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zl<aig> a() {
-      return agr.bZ;
+   public zq<aig> a() {
+      return agy.bS;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public aig.a e() {
+   public iw b() {
       return this.b;
    }
 
-   @Nullable
-   public alk f() {
+   public jc e() {
       return this.c;
+   }
+
+   public aig.a f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 
    public static enum a {
       a,
-      b;
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

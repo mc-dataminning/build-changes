@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class evr extends evs {
-   public static final MapCodec<evr> a = MapCodec.unit(() -> evr.b);
-   public static final evr b = new evr();
+public class evr extends ewj {
+   public static final MapCodec<evr> a = mh.e.q().fieldOf("block").xmap(evr::new, $$0 -> $$0.b);
+   private final dno b;
 
-   private evr() {
+   public evr(dno $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(iw $$0, iw $$1, iw $$2, azz $$3) {
-      return true;
+   public boolean a(ebq $$0, bai $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   protected evt<?> a() {
-      return evt.a;
+   protected ewk<?> a() {
+      return ewk.b;
    }
 }

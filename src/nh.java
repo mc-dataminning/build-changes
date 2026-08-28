@@ -21,7 +21,7 @@ public class nh implements mo {
    private static <T> JsonElement a(jt<T> $$0) {
       JsonObject $$1 = new JsonObject();
       if ($$0 instanceof jb) {
-         alk $$2 = ((jb)$$0).b();
+         alr $$2 = ((jb)$$0).b();
          $$1.addProperty("default", $$2.toString());
       }
 

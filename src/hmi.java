@@ -1,69 +1,131 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class hmi extends tv {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public interface hmi {
+   Codec<hmi> a = hmi.d.d.dispatch(hmi::a, hmi.d::a);
+   hmi b = new hmi.b();
 
-   private hmi(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   hmi.d a();
 
-   public static hmi a(avh $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
+   public static record a(int d, int e, hmi.a.a f, boolean g) implements hmi {
+      public static final MapCodec<hmi.a> c = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     azg.m.fieldOf("width").forGetter(hmi.a::b),
+                     azg.m.fieldOf("height").forGetter(hmi.a::c),
+                     hmi.a.a.g.fieldOf("border").forGetter(hmi.a::d),
+                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(hmi.a::e)
+                  )
+                  .apply($$0, hmi.a::new)
+         )
+         .validate(hmi.a::a);
 
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               alk $$7 = alk.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
+      private static DataResult<hmi.a> a(hmi.a $$0) {
+         hmi.a.a $$1 = $$0.d();
+         if ($$1.a() + $$1.c() >= $$0.b()) {
+            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+         } else {
+            return $$1.b() + $$1.d() >= $$0.c()
+               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
+               : DataResult.success($$0);
          }
       }
 
-      tu.a().a($$3);
-      return new hmi(Map.copyOf($$3), $$2);
-   }
+      @Override
+      public hmi.d a() {
+         return hmi.d.c;
+      }
 
-   private static void a(String $$0, List<avf> $$1, Map<String, String> $$2) {
-      for (avf $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tv.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+      public int b() {
+         return this.d;
+      }
+
+      public int c() {
+         return this.e;
+      }
+
+      public hmi.a.a d() {
+         return this.f;
+      }
+
+      public boolean e() {
+         return this.g;
+      }
+
+      public static record a(int a, int b, int c, int d) {
+         private static final Codec<hmi.a.a> e = azg.m.flatComapMap($$0 -> new hmi.a.a($$0, $$0, $$0, $$0), $$0 -> {
+            OptionalInt $$1 = $$0.e();
+            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
+         });
+         private static final Codec<hmi.a.a> f = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     azg.l.fieldOf("left").forGetter(hmi.a.a::a),
+                     azg.l.fieldOf("top").forGetter(hmi.a.a::b),
+                     azg.l.fieldOf("right").forGetter(hmi.a.a::c),
+                     azg.l.fieldOf("bottom").forGetter(hmi.a.a::d)
+                  )
+                  .apply($$0, hmi.a.a::new)
+         );
+         static final Codec<hmi.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
+
+         private OptionalInt e() {
+            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
          }
       }
    }
 
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public static record b() implements hmi {
+      public static final MapCodec<hmi.b> c = MapCodec.unit(hmi.b::new);
+
+      @Override
+      public hmi.d a() {
+         return hmi.d.a;
+      }
    }
 
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
+   public static record c(int d, int e) implements hmi {
+      public static final MapCodec<hmi.c> c = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(azg.m.fieldOf("width").forGetter(hmi.c::b), azg.m.fieldOf("height").forGetter(hmi.c::c)).apply($$0, hmi.c::new)
+      );
+
+      @Override
+      public hmi.d a() {
+         return hmi.d.b;
+      }
+
+      public int b() {
+         return this.d;
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.d;
-   }
+   public static enum d implements bax {
+      a("stretch", hmi.b.c),
+      b("tile", hmi.c.c),
+      c("nine_slice", hmi.a.c);
 
-   @Override
-   public azc a(xh $$0) {
-      return hmj.a($$0, this.d);
+      public static final Codec<hmi.d> d = bax.a(hmi.d::values);
+      private final String e;
+      private final MapCodec<? extends hmi> f;
+
+      private d(final String $$0, final MapCodec<? extends hmi> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public MapCodec<? extends hmi> a() {
+         return this.f;
+      }
    }
 }

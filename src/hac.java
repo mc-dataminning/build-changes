@@ -1,20 +1,16 @@
-public class hac extends gxe<ckk, hge, gjj> {
-   private static final alk a = alk.b("textures/entity/bear/polarbear.png");
+public class hac extends gwt<ctj, hdi> {
+   public static final alr a = alr.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public hac(gyk.a $$0) {
-      super($$0, new gjj($$0.a(glf.cC)), new gjj($$0.a(glf.cD)), 0.9F);
+   public hac(gxv.a $$0) {
+      super($$0);
    }
 
-   public alk a(hge $$0) {
+   @Override
+   protected alr a(hdi $$0) {
       return a;
    }
 
-   public hge b() {
-      return new hge();
-   }
-
-   public void a(ckk $$0, hge $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
+   public hdi a() {
+      return new hdi();
    }
 }

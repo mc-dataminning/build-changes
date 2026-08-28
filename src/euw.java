@@ -1,45 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class euw extends esd {
-   public static final MapCodec<euw> d = a(euw::new);
+public class euw extends esn {
+   public static final MapCodec<euw> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), equ.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, euw::new)
+   );
+   public final equ e;
 
-   public euw(esd.c $$0) {
+   public euw(esn.c $$0, equ $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      return Optional.of(new esd.b($$0.h().l(), (Consumer<esv>)($$1 -> a($$1, $$0))));
-   }
+   public Optional<esn.b> a(esn.a $$0) {
+      eio $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      eim $$5 = new eim($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dkv $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      iw.a $$8 = new iw.a($$2, $$6, $$3);
 
-   private static void a(esv $$0, esd.a $$1) {
-      int $$2 = 0;
-
-      euv.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().h, $$1.h().i);
-         euv.a();
-         $$3 = new euv.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<esh> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            esh $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+      while ($$6 > $$4) {
+         ebq $$9 = $$7.a($$6);
+         ebq $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dnq.en) || $$10.c(djz.a, $$8.q($$6), jc.b))) {
+            break;
          }
+      }
 
-         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         iw $$11 = new iw($$2, $$6, $$3);
+         return Optional.of(new esn.b($$11, (Consumer<etf>)($$3x -> euv.a($$0.e(), $$3x, $$1, $$11))));
+      }
    }
 
    @Override
-   public esm<?> e() {
-      return esm.n;
+   public esw<?> e() {
+      return esw.i;
    }
 }

@@ -1,47 +1,16 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record fer(alk b, fc.g c) implements feo {
-   public static final MapCodec<fer> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alk.a.fieldOf("storage").forGetter(fer::c), fc.g.a.fieldOf("path").forGetter(fer::d)).apply($$0, fer::new)
+public class fer {
+   private static final Codec<feq> d = mh.H.q().dispatch(feq::a, fep::a);
+   public static final Codec<feq> a = Codec.lazyInitialized(
+      () -> Codec.either(feo.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof feo $$1 ? Either.left($$1) : Either.right($$0))
    );
+   public static final fep b = a("storage", fes.a);
+   public static final fep c = a("context", feo.b);
 
-   @Override
-   public fen b() {
-      return fep.f;
-   }
-
-   private Number a(faj $$0, Number $$1) {
-      ua $$2 = $$0.d().p().aK().a(this.b);
-
-      try {
-         List<va> $$3 = this.c.a($$2);
-         if ($$3.size() == 1 && $$3.getFirst() instanceof uq $$4) {
-            return $$4.m();
-         }
-      } catch (CommandSyntaxException var7) {
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public float b(faj $$0) {
-      return this.a($$0, 0.0F).floatValue();
-   }
-
-   @Override
-   public int a(faj $$0) {
-      return this.a($$0, 0).intValue();
-   }
-
-   public alk c() {
-      return this.b;
-   }
-
-   public fc.g d() {
-      return this.c;
+   private static fep a(String $$0, MapCodec<? extends feq> $$1) {
+      return jt.a(mh.H, alr.b($$0), new fep($$1));
    }
 }

@@ -1,29 +1,18 @@
-public class guv implements gup<dyl> {
-   private static final float a = 0.375F;
-   private final gzi b;
+public class guv implements gua<eao> {
+   private final gxt a;
 
-   public guv(guq.a $$0) {
-      this.b = $$0.e();
+   public guv(gub.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dyl $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
-      jc $$7 = $$0.m().c(dnu.e);
-      jp<daa> $$8 = $$0.c();
-      int $$9 = (int)$$0.aB_().a();
-
-      for (int $$10 = 0; $$10 < $$8.size(); $$10++) {
-         daa $$11 = $$8.get($$10);
-         if ($$11 != daa.k) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            jc $$12 = jc.b(($$10 + $$7.e()) % 4);
-            float $$13 = -$$12.p();
-            $$2.a(a.d.rotationDegrees($$13));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$11, czy.i, $$4, $$5, $$2, $$3, $$0.i(), $$9 + $$10);
-            $$2.b();
+   public void a(eao $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      dkj $$7 = $$0.i();
+      if ($$7 != null) {
+         ear $$8 = $$0.c();
+         eau $$9 = $$8.f();
+         bxe $$10 = $$9.a($$8, $$7, $$8.i());
+         if ($$10 != null) {
+            gur.a($$1, $$2, $$3, $$4, $$10, this.a, $$9.e(), $$9.d());
          }
       }
    }

@@ -1,58 +1,45 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+public class ggx extends gij {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final gkr d;
+   private final gkr e;
 
-public record ggx(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements glp {
-   public ggx(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
+   public ggx(gkr $$0) {
+      super($$0, gry::d);
+      this.d = $$0.b("lid");
+      this.e = $$0.b("lock");
    }
 
-   public ggx(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("bottom", gkw.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gkt.a);
+      $$1.a("lid", gkw.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gkw.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      return gkx.a($$0, 64, 64);
    }
 
-   @Override
-   public glo apply(glo $$0) {
-      float $$1 = this.b ? 1.5F / this.e : 1.0F;
-      float $$2 = 1.0F / this.f;
-      UnaryOperator<gli> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
-      UnaryOperator<gli> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
-      glo $$5 = new glo();
-
-      for (Entry<String, glq> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         glq $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
-      }
-
-      return $$5;
+   public static gkx b() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("bottom", gkw.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gkt.a);
+      $$1.a("lid", gkw.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gkw.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      return gkx.a($$0, 64, 64);
    }
 
-   public boolean a() {
-      return this.b;
+   public static gkx c() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("bottom", gkw.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gkt.a);
+      $$1.a("lid", gkw.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", gkw.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gkt.a(0.0F, 9.0F, 1.0F));
+      return gkx.a($$0, 64, 64);
    }
 
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public Set<String> g() {
-      return this.h;
+   public void a(float $$0) {
+      this.d.e = -($$0 * (float) (Math.PI / 2));
+      this.e.e = this.d.e;
    }
 }

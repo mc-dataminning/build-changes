@@ -1,22 +1,68 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class gfx<S extends hev> extends gib<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final gkr a = this.s.b("left_sleeve");
+   public final gkr b = this.r.b("right_sleeve");
+   public final gkr c = this.u.b("left_pants");
+   public final gkr d = this.t.b("right_pants");
+   public final gkr e = this.q.b("jacket");
+   public final gkr f = this.o.b("right_ear");
+   public final gkr g = this.o.b("left_ear");
 
-public class gfx implements gfz {
-   private static final xc a = xc.c("spectatorMenu.root.prompt");
-   private final List<gga> b = Lists.newArrayList();
+   public gfx(gkr $$0) {
+      super($$0, gry::j);
+   }
 
-   public gfx() {
-      this.b.add(new ggd());
-      this.b.add(new gge());
+   public static gkz a(gkv $$0) {
+      gkz $$1 = git.a($$0, false);
+      glb $$2 = $$1.a();
+      $$2.a("body", gkw.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gkt.a);
+      glb $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
+   }
+
+   public static glb a(gkv $$0, gkz $$1) {
+      glb $$2 = $$1.a();
+      glb $$3 = $$2.a(
+         "head",
+         gkw.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         gkt.a
+      );
+      $$3.a("left_ear", gkw.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gkt.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", gkw.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gkt.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
    }
 
    @Override
-   public List<gga> a() {
-      return this.b;
+   public void a(S $$0) {
+      super.a($$0);
+      float $$1 = $$0.ag;
+      float $$2 = $$0.ah;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.v * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - azz.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + azz.b($$4) * $$5;
    }
 
    @Override
-   public xc b() {
-      return a;
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

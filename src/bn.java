@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boolean> e) {
+public record bn(List<du<bvv>> b, Optional<bz> c, Optional<bz> d, Optional<Boolean> e) {
    public static final Codec<bn> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                du.a(mi.aN).listOf().optionalFieldOf("tags", List.of()).forGetter(bn::a),
@@ -16,12 +16,12 @@ public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boole
             .apply($$0, bn::new)
    );
 
-   public boolean a(arv $$0, bvk $$1) {
+   public boolean a(asc $$0, bvt $$1) {
       return this.a($$0.y(), $$0.dt(), $$1);
    }
 
-   public boolean a(aru $$0, ffs $$1, bvk $$2) {
-      for (du<bvm> $$3 : this.b) {
+   public boolean a(asb $$0, fgc $$1, bvt $$2) {
+      for (du<bvv> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;
          }
@@ -34,7 +34,7 @@ public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boole
       }
    }
 
-   public List<du<bvm>> a() {
+   public List<du<bvv>> a() {
       return this.b;
    }
 
@@ -51,7 +51,7 @@ public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<du<bvm>> a = ImmutableList.builder();
+      private final Builder<du<bvv>> a = ImmutableList.builder();
       private Optional<bz> b = Optional.empty();
       private Optional<bz> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
@@ -60,7 +60,7 @@ public record bn(List<du<bvm>> b, Optional<bz> c, Optional<bz> d, Optional<Boole
          return new bn.a();
       }
 
-      public bn.a a(du<bvm> $$0) {
+      public bn.a a(du<bvv> $$0) {
          this.a.add($$0);
          return this;
       }

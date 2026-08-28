@@ -1,32 +1,33 @@
-import javax.annotation.Nullable;
-
-public class age implements zj<aby> {
-   public static final za<vy, age> a = zj.a(age::a, age::new);
+public class age implements zo<acf> {
+   public static final ze<vy, age> a = zo.a(age::a, age::new);
    private final int b;
-   @Nullable
-   private final ua c;
+   private final int c;
+   private final int d;
 
-   public age(int $$0, @Nullable ua $$1) {
+   public age(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
    private age(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a((va)this.c);
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zl<age> a() {
-      return agr.bb;
+   public zq<age> a() {
+      return agy.aU;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
@@ -34,13 +35,11 @@ public class age implements zj<aby> {
       return this.b;
    }
 
-   @Nullable
-   public ua e() {
+   public int e() {
       return this.c;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int f() {
+      return this.d;
    }
 }

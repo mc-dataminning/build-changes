@@ -1,18 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public record hip() implements hif {
-   public static final MapCodec<hip> a = MapCodec.unit(new hip());
+public class hip {
+   private static final azg.b<alr, MapCodec<? extends hiq>> b = new azg.b<>();
+   public static final MapCodec<hiq> a = b.a(alr.a).dispatchMap("property", hiq::a, $$0 -> $$0);
 
-   @Override
-   public boolean get(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
-      frf $$5 = frf.Q();
-      bwv $$6 = $$5.ao();
-      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
-   }
-
-   @Override
-   public MapCodec<hip> a() {
-      return a;
+   public static void a() {
+      b.a(alr.b("custom_model_data"), him.a);
+      b.a(alr.b("bundle/fullness"), hig.a);
+      b.a(alr.b("damage"), hin.a);
+      b.a(alr.b("cooldown"), hij.a);
+      b.a(alr.b("time"), hir.a);
+      b.a(alr.b("compass"), hih.a);
+      b.a(alr.b("crossbow/pull"), hil.a);
+      b.a(alr.b("use_cycle"), his.a);
+      b.a(alr.b("use_duration"), hit.a);
+      b.a(alr.b("count"), hik.a);
    }
 }

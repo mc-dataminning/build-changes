@@ -1,54 +1,30 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-
 public class ezz {
-   private final int a;
-   private final long b;
+   private final int b;
    private final String c;
-   private final ezp d;
-   private final boolean e;
+   public static String a = "main";
 
-   private ezz(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new ezp($$3, $$4);
-      this.e = $$5;
+   public ezz(int $$0) {
+      this($$0, a);
    }
 
-   public static ezz a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new ezz(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(ac.b().c()),
-            $$3.get("Id").asInt(ac.b().d().c()),
-            $$3.get("Series").asString(ezp.a),
-            $$3.get("Snapshot").asBoolean(!ac.b().g())
-         )
-         : new ezz($$1, $$2, "", 0, ezp.a, false);
+   public ezz(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int a() {
-      return this.a;
+   public boolean a() {
+      return !this.c.equals(a);
    }
 
-   public long b() {
-      return this.b;
-   }
-
-   public String c() {
+   public String b() {
       return this.c;
    }
 
-   public ezp d() {
-      return this.d;
+   public int c() {
+      return this.b;
    }
 
-   public boolean e() {
-      return this.e;
+   public boolean a(ezz $$0) {
+      return this.b().equals($$0.b());
    }
 }

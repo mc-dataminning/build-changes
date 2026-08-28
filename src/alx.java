@@ -1,57 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
 import org.slf4j.Logger;
 
-public class alx extends avl<ai> {
+public class alx {
    private static final Logger a = LogUtils.getLogger();
-   private Map<alk, aj> b = Map.of();
-   private ao c = new ao();
-   private final ji.a d;
+   private final Path b;
+   private final boolean c;
 
-   public alx(ji.a $$0) {
-      super($$0, ai.a, mi.bu);
-      this.d = $$0;
+   public alx(Path $$0) {
+      this.b = $$0;
+      this.c = ac.aU || this.b();
    }
 
-   protected void a(Map<alk, ai> $$0, avh $$1, brd $$2) {
-      Builder<alk, aj> $$3 = ImmutableMap.builder();
-      $$0.forEach(($$1x, $$2x) -> {
-         this.a($$1x, $$2x);
-         $$3.put($$1x, new aj($$1x, $$2x));
-      });
-      this.b = $$3.buildOrThrow();
-      ao $$4 = new ao();
-      $$4.a(this.b.values());
-
-      for (ak $$5 : $$4.b()) {
-         if ($$5.b().b().c().isPresent()) {
-            aw.a($$5);
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
          }
+
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
       }
-
-      this.c = $$4;
    }
 
-   private void a(alk $$0, ai $$1) {
-      azx.a $$2 = new azx.a();
-      $$1.a($$2, this.d);
-      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
-   }
-
-   @Nullable
-   public aj a(alk $$0) {
-      return this.b.get($$0);
-   }
-
-   public ao a() {
+   public boolean a() {
       return this.c;
    }
 
-   public Collection<aj> b() {
-      return this.b.values();
+   private void c() {
+      if (!ac.aU) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + ayt.b + ").");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
+         }
+      }
    }
 }

@@ -1,21 +1,57 @@
-public class dbj extends dbm {
-   public dbj(czw.a $$0) {
+import java.util.List;
+
+public class dbj extends dag {
+   public dbj(dag.a $$0) {
       super($$0);
    }
 
-   @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.zU, aws.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static ddn a() {
+      jh<dno> $$0 = mh.a(mh.e);
+      return new ddn(
+         List.of(ddn.a.a(jk.a(dnq.bz.p()), 15.0F), ddn.a.b($$0.b(axn.Q), 15.0F), ddn.a.b($$0.b(axn.a), 5.0F), ddn.a.b(jk.a(dnq.fx.p(), dnq.fy.p()), 2.0F)),
+         1.0F,
+         1,
+         true
+      );
    }
 
    @Override
-   protected csj a(aru $$0, bxw $$1, daa $$2) {
-      return new cth($$0, $$1, $$2);
+   public boolean a(dak $$0, dkj $$1, ebq $$2, iw $$3, byf $$4) {
+      ddn $$5 = $$0.a(kl.A);
+      if ($$5 == null) {
+         return false;
+      } else {
+         if (!$$1.A_() && !$$2.a(axn.aN) && $$5.c() > 0) {
+            $$0.a($$5.c(), $$4, bxo.a);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   protected csj a(djz $$0, jq $$1, daa $$2) {
-      return new cth($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public bvc a(def $$0) {
+      dkj $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebq $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof drh $$5 && !$$5.q($$3)) {
+         csi $$6 = $$0.o();
+         dak $$7 = $$0.n();
+         if ($$6 instanceof asc) {
+            aq.N.a((asc)$$6, $$2, $$7);
+         }
+
+         $$1.a($$6, $$2, awy.lR, awz.e, 1.0F, 1.0F);
+         ebq $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(egq.c, $$2, egq.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, byf.d($$0.p()));
+         }
+
+         return bvc.a;
+      }
+
+      return super.a($$0);
    }
 }

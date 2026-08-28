@@ -8,7 +8,7 @@ public class dk extends dl<dk.a> {
       return dk.a.a;
    }
 
-   public void a(arv $$0, daa $$1) {
+   public void a(asc $$0, dak $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class dk extends dl<dk.a> {
          return aq.G.a(new dk.a(Optional.empty(), $$0));
       }
 
-      public static ar<dk.a> a(jh<czw> $$0, djy $$1) {
+      public static ar<dk.a> a(jh<dag> $$0, dki $$1) {
          return aq.G.a(new dk.a(Optional.empty(), Optional.of(cn.a.a().a($$0, $$1).b())));
       }
 
-      public boolean a(daa $$0) {
+      public boolean a(dak $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

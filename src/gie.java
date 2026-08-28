@@ -1,44 +1,45 @@
-public class gie extends gic<het> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final glg d;
-   private final glg e;
-   private final glg f;
+import java.util.Arrays;
 
-   public gie(glg $$0) {
+public class gie extends ghn<hgb> {
+   private static final int a = 8;
+   private final gkr[] b = new gkr[8];
+
+   public gie(gkr $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      glq $$2 = $$1.a("base", gll.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gli.a(-5.0F, 24.0F, -5.0F));
-      gll $$3 = gll.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gli.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gli.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return glm.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public void a(het $$0) {
-      super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azq.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = 0;
+         if ($$2 > 0 && $$2 < 4) {
+            $$4 += 9 * $$2;
+         } else if ($$2 > 3) {
+            $$3 = 32;
+            $$4 += 9 * $$2 - 36;
+         }
+
+         $$1.a(a($$2), gkw.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gkt.a);
       }
 
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      $$1.a("inside_cube", gkw.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gkt.a);
+      return gkx.a($$0, 64, 64);
+   }
+
+   public void a(hgb $$0) {
+      super.a($$0);
+      float $$1 = Math.max(0.0F, $$0.a);
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      }
    }
 }

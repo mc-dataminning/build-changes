@@ -1,7 +1,7 @@
 import java.util.List;
 
 public interface ia<T> {
-   alk a();
+   alr a();
 
    List<hp<T>> b();
 }

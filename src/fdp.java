@@ -1,36 +1,42 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record fdp(fds b) implements fds {
-   public static final MapCodec<fdp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fds.e.fieldOf("term").forGetter(fdp::c)).apply($$0, fdp::new));
+public class fdp extends fds {
+   public static final MapCodec<fdp> a = a(fdp::new);
+   public static final Codec<fdp> b = b(fdp::new);
 
-   @Override
-   public fdt b() {
-      return fdu.a;
+   fdp(List<fec> $$0) {
+      super($$0, ag.a($$0));
    }
 
-   public boolean a(faj $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<bbb<?>> a() {
-      return this.b.a();
+   public static fdp a(List<fec> $$0) {
+      return new fdp(List.copyOf($$0));
    }
 
    @Override
-   public void a(fap $$0) {
-      fds.super.a($$0);
-      this.b.a($$0);
+   public fed b() {
+      return fee.c;
    }
 
-   public static fds.a a(fds.a $$0) {
-      fdp $$1 = new fdp($$0.build());
-      return () -> $$1;
+   public static fdp.a a(fec.a... $$0) {
+      return new fdp.a($$0);
    }
 
-   public fds c() {
-      return this.b;
+   public static class a extends fds.a {
+      public a(fec.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public fdp.a and(fec.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected fec a(List<fec> $$0) {
+         return new fdp($$0);
+      }
    }
 }

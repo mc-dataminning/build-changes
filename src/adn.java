@@ -1,36 +1,33 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
-
-public class adn implements zj<aby> {
-   public static final za<vy, adn> a = zj.a(adn::a, adn::new);
+public class adn implements zo<acf> {
+   public static final ze<vy, adn> a = zo.a(adn::a, adn::new);
    private final int b;
    private final int c;
-   private final ado d;
+   private final int d;
 
-   public adn(dje $$0, exf $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.h;
-      this.c = $$0.i;
-      this.d = new ado($$0, $$1, $$2, $$3);
+   public adn(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    private adn(vy $$0) {
-      this.b = $$0.l();
+      this.b = $$0.x();
       this.c = $$0.l();
-      this.d = new ado($$0, this.b, this.c);
+      this.d = $$0.readInt();
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
+      $$0.f(this.b);
       $$0.c(this.c);
-      this.d.a($$0);
+      $$0.q(this.d);
    }
 
    @Override
-   public zl<adn> a() {
-      return agr.N;
+   public zq<adn> a() {
+      return agy.H;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
@@ -42,7 +39,7 @@ public class adn implements zj<aby> {
       return this.c;
    }
 
-   public ado f() {
+   public int f() {
       return this.d;
    }
 }

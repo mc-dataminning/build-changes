@@ -1,45 +1,28 @@
-public class acd implements zj<aby> {
-   public static final za<vy, acd> a = zj.a(acd::a, acd::new);
-   private final int b;
-   private final iw c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public acd(int $$0, iw $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record acd(alr b, @Nullable byte[] c) implements zo<acc> {
+   public static final ze<vy, acd> a = zo.a(acd::a, acd::new);
 
    private acd(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
+      this($$0.q(), $$0.c(aaf.b));
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
+      $$0.a(this.b);
+      $$0.a(this.c, aaf.b);
    }
 
    @Override
-   public zl<acd> a() {
-      return agr.g;
+   public zq<acd> a() {
+      return acb.b;
    }
 
-   public void a(aby $$0) {
+   public void a(acc $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public iw e() {
+   @Nullable
+   public byte[] e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

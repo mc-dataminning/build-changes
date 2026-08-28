@@ -1,97 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
 public class cjc {
-   public static final alj<cjb> a = a("armorer");
-   public static final alj<cjb> b = a("butcher");
-   public static final alj<cjb> c = a("cartographer");
-   public static final alj<cjb> d = a("cleric");
-   public static final alj<cjb> e = a("farmer");
-   public static final alj<cjb> f = a("fisherman");
-   public static final alj<cjb> g = a("fletcher");
-   public static final alj<cjb> h = a("leatherworker");
-   public static final alj<cjb> i = a("librarian");
-   public static final alj<cjb> j = a("mason");
-   public static final alj<cjb> k = a("shepherd");
-   public static final alj<cjb> l = a("toolsmith");
-   public static final alj<cjb> m = a("weaponsmith");
-   public static final alj<cjb> n = a("home");
-   public static final alj<cjb> o = a("meeting");
-   public static final alj<cjb> p = a("beehive");
-   public static final alj<cjb> q = a("bee_nest");
-   public static final alj<cjb> r = a("nether_portal");
-   public static final alj<cjb> s = a("lodestone");
-   public static final alj<cjb> t = a("lightning_rod");
-   private static final Set<ebg> u = ImmutableList.of(
-         dng.bu, dng.bv, dng.br, dng.bs, dng.bp, dng.bn, dng.bt, dng.bj, dng.bo, dng.bl, dng.bi, dng.bh, new dne[]{dng.bm, dng.bq, dng.bg, dng.bk}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(dmx.b) == ebt.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<ebg> v = ImmutableList.of(dng.fS, dng.fU, dng.fT, dng.fV)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<ebg, jg<cjb>> w = Maps.newHashMap();
+   private static final int a = 10;
 
-   private static Set<ebg> a(dne $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public static iw a(bai $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new iw($$3, $$4, $$5);
    }
 
-   private static alj<cjb> a(String $$0) {
-      return alj.a(mi.aa, alk.b($$0));
+   @Nullable
+   public static iw a(bai $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = azz.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)azz.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return iw.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   private static cjb a(jt<cjb> $$0, alj<cjb> $$1, Set<ebg> $$2, int $$3, int $$4) {
-      cjb $$5 = new cjb($$2, $$3, $$4);
-      jt.a($$0, $$1, $$5);
-      a($$0.b($$1), $$2);
-      return $$5;
-   }
+   @VisibleForTesting
+   public static iw a(iw $$0, int $$1, Predicate<iw> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         iw.a $$3 = $$0.k().c(jc.b);
 
-   private static void a(jg<cjb> $$0, Set<ebg> $$1) {
-      $$1.forEach($$1x -> {
-         jg<cjb> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ag.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(jc.b);
          }
-      });
+
+         return $$3.j();
+      }
    }
 
-   public static Optional<jg<cjb>> a(ebg $$0) {
-      return Optional.ofNullable(w.get($$0));
+   @VisibleForTesting
+   public static iw a(iw $$0, int $$1, int $$2, Predicate<iw> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         iw.a $$4 = $$0.k().c(jc.b);
+
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(jc.b);
+         }
+
+         int $$5 = $$4.v();
+
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(jc.b);
+            if ($$3.test($$4)) {
+               $$4.c(jc.a);
+               break;
+            }
+         }
+
+         return $$4.j();
+      }
    }
 
-   public static boolean b(ebg $$0) {
-      return w.containsKey($$0);
+   @Nullable
+   public static fgc a(byn $$0, Supplier<iw> $$1) {
+      return a($$1, $$0::c);
    }
 
-   public static cjb a(jt<cjb> $$0) {
-      a($$0, a, a(dng.oC), 1, 1);
-      a($$0, b, a(dng.oB), 1, 1);
-      a($$0, c, a(dng.oD), 1, 1);
-      a($$0, d, a(dng.fR), 1, 1);
-      a($$0, e, a(dng.pK), 1, 1);
-      a($$0, f, a(dng.oA), 1, 1);
-      a($$0, g, a(dng.oE), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dng.oG), 1, 1);
-      a($$0, j, a(dng.oI), 1, 1);
-      a($$0, k, a(dng.oz), 1, 1);
-      a($$0, l, a(dng.oH), 1, 1);
-      a($$0, m, a(dng.oF), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dng.oJ), 32, 6);
-      a($$0, p, a(dng.pN), 0, 1);
-      a($$0, q, a(dng.pM), 0, 1);
-      a($$0, r, a(dng.eu), 0, 1);
-      a($$0, s, a(dng.pY), 0, 1);
-      return a($$0, t, a(dng.ta), 0, 1);
+   @Nullable
+   public static fgc a(Supplier<iw> $$0, ToDoubleFunction<iw> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      iw $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iw $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? fgc.c($$3) : null;
+   }
+
+   public static iw a(byn $$0, int $$1, bai $$2, iw $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.gi() && $$1 > 1) {
+         iw $$6 = $$0.gf();
+         if ($$0.dA() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dG() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return iw.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
    }
 }

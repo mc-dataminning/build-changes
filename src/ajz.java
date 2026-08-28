@@ -1,3 +1,3 @@
-public interface ajz extends wi {
-   void a(aka var1);
+public interface ajz {
+   void a(vy var1);
 }

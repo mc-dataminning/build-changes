@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface fex {
-   @Nullable
-   fgw a(faj var1);
-
-   few a();
-
-   Set<bbb<?>> b();
+public record fex(MapCodec<? extends fey> a) {
 }

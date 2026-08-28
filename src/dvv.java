@@ -1,72 +1,70 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dvv extends dpn implements dsb {
-   public static final MapCodec<dvv> c = b(dvv::new);
-   public static final ece<ecc> d = dpn.b;
-   private static final fgm e = dne.b(12.0, 0.0, 16.0);
+public class dvv extends dno {
+   public static final MapCodec<dvv> a = b(dvv::new);
+   private static final xg c = xg.c("container.stonecutter");
+   public static final eco<jc> b = drp.e;
+   private static final fgw d = dno.b(16.0, 0.0, 9.0);
 
    @Override
    public MapCodec<dvv> a() {
-      return c;
+      return a;
    }
 
-   public dvv(ebf.d $$0) {
+   public dvv(ebp.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, jc.c));
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e;
+   public ebq a(ded $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected boolean b(ebg $$0, djd $$1, iw $$2) {
-      return $$0.c($$1, $$2, jc.b) && !$$0.a(dng.lp);
-   }
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(axi.ay);
+      }
 
-   @Override
-   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
-      return new daa(dng.bG);
+      return bvc.a;
    }
 
    @Nullable
    @Override
-   public ebg a(ddt $$0) {
-      ebg $$1 = super.a($$0);
-      if ($$1 != null) {
-         exq $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(axl.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   protected bve b(ebq $$0, dkj $$1, iw $$2) {
+      return new bvk(($$2x, $$3, $$4) -> new cyf($$2x, $$3, cwo.a($$1, $$2)), c);
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      if ($$0.c(d) == ecc.a) {
-         ebg $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == ecc.b;
-      } else {
-         exq $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(axl.a) && $$4.e() == 8;
-      }
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return d;
    }
 
    @Override
-   protected exq b_(ebg $$0) {
-      return exr.c.a(false);
+   protected boolean g_(ebq $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(@Nullable bxw $$0, djd $$1, iw $$2, ebg $$3, exp $$4) {
-      return false;
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(dka $$0, iw $$1, ebg $$2, exq $$3) {
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(ebq $$0, eyp $$1) {
       return false;
    }
 }

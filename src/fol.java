@@ -1,120 +1,229 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fol extends hro {
-   private static final xc a = xc.c("mco.backup.info.title");
-   private static final xc b = xc.c("mco.backup.unknown");
-   private final gaf c;
-   final fmv C;
-   final fyb D = new fyb(this);
-   private fol.a E;
+public class fol extends hrc {
+   static final Logger a = LogUtils.getLogger();
+   private static final xg b = xg.c("mco.configure.world.players.title");
+   static final xg c = xg.c("mco.question");
+   private static final int C = 8;
+   final fxm D = new fxm(this);
+   private final foa E;
+   final fmr F;
+   @Nullable
+   private fol.b G;
+   boolean H;
 
-   public fol(gaf $$0, fmv $$1) {
-      super(a);
-      this.c = $$0;
-      this.C = $$1;
+   public fol(foa $$0, fmr $$1) {
+      super(b);
+      this.E = $$0;
+      this.F = $$1;
    }
 
    @Override
-   public void aS_() {
-      this.D.a(a, this.p);
-      this.E = this.D.c(new fol.a(this.m));
-      this.D.b(fun.a(xb.k, $$0 -> this.aP_()).a());
-      this.c();
+   public void aT_() {
+      this.D.a(b, this.p);
+      this.G = this.D.c(new fol.b());
+      this.E();
+      fxq $$0 = this.D.b(fxq.e().a(8));
+      $$0.a(fty.a(xg.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fof(this.E, this, this.F))).a());
+      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
       this.D.a($$1 -> {
-         ful var10000 = this.c($$1);
+         ftw var10000 = this.c($$1);
       });
+      this.c();
    }
 
    @Override
    protected void c() {
-      this.E.b(this.n, this.D.d());
       this.D.a();
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.c);
-   }
-
-   xc a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (xc)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xc.b($$1));
+      if (this.G != null) {
+         this.G.a(this.n, this.D);
       }
    }
 
-   private xc a(String $$0) {
-      try {
-         return fph.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
+   void E() {
+      if (this.G != null) {
+         this.G.aJ_().clear();
 
-   private xc b(String $$0) {
-      try {
-         return fph.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends fvj<fol.b> {
-      public a(final frf $$0) {
-         super($$0, fol.this.n, fol.this.D.d(), fol.this.D.c(), 36);
-         if (fol.this.C.e != null) {
-            fol.this.C.e.forEach(($$0x, $$1) -> this.b(fol.this.new b($$0x, $$1)));
+         for (fmn $$0 : this.F.h) {
+            this.G.aJ_().add(new fol.a($$0));
          }
       }
    }
 
-   class b extends fvj.a<fol.b> {
-      private static final xc b = xc.c("mco.backup.entry.templateName");
-      private static final xc c = xc.c("mco.backup.entry.gameDifficulty");
-      private static final xc d = xc.c("mco.backup.entry.name");
-      private static final xc e = xc.c("mco.backup.entry.gameServerVersion");
-      private static final xc f = xc.c("mco.backup.entry.uploaded");
-      private static final xc g = xc.c("mco.backup.entry.enabledPack");
-      private static final xc h = xc.c("mco.backup.entry.description");
-      private static final xc i = xc.c("mco.backup.entry.gameMode");
-      private static final xc j = xc.c("mco.backup.entry.seed");
-      private static final xc k = xc.c("mco.backup.entry.worldType");
-      private static final xc l = xc.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
+   @Override
+   public void aQ_() {
+      this.F();
+   }
 
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
+   private void F() {
+      if (this.H) {
+         this.m.a(this.E.g());
+      } else {
+         this.m.a(this.E);
+      }
+   }
+
+   class a extends fue.a<fol.a> {
+      private static final xg b = xg.c("mco.configure.world.invites.normal.tooltip");
+      private static final xg c = xg.c("mco.configure.world.invites.ops.tooltip");
+      private static final xg d = xg.c("mco.configure.world.invites.remove.tooltip");
+      private static final alr e = alr.b("player_list/make_operator");
+      private static final alr f = alr.b("player_list/remove_operator");
+      private static final alr g = alr.b("player_list/remove_player");
+      private static final int h = 8;
+      private static final int i = 7;
+      private final fmn j;
+      private final fty k;
+      private final fty l;
+      private final fty m;
+
+      public a(final fmn $$0) {
+         this.j = $$0;
+         int $$1 = fol.this.F.h.indexOf(this.j);
+         this.l = fvd.a(b, $$1x -> this.a($$1), false)
+            .a(e, 8, 7)
+            .a(16 + fol.this.p.a(b))
+            .a($$1x -> xf.a(xg.a("mco.invited.player.narration", $$0.a()), (xg)$$1x.get(), xg.a("narration.cycle_button.usage.focused", c)))
+            .a();
+         this.m = fvd.a(c, $$1x -> this.b($$1), false)
+            .a(f, 8, 7)
+            .a(16 + fol.this.p.a(c))
+            .a($$1x -> xf.a(xg.a("mco.invited.player.narration", $$0.a()), (xg)$$1x.get(), xg.a("narration.cycle_button.usage.focused", b)))
+            .a();
+         this.k = fvd.a(d, $$1x -> this.c($$1), false)
+            .a(g, 8, 7)
+            .a(16 + fol.this.p.a(d))
+            .a($$1x -> xf.a(xg.a("mco.invited.player.narration", $$0.a()), (xg)$$1x.get()))
+            .a();
+         this.c();
+      }
+
+      private void a(int $$0) {
+         flq $$1 = flq.a();
+         UUID $$2 = fol.this.F.h.get($$0).b();
+
+         try {
+            this.a($$1.b(fol.this.F.a, $$2));
+         } catch (fnm var5) {
+            fol.a.error("Couldn't op the user", var5);
+         }
+
+         this.c();
+         this.a(this.m);
+      }
+
+      private void b(int $$0) {
+         flq $$1 = flq.a();
+         UUID $$2 = fol.this.F.h.get($$0).b();
+
+         try {
+            this.a($$1.c(fol.this.F.a, $$2));
+         } catch (fnm var5) {
+            fol.a.error("Couldn't deop the user", var5);
+         }
+
+         this.c();
+         this.a(this.l);
+      }
+
+      private void c(int $$0) {
+         if ($$0 >= 0 && $$0 < fol.this.F.h.size()) {
+            fmn $$1 = fol.this.F.h.get($$0);
+            fob $$2 = new fob($$2x -> {
+               if ($$2x) {
+                  flq $$3 = flq.a();
+
+                  try {
+                     $$3.a(fol.this.F.a, $$1.b());
+                  } catch (fnm var6) {
+                     fol.a.error("Couldn't uninvite user", var6);
+                  }
+
+                  fol.this.F.h.remove($$0);
+                  fol.this.E();
+               }
+
+               fol.this.H = true;
+               fol.this.m.a(fol.this);
+            }, fol.c, xg.a("mco.configure.world.uninvite.player", $$1.a()));
+            fol.this.m.a($$2);
+         }
+      }
+
+      private void a(fmj $$0) {
+         for (fmn $$1 : fol.this.F.h) {
+            $$1.a($$0.a.contains($$1.a()));
+         }
+      }
+
+      private void c() {
+         this.l.k = !this.j.c();
+         this.m.k = !this.l.k;
+      }
+
+      private fty g() {
+         return this.l.k ? this.l : this.m;
       }
 
       @Override
-      public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fol.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fol.this.p, fol.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private xc a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
+      public List<? extends fvv> aJ_() {
+         return ImmutableList.of(this.g(), this.k);
       }
 
       @Override
-      public xc a() {
-         return xc.a("narrator.select", this.m + " " + this.n);
+      public List<? extends fxt> b() {
+         return ImmutableList.of(this.g(), this.k);
+      }
+
+      @Override
+      public void a(ftk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10;
+         if (!this.j.d()) {
+            $$10 = -6250336;
+         } else if (this.j.e()) {
+            $$10 = 8388479;
+         } else {
+            $$10 = -1;
+         }
+
+         int $$13 = $$2 + $$5 / 2 - 16;
+         fpg.a($$0, $$3, $$13, 32, this.j.b());
+         int $$14 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.b(fol.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10);
+         int $$15 = $$2 + $$5 / 2 - 10;
+         int $$16 = $$3 + $$4 - this.k.A();
+         this.k.c($$16, $$15);
+         this.k.a($$0, $$6, $$7, $$9);
+         int $$17 = $$16 - this.g().A() - 8;
+         this.l.c($$17, $$15);
+         this.l.a($$0, $$6, $$7, $$9);
+         this.m.c($$17, $$15);
+         this.m.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   class b extends fue<fol.a> {
+      private static final int m = 36;
+
+      public b() {
+         super(fqq.Q(), fol.this.n, fol.this.D.d(), fol.this.D.c(), 36, (int)(9.0F * 1.5F));
+      }
+
+      @Override
+      protected void a(ftk $$0, int $$1, int $$2) {
+         String $$3 = fol.this.F.h != null ? Integer.toString(fol.this.F.h.size()) : "0";
+         xg $$4 = xg.a("mco.configure.world.invited.number", $$3).a(o.t);
+         $$0.b(fol.this.p, $$4, $$1 + this.a() / 2 - fol.this.p.a($$4) / 2, $$2, -1);
+      }
+
+      @Override
+      public int a() {
+         return 300;
       }
    }
 }

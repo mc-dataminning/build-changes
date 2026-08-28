@@ -1,84 +1,385 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.function.BooleanSupplier;
-import java.util.zip.GZIPOutputStream;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import com.google.common.collect.ComparisonChain;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.slf4j.Logger;
 
-public class fmr {
-   private static final long a = 5368709120L;
-   private static final String b = "world";
-   private final BooleanSupplier c;
-   private final Path d;
+public class fmr extends fnf {
+   private static final Logger x = LogUtils.getLogger();
+   private static final int y = -1;
+   public long a;
+   @Nullable
+   public String b;
+   @Nullable
+   public String c;
+   public String d;
+   public fmr.c e;
+   @Nullable
+   public String f;
+   public UUID g = ag.e;
+   public List<fmn> h;
+   public Map<Integer, fmx> i;
+   public boolean j;
+   public boolean k;
+   public int l;
+   public fmr.d m;
+   public boolean n;
+   public int o;
+   public int p;
+   @Nullable
+   public String q;
+   public int r;
+   @Nullable
+   public String s;
+   public long t = -1L;
+   @Nullable
+   public String u;
+   public String v = "";
+   public fmr.a w = fmr.a.a;
 
-   public static File a(Path $$0, BooleanSupplier $$1) throws IOException {
-      return new fmr($$0, $$1).a();
+   public String a() {
+      return this.d;
    }
 
-   private fmr(Path $$0, BooleanSupplier $$1) {
-      this.c = $$1;
+   @Nullable
+   public String b() {
+      return this.c;
+   }
+
+   @Nullable
+   public String c() {
+      return this.q;
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
+   }
+
+   public void b(String $$0) {
       this.d = $$0;
    }
 
-   private File a() throws IOException {
-      TarArchiveOutputStream $$0 = null;
+   public static fmr a(JsonObject $$0) {
+      fmr $$1 = new fmr();
 
-      File var3;
       try {
-         File $$1 = File.createTempFile("realms-upload-file", ".tar.gz");
-         $$0 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$1)));
-         $$0.setLongFileMode(3);
-         this.a($$0, this.d, "world", true);
-         if (this.c.getAsBoolean()) {
-            throw new fmm();
-         }
-
-         $$0.finish();
-         this.a($$1.length());
-         var3 = $$1;
-      } finally {
-         if ($$0 != null) {
-            $$0.close();
-         }
-      }
-
-      return var3;
-   }
-
-   private void a(TarArchiveOutputStream $$0, Path $$1, String $$2, boolean $$3) throws IOException {
-      if (this.c.getAsBoolean()) {
-         throw new fmm();
-      } else {
-         this.a($$0.getBytesWritten());
-         File $$4 = $$1.toFile();
-         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
-         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
-         $$0.putArchiveEntry($$6);
-         if ($$4.isFile()) {
-            try (InputStream $$7 = new FileInputStream($$4)) {
-               $$7.transferTo($$0);
-            }
-
-            $$0.closeArchiveEntry();
+         $$1.a = fpc.a("id", $$0, -1L);
+         $$1.b = fpc.b("remoteSubscriptionId", $$0, null);
+         $$1.c = fpc.b("name", $$0, null);
+         $$1.d = fpc.b("motd", $$0, "");
+         $$1.e = f(fpc.b("state", $$0, fmr.c.a.name()));
+         $$1.f = fpc.b("owner", $$0, null);
+         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
+            $$1.h = a($$0.get("players").getAsJsonArray());
+            a($$1);
          } else {
-            $$0.closeArchiveEntry();
-            File[] $$8 = $$4.listFiles();
-            if ($$8 != null) {
-               for (File $$9 : $$8) {
-                  this.a($$0, $$9.toPath(), $$5 + "/", false);
-               }
-            }
+            $$1.h = Lists.newArrayList();
          }
+
+         $$1.l = fpc.a("daysLeft", $$0, 0);
+         $$1.j = fpc.a("expired", $$0, false);
+         $$1.k = fpc.a("expiredTrial", $$0, false);
+         $$1.m = g(fpc.b("worldType", $$0, fmr.d.a.name()));
+         $$1.n = fpc.a("isHardcore", $$0, false);
+         $$1.o = fpc.a("gameMode", $$0, -1);
+         $$1.g = fpc.a("ownerUUID", $$0, ag.e);
+         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
+            $$1.i = b($$0.get("slots").getAsJsonArray());
+         } else {
+            $$1.i = j();
+         }
+
+         $$1.q = fpc.b("minigameName", $$0, null);
+         $$1.p = fpc.a("activeSlot", $$0, -1);
+         $$1.r = fpc.a("minigameId", $$0, -1);
+         $$1.s = fpc.b("minigameImage", $$0, null);
+         $$1.t = fpc.a("parentWorldId", $$0, -1L);
+         $$1.u = fpc.b("parentWorldName", $$0, null);
+         $$1.v = fpc.b("activeVersion", $$0, "");
+         $$1.w = d(fpc.b("compatibility", $$0, fmr.a.a.name()));
+      } catch (Exception var3) {
+         x.error("Could not parse McoServer: {}", var3.getMessage());
+      }
+
+      return $$1;
+   }
+
+   private static void a(fmr $$0) {
+      $$0.h
+         .sort(
+            ($$0x, $$1) -> ComparisonChain.start()
+                  .compareFalseFirst($$1.d(), $$0x.d())
+                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
+                  .result()
+         );
+   }
+
+   private static List<fmn> a(JsonArray $$0) {
+      List<fmn> $$1 = Lists.newArrayList();
+
+      for (JsonElement $$2 : $$0) {
+         try {
+            JsonObject $$3 = $$2.getAsJsonObject();
+            fmn $$4 = new fmn();
+            $$4.a(fpc.b("name", $$3, null));
+            $$4.a(fpc.a("uuid", $$3, ag.e));
+            $$4.a(fpc.a("operator", $$3, false));
+            $$4.b(fpc.a("accepted", $$3, false));
+            $$4.c(fpc.a("online", $$3, false));
+            $$1.add($$4);
+         } catch (Exception var6) {
+         }
+      }
+
+      return $$1;
+   }
+
+   private static Map<Integer, fmx> b(JsonArray $$0) {
+      Map<Integer, fmx> $$1 = Maps.newHashMap();
+
+      for (JsonElement $$2 : $$0) {
+         try {
+            JsonObject $$3 = $$2.getAsJsonObject();
+            JsonElement $$4 = JsonParser.parseString($$3.get("options").getAsString());
+            fmv $$5 = a($$3.get("settings"));
+            fmx $$6;
+            if ($$4 == null) {
+               $$6 = fmx.a();
+            } else {
+               $$6 = fmx.a($$4.getAsJsonObject(), $$5);
+            }
+
+            int $$8 = fpc.a("slotId", $$3, -1);
+            $$1.put($$8, $$6);
+         } catch (Exception var9) {
+         }
+      }
+
+      for (int $$9 = 1; $$9 <= 3; $$9++) {
+         if (!$$1.containsKey($$9)) {
+            $$1.put($$9, fmx.b());
+         }
+      }
+
+      return $$1;
+   }
+
+   private static fmv a(JsonElement $$0) {
+      boolean $$1 = false;
+      if ($$0.isJsonArray()) {
+         for (JsonElement $$2 : $$0.getAsJsonArray()) {
+            JsonObject $$3 = $$2.getAsJsonObject();
+            $$1 = a($$3, "hardcore", $$1);
+         }
+      }
+
+      return new fmv($$1);
+   }
+
+   private static boolean a(JsonObject $$0, String $$1, boolean $$2) {
+      String $$3 = fpc.b("name", $$0, null);
+      return $$3 != null && $$3.equals($$1) ? fpc.a("value", $$0, $$2) : $$2;
+   }
+
+   private static Map<Integer, fmx> j() {
+      Map<Integer, fmx> $$0 = Maps.newHashMap();
+      $$0.put(1, fmx.b());
+      $$0.put(2, fmx.b());
+      $$0.put(3, fmx.b());
+      return $$0;
+   }
+
+   public static fmr c(String $$0) {
+      try {
+         return a(new JsonParser().parse($$0).getAsJsonObject());
+      } catch (Exception var2) {
+         x.error("Could not parse McoServer: {}", var2.getMessage());
+         return new fmr();
       }
    }
 
-   private void a(long $$0) {
-      if ($$0 > 5368709120L) {
-         throw new fmp(5368709120L);
+   private static fmr.c f(String $$0) {
+      try {
+         return fmr.c.valueOf($$0);
+      } catch (Exception var2) {
+         return fmr.c.a;
       }
+   }
+
+   private static fmr.d g(String $$0) {
+      try {
+         return fmr.d.valueOf($$0);
+      } catch (Exception var2) {
+         return fmr.d.a;
+      }
+   }
+
+   public static fmr.a d(@Nullable String $$0) {
+      try {
+         return fmr.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fmr.a.a;
+      }
+   }
+
+   public boolean d() {
+      return this.w.a();
+   }
+
+   public boolean e() {
+      return this.w.b();
+   }
+
+   public boolean f() {
+      return this.w.c();
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0 == this) {
+         return true;
+      } else if ($$0.getClass() != this.getClass()) {
+         return false;
+      } else {
+         fmr $$1 = (fmr)$$0;
+         return new EqualsBuilder()
+            .append(this.a, $$1.a)
+            .append(this.c, $$1.c)
+            .append(this.d, $$1.d)
+            .append(this.e, $$1.e)
+            .append(this.f, $$1.f)
+            .append(this.j, $$1.j)
+            .append(this.m, this.m)
+            .isEquals();
+      }
+   }
+
+   public fmr g() {
+      fmr $$0 = new fmr();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.h = this.h;
+      $$0.i = this.a(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      $$0.l = this.l;
+      $$0.m = this.m;
+      $$0.n = this.n;
+      $$0.o = this.o;
+      $$0.g = this.g;
+      $$0.q = this.q;
+      $$0.p = this.p;
+      $$0.r = this.r;
+      $$0.s = this.s;
+      $$0.u = this.u;
+      $$0.t = this.t;
+      $$0.v = this.v;
+      $$0.w = this.w;
+      return $$0;
+   }
+
+   public Map<Integer, fmx> a(Map<Integer, fmx> $$0) {
+      Map<Integer, fmx> $$1 = Maps.newHashMap();
+
+      for (Entry<Integer, fmx> $$2 : $$0.entrySet()) {
+         $$1.put($$2.getKey(), $$2.getValue().d());
+      }
+
+      return $$1;
+   }
+
+   public boolean h() {
+      return this.t != -1L;
+   }
+
+   public boolean i() {
+      return this.m == fmr.d.b;
+   }
+
+   public String a(int $$0) {
+      return this.c == null ? this.i.get($$0).a($$0) : this.c + " (" + this.i.get($$0).a($$0) + ")";
+   }
+
+   public gmd e(String $$0) {
+      return new gmd(Objects.requireNonNullElse(this.c, "unknown server"), $$0, gmd.c.b);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f;
+
+      public boolean a() {
+         return this == f;
+      }
+
+      public boolean b() {
+         return this == e;
+      }
+
+      public boolean c() {
+         return this == d;
+      }
+   }
+
+   public static class b implements Comparator<fmr> {
+      private final String a;
+
+      public b(String $$0) {
+         this.a = $$0;
+      }
+
+      public int a(fmr $$0, fmr $$1) {
+         return ComparisonChain.start()
+            .compareTrueFirst($$0.h(), $$1.h())
+            .compareTrueFirst($$0.e == fmr.c.c, $$1.e == fmr.c.c)
+            .compareTrueFirst($$0.k, $$1.k)
+            .compareTrueFirst(Objects.equals($$0.f, this.a), Objects.equals($$1.f, this.a))
+            .compareFalseFirst($$0.j, $$1.j)
+            .compareTrueFirst($$0.e == fmr.c.b, $$1.e == fmr.c.b)
+            .compare($$0.a, $$1.a)
+            .result();
+      }
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
+   }
+
+   public static enum d {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

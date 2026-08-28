@@ -1,32 +1,81 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.Optional;
+import java.util.Set;
 
-public class ccg {
-   public static bzo<crl> a(cgy<List<jf>> $$0, float $$1, int $$2, int $$3, cgy<jf> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return cda.a(
-         (Function<cda.b<crl>, ? extends App<cda.c<crl>, cdd<crl>>>)($$6 -> $$6.group($$6.a(cgy.n), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jf> $$11 = $$6.b($$6x);
-                     jf $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jf $$13 = $$11.get($$8.G_().a($$11.size()));
-                        if ($$13 != null && $$8.aj() == $$13.a() && $$12.b().a($$9.dt(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new chb($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
+public class ccg extends bzw<byf> {
+   public static final int c = 100;
+   private long d;
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   public ccg() {
+      super(ImmutableMap.of(chh.b, chi.a, chh.J, chi.c));
+   }
+
+   @Override
+   protected boolean a(asb $$0, byf $$1) {
+      if ($$1.bY()) {
+         return false;
+      } else {
+         bzf<?> $$2 = $$1.ec();
+         jf $$3 = $$2.c(chh.b).get();
+         if ($$0.aj() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(chh.J);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ae() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            ebq $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axn.T) && !$$6.c(dnh.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(asb $$0, byf $$1, long $$2) {
+      Optional<jf> $$3 = $$1.ec().c(chh.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         iw $$4 = $$3.get().b();
+         return $$1.ec().c(cuc.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(asb $$0, byf $$1, long $$2) {
+      if ($$2 > this.d) {
+         bzf<?> $$3 = $$1.ec();
+         if ($$3.a(chh.w)) {
+            Set<jf> $$4 = $$3.c(chh.w).get();
+            Optional<List<byf>> $$5;
+            if ($$3.a(chh.g)) {
+               $$5 = $$3.c(chh.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            cau.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.ec().c(chh.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(asb $$0, byf $$1, long $$2) {
+      if ($$1.fR()) {
+         $$1.fS();
+         this.d = $$2 + 40L;
+      }
    }
 }

@@ -29,8 +29,8 @@ public final class km implements ki {
    }
 
    public static km a(ki $$0, kj $$1) {
-      if (a($$0, $$1.d)) {
-         return new km($$0, $$1.d, true);
+      if (a($$0, $$1.e)) {
+         return new km($$0, $$1.e, true);
       } else {
          km $$2 = new km($$0);
          $$2.a($$1);
@@ -98,7 +98,7 @@ public final class km implements ki {
 
    public void a(kj $$0) {
       this.j();
-      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.d).iterator();
+      ObjectIterator var2 = Reference2ObjectMaps.fastIterable($$0.e).iterator();
 
       while (var2.hasNext()) {
          Entry<kk<?>, Optional<?>> $$1 = (Entry<kk<?>, Optional<?>>)var2.next();
@@ -124,7 +124,7 @@ public final class km implements ki {
    public void b(kj $$0) {
       this.j();
       this.d.clear();
-      this.d.putAll($$0.d);
+      this.d.putAll($$0.e);
    }
 
    public void f() {

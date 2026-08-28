@@ -1,17 +1,22 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class boo extends bky {
+public class boo extends blh {
    public boo(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:test_block");
-      $$0.registerSimple($$1, "minecraft:test_instance_block");
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("inBlockState", bjm.u.in($$0), "item", bjm.t.in($$0), "weapon", bjm.t.in($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:spectral_arrow", () -> a($$0));
+      $$0.register($$1, "minecraft:arrow", () -> a($$0));
       return $$1;
    }
 }

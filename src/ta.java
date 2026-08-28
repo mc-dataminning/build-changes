@@ -1,13 +1,13 @@
 public class ta extends sp {
-   protected final xc a;
+   protected final xg a;
 
-   public ta(xc $$0) {
+   public ta(xg $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
    @Override
-   public xc a() {
+   public xg a() {
       return this.a;
    }
 }

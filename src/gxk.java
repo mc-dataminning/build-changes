@@ -1,22 +1,22 @@
-public class gxk extends gzq<cjf, hdz, gha> {
-   private static final alk a = alk.b("textures/entity/bat.png");
+public class gxk extends gwp<cki, hdx, ghg> {
+   private static final alr a = alr.b("textures/entity/dolphin.png");
 
-   public gxk(gyk.a $$0) {
-      super($$0, new gha($$0.a(glf.u)), 0.25F);
+   public gxk(gxv.a $$0) {
+      super($$0, new ghg($$0.a(gkq.ax)), new ghg($$0.a(gkq.ay)), 0.7F);
+      this.a(new hbq(this));
    }
 
-   public alk a(hdz $$0) {
+   public alr a(hdx $$0) {
       return a;
    }
 
-   public hdz a() {
-      return new hdz();
+   public hdx a() {
+      return new hdx();
    }
 
-   public void a(cjf $$0, hdz $$1, float $$2) {
+   public void a(cki $$0, hdx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+      het.a($$0, $$1, this.h);
+      $$1.a = $$0.dy().j() > 1.0E-7;
    }
 }

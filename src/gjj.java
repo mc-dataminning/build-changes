@@ -1,60 +1,47 @@
-import java.util.Set;
-
-public class gjj extends gjn<hge> {
-   private static final float a = 2.25F;
-   private static final glp i = new ggx(true, 16.0F, 4.0F, 2.25F, 2.0F, 24.0F, Set.of("head"));
-
-   public gjj(glg $$0) {
+public class gjj<S extends hga> extends gib<S> {
+   public gjj(gkr $$0) {
       super($$0);
    }
 
-   public static glm a(boolean $$0) {
-      glo $$1 = new glo();
-      glq $$2 = $$1.a();
-      $$2.a(
-         "head",
-         gll.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         gli.a(0.0F, 10.0F, -16.0F)
-      );
-      $$2.a(
-         "body",
-         gll.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         gli.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$3 = 10;
-      gll $$4 = gll.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$2.a("right_hind_leg", $$4, gli.a(-4.5F, 14.0F, 6.0F));
-      $$2.a("left_hind_leg", $$4, gli.a(4.5F, 14.0F, 6.0F));
-      gll $$5 = gll.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$2.a("right_front_leg", $$5, gli.a(-3.5F, 14.0F, -8.0F));
-      $$2.a("left_front_leg", $$5, gli.a(3.5F, 14.0F, -8.0F));
-      return glm.a($$1, 128, 64).a($$0 ? i : glp.a).a(glp.scaling(1.2F));
+   public static gkx c() {
+      gkz $$0 = gib.a(gkv.a, 0.0F);
+      glb $$1 = $$0.a();
+      a($$1);
+      return gkx.a($$0, 64, 32);
    }
 
-   public void a(hge $$0) {
+   protected static void a(glb $$0) {
+      $$0.a("right_arm", gkw.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gkt.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", gkw.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gkt.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", gkw.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gkt.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", gkw.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gkt.a(2.0F, 12.0F, 0.0F));
+   }
+
+   public void a(S $$0) {
       super.a($$0);
-      float $$1 = $$0.a * $$0.a;
-      float $$2 = $$0.ag;
-      float $$3 = $$0.aj ? 0.44444445F : 1.0F;
-      this.c.e -= $$1 * (float) Math.PI * 0.35F;
-      this.c.c += $$1 * $$2 * 2.0F;
-      this.f.c -= $$1 * $$2 * 20.0F;
-      this.f.d += $$1 * $$2 * 4.0F;
-      this.f.e -= $$1 * (float) Math.PI * 0.45F;
-      this.g.c = this.f.c;
-      this.g.d = this.f.d;
-      this.g.e -= $$1 * (float) Math.PI * 0.45F;
-      this.b.c -= $$1 * $$3 * 24.0F;
-      this.b.d += $$1 * $$3 * 13.0F;
-      this.b.e += $$1 * (float) Math.PI * 0.15F;
+      if ($$0.b && !$$0.d) {
+         float $$1 = $$0.K;
+         float $$2 = azz.a($$1 * (float) Math.PI);
+         float $$3 = azz.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
+         this.r.g = 0.0F;
+         this.s.g = 0.0F;
+         this.r.f = -(0.1F - $$2 * 0.6F);
+         this.s.f = 0.1F - $$2 * 0.6F;
+         this.r.e = (float) (-Math.PI / 2);
+         this.s.e = (float) (-Math.PI / 2);
+         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
+         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
+         ggb.a(this.r, this.s, $$0.v);
+      }
+   }
+
+   @Override
+   public void a(bxw $$0, fld $$1) {
+      this.e().a($$1);
+      float $$2 = $$0 == bxw.b ? 1.0F : -1.0F;
+      gkr $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

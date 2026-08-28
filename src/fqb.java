@@ -1,70 +1,91 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public class fqb extends fqd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xc c = xc.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final gaf f;
-   private final String g;
+public class fqb extends axb {
+   private final Map<dgj, dgi> b = new HashMap<>();
+   private final Set<dgj> c = new HashSet<>();
+   private Map<det, List<gdt>> d = Map.of();
+   private List<gdt> e = List.of();
 
-   public fqb(long $$0, int $$1, String $$2, gaf $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public void a(dgi $$0) {
+      this.b.put($$0.a(), $$0);
    }
 
-   @Override
-   public void run() {
-      fmf $$0 = fmf.a();
-      int $$1 = 0;
+   public void a(dgj $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
+   public void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean b(dgj $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(dgj $$0) {
+      this.c.remove($$0);
+   }
+
+   public void d(dgj $$0) {
+      this.c.add($$0);
+   }
+
+   public void c() {
+      Map<dfe, List<List<dgi>>> $$0 = a(this.b.values());
+      Map<det, List<gdt>> $$1 = new HashMap<>();
+      Builder<gdt> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(gdt::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
+
+      for (gdv $$3 : gdv.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
+      }
+
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   private static Map<dfe, List<List<dgi>>> a(Iterable<dgi> $$0) {
+      Map<dfe, List<List<dgi>>> $$1 = new HashMap<>();
+      Table<dfe, Integer, List<dgi>> $$2 = HashBasedTable.create();
+
+      for (dgi $$3 : $$0) {
+         dfe $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+         } else {
+            List<dgi> $$6 = (List<dgi>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
             }
 
-            fnv $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fot(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (foc var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fob var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fou(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+            $$6.add($$3);
          }
       }
+
+      return $$1;
    }
 
-   @Override
-   public xc a() {
-      return c;
+   public List<gdt> d() {
+      return this.e;
+   }
+
+   public List<gdt> a(det $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

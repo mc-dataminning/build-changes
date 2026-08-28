@@ -1,29 +1,37 @@
-public class acr implements zj<aby> {
-   public static final za<vy, acr> a = zj.a(acr::a, acr::new);
-   private final int b;
+public class acr implements zo<acf> {
+   public static final ze<vy, acr> a = zo.a(acr::a, acr::new);
+   private final buz b;
+   private final boolean c;
 
-   public acr(int $$0) {
+   public acr(buz $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    private acr(vy $$0) {
-      this.b = $$0.x();
+      this.b = buz.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
    }
 
    private void a(vy $$0) {
-      $$0.f(this.b);
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zl<acr> a() {
-      return agr.s;
+   public zq<acr> a() {
+      return agy.l;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.c;
+   }
+
+   public buz e() {
       return this.b;
    }
 }

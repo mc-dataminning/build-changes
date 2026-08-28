@@ -1,15 +1,12 @@
 public class djx {
-   private static int[] a = new int[65536];
+   public static final int a = -10732494;
+   private static int[] b = new int[65536];
 
    public static void a(int[] $$0) {
-      a = $$0;
+      b = $$0;
    }
 
    public static int a(double $$0, double $$1) {
-      return dji.a($$0, $$1, a, -65281);
-   }
-
-   public static int a() {
-      return a(0.5, 1.0);
+      return djs.a($$0, $$1, b, -10732494);
    }
 }

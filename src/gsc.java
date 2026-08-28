@@ -1,97 +1,63 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SequencedMap;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gsc {
-   static gsc.a a(fln $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+public class gsc {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<gsb> b;
+   private volatile int c;
+
+   private gsc(List<gsb> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   static gsc.a a(SequencedMap<gsn, fln> $$0, fln $$1) {
-      return new gsc.a($$1, $$0);
+   public static gsc a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gsb.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<gsb> $$3 = new ArrayList<>($$2);
+
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new gsb());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
+      }
+
+      return new gsc($$3);
    }
 
-   flt getBuffer(gsn var1);
-
-   public static class a implements gsc {
-      protected final fln a;
-      protected final SequencedMap<gsn, fln> b;
-      protected final Map<gsn, flm> c = new HashMap<>();
-      @Nullable
-      protected gsn d;
-
-      protected a(fln $$0, SequencedMap<gsn, fln> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Nullable
+   public gsb a() {
+      gsb $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
       }
+   }
 
-      @Override
-      public flt getBuffer(gsn $$0) {
-         flm $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.U()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
+   public void a(gsb $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
 
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            fln $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new flm($$2, $$0.Q(), $$0.P());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
+   public boolean b() {
+      return this.b.isEmpty();
+   }
 
-               $$1 = new flm(this.a, $$0.Q(), $$0.P());
-               this.d = $$0;
-            }
-
-            this.c.put($$0, $$1);
-            return $$1;
-         }
-      }
-
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
-      }
-
-      public void b() {
-         this.a();
-
-         for (gsn $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gsn $$0) {
-         flm $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
-      }
-
-      private void a(gsn $$0, flm $$1) {
-         flp $$2 = $$1.a();
-         if ($$2 != null) {
-            if ($$0.V()) {
-               fln $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getProjectionType().a());
-            }
-
-            $$0.a($$2);
-         }
-
-         if ($$0.equals(this.d)) {
-            this.d = null;
-         }
-      }
+   public int c() {
+      return this.c;
    }
 }

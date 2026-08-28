@@ -1,69 +1,66 @@
-import java.util.OptionalInt;
+public class fvh extends ftw {
+   private static final fvl a = new fvl(
+      alr.b("widget/tab_selected"), alr.b("widget/tab"), alr.b("widget/tab_selected_highlighted"), alr.b("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fwc m;
+   private final fwb n;
 
-public class fvh extends fuj {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final bai<fvh.a, fvg> c;
-   private boolean d = false;
-
-   public fvh(xc $$0, ftx $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fvh(int $$0, int $$1, xc $$2, ftx $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ag.a($$1x -> $$1x.c.isPresent() ? fvg.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fvg.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fvh c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fvh d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fvh e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fvh b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public fvh(fwc $$0, fwb $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   public int A() {
-      return this.c.a(this.c()).b();
-   }
-
-   @Override
-   public int y() {
-      return this.c.a(this.c()).a() * 9;
-   }
-
-   @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      fvg $$4 = this.c.a(this.c());
-      int $$5 = this.F();
-      int $$6 = this.G();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      $$0.a(gry::H, a.a(this.b(), this.D()), this.F(), this.G(), this.g, this.h);
+      fti $$4 = fqq.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.F() + 2, this.G() + 2, this.H() - 2, this.I());
+         this.b($$0, $$4, $$5);
       }
    }
 
-   private fvh.a c() {
-      return new fvh.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   protected void a(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
+      fzq.a($$0, fzq.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
    }
 
-   static record a(xc a, int b, OptionalInt c) {
+   public void a(ftk $$0, fti $$1, int $$2) {
+      int $$3 = this.F() + 1;
+      int $$4 = this.G() + (this.b() ? 0 : 3);
+      int $$5 = this.F() + this.A() - 1;
+      int $$6 = this.G() + this.y();
+      a($$0, $$1, this.B(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(ftk $$0, fti $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.B()), this.A() - 4);
+      int $$4 = this.F() + (this.A() - $$3) / 2;
+      int $$5 = this.G() + this.y() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
+   }
+
+   @Override
+   protected void a(fxv $$0) {
+      $$0.a(fxu.a, xg.a("gui.narrate.tab", this.n.a()));
+   }
+
+   @Override
+   public void a(hpt $$0) {
+   }
+
+   public fwb a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

@@ -1,78 +1,95 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class amg {
-   private static final int a = 8;
-   private final Queue<amg.a> b = new ayc<>();
-   private final Object2IntLinkedOpenHashMap<amg.b> c = new Object2IntLinkedOpenHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private static final alr b = alr.b("tick");
+   private static final alr c = alr.b("load");
+   private final MinecraftServer d;
+   private List<hy<ek>> e = ImmutableList.of();
+   private boolean f;
+   private amf g;
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public amg(MinecraftServer $$0, amf $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new amg.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
-      }
-
-      amg.b $$4 = new amg.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
+   public CommandDispatcher<ek> a() {
+      return this.d.aG().a();
    }
 
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (amg.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
-         }
-      }
-
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
+   public void b() {
+      if (this.d.aP().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<hy<ek>> $$0 = this.g.b(c);
+            this.a($$0, c);
          }
 
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
+         this.a(this.e, b);
+      }
+   }
 
-         while (var6.hasNext()) {
-            Entry<amg.b> $$3 = (Entry<amg.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((amg.b)$$3.getKey()).a)
-               .append(":")
-               .append(((amg.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
-         }
+   private void a(Collection<hy<ek>> $$0, alr $$1) {
+      brl.a().a($$1::toString);
+
+      for (hy<ek> $$2 : $$0) {
+         this.a($$2, this.c());
       }
 
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
+      brl.a().c();
    }
 
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
+   public void a(hy<ek> $$0, ek $$1) {
+      brm $$2 = brl.a();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         ia<ek> $$3 = $$0.a(null, this.a());
+         el.a($$1, $$2x -> hl.a($$2x, $$3, $$1, eh.a));
+      } catch (en var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
+      }
    }
 
-   static record b(String a, Class<? extends Throwable> b) {
+   public void a(amf $$0) {
+      this.g = $$0;
+      this.b($$0);
+   }
+
+   private void b(amf $$0) {
+      this.e = List.copyOf($$0.b(b));
+      this.f = true;
+   }
+
+   public ek c() {
+      return this.d.aH().a(2).a();
+   }
+
+   public Optional<hy<ek>> a(alr $$0) {
+      return this.g.a($$0);
+   }
+
+   public List<hy<ek>> b(alr $$0) {
+      return this.g.b($$0);
+   }
+
+   public Iterable<alr> d() {
+      return this.g.a().keySet();
+   }
+
+   public Iterable<alr> e() {
+      return this.g.b();
    }
 }

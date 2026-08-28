@@ -1,51 +1,47 @@
-public class hct extends hcy<hfw, ghs> {
-   private final gtf a;
+public class hct extends hcj<hgl, ghn<hgl>> {
+   private static final alr a = alr.b("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final alr b = alr.b("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final alr c = alr.b("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final alr d = alr.b("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final alr e = alr.b("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final alr f = alr.b("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final alr g = alr.b("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final alr h = alr.b("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final alr i = alr.b("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final alr j = alr.b("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final alr k = alr.b("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final alr l = alr.b("textures/entity/fish/tropical_b_pattern_6.png");
+   private final gjv m;
+   private final gjw n;
 
-   public hct(hah<hfw, ghs> $$0, gtf $$1) {
+   public hct(gzs<hgl, ghn<hgl>> $$0, gkn $$1) {
       super($$0);
-      this.a = $$1;
+      this.m = new gjv($$1.a(gkq.dH));
+      this.n = new gjw($$1.a(gkq.dF));
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hfw $$3, float $$4, float $$5) {
-      if (!$$3.aj) {
-         boolean $$6 = $$3.ao && $$3.z;
-         if (!$$3.z || $$6) {
-            ebg $$7 = $$3.a.a();
-            int $$8 = gzl.a($$3, 0.0F);
-            gtp $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-         }
-      }
-   }
+   public void a(fld $$0, grn $$1, int $$2, hgl $$3, float $$4, float $$5) {
+      clb.b $$6 = $$3.a;
 
-   private void a(flq $$0, gsc $$1, int $$2, boolean $$3, ebg $$4, int $$5, gtp $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gsn.s(hlb.c)), $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+      ghn<hgl> $$7 = (ghn<hgl>)(switch ($$6.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
+
+      alr $$8 = switch ($$6) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
    }
 }

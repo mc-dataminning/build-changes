@@ -1,37 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class caw {
-   public static cay<bxw> a(float $$0) {
-      return cda.a((Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$1 -> $$1.group($$1.c(cgy.n)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dv())) {
-                  return false;
-               } else {
-                  Optional<ffs> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new chb($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static ffs a(aru $$0, bxw $$1) {
-      azz $$2 = $$1.dY();
-      iw $$3 = $$1.dv();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         iw $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ffs.c($$5);
-         }
-      }
-
-      return null;
-   }
-
-   public static boolean a(aru $$0, bxw $$1, iw $$2) {
-      return $$0.h($$2) && (double)$$0.a(ehf.a.e, $$2).v() <= $$1.dC();
+   public static cbh<byf> a(int $$0, float $$1, int $$2) {
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$3 -> $$3.group(
+                  $$3.c(chh.n), $$3.a(chh.b), $$3.a(chh.D), $$3.a(chh.u), $$3.a(chh.o), $$3.a(chh.s), $$3.a(chh.r)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.A()
+                           .d($$0xxxx -> $$0xxxx.a(cjl.n), $$0xxxx -> true, $$12.dv(), $$2 + 1, cjh.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dt(), (double)$$2))
+                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(cjl.n), $$0xxxxx -> true, cjh.b.c, $$12.dv(), $$0, $$12.dY()))
+                           .or(() -> $$3.<jf>a($$5).map(jf::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(jf.a($$11.aj(), $$10xx));
+                              if (!$$10xx.a($$12.dt(), (double)$$2)) {
+                                 $$4.a(new chk($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

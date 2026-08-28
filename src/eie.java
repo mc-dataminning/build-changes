@@ -1,84 +1,63 @@
-import java.util.function.LongFunction;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class eie extends ehg {
-   private final azz d;
-   private int e;
+public final class eie {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
 
-   public eie(azz $$0) {
-      super(0L);
-      this.d = $$0;
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   public int l() {
-      return this.e;
+   public static eie.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new eie.a($$1, $$2);
    }
 
-   @Override
-   public azz d() {
-      return this.d.d();
+   public static eie.a c(long $$0) {
+      return b($$0).a();
    }
 
-   @Override
-   public ehs e() {
-      return this.d.e();
+   public static eie.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new eie.a($$2, $$3);
    }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof ehg $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
    }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azz a(int $$0, int $$1, long $$2, long $$3) {
-      return azz.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(ehg::new),
-      b(eig::new);
-
-      private final LongFunction<azz> c;
-
-      private a(final LongFunction<azz> $$0) {
-         this.c = $$0;
+   public static record a(long a, long b) {
+      public eie.a a(long $$0, long $$1) {
+         return new eie.a(this.a ^ $$0, this.b ^ $$1);
       }
 
-      public azz a(long $$0) {
-         return this.c.apply($$0);
+      public eie.a a(eie.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public eie.a a() {
+         return new eie.a(eie.a(this.a), eie.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

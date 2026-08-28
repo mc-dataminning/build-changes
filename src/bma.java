@@ -4,22 +4,26 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bma extends bky {
+public class bma extends blh {
    public bma(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:barrel");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      $$0.register($$1, "minecraft:lectern", $$1x -> DSL.optionalFields("Book", bjd.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:bell");
-      return $$1;
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.registerSimple($$1, $$2);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> blo.a($$0));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "minecraft:turtle");
+      a($$0, $$1, "minecraft:cod_mob");
+      a($$0, $$1, "minecraft:tropical_fish");
+      a($$0, $$1, "minecraft:salmon_mob");
+      a($$0, $$1, "minecraft:puffer_fish");
+      a($$0, $$1, "minecraft:phantom");
+      a($$0, $$1, "minecraft:dolphin");
+      a($$0, $$1, "minecraft:drowned");
+      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bjm.u.in($$0), "Trident", bjm.t.in($$0)));
+      return $$1;
    }
 }

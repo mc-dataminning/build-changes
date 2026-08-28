@@ -1,11 +1,40 @@
-import java.util.OptionalInt;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public record fjz(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
-   public fjz a(int $$0, int $$1) {
-      return new fjz($$0, $$1, this.c, this.d, this.e);
+public enum fjz {
+   a("icons"),
+   b("icons", "snapshot");
+
+   private final String[] c;
+
+   private fjz(final String... $$0) {
+      this.c = $$0;
    }
 
-   public fjz a(boolean $$0) {
-      return new fjz(this.a, this.b, this.c, this.d, $$0);
+   public List<avg<InputStream>> a(aua $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
+   }
+
+   public avg<InputStream> b(aua $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
+   }
+
+   private avg<InputStream> a(aua $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      avg<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
+      }
    }
 }

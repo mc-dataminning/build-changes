@@ -1,17 +1,17 @@
-public class hdg extends hcy<hgd, gji> {
-   public static final alk a = alk.b("textures/entity/trident_riptide.png");
-   private final gkf b;
+public class hdg extends hfe {
+   public bxw e = bxw.b;
+   public gib.a f = gib.a.a;
+   public final hhi g = new hhi();
+   public gib.a h = gib.a.a;
+   public final hhi i = new hhi();
 
-   public hdg(hah<hgd, gji> $$0, glc $$1) {
-      super($$0);
-      this.b = new gkf($$1.a(glf.cB));
+   public hhi aY_() {
+      return this.e == bxw.b ? this.g : this.i;
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hgd $$3, float $$4, float $$5) {
-      if ($$3.al) {
-         flt $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hks.d);
-      }
+   public static void a(byf $$0, hdg $$1, hhg $$2) {
+      $$1.e = $$0.fy();
+      $$2.a($$1.g, $$0.a(bxw.b), dai.c, $$0);
+      $$2.a($$1.i, $$0.a(bxw.a), dai.b, $$0);
    }
 }

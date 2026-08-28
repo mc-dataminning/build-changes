@@ -1,44 +1,72 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+@FunctionalInterface
+public interface gxv<T extends bxe> {
+   gxu<T, ?> create(gxv.a var1);
 
-public class gxv extends gzq<cjw, hei, ghs> {
-   private final Map<cjx.a, ggo<ghs>> a;
+   public static class a {
+      private final gxt a;
+      private final hhg b;
+      private final grl c;
+      private final gsq d;
+      private final avo e;
+      private final gkn f;
+      private final hmv g;
+      private final fti h;
+      private final hbu i;
 
-   public gxv(gyk.a $$0) {
-      super($$0, new ghs($$0.a(glf.an)), 0.7F);
-      this.a = a($$0);
-   }
+      public a(gxt $$0, hhg $$1, grl $$2, gsq $$3, avo $$4, gkn $$5, hmv $$6, fti $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new hbu($$6, this.i().c(gsh.g));
+      }
 
-   private static Map<cjx.a, ggo<ghs>> a(gyk.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(
-            cjx.a.a,
-            new ggo<>(new ghs($$0.a(glf.an)), new ghs($$0.a(glf.ao))),
-            cjx.a.c,
-            new ggo<>(new ghs($$0.a(glf.dQ)), new ghs($$0.a(glf.dR))),
-            cjx.a.b,
-            new ggo<>(new ghs($$0.a(glf.ae)), new ghs($$0.a(glf.af)))
-         )
-      );
-   }
+      public gxt a() {
+         return this.a;
+      }
 
-   public alk a(hei $$0) {
-      return $$0.a == null ? hkr.c() : $$0.a.b().b().b();
-   }
+      public hhg b() {
+         return this.b;
+      }
 
-   public hei a() {
-      return new hei();
-   }
+      public grl c() {
+         return this.c;
+      }
 
-   public void a(cjw $$0, hei $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t().a();
-   }
+      public gsq d() {
+         return this.d;
+      }
 
-   public void a(hei $$0, flq $$1, gsc $$2, int $$3) {
-      if ($$0.a != null) {
-         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
+      public avo e() {
+         return this.e;
+      }
+
+      public gkn f() {
+         return this.f;
+      }
+
+      public hmv g() {
+         return this.g;
+      }
+
+      public hbu h() {
+         return this.i;
+      }
+
+      public hne i() {
+         return this.d.a().a();
+      }
+
+      public gkr a(gkp $$0) {
+         return this.f.a($$0);
+      }
+
+      public fti j() {
+         return this.h;
       }
    }
 }

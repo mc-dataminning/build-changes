@@ -1,36 +1,44 @@
-public final class hkr {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final alk d = alk.b("missingno");
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-   public static fki a() {
-      return a(16, 16);
-   }
+public record hkr(fkf a, @Nullable hmn b) implements Closeable {
+   public static hkr a(avo $$0, alr $$1) throws IOException {
+      avm $$2 = $$0.getResourceOrThrow($$1);
 
-   public static fki a(int $$0, int $$1) {
-      fki $$2 = new fki($$0, $$1, false);
-      int $$3 = -524040;
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.b($$5, $$4, -524040);
-            } else {
-               $$2.b($$5, $$4, -16777216);
-            }
-         }
+      fkf $$4;
+      try (InputStream $$3 = $$2.d()) {
+         $$4 = fkf.a($$3);
       }
 
-      return $$2;
+      hmn $$6 = $$2.f().a(hmn.d).orElse(null);
+      return new hkr($$4, $$6);
    }
 
-   public static hkw b() {
-      fki $$0 = a(16, 16);
-      return new hkw(d, new hmq(16, 16), $$0, avj.a);
+   public static hkr a() {
+      return new hkr(hkf.a(), null);
    }
 
-   public static alk c() {
-      return d;
+   public boolean b() {
+      return this.b != null ? this.b.a() : false;
+   }
+
+   public boolean c() {
+      return this.b != null ? this.b.b() : false;
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+   }
+
+   public fkf d() {
+      return this.a;
+   }
+
+   @Nullable
+   public hmn e() {
+      return this.b;
    }
 }

@@ -1,75 +1,56 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import java.nio.file.Path;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class avc extends avn<avc.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Stopwatch b = Stopwatch.createUnstarted();
+public class avc extends aus {
+   private static final auo d = new auo(xg.c("dataPack.vanilla.description"), ac.b().a(auc.b), Optional.empty());
+   private static final atw e = new atw(cvu.h);
+   private static final ats f = ats.a(auo.b, d, atw.a, e);
+   private static final atz g = new atz("vanilla", xg.c("dataPack.vanilla.name"), ava.c, Optional.of(c));
+   private static final aub h = new aub(false, auv.b.b, false);
+   private static final aub i = new aub(false, auv.b.a, false);
+   private static final alr j = alr.b("datapacks");
 
-   public static avd a(avh $$0, List<avb> $$1, Executor $$2, Executor $$3, CompletableFuture<bay> $$4) {
-      avc $$5 = new avc($$1);
-      $$5.b($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5x) -> {
-         AtomicLong $$6 = new AtomicLong();
-         AtomicLong $$7 = new AtomicLong();
-         AtomicLong $$8 = new AtomicLong();
-         AtomicLong $$9 = new AtomicLong();
-         CompletableFuture<Void> $$10 = $$3x.reload($$1x, $$2x, a($$4x, $$6, $$7, $$3x.getName()), a($$5x, $$8, $$9, $$3x.getName()));
-         return $$10.thenApplyAsync($$5xx -> {
-            a.debug("Finished reloading {}", $$3x.getName());
-            return new avc.a($$3x.getName(), $$6, $$7, $$8, $$9);
-         }, $$3);
-      }, $$4);
-      return $$5;
+   public avc(ffs $$0) {
+      super(auc.b, b(), j, $$0);
    }
 
-   private avc(List<avb> $$0) {
-      super($$0);
-      this.b.start();
+   private static atz a(String $$0, xg $$1) {
+      return new atz($$0, $$1, ava.d, Optional.of(auu.a($$0)));
+   }
+
+   @VisibleForTesting
+   public static aue b() {
+      return new auf().a(f).a("minecraft").b().a().a(g);
    }
 
    @Override
-   protected CompletableFuture<List<avc.a>> a(Executor $$0, Executor $$1, avh $$2, List<avb> $$3, avn.a<avc.a> $$4, CompletableFuture<?> $$5) {
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5).thenApplyAsync(this::a, $$1);
+   protected xg a(String $$0) {
+      return xg.b($$0);
    }
 
-   private static Executor a(Executor $$0, AtomicLong $$1, AtomicLong $$2, String $$3) {
-      return $$4 -> $$0.execute(() -> {
-            brd $$4x = brc.a();
-            $$4x.a($$3);
-            long $$5 = ag.d();
-            $$4.run();
-            $$1.addAndGet(ag.d() - $$5);
-            $$2.incrementAndGet();
-            $$4x.c();
-         });
+   @Nullable
+   @Override
+   protected auv a(aua $$0) {
+      return auv.a(g, b($$0), auc.b, h);
    }
 
-   private List<avc.a> a(List<avc.a> $$0) {
-      this.b.stop();
-      long $$1 = 0L;
-      a.info("Resource reload finished after {} ms", this.b.elapsed(TimeUnit.MILLISECONDS));
-
-      for (avc.a $$2 : $$0) {
-         long $$3 = TimeUnit.NANOSECONDS.toMillis($$2.b.get());
-         long $$4 = $$2.c.get();
-         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
-         long $$6 = $$2.e.get();
-         long $$7 = $$3 + $$5;
-         long $$8 = $$4 + $$6;
-         String $$9 = $$2.a;
-         a.info("{} took approximately {} tasks/{} ms ({} tasks/{} ms preparing, {} tasks/{} ms applying)", new Object[]{$$9, $$8, $$7, $$4, $$3, $$6, $$5});
-         $$1 += $$5;
-      }
-
-      a.info("Total blocking time: {} ms", $$1);
-      return $$0;
+   @Nullable
+   @Override
+   protected auv a(String $$0, auv.c $$1, xg $$2) {
+      return auv.a(a($$0, $$2), $$1, auc.b, i);
    }
 
-   public static record a(String a, AtomicLong b, AtomicLong c, AtomicLong d, AtomicLong e) {
+   public static auz a(Path $$0, ffs $$1) {
+      return new auz(new avc($$1), new aut($$0, auc.b, ava.e, $$1));
+   }
+
+   public static auz c() {
+      return new auz(new avc(new ffs($$0 -> true)));
+   }
+
+   public static auz a(fah.c $$0) {
+      return a($$0.a(faf.j), $$0.d().e());
    }
 }

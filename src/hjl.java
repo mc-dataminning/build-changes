@@ -1,23 +1,35 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hjl() implements hjs<alj<bxe<?>>> {
-   public static final Codec<alj<bxe<?>>> a = alj.a(mi.B);
-   public static final hjs.a<hjl, alj<bxe<?>>> b = hjs.a.a(MapCodec.unit(new hjl()), a);
+public class hjl implements hjq {
+   private final gtx a;
+   private final hmx b;
 
-   @Nullable
-   public alj<bxe<?>> a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
-      return $$2 == null ? null : $$2.an().r().h();
+   public hjl(gtx $$0, hmx $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public hjs.a<hjl, alj<bxe<?>>> a() {
-      return b;
+   public void a(dai $$0, fld $$1, grn $$2, int $$3, int $$4, boolean $$5) {
+      this.a.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public Codec<alj<bxe<?>>> b() {
-      return a;
+   public static record a(alr b) implements hju.a {
+      public static final MapCodec<hjl.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alr.a.fieldOf("texture").forGetter(hjl.a::b)).apply($$0, hjl.a::new));
+
+      public a(czi $$0) {
+         this(gsh.b($$0));
+      }
+
+      @Override
+      public MapCodec<hjl.a> a() {
+         return a;
+      }
+
+      @Override
+      public hju<?> a(gkn $$0) {
+         return new hjl(new gtx($$0), gsh.o.a(this.b));
+      }
    }
 }

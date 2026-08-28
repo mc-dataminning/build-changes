@@ -1,39 +1,40 @@
-public class hax<T extends bwv & csr> extends gyj<T, hgt> {
-   private final hhs a;
-   private final float g;
-   private final boolean h;
+public class hax extends gzb<coa, hgs, gkf> {
+   private static final alr a = alr.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alr j = alr.b("textures/entity/wither/wither.png");
 
-   public hax(gyk.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public hax(gxv.a $$0) {
+      super($$0, new gkf($$0.a(gkq.dU)), 1.0F);
+      this.a(new hcx(this, $$0.f()));
    }
 
-   public hax(gyk.a $$0) {
-      this($$0, 1.0F, false);
+   protected int a(coa $$0, iw $$1) {
+      return 15;
    }
 
-   @Override
-   protected int a(T $$0, iw $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public alr a(hgs $$0) {
+      int $$1 = azz.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
    }
 
-   public void a(hgt $$0, flq $$1, gsc $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.g, this.g, this.g);
-      $$1.a(this.d.b());
-      $$0.a.a($$1, $$2, $$3, hks.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public hgs b() {
+      return new hgs();
    }
 
-   public hgt a() {
-      return new hgt();
+   protected void a(hgs $$0, fld $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
    }
 
-   public void a(T $$0, hgt $$1, float $$2) {
+   public void a(coa $$0, hgs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.f(), czy.h, $$0);
+      int $$3 = $$0.t();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.x();
    }
 }

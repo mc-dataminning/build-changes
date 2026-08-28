@@ -1,45 +1,46 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class euu extends esd {
-   public static final MapCodec<euu> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, euu::new)
-   );
-   public final boolean e;
+public class euu extends esn {
+   public static final btm<dly.c> d = btm.<dly.c>b()
+      .a(new dly.c(bxn.p, 2, 3), 10)
+      .a(new dly.c(bxn.bS, 4, 4), 5)
+      .a(new dly.c(bxn.bL, 5, 5), 8)
+      .a(new dly.c(bxn.bg, 5, 5), 2)
+      .a(new dly.c(bxn.aA, 4, 4), 3)
+      .a();
+   public static final MapCodec<euu> e = a(euu::new);
 
-   public euu(esd.c $$0, boolean $$1) {
+   public euu(esn.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      ehf.a $$1 = this.e ? ehf.a.a : ehf.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   public Optional<esn.b> a(esn.a $$0) {
+      djo $$1 = $$0.h();
+      iw $$2 = new iw($$1.d(), 64, $$1.e());
+      return Optional.of(new esn.b($$2, (Consumer<etf>)($$1x -> a($$1x, $$0))));
    }
 
-   private void a(esv $$0, esd.a $$1) {
-      dty $$2 = dty.a($$1.f());
-      iw $$3 = new iw($$1.h().d(), 90, $$1.h().e());
-      eut.a $$4 = eut.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-      if ($$4.l()) {
-         erv $$5 = $$4.f();
-         int $$7;
-         if (this.e) {
-            int $$6 = esd.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-            $$7 = $$4.a($$6, $$1.f());
-         } else {
-            $$7 = esd.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-         }
+   private static void a(etf $$0, esn.a $$1) {
+      eut.q $$2 = new eut.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<esr> $$3 = $$2.d;
 
-         $$4.c($$7);
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         esr $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public esm<?> e() {
-      return esm.m;
+   public esw<?> e() {
+      return esw.d;
    }
 }

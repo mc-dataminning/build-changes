@@ -1,25 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record fem(dgu b) implements feo {
-   public static final MapCodec<fem> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgu.b.fieldOf("amount").forGetter(fem::c)).apply($$0, fem::new));
-
-   @Override
-   public float b(faj $$0) {
-      int $$1 = $$0.b(fdd.k);
-      return this.b.a($$1);
-   }
+public record fem(Optional<Boolean> b, Optional<Boolean> c) implements fec {
+   public static final MapCodec<fem> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fem::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fem::e))
+            .apply($$0, fem::new)
+   );
 
    @Override
-   public fen b() {
-      return fep.g;
+   public fed b() {
+      return fee.o;
    }
 
-   public static fem a(dgu $$0) {
-      return new fem($$0);
+   public boolean a(fat $$0) {
+      asb $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
    }
 
-   public dgu c() {
+   public static fem.a c() {
+      return new fem.a();
+   }
+
+   public Optional<Boolean> d() {
       return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements fec.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fem.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fem.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fem a() {
+         return new fem(this.a, this.b);
+      }
    }
 }

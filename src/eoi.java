@@ -1,50 +1,43 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eoi extends eod {
-   public static final MapCodec<eoi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bty.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, eoi::new)
-   );
-   private final bty b;
-   private final int c;
+public class eoi extends eon {
+   public static final MapCodec<eoi> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eoi::new));
+   protected final int b;
 
-   public eoi(bty $$0, bty $$1, bty $$2, int $$3) {
+   protected static <P extends eoi> P3<Mu<P>, buh, buh, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public eoi(buh $$0, buh $$1, int $$2) {
       super($$0, $$1);
       this.b = $$2;
-      this.c = $$3;
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.j;
+   protected eoo<?> a() {
+      return eoo.a;
    }
 
    @Override
-   protected void a(dkf $$0, eod.b $$1, azz $$2, enn $$3, int $$4, eod.a $$5, int $$6, int $$7, int $$8) {
-      iw $$9 = $$5.a();
-      iw.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+   protected void a(dkp $$0, eon.b $$1, bai $$2, enx $$3, int $$4, eon.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(azz $$0, int $$1, enn $$2) {
-      return this.b.a($$0);
+   public int a(bai $$0, int $$1, enx $$2) {
+      return this.b;
    }
 
    @Override
-   protected boolean a(azz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   protected boolean a(bai $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

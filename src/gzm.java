@@ -1,32 +1,16 @@
-public class gzm extends gxe<cly, hfs, giv> {
-   private static final alk a = alk.b("textures/entity/llama/creamy.png");
-   private static final alk j = alk.b("textures/entity/llama/white.png");
-   private static final alk k = alk.b("textures/entity/llama/brown.png");
-   private static final alk l = alk.b("textures/entity/llama/gray.png");
+public class gzm extends gyo<cpn, hew> {
+   private static final alr a = alr.b("textures/entity/illager/pillager.png");
 
-   public gzm(gyk.a $$0, gle $$1, gle $$2) {
-      super($$0, new giv($$0.a($$1)), new giv($$0.a($$2)), 0.7F);
-      this.a(new hcs(this, $$0.f(), $$0.h()));
+   public gzm(gxv.a $$0) {
+      super($$0, new gic<>($$0.a(gkq.cr)), 0.5F);
+      this.a(new hcb<>(this));
    }
 
-   public alk a(hfs $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> j;
-         case c -> k;
-         case d -> l;
-      };
+   public alr a(hew $$0) {
+      return a;
    }
 
-   public hfs b() {
-      return new hfs();
-   }
-
-   public void a(cly $$0, hfs $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gH();
-      $$1.b = !$$0.n_() && $$0.t();
-      $$1.c = $$0.fY();
-      $$1.d = $$0.gx();
+   public hew b() {
+      return new hew();
    }
 }

@@ -1,32 +1,67 @@
-public class cgh extends cfc {
-   private final cpu b;
-   private int c;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cgh(cpu $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class cgh extends cfb {
+   private static final int a = 10;
+   private final byn b;
+   private final int c;
+   @Nullable
+   private iw d;
+
+   public cgh(byn $$0, int $$1) {
       this.b = $$0;
+      this.c = b($$1);
+      this.a(EnumSet.of(cfb.a.a));
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.c = 0;
+   public boolean b() {
+      if (this.b.cX()) {
+         return false;
+      } else if (this.b.dV().V()) {
+         return false;
+      } else if (this.b.dY().a(this.c) != 0) {
+         return false;
+      } else {
+         asb $$0 = (asb)this.b.dV();
+         iw $$1 = this.b.dv();
+         if (!$$0.a($$1, 6)) {
+            return false;
+         } else {
+            fgc $$2 = cjb.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jz.a($$1x))));
+            this.d = $$2 == null ? null : iw.a((jq)$$2);
+            return this.d != null;
+         }
+      }
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
+   public boolean c() {
+      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if (this.d != null) {
+         chp $$0 = this.b.O();
+         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
+            fgc $$1 = fgc.c(this.d);
+            fgc $$2 = this.b.dt();
+            fgc $$3 = $$2.d($$1);
+            $$1 = $$3.c(0.4).e($$1);
+            fgc $$4 = $$1.d($$2).d().c(10.0).e($$2);
+            iw $$5 = iw.a((jq)$$4);
+            $$5 = this.b.dV().a(ehp.a.f, $$5);
+            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
+               this.h();
+            }
+         }
       }
+   }
+
+   private void h() {
+      bai $$0 = this.b.dY();
+      iw $$1 = this.b.dV().a(ehp.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
+      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

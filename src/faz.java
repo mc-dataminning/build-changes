@@ -1,66 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
-public abstract class faz implements far {
-   protected final List<fds> e;
-   private final Predicate<faj> a;
+public class faz {
+   private final bag a;
+   private final bbl b;
+   private final Optional<jh.a> c;
+   private final Set<alq<?>> d;
 
-   protected faz(List<fds> $$0) {
-      this.e = $$0;
-      this.a = ag.a($$0);
+   public faz(bag $$0, bbl $$1, jh.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   protected static <T extends faz> P1<Mu<T>, List<fds>> a(Instance<T> $$0) {
-      return $$0.group(fds.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   public faz(bag $$0, bbl $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   public void a(fap $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+   private faz(bag $$0, bbl $$1, Optional<jh.a> $$2, Set<alq<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public faz a(String $$0) {
+      return new faz(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public faz a(String $$0, alq<?> $$1) {
+      Set<alq<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new faz(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(alq<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(fau $$0) {
+      Set<bbk<?>> $$1 = $$0.a();
+      Set<bbk<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
       }
    }
 
-   protected final boolean a(faj $$0) {
-      return this.a.test($$0);
+   public jh.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
    }
 
-   public abstract fba a();
+   public boolean b() {
+      return this.c.isPresent();
+   }
 
-   public abstract static class a<T extends faz.a<T>> implements fdk<T> {
-      private final Builder<fds> a = ImmutableList.builder();
+   public faz a(bbl $$0) {
+      return new faz(this.a, $$0, this.c, this.d);
+   }
 
-      protected abstract T aF_();
-
-      public T a(fds.a $$0) {
-         this.a.add($$0.build());
-         return this.aF_();
-      }
-
-      public final T e() {
-         return this.aF_();
-      }
-
-      protected List<fds> f() {
-         return this.a.build();
-      }
-
-      public faq.a a(faz.a<?> $$0) {
-         return new faq.a(this, $$0);
-      }
-
-      public fav.a b(faz.a<?> $$0) {
-         return new fav.a(this, $$0);
-      }
-
-      public fbd.a c(faz.a<?> $$0) {
-         return new fbd.a(this, $$0);
-      }
-
-      public abstract faz b();
+   public bag c() {
+      return this.a;
    }
 }

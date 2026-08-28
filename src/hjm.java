@@ -1,27 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record hjm(int c) implements hjs<String> {
-   public static final PrimitiveCodec<String> a = Codec.STRING;
-   public static final hjs.a<hjm, String> b = hjs.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.l.optionalFieldOf("index", 0).forGetter(hjm::c)).apply($$0, hjm::new)), a
-   );
+public class hjm implements hjq {
+   public static final alr a = alr.b("christmas");
+   public static final alr b = alr.b("normal");
+   public static final alr c = alr.b("trapped");
+   public static final alr d = alr.b("ender");
+   private final ggx e;
+   private final hmx f;
+   private final float g;
 
-   @Nullable
-   public String a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
-      dcj $$5 = $$0.a(kl.p);
-      return $$5 != null ? $$5.c(this.c) : null;
+   public hjm(ggx $$0, hmx $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public hjs.a<hjm, String> a() {
-      return b;
+   public void a(dai $$0, fld $$1, grn $$2, int $$3, int $$4, boolean $$5) {
+      flg $$6 = this.f.a($$2, gry::d);
+      this.e.a(this.g);
+      this.e.a($$1, $$6, $$3, $$4);
    }
 
-   @Override
-   public Codec<String> b() {
-      return a;
+   public static record a(alr b, float c) implements hju.a {
+      public static final MapCodec<hjm.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alr.a.fieldOf("texture").forGetter(hjm.a::b), Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hjm.a::c))
+               .apply($$0, hjm.a::new)
+      );
+
+      public a(alr $$0) {
+         this($$0, 0.0F);
+      }
+
+      @Override
+      public MapCodec<hjm.a> a() {
+         return a;
+      }
+
+      @Override
+      public hju<?> a(gkn $$0) {
+         ggx $$1 = new ggx($$0.a(gkq.X));
+         hmx $$2 = gsh.m.a(this.b);
+         return new hjm($$1, $$2, this.c);
+      }
    }
 }

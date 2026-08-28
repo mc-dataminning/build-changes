@@ -1,67 +1,39 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class fqi extends fqd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xc c = xc.c("mco.backup.restoring");
-   private final fmv d;
-   private final long e;
-   private final fop f;
+public enum fqi implements bac {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public fqi(fmv $$0, long $$1, fop $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static final IntFunction<fqi> d = ayo.a(fqi::b, values(), ayo.a.b);
+   private final int e;
+   private final String f;
+
+   private fqi(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void run() {
-      fmf $$0 = fmf.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.g());
-            return;
-         } catch (foc var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fob var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fou(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
-      }
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public xc a() {
-      return c;
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static fqi a(int $$0) {
+      return d.apply($$0);
    }
 }

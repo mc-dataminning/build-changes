@@ -1,31 +1,43 @@
-public class gxl extends gxe<cjn, hea, ghb> {
-   private static final alk a = alk.b("textures/entity/bee/bee_angry.png");
-   private static final alk j = alk.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final alk k = alk.b("textures/entity/bee/bee.png");
-   private static final alk l = alk.b("textures/entity/bee/bee_nectar.png");
+public class gxl<T extends cmd> extends gwl<T, hdy, ghh> {
+   private final alr a;
 
-   public gxl(gyk.a $$0) {
-      super($$0, new ghb($$0.a(glf.x)), new ghb($$0.a(glf.y)), 0.4F);
+   public gxl(gxv.a $$0, gxl.a $$1) {
+      super($$0, new ghh($$0.a($$1.d)), new ghh($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hcm<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gho($$0.a($$1.g)), new gho($$0.a($$1.h))));
    }
 
-   public alk a(hea $$0) {
-      if ($$0.d) {
-         return $$0.e ? j : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   public alr a(hdy $$0) {
+      return this.a;
    }
 
-   public hea a() {
-      return new hea();
+   public hdy a() {
+      return new hdy();
    }
 
-   public void a(cjn $$0, hea $$1, float $$2) {
+   public void a(T $$0, hdy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gH();
-      $$1.c = $$0.aH() && $$0.dy().h() < 1.0E-7;
-      $$1.d = $$0.ae_();
-      $$1.e = $$0.gG();
+      $$1.a = $$0.t();
+   }
+
+   public static enum a {
+      a(alr.b("textures/entity/horse/donkey.png"), gkq.az, gkq.aA, hmw.d.k, gkq.aB, gkq.aC),
+      b(alr.b("textures/entity/horse/mule.png"), gkq.bP, gkq.bQ, hmw.d.l, gkq.bR, gkq.bS);
+
+      final alr c;
+      final gkp d;
+      final gkp e;
+      final hmw.d f;
+      final gkp g;
+      final gkp h;
+
+      private a(final alr $$0, final gkp $$1, final gkp $$2, final hmw.d $$3, final gkp $$4, final gkp $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

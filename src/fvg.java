@@ -1,139 +1,166 @@
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public interface fvg {
-   fvg a = new fvg() {
-      @Override
-      public void a(ftz $$0, int $$1, int $$2) {
-      }
+public class fvg implements hps {
+   private static final long a = 3000L;
+   private final fqq b;
+   private final List<fvg.b> c = Lists.newArrayList();
+   private boolean d;
+   private final List<fvg.b> e = new ArrayList<>();
 
-      @Override
-      public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public void b(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public int c(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static fvg a(ftx $$0, xc... $$1) {
-      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
+   public fvg(fqq $$0) {
+      this.b = $$0;
    }
 
-   static fvg a(ftx $$0, int $$1, xc... $$2) {
-      return a($$0, $$1, Integer.MAX_VALUE, $$2);
-   }
+   public void a(ftk $$0) {
+      hpt $$1 = this.b.ak();
+      if (!this.d && this.b.n.Z().c()) {
+         $$1.a(this);
+         this.d = true;
+      } else if (this.d && !this.b.n.Z().c()) {
+         $$1.b(this);
+         this.d = false;
+      }
 
-   static fvg a(ftx $$0, xc $$1, int $$2) {
-      return a($$0, $$2, Integer.MAX_VALUE, $$1);
-   }
+      if (this.d) {
+         fim $$2 = $$1.b();
+         fgc $$3 = $$2.b();
+         fgc $$4 = $$2.c();
+         fgc $$5 = $$2.a();
+         this.e.clear();
 
-   static fvg a(final ftx $$0, final int $$1, final int $$2, final xc... $$3) {
-      return $$3.length == 0 ? a : new fvg() {
-         @Nullable
-         private List<fvg.a> f;
-         @Nullable
-         private tv g;
-
-         @Override
-         public void a(ftz $$0x, int $$1x, int $$2x) {
-            this.a($$0, $$1, $$2, 9, -1);
-         }
-
-         @Override
-         public void a(ftz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (fvg.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
+         for (fvg.b $$6 : this.c) {
+            if ($$6.c($$3)) {
+               this.e.add($$6);
             }
          }
 
-         @Override
-         public void b(ftz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
+         if (!this.e.isEmpty()) {
+            int $$7 = 0;
+            int $$8 = 0;
+            double $$9 = this.b.n.D().c();
+            Iterator<fvg.b> $$10 = this.e.iterator();
 
-            for (fvg.a $$6 : this.c()) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-         }
-
-         @Override
-         public int c(ftz $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (fvg.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         private List<fvg.a> c() {
-            tv $$0 = tv.a();
-            if (this.f != null && $$0 == this.g) {
-               return this.f;
-            } else {
-               this.g = $$0;
-               List<azc> $$1 = new ArrayList<>();
-
-               for (xc $$2 : $$3) {
-                  $$1.addAll($$0.c($$2, $$1));
+            while ($$10.hasNext()) {
+               fvg.b $$11 = $$10.next();
+               $$11.a(3000.0 * $$9);
+               if (!$$11.b()) {
+                  $$10.remove();
+               } else {
+                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
                }
+            }
 
-               this.f = new ArrayList<>();
+            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
 
-               for (azc $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
-                  this.f.add(new fvg.a($$3, $$0.a($$3)));
+            for (fvg.b $$12 : this.e) {
+               int $$13 = 255;
+               xg $$14 = $$12.a();
+               fvg.a $$15 = $$12.a($$3);
+               if ($$15 != null) {
+                  fgc $$16 = $$15.a.d($$3).d();
+                  double $$17 = $$5.b($$16);
+                  double $$18 = $$4.b($$16);
+                  boolean $$19 = $$18 > 0.5;
+                  int $$20 = $$8 / 2;
+                  int $$21 = 9;
+                  int $$22 = $$21 / 2;
+                  float $$23 = 1.0F;
+                  int $$24 = this.b.h.a($$14);
+                  int $$25 = azz.d(azz.b(255.0F, 75.0F, (float)(ag.c() - $$15.b) / (float)(3000.0 * $$9)));
+                  $$0.c().a();
+                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
+                  $$0.c().b(1.0F, 1.0F, 1.0F);
+                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
+                  int $$26 = ayh.a(255, $$25, $$25, $$25);
+                  if (!$$19) {
+                     if ($$17 > 0.0) {
+                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
+                     } else if ($$17 < 0.0) {
+                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
+                     }
+                  }
+
+                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
+                  $$0.c().b();
+                  $$7++;
                }
+            }
+         }
+      }
+   }
 
-               return this.f;
+   @Override
+   public void a(hon $$0, hpu $$1, float $$2) {
+      if ($$1.a() != null) {
+         xg $$3 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (fvg.b $$4 : this.c) {
+               if ($$4.a().equals($$3)) {
+                  $$4.b(new fgc($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
             }
          }
 
-         @Override
-         public int a() {
-            return this.c().size();
-         }
-
-         @Override
-         public int b() {
-            return Math.min($$1, this.c().stream().mapToInt(fvg.a::b).max().orElse(0));
-         }
-      };
+         this.c.add(new fvg.b($$3, $$2, new fgc($$0.h(), $$0.i(), $$0.j())));
+      }
    }
 
-   void a(ftz var1, int var2, int var3);
+   static record a(fgc a, long b) {
+   }
 
-   void a(ftz var1, int var2, int var3, int var4, int var5);
+   static class b {
+      private final xg a;
+      private final float b;
+      private final List<fvg.a> c = new ArrayList<>();
 
-   void b(ftz var1, int var2, int var3, int var4, int var5);
+      public b(xg $$0, float $$1, fgc $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c.add(new fvg.a($$2, ag.c()));
+      }
 
-   int c(ftz var1, int var2, int var3, int var4, int var5);
+      public xg a() {
+         return this.a;
+      }
 
-   int a();
+      @Nullable
+      public fvg.a a(fgc $$0) {
+         if (this.c.isEmpty()) {
+            return null;
+         } else {
+            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
+         }
+      }
 
-   int b();
+      public void b(fgc $$0) {
+         this.c.removeIf($$1 -> $$0.equals($$1.a()));
+         this.c.add(new fvg.a($$0, ag.c()));
+      }
 
-   public static record a(azc a, int b) {
+      public boolean c(fgc $$0) {
+         if (Float.isInfinite(this.b)) {
+            return true;
+         } else if (this.c.isEmpty()) {
+            return false;
+         } else {
+            fvg.a $$1 = this.a($$0);
+            return $$1 == null ? false : $$0.a((jq)$$1.a, (double)this.b);
+         }
+      }
+
+      public void a(double $$0) {
+         long $$1 = ag.c();
+         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
+      }
+
+      public boolean b() {
+         return !this.c.isEmpty();
+      }
    }
 }

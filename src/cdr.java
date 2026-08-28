@@ -1,7 +1,17 @@
-public interface cdr {
-   default float a(float $$0, float $$1, float $$2) {
-      float $$3 = azq.c($$0, $$1);
-      float $$4 = azq.a($$3, -$$2, $$2);
-      return $$0 + $$4;
+import com.google.common.collect.ImmutableMap;
+
+public class cdr extends bzw<byf> {
+   public cdr() {
+      super(ImmutableMap.of());
+   }
+
+   @Override
+   protected boolean a(asb $$0, byf $$1) {
+      return $$1.bY();
+   }
+
+   @Override
+   protected void d(asb $$0, byf $$1, long $$2) {
+      $$1.al();
    }
 }

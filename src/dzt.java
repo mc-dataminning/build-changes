@@ -1,127 +1,141 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dzt {
-   private static final Codec<xc[]> c = xe.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ag.a($$0, 4).map($$0x -> new xc[]{(xc)$$0x.get(0), (xc)$$0x.get(1), (xc)$$0x.get(2), (xc)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dzt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzt::d),
-               cyy.q.fieldOf("color").orElse(cyy.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzt::a)
-   );
-   public static final int b = 4;
-   private final xc[] d;
-   private final xc[] e;
-   private final cyy f;
-   private final boolean g;
-   @Nullable
-   private azc[] h;
-   private boolean i;
+public class dzt extends dyo implements fho.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private dak d = dak.l;
+   private final dar e = new dar(this::k, this.aC_());
 
-   public dzt() {
-      this(c(), c(), cyy.p, false);
+   public dzt(iw $$0, ebq $$1) {
+      super(dyq.e, $$0, $$1);
    }
 
-   public dzt(xc[] $$0, xc[] $$1, cyy $$2, boolean $$3) {
+   public dar j() {
+      return this.e;
+   }
+
+   public void k() {
+      this.n.a(this.aC_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.n != null && this.n.a_(this.aC_()) == this.m()) {
+         this.n.a(this.aC_(), this.m().b(drw.b, Boolean.valueOf($$0)), 2);
+         this.n.a(egq.c, this.aC_(), egq.a.a(this.m()));
+      }
+   }
+
+   public void s() {
+      if (this.n != null && !this.n.C) {
+         iw $$0 = this.aC_();
+         dak $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            fgc $$2 = fgc.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
+            dak $$3 = $$1.v();
+            coo $$4 = new coo(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.j();
+            this.n.b($$4);
+         }
+      }
+   }
+
+   public static void a(dkj $$0, iw $$1, ebq $$2, dzt $$3) {
+      $$3.e.b($$0, $$2);
+   }
+
+   public int u() {
+      return daq.a(this.n.J_(), this.d).map(jg::a).map(daq::e).orElse(0);
+   }
+
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      alp<va> $$2 = $$1.a(uo.a);
+      dak $$3 = $$0.<dak>a("RecordItem", dak.b, $$2).orElse(dak.l);
+      if (!this.d.f() && !dak.c($$3, this.d)) {
+         this.e.a(this.n, this.m());
+      }
+
+      this.d = $$3;
+      $$0.f("ticks_since_song_started").ifPresent($$1x -> daq.a($$1, this.d).ifPresent($$1xx -> this.e.a($$1xx, $$1x)));
+   }
+
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().f()) {
+         alp<va> $$2 = $$1.a(uo.a);
+         $$0.a("RecordItem", dak.b, $$2, this.f());
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
+      }
+   }
+
+   @Override
+   public dak f() {
+      return this.d;
+   }
+
+   @Override
+   public dak c(int $$0) {
+      dak $$1 = this.d;
+      this.b(dak.l);
+      return $$1;
+   }
+
+   @Override
+   public void b(dak $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   private static xc[] c() {
-      return new xc[]{xb.a, xb.a, xb.a, xb.a};
-   }
-
-   private static dzt a(xc[] $$0, Optional<xc[]> $$1, cyy $$2, boolean $$3) {
-      return new dzt($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   public dzt a(boolean $$0) {
-      return $$0 == this.g ? this : new dzt(this.d, this.e, this.f, $$0);
-   }
-
-   public cyy b() {
-      return this.f;
-   }
-
-   public dzt a(cyy $$0) {
-      return $$0 == this.b() ? this : new dzt(this.d, this.e, $$0, this.g);
-   }
-
-   public xc a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dzt a(int $$0, xc $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dzt a(int $$0, xc $$1, xc $$2) {
-      xc[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      xc[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dzt($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(crz $$0) {
-      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public xc[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public azc[] a(boolean $$0, Function<xc, azc> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new azc[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+      boolean $$1 = !this.d.f();
+      Optional<jg<daq>> $$2 = daq.a(this.n.J_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.n, $$2.get());
+      } else {
+         this.e.a(this.n, this.m());
       }
-
-      return this.h;
    }
 
-   private Optional<xc[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public int ap_() {
+      return 1;
    }
 
-   public boolean b(crz $$0) {
-      for (xc $$1 : this.b($$0.X())) {
-         xz $$2 = $$1.a();
-         xa $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == xa.a.c) {
-            return true;
-         }
-      }
+   @Override
+   public dyo t() {
+      return this;
+   }
 
-      return false;
+   @Override
+   public boolean b(int $$0, dak $$1) {
+      return $$1.c(kl.ae) && this.a($$0).f();
+   }
+
+   @Override
+   public boolean a(buv $$0, int $$1, dak $$2) {
+      return $$0.a_(dak::f);
+   }
+
+   @Override
+   public void a(iw $$0, ebq $$1) {
+      this.s();
+   }
+
+   @VisibleForTesting
+   public void c(dak $$0) {
+      this.d = $$0;
+      daq.a(this.n.J_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.n.a(this.aC_(), this.m().b());
+      this.e();
+   }
+
+   @VisibleForTesting
+   public void v() {
+      daq.a(this.n.J_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (jg<daq>)$$0));
    }
 }

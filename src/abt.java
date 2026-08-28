@@ -1,20 +1,17 @@
-public record abt(alk b) implements zj<abs> {
-   public static final za<vy, abt> a = zj.a(abt::a, abt::new);
+public class abt {
+   public static final zq<abo> a = a("finish_configuration");
+   public static final zq<abp> b = a("registry_data");
+   public static final zq<abs> c = a("update_enabled_features");
+   public static final zq<abr> d = a("select_known_packs");
+   public static final zq<abq> e = a("reset_chat");
+   public static final zq<abw> f = b("finish_configuration");
+   public static final zq<abx> g = b("select_known_packs");
 
-   private abt(vy $$0) {
-      this($$0.q());
+   private static <T extends zo<abn>> zq<T> a(String $$0) {
+      return new zq<>(zp.b, alr.b($$0));
    }
 
-   private void a(vy $$0) {
-      $$0.a(this.b);
-   }
-
-   @Override
-   public zl<abt> a() {
-      return abu.a;
-   }
-
-   public void a(abs $$0) {
-      $$0.a(this);
+   private static <T extends zo<abv>> zq<T> b(String $$0) {
+      return new zq<>(zp.a, alr.b($$0));
    }
 }

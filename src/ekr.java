@@ -1,35 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ekr implements emr {
-   public static final Codec<ekr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alk.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alk.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               ewe.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               ewe.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ekr::new)
-   );
-   public final List<alk> b;
-   public final List<alk> c;
-   public final jg<ewd> d;
-   public final jg<ewd> e;
-   public final int f;
+public class ekr extends ekw<emz> {
+   public ekr(Codec<emz> $$0) {
+      super($$0);
+   }
 
-   public ekr(List<alk> $$0, List<alk> $$1, jg<ewd> $$2, jg<ewd> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   public boolean a(eky<emz> $$0) {
+      iw $$1 = $$0.e();
+      dli $$2 = $$0.b();
+      emz $$3 = $$0.f();
+
+      for (iw $$4 : iw.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            iw $$9 = $$4.j();
+            this.a($$2, $$9, dnq.ll.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof eak $$5x) {
+                  $$5x.a($$3x, $$3.c());
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dnq.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dnq.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dnq.I.m());
+         } else {
+            this.a($$2, $$4, dnq.a.m());
+         }
       }
+
+      return true;
    }
 }

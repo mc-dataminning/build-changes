@@ -1,28 +1,53 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public abstract class bbl extends DataFix {
-   private final String a;
+public class bbl {
+   private final Set<bbk<?>> a;
+   private final Set<bbk<?>> b;
 
-   public bbl(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   bbl(Set<bbk<?>> $$0, Set<bbk<?>> $$1) {
+      this.a = Set.copyOf($$0);
+      this.b = Set.copyOf(Sets.union($$0, $$1));
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bjd.u), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   public Set<bbk<?>> a() {
+      return this.a;
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result().map(bky::a);
-      return $$1.isPresent() && this.a($$1.get()) ? $$0.update("Properties", $$1x -> this.a($$1.get(), $$1x)) : $$0;
+   public Set<bbk<?>> b() {
+      return this.b;
    }
 
-   protected abstract boolean a(String var1);
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
 
-   protected abstract <T> Dynamic<T> a(String var1, Dynamic<T> var2);
+   public static class a {
+      private final Set<bbk<?>> a = Sets.newIdentityHashSet();
+      private final Set<bbk<?>> b = Sets.newIdentityHashSet();
+
+      public bbl.a a(bbk<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public bbl.a b(bbk<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public bbl a() {
+         return new bbl(this.a, this.b);
+      }
+   }
 }

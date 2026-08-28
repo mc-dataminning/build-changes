@@ -1,24 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class chw extends cie<bxy> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
-
+public class chw extends cig<cqg> {
    @Override
-   public Set<cgy<?>> a() {
-      return ImmutableSet.of(cgy.M);
+   public Set<chh<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(chh.C)));
    }
 
-   protected void a(aru $$0, bxy $$1) {
-      byw<?> $$2 = $$1.ec();
-      List<coe> $$3 = $$0.a(coe.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<coe> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.f())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cgy.M, $$4);
+   protected void a(asb $$0, cqg $$1) {
+      super.a($$0, $$1);
+      $$1.ec()
+         .c(chh.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bxl.e)
+         .filter($$2 -> cin.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.ec().a(chh.C, $$1x), () -> $$1.ec().b(chh.C));
    }
 }

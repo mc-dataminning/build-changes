@@ -1,61 +1,40 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class asg implements ase {
-   private static final Logger a = LogUtils.getLogger();
-   private final int b;
-   private int c;
-   private long d;
-   private long e = Long.MAX_VALUE;
+public class asg extends arh {
+   private final LongSet c = new LongOpenHashSet();
+   private final int d;
+   private final String e;
 
-   private asg(int $$0) {
-      this.b = $$0;
-   }
-
-   public static asg b(int $$0) {
-      return $$0 > 0 ? c($$0 + 1) : c();
-   }
-
-   public static asg c(int $$0) {
-      int $$1 = ase.a($$0);
-      return new asg($$1 * $$1);
-   }
-
-   public static asg c() {
-      return new asg(0);
+   public asg(btx<Runnable> $$0, Executor $$1, int $$2) {
+      super($$0, $$1);
+      this.d = $$2;
+      this.e = $$0.z_();
    }
 
    @Override
-   public void a(dje $$0) {
-      this.e = ag.c();
-      this.d = this.e;
+   protected void a(long $$0) {
+      this.c.remove($$0);
+   }
+
+   @Nullable
+   @Override
+   protected ari.a c() {
+      return this.c.size() < this.d ? super.c() : null;
    }
 
    @Override
-   public void a(dje $$0, @Nullable eee $$1) {
-      if ($$1 == eee.n) {
-         this.c++;
-      }
-
-      int $$2 = this.d();
-      if (ag.c() > this.e) {
-         this.e += 500L;
-         a.info(xc.a("menu.preparingSpawn", azq.a($$2, 0, 100)).getString());
-      }
+   protected void a(ari.a $$0) {
+      this.c.add($$0.a());
+      super.a($$0);
    }
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-      a.info("Time elapsed: {} ms", ag.c() - this.d);
-      this.e = Long.MAX_VALUE;
-   }
-
-   public int d() {
-      return this.b == 0 ? 100 : azq.d((float)this.c * 100.0F / (float)this.b);
+   @VisibleForTesting
+   public String d() {
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new djo($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

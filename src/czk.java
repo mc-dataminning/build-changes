@@ -1,40 +1,25 @@
-public class czk extends czw {
-   public czk(czw.a $$0) {
+public class czk extends dag implements dbe {
+   public static final float a = 1.5F;
+
+   public czk(dag.a $$0) {
       super($$0);
    }
 
    @Override
-   public but a(ddv $$0) {
-      crz $$1 = $$0.o();
-      djz $$2 = $$0.q();
-      iw $$3 = $$0.a();
-      ebg $$4 = $$2.a_($$3);
-      if (!dnu.i($$4) && !dnv.h($$4) && !dnw.h($$4)) {
-         iw $$5 = $$3.a($$0.k());
-         if (dmr.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awr.jD, aws.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
-            ebg $$6 = dmr.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, egg.i, $$3);
-            daa $$7 = $$0.n();
-            if ($$1 instanceof arv) {
-               aq.z.a((arv)$$1, $$5, $$7);
-               $$7.a(1, $$1, bxw.d($$0.p()));
-            }
-
-            return but.a;
-         } else {
-            return but.d;
-         }
-      } else {
-         $$2.a($$1, $$3, awr.jD, aws.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(ebw.u, Boolean.valueOf(true)), 11);
-         $$2.a($$1, egg.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bxw.d($$0.p()));
-         }
-
-         return but.a;
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.il, awz.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof asb $$4) {
+         ctd.a(ctm::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(axi.c.b(this));
+      $$3.a(1, $$1);
+      return bvc.a;
+   }
+
+   @Override
+   public ctd a(dkj $$0, jq $$1, dak $$2, jc $$3) {
+      return new ctm($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

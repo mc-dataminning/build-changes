@@ -1,7 +1,9 @@
-public record fic(ffs b, ffs c, ffs d) {
-   public static final fic a = new fic(ffs.c, new ffs(0.0, 0.0, -1.0), new ffs(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public ffs a() {
-      return this.c.c(this.d);
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface fic {
 }

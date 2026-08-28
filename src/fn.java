@@ -16,30 +16,30 @@ import java.util.function.Predicate;
 
 public class fn<T> implements ArgumentType<fn.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xc.b("argument.resource_tag.not_found", $$0, $$1));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xg.b("argument.resource_tag.not_found", $$0, $$1));
    private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xc.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> xg.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final ji<T> d;
-   final alj<? extends jt<T>> e;
+   final alq<? extends jt<T>> e;
 
-   public fn(eg $$0, alj<? extends jt<T>> $$1) {
+   public fn(eg $$0, alq<? extends jt<T>> $$1) {
       this.e = $$1;
       this.d = $$0.e($$1);
    }
 
-   public static <T> fn<T> a(eg $$0, alj<? extends jt<T>> $$1) {
+   public static <T> fn<T> a(eg $$0, alq<? extends jt<T>> $$1) {
       return new fn<>($$0, $$1);
    }
 
-   public static <T> fn.c<T> a(CommandContext<ek> $$0, String $$1, alj<jt<T>> $$2) throws CommandSyntaxException {
+   public static <T> fn.c<T> a(CommandContext<ek> $$0, String $$1, alq<jt<T>> $$2) throws CommandSyntaxException {
       fn.c<?> $$3 = (fn.c<?>)$$0.getArgument($$1, fn.c.class);
       Optional<fn.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            alj<?> $$2x = $$1xx.h();
+            alq<?> $$2x = $$1xx.h();
             return fj.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            axv<?> $$2x = $$1xx.h();
+            ayc<?> $$2x = $$1xx.h();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,8 +50,8 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
 
          try {
             $$0.skip();
-            alk $$2 = alk.a($$0);
-            axv<T> $$3 = axv.a(this.e, $$2);
+            alr $$2 = alr.a($$0);
+            ayc<T> $$3 = ayc.a(this.e, $$2);
             jk.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new fn.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -59,16 +59,16 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
             throw var6;
          }
       } else {
-         alk $$6 = alk.a($$0);
-         alj<T> $$7 = alj.a(this.e, $$6);
+         alr $$6 = alr.a($$0);
+         alq<T> $$7 = alq.a(this.e, $$6);
          jg.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fj.a.createWithContext($$0, $$6, this.e.a()));
          return new fn.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      ep.a(this.d.f().map(axv::b), $$1, "#");
-      return ep.a(this.d.c_().map(alj::a), $$1);
+      ep.a(this.d.f().map(ayc::b), $$1, "#");
+      return ep.a(this.d.c_().map(alq::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
       }
 
       public final class a implements ih.a<fn<T>> {
-         final alj<? extends jt<T>> b;
+         final alq<? extends jt<T>> b;
 
-         a(final alj<? extends jt<T>> $$1) {
+         a(final alq<? extends jt<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
       }
 
       @Override
-      public <E> Optional<fn.c<E>> a(alj<? extends jt<E>> $$0) {
+      public <E> Optional<fn.c<E>> a(alq<? extends jt<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((fn.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
    public interface c<T> extends Predicate<jg<T>> {
       Either<jg.c<T>, jk.c<T>> a();
 
-      <E> Optional<fn.c<E>> a(alj<? extends jt<E>> var1);
+      <E> Optional<fn.c<E>> a(alq<? extends jt<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class fn<T> implements ArgumentType<fn.c<T>> {
       }
 
       @Override
-      public <E> Optional<fn.c<E>> a(alj<? extends jt<E>> $$0) {
+      public <E> Optional<fn.c<E>> a(alq<? extends jt<E>> $$0) {
          return this.a.h().d($$0) ? Optional.of((fn.c<E>)this) : Optional.empty();
       }
 

@@ -1,38 +1,16 @@
-public class bwr {
-   public static final bwr a = new bwr(0.75F, 0.5F, 0.25F);
-   public static final bwr b = new bwr(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
-
-   private bwr(float $$0, float $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+class bwr extends bwg {
+   protected bwr(bwh $$0, int $$1) {
+      super($$0, $$1, lz.y);
    }
 
-   public bwr.a a(float $$0) {
-      if ($$0 < this.e) {
-         return bwr.a.d;
-      } else if ($$0 < this.d) {
-         return bwr.a.c;
-      } else {
-         return $$0 < this.c ? bwr.a.b : bwr.a.a;
+   @Override
+   public void a(asb $$0, byf $$1, int $$2, bxe.d $$3) {
+      if ($$3 == bxe.d.a) {
+         double $$4 = $$1.dA();
+         double $$5 = $$1.dC() + (double)($$1.dr() / 2.0F);
+         double $$6 = $$1.dG();
+         float $$7 = 3.0F + $$1.dY().i() * 2.0F;
+         $$0.a($$1, null, ctu.d, $$4, $$5, $$6, $$7, false, dkj.a.e, lz.A, lz.z, awy.cQ);
       }
-   }
-
-   public bwr.a a(daa $$0) {
-      return !$$0.m() ? bwr.a.a : this.a($$0.o(), $$0.p());
-   }
-
-   public bwr.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

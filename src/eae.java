@@ -1,70 +1,194 @@
-public class eae extends dye implements dku, eah.b {
-   private eah a = this.j();
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-   public eae(iw $$0, ebg $$1) {
-      super(dyg.R, $$0, $$1);
-   }
-
-   private eah j() {
-      eag $$0 = eag.a;
-      eag.a $$1 = eag.a.a;
-      return new eah(this, $$0, $$1);
-   }
-
-   @Override
-   protected void a(ua $$0, ji.a $$1) {
-      super.a($$0, $$1);
-      this.a = $$0.<eah>a(this.a.a(), $$1.a(uo.a)).orElseGet(this::j);
-      if (this.n != null) {
-         this.f();
+public class eae extends dyo {
+   private static final String b = "profile";
+   private static final String c = "note_block_sound";
+   private static final String d = "custom_name";
+   @Nullable
+   private static Executor e;
+   @Nullable
+   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> f;
+   @Nullable
+   private static LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> g;
+   public static final Executor a = $$0 -> {
+      Executor $$1 = e;
+      if ($$1 != null) {
+         $$1.execute($$0);
       }
+   };
+   @Nullable
+   private ddk h;
+   @Nullable
+   private alr i;
+   private int j;
+   private boolean k;
+   @Nullable
+   private xg l;
+
+   public eae(iw $$0, ebq $$1) {
+      super(dyq.q, $$0, $$1);
+   }
+
+   public static void a(final amm $$0, Executor $$1) {
+      e = $$1;
+      final BooleanSupplier $$2 = () -> g == null;
+      f = CacheBuilder.newBuilder()
+         .expireAfterAccess(Duration.ofMinutes(10L))
+         .maximumSize(256L)
+         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
+            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
+               return eae.a($$0, $$0);
+            }
+         });
+      g = CacheBuilder.newBuilder()
+         .expireAfterAccess(Duration.ofMinutes(10L))
+         .maximumSize(256L)
+         .build(new CacheLoader<UUID, CompletableFuture<Optional<GameProfile>>>() {
+            public CompletableFuture<Optional<GameProfile>> a(UUID $$0x) {
+               return eae.a($$0, $$0, $$2);
+            }
+         });
+   }
+
+   static CompletableFuture<Optional<GameProfile>> a(String $$0, amm $$1) {
+      return $$1.f()
+         .b($$0)
+         .thenCompose(
+            $$0x -> {
+               LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1x = g;
+               return $$1x != null && !$$0x.isEmpty()
+                  ? ((CompletableFuture)$$1x.getUnchecked(((GameProfile)$$0x.get()).getId())).thenApply($$1xx -> $$1xx.or(() -> $$0x))
+                  : CompletableFuture.completedFuture(Optional.empty());
+            }
+         );
+   }
+
+   static CompletableFuture<Optional<GameProfile>> a(UUID $$0, amm $$1, BooleanSupplier $$2) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$2.getAsBoolean()) {
+            return Optional.empty();
+         } else {
+            ProfileResult $$3 = $$1.c().fetchProfile($$0, true);
+            return Optional.ofNullable($$3).map(ProfileResult::profile);
+         }
+      }, ag.h().a("fetchProfile"));
+   }
+
+   public static void a() {
+      e = null;
+      f = null;
+      g = null;
    }
 
    @Override
    protected void b(ua $$0, ji.a $$1) {
       super.b($$0, $$1);
-      $$0.a(this.a.a(), $$1.a(uo.a), this.a);
+      $$0.b("profile", ddk.a, this.h);
+      $$0.b("note_block_sound", alr.a, this.i);
+      $$0.b("custom_name", xi.a, $$1.a(uo.a), this.l);
    }
 
-   public ace a() {
-      return ace.a(this);
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.a($$0.<ddk>a("profile", ddk.a).orElse(null));
+      this.i = $$0.<alr>a("note_block_sound", alr.a).orElse(null);
+      this.l = a($$0.a("custom_name"), $$1);
+   }
+
+   public static void a(dkj $$0, iw $$1, ebq $$2, eae $$3) {
+      if ($$2.b(dva.a) && $$2.c(dva.a)) {
+         $$3.k = true;
+         $$3.j++;
+      } else {
+         $$3.k = false;
+      }
+   }
+
+   public float a(float $$0) {
+      return this.k ? (float)this.j + $$0 : (float)this.j;
+   }
+
+   @Nullable
+   public ddk c() {
+      return this.h;
+   }
+
+   @Nullable
+   public alr d() {
+      return this.i;
+   }
+
+   public acl f() {
+      return acl.a(this);
    }
 
    @Override
    public ua a(ji.a $$0) {
-      return this.a.f().a(this.m().c(dwi.b));
+      return this.e($$0);
    }
 
-   @Override
-   public void a(bxe<?> $$0, azz $$1) {
-      if (this.n == null) {
-         ag.b("Expected non-null level");
+   public void a(@Nullable ddk $$0) {
+      synchronized (this) {
+         this.h = $$0;
+      }
+
+      this.j();
+   }
+
+   private void j() {
+      if (this.h != null && !this.h.b()) {
+         this.h.a().thenAcceptAsync($$0 -> {
+            this.h = $$0;
+            this.e();
+         }, a);
       } else {
-         this.a.a($$0, this.n);
          this.e();
       }
    }
 
-   public eah c() {
-      return this.a;
+   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
+      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = f;
+      return $$1 != null && bay.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
+   }
+
+   public static CompletableFuture<Optional<GameProfile>> a(UUID $$0) {
+      LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1 = g;
+      return $$1 != null ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
    }
 
    @Override
-   public eal d() {
-      return !this.m().b(ebw.bB) ? eal.a : this.m().c(ebw.bB);
+   protected void a(kg $$0) {
+      super.a($$0);
+      this.a($$0.a(kl.ak));
+      this.i = $$0.a(kl.al);
+      this.l = $$0.a(kl.g);
    }
 
    @Override
-   public void a(djz $$0, eal $$1) {
-      this.e();
-      $$0.b(this.o, this.m().b(ebw.bB, $$1));
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(kl.ak, this.h);
+      $$0.a(kl.al, this.i);
+      $$0.a(kl.g, this.l);
    }
 
    @Override
-   public void f() {
-      this.e();
-      if (this.n != null) {
-         this.n.a(this.o, this.m(), this.m(), 3);
-      }
+   public void a(ua $$0) {
+      super.a($$0);
+      $$0.r("profile");
+      $$0.r("note_block_sound");
+      $$0.r("custom_name");
    }
 }

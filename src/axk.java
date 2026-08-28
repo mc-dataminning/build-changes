@@ -1,10 +1,8 @@
-public class axk {
-   public static final axv<eqe> a = a("visible");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private axk() {
-   }
-
-   private static axv<eqe> a(String $$0) {
-      return axv.a(mi.aS, alk.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface axk {
 }

@@ -1,45 +1,8 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bto<R extends Runnable> extends AutoCloseable {
-   String z_();
-
-   void a_(R var1);
-
-   @Override
-   default void close() {
-   }
-
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
-   }
-
-   static bto<Runnable> a(final String $$0, final Executor $$1) {
-      return new bto<Runnable>() {
-         @Override
-         public String z_() {
-            return $$0;
-         }
-
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bto {
 }

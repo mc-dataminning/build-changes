@@ -1,226 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public class bva implements bum, cxu {
-   private final int b;
-   private final jp<daa> c;
-   @Nullable
-   private List<buo> d;
+@Immutable
+public class bva {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final buz d;
+   private final float e;
 
-   public bva(int $$0) {
-      this.b = $$0;
-      this.c = jp.a($$0, daa.k);
+   public bva(buz $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public bva(daa... $$0) {
-      this.b = $$0.length;
-      this.c = jp.a(daa.k, $$0);
+   public buz a() {
+      return this.d;
    }
 
-   public void a(buo $$0) {
-      if (this.d == null) {
-         this.d = Lists.newArrayList();
-      }
-
-      this.d.add($$0);
+   public float b() {
+      return this.e;
    }
 
-   public void b(buo $$0) {
-      if (this.d != null) {
-         this.d.remove($$0);
-      }
-   }
-
-   @Override
-   public daa a(int $$0) {
-      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : daa.k;
-   }
-
-   public List<daa> f() {
-      List<daa> $$0 = this.c.stream().filter($$0x -> !$$0x.f()).collect(Collectors.toList());
-      this.a();
-      return $$0;
-   }
-
-   @Override
-   public daa a(int $$0, int $$1) {
-      daa $$2 = bun.a(this.c, $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public daa a(czw $$0, int $$1) {
-      daa $$2 = new daa($$0, 0);
-
-      for (int $$3 = this.b - 1; $$3 >= 0; $$3--) {
-         daa $$4 = this.a($$3);
-         if ($$4.h().equals($$0)) {
-            int $$5 = $$1 - $$2.M();
-            daa $$6 = $$4.a($$5);
-            $$2.g($$6.M());
-            if ($$2.M() == $$1) {
-               break;
-            }
-         }
-      }
-
-      if (!$$2.f()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public daa b(daa $$0) {
-      if ($$0.f()) {
-         return daa.k;
-      } else {
-         daa $$1 = $$0.v();
-         this.e($$1);
-         if ($$1.f()) {
-            return daa.k;
-         } else {
-            this.d($$1);
-            return $$1.f() ? daa.k : $$1;
-         }
-      }
-   }
-
-   public boolean c(daa $$0) {
-      boolean $$1 = false;
-
-      for (daa $$2 : this.c) {
-         if ($$2.f() || daa.c($$2, $$0) && $$2.M() < $$2.k()) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public daa b(int $$0) {
-      daa $$1 = this.c.get($$0);
-      if ($$1.f()) {
-         return daa.k;
-      } else {
-         this.c.set($$0, daa.k);
-         return $$1;
-      }
-   }
-
-   @Override
-   public void a(int $$0, daa $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.f_($$1));
-      this.e();
-   }
-
-   @Override
-   public int b() {
-      return this.b;
-   }
-
-   @Override
    public boolean c() {
-      for (daa $$0 : this.c) {
-         if (!$$0.f()) {
-            return false;
+      return this.e >= (float)buz.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
+   }
+
+   private float a(buz $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == buz.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == buz.d;
+         float $$5 = 0.75F;
+         float $$6 = azz.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azz.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azz.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == buz.b) {
+            $$7 *= 0.5F;
          }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
       }
-
-      return true;
-   }
-
-   @Override
-   public void e() {
-      if (this.d != null) {
-         for (buo $$0 : this.d) {
-            $$0.a(this);
-         }
-      }
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-      this.e();
-   }
-
-   @Override
-   public void fillStackedContents(csf $$0) {
-      for (daa $$1 : this.c) {
-         $$0.b($$1);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.c.stream().filter($$0 -> !$$0.f()).collect(Collectors.toList()).toString();
-   }
-
-   private void d(daa $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         daa $$2 = this.a($$1);
-         if ($$2.f()) {
-            this.a($$1, $$0.g());
-            return;
-         }
-      }
-   }
-
-   private void e(daa $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         daa $$2 = this.a($$1);
-         if (daa.c($$2, $$0)) {
-            this.a($$0, $$2);
-            if ($$0.f()) {
-               return;
-            }
-         }
-      }
-   }
-
-   private void a(daa $$0, daa $$1) {
-      int $$2 = this.f_($$1);
-      int $$3 = Math.min($$0.M(), $$2 - $$1.M());
-      if ($$3 > 0) {
-         $$1.g($$3);
-         $$0.h($$3);
-         this.e();
-      }
-   }
-
-   public void a(ug $$0, ji.a $$1) {
-      this.a();
-      $$0.j().flatMap($$1x -> daa.a($$1, $$1x).stream()).forEach(this::b);
-   }
-
-   public ug a(ji.a $$0) {
-      ug $$1 = new ug();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         daa $$3 = this.a($$2);
-         if (!$$3.f()) {
-            $$1.add($$3.a($$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public jp<daa> g() {
-      return this.c;
    }
 }

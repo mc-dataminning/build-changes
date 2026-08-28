@@ -1,114 +1,104 @@
-import java.util.function.Predicate;
+public class cpb extends cpk {
+   private static final int a = 2400;
+   private static final int b = 0;
+   private int c = 0;
 
-public abstract class cpb extends bye implements cot {
-   protected cpb(bxe<? extends cpb> $$0, djz $$1) {
+   public cpb(bxn<? extends cpb> $$0, dkj $$1) {
       super($$0, $$1);
-      this.bA = 5;
+      this.bA = 3;
    }
 
    @Override
-   public aws dm() {
-      return aws.f;
+   protected void D() {
+      this.bF.a(1, new cev(this));
+      this.bF.a(1, new ceq(this, this.dV()));
+      this.bF.a(2, new cfl(this, 1.0, false));
+      this.bF.a(3, new cgo(this, 1.0));
+      this.bF.a(7, new cfj(this, csi.class, 8.0F));
+      this.bF.a(8, new cfw(this));
+      this.bG.a(1, new cgt(this).a());
+      this.bG.a(2, new cgu<>(this, csi.class, true));
+   }
+
+   public static bzk.a j() {
+      return cpk.gx().a(bzl.s, 8.0).a(bzl.v, 0.25).a(bzl.c, 2.0);
+   }
+
+   @Override
+   protected bxe.c bf() {
+      return bxe.c.c;
+   }
+
+   @Override
+   protected awx u() {
+      return awy.iN;
+   }
+
+   @Override
+   protected awx e(bvt $$0) {
+      return awy.iP;
+   }
+
+   @Override
+   protected awx l_() {
+      return awy.iO;
+   }
+
+   @Override
+   protected void b(iw $$0, ebq $$1) {
+      this.a(awy.iQ, 0.15F, 1.0F);
+   }
+
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.c = $$0.b("Lifetime", 0);
+   }
+
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.c);
+   }
+
+   @Override
+   public void h() {
+      this.aV = this.dL();
+      super.h();
+   }
+
+   @Override
+   public void s(float $$0) {
+      this.w($$0);
+      super.s($$0);
    }
 
    @Override
    public void k_() {
-      this.eZ();
-      this.gw();
       super.k_();
-   }
-
-   protected void gw() {
-      float $$0 = this.bw();
-      if ($$0 > 0.5F) {
-         this.bd += 2;
-      }
-   }
-
-   @Override
-   protected boolean aa() {
-      return true;
-   }
-
-   @Override
-   protected awq aU() {
-      return awr.nA;
-   }
-
-   @Override
-   protected awq aV() {
-      return awr.nz;
-   }
-
-   @Override
-   protected awq e(bvk $$0) {
-      return awr.nx;
-   }
-
-   @Override
-   protected awq l_() {
-      return awr.nw;
-   }
-
-   @Override
-   public bxw.a eO() {
-      return new bxw.a(awr.ny, awr.nv);
-   }
-
-   @Override
-   public float a(iw $$0, dkc $$1) {
-      return -$$1.x($$0);
-   }
-
-   public static boolean a(dkq $$0, iw $$1, azz $$2) {
-      if ($$0.a(dki.a, $$1) > $$2.a(32)) {
-         return false;
+      if (this.dV().C) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dV().a(lz.af, this.d(0.5), this.dD(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
+         }
       } else {
-         efd $$3 = $$0.F_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(dki.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.a().ag() ? $$0.c($$1, 10) : $$0.B($$1);
-            return $$5 <= $$3.d().a($$2);
+         if (!this.gd()) {
+            this.c++;
+         }
+
+         if (this.c >= 2400) {
+            this.aq();
          }
       }
    }
 
-   public static boolean b(bxe<? extends cpb> $$0, dkq $$1, bxd $$2, iw $$3, azz $$4) {
-      return $$1.an() != buq.a && (bxd.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bxe<? extends cpb> $$0, dka $$1, bxd $$2, iw $$3, azz $$4) {
-      return $$1.an() != buq.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bzb.a gx() {
-      return bxy.E().a(bzc.c);
-   }
-
-   @Override
-   public boolean eo() {
-      return true;
-   }
-
-   @Override
-   protected boolean ep() {
-      return true;
-   }
-
-   public boolean a(aru $$0, crz $$1) {
-      return true;
-   }
-
-   @Override
-   public daa d(daa $$0) {
-      if ($$0.h() instanceof dav) {
-         Predicate<daa> $$1 = ((dav)$$0.h()).c();
-         daa $$2 = dav.a(this, $$1);
-         return $$2.f() ? new daa(dae.pk) : $$2;
+   public static boolean b(bxn<cpb> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
+      if (!c($$0, $$1, $$2, $$3, $$4)) {
+         return false;
+      } else if (bxm.a($$2)) {
+         return true;
       } else {
-         return daa.k;
+         csi $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
       }
    }
 }

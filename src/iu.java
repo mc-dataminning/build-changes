@@ -2,7 +2,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.Iterator;
 
 public record iu(iw b, iw c) implements Iterable<iw> {
-   public static final za<ByteBuf, iu> a = new za<ByteBuf, iu>() {
+   public static final ze<ByteBuf, iu> a = new ze<ByteBuf, iu>() {
       public iu a(ByteBuf $$0) {
          return new iu(vy.c($$0), vy.c($$0));
       }
@@ -38,8 +38,8 @@ public record iu(iw b, iw c) implements Iterable<iw> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public ffn b() {
-      return ffn.a(this.b, this.c);
+   public ffx b() {
+      return ffx.a(this.b, this.c);
    }
 
    @Override

@@ -1,159 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.sun.jna.Memory;
-import com.sun.jna.Native;
-import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.Kernel32;
-import com.sun.jna.platform.win32.Kernel32Util;
-import com.sun.jna.platform.win32.Version;
-import com.sun.jna.platform.win32.Win32Exception;
-import com.sun.jna.platform.win32.Tlhelp32.MODULEENTRY32W;
-import com.sun.jna.ptr.IntByReference;
-import com.sun.jna.ptr.PointerByReference;
-import java.nio.charset.StandardCharsets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class azr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 65535;
-   private static final int c = 1033;
-   private static final int d = -65536;
-   private static final int e = 78643200;
+public record azr<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<azr<Integer>> a = a(Codec.INT);
 
-   public static List<azr.a> a() {
-      if (!Platform.isWindows()) {
-         return ImmutableList.of();
+   public azr(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         int $$0 = Kernel32.INSTANCE.GetCurrentProcessId();
-         Builder<azr.a> $$1 = ImmutableList.builder();
-
-         for (MODULEENTRY32W $$3 : Kernel32Util.getModules($$0)) {
-            String $$4 = $$3.szModule();
-            Optional<azr.b> $$5 = a($$3.szExePath());
-            $$1.add(new azr.a($$4, $$5));
-         }
-
-         return $$1.build();
+         this.b = b;
+         this.c = c;
       }
    }
 
-   private static Optional<azr.b> a(String $$0) {
-      try {
-         IntByReference $$1 = new IntByReference();
-         int $$2 = Version.INSTANCE.GetFileVersionInfoSize($$0, $$1);
-         if ($$2 == 0) {
-            int $$3 = Native.getLastError();
-            if ($$3 != 1813 && $$3 != 1812) {
-               throw new Win32Exception($$3);
-            } else {
-               return Optional.empty();
-            }
-         } else {
-            Pointer $$4 = new Memory((long)$$2);
-            if (!Version.INSTANCE.GetFileVersionInfo($$0, 0, $$2, $$4)) {
-               throw new Win32Exception(Native.getLastError());
-            } else {
-               IntByReference $$5 = new IntByReference();
-               Pointer $$6 = a($$4, "\\VarFileInfo\\Translation", $$5);
-               int[] $$7 = $$6.getIntArray(0L, $$5.getValue() / 4);
-               OptionalInt $$8 = a($$7);
-               if ($$8.isEmpty()) {
-                  return Optional.empty();
+   public azr(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<azr<T>> a(Codec<T> $$0) {
+      return azg.a($$0, "min_inclusive", "max_inclusive", azr::a, azr::a, azr::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<azr<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
                } else {
-                  int $$9 = $$8.getAsInt();
-                  int $$10 = $$9 & 65535;
-                  int $$11 = ($$9 & -65536) >> 16;
-                  String $$12 = b($$4, a("FileDescription", $$10, $$11), $$5);
-                  String $$13 = b($$4, a("CompanyName", $$10, $$11), $$5);
-                  String $$14 = b($$4, a("FileVersion", $$10, $$11), $$5);
-                  return Optional.of(new azr.b($$12, $$14, $$13));
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
                }
             }
-         }
-      } catch (Exception var14) {
-         a.info("Failed to find module info for {}", $$0, var14);
-         return Optional.empty();
-      }
+         );
    }
 
-   private static String a(String $$0, int $$1, int $$2) {
-      return String.format(Locale.ROOT, "\\StringFileInfo\\%04x%04x\\%s", $$1, $$2, $$0);
+   public static <T extends Comparable<T>> DataResult<azr<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new azr($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
    }
 
-   private static OptionalInt a(int[] $$0) {
-      OptionalInt $$1 = OptionalInt.empty();
-
-      for (int $$2 : $$0) {
-         if (($$2 & -65536) == 78643200 && ($$2 & 65535) == 1033) {
-            return OptionalInt.of($$2);
-         }
-
-         $$1 = OptionalInt.of($$2);
-      }
-
-      return $$1;
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
    }
 
-   private static Pointer a(Pointer $$0, String $$1, IntByReference $$2) {
-      PointerByReference $$3 = new PointerByReference();
-      if (!Version.INSTANCE.VerQueryValue($$0, $$1, $$3, $$2)) {
-         throw new UnsupportedOperationException("Can't get version value " + $$1);
-      } else {
-         return $$3.getValue();
-      }
+   public boolean a(azr<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
    }
 
-   private static String b(Pointer $$0, String $$1, IntByReference $$2) {
-      try {
-         Pointer $$3 = a($$0, $$1, $$2);
-         byte[] $$4 = $$3.getByteArray(0L, ($$2.getValue() - 1) * 2);
-         return new String($$4, StandardCharsets.UTF_16LE);
-      } catch (Exception var5) {
-         return "";
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
    }
 
-   public static void a(q $$0) {
-      $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
+   public T a() {
+      return this.b;
    }
 
-   public static class a {
-      public final String a;
-      public final Optional<azr.b> b;
-
-      public a(String $$0, Optional<azr.b> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b.<String>map($$0 -> this.a + ":" + $$0).orElse(this.a);
-      }
-   }
-
-   public static class b {
-      public final String a;
-      public final String b;
-      public final String c;
-
-      public b(String $$0, String $$1, String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.a + ":" + this.b + ":" + this.c;
-      }
+   public T b() {
+      return this.c;
    }
 }

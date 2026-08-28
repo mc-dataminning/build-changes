@@ -1,50 +1,38 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
 
 public class bjh extends DataFix {
-   final String a;
-   final Map<String, String> b;
-
-   public bjh(Schema $$0, String $$1, Map<String, String> $$2) {
+   public bjh(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bky.a($$1xx), $$1xx)))
-                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .mapOrElse(Function.identity(), $$1x -> $$0x)
+      return this.fixTypeEverywhereTyped(
+         "RaidRenamesDataFix", this.getInputSchema().getType(bjm.l), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bjh::a))
       );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.renameAndFixField("Raids", "raids", $$0x -> $$0x.createList($$0x.asStream().map(bjh::b)))
+         .renameField("Tick", "tick")
+         .renameField("NextAvailableID", "next_id");
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      return bbq.a($$0, "CX", "CY", "CZ", "center")
+         .renameField("Id", "id")
+         .renameField("Started", "started")
+         .renameField("Active", "active")
+         .renameField("TicksActive", "ticks_active")
+         .renameField("BadOmenLevel", "raid_omen_level")
+         .renameField("GroupsSpawned", "groups_spawned")
+         .renameField("PreRaidTicks", "cooldown_ticks")
+         .renameField("PostRaidTicks", "post_raid_ticks")
+         .renameField("TotalHealth", "total_health")
+         .renameField("NumGroups", "group_count")
+         .renameField("Status", "status");
    }
 }

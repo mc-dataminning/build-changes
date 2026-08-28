@@ -14,11 +14,11 @@ public class ne implements mo {
    private static final ne.b f = new ne.b(true, true, true);
    private static final ne.b g = new ne.b(true, true, false);
    private static final ne.b h = new ne.b(false, true, true);
-   private static final Map<alj<? extends jt<?>>, ne.b> i = Map.of(mi.bv, e, mi.bu, e, mi.br, f, mi.bs, f, mi.bt, f);
+   private static final Map<alq<? extends jt<?>>, ne.b> i = Map.of(mi.bv, e, mi.bu, e, mi.br, f, mi.bs, f, mi.bt, f);
    private static final Map<String, ne.a> j = Map.of(
       "structure", new ne.a(ne.c.a, new ne.b(true, false, true)), "function", new ne.a(ne.c.b, new ne.b(true, true, true))
    );
-   static final Codec<alj<? extends jt<?>>> k = alk.a.xmap(alj::a, alj::a);
+   static final Codec<alq<? extends jt<?>>> k = alr.a.xmap(alq::a, alq::a);
 
    public ne(mq $$0) {
       this.d = $$0;
@@ -36,19 +36,19 @@ public class ne implements mo {
       return "Datapack Structure";
    }
 
-   private void a(Map<alj<? extends jt<?>>, ne.b> $$0, alj<? extends jt<?>> $$1, ne.b $$2) {
+   private void a(Map<alq<? extends jt<?>>, ne.b> $$0, alq<? extends jt<?>> $$1, ne.b $$2) {
       ne.b $$3 = $$0.putIfAbsent($$1, $$2);
       if ($$3 != null) {
          throw new IllegalStateException("Duplicate entry for key " + $$1.a());
       }
    }
 
-   private Map<alj<? extends jt<?>>, ne.b> b() {
-      Map<alj<? extends jt<?>>, ne.b> $$0 = new HashMap<>();
+   private Map<alq<? extends jt<?>>, ne.b> b() {
+      Map<alq<? extends jt<?>>, ne.b> $$0 = new HashMap<>();
       mh.aF.forEach($$1 -> this.a($$0, $$1.g(), h));
-      alf.a.forEach($$1 -> this.a($$0, $$1.a(), g));
-      alf.b.forEach($$1 -> this.a($$0, $$1.a(), g));
-      i.forEach(($$1, $$2) -> this.a($$0, (alj<? extends jt<?>>)$$1, $$2));
+      alm.a.forEach($$1 -> this.a($$0, $$1.a(), g));
+      alm.b.forEach($$1 -> this.a($$0, $$1.a(), g));
+      i.forEach(($$1, $$2) -> this.a($$0, (alq<? extends jt<?>>)$$1, $$2));
       return $$0;
    }
 
@@ -90,11 +90,11 @@ public class ne implements mo {
       }
    }
 
-   static enum c implements bao {
+   static enum c implements bax {
       a("structure"),
       b("mcfunction");
 
-      public static final Codec<ne.c> c = bao.a(ne.c::values);
+      public static final Codec<ne.c> c = bax.a(ne.c::values);
       private final String d;
 
       private c(final String $$0) {
@@ -107,7 +107,7 @@ public class ne implements mo {
       }
    }
 
-   static record d(Map<alj<? extends jt<?>>, ne.b> b, Map<String, ne.a> c) {
+   static record d(Map<alq<? extends jt<?>>, ne.b> b, Map<String, ne.a> c) {
       public static final Codec<ne.d> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   Codec.unboundedMap(ne.k, ne.b.b).fieldOf("registries").forGetter(ne.d::a),
@@ -116,7 +116,7 @@ public class ne implements mo {
                .apply($$0, ne.d::new)
       );
 
-      public Map<alj<? extends jt<?>>, ne.b> a() {
+      public Map<alq<? extends jt<?>>, ne.b> a() {
          return this.b;
       }
 

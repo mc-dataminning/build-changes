@@ -1,65 +1,75 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmh extends dne implements dnh {
-   public static final MapCodec<dmh> a = b(dmh::new);
-   private static final fgm b = dne.b(8.0, 0.0, 12.0);
+public abstract class dmh extends dno {
+   protected static final int a = 4;
+   private static final fgw c = dno.b(12.0, 4.0, 16.0);
+   private static final fgw d = ag.a(() -> {
+      int $$0 = 4;
+      int $$1 = 3;
+      int $$2 = 2;
+      return fgt.a(fgt.b(), fgt.a(dno.a(16.0, 8.0, 0.0, 3.0), dno.a(8.0, 16.0, 0.0, 3.0), dno.b(12.0, 0.0, 3.0), c), fgg.e);
+   });
+   protected final kd.a b;
 
    @Override
-   public MapCodec<dmh> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dmh> a();
 
-   public dmh(ebf.d $$0) {
+   public dmh(ebp.d $$0, kd.a $$1) {
       super($$0);
+      this.b = $$1;
+   }
+
+   protected double b(ebq $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(ebq $$0, iw $$1, bxe $$2) {
+      return $$2.dC() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return b.a($$0.a($$2));
+   protected bvc a(dak $$0, ebq $$1, dkj $$2, iw $$3, csi $$4, bvb $$5, ffy $$6) {
+      kd $$7 = this.b.b().get($$0.h());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if ($$3.a(3) == 0 && $$1.v($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return d;
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return $$1.a_($$2.e()).a(axg.ax);
+   protected fgw a(ebq $$0, djn $$1, iw $$2) {
+      return c;
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dng.a.m();
-      } else {
-         return $$4 == jc.b && $$6.a(dng.nF) ? dng.nF.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
-
-   @Override
-   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
-      return new daa(dae.ej);
-   }
-
-   @Override
-   public boolean a(dkc $$0, iw $$1, ebg $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+   protected boolean c_(ebq $$0) {
       return true;
    }
 
    @Override
-   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
-      this.a($$0, $$2);
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 
-   protected void a(djz $$0, iw $$1) {
-      $$0.a($$1.d(), dng.nF.m().b(dmi.c, ebs.b), 3);
+   public abstract boolean d(ebq var1);
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      iw $$4 = dtm.a((dkj)$$1, $$2);
+      if ($$4 != null) {
+         exz $$5 = dtm.a($$1, $$4);
+         if ($$5 != eyb.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
+      }
+   }
+
+   protected boolean a(exz $$0) {
+      return false;
+   }
+
+   protected void a(ebq $$0, dkj $$1, iw $$2, exz $$3) {
    }
 }

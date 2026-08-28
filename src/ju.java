@@ -13,25 +13,25 @@ public interface ju extends ji.a {
    ju.b b = new ju.c(Map.of()).e();
 
    @Override
-   <E> Optional<jt<E>> a(alj<? extends jt<? extends E>> var1);
+   <E> Optional<jt<E>> a(alq<? extends jt<? extends E>> var1);
 
-   default <E> jt<E> f(alj<? extends jt<? extends E>> $$0) {
+   default <E> jt<E> f(alq<? extends jt<? extends E>> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
    Stream<ju.d<?>> a();
 
    @Override
-   default Stream<alj<? extends jt<?>>> b() {
+   default Stream<alq<? extends jt<?>>> b() {
       return this.a().map($$0 -> $$0.a);
    }
 
    static ju.b a(final jt<? extends jt<?>> $$0) {
       return new ju.b() {
          @Override
-         public <T> Optional<jt<T>> a(alj<? extends jt<? extends T>> $$0x) {
+         public <T> Optional<jt<T>> a(alq<? extends jt<? extends T>> $$0x) {
             jt<jt<T>> $$1 = (jt<jt<T>>)$$0;
-            return $$1.f((alj<jt<T>>)$$0);
+            return $$1.f((alq<jt<T>>)$$0);
          }
 
          @Override
@@ -60,13 +60,13 @@ public interface ju extends ji.a {
    }
 
    public static class c implements ju {
-      private final Map<? extends alj<? extends jt<?>>, ? extends jt<?>> c;
+      private final Map<? extends alq<? extends jt<?>>, ? extends jt<?>> c;
 
       public c(List<? extends jt<?>> $$0) {
          this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(jt::g, $$0x -> $$0x));
       }
 
-      public c(Map<? extends alj<? extends jt<?>>, ? extends jt<?>> $$0) {
+      public c(Map<? extends alq<? extends jt<?>>, ? extends jt<?>> $$0) {
          this.c = Map.copyOf($$0);
       }
 
@@ -75,7 +75,7 @@ public interface ju extends ji.a {
       }
 
       @Override
-      public <E> Optional<jt<E>> a(alj<? extends jt<? extends E>> $$0) {
+      public <E> Optional<jt<E>> a(alq<? extends jt<? extends E>> $$0) {
          return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
@@ -85,14 +85,14 @@ public interface ju extends ji.a {
       }
    }
 
-   public static record d<T>(alj<? extends jt<T>> a, jt<T> b) {
+   public static record d<T>(alq<? extends jt<T>> a, jt<T> b) {
 
-      private static <T, R extends jt<? extends T>> ju.d<T> a(Entry<? extends alj<? extends jt<?>>, R> $$0) {
-         return a((alj<? extends jt<?>>)$$0.getKey(), $$0.getValue());
+      private static <T, R extends jt<? extends T>> ju.d<T> a(Entry<? extends alq<? extends jt<?>>, R> $$0) {
+         return a((alq<? extends jt<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      private static <T> ju.d<T> a(alj<? extends jt<?>> $$0, jt<?> $$1) {
-         return new ju.d<>((alj<? extends jt<T>>)$$0, (jt<T>)$$1);
+      private static <T> ju.d<T> a(alq<? extends jt<?>> $$0, jt<?> $$1) {
+         return new ju.d<>((alq<? extends jt<T>>)$$0, (jt<T>)$$1);
       }
 
       private ju.d<T> c() {

@@ -1,108 +1,28 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class eoo extends eop {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<eoo> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(eon.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eoo::new)
-   );
-   private final eon h;
+public class eoo<P extends eon> {
+   public static final eoo<eoi> a = a("blob_foliage_placer", eoi.a);
+   public static final eoo<eot> b = a("spruce_foliage_placer", eot.a);
+   public static final eoo<eor> c = a("pine_foliage_placer", eor.a);
+   public static final eoo<eoh> d = a("acacia_foliage_placer", eoh.a);
+   public static final eoo<eoj> e = a("bush_foliage_placer", eoj.c);
+   public static final eoo<eom> f = a("fancy_foliage_placer", eom.c);
+   public static final eoo<eop> g = a("jungle_foliage_placer", eop.a);
+   public static final eoo<eoq> h = a("mega_pine_foliage_placer", eoq.a);
+   public static final eoo<eol> i = a("dark_oak_foliage_placer", eol.a);
+   public static final eoo<eos> j = a("random_spread_foliage_placer", eos.a);
+   public static final eoo<eok> k = a("cherry_foliage_placer", eok.a);
+   private final MapCodec<P> l;
 
-   public eoo(bty $$0, eos $$1, Optional<eom> $$2, eon $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   private static <P extends eon> eoo<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.U, $$0, new eoo<>($$1));
    }
 
-   @Override
-   public boolean a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, iw $$3, iw $$4, enn $$5) {
-      List<iw> $$6 = Lists.newArrayList();
-      iw.a $$7 = $$3.k();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(jc.b);
-      }
-
-      $$6.add($$4.e());
-
-      for (jc $$8 : jc.c.a) {
-         iw $$9 = $$4.a($$8);
-         List<iw> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (iw $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   private eoo(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   private boolean a(dkf $$0, azz $$1, iw $$2, jc $$3, iw $$4, List<iw> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (iw $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected List<iw> a(iw $$0, jc $$1, azz $$2, iw $$3) {
-      iw $$4 = $$0.e();
-      iw $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
-   }
-
-   @Override
-   protected boolean a(dkf $$0, iw $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, iw $$3, enn $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         ebg $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected eoq<?> a() {
-      return eoq.a;
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

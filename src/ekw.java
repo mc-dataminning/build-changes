@@ -1,167 +1,146 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ekw extends ekm<ekv> {
-   private static final float a = 0.06F;
+public abstract class ekw<FC extends enb> {
+   public static final ekw<eni> e = a("no_op", new elq(eni.a));
+   public static final ekw<enx> f = a("tree", new emi(enx.a));
+   public static final ekw<ena> g = a("fallen_tree", new ekv(ena.a));
+   public static final ekw<eno> h = a("flower", new elu(eno.a));
+   public static final ekw<eno> i = a("no_bonemeal_flower", new elu(eno.a));
+   public static final ekw<eno> j = a("random_patch", new elu(eno.a));
+   public static final ekw<ems> k = a("block_pile", new ekd(ems.a));
+   public static final ekw<enw> l = a("spring_feature", new emh(enw.a));
+   public static final ekw<eni> m = a("chorus_plant", new ekg(eni.a));
+   public static final ekw<enp> n = a("replace_single_block", new elx(enp.a));
+   public static final ekw<eni> o = a("void_start_platform", new emn(eni.a));
+   public static final ekw<eni> p = a("desert_well", new ekn(eni.a));
+   public static final ekw<elb> q = a("fossil", new ela(elb.a));
+   public static final ekw<end> r = a("huge_red_mushroom", new elh(end.a));
+   public static final ekw<end> s = a("huge_brown_mushroom", new ele(end.a));
+   public static final ekw<eni> t = a("ice_spike", new eli(eni.a));
+   public static final ekw<eni> u = a("glowstone_blob", new eld(eni.a));
+   public static final ekw<eni> v = a("freeze_top_layer", new emf(eni.a));
+   public static final ekw<eni> w = a("vines", new emm(eni.a));
+   public static final ekw<emr> x = a("block_column", new ekc(emr.a));
+   public static final ekw<eoa> y = a("vegetation_patch", new eml(eoa.a));
+   public static final ekw<eoa> z = a("waterlogged_vegetation_patch", new emo(eoa.a));
+   public static final ekw<enr> A = a("root_system", new ely(enr.a));
+   public static final ekw<eng> B = a("multiface_growth", new elo(eng.a));
+   public static final ekw<enz> C = a("underwater_magma", new emk(enz.a));
+   public static final ekw<eni> D = a("monster_room", new eln(eni.a));
+   public static final ekw<eni> E = a("blue_ice", new eke(eni.a));
+   public static final ekw<emt> F = a("iceberg", new elj(emt.a));
+   public static final ekw<emt> G = a("forest_rock", new ekb(emt.a));
+   public static final ekw<emx> H = a("disk", new eko(emx.a));
+   public static final ekw<ell.a> I = a("lake", new ell(ell.a.a));
+   public static final ekw<enj> J = a("ore", new elr(enj.a));
+   public static final ekw<eni> K = a("end_platform", new ekt(eni.a));
+   public static final ekw<env> L = a("end_spike", new emg(env.a));
+   public static final ekw<eni> M = a("end_island", new eks(eni.a));
+   public static final ekw<emz> N = a("end_gateway", new ekr(emz.a));
+   public static final emc O = a("seagrass", new emc(enl.k));
+   public static final ekw<eni> P = a("kelp", new elk(eni.a));
+   public static final ekw<eni> Q = a("coral_tree", new ekl(eni.a));
+   public static final ekw<eni> R = a("coral_mushroom", new ekk(eni.a));
+   public static final ekw<eni> S = a("coral_claw", new eki(eni.a));
+   public static final ekw<emv> T = a("sea_pickle", new emb(emv.a));
+   public static final ekw<ent> U = a("simple_block", new emd(ent.a));
+   public static final ekw<enl> V = a("bamboo", new ejy(enl.k));
+   public static final ekw<elf> W = a("huge_fungus", new elg(elf.a));
+   public static final ekw<enh> X = a("nether_forest_vegetation", new elp(enh.c));
+   public static final ekw<eni> Y = a("weeping_vines", new emp(eni.a));
+   public static final ekw<eny> Z = a("twisting_vines", new emj(eny.a));
+   public static final ekw<emu> aa = a("basalt_columns", new ejz(emu.a));
+   public static final ekw<emw> ab = a("delta_feature", new ekm(emw.a));
+   public static final ekw<enq> ac = a("netherrack_replace_blobs", new elw(enq.a));
+   public static final ekw<enf> ad = a("fill_layer", new ekz(enf.a));
+   public static final ekf ae = a("bonus_chest", new ekf(eni.a));
+   public static final ekw<eni> af = a("basalt_pillar", new eka(eni.a));
+   public static final ekw<enj> ag = a("scattered_ore", new elz(enj.a));
+   public static final ekw<enn> ah = a("random_selector", new elv(enn.a));
+   public static final ekw<enu> ai = a("simple_random_selector", new eme(enu.a));
+   public static final ekw<enm> aj = a("random_boolean_selector", new elt(enm.a));
+   public static final ekw<enc> ak = a("geode", new elc(enc.b));
+   public static final ekw<emy> al = a("dripstone_cluster", new ekp(emy.a));
+   public static final ekw<ene> am = a("large_dripstone", new elm(ene.a));
+   public static final ekw<enk> an = a("pointed_dripstone", new els(enk.a));
+   public static final ekw<ens> ao = a("sculk_patch", new ema(ens.a));
+   private final MapCodec<ekh<FC, ekw<FC>>> a;
 
-   public ekw(Codec<ekv> $$0) {
-      super($$0);
+   private static <C extends enb, F extends ekw<C>> F a(String $$0, F $$1) {
+      return jt.a(mh.O, $$0, $$1);
    }
 
-   @Override
-   public boolean a(eko<ekv> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      azz $$3 = $$0.d();
-      ede $$4 = $$0.c();
-      ekv $$5 = $$0.f();
-      dne $$6 = $$5.b.b();
-      iw $$7 = null;
-      ebg $$8 = $$1.a_($$2.e());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
-      }
-
-      if ($$7 == null) {
-         return false;
-      } else {
-         int $$9 = azq.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
-         }
-
-         if (!$$5.g) {
-            int $$10 = $$4.e();
-            if ($$7.v() + $$9 + 1 >= $$10) {
-               return false;
-            }
-         }
-
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, dng.a.m(), 260);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
-         return true;
-      }
+   public ekw(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new ekh<>(this, $$0x), ekh::c);
    }
 
-   private static boolean a(dky $$0, iw $$1, ekv $$2, boolean $$3) {
-      if ($$0.a($$1, ebf.a::v)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
-      }
+   public MapCodec<ekh<FC, ekw<FC>>> a() {
+      return this.a;
    }
 
-   private void a(dky $$0, azz $$1, ekv $$2, iw $$3, int $$4, boolean $$5) {
-      iw.a $$6 = new iw.a();
-      ebg $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && azq.a($$9) == $$8 && azq.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.e()).l()) {
-                        $$0.b($$6, true);
-                     }
-
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
-                     }
-                  } else {
-                     this.a($$0, $$6, $$7);
-                  }
-               }
-            }
-         }
-      }
+   protected void a(dkr $$0, iw $$1, ebq $$2) {
+      $$0.a($$1, $$2, 3);
    }
 
-   private void b(dky $$0, azz $$1, ekv $$2, iw $$3, int $$4, boolean $$5) {
-      iw.a $$6 = new iw.a();
-      boolean $$7 = $$2.d.a(dng.lq);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
+   public static Predicate<ebq> a(ayc<dno> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
 
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.e()).l()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
+   protected void a(dli $$0, iw $$1, ebq $$2, Predicate<ebq> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
    }
 
-   private void a(dka $$0, azz $$1, ekv $$2, iw.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
-      }
+   public abstract boolean a(eky<FC> var1);
+
+   public boolean a(FC $$0, dli $$1, edo $$2, bai $$3, iw $$4) {
+      return $$1.f_($$4) ? this.a(new eky<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
    }
 
-   private void a(dka $$0, azz $$1, iw $$2, ebg $$3, boolean $$4) {
-      if ($$0.a_($$2.e()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
-      }
+   protected static boolean a(ebq $$0) {
+      return $$0.a(axn.bh);
    }
 
-   private static void a(iw $$0, dka $$1, azz $$2) {
-      iw.a $$3 = $$0.k().c(jc.a);
-      if ($$1.v($$3)) {
-         int $$4 = azq.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
+   public static boolean b(ebq $$0) {
+      return $$0.a(axn.ah);
+   }
+
+   public static boolean a(dkp $$0, iw $$1) {
+      return $$0.a($$1, ekw::b);
+   }
+
+   public static boolean a(Function<iw, ebq> $$0, iw $$1, Predicate<ebq> $$2) {
+      iw.a $$3 = new iw.a();
+
+      for (jc $$4 : jc.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(Function<iw, ebq> $$0, iw $$1) {
+      return a($$0, $$1, ebp.a::l);
+   }
+
+   protected void a(dli $$0, iw $$1) {
+      iw.a $$2 = $$1.k();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(jc.b);
+         if ($$0.a_($$2).l()) {
+            return;
          }
 
-         int $$5 = 23;
-         int $$6 = 25;
-         emf.a($$1, $$2, $$3, $$4, 23, 25);
+         $$0.z($$2).e($$2);
       }
    }
 }

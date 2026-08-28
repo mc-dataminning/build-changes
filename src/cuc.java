@@ -1,94 +1,65 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+public class cuc {
+   public static final cuc a = a("core");
+   public static final cuc b = a("idle");
+   public static final cuc c = a("work");
+   public static final cuc d = a("play");
+   public static final cuc e = a("rest");
+   public static final cuc f = a("meet");
+   public static final cuc g = a("panic");
+   public static final cuc h = a("raid");
+   public static final cuc i = a("pre_raid");
+   public static final cuc j = a("hide");
+   public static final cuc k = a("fight");
+   public static final cuc l = a("celebrate");
+   public static final cuc m = a("admire_item");
+   public static final cuc n = a("avoid");
+   public static final cuc o = a("ride");
+   public static final cuc p = a("play_dead");
+   public static final cuc q = a("long_jump");
+   public static final cuc r = a("ram");
+   public static final cuc s = a("tongue");
+   public static final cuc t = a("swim");
+   public static final cuc u = a("lay_spawn");
+   public static final cuc v = a("sniff");
+   public static final cuc w = a("investigate");
+   public static final cuc x = a("roar");
+   public static final cuc y = a("emerge");
+   public static final cuc z = a("dig");
+   private final String A;
+   private final int B;
 
-public interface cuc<Context, Condition extends cuc.b<Context>> {
-   List<cuc.a<Context, Condition>> a();
-
-   static <C, T> Stream<T> a(Stream<T> $$0, Function<T, cuc<C, ?>> $$1, C $$2) {
-      List<cuc.c<C, T>> $$3 = new ArrayList<>();
-      $$0.forEach($$2x -> {
-         cuc<C, ?> $$3x = $$1.apply((T)$$2x);
-
-         for (cuc.a<C, ?> $$4x : $$3x.a()) {
-            $$3.add(new cuc.c<>((T)$$2x, $$4x.b(), (cuc.b<C>)DataFixUtils.orElseGet($$4x.a(), cuc.b::alwaysTrue)));
-         }
-      });
-      $$3.sort(cuc.c.a);
-      Iterator<cuc.c<C, T>> $$4 = $$3.iterator();
-      int $$5 = Integer.MIN_VALUE;
-
-      while ($$4.hasNext()) {
-         cuc.c<C, T> $$6 = $$4.next();
-         if ($$6.c < $$5) {
-            $$4.remove();
-         } else if ($$6.d.test($$2)) {
-            $$5 = $$6.c;
-         } else {
-            $$4.remove();
-         }
-      }
-
-      return $$3.stream().map(cuc.c::a);
+   private cuc(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   static <C, T> Optional<T> a(Stream<T> $$0, Function<T, cuc<C, ?>> $$1, azz $$2, C $$3) {
-      List<T> $$4 = a($$0, $$1, $$3).toList();
-      return ag.b($$4, $$2);
+   public String a() {
+      return this.A;
    }
 
-   static <Context, Condition extends cuc.b<Context>> List<cuc.a<Context, Condition>> a(Condition $$0, int $$1) {
-      return List.of(new cuc.a<>($$0, $$1));
+   private static cuc a(String $$0) {
+      return jt.a(mh.C, $$0, new cuc($$0));
    }
 
-   static <Context, Condition extends cuc.b<Context>> List<cuc.a<Context, Condition>> a(int $$0) {
-      return List.of(new cuc.a<>(Optional.empty(), $$0));
-   }
-
-   public static record a<Context, Condition extends cuc.b<Context>>(Optional<Condition> a, int b) {
-      public a(Condition $$0, int $$1) {
-         this(Optional.of($$0), $$1);
-      }
-
-      public a(int $$0) {
-         this(Optional.empty(), $$0);
-      }
-
-      public static <Context, Condition extends cuc.b<Context>> Codec<cuc.a<Context, Condition>> a(Codec<Condition> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.optionalFieldOf("condition").forGetter(cuc.a::a), Codec.INT.fieldOf("priority").forGetter(cuc.a::b)).apply($$1, cuc.a::new)
-         );
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cuc $$1 = (cuc)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
    }
 
-   @FunctionalInterface
-   public interface b<C> extends Predicate<C> {
-      static <C> cuc.b<C> alwaysTrue() {
-         return $$0 -> true;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   public static record c<C, T>(T b, int c, cuc.b<C> d) {
-      public static final Comparator<cuc.c<?, ?>> a = Comparator.comparingInt(cuc.c::b).reversed();
-
-      public T a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public cuc.b<C> c() {
-         return this.d;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

@@ -13,11 +13,11 @@ import org.apache.commons.io.FilenameUtils;
 
 public class fp<T> implements ArgumentType<Collection<jg.c<T>>> {
    private static final Collection<String> b = List.of("minecraft:*", "*:asset", "*");
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xc.b("argument.resource_selector.not_found", $$0, $$1));
-   final alj<? extends jt<T>> c;
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xg.b("argument.resource_selector.not_found", $$0, $$1));
+   final alq<? extends jt<T>> c;
    private final ji<T> d;
 
-   fp(eg $$0, alj<? extends jt<T>> $$1) {
+   fp(eg $$0, alq<? extends jt<T>> $$1) {
       this.c = $$1;
       this.d = $$0.e($$1);
    }
@@ -48,27 +48,27 @@ public class fp<T> implements ArgumentType<Collection<jg.c<T>>> {
    }
 
    private static boolean a(char $$0) {
-      return alk.a($$0) || $$0 == '*' || $$0 == '?';
+      return alr.a($$0) || $$0 == '*' || $$0 == '?';
    }
 
    private static String a(String $$0) {
       return !$$0.contains(":") ? "minecraft:" + $$0 : $$0;
    }
 
-   private static boolean a(String $$0, alk $$1) {
+   private static boolean a(String $$0, alr $$1) {
       return FilenameUtils.wildcardMatch($$1.toString(), $$0);
    }
 
-   public static <T> fp<T> a(eg $$0, alj<? extends jt<T>> $$1) {
+   public static <T> fp<T> a(eg $$0, alq<? extends jt<T>> $$1) {
       return new fp<>($$0, $$1);
    }
 
-   public static <T> Collection<jg.c<T>> a(CommandContext<ek> $$0, String $$1, alj<? extends jt<T>> $$2) {
+   public static <T> Collection<jg.c<T>> a(CommandContext<ek> $$0, String $$1, alq<? extends jt<T>> $$2) {
       return (Collection<jg.c<T>>)$$0.getArgument($$1, Collection.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ep $$2 ? $$2.a(this.c, ep.a.b, $$1, $$0) : ep.b(this.d.c_().map(alj::a).map(alk::toString), $$1);
+      return $$0.getSource() instanceof ep $$2 ? $$2.a(this.c, ep.a.b, $$1, $$0) : ep.b(this.d.c_().map(alq::a).map(alr::toString), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class fp<T> implements ArgumentType<Collection<jg.c<T>>> {
       }
 
       public final class a implements ih.a<fp<T>> {
-         final alj<? extends jt<T>> b;
+         final alq<? extends jt<T>> b;
 
-         a(final alj<? extends jt<T>> $$1) {
+         a(final alq<? extends jt<T>> $$1) {
             this.b = $$1;
          }
 

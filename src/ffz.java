@@ -1,18 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class ffz extends fga {
+   private final bxe b;
 
-public final class ffz extends fgm {
-   protected ffz(fgb $$0) {
-      super($$0);
+   public ffz(bxe $$0) {
+      this($$0, $$0.dt());
+   }
+
+   public ffz(bxe $$0, fgc $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bxe a() {
+      return this.b;
    }
 
    @Override
-   public DoubleList a(jc.a $$0) {
-      return new ffy(this.a.c($$0));
-   }
-
-   @Override
-   protected int a(jc.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return azq.a(azq.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public fga.a d() {
+      return fga.a.c;
    }
 }

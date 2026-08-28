@@ -1,58 +1,24 @@
-public abstract class cwm {
-   private int a;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public static cwm a(final cwe $$0, final int $$1) {
-      return new cwm() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
+public enum cwm {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6);
 
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
+   private static final IntFunction<cwm> i = ayo.a(cwm::a, values(), ayo.a.a);
+   public static final ze<ByteBuf, cwm> h = zc.a(i, cwm::a);
+   private final int j;
+
+   private cwm(final int $$0) {
+      this.j = $$0;
    }
 
-   public static cwm a(final int[] $$0, final int $$1) {
-      return new cwm() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
-   }
-
-   public static cwm a() {
-      return new cwm() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
-   }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+   public int a() {
+      return this.j;
    }
 }

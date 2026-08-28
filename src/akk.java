@@ -1,12 +1,31 @@
-public class akk {
-   public static final zl<akg> a = a("status_response");
-   public static final zl<akj> b = b("status_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zj<akf>> zl<T> a(String $$0) {
-      return new zl<>(zk.b, alk.b($$0));
+public class akk implements zo<akj> {
+   public static final ze<ByteBuf, akk> a = zo.a(akk::a, akk::new);
+   private final long b;
+
+   public akk(long $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zj<aki>> zl<T> b(String $$0) {
-      return new zl<>(zk.a, alk.b($$0));
+   private akk(ByteBuf $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
+   }
+
+   @Override
+   public zq<akk> a() {
+      return aki.b;
+   }
+
+   public void a(akj $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

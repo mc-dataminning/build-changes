@@ -1,37 +1,33 @@
-public class gjk extends gic<her> {
-   private final glg a;
-   private final glg b;
+public class gjk extends gjl {
+   protected final gkr a;
 
-   public gjk(glg $$0) {
+   public gjk(gkr $$0) {
       super($$0);
-      this.a = $$0.b("left_blue_fin");
-      this.b = $$0.b("right_blue_fin");
+      this.a = $$0.b("head");
    }
 
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gll.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gli.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gll.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gli.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", gll.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gli.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", gll.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", gll.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gli.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", gll.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gll.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gll.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", gll.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gli.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", gll.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gll.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gli.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return glm.a($$0, 32, 32);
+   public static gkz a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("head", gkw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gkt.a);
+      return $$0;
+   }
+
+   public static gkx b() {
+      gkz $$0 = a();
+      glb $$1 = $$0.a();
+      $$1.b("head").a("hat", gkw.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gkv(0.25F)), gkt.a);
+      return gkx.a($$0, 64, 64);
+   }
+
+   public static gkx c() {
+      gkz $$0 = a();
+      return gkx.a($$0, 64, 32);
    }
 
    @Override
-   public void a(her $$0) {
-      super.a($$0);
-      this.b.g = -0.2F + 0.4F * azq.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azq.a($$0.u * 0.2F);
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

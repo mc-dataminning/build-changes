@@ -1,128 +1,42 @@
-public class gzv extends gyj<cnz, hfx> {
-   public gzv(gyk.a $$0) {
+public class gzv extends gxu<ctg, hfy> {
+   private static final alr a = alr.b("textures/entity/shulker/spark.png");
+   private static final gry g = gry.j(a);
+   private final gjg h;
+
+   public gzv(gxv.a $$0) {
       super($$0);
+      this.h = new gjg($$0.a(gkq.cW));
    }
 
-   public void a(hfx $$0, flq $$1, gsc $$2, int $$3) {
-      coa $$4 = $$0.b;
-      if ($$4 != null) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees((float)(180 - $$0.a.e() * 90)));
-         hmd $$5 = frf.Q().aF();
-         hlc $$6 = $$5.a();
-         flt $$7 = $$2.getBuffer(gsn.e($$6.i()));
-         this.a($$1, $$7, $$0.c, $$4.b(), $$4.c(), $$5.a($$4), $$6);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   protected int a(ctg $$0, iw $$1) {
+      return 15;
    }
 
-   public hfx a() {
-      return new hfx();
+   public void a(hfy $$0, fld $$1, grn $$2, int $$3) {
+      $$1.a();
+      float $$4 = $$0.v;
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees(azz.a($$4 * 0.1F) * 180.0F));
+      $$1.a(a.b.rotationDegrees(azz.b($$4 * 0.1F) * 180.0F));
+      $$1.a(a.f.rotationDegrees(azz.a($$4 * 0.15F) * 360.0F));
+      $$1.b(-0.5F, -0.5F, 0.5F);
+      this.h.a($$0);
+      flg $$5 = $$2.getBuffer(this.h.a(a));
+      this.h.a($$1, $$5, $$3, hkg.d);
+      $$1.b(1.5F, 1.5F, 1.5F);
+      flg $$6 = $$2.getBuffer(g);
+      this.h.a($$1, $$6, $$3, hkg.d, 654311423);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cnz $$0, hfx $$1, float $$2) {
+   public hfy a() {
+      return new hfy();
+   }
+
+   public void a(ctg $$0, hfy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      jc $$3 = $$0.cO();
-      coa $$4 = $$0.m().a();
-      $$1.a = $$3;
-      $$1.b = $$4;
-      int $$5 = $$4.b();
-      int $$6 = $$4.c();
-      if ($$1.c.length != $$5 * $$6) {
-         $$1.c = new int[$$5 * $$6];
-      }
-
-      float $$7 = (float)(-$$5) / 2.0F;
-      float $$8 = (float)(-$$6) / 2.0F;
-      djz $$9 = $$0.dV();
-
-      for (int $$10 = 0; $$10 < $$6; $$10++) {
-         for (int $$11 = 0; $$11 < $$5; $$11++) {
-            float $$12 = (float)$$11 + $$7 + 0.5F;
-            float $$13 = (float)$$10 + $$8 + 0.5F;
-            int $$14 = $$0.dz();
-            int $$15 = azq.a($$0.dC() + (double)$$13);
-            int $$16 = $$0.dF();
-            switch ($$3) {
-               case c:
-                  $$14 = azq.a($$0.dA() + (double)$$12);
-                  break;
-               case e:
-                  $$16 = azq.a($$0.dG() - (double)$$12);
-                  break;
-               case d:
-                  $$14 = azq.a($$0.dA() - (double)$$12);
-                  break;
-               case f:
-                  $$16 = azq.a($$0.dG() + (double)$$12);
-            }
-
-            $$1.c[$$11 + $$10 * $$5] = grx.a($$9, new iw($$14, $$15, $$16));
-         }
-      }
-   }
-
-   private void a(flq $$0, flt $$1, int[] $$2, int $$3, int $$4, hlc $$5, hlc $$6) {
-      flq.a $$7 = $$0.c();
-      float $$8 = (float)(-$$3) / 2.0F;
-      float $$9 = (float)(-$$4) / 2.0F;
-      float $$10 = 0.03125F;
-      float $$11 = $$6.c();
-      float $$12 = $$6.d();
-      float $$13 = $$6.g();
-      float $$14 = $$6.h();
-      float $$15 = $$6.c();
-      float $$16 = $$6.d();
-      float $$17 = $$6.g();
-      float $$18 = $$6.c(0.0625F);
-      float $$19 = $$6.c();
-      float $$20 = $$6.a(0.0625F);
-      float $$21 = $$6.g();
-      float $$22 = $$6.h();
-      double $$23 = 1.0 / (double)$$3;
-      double $$24 = 1.0 / (double)$$4;
-
-      for (int $$25 = 0; $$25 < $$3; $$25++) {
-         for (int $$26 = 0; $$26 < $$4; $$26++) {
-            float $$27 = $$8 + (float)($$25 + 1);
-            float $$28 = $$8 + (float)$$25;
-            float $$29 = $$9 + (float)($$26 + 1);
-            float $$30 = $$9 + (float)$$26;
-            int $$31 = $$2[$$25 + $$26 * $$3];
-            float $$32 = $$5.a((float)($$23 * (double)($$3 - $$25)));
-            float $$33 = $$5.a((float)($$23 * (double)($$3 - ($$25 + 1))));
-            float $$34 = $$5.c((float)($$24 * (double)($$4 - $$26)));
-            float $$35 = $$5.c((float)($$24 * (double)($$4 - ($$26 + 1))));
-            this.a($$7, $$1, $$27, $$30, $$33, $$34, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$28, $$30, $$32, $$34, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$28, $$29, $$32, $$35, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$33, $$35, -0.03125F, 0, 0, -1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$12, $$13, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$28, $$29, $$11, $$13, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$28, $$30, $$11, $$14, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$27, $$30, $$12, $$14, 0.03125F, 0, 0, 1, $$31);
-            this.a($$7, $$1, $$27, $$29, $$15, $$17, -0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$16, $$17, -0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$16, $$18, 0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$15, $$18, 0.03125F, 0, 1, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$15, $$17, 0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$16, $$17, 0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$16, $$18, -0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$15, $$18, -0.03125F, 0, -1, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$20, $$21, 0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$20, $$22, 0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$30, $$19, $$22, -0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$27, $$29, $$19, $$21, -0.03125F, -1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$20, $$21, -0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$20, $$22, -0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$30, $$19, $$22, 0.03125F, 1, 0, 0, $$31);
-            this.a($$7, $$1, $$28, $$29, $$19, $$21, 0.03125F, 1, 0, 0, $$31);
-         }
-      }
-   }
-
-   private void a(flq.a $$0, flt $$1, float $$2, float $$3, float $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
-      $$1.a($$0, $$2, $$3, $$6).a(-1).a($$4, $$5).b(hks.d).c($$10).b($$0, (float)$$7, (float)$$8, (float)$$9);
+      $$1.b = $$0.l($$2);
+      $$1.a = $$0.k($$2);
    }
 }

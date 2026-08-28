@@ -75,7 +75,7 @@ public class oz implements mo {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new ayz($$4);
+            InputStream $$5 = new azh($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
             a($$0, $$6, up.a(un.a($$5, uj.a())));

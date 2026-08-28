@@ -1,41 +1,71 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class epx extends epw {
-   public static final MapCodec<epx> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epx::new));
+public abstract class epx {
+   public static final Codec<epx> h = mh.X.q().dispatch(epx::a, epy::a);
 
-   public epx(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   protected abstract epy<?> a();
 
-   @Override
-   protected eqa<?> a() {
-      return eqa.d;
-   }
+   public abstract void a(epx.a var1);
 
-   @Override
-   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
-      List<eod.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public static final class a {
+      private final dkp a;
+      private final BiConsumer<iw, ebq> b;
+      private final bai c;
+      private final ObjectArrayList<iw> d;
+      private final ObjectArrayList<iw> e;
+      private final ObjectArrayList<iw> f;
 
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azq.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azq.a($$8) * (float)$$11);
-            iw $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new eod.a($$4.b($$9, $$7, $$10), -2, false));
+      public a(dkp $$0, BiConsumer<iw, ebq> $$1, bai $$2, Set<iw> $$3, Set<iw> $$4, Set<iw> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kb::v));
+         this.e.sort(Comparator.comparingInt(kb::v));
+         this.f.sort(Comparator.comparingInt(kb::v));
       }
 
-      return $$6;
+      public void a(iw $$0, ech $$1) {
+         this.a($$0, dnq.fx.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(iw $$0, ebq $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(iw $$0) {
+         return this.a.a($$0, ebp.a::l);
+      }
+
+      public boolean a(iw $$0, Predicate<ebq> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dkp a() {
+         return this.a;
+      }
+
+      public bai b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iw> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iw> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iw> e() {
+         return this.f;
+      }
    }
 }

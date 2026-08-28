@@ -1,95 +1,69 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class fam {
-   private final aru a;
-   private final bbd b;
-   private final Map<alk, fam.b> c;
-   private final float d;
+public interface fam extends fao {
+   @Override
+   String e();
 
-   public fam(aru $$0, bbd $$1, Map<alk, fam.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(q $$0, dkl $$1) {
+      fao.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   public aru a() {
-      return this.a;
-   }
+   int f();
 
-   public bbd b() {
-      return this.b;
-   }
+   void a(int var1);
 
-   public void a(alk $$0, Consumer<daa> $$1) {
-      fam.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
+   int t();
 
-   public float c() {
-      return this.d;
-   }
+   void d(int var1);
 
-   public static class a {
-      private final aru a;
-      private final bbd.a b = new bbd.a();
-      private final Map<alk, fam.b> c = Maps.newHashMap();
-      private float d;
+   int u();
 
-      public a(aru $$0) {
-         this.a = $$0;
-      }
+   void e(int var1);
 
-      public aru a() {
-         return this.a;
-      }
+   @Nullable
+   UUID v();
 
-      public <T> fam.a a(bbb<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
+   void a(UUID var1);
 
-      public <T> fam.a b(bbb<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
+   dkg k();
 
-      public <T> T a(bbb<T> $$0) {
-         return this.b.a($$0);
-      }
+   void a(edi.d var1);
 
-      @Nullable
-      public <T> T b(bbb<T> $$0) {
-         return this.b.b($$0);
-      }
+   edi.d p();
 
-      public fam.a a(alk $$0, fam.b $$1) {
-         fam.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
+   boolean n();
 
-      public fam.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
+   void c(boolean var1);
 
-      public fam a(bbc $$0) {
-         bbd $$1 = this.b.a($$0);
-         return new fam(this.a, $$1, this.c, this.d);
-      }
-   }
+   boolean m();
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<daa> var1);
-   }
+   void a(dkg var1);
+
+   ffp<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dkf o();
 }

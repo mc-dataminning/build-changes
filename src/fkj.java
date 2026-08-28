@@ -1,4 +1,7 @@
-public enum fkj {
-   a,
-   b;
+public interface fkj {
+   void a(boolean var1);
+
+   void a();
+
+   void b();
 }

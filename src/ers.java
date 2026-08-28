@@ -1,44 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
 
-public class ers {
-   public static final Codec<ers> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(alj.a(mi.bq), efe.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ers::new)
-      )
-      .validate(ers::a);
-   public static final Codec<jg<ers>> b = alg.a(mi.bo, a);
-   private final Map<alj<efe>, efe> c;
+public class ers extends eim {
+   private final dli a;
+   private final edo b;
+   private final Optional<err> c;
 
-   public ers(Map<alj<efe>, efe> $$0) {
-      this.c = $$0;
+   public ers(dli $$0, edo $$1, Optional<err> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private ImmutableMap<alj<efe>, efe> c() {
-      Builder<alj<efe>, efe> $$0 = ImmutableMap.builder();
-      eia.a(this.c.keySet().stream()).forEach($$1 -> {
-         efe $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   public int a(ehp.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public eia a() {
-      return new eia(this.c());
+   public edm a(djo $$0) {
+      return ((eeh)this.a.a($$0.h, $$0.i)).F();
    }
 
-   public Optional<efe> b() {
-      return Optional.ofNullable(this.c.get(efe.b));
+   public ebq a(iw $$0) {
+      return this.a.a_($$0);
    }
 
-   private static DataResult<ers> a(ers $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   public int c() {
+      return this.a.K_();
+   }
+
+   public dli d() {
+      return this.a;
+   }
+
+   public Optional<err> e() {
+      return this.c;
+   }
+
+   public edo f() {
+      return this.b;
    }
 }

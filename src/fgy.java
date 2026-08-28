@@ -1,65 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fgy extends ezc {
-   public static final String a = "scoreboard";
-   private final fgx b;
+public enum fgy implements bax {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   public fgy(fgx $$0) {
-      this.b = $$0;
+   public static final bax.a<fgy> t = bax.a(fgy::values);
+   public static final IntFunction<fgy> u = ayo.a(fgy::a, values(), ayo.a.a);
+   private final int v;
+   private final String w;
+
+   private fgy(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   public void a(fgy.a $$0) {
-      $$0.a().forEach(this.b::a);
-      $$0.b().forEach(this.b::a);
-      $$0.c().forEach(($$0x, $$1) -> {
-         fgp $$2 = this.b.a($$1);
-         this.b.a($$0x, $$2);
-      });
-      $$0.d().forEach(this.b::a);
+   public int a() {
+      return this.v;
    }
 
-   public fgy.a a() {
-      Map<fgo, String> $$0 = new EnumMap<>(fgo.class);
-
-      for (fgo $$1 : fgo.values()) {
-         fgp $$2 = this.b.a($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2.c());
-         }
-      }
-
-      return new fgy.a(this.b.b().stream().map(fgp::a).toList(), this.b.g(), $$0, this.b.f().stream().map(fgs::a).toList());
+   @Override
+   public String c() {
+      return this.w;
    }
 
-   public static record a(List<fgp.a> b, List<fgx.a> c, Map<fgo, String> d, List<fgs.a> e) {
-      public static final Codec<fgy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  fgp.a.a.listOf().optionalFieldOf("Objectives", List.of()).forGetter(fgy.a::a),
-                  fgx.a.a.listOf().optionalFieldOf("PlayerScores", List.of()).forGetter(fgy.a::b),
-                  Codec.unboundedMap(fgo.t, Codec.STRING).optionalFieldOf("DisplaySlots", Map.of()).forGetter(fgy.a::c),
-                  fgs.a.a.listOf().optionalFieldOf("Teams", List.of()).forGetter(fgy.a::d)
-               )
-               .apply($$0, fgy.a::new)
-      );
-
-      public List<fgp.a> a() {
-         return this.b;
-      }
-
-      public List<fgx.a> b() {
-         return this.c;
-      }
-
-      public Map<fgo, String> c() {
-         return this.d;
-      }
-
-      public List<fgs.a> d() {
-         return this.e;
-      }
+   @Nullable
+   public static fgy a(o $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

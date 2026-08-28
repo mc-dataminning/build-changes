@@ -1,20 +1,30 @@
-public interface fmt {
-   fmj b();
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
 
-   void d();
+public class fmt extends fnf {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fmr> a;
 
-   static fmt f() {
-      return new fmt() {
-         private final fmj a = new fmj();
+   public static fmt a(String $$0) {
+      fmt $$1 = new fmt();
+      $$1.a = new ArrayList<>();
 
-         @Override
-         public fmj b() {
-            return this.a;
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         if ($$2.get("servers").isJsonArray()) {
+            for (JsonElement $$4 : $$2.get("servers").getAsJsonArray()) {
+               $$1.a.add(fmr.a($$4.getAsJsonObject()));
+            }
          }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
+      }
 
-         @Override
-         public void d() {
-         }
-      };
+      return $$1;
    }
 }

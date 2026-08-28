@@ -1,62 +1,100 @@
 import java.util.List;
+import java.util.function.Consumer;
 
-public record dbo(axv<dne> g, int h, float i, float j, int k, axv<czw> l) {
-   public static final dbo a = new dbo(axg.bR, 59, 2.0F, 0.0F, 15, axo.bd);
-   public static final dbo b = new dbo(axg.bP, 131, 4.0F, 1.0F, 5, axo.be);
-   public static final dbo c = new dbo(axg.bO, 250, 6.0F, 2.0F, 14, axo.bf);
-   public static final dbo d = new dbo(axg.bN, 1561, 8.0F, 3.0F, 10, axo.bh);
-   public static final dbo e = new dbo(axg.bQ, 32, 12.0F, 0.0F, 22, axo.bg);
-   public static final dbo f = new dbo(axg.bM, 2031, 9.0F, 4.0F, 15, axo.bi);
+public class dbo extends dag {
+   private static final o a = o.h;
+   private static final o b = o.j;
+   private static final xg c = xg.c(ag.a("item", alr.b("smithing_template.ingredients"))).a(a);
+   private static final xg d = xg.c(ag.a("item", alr.b("smithing_template.applies_to"))).a(a);
+   private static final xg o = xg.c(ag.a("item", alr.b("smithing_template"))).a(a);
+   private static final xg p = xg.c(ag.a("item", alr.b("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final xg q = xg.c(ag.a("item", alr.b("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final xg r = xg.c(ag.a("item", alr.b("smithing_template.armor_trim.base_slot_description")));
+   private static final xg s = xg.c(ag.a("item", alr.b("smithing_template.armor_trim.additions_slot_description")));
+   private static final xg t = xg.c(ag.a("item", alr.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final xg u = xg.c(ag.a("item", alr.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final xg v = xg.c(ag.a("item", alr.b("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final xg w = xg.c(ag.a("item", alr.b("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final alr x = alr.b("container/slot/helmet");
+   private static final alr y = alr.b("container/slot/chestplate");
+   private static final alr z = alr.b("container/slot/leggings");
+   private static final alr A = alr.b("container/slot/boots");
+   private static final alr B = alr.b("container/slot/hoe");
+   private static final alr C = alr.b("container/slot/axe");
+   private static final alr D = alr.b("container/slot/sword");
+   private static final alr E = alr.b("container/slot/shovel");
+   private static final alr F = alr.b("container/slot/pickaxe");
+   private static final alr G = alr.b("container/slot/ingot");
+   private static final alr H = alr.b("container/slot/redstone_dust");
+   private static final alr I = alr.b("container/slot/quartz");
+   private static final alr J = alr.b("container/slot/emerald");
+   private static final alr K = alr.b("container/slot/diamond");
+   private static final alr L = alr.b("container/slot/lapis_lazuli");
+   private static final alr M = alr.b("container/slot/amethyst_shard");
+   private final xg N;
+   private final xg O;
+   private final xg P;
+   private final xg Q;
+   private final List<alr> R;
+   private final List<alr> S;
 
-   private czw.a a(czw.a $$0) {
-      return $$0.b(this.h).a(this.l).c(this.k);
+   public dbo(xg $$0, xg $$1, xg $$2, xg $$3, List<alr> $$4, List<alr> $$5, dag.a $$6) {
+      super($$6);
+      this.N = $$0;
+      this.O = $$1;
+      this.P = $$2;
+      this.Q = $$3;
+      this.R = $$4;
+      this.S = $$5;
    }
 
-   public czw.a a(czw.a $$0, axv<dne> $$1, float $$2, float $$3, float $$4) {
-      jh<dne> $$5 = mh.a(mh.e);
-      return this.a($$0)
-         .a(kl.A, new ddd(List.of(ddd.a.a($$5.b(this.g)), ddd.a.a($$5.b($$1), this.i)), 1.0F, 1, true))
-         .a(this.a($$2, $$3))
-         .a(kl.B, new ddi(2, $$4));
+   public static dbo a(dag.a $$0) {
+      return new dbo(p, q, r, s, o(), p(), $$0);
    }
 
-   private dcr a(float $$0, float $$1) {
-      return dcr.a().a(bzc.c, new bza(czw.h, (double)($$0 + this.j), bza.a.a), bxg.b).a(bzc.e, new bza(czw.i, (double)$$1, bza.a.a), bxg.b).a();
+   public static dbo b(dag.a $$0) {
+      return new dbo(t, u, v, w, q(), r(), $$0);
    }
 
-   public czw.a a(czw.a $$0, float $$1, float $$2) {
-      jh<dne> $$3 = mh.a(mh.e);
-      return this.a($$0)
-         .a(kl.A, new ddd(List.of(ddd.a.a(jk.a(dng.bz.p()), 15.0F), ddd.a.b($$3.b(axg.bI), Float.MAX_VALUE), ddd.a.b($$3.b(axg.bH), 1.5F)), 1.0F, 2, false))
-         .a(this.b($$1, $$2))
-         .a(kl.B, new ddi(1));
+   private static List<alr> o() {
+      return List.of(x, y, z, A);
    }
 
-   private dcr b(float $$0, float $$1) {
-      return dcr.a().a(bzc.c, new bza(czw.h, (double)($$0 + this.j), bza.a.a), bxg.b).a(bzc.e, new bza(czw.i, (double)$$1, bza.a.a), bxg.b).a();
+   private static List<alr> p() {
+      return List.of(G, H, L, I, K, J, M);
    }
 
-   public axv<dne> a() {
-      return this.g;
+   private static List<alr> q() {
+      return List.of(x, D, y, F, z, C, A, B, E);
    }
 
-   public int b() {
-      return this.h;
+   private static List<alr> r() {
+      return List.of(G);
    }
 
-   public float c() {
-      return this.i;
+   @Override
+   public void a(dak $$0, dag.b $$1, ddo $$2, Consumer<xg> $$3, dbz $$4) {
+      $$3.accept(o);
+      $$3.accept(xf.a);
+      $$3.accept(d);
+      $$3.accept(xf.a().b(this.N));
+      $$3.accept(c);
+      $$3.accept(xf.a().b(this.O));
    }
 
-   public float d() {
-      return this.j;
+   public xg a() {
+      return this.P;
    }
 
-   public int e() {
-      return this.k;
+   public xg b() {
+      return this.Q;
    }
 
-   public axv<czw> f() {
-      return this.l;
+   public List<alr> c() {
+      return this.R;
+   }
+
+   public List<alr> n() {
+      return this.S;
    }
 }

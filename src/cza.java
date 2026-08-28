@@ -1,25 +1,58 @@
-public class cza extends czw implements dau {
-   public static final float a = 1.5F;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public cza(czw.a $$0) {
+public class cza extends dag {
+   private static final xg a = xg.c("item.minecraft.lodestone_compass");
+
+   public cza(dag.a $$0) {
       super($$0);
    }
 
    @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      daa $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.il, aws.h, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof aru $$4) {
-         csu.a(ctd::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
-      }
-
-      $$1.b(axb.c.b(this));
-      $$3.a(1, $$1);
-      return but.a;
+   public boolean d_(dak $$0) {
+      return $$0.c(kl.ah) || super.d_($$0);
    }
 
    @Override
-   public csu a(djz $$0, jq $$1, daa $$2, jc $$3) {
-      return new ctd($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public void a(dak $$0, asb $$1, bxe $$2, @Nullable bxo $$3) {
+      dde $$4 = $$0.a(kl.ah);
+      if ($$4 != null) {
+         dde $$5 = $$4.a($$1);
+         if ($$5 != $$4) {
+            $$0.b(kl.ah, $$5);
+         }
+      }
+   }
+
+   @Override
+   public bvc a(def $$0) {
+      iw $$1 = $$0.a();
+      dkj $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dnq.pY)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awy.oZ, awz.h, 1.0F, 1.0F);
+         csi $$3 = $$0.o();
+         dak $$4 = $$0.n();
+         boolean $$5 = !$$3.fV() && $$4.M() == 1;
+         dde $$6 = new dde(Optional.of(jf.a($$2.aj(), $$1)), true);
+         if ($$5) {
+            $$4.b(kl.ah, $$6);
+         } else {
+            dak $$7 = $$4.a(dao.rK, 1);
+            $$4.a(1, $$3);
+            $$7.b(kl.ah, $$6);
+            if (!$$3.gj().g($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bvc.a;
+      }
+   }
+
+   @Override
+   public xg a(dak $$0) {
+      return $$0.c(kl.ah) ? a : super.a($$0);
    }
 }

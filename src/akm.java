@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface akm extends akg, vs {
+   @Override
+   default vw b() {
+      return vw.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface akm {
+   void a(akn var1);
 }

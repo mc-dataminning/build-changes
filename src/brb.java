@@ -1,32 +1,26 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-public interface brb {
-   char d = '\u001e';
+public class brb implements bql<StringReader, String> {
+   private final int a;
+   private final bqf<CommandSyntaxException> b;
 
-   List<brf> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   public brb(int $$0, bqf<CommandSyntaxException> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default int f() {
-      return this.d() - this.b();
-   }
-
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @Nullable
+   public String b(bqk<StringReader> $$0) {
+      $$0.f().skipWhitespace();
+      int $$1 = $$0.g();
+      String $$2 = $$0.f().readUnquotedString();
+      if ($$2.length() < this.a) {
+         $$0.b().a($$1, this.b);
+         return null;
+      } else {
+         return $$2;
+      }
    }
 }

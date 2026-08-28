@@ -1,6 +1,7 @@
-public class hdu extends hfr {
-   public boolean a;
-   public final bwm b = new bwm();
-   public final bwm c = new bwm();
-   public final bwm d = new bwm();
+public class hdu extends hfe {
+   public final bwv a = new bwv();
+   public final bwv b = new bwv();
+   public final bwv c = new bwv();
+   public boolean d;
+   public boolean e;
 }

@@ -1,22 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class enp implements emr {
+public class enp implements enb {
    public static final Codec<enp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, enp::new)
+      $$0 -> $$0.group(Codec.list(enj.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, enp::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
+   public final List<enj.a> b;
 
-   public enp(int $$0, int $$1, float $$2) {
+   public enp(ebq $$0, ebq $$1) {
+      this(ImmutableList.of(enj.a(new evt($$0), $$1)));
+   }
+
+   public enp(List<enj.a> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 }

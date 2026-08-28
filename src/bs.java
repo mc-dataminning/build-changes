@@ -9,8 +9,8 @@ public class bs extends dl<bs.a> {
       return bs.a.a;
    }
 
-   public void a(arv $$0, @Nullable bwv $$1) {
-      faj $$2 = $$1 != null ? bz.b($$0, $$1) : null;
+   public void a(asc $$0, @Nullable bxe $$1) {
+      fat $$2 = $$1 != null ? bz.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,8 +32,8 @@ public class bs extends dl<bs.a> {
          return aq.B.a(new bs.a(Optional.empty(), Optional.empty(), Optional.of(bz.a($$0.b()))));
       }
 
-      public boolean a(arv $$0, @Nullable faj $$1) {
-         return this.c.isPresent() && !this.c.get().a((bxw)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(asc $$0, @Nullable fat $$1) {
+         return this.c.isPresent() && !this.c.get().a((byf)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override

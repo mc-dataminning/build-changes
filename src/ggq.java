@@ -1,69 +1,65 @@
-public class ggq {
-   public static void a(glg $$0, glg $$1, glg $$2, boolean $$3) {
-      glg $$4 = $$3 ? $$0 : $$1;
-      glg $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+public class ggq extends gfv {
+   private static final int a = 28;
+   private static final int b = 32;
+   private static final int c = 6;
+   private static final int d = 20;
+   private static final int e = 4;
+   private static final String f = "water_patch";
+   private static final String g = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
+
+   public ggq(gkr $$0) {
+      super($$0);
    }
 
-   public static void a(glg $$0, glg $$1, float $$2, int $$3, boolean $$4) {
-      glg $$5 = $$4 ? $$0 : $$1;
-      glg $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = azq.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = azq.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = azq.h($$8, $$6.e, (float) (-Math.PI / 2));
+   private static void a(glb $$0) {
+      int $$1 = 16;
+      int $$2 = 14;
+      int $$3 = 10;
+      $$0.a("bottom", gkw.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gkt.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", gkw.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gkt.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", gkw.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gkt.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", gkw.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gkt.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", gkw.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gkt.a(0.0F, 4.0F, 9.0F));
+      int $$4 = 20;
+      int $$5 = 7;
+      int $$6 = 6;
+      float $$7 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         gkw.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gkt.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         gkw.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gkt.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public static void a(glg $$0, glg $$1, bxn $$2, float $$3, float $$4) {
-      float $$5 = azq.a($$3 * (float) Math.PI);
-      float $$6 = azq.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == bxn.b) {
-         $$0.e = -1.8849558F + azq.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + azq.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + azq.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + azq.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
-      }
-
-      a($$0, $$1, $$4);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      a($$1);
+      return gkx.a($$0, 128, 64);
    }
 
-   public static void a(glg $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (azq.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * azq.a($$1 * 0.067F) * 0.05F;
+   public static gkx b() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", gkw.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gkt.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", gkw.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gkt.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", gkw.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gkt.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gkx.a($$0, 128, 128);
    }
 
-   public static void a(glg $$0, glg $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(glg $$0, glg $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = azq.a($$3 * (float) Math.PI);
-      float $$6 = azq.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+   public static gkx c() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("water_patch", gkw.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gkt.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gkx.a($$0, 0, 0);
    }
 }

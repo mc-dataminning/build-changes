@@ -1,23 +1,63 @@
-public class ggv extends gic<hdx> {
-   public ggv(glg $$0) {
-      super($$0, gsn::f);
+public class ggv extends ggu {
+   private static final String c = "saddle";
+   private static final String d = "bridle";
+   private static final String e = "reins";
+   private final gkr f = this.b.b("reins");
+
+   public ggv(gkr $$0) {
+      super($$0);
    }
 
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      $$1.a("back", gll.c().a(0, 0).a(0.0F, -2.5F, -2.5F, 0.0F, 5.0F, 5.0F), gli.a(-11.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F, 0.0F).a(0.8F));
-      gll $$2 = gll.c().a(0, 0).a(-12.0F, -2.0F, 0.0F, 16.0F, 4.0F, 0.0F, glk.a, 1.0F, 0.8F);
-      $$1.a("cross_1", $$2, gli.b((float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("cross_2", $$2, gli.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
-      return glm.a($$0.a($$0x -> $$0x.b(0.9F)), 32, 32);
+   public static gkx c() {
+      gkz $$0 = b();
+      glb $$1 = $$0.a();
+      glb $$2 = $$1.b("body");
+      glb $$3 = $$2.b("head");
+      gkv $$4 = new gkv(0.05F);
+      $$2.a(
+         "saddle",
+         gkw.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$4)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$4)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$4),
+         gkt.a(0.0F, 0.0F, 0.0F)
+      );
+      $$3.a(
+         "reins",
+         gkw.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         gkt.a(0.0F, 0.0F, 0.0F)
+      );
+      $$3.a(
+         "bridle",
+         gkw.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$4)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$4)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$4)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         gkt.a(0.0F, 0.0F, 0.0F)
+      );
+      return gkx.a($$0, 128, 128);
    }
 
-   public void a(hdx $$0) {
+   @Override
+   public void a(hdq $$0) {
       super.a($$0);
-      if ($$0.c > 0.0F) {
-         float $$1 = -azq.a($$0.c * 3.0F) * $$0.c;
-         this.v.g += $$1 * (float) (Math.PI / 180.0);
-      }
+      this.f.k = $$0.b;
    }
 }

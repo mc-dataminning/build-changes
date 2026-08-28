@@ -1,16 +1,28 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
 public class bhr extends DataFix {
    public bhr(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("ExitPortalLocation", bbq::a);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "Map id fix", this.getInputSchema().getType(bjd.j), this.getOutputSchema().getType(bjd.j), $$0 -> $$0.createMap(Map.of($$0.createString("data"), $$0))
-      );
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bjm.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", a($$2));
+            }
+         }));
    }
 }

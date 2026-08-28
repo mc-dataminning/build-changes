@@ -1,92 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class fee implements feg {
-   private static final String d = "block_entity";
-   private static final fee.a e = new fee.a() {
-      @Override
-      public va a(faj $$0) {
-         dye $$1 = $$0.c(fdd.h);
-         return $$1 != null ? $$1.b($$1.i().J_()) : null;
-      }
+public class fee {
+   public static final fed a = a("inverted", fdz.a);
+   public static final fed b = a("any_of", fdq.a);
+   public static final fed c = a("all_of", fdp.a);
+   public static final fed d = a("random_chance", feh.a);
+   public static final fed e = a("random_chance_with_enchanted_bonus", fei.a);
+   public static final fed f = a("entity_properties", fef.a);
+   public static final fed g = a("killed_by_player", feg.a);
+   public static final fed h = a("entity_scores", fdx.a);
+   public static final fed i = a("block_state_property", feb.a);
+   public static final fed j = a("match_tool", fej.a);
+   public static final fed k = a("table_bonus", fdr.a);
+   public static final fed l = a("survives_explosion", fdy.a);
+   public static final fed m = a("damage_source_properties", fdv.a);
+   public static final fed n = a("location_check", fea.a);
+   public static final fed o = a("weather_check", fem.a);
+   public static final fed p = a("reference", fdt.a);
+   public static final fed q = a("time_check", fek.a);
+   public static final fed r = a("value_check", fel.a);
+   public static final fed s = a("enchantment_active_check", fdw.a);
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<bbb<?>> b() {
-         return Set.of(fdd.h);
-      }
-   };
-   public static final fee a = new fee(e);
-   private static final Codec<fee.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         faj.b $$1 = faj.b.a($$0);
-         return b($$1);
-      }
-   }, fee.a::a);
-   public static final MapCodec<fee> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, fee::new));
-   public static final Codec<fee> c = f.xmap(fee::new, $$0 -> $$0.g);
-   private final fee.a g;
-
-   private static fee.a b(final faj.b $$0) {
-      return new fee.a() {
-         @Nullable
-         @Override
-         public va a(faj $$0x) {
-            bwv $$1 = $$0.c($$0.a());
-            return $$1 != null ? da.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<bbb<?>> b() {
-            return Set.of($$0.a());
-         }
-      };
-   }
-
-   private fee(fee.a $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public fef a() {
-      return feh.c;
-   }
-
-   @Nullable
-   @Override
-   public va a(faj $$0) {
-      return this.g.a($$0);
-   }
-
-   @Override
-   public Set<bbb<?>> b() {
-      return this.g.b();
-   }
-
-   public static feg a(faj.b $$0) {
-      return new fee(b($$0));
-   }
-
-   interface a {
-      @Nullable
-      va a(faj var1);
-
-      String a();
-
-      Set<bbb<?>> b();
+   private static fed a(String $$0, MapCodec<? extends fec> $$1) {
+      return jt.a(mh.F, alr.b($$0), new fed($$1));
    }
 }

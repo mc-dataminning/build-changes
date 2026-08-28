@@ -1,10 +1,14 @@
-public class czz extends czo {
-   public czz(bxe<? extends cnw> $$0, czw.a $$1) {
-      super($$0, $$1);
+public class czz extends dbn {
+   public czz(dno $$0, dno $$1, dag.a $$2) {
+      super($$2, $$0, $$1, jc.b);
    }
 
    @Override
-   protected boolean a(crz $$0, jc $$1, daa $$2, iw $$3) {
-      return !$$0.dV().t($$3) && $$0.a($$3, $$1, $$2);
+   protected boolean a(dkm $$0, ebq $$1, iw $$2) {
+      if ($$1.b() instanceof dxe $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 }

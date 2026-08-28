@@ -1,213 +1,182 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fon extends hro {
-   private static final alk a = alk.b("widget/slot_frame");
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 80;
-   private final gaf C;
+public class fon extends hrc {
+   static final Logger c = LogUtils.getLogger();
+   private static final xg C = xg.c("mco.selectServer.create");
+   private static final xg D = xg.c("mco.selectServer.create.subtitle");
+   private static final xg E = xg.c("mco.configure.world.switch.slot");
+   private static final xg F = xg.c("mco.configure.world.switch.slot.subtitle");
+   private static final xg G = xg.c("mco.reset.world.generate");
+   private static final xg H = xg.c("mco.reset.world.title");
+   private static final xg I = xg.c("mco.reset.world.warning");
+   public static final xg a = xg.c("mco.create.world.reset.title");
+   private static final xg J = xg.c("mco.reset.world.resetting.screen.title");
+   private static final xg K = xg.c("mco.reset.world.template");
+   private static final xg L = xg.c("mco.reset.world.adventure");
+   private static final xg M = xg.c("mco.reset.world.experience");
+   private static final xg N = xg.c("mco.reset.world.inspiration");
+   private final fzq O;
+   private final fmr P;
+   private final xg Q;
+   private final int R;
+   private final xg S;
+   private static final alr T = alr.b("textures/gui/realms/upload.png");
+   private static final alr U = alr.b("textures/gui/realms/adventure.png");
+   private static final alr V = alr.b("textures/gui/realms/survival_spawn.png");
+   private static final alr W = alr.b("textures/gui/realms/new_world.png");
+   private static final alr X = alr.b("textures/gui/realms/experience.png");
+   private static final alr Y = alr.b("textures/gui/realms/inspiration.png");
+   fni Z;
+   fni aa;
+   fni ab;
+   fni ac;
+   public final int b;
    @Nullable
-   private fng D;
-   private final long E;
-   private final xc[] F = new xc[]{xc.c("mco.brokenworld.message.line1"), xc.c("mco.brokenworld.message.line2")};
-   private int G;
-   private final List<Integer> H = Lists.newArrayList();
-   private int I;
+   private final fpq ad;
+   private final Runnable ae;
+   private final fxm af = new fxm(this);
 
-   public fon(gaf $$0, long $$1, boolean $$2) {
-      super($$2 ? xc.c("mco.brokenworld.minigame.title") : xc.c("mco.brokenworld.title"));
-      this.C = $$0;
-      this.E = $$1;
+   private fon(fzq $$0, fmr $$1, int $$2, xg $$3, xg $$4, int $$5, xg $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   }
+
+   public fon(fzq $$0, fmr $$1, int $$2, xg $$3, xg $$4, int $$5, xg $$6, @Nullable fpq $$7, Runnable $$8) {
+      super($$3);
+      this.O = $$0;
+      this.P = $$1;
+      this.b = $$2;
+      this.Q = $$4;
+      this.R = $$5;
+      this.S = $$6;
+      this.ad = $$7;
+      this.ae = $$8;
+   }
+
+   public static fon a(fzq $$0, fmr $$1, fpq $$2, Runnable $$3) {
+      return new fon($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
+   }
+
+   public static fon a(fzq $$0, int $$1, fmr $$2, Runnable $$3) {
+      return new fon($$0, $$2, $$1, E, F, -6250336, a, $$3);
+   }
+
+   public static fon a(fzq $$0, fmr $$1, Runnable $$2) {
+      return new fon($$0, $$1, $$1.p, H, I, -65536, J, $$2);
    }
 
    @Override
-   public void aS_() {
-      this.G = this.n / 2 - 150;
-      this.c(fun.a(xb.k, $$0 -> this.aP_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
-      if (this.D == null) {
-         this.a(this.E);
-      } else {
-         this.E();
-      }
-   }
+   public void aT_() {
+      fxq $$0 = this.af.a(fxq.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new fvf(this.l, this.p), fxp::b);
+      $$0.a(new fvf(this.Q, this.p).b(this.R), fxp::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            flq $$0 = flq.a();
 
-   @Override
-   public xc i() {
-      return xf.a(Stream.concat(Stream.of(this.l), Stream.of(this.F)).collect(Collectors.toList()), xb.v);
-   }
-
-   private void E() {
-      for (Entry<Integer, fnm> $$0 : this.D.i.entrySet()) {
-         int $$1 = $$0.getKey();
-         boolean $$2 = $$1 != this.D.p || this.D.i();
-         fun $$3;
-         if ($$2) {
-            $$3 = fun.a(xc.c("mco.brokenworld.play"), $$1x -> this.m.a(new fow(this.C, new fqk(this.D.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
-            $$3.j = !this.D.i.get($$1).m;
-         } else {
-            $$3 = fun.a(
-                  xc.c("mco.brokenworld.download"),
-                  $$1x -> this.m.a(fpc.a(this, xc.c("mco.configure.world.restore.download.question.line1"), $$1xx -> this.b($$1)))
-               )
-               .a(this.a($$1), g(8), 80, 20)
-               .a();
-         }
-
-         if (this.H.contains($$1)) {
-            $$3.j = false;
-            $$3.b(xc.c("mco.brokenworld.downloaded"));
-         }
-
-         this.c($$3);
-      }
-   }
-
-   @Override
-   public void e() {
-      this.I++;
-   }
-
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-
-      for (int $$4 = 0; $$4 < this.F.length; $$4++) {
-         $$0.a(this.p, this.F[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
-      }
-
-      if (this.D != null) {
-         for (Entry<Integer, fnm> $$5 : this.D.i.entrySet()) {
-            if ($$5.getValue().l != null && $$5.getValue().k != -1L) {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.D.p == $$5.getKey() && !this.F(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  $$5.getValue().k,
-                  $$5.getValue().l,
-                  $$5.getValue().m
-               );
-            } else {
-               this.a(
-                  $$0,
-                  this.a($$5.getKey()),
-                  g(1) + 5,
-                  $$1,
-                  $$2,
-                  this.D.p == $$5.getKey() && !this.F(),
-                  $$5.getValue().a($$5.getKey()),
-                  $$5.getKey(),
-                  -1L,
-                  null,
-                  $$5.getValue().m
-               );
-            }
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      return this.G + ($$0 - 1) * 110;
-   }
-
-   private void a(long $$0) {
-      new Thread(() -> {
-         fmf $$1 = fmf.a();
-
-         try {
-            this.D = $$1.a($$0);
-            this.E();
-         } catch (fob var5) {
-            b.error("Couldn't get own world", var5);
-            this.m.a(new fou(var5, this.C));
-         }
-      }).start();
-   }
-
-   public void b() {
-      new Thread(() -> {
-         fmf $$0 = fmf.a();
-         if (this.D.e == fng.c.a) {
-            this.m.execute(() -> this.m.a(new fow(this, new fqe(this.D, this, true, this.m))));
-         } else {
             try {
-               fng $$1 = $$0.a(this.E);
-               this.m.execute(() -> fma.a($$1, this));
-            } catch (fob var3) {
-               b.error("Couldn't get own world", var3);
-               this.m.execute(() -> this.m.a(this.C));
+               fni $$1 = $$0.a(1, 10, fmr.d.a);
+               fni $$2 = $$0.a(1, 10, fmr.d.c);
+               fni $$3 = $$0.a(1, 10, fmr.d.d);
+               fni $$4 = $$0.a(1, 10, fmr.d.e);
+               fon.this.m.execute(() -> {
+                  fon.this.Z = $$1;
+                  fon.this.aa = $$2;
+                  fon.this.ab = $$3;
+                  fon.this.ac = $$4;
+               });
+            } catch (fnm var6) {
+               fon.c.error("Couldn't fetch templates in reset world", var6);
             }
          }
       }).start();
-   }
-
-   private void b(int $$0) {
-      fmf $$1 = fmf.a();
-
-      try {
-         fnv $$2 = $$1.b(this.D.a, $$0);
-         fot $$3 = new fot(this, $$2, this.D.a($$0), $$1x -> {
-            if ($$1x) {
-               this.H.add($$0);
-               this.p();
-               this.E();
-            } else {
-               this.m.a(this);
-            }
-         });
-         this.m.a($$3);
-      } catch (fob var5) {
-         b.error("Couldn't download world data", var5);
-         this.m.a(new fou(var5, this));
-      }
+      fxl $$1 = this.af.c(new fxl());
+      fxl.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fon.a(this.m.h, G, W, $$0x -> flw.a(this.m, this.O, this, this.b, this.P, this.ad)));
+      $$2.a(new fon.a(this.m.h, foo.a, T, $$0x -> this.m.a(new foo(this.ad, this.P.a, this.b, this))));
+      $$2.a(new fon.a(this.m.h, K, V, $$0x -> this.m.a(new fop(K, this::a, fmr.d.a, this.Z))));
+      $$2.a(fxr.b(16), 3);
+      $$2.a(new fon.a(this.m.h, L, U, $$0x -> this.m.a(new fop(L, this::a, fmr.d.c, this.aa))));
+      $$2.a(new fon.a(this.m.h, M, X, $$0x -> this.m.a(new fop(M, this::a, fmr.d.d, this.ab))));
+      $$2.a(new fon.a(this.m.h, N, Y, $$0x -> this.m.a(new fop(N, this::a, fmr.d.e, this.ac))));
+      this.af.b(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      this.af.a($$1x -> {
+         ftw var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.C);
+   protected void c() {
+      this.af.a();
    }
 
-   private boolean F() {
-      return this.D != null && this.D.i();
+   @Override
+   public xg i() {
+      return xf.a(this.n(), this.Q);
    }
 
-   private void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
-      alk $$11;
-      if ($$10) {
-         $$11 = foh.a;
-      } else if ($$9 != null && $$8 != -1L) {
-         $$11 = fpu.a(String.valueOf($$8), $$9);
-      } else if ($$7 == 1) {
-         $$11 = foh.b;
-      } else if ($$7 == 2) {
-         $$11 = foh.c;
-      } else if ($$7 == 3) {
-         $$11 = foh.d;
-      } else {
-         $$11 = fpu.a(String.valueOf(this.D.r), this.D.s);
+   @Override
+   public void aQ_() {
+      this.m.a(this.O);
+   }
+
+   private void a(@Nullable fnh $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new fpr($$0, this.P.a, this.S, this.ae));
       }
 
-      if ($$5) {
-         float $$17 = 0.9F + 0.1F * azq.b((float)this.I * 0.2F);
-         $$0.a(gsn::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, aya.a(1.0F, $$17, $$17, $$17));
-         $$0.a(gsn::H, a, $$1, $$2, 80, 80);
-      } else {
-         int $$18 = aya.a(1.0F, 0.56F, 0.56F, 0.56F);
-         $$0.a(gsn::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$18);
-         $$0.a(gsn::H, a, $$1, $$2, 80, 80, $$18);
+      fll.g();
+   }
+
+   private void a(fpo $$0) {
+      List<fpo> $$1 = new ArrayList<>();
+      if (this.ad != null) {
+         $$1.add(this.ad);
       }
 
-      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
+      if (this.b != this.P.p) {
+         $$1.add(new fpv(this.P.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.m.a(new fog(this.O, $$1.toArray(new fpo[0])));
+   }
+
+   class a extends fty {
+      private static final alr b = alr.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final alr v;
+
+      a(final fti $$0, final xg $$1, final alr $$2, final fty.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
+      }
+
+      @Override
+      public void b(ftk $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.D();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = ayh.a(1.0F, 0.56F, 0.56F, 0.56F);
+         }
+
+         int $$6 = this.F();
+         int $$7 = this.G();
+         $$0.a(gry::H, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(gry::H, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fon.this.p, this.B(), $$6 + 28, $$7 - 14, $$8);
+      }
    }
 }

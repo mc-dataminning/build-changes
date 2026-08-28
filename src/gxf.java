@@ -1,29 +1,27 @@
-public class gxf extends gzq<ckv, hdt, ggp> {
-   private static final alk a = alk.b("textures/entity/allay/allay.png");
+public class gxf extends gzb<cke, hfe, ggz> {
+   private static final alr a = alr.b("textures/entity/fish/cod.png");
 
-   public gxf(gyk.a $$0) {
-      super($$0, new ggp($$0.a(glf.c)), 0.4F);
-      this.a(new hcq<>(this));
+   public gxf(gxv.a $$0) {
+      super($$0, new ggz($$0.a(gkq.ab)), 0.3F);
    }
 
-   public alk a(hdt $$0) {
+   @Override
+   public alr b(hfe $$0) {
       return a;
    }
 
-   public hdt a() {
-      return new hdt();
+   public hfe a() {
+      return new hfe();
    }
 
-   public void a(ckv $$0, hdt $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hdv.a($$0, $$1, this.h);
-      $$1.a = $$0.q();
-      $$1.b = $$0.t();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(ckv $$0, iw $$1) {
-      return 15;
+   @Override
+   protected void a(hfe $$0, fld $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azz.a(0.6F * $$0.v);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.an) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

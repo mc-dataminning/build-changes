@@ -36,7 +36,7 @@ public class sx {
    public sx a(int $$0, Runnable $$1) {
       this.b.add(so.a(() -> {
          if (this.a.p() < this.c + $$0) {
-            throw new si(xc.c("test.error.sequence.not_completed"), this.a.p());
+            throw new si(xg.c("test.error.sequence.not_completed"), this.a.p());
          } else {
             this.c($$1);
          }
@@ -48,7 +48,7 @@ public class sx {
       this.b.add(so.a(() -> {
          if (this.a.p() < this.c + $$0) {
             this.c($$1);
-            throw new si(xc.c("test.error.sequence.not_completed"), this.a.p());
+            throw new si(xg.c("test.error.sequence.not_completed"), this.a.p());
          }
       }));
       return this;
@@ -102,7 +102,7 @@ public class sx {
          int $$4 = this.c;
          this.c = $$0;
          if ($$2.a != null && $$2.a != (long)$$3) {
-            this.a.a(new si(xc.a("test.error.sequence.invalid_tick", (long)$$4 + $$2.a), $$0));
+            this.a.a(new si(xg.a("test.error.sequence.invalid_tick", (long)$$4 + $$2.a), $$0));
             break;
          }
       }
@@ -124,9 +124,9 @@ public class sx {
          int $$0 = sx.this.a.p();
          if (this.c != $$0) {
             if (this.c == -1) {
-               throw new si(xc.c("test.error.sequence.condition_not_triggered"), $$0);
+               throw new si(xg.c("test.error.sequence.condition_not_triggered"), $$0);
             } else {
-               throw new si(xc.a("test.error.sequence.condition_already_triggered", this.c), $$0);
+               throw new si(xg.a("test.error.sequence.condition_already_triggered", this.c), $$0);
             }
          }
       }

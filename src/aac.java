@@ -1,11 +1,23 @@
-public interface aac extends abv {
-   void a(aaf var1);
+import java.util.Optional;
+import java.util.UUID;
 
-   void a(aag var1);
+public record aac(Optional<UUID> b) implements zo<zw> {
+   public static final ze<vy, aac> a = zo.a(aac::a, aac::new);
 
-   void a(aae var1);
+   private aac(vy $$0) {
+      this($$0.b(ka.g));
+   }
 
-   void a(aah var1);
+   private void a(vy $$0) {
+      $$0.a(this.b, ka.g);
+   }
 
-   void a(aad var1);
+   @Override
+   public zq<aac> a() {
+      return aai.f;
+   }
+
+   public void a(zw $$0) {
+      $$0.a(this);
+   }
 }

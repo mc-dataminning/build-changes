@@ -1,22 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cir {
-   @Nullable
-   public static ffs a(bye $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = ciq.a($$0, $$1);
-      return cit.a($$0, () -> {
-         iw $$9 = cit.a($$0.dY(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            iw $$10 = cis.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cit.a($$10, $$0.dY().a($$6 - $$7 + 1) + $$7, $$0.dV().ao(), $$1xx -> ciq.c($$0, $$1xx));
-               return !ciq.a($$0, $$10) && !ciq.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class cir extends cih {
+   private static final ImmutableMap<bxn<?>, Float> a = ImmutableMap.builder()
+      .put(bxn.L, 8.0F)
+      .put(bxn.T, 12.0F)
+      .put(bxn.an, 8.0F)
+      .put(bxn.ao, 12.0F)
+      .put(bxn.aU, 15.0F)
+      .put(bxn.ba, 12.0F)
+      .put(bxn.bD, 8.0F)
+      .put(bxn.bF, 10.0F)
+      .put(bxn.bO, 10.0F)
+      .put(bxn.bP, 8.0F)
+      .put(bxn.bR, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(asb $$0, byf $$1, byf $$2) {
+      return this.b($$2) && this.a($$1, $$2);
+   }
+
+   private boolean a(byf $$0, byf $$1) {
+      float $$2 = (Float)a.get($$1.an());
+      return $$1.g($$0) <= (double)($$2 * $$2);
+   }
+
+   @Override
+   protected chh<byf> b() {
+      return chh.B;
+   }
+
+   private boolean b(byf $$0) {
+      return a.containsKey($$0.an());
    }
 }

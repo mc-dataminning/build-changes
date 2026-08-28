@@ -1,13 +1,41 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
-public class bfv extends bhy {
-   public bfv(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bjd.s, "minecraft:sign");
+public class bfv extends big {
+   private final String c;
+   private final IntFunction<String> d;
+
+   public bfv(Schema $$0, String $$1, TypeReference $$2, String $$3, String $$4, IntFunction<String> $$5) {
+      super($$0, false, $$1, $$2, $$3);
+      this.c = $$4;
+      this.d = $$5;
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Function<Dynamic<T>, Dynamic<T>> $$3) {
+      return $$0.map($$4 -> {
+         DynamicOps<T> $$5 = $$0.getOps();
+         Function<T, T> $$6 = $$2xx -> (T)$$3.apply(new Dynamic($$5, $$2xx)).getValue();
+         return $$5.get($$4, $$1).map($$4x -> $$5.set($$4, $$2, $$6.apply((T)$$4x))).result().orElse($$4);
+      });
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4");
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> a(
+               $$0x,
+               this.c,
+               "variant",
+               $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asNumber().map($$1 -> $$0xx.createString(this.d.apply($$1.intValue()))).result(), $$0xx)
+            )
+      );
    }
 }

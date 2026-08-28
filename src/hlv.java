@@ -1,17 +1,40 @@
-import java.io.IOException;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class hlv extends avm<int[]> {
-   private static final alk a = alk.b("textures/colormap/dry_foliage.png");
+public abstract class hlv implements avi, AutoCloseable {
+   private final hkp a;
+   private final alr b;
+   private final Set<aun<?>> c;
 
-   protected int[] a(avh $$0, brd $$1) {
-      try {
-         return hlz.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load dry foliage color texture", var4);
+   public hlv(hks $$0, alr $$1, alr $$2) {
+      this($$0, $$1, $$2, hkl.a);
+   }
+
+   public hlv(hks $$0, alr $$1, alr $$2, Set<aun<?>> $$3) {
+      this.b = $$2;
+      this.a = new hkp($$1);
+      $$0.a(this.a.e(), this.a);
+      this.c = $$3;
+   }
+
+   protected hkq a(alr $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public final CompletableFuture<Void> reload(avi.a $$0, avo $$1, Executor $$2, Executor $$3) {
+      return hkl.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hkl.a::a).thenCompose($$0::wait).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hkl.a $$0) {
+      try (brr $$1 = brl.a().d("upload")) {
+         this.a.a($$0);
       }
    }
 
-   protected void a(int[] $$0, avh $$1, brd $$2) {
-      djn.a($$0);
+   @Override
+   public void close() {
+      this.a.d();
    }
 }

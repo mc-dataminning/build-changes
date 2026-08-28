@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fhv
-@fht
-interface fif {
+@Nonnull
+@TypeQualifierDefault({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface fif {
 }

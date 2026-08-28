@@ -1,56 +1,72 @@
-public class gqt extends gqm {
-   private float a;
+public class gqt {
+   public static final xg a = xg.c("quickplay.error.title");
+   private static final xg b = xg.c("quickplay.error.invalid_identifier");
+   private static final xg c = xg.c("quickplay.error.realm_connect");
+   private static final xg d = xg.c("quickplay.error.realm_permission");
+   private static final xg e = xg.c("gui.toTitle");
+   private static final xg f = xg.c("gui.toWorld");
+   private static final xg g = xg.c("gui.toRealms");
 
-   gqt(gmd $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   public static void a(fqq $$0, gfs.c $$1, flq $$2) {
+      String $$3 = $$1.c();
+      String $$4 = $$1.d();
+      String $$5 = $$1.e();
+      if (!bay.h($$3)) {
+         a($$0, $$3);
+      } else if (!bay.h($$4)) {
+         b($$0, $$4);
+      } else if (!bay.h($$5)) {
+         a($$0, $$2, $$5);
+      }
    }
 
-   @Override
-   public gpq b() {
-      return gpq.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   private static void a(fqq $$0, String $$1) {
+      if (!$$0.m().b($$1)) {
+         fzq $$2 = new gez(new fzs());
+         $$0.a(new fyx($$2, a, b, f));
       } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * azq.b(this.a));
-         this.l = this.l + (double)(0.6F * azq.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(iw.a(this.g, this.h, this.i)).a(axl.a) || this.m) {
-            this.k();
-         }
-
-         this.a += 0.08F;
+         $$0.x().a($$1, () -> $$0.a(new fzs()));
       }
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
-
-      public a(gqh $$0) {
-         this.a = $$0;
+   private static void b(fqq $$0, String $$1) {
+      gme $$2 = new gme($$0);
+      $$2.a();
+      gmd $$3 = $$2.a($$1);
+      if ($$3 == null) {
+         $$3 = new gmd(hly.a("selectServer.defaultName"), $$1, gmd.c.c);
+         $$2.a($$3, true);
+         $$2.b();
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gqt $$8 = new gqt($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      gng $$4 = gng.a($$1);
+      fyp.a(new gci(new fzs()), $$0, $$4, $$3, true, null);
+   }
+
+   private static void a(fqq $$0, flq $$1, String $$2) {
+      long $$3;
+      fmt $$4;
+      try {
+         $$3 = Long.parseLong($$2);
+         $$4 = $$1.c();
+      } catch (NumberFormatException var9) {
+         fzq $$6 = new fll(new fzs());
+         $$0.a(new fyx($$6, a, b, g));
+         return;
+      } catch (fnm var10) {
+         fzq $$8 = new fzs();
+         $$0.a(new fyx($$8, a, c, e));
+         return;
+      }
+
+      fmr $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
+      if ($$11 == null) {
+         fzq $$12 = new fll(new fzs());
+         $$0.a(new fyx($$12, a, d, g));
+      } else {
+         fzs $$13 = new fzs();
+         fpn $$14 = new fpn($$13, $$11);
+         $$0.a(new fog($$13, $$14));
       }
    }
 }

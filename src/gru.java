@@ -1,392 +1,70 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
 public class gru {
-   private static final Map<dne, gsn> a = ag.a(Maps.newHashMap(), $$0 -> {
-      gsn $$1 = gsn.t();
-      $$0.put(dng.gh, $$1);
-      gsn $$2 = gsn.e();
-      $$0.put(dng.i, $$2);
-      $$0.put(dng.fo, $$2);
-      $$0.put(dng.fq, $$2);
-      $$0.put(dng.gg, $$2);
-      $$0.put(dng.hD, $$2);
-      $$0.put(dng.fp, $$2);
-      $$0.put(dng.aN, $$2);
-      $$0.put(dng.aK, $$2);
-      $$0.put(dng.aL, $$2);
-      $$0.put(dng.aO, $$2);
-      $$0.put(dng.aP, $$2);
-      $$0.put(dng.aM, $$2);
-      $$0.put(dng.aQ, $$2);
-      $$0.put(dng.aR, $$2);
-      $$0.put(dng.aT, $$2);
-      $$0.put(dng.aU, $$2);
-      $$0.put(dng.ag, $$2);
-      $$0.put(dng.aS, $$2);
-      gsn $$3 = gsn.f();
-      $$0.put(dng.z, $$3);
-      $$0.put(dng.A, $$3);
-      $$0.put(dng.B, $$3);
-      $$0.put(dng.C, $$3);
-      $$0.put(dng.D, $$3);
-      $$0.put(dng.E, $$3);
-      $$0.put(dng.F, $$3);
-      $$0.put(dng.G, $$3);
-      $$0.put(dng.aX, $$3);
-      $$0.put(dng.bg, $$3);
-      $$0.put(dng.bh, $$3);
-      $$0.put(dng.bi, $$3);
-      $$0.put(dng.bj, $$3);
-      $$0.put(dng.bk, $$3);
-      $$0.put(dng.bl, $$3);
-      $$0.put(dng.bm, $$3);
-      $$0.put(dng.bn, $$3);
-      $$0.put(dng.bo, $$3);
-      $$0.put(dng.bp, $$3);
-      $$0.put(dng.bq, $$3);
-      $$0.put(dng.br, $$3);
-      $$0.put(dng.bs, $$3);
-      $$0.put(dng.bt, $$3);
-      $$0.put(dng.bu, $$3);
-      $$0.put(dng.bv, $$3);
-      $$0.put(dng.bw, $$3);
-      $$0.put(dng.bx, $$3);
-      $$0.put(dng.bz, $$3);
-      $$0.put(dng.bA, $$3);
-      $$0.put(dng.bB, $$3);
-      $$0.put(dng.bD, $$3);
-      $$0.put(dng.bC, $$3);
-      $$0.put(dng.bE, $$3);
-      $$0.put(dng.bF, $$3);
-      $$0.put(dng.bG, $$3);
-      $$0.put(dng.bH, $$3);
-      $$0.put(dng.cb, $$3);
-      $$0.put(dng.uh, $$3);
-      $$0.put(dng.ui, $$3);
-      $$0.put(dng.cd, $$3);
-      $$0.put(dng.ce, $$3);
-      $$0.put(dng.cf, $$3);
-      $$0.put(dng.cg, $$3);
-      $$0.put(dng.ch, $$3);
-      $$0.put(dng.ci, $$3);
-      $$0.put(dng.cj, $$3);
-      $$0.put(dng.ck, $$3);
-      $$0.put(dng.cl, $$3);
-      $$0.put(dng.cm, $$3);
-      $$0.put(dng.cn, $$3);
-      $$0.put(dng.co, $$3);
-      $$0.put(dng.cp, $$3);
-      $$0.put(dng.cq, $$3);
-      $$0.put(dng.cz, $$3);
-      $$0.put(dng.cA, $$3);
-      $$0.put(dng.er, $$3);
-      $$0.put(dng.es, $$3);
-      $$0.put(dng.cB, $$3);
-      $$0.put(dng.cC, $$3);
-      $$0.put(dng.cD, $$3);
-      $$0.put(dng.ub, $$3);
-      $$0.put(dng.uc, $$3);
-      $$0.put(dng.cH, $$3);
-      $$0.put(dng.cM, $$3);
-      $$0.put(dng.cZ, $$3);
-      $$0.put(dng.da, $$3);
-      $$0.put(dng.db, $$3);
-      $$0.put(dng.dN, $$3);
-      $$0.put(dng.ea, $$3);
-      $$0.put(dng.eb, $$3);
-      $$0.put(dng.eg, $$3);
-      $$0.put(dng.ej, $$3);
-      $$0.put(dng.ey, $$3);
-      $$0.put(dng.eP, $$3);
-      $$0.put(dng.eQ, $$3);
-      $$0.put(dng.eR, $$3);
-      $$0.put(dng.eS, $$3);
-      $$0.put(dng.eT, $$3);
-      $$0.put(dng.eU, $$3);
-      $$0.put(dng.eV, $$3);
-      $$0.put(dng.eW, $$3);
-      $$0.put(dng.ps, $$3);
-      $$0.put(dng.pt, $$3);
-      $$0.put(dng.eX, $$3);
-      $$0.put(dng.eY, $$3);
-      $$0.put(dng.sC, $$3);
-      $$0.put(dng.sD, $$3);
-      $$0.put(dng.sF, $$3);
-      $$0.put(dng.sE, $$3);
-      $$0.put(dng.sG, $$3);
-      $$0.put(dng.sH, $$3);
-      $$0.put(dng.sJ, $$3);
-      $$0.put(dng.sI, $$3);
-      $$0.put(dng.ft, $$3);
-      $$0.put(dng.fu, $$3);
-      $$0.put(dng.fv, $$3);
-      $$0.put(dng.fw, $$3);
-      $$0.put(dng.fx, $$3);
-      $$0.put(dng.uf, $$3);
-      $$0.put(dng.ug, $$3);
-      $$0.put(dng.fy, $$3);
-      $$0.put(dng.fz, $$3);
-      $$0.put(dng.fF, $$3);
-      $$0.put(dng.fP, $$3);
-      $$0.put(dng.fR, $$3);
-      $$0.put(dng.gb, $$3);
-      $$0.put(dng.gn, $$3);
-      $$0.put(dng.gq, $$3);
-      $$0.put(dng.gs, $$3);
-      $$0.put(dng.gt, $$3);
-      $$0.put(dng.gu, $$3);
-      $$0.put(dng.gv, $$3);
-      $$0.put(dng.gw, $$3);
-      $$0.put(dng.gx, $$3);
-      $$0.put(dng.gy, $$3);
-      $$0.put(dng.gz, $$3);
-      $$0.put(dng.gA, $$3);
-      $$0.put(dng.gB, $$3);
-      $$0.put(dng.gC, $$3);
-      $$0.put(dng.gD, $$3);
-      $$0.put(dng.uj, $$3);
-      $$0.put(dng.uk, $$3);
-      $$0.put(dng.gE, $$3);
-      $$0.put(dng.gF, $$3);
-      $$0.put(dng.gG, $$3);
-      $$0.put(dng.gH, $$3);
-      $$0.put(dng.gI, $$3);
-      $$0.put(dng.gJ, $$3);
-      $$0.put(dng.gK, $$3);
-      $$0.put(dng.gL, $$3);
-      $$0.put(dng.gM, $$3);
-      $$0.put(dng.gN, $$3);
-      $$0.put(dng.gO, $$3);
-      $$0.put(dng.gP, $$3);
-      $$0.put(dng.gQ, $$3);
-      $$0.put(dng.gR, $$3);
-      $$0.put(dng.gS, $$3);
-      $$0.put(dng.tS, $$3);
-      $$0.put(dng.tT, $$3);
-      $$0.put(dng.gr, $$3);
-      $$0.put(dng.gT, $$3);
-      $$0.put(dng.gU, $$3);
-      $$0.put(dng.hz, $$3);
-      $$0.put(dng.hI, $$3);
-      $$0.put(dng.iA, $$3);
-      $$0.put(dng.jf, $$3);
-      $$0.put(dng.jg, $$3);
-      $$0.put(dng.jh, $$3);
-      $$0.put(dng.ji, $$3);
-      $$0.put(dng.jj, $$3);
-      $$0.put(dng.jk, $$3);
-      $$0.put(dng.kQ, $$3);
-      $$0.put(dng.kR, $$3);
-      $$0.put(dng.kS, $$3);
-      $$0.put(dng.kT, $$3);
-      $$0.put(dng.kU, $$3);
-      $$0.put(dng.kV, $$3);
-      $$0.put(dng.kW, $$3);
-      $$0.put(dng.kX, $$3);
-      $$0.put(dng.kY, $$3);
-      $$0.put(dng.su, $$3);
-      $$0.put(dng.sv, $$3);
-      $$0.put(dng.sx, $$3);
-      $$0.put(dng.sw, $$3);
-      $$0.put(dng.sy, $$3);
-      $$0.put(dng.sz, $$3);
-      $$0.put(dng.sB, $$3);
-      $$0.put(dng.sA, $$3);
-      $$0.put(dng.kZ, $$3);
-      $$0.put(dng.la, $$3);
-      $$0.put(dng.lb, $$3);
-      $$0.put(dng.cc, $$3);
-      $$0.put(dng.lg, $$3);
-      $$0.put(dng.li, $$3);
-      $$0.put(dng.lh, $$3);
-      $$0.put(dng.lj, $$3);
-      $$0.put(dng.mI, $$3);
-      $$0.put(dng.mJ, $$3);
-      $$0.put(dng.mL, $$3);
-      $$0.put(dng.mX, $$3);
-      $$0.put(dng.mY, $$3);
-      $$0.put(dng.mZ, $$3);
-      $$0.put(dng.na, $$3);
-      $$0.put(dng.nb, $$3);
-      $$0.put(dng.nc, $$3);
-      $$0.put(dng.nd, $$3);
-      $$0.put(dng.ne, $$3);
-      $$0.put(dng.nf, $$3);
-      $$0.put(dng.ng, $$3);
-      $$0.put(dng.nh, $$3);
-      $$0.put(dng.ni, $$3);
-      $$0.put(dng.nj, $$3);
-      $$0.put(dng.nk, $$3);
-      $$0.put(dng.nl, $$3);
-      $$0.put(dng.nm, $$3);
-      $$0.put(dng.nn, $$3);
-      $$0.put(dng.no, $$3);
-      $$0.put(dng.np, $$3);
-      $$0.put(dng.nq, $$3);
-      $$0.put(dng.nr, $$3);
-      $$0.put(dng.ns, $$3);
-      $$0.put(dng.nt, $$3);
-      $$0.put(dng.nu, $$3);
-      $$0.put(dng.nv, $$3);
-      $$0.put(dng.nw, $$3);
-      $$0.put(dng.nx, $$3);
-      $$0.put(dng.ny, $$3);
-      $$0.put(dng.nz, $$3);
-      $$0.put(dng.nA, $$3);
-      $$0.put(dng.nB, $$3);
-      $$0.put(dng.nD, $$3);
-      $$0.put(dng.nE, $$3);
-      $$0.put(dng.nF, $$3);
-      $$0.put(dng.nG, $$3);
-      $$0.put(dng.oy, $$3);
-      $$0.put(dng.oI, $$3);
-      $$0.put(dng.oK, $$3);
-      $$0.put(dng.oL, $$3);
-      $$0.put(dng.oM, $$3);
-      $$0.put(dng.oN, $$3);
-      $$0.put(dng.oO, $$3);
-      $$0.put(dng.pf, $$3);
-      $$0.put(dng.pg, $$3);
-      $$0.put(dng.ph, $$3);
-      $$0.put(dng.pi, $$3);
-      $$0.put(dng.oX, $$3);
-      $$0.put(dng.pd, $$3);
-      $$0.put(dng.oU, $$3);
-      $$0.put(dng.pj, $$3);
-      $$0.put(dng.oW, $$3);
-      $$0.put(dng.pU, $$3);
-      $$0.put(dng.pV, $$3);
-      $$0.put(dng.pW, $$3);
-      $$0.put(dng.pX, $$3);
-      $$0.put(dng.pA, $$3);
-      $$0.put(dng.pB, $$3);
-      $$0.put(dng.tb, $$3);
-      $$0.put(dng.rg, $$3);
-      $$0.put(dng.rf, $$3);
-      $$0.put(dng.re, $$3);
-      $$0.put(dng.rd, $$3);
-      $$0.put(dng.ta, $$3);
-      $$0.put(dng.td, $$3);
-      $$0.put(dng.te, $$3);
-      $$0.put(dng.tf, $$3);
-      $$0.put(dng.th, $$3);
-      $$0.put(dng.tg, $$3);
-      $$0.put(dng.tj, $$3);
-      $$0.put(dng.tk, $$3);
-      $$0.put(dng.tl, $$3);
-      $$0.put(dng.tn, $$3);
-      $$0.put(dng.to, $$3);
-      $$0.put(dng.tp, $$3);
-      $$0.put(dng.tq, $$3);
-      $$0.put(dng.ry, $$3);
-      $$0.put(dng.rz, $$3);
-      $$0.put(dng.rB, $$3);
-      $$0.put(dng.rD, $$3);
-      $$0.put(dng.H, $$3);
-      $$0.put(dng.tX, $$3);
-      $$0.put(dng.sK, $$3);
-      $$0.put(dng.sL, $$3);
-      $$0.put(dng.sM, $$3);
-      $$0.put(dng.sN, $$3);
-      $$0.put(dng.sO, $$3);
-      $$0.put(dng.sP, $$3);
-      $$0.put(dng.sQ, $$3);
-      $$0.put(dng.sR, $$3);
-      $$0.put(dng.ul, $$3);
-      $$0.put(dng.eh, $$3);
-      gsn $$4 = gsn.g();
-      $$0.put(dng.ee, $$4);
-      $$0.put(dng.eu, $$4);
-      $$0.put(dng.ez, $$4);
-      $$0.put(dng.eA, $$4);
-      $$0.put(dng.eB, $$4);
-      $$0.put(dng.eC, $$4);
-      $$0.put(dng.eD, $$4);
-      $$0.put(dng.eE, $$4);
-      $$0.put(dng.eF, $$4);
-      $$0.put(dng.eG, $$4);
-      $$0.put(dng.eH, $$4);
-      $$0.put(dng.eI, $$4);
-      $$0.put(dng.eJ, $$4);
-      $$0.put(dng.eK, $$4);
-      $$0.put(dng.eL, $$4);
-      $$0.put(dng.eM, $$4);
-      $$0.put(dng.eN, $$4);
-      $$0.put(dng.eO, $$4);
-      $$0.put(dng.ia, $$4);
-      $$0.put(dng.ib, $$4);
-      $$0.put(dng.ic, $$4);
-      $$0.put(dng.id, $$4);
-      $$0.put(dng.ie, $$4);
-      $$0.put(dng.if, $$4);
-      $$0.put(dng.ig, $$4);
-      $$0.put(dng.ih, $$4);
-      $$0.put(dng.ii, $$4);
-      $$0.put(dng.ij, $$4);
-      $$0.put(dng.ik, $$4);
-      $$0.put(dng.il, $$4);
-      $$0.put(dng.im, $$4);
-      $$0.put(dng.in, $$4);
-      $$0.put(dng.io, $$4);
-      $$0.put(dng.ip, $$4);
-      $$0.put(dng.ix, $$4);
-      $$0.put(dng.pO, $$4);
-      $$0.put(dng.lo, $$4);
-      $$0.put(dng.nJ, $$4);
-      $$0.put(dng.rw, $$4);
-   });
-   private static final Map<exp, gsn> b = ag.a(Maps.newHashMap(), $$0 -> {
-      gsn $$1 = gsn.g();
-      $$0.put(exr.b, $$1);
-      $$0.put(exr.c, $$1);
-   });
-   private static boolean c;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public static gsn a(ebg $$0) {
-      dne $$1 = $$0.b();
-      if ($$1 instanceof dru) {
-         return c ? gsn.e() : gsn.d();
-      } else {
-         gsn $$2 = a.get($$1);
-         return $$2 != null ? $$2 : gsn.d();
-      }
+   public gru(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static gsn b(ebg $$0) {
-      dne $$1 = $$0.b();
-      if ($$1 instanceof dru) {
-         return c ? gsn.e() : gsn.d();
-      } else {
-         gsn $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == gsn.g() ? gsn.h() : $$2;
-         } else {
-            return gsn.d();
-         }
-      }
+   public gru a(gru $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public static gsn c(ebg $$0) {
-      gsn $$1 = a($$0);
-      return $$1 == gsn.g() ? gsw.j() : gsw.i();
+   public int a() {
+      return this.a;
    }
 
-   public static gsn a(daa $$0) {
-      if ($$0.h() instanceof cyi $$2) {
-         dne $$3 = $$2.c();
-         return c($$3.m());
-      } else {
-         return gsw.j();
-      }
+   public int b() {
+      return this.b;
    }
 
-   public static gsn a(exq $$0) {
-      gsn $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : gsn.d();
+   public void a(int $$0) {
+      this.a = $$0;
    }
 
-   public static void a(boolean $$0) {
-      c = $$0;
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

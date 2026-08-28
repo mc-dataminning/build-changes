@@ -1,12 +1,19 @@
-public class dgf {
-   public static dgd.i<?> a(jt<dgd.i<?>> $$0) {
-      jt.a($$0, "empty", dgd.c.f);
-      jt.a($$0, "any_fuel", dgd.a.f);
-      jt.a($$0, "item", dgd.d.e);
-      jt.a($$0, "item_stack", dgd.f.e);
-      jt.a($$0, "tag", dgd.h.e);
-      jt.a($$0, "smithing_trim", dgd.g.e);
-      jt.a($$0, "with_remainder", dgd.j.e);
-      return jt.a($$0, "composite", dgd.b.e);
+import java.util.List;
+
+public interface dgf<T> {
+   public interface a<T> extends dgf<T> {
+      T a(T var1, List<T> var2);
+   }
+
+   public interface b<T> extends dgf<T> {
+      default T a(jg<dag> $$0) {
+         return this.a(new dak($$0));
+      }
+
+      default T a(dag $$0) {
+         return this.a(new dak($$0));
+      }
+
+      T a(dak var1);
    }
 }

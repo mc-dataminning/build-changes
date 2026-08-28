@@ -1,160 +1,74 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public class exf implements exi {
-   public static final int b = 1;
-   public static final exf c = new exf();
-   protected final dkb d;
-   @Nullable
-   private final exh<?, ?> a;
-   @Nullable
-   private final exh<?, ?> e;
+public class exf {
+   private final exg[] a;
+   private final double b;
+   private final double c;
 
-   public exf(edq $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.r();
-      this.a = $$1 ? new ewy($$0) : null;
-      this.e = $$2 ? new exj($$0) : null;
+   public exf(bai $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   private exf() {
-      this.d = dkb.e(0, 0);
-      this.a = null;
-      this.e = null;
-   }
-
-   @Override
-   public void a(iw $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   @Override
-   public boolean M_() {
-      return this.e != null && this.e.M_() ? true : this.a != null && this.a.M_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.e != null) {
-         $$0 += this.e.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(jz $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(dje $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dje $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
-   }
-
-   public exd a(dki $$0) {
-      if ($$0 == dki.b) {
-         return (exd)(this.a == null ? exd.a.a : this.a);
+   private exf(bai $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         return (exd)(this.e == null ? exd.a.a : this.e);
-      }
-   }
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            exg $$5 = new exg($$0);
+            int $$6 = $$3;
+            this.a = new exg[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
 
-   public String a(dki $$0, jz $$1) {
-      if ($$0 == dki.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new exg($$0);
+               } else {
+                  $$0.b(262);
+               }
+            }
+
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               bai $$9 = new eio(new ehq($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new exg($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
       }
-
-      return "n/a";
    }
 
-   public exe.b b(dki $$0, jz $$1) {
-      if ($$0 == dki.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
+
+      for (exg $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
          }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
+
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
 
-      return exe.b.a;
-   }
-
-   public void a(dki $$0, jz $$1, @Nullable edi $$2) {
-      if ($$0 == dki.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(dje $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0, $$1);
-      }
-   }
-
-   public int a(iw $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
-   }
-
-   public int c() {
-      return this.d.ap() + 2;
-   }
-
-   public int d() {
-      return this.d.aq() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
+      return $$3;
    }
 }

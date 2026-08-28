@@ -1,177 +1,507 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.textures.GpuTexture;
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.bytes.ByteList;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.IntBuffer;
 import java.util.List;
-import java.util.Set;
-import java.util.function.IntFunction;
+import java.util.function.Function;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public class fxf implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final azz b = azz.a();
-   private static final float c = 32.0F;
-   private final hle d;
-   private final alk e;
-   private fxj f;
-   private fxj g;
-   private List<fim.a> h = List.of();
-   private List<fim> i = List.of();
-   private final fxc<fxj> j = new fxc<>(fxj[]::new, fxj[][]::new);
-   private final fxc<fxf.a> k = new fxc<>(fxf.a[]::new, fxf.a[][]::new);
-   private final Int2ObjectMap<IntList> l = new Int2ObjectOpenHashMap();
-   private final List<fxg> m = Lists.newArrayList();
-   private final IntFunction<fxf.a> n = this::b;
-   private final IntFunction<fxj> o = this::c;
+public class fxf implements fis {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 16;
+   private static final int d = 2;
+   private static final int e = 32;
+   private static final int f = 64;
+   private static final int g = 96;
+   private static final int h = 128;
+   private final fwn<fxf.d> i;
 
-   public fxf(hle $$0, alk $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   fxf(fwn<fxf.d> $$0) {
+      this.i = $$0;
    }
 
-   public void a(List<fim.a> $$0, Set<fxe> $$1) {
-      this.h = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fxe> $$0) {
-      this.i = List.of();
-      this.c();
-      this.i = this.b(this.h, $$0);
-   }
-
-   private void c() {
-      this.m.clear();
-      this.j.a();
-      this.k.a();
-      this.l.clear();
-      this.f = fxl.b.bake(this::a);
-      this.g = fxl.a.bake(this::a);
-   }
-
-   private List<fim> b(List<fim.a> $$0, Set<fxe> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<fim> $$3 = new ArrayList<>();
-
-      for (fim.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<fim> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (fim $$3x : $$3) {
-            fil $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fxl.b) {
-                  ((IntList)this.l.computeIfAbsent(azq.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   @Nullable
+   @Override
+   public fir a(int $$0) {
+      return this.i.a($$0);
    }
 
    @Override
-   public void close() {
-      this.m.clear();
+   public IntSet a() {
+      return this.i.b();
    }
 
-   private static boolean b(fil $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
+   @VisibleForTesting
+   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 32 - $$2 - 1;
+      int $$5 = 32 - $$3 - 1;
+
+      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
+         if ($$6 < 32 && $$6 >= 0) {
+            boolean $$7 = ($$1 >> $$6 & 1) != 0;
+            $$0.put($$7 ? -1 : 0);
+         } else {
+            $$0.put(0);
+         }
       }
    }
 
-   private fxf.a b(int $$0) {
-      fil $$1 = null;
+   static void a(IntBuffer $$0, fxf.f $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         int $$5 = $$1.a($$4);
+         a($$0, $$5, $$2, $$3);
+      }
+   }
 
-      for (fim $$2 : this.i) {
-         fil $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
+   @VisibleForTesting
+   static void a(InputStream $$0, fxf.h $$1) throws IOException {
+      int $$2 = 0;
+      ByteList $$3 = new ByteArrayList(128);
+
+      while (true) {
+         boolean $$4 = a($$0, $$3, 58);
+         int $$5 = $$3.size();
+         if ($$5 == 0 && !$$4) {
+            return;
+         }
+
+         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
+            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
+         }
+
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
+         }
+
+         $$3.clear();
+         a($$0, $$3, 10);
+         int $$8 = $$3.size();
+
+         fxf.f $$9 = switch ($$8) {
+            case 32 -> fxf.a.a($$2, $$3);
+            case 64 -> fxf.i.a($$2, $$3);
+            case 96 -> fxf.e.b($$2, $$3);
+            case 128 -> fxf.e.a($$2, $$3);
+            default -> throw new IllegalArgumentException(
+            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
+         );
+         };
+         $$1.accept($$6, $$9);
+         $$2++;
+         $$3.clear();
+      }
+   }
+
+   static int a(int $$0, ByteList $$1, int $$2) {
+      return a($$0, $$1.getByte($$2));
+   }
+
+   private static int a(int $$0, byte $$1) {
+      return switch ($$1) {
+         case 48 -> 0;
+         case 49 -> 1;
+         case 50 -> 2;
+         case 51 -> 3;
+         case 52 -> 4;
+         case 53 -> 5;
+         case 54 -> 6;
+         case 55 -> 7;
+         case 56 -> 8;
+         case 57 -> 9;
+         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
+         case 65 -> 10;
+         case 66 -> 11;
+         case 67 -> 12;
+         case 68 -> 13;
+         case 69 -> 14;
+         case 70 -> 15;
+      };
+   }
+
+   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
+      while (true) {
+         int $$3 = $$0.read();
+         if ($$3 == -1) {
+            return false;
+         }
+
+         if ($$3 == $$2) {
+            return true;
+         }
+
+         $$1.add((byte)$$3);
+      }
+   }
+
+   static record a(byte[] a) implements fxf.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 24;
+      }
+
+      static fxf.f a(int $$0, ByteList $$1) {
+         byte[] $$2 = new byte[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fxf.a($$0, $$1, $$3++);
+            int $$6 = fxf.a($$0, $$1, $$3++);
+            byte $$7 = (byte)($$5 << 4 | $$6);
+            $$2[$$4] = $$7;
+         }
+
+         return new fxf.a($$2);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      public byte[] b() {
+         return this.a;
+      }
+   }
+
+   public static class b implements fxb {
+      public static final MapCodec<fxf.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alr.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), fxf.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
+               .apply($$0, fxf.b::new)
+      );
+      private final alr c;
+      private final List<fxf.g> d;
+
+      private b(alr $$0, List<fxf.g> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public fxc a() {
+         return fxc.d;
+      }
+
+      @Override
+      public Either<fxb.b, fxb.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fis a(avo $$0) throws IOException {
+         fxf var3;
+         try (InputStream $$1 = $$0.open(this.c)) {
+            var3 = this.a($$1);
+         }
+
+         return var3;
+      }
+
+      private fxf a(InputStream $$0) throws IOException {
+         fwn<fxf.f> $$1 = new fwn<>(fxf.f[]::new, fxf.f[][]::new);
+         fxf.h $$2 = $$1::a;
+
+         fxf var17;
+         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
+            ZipEntry $$4;
+            while (($$4 = $$3.getNextEntry()) != null) {
+               String $$5 = $$4.getName();
+               if ($$5.endsWith(".hex")) {
+                  fxf.b.info("Found {}, loading", $$5);
+                  fxf.a(new azh($$3), $$2);
+               }
             }
 
-            if (!b($$3)) {
-               return new fxf.a($$1, $$3);
+            fwn<fxf.d> $$6 = new fwn<>(fxf.d[]::new, fxf.d[][]::new);
+
+            for (fxf.g $$7 : this.d) {
+               int $$8 = $$7.b;
+               int $$9 = $$7.c;
+               fxf.c $$10 = $$7.d;
+
+               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
+                  fxf.f $$12 = $$1.b($$11);
+                  if ($$12 != null) {
+                     $$6.a($$11, new fxf.d($$12, $$10.c, $$10.d));
+                  }
+               }
             }
+
+            $$1.a(($$1x, $$2x) -> {
+               int $$3x = $$2x.d();
+               int $$4x = fxf.c.a($$3x);
+               int $$5 = fxf.c.b($$3x);
+               $$6.a($$1x, new fxf.d($$2x, $$4x, $$5));
+            });
+            var17 = new fxf($$6);
          }
+
+         return var17;
+      }
+   }
+
+   public static record c(int c, int d) {
+      public static final MapCodec<fxf.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(fxf.c::b), Codec.INT.fieldOf("right").forGetter(fxf.c::c)).apply($$0, fxf.c::new)
+      );
+      public static final Codec<fxf.c> b = a.codec();
+
+      public int a() {
+         return a(this.c, this.d);
       }
 
-      return $$1 != null ? new fxf.a($$1, fxl.b) : fxf.a.c;
-   }
-
-   public fil a(int $$0, boolean $$1) {
-      return this.k.a($$0, this.n).a($$1);
-   }
-
-   private fxj c(int $$0) {
-      for (fim $$1 : this.i) {
-         fil $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
+      public static int a(int $$0, int $$1) {
+         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
       }
 
-      a.warn("Couldn't find glyph for character {} (\\u{})", Character.toString($$0), String.format("%04x", $$0));
-      return this.f;
-   }
-
-   public fxj a(int $$0) {
-      return this.j.a($$0, this.o);
-   }
-
-   private fxj a(fin $$0) {
-      for (fxg $$1 : this.m) {
-         fxj $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
+      public static int a(int $$0) {
+         return (byte)($$0 >> 8);
       }
 
-      alk $$3 = this.e.g("/" + this.m.size());
-      boolean $$4 = $$0.c();
-      fxh $$5 = $$4 ? fxh.b($$3) : fxh.a($$3);
-      fxg $$6 = new fxg($$3::toString, $$5, $$4);
-      this.m.add($$6);
-      this.d.a($$3, $$6);
-      fxj $$7 = $$6.a($$0);
-      return $$7 == null ? this.f : $$7;
+      public static int b(int $$0) {
+         return (byte)$$0;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 
-   public fxj a(fil $$0) {
-      IntList $$1 = (IntList)this.l.get(azq.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(b.a($$1.size()))) : this.f;
+   static record d(fxf.f a, int b, int c) implements fir {
+
+      public int c() {
+         return this.c - this.b + 1;
+      }
+
+      @Override
+      public float getAdvance() {
+         return (float)(this.c() / 2 + 1);
+      }
+
+      @Override
+      public float b() {
+         return 0.5F;
+      }
+
+      @Override
+      public float a() {
+         return 0.5F;
+      }
+
+      @Override
+      public fwu bake(Function<fit, fwu> $$0) {
+         return $$0.apply(new fit() {
+            @Override
+            public float d() {
+               return 2.0F;
+            }
+
+            @Override
+            public int a() {
+               return d.this.c();
+            }
+
+            @Override
+            public int b() {
+               return 16;
+            }
+
+            @Override
+            public void a(int $$0, int $$1, GpuTexture $$2) {
+               IntBuffer $$3 = MemoryUtil.memAllocInt(d.this.c() * 16);
+               fxf.a($$3, d.this.a, d.this.b, d.this.c);
+               $$3.rewind();
+               RenderSystem.getDevice().createCommandEncoder().writeToTexture($$2, $$3, fkf.a.a, 0, $$0, $$1, d.this.c(), 16);
+               MemoryUtil.memFree($$3);
+            }
+
+            @Override
+            public boolean c() {
+               return true;
+            }
+         });
+      }
+
+      public fxf.f d() {
+         return this.a;
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.c;
+      }
    }
 
-   public alk a() {
-      return this.e;
+   static record e(int[] a, int b) implements fxf.f {
+      private static final int c = 24;
+
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0];
+      }
+
+      static fxf.f b(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fxf.a($$0, $$1, $$4++);
+            int $$7 = fxf.a($$0, $$1, $$4++);
+            int $$8 = fxf.a($$0, $$1, $$4++);
+            int $$9 = fxf.a($$0, $$1, $$4++);
+            int $$10 = fxf.a($$0, $$1, $$4++);
+            int $$11 = fxf.a($$0, $$1, $$4++);
+            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
+            $$2[$$5] = $$12 << 8;
+            $$3 |= $$12;
+         }
+
+         return new fxf.e($$2, 24);
+      }
+
+      public static fxf.f a(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fxf.a($$0, $$1, $$4++);
+            int $$7 = fxf.a($$0, $$1, $$4++);
+            int $$8 = fxf.a($$0, $$1, $$4++);
+            int $$9 = fxf.a($$0, $$1, $$4++);
+            int $$10 = fxf.a($$0, $$1, $$4++);
+            int $$11 = fxf.a($$0, $$1, $$4++);
+            int $$12 = fxf.a($$0, $$1, $$4++);
+            int $$13 = fxf.a($$0, $$1, $$4++);
+            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
+            $$2[$$5] = $$14;
+            $$3 |= $$14;
+         }
+
+         return new fxf.e($$2, 32);
+      }
+
+      public int[] b() {
+         return this.a;
+      }
+
+      @Override
+      public int a() {
+         return this.b;
+      }
    }
 
-   public fxj b() {
-      return this.g;
+   public interface f {
+      int a(int var1);
+
+      int a();
+
+      default int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 16; $$1++) {
+            $$0 |= this.a($$1);
+         }
+
+         return $$0;
+      }
+
+      default int d() {
+         int $$0 = this.c();
+         int $$1 = this.a();
+         int $$2;
+         int $$3;
+         if ($$0 == 0) {
+            $$2 = 0;
+            $$3 = $$1;
+         } else {
+            $$2 = Integer.numberOfLeadingZeros($$0);
+            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
+         }
+
+         return fxf.c.a($$2, $$3);
+      }
    }
 
-   static record a(fil a, fil b) {
-      static final fxf.a c = new fxf.a(fxl.b, fxl.b);
+   static record g(int b, int c, fxf.c d) {
+      private static final Codec<fxf.g> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(azg.B.fieldOf("from").forGetter(fxf.g::a), azg.B.fieldOf("to").forGetter(fxf.g::b), fxf.c.a.forGetter(fxf.g::c))
+               .apply($$0, fxf.g::new)
+      );
+      public static final Codec<fxf.g> a = e.validate(
+         $$0 -> $$0.b >= $$0.c ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]") : DataResult.success($$0)
+      );
 
-      fil a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public fxf.c c() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface h {
+      void accept(int var1, fxf.f var2);
+   }
+
+   static record i(short[] a) implements fxf.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 16;
+      }
+
+      static fxf.f a(int $$0, ByteList $$1) {
+         short[] $$2 = new short[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fxf.a($$0, $$1, $$3++);
+            int $$6 = fxf.a($$0, $$1, $$3++);
+            int $$7 = fxf.a($$0, $$1, $$3++);
+            int $$8 = fxf.a($$0, $$1, $$3++);
+            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
+            $$2[$$4] = $$9;
+         }
+
+         return new fxf.i($$2);
+      }
+
+      @Override
+      public int a() {
+         return 16;
+      }
+
+      public short[] b() {
+         return this.a;
       }
    }
 }

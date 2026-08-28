@@ -1,77 +1,76 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class epv extends epz {
-   public static final MapCodec<epv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epv::new));
+public class epv extends epx {
+   public static final MapCodec<epv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, epv::new)
+   );
+   private final float b;
+   private final float c;
+   private final float d;
 
-   public epv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected epy<?> a() {
+      return epy.c;
+   }
+
+   public epv(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected eqa<?> a() {
-      return eqa.b;
-   }
-
-   @Override
-   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<eod.a> $$6 = Lists.newArrayList();
-      jc $$7 = jc.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      iw.a $$10 = new iw.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
+   public void a(epx.a $$0) {
+      bai $$1 = $$0.b();
+      dli $$2 = (dli)$$0.a();
+      List<iw> $$3 = ag.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<iw> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((iw)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
+            }
+         });
+         iw $$5 = (iw)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.J_().a(mi.aL).flatMap($$0x -> $$0x.a(rp.M)).ifPresent($$3x -> ((ekh)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
 
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new eod.a(new iw($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jc $$16 = jc.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               iw $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
                }
             }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               iw $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+      }
+   }
 
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new eod.a(new iw($$11, $$13.getAsInt(), $$12), 0, false));
-         }
+   private static void a(iw $$0, epx.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, dnq.ug.m().b(drj.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
       }
 
-      return $$6;
+      $$1.a($$0, dnq.ug.m().b(drj.b, Boolean.valueOf(true)));
    }
 }

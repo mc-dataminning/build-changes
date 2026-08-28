@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class hgb extends hfr {
-   public daa a = daa.k;
-   @Nullable
-   public cki b;
+public class hgb extends hfe {
+   public float a;
+   public int b = 1;
 }

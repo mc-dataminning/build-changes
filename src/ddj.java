@@ -1,36 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record ddj(List<asm<String>> g) implements dcc<String, ddj> {
-   public static final ddj a = new ddj(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<asm<String>> h = asm.a(Codec.string(0, 1024));
-   public static final Codec<List<asm<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<ddj> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(ddj::a)).apply($$0, ddj::new));
-   public static final za<ByteBuf, ddj> f = asm.a(yy.b(1024)).a(yy.c(100)).a(ddj::new, ddj::a);
+public record ddj(czl<dix> c) {
+   public static final Codec<ddj> a = czl.a(mi.bk, dix.c).xmap(ddj::new, ddj::a);
+   public static final ze<wp, ddj> b = czl.a(mi.bk, dix.d).a(ddj::new, ddj::a);
 
-   public ddj(List<asm<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
-      }
+   public ddj(jg<dix> $$0) {
+      this(new czl<>($$0));
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
+   @Deprecated
+   public ddj(alq<dix> $$0) {
+      this(new czl<>($$0));
    }
 
-   public ddj b(List<asm<String>> $$0) {
-      return new ddj($$0);
+   public Optional<jg<dix>> a(ji.a $$0) {
+      return this.c.a($$0);
    }
 
-   @Override
-   public List<asm<String>> a() {
-      return this.g;
+   public czl<dix> a() {
+      return this.c;
    }
 }

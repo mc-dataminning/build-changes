@@ -1,23 +1,20 @@
-public enum ecd implements bao {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+public enum ecd implements bax {
+   a("head"),
+   b("foot");
 
-   private final String f;
+   private final String c;
 
    private ecd(final String $$0) {
-      this.f = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.c;
    }
 }

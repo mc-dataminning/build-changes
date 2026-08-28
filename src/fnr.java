@@ -1,31 +1,40 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-public class fnr extends fnu {
-   public long a;
-   public List<fnq> b = Lists.newArrayList();
+public class fnr implements Iterable<fmr> {
+   private final fqq a;
+   private final Set<fmr> b = new HashSet<>();
+   private List<fmr> c = List.of();
 
-   public static fnr a(String $$0) {
-      fnr $$1 = new fnr();
-      JsonParser $$2 = new JsonParser();
+   public fnr(fqq $$0) {
+      this.a = $$0;
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fpr.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fnq $$8 = fnq.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+   public void a(List<fmr> $$0) {
+      List<fmr> $$1 = new ArrayList<>($$0);
+      $$1.sort(new fmr.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
       }
 
-      return $$1;
+      this.c = $$1;
+   }
+
+   public void a(fmr $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
+   }
+
+   @Override
+   public Iterator<fmr> iterator() {
+      return this.c.iterator();
+   }
+
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

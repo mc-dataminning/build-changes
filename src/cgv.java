@@ -1,32 +1,18 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum cgv implements bao {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cgv<T extends byf> extends cgu<T> {
+   private boolean i = true;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cgv> n = bao.a(cgv::values);
+   public cgv(ctz $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable ciu.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-   private cgv(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+   public void a(boolean $$0) {
       this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      return this.i && super.b();
    }
 }

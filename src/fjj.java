@@ -1,18 +1,14 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.pipeline.CompiledRenderPipeline;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 
-public class fjj implements fji {
+public record fjj(RenderPipeline a, fjh b) implements CompiledRenderPipeline {
    @Override
-   public int a() {
-      return GlStateManager.glGenFramebuffers();
+   public boolean containsUniform(String $$0) {
+      return this.b.a($$0) != null;
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      GlStateManager._glBindFramebuffer(36160, $$0);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, $$1, $$3);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, $$2, $$3);
-      if (!$$4) {
-         GlStateManager._glBindFramebuffer(36160, 0);
-      }
+   public boolean isValid() {
+      return this.b != fjh.b;
    }
 }

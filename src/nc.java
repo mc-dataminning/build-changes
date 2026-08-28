@@ -22,17 +22,17 @@ public class nc implements mo {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               ali<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               alp<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.e(mi.i)
                   .c()
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        ebh<dne, ebg> $$4x = ((dne)$$2x.a()).l();
+                        ebr<dno, ebq> $$4x = ((dno)$$2x.a()).l();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (ecj<?> $$6 : $$4x.d()) {
+                           for (ect<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class nc implements mo {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           ebg $$10 = (ebg)var13.next();
+                           ebq $$10 = (ebq)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (ecj<?> $$13 : $$4x.d()) {
+                           for (ect<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ag.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class nc implements mo {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dne.j($$10));
-                           if ($$10 == ((dne)$$2x.a()).m()) {
+                           $$11.addProperty("id", dno.j($$10));
+                           if ($$10 == ((dno)$$2x.a()).m()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class nc implements mo {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dnf.a
+                        JsonElement $$15 = (JsonElement)dnp.a
                            .codec()
-                           .encodeStart($$4, (dne)$$2x.a())
+                           .encodeStart($$4, (dno)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

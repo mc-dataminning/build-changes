@@ -1,23 +1,20 @@
-public enum ecp implements bao {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum ecp implements bax {
+   a("top"),
+   b("bottom");
 
-   private final String f;
+   private final String c;
 
    private ecp(final String $$0) {
-      this.f = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.c;
    }
 }

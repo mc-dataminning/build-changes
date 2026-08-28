@@ -1,16 +1,12 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class acb {
+   public static final zq<aca> a = a("cookie_request");
+   public static final zq<acd> b = b("cookie_response");
 
-public record acb(Object2IntMap<awy<?>> b) implements zj<aby> {
-   private static final za<wn, Object2IntMap<awy<?>>> c = yy.a(Object2IntOpenHashMap::new, awy.a, yy.h);
-   public static final za<wn, acb> a = c.a(acb::new, acb::b);
-
-   @Override
-   public zl<acb> a() {
-      return agr.e;
+   private static <T extends zo<abz>> zq<T> a(String $$0) {
+      return new zq<>(zp.b, alr.b($$0));
    }
 
-   public void a(aby $$0) {
-      $$0.a(this);
+   private static <T extends zo<acc>> zq<T> b(String $$0) {
+      return new zq<>(zp.a, alr.b($$0));
    }
 }

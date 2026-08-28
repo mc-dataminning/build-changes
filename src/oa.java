@@ -2,25 +2,25 @@ import java.util.function.BiConsumer;
 
 public record oa(ji.a a) implements nm {
    @Override
-   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
-      $$0.accept(faf.aQ, fao.b().a(fan.a().a(fel.a(2.0F)).a(faw.a(dae.dN).a(fco.a(fel.a(1.0F)))).a(faw.a(dae.dO).a(fco.a(fel.a(1.0F))))));
-      no.a.forEach(($$1, $$2) -> $$0.accept(faf.aW.get($$1), fao.b().a(fan.a().a(fes.a(1.0F, 3.0F)).a(faw.a($$2)))));
-      $$0.accept(faf.aV, fao.b().a(nk.a(faf.aW)));
+   public void generate(BiConsumer<alq<fay>, fay.a> $$0) {
+      $$0.accept(fap.aQ, fay.b().a(fax.a().a(fev.a(2.0F)).a(fbg.a(dao.dN).a(fcy.a(fev.a(1.0F)))).a(fbg.a(dao.dO).a(fcy.a(fev.a(1.0F))))));
+      no.a.forEach(($$1, $$2) -> $$0.accept(fap.aW.get($$1), fay.b().a(fax.a().a(ffc.a(1.0F, 3.0F)).a(fbg.a($$2)))));
+      $$0.accept(fap.aV, fay.b().a(nk.a(fap.aW)));
       $$0.accept(
-         faf.aR,
-         fao.b()
+         fap.aR,
+         fay.b()
             .a(
-               fan.a()
+               fax.a()
                   .a(
-                     faq.a(
-                        fbc.a(faf.aS).a(fdv.a(faj.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aF, ckd.a.a)).b()))),
-                        fbc.a(faf.aT).a(fdv.a(faj.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aF, ckd.a.b)).b())))
+                     fba.a(
+                        fbm.a(fap.aS).a(fef.a(fat.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aF, ckm.a.a)).b()))),
+                        fbm.a(fap.aT).a(fef.a(fat.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aF, ckm.a.b)).b())))
                      )
                   )
             )
       );
-      $$0.accept(faf.aS, fao.b().a(fan.a().a(fel.a(5.0F)).a(faw.a(dae.dO))));
-      $$0.accept(faf.aT, fao.b().a(fan.a().a(fel.a(5.0F)).a(faw.a(dae.dN))));
-      $$0.accept(faf.aU, fao.b().a(fan.a().a(fel.a(1.0F)).a(faw.a(dae.fH))));
+      $$0.accept(fap.aS, fay.b().a(fax.a().a(fev.a(5.0F)).a(fbg.a(dao.dO))));
+      $$0.accept(fap.aT, fay.b().a(fax.a().a(fev.a(5.0F)).a(fbg.a(dao.dN))));
+      $$0.accept(fap.aU, fay.b().a(fax.a().a(fev.a(1.0F)).a(fbg.a(dao.fH))));
    }
 }

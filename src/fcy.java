@@ -1,43 +1,46 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class fcy extends fbw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<fcy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fcy::new));
+public class fcy extends fcg {
+   public static final MapCodec<fcy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(fez.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, fcy::new)
+   );
+   private final fey b;
+   private final boolean c;
 
-   private fcy(List<fds> $$0) {
+   private fcy(List<fec> $$0, fey $$1, boolean $$2) {
       super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fby<fcy> b() {
-      return fbz.l;
+   public fci<fcy> b() {
+      return fcj.e;
    }
 
    @Override
-   public daa a(daa $$0, faj $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         dfk $$2 = new dfk($$0);
-         Optional<dew<dfl>> $$3 = $$1.d().t().a(dfc.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            daa $$4 = $$3.get().b().a($$2, $$1.d().J_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public Set<bbk<?>> a() {
+      return this.b.a();
    }
 
-   public static fbw.a<?> c() {
-      return a(fcy::new);
+   @Override
+   public dak a(dak $$0, fat $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
+   }
+
+   public static fcg.a<?> a(fey $$0) {
+      return a($$1 -> new fcy($$1, $$0, false));
+   }
+
+   public static fcg.a<?> a(fey $$0, boolean $$1) {
+      return a($$2 -> new fcy($$2, $$0, $$1));
    }
 }

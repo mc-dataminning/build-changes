@@ -12,8 +12,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class go implements ArgumentType<gj> {
    private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("argument.pos.mixed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("argument.pos.mixed"));
    private final boolean d;
 
    public go(boolean $$0) {
@@ -28,7 +28,7 @@ public class go implements ArgumentType<gj> {
       return new go($$0);
    }
 
-   public static ffs a(CommandContext<ek> $$0, String $$1) {
+   public static fgc a(CommandContext<ek> $$0, String $$1) {
       return ((gj)$$0.getArgument($$1, gj.class)).a((ek)$$0.getSource());
    }
 

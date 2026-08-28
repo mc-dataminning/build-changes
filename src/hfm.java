@@ -1,27 +1,10 @@
-public class hfm extends her {
-   public final hhu a = new hhu();
-   public int b;
-   public int c;
+public class hfm extends hfe {
+   public ckp.b a;
+   public float b;
+   public gim.a c;
 
-   public void a(bwv $$0, daa $$1, hhs $$2) {
-      $$2.a(this.a, $$1, czy.h, $$0);
-      this.b = a($$1.M());
-      this.c = a($$1);
-   }
-
-   public static int a(daa $$0) {
-      return $$0.f() ? 187 : czw.a($$0.h()) + $$0.o();
-   }
-
-   public static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
+   public hfm() {
+      this.a = ckp.b.a;
+      this.c = gim.a.a;
    }
 }

@@ -1,32 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.google.common.escape.Escaper;
+import com.google.common.escape.Escapers;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class bhx extends DataFix {
-   private final String c;
-   protected final String a;
-   protected final TypeReference b;
+public class bhx extends bee {
+   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
 
-   public bhx(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
-      super($$0, $$1);
-      this.c = $$2;
-      this.b = $$3;
-      this.a = $$4;
+   public bhx(Schema $$0) {
+      super($$0, "LockComponentPredicateFix", "minecraft:lock");
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = DSL.namedChoice(this.a, this.getInputSchema().getChoiceType(this.b, this.a));
-      return this.fixTypeEverywhereTyped(
-         this.c,
-         this.getInputSchema().getType(this.b),
-         this.getOutputSchema().getType(this.b),
-         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.b, this.a), this::a)
-      );
+   @Nullable
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 
-   protected abstract Typed<?> a(Typed<?> var1);
+   @Nullable
+   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return null;
+      } else if ($$1.get().isEmpty()) {
+         return null;
+      } else {
+         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
+         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
+         return $$0.emptyMap().set("components", $$3);
+      }
+   }
 }

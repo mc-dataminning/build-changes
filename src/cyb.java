@@ -1,100 +1,89 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class cyb {
-   public static final Codec<cyb> a = ayy.c(az.a, ayy.b(az.a.listOf())).xmap(cyb::new, $$0 -> $$0.f);
-   public static final za<wn, cyb> b = za.a(az.b.a(yy.a()), $$0 -> $$0.f, cyb::new);
-   public static final xc c = xc.c("item.canBreak").a(o.h);
-   public static final xc d = xc.c("item.canPlace").a(o.h);
-   private static final xc e = xc.c("item.canUse.unknown").a(o.h);
-   private final List<az> f;
+   private static final List<cya> b = ag.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bxo.a.a(98);
+      int $$2 = bxo.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bxo.f.a(100);
+      $$2 = bxo.e.a(100);
+      int $$5 = bxo.d.a(100);
+      int $$6 = bxo.c.a(100);
+      int $$7 = bxo.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "saddle", bxo.h.a(106));
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cya> a = bax.b(() -> b.toArray(new cya[0]));
+   private static final Function<String, cya> c = bax.a(b.toArray(new cya[0]), $$0 -> $$0);
+
+   private static cya a(String $$0, int $$1) {
+      return cya.a($$0, IntLists.singleton($$1));
+   }
+
+   private static cya a(String $$0, IntList $$1) {
+      return cya.a($$0, IntLists.unmodifiable($$1));
+   }
+
+   private static cya a(String $$0, int... $$1) {
+      return cya.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<cya> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<cya> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
+      }
+
+      $$0.add(a($$1 + "*", $$4));
+   }
+
+   private static void a(List<cya> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
    @Nullable
-   private List<xc> g;
-   @Nullable
-   private ebk h;
-   private boolean i;
-   private boolean j;
-
-   public cyb(List<az> $$0) {
-      this.f = $$0;
+   public static cya a(String $$0) {
+      return c.apply($$0);
    }
 
-   private static boolean a(ebk $$0, @Nullable ebk $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         ju $$3 = $$0.c().J_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
+   public static Stream<String> a() {
+      return b.stream().map(bax::c);
    }
 
-   public boolean a(ebk $$0) {
-      if (a($$0, this.h, this.j)) {
-         return this.i;
-      } else {
-         this.h = $$0;
-         this.j = false;
-
-         for (az $$1 : this.f) {
-            if ($$1.a($$0)) {
-               this.j = this.j | $$1.a();
-               this.i = true;
-               return true;
-            }
-         }
-
-         this.i = false;
-         return false;
-      }
-   }
-
-   private List<xc> a() {
-      if (this.g == null) {
-         this.g = a(this.f);
-      }
-
-      return this.g;
-   }
-
-   public void a(Consumer<xc> $$0) {
-      this.a().forEach($$0);
-   }
-
-   private static List<xc> a(List<az> $$0) {
-      for (az $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(e);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dne)$$0x.a()).f().a(o.i)).toList();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof cyb $$1 ? this.f.equals($$1.f) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.f.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.f + "}";
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(bax::c);
    }
 }

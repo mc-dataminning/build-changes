@@ -3,18 +3,18 @@ public class qx {
    private static final float b = -0.4F;
    private static final float c = 0.1F;
    private static final float d = -0.15F;
-   private static final bav<Float> e = bav.a;
-   private static final bav<Float> f = bav.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final bav<Float> g = bav.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final bav<Float> h = bav.a($$0 -> $$0 * 2.0F);
+   private static final bbe<Float> e = bbe.a;
+   private static final bbe<Float> f = bbe.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
+   private static final bbe<Float> g = bbe.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
+   private static final bbe<Float> h = bbe.a($$0 -> $$0 * 2.0F);
 
-   public static <C, I extends bav<C>> ayr<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      bav<Float> $$4 = $$3 ? f : e;
-      ayr<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      ayr<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      ayr<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      ayr<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return ayr.<C, I>a($$0, $$4)
+   public static <C, I extends bbe<C>> ayz<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
+      bbe<Float> $$4 = $$3 ? f : e;
+      ayz<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
+      ayz<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
+      ayz<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
+      ayz<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
+      return ayz.<C, I>a($$0, $$4)
          .a(-1.1F, 0.044F)
          .a(-1.02F, -0.2222F)
          .a(-0.51F, -0.2222F)
@@ -28,9 +28,9 @@ public class qx {
          .a();
    }
 
-   public static <C, I extends bav<C>> ayr<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      bav<Float> $$5 = $$4 ? g : e;
-      return ayr.<C, I>a($$0, e)
+   public static <C, I extends bbe<C>> ayz<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      bbe<Float> $$5 = $$4 ? g : e;
+      return ayz.<C, I>a($$0, e)
          .a(-0.19F, 3.95F)
          .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
          .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
@@ -39,28 +39,28 @@ public class qx {
          .a();
    }
 
-   public static <C, I extends bav<C>> ayr<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      bav<Float> $$5 = $$4 ? h : e;
+   public static <C, I extends bbe<C>> ayz<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
+      bbe<Float> $$5 = $$4 ? h : e;
       float $$6 = 0.65F;
-      return ayr.<C, I>a($$0, $$5)
+      return ayz.<C, I>a($$0, $$5)
          .a(-0.11F, 0.0F)
          .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
          .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
          .a();
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, bav<Float> $$7) {
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, bbe<Float> $$7) {
       float $$8 = -0.5775F;
-      ayr<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      ayr<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return ayr.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
+      ayz<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
+      ayz<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
+      return ayz.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, I $$1, float $$2, float $$3, bav<Float> $$4) {
-      float $$5 = ehm.a(0.4F);
-      float $$6 = ehm.a(0.56666666F);
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, I $$1, float $$2, float $$3, bbe<Float> $$4) {
+      float $$5 = ehw.a(0.4F);
+      float $$6 = ehw.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
-      ayr.b<C, I> $$8 = ayr.a($$1, $$4);
+      ayz.b<C, I> $$8 = ayz.a($$1, $$4);
       $$8.a($$5, 0.0F);
       if ($$3 > 0.0F) {
          $$8.a($$7, a($$0, $$3, $$4));
@@ -77,28 +77,28 @@ public class qx {
       return $$8.a();
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, float $$1, bav<Float> $$2) {
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, float $$1, bbe<Float> $$2) {
       float $$3 = 0.63F * $$1;
       float $$4 = 0.3F * $$1;
-      return ayr.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+      return ayz.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, bav<Float> $$5) {
-      ayr<C, I> $$6 = ayr.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      ayr.b<C, I> $$7 = ayr.<C, I>a($$0, $$5)
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, bbe<Float> $$5) {
+      ayz<C, I> $$6 = ayz.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
+      ayz.b<C, I> $$7 = ayz.<C, I>a($$0, $$5)
          .a(-0.6F, $$6)
-         .a(-0.5F, ayr.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
+         .a(-0.5F, ayz.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
          .a(-0.35F, $$6)
          .a(-0.25F, $$6)
-         .a(-0.1F, ayr.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
+         .a(-0.1F, ayz.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
          .a(0.03F, $$6);
       if ($$4) {
-         ayr<C, I> $$8 = ayr.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         ayr<C, I> $$9 = ayr.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
+         ayz<C, I> $$8 = ayz.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
+         ayz<C, I> $$9 = ayz.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
          $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
       } else {
-         ayr<C, I> $$10 = ayr.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         ayr<C, I> $$11 = ayr.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
+         ayz<C, I> $$10 = ayz.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
+         ayz<C, I> $$11 = ayz.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
          $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
       }
 
@@ -109,8 +109,8 @@ public class qx {
       return ($$1 - $$0) / ($$3 - $$2);
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, float $$1, boolean $$2, bav<Float> $$3) {
-      ayr.b<C, I> $$4 = ayr.a($$0, $$3);
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, float $$1, boolean $$2, bbe<Float> $$3) {
+      ayz.b<C, I> $$4 = ayz.a($$0, $$3);
       float $$5 = -0.7F;
       float $$6 = -1.0F;
       float $$7 = a(-1.0F, $$1, -0.7F);
@@ -136,7 +136,7 @@ public class qx {
          float $$19 = a($$7, $$9, -1.0F, 1.0F);
          if ($$2) {
             $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, azq.h(0.5F, $$7, $$9), $$19);
+            $$4.a(0.0F, azz.h(0.5F, $$7, $$9), $$19);
          } else {
             $$4.a(-1.0F, $$7, $$19);
          }
@@ -165,22 +165,22 @@ public class qx {
       return $$4 / (0.46082947F * $$3) - 1.17F;
    }
 
-   public static <C, I extends bav<C>> ayr<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, bav<Float> $$10
+   public static <C, I extends bbe<C>> ayz<C, I> a(
+      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, bbe<Float> $$10
    ) {
       float $$11 = 0.6F;
       float $$12 = 0.5F;
       float $$13 = 0.5F;
-      ayr<C, I> $$14 = a($$1, azq.h($$5, 0.6F, 1.5F), $$9, $$10);
-      ayr<C, I> $$15 = a($$1, azq.h($$5, 0.6F, 1.0F), $$9, $$10);
-      ayr<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      ayr<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, azq.h(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      ayr<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      ayr<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      ayr<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      ayr<C, I> $$21 = ayr.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      ayr<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      ayr.b<C, I> $$23 = ayr.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
+      ayz<C, I> $$14 = a($$1, azz.h($$5, 0.6F, 1.5F), $$9, $$10);
+      ayz<C, I> $$15 = a($$1, azz.h($$5, 0.6F, 1.0F), $$9, $$10);
+      ayz<C, I> $$16 = a($$1, $$5, $$9, $$10);
+      ayz<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, azz.h(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      ayz<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
+      ayz<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      ayz<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
+      ayz<C, I> $$21 = ayz.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
+      ayz<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
+      ayz.b<C, I> $$23 = ayz.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
       if ($$8) {
          $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
       }
@@ -189,10 +189,10 @@ public class qx {
       return $$23.a();
    }
 
-   private static <C, I extends bav<C>> ayr<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, bav<Float> $$7) {
+   private static <C, I extends bbe<C>> ayz<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, bbe<Float> $$7) {
       float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
       float $$9 = 5.0F * ($$3 - $$2);
-      return ayr.<C, I>a($$0, $$7)
+      return ayz.<C, I>a($$0, $$7)
          .a(-1.0F, $$1, $$8)
          .a(-0.4F, $$2, Math.min($$8, $$9))
          .a(0.0F, $$3, $$9)

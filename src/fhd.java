@@ -1,45 +1,19 @@
-public class fhd {
-   private static final fhn<Object> a = new fhn<Object>() {
-      @Override
-      public void a(fhk<Object> $$0) {
-      }
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(iw $$0, Object $$1) {
-         return false;
-      }
+public interface fhd {
+   int a();
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final fhg<Object> b = new fhg<Object>() {
-      @Override
-      public void a(fhk<Object> $$0) {
-      }
+   boolean b();
 
-      @Override
-      public boolean a(iw $$0, Object $$1) {
-         return false;
-      }
+   @Nullable
+   yw c();
 
-      @Override
-      public boolean b(iw $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> fhn<T> a() {
-      return (fhn<T>)a;
+   default xu a(yw $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   public static <T> fhg<T> b() {
-      return (fhg<T>)b;
+   static xu a(@Nullable fhd $$0, yw $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

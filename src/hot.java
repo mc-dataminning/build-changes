@@ -1,45 +1,33 @@
-public class hot extends hoi {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final crz p;
-   private final cum q;
-   private final boolean r;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-   public hot(crz $$0, cum $$1, boolean $$2) {
-      super($$2 ? awr.px : awr.py, aws.g, hoz.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = hoz.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class hot<T> implements hox<T> {
+   protected final Comparator<T> a;
+   protected final how<T> b;
+
+   public hot(Function<T, Stream<alr>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ag.g($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = how.a($$1, $$0);
    }
 
    @Override
-   public boolean s() {
-      return !this.q.ba();
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   @Override
-   public boolean r() {
-      return true;
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   @Override
-   public void q() {
-      if (this.q.dQ() || !this.p.bY() || this.p.dk() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bm()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dy().i();
-         boolean $$1 = !this.q.cp() && this.q.f() instanceof cvb;
-         if ($$0 >= 0.01F && !$$1) {
-            this.d = azq.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
-      }
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new hou<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

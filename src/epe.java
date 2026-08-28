@@ -1,63 +1,51 @@
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class epe extends epn {
-   public static final MapCodec<epe> a = eos.a.fieldOf("provider").xmap(epe::new, $$0 -> $$0.b);
-   private final eos b;
+public class epe extends epg {
+   public static final MapCodec<epe> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               azr.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               exd.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               azg.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, epe::new)
+   );
+   private final azr<Integer> i;
+   private final exd.a j;
+   private final float k;
+   private final exd l;
 
-   public epe(eos $$0) {
-      this.b = $$0;
+   public epe(azr<Integer> $$0, exd.a $$1, float $$2, long $$3, exd.a $$4, float $$5, List<ebq> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = exd.b(new eio(new ehq($$3)), $$1);
    }
 
    @Override
-   protected epo<?> a() {
-      return epo.g;
+   protected epd<?> a() {
+      return epd.e;
    }
 
    @Override
-   public void a(epn.a $$0) {
-      List<iw> $$1 = ely.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
+   public ebq a(bai $$0, iw $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azz.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<ebq> $$4 = Lists.newArrayListWithCapacity($$3);
 
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
+
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   private void a(epn.a $$0, iw $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(epn.a $$0, iw $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         iw $$3 = $$1.b($$2);
-         if (ekm.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   protected double a(iw $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

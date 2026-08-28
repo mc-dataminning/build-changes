@@ -1,166 +1,145 @@
+import com.google.gson.JsonElement;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public interface xi {
-   Codec<xi> a = xi.a.e.dispatch("action", xi::a, $$0 -> $$0.h);
+public class xi {
+   public static final Codec<xg> a = Codec.recursive("Component", xi::a);
+   public static final ze<wp, xg> b = zc.d(a);
+   public static final ze<wp, Optional<xg>> c = b.a(zc::a);
+   public static final ze<wp, xg> d = zc.c(a);
+   public static final ze<wp, Optional<xg>> e = d.a(zc::a);
+   public static final ze<ByteBuf, xg> f = zc.a(a);
 
-   xi.a a();
+   public static Codec<xg> a(final int $$0) {
+      return new Codec<xg>() {
+         public <T> DataResult<Pair<xg, T>> decode(DynamicOps<T> $$0x, T $$1) {
+            return xi.a
+               .decode($$0, $$1)
+               .flatMap(
+                  $$2 -> this.a($$0, (xg)$$2.getFirst())
+                        ? DataResult.error(() -> "Component was too large: greater than max size " + $$0)
+                        : DataResult.success($$2)
+               );
+         }
 
-   public static enum a implements bao {
-      a("show_text", true, xi.e.b),
-      b("show_item", true, xi.d.b),
-      c("show_entity", true, xi.c.b);
+         public <T> DataResult<T> a(xg $$0x, DynamicOps<T> $$1, T $$2) {
+            return xi.a.encodeStart($$1, $$0);
+         }
 
-      public static final Codec<xi.a> d = bao.b(xi.a::values);
-      public static final Codec<xi.a> e = d.validate(xi.a::a);
-      private final String f;
-      private final boolean g;
-      final MapCodec<? extends xi> h;
+         private <T> boolean a(DynamicOps<T> $$0x, xg $$1) {
+            DataResult<JsonElement> $$2 = xi.a.encodeStart(a($$0), $$1);
+            return $$2.isSuccess() && azo.a((JsonElement)$$2.getOrThrow(), $$0);
+         }
 
-      private a(final String $$0, final boolean $$1, final MapCodec<? extends xi> $$2) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2;
-      }
-
-      public boolean a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "<action " + this.f + ">";
-      }
-
-      private static DataResult<xi.a> a(xi.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
+         private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0x) {
+            return (DynamicOps<JsonElement>)($$0 instanceof alp<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+         }
+      };
    }
 
-   public static class b {
-      public static final MapCodec<xi.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  mh.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
-                  ka.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
-                  xe.a.optionalFieldOf("name").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, xi.b::new)
+   private static xu a(List<xg> $$0) {
+      xu $$1 = $$0.get(0).f();
+
+      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
+         $$1.b($$0.get($$2));
+      }
+
+      return $$1;
+   }
+
+   public static <T extends bax, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+      MapCodec<E> $$4 = new xi.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
+      Codec<T> $$5 = bax.b((Supplier<T[]>)(() -> $$0));
+      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
+      MapCodec<E> $$7 = new xi.b($$3, $$6, $$4);
+      return azg.a($$7, $$6);
+   }
+
+   private static Codec<xg> a(Codec<xg> $$0) {
+      xh.a<?>[] $$1 = new xh.a[]{yn.b, yr.c, yk.b, yo.c, yp.b, ym.b};
+      MapCodec<xh> $$2 = a($$1, xh.a::a, xh::a, "type");
+      Codec<xg> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$2.forGetter(xg::b), azg.b($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xg::c), yd.b.a.forGetter(xg::a))
+               .apply($$2x, xu::new)
       );
-      public final bxe<?> b;
-      public final UUID c;
-      public final Optional<xc> d;
-      @Nullable
-      private List<xc> e;
+      return Codec.either(Codec.either(Codec.STRING, azg.b($$0.listOf())), $$3)
+         .xmap($$0x -> (xg)$$0x.map($$0xx -> (xg)$$0xx.map(xg::b, xi::a), $$0xx -> $$0xx), $$0x -> {
+            String $$1x = $$0x.d();
+            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
+         });
+   }
 
-      public b(bxe<?> $$0, UUID $$1, @Nullable xc $$2) {
-         this($$0, $$1, Optional.ofNullable($$2));
+   static class a<T> extends MapCodec<T> {
+      private final List<MapCodec<? extends T>> a;
+      private final Function<T, MapEncoder<? extends T>> b;
+
+      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public b(bxe<?> $$0, UUID $$1, Optional<xc> $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public List<xc> a() {
-         if (this.e == null) {
-            this.e = new ArrayList<>();
-            this.d.ifPresent(this.e::add);
-            this.e.add(xc.a("gui.entity_tooltip.type", this.b.h()));
-            this.e.add(xc.b(this.c.toString()));
+      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
+         for (MapDecoder<? extends T> $$2 : this.a) {
+            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
+            if ($$3.result().isPresent()) {
+               return (DataResult<T>)$$3;
+            }
          }
 
-         return this.e;
+         return DataResult.error(() -> "No matching codec found");
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            xi.b $$1 = (xi.b)$$0;
-            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
-         } else {
-            return false;
-         }
+      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
+         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
+         return $$3.encode($$0, $$1, $$2);
       }
 
-      @Override
-      public int hashCode() {
-         int $$0 = this.b.hashCode();
-         $$0 = 31 * $$0 + this.c.hashCode();
-         return 31 * $$0 + this.d.hashCode();
+      public <S> Stream<S> keys(DynamicOps<S> $$0) {
+         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
+      }
+
+      public String toString() {
+         return "FuzzyCodec[" + this.a + "]";
       }
    }
 
-   public static record c(xi.b c) implements xi {
-      public static final MapCodec<xi.c> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xi.b.a.forGetter(xi.c::b)).apply($$0, xi.c::new));
+   static class b<T> extends MapCodec<T> {
+      private final String a;
+      private final MapCodec<T> b;
+      private final MapCodec<T> c;
 
-      @Override
-      public xi.a a() {
-         return xi.a.c;
+      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public xi.b b() {
-         return this.c;
-      }
-   }
-
-   public static record d(daa c) implements xi {
-      public static final MapCodec<xi.d> b = daa.a.xmap(xi.d::new, xi.d::b);
-
-      public d(daa c) {
-         c = c.v();
-         this.c = c;
+      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
+         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
       }
 
-      @Override
-      public xi.a a() {
-         return xi.a.b;
+      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
+         return this.c.encode($$0, $$1, $$2);
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if ($$0 instanceof xi.d $$1 && daa.a(this.c, $$1.c)) {
-            return true;
-         }
-
-         return false;
-      }
-
-      @Override
-      public int hashCode() {
-         return daa.b(this.c);
-      }
-
-      public daa b() {
-         return this.c;
-      }
-   }
-
-   public static record e(xc c) implements xi {
-      public static final MapCodec<xi.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(xe.a.fieldOf("value").forGetter(xi.e::b)).apply($$0, xi.e::new));
-
-      @Override
-      public xi.a a() {
-         return xi.a.a;
-      }
-
-      public xc b() {
-         return this.c;
+      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
+         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
       }
    }
 }

@@ -1,46 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
-import java.util.List;
-import java.util.SequencedSet;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record dde(boolean d, SequencedSet<kk<?>> e) {
-   private static final Codec<SequencedSet<kk<?>>> f = kk.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
+public record dde(Optional<jf> c, boolean d) {
    public static final Codec<dde> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dde::a),
-               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dde::b)
-            )
-            .apply($$0, dde::new)
+      $$0 -> $$0.group(jf.b.optionalFieldOf("target").forGetter(dde::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dde::b)).apply($$0, dde::new)
    );
-   public static final za<wn, dde> b = za.a(yy.b, dde::a, kk.b.a(yy.a(ReferenceLinkedOpenHashSet::new)), dde::b, dde::new);
-   public static final dde c = new dde(false, ReferenceSortedSets.emptySet());
+   public static final ze<ByteBuf, dde> b = ze.a(jf.c.a(zc::a), dde::a, zc.b, dde::b, dde::new);
 
-   public dde a(kk<?> $$0, boolean $$1) {
-      if (this.e.contains($$0) == $$1) {
-         return this;
-      } else {
-         SequencedSet<kk<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
-         if ($$1) {
-            $$2.add($$0);
+   public dde a(asb $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.aj()) {
+            return this;
          } else {
-            $$2.remove($$0);
+            iw $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.A().a(cjl.s, $$1) ? this : new dde(Optional.empty(), true);
          }
-
-         return new dde(this.d, $$2);
+      } else {
+         return this;
       }
    }
 
-   public boolean a(kk<?> $$0) {
-      return !this.d && !this.e.contains($$0);
+   public Optional<jf> a() {
+      return this.c;
    }
 
-   public boolean a() {
+   public boolean b() {
       return this.d;
-   }
-
-   public SequencedSet<kk<?>> b() {
-      return this.e;
    }
 }

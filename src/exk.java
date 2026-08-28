@@ -1,140 +1,166 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+public class exk {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final aym d;
+   private final iw.a e = new iw.a();
+   private final iw.a f = new iw.a();
 
-public class exk extends exe<exk.a> {
-   protected exk(edq $$0) {
-      super(dki.a, $$0, new exk.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+   public exk(dkl $$0) {
+      this.c = $$0.K_() - 1;
+      int $$1 = $$0.ao() + 1;
+      int $$2 = azz.e($$1 - this.c + 1);
+      this.d = new baq($$2, 256);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public void a(edn $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = jz.e($$0);
-      int $$3 = jz.c($$2);
-      exk.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(jz.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         edi $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = iw.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
+   private int a(edn $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jz.c($$0.h($$1) + 1);
+      iw.a $$5 = this.e.d($$2, $$4, $$3);
+      iw.a $$6 = this.f.a($$5, jc.a);
+      ebq $$7 = dnq.a.m();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         edy $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dnq.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(jz.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               ebq $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
                }
 
-               $$2 = jz.a($$2, jc.b);
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jc.a);
             }
          }
+      }
 
-         return $$6.a(jz.b(iw.a($$0)), jz.b(iw.b($$0)), jz.b(iw.c($$0)));
+      return this.c;
+   }
+
+   public boolean a(djn $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
       } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void h(long $$0) {
-      int $$1 = jz.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = jz.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = jz.f($$0);
-      int $$2 = jz.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jz.a($$3, jc.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
+         iw $$7 = this.e.d($$1, $$2 + 1, $$3);
+         ebq $$8 = $$0.a_($$7);
+         iw $$9 = this.f.d($$1, $$2, $$3);
+         ebq $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
          } else {
-            this.d.c.remove($$1);
+            iw $$11 = this.e.d($$1, $$2 - 1, $$3);
+            ebq $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
          }
       }
    }
 
-   @Override
-   protected edi g(long $$0) {
-      edi $$1 = (edi)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
+   private boolean a(djn $$0, int $$1, int $$2, iw $$3, ebq $$4, iw $$5, ebq $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
+   }
+
+   private int a(djn $$0, iw $$1, ebq $$2) {
+      iw.a $$3 = this.e.g($$1);
+      iw.a $$4 = this.f.a($$1, jc.a);
+      ebq $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         ebq $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jc.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(ebq $$0, ebq $$1) {
+      if ($$1.g() != 0) {
+         return true;
       } else {
-         int $$2 = this.d.c.get(jz.f($$0));
-         if ($$2 != this.d.b && jz.c($$0) < $$2) {
-            long $$3 = jz.a($$0, jc.b);
+         fgw $$2 = exr.a($$0, jc.a);
+         fgw $$3 = exr.a($$1, jc.b);
+         return fgt.b($$2, $$3);
+      }
+   }
 
-            edi $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = jz.a($$3, jc.b);
-            }
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
 
-            return a($$4);
-         } else {
-            return this.j($$0) ? new edi(15) : new edi();
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
          }
       }
+
+      return this.c($$0 + this.c);
    }
 
-   private static edi a(edi $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
 
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new edi($$2);
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
       }
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
    }
 
-   protected boolean m(long $$0) {
-      long $$1 = jz.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || jz.c($$0) >= $$2;
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
    }
 
-   protected int n(long $$0) {
-      return this.d.c.get($$0);
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
    }
 
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends exb<exk.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<edi> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public exk.a a() {
-         return new exk.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

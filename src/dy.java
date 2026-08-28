@@ -8,7 +8,7 @@ public class dy extends dl<dy.a> {
       return dy.a.a;
    }
 
-   public void a(arv $$0, iw $$1) {
+   public void a(asc $$0, iw $$1) {
       double $$2 = $$0.dA() - (double)$$1.u();
       double $$3 = $$0.dG() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;

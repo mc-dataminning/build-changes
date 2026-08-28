@@ -1,161 +1,101 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cvx {
+   private static final int a = 0;
+   private static final float b = 0.0F;
+   private int c = 20;
+   private float d = 5.0F;
+   private float e;
+   private int f;
 
-public class cvx extends cvs {
-   private static final int m = 0;
-   private static final int n = 1;
-   private static final int o = 3;
-   private static final int p = 1;
-   private static final int q = 28;
-   private static final int r = 28;
-   private static final int s = 37;
-   private static final int t = 0;
-   private final bum u = new bva(1) {
-      @Override
-      public boolean b(int $$0, daa $$1) {
-         return $$1.a(axo.bc);
-      }
-
-      @Override
-      public int ao_() {
-         return 1;
-      }
-   };
-   private final cvx.a v;
-   private final cwf w;
-   private final cwe x;
-
-   public cvx(int $$0, bum $$1) {
-      this($$0, $$1, new cxo(3), cwf.a);
+   private void b(int $$0, float $$1) {
+      this.c = azz.a($$0 + this.c, 0, 20);
+      this.d = azz.a($$1 + this.d, 0.0F, (float)this.c);
    }
 
-   public cvx(int $$0, bum $$1, cwe $$2, cwf $$3) {
-      super(cxb.j, $$0);
-      a($$2, 3);
-      this.x = $$2;
-      this.w = $$3;
-      this.v = new cvx.a(this.u, 0, 136, 110);
-      this.a(this.v);
-      this.a($$2);
-      this.c($$1, 36, 137);
+   public void a(int $$0, float $$1) {
+      this.b($$0, cvw.a($$0, $$1));
    }
 
-   @Override
-   public void a(crz $$0) {
-      super.a($$0);
-      if (!$$0.dV().C) {
-         daa $$1 = this.v.a(this.v.a());
-         if (!$$1.f()) {
-            $$0.a($$1, false);
+   public void a(cvy $$0) {
+      this.b($$0.a(), $$0.b());
+   }
+
+   public void a(asc $$0) {
+      asb $$1 = $$0.y();
+      buz $$2 = $$1.an();
+      if (this.e > 4.0F) {
+         this.e -= 4.0F;
+         if (this.d > 0.0F) {
+            this.d = Math.max(this.d - 1.0F, 0.0F);
+         } else if ($$2 != buz.a) {
+            this.c = Math.max(this.c - 1, 0);
          }
       }
-   }
 
-   @Override
-   public boolean b(crz $$0) {
-      return a(this.w, $$0, dng.gn);
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public daa b(crz $$0, int $$1) {
-      daa $$2 = daa.k;
-      cxp $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         daa $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return daa.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.v.h() && this.v.a($$4) && $$4.M() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return daa.k;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return daa.k;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return daa.k;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return daa.k;
+      boolean $$3 = $$1.O().c(dkf.l);
+      if ($$3 && this.d > 0.0F && $$0.gv() && this.c >= 20) {
+         this.f++;
+         if (this.f >= 10) {
+            float $$4 = Math.min(this.d, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.f = 0;
          }
-
-         if ($$4.f()) {
-            $$3.e(daa.k);
-         } else {
-            $$3.d();
+      } else if ($$3 && this.c >= 18 && $$0.gv()) {
+         this.f++;
+         if (this.f >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.f = 0;
          }
+      } else if (this.c <= 0) {
+         this.f++;
+         if (this.f >= 80) {
+            if ($$0.eG() > 10.0F || $$2 == buz.d || $$0.eG() > 1.0F && $$2 == buz.c) {
+               $$0.a($$1, $$0.dW().j(), 1.0F);
+            }
 
-         if ($$4.M() == $$2.M()) {
-            return daa.k;
+            this.f = 0;
          }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.x.a(0);
-   }
-
-   public static int a(@Nullable jg<bvx> $$0) {
-      return $$0 == null ? 0 : mh.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static jg<bvx> e(int $$0) {
-      return $$0 == 0 ? null : mh.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public jg<bvx> m() {
-      return e(this.x.a(1));
-   }
-
-   @Nullable
-   public jg<bvx> n() {
-      return e(this.x.a(2));
-   }
-
-   public void a(Optional<jg<bvx>> $$0, Optional<jg<bvx>> $$1) {
-      if (this.v.h()) {
-         this.x.a(1, a($$0.orElse(null)));
-         this.x.a(2, a($$1.orElse(null)));
-         this.v.a(1);
-         this.w.a(djz::q);
+      } else {
+         this.f = 0;
       }
    }
 
-   public boolean o() {
-      return !this.u.a(0).f();
+   public void a(ua $$0) {
+      this.c = $$0.b("foodLevel", 20);
+      this.f = $$0.b("foodTickTimer", 0);
+      this.d = $$0.b("foodSaturationLevel", 5.0F);
+      this.e = $$0.b("foodExhaustionLevel", 0.0F);
    }
 
-   static class a extends cxp {
-      public a(bum $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
+   public void b(ua $$0) {
+      $$0.a("foodLevel", this.c);
+      $$0.a("foodTickTimer", this.f);
+      $$0.a("foodSaturationLevel", this.d);
+      $$0.a("foodExhaustionLevel", this.e);
+   }
 
-      @Override
-      public boolean a(daa $$0) {
-         return $$0.a(axo.bc);
-      }
+   public int a() {
+      return this.c;
+   }
 
-      @Override
-      public int a() {
-         return 1;
-      }
+   public boolean b() {
+      return this.c < 20;
+   }
+
+   public void a(float $$0) {
+      this.e = Math.min(this.e + $$0, 40.0F);
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   public void b(float $$0) {
+      this.d = $$0;
    }
 }

@@ -14,27 +14,27 @@ public class sd extends ss {
    @Override
    public void a(sq $$0) {
       iw $$1 = this.b($$0);
-      dzy $$2 = $$0.a($$1, dzy.class);
+      eai $$2 = $$0.a($$1, eai.class);
       $$2.j();
       $$0.e(() -> {
-         List<iw> $$1x = this.a($$0, ecr.d);
+         List<iw> $$1x = this.a($$0, edb.d);
          if ($$1x.isEmpty()) {
-            $$0.b(xc.a("test_block.error.missing", ecr.d.a()));
+            $$0.b(xg.a("test_block.error.missing", edb.d.a()));
          }
 
-         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dzy.class)).anyMatch(dzy::s);
+         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, eai.class)).anyMatch(eai::s);
          if ($$2x) {
             $$0.e();
          } else {
-            this.a($$0, ecr.c, $$1xx -> $$0.b(xc.b($$1xx.t())));
-            this.a($$0, ecr.b, dzy::j);
+            this.a($$0, edb.c, $$1xx -> $$0.b(xg.b($$1xx.t())));
+            this.a($$0, edb.b, eai::j);
          }
       });
    }
 
-   private void a(sq $$0, ecr $$1, Consumer<dzy> $$2) {
+   private void a(sq $$0, edb $$1, Consumer<eai> $$2) {
       for (iw $$4 : this.a($$0, $$1)) {
-         dzy $$5 = $$0.a($$4, dzy.class);
+         eai $$5 = $$0.a($$4, eai.class);
          if ($$5.s()) {
             $$2.accept($$5);
             $$5.f();
@@ -43,23 +43,23 @@ public class sd extends ss {
    }
 
    private iw b(sq $$0) {
-      List<iw> $$1 = this.a($$0, ecr.a);
+      List<iw> $$1 = this.a($$0, edb.a);
       if ($$1.isEmpty()) {
-         $$0.b(xc.a("test_block.error.missing", ecr.a.a()));
+         $$0.b(xg.a("test_block.error.missing", edb.a.a()));
       }
 
       if ($$1.size() != 1) {
-         $$0.b(xc.a("test_block.error.too_many", ecr.a.a()));
+         $$0.b(xg.a("test_block.error.too_many", edb.a.a()));
       }
 
       return $$1.getFirst();
    }
 
-   private List<iw> a(sq $$0, ecr $$1) {
+   private List<iw> a(sq $$0, edb $$1) {
       List<iw> $$2 = new ArrayList<>();
       $$0.a($$3 -> {
-         ebg $$4 = $$0.a($$3);
-         if ($$4.a(dng.pI) && $$4.c(dvy.b) == $$1) {
+         ebq $$4 = $$0.a($$3);
+         if ($$4.a(dnq.pI) && $$4.c(dwi.b) == $$1) {
             $$2.add($$3.j());
          }
       });
@@ -72,7 +72,7 @@ public class sd extends ss {
    }
 
    @Override
-   protected xq b() {
-      return xc.c("test_instance.type.block_based");
+   protected xu b() {
+      return xg.c("test_instance.type.block_based");
    }
 }

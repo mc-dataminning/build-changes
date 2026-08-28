@@ -1,13 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eqk {
-   private static final Codec<Either<ehz, eqk>> a = Codec.either(ehz.a, mh.L.q().dispatch(eqk::a, eql::codec));
-   public static final Codec<eqk> c = a.xmap(
-      $$0 -> (eqk)$$0.map(eqj::a, $$0x -> $$0x), $$0 -> $$0.a() == eql.a ? Either.left(((eqj)$$0).b()) : Either.right($$0)
-   );
+public class eqk<P extends eqj> {
+   public static final eqk<eqi> a = a("straight_trunk_placer", eqi.a);
+   public static final eqk<eqf> b = a("forking_trunk_placer", eqf.a);
+   public static final eqk<eqg> c = a("giant_trunk_placer", eqg.a);
+   public static final eqk<eqh> d = a("mega_jungle_trunk_placer", eqh.b);
+   public static final eqk<eqd> e = a("dark_oak_trunk_placer", eqd.a);
+   public static final eqk<eqe> f = a("fancy_trunk_placer", eqe.a);
+   public static final eqk<eqb> g = a("bending_trunk_placer", eqb.a);
+   public static final eqk<eql> h = a("upwards_branching_trunk_placer", eql.a);
+   public static final eqk<eqc> i = a("cherry_trunk_placer", eqc.a);
+   private final MapCodec<P> j;
 
-   public abstract int a(azz var1, eic var2);
+   private static <P extends eqj> eqk<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.V, $$0, new eqk<>($$1));
+   }
 
-   public abstract eql<?> a();
+   private eqk(MapCodec<P> $$0) {
+      this.j = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.j;
+   }
 }

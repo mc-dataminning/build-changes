@@ -1,53 +1,22 @@
-import java.util.function.Consumer;
+public class bwm extends bwg {
+   public static final int c = 25;
 
-public class bwm {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
-
-   public void a(int $$0) {
-      this.b = $$0;
+   protected bwm(bwh $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
+   @Override
+   public boolean a(asb $$0, byf $$1, int $$2) {
+      if ($$1.eG() > 1.0F) {
+         $$1.a($$0, $$1.dW().q(), 1.0F);
       }
+
+      return true;
    }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
-
-   public void a() {
-      this.b = Integer.MIN_VALUE;
-   }
-
-   public void a(Consumer<bwm> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(bwm $$0) {
-      this.b = $$0.b;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

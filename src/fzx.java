@@ -1,61 +1,125 @@
-import java.net.URI;
+enum fzx {
+   a(
+      new fzx.a(alr.b("advancements/tab_above_left_selected"), alr.b("advancements/tab_above_middle_selected"), alr.b("advancements/tab_above_right_selected")),
+      new fzx.a(alr.b("advancements/tab_above_left"), alr.b("advancements/tab_above_middle"), alr.b("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fzx.a(alr.b("advancements/tab_below_left_selected"), alr.b("advancements/tab_below_middle_selected"), alr.b("advancements/tab_below_right_selected")),
+      new fzx.a(alr.b("advancements/tab_below_left"), alr.b("advancements/tab_below_middle"), alr.b("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fzx.a(alr.b("advancements/tab_left_top_selected"), alr.b("advancements/tab_left_middle_selected"), alr.b("advancements/tab_left_bottom_selected")),
+      new fzx.a(alr.b("advancements/tab_left_top"), alr.b("advancements/tab_left_middle"), alr.b("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fzx.a(alr.b("advancements/tab_right_top_selected"), alr.b("advancements/tab_right_middle_selected"), alr.b("advancements/tab_right_bottom_selected")),
+      new fzx.a(alr.b("advancements/tab_right_top"), alr.b("advancements/tab_right_middle"), alr.b("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-public class fzx extends gaf {
-   private static final xc a = xc.c("symlink_warning.title.world").a(o.r);
-   private static final xc b = xc.a("symlink_warning.message.world", xc.a(ayl.p));
-   private static final xc c = xc.c("symlink_warning.title.pack").a(o.r);
-   private static final xc d = xc.a("symlink_warning.message.pack", xc.a(ayl.p));
-   private final xc s;
-   private final URI u;
-   private final Runnable v;
-   private final fya w = new fya().b(10);
+   private final fzx.a e;
+   private final fzx.a f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public fzx(xc $$0, xc $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
+   private fzx(final fzx.a $$0, final fzx.a $$1, final int $$2, final int $$3, final int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   public static gaf a(Runnable $$0) {
-      return new fzx(a, b, ayl.p, $$0);
+   public int a() {
+      return this.i;
    }
 
-   public static gaf b(Runnable $$0) {
-      return new fzx(c, d, ayl.p, $$0);
+   public void a(ftk $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fzx.a $$5 = $$3 ? this.e : this.f;
+      alr $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
+      } else {
+         $$6 = $$5.b();
+      }
+
+      $$0.a(gry::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.w.c().b();
-      fya.b $$0 = this.w.d(1);
-      $$0.a(new fvu(this.l, this.p));
-      $$0.a(new fvh(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fya $$2 = new fya().a(5);
-      fya.b $$3 = $$2.d(3);
-      $$3.a(fun.a(xb.n, $$0x -> ag.n().a(this.u)).b(120, 20).a());
-      $$3.a(fun.a(xb.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fun.a(xb.k, $$0x -> this.aP_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public void a(ftk $$0, int $$1, int $$2, int $$3, dak $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
    }
 
-   @Override
-   protected void c() {
-      this.w.a();
-      fxz.a(this.w, this.J());
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
    }
 
-   @Override
-   public xc i() {
-      return xb.a(super.i(), this.s);
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      }
    }
 
-   @Override
-   public void aP_() {
-      this.v.run();
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(alr a, alr b, alr c) {
    }
 }

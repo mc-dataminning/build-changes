@@ -1,74 +1,78 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class hqu {
-   public static final hqu a = new hqu(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hqq<hqu.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class hqu implements hqw {
+   private static final int a = 600;
+   private static final xg b = xg.c("tutorial.punch_tree.title");
+   private static final xg c = xg.a("tutorial.punch_tree.description", hqv.a("attack"));
+   private final hqv d;
+   @Nullable
+   private fwk e;
+   private int f;
+   private int g;
 
-   protected hqu(Ticker $$0) {
-      this.c = $$0;
+   public hqu(hqv $$0) {
+      this.d = $$0;
    }
 
-   public synchronized void a(hqq<hqu.a> $$0) {
-      this.a($$0, (Function<hqq<hqu.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(hqq<hqu.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hqq<hqu.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hqq<hqu.a> $$0, Function<hqq<hqu.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hqq<hqu.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hqx.f);
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+         fqq $$0 = this.d.e();
+         if (this.f == 1) {
+            gqm $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gj().a(axv.r)) {
+                  this.d.a(hqx.e);
+                  return;
+               }
+
+               if (hqr.a($$1)) {
+                  this.d.a(hqx.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fwk($$0.h, fwk.a.c, b, c, true);
+            $$0.aA().a(this.e);
          }
       }
    }
 
-   public void a(hqn $$0) {
-      $$0.send(hqo.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hqq<hqu.a>)$$1, new hqu.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hqo.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hqq.B, new hqu.a((int)$$1)));
-            this.d.clear();
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(glo $$0, iw $$1, ebq $$2, float $$3) {
+      boolean $$4 = $$2.a(axn.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
          }
-      });
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hqx.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hqu.a> a = Codec.INT.xmap(hqu.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+   @Override
+   public void a(dak $$0) {
+      if ($$0.a(axv.r)) {
+         this.d.a(hqx.e);
       }
    }
 }

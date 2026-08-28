@@ -1,45 +1,33 @@
-class arl extends arc {
-   private static final int a = aqx.b + 1;
-   private final arh b;
-   private final dkw c;
+public record arl(String b, int c, csf d, boolean e, int f, bxw g, boolean h, boolean i, art j) {
+   public static final int a = 16;
 
-   public arl(arh $$0, dkw $$1) {
-      super(a + 1, 16, 256);
-      this.b = $$0;
-      this.c = $$1;
-      $$1.a(this::b);
+   public arl(vy $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(csf.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bxw.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(art.class)
+      );
    }
 
-   @Override
-   protected int b(long $$0) {
-      return this.c.a($$0, false);
+   public void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   @Override
-   protected int c(long $$0) {
-      if (!this.b.a($$0)) {
-         aqw $$1 = this.b.b($$0);
-         if ($$1 != null) {
-            return $$1.j();
-         }
-      }
-
-      return a;
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      aqw $$2 = this.b.b($$0);
-      int $$3 = $$2 == null ? a : $$2.j();
-      if ($$3 != $$1) {
-         $$2 = this.b.a($$0, $$1, $$2, $$3);
-         if ($$2 != null) {
-            this.b.b.add($$2);
-         }
-      }
-   }
-
-   public int a(int $$0) {
-      return this.b($$0);
+   public static arl a() {
+      return new arl("en_us", 2, csf.a, true, 0, csi.bu, false, false, art.a);
    }
 }

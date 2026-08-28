@@ -1,70 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class fgu implements fgt {
-   public static final MapCodec<fgu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("Score", 0).forGetter(fgu::a),
-               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(fgu::b),
-               xe.a.optionalFieldOf("display").forGetter($$0x -> Optional.ofNullable($$0x.d)),
-               yu.b.optionalFieldOf("format").forGetter($$0x -> Optional.ofNullable($$0x.e))
-            )
-            .apply($$0, fgu::new)
-   );
-   private int b;
-   private boolean c = true;
-   @Nullable
-   private xc d;
-   @Nullable
-   private ys e;
+public class fgu extends fgw {
+   private final fgw b;
+   private final jc.a c;
+   private static final DoubleList d = new fgi(1);
 
-   public fgu() {
-   }
-
-   private fgu(int $$0, boolean $$1, Optional<xc> $$2, Optional<ys> $$3) {
+   public fgu(fgw $$0, jc.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
-      this.e = $$3.orElse(null);
+   }
+
+   private static fgl a(fgl $$0, jc.a $$1, int $$2) {
+      return new fgv(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
    @Override
-   public int a() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   public xc d() {
-      return this.d;
-   }
-
-   public void a(@Nullable xc $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ys c() {
-      return this.e;
-   }
-
-   public void b(@Nullable ys $$0) {
-      this.e = $$0;
+   public DoubleList a(jc.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

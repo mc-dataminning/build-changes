@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface eam {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface eam {
+   boolean b();
+
+   iw c();
+
+   String d();
 }

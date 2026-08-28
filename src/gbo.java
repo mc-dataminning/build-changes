@@ -1,96 +1,33 @@
-public class gbo {
-   private static final alk a = alk.b("alt");
-   private static final xz b = xz.a.a(a);
-   private static final gbo c = new gbo();
-   private final azz d = azz.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class gbo extends fty {
+   private static final alr a = alr.b("widget/page_forward_highlighted");
+   private static final alr b = alr.b("widget/page_forward");
+   private static final alr c = alr.b("widget/page_backward_highlighted");
+   private static final alr d = alr.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   private gbo() {
+   public gbo(int $$0, int $$1, boolean $$2, fty.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, xf.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
-   public static gbo a() {
-      return c;
-   }
-
-   public xh a(ftx $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ag.a(this.e, this.d));
+   @Override
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      alr $$4;
+      if (this.u) {
+         $$4 = this.D() ? a : b;
+      } else {
+         $$4 = this.D() ? c : d;
       }
 
-      return $$0.b().a(xc.b($$2.toString()).c(b), $$1, xz.a);
+      $$0.a(gry::H, $$4, this.F(), this.G(), 23, 13);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   public void a(hpt $$0) {
+      if (this.v) {
+         $$0.a(hoi.a(awy.cy, 1.0F));
+      }
    }
 }

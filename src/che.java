@@ -1,65 +1,32 @@
-public class che extends chg {
-   public che(bxy $$0, djz $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum che implements bax {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<che> n = bax.a(che::values);
+
+   private che(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected eyg a(int $$0) {
-      this.o = new eyb();
-      return new eyg(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a(ffs $$0, ffs $$1) {
-      return a(this.a, $$0, $$1, true);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.o() && this.a.bl() || !this.a.bY();
-   }
-
-   @Override
-   protected ffs b() {
-      return this.a.dt();
-   }
-
-   @Override
-   public eye a(bwv $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
-   }
-
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.h();
-      }
-
-      if (!this.k()) {
-         if (this.a()) {
-            this.j();
-         } else if (this.c != null && !this.c.c()) {
-            ffs $$0 = this.c.a(this.a);
-            if (this.a.dz() == azq.a($$0.d) && this.a.dB() == azq.a($$0.e) && this.a.dF() == azq.a($$0.f)) {
-               this.c.a();
-            }
-         }
-
-         agq.a(this.b, this.a, this.c, this.l);
-         if (!this.k()) {
-            ffs $$1 = this.c.a(this.a);
-            this.a.L().a($$1.d, $$1.e, $$1.f, this.d);
-         }
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   @Override
-   public boolean a(iw $$0) {
-      return this.b.a_($$0).b(this.b, $$0, this.a);
+   public String c() {
+      return this.i;
    }
 }

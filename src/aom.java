@@ -1,242 +1,345 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 public class aom {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.place.feature.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("commands.place.jigsaw.failed"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xc.c("commands.place.structure.failed"));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xc.b("commands.place.template.invalid", $$0));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xc.c("commands.place.template.failed"));
-   private static final SuggestionProvider<ek> f = ($$0, $$1) -> {
-      ewg $$2 = ((ek)$$0.getSource()).e().r();
-      return ep.a($$2.a(), $$1);
+   public static final SuggestionProvider<ek> a = ($$0, $$1) -> {
+      amb.a $$2 = ((ek)$$0.getSource()).l().bc();
+      return ep.a($$2.a(mi.br), $$1);
    };
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("commands.drop.no_held_items", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xg.b("commands.drop.no_loot_table.entity", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xg.b("commands.drop.no_loot_table.block", $$0));
 
-   public static void a(CommandDispatcher<ek> $$0) {
+   public static void a(CommandDispatcher<ek> $$0, eg $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("place")
-                        .requires($$0x -> $$0x.c(2)))
-                     .then(
-                        el.a("feature")
-                           .then(
-                              ((RequiredArgumentBuilder)el.a("feature", fk.a(mi.aL))
-                                    .executes($$0x -> a((ek)$$0x.getSource(), fk.a($$0x, "feature"), iw.a((jq)((ek)$$0x.getSource()).d()))))
-                                 .then(el.a("pos", gh.a()).executes($$0x -> a((ek)$$0x.getSource(), fk.a($$0x, "feature"), gh.a($$0x, "pos"))))
-                           )
-                     ))
-                  .then(
-                     el.a("jigsaw")
+         a(
+            (LiteralArgumentBuilder)el.a("loot").requires($$0x -> $$0x.c(2)),
+            ($$1x, $$2) -> $$1x.then(
+                     el.a("fish")
                         .then(
-                           el.a("pool", fk.a(mi.bf))
+                           el.a("loot_table", fm.a($$1))
+                              .suggests(a)
                               .then(
-                                 el.a("target", fl.a())
-                                    .then(
-                                       ((RequiredArgumentBuilder)el.a("max_depth", IntegerArgumentType.integer(1, 20))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ek)$$0x.getSource(),
-                                                      fk.c($$0x, "pool"),
-                                                      fl.a($$0x, "target"),
-                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                      iw.a((jq)((ek)$$0x.getSource()).d())
-                                                   )
-                                             ))
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a("pos", gh.a())
+                                             .executes($$1xx -> a($$1xx, fm.a($$1xx, "loot_table"), gh.a($$1xx, "pos"), dak.l, $$2)))
                                           .then(
-                                             el.a("position", gh.a())
+                                             el.a("tool", gu.a($$1))
                                                 .executes(
-                                                   $$0x -> a(
-                                                         (ek)$$0x.getSource(),
-                                                         fk.c($$0x, "pool"),
-                                                         fl.a($$0x, "target"),
-                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
-                                                         gh.a($$0x, "position")
-                                                      )
+                                                   $$1xx -> a($$1xx, fm.a($$1xx, "loot_table"), gh.a($$1xx, "pos"), gu.a($$1xx, "tool").a(1, false), $$2)
                                                 )
-                                          )
+                                          ))
+                                       .then(
+                                          el.a("mainhand")
+                                             .executes($$1xx -> a($$1xx, fm.a($$1xx, "loot_table"), gh.a($$1xx, "pos"), a((ek)$$1xx.getSource(), bxo.a), $$2))
+                                       ))
+                                    .then(
+                                       el.a("offhand")
+                                          .executes($$1xx -> a($$1xx, fm.a($$1xx, "loot_table"), gh.a($$1xx, "pos"), a((ek)$$1xx.getSource(), bxo.b), $$2))
+                                    )
+                              )
+                        )
+                  )
+                  .then(el.a("loot").then(el.a("loot_table", fm.a($$1)).suggests(a).executes($$1xx -> a($$1xx, fm.a($$1xx, "loot_table"), $$2))))
+                  .then(el.a("kill").then(el.a("target", ex.a()).executes($$1xx -> a($$1xx, ex.a($$1xx, "target"), $$2))))
+                  .then(
+                     el.a("mine")
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a("pos", gh.a())
+                                       .executes($$1xx -> a($$1xx, gh.a($$1xx, "pos"), dak.l, $$2)))
+                                    .then(el.a("tool", gu.a($$1)).executes($$1xx -> a($$1xx, gh.a($$1xx, "pos"), gu.a($$1xx, "tool").a(1, false), $$2))))
+                                 .then(el.a("mainhand").executes($$1xx -> a($$1xx, gh.a($$1xx, "pos"), a((ek)$$1xx.getSource(), bxo.a), $$2))))
+                              .then(el.a("offhand").executes($$1xx -> a($$1xx, gh.a($$1xx, "pos"), a((ek)$$1xx.getSource(), bxo.b), $$2)))
+                        )
+                  )
+         )
+      );
+   }
+
+   private static <T extends ArgumentBuilder<ek, T>> T a(T $$0, aom.c $$1) {
+      return (T)$$0.then(
+            ((LiteralArgumentBuilder)el.a("replace")
+                  .then(
+                     el.a("entity")
+                        .then(
+                           el.a("entities", ex.b())
+                              .then(
+                                 $$1.construct(el.a("slot", ft.a()), ($$0x, $$1x, $$2) -> a(ex.b($$0x, "entities"), ft.a($$0x, "slot"), $$1x.size(), $$1x, $$2))
+                                    .then(
+                                       $$1.construct(
+                                          el.a("count", IntegerArgumentType.integer(0)),
+                                          ($$0x, $$1x, $$2) -> a(
+                                                ex.b($$0x, "entities"), ft.a($$0x, "slot"), IntegerArgumentType.getInteger($$0x, "count"), $$1x, $$2
+                                             )
+                                       )
                                     )
                               )
                         )
                   ))
                .then(
-                  el.a("structure")
+                  el.a("block")
                      .then(
-                        ((RequiredArgumentBuilder)el.a("structure", fk.a(mi.be))
-                              .executes($$0x -> b((ek)$$0x.getSource(), fk.b($$0x, "structure"), iw.a((jq)((ek)$$0x.getSource()).d()))))
-                           .then(el.a("pos", gh.a()).executes($$0x -> b((ek)$$0x.getSource(), fk.b($$0x, "structure"), gh.a($$0x, "pos"))))
-                     )
-               ))
-            .then(
-               el.a("template")
-                  .then(
-                     ((RequiredArgumentBuilder)el.a("template", fl.a())
-                           .suggests(f)
-                           .executes(
-                              $$0x -> a((ek)$$0x.getSource(), fl.a($$0x, "template"), iw.a((jq)((ek)$$0x.getSource()).d()), dty.a, dsh.a, 1.0F, 0, false)
-                           ))
-                        .then(
-                           ((RequiredArgumentBuilder)el.a("pos", gh.a())
-                                 .executes($$0x -> a((ek)$$0x.getSource(), fl.a($$0x, "template"), gh.a($$0x, "pos"), dty.a, dsh.a, 1.0F, 0, false)))
-                              .then(
-                                 ((RequiredArgumentBuilder)el.a("rotation", fz.a())
-                                       .executes(
-                                          $$0x -> a(
-                                                (ek)$$0x.getSource(), fl.a($$0x, "template"), gh.a($$0x, "pos"), fz.a($$0x, "rotation"), dsh.a, 1.0F, 0, false
-                                             )
-                                       ))
-                                    .then(
-                                       ((RequiredArgumentBuilder)el.a("mirror", fy.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ek)$$0x.getSource(),
-                                                      fl.a($$0x, "template"),
-                                                      gh.a($$0x, "pos"),
-                                                      fz.a($$0x, "rotation"),
-                                                      fy.a($$0x, "mirror"),
-                                                      1.0F,
-                                                      0,
-                                                      false
-                                                   )
-                                             ))
-                                          .then(
-                                             ((RequiredArgumentBuilder)el.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                                   .executes(
-                                                      $$0x -> a(
-                                                            (ek)$$0x.getSource(),
-                                                            fl.a($$0x, "template"),
-                                                            gh.a($$0x, "pos"),
-                                                            fz.a($$0x, "rotation"),
-                                                            fy.a($$0x, "mirror"),
-                                                            FloatArgumentType.getFloat($$0x, "integrity"),
-                                                            0,
-                                                            false
-                                                         )
-                                                   ))
-                                                .then(
-                                                   ((RequiredArgumentBuilder)el.a("seed", IntegerArgumentType.integer())
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (ek)$$0x.getSource(),
-                                                                  fl.a($$0x, "template"),
-                                                                  gh.a($$0x, "pos"),
-                                                                  fz.a($$0x, "rotation"),
-                                                                  fy.a($$0x, "mirror"),
-                                                                  FloatArgumentType.getFloat($$0x, "integrity"),
-                                                                  IntegerArgumentType.getInteger($$0x, "seed"),
-                                                                  false
-                                                               )
-                                                         ))
-                                                      .then(
-                                                         el.a("strict")
-                                                            .executes(
-                                                               $$0x -> a(
-                                                                     (ek)$$0x.getSource(),
-                                                                     fl.a($$0x, "template"),
-                                                                     gh.a($$0x, "pos"),
-                                                                     fz.a($$0x, "rotation"),
-                                                                     fy.a($$0x, "mirror"),
-                                                                     FloatArgumentType.getFloat($$0x, "integrity"),
-                                                                     IntegerArgumentType.getInteger($$0x, "seed"),
-                                                                     true
-                                                                  )
-                                                            )
-                                                      )
-                                                )
+                        el.a("targetPos", gh.a())
+                           .then(
+                              $$1.construct(
+                                    el.a("slot", ft.a()),
+                                    ($$0x, $$1x, $$2) -> a((ek)$$0x.getSource(), gh.a($$0x, "targetPos"), ft.a($$0x, "slot"), $$1x.size(), $$1x, $$2)
+                                 )
+                                 .then(
+                                    $$1.construct(
+                                       el.a("count", IntegerArgumentType.integer(0)),
+                                       ($$0x, $$1x, $$2) -> a(
+                                             (ek)$$0x.getSource(),
+                                             gh.a($$0x, "targetPos"),
+                                             IntegerArgumentType.getInteger($$0x, "slot"),
+                                             IntegerArgumentType.getInteger($$0x, "count"),
+                                             $$1x,
+                                             $$2
                                           )
                                     )
-                              )
-                        )
-                  )
-            )
-      );
+                                 )
+                           )
+                     )
+               )
+         )
+         .then(el.a("insert").then($$1.construct(el.a("targetPos", gh.a()), ($$0x, $$1x, $$2) -> a((ek)$$0x.getSource(), gh.a($$0x, "targetPos"), $$1x, $$2))))
+         .then(el.a("give").then($$1.construct(el.a("players", ex.d()), ($$0x, $$1x, $$2) -> a(ex.f($$0x, "players"), $$1x, $$2))))
+         .then(el.a("spawn").then($$1.construct(el.a("targetPos", go.a()), ($$0x, $$1x, $$2) -> a((ek)$$0x.getSource(), go.a($$0x, "targetPos"), $$1x, $$2))));
    }
 
-   public static int a(ek $$0, jg.c<ejx<?, ?>> $$1, iw $$2) throws CommandSyntaxException {
-      aru $$3 = $$0.e();
-      ejx<?, ?> $$4 = $$1.a();
-      dje $$5 = new dje($$2);
-      a($$3, new dje($$5.h - 1, $$5.i - 1), new dje($$5.h + 1, $$5.i + 1));
-      if (!$$4.a($$3, $$3.m().g(), $$3.G_(), $$2)) {
-         throw a.create();
+   private static buv a(ek $$0, iw $$1) throws CommandSyntaxException {
+      dyo $$2 = $$0.e().c_($$1);
+      if (!($$2 instanceof buv)) {
+         throw aof.a.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         String $$6 = $$1.h().a().toString();
-         $$0.a(() -> xc.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
+         return (buv)$$2;
       }
    }
 
-   public static int a(ek $$0, jg<etn> $$1, alk $$2, int $$3, iw $$4) throws CommandSyntaxException {
-      aru $$5 = $$0.e();
-      dje $$6 = new dje($$4);
-      a($$5, $$6, $$6);
-      if (!eth.a($$5, $$1, $$2, $$3, $$4, false)) {
-         throw b.create();
-      } else {
-         $$0.a(() -> xc.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
-         return 1;
+   private static int a(ek $$0, iw $$1, List<dak> $$2, aom.a $$3) throws CommandSyntaxException {
+      buv $$4 = a($$0, $$1);
+      List<dak> $$5 = Lists.newArrayListWithCapacity($$2.size());
+
+      for (dak $$6 : $$2) {
+         if (a($$4, $$6.v())) {
+            $$4.e();
+            $$5.add($$6);
+         }
       }
+
+      $$3.accept($$5);
+      return $$5.size();
    }
 
-   public static int b(ek $$0, jg.c<esd> $$1, iw $$2) throws CommandSyntaxException {
-      aru $$3 = $$0.e();
-      esd $$4 = $$1.a();
-      ede $$5 = $$3.m().g();
-      esl $$6 = $$4.a($$1, $$3.aj(), $$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.E(), new dje($$2), 0, $$3, $$0x -> true);
-      if (!$$6.b()) {
-         throw c.create();
-      } else {
-         erv $$7 = $$6.a();
-         dje $$8 = new dje(jz.a($$7.h()), jz.a($$7.j()));
-         dje $$9 = new dje(jz.a($$7.k()), jz.a($$7.m()));
-         a($$3, $$8, $$9);
-         dje.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.G_(), new erv($$3x.d(), $$3.K_(), $$3x.e(), $$3x.f(), $$3.ao() + 1, $$3x.g()), $$3x));
-         String $$10 = $$1.h().a().toString();
-         $$0.a(() -> xc.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
-         return 1;
+   private static boolean a(buv $$0, dak $$1) {
+      boolean $$2 = false;
+
+      for (int $$3 = 0; $$3 < $$0.b() && !$$1.f(); $$3++) {
+         dak $$4 = $$0.a($$3);
+         if ($$0.b($$3, $$1)) {
+            if ($$4.f()) {
+               $$0.a($$3, $$1);
+               $$2 = true;
+               break;
+            }
+
+            if (a($$4, $$1)) {
+               int $$5 = $$1.k() - $$4.M();
+               int $$6 = Math.min($$1.M(), $$5);
+               $$1.h($$6);
+               $$4.g($$6);
+               $$2 = true;
+            }
+         }
       }
+
+      return $$2;
    }
 
-   public static int a(ek $$0, alk $$1, iw $$2, dty $$3, dsh $$4, float $$5, int $$6, boolean $$7) throws CommandSyntaxException {
-      aru $$8 = $$0.e();
-      ewg $$9 = $$8.r();
+   private static int a(ek $$0, iw $$1, int $$2, int $$3, List<dak> $$4, aom.a $$5) throws CommandSyntaxException {
+      buv $$6 = a($$0, $$1);
+      int $$7 = $$6.b();
+      if ($$2 >= 0 && $$2 < $$7) {
+         List<dak> $$8 = Lists.newArrayListWithCapacity($$4.size());
 
-      Optional<ewf> $$10;
-      try {
-         $$10 = $$9.b($$1);
-      } catch (ab var14) {
-         throw d.create($$1);
-      }
-
-      if ($$10.isEmpty()) {
-         throw d.create($$1);
-      } else {
-         ewf $$13 = $$10.get();
-         a($$8, new dje($$2), new dje($$2.a($$13.a())));
-         ewb $$14 = new ewb().a($$4).a($$3).b($$7);
-         if ($$5 < 1.0F) {
-            $$14.b().a(new evi($$5)).a(dzx.b((long)$$6));
+         for (int $$9 = 0; $$9 < $$3; $$9++) {
+            int $$10 = $$2 + $$9;
+            dak $$11 = $$9 < $$4.size() ? $$4.get($$9) : dak.l;
+            if ($$6.b($$10, $$11)) {
+               $$6.a($$10, $$11);
+               $$8.add($$11);
+            }
          }
 
-         boolean $$15 = $$13.a($$8, $$2, $$2, $$14, dzx.b((long)$$6), 2 | ($$7 ? 816 : 0));
-         if (!$$15) {
-            throw e.create();
+         $$5.accept($$8);
+         return $$8.size();
+      } else {
+         throw aof.c.create($$2);
+      }
+   }
+
+   private static boolean a(dak $$0, dak $$1) {
+      return $$0.M() <= $$0.k() && dak.c($$0, $$1);
+   }
+
+   private static int a(Collection<asc> $$0, List<dak> $$1, aom.a $$2) throws CommandSyntaxException {
+      List<dak> $$3 = Lists.newArrayListWithCapacity($$1.size());
+
+      for (dak $$4 : $$1) {
+         for (asc $$5 : $$0) {
+            if ($$5.gj().g($$4.v())) {
+               $$3.add($$4);
+            }
+         }
+      }
+
+      $$2.accept($$3);
+      return $$3.size();
+   }
+
+   private static void a(bxe $$0, List<dak> $$1, int $$2, int $$3, List<dak> $$4) {
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         dak $$6 = $$5 < $$1.size() ? $$1.get($$5) : dak.l;
+         byw $$7 = $$0.a_($$2 + $$5);
+         if ($$7 != byw.a && $$7.a($$6.v())) {
+            $$4.add($$6);
+         }
+      }
+   }
+
+   private static int a(Collection<? extends bxe> $$0, int $$1, int $$2, List<dak> $$3, aom.a $$4) throws CommandSyntaxException {
+      List<dak> $$5 = Lists.newArrayListWithCapacity($$3.size());
+
+      for (bxe $$6 : $$0) {
+         if ($$6 instanceof asc $$7) {
+            a($$6, $$3, $$1, $$2, $$5);
+            $$7.bR.d();
          } else {
-            $$0.a(() -> xc.a("commands.place.template.success", xc.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
-            return 1;
+            a($$6, $$3, $$1, $$2, $$5);
          }
+      }
+
+      $$4.accept($$5);
+      return $$5.size();
+   }
+
+   private static int a(ek $$0, fgc $$1, List<dak> $$2, aom.a $$3) throws CommandSyntaxException {
+      asb $$4 = $$0.e();
+      $$2.forEach($$2x -> {
+         coo $$3x = new coo($$4, $$1.d, $$1.e, $$1.f, $$2x.v());
+         $$3x.j();
+         $$4.b($$3x);
+      });
+      $$3.accept($$2);
+      return $$2.size();
+   }
+
+   private static void a(ek $$0, List<dak> $$1) {
+      if ($$1.size() == 1) {
+         dak $$2 = $$1.get(0);
+         $$0.a(() -> xg.a("commands.drop.success.single", $$2.M(), $$2.K()), false);
+      } else {
+         $$0.a(() -> xg.a("commands.drop.success.multiple", $$1.size()), false);
       }
    }
 
-   private static void a(aru $$0, dje $$1, dje $$2) throws CommandSyntaxException {
-      if (dje.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
-         throw gh.a.create();
+   private static void a(ek $$0, List<dak> $$1, alq<fay> $$2) {
+      if ($$1.size() == 1) {
+         dak $$3 = $$1.get(0);
+         $$0.a(() -> xg.a("commands.drop.success.single_with_table", $$3.M(), $$3.K(), xg.a($$2.a())), false);
+      } else {
+         $$0.a(() -> xg.a("commands.drop.success.multiple_with_table", $$1.size(), xg.a($$2.a())), false);
       }
+   }
+
+   private static dak a(ek $$0, bxo $$1) throws CommandSyntaxException {
+      bxe $$2 = $$0.g();
+      if ($$2 instanceof byf) {
+         return ((byf)$$2).a($$1);
+      } else {
+         throw b.create($$2.m_());
+      }
+   }
+
+   private static int a(CommandContext<ek> $$0, iw $$1, dak $$2, aom.b $$3) throws CommandSyntaxException {
+      ek $$4 = (ek)$$0.getSource();
+      asb $$5 = $$4.e();
+      ebq $$6 = $$5.a_($$1);
+      dyo $$7 = $$5.c_($$1);
+      Optional<alq<fay>> $$8 = $$6.b().u();
+      if ($$8.isEmpty()) {
+         throw d.create($$6.b().f());
+      } else {
+         faw.a $$9 = new faw.a($$5).a(fdn.f, fgc.b($$1)).a(fdn.g, $$6).b(fdn.h, $$7).b(fdn.a, $$4.f()).a(fdn.i, $$2);
+         List<dak> $$10 = $$6.a($$9);
+         return $$3.accept($$0, $$10, $$2x -> a($$4, $$2x, $$8.get()));
+      }
+   }
+
+   private static int a(CommandContext<ek> $$0, bxe $$1, aom.b $$2) throws CommandSyntaxException {
+      Optional<alq<fay>> $$3 = $$1.ea();
+      if ($$3.isEmpty()) {
+         throw c.create($$1.m_());
+      } else {
+         ek $$4 = (ek)$$0.getSource();
+         faw.a $$5 = new faw.a($$4.e());
+         bxe $$6 = $$4.f();
+         if ($$6 instanceof csi $$7) {
+            $$5.a(fdn.b, $$7);
+         }
+
+         $$5.a(fdn.c, $$1.dW().q());
+         $$5.b(fdn.e, $$6);
+         $$5.b(fdn.d, $$6);
+         $$5.a(fdn.a, $$1);
+         $$5.a(fdn.f, $$4.d());
+         faw $$8 = $$5.a(fdm.g);
+         fay $$9 = $$4.l().bc().b($$3.get());
+         List<dak> $$10 = $$9.a($$8);
+         return $$2.accept($$0, $$10, $$2x -> a($$4, $$2x, $$3.get()));
+      }
+   }
+
+   private static int a(CommandContext<ek> $$0, jg<fay> $$1, aom.b $$2) throws CommandSyntaxException {
+      ek $$3 = (ek)$$0.getSource();
+      faw $$4 = new faw.a($$3.e()).b(fdn.a, $$3.f()).a(fdn.f, $$3.d()).a(fdm.c);
+      return a($$0, $$1, $$4, $$2);
+   }
+
+   private static int a(CommandContext<ek> $$0, jg<fay> $$1, iw $$2, dak $$3, aom.b $$4) throws CommandSyntaxException {
+      ek $$5 = (ek)$$0.getSource();
+      faw $$6 = new faw.a($$5.e()).a(fdn.f, fgc.b($$2)).a(fdn.i, $$3).b(fdn.a, $$5.f()).a(fdm.f);
+      return a($$0, $$1, $$6, $$4);
+   }
+
+   private static int a(CommandContext<ek> $$0, jg<fay> $$1, faw $$2, aom.b $$3) throws CommandSyntaxException {
+      ek $$4 = (ek)$$0.getSource();
+      List<dak> $$5 = $$1.a().a($$2);
+      return $$3.accept($$0, $$5, $$1x -> a($$4, $$1x));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void accept(List<dak> var1) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface b {
+      int accept(CommandContext<ek> var1, List<dak> var2, aom.a var3) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface c {
+      ArgumentBuilder<ek, ?> construct(ArgumentBuilder<ek, ?> var1, aom.b var2);
    }
 }

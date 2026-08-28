@@ -1,60 +1,99 @@
-import org.joml.Vector2i;
+public abstract class ftv extends ftr {
+   private static final fvl a = new fvl(alr.b("widget/text_field"), alr.b("widget/text_field_highlighted"));
+   private static final int c = 4;
 
-public class ftv implements fub {
-   private final frf a;
-   private final fro b;
-
-   public ftv(frf $$0) {
-      this.a = $$0;
-      this.b = new fro();
+   public ftv(int $$0, int $$1, int $$2, int $$3, xg $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public boolean a(cxp $$0) {
-      return $$0.g().a(axo.bS);
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return super.a($$0, $$1, $$2) || $$3;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2, daa $$3) {
-      int $$4 = cyp.j($$3);
-      if ($$4 == 0) {
-         return false;
-      } else {
-         Vector2i $$5 = this.b.a($$0, $$1);
-         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
-         if ($$6 != 0) {
-            int $$7 = cyp.h($$3);
-            int $$8 = fro.a((double)$$6, $$7, $$4);
-            if ($$7 != $$8) {
-               this.a($$3, $$2, $$8);
-            }
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.g();
+         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
+         if ($$5 != this.g()) {
+            return true;
          }
-
-         return true;
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void b(cxp $$0) {
-      this.a($$0.g(), $$0.d);
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.c($$0);
+         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.g(), 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.b($$0);
+      }
+   }
+
+   protected void b(ftk $$0) {
+      this.a($$0);
+   }
+
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
    }
 
    @Override
-   public void a(cxp $$0, cwd $$1) {
-      if ($$1 == cwd.b || $$1 == cwd.c) {
-         this.a($$0.g(), $$0.d);
-      }
+   public boolean a_(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
    }
 
-   private void a(daa $$0, int $$1, int $$2) {
-      if (this.a.L() != null && $$2 < cyp.j($$0)) {
-         gme $$3 = this.a.L();
-         cyp.a($$0, $$2);
-         $$3.b(new aih($$1, $$2));
-      }
+   @Override
+   protected int l() {
+      return this.H();
    }
 
-   public void a(daa $$0, int $$1) {
-      this.a($$0, $$1, -1);
+   @Override
+   protected int n() {
+      return this.c() + this.b();
+   }
+
+   protected void c(ftk $$0) {
+      this.a($$0, this.F(), this.G(), this.A(), this.y());
+   }
+
+   protected void a(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
+      alr $$5 = a.a(this.E(), this.aO_());
+      $$0.a(gry::H, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
+   }
+
+   protected abstract int c();
+
+   protected abstract void c(ftk var1, int var2, int var3, float var4);
+
+   protected int e() {
+      return this.F() + this.a();
+   }
+
+   protected int p() {
+      return this.G() + this.a();
+   }
+
+   @Override
+   public void a(hpt $$0) {
    }
 }

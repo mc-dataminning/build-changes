@@ -1,9 +1,15 @@
-public interface azt {
-   int b();
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-   String a();
+@Deprecated
+public class azt<T> {
+   private final Supplier<T> a;
 
-   default xc d() {
-      return xc.c(this.a());
+   public azt(Supplier<T> $$0) {
+      this.a = Suppliers.memoize($$0::get);
+   }
+
+   public T a() {
+      return this.a.get();
    }
 }

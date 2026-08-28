@@ -1,29 +1,78 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record ejx<FC extends emr, F extends ekm<FC>>(F d, FC e) {
-   public static final Codec<ejx<?, ?>> a = mh.O.q().dispatch($$0 -> $$0.d, ekm::a);
-   public static final Codec<jg<ejx<?, ?>>> b = alg.a(mi.aL, a);
-   public static final Codec<jk<ejx<?, ?>>> c = jv.a(mi.aL, a);
-
-   public boolean a(dky $$0, ede $$1, azz $$2, iw $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+public abstract class ejx extends ekw<end> {
+   public ejx(Codec<end> $$0) {
+      super($$0);
    }
 
-   public Stream<ejx<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   protected void a(dkk $$0, bai $$1, iw $$2, end $$3, int $$4, iw.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jc.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
+      }
+   }
+
+   protected void a(dkk $$0, iw.a $$1, ebq $$2) {
+      ebq $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(axn.cu)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
+   protected int a(bai $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dkk $$0, iw $$1, int $$2, iw.a $$3, end $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.K_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         ebq $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axn.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     ebq $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axn.Q)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public boolean a(eky<end> $$0) {
+      dli $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      bai $$3 = $$0.d();
+      end $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iw.a $$6 = new iw.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
    }
 
-   public F b() {
-      return this.d;
-   }
+   protected abstract int a(int var1, int var2, int var3, int var4);
 
-   public FC c() {
-      return this.e;
-   }
+   protected abstract void a(dkk var1, bai var2, iw var3, int var4, iw.a var5, end var6);
 }

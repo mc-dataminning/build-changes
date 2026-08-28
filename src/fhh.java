@@ -1,265 +1,396 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class fhh<T> implements fhg<T> {
-   private static final Comparator<fhf<?>> a = ($$0, $$1) -> fhk.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Long2ObjectMap<fhf<T>> c = new Long2ObjectOpenHashMap();
-   private final Long2LongMap d = ag.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<fhf<T>> e = new PriorityQueue<>(a);
-   private final Queue<fhk<T>> f = new ArrayDeque<>();
-   private final List<fhk<T>> g = new ArrayList<>();
-   private final Set<fhk<?>> h = new ObjectOpenCustomHashSet(fhk.c);
-   private final BiConsumer<fhf<T>, fhk<T>> i = ($$0x, $$1) -> {
-      if ($$1.equals($$0x.b())) {
-         this.b($$1);
-      }
-   };
+public class fhh {
+   public static final String b = "#";
+   private static final Logger a = LogUtils.getLogger();
+   private final Object2ObjectMap<String, fgz> c = new Object2ObjectOpenHashMap(16, 0.5F);
+   private final Reference2ObjectMap<fhk, List<fgz>> d = new Reference2ObjectOpenHashMap();
+   private final Map<String, fhb> e = new Object2ObjectOpenHashMap(16, 0.5F);
+   private final Map<fgy, fgz> f = new EnumMap<>(fgy.class);
+   private final Object2ObjectMap<String, fhc> g = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<String, fhc> h = new Object2ObjectOpenHashMap();
 
-   public fhh(LongPredicate $$0) {
-      this.b = $$0;
+   @Nullable
+   public fgz a(@Nullable String $$0) {
+      return (fgz)this.c.get($$0);
    }
 
-   public void a(dje $$0, fhf<T> $$1) {
-      long $$2 = $$0.a();
-      this.c.put($$2, $$1);
-      fhk<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.d.put($$2, $$3.c());
-      }
-
-      $$1.a(this.i);
-   }
-
-   public void a(dje $$0) {
-      long $$1 = $$0.a();
-      fhf<T> $$2 = (fhf<T>)this.c.remove($$1);
-      this.d.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
-      }
-   }
-
-   @Override
-   public void a(fhk<T> $$0) {
-      long $$1 = dje.a($$0.b());
-      fhf<T> $$2 = (fhf<T>)this.c.get($$1);
-      if ($$2 == null) {
-         ag.b("Trying to schedule tick in not loaded position " + $$0.b());
+   public fgz a(String $$0, fhk $$1, xg $$2, fhk.a $$3, boolean $$4, @Nullable yw $$5) {
+      if (this.c.containsKey($$0)) {
+         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
       } else {
-         $$2.a($$0);
+         fgz $$6 = new fgz(this, $$0, $$1, $$2, $$3, $$4, $$5);
+         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
+         this.c.put($$0, $$6);
+         this.a($$6);
+         return $$6;
       }
    }
 
-   public void a(long $$0, int $$1, BiConsumer<iw, T> $$2) {
-      brd $$3 = brc.a();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.f.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
+   public final void a(fhk $$0, fhg $$1, Consumer<fhf> $$2) {
+      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
    }
 
-   private void a(long $$0, int $$1, brd $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.e.size());
-      this.a($$0, $$1);
-      this.b();
+   private fhb f(String $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new fhb());
    }
 
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.d);
+   public fhf c(fhg $$0, fgz $$1) {
+      return this.a($$0, $$1, false);
+   }
 
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            fhf<T> $$5 = (fhf<T>)this.c.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
+   public fhf a(final fhg $$0, final fgz $$1, boolean $$2) {
+      final boolean $$3 = $$2 || !$$1.d().e();
+      fhb $$4 = this.f($$0.cI());
+      final MutableBoolean $$5 = new MutableBoolean();
+      final fhe $$6 = $$4.a($$1, $$1x -> $$5.setTrue());
+      return new fhf() {
+         @Override
+         public int a() {
+            return $$6.a();
+         }
+
+         @Override
+         public void a(int $$0x) {
+            if (!$$3) {
+               throw new IllegalStateException("Cannot modify read-only score");
             } else {
-               fhk<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.e.add($$5);
+               boolean $$1 = $$5.isTrue();
+               if ($$1.f()) {
+                  xg $$2 = $$0.m_();
+                  if ($$2 != null && !$$2.equals($$6.d())) {
+                     $$6.a($$2);
+                     $$1 = true;
+                  }
+               }
+
+               if ($$0 != $$6.a()) {
+                  $$6.a($$0);
+                  $$1 = true;
+               }
+
+               if ($$1) {
+                  this.h();
                }
             }
          }
-      }
+
+         @Nullable
+         @Override
+         public xg g() {
+            return $$6.d();
+         }
+
+         @Override
+         public void a(@Nullable xg $$0x) {
+            if ($$5.isTrue() || !Objects.equals($$0, $$6.d())) {
+               $$6.a($$0);
+               this.h();
+            }
+         }
+
+         @Override
+         public void a(@Nullable yw $$0x) {
+            $$6.b($$0);
+            this.h();
+         }
+
+         @Override
+         public boolean d() {
+            return $$6.b();
+         }
+
+         @Override
+         public void e() {
+            this.a(false);
+         }
+
+         @Override
+         public void f() {
+            this.a(true);
+         }
+
+         private void a(boolean $$0x) {
+            $$6.a($$0);
+            if ($$5.isTrue()) {
+               this.h();
+            }
+
+            fhh.this.a($$0, $$1);
+         }
+
+         private void h() {
+            fhh.this.a($$0, $$1, $$6);
+            $$5.setFalse();
+         }
+      };
    }
 
-   private void a(long $$0, int $$1) {
-      fhf<T> $$2;
-      while (this.a($$1) && ($$2 = this.e.poll()) != null) {
-         fhk<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.e, $$2, $$0, $$1);
-         fhk<T> $$4 = $$2.b();
+   @Nullable
+   public fhd d(fhg $$0, fgz $$1) {
+      fhb $$2 = this.e.get($$0.cI());
+      return $$2 != null ? $$2.a($$1) : null;
+   }
+
+   public Collection<fha> i(fgz $$0) {
+      List<fha> $$1 = new ArrayList<>();
+      this.e.forEach(($$2, $$3) -> {
+         fhe $$4 = $$3.a($$0);
          if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.e.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
-      }
-   }
-
-   private void b() {
-      for (fhf<T> $$0 : this.e) {
-         this.b($$0.b());
-      }
-   }
-
-   private void b(fhk<T> $$0) {
-      this.d.put(dje.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<fhf<T>> $$0, fhf<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         fhf<T> $$4 = $$0.peek();
-         fhk<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            fhk<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fhk.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(fhk<T> $$0) {
-      this.f.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.f.size() < $$0;
-   }
-
-   private void a(BiConsumer<iw, T> $$0) {
-      while (!this.f.isEmpty()) {
-         fhk<T> $$1 = this.f.poll();
-         if (!this.h.isEmpty()) {
-            this.h.remove($$1);
-         }
-
-         this.g.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.f.clear();
-      this.e.clear();
-      this.g.clear();
-      this.h.clear();
-   }
-
-   @Override
-   public boolean a(iw $$0, T $$1) {
-      fhf<T> $$2 = (fhf<T>)this.c.get(dje.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(iw $$0, T $$1) {
-      this.d();
-      return this.h.contains(fhk.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.h.isEmpty() && !this.f.isEmpty()) {
-         this.h.addAll(this.f);
-      }
-   }
-
-   private void a(erv $$0, fhh.a<T> $$1) {
-      int $$2 = jz.a((double)$$0.h());
-      int $$3 = jz.a((double)$$0.j());
-      int $$4 = jz.a((double)$$0.k());
-      int $$5 = jz.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = dje.c($$6, $$7);
-            fhf<T> $$9 = (fhf<T>)this.c.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
-      }
-   }
-
-   public void a(erv $$0) {
-      Predicate<fhk<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         fhk<T> $$3 = $$2.b();
-         $$2.a($$1);
-         fhk<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.d.remove($$1x);
-            }
+            $$1.add(new fha($$2, $$4.a(), $$4.d(), $$4.c()));
          }
       });
-      this.g.removeIf($$1);
-      this.f.removeIf($$1);
+      return $$1;
    }
 
-   public void a(erv $$0, kb $$1) {
-      this.a(this, $$0, $$1);
+   public Collection<fgz> b() {
+      return this.c.values();
    }
 
-   public void a(fhh<T> $$0, erv $$1, kb $$2) {
-      List<fhk<T>> $$3 = new ArrayList<>();
-      Predicate<fhk<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.f.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fhk::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new fhk<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   public Collection<String> c() {
+      return this.c.keySet();
    }
 
-   @Override
-   public int a() {
-      return this.c.values().stream().mapToInt(fhm::a).sum();
+   public Collection<fhg> d() {
+      return this.e.keySet().stream().map(fhg::c).toList();
    }
 
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, fhf<T> var3);
+   public void b(fhg $$0) {
+      fhb $$1 = this.e.remove($$0.cI());
+      if ($$1 != null) {
+         this.a($$0);
+      }
+   }
+
+   public void e(fhg $$0, fgz $$1) {
+      fhb $$2 = this.e.get($$0.cI());
+      if ($$2 != null) {
+         boolean $$3 = $$2.b($$1);
+         if (!$$2.a()) {
+            fhb $$4 = this.e.remove($$0.cI());
+            if ($$4 != null) {
+               this.a($$0);
+            }
+         } else if ($$3) {
+            this.b($$0, $$1);
+         }
+      }
+   }
+
+   public Object2IntMap<fgz> c(fhg $$0) {
+      fhb $$1 = this.e.get($$0.cI());
+      return $$1 != null ? $$1.b() : Object2IntMaps.emptyMap();
+   }
+
+   public void j(fgz $$0) {
+      this.c.remove($$0.c());
+
+      for (fgy $$1 : fgy.values()) {
+         if (this.a($$1) == $$0) {
+            this.a($$1, null);
+         }
+      }
+
+      List<fgz> $$2 = (List<fgz>)this.d.get($$0.d());
+      if ($$2 != null) {
+         $$2.remove($$0);
+      }
+
+      for (fhb $$3 : this.e.values()) {
+         $$3.b($$0);
+      }
+
+      this.c($$0);
+   }
+
+   public void a(fgy $$0, @Nullable fgz $$1) {
+      this.f.put($$0, $$1);
+   }
+
+   @Nullable
+   public fgz a(fgy $$0) {
+      return this.f.get($$0);
+   }
+
+   @Nullable
+   public fhc b(String $$0) {
+      return (fhc)this.g.get($$0);
+   }
+
+   public fhc c(String $$0) {
+      fhc $$1 = this.b($$0);
+      if ($$1 != null) {
+         a.warn("Requested creation of existing team '{}'", $$0);
+         return $$1;
+      } else {
+         $$1 = new fhc(this, $$0);
+         this.g.put($$0, $$1);
+         this.a($$1);
+         return $$1;
+      }
+   }
+
+   public void d(fhc $$0) {
+      this.g.remove($$0.c());
+
+      for (String $$1 : $$0.h()) {
+         this.h.remove($$1);
+      }
+
+      this.c($$0);
+   }
+
+   public boolean a(String $$0, fhc $$1) {
+      if (this.e($$0) != null) {
+         this.d($$0);
+      }
+
+      this.h.put($$0, $$1);
+      return $$1.h().add($$0);
+   }
+
+   public boolean d(String $$0) {
+      fhc $$1 = this.e($$0);
+      if ($$1 != null) {
+         this.b($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void b(String $$0, fhc $$1) {
+      if (this.e($$0) != $$1) {
+         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.c() + "'.");
+      } else {
+         this.h.remove($$0);
+         $$1.h().remove($$0);
+      }
+   }
+
+   public Collection<String> e() {
+      return this.g.keySet();
+   }
+
+   public Collection<fhc> f() {
+      return this.g.values();
+   }
+
+   @Nullable
+   public fhc e(String $$0) {
+      return (fhc)this.h.get($$0);
+   }
+
+   public void a(fgz $$0) {
+   }
+
+   public void b(fgz $$0) {
+   }
+
+   public void c(fgz $$0) {
+   }
+
+   protected void a(fhg $$0, fgz $$1, fhe $$2) {
+   }
+
+   protected void a(fhg $$0, fgz $$1) {
+   }
+
+   public void a(fhg $$0) {
+   }
+
+   public void b(fhg $$0, fgz $$1) {
+   }
+
+   public void a(fhc $$0) {
+   }
+
+   public void b(fhc $$0) {
+   }
+
+   public void c(fhc $$0) {
+   }
+
+   public void a(bxe $$0) {
+      if (!($$0 instanceof csi) && !$$0.bJ()) {
+         this.b($$0);
+         this.d($$0.cI());
+      }
+   }
+
+   protected List<fhh.a> g() {
+      return this.e.entrySet().stream().flatMap($$0 -> {
+         String $$1 = $$0.getKey();
+         return $$0.getValue().c().entrySet().stream().map($$1x -> new fhh.a($$1, ((fgz)$$1x.getKey()).c(), (fhe)$$1x.getValue()));
+      }).toList();
+   }
+
+   protected void a(fhh.a $$0) {
+      fgz $$1 = this.a($$0.c);
+      if ($$1 == null) {
+         a.error("Unknown objective {} for name {}, ignoring", $$0.c, $$0.b);
+      } else {
+         this.f($$0.b).a($$1, $$0.d);
+      }
+   }
+
+   protected void a(fhc.a $$0) {
+      fhc $$1 = this.c($$0.a());
+      $$0.b().ifPresent($$1::a);
+      $$0.c().ifPresent($$1::a);
+      $$1.a($$0.d());
+      $$1.b($$0.e());
+      $$1.b($$0.f());
+      $$1.c($$0.g());
+      $$1.a($$0.h());
+      $$1.b($$0.i());
+      $$1.a($$0.j());
+
+      for (String $$2 : $$0.k()) {
+         this.a($$2, $$1);
+      }
+   }
+
+   protected void a(fgz.a $$0) {
+      this.a($$0.a(), $$0.b(), $$0.c(), $$0.d(), $$0.e(), $$0.f().orElse(null));
+   }
+
+   public static record a(String b, String c, fhe d) {
+      public static final Codec<fhh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("Name").forGetter(fhh.a::a), Codec.STRING.fieldOf("Objective").forGetter(fhh.a::b), fhe.a.forGetter(fhh.a::c))
+               .apply($$0, fhh.a::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public fhe c() {
+         return this.d;
+      }
    }
 }

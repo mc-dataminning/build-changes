@@ -1,8 +1,8 @@
-public enum cqq {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface cqq {
 }

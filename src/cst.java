@@ -1,81 +1,118 @@
-public class cst extends csu {
-   public cst(bxe<? extends cst> $$0, djz $$1) {
+import javax.annotation.Nullable;
+
+public class cst extends csq {
+   private static final int d = 600;
+   private static final int e = -1;
+   private static final aku<Integer> f = aky.a(cst.class, akw.b);
+   private static final byte g = 0;
+
+   public cst(bxn<? extends cst> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
-   public cst(djz $$0, cly $$1) {
-      this(bxe.az, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azq.a($$1.aV * (float) (Math.PI / 180.0)),
-         $$1.dE() - 0.1F,
-         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azq.b($$1.aV * (float) (Math.PI / 180.0))
-      );
+   public cst(dkj $$0, double $$1, double $$2, double $$3, dak $$4, @Nullable dak $$5) {
+      super(bxn.h, $$1, $$2, $$3, $$0, $$4, $$5);
+      this.D();
+   }
+
+   public cst(dkj $$0, byf $$1, dak $$2, @Nullable dak $$3) {
+      super(bxn.h, $$1, $$0, $$2, $$3);
+      this.D();
+   }
+
+   private dcg B() {
+      return this.s().a(kl.R, dcg.a);
+   }
+
+   private float C() {
+      return this.s().a(kl.S, 1.0F);
+   }
+
+   private void a(dcg $$0) {
+      this.s().b(kl.R, $$0);
+      this.D();
    }
 
    @Override
-   protected double bc() {
-      return 0.06;
+   protected void a(dak $$0) {
+      super.a($$0);
+      this.D();
+   }
+
+   private void D() {
+      dcg $$0 = this.B();
+      this.al.a(f, $$0.equals(dcg.a) ? -1 : $$0.b());
+   }
+
+   public void a(bwi $$0) {
+      this.a(this.B().a($$0));
+   }
+
+   @Override
+   protected void a(aky.a $$0) {
+      super.a($$0);
+      $$0.a(f, -1);
    }
 
    @Override
    public void h() {
       super.h();
-      ffs $$0 = this.dy();
-      ffq $$1 = csw.a(this, this::b);
-      this.b($$1);
-      double $$2 = this.dA() + $$0.d;
-      double $$3 = this.dC() + $$0.e;
-      double $$4 = this.dG() + $$0.f;
-      this.A();
-      float $$5 = 0.99F;
-      if (this.dV().a(this.cR()).noneMatch(ebf.a::l)) {
-         this.aq();
-      } else if (this.bi()) {
-         this.aq();
-      } else {
-         this.i($$0.c(0.99F));
-         this.be();
-         this.a_($$2, $$3, $$4);
+      if (this.dV().C) {
+         if (this.f()) {
+            if (this.a % 5 == 0) {
+               this.b(1);
+            }
+         } else {
+            this.b(2);
+         }
+      } else if (this.f() && this.a != 0 && !this.B().equals(dcg.a) && this.a >= 600) {
+         this.dV().a(this, (byte)0);
+         this.a(new dak(dao.pk));
       }
    }
 
-   @Override
-   protected void a(ffp $$0) {
-      super.a($$0);
-      if (this.q() instanceof bxw $$1) {
-         bwv $$2 = $$0.a();
-         bvk $$3 = this.dW().b(this, $$1);
-         if (this.dV() instanceof aru $$4 && $$2.a($$4, $$3, 1.0F)) {
-            dgp.a($$4, $$2, $$3);
+   private void b(int $$0) {
+      int $$1 = this.y();
+      if ($$1 != -1 && $$0 > 0) {
+         for (int $$2 = 0; $$2 < $$0; $$2++) {
+            this.dV().a(ls.a(lz.u, $$1), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
          }
       }
    }
 
-   @Override
-   protected void a(ffo $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         this.aq();
-      }
+   public int y() {
+      return this.al.a(f);
    }
 
    @Override
-   protected void a(akr.a $$0) {
+   protected void a(byf $$0) {
+      super.a($$0);
+      bxe $$1 = this.z();
+      dcg $$2 = this.B();
+      float $$3 = this.C();
+      $$2.a($$2x -> $$0.b($$2x, $$1), $$3);
    }
 
    @Override
-   public void a(abz $$0) {
-      super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
+   protected dak o() {
+      return new dak(dao.pk);
+   }
 
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dV().a(lz.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 0) {
+         int $$1 = this.y();
+         if ($$1 != -1) {
+            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
+            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
+            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
+
+            for (int $$5 = 0; $$5 < 20; $$5++) {
+               this.dV().a(ls.a(lz.u, $$2, $$3, $$4), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
+            }
+         }
+      } else {
+         super.b($$0);
       }
-
-      this.n($$1, $$2, $$3);
    }
 }

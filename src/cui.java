@@ -1,22 +1,19 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cui {
-   public static final String a = "variant";
+public record cui(jk<dlm> c) implements cum {
+   public static final MapCodec<cui> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jv.a(mi.aG).fieldOf("biomes").forGetter(cui::b)).apply($$0, cui::new));
 
-   public static <T> jg<T> a(ju $$0, alj<T> $$1) {
-      jt<T> $$2 = $$0.f($$1.c());
-      return $$2.a($$1).or($$2::a).orElseThrow();
+   public boolean a(cuo $$0) {
+      return this.c.a($$0.c());
    }
 
-   public static <T> jg<T> b(ju $$0, alj<? extends jt<T>> $$1) {
-      return $$0.f($$1).a().orElseThrow();
+   @Override
+   public MapCodec<cui> a() {
+      return a;
    }
 
-   public static <T> void a(ua $$0, jg<T> $$1) {
-      $$1.e().ifPresent($$1x -> $$0.a("variant", alk.a, $$1x.a()));
-   }
-
-   public static <T> Optional<jg<T>> a(ua $$0, ju $$1, alj<? extends jt<T>> $$2) {
-      return $$0.<alk>a("variant", alk.a).map($$1x -> alj.a($$2, $$1x)).flatMap($$1::c);
+   public jk<dlm> b() {
+      return this.c;
    }
 }

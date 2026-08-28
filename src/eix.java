@@ -1,21 +1,23 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eix implements eim {
-   protected final kb f;
+public interface eix<P extends eiw> {
+   eix<ejc> a = a("matching_blocks", ejc.a);
+   eix<ejb> b = a("matching_block_tag", ejb.e);
+   eix<ejd> c = a("matching_fluids", ejd.a);
+   eix<eiz> d = a("has_sturdy_face", eiz.a);
+   eix<ejg> e = a("solid", ejg.a);
+   eix<ejf> f = a("replaceable", ejf.a);
+   eix<ejk> g = a("would_survive", ejk.a);
+   eix<eja> h = a("inside_world_bounds", eja.a);
+   eix<eiv> i = a("any_of", eiv.a);
+   eix<eiu> j = a("all_of", eiu.a);
+   eix<eje> k = a("not", eje.a);
+   eix<eji> l = a("true", eji.e);
+   eix<ejj> m = a("unobstructed", ejj.a);
 
-   protected static <P extends eix> P1<Mu<P>, kb> a(Instance<P> $$0) {
-      return $$0.group(kb.v(16).optionalFieldOf("offset", kb.i).forGetter($$0x -> $$0x.f));
+   MapCodec<P> codec();
+
+   private static <P extends eiw> eix<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.M, $$0, () -> $$1);
    }
-
-   protected eix(kb $$0) {
-      this.f = $$0;
-   }
-
-   public final boolean a(dky $$0, iw $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
-   }
-
-   protected abstract boolean a(ebg var1);
 }

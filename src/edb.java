@@ -1,59 +1,38 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class edb implements AutoCloseable {
-   private final dka a;
-   private final Long2ObjectMap<edo> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private edo c;
-   private long d;
+public enum edb implements bax {
+   a(0, "start"),
+   b(1, "log"),
+   c(2, "fail"),
+   d(3, "accept");
 
-   public edb(dka $$0) {
-      this.a = $$0;
-   }
+   private static final IntFunction<edb> g = ayo.a($$0 -> $$0.h, values(), ayo.a.a);
+   public static final Codec<edb> e = bax.a(edb::values);
+   public static final ze<ByteBuf, edb> f = zc.a(g, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final xg j;
+   private final xg k;
 
-   @Nullable
-   public edo a(iw $$0) {
-      int $$1 = this.a.f($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.ap()) {
-         long $$2 = jz.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (edo)this.b.computeIfAbsent($$2, $$2x -> {
-               edd $$3 = this.a.a(jz.a($$0.u()), jz.a($$0.w()));
-               edo $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
-   }
-
-   public ebg b(iw $$0) {
-      edo $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dng.a.m();
-      } else {
-         int $$2 = jz.b($$0.u());
-         int $$3 = jz.b($$0.v());
-         int $$4 = jz.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   private edb(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = xg.c("test_block.mode." + $$1);
+      this.k = xg.c("test_block.mode_info." + $$1);
    }
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public String c() {
+      return this.i;
+   }
 
-      while (var1.hasNext()) {
-         edo $$0 = (edo)var1.next();
-         $$0.b();
-      }
+   public xg a() {
+      return this.j;
+   }
+
+   public xg b() {
+      return this.k;
    }
 }

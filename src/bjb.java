@@ -1,13 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bjb {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class bjb extends big {
+   public bjb(Schema $$0) {
+      super($$0, false, "PlayerHeadBlockProfileFix", bjm.s, "minecraft:skull");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
+      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
+      if ($$3.isEmpty()) {
+         return $$0;
+      } else {
+         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
+         return $$0.set("profile", bhd.a($$3.get()));
+      }
+   }
 }

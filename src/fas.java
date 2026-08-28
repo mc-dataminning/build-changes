@@ -1,45 +1,109 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public abstract class fas extends faz {
-   protected final List<faz> d;
-   private final far a;
+public class fas {
+   private static final Codec<fas> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fez.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fez.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, fas::new)
+   );
+   public static final Codec<fas> a = Codec.either(Codec.INT, b).xmap($$0 -> (fas)$$0.map(fas::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fey c;
+   @Nullable
+   private final fey d;
+   private final fas.b e;
+   private final fas.a f;
 
-   protected fas(List<faz> $$0, List<fds> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
-   }
-
-   @Override
-   public void a(fap $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+   public Set<bbk<?>> a() {
+      Builder<bbk<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
+   }
+
+   private fas(Optional<fey> $$0, Optional<fey> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
+
+   private fas(@Nullable fey $$0, @Nullable fey $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> azz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   protected abstract far a(List<? extends far> var1);
-
-   @Override
-   public final boolean expand(faj $$0, Consumer<fay> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   public static fas a(int $$0) {
+      fev $$1 = fev.a((float)$$0);
+      return new fas(Optional.of($$1), Optional.of($$1));
    }
 
-   public static <T extends fas> MapCodec<T> a(fas.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(fax.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
+   public static fas a(int $$0, int $$1) {
+      return new fas(Optional.of(fev.a((float)$$0)), Optional.of(fev.a((float)$$1)));
+   }
+
+   public static fas b(int $$0) {
+      return new fas(Optional.of(fev.a((float)$$0)), Optional.empty());
+   }
+
+   public static fas c(int $$0) {
+      return new fas(Optional.empty(), Optional.of(fev.a((float)$$0)));
+   }
+
+   public int a(fat $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(fat $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fev $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
    @FunctionalInterface
-   public interface a<T extends fas> {
-      T create(List<faz> var1, List<fds> var2);
+   interface a {
+      boolean test(fat var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(fat var1, int var2);
    }
 }

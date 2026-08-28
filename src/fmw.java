@@ -1,33 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fmw extends fnu {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fmv> a;
+public class fmw {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static fmw a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fmw $$2 = new fmw();
-      $$2.a = Lists.newArrayList();
+   private fmw(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+   public xg a(xg $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
 
-            while ($$4.hasNext()) {
-               $$2.a.add(fmv.a($$4.next()));
-            }
+   @Nullable
+   public xg a() {
+      if (!hly.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? xg.c(this.c) : xg.a(this.c, this.d);
+      }
+   }
+
+   public static fmw a(JsonObject $$0) {
+      String $$1 = fpc.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
+      } else {
+         $$5 = null;
       }
 
-      return $$2;
+      return new fmw($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

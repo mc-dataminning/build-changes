@@ -18,7 +18,7 @@ public record ck(
             .apply($$0, ck::new)
    );
 
-   public boolean a(crx $$0) {
+   public boolean a(csg $$0) {
       return this.a(this.b, $$0.a())
          && this.a(this.c, $$0.b())
          && this.a(this.d, $$0.c())

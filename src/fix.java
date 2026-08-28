@@ -1,182 +1,350 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
 
 public class fix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private final Queue<fix.a> c = EvictingQueue.create(10);
-   @Nullable
-   private volatile fix.a d;
-   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private final List<fix.d<?>> a = new ArrayList<>();
+   private final List<fix.a<?>> b = new ArrayList<>();
+   private final List<fix.e> c = new ArrayList<>();
 
-   private static String d(int $$0) {
-      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
+   public fiy a(String $$0) {
+      fix.e $$1 = new fix.e(this.c.size(), $$0);
+      this.c.add($$1);
+      return $$1;
    }
 
-   public static String a(int $$0) {
-      switch ($$0) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return d($$0);
-      }
+   public <T> fkr<T> a(String $$0, T $$1) {
+      fix.a<T> $$2 = new fix.a<>($$0, null, $$1);
+      this.b.add($$2);
+      return $$2.b;
    }
 
-   public static String b(int $$0) {
-      switch ($$0) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return d($$0);
-      }
+   public <T> fkr<T> a(String $$0, fkq<T> $$1) {
+      return this.a($$0, $$1, null).b;
    }
 
-   public static String c(int $$0) {
-      switch ($$0) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return d($$0);
-      }
+   <T> fix.d<T> a(String $$0, fkq<T> $$1, @Nullable fix.e $$2) {
+      int $$3 = this.a.size();
+      fix.d<T> $$4 = new fix.d<>($$3, $$0, $$2, $$1);
+      this.a.add($$4);
+      return $$4;
    }
 
-   private void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
-      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
-      fix.a $$8;
-      synchronized (this.c) {
-         $$8 = this.d;
-         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
-            $$8.f++;
-         } else {
-            $$8 = new fix.a($$0, $$1, $$2, $$3, $$7);
-            this.c.add($$8);
-            this.d = $$8;
-         }
+   public void a(fko $$0) {
+      this.a($$0, fix.c.a);
+   }
+
+   public void a(fko $$0, fix.c $$1) {
+      BitSet $$2 = this.a();
+      List<fix.e> $$3 = new ArrayList<>($$2.cardinality());
+      BitSet $$4 = new BitSet(this.c.size());
+
+      for (fix.e $$5 : this.c) {
+         this.a($$5, $$2, $$4, $$3);
       }
 
-      a.info("OpenGL debug message: {}", $$8);
-   }
+      this.a($$3);
 
-   public List<String> a() {
-      synchronized (this.c) {
-         List<String> $$0 = Lists.newArrayListWithCapacity(this.c.size());
-
-         for (fix.a $$1 : this.c) {
-            $$0.add($$1 + " x " + $$1.f);
+      for (fix.e $$6 : $$3) {
+         for (fix.d<?> $$7 : $$6.h) {
+            $$1.a($$7.a);
+            $$7.a($$0);
          }
 
-         return $$0;
-      }
-   }
+         $$1.c($$6.c);
+         $$6.g.run();
+         $$1.d($$6.c);
 
-   @Nullable
-   public static fix a(int $$0, boolean $$1, Set<String> $$2) {
-      if ($$0 <= 0) {
-         return null;
-      } else {
-         GLCapabilities $$3 = GL.getCapabilities();
-         if ($$3.GL_KHR_debug && fiz.b) {
-            fix $$4 = new fix();
-            $$2.add("GL_KHR_debug");
-            GL11.glEnable(37600);
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$5 = 0; $$5 < e.size(); $$5++) {
-               boolean $$6 = $$5 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$5), (int[])null, $$6);
-            }
-
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create($$4::a), fjx::a), 0L);
-            return $$4;
-         } else if ($$3.GL_ARB_debug_output && fiz.d) {
-            fix $$7 = new fix();
-            $$2.add("GL_ARB_debug_output");
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$8 = 0; $$8 < f.size(); $$8++) {
-               boolean $$9 = $$8 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$8), (int[])null, $$9);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create($$7::a), fjx::a), 0L);
-            return $$7;
-         } else {
-            return null;
+         for (int $$8 = $$6.i.nextSetBit(0); $$8 >= 0; $$8 = $$6.i.nextSetBit($$8 + 1)) {
+            fix.d<?> $$9 = this.a.get($$8);
+            $$1.b($$9.a);
+            $$9.b($$0);
          }
       }
    }
 
-   static class a {
-      private final int a;
-      private final int b;
+   private BitSet a() {
+      Deque<fix.e> $$0 = new ArrayDeque<>(this.c.size());
+      BitSet $$1 = new BitSet(this.c.size());
+
+      for (fix.f<?> $$2 : this.b) {
+         fix.e $$3 = $$2.b.d;
+         if ($$3 != null) {
+            this.a($$3, $$1, $$0);
+         }
+      }
+
+      for (fix.e $$4 : this.c) {
+         if ($$4.j) {
+            this.a($$4, $$1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(fix.e $$0, BitSet $$1, Deque<fix.e> $$2) {
+      $$2.add($$0);
+
+      while (!$$2.isEmpty()) {
+         fix.e $$3 = $$2.poll();
+         if (!$$1.get($$3.b)) {
+            $$1.set($$3.b);
+
+            for (int $$4 = $$3.f.nextSetBit(0); $$4 >= 0; $$4 = $$3.f.nextSetBit($$4 + 1)) {
+               $$2.add(this.c.get($$4));
+            }
+         }
+      }
+   }
+
+   private void a(fix.e $$0, BitSet $$1, BitSet $$2, List<fix.e> $$3) {
+      if ($$2.get($$0.b)) {
+         String $$4 = $$2.stream().mapToObj($$0x -> this.c.get($$0x).c).collect(Collectors.joining(", "));
+         throw new IllegalStateException("Frame graph cycle detected between " + $$4);
+      } else if ($$1.get($$0.b)) {
+         $$2.set($$0.b);
+         $$1.clear($$0.b);
+
+         for (int $$5 = $$0.f.nextSetBit(0); $$5 >= 0; $$5 = $$0.f.nextSetBit($$5 + 1)) {
+            this.a(this.c.get($$5), $$1, $$2, $$3);
+         }
+
+         for (fix.b<?> $$6 : $$0.d) {
+            for (int $$7 = $$6.e.nextSetBit(0); $$7 >= 0; $$7 = $$6.e.nextSetBit($$7 + 1)) {
+               if ($$7 != $$0.b) {
+                  this.a(this.c.get($$7), $$1, $$2, $$3);
+               }
+            }
+         }
+
+         $$3.add($$0);
+         $$2.clear($$0.b);
+      }
+   }
+
+   private void a(Collection<fix.e> $$0) {
+      fix.e[] $$1 = new fix.e[this.a.size()];
+
+      for (fix.e $$2 : $$0) {
+         for (int $$3 = $$2.e.nextSetBit(0); $$3 >= 0; $$3 = $$2.e.nextSetBit($$3 + 1)) {
+            fix.d<?> $$4 = this.a.get($$3);
+            fix.e $$5 = $$1[$$3];
+            $$1[$$3] = $$2;
+            if ($$5 == null) {
+               $$2.h.add($$4);
+            } else {
+               $$5.i.clear($$3);
+            }
+
+            $$2.i.set($$3);
+         }
+      }
+   }
+
+   static class a<T> extends fix.f<T> {
+      private final T c;
+
+      public a(String $$0, @Nullable fix.e $$1, T $$2) {
+         super($$0, $$1);
+         this.c = $$2;
+      }
+
+      @Override
+      public T a() {
+         return this.c;
+      }
+   }
+
+   static class b<T> implements fkr<T> {
+      final fix.f<T> b;
       private final int c;
-      private final int d;
-      private final String e;
-      int f = 1;
+      @Nullable
+      final fix.e d;
+      final BitSet e = new BitSet();
+      @Nullable
+      private fix.b<T> f;
 
-      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         this.a = $$2;
+      b(fix.f<T> $$0, int $$1, @Nullable fix.e $$2) {
          this.b = $$0;
          this.c = $$1;
-         this.d = $$3;
-         this.e = $$4;
+         this.d = $$2;
       }
 
-      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      @Override
+      public T get() {
+         return this.b.a();
+      }
+
+      fix.b<T> a(fix.e $$0) {
+         if (this.b.b != this) {
+            throw new IllegalStateException("Handle " + this + " is no longer valid, as its contents were moved into " + this.f);
+         } else {
+            fix.b<T> $$1 = new fix.b<>(this.b, this.c + 1, $$0);
+            this.b.b = $$1;
+            this.f = $$1;
+            return $$1;
+         }
       }
 
       @Override
       public String toString() {
-         return "id=" + this.a + ", source=" + fix.a(this.b) + ", type=" + fix.b(this.c) + ", severity=" + fix.c(this.d) + ", message='" + this.e + "'";
+         return this.d != null ? this.b + "#" + this.c + " (from " + this.d + ")" : this.b + "#" + this.c;
+      }
+   }
+
+   public interface c {
+      fix.c a = new fix.c() {
+      };
+
+      default void a(String $$0) {
+      }
+
+      default void b(String $$0) {
+      }
+
+      default void c(String $$0) {
+      }
+
+      default void d(String $$0) {
+      }
+   }
+
+   static class d<T> extends fix.f<T> {
+      final int c;
+      private final fkq<T> d;
+      @Nullable
+      private T e;
+
+      public d(int $$0, String $$1, @Nullable fix.e $$2, fkq<T> $$3) {
+         super($$1, $$2);
+         this.c = $$0;
+         this.d = $$3;
+      }
+
+      @Override
+      public T a() {
+         return Objects.requireNonNull(this.e, "Resource is not currently available");
+      }
+
+      public void a(fko $$0) {
+         if (this.e != null) {
+            throw new IllegalStateException("Tried to acquire physical resource, but it was already assigned");
+         } else {
+            this.e = $$0.a(this.d);
+         }
+      }
+
+      public void b(fko $$0) {
+         if (this.e == null) {
+            throw new IllegalStateException("Tried to release physical resource that was not allocated");
+         } else {
+            $$0.a(this.d, this.e);
+            this.e = null;
+         }
+      }
+   }
+
+   class e implements fiy {
+      final int b;
+      final String c;
+      final List<fix.b<?>> d = new ArrayList<>();
+      final BitSet e = new BitSet();
+      final BitSet f = new BitSet();
+      Runnable g = () -> {
+      };
+      final List<fix.d<?>> h = new ArrayList<>();
+      final BitSet i = new BitSet();
+      boolean j;
+
+      public e(final int $$0, final String $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      private <T> void a(fix.b<T> $$0) {
+         if ($$0.b instanceof fix.d<?> $$1) {
+            this.e.set($$1.c);
+         }
+      }
+
+      private void a(fix.e $$0) {
+         this.f.set($$0.b);
+      }
+
+      @Override
+      public <T> fkr<T> a(String $$0, fkq<T> $$1) {
+         fix.d<T> $$2 = fix.this.a($$0, $$1, this);
+         this.e.set($$2.c);
+         return $$2.b;
+      }
+
+      @Override
+      public <T> void a(fkr<T> $$0) {
+         this.b((fix.b<T>)$$0);
+      }
+
+      private <T> void b(fix.b<T> $$0) {
+         this.a($$0);
+         if ($$0.d != null) {
+            this.a($$0.d);
+         }
+
+         $$0.e.set(this.b);
+      }
+
+      @Override
+      public <T> fkr<T> b(fkr<T> $$0) {
+         return this.c((fix.b<T>)$$0);
+      }
+
+      @Override
+      public void a(fiy $$0) {
+         this.f.set(((fix.e)$$0).b);
+      }
+
+      @Override
+      public void a() {
+         this.j = true;
+      }
+
+      private <T> fix.b<T> c(fix.b<T> $$0) {
+         this.d.add($$0);
+         this.b($$0);
+         return $$0.a(this);
+      }
+
+      @Override
+      public void a(Runnable $$0) {
+         this.g = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
+   }
+
+   abstract static class f<T> {
+      public final String a;
+      public fix.b<T> b;
+
+      public f(String $$0, @Nullable fix.e $$1) {
+         this.a = $$0;
+         this.b = new fix.b<>(this, 0, $$1);
+      }
+
+      public abstract T a();
+
+      @Override
+      public String toString() {
+         return this.a;
       }
    }
 }

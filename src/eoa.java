@@ -1,70 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eoa extends eod {
-   public static final MapCodec<eoa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bty.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
-               )
+public class eoa implements enb {
+   public static final Codec<eoa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayc.b(mi.i).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               epc.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               err.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               erh.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               buh.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               buh.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
             )
             .apply($$0, eoa::new)
    );
-   private final bty b;
-   private final float c;
-   private final float g;
-   private final float h;
-   private final float i;
+   public final ayc<dno> b;
+   public final epc c;
+   public final jg<err> d;
+   public final erh e;
+   public final buh f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final buh j;
+   public final float k;
 
-   public eoa(bty $$0, bty $$1, bty $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
-
-   @Override
-   protected eoe<?> a() {
-      return eoe.k;
-   }
-
-   @Override
-   protected void a(dkf $$0, eod.b $$1, azz $$2, enn $$3, int $$4, eod.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      iw $$10 = $$5.a().b($$8);
-      int $$11 = $$7 + $$5.b() - 1;
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
-
-      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
-         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
-      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
-   }
-
-   @Override
-   public int a(azz $$0, int $$1, enn $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
-         return true;
-      } else {
-         boolean $$6 = $$1 == $$4 && $$3 == $$4;
-         boolean $$7 = $$4 > 2;
-         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
-      }
+   public eoa(ayc<dno> $$0, epc $$1, jg<err> $$2, erh $$3, buh $$4, float $$5, int $$6, float $$7, buh $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

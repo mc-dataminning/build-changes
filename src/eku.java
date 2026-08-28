@@ -1,41 +1,71 @@
-import com.mojang.serialization.Codec;
+public class eku extends ekw<eni> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final iw ap = iw.c;
+   private final boolean aq;
 
-public class eku extends ejn {
-   public eku(Codec<emt> $$0) {
-      super($$0);
+   public static iw a(iw $$0) {
+      return ap.a((kb)$$0);
+   }
+
+   public eku(boolean $$0) {
+      super(eni.a);
+      this.aq = $$0;
    }
 
    @Override
-   protected void a(dka $$0, azz $$1, iw $$2, int $$3, iw.a $$4, emt $$5) {
-      int $$6 = $$5.d;
+   public boolean a(eky<eni> $$0) {
+      iw $$1 = $$0.e();
+      dli $$2 = $$0.b();
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-               boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-               boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-               boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-               ebg $$19 = $$5.b.a($$1, $$2);
-               if ($$19.b(drg.e) && $$19.b(drg.c) && $$19.b(drg.b) && $$19.b(drg.d)) {
-                  $$19 = $$19.b(drg.e, Boolean.valueOf($$15)).b(drg.c, Boolean.valueOf($$16)).b(drg.b, Boolean.valueOf($$17)).b(drg.d, Boolean.valueOf($$18));
+      for (iw $$3 : iw.c(new iw($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iw($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dnq.I.m());
+               } else if ($$3.v() < $$1.v()) {
+                  if (this.aq) {
+                     this.a($$2, $$3, dnq.fY);
+                  } else {
+                     this.a($$2, $$3, dnq.fY.m());
+                  }
                }
-
-               this.a($$0, $$4, $$19);
+            } else if ($$3.v() > $$1.v()) {
+               if (this.aq) {
+                  this.a($$2, $$3, dnq.a);
+               } else {
+                  this.a($$2, $$3, dnq.a.m());
+               }
+            } else if (!$$4) {
+               this.a($$2, $$3, dnq.I.m());
+            } else if (this.aq) {
+               this.a($$2, new iw($$3), dnq.fW);
+            } else {
+               this.a($$2, new iw($$3), dnq.a.m());
             }
          }
       }
+
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dnq.I.m());
+      }
+
+      iw $$6 = $$1.b(2);
+
+      for (jc $$7 : jc.c.a) {
+         this.a($$2, $$6.a($$7), dnq.cA.m().b(dxh.e, $$7));
+      }
+
+      return true;
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   private void a(dli $$0, iw $$1, dno $$2) {
+      if (!$$0.a_($$1).a($$2)) {
+         $$0.a($$1, true, null);
+         this.a($$0, $$1, $$2.m());
+      }
    }
 }

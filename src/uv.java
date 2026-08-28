@@ -13,13 +13,13 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class uv {
-   static final bpw<CommandSyntaxException> e = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_string_uuid")));
-   static final bpw<CommandSyntaxException> f = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_number_or_boolean")));
+   static final bqf<CommandSyntaxException> e = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_string_uuid")));
+   static final bqf<CommandSyntaxException> f = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_number_or_boolean")));
    public static final String a = "true";
    public static final String b = "false";
    public static final Map<uv.a, uv.b> c = Map.of(new uv.a("bool", 1), new uv.b() {
       @Override
-      public <T> T a(DynamicOps<T> $$0, List<T> $$1, bqb<StringReader> $$2) {
+      public <T> T a(DynamicOps<T> $$0, List<T> $$1, bqk<StringReader> $$2) {
          Boolean $$3 = a($$0, $$1.getFirst());
          if ($$3 == null) {
             $$2.b().a($$2.g(), uv.f);
@@ -41,7 +41,7 @@ public class uv {
       }
    }, new uv.a("uuid", 1), new uv.b() {
       @Override
-      public <T> T a(DynamicOps<T> $$0, List<T> $$1, bqb<StringReader> $$2) {
+      public <T> T a(DynamicOps<T> $$0, List<T> $$1, bqk<StringReader> $$2) {
          Optional<String> $$3 = $$0.getStringValue($$1.getFirst()).result();
          if ($$3.isEmpty()) {
             $$2.b().a($$2.g(), uv.e);
@@ -59,11 +59,11 @@ public class uv {
          }
       }
    });
-   public static final bqe<StringReader> d = new bqe<StringReader>() {
+   public static final bqn<StringReader> d = new bqn<StringReader>() {
       private final Set<String> a = Stream.concat(Stream.of("false", "true"), uv.c.keySet().stream().map(uv.a::a)).collect(Collectors.toSet());
 
       @Override
-      public Stream<String> possibleValues(bqb<StringReader> $$0) {
+      public Stream<String> possibleValues(bqk<StringReader> $$0) {
          return this.a.stream();
       }
    };
@@ -77,6 +77,6 @@ public class uv {
 
    public interface b {
       @Nullable
-      <T> T a(DynamicOps<T> var1, List<T> var2, bqb<StringReader> var3);
+      <T> T a(DynamicOps<T> var1, List<T> var2, bqk<StringReader> var3);
    }
 }

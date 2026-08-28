@@ -1,19 +1,16 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class enf implements emr {
+public class enf implements enb {
    public static final Codec<enf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(emz.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, enf::new)
+      $$0 -> $$0.group(Codec.intRange(0, efn.c).fieldOf("height").forGetter($$0x -> $$0x.b), ebq.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+            .apply($$0, enf::new)
    );
-   public final List<emz.a> b;
+   public final int b;
+   public final ebq c;
 
-   public enf(ebg $$0, ebg $$1) {
-      this(ImmutableList.of(emz.a(new evj($$0), $$1)));
-   }
-
-   public enf(List<emz.a> $$0) {
+   public enf(int $$0, ebq $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 }

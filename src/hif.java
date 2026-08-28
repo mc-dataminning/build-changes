@@ -1,5 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface hif extends hiq {
-   MapCodec<? extends hif> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hif {
 }

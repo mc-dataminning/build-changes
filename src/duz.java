@@ -1,33 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class duz extends dmr {
-   public static final MapCodec<duz> b = b(duz::new);
-
+public interface duz extends dnw, dsl {
    @Override
-   public MapCodec<duz> a() {
-      return b;
-   }
-
-   public duz(ebf.d $$0) {
-      super($$0, 2.0F);
+   default boolean a(@Nullable byf $$0, djn $$1, iw $$2, ebq $$3, exz $$4) {
+      return $$4 == eyb.c;
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : dng.a.m();
+   default boolean a(dkk $$0, iw $$1, ebq $$2, eya $$3) {
+      if (!$$2.c(ecg.I) && $$3.a() == eyb.c) {
+         if (!$$0.A_()) {
+            $$0.a($$1, $$2.b(ecg.I, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return o($$1.a_($$2.e()));
-   }
+   default dak a(@Nullable byf $$0, dkk $$1, iw $$2, ebq $$3) {
+      if ($$3.c(ecg.I)) {
+         $$1.a($$2, $$3.b(ecg.I, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-   public static boolean o(ebg $$0) {
-      return $$0.a(axg.aV);
+         return new dak(dao.rp);
+      } else {
+         return dak.l;
+      }
    }
 
    @Override
-   protected boolean g(ebg $$0) {
-      return true;
+   default Optional<awx> au_() {
+      return eyb.c.j();
    }
 }

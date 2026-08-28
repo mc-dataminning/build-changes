@@ -1,153 +1,66 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class gms {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public xc c;
-   public xc d;
-   @Nullable
-   public akh.b e;
-   public long f;
-   public int g = ac.b().e();
-   public xc h = xc.b(ac.b().c());
-   public List<xc> i = Collections.emptyList();
-   private gms.a l = gms.a.c;
-   @Nullable
-   private byte[] m;
-   private gms.c n;
-   private gms.b o = gms.b.a;
+public class gms extends gmt {
+   private final String g;
 
-   public gms(String $$0, String $$1, gms.c $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.n = $$2;
+   gms(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public ua a() {
-      ua $$0 = new ua();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      $$0.b("icon", ayy.r, this.m);
-      $$0.a(gms.a.d, this.l);
+   public String a() {
+      return this.g;
+   }
+
+   public gms c() {
+      gms $$0 = new gms(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
       return $$0;
    }
 
-   public gms.a b() {
-      return this.l;
+   @Override
+   public fzq a(fzq $$0, gmx $$1) {
+      return new gec($$0, $$1, this);
    }
 
-   public void a(gms.a $$0) {
-      this.l = $$0;
-   }
+   public static class a extends gmt.a<gms> {
+      public a(gms $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
 
-   public static gms a(ua $$0) {
-      gms $$1 = new gms($$0.b("name", ""), $$0.b("ip", ""), gms.c.c);
-      $$1.a($$0.<byte[]>a("icon", ayy.r).orElse(null));
-      $$1.a($$0.<gms.a>a(gms.a.d).orElse(gms.a.c));
-      return $$1;
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gms(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
+      @Nullable
+      @Override
+      public gmt.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gmt.b.d : super.c();
+      }
 
-   public boolean d() {
-      return this.n == gms.c.a;
-   }
-
-   public boolean e() {
-      return this.n == gms.c.b;
-   }
-
-   public gms.c f() {
-      return this.n;
-   }
-
-   public void a(gms $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(gms $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public gms.b g() {
-      return this.o;
-   }
-
-   public void a(gms.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            azw $$1 = azw.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
+      @Override
+      public Either<gmt.c, gmt.b> a(gmx $$0) {
+         gmt.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gmt.c(this.a.a, gmw.c, $$3));
          }
       }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      public static final MapCodec<gms.a> d = Codec.BOOL.optionalFieldOf("acceptTextures").xmap($$0 -> $$0.<gms.a>map($$0x -> $$0x ? a : b).orElse(c), $$0 -> {
-         return switch ($$0) {
-            case a -> Optional.of(true);
-            case b -> Optional.of(false);
-            case c -> Optional.empty();
-         };
-      });
-      private final xc e;
-
-      private a(final String $$0) {
-         this.e = xc.c("addServer.resourcePack." + $$0);
-      }
-
-      public xc a() {
-         return this.e;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum c {
-      a,
-      b,
-      c;
    }
 }

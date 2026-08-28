@@ -8,7 +8,7 @@ public class by extends dl<by.a> {
       return by.a.a;
    }
 
-   public void a(arv $$0, bvk $$1, float $$2, float $$3, boolean $$4) {
+   public void a(asc $$0, bvt $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -29,7 +29,7 @@ public class by extends dl<by.a> {
          return aq.i.a(new by.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(arv $$0, bvk $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(asc $$0, bvt $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

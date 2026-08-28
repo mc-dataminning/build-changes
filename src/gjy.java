@@ -1,47 +1,93 @@
-public class gjy<S extends hgm> extends giq<S> {
-   public gjy(glg $$0) {
-      super($$0);
+public class gjy extends ghn<hgn> implements ggd {
+   private final gkr a = this.v.b("body");
+   private final gkr b = this.a.b("right_arm");
+   private final gkr c = this.a.b("left_arm");
+   private final gkr d = this.a.b("right_wing");
+   private final gkr e = this.a.b("left_wing");
+   private final gkr f = this.v.b("head");
+
+   public gjy(gkr $$0) {
+      super($$0.b("root"), gry::j);
    }
 
-   public static glm c() {
-      glo $$0 = giq.a(glk.a, 0.0F);
-      glq $$1 = $$0.a();
-      a($$1);
-      return glm.a($$0, 64, 32);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      glb $$2 = $$1.a("root", gkw.c(), gkt.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", gkw.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gkv(0.0F)), gkt.a(0.0F, 20.0F, 0.0F));
+      glb $$3 = $$2.a(
+         "body",
+         gkw.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gkv(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gkv(-0.2F)),
+         gkt.a(0.0F, 20.0F, 0.0F)
+      );
+      $$3.a("right_arm", gkw.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gkv(-0.1F)), gkt.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", gkw.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gkv(-0.1F)), gkt.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", gkw.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gkv(0.0F)).a(false), gkt.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", gkw.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gkv(0.0F)), gkt.a(-0.5F, 1.0F, 1.0F));
+      return gkx.a($$0, 32, 32);
    }
 
-   protected static void a(glq $$0) {
-      $$0.a("right_arm", gll.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gli.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", gll.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gli.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", gll.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gli.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", gll.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gli.a(2.0F, 12.0F, 0.0F));
-   }
-
-   public void a(S $$0) {
+   public void a(hgn $$0) {
       super.a($$0);
-      if ($$0.b && !$$0.d) {
-         float $$1 = $$0.H;
-         float $$2 = azq.a($$1 * (float) Math.PI);
-         float $$3 = azq.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$2 * 0.6F);
-         this.s.f = 0.1F - $$2 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
-         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
-         ggq.a(this.r, this.s, $$0.u);
+      this.f.f = $$0.ad * (float) (Math.PI / 180.0);
+      this.f.e = $$0.ae * (float) (Math.PI / 180.0);
+      float $$1 = azz.b($$0.v * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.b.g = (float) (Math.PI / 5) + $$1;
+      this.c.g = -((float) (Math.PI / 5) + $$1);
+      if ($$0.a) {
+         this.a.e = 0.0F;
+         this.a(!$$0.g.c(), !$$0.i.c(), $$1);
+      } else {
+         this.a.e = (float) (Math.PI / 20);
+      }
+
+      this.e.f = 1.0995574F + azz.b($$0.v * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.d.f = -this.e.f;
+      this.e.e = 0.47123888F;
+      this.e.g = -0.47123888F;
+      this.d.e = 0.47123888F;
+      this.d.g = 0.47123888F;
+   }
+
+   private void a(boolean $$0, boolean $$1, float $$2) {
+      if (!$$0 && !$$1) {
+         this.b.e = -1.2217305F;
+         this.b.f = (float) (Math.PI / 12);
+         this.b.g = -0.47123888F - $$2;
+         this.c.e = -1.2217305F;
+         this.c.f = (float) (-Math.PI / 12);
+         this.c.g = 0.47123888F + $$2;
+      } else {
+         if ($$0) {
+            this.b.e = (float) (Math.PI * 7.0 / 6.0);
+            this.b.f = (float) (Math.PI / 12);
+            this.b.g = -0.47123888F - $$2;
+         }
+
+         if ($$1) {
+            this.c.e = (float) (Math.PI * 7.0 / 6.0);
+            this.c.f = (float) (-Math.PI / 12);
+            this.c.g = 0.47123888F + $$2;
+         }
       }
    }
 
    @Override
-   public void a(bxn $$0, flq $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bxn.b ? 1.0F : -1.0F;
-      glg $$3 = this.a($$0);
-      $$3.b += $$2;
+   public void a(bxw $$0, fld $$1) {
+      boolean $$2 = $$0 == bxw.b;
+      gkr $$3 = $$2 ? this.b : this.c;
+      this.v.a($$1);
+      this.a.a($$1);
       $$3.a($$1);
-      $$3.b -= $$2;
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
+
+   private void a(fld $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
+      }
    }
 }

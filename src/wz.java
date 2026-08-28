@@ -1,95 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.CorruptedFrameException;
 import java.util.List;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public record wz(String c, List<wz.a> d, xz e) {
-   public static final Codec<wz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("translation_key").forGetter(wz::a),
-               wz.a.d.listOf().fieldOf("parameters").forGetter(wz::b),
-               xz.b.b.optionalFieldOf("style", xz.a).forGetter(wz::c)
-            )
-            .apply($$0, wz::new)
-   );
-   public static final za<wn, wz> b = za.a(yy.p, wz::a, wz.a.e.a(yy.a()), wz::b, xz.b.c, wz::c, wz::new);
+public class wz extends ByteToMessageDecoder {
+   private static final int a = 3;
+   private final ByteBuf b = Unpooled.directBuffer(3);
+   @Nullable
+   private final vo c;
 
-   public static wz a(String $$0) {
-      return new wz($$0, List.of(wz.a.a, wz.a.c), xz.a);
+   public wz(@Nullable vo $$0) {
+      this.c = $$0;
    }
 
-   public static wz b(String $$0) {
-      xz $$1 = xz.a.a(o.h).b(true);
-      return new wz($$0, List.of(wz.a.a, wz.a.c), $$1);
+   protected void handlerRemoved0(ChannelHandlerContext $$0) {
+      this.b.release();
    }
 
-   public static wz c(String $$0) {
-      xz $$1 = xz.a.a(o.h).b(true);
-      return new wz($$0, List.of(wz.a.b, wz.a.c), $$1);
-   }
+   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
+      for (int $$2 = 0; $$2 < 3; $$2++) {
+         if (!$$0.isReadable()) {
+            return false;
+         }
 
-   public static wz d(String $$0) {
-      return new wz($$0, List.of(wz.a.b, wz.a.a, wz.a.c), xz.a);
-   }
-
-   public xc a(xc $$0, wy.a $$1) {
-      Object[] $$2 = this.b($$0, $$1);
-      return xc.a(this.c, $$2).c(this.e);
-   }
-
-   private xc[] b(xc $$0, wy.a $$1) {
-      xc[] $$2 = new xc[this.d.size()];
-
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         wz.a $$4 = this.d.get($$3);
-         $$2[$$3] = $$4.a($$0, $$1);
+         byte $$3 = $$0.readByte();
+         $$1.writeByte($$3);
+         if (!wx.a($$3)) {
+            return true;
+         }
       }
 
-      return $$2;
+      throw new CorruptedFrameException("length wider than 21-bit");
    }
 
-   public String a() {
-      return this.c;
-   }
+   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
+      $$1.markReaderIndex();
+      this.b.clear();
+      if (!a($$1, this.b)) {
+         $$1.resetReaderIndex();
+      } else {
+         int $$3 = wx.a(this.b);
+         if ($$1.readableBytes() < $$3) {
+            $$1.resetReaderIndex();
+         } else {
+            if (this.c != null) {
+               this.c.a($$3 + wx.a($$3));
+            }
 
-   public List<wz.a> b() {
-      return this.d;
-   }
-
-   public xz c() {
-      return this.e;
-   }
-
-   public static enum a implements bao {
-      a(0, "sender", ($$0, $$1) -> $$1.b()),
-      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xb.a)),
-      c(2, "content", ($$0, $$1) -> $$0);
-
-      private static final IntFunction<wz.a> f = ayg.a($$0 -> $$0.g, values(), ayg.a.a);
-      public static final Codec<wz.a> d = bao.a(wz.a::values);
-      public static final za<ByteBuf, wz.a> e = yy.a(f, $$0 -> $$0.g);
-      private final int g;
-      private final String h;
-      private final wz.a.a i;
-
-      private a(final int $$0, final String $$1, final wz.a.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      public xc a(xc $$0, wy.a $$1) {
-         return this.i.select($$0, $$1);
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-
-      public interface a {
-         xc select(xc var1, wy.a var2);
+            $$2.add($$1.readBytes($$3));
+         }
       }
    }
 }

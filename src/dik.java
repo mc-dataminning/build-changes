@@ -1,8 +1,78 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dik {
+   alq<dif> a = dil.a("trades/desert_armorer_boots_4");
+   alq<dif> b = dil.a("trades/desert_armorer_leggings_4");
+   alq<dif> c = dil.a("trades/desert_armorer_chestplate_4");
+   alq<dif> d = dil.a("trades/desert_armorer_helmet_4");
+   alq<dif> e = dil.a("trades/desert_armorer_leggings_5");
+   alq<dif> f = dil.a("trades/desert_armorer_chestplate_5");
+   alq<dif> g = dil.a("trades/plains_armorer_boots_4");
+   alq<dif> h = dil.a("trades/plains_armorer_leggings_4");
+   alq<dif> i = dil.a("trades/plains_armorer_chestplate_4");
+   alq<dif> j = dil.a("trades/plains_armorer_helmet_4");
+   alq<dif> k = dil.a("trades/plains_armorer_boots_5");
+   alq<dif> l = dil.a("trades/plains_armorer_leggings_5");
+   alq<dif> m = dil.a("trades/savanna_armorer_boots_4");
+   alq<dif> n = dil.a("trades/savanna_armorer_leggings_4");
+   alq<dif> o = dil.a("trades/savanna_armorer_chestplate_4");
+   alq<dif> p = dil.a("trades/savanna_armorer_helmet_4");
+   alq<dif> q = dil.a("trades/savanna_armorer_chestplate_5");
+   alq<dif> r = dil.a("trades/savanna_armorer_helmet_5");
+   alq<dif> s = dil.a("trades/snow_armorer_boots_4");
+   alq<dif> t = dil.a("trades/snow_armorer_helmet_4");
+   alq<dif> u = dil.a("trades/snow_armorer_boots_5");
+   alq<dif> v = dil.a("trades/snow_armorer_helmet_5");
+   alq<dif> w = dil.a("trades/jungle_armorer_boots_4");
+   alq<dif> x = dil.a("trades/jungle_armorer_leggings_4");
+   alq<dif> y = dil.a("trades/jungle_armorer_chestplate_4");
+   alq<dif> z = dil.a("trades/jungle_armorer_helmet_4");
+   alq<dif> A = dil.a("trades/jungle_armorer_boots_5");
+   alq<dif> B = dil.a("trades/jungle_armorer_helmet_5");
+   alq<dif> C = dil.a("trades/swamp_armorer_boots_4");
+   alq<dif> D = dil.a("trades/swamp_armorer_leggings_4");
+   alq<dif> E = dil.a("trades/swamp_armorer_chestplate_4");
+   alq<dif> F = dil.a("trades/swamp_armorer_helmet_4");
+   alq<dif> G = dil.a("trades/swamp_armorer_boots_5");
+   alq<dif> H = dil.a("trades/swamp_armorer_helmet_5");
+   alq<dif> I = dil.a("trades/taiga_armorer_leggings_5");
+   alq<dif> J = dil.a("trades/taiga_armorer_chestplate_5");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface dik {
+   static void a(qi<dif> $$0) {
+      jh<dgx> $$1 = $$0.a(mi.aR);
+      $$0.a(a, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(b, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(c, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(d, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(e, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(f, new dij($$1.b(dhc.h), bue.a(1)));
+      $$0.a(g, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(h, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(i, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(j, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(k, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(l, new dij($$1.b(dhc.a), bue.a(1)));
+      $$0.a(m, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(n, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(o, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(p, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(q, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(r, new dij($$1.b(dhc.k), bue.a(1)));
+      $$0.a(s, new dij($$1.b(dhc.j), bue.a(1)));
+      $$0.a(t, new dij($$1.b(dhc.g), bue.a(1)));
+      $$0.a(u, new dij($$1.b(dhc.j), bue.a(1)));
+      $$0.a(v, new dij($$1.b(dhc.g), bue.a(1)));
+      $$0.a(w, new dij($$1.b(dhc.w), bue.a(1)));
+      $$0.a(x, new dij($$1.b(dhc.w), bue.a(1)));
+      $$0.a(y, new dij($$1.b(dhc.w), bue.a(1)));
+      $$0.a(z, new dij($$1.b(dhc.w), bue.a(1)));
+      $$0.a(A, new dij($$1.b(dhc.c), bue.a(1)));
+      $$0.a(B, new dij($$1.b(dhc.e), bue.a(1)));
+      $$0.a(C, new dij($$1.b(dhc.O), bue.a(1)));
+      $$0.a(D, new dij($$1.b(dhc.O), bue.a(1)));
+      $$0.a(E, new dij($$1.b(dhc.O), bue.a(1)));
+      $$0.a(F, new dij($$1.b(dhc.O), bue.a(1)));
+      $$0.a(G, new dij($$1.b(dhc.i), bue.a(1)));
+      $$0.a(H, new dij($$1.b(dhc.f), bue.a(1)));
+      $$0.a(I, new dij($$1.b(dhc.d), bue.a(1)));
+      $$0.a(J, new dij($$1.b(dhc.d), bue.a(1)));
+   }
 }

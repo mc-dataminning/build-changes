@@ -1,22 +1,17 @@
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ezs {
-   public static DateTimeFormatter a() {
-      return new DateTimeFormatterBuilder()
-         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.DAY_OF_MONTH, 2)
-         .appendLiteral('_')
-         .appendValue(ChronoField.HOUR_OF_DAY, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-         .toFormatter();
+public record ezs(iw b, int c, int d) {
+   public static final Codec<ezs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iw.a.fieldOf("pos").forGetter(ezs::b), Codec.INT.fieldOf("rotation").forGetter(ezs::c), Codec.INT.fieldOf("entity_id").forGetter(ezs::d))
+            .apply($$0, ezs::new)
+   );
+
+   public String a() {
+      return a(this.b);
+   }
+
+   public static String a(iw $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

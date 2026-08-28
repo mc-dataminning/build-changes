@@ -1,11 +1,7 @@
 import javax.annotation.Nullable;
 
-public class heb extends hel {
+public class heb extends hev {
+   public boolean a;
    @Nullable
-   public bws.b.a a;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+   public ebq b;
 }

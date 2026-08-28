@@ -1,41 +1,18 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class fbh extends fbw {
-   public static final MapCodec<fbh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fbh::new));
+public class fbh {
+   public static final Codec<fbj> a = mh.D.q().dispatch(fbj::a, fbk::a);
+   public static final fbk b = a("empty", fbe.a);
+   public static final fbk c = a("item", fbg.a);
+   public static final fbk d = a("loot_table", fbm.a);
+   public static final fbk e = a("dynamic", fbd.a);
+   public static final fbk f = a("tag", fbo.a);
+   public static final fbk g = a("alternatives", fba.a);
+   public static final fbk h = a("sequence", fbn.a);
+   public static final fbk i = a("group", fbf.a);
 
-   private fbh(List<fds> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public fby<fbh> b() {
-      return fbz.z;
-   }
-
-   @Override
-   public daa a(daa $$0, faj $$1) {
-      Float $$2 = $$1.c(fdd.j);
-      if ($$2 != null) {
-         azz $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.M();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
-      }
-
-      return $$0;
-   }
-
-   public static fbw.a<?> c() {
-      return a(fbh::new);
+   private static fbk a(String $$0, MapCodec<? extends fbj> $$1) {
+      return jt.a(mh.D, alr.b($$0), new fbk($$1));
    }
 }

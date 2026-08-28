@@ -1,52 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public class gur implements gua<eag> {
+   private final gxt a;
 
-public class gur {
-   private static final Map<dyg<?>, guq<?>> a = Maps.newHashMap();
-
-   private static <T extends dye> void a(dyg<? extends T> $$0, guq<T> $$1) {
-      a.put($$0, $$1);
+   public gur(gub.a $$0) {
+      this.a = $$0.c();
    }
 
-   public static Map<dyg<?>, gup<?>> a(guq.a $$0) {
-      Builder<dyg<?>, gup<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + mh.j.b((dyg<?>)$$2), var5);
+   public void a(eag $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      dkj $$7 = $$0.i();
+      if ($$7 != null) {
+         djj $$8 = $$0.c();
+         bxe $$9 = $$8.b($$7, $$0.aC_());
+         if ($$9 != null) {
+            a($$1, $$2, $$3, $$4, $$9, this.a, $$8.b(), $$8.a());
          }
-      });
-      return $$1.build();
+      }
    }
 
-   static {
-      a(dyg.h, gve::new);
-      a(dyg.i, gva::new);
-      a(dyg.j, gvg::new);
-      a(dyg.l, gvc::new);
-      a(dyg.b, guw::new);
-      a(dyg.d, guw::new);
-      a(dyg.c, guw::new);
-      a(dyg.n, guz::new);
-      a(dyg.E, gvb::new);
-      a(dyg.o, gvj::new);
-      a(dyg.w, gvi::new);
-      a(dyg.p, gul::new);
-      a(dyg.q, gvf::new);
-      a(dyg.u, guk::new);
-      a(dyg.v, gus::new);
-      a(dyg.U, gvh::new);
-      a(dyg.y, gvd::new);
-      a(dyg.z, gum::new);
-      a(dyg.A, gux::new);
-      a(dyg.F, gun::new);
-      a(dyg.H, guv::new);
-      a(dyg.O, guu::new);
-      a(dyg.P, guy::new);
-      a(dyg.R, gvk::new);
-      a(dyg.S, gvl::new);
+   public static void a(float $$0, fld $$1, grn $$2, int $$3, bxe $$4, gxt $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azz.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

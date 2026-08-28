@@ -1,20 +1,15 @@
-public record ahm(bpf b) implements zj<agt> {
-   public static final za<vy, ahm> a = zj.a(ahm::a, ahm::new);
+import io.netty.buffer.ByteBuf;
 
-   private ahm(vy $$0) {
-      this($$0.b(bpf.class));
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-   }
+public record ahm() implements zo<aha> {
+   public static final ahm a = new ahm();
+   public static final ze<ByteBuf, ahm> b = ze.a(a);
 
    @Override
-   public zl<ahm> a() {
-      return agr.bC;
+   public zq<ahm> a() {
+      return agy.bv;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 }

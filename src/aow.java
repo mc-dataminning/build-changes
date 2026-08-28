@@ -1,29 +1,154 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
 public class aow {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.save.failed"));
-
-   public static void a(CommandDispatcher<ek> $$0) {
+   public static void a(CommandDispatcher<ek> $$0, eg $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ek)$$0x.getSource(), false)))
-            .then(el.a("flush").executes($$0x -> a((ek)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a(
+                                    "raid"
+                                 )
+                                 .requires($$0x -> $$0x.c(3)))
+                              .then(
+                                 el.a("start")
+                                    .then(
+                                       el.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+                                    )
+                              ))
+                           .then(el.a("stop").executes($$0x -> c((ek)$$0x.getSource()))))
+                        .then(el.a("check").executes($$0x -> d((ek)$$0x.getSource()))))
+                     .then(el.a("sound").then(el.a("type", et.a($$1)).executes($$0x -> a((ek)$$0x.getSource(), et.b($$0x, "type"))))))
+                  .then(el.a("spawnleader").executes($$0x -> b((ek)$$0x.getSource()))))
+               .then(
+                  el.a("setomen")
+                     .then(
+                        el.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                     )
+               ))
+            .then(el.a("glow").executes($$0x -> a((ek)$$0x.getSource())))
       );
    }
 
-   private static int a(ek $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> xc.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
+   private static int a(ek $$0) throws CommandSyntaxException {
+      cty $$1 = a($$0.h());
+      if ($$1 != null) {
+         for (ctz $$3 : $$1.h()) {
+            $$3.a(new bwi(bwk.x, 1000, 1));
+         }
+      }
+
+      return 1;
+   }
+
+   private static int a(ek $$0, int $$1) throws CommandSyntaxException {
+      cty $$2 = a($$0.h());
+      if ($$2 != null) {
+         int $$3 = $$2.k();
+         if ($$1 > $$3) {
+            $$0.b(xg.b("Sorry, the max raid omen level you can set is " + $$3));
+         } else {
+            int $$4 = $$2.l();
+            $$2.a($$1);
+            $$0.a(() -> xg.b("Changed village's raid omen level from " + $$4 + " to " + $$1), false);
+         }
       } else {
-         $$0.a(() -> xc.c("commands.save.success"), true);
+         $$0.b(xg.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(ek $$0) {
+      $$0.a(() -> xg.b("Spawned a raid captain"), false);
+      ctz $$1 = bxn.aU.a($$0.e(), bxm.n);
+      if ($$1 == null) {
+         $$0.b(xg.b("Pillager failed to spawn"));
+         return 0;
+      } else {
+         $$1.w(true);
+         $$1.a(bxo.f, cty.a($$0.u().f(mi.aF)));
+         $$1.a_($$0.d().d, $$0.d().e, $$0.d().f);
+         $$1.a($$0.e(), $$0.e().d_(iw.a((jq)$$0.d())), bxm.n, null);
+         $$0.e().a_($$1);
          return 1;
       }
+   }
+
+   private static int a(ek $$0, @Nullable xg $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         asb $$2 = $$0.e();
+         fgc $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.d, $$3.e, $$3.f, awy.vQ, awz.g, 2.0F, 1.0F, $$2.A.g());
+      }
+
+      return 1;
+   }
+
+   private static int b(ek $$0, int $$1) throws CommandSyntaxException {
+      asc $$2 = $$0.h();
+      iw $$3 = $$2.dv();
+      if ($$2.y().e($$3)) {
+         $$0.b(xg.b("Raid already started close by"));
+         return -1;
+      } else {
+         cua $$4 = $$2.y().B();
+         cty $$5 = $$4.a($$2, $$2.dv());
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.f();
+            $$0.a(() -> xg.b("Created a raid in your local village"), false);
+         } else {
+            $$0.b(xg.b("Failed to create a raid in your local village"));
+         }
+
+         return 1;
+      }
+   }
+
+   private static int c(ek $$0) throws CommandSyntaxException {
+      asc $$1 = $$0.h();
+      iw $$2 = $$1.dv();
+      cty $$3 = $$1.y().d($$2);
+      if ($$3 != null) {
+         $$3.m();
+         $$0.a(() -> xg.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(xg.b("No raid here"));
+         return -1;
+      }
+   }
+
+   private static int d(ek $$0) throws CommandSyntaxException {
+      cty $$1 = a($$0.h());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> xg.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.j());
+         $$3.append(" Raid omen level: ");
+         $$3.append($$1.l());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.p());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.o());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> xg.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(xg.b("Found no started raids"));
+         return 0;
+      }
+   }
+
+   @Nullable
+   private static cty a(asc $$0) {
+      return $$0.y().d($$0.dv());
    }
 }

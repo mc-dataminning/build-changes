@@ -1,19 +1,29 @@
-import java.util.List;
-
-public interface dfv<T> {
-   public interface a<T> extends dfv<T> {
-      T a(T var1, List<T> var2);
+public class dfv extends deh {
+   public dfv(String $$0, den $$1, dex $$2, dak $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public interface b<T> extends dfv<T> {
-      default T a(jg<czw> $$0) {
-         return this.a(new daa($$0));
-      }
+   @Override
+   protected dag f() {
+      return dao.fk;
+   }
 
-      default T a(czw $$0) {
-         return this.a(new daa($$0));
-      }
+   @Override
+   public dfl<dfv> a() {
+      return dfl.o;
+   }
 
-      T a(daa var1);
+   @Override
+   public dfm<dfv> b() {
+      return dfm.b;
+   }
+
+   @Override
+   public dfe h() {
+      return switch (this.e()) {
+         case b -> dfd.f;
+         case a -> dfd.e;
+         case c -> dfd.g;
+      };
    }
 }

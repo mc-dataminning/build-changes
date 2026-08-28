@@ -1,61 +1,28 @@
-public class aia implements zj<agt> {
-   public static final za<vy, aia> a = zj.a(aia::a, aia::new);
-   private final int b;
-   private final aia.a c;
-   private final int d;
+public record aia(fgc b, float c, float d, boolean e) implements zo<aha> {
+   public static final ze<vy, aia> a = ze.a(fgc.b, aia::b, zc.l, aia::e, zc.l, aia::f, zc.b, aia::g, aia::new);
 
-   public aia(bwv $$0, aia.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aia(bwv $$0, aia.a $$1, int $$2) {
-      this.b = $$0.ao();
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private aia(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(aia.a.class);
-      this.d = $$0.l();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   public static aia a(bxe $$0) {
+      return $$0.bQ() ? new aia($$0.S_().a(), $$0.S_().b(), $$0.S_().c(), $$0.aH()) : new aia($$0.dt(), $$0.dL(), $$0.dN(), $$0.aH());
    }
 
    @Override
-   public zl<aia> a() {
-      return agr.bT;
+   public zq<aia> a() {
+      return agy.bM;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public aia.a e() {
+   public float e() {
       return this.c;
    }
 
-   public int f() {
+   public float f() {
       return this.d;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
+   public boolean g() {
+      return this.e;
    }
 }

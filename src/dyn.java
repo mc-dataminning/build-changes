@@ -1,23 +1,20 @@
-public class dyn {
-   private boolean a;
-   private float b;
-   private float c;
-
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class dyn extends dyb {
+   public dyn(iw $$0, ebq $$1) {
+      super(dyq.D, $$0, $$1, dfm.c);
    }
 
-   public float a(float $$0) {
-      return azq.h($$0, this.c, this.b);
+   @Override
+   protected xg j() {
+      return xg.c("container.blast_furnace");
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   protected int a(dzn $$0, dak $$1) {
+      return super.a($$0, $$1) / 2;
+   }
+
+   @Override
+   protected cwb a(int $$0, csh $$1) {
+      return new cwh($$0, $$1, this, this.m);
    }
 }

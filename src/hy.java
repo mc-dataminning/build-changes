@@ -8,7 +8,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface hy<T> {
-   alk a();
+   alr a();
 
    ia<T> a(@Nullable ua var1, CommandDispatcher<T> var2) throws en;
 
@@ -17,7 +17,7 @@ public interface hy<T> {
       return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
    }
 
-   static <T extends em<T>> hy<T> a(alk $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
+   static <T extends em<T>> hy<T> a(alr $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
       hz<T> $$4 = new hz<>();
 
       for (int $$5 = 0; $$5 < $$3.size(); $$5++) {

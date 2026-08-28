@@ -1,20 +1,49 @@
-public record aad(are b) implements zj<aac> {
-   public static final za<vy, aad> a = zj.a(aad::a, aad::new);
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
 
-   private aad(vy $$0) {
-      this(new are($$0));
-   }
+public record aad(UUID c, String d, String e, boolean f, Optional<xg> g) implements zo<zw> {
+   public static final int a = 40;
+   public static final ze<ByteBuf, aad> b = ze.a(ka.g, aad::b, zc.p, aad::e, zc.b(40), aad::f, zc.b, aad::g, xi.f.a(zc::a), aad::h, aad::new);
 
-   private void a(vy $$0) {
-      this.b.a($$0);
+   public aad(UUID c, String d, String e, boolean f, Optional<xg> g) {
+      if (e.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
+      } else {
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
    }
 
    @Override
-   public zl<aad> a() {
-      return aab.l;
+   public zq<aad> a() {
+      return aai.g;
    }
 
-   public void a(aac $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
+   }
+
+   public UUID b() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public String f() {
+      return this.e;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public Optional<xg> h() {
+      return this.g;
    }
 }

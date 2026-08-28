@@ -1,68 +1,139 @@
-import it.unimi.dsi.fastutil.ints.IntImmutableList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
-
-public final class ecg extends ecj<Integer> {
-   private final IntImmutableList a;
-   private final int b;
-   private final int c;
-
-   private ecg(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
-      }
-   }
-
-   @Override
-   public List<Integer> a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ecg $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
-   }
-
-   public static ecg a(String $$0, int $$1, int $$2) {
-      return new ecg($$0, $$1, $$2);
-   }
-
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         int $$1 = Integer.parseInt($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
-   }
-
-   public String a(Integer $$0) {
-      return $$0.toString();
-   }
-
-   public int b(Integer $$0) {
-      return $$0 <= this.c ? $$0 - this.b : -1;
-   }
+public class ecg {
+   public static final ech a = ech.a("attached");
+   public static final ech b = ech.a("berries");
+   public static final ech c = ech.a("bloom");
+   public static final ech d = ech.a("bottom");
+   public static final ech e = ech.a("can_summon");
+   public static final ech f = ech.a("conditional");
+   public static final ech g = ech.a("disarmed");
+   public static final ech h = ech.a("drag");
+   public static final ech i = ech.a("enabled");
+   public static final ech j = ech.a("extended");
+   public static final ech k = ech.a("eye");
+   public static final ech l = ech.a("falling");
+   public static final ech m = ech.a("hanging");
+   public static final ech n = ech.a("has_bottle_0");
+   public static final ech o = ech.a("has_bottle_1");
+   public static final ech p = ech.a("has_bottle_2");
+   public static final ech q = ech.a("has_record");
+   public static final ech r = ech.a("has_book");
+   public static final ech s = ech.a("inverted");
+   public static final ech t = ech.a("in_wall");
+   public static final ech u = ech.a("lit");
+   public static final ech v = ech.a("locked");
+   public static final ech w = ech.a("natural");
+   public static final ech x = ech.a("occupied");
+   public static final ech y = ech.a("open");
+   public static final ech z = ech.a("persistent");
+   public static final ech A = ech.a("powered");
+   public static final ech B = ech.a("short");
+   public static final ech C = ech.a("shrieking");
+   public static final ech D = ech.a("signal_fire");
+   public static final ech E = ech.a("snowy");
+   public static final ech F = ech.a("tip");
+   public static final ech G = ech.a("triggered");
+   public static final ech H = ech.a("unstable");
+   public static final ech I = ech.a("waterlogged");
+   public static final eco<jc.a> J = eco.a("axis", jc.a.class, jc.a.a, jc.a.c);
+   public static final eco<jc.a> K = eco.a("axis", jc.a.class);
+   public static final ech L = ech.a("up");
+   public static final ech M = ech.a("down");
+   public static final ech N = ech.a("north");
+   public static final ech O = ech.a("east");
+   public static final ech P = ech.a("south");
+   public static final ech Q = ech.a("west");
+   public static final eco<jc> R = eco.a("facing", jc.class, jc.c, jc.f, jc.d, jc.e, jc.b, jc.a);
+   public static final eco<jc> S = eco.a("facing", jc.class, $$0 -> $$0 != jc.b);
+   public static final eco<jc> T = eco.a("facing", jc.class, jc.c.a);
+   public static final ecq U = ecq.a("flower_amount", 1, 4);
+   public static final ecq V = ecq.a("segment_amount", 1, 4);
+   public static final eco<je> W = eco.a("orientation", je.class);
+   public static final eco<ecb> X = eco.a("face", ecb.class);
+   public static final eco<ece> Y = eco.a("attachment", ece.class);
+   public static final eco<edd> Z = eco.a("east", edd.class);
+   public static final eco<edd> aa = eco.a("north", edd.class);
+   public static final eco<edd> ab = eco.a("south", edd.class);
+   public static final eco<edd> ac = eco.a("west", edd.class);
+   public static final eco<ecv> ad = eco.a("east", ecv.class);
+   public static final eco<ecv> ae = eco.a("north", ecv.class);
+   public static final eco<ecv> af = eco.a("south", ecv.class);
+   public static final eco<ecv> ag = eco.a("west", ecv.class);
+   public static final eco<ecm> ah = eco.a("half", ecm.class);
+   public static final eco<ecp> ai = eco.a("half", ecp.class);
+   public static final eco<ecu> aj = eco.a("shape", ecu.class);
+   public static final eco<ecu> ak = eco.a("shape", ecu.class, $$0 -> $$0 != ecu.j && $$0 != ecu.i && $$0 != ecu.g && $$0 != ecu.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final ecq at = ecq.a("age", 0, 1);
+   public static final ecq au = ecq.a("age", 0, 2);
+   public static final ecq av = ecq.a("age", 0, 3);
+   public static final ecq aw = ecq.a("age", 0, 4);
+   public static final ecq ax = ecq.a("age", 0, 5);
+   public static final ecq ay = ecq.a("age", 0, 7);
+   public static final ecq az = ecq.a("age", 0, 15);
+   public static final ecq aA = ecq.a("age", 0, 25);
+   public static final ecq aB = ecq.a("bites", 0, 6);
+   public static final ecq aC = ecq.a("candles", 1, 4);
+   public static final ecq aD = ecq.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final ecq aF = ecq.a("distance", 1, 7);
+   public static final ecq aG = ecq.a("eggs", 1, 4);
+   public static final ecq aH = ecq.a("hatch", 0, 2);
+   public static final ecq aI = ecq.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final ecq aN = ecq.a("level", 1, 3);
+   public static final ecq aO = ecq.a("level", 0, 8);
+   public static final ecq aP = ecq.a("level", 1, 8);
+   public static final ecq aQ = ecq.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final ecq aS = ecq.a("level", 0, 15);
+   public static final ecq aT = ecq.a("moisture", 0, 7);
+   public static final ecq aU = ecq.a("note", 0, 24);
+   public static final ecq aV = ecq.a("pickles", 1, 4);
+   public static final ecq aW = ecq.a("power", 0, 15);
+   public static final ecq aX = ecq.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final ecq aZ = ecq.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final ecq bc = ecq.a("charges", 0, 4);
+   public static final ecq bd = ecq.a("rotation", 0, ecw.a());
+   public static final eco<ecd> be = eco.a("part", ecd.class);
+   public static final eco<eci> bf = eco.a("type", eci.class);
+   public static final eco<ecj> bg = eco.a("mode", ecj.class);
+   public static final eco<ecl> bh = eco.a("hinge", ecl.class);
+   public static final eco<ecr> bi = eco.a("instrument", ecr.class);
+   public static final eco<ecs> bj = eco.a("type", ecs.class);
+   public static final eco<ecy> bk = eco.a("type", ecy.class);
+   public static final eco<ecz> bl = eco.a("shape", ecz.class);
+   public static final eco<eda> bm = eco.a("mode", eda.class);
+   public static final eco<ecc> bn = eco.a("leaves", ecc.class);
+   public static final eco<edc> bo = eco.a("tilt", edc.class);
+   public static final eco<jc> bp = eco.a("vertical_direction", jc.class, jc.b, jc.a);
+   public static final eco<ecn> bq = eco.a("thickness", ecn.class);
+   public static final eco<ecx> br = eco.a("sculk_sensor_phase", ecx.class);
+   public static final ech bs = ech.a("slot_0_occupied");
+   public static final ech bt = ech.a("slot_1_occupied");
+   public static final ech bu = ech.a("slot_2_occupied");
+   public static final ech bv = ech.a("slot_3_occupied");
+   public static final ech bw = ech.a("slot_4_occupied");
+   public static final ech bx = ech.a("slot_5_occupied");
+   public static final ecq by = ecq.a("dusted", 0, 3);
+   public static final ech bz = ech.a("cracked");
+   public static final ech bA = ech.a("crafting");
+   public static final eco<eav> bB = eco.a("trial_spawner_state", eav.class);
+   public static final eco<ebc> bC = eco.a("vault_state", ebc.class);
+   public static final eco<eck> bD = eco.a("creaking_heart_state", eck.class);
+   public static final ech bE = ech.a("ominous");
+   public static final eco<edb> bF = eco.a("mode", edb.class);
+   public static final ech bG = ech.a("map");
 }

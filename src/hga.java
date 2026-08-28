@@ -1,4 +1,5 @@
-public class hga extends hfr {
-   public float a;
-   public int b;
+public class hga extends hev {
+   public boolean b;
+   public boolean c;
+   public boolean d;
 }

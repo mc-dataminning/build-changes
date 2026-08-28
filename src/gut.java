@@ -1,23 +1,41 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+public class gut extends guu<eak> {
+   private static final alr c = alr.b("textures/entity/end_gateway_beam.png");
 
-public class gut<S extends dye> implements dpm.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = grx.a($$0.i(), $$0.aB_());
-         int $$4 = grx.a($$1.i(), $$1.aB_());
-         int $$5 = grz.a($$3);
-         int $$6 = grz.a($$4);
-         int $$7 = grz.b($$3);
-         int $$8 = grz.b($$4);
-         return grz.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+   public gut(gub.a $$0) {
+      super($$0);
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   public void a(eak $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      if ($$0.a() || $$0.c()) {
+         float $$7 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
+         double $$8 = $$0.a() ? (double)$$0.i().ao() : 50.0;
+         $$7 = azz.a($$7 * (float) Math.PI);
+         int $$9 = azz.a((double)$$7 * $$8);
+         int $$10 = $$0.a() ? czi.c.d() : czi.k.d();
+         long $$11 = $$0.i().ae();
+         gtw.a($$2, $$3, c, $$1, $$7, $$11, -$$9, $$9 * 2, $$10, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected gry d() {
+      return gry.v();
+   }
+
+   @Override
+   public int aW_() {
+      return 256;
    }
 }

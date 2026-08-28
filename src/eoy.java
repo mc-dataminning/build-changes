@@ -1,69 +1,108 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public class eoy extends eos {
-   public static final MapCodec<eoy> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eos.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bty.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eoy::new)
+public class eoy extends eoz {
+   public static final int a = 8;
+   public static final int b = 15;
+   public static final MapCodec<eoy> c = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(eox.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, eoy::new)
    );
-   private final eos c;
-   private final String d;
-   @Nullable
-   private ecg e;
-   private final bty f;
+   private final eox h;
 
-   public eoy(eos $$0, ecg $$1, bty $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public eoy(eos $$0, String $$1, bty $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public eoy(buh $$0, epc $$1, Optional<eow> $$2, eox $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected eot<?> a() {
-      return eot.g;
+   public boolean a(dkp $$0, BiConsumer<iw, ebq> $$1, bai $$2, iw $$3, iw $$4, enx $$5) {
+      List<iw> $$6 = Lists.newArrayList();
+      iw.a $$7 = $$3.k();
+
+      while ($$7.v() < $$4.v()) {
+         if (!this.a($$0, $$7)) {
+            return false;
+         }
+
+         $$7.c(jc.b);
+      }
+
+      $$6.add($$4.e());
+
+      for (jc $$8 : jc.c.a) {
+         iw $$9 = $$4.a($$8);
+         List<iw> $$10 = Lists.newArrayList();
+         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
+            return false;
+         }
+
+         $$6.addAll($$10);
+         $$6.add($$4.a($$8));
+      }
+
+      for (iw $$11 : $$6) {
+         this.a($$0, $$1, $$2, $$11, $$5);
+      }
+
+      return true;
+   }
+
+   private boolean a(dkp $$0, bai $$1, iw $$2, jc $$3, iw $$4, List<iw> $$5, int $$6) {
+      int $$7 = this.h.e();
+      if ($$6 != $$7 && $$5.size() <= $$7) {
+         for (iw $$9 : this.a($$2, $$3, $$1, $$4)) {
+            if (this.a($$0, $$9)) {
+               $$5.add($$9);
+               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected List<iw> a(iw $$0, jc $$1, bai $$2, iw $$3) {
+      iw $$4 = $$0.e();
+      iw $$5 = $$0.a($$1);
+      int $$6 = $$0.k($$3);
+      int $$7 = this.h.d();
+      float $$8 = this.h.f();
+      if ($$6 > $$7 - 3 && $$6 <= $$7) {
+         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
+      } else if ($$6 > $$7) {
+         return List.of($$4);
+      } else if ($$2.i() < $$8) {
+         return List.of($$4);
+      } else {
+         return $$2.h() ? List.of($$5) : List.of($$4);
+      }
    }
 
    @Override
-   public ebg a(azz $$0, iw $$1) {
-      ebg $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         ecg $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
-
-         this.e = $$3;
-      }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   protected boolean a(dkp $$0, iw $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
    }
 
-   @Nullable
-   private static ecg a(ebg $$0, String $$1) {
-      Collection<ecj<?>> $$2 = $$0.F();
-      Optional<ecg> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ecg).map($$0x -> (ecg)$$0x).findAny();
-      return $$3.orElse(null);
+   @Override
+   protected void a(dkp $$0, BiConsumer<iw, ebq> $$1, bai $$2, iw $$3, enx $$4) {
+      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
+         ebq $$5 = this.h.c().a($$2, $$3);
+         $$1.accept($$3, this.a($$0, $$3, $$5));
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected epa<?> a() {
+      return epa.a;
    }
 }

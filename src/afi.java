@@ -1,39 +1,32 @@
 import javax.annotation.Nullable;
 
-public class afi implements zj<aby> {
-   public static final za<vy, afi> a = zj.a(afi::a, afi::new);
+public class afi implements zo<acf> {
+   public static final ze<vy, afi> a = zo.a(afi::a, afi::new);
    private final int b;
-   private final int c;
 
-   public afi(bwv $$0, @Nullable bwv $$1) {
+   public afi(bxe $$0) {
       this.b = $$0.ao();
-      this.c = $$1 != null ? $$1.ao() : 0;
    }
 
    private afi(vy $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+      this.b = $$0.l();
    }
 
    private void a(vy $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
+      $$0.c(this.b);
    }
 
    @Override
-   public zl<afi> a() {
-      return agr.aG;
+   public zq<afi> a() {
+      return agy.aA;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public bxe a(dkj $$0) {
+      return $$0.a(this.b);
    }
 }

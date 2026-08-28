@@ -1,49 +1,51 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class brr extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public class brr implements AutoCloseable {
+   public static final brr a = new brr(null);
+   @Nullable
+   private final brm b;
 
-   public brr(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+   brr(@Nullable brm $$0) {
+      this.b = $$0;
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   public brr a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
+      }
 
-      private a() {
+      return this;
+   }
+
+   public brr a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
+      }
+
+      return this;
+   }
+
+   public brr a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   public brr a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
       }
    }
 }

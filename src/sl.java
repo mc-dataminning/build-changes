@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 
 public class sl {
    private static final int b = 50;
-   public static final sl.a a = ($$0, $$1) -> Stream.of(new sr($$0, dty.a, $$1, th.a()));
+   public static final sl.a a = ($$0, $$1) -> Stream.of(new sr($$0, dui.a, $$1, th.a()));
 
-   public static List<sk> a(Collection<jg.c<ss>> $$0, sl.a $$1, aru $$2) {
+   public static List<sk> a(Collection<jg.c<ss>> $$0, sl.a $$1, asb $$2) {
       Map<jg<tm>, List<sr>> $$3 = $$0.stream().flatMap($$2x -> $$1.decorate($$2x, $$2)).collect(Collectors.groupingBy($$0x -> $$0x.v().d()));
       return $$3.entrySet().stream().flatMap($$0x -> {
          jg<tm> $$1x = (jg<tm>)$$0x.getKey();
@@ -41,6 +41,6 @@ public class sl {
 
    @FunctionalInterface
    public interface a {
-      Stream<sr> decorate(jg.c<ss> var1, aru var2);
+      Stream<sr> decorate(jg.c<ss> var1, asb var2);
    }
 }

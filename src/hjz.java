@@ -1,32 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hjz implements hkc {
-   private final glg a;
+public class hjz {
+   @Nullable
+   public alr a;
+   public final List<hjz.a> b = new ArrayList<>();
 
-   public hjz(glg $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(czy $$0, flq $$1, gsc $$2, int $$3, int $$4, boolean $$5) {
-      flt $$6 = gux.b.a($$2, gsn::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
-
-   public static record a() implements hkg.a {
-      public static final MapCodec<hjz.a> a = MapCodec.unit(new hjz.a());
-
-      @Override
-      public MapCodec<hjz.a> a() {
-         return a;
-      }
-
-      @Override
-      public hkg<?> a(glc $$0) {
-         return new hjz($$0.a(glf.al));
-      }
+   public static class a {
+      @Nullable
+      public hkq a;
+      public byte b;
+      public byte c;
+      public byte d;
+      public boolean e;
+      @Nullable
+      public xg f;
    }
 }

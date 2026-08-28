@@ -1,35 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dlk extends dlg {
-   public static final MapCodec<dlk> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dlc.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+public class dlk {
+   public static final Codec<dlk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awx.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
             .apply($$0, dlk::new)
    );
-   private final jk<dlc> c;
+   public static final dlk b = new dlk(awy.h, 6000, 8, 2.0);
+   private final jg<awx> c;
    private final int d;
    private final int e;
+   private final double f;
 
-   public dlk(jk<dlc> $$0, int $$1) {
+   public dlk(jg<awx> $$0, int $$1, int $$2, double $$3) {
       this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected Stream<jg<dlc>> b() {
-      return this.c.a();
+   public jg<awx> a() {
+      return this.c;
    }
 
-   @Override
-   protected MapCodec<? extends dlg> a() {
-      return b;
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2, dll.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public int c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
    }
 }

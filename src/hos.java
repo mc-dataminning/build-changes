@@ -1,50 +1,28 @@
-public class hos extends hoi {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cum s;
-   private float t = 0.0F;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public hos(cum $$0) {
-      super(awr.pz, aws.g, hoz.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
+public class hos<T> extends hot<T> {
+   private final hox<T> c;
+
+   public hos(Function<T, Stream<String>> $$0, Function<T, Stream<alr>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hox.plainText($$2, $$0);
    }
 
    @Override
-   public boolean s() {
-      return !this.s.ba();
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
    @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dQ()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dA());
-         this.g = (double)((float)this.s.dC());
-         this.h = (double)((float)this.s.dG());
-         float $$0 = (float)this.s.dy().i();
-         boolean $$1 = !this.s.cp() && this.s.f() instanceof cvb;
-         if ($$0 >= 0.01F && this.s.dV().u().i() && !$$1) {
-            this.t = azq.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = azq.h(azq.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
-      }
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hov<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hou<T>($$2.iterator(), $$5, this.a));
    }
 }

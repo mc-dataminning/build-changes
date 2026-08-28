@@ -1,31 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public enum djp implements djd {
-   a;
+public class djp {
+   private final fgc a;
+   private final fgc b;
+   private final Predicate<ebq> c;
 
-   @Nullable
-   @Override
-   public dye c_(iw $$0) {
-      return null;
+   public djp(fgc $$0, fgc $$1, Predicate<ebq> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public ebg a_(iw $$0) {
-      return dng.a.m();
+   public fgc a() {
+      return this.b;
    }
 
-   @Override
-   public exq b_(iw $$0) {
-      return exr.a.g();
+   public fgc b() {
+      return this.a;
    }
 
-   @Override
-   public int K_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public Predicate<ebq> c() {
+      return this.c;
    }
 }

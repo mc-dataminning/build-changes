@@ -1,44 +1,32 @@
-public class hop extends hoi {
-   public static final int n = 20;
-   private final grb o;
-   private int p;
+public class hop implements hnx {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final gqm e;
+   private final hpt f;
+   private int g = 0;
 
-   public hop(grb $$0) {
-      super(awr.iu, aws.h, hoz.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+   public hop(gqm $$0, hpt $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dQ() && (this.p <= 20 || this.o.fJ())) {
-         this.f = (double)((float)this.o.dA());
-         this.g = (double)((float)this.o.dC());
-         this.h = (double)((float)this.o.dG());
-         float $$0 = (float)this.o.dy().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azq.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bm()) {
+         float $$0 = this.e.dV().A.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((hon)(new hoq.a(this.e, awy.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((hon)(new hoq.a(this.e, awy.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((hon)(new hoq.a(this.e, awy.A)));
          }
-
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
-      } else {
-         this.n();
       }
    }
 }

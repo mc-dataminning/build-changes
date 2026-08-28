@@ -1,43 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class cne extends cmz {
-   @Nullable
-   private ffs b;
+public class cne {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final cne.a[] c = new cne.a[64];
+   private int d = -1;
 
-   public cne(cmx $$0) {
-      super($$0);
+   public cne() {
+      Arrays.fill(this.c, new cne.a(0.0, 0.0F));
    }
 
-   @Override
-   public void a(aru $$0) {
-      if (this.b == null) {
-         this.b = this.a.dt();
+   public void a(cne $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
+   }
+
+   public void a(double $$0, float $$1) {
+      cne.a $$2 = new cne.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
+
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public boolean a() {
-      return true;
+   public cne.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   @Override
-   public void c() {
-      this.b = null;
+   public cne.a a(int $$0, float $$1) {
+      cne.a $$2 = this.a($$0);
+      cne.a $$3 = this.a($$0 + 1);
+      return new cne.a(azz.d((double)$$1, $$3.a, $$2.a), azz.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public float e() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public ffs f() {
-      return this.b;
-   }
-
-   @Override
-   public cnn<cne> h() {
-      return cnn.k;
+   public static record a(double a, float b) {
    }
 }

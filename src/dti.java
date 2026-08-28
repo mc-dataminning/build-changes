@@ -1,43 +1,51 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public class dti extends dms {
-   public static final MapCodec<dti> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebv.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t()).apply($$0, dti::new)
-   );
-   public static final ebx d = ebw.A;
+public abstract class dti extends dno {
+   public static final ech b = ecg.N;
+   public static final ech c = ecg.O;
+   public static final ech d = ecg.P;
+   public static final ech e = ecg.Q;
+   public static final ech f = ecg.L;
+   public static final ech g = ecg.M;
+   public static final Map<jc, ech> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jc.c, b, jc.f, c, jc.d, d, jc.e, e, jc.b, f, jc.a, g)));
+   private final Function<ebq, fgw> a;
 
-   @Override
-   public MapCodec<dti> a() {
-      return c;
-   }
-
-   protected dti(ebv $$0, ebf.d $$1) {
-      super($$1, $$0);
-      this.l(this.C.b().b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int h(ebg $$0) {
-      return $$0.c(d) ? 15 : 0;
+   protected dti(float $$0, ebp.d $$1) {
+      super($$1);
+      this.a = this.a($$0);
    }
 
    @Override
-   protected ebg a(ebg $$0, int $$1) {
-      return $$0.b(d, Boolean.valueOf($$1 > 0));
+   protected abstract MapCodec<? extends dti> a();
+
+   private Function<ebq, fgw> a(float $$0) {
+      fgw $$1 = dno.a((double)$$0);
+      Map<jc, fgw> $$2 = fgt.d(dno.c((double)$$0, 0.0, 8.0));
+      return this.a($$2x -> {
+         fgw $$3 = $$1;
+
+         for (Entry<jc, ech> $$4 : h.entrySet()) {
+            if ($$2x.c($$4.getValue())) {
+               $$3 = fgt.a($$2.get($$4.getKey()), $$3);
+            }
+         }
+
+         return $$3;
+      });
    }
 
    @Override
-   protected int b(djz $$0, iw $$1) {
-      Class<? extends bwv> $$2 = switch (this.b.f()) {
-         case a -> bwv.class;
-         case b -> bxw.class;
-      };
-      return a($$0, a.a($$1), $$2) > 0 ? 15 : 0;
+   protected boolean e_(ebq $$0) {
+      return false;
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(d);
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return this.a.apply($$0);
    }
 }

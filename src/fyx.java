@@ -1,107 +1,65 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+public class fyx extends fzq {
+   private static final xg a = xg.c("gui.toMenu");
+   private static final xg b = xg.c("gui.toTitle");
+   private static final xg c = xg.c("gui.report_to_server");
+   private static final xg d = xg.c("gui.open_report_dir");
+   private final fzq s;
+   private final vx u;
+   private final xg v;
+   private final fxq w = fxq.d();
 
-public class fyx extends gaf {
-   private static final xc a = xc.c("accessibility.onboarding.screen.title");
-   private static final xc b = xc.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fve s;
-   private final frj u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fuy z;
-   private final fyb A = new fyb(this, this.m(), 33);
+   public fyx(fzq $$0, xg $$1, xg $$2) {
+      this($$0, $$1, new vx($$2));
+   }
 
-   public fyx(frj $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fve(true);
-      this.v = frf.Q().aY().a();
+   public fyx(fzq $$0, xg $$1, xg $$2, xg $$3) {
+      this($$0, $$1, new vx($$2), $$3);
+   }
+
+   public fyx(fzq $$0, xg $$1, vx $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fyx(fzq $$0, xg $$1, vx $$2, xg $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
-   public void aS_() {
-      fyf $$0 = this.A.c(fyf.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fuy(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.av().a(this.u) instanceof fuu $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
+   protected void aT_() {
+      this.w.c().b().a(10);
+      this.w.a(new fvf(this.l, this.p));
+      this.w.a(new fus(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fty.a(c, fyn.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fty.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
+      fty $$0;
+      if (this.m.F()) {
+         $$0 = fty.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = fty.a(b, $$0x -> this.m.a(new fzs())).a(200).a();
       }
 
-      $$0.a(fur.b(150, $$0x -> this.a(new gde(this, this.m.n)), false));
-      $$0.a(fur.a(150, $$0x -> this.a(new gdh(this, this.m.n, this.m.ah())), false));
-      this.A.b(fun.a(xb.j, $$0x -> this.aP_()).a());
-      this.A.a(this::c);
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
       this.c();
    }
 
    @Override
    protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
-
-      this.A.a();
+      fxk.a(this.w, this.J());
    }
 
    @Override
-   protected void aG_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aG_();
-      }
-   }
-
-   private int m() {
-      return 90;
+   public xg i() {
+      return xf.a(this.l, this.u.a());
    }
 
    @Override
-   public void aP_() {
-      this.a(true, this.y);
-   }
-
-   private void a(gaf $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.ax();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.s.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(ftz $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void E() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true, 1.0F);
-            this.w = true;
-         }
-      }
+   public boolean aI_() {
+      return false;
    }
 }

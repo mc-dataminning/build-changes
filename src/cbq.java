@@ -2,25 +2,17 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class cbq {
-   public static bzo<bxw> a() {
-      return cda.a((Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$0 -> $$0.a((cdd<bxw>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               byw<?> $$3 = $$1.ec();
-               ctp $$4 = $$0x.d($$1.dv());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(ctt.h);
-                     $$3.a(ctt.h);
-                  } else {
-                     $$3.b(ctt.i);
-                     $$3.a(ctt.i);
-                  }
+   public static bzx<cru> a() {
+      return cdj.a((Function<cdj.b<cru>, ? extends App<cdj.c<cru>, cdm<cru>>>)($$0 -> $$0.group($$0.c(chh.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               crv $$3 = $$1.gC();
+               boolean $$4 = !$$3.b().a(crx.b) && !$$3.b().a(crx.m);
+               if ($$4 && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gC().b($$0xx.J_(), crx.b));
+                  $$1.g($$0xx);
+                  return true;
+               } else {
+                  return false;
                }
-
-               return true;
-            }
-         }))));
+            })));
    }
 }

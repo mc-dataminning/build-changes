@@ -1,3 +1,3 @@
-public class hfv extends hfu {
-   public float n = -1.0F;
+public class hfv extends hfe {
+   public ckw.a a = ckw.a.b;
 }

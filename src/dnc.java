@@ -1,101 +1,121 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dnc extends drf implements dnh, dup {
-   public static final MapCodec<dnc> a = b(dnc::new);
-   private static final ebx b = ebw.I;
-   private static final Map<jc, fgm> c = fgj.c(dne.b(6.0, 0.0, 16.0).a(0.0, 0.0, 0.25).d());
+public abstract class dnc extends dno {
+   private static final fgw c = dno.b(14.0, 0.0, 0.5);
+   private static final fgw d = dno.b(14.0, 0.0, 1.0);
+   protected static final ffx a = dno.b(14.0, 0.0, 4.0).e().getFirst();
+   protected final ecf b;
 
-   @Override
-   public MapCodec<dnc> a() {
-      return a;
-   }
-
-   protected dnc(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(e, jc.c));
+   protected dnc(ebp.d $$0, ecf $$1) {
+      super($$0.a($$1.g()));
+      this.b = $$1;
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return c.get($$0.c(e));
+   protected abstract MapCodec<? extends dnc> a();
+
+   @Override
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return this.h($$0) > 0 ? c : d;
+   }
+
+   protected int b() {
+      return 20;
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b, e);
-   }
-
-   @Override
-   protected exq b_(ebg $$0) {
-      return $$0.c(b) ? exr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      iw $$3 = $$2.e();
-      ebg $$4 = $$1.a_($$3);
-      ebg $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(axg.bB)) && ($$5.a(this) || $$5.a(dng.tn));
-   }
-
-   protected static boolean a(dka $$0, iw $$1, exq $$2, jc $$3) {
-      ebg $$4 = dng.to.m().b(b, Boolean.valueOf($$2.a(exr.c))).b(e, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if (($$4 == jc.a || $$4 == jc.b) && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      if ($$0.c(b)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   public boolean a(dkc $$0, iw $$1, ebg $$2) {
-      Optional<iw> $$3 = m.a($$0, $$1, $$2.b(), jc.b, dng.tn);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iw $$4 = $$3.get().d();
-         ebg $$5 = $$0.a_($$4);
-         return dnb.a((dkb)$$0, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean a(djz $$0, azz $$1, iw $$2, ebg $$3) {
+   public boolean a(ebq $$0) {
       return true;
    }
 
    @Override
-   public void a(aru $$0, azz $$1, iw $$2, ebg $$3) {
-      Optional<iw> $$4 = m.a($$0, $$2, $$3.b(), jc.b, dng.tn);
-      if (!$$4.isEmpty()) {
-         iw $$5 = $$4.get();
-         iw $$6 = $$5.d();
-         jc $$7 = $$3.c(e);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         dnb.a($$0, $$6, $$0.b_($$6), $$7);
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      return $$4 == jc.a && !$$0.a($$1, $$3) ? dnq.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      iw $$3 = $$2.e();
+      return c($$1, $$3) || a($$1, $$3, jc.b);
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      int $$4 = this.h($$0);
+      if ($$4 > 0) {
+         this.a(null, $$1, $$2, $$0, $$4);
       }
    }
 
    @Override
-   protected daa a(dkc $$0, iw $$1, ebg $$2, boolean $$3) {
-      return new daa(dng.tn);
+   protected void a(ebq $$0, dkj $$1, iw $$2, bxe $$3, bxx $$4) {
+      if (!$$1.C) {
+         int $$5 = this.h($$0);
+         if ($$5 == 0) {
+            this.a($$3, $$1, $$2, $$0, $$5);
+         }
+      }
    }
+
+   private void a(@Nullable bxe $$0, dkj $$1, iw $$2, ebq $$3, int $$4) {
+      int $$5 = this.b($$1, $$2);
+      boolean $$6 = $$4 > 0;
+      boolean $$7 = $$5 > 0;
+      if ($$4 != $$5) {
+         ebq $$8 = this.a($$3, $$5);
+         $$1.a($$2, $$8, 2);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3, $$8);
+      }
+
+      if (!$$7 && $$6) {
+         $$1.a(null, $$2, this.b.l(), awz.e);
+         $$1.a($$0, egq.e, $$2);
+      } else if ($$7 && !$$6) {
+         $$1.a(null, $$2, this.b.m(), awz.e);
+         $$1.a($$0, egq.a, $$2);
+      }
+
+      if ($$7) {
+         $$1.a(new iw($$2), this, this.b());
+      }
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, boolean $$3) {
+      if (!$$3 && this.h($$0) > 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   protected void a(dkj $$0, iw $$1) {
+      $$0.a($$1, this);
+      $$0.a($$1.e(), this);
+   }
+
+   @Override
+   protected int a(ebq $$0, djn $$1, iw $$2, jc $$3) {
+      return this.h($$0);
+   }
+
+   @Override
+   protected int b(ebq $$0, djn $$1, iw $$2, jc $$3) {
+      return $$3 == jc.b ? this.h($$0) : 0;
+   }
+
+   @Override
+   protected boolean f_(ebq $$0) {
+      return true;
+   }
+
+   protected static int a(dkj $$0, ffx $$1, Class<? extends bxe> $$2) {
+      return $$0.a($$2, $$1, bxl.f.and($$0x -> !$$0x.g_())).size();
+   }
+
+   protected abstract int b(dkj var1, iw var2);
+
+   protected abstract int h(ebq var1);
+
+   protected abstract ebq a(ebq var1, int var2);
 }

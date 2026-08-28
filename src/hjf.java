@@ -1,28 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public record hjf(boolean b) implements hjc {
-   public static final MapCodec<hjf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(hjf::b)).apply($$0, hjf::new)
-   );
+public class hjf {
+   private static final azg.b<alr, hjg.a<?, ?>> b = new azg.b<>();
+   public static final Codec<hjg.a<?, ?>> a = b.a(alr.a);
 
-   @Override
-   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
-      if ($$2 != null && $$2.fB() == $$0) {
-         return this.b ? (float)$$2.fC() : (float)a($$0, $$2);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   @Override
-   public MapCodec<hjf> a() {
-      return a;
-   }
-
-   public static int a(daa $$0, bxw $$1) {
-      return $$0.a($$1) - $$1.fC();
+   public static void a() {
+      b.a(alr.b("custom_model_data"), hja.b);
+      b.a(alr.b("main_hand"), hje.b);
+      b.a(alr.b("charge_type"), hiw.b);
+      b.a(alr.b("trim_material"), hjh.b);
+      b.a(alr.b("block_state"), hjc.b);
+      b.a(alr.b("display_context"), hjb.b);
+      b.a(alr.b("local_time"), hjd.c);
+      b.a(alr.b("context_entity_type"), hiz.b);
+      b.a(alr.b("context_dimension"), hiy.b);
+      b.a(alr.b("component"), hix.c());
    }
 }

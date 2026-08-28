@@ -1,53 +1,46 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fgh extends AbstractDoubleList implements fge {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
-
-   protected fgh(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public interface fgh {
+   static fgh a() {
+      return fgm.a;
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   static fgh a(bxe $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fgh)(switch ($$0) {
+         case cuv $$1 -> cuv.b($$1.dV()) ? new fgq($$1, false) : new fgm($$0, false, false);
+         default -> new fgm($$0, false, false);
+      });
    }
 
-   @Override
-   public boolean a(fge.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   static fgh a(bxe $$0, boolean $$1) {
+      return new fgm($$0, $$1, false);
    }
 
-   private boolean b(fge.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   static fgh b(@Nullable bxe $$0) {
+      return new fgm(
+         $$0 != null ? $$0.cg() : false,
+         true,
+         $$0 != null ? $$0.dC() : -Double.MAX_VALUE,
+         $$0 instanceof byf $$1 ? $$1.fb() : dak.l,
+         $$0 instanceof byf $$2 ? $$1 -> $$2.a($$1) : $$0x -> false,
+         $$0
+      );
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
+   boolean b();
 
-   @Override
-   public DoubleList a() {
-      return this;
+   boolean a(fgw var1, iw var2, boolean var3);
+
+   boolean a(dag var1);
+
+   boolean a(eya var1, eya var2);
+
+   fgw a(ebq var1, djr var2, iw var3);
+
+   default boolean c() {
+      return false;
    }
 }

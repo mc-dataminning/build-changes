@@ -1,25 +1,28 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hit implements hjc {
-   public static final MapCodec<hit> a = hiu.a.xmap(hit::new, $$0 -> $$0.b);
-   private final hiu b;
-
-   public hit(boolean $$0, hiu.a $$1) {
-      this(new hiu($$0, $$1));
-   }
-
-   private hit(hiu $$0) {
-      this.b = $$0;
-   }
+public record hit(boolean b) implements hiq {
+   public static final MapCodec<hit> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("remaining", false).forGetter(hit::b)).apply($$0, hit::new)
+   );
 
    @Override
-   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
-      return this.b.a($$0, $$1, $$2, $$3);
+   public float a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3) {
+      if ($$2 != null && $$2.fB() == $$0) {
+         return this.b ? (float)$$2.fC() : (float)a($$0, $$2);
+      } else {
+         return 0.0F;
+      }
    }
 
    @Override
    public MapCodec<hit> a() {
       return a;
+   }
+
+   public static int a(dak $$0, byf $$1) {
+      return $$0.a($$1) - $$1.fC();
    }
 }

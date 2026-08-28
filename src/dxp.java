@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxp extends dww {
-   public static final MapCodec<dxp> b = b(dxp::new);
+public class dxp extends dvb implements dxk {
+   public static final MapCodec<dxp> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxk.a.e.fieldOf("weathering_state").forGetter(dor::c), t()).apply($$0, dxp::new)
+   );
+   private final dxk.a e;
 
    @Override
    public MapCodec<dxp> a() {
-      return b;
+      return d;
    }
 
-   protected dxp(ebf.d $$0) {
-      super(duq.b.d, $$0);
+   public dxp(dxk.a $$0, ebp.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(djz $$0, iw $$1, ebg $$2, @Nullable bxw $$3, daa $$4) {
-      dxo.a($$0, $$1);
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(ebq $$0) {
+      return dxk.c($$0.b()).isPresent();
+   }
+
+   public dxk.a q() {
+      return this.e;
    }
 }

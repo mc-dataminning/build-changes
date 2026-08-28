@@ -8,5 +8,5 @@ public interface ca {
 
    MapCodec<? extends ca> a();
 
-   boolean a(bwv var1, aru var2, @Nullable ffs var3);
+   boolean a(bxe var1, asb var2, @Nullable fgc var3);
 }

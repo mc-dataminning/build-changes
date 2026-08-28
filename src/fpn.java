@@ -1,167 +1,131 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public class fpn {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bat d;
+public class fpn extends fpo {
+   private static final xg b = xg.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final xg d = xg.c("mco.connect.connecting");
+   private final fmr e;
+   private final fzq f;
 
-   public fpn(Executor $$0, TimeUnit $$1, bat $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fpn(fzq $$0, fmr $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public <T> fpn.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fpo $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fpn.e<>($$0, $$1, $$4, $$3);
-      }
-   }
-
-   public fpn.c a() {
-      return new fpn.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fpn.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fpn.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fpn.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fpn.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fpn.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fpn.e<T> $$0, Consumer<T> $$1) {
-         fpn.b<T> $$2 = fpn.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fpn.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fpn.b<?> $$0 : this.b) {
-            $$0.a(fpn.this.d.get(fpn.this.c));
-         }
-      }
-
-      public void c() {
-         for (fpn.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fpo e;
-      @Nullable
-      private CompletableFuture<fpn.a<T>> f;
-      @Nullable
-      fpn.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fpo $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fpn.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
+   @Override
+   public void run() {
+      fms $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fnm var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fou(this.f, this.e));
                return;
-            }
+            case 6006:
+               boolean $$3 = fqq.Q().b(this.e.g);
+               a(
+                  (fzq)($$3
+                     ? new fny(this.f, this.e.a, this.e.i())
+                     : new foe(xg.c("mco.brokenworld.nonowner.title"), xg.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
+         }
+      } catch (TimeoutException var6) {
+         this.a(xg.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
+      }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fpn.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fpn.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
+      if ($$0.a == null) {
+         this.a(xg.c("mco.errorMessage.connectionFailure"));
+      } else {
+         boolean $$7 = $$0.b != null && $$0.c != null;
+         fzq $$8 = (fzq)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+         a($$8);
+      }
+   }
+
+   private static UUID a(fmr $$0) {
+      return $$0.q != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
+   }
+
+   @Override
+   public xg a() {
+      return d;
+   }
+
+   private fms f() throws fnm, TimeoutException, CancellationException {
+      flq $$0 = flq.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
          }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fpn.this.d.get(fpn.this.c);
-                  return new fpn.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fpn.this.d.get(fpn.this.c);
-                  return new fpn.a<>(Either.right(var4x), $$3);
-               }
-            }, fpn.this.b);
+         try {
+            return $$0.c(this.e.a);
+         } catch (fnn var4) {
+            a((long)var4.c);
          }
       }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      throw new TimeoutException();
+   }
+
+   public fog a(fms $$0) {
+      return new foh(this.f, new fpl(this.f, this.e, $$0));
+   }
+
+   private fva a(fms $$0, UUID $$1, Function<fms, fzq> $$2) {
+      xg $$3 = xg.c("mco.configure.world.resourcepack.question");
+      return fom.a(this.f, $$3, $$3x -> {
+         a(new fzb(b));
+         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+            fqq.Q().af().i();
+            c.error("Failed to download resource pack from {}", $$0, $$1xx);
+            a(new foe(xg.c("mco.download.resourcePack.fail"), this.f));
+            return null;
+         });
+      });
+   }
+
+   private CompletableFuture<?> a(fms $$0, UUID $$1) {
+      try {
+         if ($$0.b == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
+         } else if ($$0.c == null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         } else {
+            hnp $$2 = fqq.Q().af();
+            CompletableFuture<Void> $$3 = $$2.b($$1);
+            $$2.g();
+            $$2.a($$1, new URL($$0.b), $$0.c);
+            return $$3;
+         }
+      } catch (Exception var5) {
+         return CompletableFuture.failedFuture(var5);
       }
    }
 }

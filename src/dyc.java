@@ -1,144 +1,92 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class dyc extends dye {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public jc c;
-   private List<bxw> m;
-   private boolean q;
-   private int r;
+public class dyc extends dyo implements bvf {
+   public static final int a = 6;
+   private static final String b = "patterns";
+   @Nullable
+   private xg c;
+   private final czi d;
+   private dye e = dye.a;
 
-   public dyc(iw $$0, ebg $$1) {
-      super(dyg.F, $$0, $$1);
+   public dyc(iw $$0, ebq $$1) {
+      this($$0, $$1, ((dmf)$$1.b()).b());
+   }
+
+   public dyc(iw $$0, ebq $$1, czi $$2) {
+      super(dyq.u, $$0, $$1);
+      this.d = $$2;
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a();
-         this.r = 0;
-         this.c = jc.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public xg ai() {
+      return (xg)(this.c != null ? this.c : xg.c("block.minecraft.banner"));
    }
 
-   private static void a(djz $$0, iw $$1, ebg $$2, dyc $$3, dyc.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
+   @Nullable
+   @Override
+   public xg ak() {
+      return this.c;
+   }
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      alp<va> $$2 = $$1.a(uo.a);
+      if (!this.e.equals(dye.a)) {
+         $$0.a("patterns", dye.b, $$2, this.e);
       }
 
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.q = true;
-         $$0.a(null, $$1, awr.ca, aws.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.q) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.q = false;
-         }
-      }
+      $$0.b("CustomName", xi.a, $$2, this.c);
    }
 
-   public static void a(djz $$0, iw $$1, ebg $$2, dyc $$3) {
-      a($$0, $$1, $$2, $$3, dyc::b);
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.c = a($$0.a("CustomName"), $$1);
+      alp<va> $$2 = $$1.a(uo.a);
+      this.e = $$0.<dye>a("patterns", dye.b, $$2).orElse(dye.a);
    }
 
-   public static void b(djz $$0, iw $$1, ebg $$2, dyc $$3) {
-      a($$0, $$1, $$2, $$3, dyc::a);
+   public acl a() {
+      return acl.a(this);
    }
 
-   public void a(jc $$0) {
-      iw $$1 = this.aB_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.n.a($$1, this.m().b(), 1, $$0.d());
+   @Override
+   public ua a(ji.a $$0) {
+      return this.d($$0);
    }
 
-   private void a() {
-      iw $$0 = this.aB_();
-      if (this.n.ae() > this.l + 60L || this.m == null) {
-         this.l = this.n.ae();
-         ffn $$1 = new ffn($$0).g(48.0);
-         this.m = this.n.a(bxw.class, $$1);
-      }
-
-      if (!this.n.C) {
-         for (bxw $$2 : this.m) {
-            if ($$2.bJ() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
-               $$2.ec().a(cgy.E, this.n.ae());
-            }
-         }
-      }
+   public dye b() {
+      return this.e;
    }
 
-   private static boolean a(iw $$0, List<bxw> $$1) {
-      for (bxw $$2 : $$1) {
-         if ($$2.bJ() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.an().a(axj.c)) {
-            return true;
-         }
-      }
-
-      return false;
+   public dak c() {
+      dak $$0 = new dak(dmt.a(this.d));
+      $$0.b(this.q());
+      return $$0;
    }
 
-   private static void a(djz $$0, iw $$1, List<bxw> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dyc::a);
+   public czi f() {
+      return this.d;
    }
 
-   private static void b(djz $$0, iw $$1, List<bxw> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
-         int $$9 = azq.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(ls.a(lz.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
+   @Override
+   protected void a(kg $$0) {
+      super.a($$0);
+      this.e = $$0.a(kl.am, dye.a);
+      this.c = $$0.a(kl.g);
    }
 
-   private static boolean a(iw $$0, bxw $$1) {
-      return $$1.bJ() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.an().a(axj.c);
+   @Override
+   protected void a(ki.a $$0) {
+      super.a($$0);
+      $$0.a(kl.am, this.e);
+      $$0.a(kl.g, this.c);
    }
 
-   private static void a(bxw $$0) {
-      $$0.a(new bvz(bwb.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(djz var1, iw var2, List<bxw> var3);
+   @Override
+   public void a(ua $$0) {
+      $$0.r("patterns");
+      $$0.r("CustomName");
    }
 }

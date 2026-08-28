@@ -1,24 +1,19 @@
-class bvs extends bvx {
-   protected bvs(bvy $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bvs implements bax {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
+
+   public static final Codec<bvs> d = bax.a(bvs::values);
+   private final String e;
+
+   private bvs(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean a(aru $$0, bxw $$1, int $$2) {
-      if ($$1 instanceof arv $$3 && !$$3.Z_() && $$0.an() != buq.a && $$0.c($$3.dv())) {
-         ctp $$4 = $$0.d($$3.dv());
-         if ($$4 == null || $$4.l() < $$4.k()) {
-            $$3.a(new bvz(bwb.I, 600, $$2));
-            $$3.c($$3.dv());
-            return false;
-         }
-      }
-
-      return true;
+   public String c() {
+      return this.e;
    }
 }

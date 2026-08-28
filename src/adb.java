@@ -1,40 +1,53 @@
-import javax.annotation.Nullable;
-
-public class adb implements zj<aby> {
-   public static final za<vy, adb> a = zj.a(adb::a, adb::new);
+public class adb implements zo<acf> {
+   public static final ze<wp, adb> a = zo.a(adb::a, adb::new);
    private final int b;
-   private final byte c;
+   private final int c;
+   private final int d;
+   private final dak e;
 
-   public adb(bwv $$0, byte $$1) {
-      this.b = $$0.ao();
+   public adb(int $$0, int $$1, int $$2, dak $$3) {
+      this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3.v();
    }
 
-   private adb(vy $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
+   private adb(wp $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readShort();
+      this.e = dak.h.decode($$0);
    }
 
-   private void a(vy $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   private void a(wp $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.m(this.d);
+      dak.h.encode($$0, this.e);
    }
 
    @Override
-   public zl<adb> a() {
-      return agr.C;
+   public zq<adb> a() {
+      return agy.v;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwv a(djz $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 
-   public byte b() {
+   public int e() {
+      return this.d;
+   }
+
+   public dak f() {
+      return this.e;
+   }
+
+   public int g() {
       return this.c;
    }
 }

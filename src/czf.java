@@ -1,20 +1,16 @@
-public class czf extends czw {
-   public static float a = 1.5F;
+import java.util.function.Consumer;
 
-   public czf(czw.a $$0) {
+public class czf extends dag {
+   public czf(dag.a $$0) {
       super($$0);
    }
 
    @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      daa $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.iR, aws.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof aru $$4) {
-         csu.a(cte::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
+   public void a(dak $$0, dag.b $$1, ddo $$2, Consumer<xg> $$3, dbz $$4) {
+      $$3.accept(this.a().a(o.h));
+   }
 
-      $$1.b(axb.c.b(this));
-      $$3.a(1, $$1);
-      return but.a;
+   public xu a() {
+      return xg.c(this.n + ".desc");
    }
 }

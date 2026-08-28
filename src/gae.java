@@ -1,132 +1,140 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class gae extends fzq {
+   private static final xg u = xg.c("advMode.setCommand");
+   private static final xg v = xg.c("advMode.command");
+   private static final xg w = xg.c("advMode.previousOutput");
+   protected fuh a;
+   protected fuh b;
+   protected fty c;
+   protected fty d;
+   protected fuf<Boolean> s;
+   fub x;
 
-public class gae extends gaf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xc c = xc.c("recover_world.title").a(o.r);
-   private static final xc d = xc.c("recover_world.bug_tracker");
-   private static final xc s = xc.c("recover_world.restore");
-   private static final xc u = xc.c("recover_world.no_fallback");
-   private static final xc v = xc.c("recover_world.done.title");
-   private static final xc w = xc.c("recover_world.done.success");
-   private static final xc x = xc.c("recover_world.done.failed");
-   private static final xc y = xc.c("recover_world.issue.none").a(o.k);
-   private static final xc z = xc.c("recover_world.issue.missing_file").a(o.m);
-   private final BooleanConsumer A;
-   private final fyf B = fyf.d().a(8);
-   private final xc C;
-   private final fvh D;
-   private final fvh E;
-   private final ezx.c F;
-
-   public gae(frf $$0, BooleanConsumer $$1, ezx.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xc.a("recover_world.message", xc.b($$2.f()).a(o.h));
-      this.D = new fvh(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xc $$5 = xc.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new fvh($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new fvu(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      fyf $$7 = fyf.e().a(5);
-      $$7.a(fun.a(d, fzc.b(this, ayl.j)).b(120, 20).a());
-      $$7.a(fun.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fvy.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(fun.a(xb.k, $$0x -> this.aP_()).b(120, 20).a());
-      this.B.a(this::c);
+   public gae() {
+      super(fqh.a);
    }
 
-   private void a(frf $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fzq(xc.c("recover_world.restoring")));
-         gfj.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fzd(this.A, v, w, xb.j, xb.k));
-         } else {
-            $$0.a(new fyy(() -> this.A.accept(false), v, x));
+   @Override
+   public void e() {
+      if (!this.m().j()) {
+         this.aQ_();
+      }
+   }
+
+   abstract dji m();
+
+   abstract int E();
+
+   @Override
+   protected void aT_() {
+      this.c = this.c(fty.a(xf.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fty.a(xf.e, $$0x -> this.aQ_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.s = this.c(fuf.a(xg.b("O"), xg.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, xg.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dji $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fuh(this.p, this.n / 2 - 150, 50, 300, 20, xg.c("advMode.command")) {
+         @Override
+         protected xu d() {
+            return super.d().b(gae.this.x.e());
          }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fuh(this.p, this.n / 2 - 150, this.E(), 276, 20, xg.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fub(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aH_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected xg z() {
+      return this.x.a() ? this.x.b() : super.z();
+   }
+
+   @Override
+   public void a(fqq $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void F() {
+      dji $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(dji var1);
+
+   private void a(String $$0) {
+      this.x.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fyy(() -> this.A.accept(false), v, x));
-      }
-   }
-
-   private xc a(ezx.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xc.i();
-      } else {
-         xq $$3 = xc.i();
-         Instant $$4 = $$0.a($$1);
-         xq $$5 = $$4 != null ? xc.b(gfu.a.format($$4)) : xc.c("recover_world.state_entry.unknown");
-         $$3.b(xc.a("recover_world.state_entry", $$5.a(o.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof us) {
-            $$3.b(xc.b($$2.getCause().toString()).a(o.m));
-         } else {
-            $$3.b(xc.b($$2.toString()).a(o.m));
-         }
-
-         return $$3;
-      }
-   }
-
-   @Nullable
-   private Exception a(ezx.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
-
-         return null;
-      } catch (ul | us | IOException var4) {
-         return var4;
+         this.F();
+         return true;
       }
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      this.c();
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      fxz.a(this.B, this.J());
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
    }
 
    @Override
-   public xc i() {
-      return xb.a(super.i(), this.C);
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.x.a($$0, $$1, $$2);
    }
 
    @Override
-   public void aP_() {
-      this.A.accept(false);
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

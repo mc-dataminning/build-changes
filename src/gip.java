@@ -1,13 +1,27 @@
-public class gip<S extends hfi> extends giq<S> {
-   public gip(glg $$0) {
+public class gip extends gjl {
+   private final gkr a;
+   private final gkr b;
+   private final gkr c;
+
+   public gip(gkr $$0) {
       super($$0);
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static glo a(glk $$0) {
-      glo $$1 = giq.a($$0, 0.0F);
-      glq $$2 = $$1.a();
-      $$2.a("right_leg", gll.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gli.a(-1.9F, 12.0F, 0.0F));
-      $$2.a("left_leg", gll.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gli.a(1.9F, 12.0F, 0.0F));
-      return $$1;
+   public static gkz a() {
+      gkz $$0 = new gkz();
+      giq.a(gkv.a, $$0);
+      return $$0;
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 }

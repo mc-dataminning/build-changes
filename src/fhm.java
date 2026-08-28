@@ -1,7 +1,8 @@
-public interface fhm<T> {
-   void a(fhk<T> var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean a(iw var1, T var2);
-
-   int a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fhm {
 }

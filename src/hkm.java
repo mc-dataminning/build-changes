@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.blaze3d.textures.GpuTexture;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hkm {
+public interface hkm extends AutoCloseable {
+   void a(int var1, int var2, GpuTexture var3);
+
+   @Override
+   void close();
 }

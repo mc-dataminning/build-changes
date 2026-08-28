@@ -1,5 +1,13 @@
-public class hgg extends hfr {
-   public float a;
-   public boolean b;
-   public ckm.g c = ckm.g.h;
+import javax.annotation.Nullable;
+
+public class hgg extends hdw {
+   @Nullable
+   public bxb.k.e a;
+   @Nullable
+   public bxb.k.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

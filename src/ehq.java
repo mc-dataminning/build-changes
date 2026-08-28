@@ -1,77 +1,82 @@
-public class ehq implements djl {
-   private int a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
+
+public class ehq implements ehe {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final ehr i = new ehr(this);
+
+   public ehq(long $$0) {
+      this.b($$0);
+   }
 
    @Override
-   public void a(aru $$0, boolean $$1, boolean $$2) {
-      if ($$1) {
-         if ($$0.O().c(djv.M)) {
-            azz $$3 = $$0.A;
-            this.a--;
-            if (this.a <= 0) {
-               this.a = this.a + 12000 + $$3.a(1200);
-               long $$4 = $$0.af() / 24000L;
-               if ($$4 >= 5L && $$0.V()) {
-                  if ($$3.a(5) == 0) {
-                     int $$5 = $$0.z().size();
-                     if ($$5 >= 1) {
-                        crz $$6 = $$0.z().get($$3.a($$5));
-                        if (!$$6.Z_()) {
-                           if (!$$0.a($$6.dv(), 2)) {
-                              int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                              int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                              iw.a $$9 = $$6.dv().k().e($$7, 0, $$8);
-                              int $$10 = 10;
-                              if ($$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                                 jg<dlc> $$11 = $$0.u($$9);
-                                 if (!$$11.a(axf.ag)) {
-                                    int $$12 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+   public bai d() {
+      return new ehq(this.g());
+   }
 
-                                    for (int $$13 = 0; $$13 < $$12; $$13++) {
-                                       $$9.q($$0.a(ehf.a.f, $$9).v());
-                                       if ($$13 == 0) {
-                                          if (!this.a($$0, $$9, $$3, true)) {
-                                             break;
-                                          }
-                                       } else {
-                                          this.a($$0, $$9, $$3, false);
-                                       }
+   @Override
+   public eic e() {
+      return new ehq.a(this.g());
+   }
 
-                                       $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                                       $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw bba.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
       }
    }
 
-   private boolean a(aru $$0, iw $$1, azz $$2, boolean $$3) {
-      ebg $$4 = $$0.a_($$1);
-      if (!dkk.a($$0, $$1, $$4, $$4.y(), bxe.aU)) {
-         return false;
-      } else if (!cpc.b(bxe.aU, $$0, bxd.p, $$1, $$2)) {
-         return false;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw bba.a("LegacyRandomSource", null);
       } else {
-         cpc $$5 = bxe.aU.a($$0, bxd.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gz();
-            }
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bxd.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements eic {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bai a(int $$0, int $$1, int $$2) {
+         long $$3 = azz.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new ehq($$4);
+      }
+
+      @Override
+      public bai a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new ehq((long)$$1 ^ this.a);
+      }
+
+      @Override
+      public bai a(long $$0) {
+         return new ehq($$0);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
       }
    }
 }

@@ -1,16 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enk implements emr {
-   public static final Codec<enk> a = ayy.c(erh.c).fieldOf("features").xmap(enk::new, $$0 -> $$0.b).codec();
-   public final jk<erh> b;
+public class enk implements enb {
+   public static final Codec<enk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, enk::new)
+   );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public enk(jk<erh> $$0) {
+   public enk(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
-   }
-
-   @Override
-   public Stream<ejx<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

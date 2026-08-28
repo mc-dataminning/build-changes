@@ -1,38 +1,119 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
 
-public class gtw implements gtp {
-   private final gto a;
+public class gtw<T extends dyo & dyi> implements gua<T> {
+   public static final alr a = alr.b("textures/entity/beacon_beam.png");
+   public static final int b = 2048;
+   private static final float e = 96.0F;
+   public static final float c = 0.2F;
+   public static final float d = 0.25F;
 
-   public gtw(gto $$0) {
-      this.a = $$0;
+   public gtw(gub.a $$0) {
    }
 
    @Override
-   public void a(azz $$0, List<gto> $$1) {
-      $$1.add(this.a);
+   public void a(T $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      long $$7 = $$0.i().ae();
+      float $$8 = (float)$$6.d($$0.aC_().b()).i();
+      gqm $$9 = fqq.Q().t;
+      float $$10 = $$9 != null && $$9.gH() ? 1.0F : Math.max(1.0F, $$8 / 96.0F);
+      List<dyi.a> $$11 = $$0.a();
+      int $$12 = 0;
+
+      for (int $$13 = 0; $$13 < $$11.size(); $$13++) {
+         dyi.a $$14 = $$11.get($$13);
+         a($$2, $$3, $$1, $$10, $$7, $$12, $$13 == $$11.size() - 1 ? 2048 : $$14.c(), $$14.b());
+         $$12 += $$14.c();
+      }
+   }
+
+   private static void a(fld $$0, grn $$1, float $$2, float $$3, long $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, a, $$2, 1.0F, $$4, $$5, $$6, $$7, 0.2F * $$3, 0.25F * $$3);
+   }
+
+   public static void a(fld $$0, grn $$1, alr $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = azz.i($$13 * 0.2F - (float)azz.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(gry.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(gry.e($$2, true)), ayh.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+   }
+
+   private static void a(
+      fld $$0,
+      flg $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fld.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   }
+
+   private static void a(
+      fld.a $$0, flg $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   }
+
+   private static void a(fld.a $$0, flg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hkg.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
    }
 
    @Override
-   public hlc a() {
-      return this.a.b();
+   public boolean a(T $$0) {
+      return true;
    }
 
-   public static record a(gty e) implements gtp.b {
-      public static final Codec<gtw.a> d = gty.b.xmap(gtw.a::new, gtw.a::b);
+   @Override
+   public int aW_() {
+      return fqq.Q().n.aH() * 16;
+   }
 
-      @Override
-      public gtp a(hnl $$0) {
-         return new gtw(this.e.a($$0));
-      }
-
-      @Override
-      public void a(hnt.a $$0) {
-         this.e.a($$0);
-      }
-
-      public gty b() {
-         return this.e;
-      }
+   @Override
+   public boolean a(T $$0, fgc $$1) {
+      return fgc.b($$0.aC_()).d(1.0, 0.0, 1.0).a((jq)$$1.d(1.0, 0.0, 1.0), (double)this.aW_());
    }
 }

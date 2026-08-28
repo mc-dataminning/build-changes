@@ -1,11 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
-public interface agu extends wo {
-   Logger a = LogUtils.getLogger();
+public record agu(Map<alq<dfk>, dfk> b, dfo.b<dgb> c) implements zo<acf> {
+   public static final ze<wp, agu> a = ze.a(zc.a(HashMap::new, alq.b(dfk.a), dfk.i), agu::b, dfo.b.b(), agu::e, agu::new);
 
    @Override
-   default void a(zj $$0, Exception $$1) throws aa {
-      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
+   public zq<agu> a() {
+      return agy.bi;
+   }
+
+   public void a(acf $$0) {
+      $$0.a(this);
+   }
+
+   public dfo.b<dgb> e() {
+      return this.c;
    }
 }

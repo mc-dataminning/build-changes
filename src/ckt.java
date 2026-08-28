@@ -1,590 +1,271 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class ckt extends cjm {
-   private static final akn<Boolean> bJ = akr.a(ckt.class, akp.k);
-   private static final akn<Boolean> bK = akr.a(ckt.class, akp.k);
-   private static final float bM = 0.3F;
-   private static final bwy bN = bxe.bC.n().a(bwx.a().a(bww.a, 0.0F, bxe.bC.m(), -0.25F)).a(0.3F);
-   private static final boolean bO = false;
-   int bP;
-   public static final cil.a bI = ($$0, $$1) -> $$0.n_() && !$$0.bi();
-   iw bQ = iw.c;
+public class ckt extends cjv implements byk {
+   private static final aku<Boolean> bI = aky.a(ckt.class, akw.k);
+   private static final float bJ = 6.0F;
+   private float bK;
+   private float bM;
+   private int bN;
+   private static final bun bO = bbd.a(20, 39);
+   private int bP;
    @Nullable
-   iw bR;
-   boolean bS;
+   private UUID bQ;
 
-   public ckt(bxe<? extends ckt> $$0, djz $$1) {
+   public ckt(bxn<? extends ckt> $$0, dkj $$1) {
       super($$0, $$1);
-      this.a(eyh.j, 0.0F);
-      this.a(eyh.t, -1.0F);
-      this.a(eyh.s, -1.0F);
-      this.a(eyh.r, -1.0F);
-      this.bC = new ckt.e(this);
    }
 
-   public void h(iw $$0) {
-      this.bQ = $$0;
-   }
-
-   public boolean q() {
-      return this.al.a(bJ);
-   }
-
-   void w(boolean $$0) {
-      this.al.a(bJ, $$0);
-   }
-
-   public boolean t() {
-      return this.al.a(bK);
-   }
-
-   void x(boolean $$0) {
-      this.bP = $$0 ? 1 : 0;
-      this.al.a(bK, $$0);
+   @Nullable
+   @Override
+   public bwu a(asb $$0, bwu $$1) {
+      return bxn.aV.a($$0, bxm.e);
    }
 
    @Override
-   protected void a(akr.a $$0) {
+   public boolean i(dak $$0) {
+      return false;
+   }
+
+   @Override
+   protected void D() {
+      super.D();
+      this.bF.a(0, new cev(this));
+      this.bF.a(1, new ckt.c());
+      this.bF.a(1, new cfu(this, 2.0, $$0 -> $$0.n_() ? axo.F : axo.G));
+      this.bF.a(4, new cfa(this, 1.25));
+      this.bF.a(5, new cfy(this, 1.0));
+      this.bF.a(6, new cfj(this, csi.class, 6.0F));
+      this.bF.a(7, new cfw(this));
+      this.bG.a(1, new ckt.b());
+      this.bG.a(2, new ckt.a());
+      this.bG.a(3, new cgu<>(this, csi.class, 10, true, false, this::a));
+      this.bG.a(4, new cgu<>(this, ckk.class, 10, true, true, null));
+      this.bG.a(5, new cha<>(this, false));
+   }
+
+   public static bzk.a q() {
+      return cjv.gz().a(bzl.s, 30.0).a(bzl.m, 20.0).a(bzl.v, 0.25).a(bzl.c, 6.0);
+   }
+
+   public static boolean c(bxn<ckt> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
+      jg<dlm> $$5 = $$1.u($$3);
+      return !$$5.a(axm.aq) ? b($$0, $$1, $$2, $$3, $$4) : a($$1, $$3) && $$1.a_($$3.e()).a(axn.cg);
+   }
+
+   @Override
+   public void a(ua $$0) {
       super.a($$0);
-      $$0.a(bJ, false);
-      $$0.a(bK, false);
+      this.a(this.dV(), $$0);
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("home_pos", iw.a, this.bQ);
-      $$0.a("has_egg", this.q());
+      this.a_($$0);
    }
 
    @Override
-   public void a(ua $$0) {
-      this.h($$0.<iw>a("home_pos", iw.a).orElse(this.dv()));
-      super.a($$0);
-      this.w($$0.b("has_egg", false));
+   public void c() {
+      this.a(bO.a(this.ae));
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.bP = $$0;
+   }
+
+   @Override
+   public int a() {
+      return this.bP;
+   }
+
+   @Override
+   public void a(@Nullable UUID $$0) {
+      this.bQ = $$0;
    }
 
    @Nullable
    @Override
-   public byo a(dkq $$0, bur $$1, bxd $$2, @Nullable byo $$3) {
-      this.h(this.dv());
+   public UUID b() {
+      return this.bQ;
+   }
+
+   @Override
+   protected awx u() {
+      return this.n_() ? awy.vl : awy.vk;
+   }
+
+   @Override
+   protected awx e(bvt $$0) {
+      return awy.vn;
+   }
+
+   @Override
+   protected awx l_() {
+      return awy.vm;
+   }
+
+   @Override
+   protected void b(iw $$0, ebq $$1) {
+      this.a(awy.vo, 0.15F, 1.0F);
+   }
+
+   protected void t() {
+      if (this.bN <= 0) {
+         this.b(awy.vp);
+         this.bN = 40;
+      }
+   }
+
+   @Override
+   protected void a(aky.a $$0) {
+      super.a($$0);
+      $$0.a(bI, false);
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.dV().C) {
+         if (this.bM != this.bK) {
+            this.i_();
+         }
+
+         this.bK = this.bM;
+         if (this.x()) {
+            this.bM = azz.a(this.bM + 1.0F, 0.0F, 6.0F);
+         } else {
+            this.bM = azz.a(this.bM - 1.0F, 0.0F, 6.0F);
+         }
+      }
+
+      if (this.bN > 0) {
+         this.bN--;
+      }
+
+      if (!this.dV().C) {
+         this.a((asb)this.dV(), true);
+      }
+   }
+
+   @Override
+   public bxh e(byr $$0) {
+      if (this.bM > 0.0F) {
+         float $$1 = this.bM / 6.0F;
+         float $$2 = 1.0F + $$1;
+         return super.e($$0).a(1.0F, $$2);
+      } else {
+         return super.e($$0);
+      }
+   }
+
+   public boolean x() {
+      return this.al.a(bI);
+   }
+
+   public void w(boolean $$0) {
+      this.al.a(bI, $$0);
+   }
+
+   public float J(float $$0) {
+      return azz.h($$0, this.bK, this.bM) / 6.0F;
+   }
+
+   @Override
+   protected float fk() {
+      return 0.98F;
+   }
+
+   @Override
+   public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
+      if ($$3 == null) {
+         $$3 = new bwu.a(1.0F);
+      }
+
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static boolean c(bxe<ckt> $$0, dka $$1, bxd $$2, iw $$3, azz $$4) {
-      return $$3.v() < $$1.P() + 4 && dwl.a($$1, $$3) && a($$1, $$3);
-   }
-
-   @Override
-   protected void D() {
-      this.bF.a(0, new ckt.f(this, 1.2));
-      this.bF.a(1, new ckt.a(this, 1.0));
-      this.bF.a(1, new ckt.d(this, 1.0));
-      this.bF.a(2, new cga(this, 1.1, $$0 -> $$0.a(axo.aB), false));
-      this.bF.a(3, new ckt.c(this, 1.0));
-      this.bF.a(4, new ckt.b(this, 1.0));
-      this.bF.a(7, new ckt.i(this, 1.0));
-      this.bF.a(8, new cfa(this, crz.class, 8.0F));
-      this.bF.a(9, new ckt.h(this, 1.0, 100));
-   }
-
-   public static bzb.a x() {
-      return cjm.gz().a(bzc.s, 30.0).a(bzc.v, 0.25).a(bzc.B, 1.0);
-   }
-
-   @Override
-   public boolean cJ() {
-      return false;
-   }
-
-   @Override
-   public int S() {
-      return 200;
-   }
-
-   @Nullable
-   @Override
-   protected awq u() {
-      return !this.bi() && this.aH() && !this.n_() ? awr.Bj : super.u();
-   }
-
-   @Override
-   protected void g(float $$0) {
-      super.g($$0 * 1.5F);
-   }
-
-   @Override
-   protected awq aU() {
-      return awr.Bu;
-   }
-
-   @Nullable
-   @Override
-   protected awq e(bvk $$0) {
-      return this.n_() ? awr.Bq : awr.Bp;
-   }
-
-   @Nullable
-   @Override
-   protected awq l_() {
-      return this.n_() ? awr.Bl : awr.Bk;
-   }
-
-   @Override
-   protected void b(iw $$0, ebg $$1) {
-      awq $$2 = this.n_() ? awr.Bt : awr.Bs;
-      this.a($$2, 0.15F, 1.0F);
-   }
-
-   @Override
-   public boolean gB() {
-      return super.gB() && !this.q();
-   }
-
-   @Override
-   protected float aT() {
-      return this.X + 0.15F;
-   }
-
-   @Override
-   public float ek() {
-      return this.n_() ? 0.3F : 1.0F;
-   }
-
-   @Override
-   protected chg b(djz $$0) {
-      return new ckt.g(this, $$0);
-   }
-
-   @Nullable
-   @Override
-   public bwl a(aru $$0, bwl $$1) {
-      return bxe.bC.a($$0, bxd.e);
-   }
-
-   @Override
-   public boolean i(daa $$0) {
-      return $$0.a(axo.aB);
-   }
-
-   @Override
-   public float a(iw $$0, dkc $$1) {
-      if (!this.bS && $$1.b_($$0).a(axl.a)) {
-         return 10.0F;
-      } else {
-         return dwl.a($$1, $$0) ? 10.0F : $$1.x($$0);
-      }
-   }
-
-   @Override
-   public void k_() {
-      super.k_();
-      if (this.bJ() && this.t() && this.bP >= 1 && this.bP % 5 == 0) {
-         iw $$0 = this.dv();
-         if (dwl.a(this.dV(), $$0)) {
-            this.dV().c(2001, $$0, dne.j(this.dV().a_($$0.e())));
-            this.a(egg.u);
-         }
-      }
-   }
-
-   @Override
-   protected void j() {
-      super.j();
-      if (!this.n_() && this.dV() instanceof aru $$0 && $$0.O().c(djv.g)) {
-         this.a($$0, dae.pd, 1);
-      }
-   }
-
-   @Override
-   public void a_(ffs $$0) {
-      if (this.bi()) {
-         this.a(0.1F, $$0);
-         this.a(bya.a, this.dy());
-         this.i(this.dy().c(0.9));
-         if (this.f() == null && (!this.bS || !this.bQ.a(this.dt(), 20.0))) {
-            this.i(this.dy().b(0.0, -0.005, 0.0));
-         }
-      } else {
-         super.a_($$0);
-      }
-   }
-
-   @Override
-   public boolean w() {
-      return false;
-   }
-
-   @Override
-   public void a(aru $$0, bxv $$1) {
-      this.a($$0, this.dW().c(), Float.MAX_VALUE);
-   }
-
-   @Override
-   public bwy e(byi $$0) {
-      return this.n_() ? bN : super.e($$0);
-   }
-
-   static class a extends cee {
-      private final ckt d;
-
-      a(ckt $$0, double $$1) {
-         super($$0, $$1);
-         this.d = $$0;
+   class a extends cgu<csi> {
+      public a() {
+         super(ckt.this, csi.class, 20, true, true, null);
       }
 
       @Override
       public boolean b() {
-         return super.b() && !this.d.q();
-      }
-
-      @Override
-      protected void g() {
-         arv $$0 = this.a.gD();
-         if ($$0 == null && this.c.gD() != null) {
-            $$0 = this.c.gD();
-         }
-
-         if ($$0 != null) {
-            $$0.a(axb.P);
-            aq.p.a($$0, this.a, this.c, null);
-         }
-
-         this.d.w(true);
-         this.a.c_(6000);
-         this.c.c_(6000);
-         this.a.gF();
-         this.c.gF();
-         azz $$1 = this.a.dY();
-         if (a(this.b).O().c(djv.g)) {
-            this.b.b(new bxj(this.b, this.a.dA(), this.a.dC(), this.a.dG(), $$1.a(7) + 1));
-         }
-      }
-   }
-
-   static class b extends ces {
-      private final ckt a;
-      private final double b;
-      private boolean c;
-      private int d;
-      private static final int e = 600;
-
-      b(ckt $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public boolean b() {
-         if (this.a.n_()) {
-            return false;
-         } else if (this.a.q()) {
-            return true;
-         } else {
-            return this.a.dY().a(b(700)) != 0 ? false : !this.a.bQ.a(this.a.dt(), 64.0);
-         }
-      }
-
-      @Override
-      public void d() {
-         this.a.bS = true;
-         this.c = false;
-         this.d = 0;
-      }
-
-      @Override
-      public void e() {
-         this.a.bS = false;
-      }
-
-      @Override
-      public boolean c() {
-         return !this.a.bQ.a(this.a.dt(), 7.0) && !this.c && this.d <= this.a(600);
-      }
-
-      @Override
-      public void a() {
-         iw $$0 = this.a.bQ;
-         boolean $$1 = $$0.a(this.a.dt(), 16.0);
-         if ($$1) {
-            this.d++;
-         }
-
-         if (this.a.O().k()) {
-            ffs $$2 = ffs.c($$0);
-            ffs $$3 = cip.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
-            if ($$3 == null) {
-               $$3 = cip.a(this.a, 8, 7, $$2, (float) (Math.PI / 2));
-            }
-
-            if ($$3 != null && !$$1 && !this.a.dV().a_(iw.a((jq)$$3)).a(dng.J)) {
-               $$3 = cip.a(this.a, 16, 5, $$2, (float) (Math.PI / 2));
-            }
-
-            if ($$3 == null) {
-               this.c = true;
-               return;
-            }
-
-            this.a.O().a($$3.d, $$3.e, $$3.f, this.b);
-         }
-      }
-   }
-
-   static class c extends cff {
-      private static final int g = 1200;
-      private final ckt h;
-
-      c(ckt $$0, double $$1) {
-         super($$0, $$0.n_() ? 2.0 : $$1, 24);
-         this.h = $$0;
-         this.f = -1;
-      }
-
-      @Override
-      public boolean c() {
-         return !this.h.bi() && this.d <= 1200 && this.a(this.h.dV(), this.e);
-      }
-
-      @Override
-      public boolean b() {
-         if (this.h.n_() && !this.h.bi()) {
-            return super.b();
-         } else {
-            return !this.h.bS && !this.h.bi() && !this.h.q() ? super.b() : false;
-         }
-      }
-
-      @Override
-      public boolean l() {
-         return this.d % 160 == 0;
-      }
-
-      @Override
-      protected boolean a(dkc $$0, iw $$1) {
-         return $$0.a_($$1).a(dng.J);
-      }
-   }
-
-   static class d extends cff {
-      private final ckt g;
-
-      d(ckt $$0, double $$1) {
-         super($$0, $$1, 16);
-         this.g = $$0;
-      }
-
-      @Override
-      public boolean b() {
-         return this.g.q() && this.g.bQ.a(this.g.dt(), 9.0) ? super.b() : false;
-      }
-
-      @Override
-      public boolean c() {
-         return super.c() && this.g.q() && this.g.bQ.a(this.g.dt(), 9.0);
-      }
-
-      @Override
-      public void a() {
-         super.a();
-         iw $$0 = this.g.dv();
-         if (!this.g.bi() && this.m()) {
-            if (this.g.bP < 1) {
-               this.g.x(true);
-            } else if (this.g.bP > this.a(200)) {
-               djz $$1 = this.g.dV();
-               $$1.a(null, $$0, awr.Br, aws.e, 0.3F, 0.9F + $$1.A.i() * 0.2F);
-               iw $$2 = this.e.d();
-               ebg $$3 = dng.mL.m().b(dwl.c, Integer.valueOf(this.g.ae.a(4) + 1));
-               $$1.a($$2, $$3, 3);
-               $$1.a(egg.i, $$2, egg.a.a(this.g, $$3));
-               this.g.w(false);
-               this.g.x(false);
-               this.g.r(600);
-            }
-
-            if (this.g.t()) {
-               this.g.bP++;
-            }
-         }
-      }
-
-      @Override
-      protected boolean a(dkc $$0, iw $$1) {
-         return !$$0.v($$1.d()) ? false : dwl.b($$0, $$1);
-      }
-   }
-
-   static class e extends cdv {
-      private final ckt l;
-
-      e(ckt $$0) {
-         super($$0);
-         this.l = $$0;
-      }
-
-      private void g() {
-         if (this.l.bi()) {
-            this.l.i(this.l.dy().b(0.0, 0.005, 0.0));
-            if (!this.l.bQ.a(this.l.dt(), 16.0)) {
-               this.l.B(Math.max(this.l.fo() / 2.0F, 0.08F));
-            }
-
-            if (this.l.n_()) {
-               this.l.B(Math.max(this.l.fo() / 3.0F, 0.06F));
-            }
-         } else if (this.l.aH()) {
-            this.l.B(Math.max(this.l.fo() / 2.0F, 0.06F));
-         }
-      }
-
-      @Override
-      public void a() {
-         this.g();
-         if (this.k == cdv.a.b && !this.l.O().k()) {
-            double $$0 = this.e - this.l.dA();
-            double $$1 = this.f - this.l.dC();
-            double $$2 = this.g - this.l.dG();
-            double $$3 = Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-            if ($$3 < 1.0E-5F) {
-               this.d.B(0.0F);
-            } else {
-               $$1 /= $$3;
-               float $$4 = (float)(azq.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.w(this.b(this.l.dL(), $$4, 90.0F));
-               this.l.aV = this.l.dL();
-               float $$5 = (float)(this.h * this.l.h(bzc.v));
-               this.l.B(azq.h(0.125F, this.l.fo(), $$5));
-               this.l.i(this.l.dy().b(0.0, (double)this.l.fo() * $$1 * 0.1, 0.0));
-            }
-         } else {
-            this.l.B(0.0F);
-         }
-      }
-   }
-
-   static class f extends cfl {
-      f(ckt $$0, double $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      public boolean b() {
-         if (!this.h()) {
+         if (ckt.this.n_()) {
             return false;
          } else {
-            iw $$0 = this.a(this.c.dV(), this.c, 7);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            } else {
-               return this.i();
-            }
-         }
-      }
-   }
-
-   static class g extends chd {
-      g(ckt $$0, djz $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      public boolean a(iw $$0) {
-         if (this.a instanceof ckt $$1 && $$1.bR != null) {
-            return this.b.a_($$0).a(dng.J);
-         }
-
-         return !this.b.a_($$0.e()).l();
-      }
-   }
-
-   static class h extends cfp {
-      private final ckt i;
-
-      h(ckt $$0, double $$1, int $$2) {
-         super($$0, $$1, $$2);
-         this.i = $$0;
-      }
-
-      @Override
-      public boolean b() {
-         return !this.b.bi() && !this.i.bS && !this.i.q() ? super.b() : false;
-      }
-   }
-
-   static class i extends ces {
-      private final ckt a;
-      private final double b;
-      private boolean c;
-
-      i(ckt $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public boolean b() {
-         return !this.a.bS && !this.a.q() && this.a.bi();
-      }
-
-      @Override
-      public void d() {
-         int $$0 = 512;
-         int $$1 = 4;
-         azz $$2 = this.a.ae;
-         int $$3 = $$2.a(1025) - 512;
-         int $$4 = $$2.a(9) - 4;
-         int $$5 = $$2.a(1025) - 512;
-         if ((double)$$4 + this.a.dC() > (double)(this.a.dV().P() - 1)) {
-            $$4 = 0;
-         }
-
-         this.a.bR = iw.a((double)$$3 + this.a.dA(), (double)$$4 + this.a.dC(), (double)$$5 + this.a.dG());
-         this.c = false;
-      }
-
-      @Override
-      public void a() {
-         if (this.a.bR == null) {
-            this.c = true;
-         } else {
-            if (this.a.O().k()) {
-               ffs $$0 = ffs.c(this.a.bR);
-               ffs $$1 = cip.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
-               if ($$1 == null) {
-                  $$1 = cip.a(this.a, 8, 7, $$0, (float) (Math.PI / 2));
-               }
-
-               if ($$1 != null) {
-                  int $$2 = azq.a($$1.d);
-                  int $$3 = azq.a($$1.f);
-                  int $$4 = 34;
-                  if (!this.a.dV().b($$2 - 34, $$3 - 34, $$2 + 34, $$3 + 34)) {
-                     $$1 = null;
+            if (super.b()) {
+               for (ckt $$1 : ckt.this.dV().a(ckt.class, ckt.this.cR().c(8.0, 4.0, 8.0))) {
+                  if ($$1.n_()) {
+                     return true;
                   }
                }
-
-               if ($$1 == null) {
-                  this.c = true;
-                  return;
-               }
-
-               this.a.O().a($$1.d, $$1.e, $$1.f, this.b);
             }
+
+            return false;
          }
       }
 
       @Override
-      public boolean c() {
-         return !this.a.O().k() && !this.c && !this.a.bS && !this.a.gE() && !this.a.q();
+      protected double l() {
+         return super.l() * 0.5;
+      }
+   }
+
+   class b extends cgt {
+      public b() {
+         super(ckt.this);
+      }
+
+      @Override
+      public void d() {
+         super.d();
+         if (ckt.this.n_()) {
+            this.h();
+            this.e();
+         }
+      }
+
+      @Override
+      protected void a(byh $$0, byf $$1) {
+         if ($$0 instanceof ckt && !$$0.n_()) {
+            super.a($$0, $$1);
+         }
+      }
+   }
+
+   class c extends cfl {
+      public c() {
+         super(ckt.this, 1.25, true);
+      }
+
+      @Override
+      protected void a(byf $$0) {
+         if (this.b($$0)) {
+            this.h();
+            this.a.c(a(this.a), $$0);
+            ckt.this.w(false);
+         } else if (this.a.g((bxe)$$0) < (double)(($$0.dq() + 3.0F) * ($$0.dq() + 3.0F))) {
+            if (this.i()) {
+               ckt.this.w(false);
+               this.h();
+            }
+
+            if (this.k() <= 10) {
+               ckt.this.w(true);
+               ckt.this.t();
+            }
+         } else {
+            this.h();
+            ckt.this.w(false);
+         }
       }
 
       @Override
       public void e() {
-         this.a.bR = null;
+         ckt.this.w(false);
          super.e();
       }
    }

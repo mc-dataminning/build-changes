@@ -1,4 +1,3 @@
-public enum fke {
-   a,
-   b;
+public interface fke {
+   fkd createMonitor(long var1);
 }

@@ -1,39 +1,35 @@
-public class gxr extends gxe<cjp, heg, ghl> {
-   public gxr(gyk.a $$0) {
-      super($$0, new ghl($$0.a(glf.Q)), new ghl($$0.a(glf.R)), 0.4F);
-      this.a(new hca(this, $$0.f()));
+public class gxr extends gzb<cpa, heb, ghl<heb>> {
+   private static final alr a = alr.b("textures/entity/enderman/enderman.png");
+   private final bai j = bai.a();
+
+   public gxr(gxv.a $$0) {
+      super($$0, new ghl<>($$0.a(gkq.aR)), 0.5F);
+      this.a(new hbs(this));
+      this.a(new hbk(this, $$0.d()));
    }
 
-   public alk a(heg $$0) {
-      return $$0.a;
-   }
-
-   public heg a() {
-      return new heg();
-   }
-
-   public void a(cjp $$0, heg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gG().a().b().b();
-      $$1.d = $$0.ch();
-      $$1.e = $$0.ci();
-      $$1.f = $$0.x();
-      $$1.g = $$0.J($$2);
-      $$1.h = $$0.K($$2);
-      $$1.i = $$0.L($$2);
-      $$1.b = $$0.gL();
-      $$1.c = $$0.q() ? $$0.gI() : null;
-   }
-
-   protected void a(heg $$0, flq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.g;
-      if ($$4 > 0.0F) {
-         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
-         $$1.a(a.f.rotationDegrees(azq.i($$4, 0.0F, 90.0F)));
-         if ($$0.b) {
-            $$1.a(0.15F * $$4, 0.0F, 0.0F);
-         }
+   public fgc a(heb $$0) {
+      fgc $$1 = super.a($$0);
+      if ($$0.a) {
+         double $$2 = 0.02 * (double)$$0.ai;
+         return $$1.b(this.j.k() * $$2, 0.0, this.j.k() * $$2);
+      } else {
+         return $$1;
       }
+   }
+
+   public alr b(heb $$0) {
+      return a;
+   }
+
+   public heb a() {
+      return new heb();
+   }
+
+   public void a(cpa $$0, heb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gym.a($$0, $$1, $$2, this.h);
+      $$1.a = $$0.t();
+      $$1.b = $$0.q();
    }
 }

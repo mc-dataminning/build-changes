@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.time.Duration;
+import java.time.Instant;
+import jdk.jfr.consumer.RecordedEvent;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bsr {
+public record bsr(Instant a, Duration b) {
+   public static bsr a(RecordedEvent $$0) {
+      return new bsr($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+   }
 }

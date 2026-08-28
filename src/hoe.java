@@ -1,18 +1,29 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+public class hoe extends hnw {
+   private final bxe n;
 
-public interface hoe {
-   void scheduleReload(hoe.a var1);
-
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<hoe.b> b();
+   public hoe(awx $$0, awz $$1, float $$2, float $$3, bxe $$4, long $$5) {
+      super($$0, $$1, bai.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
-   public static record b(UUID a, Path b) {
+   @Override
+   public boolean s() {
+      return !this.n.ba();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dQ()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
+      }
    }
 }

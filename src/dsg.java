@@ -1,49 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public class dsg extends dne implements dup {
-   public static final MapCodec<dsg> a = b(dsg::new);
-   public static final ebx b = ebw.I;
-
-   @Override
-   public MapCodec<dsg> a() {
-      return a;
-   }
-
-   protected dsg(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean b(ebg $$0, ebg $$1, jc $$2) {
-      return $$1.a(dng.ag) && $$2.o() == jc.a.b;
-   }
-
-   @Nullable
-   @Override
-   public ebg a(ddt $$0) {
-      exq $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == exr.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected exq b_(ebg $$0) {
-      return $$0.c(b) ? exr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b);
-   }
+public class dsg {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1004;
+   public static final int e = 1009;
+   public static final int f = 1010;
+   public static final int g = 1011;
+   public static final int h = 1015;
+   public static final int i = 1016;
+   public static final int j = 1017;
+   public static final int k = 1018;
+   public static final int l = 1019;
+   public static final int m = 1020;
+   public static final int n = 1021;
+   public static final int o = 1022;
+   public static final int p = 1023;
+   public static final int q = 1024;
+   public static final int r = 1025;
+   public static final int s = 1026;
+   public static final int t = 1027;
+   public static final int u = 1028;
+   public static final int v = 1029;
+   public static final int w = 1030;
+   public static final int x = 1031;
+   public static final int y = 1032;
+   public static final int z = 1033;
+   public static final int A = 1034;
+   public static final int B = 1035;
+   public static final int C = 1038;
+   public static final int D = 1039;
+   public static final int E = 1040;
+   public static final int F = 1041;
+   public static final int G = 1042;
+   public static final int H = 1043;
+   public static final int I = 1044;
+   public static final int J = 1045;
+   public static final int K = 1046;
+   public static final int L = 1047;
+   public static final int M = 1048;
+   public static final int N = 1049;
+   public static final int O = 1050;
+   public static final int P = 1051;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 2013;
+   public static final int aj = 3000;
+   public static final int ak = 3001;
+   public static final int al = 3002;
+   public static final int am = 3003;
+   public static final int an = 3004;
+   public static final int ao = 3005;
+   public static final int ap = 3006;
+   public static final int aq = 3007;
+   public static final int ar = 3008;
+   public static final int as = 3009;
+   public static final int at = 3011;
+   public static final int au = 3012;
+   public static final int av = 3013;
+   public static final int aw = 3014;
+   public static final int ax = 3015;
+   public static final int ay = 3016;
+   public static final int az = 3017;
+   public static final int aA = 3018;
+   public static final int aB = 3019;
+   public static final int aC = 3020;
+   public static final int aD = 3021;
 }

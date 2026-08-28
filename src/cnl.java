@@ -1,174 +1,59 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cnl extends cmz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 5;
-   private int d;
+public class cnl extends cni {
    @Nullable
-   private eye e;
-   @Nullable
-   private ffs f;
-   @Nullable
-   private bxw g;
-   private boolean h;
+   private fgc b;
+   private int c;
 
-   public cnl(cmx $$0) {
+   public cnl(cng $$0) {
       super($$0);
    }
 
    @Override
-   public void a(aru $$0) {
-      if (this.g == null) {
-         b.warn("Skipping player strafe phase because no player was found");
-         this.a.t().a(cnn.a);
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
+         this.a.dV().a(lz.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   public void a(asb $$0) {
+      this.c++;
+      if (this.b == null) {
+         iw $$1 = $$0.a(ehp.a.e, eku.a(this.a.j()));
+         this.b = fgc.c($$1);
+      }
+
+      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.d(1.0F);
       } else {
-         if (this.e != null && this.e.c()) {
-            double $$1 = this.g.dA();
-            double $$2 = this.g.dG();
-            double $$3 = $$1 - this.a.dA();
-            double $$4 = $$2 - this.a.dG();
-            double $$5 = Math.sqrt($$3 * $$3 + $$4 * $$4);
-            double $$6 = Math.min(0.4F + $$5 / 80.0 - 1.0, 10.0);
-            this.f = new ffs($$1, this.g.dC() + $$6, $$2);
-         }
-
-         double $$7 = this.f == null ? 0.0 : this.f.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$7 < 100.0 || $$7 > 22500.0) {
-            this.i();
-         }
-
-         double $$8 = 64.0;
-         if (this.g.g(this.a) < 4096.0) {
-            if (this.a.E(this.g)) {
-               this.d++;
-               ffs $$9 = new ffs(this.g.dA() - this.a.dA(), 0.0, this.g.dG() - this.a.dG()).d();
-               ffs $$10 = new ffs((double)azq.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azq.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
-               float $$11 = (float)$$10.b($$9);
-               float $$12 = (float)(Math.acos((double)$$11) * 180.0F / (float)Math.PI);
-               $$12 += 0.5F;
-               if (this.d >= 5 && $$12 >= 0.0F && $$12 < 10.0F) {
-                  double $$13 = 1.0;
-                  ffs $$14 = this.a.h(1.0F);
-                  double $$15 = this.a.c.dA() - $$14.d * 1.0;
-                  double $$16 = this.a.c.e(0.5) + 0.5;
-                  double $$17 = this.a.c.dG() - $$14.f * 1.0;
-                  double $$18 = this.g.dA() - $$15;
-                  double $$19 = this.g.e(0.5) - $$16;
-                  double $$20 = this.g.dG() - $$17;
-                  ffs $$21 = new ffs($$18, $$19, $$20);
-                  if (!this.a.ba()) {
-                     $$0.a(null, 1017, this.a.dv(), 0);
-                  }
-
-                  csl $$22 = new csl($$0, this.a, $$21.d());
-                  $$22.b($$15, $$16, $$17, 0.0F, 0.0F);
-                  $$0.b($$22);
-                  this.d = 0;
-                  if (this.e != null) {
-                     while (!this.e.c()) {
-                        this.e.a();
-                     }
-                  }
-
-                  this.a.t().a(cnn.a);
-               }
-            } else if (this.d > 0) {
-               this.d--;
-            }
-         } else if (this.d > 0) {
-            this.d--;
-         }
-      }
-   }
-
-   private void i() {
-      if (this.e == null || this.e.c()) {
-         int $$0 = this.a.n();
-         int $$1 = $$0;
-         if (this.a.dY().a(8) == 0) {
-            this.h = !this.h;
-            $$1 = $$0 + 6;
-         }
-
-         if (this.h) {
-            $$1++;
-         } else {
-            $$1--;
-         }
-
-         if (this.a.x() != null && this.a.x().e() > 0) {
-            $$1 %= 12;
-            if ($$1 < 0) {
-               $$1 += 12;
-            }
-         } else {
-            $$1 -= 12;
-            $$1 &= 7;
-            $$1 += 12;
-         }
-
-         this.e = this.a.a($$0, $$1, null);
-         if (this.e != null) {
-            this.e.a();
-         }
-      }
-
-      this.j();
-   }
-
-   private void j() {
-      if (this.e != null && !this.e.c()) {
-         kb $$0 = this.e.g();
-         this.e.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.f = new ffs($$1, $$3, $$2);
+         this.a.d(0.0F);
       }
    }
 
    @Override
    public void c() {
-      this.d = 0;
-      this.f = null;
-      this.e = null;
-      this.g = null;
+      this.b = null;
+      this.c = 0;
    }
 
-   public void a(bxw $$0) {
-      this.g = $$0;
-      int $$1 = this.a.n();
-      int $$2 = this.a.q(this.g.dA(), this.g.dC(), this.g.dG());
-      int $$3 = this.g.dz();
-      int $$4 = this.g.dF();
-      double $$5 = (double)$$3 - this.a.dA();
-      double $$6 = (double)$$4 - this.a.dG();
-      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
-      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
-      int $$9 = azq.a(this.g.dC() + $$8);
-      eyc $$10 = new eyc($$3, $$9, $$4);
-      this.e = this.a.a($$1, $$2, $$10);
-      if (this.e != null) {
-         this.e.a();
-         this.j();
-      }
+   @Override
+   public float e() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public ffs f() {
-      return this.f;
+   public fgc f() {
+      return this.b;
    }
 
    @Override
-   public cnn<cnl> h() {
-      return cnn.b;
+   public cnw<cnl> h() {
+      return cnw.j;
    }
 }

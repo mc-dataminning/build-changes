@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public interface ku {
    Codec<Map<ku.b<?>, ku>> b = Codec.dispatchedMap(mh.ao.q(), ku.b::a);
-   za<wn, ku.a<?>> c = yy.a(mi.q).b(ku.a::a, ku.b::c);
-   za<wn, Map<ku.b<?>, ku>> d = c.a(yy.c(64))
+   ze<wp, ku.a<?>> c = zc.a(mi.q).b(ku.a::a, ku.b::c);
+   ze<wp, Map<ku.b<?>, ku>> d = c.a(zc.c(64))
       .a($$0 -> $$0.stream().collect(Collectors.toMap(ku.a::a, ku.a::b)), $$0 -> $$0.entrySet().stream().map(ku.a::a).toList());
 
    static MapCodec<ku.a<?>> a(String $$0) {
@@ -26,12 +26,12 @@ public interface ku {
    public static final class b<T extends ku> {
       private final Codec<T> a;
       private final MapCodec<ku.a<T>> b;
-      private final za<wn, ku.a<T>> c;
+      private final ze<wp, ku.a<T>> c;
 
       public b(Codec<T> $$0) {
          this.a = $$0;
          this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(ku.a::b)).apply($$1, $$0xx -> new ku.a<>(this, (T)$$0xx)));
-         this.c = yy.<ku>d($$0).a($$0x -> new ku.a<>(this, (T)$$0x), ku.a::b);
+         this.c = zc.<ku>d($$0).a($$0x -> new ku.a<>(this, (T)$$0x), ku.a::b);
       }
 
       public Codec<T> a() {
@@ -42,7 +42,7 @@ public interface ku {
          return this.b;
       }
 
-      public za<wn, ku.a<T>> c() {
+      public ze<wp, ku.a<T>> c() {
          return this.c;
       }
    }

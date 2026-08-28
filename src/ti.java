@@ -7,7 +7,7 @@ public class ti implements sw.c {
    private static final int d = 6;
    private final int e;
    private int f;
-   private ffn g;
+   private ffx g;
    private final iw.a h;
    private final iw i;
    private final boolean j;
@@ -17,20 +17,20 @@ public class ti implements sw.c {
    public ti(iw $$0, int $$1, boolean $$2) {
       this.e = $$1;
       this.h = $$0.k();
-      this.g = new ffn(this.h);
+      this.g = new ffx(this.h);
       this.i = $$0;
       this.j = $$2;
    }
 
    @Override
-   public void a(aru $$0) {
+   public void a(asb $$0) {
       if (this.j) {
          this.l.forEach($$1 -> {
-            erv $$2 = $$1.f().d();
+            esf $$2 = $$1.f().d();
             tj.a($$2, $$0);
          });
          this.l.clear();
-         this.g = new ffn(this.i);
+         this.g = new ffx(this.i);
          this.h.g(this.i);
       }
    }
@@ -40,7 +40,7 @@ public class ti implements sw.c {
       iw $$1 = new iw(this.h);
       $$0.a($$1);
       $$0.o().a(1);
-      ffn $$2 = $$0.f().f();
+      ffx $$2 = $$0.f().f();
       this.g = this.g.b($$2);
       this.h.e((int)$$2.b() + 5, 0, 0);
       if ((float)this.h.u() > this.k) {
@@ -51,7 +51,7 @@ public class ti implements sw.c {
          this.f = 0;
          this.h.e(0, 0, (int)this.g.d() + 6);
          this.h.p(this.i.u());
-         this.g = new ffn(this.h);
+         this.g = new ffx(this.h);
       }
 
       this.l.add($$0);

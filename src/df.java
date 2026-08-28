@@ -8,7 +8,7 @@ public class df extends dl<df.a> {
       return df.a.a;
    }
 
-   public void a(arv $$0) {
+   public void a(asc $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,7 +43,7 @@ public class df extends dl<df.a> {
          return aq.x.a(new df.a(Optional.empty()));
       }
 
-      public static ar<df.a> a(jh<dne> $$0, jh<czw> $$1, dne $$2, czw $$3) {
+      public static ar<df.a> a(jh<dno> $$0, jh<dag> $$1, dno $$2, dag $$3) {
          return a(bz.a.a().a(bw.a.a().d(cn.a.a().a($$1, $$3))).b(cv.a.a().a(az.a.a().a($$0, $$2))));
       }
 

@@ -1,26 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hjx implements hkc {
-   private final gum a;
-   private final hnj b;
+public class hjx implements hjq {
+   private final gju a;
 
-   public hjx(gum $$0, hnj $$1) {
+   public hjx(gju $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
    @Override
-   public void a(czy $$0, flq $$1, gsc $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
+   public void a(dai $$0, fld $$1, grn $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      flg $$6 = gyt.a($$2, this.a.a(gju.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
    }
 
-   public static record a(alk b) implements hkg.a {
-      public static final MapCodec<hjx.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alk.a.fieldOf("texture").forGetter(hjx.a::b)).apply($$0, hjx.a::new));
-
-      public a(cyy $$0) {
-         this(gsw.b($$0));
-      }
+   public static record a() implements hju.a {
+      public static final MapCodec<hjx.a> a = MapCodec.unit(new hjx.a());
 
       @Override
       public MapCodec<hjx.a> a() {
@@ -28,8 +25,8 @@ public class hjx implements hkc {
       }
 
       @Override
-      public hkg<?> a(glc $$0) {
-         return new hjx(new gum($$0), gsw.o.a(this.b));
+      public hju<?> a(gkn $$0) {
+         return new hjx(new gju($$0.a(gkq.dD)));
       }
    }
 }

@@ -1,38 +1,26 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public abstract class fga {
+   protected final fgc a;
 
-public final class fga implements fge {
-   private final ffy a;
-   private final int b;
-   private final int c;
-
-   fga(int $$0, int $$1) {
-      this.a = new ffy((int)fgj.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   protected fga(fgc $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean a(fge.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public double a(bxe $$0) {
+      double $$1 = this.a.d - $$0.dA();
+      double $$2 = this.a.e - $$0.dC();
+      double $$3 = this.a.f - $$0.dG();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
+   public abstract fga.a d();
 
-   @Override
-   public DoubleList a() {
+   public fgc g() {
       return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

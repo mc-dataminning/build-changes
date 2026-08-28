@@ -1,84 +1,115 @@
-import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
 
-public class hhl implements hhr {
-   private final List<fsp> a;
-   private final List<gti> b;
-   private final Supplier<Vector3f[]> c;
-   private final hhw d;
+public class hhl implements hhf {
+   private static final int a = 16;
+   private final hiq b;
+   private final float c;
+   private final float[] d;
+   private final hhf[] e;
+   private final hhf f;
 
-   public hhl(List<fsp> $$0, List<gti> $$1, hhw $$2) {
-      this.a = $$0;
-      this.b = $$1;
+   hhl(hiq $$0, float $$1, float[] $$2, hhf[] $$3, hhf $$4) {
+      this.b = $$0;
       this.d = $$2;
-      this.c = Suppliers.memoize(() -> a(this.b));
+      this.e = $$3;
+      this.f = $$4;
+      this.c = $$1;
    }
 
-   public static Vector3f[] a(List<gti> $$0) {
-      Set<Vector3f> $$1 = new HashSet<>();
+   private static int a(float[] $$0, float $$1) {
+      if ($$0.length < 16) {
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            if ($$0[$$2] > $$1) {
+               return $$2 - 1;
+            }
+         }
 
-      for (gti $$2 : $$0) {
-         gtq.a($$2.b(), $$1::add);
+         return $$0.length - 1;
+      } else {
+         int $$3 = Arrays.binarySearch($$0, $$1);
+         if ($$3 < 0) {
+            int $$4 = ~$$3;
+            return $$4 - 1;
+         } else {
+            return $$3;
+         }
       }
-
-      return $$1.toArray(Vector3f[]::new);
    }
 
    @Override
-   public void a(hhu $$0, daa $$1, hhs $$2, czy $$3, @Nullable gmd $$4, @Nullable bxw $$5, int $$6) {
-      hhu.b $$7 = $$0.a();
-      if ($$1.C()) {
-         $$7.a(a($$1) ? hhu.a.c : hhu.a.b);
+   public void a(hhi $$0, dak $$1, hhg $$2, dai $$3, @Nullable glo $$4, @Nullable byf $$5, int $$6) {
+      float $$7 = this.b.a($$1, $$4, $$5, $$6) * this.c;
+      hhf $$8;
+      if (Float.isNaN($$7)) {
+         $$8 = this.f;
+      } else {
+         int $$9 = a(this.d, $$7);
+         $$8 = $$9 == -1 ? this.f : this.e[$$9];
       }
 
-      int $$8 = this.a.size();
-      int[] $$9 = $$7.a($$8);
+      $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      for (int $$10 = 0; $$10 < $$8; $$10++) {
-         $$9[$$10] = this.a.get($$10).a($$1, $$4, $$5);
+   public static record a(float c, hhf.b d) {
+      public static final Codec<hhl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("threshold").forGetter(hhl.a::a), hhh.a.fieldOf("model").forGetter(hhl.a::b)).apply($$0, hhl.a::new)
+      );
+      public static final Comparator<hhl.a> b = Comparator.comparingDouble(hhl.a::a);
+
+      public float a() {
+         return (double)this.c;
       }
 
-      $$7.a(this.c);
-      $$7.a(gru.a($$1));
-      this.d.a($$7, $$3);
-      $$7.b().addAll(this.b);
+      public hhf.b b() {
+         return this.d;
+      }
    }
 
-   private static boolean a(daa $$0) {
-      return $$0.a(axo.bv) || $$0.a(dae.se);
-   }
-
-   public static record a(alk b, List<fsp> c) implements hhr.b {
-      public static final MapCodec<hhl.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alk.a.fieldOf("model").forGetter(hhl.a::b), fsq.a.listOf().optionalFieldOf("tints", List.of()).forGetter(hhl.a::c))
-               .apply($$0, hhl.a::new)
+   public static record b(hiq b, float c, List<hhl.a> d, Optional<hhf.b> e) implements hhf.b {
+      public static final MapCodec<hhl.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  hip.a.forGetter(hhl.b::b),
+                  Codec.FLOAT.optionalFieldOf("scale", 1.0F).forGetter(hhl.b::c),
+                  hhl.a.a.listOf().fieldOf("entries").forGetter(hhl.b::d),
+                  hhh.a.optionalFieldOf("fallback").forGetter(hhl.b::e)
+               )
+               .apply($$0, hhl.b::new)
       );
 
       @Override
-      public void a(hnt.a $$0) {
-         $$0.markDependency(this.b);
-      }
-
-      @Override
-      public hhr a(hhr.a $$0) {
-         hnl $$1 = $$0.a();
-         hnu $$2 = $$1.a(this.b);
-         gtx $$3 = $$2.g();
-         List<gti> $$4 = $$2.a($$3, $$1, hnd.a).a();
-         hhw $$5 = hhw.a($$1, $$2, $$3);
-         return new hhl(this.c, $$4, $$5);
-      }
-
-      @Override
-      public MapCodec<hhl.a> a() {
+      public MapCodec<hhl.b> a() {
          return a;
+      }
+
+      @Override
+      public hhf a(hhf.a $$0) {
+         float[] $$1 = new float[this.d.size()];
+         hhf[] $$2 = new hhf[this.d.size()];
+         List<hhl.a> $$3 = new ArrayList<>(this.d);
+         $$3.sort(hhl.a.b);
+
+         for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+            hhl.a $$5 = $$3.get($$4);
+            $$1[$$4] = $$5.c;
+            $$2[$$4] = $$5.d.a($$0);
+         }
+
+         hhf $$6 = this.e.<hhf>map($$1x -> $$1x.a($$0)).orElse($$0.c());
+         return new hhl(this.b, this.c, $$1, $$2, $$6);
+      }
+
+      @Override
+      public void a(hnh.a $$0) {
+         this.e.ifPresent($$1 -> $$1.a($$0));
+         this.d.forEach($$1 -> $$1.d.a($$0));
       }
    }
 }

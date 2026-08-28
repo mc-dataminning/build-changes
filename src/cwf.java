@@ -1,34 +1,48 @@
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public interface cwf {
-   cwf a = new cwf() {
-      @Override
-      public <T> Optional<T> a(BiFunction<djz, iw, T> $$0) {
-         return Optional.empty();
-      }
-   };
+class cwf extends cxz {
+   private final byf a;
+   private final bxo b;
+   @Nullable
+   private final alr g;
 
-   static cwf a(final djz $$0, final iw $$1) {
-      return new cwf() {
-         @Override
-         public <T> Optional<T> a(BiFunction<djz, iw, T> $$0x) {
-            return Optional.of($$0.apply($$0, $$1));
-         }
-      };
+   public cwf(buv $$0, byf $$1, bxo $$2, int $$3, int $$4, int $$5, @Nullable alr $$6) {
+      super($$0, $$3, $$4, $$5);
+      this.a = $$1;
+      this.b = $$2;
+      this.g = $$6;
    }
 
-   <T> Optional<T> a(BiFunction<djz, iw, T> var1);
-
-   default <T> T a(BiFunction<djz, iw, T> $$0, T $$1) {
-      return this.a($$0).orElse($$1);
+   @Override
+   public void a(dak $$0, dak $$1) {
+      this.a.a(this.b, $$1, $$0);
+      super.a($$0, $$1);
    }
 
-   default void a(BiConsumer<djz, iw> $$0) {
-      this.a(($$1, $$2) -> {
-         $$0.accept($$1, $$2);
-         return Optional.empty();
-      });
+   @Override
+   public int a() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(dak $$0) {
+      return this.a.a($$0, this.b);
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.e(this.b);
+   }
+
+   @Override
+   public boolean a(csi $$0) {
+      dak $$1 = this.g();
+      return !$$1.f() && !$$0.b() && dgz.a($$1, dgy.E) ? false : super.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public alr c() {
+      return this.g;
    }
 }

@@ -1,44 +1,17 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+@Deprecated
+public abstract class gwp<T extends byh, S extends hfe, M extends ghn<? super S>> extends gzb<T, S, M> {
+   private final M a;
+   private final M j;
 
-public class gwp implements gwf.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final frf c;
-   private Collection<iw> d = Lists.newArrayList();
-
-   public gwp(frf $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<iw> $$0) {
-      this.d = $$0;
+   public gwp(gxv.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.j = $$2;
    }
 
    @Override
-   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
-      iw $$5 = this.b().c();
-
-      for (iw $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
-         }
-      }
-   }
-
-   private static void a(flq $$0, gsc $$1, iw $$2) {
-      gwf.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(flq $$0, gsc $$1, String $$2, iw $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      gwf.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fqn b() {
-      return this.c.j.k();
+   public void a(S $$0, fld $$1, grn $$2, int $$3) {
+      this.g = $$0.am ? this.j : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

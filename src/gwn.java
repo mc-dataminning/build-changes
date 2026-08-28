@@ -1,38 +1,25 @@
-import org.apache.commons.lang3.mutable.MutableInt;
-
-public class gwn {
-   private final frf a;
-
-   public gwn(frf $$0) {
-      this.a = $$0;
+public abstract class gwn<T extends cos, S extends hga> extends gym<T, S, gjj<S>> {
+   public gwn(gxv.a $$0, gkp $$1, gkp $$2, gkp $$3) {
+      this($$0, $$2, $$3, new gjj<>($$0.a($$1)));
    }
 
-   public void a(flq $$0, gvw $$1, gsc $$2, double $$3, double $$4, double $$5) {
-      gsd $$6 = this.a.f.w().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   public gwn(gxv.a $$0, gkp $$1, gkp $$2, gjj<S> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new hby<>(this, new gjj($$0.a($$1)), new gjj($$0.a($$2)), $$0.h()));
    }
 
-   private void a(gsd.d $$0, flq $$1, gsc $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      ffn $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gwf.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
-      }
-
-      flt $$17 = $$2.getBuffer(gsn.w());
-      long $$18 = $$12 + 5L;
-      gsv.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gl();
+      $$1.c = $$0.x();
+      $$1.d = $$0.fb().a(dao.pj);
    }
 
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return azq.i($$1 * (float)$$0) * 0.9F + 0.1F;
+   protected boolean a(S $$0) {
+      return $$0.c;
+   }
+
+   protected gib.a a(cos $$0, bxw $$1) {
+      return $$0.fy() == $$1 && $$0.gl() && $$0.fb().a(dao.pj) ? gib.a.d : gib.a.a;
    }
 }

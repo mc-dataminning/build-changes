@@ -1,14 +1,12 @@
-public class bwd extends bvx {
-   public static final int c = 25;
-
-   protected bwd(bvy $$0, int $$1) {
+class bwd extends bwg {
+   protected bwd(bwh $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(aru $$0, bxw $$1, int $$2) {
-      if ($$1.eG() > 1.0F) {
-         $$1.a($$0, $$1.dW().q(), 1.0F);
+   public boolean a(asb $$0, byf $$1, int $$2) {
+      if ($$1 instanceof csi $$3) {
+         $$3.G(0.005F * (float)($$2 + 1));
       }
 
       return true;
@@ -16,7 +14,6 @@ public class bwd extends bvx {
 
    @Override
    public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

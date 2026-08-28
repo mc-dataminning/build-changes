@@ -1,227 +1,169 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Arrays;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dyb extends dye {
-   private static final String c = "flower_pos";
-   private static final String d = "bees";
-   static final List<String> e = Arrays.asList(
-      "Air",
-      "drop_chances",
-      "ArmorItems",
-      "Brain",
-      "CanPickUpLoot",
-      "DeathTime",
-      "fall_distance",
-      "FallFlying",
-      "Fire",
-      "HandItems",
-      "HurtByTimestamp",
-      "HurtTime",
-      "LeftHanded",
-      "Motion",
-      "NoGravity",
-      "OnGround",
-      "PortalCooldown",
-      "Pos",
-      "Rotation",
-      "SleepingX",
-      "SleepingY",
-      "SleepingZ",
-      "CannotEnterHiveTicks",
-      "TicksSincePollination",
-      "CropsGrownSincePollination",
-      "hive_pos",
-      "Passengers",
-      "leash",
-      "UUID"
-   );
-   public static final int a = 3;
-   private static final int f = 400;
-   private static final int g = 2400;
-   public static final int b = 600;
-   private final List<dyb.a> h = Lists.newArrayList();
-   @Nullable
-   private iw i;
-
-   public dyb(iw $$0, ebg $$1) {
-      super(dyg.I, $$0, $$1);
-   }
-
-   @Override
-   public void e() {
-      if (this.a()) {
-         this.a(null, this.n.a_(this.aB_()), dyb.b.c);
-      }
-
-      super.e();
-   }
-
-   public boolean a() {
-      if (this.n == null) {
-         return false;
-      } else {
-         for (iw $$0 : iw.c(this.o.b(-1, -1, -1), this.o.b(1, 1, 1))) {
-            if (this.n.a_($$0).b() instanceof dqg) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public boolean c() {
-      return this.h.isEmpty();
-   }
-
-   public boolean d() {
-      return this.h.size() == 3;
-   }
-
-   public void a(@Nullable crz $$0, ebg $$1, dyb.b $$2) {
-      List<bwv> $$3 = this.a($$1, $$2);
-      if ($$0 != null) {
-         for (bwv $$4 : $$3) {
-            if ($$4 instanceof cjn) {
-               cjn $$5 = (cjn)$$4;
-               if ($$0.dt().g($$4.dt()) <= 16.0) {
-                  if (!this.j()) {
-                     $$5.g($$0);
-                  } else {
-                     $$5.s(400);
-                  }
-               }
-            }
+public abstract class dyb extends dyh implements bvm, cxs, cye {
+   protected static final int b = 0;
+   protected static final int c = 1;
+   protected static final int d = 2;
+   public static final int e = 0;
+   private static final int[] q = new int[]{0};
+   private static final int[] r = new int[]{2, 1};
+   private static final int[] s = new int[]{1};
+   public static final int f = 1;
+   public static final int g = 2;
+   public static final int h = 3;
+   public static final int i = 4;
+   public static final int j = 200;
+   public static final int k = 2;
+   private static final Codec<Map<alq<dfb<?>>, Integer>> t = Codec.unboundedMap(dfb.b, Codec.INT);
+   private static final short u = 0;
+   private static final short v = 0;
+   private static final short w = 0;
+   private static final short x = 0;
+   protected jp<dak> l = jp.a(3, dak.l);
+   int y;
+   int z;
+   int A;
+   int B;
+   protected final cwn m = new cwn() {
+      @Override
+      public int a(int $$0) {
+         switch ($$0) {
+            case 0:
+               return dyb.this.y;
+            case 1:
+               return dyb.this.z;
+            case 2:
+               return dyb.this.A;
+            case 3:
+               return dyb.this.B;
+            default:
+               return 0;
          }
       }
-   }
 
-   private List<bwv> a(ebg $$0, dyb.b $$1) {
-      List<bwv> $$2 = Lists.newArrayList();
-      this.h.removeIf($$3 -> a(this.n, this.o, $$0, $$3.b(), $$2, $$1, this.i));
-      if (!$$2.isEmpty()) {
-         super.e();
-      }
-
-      return $$2;
-   }
-
-   @baz
-   public int f() {
-      return this.h.size();
-   }
-
-   public static int a(ebg $$0) {
-      return $$0.c(dmy.c);
-   }
-
-   @baz
-   public boolean j() {
-      return dnu.a(this.n, this.aB_());
-   }
-
-   public void a(cjn $$0) {
-      if (this.h.size() < 3) {
-         $$0.bO();
-         $$0.bN();
-         $$0.y();
-         this.a(dyb.c.a($$0));
-         if (this.n != null) {
-            if ($$0.t() && (!this.k() || this.n.A.h())) {
-               this.i = $$0.q();
-            }
-
-            iw $$1 = this.aB_();
-            this.n.a(null, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awr.bV, aws.e, 1.0F, 1.0F);
-            this.n.a(egg.c, $$1, egg.a.a($$0, this.m()));
-         }
-
-         $$0.aq();
-         super.e();
-      }
-   }
-
-   public void a(dyb.c $$0) {
-      this.h.add(new dyb.a($$0));
-   }
-
-   private static boolean a(djz $$0, iw $$1, ebg $$2, dyb.c $$3, @Nullable List<bwv> $$4, dyb.b $$5, @Nullable iw $$6) {
-      if (cjn.c($$0) && $$5 != dyb.b.c) {
-         return false;
-      } else {
-         jc $$7 = $$2.c(dmy.b);
-         iw $$8 = $$1.a($$7);
-         boolean $$9 = !$$0.a_($$8).g($$0, $$8).c();
-         if ($$9 && $$5 != dyb.b.c) {
-            return false;
-         } else {
-            bwv $$10 = $$3.a($$0, $$1);
-            if ($$10 != null) {
-               if ($$10 instanceof cjn $$11) {
-                  if ($$6 != null && !$$11.t() && $$0.A.i() < 0.9F) {
-                     $$11.h($$6);
-                  }
-
-                  if ($$5 == dyb.b.a) {
-                     $$11.gK();
-                     if ($$2.a(axg.aJ, $$0x -> $$0x.b(dmy.c))) {
-                        int $$12 = a($$2);
-                        if ($$12 < 5) {
-                           int $$13 = $$0.A.a(100) == 0 ? 2 : 1;
-                           if ($$12 + $$13 > 5) {
-                              $$13--;
-                           }
-
-                           $$0.b($$1, $$2.b(dmy.c, Integer.valueOf($$12 + $$13)));
-                        }
-                     }
-                  }
-
-                  if ($$4 != null) {
-                     $$4.add($$11);
-                  }
-
-                  float $$14 = $$10.dq();
-                  double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
-                  double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
-                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dr() / 2.0F);
-                  double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
-                  $$10.b($$16, $$17, $$18, $$10.dL(), $$10.dN());
-               }
-
-               $$0.a(null, $$1, awr.bW, aws.e, 1.0F, 1.0F);
-               $$0.a(egg.c, $$1, egg.a.a($$10, $$0.a_($$1)));
-               return $$0.b($$10);
-            } else {
-               return false;
-            }
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dyb.this.y = $$1;
+               break;
+            case 1:
+               dyb.this.z = $$1;
+               break;
+            case 2:
+               dyb.this.A = $$1;
+               break;
+            case 3:
+               dyb.this.B = $$1;
          }
       }
+
+      @Override
+      public int a() {
+         return 4;
+      }
+   };
+   private final Reference2IntOpenHashMap<alq<dfb<?>>> C = new Reference2IntOpenHashMap();
+   private final dfi.a<dfu, ? extends deh> D;
+
+   protected dyb(dyq<?> $$0, iw $$1, ebq $$2, dfm<? extends deh> $$3) {
+      super($$0, $$1, $$2);
+      this.D = dfi.a($$3);
    }
 
    private boolean k() {
-      return this.i != null;
+      return this.y > 0;
    }
 
-   private static void a(djz $$0, iw $$1, ebg $$2, List<dyb.a> $$3, @Nullable iw $$4) {
-      boolean $$5 = false;
-      Iterator<dyb.a> $$6 = $$3.iterator();
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.l = jp.a(this.b(), dak.l);
+      buw.b($$0, this.l, $$1);
+      this.A = $$0.b("cooking_time_spent", (short)0);
+      this.B = $$0.b("cooking_total_time", (short)0);
+      this.y = $$0.b("lit_time_remaining", (short)0);
+      this.z = $$0.b("lit_total_time", (short)0);
+      this.C.clear();
+      this.C.putAll($$0.<Map>a("RecipesUsed", t).orElse(Map.of()));
+   }
 
-      while ($$6.hasNext()) {
-         dyb.a $$7 = $$6.next();
-         if ($$7.a()) {
-            dyb.b $$8 = $$7.c() ? dyb.b.a : dyb.b.b;
-            if (a($$0, $$1, $$2, $$7.b(), null, $$8, $$4)) {
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("cooking_time_spent", (short)this.A);
+      $$0.a("cooking_total_time", (short)this.B);
+      $$0.a("lit_time_remaining", (short)this.y);
+      $$0.a("lit_total_time", (short)this.z);
+      buw.a($$0, this.l, $$1);
+      $$0.a("RecipesUsed", t, this.C);
+   }
+
+   public static void a(asb $$0, iw $$1, ebq $$2, dyb $$3) {
+      boolean $$4 = $$3.k();
+      boolean $$5 = false;
+      if ($$3.k()) {
+         $$3.y--;
+      }
+
+      dak $$6 = $$3.l.get(1);
+      dak $$7 = $$3.l.get(0);
+      boolean $$8 = !$$7.f();
+      boolean $$9 = !$$6.f();
+      if ($$3.k() || $$9 && $$8) {
+         dfu $$10 = new dfu($$7);
+         dfg<? extends deh> $$11;
+         if ($$8) {
+            $$11 = $$3.D.a($$10, $$0).orElse(null);
+         } else {
+            $$11 = null;
+         }
+
+         int $$13 = $$3.ap_();
+         if (!$$3.k() && a($$0.J_(), $$11, $$10, $$3.l, $$13)) {
+            $$3.y = $$3.a($$0.M(), $$6);
+            $$3.z = $$3.y;
+            if ($$3.k()) {
                $$5 = true;
-               $$6.remove();
+               if ($$9) {
+                  dag $$14 = $$6.h();
+                  $$6.h(1);
+                  if ($$6.f()) {
+                     $$3.l.set(1, $$14.i());
+                  }
+               }
             }
          }
+
+         if ($$3.k() && a($$0.J_(), $$11, $$10, $$3.l, $$13)) {
+            $$3.A++;
+            if ($$3.A == $$3.B) {
+               $$3.A = 0;
+               $$3.B = a($$0, $$3);
+               if (b($$0.J_(), $$11, $$10, $$3.l, $$13)) {
+                  $$3.a($$11);
+               }
+
+               $$5 = true;
+            }
+         } else {
+            $$3.A = 0;
+         }
+      } else if (!$$3.k() && $$3.A > 0) {
+         $$3.A = azz.a($$3.A - 2, 0, $$3.B);
+      }
+
+      if ($$4 != $$3.k()) {
+         $$5 = true;
+         $$2 = $$2.b(dmj.b, Boolean.valueOf($$3.k()));
+         $$0.a($$1, $$2, 3);
       }
 
       if ($$5) {
@@ -229,150 +171,184 @@ public class dyb extends dye {
       }
    }
 
-   public static void a(djz $$0, iw $$1, ebg $$2, dyb $$3) {
-      a($$0, $$1, $$2, $$3.h, $$3.i);
-      if (!$$3.h.isEmpty() && $$0.G_().j() < 0.005) {
-         double $$4 = (double)$$1.u() + 0.5;
-         double $$5 = (double)$$1.v();
-         double $$6 = (double)$$1.w() + 0.5;
-         $$0.a(null, $$4, $$5, $$6, awr.bY, aws.e, 1.0F, 1.0F);
-      }
-
-      agq.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(ua $$0, ji.a $$1) {
-      super.a($$0, $$1);
-      this.h.clear();
-      $$0.<List>a("bees", dyb.c.b).orElse(List.of()).forEach(this::a);
-      this.i = $$0.<iw>a("flower_pos", iw.a).orElse(null);
-   }
-
-   @Override
-   protected void b(ua $$0, ji.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("bees", dyb.c.b, this.s());
-      $$0.b("flower_pos", iw.a, this.i);
-   }
-
-   @Override
-   protected void a(kg $$0) {
-      super.a($$0);
-      this.h.clear();
-      List<dyb.c> $$1 = $$0.a(kl.ar, dbz.c).a();
-      $$1.forEach(this::a);
-   }
-
-   @Override
-   protected void a(ki.a $$0) {
-      super.a($$0);
-      $$0.a(kl.ar, new dbz(this.s()));
-   }
-
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      $$0.r("bees");
-   }
-
-   private List<dyb.c> s() {
-      return this.h.stream().map(dyb.a::b).toList();
-   }
-
-   static class a {
-      private final dyb.c a;
-      private int b;
-
-      a(dyb.c $$0) {
-         this.a = $$0;
-         this.b = $$0.b();
-      }
-
-      public boolean a() {
-         return this.b++ > this.a.f;
-      }
-
-      public dyb.c b() {
-         return new dyb.c(this.a.d, this.b, this.a.f);
-      }
-
-      public boolean c() {
-         return this.a.d.e().b("HasNectar", false);
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
-   }
-
-   public static record c(dci d, int e, int f) {
-      public static final Codec<dyb.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dci.b.optionalFieldOf("entity_data", dci.a).forGetter(dyb.c::a),
-                  Codec.INT.fieldOf("ticks_in_hive").forGetter(dyb.c::b),
-                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(dyb.c::c)
-               )
-               .apply($$0, dyb.c::new)
-      );
-      public static final Codec<List<dyb.c>> b = a.listOf();
-      public static final za<ByteBuf, dyb.c> c = za.a(dci.d, dyb.c::a, yy.h, dyb.c::b, yy.h, dyb.c::c, dyb.c::new);
-
-      public static dyb.c a(bwv $$0) {
-         ua $$1 = new ua();
-         $$0.g($$1);
-         dyb.e.forEach($$1::r);
-         boolean $$2 = $$1.b("HasNectar", false);
-         return new dyb.c(dci.a($$1), 0, $$2 ? 2400 : 600);
-      }
-
-      public static dyb.c a(int $$0) {
-         ua $$1 = new ua();
-         $$1.a("id", mh.f.b(bxe.m).toString());
-         return new dyb.c(dci.a($$1), $$0, 600);
-      }
-
-      @Nullable
-      public bwv a(djz $$0, iw $$1) {
-         ua $$2 = this.d.d();
-         dyb.e.forEach($$2::r);
-         bwv $$3 = bxe.a($$2, $$0, bxd.r, $$0x -> $$0x);
-         if ($$3 != null && $$3.an().a(axj.e)) {
-            $$3.f(true);
-            if ($$3 instanceof cjn $$4) {
-               $$4.i($$1);
-               a(this.e, $$4);
-            }
-
-            return $$3;
+   private static boolean a(ju $$0, @Nullable dfg<? extends deh> $$1, dfu $$2, jp<dak> $$3, int $$4) {
+      if (!$$3.get(0).f() && $$1 != null) {
+         dak $$5 = $$1.b().a($$2, $$0);
+         if ($$5.f()) {
+            return false;
          } else {
-            return null;
+            dak $$6 = $$3.get(2);
+            if ($$6.f()) {
+               return true;
+            } else if (!dak.c($$6, $$5)) {
+               return false;
+            } else {
+               return $$6.M() < $$4 && $$6.M() < $$6.k() ? true : $$6.M() < $$5.k();
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static boolean b(ju $$0, @Nullable dfg<? extends deh> $$1, dfu $$2, jp<dak> $$3, int $$4) {
+      if ($$1 != null && a($$0, $$1, $$2, $$3, $$4)) {
+         dak $$5 = $$3.get(0);
+         dak $$6 = $$1.b().a($$2, $$0);
+         dak $$7 = $$3.get(2);
+         if ($$7.f()) {
+            $$3.set(2, $$6.v());
+         } else if (dak.c($$7, $$6)) {
+            $$7.g(1);
+         }
+
+         if ($$5.a(dnq.aW.h()) && !$$3.get(1).f() && $$3.get(1).a(dao.ro)) {
+            $$3.set(1, new dak(dao.rp));
+         }
+
+         $$5.h(1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected int a(dzn $$0, dak $$1) {
+      return $$0.b($$1);
+   }
+
+   private static int a(asb $$0, dyb $$1) {
+      dfu $$2 = new dfu($$1.a(0));
+      return $$1.D.a($$2, $$0).map($$0x -> ((deh)$$0x.b()).d()).orElse(200);
+   }
+
+   @Override
+   public int[] a(jc $$0) {
+      if ($$0 == jc.a) {
+         return r;
+      } else {
+         return $$0 == jc.b ? q : s;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, dak $$1, @Nullable jc $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, dak $$1, jc $$2) {
+      return $$2 == jc.a && $$0 == 1 ? $$1.a(dao.rp) || $$1.a(dao.ro) : true;
+   }
+
+   @Override
+   public int b() {
+      return this.l.size();
+   }
+
+   @Override
+   protected jp<dak> f() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(jp<dak> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public void a(int $$0, dak $$1) {
+      dak $$2 = this.l.get($$0);
+      boolean $$3 = !$$1.f() && dak.c($$2, $$1);
+      this.l.set($$0, $$1);
+      $$1.f(this.f_($$1));
+      if ($$0 == 0 && !$$3 && this.n instanceof asb $$4) {
+         this.B = a($$4, this);
+         this.A = 0;
+         this.e();
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, dak $$1) {
+      if ($$0 == 2) {
+         return false;
+      } else if ($$0 != 1) {
+         return true;
+      } else {
+         dak $$2 = this.l.get(1);
+         return this.n.M().a($$1) || $$1.a(dao.ro) && !$$2.a(dao.ro);
+      }
+   }
+
+   @Override
+   public void a(@Nullable dfg<?> $$0) {
+      if ($$0 != null) {
+         alq<dfb<?>> $$1 = $$0.a();
+         this.C.addTo($$1, 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfg<?> d() {
+      return null;
+   }
+
+   @Override
+   public void a(csi $$0, List<dak> $$1) {
+   }
+
+   public void a(asc $$0) {
+      List<dfg<?>> $$1 = this.a($$0.y(), $$0.dt());
+      $$0.a($$1);
+
+      for (dfg<?> $$2 : $$1) {
+         if ($$2 != null) {
+            $$0.a($$2, this.l);
          }
       }
 
-      private static void a(int $$0, cjn $$1) {
-         int $$2 = $$1.g();
-         if ($$2 < 0) {
-            $$1.c_(Math.min(0, $$2 + $$0));
-         } else if ($$2 > 0) {
-            $$1.c_(Math.max(0, $$2 - $$0));
-         }
+      this.C.clear();
+   }
 
-         $$1.r(Math.max(0, $$1.gC() - $$0));
+   public List<dfg<?>> a(asb $$0, fgc $$1) {
+      List<dfg<?>> $$2 = Lists.newArrayList();
+      ObjectIterator var4 = this.C.reference2IntEntrySet().iterator();
+
+      while (var4.hasNext()) {
+         Entry<alq<dfb<?>>> $$3 = (Entry<alq<dfb<?>>>)var4.next();
+         $$0.t().b((alq<dfb<?>>)$$3.getKey()).ifPresent($$4 -> {
+            $$2.add((dfg<?>)$$4);
+            a($$0, $$1, $$3.getIntValue(), ((deh)$$4.b()).c());
+         });
       }
 
-      public dci a() {
-         return this.d;
+      return $$2;
+   }
+
+   private static void a(asb $$0, fgc $$1, int $$2, float $$3) {
+      int $$4 = azz.d((float)$$2 * $$3);
+      float $$5 = azz.i((float)$$2 * $$3);
+      if ($$5 != 0.0F && Math.random() < (double)$$5) {
+         $$4++;
       }
 
-      public int b() {
-         return this.e;
-      }
+      bxs.a($$0, $$1, $$4);
+   }
 
-      public int c() {
-         return this.f;
+   @Override
+   public void fillStackedContents(cso $$0) {
+      for (dak $$1 : this.l) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public void a(iw $$0, ebq $$1) {
+      super.a($$0, $$1);
+      if (this.n instanceof asb $$2) {
+         this.a($$2, fgc.b($$0));
       }
    }
 }

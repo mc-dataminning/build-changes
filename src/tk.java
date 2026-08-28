@@ -35,15 +35,15 @@ public class tk {
    private static final int i = 5;
    private static final int j = 5;
    private static final int k = 5;
-   private static final SimpleCommandExceptionType l = new SimpleCommandExceptionType(xc.c("commands.test.clear.error.no_tests"));
-   private static final SimpleCommandExceptionType m = new SimpleCommandExceptionType(xc.c("commands.test.reset.error.no_tests"));
-   private static final SimpleCommandExceptionType n = new SimpleCommandExceptionType(xc.c("commands.test.error.test_instance_not_found"));
-   private static final SimpleCommandExceptionType o = new SimpleCommandExceptionType(xc.b("Could not find any structures to export"));
-   private static final SimpleCommandExceptionType p = new SimpleCommandExceptionType(xc.c("commands.test.error.no_test_instances"));
+   private static final SimpleCommandExceptionType l = new SimpleCommandExceptionType(xg.c("commands.test.clear.error.no_tests"));
+   private static final SimpleCommandExceptionType m = new SimpleCommandExceptionType(xg.c("commands.test.reset.error.no_tests"));
+   private static final SimpleCommandExceptionType n = new SimpleCommandExceptionType(xg.c("commands.test.error.test_instance_not_found"));
+   private static final SimpleCommandExceptionType o = new SimpleCommandExceptionType(xg.b("Could not find any structures to export"));
+   private static final SimpleCommandExceptionType p = new SimpleCommandExceptionType(xg.c("commands.test.error.no_test_instances"));
    private static final Dynamic3CommandExceptionType q = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xc.b("commands.test.error.no_test_containing_pos", $$0, $$1, $$2)
+      ($$0, $$1, $$2) -> xg.b("commands.test.error.no_test_containing_pos", $$0, $$1, $$2)
    );
-   private static final DynamicCommandExceptionType r = new DynamicCommandExceptionType($$0 -> xc.b("commands.test.error.too_large", $$0));
+   private static final DynamicCommandExceptionType r = new DynamicCommandExceptionType($$0 -> xg.b("commands.test.error.too_large", $$0));
 
    private static int a(tn $$0) throws CommandSyntaxException {
       a();
@@ -51,7 +51,7 @@ public class tk {
       if ($$1 == 0) {
          throw l.create();
       } else {
-         $$0.b().a(() -> xc.a("commands.test.reset.success", $$1), true);
+         $$0.b().a(() -> xg.a("commands.test.reset.success", $$1), true);
          return $$1;
       }
    }
@@ -59,27 +59,27 @@ public class tk {
    private static int b(tn $$0) throws CommandSyntaxException {
       a();
       ek $$1 = $$0.b();
-      aru $$2 = $$1.e();
+      asb $$2 = $$1.e();
       sw.a($$2);
-      List<erv> $$3 = $$0.findTestPos().flatMap($$1x -> $$2.a($$1x, dyg.U).stream()).map(dzz::d).toList();
+      List<esf> $$3 = $$0.findTestPos().flatMap($$1x -> $$2.a($$1x, dyq.U).stream()).map(eaj::d).toList();
       $$3.forEach($$1x -> tj.a($$1x, $$2));
       if ($$3.isEmpty()) {
          throw l.create();
       } else {
-         $$1.a(() -> xc.a("commands.test.clear.success", $$3.size()), true);
+         $$1.a(() -> xg.a("commands.test.clear.success", $$3.size()), true);
          return $$3.size();
       }
    }
 
    private static int c(tn $$0) throws CommandSyntaxException {
       ek $$1 = $$0.b();
-      aru $$2 = $$1.e();
+      asb $$2 = $$1.e();
       int $$3 = 0;
       boolean $$4 = true;
 
       for (Iterator<iw> $$5 = $$0.findTestPos().iterator(); $$5.hasNext(); $$3++) {
          iw $$6 = $$5.next();
-         if (!($$2.c_($$6) instanceof dzz $$7)) {
+         if (!($$2.c_($$6) instanceof eaj $$7)) {
             throw n.create();
          }
 
@@ -92,7 +92,7 @@ public class tk {
          throw o.create();
       } else {
          String $$8 = "Exported " + $$3 + " structures";
-         $$0.b().a(() -> xc.b($$8), true);
+         $$0.b().a(() -> xg.b($$8), true);
          return $$4 ? 0 : 1;
       }
    }
@@ -100,7 +100,7 @@ public class tk {
    private static int d(tn $$0) {
       a();
       ek $$1 = $$0.b();
-      aru $$2 = $$1.e();
+      asb $$2 = $$1.e();
       iw $$3 = a($$1);
       Collection<sr> $$4 = Stream.concat(a($$1, th.a(), $$0), a($$1, th.a(), $$0, 0)).toList();
       sw.a($$2);
@@ -108,7 +108,7 @@ public class tk {
       Collection<sk> $$5 = new ArrayList<>();
 
       for (sr $$6 : $$4) {
-         for (dty $$7 : dty.values()) {
+         for (dui $$7 : dui.values()) {
             Collection<sr> $$8 = new ArrayList<>();
 
             for (int $$9 = 0; $$9 < 100; $$9++) {
@@ -130,39 +130,39 @@ public class tk {
    private static int a(tn $$0, th $$1, int $$2, int $$3) {
       a();
       ek $$4 = $$0.b();
-      aru $$5 = $$4.e();
+      asb $$5 = $$4.e();
       iw $$6 = a($$4);
       Collection<sr> $$7 = Stream.concat(a($$4, $$1, $$0), a($$4, $$1, $$0, $$2)).toList();
       if ($$7.isEmpty()) {
-         $$4.a(() -> xc.c("commands.test.no_tests"), false);
+         $$4.a(() -> xg.c("commands.test.no_tests"), false);
          return 0;
       } else {
          sw.a($$5);
          sg.b();
-         $$4.a(() -> xc.a("commands.test.run.running", $$7.size()), false);
+         $$4.a(() -> xg.a("commands.test.run.running", $$7.size()), false);
          sw $$8 = sw.a.b($$7, $$5).a((sw.c)(new ti($$6, $$3, false))).a();
          return a($$4, $$8);
       }
    }
 
    private static int e(tn $$0) throws CommandSyntaxException {
-      $$0.b().a(xc.c("commands.test.locate.started"));
+      $$0.b().a(xg.c("commands.test.locate.started"));
       MutableInt $$1 = new MutableInt(0);
       iw $$2 = iw.a((jq)$$0.b().d());
       $$0.findTestPos()
          .forEach(
             $$3x -> {
-               if ($$0.b().e().c_($$3x) instanceof dzz $$5) {
+               if ($$0.b().e().c_($$3x) instanceof eaj $$5) {
                   jc var13 = $$5.u().a(jc.c);
-                  iw $$8 = $$5.aB_().a(var13, 2);
+                  iw $$8 = $$5.aC_().a(var13, 2);
                   int $$9 = (int)var13.g().p();
                   String $$10 = String.format(Locale.ROOT, "/tp @s %d %d %d %d 0", $$8.u(), $$8.v(), $$8.w(), $$9);
                   int $$11 = $$2.u() - $$3x.u();
                   int $$12 = $$2.w() - $$3x.w();
-                  int $$13 = azq.d(azq.c((float)($$11 * $$11 + $$12 * $$12)));
-                  xq $$14 = xf.a((xc)xc.a("chat.coordinates", $$3x.u(), $$3x.v(), $$3x.w()))
-                     .a($$1xx -> $$1xx.a(o.k).a(new xa.g($$10)).a(new xi.e(xc.c("chat.coordinates.tooltip"))));
-                  $$0.b().a(() -> xc.a("commands.test.locate.found", $$14, $$13), false);
+                  int $$13 = azz.d(azz.c((float)($$11 * $$11 + $$12 * $$12)));
+                  xu $$14 = xj.a((xg)xg.a("chat.coordinates", $$3x.u(), $$3x.v(), $$3x.w()))
+                     .a($$1xx -> $$1xx.a(o.k).a(new xe.g($$10)).a(new xm.e(xg.c("chat.coordinates.tooltip"))));
+                  $$0.b().a(() -> xg.a("commands.test.locate.found", $$14, $$13), false);
                   $$1.increment();
                }
             }
@@ -171,13 +171,13 @@ public class tk {
       if ($$3 == 0) {
          throw p.create();
       } else {
-         $$0.b().a(() -> xc.a("commands.test.locate.done", $$3), true);
+         $$0.b().a(() -> xg.a("commands.test.locate.done", $$3), true);
          return $$3;
       }
    }
 
    private static ArgumentBuilder<ek, ?> a(
-      ArgumentBuilder<ek, ?> $$0, anx<CommandContext<ek>, tn> $$1, Function<ArgumentBuilder<ek, ?>, ArgumentBuilder<ek, ?>> $$2
+      ArgumentBuilder<ek, ?> $$0, aoe<CommandContext<ek>, tn> $$1, Function<ArgumentBuilder<ek, ?>, ArgumentBuilder<ek, ?>> $$2
    ) {
       return $$0.executes($$1x -> a($$1.apply($$1x), th.a(), 0, 8))
          .then(
@@ -199,11 +199,11 @@ public class tk {
          );
    }
 
-   private static ArgumentBuilder<ek, ?> a(ArgumentBuilder<ek, ?> $$0, anx<CommandContext<ek>, tn> $$1) {
+   private static ArgumentBuilder<ek, ?> a(ArgumentBuilder<ek, ?> $$0, aoe<CommandContext<ek>, tn> $$1) {
       return a($$0, $$1, $$0x -> $$0x);
    }
 
-   private static ArgumentBuilder<ek, ?> b(ArgumentBuilder<ek, ?> $$0, anx<CommandContext<ek>, tn> $$1) {
+   private static ArgumentBuilder<ek, ?> b(ArgumentBuilder<ek, ?> $$0, aoe<CommandContext<ek>, tn> $$1) {
       return a(
          $$0,
          $$1,
@@ -281,7 +281,7 @@ public class tk {
                      ((LiteralArgumentBuilder)el.a("clearall").executes($$0x -> b(tn.a().a($$0x, 200))))
                         .then(
                            el.a("radius", IntegerArgumentType.integer())
-                              .executes($$0x -> b(tn.a().a($$0x, azq.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024))))
+                              .executes($$0x -> b(tn.a().a($$0x, azz.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024))))
                         )
                   ))
                .then(el.a("stop").executes($$0x -> a())))
@@ -340,7 +340,7 @@ public class tk {
    }
 
    private static int a(ek $$0, sr $$1) {
-      dzz $$2 = $$1.f();
+      eaj $$2 = $$1.f();
       $$2.a($$0::a);
       return 1;
    }
@@ -354,11 +354,11 @@ public class tk {
    }
 
    private static Optional<sr> a(iw $$0, ek $$1, th $$2) {
-      aru $$3 = $$1.e();
-      if ($$3.c_($$0) instanceof dzz $$4) {
+      asb $$3 = $$1.e();
+      if ($$3.c_($$0) instanceof eaj $$4) {
          Optional<jg.c<ss>> $$6 = $$4.j().flatMap($$1.u().f(mi.bh)::a);
          if ($$6.isEmpty()) {
-            $$1.b(xc.a("commands.test.error.non_existant_test", $$4.k()));
+            $$1.b(xg.a("commands.test.error.non_existant_test", $$4.k()));
             return Optional.empty();
          } else {
             jg.c<ss> $$7 = $$6.get();
@@ -367,20 +367,20 @@ public class tk {
             return !a($$1, $$8.t()) ? Optional.empty() : Optional.of($$8);
          }
       } else {
-         $$1.b(xc.a("commands.test.error.test_instance_not_found.position", $$0.u(), $$0.v(), $$0.w()));
+         $$1.b(xg.a("commands.test.error.test_instance_not_found.position", $$0.u(), $$0.v(), $$0.w()));
          return Optional.empty();
       }
    }
 
-   private static int a(ek $$0, alk $$1, int $$2, int $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ek $$0, alr $$1, int $$2, int $$3, int $$4) throws CommandSyntaxException {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
-         aru $$5 = $$0.e();
+         asb $$5 = $$0.e();
          iw $$6 = a($$0);
-         dzz $$7 = tj.a($$1, $$6, new kb($$2, $$3, $$4), dty.a, $$5);
+         eaj $$7 = tj.a($$1, $$6, new kb($$2, $$3, $$4), dui.a, $$5);
          iw $$8 = $$7.z();
          iw $$9 = $$8.b($$2 - 1, 0, $$4 - 1);
-         iw.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dng.I.m()));
-         $$0.a(() -> xc.a("commands.test.create.success", $$7.k()), true);
+         iw.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dnq.I.m()));
+         $$0.a(() -> xg.a("commands.test.create.success", $$7.k()), true);
          return 1;
       } else {
          throw r.create(48);
@@ -388,9 +388,9 @@ public class tk {
    }
 
    private static int a(ek $$0, String $$1) throws CommandSyntaxException {
-      ffo $$2 = (ffo)$$0.h().a(10.0, 1.0F, false);
+      ffy $$2 = (ffy)$$0.h().a(10.0, 1.0F, false);
       iw $$3 = $$2.b();
-      aru $$4 = $$0.e();
+      asb $$4 = $$0.e();
       Optional<iw> $$5 = tj.a($$3, 15, $$4);
       if ($$5.isEmpty()) {
          $$5 = tj.a($$3, 200, $$4);
@@ -398,15 +398,15 @@ public class tk {
 
       if ($$5.isEmpty()) {
          throw q.create($$3.u(), $$3.v(), $$3.w());
-      } else if ($$4.c_($$5.get()) instanceof dzz $$6) {
+      } else if ($$4.c_($$5.get()) instanceof eaj $$6) {
          iw var12 = $$6.z();
          iw $$9 = $$3.b(var12);
          String $$10 = $$9.u() + ", " + $$9.v() + ", " + $$9.w();
          String $$11 = $$6.k().getString();
-         xq $$12 = xc.a("commands.test.coordinates", $$9.u(), $$9.v(), $$9.w())
-            .b(xz.a.a(true).a(o.k).a(new xi.e(xc.c("commands.test.coordinates.copy"))).a(new xa.c("final BlockPos " + $$1 + " = new BlockPos(" + $$10 + ");")));
-         $$0.a(() -> xc.a("commands.test.relative_position", $$11, $$12), false);
-         agq.a($$4, new iw($$3), $$10, -2147418368, 10000);
+         xu $$12 = xg.a("commands.test.coordinates", $$9.u(), $$9.v(), $$9.w())
+            .b(yd.a.a(true).a(o.k).a(new xm.e(xg.c("commands.test.coordinates.copy"))).a(new xe.c("final BlockPos " + $$1 + " = new BlockPos(" + $$10 + ");")));
+         $$0.a(() -> xg.a("commands.test.relative_position", $$11, $$12), false);
+         agx.a($$4, new iw($$3), $$10, -2147418368, 10000);
          return 1;
       } else {
          throw n.create();
@@ -428,12 +428,12 @@ public class tk {
    }
 
    private static int a(ek $$0, jg<ss> $$1) {
-      return !dzz.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
+      return !eaj.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
    }
 
-   private static boolean a(ek $$0, alk $$1) {
+   private static boolean a(ek $$0, alr $$1) {
       if ($$0.e().r().b($$1).isEmpty()) {
-         $$0.b(xc.a("commands.test.error.structure_not_found", xc.a($$1)));
+         $$0.b(xg.a("commands.test.error.structure_not_found", xg.a($$1)));
          return false;
       } else {
          return true;
@@ -442,14 +442,14 @@ public class tk {
 
    private static iw a(ek $$0) {
       iw $$1 = iw.a((jq)$$0.d());
-      int $$2 = $$0.e().a(ehf.a.b, $$1).v();
+      int $$2 = $$0.e().a(ehp.a.b, $$1).v();
       return new iw($$1.u(), $$2, $$1.w() + 3);
    }
 
    static record a(ek a) implements sm {
       @Override
       public void a(sk $$0) {
-         this.a.a(() -> xc.a("commands.test.batch.starting", $$0.c().g(), $$0.a()), true);
+         this.a.a(() -> xg.a("commands.test.batch.starting", $$0.c().g(), $$0.a()), true);
       }
 
       @Override
@@ -479,15 +479,15 @@ public class tk {
 
       private void c() {
          if (this.b.i()) {
-            this.a.a(() -> xc.a("commands.test.summary", this.b.h()).a(o.p), true);
+            this.a.a(() -> xg.a("commands.test.summary", this.b.h()).a(o.p), true);
             if (this.b.d()) {
-               this.a.b(xc.a("commands.test.summary.failed", this.b.a()));
+               this.a.b(xg.a("commands.test.summary.failed", this.b.a()));
             } else {
-               this.a.a(() -> xc.c("commands.test.summary.all_required_passed").a(o.k), true);
+               this.a.a(() -> xg.c("commands.test.summary.all_required_passed").a(o.k), true);
             }
 
             if (this.b.e()) {
-               this.a.a(xc.a("commands.test.summary.optional_failed", this.b.b()));
+               this.a.a(xg.a("commands.test.summary.optional_failed", this.b.b()));
             }
          }
       }

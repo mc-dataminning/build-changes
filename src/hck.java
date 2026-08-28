@@ -1,13 +1,26 @@
-public abstract class hck<S extends her, M extends gic<S>> extends hcy<S, M> {
-   public hck(hah<S, M> $$0) {
+public class hck extends hcj<hfx, gje> {
+   private static final alr a = alr.b("textures/entity/sheep/sheep_wool.png");
+   private final ghn<hfx> b;
+   private final ghn<hfx> c;
+
+   public hck(gzs<hfx, gje> $$0, gkn $$1) {
       super($$0);
+      this.b = new gjd($$1.a(gkq.cQ));
+      this.c = new gjd($$1.a(gkq.cP));
    }
 
-   @Override
-   public void a(flq $$0, gsc $$1, int $$2, S $$3, float $$4, float $$5) {
-      flt $$6 = $$1.getBuffer(this.a());
-      this.d().a($$0, $$6, $$2, hks.d);
+   public void a(fld $$0, grn $$1, int $$2, hfx $$3, float $$4, float $$5) {
+      if (!$$3.c) {
+         ghn<hfx> $$6 = $$3.am ? this.c : this.b;
+         if ($$3.A) {
+            if ($$3.ar) {
+               $$6.a($$3);
+               flg $$7 = $$1.getBuffer(gry.s(a));
+               $$6.a($$0, $$7, $$2, gyw.a($$3, 0.0F), -16777216);
+            }
+         } else {
+            a($$6, a, $$0, $$1, $$2, $$3, $$3.a());
+         }
+      }
    }
-
-   public abstract gsn a();
 }

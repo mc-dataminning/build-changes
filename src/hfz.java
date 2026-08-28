@@ -1,10 +1,11 @@
-public class hfz extends hfr {
-   public ckg.b a;
-   public float b;
-   public gjb.a c;
+import javax.annotation.Nullable;
 
-   public hfz() {
-      this.a = ckg.b.a;
-      this.c = gjb.a.a;
-   }
+public class hfz extends hfe {
+   public fgc a = fgc.c;
+   @Nullable
+   public czi b;
+   public float c;
+   public float d;
+   public float e;
+   public jc f = jc.a;
 }

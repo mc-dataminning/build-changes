@@ -1,18 +1,20 @@
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
+import java.util.UUID;
 
 public interface hnr {
-   Matrix4fc q = new Matrix4f();
+   void a(UUID var1, hnr.b var2);
 
-   default k a() {
-      return k.a();
+   void a(UUID var1, hnr.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   default Matrix4fc a(jc $$0) {
-      return q;
-   }
-
-   default Matrix4fc b(jc $$0) {
-      return q;
+   public static enum b {
+      a,
+      b;
    }
 }

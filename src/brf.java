@@ -1,25 +1,36 @@
-public final class brf implements Comparable<brf> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-   public brf(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class brf {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private final BooleanSupplier c;
+   private brj d = bri.a;
+
+   public brf(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public int a(brf $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
+   public boolean a() {
+      return this.d != bri.a;
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   public void b() {
+      this.d = bri.a;
+   }
+
+   public void c() {
+      this.d = new bre(this.a, this.b, this.c);
+   }
+
+   public brm d() {
+      return this.d;
+   }
+
+   public brk e() {
+      return this.d.d();
    }
 }

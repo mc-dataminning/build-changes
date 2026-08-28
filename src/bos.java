@@ -3,14 +3,21 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bos extends Schema {
+public class bos extends blh {
    public bos(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "PolarBear");
+      $$0.registerSimple($$1, "minecraft:creaking");
+      $$0.registerSimple($$1, "minecraft:creaking_transient");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      this.registerSimple($$1, "minecraft:creaking_heart");
       return $$1;
    }
 }

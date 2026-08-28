@@ -1,15 +1,17 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public interface hhr {
-   void a(hhu var1, daa var2, hhs var3, czy var4, @Nullable gmd var5, @Nullable bxw var6, int var7);
+public record hhr(ku.a<?> b) implements hht {
+   public static final MapCodec<hhr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ku.a("predicate").forGetter(hhr::b)).apply($$0, hhr::new));
 
-   public static record a(hnl a, glc b, hhr c, @Nullable baa d) {
+   @Override
+   public boolean get(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      return this.b.b().a($$0);
    }
 
-   public interface b extends hnt {
-      MapCodec<? extends hhr.b> a();
-
-      hhr a(hhr.a var1);
+   @Override
+   public MapCodec<hhr> a() {
+      return a;
    }
 }

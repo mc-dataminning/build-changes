@@ -1,24 +1,14 @@
-import com.mojang.serialization.MapCodec;
+public class dmb {
+   public static final alq<dma> a = a("nether");
+   public static final alq<dma> b = a("overworld");
 
-public class dmb extends dne {
-   public static final MapCodec<dmb> a = b(dmb::new);
-
-   @Override
-   public MapCodec<dmb> a() {
-      return a;
+   public static void a(qi<dma> $$0) {
+      jh<dlm> $$1 = $$0.a(mi.aG);
+      $$0.a(a, new dma(dma.a.a, $$1));
+      $$0.a(b, new dma(dma.a.b, $$1));
    }
 
-   public dmb(ebf.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected dtr a_(ebg $$0) {
-      return dtr.a;
-   }
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return fgj.a();
+   private static alq<dma> a(String $$0) {
+      return alq.a(mi.aW, alr.b($$0));
    }
 }

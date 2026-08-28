@@ -1,15 +1,23 @@
-import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.UUID;
 
-public record ael(List<dfz> b) implements zj<aby> {
-   public static final za<ByteBuf, ael> a = za.a(dfz.a.a(yy.a()), ael::b, ael::new);
+public record ael(List<UUID> b) implements zo<acf> {
+   public static final ze<vy, ael> a = zo.a(ael::a, ael::new);
 
-   @Override
-   public zl<ael> a() {
-      return agr.al;
+   private ael(vy $$0) {
+      this($$0.a(ka.g));
    }
 
-   public void a(aby $$0) {
+   private void a(vy $$0) {
+      $$0.a(this.b, ka.g);
+   }
+
+   @Override
+   public zq<ael> a() {
+      return agy.af;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 }

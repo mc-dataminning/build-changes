@@ -1,252 +1,37 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
 
-public final class alk implements Comparable<alk> {
-   public static final Codec<alk> a = Codec.STRING.comapFlatMap(alk::d, alk::toString).stable();
-   public static final za<ByteBuf, alk> b = yy.p.a(alk::a, alk::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xc.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String h;
-   private final String i;
+public class alk {
+   private final String a;
+   private final String b;
 
-   private alk(String $$0, String $$1) {
-      assert j($$0);
-
-      assert i($$1);
-
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   private static alk d(String $$0, String $$1) {
-      return new alk(e($$0, $$1), f($$0, $$1));
-   }
-
-   public static alk a(String $$0, String $$1) {
-      return d($$0, $$1);
+   public alk(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    public static alk a(String $$0) {
-      return a($$0, ':');
+      return new alk($$0, ".json");
    }
 
-   public static alk b(String $$0) {
-      return new alk("minecraft", f("minecraft", $$0));
+   public static alk a(alq<? extends jt<?>> $$0) {
+      return a(mi.c($$0));
    }
 
-   @Nullable
-   public static alk c(String $$0) {
-      return b($$0, ':');
+   public alr a(alr $$0) {
+      return $$0.e(this.a + "/" + $$0.a() + this.b);
    }
 
-   @Nullable
-   public static alk b(String $$0, String $$1) {
-      return j($$0) && i($$1) ? new alk($$0, $$1) : null;
+   public alr b(alr $$0) {
+      String $$1 = $$0.a();
+      return $$0.e($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   public static alk a(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return d($$4, $$3);
-         } else {
-            return b($$3);
-         }
-      } else {
-         return b($$0);
-      }
+   public Map<alr, avm> a(avo $$0) {
+      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   @Nullable
-   public static alk b(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if (!i($$3)) {
-            return null;
-         } else if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return j($$4) ? new alk($$4, $$3) : null;
-         } else {
-            return new alk("minecraft", $$3);
-         }
-      } else {
-         return i($$0) ? new alk("minecraft", $$0) : null;
-      }
-   }
-
-   public static DataResult<alk> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (ab var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   public alk e(String $$0) {
-      return new alk(this.h, f(this.h, $$0));
-   }
-
-   public alk a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.i));
-   }
-
-   public alk f(String $$0) {
-      return this.e($$0 + this.i);
-   }
-
-   public alk g(String $$0) {
-      return this.e(this.i + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.h + ":" + this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof alk $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.h.hashCode() + this.i.hashCode();
-   }
-
-   public int a(alk $$0) {
-      int $$1 = this.i.compareTo($$0.i);
-      if ($$1 == 0) {
-         $$1 = this.h.compareTo($$0.h);
-      }
-
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.h + "." + this.i;
-   }
-
-   public String e() {
-      return this.h.equals("minecraft") ? this.i : this.d();
-   }
-
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static alk a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (ab var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
-      }
-   }
-
-   public static alk b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (ab var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String e(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new ab("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
-      }
-   }
-
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   private static String f(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new ab("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
-      }
+   public Map<alr, List<avm>> b(avo $$0) {
+      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

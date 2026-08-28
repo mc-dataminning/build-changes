@@ -1,116 +1,60 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class gzw extends gxe<ckf, hfy, gja> {
-   private static final Map<ckf.a, alk> a = Maps.newEnumMap(
-      Map.of(
-         ckf.a.a,
-         alk.b("textures/entity/panda/panda.png"),
-         ckf.a.b,
-         alk.b("textures/entity/panda/lazy_panda.png"),
-         ckf.a.c,
-         alk.b("textures/entity/panda/worried_panda.png"),
-         ckf.a.d,
-         alk.b("textures/entity/panda/playful_panda.png"),
-         ckf.a.e,
-         alk.b("textures/entity/panda/brown_panda.png"),
-         ckf.a.f,
-         alk.b("textures/entity/panda/weak_panda.png"),
-         ckf.a.g,
-         alk.b("textures/entity/panda/aggressive_panda.png")
-      )
-   );
+public class gzw extends gzb<cpq, hfz, gjh> {
+   private static final alr a = gsh.s.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
+   private static final alr[] j = gsh.t.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(alr[]::new);
 
-   public gzw(gyk.a $$0) {
-      super($$0, new gja($$0.a(glf.bZ)), new gja($$0.a(glf.ca)), 0.9F);
-      this.a(new hcu(this));
+   public gzw(gxv.a $$0) {
+      super($$0, new gjh($$0.a(gkq.cU)), 0.0F);
    }
 
-   public alk a(hfy $$0) {
-      return a.getOrDefault($$0.a, a.get(ckf.a.a));
+   public fgc a(hfz $$0) {
+      return $$0.a;
    }
 
-   public hfy b() {
-      return new hfy();
+   public boolean a(cpq $$0, gvh $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         fgc $$5 = $$0.K(0.0F);
+         if ($$5 == null) {
+            return false;
+         } else {
+            bxn<?> $$6 = $$0.an();
+            float $$7 = $$6.m() / 2.0F;
+            float $$8 = $$6.l() / 2.0F;
+            fgc $$9 = fgc.c($$0.dv());
+            return $$1.a(new ffx($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
+         }
+      }
    }
 
-   public void a(ckf $$0, hfy $$1, float $$2) {
+   public alr b(hfz $$0) {
+      return a($$0.b);
+   }
+
+   public hfz b() {
+      return new hfz();
+   }
+
+   public void a(cpq $$0, hfz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hfg.a($$0, $$1, this.h);
-      $$1.a = $$0.gI();
-      $$1.b = $$0.q() > 0;
-      $$1.c = $$0.t();
-      $$1.d = $$0.gw();
-      $$1.e = $$0.gv();
-      $$1.f = $$0.gO();
-      $$1.g = $$0.x();
-      $$1.h = $$0.J($$2);
-      $$1.j = $$0.K($$2);
-      $$1.k = $$0.n_() ? 0.0F : $$0.L($$2);
-      $$1.l = $$0.bJ > 0 ? (float)$$0.bJ + $$2 : 0.0F;
+      $$1.a = Objects.requireNonNullElse($$0.K($$2), fgc.c);
+      $$1.b = $$0.t();
+      $$1.c = $$0.J($$2);
+      $$1.d = $$0.aX;
+      $$1.e = $$0.aV;
+      $$1.f = $$0.n();
    }
 
-   protected void a(hfy $$0, flq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.l > 0.0F) {
-         float $$4 = azq.i($$0.l);
-         int $$5 = azq.d($$0.l);
-         int $$6 = $$5 + 1;
-         float $$7 = 7.0F;
-         float $$8 = $$0.aj ? 0.3F : 0.8F;
-         if ((float)$$5 < 8.0F) {
-            float $$9 = 90.0F * (float)$$5 / 7.0F;
-            float $$10 = 90.0F * (float)$$6 / 7.0F;
-            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
-            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$11));
-         } else if ((float)$$5 < 16.0F) {
-            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
-            float $$13 = 90.0F + 90.0F * $$12;
-            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
-            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
-            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$15));
-         } else if ((float)$$5 < 24.0F) {
-            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
-            float $$17 = 180.0F + 90.0F * $$16;
-            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
-            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
-            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$19));
-         } else if ($$5 < 32) {
-            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
-            float $$21 = 270.0F + 90.0F * $$20;
-            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
-            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
-            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$23));
-         }
-      }
-
-      float $$24 = $$0.h;
-      if ($$24 > 0.0F) {
-         $$1.a(0.0F, 0.8F * $$24, 0.0F);
-         $$1.a(a.b.rotationDegrees(azq.h($$24, $$0.ab, $$0.ab + 90.0F)));
-         $$1.a(0.0F, -1.0F * $$24, 0.0F);
-         if ($$0.f) {
-            float $$25 = (float)(Math.cos((double)($$0.u * 1.25F)) * Math.PI * 0.05F);
-            $$1.a(a.d.rotationDegrees($$25));
-            if ($$0.aj) {
-               $$1.a(0.0F, 0.8F, 0.55F);
-            }
-         }
-      }
-
-      float $$26 = $$0.j;
-      if ($$26 > 0.0F) {
-         float $$27 = $$0.aj ? 0.5F : 1.3F;
-         $$1.a(0.0F, $$27 * $$26, 0.0F);
-         $$1.a(a.b.rotationDegrees(azq.h($$26, $$0.ab, $$0.ab + 180.0F)));
-      }
+   public static alr a(@Nullable czi $$0) {
+      return $$0 == null ? a : j[$$0.a()];
    }
 
-   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
-      return (float)$$2 < $$4 ? azq.h($$3, $$0, $$1) : $$0;
+   protected void a(hfz $$0, fld $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2 + 180.0F, $$3);
+      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

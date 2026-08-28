@@ -1,246 +1,217 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dyt extends dzn implements cwk {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private static final int q = 0;
-   private static final int r = 0;
-   private jp<daa> s = jp.a(9, daa.k);
-   private int t = 0;
-   protected final cwe k = new cwe() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public class dyt extends dyo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private dak l;
+   @Nullable
+   private jc m;
+   @Nullable
+   private alq<fay> q;
+   private long r;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
+   public dyt(iw $$0, ebq $$1) {
+      super(dyq.O, $$0, $$1);
+      this.l = dak.l;
+   }
+
+   public boolean a(long $$0, asb $$1, byf $$2, jc $$3, dak $$4) {
+      if (this.m == null) {
+         this.m = $$3;
       }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
+      this.j = $$0 + 40L;
+      if ($$0 < this.k) {
+         return false;
+      } else {
+         this.k = $$0 + 10L;
+         this.a($$1, $$2, $$4);
+         int $$5 = this.f();
+         if (++this.i >= 10) {
+            this.b($$1, $$2, $$4);
+            return true;
          } else {
-            this.a[$$0] = $$1;
+            $$1.a(this.aC_(), this.m().b(), 2);
+            int $$6 = this.f();
+            if ($$5 != $$6) {
+               ebq $$7 = this.m();
+               ebq $$8 = $$7.b(ecg.by, Integer.valueOf($$6));
+               $$1.a(this.aC_(), $$8, 3);
+            }
+
+            return false;
          }
       }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dyt(iw $$0, ebg $$1) {
-      super(dyg.Q, $$0, $$1);
    }
 
-   @Override
-   protected xc j() {
-      return xc.c("container.crafter");
-   }
+   private void a(asb $$0, byf $$1, dak $$2) {
+      if (this.q != null) {
+         fay $$3 = $$0.p().bc().b(this.q);
+         if ($$1 instanceof asc $$4) {
+            aq.Q.a($$4, this.q);
+         }
 
-   @Override
-   protected cvs a(int $$0, cry $$1) {
-      return new cwi($$0, $$1, this, this.k);
-   }
+         faw $$5 = new faw.a($$0).a(fdn.f, fgc.b(this.o)).a($$1.eh()).a(fdn.a, $$1).a(fdn.i, $$2).a(fdm.i);
+         ObjectArrayList<dak> $$6 = $$3.a($$5, this.r);
 
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
+         this.l = switch ($$6.size()) {
+            case 0 -> dak.l;
+            case 1 -> (dak)$$6.getFirst();
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
+               yield (dak)$$6.getFirst();
+            }
+         };
+         this.q = null;
          this.e();
       }
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   private void b(asb $$0, byf $$1, dak $$2) {
+      this.c($$0, $$1, $$2);
+      ebq $$3 = this.m();
+      $$0.c(3008, this.aC_(), dno.j($$3));
+      dno $$6;
+      if (this.m().b() instanceof dnu $$5) {
+         $$6 = $$5.b();
+      } else {
+         $$6 = dnq.a;
+      }
+
+      $$0.a(this.o, $$6.m(), 3);
+   }
+
+   private void c(asb $$0, byf $$1, dak $$2) {
+      this.a($$0, $$1, $$2);
+      if (!this.l.f()) {
+         double $$3 = (double)bxn.ar.l();
+         double $$4 = 1.0 - $$3;
+         double $$5 = $$3 / 2.0;
+         jc $$6 = Objects.requireNonNullElse(this.m, jc.b);
+         iw $$7 = this.o.a($$6, 1);
+         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
+         double $$9 = (double)$$7.v() + 0.5 + (double)(bxn.ar.m() / 2.0F);
+         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
+         coo $$11 = new coo($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
+         $$11.i(fgc.c);
+         $$0.b($$11);
+         this.l = dak.l;
+      }
+   }
+
+   public void a(asb $$0) {
+      if (this.i != 0 && $$0.ae() >= this.j) {
+         int $$1 = this.f();
+         this.i = Math.max(0, this.i - 2);
+         int $$2 = this.f();
+         if ($$1 != $$2) {
+            $$0.a(this.aC_(), this.m().b(ecg.by, Integer.valueOf($$2)), 3);
+         }
+
+         int $$3 = 4;
+         this.j = $$0.ae() + 4L;
+      }
+
+      if (this.i == 0) {
+         this.m = null;
+         this.j = 0L;
+         this.k = 0L;
+      } else {
+         $$0.a(this.aC_(), this.m().b(), 2);
+      }
+   }
+
+   private boolean b(ua $$0) {
+      this.q = $$0.<alq<fay>>a("LootTable", fay.a).orElse(null);
+      this.r = $$0.b("LootTableSeed", 0L);
+      return this.q != null;
+   }
+
+   private boolean c(ua $$0) {
+      if (this.q == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", fay.a, this.q);
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public boolean b(int $$0, daa $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         daa $$2 = this.s.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
-         }
+   public ua a(ji.a $$0) {
+      ua $$1 = super.a($$0);
+      $$1.b("hit_direction", jc.k, this.m);
+      if (!this.l.f()) {
+         alp<va> $$2 = $$0.a(uo.a);
+         $$1.a("item", dak.b, $$2, this.l);
       }
+
+      return $$1;
    }
 
-   private boolean a(int $$0, daa $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            daa $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && daa.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public acl a() {
+      return acl.a(this);
    }
 
    @Override
    protected void a(ua $$0, ji.a $$1) {
       super.a($$0, $$1);
-      this.t = $$0.b("crafting_ticks_remaining", 0);
-      this.s = jp.a(this.b(), daa.k);
-      if (!this.b_($$0)) {
-         bun.b($$0, this.s, $$1);
+      alp<va> $$2 = $$1.a(uo.a);
+      if (!this.b($$0)) {
+         this.l = $$0.<dak>a("item", dak.b, $$2).orElse(dak.l);
+      } else {
+         this.l = dak.l;
       }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.k.a($$2, 0);
-      }
-
-      $$0.k("disabled_slots").ifPresent($$0x -> {
-         for (int $$1x : $$0x) {
-            if (this.e($$1x)) {
-               this.k.a($$1x, 1);
-            }
-         }
-      });
-      this.k.a(9, $$0.b("triggered", 0));
+      this.m = $$0.<jc>a("hit_direction", jc.k).orElse(null);
    }
 
    @Override
    protected void b(ua $$0, ji.a $$1) {
       super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.t);
-      if (!this.c_($$0)) {
-         bun.a($$0, this.s, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean c() {
-      for (daa $$0 : this.s) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public daa a(int $$0) {
-      return this.s.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, daa $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      return bum.a(this, $$0);
-   }
-
-   @Override
-   public jp<daa> f() {
-      return this.s;
-   }
-
-   @Override
-   protected void a(jp<daa> $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public int az_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(csf $$0) {
-      for (daa $$1 : this.s) {
-         $$0.a($$1);
+      if (!this.c($$0) && !this.l.f()) {
+         alp<va> $$2 = $$1.a(uo.a);
+         $$0.a("item", dak.b, $$2, this.l);
       }
    }
 
-   private void c(ua $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.a("disabled_slots", $$1.toIntArray());
+   public void a(alq<fay> $$0, long $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   private void d(ua $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(djz $$0, iw $$1, ebg $$2, dyt $$3) {
-      int $$4 = $$3.t - 1;
-      if ($$4 >= 0) {
-         $$3.t = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(doy.b, Boolean.valueOf(false)), 3);
-         }
+   private int f() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
       }
    }
 
-   public void d(int $$0) {
-      this.t = $$0;
+   @Nullable
+   public jc c() {
+      return this.m;
    }
 
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         daa $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.s.get($$0).f();
+   public dak d() {
+      return this.l;
    }
 }

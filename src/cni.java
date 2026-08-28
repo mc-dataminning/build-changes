@@ -1,30 +1,57 @@
-public class cni extends cna {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cni(cmx $$0) {
-      super($$0);
+public abstract class cni implements cnq {
+   protected final cng a;
+
+   public cni(cng $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), awr.iC, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
    }
 
    @Override
-   public void a(aru $$0) {
-      if (this.c++ >= 40) {
-         this.a.t().a(cnn.f);
-      }
+   public void a(asb $$0) {
+   }
+
+   @Override
+   public void a(cnf $$0, iw $$1, bvt $$2, @Nullable csi $$3) {
    }
 
    @Override
    public void c() {
-      this.c = 0;
    }
 
    @Override
-   public cnn<cni> h() {
-      return cnn.h;
+   public void d() {
+   }
+
+   @Override
+   public float e() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public fgc f() {
+      return null;
+   }
+
+   @Override
+   public float a(bvt $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

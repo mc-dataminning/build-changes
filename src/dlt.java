@@ -1,59 +1,71 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public abstract class dlt {
+   public static final alq<dlm> a = a("the_void");
+   public static final alq<dlm> b = a("plains");
+   public static final alq<dlm> c = a("sunflower_plains");
+   public static final alq<dlm> d = a("snowy_plains");
+   public static final alq<dlm> e = a("ice_spikes");
+   public static final alq<dlm> f = a("desert");
+   public static final alq<dlm> g = a("swamp");
+   public static final alq<dlm> h = a("mangrove_swamp");
+   public static final alq<dlm> i = a("forest");
+   public static final alq<dlm> j = a("flower_forest");
+   public static final alq<dlm> k = a("birch_forest");
+   public static final alq<dlm> l = a("dark_forest");
+   public static final alq<dlm> m = a("pale_garden");
+   public static final alq<dlm> n = a("old_growth_birch_forest");
+   public static final alq<dlm> o = a("old_growth_pine_taiga");
+   public static final alq<dlm> p = a("old_growth_spruce_taiga");
+   public static final alq<dlm> q = a("taiga");
+   public static final alq<dlm> r = a("snowy_taiga");
+   public static final alq<dlm> s = a("savanna");
+   public static final alq<dlm> t = a("savanna_plateau");
+   public static final alq<dlm> u = a("windswept_hills");
+   public static final alq<dlm> v = a("windswept_gravelly_hills");
+   public static final alq<dlm> w = a("windswept_forest");
+   public static final alq<dlm> x = a("windswept_savanna");
+   public static final alq<dlm> y = a("jungle");
+   public static final alq<dlm> z = a("sparse_jungle");
+   public static final alq<dlm> A = a("bamboo_jungle");
+   public static final alq<dlm> B = a("badlands");
+   public static final alq<dlm> C = a("eroded_badlands");
+   public static final alq<dlm> D = a("wooded_badlands");
+   public static final alq<dlm> E = a("meadow");
+   public static final alq<dlm> F = a("cherry_grove");
+   public static final alq<dlm> G = a("grove");
+   public static final alq<dlm> H = a("snowy_slopes");
+   public static final alq<dlm> I = a("frozen_peaks");
+   public static final alq<dlm> J = a("jagged_peaks");
+   public static final alq<dlm> K = a("stony_peaks");
+   public static final alq<dlm> L = a("river");
+   public static final alq<dlm> M = a("frozen_river");
+   public static final alq<dlm> N = a("beach");
+   public static final alq<dlm> O = a("snowy_beach");
+   public static final alq<dlm> P = a("stony_shore");
+   public static final alq<dlm> Q = a("warm_ocean");
+   public static final alq<dlm> R = a("lukewarm_ocean");
+   public static final alq<dlm> S = a("deep_lukewarm_ocean");
+   public static final alq<dlm> T = a("ocean");
+   public static final alq<dlm> U = a("deep_ocean");
+   public static final alq<dlm> V = a("cold_ocean");
+   public static final alq<dlm> W = a("deep_cold_ocean");
+   public static final alq<dlm> X = a("frozen_ocean");
+   public static final alq<dlm> Y = a("deep_frozen_ocean");
+   public static final alq<dlm> Z = a("mushroom_fields");
+   public static final alq<dlm> aa = a("dripstone_caves");
+   public static final alq<dlm> ab = a("lush_caves");
+   public static final alq<dlm> ac = a("deep_dark");
+   public static final alq<dlm> ad = a("nether_wastes");
+   public static final alq<dlm> ae = a("warped_forest");
+   public static final alq<dlm> af = a("crimson_forest");
+   public static final alq<dlm> ag = a("soul_sand_valley");
+   public static final alq<dlm> ah = a("basalt_deltas");
+   public static final alq<dlm> ai = a("the_end");
+   public static final alq<dlm> aj = a("end_highlands");
+   public static final alq<dlm> ak = a("end_midlands");
+   public static final alq<dlm> al = a("small_end_islands");
+   public static final alq<dlm> am = a("end_barrens");
 
-public class dlt extends dlg {
-   public static final MapCodec<dlt> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ali.d(dlj.ai), ali.d(dlj.aj), ali.d(dlj.ak), ali.d(dlj.al), ali.d(dlj.am)).apply($$0, $$0.stable(dlt::new))
-   );
-   private final jg<dlc> c;
-   private final jg<dlc> d;
-   private final jg<dlc> e;
-   private final jg<dlc> f;
-   private final jg<dlc> g;
-
-   public static dlt a(jh<dlc> $$0) {
-      return new dlt($$0.b(dlj.ai), $$0.b(dlj.aj), $$0.b(dlj.ak), $$0.b(dlj.al), $$0.b(dlj.am));
-   }
-
-   private dlt(jg<dlc> $$0, jg<dlc> $$1, jg<dlc> $$2, jg<dlc> $$3, jg<dlc> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected Stream<jg<dlc>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected MapCodec<? extends dlg> a() {
-      return b;
-   }
-
-   @Override
-   public jg<dlc> getNoiseBiome(int $$0, int $$1, int $$2, dll.f $$3) {
-      int $$4 = jr.c($$0);
-      int $$5 = jr.c($$1);
-      int $$6 = jr.c($$2);
-      int $$7 = jz.a($$4);
-      int $$8 = jz.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (jz.a($$4) * 2 + 1) * 8;
-         int $$10 = (jz.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new egy.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
-      }
+   private static alq<dlm> a(String $$0) {
+      return alq.a(mi.aG, alr.b($$0));
    }
 }

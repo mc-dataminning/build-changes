@@ -1,35 +1,30 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Objects;
 
-public class beq extends bhx {
+public class beq extends bjz {
    public beq(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", bjd.D, "EntityHorse");
+      super("EntityCatSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bjd.F.typeName(), bky.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(bjd.t);
-      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
-      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
-      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
-         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(bjd.F.typeName(), "minecraft:saddle"));
-         Dynamic<?> $$7 = $$5.emptyMap();
-         $$7 = $$7.set("Count", $$7.createByte((byte)1));
-         $$7 = $$7.set("Damage", $$7.createShort((short)0));
-         $$6 = $$6.set(DSL.remainderFinder(), $$7);
-         $$5.remove("Saddle");
-         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
-      } else {
-         return $$0;
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("minecraft:ocelot", $$0)) {
+         int $$2 = $$1.get("CatType").asInt(0);
+         if ($$2 == 0) {
+            String $$3 = $$1.get("Owner").asString("");
+            String $$4 = $$1.get("OwnerUUID").asString("");
+            if ($$3.length() > 0 || $$4.length() > 0) {
+               $$1.set("Trusting", $$1.createBoolean(true));
+            }
+         } else if ($$2 > 0 && $$2 < 4) {
+            $$1 = $$1.set("CatType", $$1.createInt($$2));
+            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
+            return Pair.of("minecraft:cat", $$1);
+         }
       }
+
+      return Pair.of($$0, $$1);
    }
 }

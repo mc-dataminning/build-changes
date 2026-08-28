@@ -1,15 +1,42 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 
-public interface ase {
-   void a(dje var1);
+public class ase extends arj {
+   public static final int a = 33;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final dlg c;
 
-   void a(dje var1, @Nullable eee var2);
+   public ase(dlg $$0) {
+      super(34, 16, 256);
+      this.c = $$0;
+      $$0.b(this::b);
+      this.b.defaultReturnValue((byte)33);
+   }
 
-   void a();
+   @Override
+   protected int b(long $$0) {
+      return this.c.a($$0, true);
+   }
 
-   void b();
+   public int a(djo $$0) {
+      return this.c($$0.a());
+   }
 
-   static int a(int $$0) {
-      return 2 * $$0 + 1;
+   @Override
+   protected int c(long $$0) {
+      return this.b.get($$0);
+   }
+
+   @Override
+   protected void a(long $$0, int $$1) {
+      if ($$1 >= 33) {
+         this.b.remove($$0);
+      } else {
+         this.b.put($$0, (byte)$$1);
+      }
+   }
+
+   public void a() {
+      this.b(Integer.MAX_VALUE);
    }
 }

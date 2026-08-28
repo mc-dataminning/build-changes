@@ -1,16 +1,23 @@
-public interface abg extends zp {
-   @Override
-   default vw b() {
-      return vw.e;
+import java.util.List;
+
+public record abg(List<iw> c) implements aat {
+   public static final ze<vy, abg> a = aat.a(abg::a, abg::new);
+   public static final aat.b<abg> b = aat.a("debug/raids");
+
+   private abg(vy $$0) {
+      this($$0.a(iw.b));
    }
 
-   void a(abh var1);
+   private void a(vy $$0) {
+      $$0.a(this.c, iw.b);
+   }
 
-   void a(abi var1);
+   @Override
+   public aat.b<abg> a() {
+      return b;
+   }
 
-   void a(abl var1);
-
-   void a(abk var1);
-
-   void a(abj var1);
+   public List<iw> b() {
+      return this.c;
+   }
 }

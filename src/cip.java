@@ -1,38 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cip {
-   @Nullable
-   public static ffs a(bye $$0, int $$1, int $$2) {
-      boolean $$3 = ciq.a($$0, $$1);
-      return cit.a($$0, () -> {
-         iw $$4 = cit.a($$0.dY(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cip extends cin<byn> {
+   private static final ciu a = ciu.b().d();
+   private final Predicate<dak> b;
+
+   public cip(Predicate<dak> $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static ffs a(bye $$0, int $$1, int $$2, ffs $$3, double $$4) {
-      ffs $$5 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$6 = ciq.a($$0, $$1);
-      return cit.a($$0, () -> {
-         iw $$6x = cit.a($$0.dY(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   protected void a(asb $$0, byn $$1) {
+      bzf<?> $$2 = $$1.ec();
+      ciu $$3 = a.c().a((double)((float)$$1.h(bzl.E)));
+      List<csi> $$4 = $$0.z()
+         .stream()
+         .filter(bxl.f)
+         .filter($$3x -> $$3.a($$0, $$1, $$3x))
+         .filter(this::a)
+         .filter($$1x -> !$$1.y($$1x))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      if (!$$4.isEmpty()) {
+         csi $$5 = $$4.get(0);
+         $$2.a(chh.P, $$5);
+      } else {
+         $$2.b(chh.P);
+      }
    }
 
-   @Nullable
-   public static ffs a(bye $$0, int $$1, int $$2, ffs $$3) {
-      ffs $$4 = $$0.dt().d($$3);
-      boolean $$5 = ciq.a($$0, $$1);
-      return cit.a($$0, () -> {
-         iw $$5x = cit.a($$0.dY(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   private boolean a(csi $$0) {
+      return this.a($$0.fb()) || this.a($$0.fc());
    }
 
-   @Nullable
-   private static iw a(bye $$0, int $$1, boolean $$2, iw $$3) {
-      iw $$4 = cit.a($$0, $$1, $$0.dY(), $$3);
-      return !ciq.a($$4, $$0) && !ciq.a($$2, $$0, $$4) && !ciq.a($$0.O(), $$4) && !ciq.b($$0, $$4) ? $$4 : null;
+   private boolean a(dak $$0) {
+      return this.b.test($$0);
+   }
+
+   @Override
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(chh.P);
    }
 }

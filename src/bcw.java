@@ -1,16 +1,26 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
 public class bcw extends DataFix {
-   public bcw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   private bcw(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bjd.u), $$0 -> $$0.update(DSL.remainderFinder(), bcv::a)
-      );
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bjm.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bjm.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
+   }
+
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new bcw($$0, $$1, $$2);
    }
 }

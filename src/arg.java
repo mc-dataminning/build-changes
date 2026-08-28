@@ -1,85 +1,113 @@
-public class arg extends arw {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public arg(arv $$0) {
-      super($$0);
+public interface arg<T> {
+   static <T> arg<T> a(T $$0) {
+      return new arg.b<>($$0);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.ae();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.f.b(new adf(adf.g, 0.0F));
+   static <T> arg<T> a(String $$0) {
+      return a(() -> $$0);
+   }
+
+   static <T> arg<T> a(Supplier<String> $$0) {
+      return new arg.a<>($$0);
+   }
+
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(arg<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   arg<T> a(Consumer<T> var1);
+
+   <R> arg<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements arg<T> {
+      @Override
+      public boolean a() {
+         return false;
       }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
       }
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.f.b(new adf(adf.g, 104.0F));
-            } else {
-               this.d.a(xc.c("demo.day." + $$1));
-            }
-         }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.f.b(new adf(adf.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.f.b(new adf(adf.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.f.b(new adf(adf.g, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(xc.c("demo.day.warning"));
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public arg<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> arg<R> a(Function<T, R> $$0) {
+         return new arg.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(xc.c("demo.reminder"));
-         this.g = 0;
+   public static record b<T>(T a) implements arg<T> {
+      @Override
+      public boolean a() {
+         return true;
       }
-   }
 
-   @Override
-   public void a(iw $$0, ahz.a $$1, jc $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
       }
-   }
 
-   @Override
-   public but a(arv $$0, djz $$1, daa $$2, bus $$3) {
-      if (this.f) {
-         this.f();
-         return but.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+      @Nullable
+      @Override
+      public String b() {
+         return null;
       }
-   }
 
-   @Override
-   public but a(arv $$0, djz $$1, daa $$2, bus $$3, ffo $$4) {
-      if (this.f) {
-         this.f();
-         return but.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+      @Override
+      public arg<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> arg<R> a(Function<T, R> $$0) {
+         return new arg.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
       }
    }
 }

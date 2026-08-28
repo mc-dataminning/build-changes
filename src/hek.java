@@ -1,4 +1,3 @@
-public class hek extends hfr {
-   public float a;
-   public boolean b;
+public class hek extends hec {
+   public fgc a = fgc.c;
 }

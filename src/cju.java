@@ -1,32 +1,56 @@
-import java.util.Optional;
-
-public class cju {
-   public static final alj<cjt> a = a(ckr.a);
-   public static final alj<cjt> b = a(ckr.b);
-   public static final alj<cjt> c = a(ckr.c);
-   public static final alj<cjt> d = a;
-
-   private static alj<cjt> a(alk $$0) {
-      return alj.a(mi.aJ, $$0);
+public abstract class cju extends bwu {
+   protected cju(bxn<? extends cju> $$0, dkj $$1) {
+      super($$0, $$1);
+      this.a(eyr.j, 0.0F);
    }
 
-   public static void a(qi<cjt> $$0) {
-      a($$0, a, cjt.a.a, "temperate_chicken", cug.a(0));
-      a($$0, b, cjt.a.a, "warm_chicken", axf.al);
-      a($$0, c, cjt.a.b, "cold_chicken", axf.ak);
+   @Override
+   public boolean a(dkm $$0) {
+      return $$0.f(this);
    }
 
-   private static void a(qi<cjt> $$0, alj<cjt> $$1, cjt.a $$2, String $$3, axv<dlc> $$4) {
-      jk<dlc> $$5 = $$0.a(mi.aG).b($$4);
-      a($$0, $$1, $$2, $$3, cug.a(new ctz($$5), 1));
+   @Override
+   public int S() {
+      return 120;
    }
 
-   private static void a(qi<cjt> $$0, alj<cjt> $$1, cjt.a $$2, String $$3, cug $$4) {
-      alk $$5 = alk.b("entity/chicken/" + $$3);
-      $$0.a($$1, new cjt(new cua<>($$2, $$5), $$4));
+   @Override
+   public int e(asb $$0) {
+      return 1 + this.ae.a(3);
    }
 
-   public static Optional<jg.c<cjt>> a(azz $$0, ju $$1, cuf $$2) {
-      return cuc.a($$1.f(mi.aJ).c(), jg::a, $$0, $$2);
+   protected void r(int $$0) {
+      if (this.bJ() && !this.bi()) {
+         this.j($$0 - 1);
+         if (this.cs() == -20) {
+            this.j(0);
+            this.a(this.dW().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
+   }
+
+   @Override
+   public void aw() {
+      int $$0 = this.cs();
+      super.aw();
+      this.r($$0);
+   }
+
+   @Override
+   public boolean cJ() {
+      return false;
+   }
+
+   @Override
+   public boolean w() {
+      return false;
+   }
+
+   public static boolean b(bxn<? extends cju> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axs.a) && $$1.a_($$3.d()).a(dnq.J);
    }
 }

@@ -1,9 +1,26 @@
-import com.mojang.brigadier.arguments.StringArgumentType;
-import java.util.Optional;
+import java.util.Map;
 
-public record ats(String a, xc b, aus c, Optional<aun> d) {
-   public xc a(boolean $$0, xc $$1) {
-      return xf.a(this.c.a(xc.b(this.a)))
-         .a($$2 -> $$2.a($$0 ? o.k : o.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xi.e(xc.i().b(this.b).f("\n").b($$1))));
+public class ats {
+   private static final ats a = new ats(Map.of());
+   private final Map<aun<?>, ?> b;
+
+   private ats(Map<aun<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(aun<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static ats a() {
+      return a;
+   }
+
+   public static <T> ats a(aun<T> $$0, T $$1) {
+      return new ats(Map.of($$0, $$1));
+   }
+
+   public static <T1, T2> ats a(aun<T1> $$0, T1 $$1, aun<T2> $$2, T2 $$3) {
+      return new ats(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

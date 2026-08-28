@@ -1,92 +1,61 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 
-public class bxl extends ckq {
-   private static final akn<Integer> bQ = akr.a(bxl.class, akp.b);
-   private static final int bR = 0;
-
-   public bxl(bxe<? extends bxl> $$0, djz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected lx q() {
-      return lz.aS;
-   }
-
-   @Override
-   protected void a(akr.a $$0) {
-      super.a($$0);
-      $$0.a(bQ, 0);
-   }
-
-   @Nullable
-   @Override
-   public bwl a(aru $$0, bwl $$1) {
-      return bxe.ah.a($$0, bxd.e);
-   }
-
-   @Override
-   protected awq t() {
-      return awr.ln;
-   }
-
-   @Override
-   protected awq u() {
-      return awr.lk;
-   }
-
-   @Override
-   protected awq e(bvk $$0) {
-      return awr.lm;
-   }
-
-   @Override
-   protected awq l_() {
-      return awr.ll;
-   }
-
-   @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.x());
-   }
-
-   @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      this.s($$0.b("DarkTicksRemaining", 0));
-   }
-
-   @Override
-   public void k_() {
-      super.k_();
-      int $$0 = this.x();
-      if ($$0 > 0) {
-         this.s($$0 - 1);
+public final class bxl {
+   public static final Predicate<bxe> a = bxe::bJ;
+   public static final Predicate<bxe> b = $$0 -> $$0.bJ() && $$0 instanceof byf;
+   public static final Predicate<bxe> c = $$0 -> $$0.bJ() && !$$0.bZ() && !$$0.bY();
+   public static final Predicate<bxe> d = $$0 -> $$0 instanceof buv && $$0.bJ();
+   public static final Predicate<bxe> e = $$0 -> {
+      if ($$0 instanceof csi $$1 && ($$0.aa_() || $$1.b())) {
+         return false;
       }
 
-      this.dV().a(lz.aT, this.d(0.6), this.dD(), this.g(0.6), 0.0, 0.0, 0.0);
+      return true;
+   };
+   public static final Predicate<bxe> f = $$0 -> !$$0.aa_();
+   public static final Predicate<bxe> g = f.and(bxe::bL);
+   public static final Predicate<bxe> h = f.and(bxe::bF);
+
+   private bxl() {
    }
 
-   @Override
-   public boolean a(aru $$0, bvk $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3) {
-         this.s(100);
-      }
-
-      return $$3;
+   public static Predicate<bxe> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.h($$0, $$1, $$2) <= $$4;
    }
 
-   private void s(int $$0) {
-      this.al.a(bQ, $$0);
+   public static Predicate<bxe> a(bxe $$0) {
+      fhj $$1 = $$0.cq();
+      fhj.a $$2 = $$1 == null ? fhj.a.a : $$1.m();
+      return (Predicate<bxe>)($$2 == fhj.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bG()) {
+            return false;
+         } else if (!$$0.dV().C || $$3 instanceof csi $$4 && $$4.gh()) {
+            fhj $$5 = $$3.cq();
+            fhj.a $$6 = $$5 == null ? fhj.a.a : $$5.m();
+            if ($$6 == fhj.a.b) {
+               return false;
+            } else {
+               boolean $$7 = $$1 != null && $$1.a($$5);
+               return ($$2 == fhj.a.d || $$6 == fhj.a.d) && $$7 ? false : $$2 != fhj.a.c && $$6 != fhj.a.c || $$7;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int x() {
-      return this.al.a(bQ);
-   }
+   public static Predicate<bxe> b(bxe $$0) {
+      return $$1 -> {
+         while ($$1.bY()) {
+            $$1 = $$1.dk();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
 
-   public static boolean a(bxe<? extends bxw> $$0, dkq $$1, bxd $$2, iw $$3, azz $$4) {
-      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dng.J);
+         return true;
+      };
    }
 }

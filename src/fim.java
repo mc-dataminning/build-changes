@@ -1,24 +1,7 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+public record fim(fgc b, fgc c, fgc d) {
+   public static final fim a = new fim(fgc.c, new fgc(0.0, 0.0, -1.0), new fgc(0.0, 1.0, 0.0));
 
-public interface fim extends AutoCloseable {
-   float a = 7.0F;
-
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default fil a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(fim a, fxe.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
+   public fgc a() {
+      return this.c.c(this.d);
    }
 }

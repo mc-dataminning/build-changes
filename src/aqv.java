@@ -1,162 +1,205 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqv {
-   private final arj b;
-   private final dje c;
-   @Nullable
-   private eee d = null;
-   public final eee a;
-   private volatile boolean e;
-   private final List<CompletableFuture<aqz<edd>>> f = new ArrayList<>();
-   private final bam<ark> g;
-   private boolean h;
+public abstract class aqv<T extends aqv<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
 
-   private aqv(arj $$0, eee $$1, dje $$2, bam<ark> $$3) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.g = $$3;
+   public aqv(Properties $$0) {
+      this.ac = $$0;
    }
 
-   public static aqv a(arj $$0, eee $$1, dje $$2) {
-      int $$3 = eed.a.a($$1).a(eee.c);
-      bam<ark> $$4 = bam.a($$2.h, $$2.i, $$3, ($$1x, $$2x) -> $$0.d(dje.c($$1x, $$2x)));
-      return new aqv($$0, $$1, $$2, $$4);
-   }
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
 
-   @Nullable
-   public CompletableFuture<?> a() {
-      while (true) {
-         CompletableFuture<?> $$0 = this.g();
-         if ($$0 != null) {
-            return $$0;
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
          }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
+      }
+   }
 
-         if (this.e || this.d == this.a) {
-            this.e();
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
+   }
+
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
             return null;
          }
-
-         this.d();
-      }
+      };
    }
 
-   private void d() {
-      eee $$0;
-      if (this.d == null) {
-         $$0 = eee.c;
-      } else if (!this.h && this.d == eee.c && !this.f()) {
-         this.h = true;
-         $$0 = eee.c;
-      } else {
-         $$0 = eee.a().get(this.d.b() + 1);
-      }
-
-      this.a($$0, this.h);
-      this.d = $$0;
-   }
-
-   public void b() {
-      this.e = true;
-   }
-
-   private void e() {
-      ark $$0 = this.g.a(this.c.h, this.c.i);
-      $$0.a(this);
-      this.g.a(this.b::a);
-   }
-
-   private boolean f() {
-      if (this.a == eee.c) {
-         return true;
-      } else {
-         eee $$0 = this.g.a(this.c.h, this.c.i).q();
-         if ($$0 != null && !$$0.d(this.a)) {
-            eec $$1 = eed.b.a(this.a).c();
-            int $$2 = $$1.c();
-
-            for (int $$3 = this.c.h - $$2; $$3 <= this.c.h + $$2; $$3++) {
-               for (int $$4 = this.c.i - $$2; $$4 <= this.c.i + $$2; $$4++) {
-                  int $$5 = this.c.e($$3, $$4);
-                  eee $$6 = $$1.a($$5);
-                  eee $$7 = this.g.a($$3, $$4).q();
-                  if ($$7 == null || $$7.d($$6)) {
-                     return false;
-                  }
-               }
-            }
-
-            return true;
-         } else {
-            return false;
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
          }
-      }
-   }
-
-   public ark c() {
-      return this.g.a(this.c.h, this.c.i);
-   }
-
-   private void a(eee $$0, boolean $$1) {
-      try (bri $$2 = brc.a().d("scheduleLayer")) {
-         $$2.a($$0::f);
-         int $$3 = this.b($$0, $$1);
-
-         for (int $$4 = this.c.h - $$3; $$4 <= this.c.h + $$3; $$4++) {
-            for (int $$5 = this.c.i - $$3; $$5 <= this.c.i + $$3; $$5++) {
-               ark $$6 = this.g.a($$4, $$5);
-               if (this.e || !this.a($$0, $$1, $$6)) {
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   private int b(eee $$0, boolean $$1) {
-      eed $$2 = $$1 ? eed.a : eed.b;
-      return $$2.a(this.a).a($$0);
-   }
-
-   private boolean a(eee $$0, boolean $$1, ark $$2) {
-      eee $$3 = $$2.q();
-      boolean $$4 = $$3 != null && $$0.b($$3);
-      eed $$5 = $$4 ? eed.a : eed.b;
-      if ($$4 && !$$1) {
-         throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
-      } else {
-         CompletableFuture<aqz<edd>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
-         aqz<edd> $$7 = $$6.getNow(null);
-         if ($$7 == null) {
-            this.f.add($$6);
-            return true;
-         } else if ($$7.a()) {
-            return true;
-         } else {
-            this.b();
-            return false;
-         }
-      }
+      };
    }
 
    @Nullable
-   private CompletableFuture<?> g() {
-      while (!this.f.isEmpty()) {
-         CompletableFuture<aqz<edd>> $$0 = this.f.getLast();
-         aqz<edd> $$1 = $$0.getNow(null);
-         if ($$1 == null) {
-            return $$0;
-         }
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
+   }
 
-         this.f.removeLast();
-         if (!$$1.a()) {
-            this.b();
-         }
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         this.ac.remove($$0);
+         return $$1.apply($$2);
+      }
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> aqv<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new aqv.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> aqv<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected aqv<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected aqv<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(ju var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return null;
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(ju $$0, V $$1) {
+         Properties $$2 = aqv.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return aqv.this.b($$0, $$2);
+      }
    }
 }

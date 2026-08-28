@@ -1,28 +1,45 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
+import java.util.Set;
 
 public class bcr extends DataFix {
-   public bcr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final Set<String> a = Set.of(
+      "minecraft:beacon",
+      "minecraft:banner",
+      "minecraft:brewing_stand",
+      "minecraft:chest",
+      "minecraft:trapped_chest",
+      "minecraft:dispenser",
+      "minecraft:dropper",
+      "minecraft:enchanting_table",
+      "minecraft:furnace",
+      "minecraft:hopper",
+      "minecraft:shulker_box"
+   );
+
+   public bcr(Schema $$0) {
+      super($$0, true);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.E);
-      Type<?> $$1 = this.getOutputSchema().getType(bjd.E);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bjd.E.typeName(), DSL.or(DSL.intType(), bky.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bjd.E.typeName(), bky.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bcv::a, $$0xxxx -> bcv.a(bky.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", blh.a());
+      Type<?> $$1 = this.getInputSchema().getType(bjm.s);
+      Type<?> $$2 = this.getOutputSchema().getType(bjm.s);
+      Type<?> $$3 = bbq.a($$1, $$1, $$2);
+      return this.fixTypeEverywhereTyped("BlockEntityCustomNameToComponentFix", $$1, $$2, $$3x -> {
+         Optional<String> $$4 = $$3x.getOptional($$0);
+         return $$4.isPresent() && !a.contains($$4.get()) ? bbq.a($$2, $$3x) : ag.a(bbq.a($$3, $$3x), $$2, bcr::a);
+      });
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", bbr.a($$0.getOps(), $$1));
    }
 }

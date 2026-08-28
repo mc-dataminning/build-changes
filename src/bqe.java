@@ -1,9 +1,16 @@
-import java.util.stream.Stream;
+public interface bqe {
+   bqe a = new bqe() {
+      @Override
+      public void a() {
+      }
 
-public interface bqe<S> {
-   Stream<String> possibleValues(bqb<S> var1);
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
 
-   static <S> bqe<S> b() {
-      return $$0 -> Stream.empty();
-   }
+   void a();
+
+   boolean b();
 }

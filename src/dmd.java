@@ -1,79 +1,59 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class dmd extends dmc implements dup {
+public class dmd extends dlq {
    public static final MapCodec<dmd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
-            .apply($$0, dmd::new)
+      $$0 -> $$0.group(alp.d(dlt.ai), alp.d(dlt.aj), alp.d(dlt.ak), alp.d(dlt.al), alp.d(dlt.am)).apply($$0, $$0.stable(dmd::new))
    );
-   public static final ebx c = ebw.I;
-   public static final ece<jc> d = ebw.R;
-   private final float e;
-   private final float f;
-   private final Map<jc, fgm> g;
+   private final jg<dlm> c;
+   private final jg<dlm> d;
+   private final jg<dlm> e;
+   private final jg<dlm> f;
+   private final jg<dlm> g;
+
+   public static dmd a(jh<dlm> $$0) {
+      return new dmd($$0.b(dlt.ai), $$0.b(dlt.aj), $$0.b(dlt.ak), $$0.b(dlt.al), $$0.b(dlt.am));
+   }
+
+   private dmd(jg<dlm> $$0, jg<dlm> $$1, jg<dlm> $$2, jg<dlm> $$3, jg<dlm> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
 
    @Override
-   public MapCodec<dmd> a() {
+   protected Stream<jg<dlm>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
+
+   @Override
+   protected MapCodec<? extends dlq> a() {
       return b;
    }
 
-   public dmd(float $$0, float $$1, ebf.d $$2) {
-      super($$2);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, jc.b));
-      this.g = fgj.d(dne.c((double)$$1, (double)(16.0F - $$0), 16.0));
-      this.e = $$0;
-      this.f = $$1;
-   }
-
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return this.g.get($$0.c(d));
-   }
-
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      jc $$3 = $$0.c(d);
-      iw $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).c($$1, $$4, $$3);
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
+   public jg<dlm> getNoiseBiome(int $$0, int $$1, int $$2, dlv.f $$3) {
+      int $$4 = jr.c($$0);
+      int $$5 = jr.c($$1);
+      int $$6 = jr.c($$2);
+      int $$7 = jz.a($$4);
+      int $$8 = jz.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (jz.a($$4) * 2 + 1) * 8;
+         int $$10 = (jz.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new ehi.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
+         }
       }
-
-      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Nullable
-   @Override
-   public ebg a(ddt $$0) {
-      dka $$1 = $$0.q();
-      iw $$2 = $$0.a();
-      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == exr.c)).b(d, $$0.k());
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected exq b_(ebg $$0) {
-      return $$0.c(c) ? exr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(c, d);
    }
 }

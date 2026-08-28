@@ -1,26 +1,63 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import javax.annotation.Nullable;
 
-public class gcn implements gcs {
-   private final fyu a;
+public abstract class gcn extends fzq {
+   private static final int b = 100;
+   private final xg c;
+   @Nullable
+   private final xg d;
+   private final xg s;
+   @Nullable
+   protected fua a;
+   @Nullable
+   private fuj u;
+   private final fxk v;
 
-   public gcn(fyu $$0) {
-      this.a = $$0;
+   protected gcn(xg $$0, xg $$1, xg $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected gcn(xg $$0, xg $$1, @Nullable xg $$2, xg $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.s = $$3;
+      this.v = new fxk(0, 0, this.n, this.o);
+   }
+
+   protected abstract fxn m();
+
+   @Override
+   protected void aT_() {
+      fxq $$0 = this.v.a(fxq.d().a(8));
+      $$0.c().b();
+      $$0.a(new fvf(this.n(), this.p));
+      this.u = $$0.a(new fuj(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.u.b(false);
+      fxq $$1 = $$0.a(fxq.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(fua.a(this.d, this.p).a());
+      }
+
+      $$1.a(this.m());
+      this.v.a($$1x -> {
+         ftw var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
+   protected void c() {
+      if (this.u != null) {
+         this.u.d(this.n - 100);
       }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+      this.v.a();
+      fxk.a(this.v, this.J());
+   }
 
-      return $$6;
+   @Override
+   public xg i() {
+      return this.s;
    }
 }

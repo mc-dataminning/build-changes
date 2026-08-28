@@ -2,58 +2,67 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Set;
 
 public class bju extends DataFix {
-   private final String a;
-   private final Map<String, String> b;
+   private static final Set<String> a = Set.of(
+      "minecraft:horse",
+      "minecraft:skeleton_horse",
+      "minecraft:zombie_horse",
+      "minecraft:donkey",
+      "minecraft:mule",
+      "minecraft:camel",
+      "minecraft:llama",
+      "minecraft:trader_llama"
+   );
+   private static final Set<String> b = Set.of("minecraft:pig", "minecraft:strider");
+   private static final String c = "Saddle";
+   private static final String d = "saddle";
 
-   public bju(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bju(Schema $$0) {
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.b(), this.a());
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bjm.D);
+      OpticFinder<Pair<String, ?>> $$1 = DSL.typeFinder($$0);
+      Type<?> $$2 = this.getInputSchema().getType(bjm.D);
+      Type<?> $$3 = this.getOutputSchema().getType(bjm.D);
+      Type<?> $$4 = bbq.a($$2, $$2, $$3);
+      return this.fixTypeEverywhereTyped("SaddleEquipmentSlotFix", $$2, $$3, $$3x -> {
+         String $$4x = $$3x.getOptional($$1).<String>map(Pair::getFirst).map(blh::a).orElse("");
+         Typed<?> $$5 = bbq.a($$4, $$3x);
+         if (a.contains($$4x)) {
+            return ag.a($$5, $$3, bju::a);
+         } else {
+            return b.contains($$4x) ? ag.a($$5, $$3, bju::b) : bbq.a($$3, $$3x);
+         }
+      });
    }
 
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getOutputSchema().getType(bjd.J);
-      Type<?> $$1 = this.getInputSchema().getType(bjd.J);
-      OpticFinder<?> $$2 = $$1.findField("CriteriaType");
-      TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
-         .findChoiceType("type", -1)
-         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
-      Type<?> $$4 = (Type<?>)$$3.types().get("minecraft:custom");
-      if ($$4 == null) {
-         throw new IllegalStateException("Failed to find custom criterion type variant");
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("SaddleItem").result().isEmpty() ? $$0 : c($$0.renameField("SaddleItem", "saddle"));
+   }
+
+   private static Dynamic<?> b(Dynamic<?> $$0) {
+      boolean $$1 = $$0.get("Saddle").asBoolean(false);
+      $$0 = $$0.remove("Saddle");
+      if (!$$1) {
+         return $$0;
       } else {
-         OpticFinder<?> $$5 = DSL.namedChoice("minecraft:custom", $$4);
-         OpticFinder<String> $$6 = DSL.fieldFinder("id", bky.a());
-         return this.fixTypeEverywhereTyped(
-            this.a,
-            $$1,
-            $$0,
-            $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$5, $$1xxx -> $$1xxx.update($$6, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
-         );
+         Dynamic<?> $$2 = $$0.emptyMap().set("id", $$0.createString("minecraft:saddle")).set("count", $$0.createInt(1));
+         return c($$0.set("saddle", $$2));
       }
    }
 
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getOutputSchema().getType(bjd.g);
-      Type<?> $$1 = this.getInputSchema().getType(bjd.g);
-      OpticFinder<?> $$2 = $$1.findField("stats");
-      OpticFinder<?> $$3 = $$2.type().findField("minecraft:custom");
-      OpticFinder<String> $$4 = bky.a().finder();
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$1,
-         $$0,
-         $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$3, $$1xxx -> $$1xxx.update($$4, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
-      );
+   private static Dynamic<?> c(Dynamic<?> $$0) {
+      Dynamic<?> $$1 = $$0.get("drop_chances").orElseEmptyMap().set("saddle", $$0.createFloat(2.0F));
+      return $$0.set("drop_chances", $$1);
    }
 }

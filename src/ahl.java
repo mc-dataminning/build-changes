@@ -1,30 +1,34 @@
-public record ahl(int b, int c, boolean d) implements zj<agt> {
-   public static final za<vy, ahl> a = zj.a(ahl::a, ahl::new);
+public class ahl implements zo<aha> {
+   public static final ze<vy, ahl> a = zo.a(ahl::a, ahl::new);
+   private final ahl.a b;
+
+   public ahl(ahl.a $$0) {
+      this.b = $$0;
+   }
 
    private ahl(vy $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+      this.b = $$0.b(ahl.a.class);
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+      $$0.a(this.b);
    }
 
    @Override
-   public zl<ahl> a() {
-      return agr.bB;
+   public zq<ahl> a() {
+      return agy.bu;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public ahl.a b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.d;
+   public static enum a {
+      a,
+      b;
    }
 }

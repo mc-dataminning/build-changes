@@ -1,101 +1,104 @@
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.Map.Entry;
 
-public class fsv implements mo {
-   private static final alk d = alk.b("trims/color_palettes/trim_palette");
-   private static final Map<String, alk> e = c().collect(Collectors.toMap(dim.a::a, $$0 -> alk.b("trims/color_palettes/" + $$0.a())));
-   private static final List<alj<dip>> f = List.of(
-      diq.a, diq.b, diq.c, diq.d, diq.e, diq.f, diq.g, diq.h, diq.i, diq.j, diq.k, diq.l, diq.m, diq.n, diq.o, diq.p, diq.q, diq.r
-   );
-   private static final List<hni.d> g = List.of(hni.d.a, hni.d.b);
-   private final mq.a h;
-
-   public fsv(mq $$0) {
-      this.h = $$0.a(mq.b.b, "atlases");
+public class fsv {
+   public static hhf.b a(alr $$0) {
+      return new hgz.a($$0, List.of());
    }
 
-   private static List<alk> b() {
-      List<alk> $$0 = new ArrayList<>(f.size() * g.size());
-
-      for (alj<dip> $$1 : f) {
-         alk $$2 = diq.a($$1);
-
-         for (hni.d $$3 : g) {
-            $$0.add($$2.a((UnaryOperator<String>)($$1x -> $$3.a() + "/" + $$1x)));
-         }
-      }
-
-      return $$0;
+   public static hhf.b a(alr $$0, fsa... $$1) {
+      return new hgz.a($$0, List.of($$1));
    }
 
-   private static hlh a(hnj $$0) {
-      return new hlo($$0.b());
+   public static fsa a(int $$0) {
+      return new frv($$0);
    }
 
-   private static hlh a(gsb $$0) {
-      return new hll($$0.b(), $$0.b() + "/");
+   public static hhf.b a(hhf.b... $$0) {
+      return new hhc.a(List.of($$0));
    }
 
-   private static List<hlh> b(gsb $$0) {
-      return List.of(a($$0));
+   public static hhf.b a(alr $$0, hju.a $$1) {
+      return new hhn.a($$0, $$1);
    }
 
-   private static List<hlh> a(String $$0) {
-      return List.of(new hll($$0, ""));
+   public static hhl.a a(hhf.b $$0, float $$1) {
+      return new hhl.a($$1, $$0);
    }
 
-   private static Stream<dim.a> c() {
-      return fsy.e.stream().map(fsy.a::a).flatMap($$0 -> Stream.concat(Stream.of($$0.a()), $$0.b().values().stream())).sorted(Comparator.comparing(dim.a::a));
+   public static hhf.b a(hiq $$0, hhf.b $$1, hhl.a... $$2) {
+      return new hhl.b($$0, 1.0F, List.of($$2), Optional.of($$1));
    }
 
-   private static List<hlh> d() {
-      return List.of(new hln(b(), d, e));
+   public static hhf.b a(hiq $$0, float $$1, hhf.b $$2, hhl.a... $$3) {
+      return new hhl.b($$0, $$1, List.of($$3), Optional.of($$2));
    }
 
-   private static List<hlh> e() {
-      return List.of(a(gsw.j), a(gsw.i), a(gux.a), a(gun.a), a(gsw.A), a(guz.a), new hln(List.of(fsy.a, fsy.b, fsy.c, fsy.d), d, e));
+   public static hhf.b a(hiq $$0, hhf.b $$1, List<hhl.a> $$2) {
+      return new hhl.b($$0, 1.0F, $$2, Optional.of($$1));
    }
 
-   private static List<hlh> f() {
-      return List.of(a(hnm.f), a(gsw.k));
+   public static hhf.b a(hiq $$0, List<hhl.a> $$1) {
+      return new hhl.b($$0, 1.0F, $$1, Optional.empty());
    }
 
-   private static List<hlh> g() {
-      return List.of(a(hnm.g), a(hnm.h), a(gsw.l));
+   public static hhf.b a(hiq $$0, float $$1, List<hhl.a> $$2) {
+      return new hhl.b($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public CompletableFuture<?> a(mm $$0) {
-      return CompletableFuture.allOf(
-         this.a($$0, hnb.a, d()),
-         this.a($$0, hnb.b, f()),
-         this.a($$0, hnb.c, b(gsw.o)),
-         this.a($$0, hnb.d, e()),
-         this.a($$0, hnb.e, b(gsw.m)),
-         this.a($$0, hnb.f, b(gsw.n)),
-         this.a($$0, hnb.g, a("gui/sprites")),
-         this.a($$0, hnb.h, a("map/decorations")),
-         this.a($$0, hnb.i, a("mob_effect")),
-         this.a($$0, hnb.j, a("painting")),
-         this.a($$0, hnb.k, a("particle")),
-         this.a($$0, hnb.l, g()),
-         this.a($$0, hnb.m, b(gsw.p)),
-         this.a($$0, hnb.n, b(gsw.q))
-      );
+   public static hhf.b a(hht $$0, hhf.b $$1, hhf.b $$2) {
+      return new hhd.a($$0, $$1, $$2);
    }
 
-   private CompletableFuture<?> a(mm $$0, alk $$1, List<hlh> $$2) {
-      return mo.a($$0, hlj.b, $$2, this.h.a($$1));
+   public static <T> hhm.b<T> a(T $$0, hhf.b $$1) {
+      return new hhm.b<>(List.of($$0), $$1);
    }
 
-   @Override
-   public String a() {
-      return "Atlas Definitions";
+   public static <T> hhm.b<T> a(List<T> $$0, hhf.b $$1) {
+      return new hhm.b<>($$0, $$1);
+   }
+
+   @SafeVarargs
+   public static <T> hhf.b a(hjg<T> $$0, hhf.b $$1, hhm.b<T>... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T> hhf.b a(hjg<T> $$0, hhf.b $$1, List<hhm.b<T>> $$2) {
+      return new hhm.c(new hhm.d<>($$0, $$2), Optional.of($$1));
+   }
+
+   @SafeVarargs
+   public static <T> hhf.b a(hjg<T> $$0, hhm.b<T>... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   public static <T> hhf.b a(hjg<T> $$0, List<hhm.b<T>> $$1) {
+      return new hhm.c(new hhm.d<>($$0, $$1), Optional.empty());
+   }
+
+   public static hht a() {
+      return new hic();
+   }
+
+   public static hht a(kk<?> $$0) {
+      return new hhy($$0, false);
+   }
+
+   public static hhf.b a(hhf.b $$0, hhf.b $$1) {
+      return a(new hiy(), $$1, a(dkj.i, $$0));
+   }
+
+   public static <T extends Comparable<T>> hhf.b a(ect<T> $$0, hhf.b $$1, Map<T, hhf.b> $$2) {
+      List<hhm.b<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
+         String $$2x = $$0.b((T)$$1x.getKey());
+         return new hhm.b<>(List.of($$2x), (hhf.b)$$1x.getValue());
+      }).toList();
+      return a(new hjc($$0.f()), $$1, $$3);
+   }
+
+   public static hhf.b b(hhf.b $$0, hhf.b $$1) {
+      return a(hjd.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
    }
 }

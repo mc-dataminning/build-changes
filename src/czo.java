@@ -1,75 +1,78 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-
-public class czo extends czw {
-   private static final xc a = xc.c("painting.random").a(o.h);
-   private final bxe<? extends cnw> b;
-
-   public czo(bxe<? extends cnw> $$0, czw.a $$1) {
-      super($$1);
-      this.b = $$0;
+public class czo extends dag {
+   public czo(dag.a $$0) {
+      super($$0);
    }
 
    @Override
-   public but a(ddv $$0) {
-      iw $$1 = $$0.a();
-      jc $$2 = $$0.k();
-      iw $$3 = $$1.a($$2);
-      crz $$4 = $$0.o();
-      daa $$5 = $$0.n();
-      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
-         return but.d;
+   public bvc a(def $$0) {
+      dkj $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebq $$3 = $$1.a_($$2);
+      if (!$$3.a(dnq.fX) || $$3.c(dqf.c)) {
+         return bvc.e;
+      } else if ($$1.C) {
+         return bvc.a;
       } else {
-         djz $$6 = $$0.q();
-         cnw $$8;
-         if (this.b == bxe.aL) {
-            Optional<cnz> $$7 = cnz.a($$6, $$3, $$2);
-            if ($$7.isEmpty()) {
-               return but.c;
+         ebq $$4 = $$3.b(dqf.c, Boolean.valueOf(true));
+         dno.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.b($$2, dnq.fX);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         ebv.b $$5 = dqf.b().a($$1, $$2);
+         if ($$5 != null) {
+            iw $$6 = $$5.a().b(-3, 0, -3);
+
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  iw $$9 = $$6.b($$7, 0, $$8);
+                  $$1.a($$9, true, null);
+                  $$1.a($$9, dnq.fW.m(), 2);
+               }
             }
 
-            $$8 = $$7.get();
-         } else if (this.b == bxe.at) {
-            $$8 = new cnx($$6, $$3, $$2);
-         } else {
-            if (this.b != bxe.ag) {
-               return but.a;
-            }
-
-            $$8 = new cnv($$6, $$3, $$2);
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
 
-         bxe.<cnw>a($$6, $$5, $$4).accept($$8);
-         if ($$8.g()) {
-            if (!$$6.C) {
-               $$8.v();
-               $$6.a($$4, egg.t, $$8.dt());
-               $$6.b($$8);
-            }
-
-            $$5.h(1);
-            return but.a;
-         } else {
-            return but.c;
-         }
+         return bvc.a;
       }
    }
 
-   protected boolean a(crz $$0, jc $$1, daa $$2, iw $$3) {
-      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   @Override
+   public int a(dak $$0, byf $$1) {
+      return 0;
    }
 
    @Override
-   public void a(daa $$0, czw.b $$1, dde $$2, Consumer<xc> $$3, dbp $$4) {
-      if (this.b == bxe.aL && $$2.a(kl.aM)) {
-         jg<coa> $$5 = $$0.a(kl.aM);
-         if ($$5 != null) {
-            $$5.a().e().ifPresent($$3);
-            $$5.a().f().ifPresent($$3);
-            $$3.accept(xc.a("painting.dimensions", $$5.a().b(), $$5.a().c()));
-         } else if ($$4.b()) {
-            $$3.accept(a);
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      ffy $$4 = a($$0, $$1, djq.b.a);
+      if ($$4.d() == fga.a.b && $$0.a_($$4.b()).a(dnq.fX)) {
+         return bvc.e;
+      } else {
+         $$1.c($$2);
+         if ($$0 instanceof asb $$5) {
+            iw $$6 = $$5.a(axy.a, $$1.dv(), 100, false);
+            if ($$6 == null) {
+               return bvc.c;
+            }
+
+            csw $$7 = new csw($$0, $$1.dA(), $$1.e(0.5), $$1.dG());
+            $$7.a($$3);
+            $$7.a($$6);
+            $$0.a(egq.K, $$7.dt(), egq.a.a($$1));
+            $$0.b($$7);
+            if ($$1 instanceof asc $$8) {
+               aq.n.a($$8, $$6);
+            }
+
+            float $$9 = azz.h($$0.A.i(), 0.33F, 0.5F);
+            $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.iG, awz.g, 1.0F, $$9);
+            $$3.a(1, $$1);
+            $$1.b(axi.c.b(this));
          }
+
+         return bvc.b;
       }
    }
 }

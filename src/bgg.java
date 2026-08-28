@@ -1,38 +1,64 @@
-import com.google.common.collect.Streams;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class bgg extends bhy {
-   private final String a;
-   private final boolean b;
+public class bgg extends DataFix {
+   private static final String a = "minecraft:empty";
 
-   public bgg(Schema $$0, String $$1, String $$2, boolean $$3) {
-      super($$0, true, "Horse armor fix for " + $$1, bjd.D, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public bgg(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get(this.a).result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Dynamic<T> $$3 = $$0.remove(this.a);
-         if (this.b) {
-            $$3 = $$3.update(
-               "ArmorItems", $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.emptyMap() : $$0xx))
-            );
-            $$3 = $$3.update(
-               "ArmorDropChances",
-               $$0x -> $$0x.createList(Streams.mapWithIndex($$0x.asStream(), ($$0xx, $$1x) -> $$1x == 2L ? $$0xx.createFloat(0.085F) : $$0xx))
-            );
-         }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.D);
+      Type<?> $$1 = this.getOutputSchema().getType(bjm.D);
+      return this.fixTypeEverywhereTyped(
+         "Fix AbstractArrow item type",
+         $$0,
+         $$1,
+         bbq.a(this.a("minecraft:trident", bgg::c), this.a("minecraft:arrow", bgg::a), this.a("minecraft:spectral_arrow", bgg::b))
+      );
+   }
 
-         $$3 = $$3.set("body_armor_item", $$2);
-         return $$3.set("body_armor_drop_chance", $$0.createFloat(2.0F));
-      } else {
-         return $$0;
-      }
+   private Function<Typed<?>, Typed<?>> a(String $$0, bgg.a<?> $$1) {
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bjm.D, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bjm.D, $$0);
+      return a($$0, $$1, $$2, $$3);
+   }
+
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, bgg.a<?> $$1, Type<?> $$2, Type<T> $$3) {
+      OpticFinder<?> $$4 = DSL.namedChoice($$0, $$2);
+      return $$3x -> $$3x.updateTyped($$4, $$3, $$2xx -> $$1.fix($$2xx, $$3));
+   }
+
+   private static <T> Typed<T> a(Typed<?> $$0, Type<T> $$1) {
+      return ag.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, a($$0x))));
+   }
+
+   private static String a(Dynamic<?> $$0) {
+      return $$0.get("Potion").asString("minecraft:empty").equals("minecraft:empty") ? "minecraft:arrow" : "minecraft:tipped_arrow";
+   }
+
+   private static <T> Typed<T> b(Typed<?> $$0, Type<T> $$1) {
+      return ag.a($$0, $$1, $$0x -> $$0x.set("item", a($$0x, "minecraft:spectral_arrow")));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("id"), $$0.createString($$1), $$0.createString("Count"), $$0.createInt(1)));
+   }
+
+   private static <T> Typed<T> c(Typed<?> $$0, Type<T> $$1) {
+      return new Typed($$1, $$0.getOps(), $$0.getValue());
+   }
+
+   interface a<F> {
+      Typed<F> fix(Typed<?> var1, Type<F> var2);
    }
 }

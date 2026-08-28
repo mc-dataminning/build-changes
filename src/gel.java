@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface gel {
-   int currentIndex();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gel {
 }

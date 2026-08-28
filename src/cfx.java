@@ -1,45 +1,47 @@
-import java.util.EnumSet;
+public class cfx extends cfb {
+   private final cme a;
+   private int b;
 
-public class cfx extends ces {
-   private final bys a;
-
-   public cfx(bys $$0) {
+   public cfx(cme $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ces.a.c, ces.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.gu();
-   }
-
-   @Override
-   public boolean b() {
-      boolean $$0 = this.a.gu();
-      if (!$$0 && !this.a.q()) {
-         return false;
-      } else if (this.a.bi()) {
-         return false;
-      } else if (!this.a.aH()) {
-         return false;
-      } else {
-         bxw $$1 = this.a.e();
-         if ($$1 == null) {
-            return true;
-         } else {
-            return this.a.g((bwv)$$1) < 144.0 && $$1.er() != null ? false : $$0;
-         }
-      }
+      this.a($$0);
    }
 
    @Override
    public void d() {
-      this.a.O().m();
-      this.a.x(true);
+      this.a.gZ();
+      this.h();
+   }
+
+   private void h() {
+      awx $$0 = this.a.gY();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void e() {
-      this.a.x(false);
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
+      this.b++;
+      if (this.b > 0 && this.a.dY().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fg() && this.a.dY().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(cme $$0) {
+      this.b = -$$0.hd();
+   }
+
+   @Override
+   public boolean W_() {
+      return true;
    }
 }

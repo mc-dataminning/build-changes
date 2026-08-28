@@ -1,159 +1,108 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ebh<O, S extends ebi<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, ecj<?>> c;
-   private final ImmutableList<S> d;
-
-   protected ebh(Function<O, S> $$0, O $$1, ebh.b<O, S> $$2, Map<String, ecj<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, ecj<?>> $$6 = (Entry<String, ecj<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<ecj<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<ecj<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         ecj<?> $$11 = (ecj<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<ecj<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<ecj<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<ecj<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((ecj)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
-   }
-
-   private static <S extends ebi<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, ecj<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (ebi)((ebi)$$1x.getFirst()).b($$3, ((ecj.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<ecj<?>> d() {
-      return this.c.values();
-   }
+public class ebh extends dna {
+   public static final MapCodec<ebh> a = b(ebh::new);
+   public static final eco<jc> b = ebj.a;
+   public static final eco<ecs> c = ebj.c;
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(ecj::f).collect(Collectors.toList()))
-         .toString();
+   public MapCodec<ebh> a() {
+      return a;
+   }
+
+   public ebh(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jc.c).b(c, ecs.a));
    }
 
    @Nullable
-   public ecj<?> a(String $$0) {
-      return (ecj<?>)this.c.get($$0);
+   @Override
+   public dyo a(iw $$0, ebq $$1) {
+      return null;
    }
 
-   public static class a<O, S extends ebi<O, S>> {
-      private final O a;
-      private final Map<String, ecj<?>> b = Maps.newHashMap();
+   public static dyo a(iw $$0, ebq $$1, ebq $$2, jc $$3, boolean $$4, boolean $$5) {
+      return new ebl($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   @Override
+   public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
+      return a($$2, dyq.l, ebl::a);
+   }
 
-      public ebh.a<O, S> a(ecj<?>... $$0) {
-         for (ecj<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(ecj<T> $$0) {
-         String $$1 = $$0.f();
-         if (!ebh.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.b($$3);
-                  if (!ebh.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
-            }
-         }
-      }
-
-      public ebh<O, S> a(Function<O, S> $$0, ebh.b<O, S> $$1) {
-         return new ebh<>($$0, this.a, $$1, this.b);
+   @Override
+   public void a(dkk $$0, iw $$1, ebq $$2) {
+      iw $$3 = $$1.a($$2.c(b).g());
+      ebq $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof ebi && $$4.c(ebi.c)) {
+         $$0.a($$3, false);
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<ecj<?>, Comparable<?>> var2, MapCodec<S> var3);
+   @Override
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if (!$$1.C && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bvc.c;
+      } else {
+         return bvc.e;
+      }
+   }
+
+   @Override
+   protected List<dak> a(ebq $$0, faw.a $$1) {
+      ebl $$2 = this.a($$1.a(), iw.a($$1.a(fdn.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   }
+
+   @Override
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return fgt.a();
+   }
+
+   @Override
+   protected fgw b(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      ebl $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : fgt.a();
+   }
+
+   @Nullable
+   private ebl a(djn $$0, iw $$1) {
+      dyo $$2 = $$0.c_($$1);
+      return $$2 instanceof ebl ? (ebl)$$2 : null;
+   }
+
+   @Override
+   protected dub a_(ebq $$0) {
+      return dub.a;
+   }
+
+   @Override
+   protected dak a(dkm $$0, iw $$1, ebq $$2, boolean $$3) {
+      return dak.l;
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 }

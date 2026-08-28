@@ -1,27 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class hco extends hcj<hgb, gjm> {
+   private final gjm a;
 
-public class hco extends hcy<hfl, gis> {
-   private static final Map<bwr.a, alk> a = ImmutableMap.of(
-      bwr.a.b,
-      alk.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bwr.a.c,
-      alk.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bwr.a.d,
-      alk.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public hco(hah<hfl, gis> $$0) {
+   public hco(gzs<hgb, gjm> $$0, gkn $$1) {
       super($$0);
+      this.a = new gjm($$1.a(gkq.dh));
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hfl $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bwr.a $$6 = $$3.c;
-         if ($$6 != bwr.a.a) {
-            alk $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+   public void a(fld $$0, grn $$1, int $$2, hgb $$3, float $$4, float $$5) {
+      boolean $$6 = $$3.ar && $$3.A;
+      if (!$$3.A || $$6) {
+         flg $$7;
+         if ($$6) {
+            $$7 = $$1.getBuffer(gry.s(gzz.a));
+         } else {
+            $$7 = $$1.getBuffer(gry.j(gzz.a));
          }
+
+         this.a.a($$3);
+         this.a.a($$0, $$7, $$2, gyw.a($$3, 0.0F));
       }
    }
 }

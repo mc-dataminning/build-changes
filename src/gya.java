@@ -1,43 +1,41 @@
-public class gya<T extends clu> extends gxa<T, hen, ghw> {
-   private final alk a;
+import java.util.List;
 
-   public gya(gyk.a $$0, gya.a $$1) {
-      super($$0, new ghw($$0.a($$1.d)), new ghw($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hdb<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gid($$0.a($$1.g)), new gid($$0.a($$1.h))));
+public class gya extends gxu<com, heh> {
+   private final gsq a;
+
+   public gya(gxv.a $$0) {
+      super($$0);
+      this.e = 0.5F;
+      this.a = $$0.d();
    }
 
-   public alk a(hen $$0) {
-      return this.a;
+   public boolean a(com $$0, gvh $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.j() != $$0.dV().a_($$0.dv());
    }
 
-   public hen a() {
-      return new hen();
-   }
-
-   public void a(T $$0, hen $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-   }
-
-   public static enum a {
-      a(alk.b("textures/entity/horse/donkey.png"), glf.az, glf.aA, hni.d.k, glf.aB, glf.aC),
-      b(alk.b("textures/entity/horse/mule.png"), glf.bP, glf.bQ, hni.d.l, glf.bR, glf.bS);
-
-      final alk c;
-      final gle d;
-      final gle e;
-      final hni.d f;
-      final gle g;
-      final gle h;
-
-      private a(final alk $$0, final gle $$1, final gle $$2, final hni.d $$3, final gle $$4, final gle $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+   public void a(heh $$0, fld $$1, grn $$2, int $$3) {
+      ebq $$4 = $$0.c;
+      if ($$4.o() == dub.b) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         List<gsz> $$5 = this.a.a($$4).a(bai.a($$4.b($$0.a)));
+         this.a.b().a($$0, $$5, $$4, $$0.b, $$1, $$2.getBuffer(grf.b($$4)), false, hkg.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
+   }
+
+   public heh a() {
+      return new heh();
+   }
+
+   public void a(com $$0, heh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      iw $$3 = iw.a($$0.dA(), $$0.cR().e, $$0.dG());
+      $$1.a = $$0.f();
+      $$1.b = $$3;
+      $$1.c = $$0.j();
+      $$1.d = $$0.dV().u($$3);
+      $$1.e = $$0.dV();
    }
 }

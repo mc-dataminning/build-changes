@@ -1,89 +1,193 @@
-import java.util.List;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class edy<T> implements edt<T> {
-   private final jl<T> a;
-   @Nullable
-   private T b;
-   private final edu<T> c;
+public class edy {
+   public static final int a = 16;
+   public static final int b = 16;
+   public static final int c = 4096;
+   public static final int d = 2;
+   private short e;
+   private short f;
+   private short g;
+   private final eef<ebq> h;
+   private eeg<jg<dlm>> i;
 
-   public edy(jl<T> $$0, edu<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
+   private edy(edy $$0) {
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h.d();
+      this.i = $$0.i.d();
    }
 
-   public static <A> edt<A> a(int $$0, jl<A> $$1, edu<A> $$2, List<A> $$3) {
-      return new edy<>($$1, $$2, $$3);
+   public edy(eef<ebq> $$0, eeg<jg<dlm>> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.g();
    }
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
+   public edy(jt<dlm> $$0) {
+      this.h = new eef<>(dno.k, dnq.a.m(), eef.d.d);
+      this.i = new eef<>($$0.t(), $$0.b(dlt.b), eef.d.e);
+   }
+
+   public ebq a(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2);
+   }
+
+   public eya b(int $$0, int $$1, int $$2) {
+      return this.h.a($$0, $$1, $$2).y();
+   }
+
+   public void a() {
+      this.h.a();
+   }
+
+   public void b() {
+      this.h.b();
+   }
+
+   public ebq a(int $$0, int $$1, int $$2, ebq $$3) {
+      return this.a($$0, $$1, $$2, $$3, true);
+   }
+
+   public ebq a(int $$0, int $$1, int $$2, ebq $$3, boolean $$4) {
+      ebq $$5;
+      if ($$4) {
+         $$5 = this.h.a($$0, $$1, $$2, $$3);
       } else {
-         this.b = $$0;
-         return 0;
+         $$5 = this.h.b($$0, $$1, $$2, $$3);
       }
+
+      eya $$7 = $$5.y();
+      eya $$8 = $$3.y();
+      if (!$$5.l()) {
+         this.e--;
+         if ($$5.z()) {
+            this.f--;
+         }
+      }
+
+      if (!$$7.c()) {
+         this.g--;
+      }
+
+      if (!$$3.l()) {
+         this.e++;
+         if ($$3.z()) {
+            this.f++;
+         }
+      }
+
+      if (!$$8.c()) {
+         this.g++;
+      }
+
+      return $$5;
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
+   public boolean c() {
+      return this.e == 0;
    }
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
+   public boolean d() {
+      return this.e() || this.f();
    }
 
-   @Override
+   public boolean e() {
+      return this.f > 0;
+   }
+
+   public boolean f() {
+      return this.g > 0;
+   }
+
+   public void g() {
+      class a implements eef.b<ebq> {
+         public int a;
+         public int b;
+         public int c;
+
+         public void a(ebq $$0, int $$1) {
+            eya $$2 = $$0.y();
+            if (!$$0.l()) {
+               this.a += $$1;
+               if ($$0.z()) {
+                  this.b += $$1;
+               }
+            }
+
+            if (!$$2.c()) {
+               this.a += $$1;
+               if ($$2.f()) {
+                  this.c += $$1;
+               }
+            }
+         }
+      }
+
+      a $$0 = new a();
+      this.h.a($$0);
+      this.e = (short)$$0.a;
+      this.f = (short)$$0.b;
+      this.g = (short)$$0.c;
+   }
+
+   public eef<ebq> h() {
+      return this.h;
+   }
+
+   public eeg<jg<dlm>> i() {
+      return this.i;
+   }
+
    public void a(vy $$0) {
-      this.b = this.a.b($$0.l());
+      this.e = $$0.readShort();
+      this.h.a($$0);
+      eef<jg<dlm>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
    }
 
-   @Override
    public void b(vy $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
+      eef<jg<dlm>> $$1 = this.i.e();
+      $$1.a($$0);
+      this.i = $$1;
    }
 
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wt.a(this.a.a(this.b));
-      }
+   public void c(vy $$0) {
+      $$0.m(this.e);
+      this.h.b($$0);
+      this.i.b($$0);
    }
 
-   @Override
-   public int b() {
-      return 1;
+   public int j() {
+      return 2 + this.h.c() + this.i.c();
    }
 
-   @Override
-   public edt<T> a(edu<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
+   public boolean a(Predicate<ebq> $$0) {
+      return this.h.a($$0);
+   }
+
+   public jg<dlm> c(int $$0, int $$1, int $$2) {
+      return this.i.a($$0, $$1, $$2);
+   }
+
+   public void a(dlp $$0, dlv.f $$1, int $$2, int $$3, int $$4) {
+      eef<jg<dlm>> $$5 = this.i.e();
+      int $$6 = 4;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            for (int $$9 = 0; $$9 < 4; $$9++) {
+               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
+            }
+         }
       }
+
+      this.i = $$5;
+   }
+
+   public edy k() {
+      return new edy(this);
    }
 }

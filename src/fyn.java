@@ -1,88 +1,109 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public class fyn {
-   int a;
-   final Map<fyn.a, fyn.b> b = Maps.newTreeMap(Comparator.<fyn.a, fyj>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fyn extends fyo {
+   private static final xg d = xg.c("chat.copy");
+   private static final xg s = xg.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public void a(Consumer<fyk> $$0) {
-      this.a++;
-      $$0.accept(new fyn.c(0));
+   public fyn(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xg.b($$1), $$1, $$2 ? xf.e : xf.g, $$2);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
+   public fyn(BooleanConsumer $$0, xg $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xf.e : xf.g, $$3);
+   }
 
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
+   public fyn(BooleanConsumer $$0, xg $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
 
-            this.b = false;
-            $$1.append($$0);
+   public fyn(BooleanConsumer $$0, xg $$1, xg $$2, URI $$3, xg $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fyn(BooleanConsumer $$0, xg $$1, xg $$2, String $$3, xg $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xg)($$5 ? xg.c("chat.link.open") : xf.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xu a(boolean $$0, String $$1) {
+      return c($$0).b(xf.v).b(xg.b($$1));
+   }
+
+   protected static xu c(boolean $$0) {
+      return xg.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   }
+
+   @Override
+   protected void a(int $$0) {
+      this.c(fty.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fty.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fty.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
+   }
+
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
+   }
+
+   public static void a(fzq $$0, String $$1, boolean $$2) {
+      fqq $$3 = fqq.Q();
+      $$3.a(new fyn($$3x -> {
+         if ($$3x) {
+            ag.n().a($$1);
          }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+
+         $$3.a($$0);
+      }, $$1, $$2));
    }
 
-   static class a {
-      final fyj a;
-      final int b;
-
-      a(fyj $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-   }
-
-   static class b {
-      fym<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fym.a;
-         this.b = -1;
-      }
-
-      public fyn.b a(int $$0, fym<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
+   public static void a(fzq $$0, URI $$1, boolean $$2) {
+      fqq $$3 = fqq.Q();
+      $$3.a(new fyn($$3x -> {
+         if ($$3x) {
+            ag.n().a($$1);
          }
 
-         this.b = $$0;
-         return this;
-      }
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
    }
 
-   class c implements fyk {
-      private final int b;
+   public static void a(fzq $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
 
-      c(final int $$0) {
-         this.b = $$0;
-      }
+   public static void a(fzq $$0, String $$1) {
+      a($$0, $$1, true);
+   }
 
-      @Override
-      public void a(fyj $$0, fym<?> $$1) {
-         fyn.this.b.computeIfAbsent(new fyn.a($$0, this.b), $$0x -> new fyn.b()).a(fyn.this.a, $$1);
-      }
+   public static fty.c b(fzq $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
 
-      @Override
-      public fyk a() {
-         return fyn.this.new c(this.b + 1);
-      }
+   public static fty.c b(fzq $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fty.c b(fzq $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fty.c b(fzq $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

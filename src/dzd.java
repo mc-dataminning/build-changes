@@ -1,137 +1,246 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dzd {
-   private final Object2IntSortedMap<czw> a;
+public class dzd extends dzx implements cwt {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private static final int q = 0;
+   private static final int r = 0;
+   private jp<dak> s = jp.a(9, dak.l);
+   private int t = 0;
+   protected final cwn k = new cwn() {
+      private final int[] a = new int[9];
+      private int b = 0;
 
-   dzd(Object2IntSortedMap<czw> $$0) {
-      this.a = $$0;
-   }
-
-   public boolean a(daa $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<czw> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(daa $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dzd a(ji.a $$0, cvj $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dzd a(ji.a $$0, cvj $$1, int $$2) {
-      return new dzd.a($$0, $$1)
-         .a(dae.rq, $$2 * 100)
-         .a(dng.jd, $$2 * 8 * 10)
-         .a(dae.to, $$2 * 12)
-         .a(dae.pl, $$2 * 8)
-         .a(dae.pm, $$2 * 8)
-         .a(axo.r, $$2 * 3 / 2)
-         .a(axo.D, $$2 * 3 / 2)
-         .a(axo.b, $$2 * 3 / 2)
-         .a(dng.y, $$2 * 3 / 2)
-         .a(axo.i, $$2 * 3 / 2)
-         .a(dng.iw, $$2 * 3 / 2)
-         .a(axo.j, $$2 * 3 / 4)
-         .a(dng.kf, $$2 * 3 / 4)
-         .a(axo.n, $$2 * 3 / 2)
-         .a(axo.m, $$2 * 3 / 2)
-         .a(axo.k, $$2 * 3 / 2)
-         .a(axo.l, $$2 * 3 / 2)
-         .a(dng.bf, $$2 * 3 / 2)
-         .a(dng.cv, $$2 * 3 / 2)
-         .a(dng.cw, $$2 * 3 / 2)
-         .a(dng.oG, $$2 * 3 / 2)
-         .a(dng.ek, $$2 * 3 / 2)
-         .a(dng.cG, $$2 * 3 / 2)
-         .a(dng.hw, $$2 * 3 / 2)
-         .a(dng.cL, $$2 * 3 / 2)
-         .a(dng.hA, $$2 * 3 / 2)
-         .a(axo.F, $$2 * 3 / 2)
-         .a(dae.pj, $$2 * 3 / 2)
-         .a(dae.sd, $$2 * 3 / 2)
-         .a(dng.da, $$2 * 3 / 2)
-         .a(axo.aW, $$2)
-         .a(axo.bw, $$2 * 4)
-         .a(dae.pB, $$2)
-         .a(dae.pA, $$2)
-         .a(dae.pE, $$2)
-         .a(dae.pD, $$2)
-         .a(dae.pC, $$2)
-         .a(axo.h, $$2)
-         .a(axo.aT, $$2 * 6)
-         .a(axo.a, $$2 / 2)
-         .a(axo.d, $$2 / 2)
-         .a(dae.qe, $$2 / 2)
-         .a(axo.p, $$2 / 2)
-         .a(dae.ph, $$2 / 2)
-         .a(axo.g, 1 + $$2 / 3)
-         .a(dng.mK, 1 + $$2 * 20)
-         .a(dae.xg, $$2 * 3 / 2)
-         .a(dng.nF, $$2 / 4)
-         .a(dng.bC, $$2 / 2)
-         .a(dng.bE, $$2 / 2)
-         .a(dng.bF, $$2 / 2)
-         .a(dng.oy, $$2 / 4)
-         .a(dng.oz, $$2 * 3 / 2)
-         .a(dng.oA, $$2 * 3 / 2)
-         .a(dng.oD, $$2 * 3 / 2)
-         .a(dng.oE, $$2 * 3 / 2)
-         .a(dng.oH, $$2 * 3 / 2)
-         .a(dng.pK, $$2 * 3 / 2)
-         .a(dng.tg, $$2 / 2)
-         .a(dng.th, $$2 / 2)
-         .a(dng.ag, $$2 * 3 / 2)
-         .a(dng.tl, $$2 / 2)
-         .a(axo.aN)
-         .a();
-   }
-
-   public static class a {
-      private final ji<czw> a;
-      private final cvj b;
-      private final Object2IntSortedMap<czw> c = new Object2IntLinkedOpenHashMap();
-
-      public a(ji.a $$0, cvj $$1) {
-         this.a = $$0.e(mi.K);
-         this.b = $$1;
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.b : this.a[$$0];
       }
 
-      public dzd a() {
-         return new dzd(this.c);
-      }
-
-      public dzd.a a(axv<czw> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.e().a($$0));
-         return this;
-      }
-
-      public dzd.a a(axv<czw> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jg<czw> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dzd.a a(djy $$0, int $$1) {
-         czw $$2 = $$0.h();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, czw $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.b = $$1;
+         } else {
+            this.a[$$0] = $$1;
          }
       }
+
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
+
+   public dzd(iw $$0, ebq $$1) {
+      super(dyq.Q, $$0, $$1);
+   }
+
+   @Override
+   protected xg j() {
+      return xg.c("container.crafter");
+   }
+
+   @Override
+   protected cwb a(int $$0, csh $$1) {
+      return new cwr($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
+      }
+   }
+
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, dak $$1) {
+      if (this.k.a($$0) == 1) {
+         return false;
+      } else {
+         dak $$2 = this.s.get($$0);
+         int $$3 = $$2.M();
+         if ($$3 >= $$2.k()) {
+            return false;
+         } else {
+            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+         }
+      }
+   }
+
+   private boolean a(int $$0, dak $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            dak $$4 = this.a($$3);
+            if ($$4.f() || $$4.M() < $$0 && dak.c($$4, $$1)) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.t = $$0.b("crafting_ticks_remaining", 0);
+      this.s = jp.a(this.b(), dak.l);
+      if (!this.b_($$0)) {
+         buw.b($$0, this.s, $$1);
+      }
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.k.a($$2, 0);
+      }
+
+      $$0.k("disabled_slots").ifPresent($$0x -> {
+         for (int $$1x : $$0x) {
+            if (this.e($$1x)) {
+               this.k.a($$1x, 1);
+            }
+         }
+      });
+      this.k.a(9, $$0.b("triggered", 0));
+   }
+
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.t);
+      if (!this.b($$0)) {
+         buw.a($$0, this.s, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (dak $$0 : this.s) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public dak a(int $$0) {
+      return this.s.get($$0);
+   }
+
+   @Override
+   public void a(int $$0, dak $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(csi $$0) {
+      return buv.a(this, $$0);
+   }
+
+   @Override
+   public jp<dak> f() {
+      return this.s;
+   }
+
+   @Override
+   protected void a(jp<dak> $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public int aA_() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void fillStackedContents(cso $$0) {
+      for (dak $$1 : this.s) {
+         $$0.a($$1);
+      }
+   }
+
+   private void c(ua $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.a("disabled_slots", $$1.toIntArray());
+   }
+
+   private void d(ua $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean k() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(dkj $$0, iw $$1, ebq $$2, dzd $$3) {
+      int $$4 = $$3.t - 1;
+      if ($$4 >= 0) {
+         $$3.t = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.b(dpi.b, Boolean.valueOf(false)), 3);
+         }
+      }
+   }
+
+   public void d(int $$0) {
+      this.t = $$0;
+   }
+
+   public int s() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         dak $$2 = this.a($$1);
+         if (!$$2.f() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.s.get($$0).f();
    }
 }

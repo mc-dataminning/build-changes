@@ -1,28 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
 public class bvg {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+   public static final Codec<bvg> a = RecordCodecBuilder.create($$0 -> $$0.group(eiq.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bvg::new));
+   private final eiq b;
 
-   public static float a(bxw $$0, float $$1, bvk $$2, float $$3, float $$4) {
-      float $$5 = 2.0F + $$4 / 4.0F;
-      float $$6 = azq.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
-      float $$7 = $$6 / 25.0F;
-      daa $$8 = $$2.e();
-      float $$10;
-      if ($$8 != null && $$0.dV() instanceof aru $$9) {
-         $$10 = azq.a(dgp.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
-      } else {
-         $$10 = $$7;
-      }
-
-      float $$12 = 1.0F - $$10;
-      return $$1 * $$12;
+   public bvg(eiq $$0) {
+      this.b = $$0;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = azq.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   public bvg(long $$0, alr $$1) {
+      this(a($$0, Optional.of($$1)));
+   }
+
+   public bvg(long $$0, Optional<alr> $$1) {
+      this(a($$0, $$1));
+   }
+
+   private static eiq a(long $$0, Optional<alr> $$1) {
+      eie.a $$2 = eie.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
+      }
+
+      return new eiq($$2.a());
+   }
+
+   public static eie.a a(alr $$0) {
+      return eie.a($$0.toString());
+   }
+
+   public bai a() {
+      return this.b;
    }
 }

@@ -1,51 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record fdq(Optional<cv> b, iw c) implements fds {
-   private static final MapCodec<iw> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kb::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kb::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kb::w)
-            )
-            .apply($$0, iw::new)
-   );
-   public static final MapCodec<fdq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(fdq::c), g.forGetter(fdq::d)).apply($$0, fdq::new)
-   );
+public class fdq extends fds {
+   public static final MapCodec<fdq> a = a(fdq::new);
 
-   @Override
-   public fdt b() {
-      return fdu.n;
-   }
-
-   public boolean a(faj $$0) {
-      ffs $$1 = $$0.c(fdd.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   fdq(List<fec> $$0) {
+      super($$0, ag.b($$0));
    }
 
    @Override
-   public Set<bbb<?>> a() {
-      return Set.of(fdd.f);
+   public fed b() {
+      return fee.b;
    }
 
-   public static fds.a a(cv.a $$0) {
-      return () -> new fdq(Optional.of($$0.b()), iw.c);
+   public static fdq.a a(fec.a... $$0) {
+      return new fdq.a($$0);
    }
 
-   public static fds.a a(cv.a $$0, iw $$1) {
-      return () -> new fdq(Optional.of($$0.b()), $$1);
-   }
+   public static class a extends fds.a {
+      public a(fec.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<cv> c() {
-      return this.b;
-   }
+      @Override
+      public fdq.a or(fec.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public iw d() {
-      return this.c;
+      @Override
+      protected fec a(List<fec> $$0) {
+         return new fdq($$0);
+      }
    }
 }

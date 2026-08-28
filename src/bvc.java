@@ -1,60 +1,75 @@
-public class bvc {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = bau.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)bau.a / (double)this.b);
+public sealed interface bvc permits bvc.d, bvc.a, bvc.c, bvc.f {
+   bvc.d a = new bvc.d(bvc.e.b, bvc.b.b);
+   bvc.d b = new bvc.d(bvc.e.c, bvc.b.b);
+   bvc.d c = new bvc.d(bvc.e.a, bvc.b.b);
+   bvc.a d = new bvc.a();
+   bvc.c e = new bvc.c();
+   bvc.f f = new bvc.f();
+
+   default boolean a() {
+      return false;
    }
 
-   public float f() {
-      return this.b;
+   public static record a() implements bvc {
    }
 
-   public float g() {
-      return (float)this.c / (float)bau.b;
-   }
+   public static record b(boolean c, @Nullable dak d) {
+      static bvc.b a = new bvc.b(false, null);
+      static bvc.b b = new bvc.b(true, null);
 
-   public long h() {
-      return this.c;
-   }
+      public boolean a() {
+         return this.c;
+      }
 
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+      @Nullable
+      public dak b() {
+         return this.d;
       }
    }
 
-   public boolean a(bwv $$0) {
-      return !this.i() && !($$0 instanceof crz) && $$0.dd() <= 0;
+   public static record c() implements bvc {
+   }
+
+   public static record d(bvc.e g, bvc.b h) implements bvc {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public bvc.d a(dak $$0) {
+         return new bvc.d(this.g, new bvc.b(true, $$0));
+      }
+
+      public bvc.d b() {
+         return new bvc.d(this.g, bvc.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public dak d() {
+         return this.h.d;
+      }
+
+      public bvc.e e() {
+         return this.g;
+      }
+
+      public bvc.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements bvc {
    }
 }

@@ -4,24 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bom extends bky {
+public class bom extends blh {
    public bom(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
-      $$0.registerSimple($$1, "minecraft:horse");
-      $$0.registerSimple($$1, "minecraft:skeleton_horse");
-      $$0.registerSimple($$1, "minecraft:zombie_horse");
-      return $$1;
-   }
-
-   private static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("Items", DSL.list(bjd.t.in($$0)));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bjm.t, () -> DSL.optionalFields("id", bjm.F.in($$0), "components", bjm.w.in($$0)));
    }
 }

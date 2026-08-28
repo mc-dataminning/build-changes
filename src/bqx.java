@@ -1,45 +1,11 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import java.util.stream.Stream;
 
-public class bqx implements brb {
-   public static final bqx a = new bqx();
-
-   private bqx() {
-   }
+public interface bqx extends bqn<StringReader> {
+   Stream<alr> a();
 
    @Override
-   public List<brf> a(String $$0) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+   default Stream<String> possibleValues(bqk<StringReader> $$0) {
+      return this.a().map(alr::toString);
    }
 }

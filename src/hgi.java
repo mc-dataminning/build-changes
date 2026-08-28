@@ -1,3 +1,5 @@
-public class hgi extends hfr {
-   public ckn.a a = ckn.a.b;
+public class hgi extends hec {
+   public float a;
+   public float b;
+   public boolean c;
 }

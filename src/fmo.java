@@ -1,16 +1,13 @@
-public class fmo extends fmn {
-   private final xc a;
+import com.google.gson.annotations.SerializedName;
 
-   public fmo(xc $$0) {
+public class fmo extends fnf implements fmz {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public fmo(String $$0, String $$1) {
       this.a = $$0;
-   }
-
-   public fmo(String $$0) {
-      this(xc.b($$0));
-   }
-
-   @Override
-   public xc a() {
-      return xc.a("mco.upload.failed", this.a);
+      this.b = $$1;
    }
 }

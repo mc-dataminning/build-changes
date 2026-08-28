@@ -1,24 +1,53 @@
-import org.joml.Vector3f;
-
-public class goo extends gop<lu> {
-   protected goo(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lu $$7, gqh $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      Vector3f $$10 = $$7.b();
-      this.v = this.a($$10.x(), $$9);
-      this.w = this.a($$10.y(), $$9);
-      this.x = this.a($$10.z(), $$9);
+public class goo extends gpx {
+   goo(glo $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
-   public static class a implements gpp<lu> {
-      private final gqh a;
+   @Override
+   public gpb b() {
+      return gpb.b;
+   }
 
-      public a(gqh $$0) {
+   @Override
+   public float b(float $$0) {
+      return this.D * azz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gpa<md> {
+      private final gps a;
+
+      public a(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(lu $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goo($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goo $$8 = new goo($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gpa<md> {
+      private final gps a;
+
+      public b(gps $$0) {
+         this.a = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goo $$8 = new goo($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

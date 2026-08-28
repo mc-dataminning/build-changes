@@ -1,109 +1,313 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fai {
-   private static final Codec<fai> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fep.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               fep.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, fai::new)
-   );
-   public static final Codec<fai> a = Codec.either(Codec.INT, b).xmap($$0 -> (fai)$$0.map(fai::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
+public class fai implements Comparable<fai> {
+   public static final xg a = xg.c("selectWorld.select");
+   private final dkn b;
+   private final faj c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
    @Nullable
-   private final feo c;
-   @Nullable
-   private final feo d;
-   private final fai.b e;
-   private final fai.a f;
+   private xg i;
 
-   public Set<bbb<?>> a() {
-      Builder<bbb<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public fai(dkn $$0, faj $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   private fai(Optional<feo> $$0, Optional<feo> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public String a() {
+      return this.d;
    }
 
-   private fai(@Nullable feo $$0, @Nullable feo $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(fai $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
       } else {
-         this.e = ($$2, $$3) -> azq.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
       }
    }
 
-   public static fai a(int $$0) {
-      fel $$1 = fel.a((float)$$0);
-      return new fai(Optional.of($$1), Optional.of($$1));
+   public dkn g() {
+      return this.b;
    }
 
-   public static fai a(int $$0, int $$1) {
-      return new fai(Optional.of(fel.a((float)$$0)), Optional.of(fel.a((float)$$1)));
+   public dkg h() {
+      return this.b.b();
    }
 
-   public static fai b(int $$0) {
-      return new fai(Optional.of(fel.a((float)$$0)), Optional.empty());
+   public boolean i() {
+      return this.b.c();
    }
 
-   public static fai c(int $$0) {
-      return new fai(Optional.empty(), Optional.of(fel.a((float)$$0)));
+   public boolean j() {
+      return this.b.e();
    }
 
-   public int a(faj $$0, int $$1) {
-      return this.e.apply($$0, $$1);
+   public xu k() {
+      return bay.b(this.c.c()) ? xg.c("selectWorld.versionUnknown") : xg.b(this.c.c());
    }
 
-   public boolean b(faj $$0, int $$1) {
-      return this.f.test($$0, $$1);
+   public faj l() {
+      return this.c;
    }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof fel $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
+   public boolean m() {
+      return this.o().a();
    }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(faj var1, int var2);
+   public boolean n() {
+      return this.o() == fai.a.b;
    }
 
-   @FunctionalInterface
-   interface b {
-      int apply(faj var1, int var2);
+   public fai.a o() {
+      ah $$0 = ac.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return fai.a.c;
+      } else {
+         return $$2 > $$1 ? fai.a.b : fai.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return ac.b().d().a(this.c.d());
+   }
+
+   public xg s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private xg z() {
+      if (this.p()) {
+         return xg.c("selectWorld.locked").a(o.m);
+      } else if (this.d()) {
+         return xg.c("selectWorld.conversion").a(o.m);
+      } else if (!this.r()) {
+         return xg.a("selectWorld.incompatible.info", this.k()).a(o.m);
+      } else {
+         xu $$0 = this.i() ? xg.i().b(xg.c("gameMode.hardcore").b(-65536)) : xg.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(xg.c("selectWorld.commands"));
+         }
+
+         if (this.e()) {
+            $$0.f(", ").b(xg.c("selectWorld.experimental").a(o.o));
+         }
+
+         xu $$1 = this.k();
+         xu $$2 = xg.b(", ").b(xg.c("selectWorld.version")).b(xf.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? o.m : o.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
+   }
+
+   public xg t() {
+      return a;
+   }
+
+   public boolean u() {
+      return !this.q();
+   }
+
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
+
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends fai {
+      private static final xg b = xg.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final xg c = xg.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xg s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xg t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends fai {
+      private static final xg b = xg.c("symlink_warning.more_info");
+      private static final xg c = xg.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public xg s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public xg t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

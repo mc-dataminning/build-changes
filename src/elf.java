@@ -1,37 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elf extends ekm<emx> {
-   public elf(Codec<emx> $$0) {
-      super($$0);
-   }
+public class elf implements enb {
+   public static final Codec<elf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ebq.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               ebq.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               ebq.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               ebq.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               eiw.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, elf::new)
+   );
+   public final ebq b;
+   public final ebq c;
+   public final ebq d;
+   public final ebq e;
+   public final eiw f;
+   public final boolean g;
 
-   @Override
-   public boolean a(eko<emx> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      ebg $$3 = $$1.a_($$2.e());
-      emx $$4 = $$0.f();
-      azz $$5 = $$0.d();
-      if (!$$3.a(axg.aO)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.K_() + 1 && $$6 + 1 <= $$1.ao()) {
-            int $$7 = 0;
-
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               iw $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               ebg $$10 = $$4.b.a($$5, $$9);
-               if ($$1.v($$9) && $$9.v() > $$1.K_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
-            }
-
-            return $$7 > 0;
-         } else {
-            return false;
-         }
-      }
+   public elf(ebq $$0, ebq $$1, ebq $$2, ebq $$3, eiw $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

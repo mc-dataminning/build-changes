@@ -1,18 +1,37 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public abstract class bha extends bgz {
-   public bha(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1, $$2);
+public abstract class bha extends DataFix {
+   private final String a;
+
+   public bha(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(bjm.F.typeName(), blh.a());
+      if (!Objects.equals(this.getInputSchema().getType(bjm.F), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
+   }
 
-   @Override
-   protected final Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bha($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

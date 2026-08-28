@@ -1,141 +1,83 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public class csm extends bwv implements byu {
-   public static final int a = 20;
-   public static final int b = 2;
-   public static final int c = 14;
-   private static final int d = 0;
-   private int e = 0;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private bxw i;
-   @Nullable
-   private UUID j;
+public record csm(csm.a d) {
+   public static final xg a = xg.c("multiplayer.disconnect.expired_public_key");
+   private static final xg e = xg.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<csm> c = csm.a.a.xmap(csm::new, csm::b);
 
-   public csm(bxe<? extends csm> $$0, djz $$1) {
-      super($$0, $$1);
-   }
-
-   public csm(djz $$0, double $$1, double $$2, double $$3, float $$4, int $$5, bxw $$6) {
-      this(bxe.U, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.w($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(akr.a $$0) {
-   }
-
-   public void a(@Nullable bxw $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cG();
-   }
-
-   @Nullable
-   public bxw f() {
-      if (this.i == null && this.j != null && this.dV() instanceof aru) {
-         bwv $$0 = ((aru)this.dV()).b(this.j);
-         if ($$0 instanceof bxw) {
-            this.i = (bxw)$$0;
-         }
-      }
-
-      return this.i;
-   }
-
-   @Override
-   protected void a(ua $$0) {
-      this.e = $$0.b("Warmup", 0);
-      this.j = $$0.<UUID>a("Owner", ka.a).orElse(null);
-   }
-
-   @Override
-   protected void b(ua $$0) {
-      $$0.a("Warmup", this.e);
-      $$0.b("Owner", ka.a, this.j);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dA() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$2 = this.dC() + 0.05 + this.ae.j();
-                  double $$3 = this.dG() + (this.ae.j() * 2.0 - 1.0) * (double)this.dq() * 0.5;
-                  double $$4 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ae.j() * 0.3;
-                  double $$6 = (this.ae.j() * 2.0 - 1.0) * 0.3;
-                  this.dV().a(lz.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (bxw $$8 : this.dV().a(bxw.class, this.cR().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
-
-         if (!this.f) {
-            this.dV().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.aq();
-         }
-      }
-   }
-
-   private void c(bxw $$0) {
-      bxw $$1 = this.f();
-      if ($$0.bJ() && !$$0.cC() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dW().q(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            bvk $$2 = this.dW().c(this, (bwv)$$1);
-            if (this.dV() instanceof aru $$3 && $$0.a($$3, $$2, 6.0F)) {
-               dgp.a($$3, (bwv)$$0, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.ba()) {
-            this.dV().a(this.dA(), this.dC(), this.dG(), awr.iZ, this.dm(), 1.0F, this.ae.i() * 0.2F + 0.85F, false);
-         }
-      }
-   }
-
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
+   public static csm a(bao $$0, UUID $$1, csm.a $$2) throws csm.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new csm.b(e);
       } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+         return new csm($$2);
       }
    }
 
-   @Override
-   public boolean a(aru $$0, bvk $$1, float $$2) {
-      return false;
+   public bao a() {
+      return bao.a(this.d.c, "SHA256withRSA");
+   }
+
+   public csm.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<csm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  azg.q.fieldOf("expires_at").forGetter(csm.a::b), ayv.f.fieldOf("key").forGetter(csm.a::c), azg.r.fieldOf("signature_v2").forGetter(csm.a::d)
+               )
+               .apply($$0, csm.a::new)
+      );
+
+      public a(vy $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(vy $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(bao $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof csm.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
+   }
+
+   public static class b extends yg {
+      public b(xg $$0) {
+         super($$0);
+      }
    }
 }

@@ -1,140 +1,289 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.lwjgl.system.MemoryStack;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-public interface flt {
-   flt a(float var1, float var2, float var3);
+public abstract class flt<T extends flt<T>> {
+   protected HttpURLConnection a;
+   private boolean c;
+   protected String b;
+   private static final int d = 60000;
+   private static final int e = 5000;
+   private static final String f = "Is-Prerelease";
+   private static final String g = "Cookie";
 
-   flt a(int var1, int var2, int var3, int var4);
+   public flt(String $$0, int $$1, int $$2) {
+      try {
+         this.b = $$0;
+         Proxy $$3 = flr.a();
+         if ($$3 != null) {
+            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
+         } else {
+            this.a = (HttpURLConnection)new URL($$0).openConnection();
+         }
 
-   flt a(float var1, float var2);
-
-   flt a(int var1, int var2);
-
-   flt b(int var1, int var2);
-
-   flt b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
+         this.a.setConnectTimeout($$1);
+         this.a.setReadTimeout($$2);
+      } catch (MalformedURLException var5) {
+         throw new fnl(var5.getMessage(), var5);
+      } catch (IOException var6) {
+         throw new fnl(var6.getMessage(), var6);
+      }
    }
 
-   default flt a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   public void a(String $$0, String $$1) {
+      a(this.a, $$0, $$1);
    }
 
-   default flt a(int $$0) {
-      return this.a(aya.b($$0), aya.c($$0), aya.d($$0), aya.a($$0));
+   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
+      String $$3 = $$0.getRequestProperty("Cookie");
+      if ($$3 == null) {
+         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
+      } else {
+         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+      }
    }
 
-   default flt d(int $$0) {
-      return this.a(aya.c($$0, -1));
+   public void a(boolean $$0) {
+      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
    }
 
-   default flt c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   public int a() {
+      return a(this.a);
    }
 
-   default flt b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(flq.a $$0, gti $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(flq.a $$0, gti $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      Vector3fc $$11 = $$1.d().s();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a($$11, new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      int $$17 = $$1.g();
-      MemoryStack $$18 = MemoryStack.stackPush();
+   public static int a(HttpURLConnection $$0) {
+      String $$1 = $$0.getHeaderField("Retry-After");
 
       try {
-         ByteBuffer $$19 = $$18.malloc(flo.b.b());
-         IntBuffer $$20 = $$19.asIntBuffer();
-
-         for (int $$21 = 0; $$21 < $$15; $$21++) {
-            $$20.clear();
-            $$20.put($$10, $$21 * 8, 8);
-            float $$22 = $$19.getFloat(0);
-            float $$23 = $$19.getFloat(4);
-            float $$24 = $$19.getFloat(8);
-            float $$28;
-            float $$29;
-            float $$30;
-            if ($$9) {
-               float $$25 = (float)($$19.get(12) & 255);
-               float $$26 = (float)($$19.get(13) & 255);
-               float $$27 = (float)($$19.get(14) & 255);
-               $$28 = $$25 * $$2[$$21] * $$3;
-               $$29 = $$26 * $$2[$$21] * $$4;
-               $$30 = $$27 * $$2[$$21] * $$5;
-            } else {
-               $$28 = $$2[$$21] * $$3 * 255.0F;
-               $$29 = $$2[$$21] * $$4 * 255.0F;
-               $$30 = $$2[$$21] * $$5 * 255.0F;
-            }
-
-            int $$34 = aya.a($$16, (int)$$28, (int)$$29, (int)$$30);
-            int $$35 = grz.b($$7[$$21], $$17);
-            float $$36 = $$19.getFloat(16);
-            float $$37 = $$19.getFloat(20);
-            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
-            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var35) {
-         if ($$18 != null) {
-            try {
-               $$18.close();
-            } catch (Throwable var34) {
-               var35.addSuppressed(var34);
-            }
-         }
-
-         throw var35;
-      }
-
-      if ($$18 != null) {
-         $$18.close();
+         return Integer.valueOf($$1);
+      } catch (Exception var3) {
+         return 5;
       }
    }
 
-   default flt a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
+   public int b() {
+      try {
+         this.d();
+         return this.a.getResponseCode();
+      } catch (Exception var2) {
+         throw new fnl(var2.getMessage(), var2);
+      }
    }
 
-   default flt a(flq.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   public String c() {
+      try {
+         this.d();
+         String $$0;
+         if (this.b() >= 400) {
+            $$0 = this.a(this.a.getErrorStream());
+         } else {
+            $$0 = this.a(this.a.getInputStream());
+         }
+
+         this.f();
+         return $$0;
+      } catch (IOException var2) {
+         throw new fnl(var2.getMessage(), var2);
+      }
    }
 
-   default flt a(flq.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
+   private String a(@Nullable InputStream $$0) throws IOException {
+      if ($$0 == null) {
+         return "";
+      } else {
+         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
+         StringBuilder $$2 = new StringBuilder();
+
+         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
+            $$2.append((char)$$3);
+         }
+
+         return $$2.toString();
+      }
    }
 
-   default flt a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   private void f() {
+      byte[] $$0 = new byte[1024];
+
+      try {
+         InputStream $$1 = this.a.getInputStream();
+
+         while ($$1.read($$0) > 0) {
+         }
+
+         $$1.close();
+         return;
+      } catch (Exception var9) {
+         try {
+            InputStream $$3 = this.a.getErrorStream();
+            if ($$3 != null) {
+               while ($$3.read($$0) > 0) {
+               }
+
+               $$3.close();
+               return;
+            }
+         } catch (IOException var8) {
+            return;
+         }
+      } finally {
+         if (this.a != null) {
+            this.a.disconnect();
+         }
+      }
    }
 
-   default flt b(flq.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
+   protected T d() {
+      if (this.c) {
+         return (T)this;
+      } else {
+         T $$0 = this.e();
+         this.c = true;
+         return $$0;
+      }
    }
 
-   default flt b(flq.a $$0, Vector3f $$1) {
-      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
+   protected abstract T e();
+
+   public static flt<?> a(String $$0) {
+      return new flt.b($$0, 5000, 60000);
+   }
+
+   public static flt<?> a(String $$0, int $$1, int $$2) {
+      return new flt.b($$0, $$1, $$2);
+   }
+
+   public static flt<?> b(String $$0, String $$1) {
+      return new flt.c($$0, $$1, 5000, 60000);
+   }
+
+   public static flt<?> a(String $$0, String $$1, int $$2, int $$3) {
+      return new flt.c($$0, $$1, $$2, $$3);
+   }
+
+   public static flt<?> b(String $$0) {
+      return new flt.a($$0, 5000, 60000);
+   }
+
+   public static flt<?> c(String $$0, String $$1) {
+      return new flt.d($$0, $$1, 5000, 60000);
+   }
+
+   public static flt<?> b(String $$0, String $$1, int $$2, int $$3) {
+      return new flt.d($$0, $$1, $$2, $$3);
+   }
+
+   public String c(String $$0) {
+      return a(this.a, $$0);
+   }
+
+   public static String a(HttpURLConnection $$0, String $$1) {
+      try {
+         return $$0.getHeaderField($$1);
+      } catch (Exception var3) {
+         return "";
+      }
+   }
+
+   public static class a extends flt<flt.a> {
+      public a(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public flt.a f() {
+         try {
+            this.a.setDoOutput(true);
+            this.a.setRequestMethod("DELETE");
+            this.a.connect();
+            return this;
+         } catch (Exception var2) {
+            throw new fnl(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class b extends flt<flt.b> {
+      public b(String $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+      }
+
+      public flt.b f() {
+         try {
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("GET");
+            return this;
+         } catch (Exception var2) {
+            throw new fnl(var2.getMessage(), var2);
+         }
+      }
+   }
+
+   public static class c extends flt<flt.c> {
+      private final String c;
+
+      public c(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public flt.c f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoInput(true);
+            this.a.setDoOutput(true);
+            this.a.setUseCaches(false);
+            this.a.setRequestMethod("POST");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fnl(var3.getMessage(), var3);
+         }
+      }
+   }
+
+   public static class d extends flt<flt.d> {
+      private final String c;
+
+      public d(String $$0, String $$1, int $$2, int $$3) {
+         super($$0, $$2, $$3);
+         this.c = $$1;
+      }
+
+      public flt.d f() {
+         try {
+            if (this.c != null) {
+               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+            }
+
+            this.a.setDoOutput(true);
+            this.a.setDoInput(true);
+            this.a.setRequestMethod("PUT");
+            OutputStream $$0 = this.a.getOutputStream();
+            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
+            $$1.write(this.c);
+            $$1.close();
+            $$0.flush();
+            return this;
+         } catch (Exception var3) {
+            throw new fnl(var3.getMessage(), var3);
+         }
+      }
    }
 }

@@ -1,24 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejj<WC extends eje>(ejl<WC> d, WC e) {
-   public static final Codec<ejj<?>> a = mh.N.q().dispatch($$0 -> $$0.d, ejl::c);
-   public static final Codec<jg<ejj<?>>> b = alg.a(mi.aK, a);
-   public static final Codec<jk<ejj<?>>> c = jv.a(mi.aK, a);
+record ejj(kb e) implements eiw {
+   public static MapCodec<ejj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kb.g.optionalFieldOf("offset", kb.i).forGetter(ejj::g)).apply($$0, ejj::new));
 
-   public boolean a(azz $$0) {
-      return this.d.a(this.e, $$0);
+   @Override
+   public eix<?> a() {
+      return eix.m;
    }
 
-   public boolean a(ejg $$0, edd $$1, Function<iw, jg<dlc>> $$2, azz $$3, egr $$4, dje $$5, edc $$6) {
-      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public boolean a(dli $$0, iw $$1) {
+      return $$0.a(null, fgt.b().a($$1));
    }
 
-   public ejl<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
+   public kb g() {
       return this.e;
    }
 }

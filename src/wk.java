@@ -1,30 +1,31 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public interface wk {
+   zp N_();
 
-public interface wk<T extends wi> {
-   vw a();
+   vw b();
 
-   zk b();
+   void a(vx var1);
 
-   za<ByteBuf, zj<? super T>> c();
+   default void a(zo $$0, Exception $$1) throws aa {
+      throw zr.a($$1, $$0, this);
+   }
 
-   @Nullable
-   zi d();
+   default vx a(xg $$0, Throwable $$1) {
+      return new vx($$0);
+   }
 
-   public interface a<T extends wi, B extends ByteBuf> {
-      wk<T> a(Function<ByteBuf, B> var1);
+   boolean c();
 
-      vw a();
+   default boolean a(zo<?> $$0) {
+      return this.c();
+   }
 
-      zk b();
+   default void a(p $$0) {
+      q $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.N_().toString());
+      this.a($$0, $$1);
+   }
 
-      @baz
-      void a(wk.a.a var1);
-
-      @FunctionalInterface
-      public interface a {
-         void accept(zl<?> var1, int var2);
-      }
+   default void a(p $$0, q $$1) {
    }
 }

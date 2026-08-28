@@ -1,324 +1,48 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class duh {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int f = 32;
-   public static final int d = 11;
-   public static final int e = 1024;
-   final boolean g;
-   private final axv<dne> h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private final int l;
-   private List<duh.a> m = new ArrayList<>();
+public class duh extends dno {
+   public static final MapCodec<duh> c = b(duh::new);
+   public static final eco<jc.a> d = ecg.K;
 
-   public duh(boolean $$0, axv<dne> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+   @Override
+   public MapCodec<? extends duh> a() {
+      return c;
    }
 
-   public static duh a() {
-      return new duh(false, axg.bW, 10, 4, 10, 5);
+   public duh(ebp.d $$0) {
+      super($$0);
+      this.l(this.m().b(d, jc.a.b));
    }
 
-   public static duh b() {
-      return new duh(true, axg.bX, 50, 1, 5, 10);
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return b($$0, $$1);
    }
 
-   public axv<dne> c() {
-      return this.h;
-   }
-
-   public int d() {
-      return this.i;
-   }
-
-   public int e() {
-      return this.j;
-   }
-
-   public int f() {
-      return this.k;
-   }
-
-   public int g() {
-      return this.l;
-   }
-
-   public boolean h() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public List<duh.a> i() {
-      return this.m;
-   }
-
-   public void j() {
-      this.m.clear();
-   }
-
-   public void a(ua $$0) {
-      this.m.clear();
-      $$0.<List>a("cursors", duh.a.b.sizeLimitedListOf(32)).orElse(List.of()).forEach(this::a);
-   }
-
-   public void b(ua $$0) {
-      $$0.a("cursors", duh.a.b.listOf(), this.m);
-   }
-
-   public void a(iw $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new duh.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(duh.a $$0) {
-      if (this.m.size() < 32) {
-         this.m.add($$0);
-      }
-   }
-
-   public void a(dka $$0, iw $$1, azz $$2, boolean $$3) {
-      if (!this.m.isEmpty()) {
-         List<duh.a> $$4 = new ArrayList<>();
-         Map<iw, duh.a> $$5 = new HashMap<>();
-         Object2IntMap<iw> $$6 = new Object2IntOpenHashMap();
-
-         for (duh.a $$7 : this.m) {
-            if (!$$7.a($$1)) {
-               $$7.a($$0, $$1, $$2, this, $$3);
-               if ($$7.e <= 0) {
-                  $$0.c(3006, $$7.a(), 0);
-               } else {
-                  iw $$8 = $$7.a();
-                  $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-                  duh.a $$9 = $$5.get($$8);
-                  if ($$9 == null) {
-                     $$5.put($$8, $$7);
-                     $$4.add($$7);
-                  } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                     $$9.a($$7);
-                  } else {
-                     $$4.add($$7);
-                     if ($$7.e < $$9.e) {
-                        $$5.put($$8, $$7);
-                     }
-                  }
-               }
+   public static ebq b(ebq $$0, dui $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((jc.a)$$0.c(d)) {
+               case a:
+                  return $$0.b(d, jc.a.c);
+               case c:
+                  return $$0.b(d, jc.a.a);
+               default:
+                  return $$0;
             }
-         }
-
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<iw> $$10 = (Entry<iw>)var16.next();
-            iw $$11 = (iw)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            duh.a $$13 = $$5.get($$11);
-            Collection<jc> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + dsk.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.m = $$4;
+         default:
+            return $$0;
       }
    }
 
-   public static class a {
-      private static final ObjectArrayList<kb> c = ag.a(
-         new ObjectArrayList(18),
-         $$0 -> iw.d(new iw(-1, -1, -1), new iw(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(iw.c))
-               .map(iw::j)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private iw d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<jc> h;
-      private static final Codec<Set<jc>> i = jc.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, jc.class), Lists::newArrayList);
-      public static final Codec<duh.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  iw.a.fieldOf("pos").forGetter(duh.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(duh.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(duh.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.lenientOptionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, duh.a::new)
-      );
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(d);
+   }
 
-      private a(iw $$0, int $$1, int $$2, int $$3, Optional<Set<jc>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
-
-      public a(iw $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public iw a() {
-         return this.d;
-      }
-
-      boolean a(iw $$0) {
-         return this.d.l($$0) > 1024;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<jc> d() {
-         return this.h;
-      }
-
-      private boolean a(dka $$0, iw $$1, boolean $$2) {
-         if (this.e <= 0) {
-            return false;
-         } else if ($$2) {
-            return true;
-         } else {
-            return $$0 instanceof aru $$3 ? $$3.n($$1) : false;
-         }
-      }
-
-      public void a(dka $$0, iw $$1, azz $$2, duh $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.g)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               ebg $$5 = $$0.a_(this.d);
-               duc $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.d()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
-
-                  $$0.a(null, this.d, awr.wJ, aws.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  iw $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.j();
-                     if ($$3.h() && !this.d.a(new kb($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof duc) {
-                     this.h = dsk.o($$5);
-                  }
-
-                  this.g = $$6.j_(this.g);
-                  this.f = $$6.b();
-               }
-            }
-         }
-      }
-
-      void a(duh.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static duc a(ebg $$0) {
-         return $$0.b() instanceof duc $$1 ? $$1 : duc.s_;
-      }
-
-      private static List<kb> a(azz $$0) {
-         return ag.a(c, $$0);
-      }
-
-      @Nullable
-      private static iw a(dka $$0, iw $$1, azz $$2) {
-         iw.a $$3 = $$1.k();
-         iw.a $$4 = $$1.k();
-
-         for (kb $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            ebg $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof duc && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (dui.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(dka $$0, iw $$1, iw $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
-         } else {
-            iw $$3 = $$2.b($$1);
-            jc $$4 = jc.a(jc.a.a, $$3.u() < 0 ? jc.b.b : jc.b.a);
-            jc $$5 = jc.a(jc.a.b, $$3.v() < 0 ? jc.b.b : jc.b.a);
-            jc $$6 = jc.a(jc.a.c, $$3.w() < 0 ? jc.b.b : jc.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
-            } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
-            }
-         }
-      }
-
-      private static boolean a(dka $$0, iw $$1, jc $$2) {
-         iw $$3 = $$1.a($$2);
-         return !$$0.a_($$3).c($$0, $$3, $$2.g());
-      }
+   @Override
+   public ebq a(ded $$0) {
+      return this.m().b(d, $$0.k().o());
    }
 }

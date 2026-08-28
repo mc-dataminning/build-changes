@@ -1,68 +1,179 @@
-public final class ehp {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   private ehp() {
+public class ehp {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<ebq> b = $$0 -> !$$0.l();
+   static final Predicate<ebq> c = ebp.a::d;
+   private final aym d;
+   private final Predicate<ebq> e;
+   private final edn f;
+
+   public ehp(edn $$0, ehp.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = azz.e($$0.L_() + 1);
+      this.d = new baq($$2, 256);
    }
 
-   protected static ehj.c a(egy $$0, egy $$1, egy $$2, ehs $$3) {
-      ebg $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         ehp.a $$8 = $$6 > 0.0 ? ehp.a.a : ehp.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azq.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azz $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azq.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
+   public static void a(edn $$0, Set<ehp.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<ehp> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<ehp> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         iw.a $$6 = new iw.a();
+
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (ehp.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
+               }
+
+               for (int $$10 = $$5 - 1; $$10 >= $$0.K_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  ebq $$11 = $$0.a_($$6);
+                  if (!$$11.a(dnq.a)) {
+                     while ($$4.hasNext()) {
+                        ehp $$12 = (ehp)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
+                        }
+                     }
+
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
+
+                     $$4.back($$2);
                   }
                }
             }
-         } else {
-            return $$4;
          }
-      };
+      }
    }
 
-   protected static enum a {
-      a(dng.rI.m(), dng.tQ.m(), dng.c.m(), 0, 50),
-      b(dng.T.m(), dng.tP.m(), dng.rh.m(), -60, -8);
+   public boolean a(int $$0, int $$1, int $$2, ebq $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            iw.a $$5 = new iw.a();
 
-      final ebg e;
-      final ebg f;
-      final ebg g;
-      protected final int c;
-      protected final int d;
+            for (int $$6 = $$1 - 1; $$6 >= this.f.K_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
 
-      private a(final ebg $$0, final ebg $$1, final ebg $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+            this.a($$0, $$2, this.f.K_());
+            return true;
+         }
+
+         return false;
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.K_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.K_());
+   }
+
+   public void a(edn $$0, ehp.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements bax {
+      a(0, "WORLD_SURFACE_WG", ehp.b.a, ehp.b),
+      b(1, "WORLD_SURFACE", ehp.b.c, ehp.b),
+      c(2, "OCEAN_FLOOR_WG", ehp.b.a, ehp.c),
+      d(3, "OCEAN_FLOOR", ehp.b.b, ehp.c),
+      e(4, "MOTION_BLOCKING", ehp.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f(5, "MOTION_BLOCKING_NO_LEAVES", ehp.b.c, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dse));
+
+      public static final Codec<ehp.a> g = bax.a(ehp.a::values);
+      private static final IntFunction<ehp.a> i = ayo.a($$0 -> $$0.j, values(), ayo.a.a);
+      public static final ze<ByteBuf, ehp.a> h = zc.a(i, $$0 -> $$0.j);
+      private final int j;
+      private final String k;
+      private final ehp.b l;
+      private final Predicate<ebq> m;
+
+      private a(final int $$0, final String $$1, final ehp.b $$2, final Predicate<ebq> $$3) {
+         this.j = $$0;
+         this.k = $$1;
+         this.l = $$2;
+         this.m = $$3;
+      }
+
+      public String a() {
+         return this.k;
+      }
+
+      public boolean b() {
+         return this.l == ehp.b.c;
+      }
+
+      public boolean d() {
+         return this.l != ehp.b.a;
+      }
+
+      public Predicate<ebq> e() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.k;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

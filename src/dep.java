@@ -1,54 +1,150 @@
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dep extends dff {
-   public dep(dee $$0) {
-      super("", $$0, dfg.a(Map.of('#', den.a(dae.rE), 'x', den.a(dae.tc)), "###", "#x#", "###"), new daa(dae.vt));
+public class dep implements dfh {
+   public static final dep a = new dep(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<dak> d;
+   private final cso e = new cso();
+   private final int f;
+
+   private dep(int $$0, int $$1, List<dak> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
+
+      for (dak $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
+         }
+      }
+
+      this.f = $$3;
    }
 
-   @Override
-   public boolean a(def $$0, djz $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         daa $$2 = c($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            ezl $$3 = dan.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.d() ? false : $$3.g < 4;
+   public static dep a(int $$0, int $$1, List<dak> $$2) {
+      return b($$0, $$1, $$2).a();
+   }
+
+   public static dep.a b(int $$0, int $$1, List<dak> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
+
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               dak $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
+               }
+            }
+
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
             }
          }
-      }
-   }
 
-   @Override
-   public daa a(def $$0, ji.a $$1) {
-      daa $$2 = c($$0).c(1);
-      $$2.b(kl.O, dcx.b);
-      return $$2;
-   }
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return dep.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new dep.a(new dep($$0, $$1, $$2), $$3, $$5);
+         } else {
+            List<dak> $$13 = new ArrayList<>($$11 * $$12);
 
-   private static daa c(def $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         daa $$2 = $$0.a($$1);
-         if ($$2.c(kl.M)) {
-            return $$2;
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new dep.a(new dep($$11, $$12, $$13), $$3, $$5);
          }
+      } else {
+         return dep.a.a;
+      }
+   }
+
+   @Override
+   public dak a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   public dak a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public cso c() {
+      return this.e;
+   }
+
+   public List<dak> d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof dep $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && dak.a(this.d, $$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = dak.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
+   }
+
+   public static record a(dep b, int c, int d) {
+      public static final dep.a a = new dep.a(dep.a, 0, 0);
+
+      public dep a() {
+         return this.b;
       }
 
-      return daa.k;
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Override
-   public boolean aq_() {
-      return true;
-   }
-
-   @Override
-   public dfb<dep> a() {
-      return dfb.f;
+      public int c() {
+         return this.d;
+      }
    }
 }

@@ -1,64 +1,43 @@
-import java.io.Serializable;
-import java.util.Deque;
-import java.util.List;
-import java.util.RandomAccess;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public interface azm<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
-   azm<T> b();
+public class azm implements baz, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
+   private final Executor d;
+   private volatile boolean e;
 
-   @Override
-   T getFirst();
-
-   @Override
-   T getLast();
-
-   @Override
-   void addFirst(T var1);
-
-   @Override
-   void addLast(T var1);
-
-   @Override
-   T removeFirst();
-
-   @Override
-   T removeLast();
-
-   @Override
-   default boolean offer(T $$0) {
-      return this.offerLast($$0);
+   public azm(Executor $$0) {
+      this.d = $$0;
    }
 
    @Override
-   default T remove() {
-      return this.removeFirst();
-   }
+   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
+      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
+         if (!this.e) {
+            $$1.accept((T)$$1x);
+         }
+      }, this.d).exceptionally($$0x -> {
+         if ($$0x instanceof CompletionException $$1x) {
+            $$0x = $$1x.getCause();
+         }
 
-   @Nullable
-   @Override
-   default T poll() {
-      return this.pollFirst();
-   }
-
-   @Override
-   default T element() {
-      return this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   default T peek() {
-      return this.peekFirst();
-   }
-
-   @Override
-   default void push(T $$0) {
-      this.addFirst($$0);
+         if ($$0x instanceof CancellationException $$2) {
+            throw $$2;
+         } else {
+            b.error("Chain link failed, continuing to next one", $$0x);
+            return null;
+         }
+      });
    }
 
    @Override
-   default T pop() {
-      return this.removeFirst();
+   public void close() {
+      this.e = true;
    }
 }

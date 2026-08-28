@@ -1,78 +1,83 @@
-public class cze extends czw {
-   public cze(czw.a $$0) {
+import java.util.Collection;
+import javax.annotation.Nullable;
+
+public class cze extends dag {
+   public cze(dag.a $$0) {
       super($$0);
    }
 
    @Override
-   public but a(ddv $$0) {
-      djz $$1 = $$0.q();
-      iw $$2 = $$0.a();
-      ebg $$3 = $$1.a_($$2);
-      if (!$$3.a(dng.fX) || $$3.c(dpv.c)) {
-         return but.e;
-      } else if ($$1.C) {
-         return but.a;
-      } else {
-         ebg $$4 = $$3.b(dpv.c, Boolean.valueOf(true));
-         dne.a($$3, $$4, $$1, $$2);
-         $$1.a($$2, $$4, 2);
-         $$1.b($$2, dng.fX);
-         $$0.n().h(1);
-         $$1.c(1503, $$2, 0);
-         ebl.b $$5 = dpv.b().a($$1, $$2);
-         if ($$5 != null) {
-            iw $$6 = $$5.a().b(-3, 0, -3);
+   public boolean a(dak $$0, ebq $$1, dkj $$2, iw $$3, byf $$4) {
+      if (!$$2.C && $$4 instanceof csi $$5) {
+         this.a($$5, $$1, $$2, $$3, false, $$0);
+      }
 
-            for (int $$7 = 0; $$7 < 3; $$7++) {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  iw $$9 = $$6.b($$7, 0, $$8);
-                  $$1.a($$9, true, null);
-                  $$1.a($$9, dng.fW.m(), 2);
+      return false;
+   }
+
+   @Override
+   public bvc a(def $$0) {
+      csi $$1 = $$0.o();
+      dkj $$2 = $$0.q();
+      if (!$$2.C && $$1 != null) {
+         iw $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bvc.d;
+         }
+      }
+
+      return bvc.a;
+   }
+
+   private boolean a(csi $$0, ebq $$1, dkk $$2, iw $$3, boolean $$4, dak $$5) {
+      if (!$$0.gG()) {
+         return false;
+      } else {
+         jg<dno> $$6 = $$1.c();
+         ebr<dno, ebq> $$7 = $$6.a().l();
+         Collection<ect<?>> $$8 = $$7.d();
+         if ($$8.isEmpty()) {
+            a($$0, xg.a(this.n + ".empty", $$6.g()));
+            return false;
+         } else {
+            dcw $$9 = $$5.a(kl.X);
+            if ($$9 == null) {
+               return false;
+            } else {
+               ect<?> $$10 = $$9.a().get($$6);
+               if ($$4) {
+                  if ($$10 == null) {
+                     $$10 = $$8.iterator().next();
+                  }
+
+                  ebq $$11 = a($$1, $$10, $$0.fY());
+                  $$2.a($$3, $$11, 18);
+                  a($$0, xg.a(this.n + ".update", $$10.f(), a($$11, $$10)));
+               } else {
+                  $$10 = a($$8, $$10, $$0.fY());
+                  $$5.b(kl.X, $$9.a($$6, $$10));
+                  a($$0, xg.a(this.n + ".select", $$10.f(), a($$1, $$10)));
                }
+
+               return true;
             }
-
-            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
-
-         return but.a;
       }
    }
 
-   @Override
-   public int a(daa $$0, bxw $$1) {
-      return 0;
+   private static <T extends Comparable<T>> ebq a(ebq $$0, ect<T> $$1, boolean $$2) {
+      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
    }
 
-   @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      daa $$3 = $$1.b($$2);
-      ffo $$4 = a($$0, $$1, djg.b.a);
-      if ($$4.d() == ffq.a.b && $$0.a_($$4.b()).a(dng.fX)) {
-         return but.e;
-      } else {
-         $$1.c($$2);
-         if ($$0 instanceof aru $$5) {
-            iw $$6 = $$5.a(axr.a, $$1.dv(), 100, false);
-            if ($$6 == null) {
-               return but.c;
-            }
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ag.b($$0, $$1) : ag.a($$0, $$1);
+   }
 
-            csn $$7 = new csn($$0, $$1.dA(), $$1.e(0.5), $$1.dG());
-            $$7.a($$3);
-            $$7.a($$6);
-            $$0.a(egg.K, $$7.dt(), egg.a.a($$1));
-            $$0.b($$7);
-            if ($$1 instanceof arv $$8) {
-               aq.n.a($$8, $$6);
-            }
+   private static void a(csi $$0, xg $$1) {
+      ((asc)$$0).b($$1, true);
+   }
 
-            float $$9 = azq.h($$0.A.i(), 0.33F, 0.5F);
-            $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.iG, aws.g, 1.0F, $$9);
-            $$3.a(1, $$1);
-            $$1.b(axb.c.b(this));
-         }
-
-         return but.b;
-      }
+   private static <T extends Comparable<T>> String a(ebq $$0, ect<T> $$1) {
+      return $$1.b($$0.c($$1));
    }
 }

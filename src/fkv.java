@@ -1,11 +1,8 @@
-public interface fkv<T> {
-   fkv<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static <T> fkv<T> a() {
-      return (fkv<T>)a;
-   }
-
-   T get();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fif
+@fid
+interface fkv {
 }

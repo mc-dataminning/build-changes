@@ -1,29 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class epy extends epz {
-   public static final MapCodec<epy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epy::new));
+public class epy<P extends epx> {
+   public static final epy<epz> a = a("trunk_vine", epz.a);
+   public static final epy<epu> b = a("leave_vine", epu.a);
+   public static final epy<epv> c = a("pale_moss", epv.a);
+   public static final epy<ept> d = a("creaking_heart", ept.a);
+   public static final epy<eps> e = a("cocoa", eps.a);
+   public static final epy<epr> f = a("beehive", epr.a);
+   public static final epy<epo> g = a("alter_ground", epo.a);
+   public static final epy<epp> h = a("attached_to_leaves", epp.a);
+   public static final epy<epw> i = a("place_on_ground", epw.a);
+   public static final epy<epq> j = a("attached_to_logs", epq.a);
+   private final MapCodec<P> k;
 
-   public epy(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends epx> epy<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.X, $$0, new epy<>($$1));
    }
 
-   @Override
-   protected eqa<?> a() {
-      return eqa.a;
+   private epy(MapCodec<P> $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new eod.a($$4.b($$3), 0, false));
+   public MapCodec<P> a() {
+      return this.k;
    }
 }

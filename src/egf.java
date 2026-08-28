@@ -1,104 +1,45 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class egf implements egj {
-   private final List<egi> b = Lists.newArrayList();
-   private final Set<egi> c = Sets.newHashSet();
-   private final List<egi> d = Lists.newArrayList();
-   private boolean e;
-   private final aru f;
-   private final int g;
-   private final egf.a h;
+public class egf<T extends efv> implements ege<T> {
+   private final efx<T> a;
+   private final ega<T> b;
 
-   public egf(aru $$0, int $$1, egf.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public egf(efx<T> $$0, ega<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public boolean a() {
-      return this.b.isEmpty();
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
    @Override
-   public void a(egi $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
-      }
-
-      agq.a(this.f, $$0);
+   public <U extends T> void a(egc<T, U> $$0, ayi<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
    @Override
-   public void b(egi $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
+   public void a(ffx $$0, Consumer<T> $$1) {
+      this.b.b($$0, ayi.forConsumer($$1));
    }
 
    @Override
-   public boolean a(jg<egg> $$0, ffs $$1, egg.a $$2, egj.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<egi> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            egi $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<ffs> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
-         }
-      } finally {
-         this.e = false;
-      }
-
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
-      }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
-   }
-
-   private static Optional<ffs> a(aru $$0, ffs $$1, egi $$2) {
-      Optional<ffs> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = iw.a($$3.get()).j(iw.a((jq)$$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
+   public <U extends T> void a(egc<T, U> $$0, ffx $$1, ayi<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

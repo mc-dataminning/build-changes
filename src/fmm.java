@@ -1,8 +1,10 @@
-public class fmm extends fmn {
-   private static final xc a = xc.c("mco.upload.cancelled");
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-   @Override
-   public xc a() {
-      return a;
-   }
+public class fmm extends fnf implements fmz {
+   @SerializedName("pingResults")
+   public List<fna> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

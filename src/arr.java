@@ -1,555 +1,306 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class arr extends edh {
-   private static final Logger b = LogUtils.getLogger();
-   private final arh c;
-   private final aru d;
-   final Thread e;
-   final ary f;
-   private final arr.a g;
-   public final aqy a;
-   private final ezr h;
-   private final dkw i;
-   private long j;
-   private boolean k = true;
-   private boolean l = true;
-   private static final int m = 4;
-   private final long[] n = new long[4];
-   private final eee[] o = new eee[4];
-   private final edd[] p = new edd[4];
-   private final List<edn> q = new ObjectArrayList();
-   private final Set<aqw> r = new ReferenceOpenHashSet();
+public abstract class arr {
+   private static final List<eeo> a = eeo.a();
+   private static final arg<edn> e = arg.a("Not done yet");
+   public static final arg<edn> b = arg.a("Unloaded chunk");
+   public static final CompletableFuture<arg<edn>> c = CompletableFuture.completedFuture(b);
+   protected final djo d;
    @Nullable
-   @baz
-   private dkk.d s;
+   private volatile eeo f;
+   private final AtomicReference<eeo> g = new AtomicReference<>();
+   private final AtomicReferenceArray<CompletableFuture<arg<edn>>> h = new AtomicReferenceArray<>(a.size());
+   private final AtomicReference<arc> i = new AtomicReference<>();
+   private final AtomicInteger j = new AtomicInteger();
+   private volatile CompletableFuture<Void> k = CompletableFuture.completedFuture(null);
 
-   public arr(aru $$0, ezx.c $$1, DataFixer $$2, ewg $$3, Executor $$4, ede $$5, int $$6, int $$7, boolean $$8, ase $$9, efk $$10, Supplier<ezr> $$11) {
+   public arr(djo $$0) {
       this.d = $$0;
-      this.g = new arr.a($$0);
-      this.e = Thread.currentThread();
-      Path $$12 = $$1.a($$0.aj()).resolve("data");
-
-      try {
-         w.c($$12);
-      } catch (IOException var15) {
-         b.error("Failed to create dimension data storage directory", var15);
+      if ($$0.a(djo.e) > djo.d) {
+         throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + $$0);
       }
-
-      this.h = new ezr(new ezc.a($$0), $$12, $$2, $$0.J_());
-      this.i = this.h.a(dkw.b);
-      this.a = new aqy($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, this.i, $$6, $$8);
-      this.f = this.a.d();
-      this.c = this.a.j();
-      this.c.b($$7);
-      this.s();
    }
 
-   public ary a() {
-      return this.f;
-   }
-
-   @Nullable
-   private aqw b(long $$0) {
-      return this.a.b($$0);
-   }
-
-   public int b() {
-      return this.a.h();
-   }
-
-   private void a(long $$0, @Nullable edd $$1, eee $$2) {
-      for (int $$3 = 3; $$3 > 0; $$3--) {
-         this.n[$$3] = this.n[$$3 - 1];
-         this.o[$$3] = this.o[$$3 - 1];
-         this.p[$$3] = this.p[$$3 - 1];
-      }
-
-      this.n[0] = $$0;
-      this.o[0] = $$2;
-      this.p[0] = $$1;
-   }
-
-   @Nullable
-   @Override
-   public edd a(int $$0, int $$1, eee $$2, boolean $$3) {
-      if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<edd>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+   public CompletableFuture<arg<edn>> a(eeo $$0, arf $$1) {
+      if (this.f($$0)) {
+         return c;
       } else {
-         brd $$4 = brc.a();
-         $$4.f("getChunk");
-         long $$5 = dje.c($$0, $$1);
+         CompletableFuture<arg<edn>> $$2 = this.c($$0);
+         if ($$2.isDone()) {
+            return $$2;
+         } else {
+            arc $$3 = this.i.get();
+            if ($$3 == null || $$0.b($$3.a)) {
+               this.a($$1, $$0);
+            }
 
-         for (int $$6 = 0; $$6 < 4; $$6++) {
-            if ($$5 == this.n[$$6] && $$2 == this.o[$$6]) {
-               edd $$7 = this.p[$$6];
-               if ($$7 != null || !$$3) {
-                  return $$7;
+            return $$2;
+         }
+      }
+   }
+
+   CompletableFuture<arg<edn>> a(eer $$0, arq $$1, bav<arr> $$2) {
+      if (this.f($$0.a())) {
+         return c;
+      } else {
+         return this.e($$0.a()) ? $$1.a(this, $$0, $$2).handle(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               p $$3 = p.a($$2x, "Exception chunk generation/loading");
+               MinecraftServer.a(new aa($$3));
+            } else {
+               this.a($$0.a(), $$1x);
+            }
+
+            return arg.a($$1x);
+         }) : this.c($$0.a());
+      }
+   }
+
+   protected void a(arf $$0) {
+      eeo $$1 = this.f;
+      eeo $$2 = are.a(this.j());
+      this.f = $$2;
+      boolean $$3 = $$1 != null && ($$2 == null || $$2.d($$1));
+      if ($$3) {
+         this.a($$2, $$1);
+         if (this.i.get() != null) {
+            this.a($$0, this.d($$2));
+         }
+      }
+   }
+
+   public void a(edw $$0) {
+      CompletableFuture<arg<edn>> $$1 = CompletableFuture.completedFuture(arg.a($$0));
+
+      for (int $$2 = 0; $$2 < this.h.length() - 1; $$2++) {
+         CompletableFuture<arg<edn>> $$3 = this.h.get($$2);
+         Objects.requireNonNull($$3);
+         edn $$4 = $$3.getNow(e).b(null);
+         if (!($$4 instanceof eeh)) {
+            throw new IllegalStateException("Trying to replace a ProtoChunk, but found " + $$4);
+         }
+
+         if (!this.h.compareAndSet($$2, $$3, $$1)) {
+            throw new IllegalStateException("Future changed by other thread while trying to replace it");
+         }
+      }
+   }
+
+   void a(arc $$0) {
+      this.i.compareAndSet($$0, null);
+   }
+
+   private void a(arf $$0, @Nullable eeo $$1) {
+      arc $$2;
+      if ($$1 != null) {
+         $$2 = $$0.a($$1, this.r());
+      } else {
+         $$2 = null;
+      }
+
+      arc $$4 = this.i.getAndSet($$2);
+      if ($$4 != null) {
+         $$4.b();
+      }
+   }
+
+   private CompletableFuture<arg<edn>> c(eeo $$0) {
+      if (this.f($$0)) {
+         return c;
+      } else {
+         int $$1 = $$0.b();
+         CompletableFuture<arg<edn>> $$2 = this.h.get($$1);
+
+         while ($$2 == null) {
+            CompletableFuture<arg<edn>> $$3 = new CompletableFuture<>();
+            $$2 = this.h.compareAndExchange($$1, null, $$3);
+            if ($$2 == null) {
+               if (this.f($$0)) {
+                  this.a($$1, $$3);
+                  return c;
                }
+
+               return $$3;
             }
          }
 
-         $$4.f("getChunkCacheMiss");
-         CompletableFuture<aqz<edd>> $$8 = this.c($$0, $$1, $$2, $$3);
-         this.g.b($$8::isDone);
-         aqz<edd> $$9 = $$8.join();
-         edd $$10 = $$9.b(null);
-         if ($$10 == null && $$3) {
-            throw (IllegalStateException)ag.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
+         return $$2;
+      }
+   }
+
+   private void a(@Nullable eeo $$0, eeo $$1) {
+      int $$2 = $$0 == null ? 0 : $$0.b() + 1;
+      int $$3 = $$1.b();
+
+      for (int $$4 = $$2; $$4 <= $$3; $$4++) {
+         CompletableFuture<arg<edn>> $$5 = this.h.get($$4);
+         if ($$5 != null) {
+            this.a($$4, $$5);
+         }
+      }
+   }
+
+   private void a(int $$0, CompletableFuture<arg<edn>> $$1) {
+      if ($$1.complete(b) && !this.h.compareAndSet($$0, $$1, null)) {
+         throw new IllegalStateException("Nothing else should replace the future here");
+      }
+   }
+
+   private void a(eeo $$0, edn $$1) {
+      arg<edn> $$2 = arg.a($$1);
+      int $$3 = $$0.b();
+
+      while (true) {
+         CompletableFuture<arg<edn>> $$4 = this.h.get($$3);
+         if ($$4 == null) {
+            if (this.h.compareAndSet($$3, null, CompletableFuture.completedFuture($$2))) {
+               return;
+            }
          } else {
-            this.a($$5, $$10, $$2);
-            return $$10;
+            if ($$4.complete($$2)) {
+               return;
+            }
+
+            if ($$4.getNow(e).a()) {
+               throw new IllegalStateException("Trying to complete a future but found it to be completed successfully already");
+            }
+
+            Thread.yield();
          }
       }
    }
 
    @Nullable
-   @Override
-   public edn a(int $$0, int $$1) {
-      if (Thread.currentThread() != this.e) {
+   private eeo d(@Nullable eeo $$0) {
+      if ($$0 == null) {
          return null;
       } else {
-         brc.a().f("getChunkNow");
-         long $$2 = dje.c($$0, $$1);
+         eeo $$1 = $$0;
 
-         for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.n[$$3] && this.o[$$3] == eee.n) {
-               edd $$4 = this.p[$$3];
-               return $$4 instanceof edn ? (edn)$$4 : null;
+         for (eeo $$2 = this.g.get(); $$2 == null || $$1.b($$2); $$1 = $$1.c()) {
+            if (this.h.get($$1.b()) != null) {
+               return $$1;
+            }
+
+            if ($$1 == eeo.c) {
+               break;
             }
          }
 
-         aqw $$5 = this.b($$2);
-         if ($$5 == null) {
-            return null;
-         } else {
-            edd $$6 = $$5.b(eee.n);
-            if ($$6 != null) {
-               this.a($$2, $$6, eee.n);
-               if ($$6 instanceof edn) {
-                  return (edn)$$6;
-               }
-            }
-
-            return null;
-         }
+         return null;
       }
    }
 
-   private void s() {
-      Arrays.fill(this.n, dje.c);
-      Arrays.fill(this.o, null);
-      Arrays.fill(this.p, null);
-   }
-
-   public CompletableFuture<aqz<edd>> b(int $$0, int $$1, eee $$2, boolean $$3) {
-      boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<aqz<edd>> $$5;
-      if ($$4) {
-         $$5 = this.c($$0, $$1, $$2, $$3);
-         this.g.b($$5::isDone);
+   private boolean e(eeo $$0) {
+      eeo $$1 = $$0 == eeo.c ? null : $$0.c();
+      eeo $$2 = this.g.compareAndExchange($$1, $$0);
+      if ($$2 == $$1) {
+         return true;
+      } else if ($$2 != null && !$$0.b($$2)) {
+         return false;
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<aqz<edd>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         throw new IllegalStateException("Unexpected last startedWork status: " + $$2 + " while trying to start: " + $$0);
+      }
+   }
+
+   private boolean f(eeo $$0) {
+      eeo $$1 = this.f;
+      return $$1 == null || $$0.b($$1);
+   }
+
+   protected abstract void b(CompletableFuture<?> var1);
+
+   public void n() {
+      if (this.j.getAndIncrement() == 0) {
+         this.k = new CompletableFuture<>();
+         this.b(this.k);
+      }
+   }
+
+   public void o() {
+      CompletableFuture<Void> $$0 = this.k;
+      int $$1 = this.j.decrementAndGet();
+      if ($$1 == 0) {
+         $$0.complete(null);
       }
 
-      return $$5;
-   }
-
-   private CompletableFuture<aqz<edd>> c(int $$0, int $$1, eee $$2, boolean $$3) {
-      dje $$4 = new dje($$0, $$1);
-      long $$5 = $$4.a();
-      int $$6 = aqx.a($$2);
-      aqw $$7 = this.b($$5);
-      if ($$3) {
-         this.a(new asa(asb.i, $$6), $$4);
-         if (this.a($$7, $$6)) {
-            brd $$8 = brc.a();
-            $$8.a("chunkLoad");
-            this.t();
-            $$7 = this.b($$5);
-            $$8.c();
-            if (this.a($$7, $$6)) {
-               throw (IllegalStateException)ag.b(new IllegalStateException("No chunk holder after ticket has been added"));
-            }
-         }
+      if ($$1 < 0) {
+         throw new IllegalStateException("More releases than claims. Count: " + $$1);
       }
-
-      return this.a($$7, $$6) ? ark.c : $$7.a($$2, this.a);
-   }
-
-   private boolean a(@Nullable aqw $$0, int $$1) {
-      return $$0 == null || $$0.j() > $$1;
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1) {
-      aqw $$2 = this.b(new dje($$0, $$1).a());
-      int $$3 = aqx.a(eee.n);
-      return !this.a($$2, $$3);
    }
 
    @Nullable
-   @Override
-   public edp c(int $$0, int $$1) {
-      long $$2 = dje.c($$0, $$1);
-      aqw $$3 = this.b($$2);
-      return $$3 == null ? null : $$3.a(eee.k.c());
+   public edn a(eeo $$0) {
+      CompletableFuture<arg<edn>> $$1 = this.h.get($$0.b());
+      return $$1 == null ? null : $$1.getNow(e).b(null);
    }
 
-   public djz c() {
+   @Nullable
+   public edn b(eeo $$0) {
+      return this.f($$0) ? null : this.a($$0);
+   }
+
+   @Nullable
+   public edn p() {
+      eeo $$0 = this.g.get();
+      if ($$0 == null) {
+         return null;
+      } else {
+         edn $$1 = this.a($$0);
+         return $$1 != null ? $$1 : this.a($$0.c());
+      }
+   }
+
+   @Nullable
+   public eeo q() {
+      CompletableFuture<arg<edn>> $$0 = this.h.get(eeo.c.b());
+      edn $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
+      return $$1 == null ? null : $$1.n();
+   }
+
+   public djo r() {
       return this.d;
    }
 
-   public boolean d() {
-      return this.g.B();
+   public arp s() {
+      return are.c(this.j());
    }
 
-   boolean t() {
-      boolean $$0 = this.c.a(this.a);
-      boolean $$1 = this.a.f();
-      this.a.g();
-      if (!$$0 && !$$1) {
-         return false;
-      } else {
-         this.s();
-         return true;
-      }
-   }
+   public abstract int j();
 
-   public boolean a(long $$0) {
-      if (!this.d.a($$0)) {
-         return false;
-      } else {
-         aqw $$1 = this.b($$0);
-         return $$1 == null ? false : $$1.a().getNow(aqw.a).a();
-      }
-   }
+   public abstract int k();
 
-   public void a(boolean $$0) {
-      this.t();
-      this.a.a($$0);
-   }
+   @bbi
+   public List<Pair<eeo, CompletableFuture<arg<edn>>>> t() {
+      List<Pair<eeo, CompletableFuture<arg<edn>>>> $$0 = new ArrayList<>();
 
-   @Override
-   public void close() throws IOException {
-      this.a(true);
-      this.h.close();
-      this.f.close();
-      this.a.close();
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-      brd $$2 = brc.a();
-      $$2.a("purge");
-      if (this.d.u().i() || !$$1) {
-         this.i.c();
+      for (int $$1 = 0; $$1 < a.size(); $$1++) {
+         $$0.add(Pair.of(a.get($$1), this.h.get($$1)));
       }
 
-      this.t();
-      $$2.b("chunks");
-      if ($$1) {
-         this.u();
-         this.a.l();
-      }
-
-      $$2.b("unload");
-      this.a.a($$0);
-      $$2.c();
-      this.s();
-   }
-
-   private void u() {
-      long $$0 = this.d.ae();
-      long $$1 = $$0 - this.j;
-      this.j = $$0;
-      if (!this.d.ak()) {
-         brd $$2 = brc.a();
-         $$2.a("pollingChunks");
-         if (this.d.u().i()) {
-            $$2.a("tickingChunks");
-            this.a($$2, $$1);
-            $$2.c();
-         }
-
-         this.a($$2);
-         $$2.c();
-      }
-   }
-
-   private void a(brd $$0) {
-      $$0.a("broadcast");
-
-      for (aqw $$1 : this.r) {
-         edn $$2 = $$1.d();
-         if ($$2 != null) {
-            $$1.a($$2);
-         }
-      }
-
-      this.r.clear();
-      $$0.c();
-   }
-
-   private void a(brd $$0, long $$1) {
-      $$0.b("naturalSpawnCount");
-      int $$2 = this.c.a();
-      dkk.d $$3 = dkk.a($$2, this.d.C(), this::a, new dkj(this.a));
-      this.s = $$3;
-      $$0.b("spawnAndTick");
-      boolean $$4 = this.d.O().c(djv.f);
-      int $$5 = this.d.O().d(djv.p);
-      List<bxz> $$7;
-      if ($$4 && (this.k || this.l)) {
-         boolean $$6 = this.d.C_().c() % 400L == 0L;
-         $$7 = dkk.a($$3, this.l, this.k, $$6);
-      } else {
-         $$7 = List.of();
-      }
-
-      List<edn> $$9 = this.q;
-
-      try {
-         $$0.a("filteringSpawningChunks");
-         this.a.a($$9);
-         $$0.b("shuffleSpawningChunks");
-         ag.c($$9, this.d.A);
-         $$0.b("tickSpawningChunks");
-
-         for (edn $$10 : $$9) {
-            this.a($$10, $$1, $$7, $$3);
-         }
-      } finally {
-         $$9.clear();
-      }
-
-      $$0.b("tickTickingChunks");
-      this.a.a($$1x -> this.d.a($$1x, $$5));
-      $$0.c();
-      $$0.b("customSpawners");
-      if ($$4) {
-         this.d.a(this.k, this.l);
-      }
-   }
-
-   private void a(edn $$0, long $$1, List<bxz> $$2, dkk.d $$3) {
-      dje $$4 = $$0.f();
-      $$0.b($$1);
-      if (this.c.c($$4.a())) {
-         this.d.a($$0);
-      }
-
-      if (!$$2.isEmpty()) {
-         if (this.d.c($$4)) {
-            dkk.a(this.d, $$0, $$3, $$2);
-         }
-      }
-   }
-
-   private void a(long $$0, Consumer<edn> $$1) {
-      aqw $$2 = this.b($$0);
-      if ($$2 != null) {
-         $$2.c().getNow(aqw.a).a($$1);
-      }
-   }
-
-   @Override
-   public String e() {
-      return Integer.toString(this.j());
-   }
-
-   @VisibleForTesting
-   public int f() {
-      return this.g.by();
-   }
-
-   public ede g() {
-      return this.a.a();
-   }
-
-   public edf h() {
-      return this.a.b();
-   }
-
-   public eht i() {
-      return this.a.c();
-   }
-
-   @Override
-   public int j() {
-      return this.a.i();
-   }
-
-   public void a(iw $$0) {
-      int $$1 = jz.a($$0.u());
-      int $$2 = jz.a($$0.w());
-      aqw $$3 = this.b(dje.c($$1, $$2));
-      if ($$3 != null && $$3.a($$0)) {
-         this.r.add($$3);
-      }
-   }
-
-   @Override
-   public void a(dki $$0, jz $$1) {
-      this.g.execute(() -> {
-         aqw $$2 = this.b($$1.r().a());
-         if ($$2 != null && $$2.a($$0, $$1.b())) {
-            this.r.add($$2);
-         }
-      });
-   }
-
-   public void a(asa $$0, dje $$1) {
-      this.i.a($$0, $$1);
-   }
-
-   public void a(asb $$0, dje $$1, int $$2) {
-      this.i.a($$0, $$1, $$2);
-   }
-
-   public void b(asb $$0, dje $$1, int $$2) {
-      this.i.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(dje $$0, boolean $$1) {
-      return this.i.a($$0, $$1);
-   }
-
-   @Override
-   public LongSet k() {
-      return this.i.e();
-   }
-
-   public void a(arv $$0) {
-      if (!$$0.dQ()) {
-         this.a.a($$0);
-      }
-   }
-
-   public void a(bwv $$0) {
-      this.a.b($$0);
-   }
-
-   public void b(bwv $$0) {
-      this.a.a($$0);
-   }
-
-   public void a(bwv $$0, zj<?> $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void b(bwv $$0, zj<?> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.a.a($$0);
-   }
-
-   public void b(int $$0) {
-      this.c.b($$0);
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.k = $$0;
-      this.l = this.l;
-   }
-
-   public String a(dje $$0) {
-      return this.a.a($$0);
-   }
-
-   public ezr l() {
-      return this.h;
-   }
-
-   public ciy m() {
-      return this.a.m();
-   }
-
-   public eem n() {
-      return this.a.p();
+      return $$0;
    }
 
    @Nullable
-   @baz
-   public dkk.d o() {
-      return this.s;
-   }
-
-   public void p() {
-      this.i.d();
-   }
-
-   public void a(aqw $$0) {
-      if ($$0.i()) {
-         this.r.add($$0);
-      }
-   }
-
-   final class a extends bth<Runnable> {
-      a(final djz $$0) {
-         super("Chunk source main thread executor for " + $$0.aj().a());
-      }
-
-      @Override
-      public void b(BooleanSupplier $$0) {
-         super.b(() -> MinecraftServer.z() && $$0.getAsBoolean());
-      }
-
-      @Override
-      public Runnable f(Runnable $$0) {
-         return $$0;
-      }
-
-      @Override
-      protected boolean e(Runnable $$0) {
-         return true;
-      }
-
-      @Override
-      protected boolean ax() {
-         return true;
-      }
-
-      @Override
-      protected Thread ay() {
-         return arr.this.e;
-      }
-
-      @Override
-      protected void d(Runnable $$0) {
-         brc.a().f("runTask");
-         super.d($$0);
-      }
-
-      @Override
-      protected boolean B() {
-         if (arr.this.t()) {
-            return true;
-         } else {
-            arr.this.f.b();
-            return super.B();
+   @bbi
+   public eeo u() {
+      for (int $$0 = a.size() - 1; $$0 >= 0; $$0--) {
+         eeo $$1 = a.get($$0);
+         edn $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$1;
          }
       }
+
+      return null;
    }
 }

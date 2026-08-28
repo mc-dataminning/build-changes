@@ -1,133 +1,419 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record egg(int ak) {
-   public static final jg.c<egg> a = a("block_activate");
-   public static final jg.c<egg> b = a("block_attach");
-   public static final jg.c<egg> c = a("block_change");
-   public static final jg.c<egg> d = a("block_close");
-   public static final jg.c<egg> e = a("block_deactivate");
-   public static final jg.c<egg> f = a("block_destroy");
-   public static final jg.c<egg> g = a("block_detach");
-   public static final jg.c<egg> h = a("block_open");
-   public static final jg.c<egg> i = a("block_place");
-   public static final jg.c<egg> j = a("container_close");
-   public static final jg.c<egg> k = a("container_open");
-   public static final jg.c<egg> l = a("drink");
-   public static final jg.c<egg> m = a("eat");
-   public static final jg.c<egg> n = a("elytra_glide");
-   public static final jg.c<egg> o = a("entity_damage");
-   public static final jg.c<egg> p = a("entity_die");
-   public static final jg.c<egg> q = a("entity_dismount");
-   public static final jg.c<egg> r = a("entity_interact");
-   public static final jg.c<egg> s = a("entity_mount");
-   public static final jg.c<egg> t = a("entity_place");
-   public static final jg.c<egg> u = a("entity_action");
-   public static final jg.c<egg> v = a("equip");
-   public static final jg.c<egg> w = a("explode");
-   public static final jg.c<egg> x = a("flap");
-   public static final jg.c<egg> y = a("fluid_pickup");
-   public static final jg.c<egg> z = a("fluid_place");
-   public static final jg.c<egg> A = a("hit_ground");
-   public static final jg.c<egg> B = a("instrument_play");
-   public static final jg.c<egg> C = a("item_interact_finish");
-   public static final jg.c<egg> D = a("item_interact_start");
-   public static final jg.c<egg> E = a("jukebox_play", 10);
-   public static final jg.c<egg> F = a("jukebox_stop_play", 10);
-   public static final jg.c<egg> G = a("lightning_strike");
-   public static final jg.c<egg> H = a("note_block_play");
-   public static final jg.c<egg> I = a("prime_fuse");
-   public static final jg.c<egg> J = a("projectile_land");
-   public static final jg.c<egg> K = a("projectile_shoot");
-   public static final jg.c<egg> L = a("sculk_sensor_tendrils_clicking");
-   public static final jg.c<egg> M = a("shear");
-   public static final jg.c<egg> N = a("shriek", 32);
-   public static final jg.c<egg> O = a("splash");
-   public static final jg.c<egg> P = a("step");
-   public static final jg.c<egg> Q = a("swim");
-   public static final jg.c<egg> R = a("teleport");
-   public static final jg.c<egg> S = a("unequip");
-   public static final jg.c<egg> T = a("resonate_1");
-   public static final jg.c<egg> U = a("resonate_2");
-   public static final jg.c<egg> V = a("resonate_3");
-   public static final jg.c<egg> W = a("resonate_4");
-   public static final jg.c<egg> X = a("resonate_5");
-   public static final jg.c<egg> Y = a("resonate_6");
-   public static final jg.c<egg> Z = a("resonate_7");
-   public static final jg.c<egg> aa = a("resonate_8");
-   public static final jg.c<egg> ab = a("resonate_9");
-   public static final jg.c<egg> ac = a("resonate_10");
-   public static final jg.c<egg> ad = a("resonate_11");
-   public static final jg.c<egg> ae = a("resonate_12");
-   public static final jg.c<egg> af = a("resonate_13");
-   public static final jg.c<egg> ag = a("resonate_14");
-   public static final jg.c<egg> ah = a("resonate_15");
-   public static final int ai = 16;
-   public static final Codec<jg<egg>> aj = alh.a(mi.H);
+public class egg<T extends efv> implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   final Set<UUID> b = Sets.newHashSet();
+   final egd<T> c;
+   private final efy<T> d;
+   private final efx<T> e;
+   final ega<T> f;
+   private final ege<T> g;
+   private final Long2ObjectMap<egk> h = new Long2ObjectOpenHashMap();
+   private final Long2ObjectMap<egg.b> i = new Long2ObjectOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   private final Queue<eft<T>> k = Queues.newConcurrentLinkedQueue();
 
-   public static jg<egg> a(jt<egg> $$0) {
-      return a;
+   public egg(Class<T> $$0, egd<T> $$1, efy<T> $$2) {
+      this.e = new efx<>();
+      this.f = new ega<>($$0, this.h);
+      this.h.defaultReturnValue(egk.a);
+      this.i.defaultReturnValue(egg.b.a);
+      this.c = $$1;
+      this.d = $$2;
+      this.g = new egf<>(this.e, this.f);
    }
 
-   public int a() {
-      return this.ak;
-   }
-
-   private static jg.c<egg> a(String $$0) {
-      return a($$0, 16);
-   }
-
-   private static jg.c<egg> a(String $$0, int $$1) {
-      return jt.b(mh.a, alk.b($$0), new egg($$1));
-   }
-
-   public static record a(@Nullable bwv a, @Nullable ebg b) {
-      public static egg.a a(@Nullable bwv $$0) {
-         return new egg.a($$0, null);
-      }
-
-      public static egg.a a(@Nullable ebg $$0) {
-         return new egg.a(null, $$0);
-      }
-
-      public static egg.a a(@Nullable bwv $$0, @Nullable ebg $$1) {
-         return new egg.a($$0, $$1);
+   void a(long $$0, efz<T> $$1) {
+      if ($$1.a()) {
+         this.f.e($$0);
       }
    }
 
-   public static final class b implements Comparable<egg.b> {
-      private final jg<egg> a;
-      private final ffs b;
-      private final egg.a c;
-      private final egi d;
-      private final double e;
+   private boolean b(T $$0) {
+      if (!this.b.add($$0.cG())) {
+         a.warn("UUID of added entity already exists: {}", $$0);
+         return false;
+      } else {
+         return true;
+      }
+   }
 
-      public b(jg<egg> $$0, ffs $$1, egg.a $$2, egi $$3, ffs $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+   public boolean a(T $$0) {
+      return this.a($$0, false);
+   }
+
+   private boolean a(T $$0, boolean $$1) {
+      if (!this.b($$0)) {
+         return false;
+      } else {
+         long $$2 = jz.c($$0.dv());
+         efz<T> $$3 = this.f.c($$2);
+         $$3.a($$0);
+         $$0.a(new egg.a($$0, $$2, $$3));
+         if (!$$1) {
+            this.c.g($$0);
+         }
+
+         egk $$4 = a($$0, $$3.c());
+         if ($$4.b()) {
+            this.e($$0);
+         }
+
+         if ($$4.a()) {
+            this.c($$0);
+         }
+
+         return true;
+      }
+   }
+
+   static <T extends efv> egk a(T $$0, egk $$1) {
+      return $$0.dU() ? egk.c : $$1;
+   }
+
+   public boolean a(djo $$0) {
+      return ((egk)this.h.get($$0.a())).a();
+   }
+
+   public void a(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, true));
+   }
+
+   public void b(Stream<T> $$0) {
+      $$0.forEach($$0x -> this.a((T)$$0x, false));
+   }
+
+   void c(T $$0) {
+      this.c.e($$0);
+   }
+
+   void d(T $$0) {
+      this.c.d($$0);
+   }
+
+   void e(T $$0) {
+      this.e.a($$0);
+      this.c.c($$0);
+   }
+
+   void f(T $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+   }
+
+   public void a(djo $$0, arp $$1) {
+      egk $$2 = egk.a($$1);
+      this.a($$0, $$2);
+   }
+
+   public void a(djo $$0, egk $$1) {
+      long $$2 = $$0.a();
+      if ($$1 == egk.a) {
+         this.h.remove($$2);
+         this.j.add($$2);
+      } else {
+         this.h.put($$2, $$1);
+         this.j.remove($$2);
+         this.b($$2);
       }
 
-      public int a(egg.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      this.f.b($$2).forEach($$1x -> {
+         egk $$2x = $$1x.a($$1);
+         boolean $$3 = $$2x.b();
+         boolean $$4 = $$1.b();
+         boolean $$5 = $$2x.a();
+         boolean $$6 = $$1.a();
+         if ($$5 && !$$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::d);
+         }
+
+         if ($$3 && !$$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::f);
+         } else if (!$$3 && $$4) {
+            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::e);
+         }
+
+         if (!$$5 && $$6) {
+            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::c);
+         }
+      });
+   }
+
+   private void b(long $$0) {
+      egg.b $$1 = (egg.b)this.i.get($$0);
+      if ($$1 == egg.b.a) {
+         this.c($$0);
+      }
+   }
+
+   private boolean a(long $$0, Consumer<T> $$1) {
+      egg.b $$2 = (egg.b)this.i.get($$0);
+      if ($$2 == egg.b.b) {
+         return false;
+      } else {
+         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(efv::dT)).collect(Collectors.toList());
+         if ($$3.isEmpty()) {
+            if ($$2 == egg.b.c) {
+               this.d.a(new eft<>(new djo($$0), ImmutableList.of()));
+            }
+
+            return true;
+         } else if ($$2 == egg.b.a) {
+            this.c($$0);
+            return false;
+         } else {
+            this.d.a(new eft<>(new djo($$0), $$3));
+            $$3.forEach($$1);
+            return true;
+         }
+      }
+   }
+
+   private void c(long $$0) {
+      this.i.put($$0, egg.b.b);
+      djo $$1 = new djo($$0);
+      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
+         a.error("Failed to read chunk {}", $$1, $$1x);
+         return null;
+      });
+   }
+
+   private boolean d(long $$0) {
+      boolean $$1 = this.a($$0, $$0x -> $$0x.db().forEach(this::g));
+      if (!$$1) {
+         return false;
+      } else {
+         this.i.remove($$0);
+         return true;
+      }
+   }
+
+   private void g(efv $$0) {
+      $$0.c(bxe.d.c);
+      $$0.a(efw.a);
+   }
+
+   private void g() {
+      this.j.removeIf($$0 -> this.h.get($$0) != egk.a ? true : this.d($$0));
+   }
+
+   private void h() {
+      eft<T> $$0;
+      while (($$0 = this.k.poll()) != null) {
+         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
+         this.i.put($$0.a().a(), egg.b.c);
+      }
+   }
+
+   public void a() {
+      this.h();
+      this.g();
+   }
+
+   private LongSet i() {
+      LongSet $$0 = this.f.a();
+      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+
+      while (var2.hasNext()) {
+         Entry<egg.b> $$1 = (Entry<egg.b>)var2.next();
+         if ($$1.getValue() == egg.b.c) {
+            $$0.add($$1.getLongKey());
+         }
       }
 
-      public jg<egg> a() {
-         return this.a;
+      return $$0;
+   }
+
+   public void b() {
+      this.i().forEach($$0 -> {
+         boolean $$1 = this.h.get($$0) == egk.a;
+         if ($$1) {
+            this.d($$0);
+         } else {
+            this.a($$0, $$0x -> {
+            });
+         }
+      });
+   }
+
+   public void c() {
+      LongSet $$0 = this.i();
+
+      while (!$$0.isEmpty()) {
+         this.d.a(false);
+         this.h();
+         $$0.removeIf($$0x -> {
+            boolean $$1 = this.h.get($$0x) == egk.a;
+            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
+            });
+         });
       }
 
-      public ffs b() {
-         return this.b;
+      this.d.a(true);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.c();
+      this.d.close();
+   }
+
+   public boolean a(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public ege<T> d() {
+      return this.g;
+   }
+
+   public boolean a(iw $$0) {
+      return ((egk)this.h.get(djo.a($$0))).a();
+   }
+
+   public boolean b(djo $$0) {
+      return ((egk)this.h.get($$0.a())).a();
+   }
+
+   public boolean a(long $$0) {
+      return this.i.get($$0) == egg.b.c;
+   }
+
+   public void a(Writer $$0) throws IOException {
+      ayx $$1 = ayx.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
+      this.f.a().forEach($$1x -> {
+         egg.b $$2 = (egg.b)this.i.get($$1x);
+         this.f.a($$1x).forEach($$2x -> {
+            efz<T> $$3 = this.f.d($$2x);
+            if ($$3 != null) {
+               try {
+                  $$1.a(jz.b($$2x), jz.c($$2x), jz.d($$2x), $$3.c(), $$2, $$3.d());
+               } catch (IOException var7) {
+                  throw new UncheckedIOException(var7);
+               }
+            }
+         });
+      });
+   }
+
+   @bbi
+   public String e() {
+      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
+   }
+
+   @bbi
+   public int f() {
+      return this.e.b();
+   }
+
+   class a implements efw {
+      private final T c;
+      private long d;
+      private efz<T> e;
+
+      a(final T $$0, final long $$1, final efz<T> $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
       }
 
-      public egg.a c() {
-         return this.c;
+      @Override
+      public void a() {
+         iw $$0 = this.c.dv();
+         long $$1 = jz.c($$0);
+         if ($$1 != this.d) {
+            egk $$2 = this.e.c();
+            if (!this.e.b(this.c)) {
+               egg.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jz.a(this.d), $$1});
+            }
+
+            egg.this.a(this.d, this.e);
+            efz<T> $$3 = egg.this.f.c($$1);
+            $$3.a(this.c);
+            this.e = $$3;
+            this.d = $$1;
+            this.a($$2, $$3.c());
+         }
       }
 
-      public egi d() {
-         return this.d;
+      private void a(egk $$0, egk $$1) {
+         egk $$2 = egg.a(this.c, $$0);
+         egk $$3 = egg.a(this.c, $$1);
+         if ($$2 == $$3) {
+            if ($$3.b()) {
+               egg.this.c.a(this.c);
+            }
+         } else {
+            boolean $$4 = $$2.b();
+            boolean $$5 = $$3.b();
+            if ($$4 && !$$5) {
+               egg.this.f(this.c);
+            } else if (!$$4 && $$5) {
+               egg.this.e(this.c);
+            }
+
+            boolean $$6 = $$2.a();
+            boolean $$7 = $$3.a();
+            if ($$6 && !$$7) {
+               egg.this.d(this.c);
+            } else if (!$$6 && $$7) {
+               egg.this.c(this.c);
+            }
+
+            if ($$5) {
+               egg.this.c.a(this.c);
+            }
+         }
       }
+
+      @Override
+      public void a(bxe.d $$0) {
+         if (!this.e.b(this.c)) {
+            egg.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jz.a(this.d), $$0});
+         }
+
+         egk $$1 = egg.a(this.c, this.e.c());
+         if ($$1.a()) {
+            egg.this.d(this.c);
+         }
+
+         if ($$1.b()) {
+            egg.this.f(this.c);
+         }
+
+         if ($$0.a()) {
+            egg.this.c.f(this.c);
+         }
+
+         egg.this.b.remove(this.c.cG());
+         this.c.a(a);
+         egg.this.a(this.d, this.e);
+      }
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,65 +1,41 @@
 import java.io.IOException;
-import java.nio.file.FileStore;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.attribute.FileStoreAttributeView;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-class aua extends FileStore {
-   private final String a;
-
-   public aua(String $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public String name() {
-      return this.a;
-   }
-
-   @Override
-   public String type() {
-      return "index";
-   }
-
-   @Override
-   public boolean isReadOnly() {
-      return true;
-   }
-
-   @Override
-   public long getTotalSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUsableSpace() {
-      return 0L;
-   }
-
-   @Override
-   public long getUnallocatedSpace() {
-      return 0L;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
-      return $$0 == BasicFileAttributeView.class;
-   }
-
-   @Override
-   public boolean supportsFileAttributeView(String $$0) {
-      return "basic".equals($$0);
-   }
+public interface aua extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
    @Nullable
-   @Override
-   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
-      return null;
+   avg<InputStream> a(String... var1);
+
+   @Nullable
+   avg<InputStream> a(auc var1, alr var2);
+
+   void a(auc var1, String var2, String var3, aua.a var4);
+
+   Set<String> a(auc var1);
+
+   @Nullable
+   <T> T a(aun<T> var1) throws IOException;
+
+   atz a();
+
+   default String b() {
+      return this.a().a();
+   }
+
+   default Optional<auu> c() {
+      return this.a().d();
    }
 
    @Override
-   public Object getAttribute(String $$0) throws IOException {
-      throw new UnsupportedOperationException();
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<alr, avg<InputStream>> {
    }
 }

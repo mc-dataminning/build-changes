@@ -1,21 +1,20 @@
-public record aak(String c) implements aam {
-   public static final za<vy, aak> a = aam.a(aak::a, aak::new);
-   public static final aam.b<aak> b = aam.a("brand");
+public record aak(arl b) implements zo<aaj> {
+   public static final ze<vy, aak> a = zo.a(aak::a, aak::new);
 
    private aak(vy $$0) {
-      this($$0.p());
+      this(new arl($$0));
    }
 
    private void a(vy $$0) {
-      $$0.a(this.c);
+      this.b.a($$0);
    }
 
    @Override
-   public aam.b<aak> a() {
-      return b;
+   public zq<aak> a() {
+      return aai.l;
    }
 
-   public String b() {
-      return this.c;
+   public void a(aaj $$0) {
+      $$0.a(this);
    }
 }

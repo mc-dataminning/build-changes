@@ -1,2 +1,8 @@
-public record bpz<S>(int a, bqe<S> b, Object c) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bpz {
 }

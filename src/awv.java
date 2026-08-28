@@ -1,149 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class awv {
-   public static final za<vy, awv> a = za.a(awv::b, awv::a);
-   private static final Map<cxi, Pair<String, String>> b = ImmutableMap.of(
-      cxi.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cxi.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cxi.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cxi.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+public class awv {
+   public static final Codec<awv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awx.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, awv::new)
    );
-   private final Map<cxi, awv.a> c;
+   private final jg<awx> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   private awv(Map<cxi, awv.a> $$0) {
-      this.c = $$0;
+   public awv(jg<awx> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public awv() {
-      this(new EnumMap<>(cxi.class));
+   public jg<awx> a() {
+      return this.b;
    }
 
-   private awv.a c(cxi $$0) {
-      return this.c.getOrDefault($$0, awv.a.a);
+   public int b() {
+      return this.c;
    }
 
-   private void a(cxi $$0, UnaryOperator<awv.a> $$1) {
-      this.c.compute($$0, ($$1x, $$2) -> {
-         if ($$2 == null) {
-            $$2 = awv.a.a;
-         }
-
-         $$2 = $$1.apply($$2);
-         if ($$2.equals(awv.a.a)) {
-            $$2 = null;
-         }
-
-         return $$2;
-      });
+   public int c() {
+      return this.d;
    }
 
-   public boolean a(cxi $$0) {
-      return this.c($$0).b;
-   }
-
-   public void a(cxi $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public boolean b(cxi $$0) {
-      return this.c($$0).c;
-   }
-
-   public void b(cxi $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
-   }
-
-   private static awv a(vy $$0) {
-      Map<cxi, awv.a> $$1 = new EnumMap<>(cxi.class);
-
-      for (cxi $$2 : cxi.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         if ($$3 || $$4) {
-            $$1.put($$2, new awv.a($$3, $$4));
-         }
-      }
-
-      return new awv($$1);
-   }
-
-   private void b(vy $$0) {
-      for (cxi $$1 : cxi.values()) {
-         awv.a $$2 = this.c.getOrDefault($$1, awv.a.a);
-         $$0.a($$2.b);
-         $$0.a($$2.c);
-      }
-   }
-
-   public static awv a(ua $$0) {
-      Map<cxi, awv.a> $$1 = new EnumMap<>(cxi.class);
-      b.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.b((String)$$3.getFirst(), awv.a.a.a());
-         boolean $$5 = $$0.b((String)$$3.getSecond(), awv.a.a.b());
-         if ($$4 || $$5) {
-            $$1.put($$2, new awv.a($$4, $$5));
-         }
-      });
-      return new awv($$1);
-   }
-
-   public void b(ua $$0) {
-      b.forEach(($$1, $$2) -> {
-         awv.a $$3 = this.c.getOrDefault($$1, awv.a.a);
-         $$0.a((String)$$2.getFirst(), $$3.b);
-         $$0.a((String)$$2.getSecond(), $$3.c);
-      });
-   }
-
-   public awv a() {
-      return new awv(new EnumMap<>(this.c));
-   }
-
-   public void a(awv $$0) {
-      this.c.clear();
-      this.c.putAll($$0.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof awv && this.c.equals(((awv)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   static record a(boolean b, boolean c) {
-      public static final awv.a a = new awv.a(false, false);
-
-      @Override
-      public String toString() {
-         return "[open=" + this.b + ", filtering=" + this.c + "]";
-      }
-
-      public awv.a a(boolean $$0) {
-         return new awv.a($$0, this.c);
-      }
-
-      public awv.a b(boolean $$0) {
-         return new awv.a(this.b, $$0);
-      }
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
-      }
+   public boolean d() {
+      return this.e;
    }
 }

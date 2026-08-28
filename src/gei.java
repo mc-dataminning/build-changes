@@ -1,72 +1,78 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public class gei {
-   public static final gei a = new gei(List.of());
-   private final List<dfy> b;
-   private final Set<dfz> c = new HashSet<>();
-   private final Set<dfz> d = new HashSet<>();
+   private final fqq a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public gei(List<dfy> $$0) {
-      this.b = $$0;
+   public gei(fqq $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public void a(csf $$0, Predicate<dfx> $$1) {
-      for (dfy $$2 : this.b) {
-         boolean $$3 = $$1.test($$2.b());
-         if ($$3) {
-            this.d.add($$2.a());
-         } else {
-            this.d.remove($$2.a());
-         }
+   public void a(UUID $$0) {
+      this.b.add($$0);
+   }
 
-         if ($$3 && $$2.a($$0)) {
-            this.c.add($$2.a());
-         } else {
-            this.c.remove($$2.a());
-         }
+   public void b(UUID $$0) {
+      this.b.remove($$0);
+   }
+
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ag.i());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   public boolean a(dfz $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return !this.d.isEmpty();
-   }
-
-   public List<dfy> c() {
+   public Set<UUID> c() {
       return this.b;
    }
 
-   public List<dfy> a(gei.a $$0) {
-      Predicate<dfz> $$1 = switch ($$0) {
-         case a -> this.d::contains;
-         case b -> this.c::contains;
-         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
-      };
-      List<dfy> $$2 = new ArrayList<>();
-
-      for (dfy $$3 : this.b) {
-         if ($$1.test($$3.a())) {
-            $$2.add($$3);
-         }
-      }
-
-      return $$2;
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ag.e);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public void a(gma $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof gek $$2) {
+         $$2.a($$0);
+      }
+   }
+
+   public void f(UUID $$0) {
+      if (this.a.z instanceof gek $$1) {
+         $$1.a($$0);
+      }
    }
 }

@@ -1,137 +1,109 @@
-import org.joml.Vector3f;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class aya {
-   public static int a(int $$0) {
-      return $$0 >>> 24;
+   private static final Codec<aya> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azg.t.fieldOf("id").forGetter(aya::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aya::new)
+   );
+   public static final Codec<aya> a = Codec.either(azg.t, b)
+      .xmap($$0 -> (aya)$$0.map($$0x -> new aya($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final alr c;
+   private final boolean d;
+   private final boolean e;
+
+   private aya(alr $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static int b(int $$0) {
-      return $$0 >> 16 & 0xFF;
+   private aya(azg.d $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
    }
 
-   public static int c(int $$0) {
-      return $$0 >> 8 & 0xFF;
+   private azg.d a() {
+      return new azg.d(this.c, this.d);
    }
 
-   public static int d(int $$0) {
-      return $$0 & 0xFF;
+   public static aya a(alr $$0) {
+      return new aya($$0, false, true);
    }
 
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+   public static aya b(alr $$0) {
+      return new aya($$0, false, false);
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      return a(255, $$0, $$1, $$2);
+   public static aya c(alr $$0) {
+      return new aya($$0, true, true);
    }
 
-   public static int a(ffs $$0) {
-      return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
+   public static aya d(alr $$0) {
+      return new aya($$0, true, false);
    }
 
-   public static int a(int $$0, int $$1) {
-      if ($$0 == -1) {
-         return $$1;
+   public <T> boolean a(aya.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.a(this.c);
+         if ($$2 == null) {
+            return !this.e;
+         }
+
+         $$2.forEach($$1);
       } else {
-         return $$1 == -1 ? $$0 : a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+         T $$3 = $$0.a(this.c, this.e);
+         if ($$3 == null) {
+            return !this.e;
+         }
+
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<alr> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   public static int a(int $$0, float $$1) {
-      return a($$0, $$1, $$1, $$1);
+   public void b(Consumer<alr> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
    }
 
-   public static int a(int $$0, float $$1, float $$2, float $$3) {
-      return a(
-         a($$0),
-         Math.clamp((long)((int)((float)b($$0) * $$1)), 0, 255),
-         Math.clamp((long)((int)((float)c($$0) * $$2)), 0, 255),
-         Math.clamp((long)((int)((float)d($$0) * $$3)), 0, 255)
-      );
+   public boolean a(Predicate<alr> $$0, Predicate<alr> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
    }
 
-   public static int b(int $$0, int $$1) {
-      return a(
-         a($$0),
-         Math.clamp((long)b($$0) * (long)$$1 / 255L, 0, 255),
-         Math.clamp((long)c($$0) * (long)$$1 / 255L, 0, 255),
-         Math.clamp((long)d($$0) * (long)$$1 / 255L, 0, 255)
-      );
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
    }
 
-   public static int e(int $$0) {
-      int $$1 = (int)((float)b($$0) * 0.3F + (float)c($$0) * 0.59F + (float)d($$0) * 0.11F);
-      return a($$1, $$1, $$1);
-   }
+   public interface a<T> {
+      @Nullable
+      T a(alr var1, boolean var2);
 
-   public static int a(float $$0, int $$1, int $$2) {
-      int $$3 = azq.a($$0, a($$1), a($$2));
-      int $$4 = azq.a($$0, b($$1), b($$2));
-      int $$5 = azq.a($$0, c($$1), c($$2));
-      int $$6 = azq.a($$0, d($$1), d($$2));
-      return a($$3, $$4, $$5, $$6);
-   }
-
-   public static int f(int $$0) {
-      return $$0 | 0xFF000000;
-   }
-
-   public static int g(int $$0) {
-      return $$0 & 16777215;
-   }
-
-   public static int c(int $$0, int $$1) {
-      return $$0 << 24 | $$1 & 16777215;
-   }
-
-   public static int a(float $$0) {
-      return b($$0) << 24 | 16777215;
-   }
-
-   public static int a(float $$0, float $$1, float $$2, float $$3) {
-      return a(b($$0), b($$1), b($$2), b($$3));
-   }
-
-   public static Vector3f h(int $$0) {
-      float $$1 = (float)b($$0) / 255.0F;
-      float $$2 = (float)c($$0) / 255.0F;
-      float $$3 = (float)d($$0) / 255.0F;
-      return new Vector3f($$1, $$2, $$3);
-   }
-
-   public static int d(int $$0, int $$1) {
-      return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
-   }
-
-   public static int b(float $$0) {
-      return azq.d($$0 * 255.0F);
-   }
-
-   public static float i(int $$0) {
-      return o(a($$0));
-   }
-
-   public static float j(int $$0) {
-      return o(b($$0));
-   }
-
-   public static float k(int $$0) {
-      return o(c($$0));
-   }
-
-   public static float l(int $$0) {
-      return o(d($$0));
-   }
-
-   private static float o(int $$0) {
-      return (float)$$0 / 255.0F;
-   }
-
-   public static int m(int $$0) {
-      return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
-   }
-
-   public static int n(int $$0) {
-      return m($$0);
+      @Nullable
+      Collection<T> a(alr var1);
    }
 }

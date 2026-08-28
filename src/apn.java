@@ -1,61 +1,39 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class apn {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xc.c("commands.summon.invalidPosition"));
-
-   public static void a(CommandDispatcher<ek> $$0, eg $$1) {
+   public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("summon").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ek)$$0x.getSource(), Collections.singleton(((ek)$$0x.getSource()).h()), iw.a((jq)((ek)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)el.a("entity", fj.a($$1, mi.B))
-                     .suggests(il.c)
-                     .executes($$0x -> b((ek)$$0x.getSource(), fj.e($$0x, "entity"), ((ek)$$0x.getSource()).d(), new ua(), true)))
+               ((RequiredArgumentBuilder)el.a("targets", ex.d())
+                     .executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), iw.a((jq)((ek)$$0x.getSource()).d()), 0.0F)))
                   .then(
-                     ((RequiredArgumentBuilder)el.a("pos", go.a())
-                           .executes($$0x -> b((ek)$$0x.getSource(), fj.e($$0x, "entity"), go.a($$0x, "pos"), new ua(), true)))
-                        .then(el.a("nbt", eu.a()).executes($$0x -> b((ek)$$0x.getSource(), fj.e($$0x, "entity"), go.a($$0x, "pos"), eu.a($$0x, "nbt"), false)))
+                     ((RequiredArgumentBuilder)el.a("pos", gh.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), gh.c($$0x, "pos"), 0.0F)))
+                        .then(el.a("angle", eq.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), gh.c($$0x, "pos"), eq.a($$0x, "angle"))))
                   )
             )
       );
    }
 
-   public static bwv a(ek $$0, jg.c<bxe<?>> $$1, ffs $$2, ua $$3, boolean $$4) throws CommandSyntaxException {
-      iw $$5 = iw.a((jq)$$2);
-      if (!djz.l($$5)) {
-         throw c.create();
-      } else {
-         ua $$6 = $$3.l();
-         $$6.a("id", $$1.h().a().toString());
-         aru $$7 = $$0.e();
-         bwv $$8 = bxe.a($$6, $$7, bxd.n, $$1x -> {
-            $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bxy) {
-               ((bxy)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bxd.n, null);
-            }
+   private static int a(ek $$0, Collection<asc> $$1, iw $$2, float $$3) {
+      alq<dkj> $$4 = $$0.e().aj();
 
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
-         }
+      for (asc $$5 : $$1) {
+         $$5.a(new asc.a($$4, $$2, $$3, true), false);
       }
-   }
 
-   private static int b(ek $$0, jg.c<bxe<?>> $$1, ffs $$2, ua $$3, boolean $$4) throws CommandSyntaxException {
-      bwv $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> xc.a("commands.summon.success", $$5.m_()), true);
-      return 1;
+      String $$6 = $$4.a().toString();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xg.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().m_()), true);
+      } else {
+         $$0.a(() -> xg.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

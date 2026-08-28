@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class end implements emr {
+public class end implements enb {
    public static final Codec<end> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(end::new, emg.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), erh.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               epc.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               epc.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, end::new)
    );
-   public final List<emg> b;
-   public final jg<erh> c;
+   public final epc b;
+   public final epc c;
+   public final int d;
 
-   public end(List<emg> $$0, jg<erh> $$1) {
+   public end(epc $$0, epc $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   @Override
-   public Stream<ejx<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+      this.d = $$2;
    }
 }

@@ -1,209 +1,144 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationException;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
-import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
-import com.mojang.authlib.exceptions.InvalidCredentialsException;
-import com.mojang.authlib.exceptions.UserBannedException;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.security.PublicKey;
-import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import net.minecraft.client.ClientBrandRetriever;
-import org.slf4j.Logger;
 
-public class gmc implements ajf {
-   private static final Logger a = LogUtils.getLogger();
-   private final frf b;
+public class gmc {
    @Nullable
-   private final gms c;
+   private gmc.a a;
    @Nullable
-   private final gaf d;
-   private final Consumer<xc> e;
-   private final vv f;
-   private final boolean g;
-   @Nullable
-   private final Duration h;
-   @Nullable
-   private String i;
-   private final Map<alk, byte[]> j;
-   private final boolean k;
-   private final AtomicReference<gmc.a> l = new AtomicReference<>(gmc.a.a);
+   private gmc.b b;
 
-   public gmc(vv $$0, frf $$1, @Nullable gms $$2, @Nullable gaf $$3, boolean $$4, @Nullable Duration $$5, Consumer<xc> $$6, @Nullable gmw $$7) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$6;
-      this.g = $$4;
-      this.h = $$5;
-      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
-      this.k = $$7 != null;
+   public void a(alq<? extends jt<?>> $$0, List<jx.a> $$1) {
+      if (this.a == null) {
+         this.a = new gmc.a();
+      }
+
+      this.a.a($$0, $$1);
    }
 
-   private void a(gmc.a $$0) {
-      gmc.a $$1 = this.l.updateAndGet($$1x -> {
-         if (!$$0.f.contains($$1x)) {
-            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
-         } else {
-            return $$0;
+   public void a(Map<alq<? extends jt<?>>, aye.a> $$0) {
+      if (this.b == null) {
+         this.b = new gmc.b();
+      }
+
+      $$0.forEach(this.b::a);
+   }
+
+   private static <T> jt.a<T> a(ju.b $$0, alq<? extends jt<? extends T>> $$1, aye.a $$2) {
+      jt<T> $$3 = $$0.f($$1);
+      return $$3.a($$2.a($$3));
+   }
+
+   private ju a(avr $$0, gmc.a $$1, boolean $$2) {
+      jn<glr> $$3 = glr.a();
+      ju.b $$4 = $$3.b(glr.b);
+      Map<alq<? extends jt<?>>, alm.c> $$5 = new HashMap<>();
+      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new alm.c($$2x, aye.a.a)));
+      List<jt.a<?>> $$6 = new ArrayList<>();
+      if (this.b != null) {
+         this.b.a(($$4x, $$5x) -> {
+            if (!$$5x.a()) {
+               if (jx.a($$4x)) {
+                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
+                     List<jx.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
+                     return new alm.c($$3xx, $$5x);
+                  });
+               } else if (!$$2) {
+                  $$6.add(a($$4, $$4x, $$5x));
+               }
+            }
+         });
+      }
+
+      List<ji.b<?>> $$7 = ayd.a($$4, $$6);
+
+      ju.b $$8;
+      try {
+         $$8 = alm.a($$5, $$0, $$7, alm.c).e();
+      } catch (Exception var13) {
+         p $$10 = p.a(var13, "Network Registry Load");
+         a($$10, $$5, $$6);
+         throw new aa($$10);
+      }
+
+      ju $$12 = $$3.a(glr.b, $$8).a();
+      $$6.forEach(jt.a::d);
+      return $$12;
+   }
+
+   private static void a(p $$0, Map<alq<? extends jt<?>>, alm.c> $$1, List<jt.a<?>> $$2) {
+      q $$3 = $$0.a("Received Elements and Tags");
+      $$3.a(
+         "Dynamic Registries",
+         () -> $$1.entrySet()
+               .stream()
+               .sorted(Comparator.comparing($$0xx -> ((alq)$$0xx.getKey()).a()))
+               .map(
+                  $$0xx -> String.format(
+                        Locale.ROOT,
+                        "\n\t\t%s: elements=%d tags=%d",
+                        ((alq)$$0xx.getKey()).a(),
+                        ((alm.c)$$0xx.getValue()).a().size(),
+                        ((alm.c)$$0xx.getValue()).b().b()
+                     )
+               )
+               .collect(Collectors.joining())
+      );
+      $$3.a(
+         "Static Registries",
+         () -> $$2.stream()
+               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
+               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
+               .collect(Collectors.joining())
+      );
+   }
+
+   private void a(gmc.b $$0, ju.b $$1, boolean $$2) {
+      $$0.a(($$2x, $$3) -> {
+         if ($$2 || jx.a($$2x)) {
+            a($$1, $$2x, $$3).d();
          }
       });
-      this.e.accept($$1.e);
    }
 
-   @Override
-   public void a(ajh $$0) {
-      this.a(gmc.a.b);
-
-      Cipher $$4;
-      Cipher $$5;
-      String $$3;
-      ajq $$7;
-      try {
-         SecretKey $$1 = ayn.a();
-         PublicKey $$2 = $$0.e();
-         $$3 = new BigInteger(ayn.a($$0.b(), $$2, $$1)).toString(16);
-         $$4 = ayn.a(2, $$1);
-         $$5 = ayn.a(1, $$1);
-         byte[] $$6 = $$0.f();
-         $$7 = new ajq($$1, $$2, $$6);
-      } catch (Exception var9) {
-         throw new IllegalStateException("Protocol error", var9);
-      }
-
-      if ($$0.g()) {
-         ag.i().execute(() -> {
-            xc $$4x = this.b($$3);
-            if ($$4x != null) {
-               if (this.c == null || !this.c.d()) {
-                  this.f.a($$4x);
-                  return;
-               }
-
-               a.warn($$4x.getString());
-            }
-
-            this.a($$7, $$4, $$5);
-         });
+   public ju.b a(avr $$0, ju.b $$1, boolean $$2) {
+      ju $$3;
+      if (this.a != null) {
+         $$3 = this.a($$0, this.a, $$2);
       } else {
-         this.a($$7, $$4, $$5);
+         if (this.b != null) {
+            this.a(this.b, $$1, !$$2);
+         }
+
+         $$3 = $$1;
+      }
+
+      return $$3.e();
+   }
+
+   static class a {
+      final Map<alq<? extends jt<?>>, List<jx.a>> a = new HashMap<>();
+
+      public void a(alq<? extends jt<?>> $$0, List<jx.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
       }
    }
 
-   private void a(ajq $$0, Cipher $$1, Cipher $$2) {
-      this.a(gmc.a.c);
-      this.f.a($$0, wj.a(() -> this.f.a($$1, $$2)));
-   }
+   static class b {
+      private final Map<alq<? extends jt<?>>, aye.a> a = new HashMap<>();
 
-   @Nullable
-   private xc b(String $$0) {
-      try {
-         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
-         return null;
-      } catch (AuthenticationUnavailableException var3) {
-         return xc.a("disconnect.loginFailedInfo", xc.c("disconnect.loginFailedInfo.serversUnavailable"));
-      } catch (InvalidCredentialsException var4) {
-         return xc.a("disconnect.loginFailedInfo", xc.c("disconnect.loginFailedInfo.invalidSession"));
-      } catch (InsufficientPrivilegesException var5) {
-         return xc.a("disconnect.loginFailedInfo", xc.c("disconnect.loginFailedInfo.insufficientPrivileges"));
-      } catch (ForcedUsernameChangeException | UserBannedException var6) {
-         return xc.a("disconnect.loginFailedInfo", xc.c("disconnect.loginFailedInfo.userBanned"));
-      } catch (AuthenticationException var7) {
-         return xc.a("disconnect.loginFailedInfo", var7.getMessage());
+      public void a(alq<? extends jt<?>> $$0, aye.a $$1) {
+         this.a.put($$0, $$1);
       }
-   }
 
-   private MinecraftSessionService d() {
-      return this.b.am();
-   }
-
-   @Override
-   public void a(ajk $$0) {
-      this.a(gmc.a.d);
-      GameProfile $$1 = $$0.b();
-      this.f
-         .a(
-            abn.d,
-            new gmb(this.b, this.f, new gmi($$1, this.b.u().a(this.g, this.h, this.i), gmg.a().a(), cvl.h, null, this.c, this.d, this.j, null, Map.of(), amc.a))
-         );
-      this.f.a(ajr.a);
-      this.f.a(abn.b);
-      this.f.a(new aae(new aak(ClientBrandRetriever.getClientModName())));
-      this.f.a(new aad(this.b.n.aA()));
-   }
-
-   @Override
-   public void a(vx $$0) {
-      xc $$1 = this.k ? xb.q : xb.r;
-      if (this.c != null && this.c.e()) {
-         this.b.a(new hrl(this.d, $$1, $$0.a()));
-      } else {
-         this.b.a(new fzm(this.d, $$1, $$0));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.f.i();
-   }
-
-   @Override
-   public void a(ajj $$0) {
-      this.f.a($$0.b());
-   }
-
-   @Override
-   public void a(aji $$0) {
-      if (!this.f.e()) {
-         this.f.a($$0.b(), false);
-      }
-   }
-
-   @Override
-   public void a(ajg $$0) {
-      this.e.accept(xc.c("connect.negotiating"));
-      this.f.a(new ajo($$0.b(), null));
-   }
-
-   public void a(@Nullable String $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public void a(abt $$0) {
-      this.f.a(new abw($$0.b(), this.j.get($$0.b())));
-   }
-
-   @Override
-   public void a(p $$0, q $$1) {
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
-      $$1.a("Login phase", () -> this.l.get().toString());
-      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
-   }
-
-   static enum a {
-      a(xc.c("connect.connecting"), Set.of()),
-      b(xc.c("connect.authorizing"), Set.of(a)),
-      c(xc.c("connect.encrypting"), Set.of(b)),
-      d(xc.c("connect.joining"), Set.of(c, a));
-
-      final xc e;
-      final Set<gmc.a> f;
-
-      private a(final xc $$0, final Set<gmc.a> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      public void a(BiConsumer<? super alq<? extends jt<?>>, ? super aye.a> $$0) {
+         this.a.forEach($$0);
       }
    }
 }

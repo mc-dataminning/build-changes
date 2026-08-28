@@ -1,32 +1,25 @@
-public class gcy extends gdc {
-   private static final xc b = xc.c("multiplayerWarning.header").a(o.r);
-   private static final xc c = xc.c("multiplayerWarning.message");
-   private static final xc d = xc.c("multiplayerWarning.check");
-   private static final xc s = b.f().f("\n").b(c);
-   private final gaf u;
+import java.util.Arrays;
 
-   public gcy(gaf $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class gcy extends gcw {
+   private static final xg a = xg.c("options.sounds.title");
+
+   private static fqt<?>[] a(fqu $$0) {
+      return new fqt[]{$$0.Z(), $$0.aa()};
+   }
+
+   public gcy(fzq $$0, fqu $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected fyc m() {
-      fyf $$0 = fyf.e().a(8);
-      $$0.a(fun.a(xb.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
-
-         this.m.a(new gcx(this.u));
-      }).a());
-      $$0.a(fun.a(xb.k, $$0x -> this.aP_()).a());
-      return $$0;
+   protected void m() {
+      this.d.a(this.c.b(awz.a));
+      this.d.a(this.H());
+      this.d.a(this.c.aw());
+      this.d.a(a(this.c));
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.u);
+   private fqt<?>[] H() {
+      return Arrays.stream(awz.values()).filter($$0 -> $$0 != awz.a).map($$0 -> this.c.b($$0)).toArray(fqt[]::new);
    }
 }

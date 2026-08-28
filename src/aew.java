@@ -1,37 +1,28 @@
-public class aew implements zj<aby> {
-   public static final za<vy, aew> a = zj.a(aew::a, aew::new);
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public aew(ecy $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
+public record aew(String b, @Nullable String c) implements zo<acf> {
+   public static final ze<vy, aew> a = zo.a(aew::a, aew::new);
 
    private aew(vy $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
+      this($$0.p(), $$0.c(vy::p));
    }
 
    private void a(vy $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.a(this.c, vy::a);
    }
 
    @Override
-   public zl<aew> a() {
-      return agr.av;
+   public zq<aew> a() {
+      return agy.cp;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   @Nullable
+   public String e() {
       return this.c;
-   }
-
-   public double e() {
-      return this.b;
    }
 }

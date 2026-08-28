@@ -1,12 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dsl extends dsk {
-   public dsl(ebf.d $$0) {
-      super($$0);
-   }
+public interface dsl {
+   boolean a(@Nullable byf var1, djn var2, iw var3, ebq var4, exz var5);
 
-   @Override
-   public abstract MapCodec<? extends dsl> a();
-
-   public abstract dsm c();
+   boolean a(dkk var1, iw var2, ebq var3, eya var4);
 }

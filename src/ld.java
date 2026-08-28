@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ld(Optional<bg<asm<xc>, ld.a>> e, Optional<String> f, Optional<String> g, cx.d h, Optional<Boolean> i) implements dm<ddk> {
+public record ld(Optional<bg<ast<xg>, ld.a>> e, Optional<String> f, Optional<String> g, cx.d h, Optional<Boolean> i) implements dm<ddu> {
    public static final Codec<ld> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bg.a(ld.a.a).optionalFieldOf("pages").forGetter(ld::b),
@@ -16,11 +16,11 @@ public record ld(Optional<bg<asm<xc>, ld.a>> e, Optional<String> f, Optional<Str
    );
 
    @Override
-   public kk<ddk> a() {
+   public kk<ddu> a() {
       return kl.V;
    }
 
-   public boolean a(ddk $$0) {
+   public boolean a(ddu $$0) {
       if (this.f.isPresent() && !this.f.get().equals($$0.e())) {
          return false;
       } else if (this.g.isPresent() && !this.g.get().equals($$0.d().a())) {
@@ -32,7 +32,7 @@ public record ld(Optional<bg<asm<xc>, ld.a>> e, Optional<String> f, Optional<Str
       }
    }
 
-   public Optional<bg<asm<xc>, ld.a>> b() {
+   public Optional<bg<ast<xg>, ld.a>> b() {
       return this.e;
    }
 
@@ -52,14 +52,14 @@ public record ld(Optional<bg<asm<xc>, ld.a>> e, Optional<String> f, Optional<Str
       return this.i;
    }
 
-   public static record a(xc b) implements Predicate<asm<xc>> {
-      public static final Codec<ld.a> a = xe.a.xmap(ld.a::new, ld.a::a);
+   public static record a(xg b) implements Predicate<ast<xg>> {
+      public static final Codec<ld.a> a = xi.a.xmap(ld.a::new, ld.a::a);
 
-      public boolean a(asm<xc> $$0) {
+      public boolean a(ast<xg> $$0) {
          return $$0.a().equals(this.b);
       }
 
-      public xc a() {
+      public xg a() {
          return this.b;
       }
    }

@@ -1,16 +1,16 @@
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
-public interface avi extends avb {
-   @Override
-   default CompletableFuture<Void> reload(avb.a $$0, avh $$1, Executor $$2, Executor $$3) {
-      return $$0.wait(bay.a).thenRunAsync(() -> {
-         brd $$1x = brc.a();
-         $$1x.a("listener");
-         this.a($$1);
-         $$1x.c();
-      }, $$3);
+@FunctionalInterface
+public interface avi {
+   CompletableFuture<Void> reload(avi.a var1, avo var2, Executor var3, Executor var4);
+
+   default String getName() {
+      return this.getClass().getSimpleName();
    }
 
-   void a(avh var1);
+   @FunctionalInterface
+   public interface a {
+      <T> CompletableFuture<T> wait(T var1);
+   }
 }

@@ -8,7 +8,7 @@ public class cm extends dl<cm.a> {
       return cm.a.a;
    }
 
-   public void a(arv $$0, daa $$1, int $$2) {
+   public void a(asc $$0, dak $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -31,7 +31,7 @@ public class cm extends dl<cm.a> {
          return aq.u.a(new cm.a($$0, $$1, $$2, cx.d.c));
       }
 
-      public boolean a(daa $$0, int $$1) {
+      public boolean a(dak $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {

@@ -1,65 +1,65 @@
 public class qj {
-   public static final alj<ejj<?>> a = a("cave");
-   public static final alj<ejj<?>> b = a("cave_extra_underground");
-   public static final alj<ejj<?>> c = a("canyon");
-   public static final alj<ejj<?>> d = a("nether_cave");
+   public static final alq<ejt<?>> a = a("cave");
+   public static final alq<ejt<?>> b = a("cave_extra_underground");
+   public static final alq<ejt<?>> c = a("canyon");
+   public static final alq<ejt<?>> d = a("nether_cave");
 
-   private static alj<ejj<?>> a(String $$0) {
-      return alj.a(mi.aK, alk.b($$0));
+   private static alq<ejt<?>> a(String $$0) {
+      return alq.a(mi.aK, alr.b($$0));
    }
 
-   public static void a(qi<ejj<?>> $$0) {
-      jh<dne> $$1 = $$0.a(mi.i);
+   public static void a(qi<ejt<?>> $$0) {
+      jh<dno> $$1 = $$0.a(mi.i);
       $$0.a(
          a,
-         ejl.a
+         ejv.a
             .a(
-               new ejh(
+               new ejr(
                   0.15F,
-                  eqn.a(ehz.b(8), ehz.a(180)),
-                  bud.b(0.1F, 0.9F),
-                  ehz.b(8),
-                  ejf.a(false, dng.py.m()),
-                  $$1.b(axg.bl),
-                  bud.b(0.7F, 1.4F),
-                  bud.b(0.8F, 1.3F),
-                  bud.b(-1.0F, -0.4F)
+                  eqx.a(eij.b(8), eij.a(180)),
+                  bum.b(0.1F, 0.9F),
+                  eij.b(8),
+                  ejp.a(false, dnq.py.m()),
+                  $$1.b(axn.bl),
+                  bum.b(0.7F, 1.4F),
+                  bum.b(0.8F, 1.3F),
+                  bum.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          b,
-         ejl.a
+         ejv.a
             .a(
-               new ejh(
+               new ejr(
                   0.07F,
-                  eqn.a(ehz.b(8), ehz.a(47)),
-                  bud.b(0.1F, 0.9F),
-                  ehz.b(8),
-                  ejf.a(false, dng.gV.m()),
-                  $$1.b(axg.bl),
-                  bud.b(0.7F, 1.4F),
-                  bud.b(0.8F, 1.3F),
-                  bud.b(-1.0F, -0.4F)
+                  eqx.a(eij.b(8), eij.a(47)),
+                  bum.b(0.1F, 0.9F),
+                  eij.b(8),
+                  ejp.a(false, dnq.gV.m()),
+                  $$1.b(axn.bl),
+                  bum.b(0.7F, 1.4F),
+                  bum.b(0.8F, 1.3F),
+                  bum.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          c,
-         ejl.c
+         ejv.c
             .a(
-               new ejc(
+               new ejm(
                   0.01F,
-                  eqn.a(ehz.a(10), ehz.a(67)),
-                  btu.a(3.0F),
-                  ehz.b(8),
-                  ejf.a(false, dng.pz.m()),
-                  $$1.b(axg.bl),
-                  bud.b(-0.125F, 0.125F),
-                  new ejc.a(bud.b(0.75F, 1.0F), buc.a(0.0F, 6.0F, 2.0F), 3, bud.b(0.75F, 1.0F), 1.0F, 0.0F)
+                  eqx.a(eij.a(10), eij.a(67)),
+                  bud.a(3.0F),
+                  eij.b(8),
+                  ejp.a(false, dnq.pz.m()),
+                  $$1.b(axn.bl),
+                  bum.b(-0.125F, 0.125F),
+                  new ejm.a(bum.b(0.75F, 1.0F), bul.a(0.0F, 6.0F, 2.0F), 3, bum.b(0.75F, 1.0F), 1.0F, 0.0F)
                )
             )
       );
-      $$0.a(d, ejl.b.a(new ejh(0.2F, eqn.a(ehz.a(0), ehz.c(1)), btu.a(0.5F), ehz.b(10), $$1.b(axg.bm), btu.a(1.0F), btu.a(1.0F), btu.a(-0.7F))));
+      $$0.a(d, ejv.b.a(new ejr(0.2F, eqx.a(eij.a(0), eij.c(1)), bud.a(0.5F), eij.b(10), $$1.b(axn.bm), bud.a(1.0F), bud.a(1.0F), bud.a(-0.7F))));
    }
 }

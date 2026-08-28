@@ -1,44 +1,69 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class epw extends epz {
-   public static final MapCodec<epw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epw::new));
+public class epw extends epx {
+   public static final MapCodec<epw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               azg.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
+               azg.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
+               azg.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
+               epc.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, epw::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final epc e;
 
-   public epw(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public epw(int $$0, int $$1, int $$2, epc $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   protected eqa<?> a() {
-      return eqa.c;
+   protected epy<?> a() {
+      return epy.i;
    }
 
    @Override
-   public List<eod.a> a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, int $$3, iw $$4, enn $$5) {
-      iw $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      iw.a $$7 = new iw.a();
+   public void a(epx.a $$0) {
+      List<iw> $$1 = emi.a($$0);
+      if (!$$1.isEmpty()) {
+         iw $$2 = $$1.getFirst();
+         int $$3 = $$2.v();
+         int $$4 = $$2.u();
+         int $$5 = $$2.u();
+         int $$6 = $$2.w();
+         int $$7 = $$2.w();
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         for (iw $$8 : $$1) {
+            if ($$8.v() == $$3) {
+               $$4 = Math.min($$4, $$8.u());
+               $$5 = Math.max($$5, $$8.u());
+               $$6 = Math.min($$6, $$8.w());
+               $$7 = Math.max($$7, $$8.w());
+            }
+         }
+
+         bai $$9 = $$0.b();
+         esf $$10 = new esf($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
+         iw.a $$11 = new iw.a();
+
+         for (int $$12 = 0; $$12 < this.b; $$12++) {
+            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
+            this.a($$0, $$11);
          }
       }
-
-      return ImmutableList.of(new eod.a($$4.b($$3), 0, true));
    }
 
-   private void a(dkf $$0, BiConsumer<iw, ebg> $$1, azz $$2, iw.a $$3, enn $$4, iw $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   private void a(epx.a $$0, iw $$1) {
+      iw $$2 = $$1.d();
+      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dnq.fx)) && $$0.a($$1, ebp.a::s)) {
+         $$0.a($$2, this.e.a($$0.b(), $$2));
+      }
    }
 }

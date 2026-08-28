@@ -1,20 +1,21 @@
 import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
 
 public class fgi extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+   private final int a;
 
-   public fgi(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fgi(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
    public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+      return (double)$$0 / (double)this.a;
    }
 
    public int size() {
-      return this.a.size();
+      return this.a + 1;
    }
 }

@@ -1,12 +1,6 @@
-import java.util.function.Supplier;
-
-public class cuo extends cuk {
-   public cuo(bxe<? extends cuo> $$0, djz $$1, Supplier<czw> $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected double b(bwy $$0) {
-      return (double)($$0.b() / 3.0F);
+public record cuo(iw a, dla b, jg<dlm> c) {
+   public static cuo a(dla $$0, iw $$1) {
+      jg<dlm> $$2 = $$0.u($$1);
+      return new cuo($$1, $$0, $$2);
    }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ath {
+   asc o();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ath {
+   void b(zo<?> var1);
 }

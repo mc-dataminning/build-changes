@@ -3,48 +3,40 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class ccc {
-   private static final int a = 200;
+   public static cbh<cru> a(chh<jf> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return cdj.a(
+         (Function<cdj.b<cru>, ? extends App<cdj.c<cru>, cdm<cru>>>)($$5 -> $$5.group($$5.a(chh.F), $$5.c(chh.n), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     jf $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.aj() && (!$$13.isPresent() || $$9.ae() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dv()) > $$3) {
+                           fgc $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static <E extends bxy> bzo<E> a(ccc.b<E> $$0) {
-      return a(($$0x, $$1) -> false, $$0, true);
-   }
+                           while ($$14 == null || iw.a((jq)$$14).k($$10.dv()) > $$3) {
+                              $$14 = ciy.a($$10, 15, 7, fgc.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   public static <E extends bxy> bzo<E> a(ccc.a $$0) {
-      return a($$0, ($$0x, $$1, $$2) -> {
-      }, true);
-   }
+                           $$7.a(new chk($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dv()) > $$2) {
+                           $$7.a(new chk($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   public static <E extends bxy> bzo<E> a() {
-      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
-      }, true);
-   }
-
-   public static <E extends bxy> bzo<E> a(ccc.a $$0, ccc.b<E> $$1, boolean $$2) {
-      return cda.a(
-         (Function<cda.b<E>, ? extends App<cda.c<E>, cdd<E>>>)($$3 -> $$3.group($$3.b(cgy.p), $$3.a(cgy.F)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bxw $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bJ() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
                      return true;
-                  } else {
-                     $$1.accept($$6, (E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+                  }))
       );
-   }
-
-   private static boolean a(bxw $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dV().ae() - $$1.get() > 200L;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      boolean test(aru var1, bxw var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      void accept(aru var1, E var2, bxw var3);
    }
 }

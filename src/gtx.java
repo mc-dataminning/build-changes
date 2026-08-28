@@ -1,175 +1,59 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gtx implements gua<dyk> {
+   private final gij a;
+   private final gij b;
 
-public class gtx {
-   public static final gtx a = new gtx(Map.of());
-   private static final char b = '#';
-   private final Map<String, hnj> c;
-
-   gtx(Map<String, hnj> $$0) {
-      this.c = $$0;
+   public gtx(gub.a $$0) {
+      this($$0.f());
    }
 
-   @Nullable
-   public hnj a(String $$0) {
-      if (b($$0)) {
-         $$0 = $$0.substring(1);
-      }
-
-      return this.c.get($$0);
+   public gtx(gkn $$0) {
+      this.a = new gij.a($$0.a(gkq.w), gry::d);
+      this.b = new gij.a($$0.a(gkq.v), gry::d);
    }
 
-   private static boolean b(String $$0) {
-      return $$0.charAt(0) == '#';
+   public static gkx b() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("main", gkw.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gkt.a);
+      $$1.a("left_leg", gkw.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gkt.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gkw.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gkt.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gkx.a($$0, 64, 64);
    }
 
-   public static gtx.a a(JsonObject $$0, alk $$1) {
-      gtx.a.a $$2 = new gtx.a.a();
-
-      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
-      }
-
-      return $$2.a();
+   public static gkx c() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("main", gkw.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gkt.a);
+      $$1.a("left_leg", gkw.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gkt.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gkw.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gkt.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gkx.a($$0, 64, 64);
    }
 
-   private static void a(alk $$0, String $$1, String $$2, gtx.a.a $$3) {
-      if (b($$2)) {
-         $$3.a($$1, $$2.substring(1));
-      } else {
-         alk $$4 = alk.c($$2);
-         if ($$4 == null) {
-            throw new JsonParseException($$2 + " is not valid resource location");
-         }
-
-         $$3.a($$1, new hnj($$0, $$4));
+   public void a(dyk $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      dkj $$7 = $$0.i();
+      if ($$7 != null) {
+         hmx $$8 = gsh.a($$0.c());
+         ebq $$9 = $$0.m();
+         dpw.c<? extends dyk> $$10 = dpw.a(dyq.z, dnh::i, dnh::h, dos.c, $$9, $$7, $$0.aC_(), ($$0x, $$1x) -> false);
+         int $$11 = $$10.apply(new gue<>()).get($$4);
+         this.a($$2, $$3, $$9.c(dnh.b) == ecd.a ? this.a : this.b, $$9.c(dnh.e), $$8, $$11, $$5, false);
       }
    }
 
-   public static record a(Map<String, gtx.d> b) {
-      public static final gtx.a a = new gtx.a(Map.of());
-
-      public Map<String, gtx.d> a() {
-         return this.b;
-      }
-
-      public static class a {
-         private final Map<String, gtx.d> a = new HashMap<>();
-
-         public gtx.a.a a(String $$0, String $$1) {
-            this.a.put($$0, new gtx.b($$1));
-            return this;
-         }
-
-         public gtx.a.a a(String $$0, hnj $$1) {
-            this.a.put($$0, new gtx.e($$1));
-            return this;
-         }
-
-         public gtx.a a() {
-            return this.a.isEmpty() ? gtx.a.a : new gtx.a(Map.copyOf(this.a));
-         }
-      }
+   public void a(fld $$0, grn $$1, int $$2, int $$3, hmx $$4) {
+      this.a($$0, $$1, this.a, jc.d, $$4, $$2, $$3, false);
+      this.a($$0, $$1, this.b, jc.d, $$4, $$2, $$3, true);
    }
 
-   static record b(String a) implements gtx.d {
-   }
-
-   public static class c {
-      private static final Logger a = LogUtils.getLogger();
-      private final List<gtx.a> b = new ArrayList<>();
-
-      public gtx.c a(gtx.a $$0) {
-         this.b.addLast($$0);
-         return this;
-      }
-
-      public gtx.c b(gtx.a $$0) {
-         this.b.addFirst($$0);
-         return this;
-      }
-
-      public gtx a(hnn $$0) {
-         if (this.b.isEmpty()) {
-            return gtx.a;
-         } else {
-            Object2ObjectMap<String, hnj> $$1 = new Object2ObjectArrayMap();
-            Object2ObjectMap<String, gtx.b> $$2 = new Object2ObjectArrayMap();
-
-            for (gtx.a $$3 : Lists.reverse(this.b)) {
-               $$3.b.forEach(($$2x, $$3x) -> {
-                  Objects.requireNonNull($$3x);
-                  switch ($$3x) {
-                     case gtx.e $$6x:
-                        $$2.remove($$2x);
-                        $$1.put($$2x, $$6x.a());
-                        break;
-                     case gtx.b $$7x:
-                        $$1.remove($$2x);
-                        $$2.put($$2x, $$7x);
-                        break;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-               });
-            }
-
-            if ($$2.isEmpty()) {
-               return new gtx($$1);
-            } else {
-               boolean $$4 = true;
-
-               while ($$4) {
-                  $$4 = false;
-                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gtx.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
-
-                  while ($$5.hasNext()) {
-                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gtx.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gtx.b>)$$5.next();
-                     hnj $$7 = (hnj)$$1.get(((gtx.b)$$6.getValue()).a);
-                     if ($$7 != null) {
-                        $$1.put((String)$$6.getKey(), $$7);
-                        $$5.remove();
-                        $$4 = true;
-                     }
-                  }
-               }
-
-               if (!$$2.isEmpty()) {
-                  a.warn(
-                     "Unresolved texture references in {}:\n{}",
-                     $$0.debugName(),
-                     $$2.entrySet()
-                        .stream()
-                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((gtx.b)$$0x.getValue()).a + "\n")
-                        .collect(Collectors.joining())
-                  );
-               }
-
-               return new gtx($$1);
-            }
-         }
-      }
-   }
-
-   public sealed interface d permits gtx.e, gtx.b {
-   }
-
-   static record e(hnj a) implements gtx.d {
+   private void a(fld $$0, grn $$1, gij $$2, jc $$3, hmx $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      flg $$8 = $$4.a($$1, gry::d);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

@@ -1,33 +1,32 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ddq(jk<bvx> c) implements ddo {
-   public static final MapCodec<ddq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jv.a(mi.W).fieldOf("effects").forGetter(ddq::b)).apply($$0, ddq::new));
-   public static final za<wn, ddq> b = za.a(yy.c(mi.W), ddq::b, ddq::new);
+public record ddq(float c, Optional<alr> d) {
+   public static final Codec<ddq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(azg.o.fieldOf("seconds").forGetter(ddq::b), alr.a.optionalFieldOf("cooldown_group").forGetter(ddq::c)).apply($$0, ddq::new)
+   );
+   public static final ze<wp, ddq> b = ze.a(zc.l, ddq::b, alr.b.a(zc::a), ddq::c, ddq::new);
 
-   public ddq(jg<bvx> $$0) {
-      this(jk.a($$0));
+   public ddq(float $$0) {
+      this($$0, Optional.empty());
    }
 
-   @Override
-   public ddo.a<ddq> a() {
-      return ddo.a.b;
+   public int a() {
+      return (int)(this.c * 20.0F);
    }
 
-   @Override
-   public boolean a(djz $$0, daa $$1, bxw $$2) {
-      boolean $$3 = false;
-
-      for (jg<bvx> $$4 : this.c) {
-         if ($$2.e($$4)) {
-            $$3 = true;
-         }
+   public void a(dak $$0, byf $$1) {
+      if ($$1 instanceof csi $$2) {
+         $$2.gF().a($$0, this.a());
       }
-
-      return $$3;
    }
 
-   public jk<bvx> b() {
+   public float b() {
       return this.c;
+   }
+
+   public Optional<alr> c() {
+      return this.d;
    }
 }

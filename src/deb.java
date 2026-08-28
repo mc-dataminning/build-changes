@@ -1,96 +1,62 @@
-public class deb extends deh {
-   public deb(dee $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(def $$0, djz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+public record deb(float c) implements ddy {
+   private static final float f = 16.0F;
+   public static final MapCodec<deb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(azg.o.optionalFieldOf("diameter", 16.0F).forGetter(deb::b)).apply($$0, deb::new)
+   );
+   public static final ze<wp, deb> b = ze.a(zc.l, deb::b, deb::new);
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            daa $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kl.V)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(axo.bT)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public daa a(def $$0, ji.a $$1) {
-      int $$2 = 0;
-      daa $$3 = daa.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         daa $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kl.V)) {
-               if (!$$3.f()) {
-                  return daa.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(axo.bT)) {
-                  return daa.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      ddk $$6 = $$3.a(kl.V);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         ddk $$7 = $$6.b();
-         if ($$7 == null) {
-            return daa.k;
-         } else {
-            daa $$8 = $$3.c($$2);
-            $$8.b(kl.V, $$7);
-            return $$8;
-         }
-      } else {
-         return daa.k;
-      }
+   public deb() {
+      this(16.0F);
    }
 
    @Override
-   public jp<daa> a(def $$0) {
-      jp<daa> $$1 = jp.a($$0.a(), daa.k);
+   public ddy.a<deb> a() {
+      return ddy.a.d;
+   }
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         daa $$3 = $$0.a($$2);
-         daa $$4 = $$3.h().i();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.c(kl.V)) {
-            $$1.set($$2, $$3.c(1));
+   @Override
+   public boolean a(dkj $$0, dak $$1, byf $$2) {
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
+         double $$6 = azz.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.K_(), (double)($$0.K_() + ((asb)$$0).l() - 1));
+         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
+         if ($$2.bY()) {
+            $$2.bO();
+         }
+
+         fgc $$8 = $$2.dt();
+         if ($$2.b($$5, $$6, $$7, true)) {
+            $$0.a(egq.R, $$8, egq.a.a($$2));
+            awz $$10;
+            awx $$9;
+            if ($$2 instanceof ckk) {
+               $$9 = awy.jT;
+               $$10 = awz.g;
+            } else {
+               $$9 = awy.fl;
+               $$10 = awz.h;
+            }
+
+            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
+            $$2.k();
+            $$3 = true;
             break;
          }
       }
 
-      return $$1;
+      if ($$3 && $$2 instanceof csi $$13) {
+         $$13.gP();
+      }
+
+      return $$3;
    }
 
-   @Override
-   public dfb<deb> a() {
-      return dfb.d;
+   public float b() {
+      return this.c;
    }
 }

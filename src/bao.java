@@ -1,100 +1,54 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.logging.LogUtils;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.util.Collection;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public interface bao {
-   int W = 16;
+   bao a = ($$0, $$1) -> true;
+   Logger b = LogUtils.getLogger();
 
-   String c();
+   boolean validate(ban var1, byte[] var2);
 
-   static <E extends Enum<E> & bao> bao.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
+   default boolean a(byte[] $$0, byte[] $$1) {
+      return this.validate($$1x -> $$1x.update($$0), $$1);
    }
 
-   static <E extends Enum<E> & bao> bao.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new bao.a<>($$2, $$3);
+   private static boolean a(ban $$0, byte[] $$1, Signature $$2) throws SignatureException {
+      $$0.update($$2::update);
+      return $$2.verify($$1);
    }
 
-   static <T extends bao> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = ag.g(Arrays.asList($$1));
-      return new bao.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends bao> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<bao>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
-      } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
-               }
-            }
-
-            return null;
-         };
-      }
-   }
-
-   static Keyable a(final bao[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(bao::c).map($$0::createString);
+   static bao a(PublicKey $$0, String $$1) {
+      return ($$2, $$3) -> {
+         try {
+            Signature $$4 = Signature.getInstance($$1);
+            $$4.initVerify($$0);
+            return a($$2, $$3, $$4);
+         } catch (Exception var5) {
+            b.error("Failed to verify signature", var5);
+            return false;
          }
       };
    }
 
-   public static class a<E extends Enum<E> & bao> extends bao.b<E> {
-      private final Function<String, E> a;
+   @Nullable
+   static bao a(ServicesKeySet $$0, ServicesKeyType $$1) {
+      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
+      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
+            Signature $$3 = $$2xx.signature();
 
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
-      }
-
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
-      }
-
-      public E a(@Nullable String $$0, Supplier<? extends E> $$1) {
-         return Objects.requireNonNullElseGet(this.a($$0), $$1);
-      }
-   }
-
-   public static class b<S extends bao> implements Codec<S> {
-      private final Codec<S> a;
-
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = ayy.a(Codec.stringResolver(bao::c, $$1), ayy.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
-      }
-
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
-      }
-
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+            try {
+               return a($$1x, $$2x, $$3);
+            } catch (SignatureException var5) {
+               b.error("Failed to verify Services signature", var5);
+               return false;
+            }
+         });
    }
 }

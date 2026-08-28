@@ -1,58 +1,111 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Consumer;
 
-public class ekq extends ekm<ekr> {
-   public ekq(Codec<ekr> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(eko<ekr> $$0) {
-      azz $$1 = $$0.d();
-      dky $$2 = $$0.b();
-      iw $$3 = $$0.e();
-      dty $$4 = dty.a($$1);
-      ekr $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      ewg $$7 = $$2.a().p().aY();
-      ewf $$8 = $$7.a($$5.b.get($$6));
-      ewf $$9 = $$7.a($$5.c.get($$6));
-      dje $$10 = new dje($$3);
-      erv $$11 = new erv($$10.d() - 16, $$2.K_(), $$10.e() - 16, $$10.f() + 16, $$2.ao(), $$10.g() + 16);
-      ewb $$12 = new ewb().a($$4).a($$11).a($$1);
-      kb $$13 = $$8.a($$4);
-      iw $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(ehf.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
+public class ekq {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.K_() + 10);
-      iw $$19 = $$8.a($$14.h($$18), dsh.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
+   }
+
+   protected static boolean a(dli $$0, iw $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 260);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 260);
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
+
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(azz.b($$5) * (float)$$2);
+            int $$7 = (int)(azz.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
+            }
+         }
+
          return true;
       }
    }
 
-   private static int a(dky $$0, erv $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         ebg $$3 = $$0.a_($$2x);
-         if ($$3.l() || $$3.a(dng.K) || $$3.a(dng.J)) {
-            $$2.add(1);
+   protected static boolean a(dkk $$0, iw $$1) {
+      return $$0.a($$1, ekq::c);
+   }
+
+   protected static boolean b(dkk $$0, iw $$1) {
+      return $$0.a($$1, ekq::e);
+   }
+
+   protected static void a(jc $$0, int $$1, boolean $$2, Consumer<ebq> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, ecn.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, ecn.d));
          }
-      });
-      return $$2.getValue();
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, ecn.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? ecn.a : ecn.b));
+      }
+   }
+
+   protected static void a(dkk $$0, iw $$1, jc $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         iw.a $$5 = $$1.k();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dnq.tb)) {
+               $$3x = $$3x.b(dtm.d, Boolean.valueOf($$0.A($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(dkk $$0, iw $$1) {
+      ebq $$2 = $$0.a_($$1);
+      if ($$2.a(axn.bv)) {
+         $$0.a($$1, dnq.tc.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static ebq a(jc $$0, ecn $$1) {
+      return dnq.tb.m().b(dtm.b, $$0).b(dtm.c, $$1);
+   }
+
+   public static boolean a(ebq $$0) {
+      return b($$0) || $$0.a(dnq.K);
+   }
+
+   public static boolean b(ebq $$0) {
+      return $$0.a(dnq.tc) || $$0.a(axn.bv);
+   }
+
+   public static boolean c(ebq $$0) {
+      return $$0.l() || $$0.a(dnq.J);
+   }
+
+   public static boolean d(ebq $$0) {
+      return !$$0.l() && !$$0.a(dnq.J);
+   }
+
+   public static boolean e(ebq $$0) {
+      return $$0.l() || $$0.a(dnq.J) || $$0.a(dnq.K);
    }
 }

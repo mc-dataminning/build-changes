@@ -1,49 +1,22 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
 public class ebk {
-   private final dkc a;
-   private final iw b;
-   private final boolean c;
-   @Nullable
-   private ebg d;
-   @Nullable
-   private dye e;
-   private boolean f;
-
-   public ebk(dkc $$0, iw $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.j();
-      this.c = $$2;
-   }
-
-   public ebg a() {
-      if (this.d == null && (this.c || this.a.C(this.b))) {
-         this.d = this.a.a_(this.b);
+   public static ffx a(ffx $$0, jc $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new ffx($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new ffx($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new ffx($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new ffx($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new ffx($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new ffx($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
       }
-
-      return this.d;
-   }
-
-   @Nullable
-   public dye b() {
-      if (this.e == null && !this.f) {
-         this.e = this.a.c_(this.b);
-         this.f = true;
-      }
-
-      return this.e;
-   }
-
-   public dkc c() {
-      return this.a;
-   }
-
-   public iw d() {
-      return this.b;
-   }
-
-   public static Predicate<ebk> a(Predicate<ebg> $$0) {
-      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

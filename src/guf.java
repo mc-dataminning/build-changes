@@ -1,22 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
+public class guf implements gua<dyt> {
+   private final gyt a;
 
-public record guf(Optional<guc> b, gtp.b c) {
-   public static final Codec<guf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(guc.a.optionalFieldOf("when").forGetter(guf::a), gtp.b.c.fieldOf("apply").forGetter(guf::b)).apply($$0, guf::new)
-   );
-
-   public <O, S extends ebi<O, S>> Predicate<S> a(ebh<O, S> $$0) {
-      return this.b.<Predicate<S>>map($$1 -> $$1.instantiate($$0)).orElse($$0x -> true);
+   public guf(gub.a $$0) {
+      this.a = $$0.e();
    }
 
-   public Optional<guc> a() {
-      return this.b;
+   public void a(dyt $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      if ($$0.i() != null) {
+         int $$7 = $$0.m().c(ecg.by);
+         if ($$7 > 0) {
+            jc $$8 = $$0.c();
+            if ($$8 != null) {
+               dak $$9 = $$0.d();
+               if (!$$9.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$10 = this.a($$8, $$7);
+                  $$2.a($$10[0], $$10[1], $$10[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$11 = $$8 == jc.f || $$8 == jc.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$12 = gri.a($$0.i(), $$0.m(), $$0.aC_().a($$8));
+                  this.a.a($$9, dai.i, $$12, hkg.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
+         }
+      }
    }
 
-   public gtp.b b() {
-      return this.c;
+   private float[] a(jc $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

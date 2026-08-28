@@ -1,139 +1,121 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record hni(Map<hni.d, List<hni.c>> b) {
-   private static final Codec<List<hni.c>> c = ayy.b(hni.c.a.listOf());
-   public static final Codec<hni> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayy.d(Codec.unboundedMap(hni.d.o, c)).fieldOf("layers").forGetter(hni::b)).apply($$0, hni::new)
-   );
+public interface hni extends hnb {
+   boolean a = true;
+   hnl.a b = hnl.a.b;
 
-   public static hni.a a() {
-      return new hni.a();
+   hnl a();
+
+   @Nullable
+   hni b();
+
+   static gti a(hni $$0) {
+      hni $$1 = $$0;
+
+      gti.c $$2;
+      for ($$2 = new gti.c(); $$1 != null; $$1 = $$1.b()) {
+         $$2.a($$1.a().e());
+      }
+
+      return $$2.a($$0);
    }
 
-   public List<hni.c> a(hni.d $$0) {
-      return this.b.getOrDefault($$0, List.of());
+   default gti g() {
+      return a(this);
    }
 
-   public static class a {
-      private final Map<hni.d, List<hni.c>> a = new EnumMap<>(hni.d.class);
+   static boolean b(hni $$0) {
+      while ($$0 != null) {
+         Boolean $$1 = $$0.a().c();
+         if ($$1 != null) {
+            return $$1;
+         }
 
-      a() {
+         $$0 = $$0.b();
       }
 
-      public hni.a a(alk $$0) {
-         return this.a($$0, false);
-      }
-
-      public hni.a a(alk $$0, boolean $$1) {
-         this.a(hni.d.b, hni.c.a($$0, $$1));
-         this.b($$0, $$1);
-         return this;
-      }
-
-      public hni.a b(alk $$0, boolean $$1) {
-         return this.a(hni.d.a, hni.c.a($$0, $$1));
-      }
-
-      public hni.a a(hni.d $$0, hni.c... $$1) {
-         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
-         return this;
-      }
-
-      public hni a() {
-         return new hni(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
-      }
+      return true;
    }
 
-   public static record b(Optional<Integer> b) {
-      public static final Codec<hni.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayy.i.optionalFieldOf("color_when_undyed").forGetter(hni.b::a)).apply($$0, hni.b::new)
-      );
-
-      public Optional<Integer> a() {
-         return this.b;
-      }
+   default boolean c() {
+      return b(this);
    }
 
-   public static record c(alk b, Optional<hni.b> c, boolean d) {
-      public static final Codec<hni.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alk.a.fieldOf("texture").forGetter(hni.c::a),
-                  hni.b.a.optionalFieldOf("dyeable").forGetter(hni.c::b),
-                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(hni.c::c)
-               )
-               .apply($$0, hni.c::new)
-      );
+   static hnl.a c(hni $$0) {
+      while ($$0 != null) {
+         hnl.a $$1 = $$0.a().b();
+         if ($$1 != null) {
+            return $$1;
+         }
 
-      public c(alk $$0) {
-         this($$0, Optional.empty(), false);
+         $$0 = $$0.b();
       }
 
-      public static hni.c a(alk $$0, boolean $$1) {
-         return new hni.c($$0, $$1 ? Optional.of(new hni.b(Optional.of(-6265536))) : Optional.empty(), false);
-      }
-
-      public static hni.c b(alk $$0, boolean $$1) {
-         return new hni.c($$0, $$1 ? Optional.of(new hni.b(Optional.empty())) : Optional.empty(), false);
-      }
-
-      public alk a(hni.d $$0) {
-         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
-      }
-
-      public alk a() {
-         return this.b;
-      }
-
-      public Optional<hni.b> b() {
-         return this.c;
-      }
-
-      public boolean c() {
-         return this.d;
-      }
+      return b;
    }
 
-   public static enum d implements bao {
-      a("humanoid"),
-      b("humanoid_leggings"),
-      c("wings"),
-      d("wolf_body"),
-      e("horse_body"),
-      f("llama_body"),
-      g("pig_saddle"),
-      h("strider_saddle"),
-      i("camel_saddle"),
-      j("horse_saddle"),
-      k("donkey_saddle"),
-      l("mule_saddle"),
-      m("zombie_horse_saddle"),
-      n("skeleton_horse_saddle");
+   default hnl.a d() {
+      return c(this);
+   }
 
-      public static final Codec<hni.d> o = bao.a(hni.d::values);
-      private final String p;
+   static hnk d(hni $$0) {
+      while ($$0 != null) {
+         hnk $$1 = $$0.a().a();
+         if ($$1 != null) {
+            return $$1;
+         }
 
-      private d(final String $$0) {
-         this.p = $$0;
+         $$0 = $$0.b();
       }
 
-      @Override
-      public String c() {
-         return this.p;
+      return hnk.a;
+   }
+
+   default hnk f() {
+      return d(this);
+   }
+
+   default hng a(gti $$0, hmz $$1, hnf $$2) {
+      return this.f().bake($$0, $$1, $$2, this);
+   }
+
+   static hkq a(gti $$0, hmz $$1, hnb $$2) {
+      return $$1.a().a($$0, "particle", $$2);
+   }
+
+   default hkq a(gti $$0, hmz $$1) {
+      return a($$0, $$1, this);
+   }
+
+   static gtd a(hni $$0, dai $$1) {
+      while ($$0 != null) {
+         gte $$2 = $$0.a().d();
+         if ($$2 != null) {
+            gtd $$3 = $$2.a($$1);
+            if ($$3 != gtd.a) {
+               return $$3;
+            }
+         }
+
+         $$0 = $$0.b();
       }
 
-      public String a() {
-         return "trims/entity/" + this.p;
-      }
+      return gtd.a;
+   }
+
+   static gte e(hni $$0) {
+      gtd $$1 = a($$0, dai.b);
+      gtd $$2 = a($$0, dai.c);
+      gtd $$3 = a($$0, dai.d);
+      gtd $$4 = a($$0, dai.e);
+      gtd $$5 = a($$0, dai.f);
+      gtd $$6 = a($$0, dai.g);
+      gtd $$7 = a($$0, dai.h);
+      gtd $$8 = a($$0, dai.i);
+      return new gte($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   default gte e() {
+      return e(this);
    }
 }

@@ -1,178 +1,110 @@
+import com.mojang.authlib.GameProfile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-class gfp {
-   private static final int a = 44;
-   private final List<gfp.c> b;
-   private final fyc c;
+public class gfp implements gfk, gfl {
+   private static final alr a = alr.b("spectator/teleport_to_team");
+   private static final xg b = xg.c("spectatorMenu.team_teleport");
+   private static final xg c = xg.c("spectatorMenu.team_teleport.prompt");
+   private final List<gfl> d;
 
-   gfp(List<gfp.c> $$0, fyc $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gfp() {
+      fqq $$0 = fqq.Q();
+      this.d = a($$0, $$0.s.R());
    }
 
-   public fyc a() {
-      return this.c;
+   private static List<gfl> a(fqq $$0, fhh $$1) {
+      return $$1.f().stream().flatMap($$1x -> gfp.a.a($$0, $$1x).stream()).toList();
    }
 
-   public void b() {
-      this.b.forEach(gfp.c::a);
+   @Override
+   public List<gfl> a() {
+      return this.d;
    }
 
-   public static gfp.a a(int $$0) {
-      return new gfp.a($$0);
+   @Override
+   public xg b() {
+      return c;
    }
 
-   public static class a {
-      final int a;
-      private final List<gfp.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<gfp.b> f = Optional.empty();
+   @Override
+   public void a(gfj $$0) {
+      $$0.a(this);
+   }
 
-      public a(int $$0) {
+   @Override
+   public xg aU_() {
+      return b;
+   }
+
+   @Override
+   public void a(ftk $$0, float $$1, float $$2) {
+      $$0.a(gry::H, a, 0, 0, 16, 16, ayh.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aV_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements gfl {
+      private final fhc a;
+      private final Supplier<hls> b;
+      private final List<gma> c;
+
+      private a(fhc $$0, List<gma> $$1, Supplier<hls> $$2) {
          this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      void b() {
-         this.e++;
-      }
+      public static Optional<gfl> a(fqq $$0, fhc $$1) {
+         List<gma> $$2 = new ArrayList<>();
 
-      public gfp.d a(xc $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         gfp.d $$3 = new gfp.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public gfp.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public gfp.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public gfp a() {
-         fya $$0 = new fya().b(this.d);
-         $$0.a(fyg.a(this.a - 44), 0, 0);
-         $$0.a(fyg.a(44), 0, 1);
-         List<gfp.c> $$1 = new ArrayList<>();
-         this.e = 0;
-
-         for (gfp.d $$2 : this.b) {
-            $$1.add($$2.a(this, $$0, 0));
+         for (String $$3 : $$1.h()) {
+            gma $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dkg.d) {
+               $$2.add($$4);
+            }
          }
 
-         $$0.a();
-         gfp $$3 = new gfp($$1, $$0);
-         $$3.b();
-         return $$3;
-      }
-
-      public gfp.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new gfp.b($$0, $$1));
-         return this;
-      }
-   }
-
-   static record b(int a, boolean b) {
-   }
-
-   static record c(fuu<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fuu<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final xc a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private xc d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(xc $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public gfp.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public gfp.d a(xc $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      gfp.c a(gfp.a $$0, fya $$1, int $$2) {
-         $$0.b();
-         fvu $$3 = new fvu(this.a, frf.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<gfp.b> $$4 = $$0.f;
-         fuu.a<Boolean> $$5 = fuu.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fvy $$7 = fvy.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> xb.a(this.a, $$0x.c(), this.d));
+         if ($$2.isEmpty()) {
+            return Optional.empty();
          } else {
-            $$5.a($$0x -> xb.a(this.a, $$0x.c()));
+            GameProfile $$5 = $$2.get(bai.a().a($$2.size())).a();
+            Supplier<hls> $$6 = $$0.an().a($$5);
+            return Optional.of(new gfp.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(gfj $$0) {
+         $$0.a(new gfo(this.c));
+      }
+
+      @Override
+      public xg aU_() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(ftk $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.o().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, ayh.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
          }
 
-         fuu<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xc.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
+         fux.a($$0, this.b.get(), 2, 2, 12, ayh.a($$2, $$1, $$1, $$1));
+      }
 
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               xc $$4x = this.d.f().a(o.h);
-               ftx $$5x = frf.Q().h;
-               fvh $$6x = new fvh($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.b();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.y() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new gfp.c($$8, this.b, this.e);
+      @Override
+      public boolean aV_() {
+         return true;
       }
    }
 }

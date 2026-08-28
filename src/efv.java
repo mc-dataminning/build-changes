@@ -1,45 +1,21 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class efv<T extends efl> implements efu<T> {
-   private final efn<T> a;
-   private final efq<T> b;
+public interface efv extends egj {
+   int ao();
 
-   public efv(efn<T> $$0, efq<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   iw dv();
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
+   ffx cR();
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   void a(efw var1);
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
+   Stream<? extends efv> da();
 
-   @Override
-   public <U extends T> void a(efs<T, U> $$0, ayb<U> $$1) {
-      this.a.a($$0, $$1);
-   }
+   Stream<? extends efv> db();
 
-   @Override
-   public void a(ffn $$0, Consumer<T> $$1) {
-      this.b.b($$0, ayb.forConsumer($$1));
-   }
+   void c(bxe.d var1);
 
-   @Override
-   public <U extends T> void a(efs<T, U> $$0, ffn $$1, ayb<U> $$2) {
-      this.b.a($$0, $$1, $$2);
-   }
+   boolean dT();
+
+   boolean dU();
 }

@@ -1,61 +1,103 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public final class glj {
+public class glj {
+   private static final Logger a = LogUtils.getLogger();
+   private final fqq b;
+   private final hqg c;
+   private final ao d = new ao();
+   private final Map<aj, al> e = new Object2ObjectOpenHashMap();
    @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final glk d;
-   private final boolean e;
-   private final glr f;
-   private final glr g;
-   private final Set<jc> h;
+   private glj.a f;
+   @Nullable
+   private aj g;
 
-   protected glj(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      glk $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jc> $$13
-   ) {
-      this.a = $$0;
-      this.f = new glr($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new glr($$11, $$12);
-      this.h = $$13;
+   public glj(fqq $$0, hqg $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public glg.a a(int $$0, int $$1) {
-      return new glg.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   public void a(agr $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
+      }
+
+      this.d.a($$0.e());
+      this.d.a($$0.b());
+
+      for (Entry<alr, al> $$1 : $$0.f().entrySet()) {
+         ak $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            al $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<av> $$4 = $$2.a().c();
+               if ($$0.h() && $$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fwf($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
+   }
+
+   public ao a() {
+      return this.d;
+   }
+
+   public void a(@Nullable aj $$0, boolean $$1) {
+      glp $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ain.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable glj.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ak $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
+      }
+   }
+
+   @Nullable
+   public aj a(alr $$0) {
+      ak $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends ao.a {
+      void a(ak var1, al var2);
+
+      void a(@Nullable aj var1);
    }
 }

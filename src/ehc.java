@@ -1,38 +1,150 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class ehc {
-   public final eos a;
-   public final eos b;
-   public final eos c;
-   public final eos d;
-   public final eos e;
-   public final List<ebg> f;
-   public final axv<dne> g;
-   public final axv<dne> h;
-   public static final Codec<ehc> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eos.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               eos.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               eos.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               eos.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               eos.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayy.b(ebg.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axv.b(mi.i).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axv.b(mi.i).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ehc::new)
-   );
+public class ehc implements ehj.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ag.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<ehc.a> h;
+   private final ObjectListIterator<etq> i;
 
-   public ehc(eos $$0, eos $$1, eos $$2, eos $$3, eos $$4, List<ebg> $$5, axv<dne> $$6, axv<dne> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public static ehc a(dlf $$0, djo $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<ehc.a> $$4 = new ObjectArrayList(10);
+      ObjectList<etq> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != esy.a).forEach($$5x -> {
+         esy $$6 = $$5x.h().d();
+
+         for (esr $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof esj) {
+                  esj $$8 = (esj)$$7;
+                  etx.a $$9 = $$8.b().g();
+                  if ($$9 == etx.a.b) {
+                     $$4.add(new ehc.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (etq $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new ehc.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new ehc($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public ehc(ObjectListIterator<ehc.a> $$0, ObjectListIterator<etq> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(ehi.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         ehc.a $$5 = (ehc.a)this.h.next();
+         esf $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         etq $$13 = (etq)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = azz.g($$0, $$1, $$2);
+      return azz.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = azz.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * azz.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = azz.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(esf a, esy b, int c) {
    }
 }

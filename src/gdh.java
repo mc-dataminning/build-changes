@@ -1,117 +1,255 @@
-public class gdh extends gdl {
-   private static final xc a = xc.c("options.languageAccuracyWarning").b(-4539718);
-   private static final int u = 53;
-   private gdh.a v;
-   final hmm w;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public gdh(gaf $$0, frj $$1, hmm $$2) {
-      super($$0, $$1, xc.c("options.language.title"));
-      this.w = $$2;
-      this.s.a(53);
+public class gdh {
+   private final auz a;
+   final List<auv> b;
+   final List<auv> c;
+   final Function<auv, alr> d;
+   final Runnable e;
+   private final Consumer<auz> f;
+
+   public gdh(Runnable $$0, Function<auv, alr> $$1, auz $$2, Consumer<auz> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.g());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.d());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void F() {
-      this.v = this.s.c(new gdh.a(this.m));
+   public Stream<gdh.a> a() {
+      return this.c.stream().map($$0 -> new gdh.d($$0));
    }
 
-   @Override
-   protected void m() {
+   public Stream<gdh.a> b() {
+      return this.b.stream().map($$0 -> new gdh.c($$0));
    }
 
-   @Override
-   protected void E() {
-      fyf $$0 = this.s.b(fyf.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fvu(a, this.p));
-      fyf $$1 = $$0.a(fyf.e().a(8));
-      $$1.a(fun.a(xc.c("options.font"), $$0x -> this.m.a(new gdg(this, this.c))).a());
-      $$1.a(fun.a(xb.d, $$0x -> this.H()).a());
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(auv::g).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      this.v.a(this.n, this.s);
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   void H() {
-      gdh.a.a $$0 = this.v.p();
-      if ($$0 != null && !$$0.b.equals(this.w.a())) {
-         this.w.a($$0.b);
-         this.c.ab = $$0.b;
-         this.m.l();
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.d());
+      this.c.clear();
+      this.c.addAll(this.a.d());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      alr a();
+
+      auw b();
+
+      String c();
+
+      xg d();
+
+      xg e();
+
+      ava f();
+
+      default xg g() {
+         return this.f().a(this.e());
       }
 
-      this.m.a(this.b);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
    }
 
-   class a extends fvj<gdh.a.a> {
-      public a(final frf $$0) {
-         super($$0, gdh.this.n, gdh.this.o - 33 - 53, 33, 18);
-         String $$1 = gdh.this.w.a();
-         gdh.this.w.b().forEach(($$1x, $$2) -> {
-            gdh.a.a $$3 = new gdh.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.p() != null) {
-            this.e(this.p());
-         }
+   abstract class b implements gdh.a {
+      private final auv b;
+
+      public b(final auv $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<auv> s();
+
+      protected abstract List<auv> t();
+
+      @Override
+      public alr a() {
+         return gdh.this.d.apply(this.b);
       }
 
       @Override
-      public int a() {
-         return super.a() + 50;
+      public auw b() {
+         return this.b.d();
       }
 
-      public class a extends fvj.a<gdh.a.a> {
-         final String b;
-         private final xc c;
-         private long d;
+      @Override
+      public String c() {
+         return this.b.g();
+      }
 
-         public a(final String $$1, final hml $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
+      @Override
+      public xg d() {
+         return this.b.b();
+      }
+
+      @Override
+      public xg e() {
+         return this.b.c();
+      }
+
+      @Override
+      public ava f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, auv::h, true);
+         gdh.this.e.run();
+         gdh.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fqt<Boolean> $$0 = fqq.Q().n.u();
+            $$0.a(!$$0.c());
          }
+      }
 
-         @Override
-         public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(gdh.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
-         }
+      protected void a(int $$0) {
+         List<auv> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         gdh.this.e.run();
+      }
 
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fyp.a($$0)) {
-               this.b();
-               gdh.this.H();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
+      @Override
+      public boolean q() {
+         List<auv> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ag.c() - this.d < 250L) {
-               gdh.this.H();
-            }
+      @Override
+      public void l() {
+         this.a(-1);
+      }
 
-            this.d = ag.c();
-            return super.a($$0, $$1, $$2);
-         }
+      @Override
+      public boolean r() {
+         List<auv> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
 
-         private void b() {
-            a.this.a(this);
-         }
+      @Override
+      public void m() {
+         this.a(1);
+      }
+   }
 
-         @Override
-         public xc a() {
-            return xc.a("narrator.select", this.c);
-         }
+   class c extends gdh.b {
+      public c(final auv $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auv> s() {
+         return gdh.this.b;
+      }
+
+      @Override
+      protected List<auv> t() {
+         return gdh.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends gdh.b {
+      public d(final auv $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auv> s() {
+         return gdh.this.c;
+      }
+
+      @Override
+      protected List<auv> t() {
+         return gdh.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

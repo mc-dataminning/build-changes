@@ -7,41 +7,41 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class oj implements of {
-   private final jh<czw> b;
+   private final jh<dag> b;
    private final og c;
-   private final czw d;
+   private final dag d;
    private final int e;
    private final List<String> f = Lists.newArrayList();
-   private final Map<Character, den> g = Maps.newLinkedHashMap();
+   private final Map<Character, dex> g = Maps.newLinkedHashMap();
    private final Map<String, ar<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
    private boolean j = true;
 
-   private oj(jh<czw> $$0, og $$1, djy $$2, int $$3) {
+   private oj(jh<dag> $$0, og $$1, dki $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.h();
       this.e = $$3;
    }
 
-   public static oj a(jh<czw> $$0, og $$1, djy $$2) {
+   public static oj a(jh<dag> $$0, og $$1, dki $$2) {
       return a($$0, $$1, $$2, 1);
    }
 
-   public static oj a(jh<czw> $$0, og $$1, djy $$2, int $$3) {
+   public static oj a(jh<dag> $$0, og $$1, dki $$2, int $$3) {
       return new oj($$0, $$1, $$2, $$3);
    }
 
-   public oj a(Character $$0, axv<czw> $$1) {
-      return this.a($$0, den.a(this.b.b($$1)));
+   public oj a(Character $$0, ayc<dag> $$1) {
+      return this.a($$0, dex.a(this.b.b($$1)));
    }
 
-   public oj a(Character $$0, djy $$1) {
-      return this.a($$0, den.a($$1));
+   public oj a(Character $$0, dki $$1) {
+      return this.a($$0, dex.a($$1));
    }
 
-   public oj a(Character $$0, den $$1) {
+   public oj a(Character $$0, dex $$1) {
       if (this.g.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -77,24 +77,24 @@ public class oj implements of {
    }
 
    @Override
-   public czw a() {
+   public dag a() {
       return this.d;
    }
 
    @Override
-   public void a(oh $$0, alj<der<?>> $$1) {
-      dfg $$2 = this.a($$1);
+   public void a(oh $$0, alq<dfb<?>> $$1) {
+      dfq $$2 = this.a($$1);
       ai.a $$3 = $$0.a().a("has_the_recipe", di.a($$1)).a(an.a.c($$1)).a(am.a.b);
       this.h.forEach($$3::a);
-      dff $$4 = new dff(Objects.requireNonNullElse(this.i, ""), of.a(this.c), $$2, new daa(this.d, this.e), this.j);
+      dfp $$4 = new dfp(Objects.requireNonNullElse(this.i, ""), of.a(this.c), $$2, new dak(this.d, this.e), this.j);
       $$0.a($$1, $$4, $$3.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   private dfg a(alj<der<?>> $$0) {
+   private dfq a(alq<dfb<?>> $$0) {
       if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       } else {
-         return dfg.a(this.g, this.f);
+         return dfq.a(this.g, this.f);
       }
    }
 }

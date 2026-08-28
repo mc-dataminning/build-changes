@@ -1,15 +1,46 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record abk(iw c, float d, float e, float f, float g, float h) implements aat {
+   public static final ze<vy, abk> a = aat.a(abk::a, abk::new);
+   public static final aat.b<abk> b = aat.a("debug/worldgen_attempt");
 
-public record abk(List<aun> b) implements zj<abg> {
-   public static final za<ByteBuf, abk> a = za.a(aun.a.a(yy.a()), abk::b, abk::new);
-
-   @Override
-   public zl<abk> a() {
-      return abm.d;
+   private abk(vy $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   public void a(abg $$0) {
-      $$0.a(this);
+   private void a(vy $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
+
+   @Override
+   public aat.b<abk> a() {
+      return b;
+   }
+
+   public iw b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

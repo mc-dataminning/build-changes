@@ -1,53 +1,98 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import javax.annotation.Nullable;
 
-public final class hqv extends hqt {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class hqv {
+   private final fqq a;
+   @Nullable
+   private hqw b;
 
-   @Override
-   public void a(hqn $$0) {
-      if (frf.Q().C()) {
-         super.a($$0);
+   public hqv(fqq $$0, fqu $$1) {
+      this.a = $$0;
+   }
+
+   public void a(gqk $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public void a(double $$0, double $$1) {
+      if (this.b != null) {
+         this.b.a($$0, $$1);
+      }
    }
 
-   @Override
-   public void f() {
-      this.b.add((long)frf.Q().o());
-      this.h();
-      this.c.add(frf.Q().p());
+   public void a(@Nullable glo $$0, @Nullable fga $$1) {
+      if (this.b != null && $$1 != null && $$0 != null) {
+         this.b.a($$0, $$1);
+      }
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
+   public void a(glo $$0, iw $$1, ebq $$2, float $$3) {
+      if (this.b != null) {
+         this.b.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   @Override
-   public void b(hqn $$0) {
-      $$0.send(hqo.c, $$0x -> {
-         $$0x.a(hqq.r, new LongArrayList(this.b));
-         $$0x.a(hqq.s, new LongArrayList(this.c));
-         $$0x.a(hqq.t, new LongArrayList(this.d));
-         $$0x.a(hqq.u, this.e());
-         $$0x.a(hqq.v, frf.Q().n.aH());
-         $$0x.a(hqq.w, (int)a);
-      });
-      this.g();
+   public void a() {
+      if (this.b != null) {
+         this.b.c();
+      }
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void a(dak $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
+
+   public void b() {
+      if (this.b != null) {
+         this.b.b();
+         this.b = null;
+      }
+   }
+
+   public void c() {
+      if (this.b != null) {
+         this.b();
+      }
+
+      this.b = this.a.n.r.a(this);
+   }
+
+   public void d() {
+      if (this.b != null) {
+         if (this.a.s != null) {
+            this.b.a();
+         } else {
+            this.b();
+         }
+      } else if (this.a.s != null) {
+         this.c();
+      }
+   }
+
+   public void a(hqx $$0) {
+      this.a.n.r = $$0;
+      this.a.n.az();
+      if (this.b != null) {
+         this.b.b();
+         this.b = $$0.a(this);
+      }
+   }
+
+   public fqq e() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.a.r == null ? false : this.a.r.i() == dkg.a;
+   }
+
+   public static xg a(String $$0) {
+      return xg.d("key." + $$0).a(o.r);
+   }
+
+   public void a(dak $$0, dak $$1, cwl $$2) {
    }
 }

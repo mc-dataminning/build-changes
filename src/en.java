@@ -1,12 +1,12 @@
 public class en extends Exception {
-   private final xc a;
+   private final xg a;
 
-   public en(xc $$0) {
+   public en(xg $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public xc a() {
+   public xg a() {
       return this.a;
    }
 }

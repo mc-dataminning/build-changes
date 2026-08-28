@@ -1,16 +1,29 @@
-public record aei(float b, float c) implements zj<aby> {
-   public static final za<vy, aei> a = za.a(yy.l, aei::b, yy.l, aei::e, aei::new);
+public class aei implements zo<acf> {
+   public static final ze<vy, aei> a = zo.a(aei::a, aei::new);
+   private final int b;
+
+   public aei(bvq $$0) {
+      this($$0.b());
+   }
+
+   public aei(int $$0) {
+      this.b = $$0;
+   }
+
+   private aei(vy $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+   }
 
    @Override
-   public zl<aei> a() {
-      return agr.aj;
+   public zq<aei> a() {
+      return agy.ac;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public float e() {
-      return this.c;
    }
 }

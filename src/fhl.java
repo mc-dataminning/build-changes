@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fhl<T> {
-   List<fhj<T>> a(long var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fhl {
 }

@@ -1,59 +1,44 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
+public class gsk implements flg {
+   private final flg a;
+   private final hkq b;
 
-public class gsk {
-   private final gsq a = new gsq();
-   private final gsr b;
-   private final gsc.a c;
-   private final gsc.a d;
-   private final gse e;
-
-   public gsk(int $$0) {
-      this.b = gsr.a($$0);
-      SequencedMap<gsn, fln> $$1 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gsw.h(), this.a.a(gsn.d()));
-         $$0x.put(gsw.i(), this.a.a(gsn.f()));
-         $$0x.put(gsw.a(), this.a.a(gsn.e()));
-         $$0x.put(gsw.j(), this.a.a(gsn.g()));
-         a($$0x, gsw.b());
-         a($$0x, gsw.c());
-         a($$0x, gsw.d());
-         a($$0x, gsw.e());
-         a($$0x, gsw.f());
-         $$0x.put(gsw.g(), new fln(786432));
-         a($$0x, gsn.k());
-         a($$0x, gsn.m());
-         a($$0x, gsn.l());
-         a($$0x, gsn.n());
-         a($$0x, gsn.j());
-      });
-      this.c = gsc.a($$1, new fln(786432));
-      this.e = new gse(this.c);
-      SequencedMap<gsn, fln> $$2 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hnm.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gsc.a($$2, new fln(0));
+   public gsk(flg $$0, hkq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gsn, fln> $$0, gsn $$1) {
-      $$0.put($$1, new fln($$1.O()));
+   @Override
+   public flg a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public gsq a() {
-      return this.a;
+   @Override
+   public flg a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public gsr b() {
-      return this.b;
+   @Override
+   public flg a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   public gsc.a c() {
-      return this.c;
+   @Override
+   public flg a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public gsc.a d() {
-      return this.d;
+   @Override
+   public flg b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
    }
 
-   public gse e() {
-      return this.e;
+   @Override
+   public flg b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

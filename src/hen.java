@@ -1,3 +1,3 @@
-public class hen extends hes {
+public class hen extends hfe {
    public boolean a;
 }

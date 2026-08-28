@@ -20,13 +20,13 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@fhs
+@fic
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    @Nullable
    private static String cpuInfo;
 
-   public static int _getRefreshRate(fkm $$0) {
+   public static int _getRefreshRate(fki $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
       if ($$1 == 0L) {
@@ -42,7 +42,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fkm.a(($$0x, $$1x) -> {
+      fki.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -71,7 +71,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fkm $$0) {
+   public static boolean _shouldClose(fki $$0) {
       return GLFW.glfwWindowShouldClose($$0.h());
    }
 

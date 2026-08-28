@@ -1,132 +1,66 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Predicate;
 
-public class fbj extends fbw {
-   public static final MapCodec<fbj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  fbj.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kk.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kk.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, fbj::new)
-   );
-   private final fbj.b b;
-   private final Optional<List<kk<?>>> c;
-   private final Optional<List<kk<?>>> d;
-   private final Predicate<kk<?>> e;
+public abstract class fbj implements fbb {
+   protected final List<fec> e;
+   private final Predicate<fat> a;
 
-   fbj(List<fds> $$0, fbj.b $$1, Optional<List<kk<?>>> $$2, Optional<List<kk<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kk<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ag.a($$4);
+   protected fbj(List<fec> $$0) {
+      this.e = $$0;
+      this.a = ag.a($$0);
    }
 
-   @Override
-   public fby<fbj> b() {
-      return fbz.J;
+   protected static <T extends fbj> P1<Mu<T>, List<fec>> a(Instance<T> $$0) {
+      return $$0.group(fec.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<bbb<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public daa a(daa $$0, faj $$1) {
-      ki $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
-   }
-
-   public static fbj.a a(fbj.b $$0) {
-      return new fbj.a($$0);
-   }
-
-   public static class a extends fbw.a<fbj.a> {
-      private final fbj.b a;
-      private Optional<Builder<kk<?>>> b = Optional.empty();
-      private Optional<Builder<kk<?>>> c = Optional.empty();
-
-      a(fbj.b $$0) {
-         this.a = $$0;
-      }
-
-      public fbj.a a(kk<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
-         }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public fbj.a b(kk<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
-      }
-
-      protected fbj.a a() {
-         return this;
-      }
-
-      @Override
-      public fbx b() {
-         return new fbj(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
+   public void a(faz $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   public static enum b implements bao {
-      a("block_entity");
+   protected final boolean a(fat $$0) {
+      return this.a.test($$0);
+   }
 
-      public static final Codec<fbj.b> b = bao.b(fbj.b::values);
-      private final String c;
+   public abstract fbk a();
 
-      private b(final String $$0) {
-         this.c = $$0;
+   public abstract static class a<T extends fbj.a<T>> implements fdu<T> {
+      private final Builder<fec> a = ImmutableList.builder();
+
+      protected abstract T aG_();
+
+      public T a(fec.a $$0) {
+         this.a.add($$0.build());
+         return this.aG_();
       }
 
-      public ki a(faj $$0) {
-         switch (this) {
-            case a:
-               dye $$1 = $$0.c(fdd.h);
-               return $$1 != null ? $$1.q() : ki.a;
-            default:
-               throw new MatchException(null, null);
-         }
+      public final T e() {
+         return this.aG_();
       }
 
-      public Set<bbb<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(fdd.h);
-            default:
-               throw new MatchException(null, null);
-         }
+      protected List<fec> f() {
+         return this.a.build();
       }
 
-      @Override
-      public String c() {
-         return this.c;
+      public fba.a a(fbj.a<?> $$0) {
+         return new fba.a(this, $$0);
       }
+
+      public fbf.a b(fbj.a<?> $$0) {
+         return new fbf.a(this, $$0);
+      }
+
+      public fbn.a c(fbj.a<?> $$0) {
+         return new fbn.a(this, $$0);
+      }
+
+      public abstract fbj b();
    }
 }

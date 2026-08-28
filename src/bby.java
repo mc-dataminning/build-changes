@@ -1,51 +1,37 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Locale;
 
 public class bby extends DataFix {
-   public bby(Schema $$0) {
-      super($$0, false);
+   private final String a;
+   private final TypeReference b;
+
+   public bby(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bjd.s);
-      OpticFinder<?> $$2 = $$0.findField("CustomName");
-      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(bjd.z));
-      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$3x -> {
-         Object $$4 = ((Pair)$$3x.get($$1.finder())).getFirst();
-         return $$4.equals("minecraft:banner") ? this.a($$3x, $$3, $$2) : $$3x;
-      });
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a($$0, $$1);
    }
 
-   private Typed<?> a(Typed<?> $$0, OpticFinder<Pair<String, String>> $$1, OpticFinder<?> $$2) {
-      Optional<String> $$3 = $$0.getOptionalTyped($$2).flatMap($$1x -> $$1x.getOptional($$1).map(Pair::getSecond));
-      boolean $$4 = $$3.flatMap(bbi::d).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
-      return $$4
-         ? ag.a(
-            $$0,
-            $$0.getType(),
-            $$1x -> {
-               Dynamic<?> $$2x = $$1x.createMap(
-                  Map.of(
-                     $$1x.createString("minecraft:item_name"),
-                     $$1x.createString($$3.get()),
-                     $$1x.createString("minecraft:hide_additional_tooltip"),
-                     $$1x.emptyMap()
-                  )
-               );
-               return $$1x.set("components", $$2x).remove("CustomName");
-            }
-         )
-         : $$0;
+   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
+      if ($$0.getKeyType() != $$1.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
+               if (!$$1.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
+               } else {
+                  return $$1xx;
+               }
+            });
+      }
    }
 }

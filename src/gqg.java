@@ -1,25 +1,26 @@
-public class gqg extends gqu {
-   gqg(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+public class gqg extends gno {
+   private static final int a = 12235202;
+
+   protected gqg(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gps $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)ayh.b(12235202) / 255.0F;
+      this.w = (float)ayh.c(12235202) / 255.0F;
+      this.x = (float)ayh.d(12235202) / 255.0F;
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
+   public static class a implements gpa<md> {
+      private final gps a;
 
-      public a(gqh $$0) {
+      public a(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gqg $$8 = new gqg($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         bai $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gqg($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
    }
 }

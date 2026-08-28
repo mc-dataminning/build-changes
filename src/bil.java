@@ -1,21 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Locale;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
 
-public class bil extends DataFix {
+public class bil extends big {
    public bil(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bjm.s, "minecraft:banner");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bjd.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<String> $$1 = $$0x.get("lang").asString().result();
-               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
-            })
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<?> $$1 = $$0.getType().findField("CustomName");
+      OpticFinder<Pair<String, String>> $$2 = DSL.typeFinder(this.getInputSchema().getType(bjm.z));
+      return $$0.updateTyped(
+         $$1,
+         $$1x -> $$1x.update(
+               $$2,
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"")
+                  )
+            )
       );
    }
 }

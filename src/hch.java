@@ -1,12 +1,12 @@
-public class hch extends hck<heq, gia<heq>> {
-   private static final gsn a = gsn.q(alk.b("textures/entity/enderman/enderman_eyes.png"));
+public class hch extends hbv<hfn, gin> {
+   private static final gry a = gry.q(alr.b("textures/entity/phantom_eyes.png"));
 
-   public hch(hah<heq, gia<heq>> $$0) {
+   public hch(gzs<hfn, gin> $$0) {
       super($$0);
    }
 
    @Override
-   public gsn a() {
+   public gry a() {
       return a;
    }
 }

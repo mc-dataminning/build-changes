@@ -1,32 +1,18 @@
-public class cfk extends cej {
-   private final boolean a;
-   private int b;
+public class cfk extends cfj {
+   private final crp h;
 
-   public cfk(bxy $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+   public cfk(crp $$0) {
+      super($$0, csi.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
-   public boolean c() {
-      return this.a && this.b > 0 && super.c();
-   }
-
-   @Override
-   public void d() {
-      this.b = 20;
-      this.a(true);
-   }
-
-   @Override
-   public void e() {
-      this.a(false);
-   }
-
-   @Override
-   public void a() {
-      this.b--;
-      super.a();
+   public boolean b() {
+      if (this.h.gu()) {
+         this.c = this.h.x();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

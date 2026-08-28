@@ -1,3 +1,5 @@
-public class hge extends hfr {
+public class hge extends hfe {
    public float a;
+   public float b;
+   public float c;
 }

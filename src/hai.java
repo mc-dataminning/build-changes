@@ -1,55 +1,39 @@
-public class hai extends gzq<ckn, hgi, gjr> {
-   private static final alk a = alk.b("textures/entity/fish/salmon.png");
-   private final gjr j;
-   private final gjr k;
-   private final gjr l;
+public class hai<T extends bxe & cta> extends gxu<T, hgh> {
+   private final hhg a;
+   private final float g;
+   private final boolean h;
 
-   public hai(gyk.a $$0) {
-      super($$0, new gjr($$0.a(glf.cK)), 0.4F);
-      this.j = new gjr($$0.a(glf.cM));
-      this.k = new gjr($$0.a(glf.cK));
-      this.l = new gjr($$0.a(glf.cL));
+   public hai(gxv.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(ckn $$0, hgi $$1, float $$2) {
+   public hai(gxv.a $$0) {
+      this($$0, 1.0F, false);
+   }
+
+   @Override
+   protected int a(T $$0, iw $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
+
+   public void a(hgh $$0, fld $$1, grn $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.g, this.g, this.g);
+      $$1.a(this.d.b());
+      $$0.a.a($$1, $$2, $$3, hkg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public hgh a() {
+      return new hgh();
+   }
+
+   public void a(T $$0, hgh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gA();
-   }
-
-   public alk a(hgi $$0) {
-      return a;
-   }
-
-   public hgi b() {
-      return new hgi();
-   }
-
-   protected void a(hgi $$0, flq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 1.0F;
-      float $$5 = 1.0F;
-      if (!$$0.ak) {
-         $$4 = 1.3F;
-         $$5 = 1.7F;
-      }
-
-      float $$6 = $$4 * 4.3F * azq.a($$5 * 0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
-   }
-
-   public void a(hgi $$0, flq $$1, gsc $$2, int $$3) {
-      if ($$0.a == ckn.a.a) {
-         this.g = this.j;
-      } else if ($$0.a == ckn.a.c) {
-         this.g = this.l;
-      } else {
-         this.g = this.k;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$1.a, $$0.f(), dai.h, $$0);
    }
 }

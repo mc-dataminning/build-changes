@@ -1,28 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bge extends bhx {
-   public bge(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bjd.D, $$1);
+public class bge extends bih {
+   public bge(Schema $$0) {
+      super($$0, false, "Remove filtered text from signs", bjm.s, "minecraft:sign");
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Gossips",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt()
-                        .result()
-                        .map($$0xxx -> $$0xxx.map($$0xxxx -> (Dynamic)bbn.c($$0xxxx, "Target", "Target").orElse($$0xxxx)))
-                        .map($$0xx::createList),
-                     $$0xx
-                  )
-            )
-      );
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4");
    }
 }

@@ -1,79 +1,118 @@
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
 
 public class gsa {
-   private static final float a = -0.01F;
-   private static final float b = -0.001F;
-   private static final int c = 128;
-   private static final int d = 128;
-   private final hmb e;
-   private final hma f;
+   private static final alr a = alr.b("textures/misc/underwater.png");
 
-   public gsa(hma $$0, hmb $$1) {
-      this.f = $$0;
-      this.e = $$1;
-   }
+   public static void a(fqq $$0, fld $$1, grn $$2) {
+      csi $$3 = $$0.t;
+      if (!$$3.ad) {
+         ebq $$4 = a($$3);
+         if ($$4 != null) {
+            a($$0.ap().a().a($$4), $$1, $$2);
+         }
+      }
 
-   public void a(hkl $$0, flq $$1, gsc $$2, boolean $$3, int $$4) {
-      Matrix4f $$5 = $$1.c().a();
-      flt $$6 = $$2.getBuffer(gsn.u($$0.a));
-      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
-      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
-      int $$7 = 0;
+      if (!$$0.t.aa_()) {
+         if ($$0.t.a(axs.a)) {
+            b($$0, $$1, $$2);
+         }
 
-      for (hkl.a $$8 : $$0.b) {
-         if (!$$3 || $$8.e) {
-            $$1.a();
-            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
-            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
-            $$1.b(4.0F, 4.0F, 3.0F);
-            $$1.a(-0.125F, 0.125F, 0.0F);
-            Matrix4f $$9 = $$1.c().a();
-            hlc $$10 = $$8.a;
-            if ($$10 != null) {
-               flt $$11 = $$2.getBuffer(gsn.u($$10.i()));
-               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
-               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
-               $$1.b();
-            }
-
-            if ($$8.f != null) {
-               ftx $$12 = frf.Q().h;
-               float $$13 = (float)$$12.a($$8.f);
-               float $$14 = azq.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
-               $$1.a();
-               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
-               $$1.b($$14, $$14, 1.0F);
-               $$1.a(0.0F, 0.0F, -0.1F);
-               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, ftx.a.a, Integer.MIN_VALUE, $$4, false);
-               $$1.b();
-            }
-
-            $$7++;
+         if ($$0.t.bX()) {
+            a($$1, $$2);
          }
       }
    }
 
-   public void a(ezj $$0, ezl $$1, hkl $$2) {
-      $$2.a = this.e.b($$0, $$1);
-      $$2.b.clear();
+   @Nullable
+   private static ebq a(csi $$0) {
+      iw.a $$1 = new iw.a();
 
-      for (ezf $$3 : $$1.e()) {
-         $$2.b.add(this.a($$3));
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dA() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         double $$4 = $$0.dE() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.el());
+         double $$5 = $$0.dG() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         ebq $$6 = $$0.dV().a_($$1);
+         if ($$6.o() != dub.a && $$6.k($$0.dV(), $$1)) {
+            return $$6;
+         }
       }
+
+      return null;
    }
 
-   private hkl.a a(ezf $$0) {
-      hkl.a $$1 = new hkl.a();
-      $$1.a = this.f.a($$0);
-      $$1.b = $$0.d();
-      $$1.c = $$0.e();
-      $$1.d = $$0.f();
-      $$1.f = $$0.g().orElse(null);
-      $$1.e = $$0.b();
-      return $$1;
+   private static void a(hkq $$0, fld $$1, grn $$2) {
+      float $$3 = 0.1F;
+      int $$4 = ayh.a(1.0F, 0.1F, 0.1F, 0.1F);
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = $$0.c();
+      float $$11 = $$0.d();
+      float $$12 = $$0.g();
+      float $$13 = $$0.h();
+      Matrix4f $$14 = $$1.c().a();
+      flg $$15 = $$2.getBuffer(gry.D($$0.i()));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a($$11, $$13).a($$4);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a($$10, $$13).a($$4);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a($$10, $$12).a($$4);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a($$11, $$12).a($$4);
+   }
+
+   private static void b(fqq $$0, fld $$1, grn $$2) {
+      iw $$3 = iw.a($$0.t.dA(), $$0.t.dE(), $$0.t.dG());
+      float $$4 = grk.a($$0.t.dV().F_(), $$0.t.dV().B($$3));
+      int $$5 = ayh.a(0.1F, $$4, $$4, $$4);
+      float $$6 = 4.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -1.0F;
+      float $$10 = 1.0F;
+      float $$11 = -0.5F;
+      float $$12 = -$$0.t.dL() / 64.0F;
+      float $$13 = $$0.t.dN() / 64.0F;
+      Matrix4f $$14 = $$1.c().a();
+      flg $$15 = $$2.getBuffer(gry.D(a));
+      $$15.a($$14, -1.0F, -1.0F, -0.5F).a(4.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, -1.0F, -0.5F).a(0.0F + $$12, 4.0F + $$13).a($$5);
+      $$15.a($$14, 1.0F, 1.0F, -0.5F).a(0.0F + $$12, 0.0F + $$13).a($$5);
+      $$15.a($$14, -1.0F, 1.0F, -0.5F).a(4.0F + $$12, 0.0F + $$13).a($$5);
+   }
+
+   private static void a(fld $$0, grn $$1) {
+      hkq $$2 = hna.b.c();
+      flg $$3 = $$1.getBuffer(gry.E($$2.i()));
+      float $$4 = $$2.c();
+      float $$5 = $$2.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$2.g();
+      float $$8 = $$2.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$2.j();
+      float $$11 = azz.h($$10, $$4, $$6);
+      float $$12 = azz.h($$10, $$5, $$6);
+      float $$13 = azz.h($$10, $$7, $$9);
+      float $$14 = azz.h($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$0.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$0.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$0.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$0.c().a();
+         $$3.a($$22, -0.5F, -0.5F, -0.5F).a($$12, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, -0.5F, -0.5F).a($$11, $$14).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, 0.5F, 0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$3.a($$22, -0.5F, 0.5F, -0.5F).a($$12, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$0.b();
+      }
    }
 }

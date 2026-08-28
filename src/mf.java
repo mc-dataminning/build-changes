@@ -4,16 +4,16 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class mf implements lx {
-   private static final Codec<egk> c = egk.c
-      .validate($$0 -> $$0 instanceof ege ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
+   private static final Codec<egu> c = egu.c
+      .validate($$0 -> $$0 instanceof ego ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
    public static final MapCodec<mf> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(c.fieldOf("destination").forGetter(mf::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(mf::c)).apply($$0, mf::new)
    );
-   public static final za<wn, mf> b = za.a(egk.d, mf::b, yy.h, mf::c, mf::new);
-   private final egk d;
+   public static final ze<wp, mf> b = ze.a(egu.d, mf::b, zc.h, mf::c, mf::new);
+   private final egu d;
    private final int e;
 
-   public mf(egk $$0, int $$1) {
+   public mf(egu $$0, int $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -23,7 +23,7 @@ public class mf implements lx {
       return lz.V;
    }
 
-   public egk b() {
+   public egu b() {
       return this.d;
    }
 

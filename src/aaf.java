@@ -1,29 +1,33 @@
-public class aaf implements zj<aac> {
-   public static final za<vy, aaf> a = zj.a(aaf::a, aaf::new);
-   private final long b;
+import io.netty.buffer.ByteBuf;
 
-   public aaf(long $$0) {
-      this.b = $$0;
-   }
+public record aaf(alr c, byte[] d) implements zo<zw> {
+   public static final ze<vy, aaf> a = zo.a(aaf::a, aaf::new);
+   private static final int e = 5120;
+   public static final ze<ByteBuf, byte[]> b = zc.a(5120);
 
    private aaf(vy $$0) {
-      this.b = $$0.readLong();
+      this($$0.q(), b.decode($$0));
    }
 
    private void a(vy $$0) {
-      $$0.b(this.b);
+      $$0.a(this.c);
+      b.encode($$0, this.d);
    }
 
    @Override
-   public zl<aaf> a() {
-      return aab.n;
+   public zq<aaf> a() {
+      return aai.i;
    }
 
-   public void a(aac $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public alr b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

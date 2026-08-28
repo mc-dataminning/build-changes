@@ -5,22 +5,22 @@ public interface ei {
    ei a = new ei() {
       @Nullable
       @Override
-      public xs a(String $$0) {
+      public xw a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   xs a(String var1);
+   xw a(String var1);
 
-   public static record a(Map<String, xs> b) implements ei {
+   public static record a(Map<String, xw> b) implements ei {
       @Nullable
       @Override
-      public xs a(String $$0) {
+      public xw a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, xs> a() {
+      public Map<String, xw> a() {
          return this.b;
       }
    }

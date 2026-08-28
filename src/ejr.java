@@ -1,45 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejr extends ekm<emj> {
-   public ejr(Codec<emj> $$0) {
-      super($$0);
+public class ejr extends ejo {
+   public static final Codec<ejr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ejo.d.forGetter($$0x -> $$0x),
+               buf.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               buf.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               buf.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, ejr::new)
+   );
+   public final buf b;
+   public final buf c;
+   final buf j;
+
+   public ejr(float $$0, equ $$1, buf $$2, eij $$3, ejp $$4, jk<dno> $$5, buf $$6, buf $$7, buf $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(eko<emj> $$0) {
-      iw $$1 = $$0.e();
-      dky $$2 = $$0.b();
-      azz $$3 = $$0.d();
+   public ejr(float $$0, equ $$1, buf $$2, eij $$3, jk<dno> $$4, buf $$5, buf $$6, buf $$7) {
+      this($$0, $$1, $$2, $$3, ejp.a, $$4, $$5, $$6, $$7);
+   }
 
-      emj $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.K_() + 3; $$1 = $$1.e()) {
-         if (!$$2.v($$1.e())) {
-            ebg $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.K_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (iw $$11 : iw.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public ejr(ejo $$0, buf $$1, buf $$2, buf $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

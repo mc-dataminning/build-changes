@@ -1,34 +1,37 @@
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record fgq(String a, int b, @Nullable xc c, @Nullable ys d) {
-   public boolean a() {
-      return this.a.startsWith("#");
-   }
-
-   public xc b() {
-      return (xc)(this.c != null ? this.c : xc.b(this.c()));
-   }
-
-   public xq a(ys $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
+public class fgq extends fgm {
    @Nullable
-   public xc e() {
-      return this.c;
+   private iw b;
+   @Nullable
+   private iw c;
+
+   protected fgq(cuv $$0, boolean $$1) {
+      super($$0, $$1, false);
+      this.a($$0);
    }
 
-   @Nullable
-   public ys f() {
-      return this.d;
+   private void a(cuv $$0) {
+      iw $$1 = $$0.j();
+      ebq $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dnd.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         ecu $$4 = $$2.c(((dnd)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
+   }
+
+   @Override
+   public fgw a(ebq $$0, djr $$1, iw $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fgt.a();
    }
 }

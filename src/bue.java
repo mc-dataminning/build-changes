@@ -1,38 +1,31 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bue extends bty {
-   public static final MapCodec<bue> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bue::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
+public class bue extends buh {
+   public static final bue a = new bue(0);
+   public static final MapCodec<bue> b = Codec.INT.fieldOf("value").xmap(bue::a, bue::d);
    private final int f;
 
-   private bue(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public static bue a(int $$0) {
+      return $$0 == 0 ? a : new bue($$0);
    }
 
-   public static bue a(int $$0, int $$1) {
-      return new bue($$0, $$1);
+   private bue(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public int a(azz $$0) {
-      return azq.b($$0, this.b, this.f);
+   public int a(bai $$0) {
+      return this.f;
    }
 
    @Override
    public int a() {
-      return this.b;
+      return this.f;
    }
 
    @Override
@@ -41,12 +34,12 @@ public class bue extends bty {
    }
 
    @Override
-   public btz<?> c() {
-      return btz.b;
+   public bui<?> c() {
+      return bui.a;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+      return Integer.toString(this.f);
    }
 }

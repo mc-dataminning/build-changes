@@ -1,44 +1,65 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import javax.annotation.Nullable;
+public class bpn extends bpl implements bpr {
+   public static final int c = 240;
+   private final long[][] d;
+   private int e;
+   private int f;
 
-public interface bpn<T> extends Closeable {
-   static <T> bpn<T> a(final Codec<T> $$0, Reader $$1) {
-      final JsonReader $$2 = new JsonReader($$1);
-      $$2.setLenient(true);
-      return new bpn<T>() {
-         @Nullable
-         @Override
-         public T a() throws IOException {
-            try {
-               if (!$$2.hasNext()) {
-                  return null;
-               } else {
-                  JsonElement $$0 = JsonParser.parseReader($$2);
-                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-               }
-            } catch (JsonParseException var2) {
-               throw new IOException(var2);
-            } catch (EOFException var3) {
-               return null;
-            }
-         }
-
-         @Override
-         public void close() throws IOException {
-            $$2.close();
-         }
-      };
+   public bpn(int $$0) {
+      this($$0, new long[$$0]);
    }
 
-   @Nullable
-   T a() throws IOException;
+   public bpn(int $$0, long[] $$1) {
+      super($$0, $$1);
+      this.d = new long[240][$$0];
+   }
+
+   @Override
+   protected void a() {
+      int $$0 = this.b(this.e + this.f);
+      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
+      if (this.f < 240) {
+         this.f++;
+      } else {
+         this.e = this.b(this.e + 1);
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.length;
+   }
+
+   @Override
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public long a(int $$0) {
+      return this.a($$0, 0);
+   }
+
+   @Override
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.f) {
+         long[] $$2 = this.d[this.b(this.e + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
+         } else {
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+         }
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
+      }
+   }
+
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   @Override
+   public void e() {
+      this.e = 0;
+      this.f = 0;
+   }
 }

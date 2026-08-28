@@ -1,41 +1,33 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record dhy(jk<dgn> d, int e, int f) implements dhv {
-   public static final int b = 10000;
-   public static final MapCodec<dhy> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jv.a(mi.aR).fieldOf("enchantments").forGetter(dhy::b),
-               ayy.a(1, 10000).fieldOf("min_cost").forGetter(dhy::c),
-               ayy.a(0, 10000).fieldOf("max_cost_span").forGetter(dhy::d)
-            )
-            .apply($$0, dhy::new)
-   );
+public record dhy(alr d) implements dho {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dhy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alr.a.fieldOf("function").forGetter(dhy::b)).apply($$0, dhy::new));
 
    @Override
-   public void a(daa $$0, dgt.a $$1, azz $$2, bur $$3) {
-      float $$4 = $$3.d();
-      int $$5 = azq.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
-
-      for (dgq $$7 : dgp.b($$2, $$0, $$5, this.d.a())) {
-         $$1.b($$7.b(), $$7.c());
+   public void a(asb $$0, int $$1, dgw $$2, bxe $$3, fgc $$4) {
+      MinecraftServer $$5 = $$0.p();
+      amg $$6 = $$5.aE();
+      Optional<hy<ek>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ek $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bT());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
       }
    }
 
    @Override
    public MapCodec<dhy> a() {
-      return c;
+      return a;
    }
 
-   public jk<dgn> b() {
+   public alr b() {
       return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
    }
 }

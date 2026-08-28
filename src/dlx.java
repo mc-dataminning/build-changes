@@ -1,75 +1,57 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class dlx extends dne {
-   protected static final int a = 4;
-   private static final fgm c = dne.b(12.0, 4.0, 16.0);
-   private static final fgm d = ag.a(() -> {
-      int $$0 = 4;
-      int $$1 = 3;
-      int $$2 = 2;
-      return fgj.a(fgj.b(), fgj.a(dne.a(16.0, 8.0, 0.0, 3.0), dne.a(8.0, 16.0, 0.0, 3.0), dne.b(12.0, 0.0, 3.0), c), ffw.e);
-   });
-   protected final kd.a b;
+public class dlx extends dlq implements dlo.a {
+   public static final MapCodec<dlx> b = dlm.c.fieldOf("biome").xmap(dlx::new, $$0 -> $$0.c).stable();
+   private final jg<dlm> c;
 
-   @Override
-   protected abstract MapCodec<? extends dlx> a();
-
-   public dlx(ebf.d $$0, kd.a $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   protected double b(ebg $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(ebg $$0, iw $$1, bwv $$2) {
-      return $$2.dC() < (double)$$1.v() + this.b($$0) && $$2.cR().e > (double)$$1.v() + 0.25;
+   public dlx(jg<dlm> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected but a(daa $$0, ebg $$1, djz $$2, iw $$3, crz $$4, bus $$5, ffo $$6) {
-      kd $$7 = this.b.b().get($$0.h());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   protected Stream<jg<dlm>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return d;
+   protected MapCodec<? extends dlq> a() {
+      return b;
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2) {
-      return c;
+   public jg<dlm> getNoiseBiome(int $$0, int $$1, int $$2, dlv.f $$3) {
+      return this.c;
    }
 
    @Override
-   protected boolean c_(ebg $$0) {
-      return true;
+   public jg<dlm> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
+   @Nullable
    @Override
-   protected boolean a(ebg $$0, eyf $$1) {
-      return false;
-   }
-
-   public abstract boolean d(ebg var1);
-
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      iw $$4 = dtc.a((djz)$$1, $$2);
-      if ($$4 != null) {
-         exp $$5 = dtc.a($$1, $$4);
-         if ($$5 != exr.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
+   public Pair<iw, jg<dlm>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jg<dlm>> $$5, bai $$6, boolean $$7, dlv.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new iw($$0, $$1, $$2), this.c) : Pair.of(new iw($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
       }
    }
 
-   protected boolean a(exp $$0) {
-      return false;
+   @Nullable
+   @Override
+   public Pair<iw, jg<dlm>> a(iw $$0, int $$1, int $$2, int $$3, Predicate<jg<dlm>> $$4, dlv.f $$5, dkm $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
-   protected void a(ebg $$0, djz $$1, iw $$2, exp $$3) {
+   @Override
+   public Set<jg<dlm>> a(int $$0, int $$1, int $$2, int $$3, dlv.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

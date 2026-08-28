@@ -1,146 +1,169 @@
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class csw extends bxe implements cta {
+   private static final float a = 12.25F;
+   private static final aku<dak> b = aky.a(csw.class, akw.h);
+   private double c;
+   private double d;
+   private double e;
+   private int f;
+   private boolean g;
 
-public final class csw {
-   private static final float a = 0.3F;
-
-   public static ffq a(bwv $$0, Predicate<bwv> $$1) {
-      ffs $$2 = $$0.dy();
-      djz $$3 = $$0.dV();
-      ffs $$4 = $$0.dt();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F, djg.a.a);
+   public csw(bxn<? extends csw> $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   public static ffq a(bwv $$0, Predicate<bwv> $$1, djg.a $$2) {
-      ffs $$3 = $$0.dy();
-      djz $$4 = $$0.dV();
-      ffs $$5 = $$0.dt();
-      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
+   public csw(dkj $$0, double $$1, double $$2, double $$3) {
+      this(bxn.X, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
-   public static ffq a(bwv $$0, Predicate<bwv> $$1, double $$2) {
-      ffs $$3 = $$0.h(0.0F).c($$2);
-      djz $$4 = $$0.dV();
-      ffs $$5 = $$0.bD();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F, djg.a.a);
+   public void a(dak $$0) {
+      if ($$0.f()) {
+         this.ar().a(b, this.g());
+      } else {
+         this.ar().a(b, $$0.c(1));
+      }
    }
 
-   private static ffq a(ffs $$0, bwv $$1, Predicate<bwv> $$2, ffs $$3, djz $$4, float $$5, djg.a $$6) {
-      ffs $$7 = $$0.e($$3);
-      ffq $$8 = $$4.b(new djg($$0, $$7, $$6, djg.b.a, $$1));
-      if ($$8.d() != ffq.a.a) {
-         $$7 = $$8.g();
+   @Override
+   public dak f() {
+      return this.ar().a(b);
+   }
+
+   @Override
+   protected void a(aky.a $$0) {
+      $$0.a(b, this.g());
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
+
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
+   }
+
+   public void a(iw $$0) {
+      double $$1 = (double)$$0.u();
+      int $$2 = $$0.v();
+      double $$3 = (double)$$0.w();
+      double $$4 = $$1 - this.dA();
+      double $$5 = $$3 - this.dG();
+      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
+      if ($$6 > 12.0) {
+         this.c = this.dA() + $$4 / $$6 * 12.0;
+         this.e = this.dG() + $$5 / $$6 * 12.0;
+         this.d = this.dC() + 8.0;
+      } else {
+         this.c = $$1;
+         this.d = (double)$$2;
+         this.e = $$3;
       }
 
-      ffq $$9 = a($$4, $$1, $$0, $$7, $$1.cR().b($$3).g(1.0), $$2, $$5);
-      if ($$9 != null) {
-         $$8 = $$9;
-      }
-
-      return $$8;
+      this.f = 0;
+      this.g = this.ae.a(5) > 0;
    }
 
-   @Nullable
-   public static ffp a(bwv $$0, ffs $$1, ffs $$2, ffn $$3, Predicate<bwv> $$4, double $$5) {
-      djz $$6 = $$0.dV();
-      double $$7 = $$5;
-      bwv $$8 = null;
-      ffs $$9 = null;
+   @Override
+   public void k(double $$0, double $$1, double $$2) {
+      this.n($$0, $$1, $$2);
+      if (this.O == 0.0F && this.N == 0.0F) {
+         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         this.w((float)(azz.d($$0, $$2) * 180.0F / (float)Math.PI));
+         this.x((float)(azz.d($$1, $$3) * 180.0F / (float)Math.PI));
+         this.N = this.dL();
+         this.O = this.dN();
+      }
+   }
 
-      for (bwv $$10 : $$6.a($$0, $$3, $$4)) {
-         ffn $$11 = $$10.cR().g((double)$$10.bR());
-         Optional<ffs> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+   @Override
+   public void h() {
+      super.h();
+      fgc $$0 = this.dy();
+      double $$1 = this.dA() + $$0.d;
+      double $$2 = this.dC() + $$0.e;
+      double $$3 = this.dG() + $$0.f;
+      double $$4 = $$0.i();
+      this.x(ctd.f(this.O, (float)(azz.d($$0.e, $$4) * 180.0F / (float)Math.PI)));
+      this.w(ctd.f(this.N, (float)(azz.d($$0.d, $$0.f) * 180.0F / (float)Math.PI)));
+      if (!this.dV().C) {
+         double $$5 = this.c - $$1;
+         double $$6 = this.e - $$3;
+         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
+         float $$8 = (float)azz.d($$6, $$5);
+         double $$9 = azz.d(0.0025, $$4, (double)$$7);
+         double $$10 = $$0.e;
+         if ($$7 < 1.0F) {
+            $$9 *= 0.8;
+            $$10 *= 0.8;
+         }
+
+         int $$11 = this.dC() < this.d ? 1 : -1;
+         $$0 = new fgc(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
+         this.i($$0);
+      }
+
+      float $$12 = 0.25F;
+      if (this.bi()) {
+         for (int $$13 = 0; $$13 < 4; $$13++) {
+            this.dV().a(lz.d, $$1 - $$0.d * 0.25, $$2 - $$0.e * 0.25, $$3 - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+      } else {
+         this.dV()
+            .a(lz.af, $$1 - $$0.d * 0.25 + this.ae.j() * 0.6 - 0.3, $$2 - $$0.e * 0.25 - 0.5, $$3 - $$0.f * 0.25 + this.ae.j() * 0.6 - 0.3, $$0.d, $$0.e, $$0.f);
+      }
+
+      if (!this.dV().C) {
+         this.a_($$1, $$2, $$3);
+         this.f++;
+         if (this.f > 80 && !this.dV().C) {
+            this.a(awy.iF, 1.0F, 1.0F);
+            this.aq();
+            if (this.g) {
+               this.dV().b(new coo(this.dV(), this.dA(), this.dC(), this.dG(), this.f()));
+            } else {
+               this.dV().c(2003, this.dv(), 0);
             }
-         } else if ($$12.isPresent()) {
-            ffs $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.df() == $$0.df()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
-               }
-            }
          }
-      }
-
-      return $$8 == null ? null : new ffp($$8, $$9);
-   }
-
-   @Nullable
-   public static ffp a(djz $$0, bwv $$1, ffs $$2, ffs $$3, ffn $$4, Predicate<bwv> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
-
-   @Nullable
-   public static ffp a(djz $$0, bwv $$1, ffs $$2, ffs $$3, ffn $$4, Predicate<bwv> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      Optional<ffs> $$8 = Optional.empty();
-      bwv $$9 = null;
-
-      for (bwv $$10 : $$0.a($$1, $$4, $$5)) {
-         ffn $$11 = $$10.cR().g((double)$$6);
-         Optional<ffs> $$12 = $$11.b($$2, $$3);
-         if ($$12.isPresent()) {
-            double $$13 = $$2.g($$12.get());
-            if ($$13 < $$7) {
-               $$9 = $$10;
-               $$7 = $$13;
-               $$8 = $$12;
-            }
-         }
-      }
-
-      return $$9 == null ? null : new ffp($$9, $$8.get());
-   }
-
-   public static void a(bwv $$0, float $$1) {
-      ffs $$2 = $$0.dy();
-      if ($$2.h() != 0.0) {
-         double $$3 = $$2.i();
-         $$0.w((float)(azq.d($$2.f, $$2.d) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.x((float)(azq.d($$3, $$2.e) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dN() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dN() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         while ($$0.dL() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dL() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.x(azq.h($$1, $$0.O, $$0.dN()));
-         $$0.w(azq.h($$1, $$0.N, $$0.dL()));
+      } else {
+         this.a_($$1, $$2, $$3);
       }
    }
 
-   public static bus a(bxw $$0, czw $$1) {
-      return $$0.fb().a($$1) ? bus.a : bus.b;
+   @Override
+   public void b(ua $$0) {
+      alp<va> $$1 = this.dX().a(uo.a);
+      $$0.a("Item", dak.b, $$1, this.f());
    }
 
-   public static csh a(bxw $$0, daa $$1, float $$2, @Nullable daa $$3) {
-      cye $$4 = (cye)($$1.h() instanceof cye ? $$1.h() : dae.pk);
-      csh $$5 = $$4.a($$0.dV(), $$1, $$0, $$3);
-      $$5.a($$2);
-      return $$5;
+   @Override
+   public void a(ua $$0) {
+      alp<va> $$1 = this.dX().a(uo.a);
+      this.a($$0.<dak>a("Item", dak.b, $$1).orElse(this.g()));
+   }
+
+   private dak g() {
+      return new dak(dao.tA);
+   }
+
+   @Override
+   public float bw() {
+      return 1.0F;
+   }
+
+   @Override
+   public boolean cB() {
+      return false;
+   }
+
+   @Override
+   public boolean a(asb $$0, bvt $$1, float $$2) {
+      return false;
    }
 }

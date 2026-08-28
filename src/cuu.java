@@ -1,91 +1,177 @@
-public abstract class cuu {
-   protected final cum a;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   protected cuu(cum $$0) {
-      this.a = $$0;
+public abstract class cuu extends cut implements bxv, cva {
+   private static final int j = 27;
+   private jp<dak> k = jp.a(27, dak.l);
+   @Nullable
+   private alq<fay> l;
+   private long m;
+
+   public cuu(bxn<? extends cuu> $$0, dkj $$1, Supplier<dag> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public bxr a() {
-      return null;
+   @Override
+   protected float m() {
+      return 0.15F;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
+   @Override
+   protected int n() {
+      return 1;
    }
 
-   public abstract void b();
-
-   public djz c() {
-      return this.a.dV();
+   @Override
+   protected void b(ua $$0) {
+      super.b($$0);
+      this.a($$0, this.dX());
    }
 
-   public abstract void a(aru var1);
-
-   public abstract double a(iw var1, eck var2, double var3);
-
-   public abstract boolean d();
-
-   public ffs e() {
-      return this.a.dy();
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.b($$0, this.dX());
    }
 
-   public void a(ffs $$0) {
-      this.a.i($$0);
+   @Override
+   public void a(asb $$0, bvt $$1) {
+      this.a($$0, this.o());
+      this.a($$1, $$0, this);
    }
 
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
+   @Override
+   public void a(bxe.d $$0) {
+      if (!this.dV().C && $$0.a()) {
+         buy.a(this.dV(), this, this);
+      }
+
+      super.a($$0);
    }
 
-   public ffs f() {
-      return this.a.dt();
+   @Override
+   public bvc a(csi $$0, bvb $$1) {
+      if (!$$0.fY()) {
+         bvc $$2 = super.a($$0, $$1);
+         if ($$2 != bvc.e) {
+            return $$2;
+         }
+      }
+
+      if (this.r($$0) && !$$0.fY()) {
+         return bvc.e;
+      } else {
+         bvc $$3 = this.b_($$0);
+         if ($$3.a() && $$0.dV() instanceof asb $$4) {
+            this.a(egq.k, $$0);
+            cqy.a($$4, $$0, true);
+         }
+
+         return $$3;
+      }
    }
 
-   public double g() {
-      return this.a.dA();
+   @Override
+   public void b(csi $$0) {
+      $$0.a(this);
+      if ($$0.dV() instanceof asb $$1) {
+         this.a(egq.k, $$0);
+         cqy.a($$1, $$0, true);
+      }
    }
 
-   public double h() {
-      return this.a.dC();
+   @Override
+   public void a() {
+      this.al_();
    }
 
-   public double i() {
-      return this.a.dG();
+   @Override
+   public int b() {
+      return 27;
    }
 
-   public void b(ffs $$0) {
-      this.a.b($$0);
+   @Override
+   public dak a(int $$0) {
+      return this.g_($$0);
    }
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
+   @Override
+   public dak a(int $$0, int $$1) {
+      return this.b($$0, $$1);
    }
 
-   public float j() {
-      return this.a.dN();
+   @Override
+   public dak b(int $$0) {
+      return this.f_($$0);
    }
 
-   public void a(float $$0) {
-      this.a.x($$0);
+   @Override
+   public void a(int $$0, dak $$1) {
+      this.c($$0, $$1);
    }
 
-   public float k() {
-      return this.a.dL();
+   @Override
+   public byw a_(int $$0) {
+      return this.h_($$0);
    }
 
-   public void b(float $$0) {
-      this.a.w($$0);
+   @Override
+   public void e() {
    }
 
-   public jc l() {
-      return this.a.cO();
+   @Override
+   public boolean a(csi $$0) {
+      return this.g($$0);
    }
 
-   public ffs c(ffs $$0) {
-      return $$0;
+   @Nullable
+   @Override
+   public cwb createMenu(int $$0, csh $$1, csi $$2) {
+      if (this.l != null && $$2.aa_()) {
+         return null;
+      } else {
+         this.e($$1.h);
+         return cwk.a($$0, $$1, this);
+      }
    }
 
-   public abstract double b(aru var1);
+   public void e(@Nullable csi $$0) {
+      this.f($$0);
+   }
 
-   public abstract double m();
+   @Nullable
+   @Override
+   public alq<fay> q() {
+      return this.l;
+   }
+
+   @Override
+   public void a(@Nullable alq<fay> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long s() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public jp<dak> t() {
+      return this.k;
+   }
+
+   @Override
+   public void u() {
+      this.k = jp.a(this.b(), dak.l);
+   }
+
+   @Override
+   public void c(csi $$0) {
+      this.dV().a(egq.j, this.dt(), egq.a.a($$0));
+   }
 }

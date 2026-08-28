@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
+import java.util.List;
+import java.util.SequencedSet;
 
-public interface ddo {
-   Codec<ddo> d = mh.aw.q().dispatch(ddo::a, ddo.a::a);
-   za<wn, ddo> e = yy.a(mi.n).b(ddo::a, ddo.a::b);
+public record ddo(boolean d, SequencedSet<kk<?>> e) {
+   private static final Codec<SequencedSet<kk<?>>> f = kk.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
+   public static final Codec<ddo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(ddo::a),
+               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(ddo::b)
+            )
+            .apply($$0, ddo::new)
+   );
+   public static final ze<wp, ddo> b = ze.a(zc.b, ddo::a, kk.b.a(zc.a(ReferenceLinkedOpenHashSet::new)), ddo::b, ddo::new);
+   public static final ddo c = new ddo(false, ReferenceSortedSets.emptySet());
 
-   ddo.a<? extends ddo> a();
+   public ddo a(kk<?> $$0, boolean $$1) {
+      if (this.e.contains($$0) == $$1) {
+         return this;
+      } else {
+         SequencedSet<kk<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
+         if ($$1) {
+            $$2.add($$0);
+         } else {
+            $$2.remove($$0);
+         }
 
-   boolean a(djz var1, daa var2, bxw var3);
-
-   public static record a<T extends ddo>(MapCodec<T> f, za<wn, T> g) {
-      public static final ddo.a<ddm> a = a("apply_effects", ddm.a, ddm.b);
-      public static final ddo.a<ddq> b = a("remove_effects", ddq.a, ddq.b);
-      public static final ddo.a<ddn> c = a("clear_all_effects", ddn.b, ddn.c);
-      public static final ddo.a<ddr> d = a("teleport_randomly", ddr.a, ddr.b);
-      public static final ddo.a<ddp> e = a("play_sound", ddp.a, ddp.b);
-
-      private static <T extends ddo> ddo.a<T> a(String $$0, MapCodec<T> $$1, za<wn, T> $$2) {
-         return jt.a(mh.aw, $$0, new ddo.a<>($$1, $$2));
+         return new ddo(this.d, $$2);
       }
+   }
 
-      public MapCodec<T> a() {
-         return this.f;
-      }
+   public boolean a(kk<?> $$0) {
+      return !this.d && !this.e.contains($$0);
+   }
 
-      public za<wn, T> b() {
-         return this.g;
-      }
+   public boolean a() {
+      return this.d;
+   }
+
+   public SequencedSet<kk<?>> b() {
+      return this.e;
    }
 }

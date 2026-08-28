@@ -1,27 +1,29 @@
-import java.util.UUID;
+public class ajp implements zo<ajm> {
+   public static final ze<vy, ajp> a = zo.a(ajp::a, ajp::new);
+   private final int b;
 
-public record ajp(String b, UUID c) implements zj<ajn> {
-   public static final za<vy, ajp> a = zj.a(ajp::a, ajp::new);
+   public ajp(int $$0) {
+      this.b = $$0;
+   }
 
    private ajp(vy $$0) {
-      this($$0.d(16), $$0.n());
+      this.b = $$0.l();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+      $$0.c(this.b);
    }
 
    @Override
-   public zl<ajp> a() {
-      return ajl.g;
+   public zq<ajp> a() {
+      return ajs.d;
    }
 
-   public void a(ajn $$0) {
+   public void a(ajm $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

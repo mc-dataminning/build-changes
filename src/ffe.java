@@ -1,20 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ffe<C> {
-   public static final ffe<MinecraftServer> a = new ffe<MinecraftServer>().a(alk.b("function"), ffb.a).a(alk.b("function_tag"), ffc.a);
-   private final ayy.b<alk, MapCodec<? extends ffd<C>>> b = new ayy.b<>();
-   private final Codec<ffd<C>> c = this.b.a(alk.a).dispatch("Type", ffd::a, Function.identity());
+public record ffe(fat.b c) implements ffh {
+   public static final MapCodec<ffe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fat.b.e.fieldOf("target").forGetter(ffe::c)).apply($$0, ffe::new));
+   public static final Codec<ffe> b = fat.b.e.xmap(ffe::new, ffe::c);
 
-   public ffe<C> a(alk $$0, MapCodec<? extends ffd<C>> $$1) {
-      this.b.a($$0, $$1);
-      return this;
+   public static ffh a(fat.b $$0) {
+      return new ffe($$0);
    }
 
-   public Codec<ffd<C>> a() {
-      return this.c;
+   @Override
+   public ffg a() {
+      return ffi.c;
+   }
+
+   @Nullable
+   @Override
+   public fhg a(fat $$0) {
+      return $$0.c(this.c.a());
+   }
+
+   @Override
+   public Set<bbk<?>> b() {
+      return Set.of(this.c.a());
    }
 }

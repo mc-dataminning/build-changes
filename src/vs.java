@@ -1,6 +1,6 @@
-public interface vs extends wi {
+public interface vs extends wk {
    @Override
-   default zk a() {
-      return zk.b;
+   default zp N_() {
+      return zp.b;
    }
 }

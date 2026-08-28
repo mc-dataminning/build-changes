@@ -1,32 +1,26 @@
-import com.mojang.serialization.Codec;
+import java.util.function.BooleanSupplier;
 
-public enum frb implements azt, bao {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class frb extends fqo {
+   private final BooleanSupplier h;
 
-   public static final Codec<frb> c = bao.a(frb::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private frb(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public frb(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, fka.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public int b() {
-      return this.d;
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   protected void n() {
+      super.a(false);
    }
 }

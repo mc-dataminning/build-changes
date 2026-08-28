@@ -1,62 +1,38 @@
-public enum ech implements bao {
-   a("harp", awr.sK, ech.a.a),
-   b("basedrum", awr.sE, ech.a.a),
-   c("snare", awr.sN, ech.a.a),
-   d("hat", awr.sL, ech.a.a),
-   e("bass", awr.sF, ech.a.a),
-   f("flute", awr.sI, ech.a.a),
-   g("bell", awr.sG, ech.a.a),
-   h("guitar", awr.sJ, ech.a.a),
-   i("chime", awr.sH, ech.a.a),
-   j("xylophone", awr.sO, ech.a.a),
-   k("iron_xylophone", awr.sP, ech.a.a),
-   l("cow_bell", awr.sQ, ech.a.a),
-   m("didgeridoo", awr.sR, ech.a.a),
-   n("bit", awr.sS, ech.a.a),
-   o("banjo", awr.sT, ech.a.a),
-   p("pling", awr.sM, ech.a.a),
-   q("zombie", awr.sU, ech.a.b),
-   r("skeleton", awr.sV, ech.a.b),
-   s("creeper", awr.sW, ech.a.b),
-   t("dragon", awr.sX, ech.a.b),
-   u("wither_skeleton", awr.sY, ech.a.b),
-   v("piglin", awr.sZ, ech.a.b),
-   w("custom_head", awr.Bv, ech.a.c);
+import java.util.List;
+import java.util.Optional;
 
-   private final String x;
-   private final jg<awq> y;
-   private final ech.a z;
+public final class ech extends ect<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   private ech(final String $$0, final jg<awq> $$1, final ech.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   private ech(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public List<Boolean> a() {
+      return a;
    }
 
-   public jg<awq> a() {
-      return this.y;
+   public static ech a(String $$0) {
+      return new ech($$0);
    }
 
-   public boolean b() {
-      return this.z == ech.a.a;
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
    }
 
-   public boolean d() {
-      return this.z == ech.a.c;
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
-   public boolean e() {
-      return this.z != ech.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

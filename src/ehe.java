@@ -1,26 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface ehe extends bai {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class ehe {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<ehe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehe::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+   int c(int var1);
 
-   public ehe(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   @Override
+   default int f() {
+      return this.c(32);
+   }
+
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

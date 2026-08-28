@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fwm {
+public class fwm implements fis {
+   @Nullable
+   @Override
+   public fir a(int $$0) {
+      return fww.b;
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
+   }
 }

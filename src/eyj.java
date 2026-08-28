@@ -1,37 +1,100 @@
 import javax.annotation.Nullable;
 
-public class eyj {
-   private final djh a;
-   @Nullable
-   private final eyi b;
-   private final iw c;
-   private final iw.a d = new iw.a();
+public class eyj extends eyw {
+   private final boolean a;
+   private float m;
+   private float n;
 
-   public eyj(djh $$0, bxy $$1) {
+   public eyj(boolean $$0) {
       this.a = $$0;
-      if ($$1.dV() instanceof aru $$2) {
-         this.b = $$2.I();
+   }
+
+   @Override
+   public void a(dkw $$0, byh $$1) {
+      super.a($$0, $$1);
+      $$1.a(eyr.j, 0.0F);
+      this.m = $$1.a(eyr.c);
+      $$1.a(eyr.c, 6.0F);
+      this.n = $$1.a(eyr.k);
+      $$1.a(eyr.k, 4.0F);
+   }
+
+   @Override
+   public void b() {
+      this.c.a(eyr.c, this.m);
+      this.c.a(eyr.k, this.n);
+      super.b();
+   }
+
+   @Override
+   public eym a() {
+      return !this.c.bi() ? super.a() : this.c(new iw(azz.a(this.c.cR().a), azz.a(this.c.cR().b + 0.5), azz.a(this.c.cR().c)));
+   }
+
+   @Override
+   public eyv a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1 + 0.5, $$2);
+   }
+
+   @Override
+   public int a(eym[] $$0, eym $$1) {
+      int $$2 = super.a($$0, $$1);
+      eyr $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
+      eyr $$4 = this.b($$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.c.a($$3) >= 0.0F && $$4 != eyr.w) {
+         $$5 = azz.d(Math.max(1.0F, this.c.dP()));
       } else {
-         this.b = null;
+         $$5 = 0;
       }
 
-      this.c = $$1.dv();
+      double $$7 = this.d(new iw($$1.a, $$1.b, $$1.c));
+      eym $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jc.b, $$4);
+      eym $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jc.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
+      }
+
+      if (this.b($$9, $$1) && $$4 != eyr.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eym $$11 = $$0[$$10];
+         if ($$11.l == eyr.j && this.a && $$11.b < this.c.dV().P() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
    }
 
-   public eyh a(int $$0, int $$1, int $$2) {
-      iw $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? eym.b(this.a, $$3) : this.b.a(this.a, $$3);
+   private boolean b(@Nullable eym $$0, eym $$1) {
+      return this.a($$0, $$1) && $$0.l == eyr.j;
    }
 
-   public ebg a(iw $$0) {
-      return this.a.a_($$0);
+   @Override
+   protected boolean c() {
+      return true;
    }
 
-   public djh a() {
-      return this.a;
-   }
+   @Override
+   public eyr a(eyt $$0, int $$1, int $$2, int $$3) {
+      eyr $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == eyr.j) {
+         iw.a $$5 = new iw.a();
 
-   public iw b() {
-      return this.c;
+         for (jc $$6 : jc.values()) {
+            $$5.d($$1, $$2, $$3).c($$6);
+            eyr $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
+            if ($$7 == eyr.a) {
+               return eyr.k;
+            }
+         }
+
+         return eyr.j;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 }

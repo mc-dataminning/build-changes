@@ -1,46 +1,49 @@
-public class cmj {
-   private static final cmj.b a = new cmj.b(a(a().a(b(cyy.p), 5).a(b(cyy.h), 5).a(b(cyy.i), 5).a(b(cyy.m), 3).a(a(cyy.a), 82).a()));
-   private static final cmj.b b = new cmj.b(a(a().a(b(cyy.h), 5).a(b(cyy.i), 5).a(b(cyy.a), 5).a(b(cyy.p), 3).a(a(cyy.m), 82).a()));
-   private static final cmj.b c = new cmj.b(a(a().a(b(cyy.i), 5).a(b(cyy.h), 5).a(b(cyy.a), 5).a(b(cyy.m), 3).a(a(cyy.p), 82).a()));
+import javax.annotation.Nullable;
 
-   private static cmj.a a(cyy $$0) {
-      return a(a().a(b($$0), 499).a(b(cyy.g), 1).a());
+public class cmj extends cmd {
+   public cmj(bxn<? extends cmj> $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   public static cyy a(jg<dlc> $$0, azz $$1) {
-      cmj.b $$2 = a($$0);
-      return $$2.a().get($$1);
+   @Override
+   protected awx u() {
+      return awy.qj;
    }
 
-   private static cmj.b a(jg<dlc> $$0) {
-      if ($$0.a(axf.al)) {
-         return b;
-      } else {
-         return $$0.a(axf.ak) ? c : a;
-      }
+   @Override
+   protected awx gU() {
+      return awy.qk;
    }
 
-   private static cmj.a a(btd<cmj.a> $$0) {
-      if ($$0.c()) {
-         throw new IllegalArgumentException("List must be non-empty");
-      } else {
-         return $$1 -> $$0.b($$1).get($$1);
-      }
+   @Override
+   protected awx l_() {
+      return awy.qm;
    }
 
-   private static cmj.a b(cyy $$0) {
-      return $$1 -> $$0;
+   @Nullable
+   @Override
+   protected awx gw() {
+      return awy.qn;
    }
 
-   private static btd.a<cmj.a> a() {
-      return btd.b();
+   @Override
+   protected awx e(bvt $$0) {
+      return awy.qo;
    }
 
-   @FunctionalInterface
-   interface a {
-      cyy get(azz var1);
+   @Override
+   protected void hb() {
+      this.a(awy.qp, 0.4F, 1.0F);
    }
 
-   static record b(cmj.a a) {
+   @Override
+   protected void x() {
+      this.a(awy.ql, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bwu a(asb $$0, bwu $$1) {
+      return bxn.aG.a($$0, bxm.e);
    }
 }

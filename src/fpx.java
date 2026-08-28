@@ -1,19 +1,30 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class fpx {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+public enum fpx implements bac {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   private static final IntFunction<fpx> d = ayo.a(fpx::b, values(), ayo.a.b);
+   private final int e;
+   private final String f;
+
+   private fpx(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public static void a(long $$0, @Nullable String $$1) {
-      a.put($$0, $$1);
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   public static fpx a(int $$0) {
+      return d.apply($$0);
    }
 }

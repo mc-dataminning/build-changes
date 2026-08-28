@@ -5,17 +5,17 @@ public class ny {
    public static nl a(mq $$0, CompletableFuture<ji.a> $$1) {
       return new nl(
          $$0,
-         faf.a(),
+         fap.a(),
          List.of(
-            new nl.a(nw::new, fdc.f),
-            new nl.a(nt::new, fdc.c),
-            new nl.a(nu::new, fdc.g),
-            new nl.a(nv::new, fdc.h),
-            new nl.a(ns::new, fdc.r),
-            new nl.a(nz::new, fdc.k),
-            new nl.a(nx::new, fdc.j),
-            new nl.a(nr::new, fdc.i),
-            new nl.a(oa::new, fdc.s)
+            new nl.a(nw::new, fdm.f),
+            new nl.a(nt::new, fdm.c),
+            new nl.a(nu::new, fdm.g),
+            new nl.a(nv::new, fdm.h),
+            new nl.a(ns::new, fdm.r),
+            new nl.a(nz::new, fdm.k),
+            new nl.a(nx::new, fdm.j),
+            new nl.a(nr::new, fdm.i),
+            new nl.a(oa::new, fdm.s)
          ),
          $$1
       );

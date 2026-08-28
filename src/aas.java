@@ -1,45 +1,61 @@
-import java.util.List;
+import java.util.UUID;
 
-public record aas(int c, iw d, List<aas.a> e) implements aam {
-   public static final za<vy, aas> a = aam.a(aas::a, aas::new);
-   public static final aam.b<aas> b = aam.a("debug/goal_selector");
+public record aas(aas.a c) implements aat {
+   public static final ze<vy, aas> a = aat.a(aas::a, aas::new);
+   public static final aat.b<aas> b = aat.a("debug/breeze");
 
    private aas(vy $$0) {
-      this($$0.readInt(), $$0.e(), $$0.a(aas.a::new));
+      this(new aas.a($$0));
    }
 
    private void a(vy $$0) {
-      $$0.q(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
+      this.c.a($$0);
    }
 
    @Override
-   public aam.b<aas> a() {
+   public aat.b<aas> a() {
       return b;
    }
 
-   public int b() {
+   public aas.a b() {
       return this.c;
    }
 
-   public iw c() {
-      return this.d;
-   }
-
-   public List<aas.a> d() {
-      return this.e;
-   }
-
-   public static record a(int a, boolean b, String c) {
+   public static record a(UUID a, int b, Integer c, iw d) {
       public a(vy $$0) {
-         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+         this($$0.n(), $$0.readInt(), $$0.c(vy::readInt), $$0.c(iw.b));
       }
 
       public void a(vy $$0) {
-         $$0.q(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c, vy::q);
+         $$0.a(this.d, iw.b);
+      }
+
+      public String a() {
+         return agw.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public iw e() {
+         return this.d;
       }
    }
 }

@@ -4,18 +4,74 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bdg extends DataFix {
    public bdg(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.c);
-      OpticFinder<?> $$1 = $$0.findField("sections");
-      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
-         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
-         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+   private static boolean a(String $$0) {
+      return $$0.equals("minecraft:boat");
+   }
+
+   private static boolean b(String $$0) {
+      return $$0.equals("minecraft:chest_boat");
+   }
+
+   private static boolean c(String $$0) {
+      return a($$0) || b($$0);
+   }
+
+   private static String d(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_boat";
+         case "birch" -> "minecraft:birch_boat";
+         case "jungle" -> "minecraft:jungle_boat";
+         case "acacia" -> "minecraft:acacia_boat";
+         case "cherry" -> "minecraft:cherry_boat";
+         case "dark_oak" -> "minecraft:dark_oak_boat";
+         case "mangrove" -> "minecraft:mangrove_boat";
+         case "bamboo" -> "minecraft:bamboo_raft";
+         default -> "minecraft:oak_boat";
+      };
+   }
+
+   private static String e(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_chest_boat";
+         case "birch" -> "minecraft:birch_chest_boat";
+         case "jungle" -> "minecraft:jungle_chest_boat";
+         case "acacia" -> "minecraft:acacia_chest_boat";
+         case "cherry" -> "minecraft:cherry_chest_boat";
+         case "dark_oak" -> "minecraft:dark_oak_chest_boat";
+         case "mangrove" -> "minecraft:mangrove_chest_boat";
+         case "bamboo" -> "minecraft:bamboo_chest_raft";
+         default -> "minecraft:oak_chest_boat";
+      };
+   }
+
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", blh.a());
+      Type<?> $$1 = this.getInputSchema().getType(bjm.D);
+      Type<?> $$2 = this.getOutputSchema().getType(bjm.D);
+      return this.fixTypeEverywhereTyped("BoatSplitFix", $$1, $$2, $$2x -> {
+         Optional<String> $$3 = $$2x.getOptional($$0);
+         if ($$3.isPresent() && c($$3.get())) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.getOrCreate(DSL.remainderFinder());
+            Optional<String> $$5 = $$4.get("Type").asString().result();
+            String $$6;
+            if (b($$3.get())) {
+               $$6 = $$5.map(bdg::e).orElse("minecraft:oak_chest_boat");
+            } else {
+               $$6 = $$5.map(bdg::d).orElse("minecraft:oak_boat");
+            }
+
+            return bbq.a($$2, $$2x).update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Type")).set($$0, $$6);
+         } else {
+            return bbq.a($$2, $$2x);
+         }
       });
    }
 }

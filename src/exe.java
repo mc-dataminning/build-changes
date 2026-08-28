@@ -1,325 +1,217 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 
-public abstract class exe<M extends exb<M>> {
-   private final dki i;
-   protected final edq a;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   protected volatile M c;
-   protected final M d;
-   protected final LongSet e = new LongOpenHashSet();
-   protected final LongSet f = new LongOpenHashSet();
-   protected final Long2ObjectMap<edi> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
-   private final LongSet k = new LongOpenHashSet();
-   private final LongSet l = new LongOpenHashSet();
-   protected volatile boolean h;
+public class exe {
+   private static final int a = 33554432;
+   private final exb[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
 
-   protected exe(dki $$0, edq $$1, M $$2) {
-      this.i = $$0;
-      this.a = $$1;
-      this.d = $$2;
-      this.c = $$2.b();
-      this.c.d();
-      this.b.defaultReturnValue((byte)0);
+   @Deprecated
+   public static exe a(bai $$0, IntStream $$1) {
+      return new exe($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   protected boolean b(long $$0) {
-      return this.a($$0, true) != null;
+   @Deprecated
+   public static exe a(bai $$0, int $$1, DoubleList $$2) {
+      return new exe($$0, Pair.of($$1, $$2), false);
    }
 
-   @Nullable
-   protected edi a(long $$0, boolean $$1) {
-      return this.a($$1 ? this.d : this.c, $$0);
+   public static exe b(bai $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
    }
 
-   @Nullable
-   protected edi a(M $$0, long $$1) {
-      return $$0.c($$1);
+   public static exe a(bai $$0, List<Integer> $$1) {
+      return new exe($$0, a(new IntRBTreeSet($$1)), true);
    }
 
-   @Nullable
-   protected edi c(long $$0) {
-      edi $$1 = this.d.c($$0);
-      if ($$1 == null) {
-         return null;
+   public static exe a(bai $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new exe($$0, Pair.of($$1, $$4), true);
+   }
+
+   public static exe b(bai $$0, int $$1, DoubleList $$2) {
+      return new exe($$0, Pair.of($$1, $$2), true);
+   }
+
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         if (this.e.add($$0)) {
-            $$1 = $$1.b();
-            this.d.a($$0, $$1);
-            this.d.c();
-         }
-
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public edi d(long $$0) {
-      edi $$1 = (edi)this.g.get($$0);
-      return $$1 != null ? $$1 : this.a($$0, false);
-   }
-
-   protected abstract int a(long var1);
-
-   protected int e(long $$0) {
-      long $$1 = jz.e($$0);
-      edi $$2 = this.a($$1, true);
-      return $$2.a(jz.b(iw.a($$0)), jz.b(iw.b($$0)), jz.b(iw.c($$0)));
-   }
-
-   protected void a(long $$0, int $$1) {
-      long $$2 = jz.e($$0);
-      edi $$3;
-      if (this.e.add($$2)) {
-         $$3 = this.d.a($$2);
-      } else {
-         $$3 = this.a($$2, true);
-      }
-
-      $$3.a(jz.b(iw.a($$0)), jz.b(iw.b($$0)), jz.b(iw.c($$0)), $$1);
-      jz.a($$0, this.f::add);
-   }
-
-   protected void f(long $$0) {
-      int $$1 = jz.b($$0);
-      int $$2 = jz.c($$0);
-      int $$3 = jz.d($$0);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               this.f.add(jz.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
-            }
-         }
-      }
-   }
-
-   protected edi g(long $$0) {
-      edi $$1 = (edi)this.g.get($$0);
-      return $$1 != null ? $$1 : new edi();
-   }
-
-   protected boolean a() {
-      return this.h;
-   }
-
-   protected void a(exh<M, ?> $$0) {
-      if (this.h) {
-         this.h = false;
-         LongIterator $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$1 = (Long)$$5.next();
-            edi $$2 = (edi)this.g.remove($$1);
-            edi $$3 = this.d.d($$1);
-            if (this.k.contains(jz.f($$1))) {
-               if ($$2 != null) {
-                  this.g.put($$1, $$2);
-               } else if ($$3 != null) {
-                  this.g.put($$1, $$3);
-               }
-            }
-         }
-
-         this.d.c();
-         $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$4 = (Long)$$5.next();
-            this.i($$4);
-            this.e.add($$4);
-         }
-
-         this.l.clear();
-         ObjectIterator<Entry<edi>> $$5x = Long2ObjectMaps.fastIterator(this.g);
-
-         while ($$5x.hasNext()) {
-            Entry<edi> $$6 = (Entry<edi>)$$5x.next();
-            long $$7 = $$6.getLongKey();
-            if (this.b($$7)) {
-               edi $$8 = (edi)$$6.getValue();
-               if (this.d.c($$7) != $$8) {
-                  this.d.a($$7, $$8);
-                  this.e.add($$7);
-               }
-
-               $$5x.remove();
-            }
-         }
-
-         this.d.c();
-      }
-   }
-
-   protected void h(long $$0) {
-   }
-
-   protected void i(long $$0) {
-   }
-
-   protected void b(long $$0, boolean $$1) {
-      if ($$1) {
-         this.j.add($$0);
-      } else {
-         this.j.remove($$0);
-      }
-   }
-
-   protected boolean j(long $$0) {
-      long $$1 = jz.f($$0);
-      return this.j.contains($$1);
-   }
-
-   protected boolean k(long $$0) {
-      return this.j.contains($$0);
-   }
-
-   public void c(long $$0, boolean $$1) {
-      if ($$1) {
-         this.k.add($$0);
-      } else {
-         this.k.remove($$0);
-      }
-   }
-
-   protected void a(long $$0, @Nullable edi $$1) {
-      if ($$1 != null) {
-         this.g.put($$0, $$1);
-         this.h = true;
-      } else {
-         this.g.remove($$0);
-      }
-   }
-
-   protected void d(long $$0, boolean $$1) {
-      byte $$2 = this.b.get($$0);
-      byte $$3 = exe.a.a($$2, !$$1);
-      if ($$2 != $$3) {
-         this.a($$0, $$3);
-         int $$4 = $$1 ? -1 : 1;
-
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               for (int $$7 = -1; $$7 <= 1; $$7++) {
-                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
-                     long $$8 = jz.a($$0, $$5, $$6, $$7);
-                     byte $$9 = this.b.get($$8);
-                     this.a($$8, exe.a.a($$9, exe.a.b($$9) + $$4));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(long $$0, byte $$1) {
-      if ($$1 != 0) {
-         if (this.b.put($$0, $$1) == 0) {
-            this.m($$0);
-         }
-      } else if (this.b.remove($$0) != 0) {
-         this.n($$0);
-      }
-   }
-
-   private void m(long $$0) {
-      if (!this.l.remove($$0)) {
-         this.d.a($$0, this.g($$0));
-         this.e.add($$0);
-         this.h($$0);
-         this.f($$0);
-         this.h = true;
-      }
-   }
-
-   private void n(long $$0) {
-      this.l.add($$0);
-      this.h = true;
-   }
-
-   protected void b() {
-      if (!this.e.isEmpty()) {
-         M $$0 = this.d.b();
-         $$0.d();
-         this.c = $$0;
-         this.e.clear();
-      }
-
-      if (!this.f.isEmpty()) {
-         LongIterator $$1 = this.f.iterator();
-
-         while ($$1.hasNext()) {
-            long $$2 = $$1.nextLong();
-            this.a.a(this.i, jz.a($$2));
-         }
-
-         this.f.clear();
-      }
-   }
-
-   public exe.b l(long $$0) {
-      return exe.a.c(this.b.get($$0));
-   }
-
-   protected static class a {
-      public static final byte a = 0;
-      private static final int b = 0;
-      private static final int c = 26;
-      private static final byte d = 32;
-      private static final byte e = 31;
-
-      public static byte a(byte $$0, boolean $$1) {
-         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
-      }
-
-      public static byte a(byte $$0, int $$1) {
-         if ($$1 >= 0 && $$1 <= 26) {
-            return (byte)($$0 & -32 | $$1 & 31);
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
          } else {
-            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
-         }
-      }
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
 
-      public static boolean a(byte $$0) {
-         return ($$0 & 32) != 0;
-      }
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
+            }
 
-      public static int b(byte $$0) {
-         return $$0 & 31;
-      }
-
-      public static exe.b c(byte $$0) {
-         if ($$0 == 0) {
-            return exe.b.a;
-         } else {
-            return a($$0) ? exe.b.c : exe.b.b;
+            return Pair.of(-$$1, $$4);
          }
       }
    }
 
-   public static enum b {
-      a("2"),
-      b("1"),
-      c("0");
+   protected exe(bai $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new exb[$$3];
+      if ($$2) {
+         eic $$5 = $$0.e();
 
-      private final String d;
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new exb($$5.a("octave_" + $$7));
+            }
+         }
+      } else {
+         exb $$8 = new exb($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
+         }
 
-      private b(final String $$0) {
-         this.d = $$0;
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new exb($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
+         }
       }
 
-      public String a() {
-         return this.d;
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
+   }
+
+   protected double a() {
+      return this.g;
+   }
+
+   private static void a(bai $$0) {
+      $$0.b(262);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
+   }
+
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         exb $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
       }
+
+      return $$6;
+   }
+
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
+   }
+
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         exb $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public exb a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
+   }
+
+   public static double b(double $$0) {
+      return $$0 - (double)azz.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
+   }
+
+   protected int b() {
+      return this.c;
+   }
+
+   protected DoubleList c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         exb $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
+         } else {
+            $$3.a($$0);
+         }
+
+         $$0.append(", ");
+      }
+
+      $$0.append("]");
+      $$0.append("}");
    }
 }

@@ -1,34 +1,30 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class bho extends bdv {
-   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
+public class bho extends bbu {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("down", "down_south")
+      .put("up", "up_north")
+      .put("north", "north_up")
+      .put("south", "south_up")
+      .put("west", "west_up")
+      .put("east", "east_up")
+      .build();
 
    public bho(Schema $$0) {
-      super($$0, "LockComponentPredicateFix", "minecraft:lock");
+      super($$0, "jigsaw_rotation_fix");
    }
 
-   @Nullable
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
+   protected boolean a(String $$0) {
+      return $$0.equals("minecraft:jigsaw");
    }
 
-   @Nullable
-   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isEmpty()) {
-         return null;
-      } else if ($$1.get().isEmpty()) {
-         return null;
-      } else {
-         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
-         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
-         return $$0.emptyMap().set("components", $$3);
-      }
+   @Override
+   protected <T> Dynamic<T> a(String $$0, Dynamic<T> $$1) {
+      String $$2 = $$1.get("facing").asString("north");
+      return $$1.remove("facing").set("orientation", $$1.createString(a.getOrDefault($$2, $$2)));
    }
 }

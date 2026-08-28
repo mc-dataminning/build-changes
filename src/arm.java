@@ -1,30 +1,42 @@
-import java.util.function.IntFunction;
+public record arm(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public enum arm implements azt {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+   public djo a() {
+      return new djo(jz.a(this.a), jz.a(this.b));
+   }
 
-   private static final IntFunction<arm> d = ayg.a(arm::b, values(), ayg.a.b);
-   private final int e;
-   private final String f;
+   public long b() {
+      return a(this.a, this.b);
+   }
 
-   private arm(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
    @Override
-   public String a() {
-      return this.f;
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public int hashCode() {
+      return djo.d(this.a, this.b);
    }
 
-   public static arm a(int $$0) {
-      return d.apply($$0);
+   public int c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

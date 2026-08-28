@@ -1,56 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class asa {
-   public static final MapCodec<asa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               mh.aA.q().fieldOf("type").forGetter(asa::a),
-               ayy.l.fieldOf("level").forGetter(asa::b),
-               Codec.LONG.optionalFieldOf("ticks_left", 0L).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, asa::new)
-   );
-   private final asb b;
-   private final int c;
-   private long d;
+public interface asa extends dkb {
+   asb a();
 
-   public asa(asb $$0, int $$1) {
-      this($$0, $$1, $$0.d());
+   @Nullable
+   default csi a(ciu $$0, byf $$1) {
+      return this.a(this.z(), $$0, $$1, $$1.dA(), $$1.dC(), $$1.dG());
    }
 
-   private asa(asb $$0, int $$1, long $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Nullable
+   default csi a(ciu $$0, byf $$1, double $$2, double $$3, double $$4) {
+      return this.a(this.z(), $$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public String toString() {
-      return this.b.c()
-         ? "Ticket[" + ag.a(mh.aA, this.b) + " " + this.c + "] with " + this.d + " ticks left ( out of" + this.b.d() + ")"
-         : "Ticket[" + ag.a(mh.aA, this.b) + " " + this.c + "] with no timeout";
+   @Nullable
+   default csi a(ciu $$0, double $$1, double $$2, double $$3) {
+      return this.a(this.z(), $$0, null, $$1, $$2, $$3);
    }
 
-   public asb a() {
-      return this.b;
+   @Nullable
+   default <T extends byf> T a(Class<? extends T> $$0, ciu $$1, @Nullable byf $$2, double $$3, double $$4, double $$5, ffx $$6) {
+      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Nullable
+   default <T extends byf> T a(List<? extends T> $$0, ciu $$1, @Nullable byf $$2, double $$3, double $$4, double $$5) {
+      double $$6 = -1.0;
+      T $$7 = null;
 
-   public void c() {
-      this.d = this.b.d();
-   }
-
-   public void d() {
-      if (this.b.c()) {
-         this.d--;
+      for (T $$8 : $$0) {
+         if ($$1.a(this.a(), $$2, $$8)) {
+            double $$9 = $$8.h($$3, $$4, $$5);
+            if ($$6 == -1.0 || $$9 < $$6) {
+               $$6 = $$9;
+               $$7 = $$8;
+            }
+         }
       }
+
+      return $$7;
    }
 
-   public boolean e() {
-      return this.b.c() && this.d < 0L;
+   default List<csi> a(ciu $$0, byf $$1, ffx $$2) {
+      List<csi> $$3 = new ArrayList<>();
+
+      for (csi $$4 : this.z()) {
+         if ($$2.e($$4.dA(), $$4.dC(), $$4.dG()) && $$0.a(this.a(), $$1, $$4)) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3;
+   }
+
+   default <T extends byf> List<T> a(Class<T> $$0, ciu $$1, byf $$2, ffx $$3) {
+      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
+      List<T> $$5 = new ArrayList<>();
+
+      for (T $$6 : $$4) {
+         if ($$1.a(this.a(), $$2, $$6)) {
+            $$5.add($$6);
+         }
+      }
+
+      return $$5;
    }
 }

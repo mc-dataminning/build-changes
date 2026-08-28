@@ -1,132 +1,90 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-public class gta {
-   protected final grx a;
-   protected final djz b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   private jz h;
-   public gvs.b[] f;
+public interface gta {
+   void a(bai var1, List<gsz> var2);
 
-   public gta(gvs $$0, djz $$1, int $$2, grx $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
-      this.h = jz.a(this.g + 1, 0, this.g + 1);
+   default List<gsz> a(bai $$0) {
+      List<gsz> $$1 = new ObjectArrayList();
+      this.a($$0, $$1);
+      return $$1;
    }
 
-   protected void a(gvs $$0) {
-      if (!frf.Q().bx()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new gvs.b[$$1];
+   hkq a();
 
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, jz.b($$2, $$3 + this.b.aq(), $$4));
-               }
-            }
+   public static class a implements gta.c {
+      final gta.b a;
+      private final hmz.a<gta> b = new hmz.a<gta>() {
+         public gta a(hmz $$0) {
+            return a.this.a.a($$0);
          }
+      };
+
+      public a(gta.b $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(hnh.a $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public gta a(ebq $$0, hmz $$1) {
+         return $$1.a(this.b);
+      }
+
+      @Override
+      public Object a(ebq $$0) {
+         return this;
       }
    }
 
-   public void a() {
-      for (gvs.b $$0 : this.f) {
-         $$0.e();
-      }
-   }
+   public interface b extends hnh {
+      Codec<btl<gtj>> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gtj.a.forGetter(btl::a), azg.m.optionalFieldOf("weight", 1).forGetter(btl::b)).apply($$0, btl::new)
+      );
+      Codec<hnm.a> b = azg.b(a.listOf()).flatComapMap($$0 -> new hnm.a(btm.a(Lists.transform($$0, $$0x -> $$0x.a(gth.a::new)))), $$0 -> {
+         List<btl<gta.b>> $$1 = $$0.b().d();
+         List<btl<gtj>> $$2 = new ArrayList<>($$1.size());
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
-   }
-
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.ap();
-      this.e = $$1;
-      this.g = $$0;
-   }
-
-   public int b() {
-      return this.g;
-   }
-
-   public dkb c() {
-      return this.b;
-   }
-
-   public void a(jz $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = $$0.a() - this.g;
-         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
-
-         for (int $$4 = 0; $$4 < this.e; $$4++) {
-            int $$5 = $$0.c() - this.g;
-            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
-
-            for (int $$7 = 0; $$7 < this.c; $$7++) {
-               int $$8 = this.b.aq() + $$7;
-               gvs.b $$9 = this.f[this.a($$1, $$7, $$4)];
-               long $$10 = $$9.g();
-               if ($$10 != jz.b($$3, $$8, $$6)) {
-                  $$9.a(jz.b($$3, $$8, $$6));
-               }
+         for (btl<gta.b> $$3 : $$1) {
+            if (!($$3.a() instanceof gth.a $$5)) {
+               return DataResult.error(() -> "Only single variants are supported");
             }
+
+            $$2.add(new btl<>($$5.b(), $$3.b()));
          }
-      }
 
-      this.h = $$0;
-      this.a.w().a();
-   }
+         return DataResult.success($$2);
+      });
+      Codec<gta.b> c = Codec.either(b, gth.a.d).flatComapMap($$0 -> (gta.b)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         Objects.requireNonNull($$0);
 
-   public jz d() {
-      return this.h;
-   }
+         return switch ($$0) {
+            case gth.a $$3 -> DataResult.success(Either.right($$3));
+            case hnm.a $$4 -> DataResult.success(Either.left($$4));
+            default -> DataResult.error(() -> "Only a single variant or a list of variants are supported");
+         };
+      });
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      gvs.b $$4 = this.b($$0, $$1, $$2);
-      if ($$4 != null) {
-         $$4.a($$3);
-      }
-   }
+      gta a(hmz var1);
 
-   @Nullable
-   protected gvs.b a(iw $$0) {
-      return this.a(jz.c($$0));
-   }
-
-   @Nullable
-   protected gvs.b a(long $$0) {
-      int $$1 = jz.b($$0);
-      int $$2 = jz.c($$0);
-      int $$3 = jz.d($$0);
-      return this.b($$1, $$2, $$3);
-   }
-
-   @Nullable
-   private gvs.b b(int $$0, int $$1, int $$2) {
-      if (!this.c($$0, $$1, $$2)) {
-         return null;
-      } else {
-         int $$3 = $$1 - this.b.aq();
-         int $$4 = Math.floorMod($$0, this.d);
-         int $$5 = Math.floorMod($$2, this.e);
-         return this.f[this.a($$4, $$3, $$5)];
+      default gta.c a() {
+         return new gta.a(this);
       }
    }
 
-   private boolean c(int $$0, int $$1, int $$2) {
-      if ($$1 >= this.b.aq() && $$1 <= this.b.ar()) {
-         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
-      } else {
-         return false;
-      }
+   public interface c extends hnh {
+      gta a(ebq var1, hmz var2);
+
+      Object a(ebq var1);
    }
 }

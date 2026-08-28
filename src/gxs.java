@@ -1,13 +1,21 @@
-public class gxs extends has<col> {
-   private static final alk a = alk.b("textures/entity/spider/cave_spider.png");
+public class gxs extends gzb<cpb, hfe, ghm> {
+   private static final alr a = alr.b("textures/entity/endermite.png");
 
-   public gxs(gyk.a $$0) {
-      super($$0, glf.U);
-      this.e = 0.56F;
+   public gxs(gxv.a $$0) {
+      super($$0, new ghm($$0.a(gkq.aS)), 0.3F);
    }
 
    @Override
-   public alk b(hfr $$0) {
+   protected float aX_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alr b(hfe $$0) {
       return a;
+   }
+
+   public hfe b() {
+      return new hfe();
    }
 }

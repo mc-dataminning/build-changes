@@ -11,8 +11,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public interface cx<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("argument.range.swapped"));
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("argument.range.swapped"));
 
    Optional<T> a();
 
@@ -38,8 +38,8 @@ public interface cx<T extends Number> {
       });
    }
 
-   static <B extends ByteBuf, T extends Number, R extends cx<T>> za<B, R> a(final za<B, T> $$0, final cx.a<T, R> $$1) {
-      return new za<B, R>() {
+   static <B extends ByteBuf, T extends Number, R extends cx<T>> ze<B, R> a(final ze<B, T> $$0, final cx.a<T, R> $$1) {
+      return new ze<B, R>() {
          private static final int d = 1;
          public static final int a = 2;
 
@@ -135,7 +135,7 @@ public interface cx<T extends Number> {
    public static record c(Optional<Double> f, Optional<Double> g, Optional<Double> h, Optional<Double> i) implements cx<Double> {
       public static final cx.c c = new cx.c(Optional.empty(), Optional.empty());
       public static final Codec<cx.c> d = cx.a(Codec.DOUBLE, cx.c::new);
-      public static final za<ByteBuf, cx.c> e = cx.a(yy.m, cx.c::new);
+      public static final ze<ByteBuf, cx.c> e = cx.a(zc.m, cx.c::new);
 
       private c(Optional<Double> $$0, Optional<Double> $$1) {
          this($$0, $$1, a($$0), a($$1));
@@ -207,7 +207,7 @@ public interface cx<T extends Number> {
    public static record d(Optional<Integer> f, Optional<Integer> g, Optional<Long> h, Optional<Long> i) implements cx<Integer> {
       public static final cx.d c = new cx.d(Optional.empty(), Optional.empty());
       public static final Codec<cx.d> d = cx.a(Codec.INT, cx.d::new);
-      public static final za<ByteBuf, cx.d> e = cx.a(yy.g, cx.d::new);
+      public static final ze<ByteBuf, cx.d> e = cx.a(zc.g, cx.d::new);
 
       private d(Optional<Integer> $$0, Optional<Integer> $$1) {
          this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));

@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface byu {
-   @Nullable
-   bwv q();
+   void a(cje var1, bxe var2);
 }

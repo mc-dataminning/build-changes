@@ -1,93 +1,29 @@
-import java.util.UUID;
+public record agp(float b, boolean c) implements zo<acf> {
+   public static final ze<vy, agp> a = zo.a(agp::a, agp::new);
 
-public class agp {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bwv $$0) {
-      if ($$0 instanceof crz) {
-         return $$0.ai().getString();
-      } else {
-         xc $$1 = $$0.ak();
-         return $$1 != null ? $$1.getString() : a($$0.cG());
-      }
+   private agp(vy $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static String a(UUID $$0) {
-      azz $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   public static agp a(bvl $$0) {
+      return new agp($$0.f(), $$0.l());
    }
 
-   private static String a(azz $$0, String[] $$1) {
-      return ag.a($$1, $$0);
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   private static azz b(UUID $$0) {
-      return azz.a((long)($$0.hashCode() >> 2));
+   @Override
+   public zq<agp> a() {
+      return agy.cq;
+   }
+
+   public void a(acf $$0) {
+      $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

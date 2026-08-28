@@ -1,113 +1,156 @@
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
 
-public record fyu(fyt a, int b, int c) {
-   private static final fyu d = new fyu(0, 0, 0, 0);
-
-   public fyu(int $$0, int $$1, int $$2, int $$3) {
-      this(new fyt($$0, $$1), $$2, $$3);
-   }
-
-   public static fyu a() {
-      return d;
-   }
-
-   public static fyu a(fyr $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fyu($$1, $$2, $$3, $$4);
-         case b -> new fyu($$2, $$1, $$4, $$3);
-      };
-   }
-
-   public fyu a(fys $$0) {
-      return new fyu(this.a.a($$0), this.b, this.c);
-   }
-
-   public int a(fyr $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
-   }
-
-   public int b(fys $$0) {
-      fyr $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
-   }
-
-   public fyu c(fys $$0) {
-      int $$1 = this.b($$0);
-      fyr $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
-   }
-
-   public boolean a(fyu $$0) {
-      return this.a($$0, fyr.a) && this.a($$0, fyr.b);
-   }
-
-   public boolean a(fyu $$0, fyr $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(fyr $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
+public class fyu extends fzq {
+   private static final alr a = alr.b("icon/draft_report");
+   private int b;
+   private final xg c;
+   private final boolean d;
+   private xg s;
+   private final List<fty> u = Lists.newArrayList();
    @Nullable
-   public fyu b(fyu $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fyu($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   private fty v;
+
+   public fyu(@Nullable xg $$0, boolean $$1) {
+      super(xg.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int b() {
-      return this.a.b();
+   @Override
+   protected void aT_() {
+      this.b = 0;
+      this.u.clear();
+      xg $$0 = this.d ? xg.c("deathScreen.spectate") : xg.c("deathScreen.respawn");
+      this.u.add(this.c(fty.a($$0, $$0x -> {
+         this.m.t.gg();
+         $$0x.j = false;
+      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fty.a(xg.c("deathScreen.titleScreen"), $$0x -> this.m.ba().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
+      );
+      this.u.add(this.v);
+      this.c(false);
+      this.s = xg.a("deathScreen.score.value", xg.b(Integer.toString(this.m.t.gd())).a(o.o));
    }
 
-   public int c() {
-      return this.a.b() + this.c;
+   @Override
+   public boolean aI_() {
+      return false;
    }
 
-   public int d() {
-      return this.a.a();
-   }
-
-   public int e() {
-      return this.a.a() + this.b;
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
-   }
-
-   public fyu a(Matrix4f $$0) {
-      if (f.a($$0)) {
-         return this;
+   private void m() {
+      if (this.d) {
+         this.E();
       } else {
-         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
-         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
-         return new fyu(azq.d($$1.x), azq.d($$1.y), azq.d($$2.x - $$1.x), azq.d($$2.y - $$1.y));
+         fyo $$0 = new fyu.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.m.t.gg();
+               this.m.a(null);
+            }
+         }, xg.c("deathScreen.quit.confirm"), xf.a, xg.c("deathScreen.titleScreen"), xg.c("deathScreen.respawn"));
+         this.m.a($$0);
+         $$0.b(20);
       }
    }
 
-   public fyt f() {
-      return this.a;
+   private void E() {
+      if (this.m.s != null) {
+         this.m.s.ad();
+      }
+
+      this.m.b(new fzb(xg.c("menu.savingLevel")));
+      this.m.a(new fzs());
    }
 
-   public int g() {
-      return this.b;
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
+      }
+
+      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         yd $$4 = this.a($$1);
+         $$0.a(this.p, $$4, $$1, $$2);
+      }
+
+      if (this.v != null && this.m.ba().c()) {
+         $$0.a(gry::H, a, this.v.F() + this.v.A() - 17, this.v.G() + 3, 15, 15);
+      }
    }
 
-   public int h() {
-      return this.c;
+   @Override
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.n, this.o);
+   }
+
+   static void a(ftk $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private yd a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.m.h.a(this.c);
+         int $$2 = this.n / 2 - $$1 / 2;
+         int $$3 = this.n / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         yd $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.i() != null && $$3.i().a() == xe.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (fty $$1 : this.u) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends fyo {
+      public a(BooleanConsumer $$0, xg $$1, xg $$2, xg $$3, xg $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(ftk $$0, int $$1, int $$2, float $$3) {
+         fyu.a($$0, this.n, this.o);
+      }
    }
 }

@@ -1,29 +1,25 @@
-public class aag implements zj<aac> {
-   public static final za<vy, aag> a = zj.a(aag::a, aag::new);
-   private final int b;
-
-   public aag(int $$0) {
-      this.b = $$0;
-   }
+public record aag(String b, int c) implements zo<zw> {
+   public static final ze<vy, aag> a = zo.a(aag::a, aag::new);
 
    private aag(vy $$0) {
-      this.b = $$0.readInt();
+      this($$0.p(), $$0.l());
    }
 
    private void a(vy $$0) {
-      $$0.q(this.b);
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zl<aag> a() {
-      return aab.o;
+   public zq<aag> a() {
+      return aai.j;
    }
 
-   public void a(aac $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

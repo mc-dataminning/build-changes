@@ -1,14 +1,22 @@
-public abstract class gzq<T extends bxy, S extends hfr, M extends gic<? super S>> extends gzl<T, S, M> {
-   public gzq(gyk.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
-   }
+import java.util.function.UnaryOperator;
 
-   protected boolean a(T $$0, double $$1) {
-      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
+public class gzq extends gwj {
+   private final ghn<hdn> a;
+   private final alr g;
+
+   public gzq(gxv.a $$0, gkp $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gja($$0.a($$1));
    }
 
    @Override
-   protected float g(S $$0) {
-      return super.g($$0) * $$0.ag;
+   protected ghn<hdn> a() {
+      return this.a;
+   }
+
+   @Override
+   protected gry b() {
+      return this.a.a(this.g);
    }
 }

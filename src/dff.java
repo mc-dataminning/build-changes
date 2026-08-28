@@ -1,127 +1,80 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dff implements deg {
-   final dfg d;
-   final daa e;
-   final String f;
-   final dee g;
-   final boolean h;
-   @Nullable
-   private deq i;
+public class dff {
+   private final dff.a[] a;
+   private WeakReference<dfi> b = new WeakReference<>(null);
 
-   public dff(String $$0, dee $$1, dfg $$2, daa $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.h = $$4;
+   public dff(int $$0) {
+      this.a = new dff.a[$$0];
    }
 
-   public dff(String $$0, dee $$1, dfg $$2, daa $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public Optional<dfg<deq>> a(asb $$0, dep $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            dff.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public dfb<? extends dff> a() {
-      return dfb.a;
+   private void a(asb $$0) {
+      dfi $$1 = $$0.t();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String j() {
-      return this.f;
+   private Optional<dfg<deq>> a(dep $$0, asb $$1) {
+      Optional<dfg<deq>> $$2 = $$1.t().a(dfm.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
    }
 
-   @Override
-   public dee c() {
-      return this.g;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         dff.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @VisibleForTesting
-   public List<Optional<den>> f() {
-      return this.d.c();
-   }
+   private void a(dep $$0, @Nullable dfg<deq> $$1) {
+      jp<dak> $$2 = jp.a($$0.a(), dak.l);
 
-   @Override
-   public deq ap_() {
-      if (this.i == null) {
-         this.i = deq.a(this.d.c());
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      return this.i;
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new dff.a($$2, $$0.f(), $$0.g(), $$1);
    }
 
-   @Override
-   public boolean i() {
-      return this.h;
-   }
+   static record a(jp<dak> a, int b, int c, @Nullable dfg<deq> d) {
+      public boolean a(dep $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!dak.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
 
-   public boolean a(def $$0, djz $$1) {
-      return this.d.a($$0);
-   }
-
-   public daa a(def $$0, ji.a $$1) {
-      return this.e.v();
-   }
-
-   public int k() {
-      return this.d.a();
-   }
-
-   public int l() {
-      return this.d.b();
-   }
-
-   @Override
-   public List<dfx> g() {
-      return List.of(
-         new dgb(this.d.a(), this.d.b(), this.d.c().stream().map($$0 -> $$0.<dgd>map(den::c).orElse(dgd.c.c)).toList(), new dgd.f(this.e), new dgd.d(dae.fi))
-      );
-   }
-
-   public static class a implements dfb<dff> {
-      public static final MapCodec<dff> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.f),
-                  dee.e.fieldOf("category").orElse(dee.d).forGetter($$0x -> $$0x.g),
-                  dfg.b.forGetter($$0x -> $$0x.d),
-                  daa.d.fieldOf("result").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.h)
-               )
-               .apply($$0, dff::new)
-      );
-      public static final za<wn, dff> x = za.a(dff.a::a, dff.a::a);
-
-      @Override
-      public MapCodec<dff> a() {
-         return w;
-      }
-
-      @Override
-      public za<wn, dff> b() {
-         return x;
-      }
-
-      private static dff a(wn $$0) {
-         String $$1 = $$0.p();
-         dee $$2 = $$0.b(dee.class);
-         dfg $$3 = dfg.c.decode($$0);
-         daa $$4 = daa.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new dff($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wn $$0, dff $$1) {
-         $$0.a($$1.f);
-         $$0.a($$1.g);
-         dfg.c.encode($$0, $$1.d);
-         daa.i.encode($$0, $$1.e);
-         $$0.a($$1.h);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

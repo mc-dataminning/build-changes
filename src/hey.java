@@ -1,4 +1,5 @@
-public class hey extends her {
-   public boolean a;
-   public final hhu b = new hhu();
+public class hey extends hfe {
+   public float a;
+   public int b;
+   public bxa.a c = bxa.a.a;
 }

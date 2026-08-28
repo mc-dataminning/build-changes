@@ -1,251 +1,428 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.joml.Vector3d;
+import org.slf4j.Logger;
 
 public class gsd {
-   private final gsd.b a;
-   final iw b;
+   private static final Logger a = LogUtils.getLogger();
+   private static final jc[] b = jc.values();
+   private static final int c = 60;
+   private static final int d = jz.a(60);
+   private static final double e = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean f = true;
+   @Nullable
+   private Future<?> g;
+   @Nullable
+   private gsl h;
+   private final AtomicReference<gsd.b> i = new AtomicReference<>();
+   private final AtomicReference<gsd.a> j = new AtomicReference<>();
+   private final AtomicBoolean k = new AtomicBoolean(false);
 
-   public gsd(jz $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = azq.c($$4);
-      int $$6 = $$1 * 16;
-      iw $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new gsd.b(new erv($$8, $$10, $$12, $$9, $$11, $$13));
-   }
-
-   public boolean a(gvs.b $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(gsd.e $$0, gvw $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
-   }
-
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
-   }
-
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+   public void a(@Nullable gsl $$0) {
+      if (this.g != null) {
+         try {
+            this.g.get();
+            this.g = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
       }
 
-      public static gsd.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
-         } else {
-            return $$0 > $$1 ? e : f;
-         }
+      this.h = $$0;
+      if ($$0 != null) {
+         this.i.set(new gsd.b($$0));
+         this.a();
+      } else {
+         this.i.set(null);
       }
    }
 
-   class b implements gsd.d {
-      private final gsd.d[] b = new gsd.d[8];
-      private final erv c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final gsd.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
+   public void a() {
+      this.f = true;
+   }
 
-      public b(final erv $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = gsd.this.b.u() - this.d;
-         int $$2 = gsd.this.b.v() - this.e;
-         int $$3 = gsd.this.b.w() - this.f;
-         this.g = gsd.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
+   public void a(gvh $$0, List<gvd.b> $$1, List<gvd.b> $$2) {
+      this.i.get().a().b.a(($$2x, $$3, $$4, $$5) -> {
+         gvd.b $$6 = $$2x.a();
+         if ($$6 != null) {
+            $$1.add($$6);
+            if ($$5) {
+               $$2.add($$6);
+            }
+         }
+      }, $$0, 32);
+   }
+
+   public boolean b() {
+      return this.k.compareAndSet(true, false);
+   }
+
+   public void a(djo $$0) {
+      gsd.a $$1 = this.j.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
       }
 
-      public boolean a(gvs.b $$0) {
-         long $$1 = $$0.g();
-         boolean $$2 = jz.c(jz.b($$1)) - this.d < 0;
-         boolean $$3 = jz.c(jz.c($$1)) - this.e < 0;
-         boolean $$4 = jz.c(jz.d($$1)) - this.f < 0;
-         boolean $$5 = $$2 != this.h;
-         boolean $$6 = $$3 != this.i;
-         boolean $$7 = $$4 != this.j;
-         int $$8 = a(this.g, $$5, $$6, $$7);
-         if (this.c()) {
-            boolean $$9 = this.b[$$8] != null;
-            this.b[$$8] = gsd.this.new c($$0);
-            return !$$9;
-         } else if (this.b[$$8] != null) {
-            gsd.b $$10 = (gsd.b)this.b[$$8];
-            return $$10.a($$0);
+      gsd.a $$2 = this.i.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(gvd.b $$0) {
+      gsd.a $$1 = this.j.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      gsd.a $$2 = this.i.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, fpy $$1, gvh $$2, List<gvd.b> $$3, LongOpenHashSet $$4) {
+      fgc $$5 = $$1.b();
+      if (this.f && (this.g == null || this.g.isDone())) {
+         this.a($$0, $$1, $$5, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$5, $$4);
+   }
+
+   private void a(boolean $$0, fpy $$1, fgc $$2, LongOpenHashSet $$3) {
+      this.f = false;
+      LongOpenHashSet $$4 = $$3.clone();
+      this.g = CompletableFuture.runAsync(() -> {
+         gsd.b $$4x = new gsd.b(this.h);
+         this.j.set($$4x.b);
+         Queue<gsd.d> $$5 = Queues.newArrayDeque();
+         this.a($$1, $$5);
+         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
+         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
+         }, $$4);
+         this.i.set($$4x);
+         this.j.set(null);
+         this.k.set(true);
+      }, ag.h());
+   }
+
+   private void a(boolean $$0, gvh $$1, List<gvd.b> $$2, fgc $$3, LongOpenHashSet $$4) {
+      gsd.b $$5 = this.i.get();
+      this.a($$5);
+      if (!$$5.b.b.isEmpty()) {
+         Queue<gsd.d> $$6 = Queues.newArrayDeque();
+
+         while (!$$5.b.b.isEmpty()) {
+            gvd.b $$7 = $$5.b.b.poll();
+            gsd.d $$8 = $$5.a.a.a($$7);
+            if ($$8 != null && $$8.a == $$7) {
+               $$6.add($$8);
+            }
+         }
+
+         gvh $$9 = gri.a($$1);
+         Consumer<gvd.b> $$10 = $$1x -> {
+            if ($$9.a($$1x.b())) {
+               this.k.set(true);
+            }
+         };
+         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
+      }
+   }
+
+   private void a(gsd.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<gvd.b> $$3 = (List<gvd.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(gsd.a $$0, djo $$1) {
+      $$0.a.add(djo.c($$1.h - 1, $$1.i));
+      $$0.a.add(djo.c($$1.h, $$1.i - 1));
+      $$0.a.add(djo.c($$1.h + 1, $$1.i));
+      $$0.a.add(djo.c($$1.h, $$1.i + 1));
+      $$0.a.add(djo.c($$1.h - 1, $$1.i - 1));
+      $$0.a.add(djo.c($$1.h - 1, $$1.i + 1));
+      $$0.a.add(djo.c($$1.h + 1, $$1.i - 1));
+      $$0.a.add(djo.c($$1.h + 1, $$1.i + 1));
+   }
+
+   private void a(fpy $$0, Queue<gsd.d> $$1) {
+      iw $$2 = $$0.c();
+      long $$3 = jz.c($$2);
+      int $$4 = jz.c($$3);
+      gvd.b $$5 = this.h.a($$3);
+      if ($$5 == null) {
+         dkl $$6 = this.h.c();
+         boolean $$7 = $$4 < $$6.aq();
+         int $$8 = $$7 ? $$6.aq() : $$6.ar();
+         int $$9 = this.h.b();
+         List<gsd.d> $$10 = Lists.newArrayList();
+         int $$11 = jz.b($$3);
+         int $$12 = jz.d($$3);
+
+         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
+            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
+               gvd.b $$15 = this.h.a(jz.b($$13 + $$11, $$8, $$14 + $$12));
+               if ($$15 != null && this.a($$3, $$15.g())) {
+                  jc $$16 = $$7 ? jc.b : jc.a;
+                  gsd.d $$17 = new gsd.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, jc.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, jc.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, jc.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, jc.c);
+                  }
+
+                  $$10.add($$17);
+               }
+            }
+         }
+
+         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j(jz.a($$1x.a.g()).k())));
+         $$1.addAll($$10);
+      } else {
+         $$1.add(new gsd.d($$5, null, 0));
+      }
+   }
+
+   private void a(gsd.c $$0, fgc $$1, Queue<gsd.d> $$2, boolean $$3, Consumer<gvd.b> $$4, LongOpenHashSet $$5) {
+      jz $$6 = jz.a($$1);
+      long $$7 = $$6.s();
+      iw $$8 = $$6.k();
+
+      while (!$$2.isEmpty()) {
+         gsd.d $$9 = $$2.poll();
+         gvd.b $$10 = $$9.a;
+         if (!$$5.contains($$9.a.g())) {
+            if ($$0.b.a($$9.a)) {
+               $$4.accept($$9.a);
+            }
          } else {
-            erv $$11 = this.a($$2, $$3, $$4);
-            gsd.b $$12 = gsd.this.new b($$11);
-            this.b[$$8] = $$12;
-            return $$12.a($$0);
-         }
-      }
-
-      private static int a(gsd.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
+            $$9.a.c.compareAndSet(gvd.a.a, gvd.a.b);
          }
 
-         if ($$2) {
-            $$4 += $$0.h;
-         }
+         long $$11 = $$10.g();
+         boolean $$12 = Math.abs(jz.b($$11) - $$6.a()) > d || Math.abs(jz.c($$11) - $$6.b()) > d || Math.abs(jz.d($$11) - $$6.c()) > d;
 
-         if ($$3) {
-            $$4 += $$0.i;
-         }
+         for (jc $$13 : b) {
+            gvd.b $$14 = this.a($$7, $$10, $$13);
+            if ($$14 != null && (!$$3 || !$$9.a($$13.g()))) {
+               if ($$3 && $$9.a()) {
+                  gvd.a $$15 = $$10.d();
+                  boolean $$16 = false;
 
-         return $$4;
-      }
+                  for (int $$17 = 0; $$17 < b.length; $$17++) {
+                     if ($$9.a($$17) && $$15.a(b[$$17].g(), $$13)) {
+                        $$16 = true;
+                        break;
+                     }
+                  }
 
-      private boolean c() {
-         return this.c.d() == 32;
-      }
+                  if (!$$16) {
+                     continue;
+                  }
+               }
 
-      private erv a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
+               if ($$3 && $$12) {
+                  int $$18 = jz.c(jz.b($$11));
+                  int $$19 = jz.c(jz.c($$11));
+                  int $$20 = jz.c(jz.d($$11));
+                  boolean $$21 = $$13.o() == jc.a.a ? $$8.u() > $$18 : $$8.u() < $$18;
+                  boolean $$22 = $$13.o() == jc.a.b ? $$8.v() > $$19 : $$8.v() < $$19;
+                  boolean $$23 = $$13.o() == jc.a.c ? $$8.w() > $$20 : $$8.w() < $$20;
+                  Vector3d $$24 = new Vector3d((double)($$18 + ($$21 ? 16 : 0)), (double)($$19 + ($$22 ? 16 : 0)), (double)($$20 + ($$23 ? 16 : 0)));
+                  Vector3d $$25 = new Vector3d($$1.d, $$1.e, $$1.f).sub($$24).normalize().mul(e);
+                  boolean $$26 = true;
 
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
+                  while ($$24.distanceSquared($$1.d, $$1.e, $$1.f) > 3600.0) {
+                     $$24.add($$25);
+                     dkl $$27 = this.h.c();
+                     if ($$24.y > (double)$$27.ao() || $$24.y < (double)$$27.K_()) {
+                        break;
+                     }
 
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
+                     gvd.b $$28 = this.h.a(iw.a($$24.x, $$24.y, $$24.z));
+                     if ($$28 == null || $$0.a.a($$28) == null) {
+                        $$26 = false;
+                        break;
+                     }
+                  }
 
-         return new erv($$3, $$7, $$11, $$4, $$8, $$12);
-      }
+                  if (!$$26) {
+                     continue;
+                  }
+               }
 
-      @Override
-      public void a(gsd.e $$0, boolean $$1, gvw $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
-         }
-
-         if ($$6) {
-            $$5 = $$5
-               && gsd.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (gsd.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+               gsd.d $$29 = $$0.a.a($$14);
+               if ($$29 != null) {
+                  $$29.b($$13);
+               } else {
+                  gsd.d $$30 = new gsd.d($$14, $$13, $$9.b + 1);
+                  $$30.a($$9.d, $$13);
+                  if ($$14.a()) {
+                     $$2.add($$30);
+                     $$0.a.a($$14, $$30);
+                  } else if (this.a($$7, $$14.g())) {
+                     $$0.a.a($$14, $$30);
+                     long $$31 = jz.g($$14.g());
+                     ((List)$$0.c.computeIfAbsent($$31, $$0x -> new ArrayList())).add($$14);
+                  }
                }
             }
          }
       }
+   }
 
-      @Nullable
-      @Override
-      public gvs.b a() {
+   private boolean a(long $$0, long $$1) {
+      return ark.a(jz.b($$0), jz.d($$0), this.h.b(), jz.b($$1), jz.d($$1));
+   }
+
+   @Nullable
+   private gvd.b a(long $$0, gvd.b $$1, jc $$2) {
+      long $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
          return null;
-      }
-
-      @Override
-      public ffn b() {
-         return new ffn(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
+      } else {
+         return azz.a(jz.c($$0) - jz.c($$3)) > this.h.b() ? null : this.h.a($$3);
       }
    }
 
-   final class c implements gsd.d {
-      private final gvs.b b;
+   @Nullable
+   @bbi
+   public gsd.d b(gvd.b $$0) {
+      return this.i.get().a.a.a($$0);
+   }
 
-      c(final gvs.b $$0) {
-         this.b = $$0;
+   public gro c() {
+      return this.i.get().a.b;
+   }
+
+   static record a(LongSet a, BlockingQueue<gvd.b> b) {
+
+      a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
       }
+   }
 
-      @Override
-      public void a(gsd.e $$0, boolean $$1, gvw $$2, int $$3, int $$4, boolean $$5) {
-         ffn $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && gsd.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
+   static record b(gsd.c a, gsd.a b) {
+
+      b(gsl $$0) {
+         this(new gsd.c($$0), new gsd.a());
+      }
+   }
+
+   static class c {
+      public final gsd.e a;
+      public final gro b;
+      public final Long2ObjectMap<List<gvd.b>> c;
+
+      public c(gsl $$0) {
+         this.a = new gsd.e($$0.f.length);
+         this.b = new gro($$0.d(), $$0.b(), $$0.c, $$0.b.K_());
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @bbi
+   public static class d {
+      @bbi
+      protected final gvd.b a;
+      private byte c;
+      byte d;
+      @bbi
+      public final int b;
+
+      d(gvd.b $$0, @Nullable jc $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
          }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, jc $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(jc $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(jc $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @bbi
+      public boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
       }
 
       @Override
-      public gvs.b a() {
-         return this.b;
+      public int hashCode() {
+         return Long.hashCode(this.a.g());
       }
 
       @Override
-      public ffn b() {
-         return this.b.b();
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof gsd.d $$1) ? false : this.a.g() == $$1.a.g();
       }
    }
 
-   public interface d {
-      void a(gsd.e var1, boolean var2, gvw var3, int var4, int var5, boolean var6);
+   static class e {
+      private final gsd.d[] a;
+
+      e(int $$0) {
+         this.a = new gsd.d[$$0];
+      }
+
+      public void a(gvd.b $$0, gsd.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
 
       @Nullable
-      gvs.b a();
-
-      ffn b();
-   }
-
-   @FunctionalInterface
-   public interface e {
-      void visit(gsd.d var1, boolean var2, int var3, boolean var4);
+      public gsd.d a(gvd.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      }
    }
 }

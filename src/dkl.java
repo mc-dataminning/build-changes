@@ -1,25 +1,59 @@
-public final class dkl implements eda {
-   private final int a;
-   private final ebg[] b;
+public interface dkl {
+   int L_();
 
-   public dkl(int $$0, ebg[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   int K_();
+
+   default int ao() {
+      return this.K_() + this.L_() - 1;
    }
 
-   @Override
-   public ebg a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dng.a.m();
+   default int ap() {
+      return this.ar() - this.aq() + 1;
    }
 
-   @Override
-   public void a(int $$0, ebg $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default int aq() {
+      return jz.a(this.K_());
+   }
+
+   default int ar() {
+      return jz.a(this.ao());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 >= this.K_() && $$0 <= this.ao();
+   }
+
+   default boolean t(iw $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.K_() || $$0 > this.ao();
+   }
+
+   default int f(int $$0) {
+      return this.g(jz.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.aq();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.aq();
+   }
+
+   static dkl e(final int $$0, final int $$1) {
+      return new dkl() {
+         @Override
+         public int L_() {
+            return $$1;
+         }
+
+         @Override
+         public int K_() {
+            return $$0;
+         }
+      };
    }
 }

@@ -16,5 +16,5 @@ public abstract class to {
       }
    }
 
-   public abstract void a(BiConsumer<alj<Consumer<sq>>, Consumer<sq>> var1);
+   public abstract void a(BiConsumer<alq<Consumer<sq>>, Consumer<sq>> var1);
 }

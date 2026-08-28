@@ -2,24 +2,24 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 public interface no {
-   Map<cyy, djy> a = Maps.newEnumMap(
+   Map<czi, dki> a = Maps.newEnumMap(
       Map.ofEntries(
-         Map.entry(cyy.a, dng.bK),
-         Map.entry(cyy.b, dng.bL),
-         Map.entry(cyy.c, dng.bM),
-         Map.entry(cyy.d, dng.bN),
-         Map.entry(cyy.e, dng.bO),
-         Map.entry(cyy.f, dng.bP),
-         Map.entry(cyy.g, dng.bQ),
-         Map.entry(cyy.h, dng.bR),
-         Map.entry(cyy.i, dng.bS),
-         Map.entry(cyy.j, dng.bT),
-         Map.entry(cyy.k, dng.bU),
-         Map.entry(cyy.l, dng.bV),
-         Map.entry(cyy.m, dng.bW),
-         Map.entry(cyy.n, dng.bX),
-         Map.entry(cyy.o, dng.bY),
-         Map.entry(cyy.p, dng.bZ)
+         Map.entry(czi.a, dnq.bK),
+         Map.entry(czi.b, dnq.bL),
+         Map.entry(czi.c, dnq.bM),
+         Map.entry(czi.d, dnq.bN),
+         Map.entry(czi.e, dnq.bO),
+         Map.entry(czi.f, dnq.bP),
+         Map.entry(czi.g, dnq.bQ),
+         Map.entry(czi.h, dnq.bR),
+         Map.entry(czi.i, dnq.bS),
+         Map.entry(czi.j, dnq.bT),
+         Map.entry(czi.k, dnq.bU),
+         Map.entry(czi.l, dnq.bV),
+         Map.entry(czi.m, dnq.bW),
+         Map.entry(czi.n, dnq.bX),
+         Map.entry(czi.o, dnq.bY),
+         Map.entry(czi.p, dnq.bZ)
       )
    );
 }

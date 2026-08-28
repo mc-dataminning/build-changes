@@ -1,9 +1,9 @@
-public record lf(aru a, iw b, ebg c, dyz d) {
-   public ffs a() {
+public record lf(asb a, iw b, ebq c, dzj d) {
+   public fgc a() {
       return this.b.b();
    }
 
-   public aru b() {
+   public asb b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record lf(aru a, iw b, ebg c, dyz d) {
       return this.b;
    }
 
-   public ebg d() {
+   public ebq d() {
       return this.c;
    }
 
-   public dyz e() {
+   public dzj e() {
       return this.d;
    }
 }

@@ -1,45 +1,20 @@
-public class adg implements zj<aby> {
-   public static final za<vy, adg> a = zj.a(adg::a, adg::new);
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public adg(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record adg(xs.a b) implements zo<acf> {
+   public static final ze<vy, adg> a = zo.a(adg::a, adg::new);
 
    private adg(vy $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
+      this(xs.a.a($$0));
    }
 
    private void a(vy $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.q(this.d);
+      xs.a.a($$0, this.b);
    }
 
    @Override
-   public zl<adg> a() {
-      return agr.H;
+   public zq<adg> a() {
+      return agy.A;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

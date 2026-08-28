@@ -1,30 +1,22 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public interface clm {
-   alj<cll> a = a(ckr.a);
-   alj<cll> b = a(ckr.b);
-   alj<cll> c = a(ckr.c);
-
-   private static alj<cll> a(alk $$0) {
-      return alj.a(mi.aT, $$0);
+public class clm extends bzw<clk> {
+   public clm() {
+      super(ImmutableMap.of(chh.O, chi.a, chh.z, chi.a), 200);
    }
 
-   static void a(qi<cll> $$0) {
-      a($$0, a, "entity/frog/temperate_frog", cug.a(0));
-      a($$0, b, "entity/frog/warm_frog", axf.aj);
-      a($$0, c, "entity/frog/cold_frog", axf.ai);
+   protected boolean a(asb $$0, clk $$1) {
+      return $$1.bi();
    }
 
-   private static void a(qi<cll> $$0, alj<cll> $$1, String $$2, axv<dlc> $$3) {
-      jk<dlc> $$4 = $$0.a(mi.aG).b($$3);
-      a($$0, $$1, $$2, cug.a(new ctz($$4), 1));
+   protected boolean a(asb $$0, clk $$1, long $$2) {
+      return $$1.bi() && $$1.ec().a(chh.O);
    }
 
-   private static void a(qi<cll> $$0, alj<cll> $$1, String $$2, cug $$3) {
-      $$0.a($$1, new cll(new ix(alk.b($$2)), $$3));
-   }
-
-   static Optional<jg.c<cll>> a(azz $$0, ju $$1, cuf $$2) {
-      return cuc.a($$1.f(mi.aT).c(), jg::a, $$0, $$2);
+   protected void b(asb $$0, clk $$1, long $$2) {
+      bzf<clk> $$3 = $$1.ec();
+      $$3.b(chh.n);
+      $$3.b(chh.o);
+      $$1.a(new bwi(bwk.j, 200, 0));
    }
 }

@@ -1,19 +1,36 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aeu(xc b, Optional<byte[]> c) implements zj<aby> {
-   public static final za<ByteBuf, aeu> a = za.a(xe.f, aeu::b, yy.n.a(yy::a), aeu::e, aeu::new);
+public class aeu implements zo<acf> {
+   public static final ze<vy, aeu> a = zo.a(aeu::a, aeu::new);
+   private final IntList b;
 
-   @Override
-   public zl<aeu> a() {
-      return agr.at;
+   public aeu(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public void a(aby $$0) {
+   public aeu(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aeu(vy $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zq<aeu> a() {
+      return agy.an;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

@@ -1,112 +1,184 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
 import javax.annotation.Nullable;
 
-public final class cvj {
-   private static final cvj b = new cvj(null, 0L);
-   public static final int a = 64;
+public class cvj extends cuv {
+   private static final byte b = 10;
+   private static final String c = "explosion_power";
+   private static final String d = "explosion_speed_factor";
+   private static final String h = "fuse";
+   private static final float i = 4.0F;
+   private static final float j = 1.0F;
+   private static final int k = -1;
    @Nullable
-   private final cvk c;
-   private final long d;
+   private bvt l;
+   private int m = -1;
+   private float n = 4.0F;
+   private float o = 1.0F;
 
-   private cvj(@Nullable cvk $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public cvj(bxn<? extends cvj> $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   static cvj a(cvk $$0, Collection<cvh> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cvj($$0, $$2);
+   @Override
+   public ebq v() {
+      return dnq.cu.m();
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.m > 0) {
+         this.m--;
+         this.dV().a(lz.ah, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
+      } else if (this.m == 0) {
+         this.a(this.l, this.dy().j());
       }
-   }
 
-   public static cvj a() {
-      return b;
-   }
-
-   public static cvj a(cvh $$0) {
-      return new cvj($$0.a, $$0.b);
-   }
-
-   public static cvj a(cvh $$0, cvh... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cvj($$0.a, $$2);
-   }
-
-   private static long a(cvk $$0, long $$1, Iterable<cvh> $$2) {
-      for (cvh $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+      if (this.P) {
+         double $$0 = this.dy().j();
+         if ($$0 >= 0.01F) {
+            this.h($$0);
          }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cvh $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(cvj $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(cvj $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public cvj c(cvj $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cvj(this.c, this.d | $$0.d);
-      }
-   }
-
-   public cvj d(cvj $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new cvj(this.c, $$1);
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cvj $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
+   public boolean a(asb $$0, bvt $$1, float $$2) {
+      if ($$1.c() instanceof csq $$4 && $$4.bX()) {
+         bvt $$5 = this.dW().d(this, $$1.d());
+         this.a($$5, $$4.dy().h());
+      }
 
-         return false;
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(asb $$0, bvt $$1) {
+      double $$2 = this.dy().j();
+      if (!f($$1) && !($$2 >= 0.01F)) {
+         this.a($$0, this.o());
+      } else {
+         if (this.m < 0) {
+            this.a($$1);
+            this.m = this.ae.a(20) + this.ae.a(20);
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected dag o() {
+      return dao.oy;
+   }
+
+   @Override
+   public dak dI() {
+      return new dak(dao.oy);
+   }
+
+   protected void h(double $$0) {
+      this.a(null, $$0);
+   }
+
+   protected void a(@Nullable bvt $$0, double $$1) {
+      if (this.dV() instanceof asb $$2) {
+         if ($$2.O().c(dkf.ad)) {
+            double $$3 = Math.min(Math.sqrt($$1), 5.0);
+            $$2.a(this, $$0, null, this.dA(), this.dC(), this.dG(), (float)((double)this.n + (double)this.o * this.ae.j() * 1.5 * $$3), false, dkj.a.d);
+            this.aq();
+         } else if (this.s()) {
+            this.aq();
+         }
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, float $$1, bvt $$2) {
+      if ($$0 >= 3.0) {
+         double $$3 = $$0 / 10.0;
+         this.h($$3 * $$3);
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.m < 0) {
+         this.a(null);
+      }
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 10) {
+         this.a(null);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   public void a(@Nullable bvt $$0) {
+      if (this.dV() instanceof asb $$1 && !$$1.O().c(dkf.ad)) {
+         return;
+      }
+
+      this.m = 80;
+      if (!this.dV().C) {
+         if ($$0 != null && this.l == null) {
+            this.l = this.dW().d(this, $$0.d());
+         }
+
+         this.dV().a(this, (byte)10);
+         if (!this.ba()) {
+            this.dV().a(null, this.dA(), this.dC(), this.dG(), awy.AC, awz.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   public int q() {
+      return this.m;
+   }
+
+   public boolean s() {
+      return this.m > -1;
+   }
+
+   @Override
+   public float a(dkc $$0, djn $$1, iw $$2, ebq $$3, eya $$4, float $$5) {
+      return !this.s() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+   }
+
+   @Override
+   public boolean a(dkc $$0, djn $$1, iw $$2, ebq $$3, float $$4) {
+      return !this.s() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.m = $$0.b("fuse", -1);
+      this.n = azz.a($$0.b("explosion_power", 4.0F), 0.0F, 128.0F);
+      this.o = azz.a($$0.b("explosion_speed_factor", 1.0F), 0.0F, 128.0F);
+   }
+
+   @Override
+   protected void b(ua $$0) {
+      super.b($$0);
+      $$0.a("fuse", this.m);
+      if (this.n != 4.0F) {
+         $$0.a("explosion_power", this.n);
+      }
+
+      if (this.o != 1.0F) {
+         $$0.a("explosion_speed_factor", this.o);
+      }
+   }
+
+   @Override
+   boolean e(bvt $$0) {
+      return f($$0);
+   }
+
+   private static boolean f(bvt $$0) {
+      return $$0.c() instanceof ctd $$1 ? $$1.bX() : $$0.a(axo.i) || $$0.a(axo.l);
    }
 }

@@ -1,58 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eju extends ekm<emy> {
-   public eju(Codec<emy> $$0) {
+public class eju extends ejs {
+   public eju(Codec<ejr> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(eyb.e, eyb.c);
    }
 
    @Override
-   public boolean a(eko<emy> $$0) {
-      iw $$1 = $$0.e();
-      dky $$2 = $$0.b();
-      azz $$3 = $$0.d();
-      if ($$1.v() > $$2.P() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dng.J) && !$$2.a_($$1.e()).a(dng.J)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   protected int a() {
+      return 10;
+   }
 
-         for (jc $$5 : jc.values()) {
-            if ($$5 != jc.a && $$2.a_($$1.a($$5)).a(dng.je)) {
-               $$4 = true;
-               break;
-            }
-         }
+   @Override
+   protected float a(bai $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-         if (!$$4) {
-            return false;
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(ejq $$0, ejr $$1, edn $$2, Function<iw, jg<dlm>> $$3, edm $$4, iw.a $$5, iw.a $$6, ehb $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         ebq $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
          } else {
-            $$2.a($$1, dng.nC.m(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  iw $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  ebg $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dng.J) || $$10.a(dng.je) || $$10.a(dng.ee)) {
-                     for (jc $$11 : jc.values()) {
-                        ebg $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dng.nC)) {
-                           $$2.a($$9, dng.nC.m(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
+            $$9 = e;
          }
+
+         $$2.a($$5, $$9);
+         return true;
+      } else {
+         return false;
       }
    }
 }

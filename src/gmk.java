@@ -1,41 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class gmk {
-   private final aur a = auu.c();
-   private final Map<aun, String> b;
+public enum gmk implements bax {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   public gmk() {
-      this.a.a();
-      Builder<aun, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         ats $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   public static final Codec<gmk> d = bax.a(gmk::values);
+   private final String e;
+
+   private gmk(final String $$0) {
+      this.e = $$0;
    }
 
-   public List<aun> a(List<aun> $$0) {
-      List<aun> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
-
-      for (aun $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public static gmk a(xw $$0, xg $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
-
-      this.a.b($$2);
-      return $$1;
    }
 
-   public auw a() {
-      List<att> $$0 = this.a.h();
-      return new ava(atv.b, $$0);
+   private static boolean a(xw $$0, xg $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xg $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(xg $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), yd.a).orElse(false);
+   }
+
+   private static boolean a(yd $$0) {
+      return !$$0.l().equals(yd.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fqk a(xw $$0) {
+      return switch (this) {
+         case b -> fqk.a($$0.c());
+         case c -> fqk.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

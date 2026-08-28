@@ -1,35 +1,127 @@
-public class chb {
-   private final cbb a;
-   private final float b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public chb(iw $$0, float $$1, int $$2) {
-      this(new bzq($$0), $$1, $$2);
+public abstract class chb extends cfb {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final byh e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected byf g;
+   protected int h = 60;
+
+   public chb(byh $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public chb(ffs $$0, float $$1, int $$2) {
-      this(new bzq(iw.a((jq)$$0)), $$1, $$2);
+   public chb(byh $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
-   public chb(bwv $$0, float $$1, int $$2) {
-      this(new bzy($$0, false), $$1, $$2);
+   @Override
+   public boolean c() {
+      byf $$0 = this.e.f();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         fhj $$1 = this.e.cq();
+         fhj $$2 = $$0.cq();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.g((bxe)$$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.P().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.g($$0);
+               return true;
+            }
+         }
+      }
    }
 
-   public chb(cbb $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected double l() {
+      return this.e.h(bzl.m);
    }
 
-   public cbb a() {
-      return this.a;
+   @Override
+   public void d() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
    }
 
-   public float b() {
-      return this.b;
+   @Override
+   public void e() {
+      this.e.g(null);
+      this.g = null;
    }
 
-   public int c() {
-      return this.c;
+   protected boolean a(@Nullable byf $$0, ciu $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(a(this.e), this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dv())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(byf $$0) {
+      this.j = b(10 + this.e.dY().a(5));
+      eyo $$1 = this.e.O().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         eym $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dz();
+            int $$4 = $$2.c - $$0.dF();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public chb c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

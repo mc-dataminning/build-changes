@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cqz {
+public enum cqz {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 }

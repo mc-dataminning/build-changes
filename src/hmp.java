@@ -1,49 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-
-public record hmp(Optional<List<hmo>> c, Optional<Integer> d, Optional<Integer> e, int f, boolean g) {
-   public static final Codec<hmp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               hmo.b.listOf().optionalFieldOf("frames").forGetter(hmp::a),
-               ayy.m.optionalFieldOf("width").forGetter(hmp::b),
-               ayy.m.optionalFieldOf("height").forGetter(hmp::c),
-               ayy.m.optionalFieldOf("frametime", 1).forGetter(hmp::d),
-               Codec.BOOL.optionalFieldOf("interpolate", false).forGetter(hmp::e)
-            )
-            .apply($$0, hmp::new)
-   );
-   public static final aug<hmp> b = new aug<>("animation", a);
-
-   public hmq a(int $$0, int $$1) {
-      if (this.d.isPresent()) {
-         return this.e.isPresent() ? new hmq(this.d.get(), this.e.get()) : new hmq(this.d.get(), $$1);
-      } else if (this.e.isPresent()) {
-         return new hmq($$0, this.e.get());
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new hmq($$2, $$2);
-      }
-   }
-
-   public Optional<List<hmo>> a() {
-      return this.c;
-   }
-
-   public Optional<Integer> b() {
-      return this.d;
-   }
-
-   public Optional<Integer> c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
+public class hmp {
+   public static final alr a = alr.b("armor_trims");
+   public static final alr b = alr.b("banner_patterns");
+   public static final alr c = alr.b("beds");
+   public static final alr d = alr.b("blocks");
+   public static final alr e = alr.b("chests");
+   public static final alr f = alr.b("decorated_pot");
+   public static final alr g = alr.b("gui");
+   public static final alr h = alr.b("map_decorations");
+   public static final alr i = alr.b("mob_effects");
+   public static final alr j = alr.b("paintings");
+   public static final alr k = alr.b("particles");
+   public static final alr l = alr.b("shield_patterns");
+   public static final alr m = alr.b("shulker_boxes");
+   public static final alr n = alr.b("signs");
 }

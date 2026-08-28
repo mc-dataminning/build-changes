@@ -1,18 +1,29 @@
-import java.util.function.Consumer;
+public enum fyc {
+   a,
+   b;
 
-public interface fyc extends fyd {
-   void b(Consumer<fyd> var1);
-
-   @Override
-   default void a(Consumer<ful> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public fyc a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fyc $$1) {
-            $$1.a();
-         }
-      });
+   public fyd b() {
+      return switch (this) {
+         case a -> fyd.d;
+         case b -> fyd.b;
+      };
+   }
+
+   public fyd c() {
+      return switch (this) {
+         case a -> fyd.c;
+         case b -> fyd.a;
+      };
+   }
+
+   public fyd a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

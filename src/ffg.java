@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ffg {
+public record ffg(MapCodec<? extends ffh> a) {
 }

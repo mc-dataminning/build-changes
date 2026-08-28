@@ -1,38 +1,21 @@
-public class hbe extends gxa<clv, hes, ggl<hes>> {
-   private final alk a;
+public class hbe extends gym<cqf, hgx, gkj> {
+   private static final alr a = alr.b("textures/entity/piglin/zombified_piglin.png");
 
-   public hbe(gyk.a $$0, hbe.a $$1) {
-      super($$0, new gio($$0.a($$1.d)), new gio($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hdb<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gid($$0.a($$1.g)), new gid($$0.a($$1.h))));
+   public hbe(gxv.a $$0, gkp $$1, gkp $$2, gkp $$3, gkp $$4, gkp $$5, gkp $$6) {
+      super($$0, new gkj($$0.a($$1)), new gkj($$0.a($$2)), 0.5F, gzl.a);
+      this.a(new hby<>(this, new gia($$0.a($$3)), new gia($$0.a($$4)), new gia($$0.a($$5)), new gia($$0.a($$6)), $$0.h()));
    }
 
-   public alk a(hes $$0) {
-      return this.a;
+   public alr a(hgx $$0) {
+      return a;
    }
 
-   public hes b() {
-      return new hes();
+   public hgx b() {
+      return new hgx();
    }
 
-   public static enum a {
-      a(alk.b("textures/entity/horse/horse_skeleton.png"), glf.cZ, glf.da, hni.d.n, glf.db, glf.dc),
-      b(alk.b("textures/entity/horse/horse_zombie.png"), glf.em, glf.en, hni.d.m, glf.eo, glf.ep);
-
-      final alk c;
-      final gle d;
-      final gle e;
-      final hni.d f;
-      final gle g;
-      final gle h;
-
-      private a(final alk $$0, final gle $$1, final gle $$2, final hni.d $$3, final gle $$4, final gle $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
-      }
+   public void a(cqf $$0, hgx $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gl();
    }
 }

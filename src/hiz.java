@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hiz(boolean b) implements hjc {
-   public static final MapCodec<hiz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hiz::b)).apply($$0, hiz::new)
-   );
+public record hiz() implements hjg<alq<bxn<?>>> {
+   public static final Codec<alq<bxn<?>>> a = alq.a(mi.B);
+   public static final hjg.a<hiz, alq<bxn<?>>> b = hjg.a.a(MapCodec.unit(new hiz()), a);
 
-   @Override
-   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
-      float $$4 = (float)$$0.o();
-      float $$5 = (float)$$0.p();
-      return this.b ? azq.a($$4 / $$5, 0.0F, 1.0F) : azq.a($$4, 0.0F, $$5);
+   @Nullable
+   public alq<bxn<?>> a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      return $$2 == null ? null : $$2.an().r().h();
    }
 
    @Override
-   public MapCodec<hiz> a() {
+   public hjg.a<hiz, alq<bxn<?>>> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<alq<bxn<?>>> b() {
       return a;
    }
 }

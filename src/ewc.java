@@ -1,15 +1,9 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
 public abstract class ewc {
-   @Nullable
-   public ewf.d a(dkc $$0, iw $$1, iw $$2, ewf.d $$3, ewf.d $$4, ewb $$5) {
-      return $$4;
-   }
+   public static final Codec<ewc> c = mh.o.q().dispatch("predicate_type", ewc::a, ewd::codec);
 
-   protected abstract ewe<?> a();
+   public abstract boolean a(iw var1, iw var2, iw var3, bai var4);
 
-   public List<ewf.d> a(dkq $$0, iw $$1, iw $$2, List<ewf.d> $$3, List<ewf.d> $$4, ewb $$5) {
-      return $$4;
-   }
+   protected abstract ewd<?> a();
 }

@@ -1,27 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record dkx(djm e, cvj f) {
-   public static final String a = "enabled_features";
-   public static final MapCodec<dkx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               djm.b.lenientOptionalFieldOf("DataPacks", djm.a).forGetter(dkx::a), cvl.f.lenientOptionalFieldOf("enabled_features", cvl.h).forGetter(dkx::b)
-            )
-            .apply($$0, dkx::new)
-   );
-   public static final Codec<dkx> c = b.codec();
-   public static final dkx d = new dkx(djm.a, cvl.h);
+public class dkx {
+   private final List<dkx.a> a = Lists.newArrayList();
 
-   public dkx a(cvj $$0) {
-      return new dkx(this.e, this.f.c($$0));
+   public void a(iw $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dkx.a($$0, $$1));
+      }
    }
 
-   public djm a() {
-      return this.e;
+   public double b(iw $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dkx.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   public cvj b() {
-      return this.f;
+   static class a {
+      private final iw a;
+      private final double b;
+
+      public a(iw $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(iw $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

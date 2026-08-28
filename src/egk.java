@@ -1,11 +1,29 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+public enum egk {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface egk {
-   Codec<egk> c = mh.t.q().dispatch(egk::a, egl::a);
-   za<wn, egk> d = yy.a(mi.ac).b(egk::a, egl::b);
+   private final boolean d;
+   private final boolean e;
 
-   Optional<ffs> a(djz var1);
+   private egk(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   egl<? extends egk> a();
+   public boolean a() {
+      return this.e;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public static egk a(arp $$0) {
+      if ($$0.a(arp.d)) {
+         return c;
+      } else {
+         return $$0.a(arp.b) ? b : a;
+      }
+   }
 }

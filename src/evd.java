@@ -1,49 +1,124 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class evd extends evs {
-   public static final MapCodec<evd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               jc.a.e.fieldOf("axis").orElse(jc.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, evd::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final jc.a g;
+public class evd {
+   private static final int a = 32;
+   static final iw b = new iw(4, 0, 15);
+   private static final alr[] c = new alr[]{
+      alr.b("shipwreck/with_mast"),
+      alr.b("shipwreck/sideways_full"),
+      alr.b("shipwreck/sideways_fronthalf"),
+      alr.b("shipwreck/sideways_backhalf"),
+      alr.b("shipwreck/rightsideup_full"),
+      alr.b("shipwreck/rightsideup_fronthalf"),
+      alr.b("shipwreck/rightsideup_backhalf"),
+      alr.b("shipwreck/with_mast_degraded"),
+      alr.b("shipwreck/rightsideup_full_degraded"),
+      alr.b("shipwreck/rightsideup_fronthalf_degraded"),
+      alr.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   private static final alr[] d = new alr[]{
+      alr.b("shipwreck/with_mast"),
+      alr.b("shipwreck/upsidedown_full"),
+      alr.b("shipwreck/upsidedown_fronthalf"),
+      alr.b("shipwreck/upsidedown_backhalf"),
+      alr.b("shipwreck/sideways_full"),
+      alr.b("shipwreck/sideways_fronthalf"),
+      alr.b("shipwreck/sideways_backhalf"),
+      alr.b("shipwreck/rightsideup_full"),
+      alr.b("shipwreck/rightsideup_fronthalf"),
+      alr.b("shipwreck/rightsideup_backhalf"),
+      alr.b("shipwreck/with_mast_degraded"),
+      alr.b("shipwreck/upsidedown_full_degraded"),
+      alr.b("shipwreck/upsidedown_fronthalf_degraded"),
+      alr.b("shipwreck/upsidedown_backhalf_degraded"),
+      alr.b("shipwreck/sideways_full_degraded"),
+      alr.b("shipwreck/sideways_fronthalf_degraded"),
+      alr.b("shipwreck/sideways_backhalf_degraded"),
+      alr.b("shipwreck/rightsideup_full_degraded"),
+      alr.b("shipwreck/rightsideup_fronthalf_degraded"),
+      alr.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   static final Map<String, alq<fay>> e = Map.of("map_chest", fap.G, "treasure_chest", fap.I, "supply_chest", fap.H);
 
-   public evd(float $$0, float $$1, int $$2, int $$3, jc.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+   public static evd.a a(ewq $$0, iw $$1, dui $$2, ess $$3, bai $$4, boolean $$5) {
+      alr $$6 = ag.a($$5 ? c : d, $$4);
+      evd.a $$7 = new evd.a($$0, $$6, $$1, $$2, $$5);
+      $$3.a($$7);
+      return $$7;
+   }
+
+   public static class a extends esx {
+      private final boolean h;
+
+      public a(ewq $$0, alr $$1, iw $$2, dui $$3, boolean $$4) {
+         super(ete.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+         this.h = $$4;
       }
-   }
 
-   @Override
-   public boolean a(iw $$0, iw $$1, iw $$2, azz $$3) {
-      jc $$4 = jc.a(jc.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= azq.b(this.b, this.d, azq.f((float)$$8, (float)this.e, (float)this.f));
-   }
+      public a(ewq $$0, ua $$1) {
+         super(ete.ab, $$1, $$0, $$1x -> a($$1.<dui>a("Rot", dui.h).orElseThrow()));
+         this.h = $$1.b("isBeached", false);
+      }
 
-   @Override
-   protected evt<?> a() {
-      return evt.c;
+      @Override
+      protected void a(etd $$0, ua $$1) {
+         super.a($$0, $$1);
+         $$1.a("isBeached", this.h);
+         $$1.a("Rot", dui.h, this.c.d());
+      }
+
+      private static ewl a(dui $$0) {
+         return new ewl().a($$0).a(dsr.a).a(evd.b).a(evq.d);
+      }
+
+      @Override
+      protected void a(String $$0, iw $$1, dla $$2, bai $$3, esf $$4) {
+         alq<fay> $$5 = evd.e.get($$0);
+         if ($$5 != null) {
+            bvi.a($$2, $$3, $$1.e(), $$5);
+         }
+      }
+
+      @Override
+      public void a(dli $$0, dlf $$1, edo $$2, bai $$3, esf $$4, djo $$5, iw $$6) {
+         if (this.l()) {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         } else {
+            int $$7 = $$0.ao() + 1;
+            int $$8 = 0;
+            kb $$9 = this.b.a();
+            ehp.a $$10 = this.h ? ehp.a.a : ehp.a.c;
+            int $$11 = $$9.u() * $$9.w();
+            if ($$11 == 0) {
+               $$8 = $$0.a($$10, this.d.u(), this.d.w());
+            } else {
+               iw $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+
+               for (iw $$13 : iw.c(this.d, $$12)) {
+                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
+                  $$8 += $$14;
+                  $$7 = Math.min($$7, $$14);
+               }
+
+               $$8 /= $$11;
+            }
+
+            this.c(this.h ? this.a($$7, $$3) : $$8);
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         }
+      }
+
+      public boolean l() {
+         kb $$0 = this.b.a();
+         return $$0.u() > 32 || $$0.v() > 32;
+      }
+
+      public int a(int $$0, bai $$1) {
+         return $$0 - this.b.a().v() / 2 - $$1.a(3);
+      }
+
+      public void c(int $$0) {
+         this.d = new iw(this.d.u(), $$0, this.d.w());
+      }
    }
 }

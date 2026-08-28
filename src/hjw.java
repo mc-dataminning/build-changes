@@ -1,28 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class hjw implements hkg<dxu> {
-   private final guk a;
-   private final cyy b;
+public class hjw implements hjq {
+   private final gij a;
+   private final hmx b;
 
-   public hjw(cyy $$0, guk $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   public hjw(gij $$0, hmx $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public dxu a(daa $$0) {
-      return $$0.a(kl.am);
+   @Override
+   public void a(dai $$0, fld $$1, grn $$2, int $$3, int $$4, boolean $$5) {
+      gup.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public void a(@Nullable dxu $$0, czy $$1, flq $$2, gsc $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dxu.a));
-   }
+   public static record a(ede b, Optional<alr> c) implements hju.a {
+      public static final MapCodec<hjw.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ede.a.fieldOf("wood_type").forGetter(hjw.a::b), alr.a.optionalFieldOf("texture").forGetter(hjw.a::c)).apply($$0, hjw.a::new)
+      );
 
-   public static record a(cyy b) implements hkg.a {
-      public static final MapCodec<hjw.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyy.q.fieldOf("color").forGetter(hjw.a::b)).apply($$0, hjw.a::new));
+      public a(ede $$0) {
+         this($$0, Optional.empty());
+      }
 
       @Override
       public MapCodec<hjw.a> a() {
@@ -30,8 +31,10 @@ public class hjw implements hkg<dxu> {
       }
 
       @Override
-      public hkg<?> a(glc $$0) {
-         return new hjw(this.b, new guk($$0));
+      public hju<?> a(gkn $$0) {
+         gij $$1 = gup.a($$0, this.b, true);
+         hmx $$2 = this.c.<hmx>map(gsh.q::a).orElseGet(() -> gsh.a(this.b));
+         return new hjw($$1, $$2);
       }
    }
 }

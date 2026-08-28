@@ -1,142 +1,80 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class flw {
-   public static flt a() {
-      throw new IllegalArgumentException();
-   }
+   private static final Logger a = LogUtils.getLogger();
 
-   public static flt a(flt $$0) {
-      return $$0;
-   }
-
-   public static flt a(flt $$0, flt $$1) {
-      return new flw.a($$0, $$1);
-   }
-
-   public static flt a(flt... $$0) {
-      return new flw.b($$0);
-   }
-
-   static class a implements flt {
-      private final flt a;
-      private final flt b;
-
-      public a(flt $$0, flt $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
+   public static void a(fqq $$0, fzq $$1, fzq $$2, int $$3, fmr $$4, @Nullable fpq $$5) {
+      ger.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
+         Path $$10;
+         try {
+            $$10 = a($$7, $$8, $$9);
+         } catch (IOException var13) {
+            a.warn("Failed to create temporary world folder.");
+            $$0.a(new foe(xg.c("mco.create.world.failed"), $$2));
+            return true;
          }
-      }
 
-      @Override
-      public flt a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
+         fmx $$13 = fmx.a($$8.J(), $$8.J().e(), ac.b().c());
+         fmd $$14 = new fmd($$10, $$13, $$0.X(), $$4.a, $$3, fme.f());
+         $$0.d(new fyj($$14::b, xg.c("mco.create.world.reset.title"), xg.i(), xf.e, false));
+         if ($$5 != null) {
+            $$5.run();
+         }
 
-      @Override
-      public flt a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public flt a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public flt a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public flt b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public flt b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   static record b(flt[] a) implements flt {
-      b(flt[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
+         $$14.a().handleAsync(($$5xx, $$6x) -> {
+            if ($$6x != null) {
+               if ($$6x instanceof CompletionException $$7x) {
+                  $$6x = $$7x.getCause();
                }
+
+               if ($$6x instanceof flx) {
+                  $$0.d($$2);
+               } else {
+                  if ($$6x instanceof flz $$8x) {
+                     a.warn("Failed to create realms world {}", $$8x.a());
+                  } else {
+                     a.warn("Failed to create realms world {}", $$6x.getMessage());
+                  }
+
+                  $$0.d(new foe(xg.c("mco.create.world.failed"), $$2));
+               }
+            } else {
+               if ($$1 instanceof foa $$9x) {
+                  $$9x.a($$4.a);
+               }
+
+               if ($$5 != null) {
+                  fll.a($$4, $$1, true);
+               } else {
+                  $$0.d($$1);
+               }
+
+               fll.g();
             }
-         }
 
-         this.a = a;
+            return null;
+         }, $$0);
+         return true;
+      });
+   }
+
+   private static Path a(jn<ama> $$0, fal $$1, @Nullable Path $$2) throws IOException {
+      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
+      if ($$2 != null) {
+         Files.move($$2, $$3.resolve("datapacks"));
       }
 
-      private void a(Consumer<flt> $$0) {
-         for (flt $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public flt a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public flt a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public flt a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public flt a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public flt b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public flt b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
-      }
+      ua $$4 = $$1.a($$0.a(), null);
+      ua $$5 = new ua();
+      $$5.a("Data", $$4);
+      Path $$6 = Files.createFile($$3.resolve("level.dat"));
+      un.a($$5, $$6);
+      return $$3;
    }
 }

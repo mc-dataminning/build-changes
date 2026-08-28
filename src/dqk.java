@@ -1,44 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dqk extends dwq implements dvq {
-   protected static final MapCodec<ddc> b = ddc.c.fieldOf("suspicious_stew_effects");
-   public static final MapCodec<dqk> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dqk::c), t()).apply($$0, dqk::new));
-   private static final fgm a = dne.b(6.0, 0.0, 10.0);
-   private final ddc d;
+public abstract class dqk extends drp {
+   public static final eco<ecb> c = ecg.X;
 
-   @Override
-   public MapCodec<? extends dqk> a() {
-      return c;
-   }
-
-   public dqk(jg<bvx> $$0, float $$1, ebf.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dqk(ddc $$0, ebf.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   protected static ddc a(jg<bvx> $$0, float $$1) {
-      return new ddc(List.of(new ddc.a($$0, azq.d($$1 * 20.0F))));
+   protected dqk(ebp.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return a.a($$0.a($$2));
-   }
+   protected abstract MapCodec<? extends dqk> a();
 
    @Override
-   public ddc c() {
-      return this.d;
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      return b($$1, $$2, n($$0).g());
+   }
+
+   public static boolean b(dkm $$0, iw $$1, jc $$2) {
+      iw $$3 = $$1.a($$2);
+      return $$0.a_($$3).c($$0, $$3, $$2.g());
    }
 
    @Nullable
-   public bvz b() {
+   @Override
+   public ebq a(ded $$0) {
+      for (jc $$1 : $$0.f()) {
+         ebq $$2;
+         if ($$1.o() == jc.a.b) {
+            $$2 = this.m().b(c, $$1 == jc.b ? ecb.c : ecb.a).b(e, $$0.g());
+         } else {
+            $$2 = this.m().b(c, ecb.b).b(e, $$1.g());
+         }
+
+         if ($$2.a((dkm)$$0.q(), $$0.a())) {
+            return $$2;
+         }
+      }
+
       return null;
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dnq.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static jc n(ebq $$0) {
+      switch ((ecb)$$0.c(c)) {
+         case c:
+            return jc.a;
+         case a:
+            return jc.b;
+         default:
+            return $$0.c(e);
+      }
    }
 }

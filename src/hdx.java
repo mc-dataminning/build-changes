@@ -1,5 +1,3 @@
-public class hdx extends her {
-   public float a;
-   public float b;
-   public float c;
+public class hdx extends het {
+   public boolean a;
 }

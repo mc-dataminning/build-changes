@@ -1,28 +1,85 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record fdx(feo b) implements fds {
-   public static final MapCodec<fdx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fep.a.fieldOf("chance").forGetter(fdx::c)).apply($$0, fdx::new));
+public record fdx(Map<String, fas> b, fat.b c) implements fec {
+   public static final MapCodec<fdx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, fas.a).fieldOf("scores").forGetter(fdx::c), fat.b.e.fieldOf("entity").forGetter(fdx::d))
+            .apply($$0, fdx::new)
+   );
 
    @Override
-   public fdt b() {
-      return fdu.d;
+   public fed b() {
+      return fee.h;
    }
 
-   public boolean a(faj $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<bbk<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static fds.a a(float $$0) {
-      return () -> new fdx(fel.a($$0));
+   public boolean a(fat $$0) {
+      bxe $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         fhh $$2 = $$0.d().g();
+
+         for (Entry<String, fas> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static fds.a a(feo $$0) {
-      return () -> new fdx($$0);
+   protected boolean a(fat $$0, bxe $$1, fhh $$2, String $$3, fas $$4) {
+      fgz $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         fhd $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
    }
 
-   public feo c() {
+   public static fdx.a a(fat.b $$0) {
+      return new fdx.a($$0);
+   }
+
+   public Map<String, fas> c() {
       return this.b;
+   }
+
+   public fat.b d() {
+      return this.c;
+   }
+
+   public static class a implements fec.a {
+      private final Builder<String, fas> a = ImmutableMap.builder();
+      private final fat.b b;
+
+      public a(fat.b $$0) {
+         this.b = $$0;
+      }
+
+      public fdx.a a(String $$0, fas $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fec build() {
+         return new fdx(this.a.build(), this.b);
+      }
    }
 }

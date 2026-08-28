@@ -1,32 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class big extends DataFix {
-   public big(Schema $$0, boolean $$1) {
+public abstract class big extends DataFix {
+   private final String c;
+   protected final String a;
+   protected final TypeReference b;
+
+   public big(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
       super($$0, $$1);
+      this.c = $$2;
+      this.b = $$3;
+      this.a = $$4;
    }
 
    public TypeRewriteRule makeRule() {
+      OpticFinder<?> $$0 = DSL.namedChoice(this.a, this.getInputSchema().getChoiceType(this.b, this.a));
       return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bjd.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("chatOpacity").asString().map($$1 -> {
-                  double $$2 = this.a($$1);
-                  return $$0x.set("textBackgroundOpacity", $$0x.createString(String.valueOf($$2)));
-               }).result(), $$0x))
+         this.c,
+         this.getInputSchema().getType(this.b),
+         this.getOutputSchema().getType(this.b),
+         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.b, this.a), this::a)
       );
    }
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
-   }
+   protected abstract Typed<?> a(Typed<?> var1);
 }

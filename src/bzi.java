@@ -1,79 +1,143 @@
+import com.google.common.collect.Multimap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bzi<E extends bye> extends bzn<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<bye, axv<bvm>> h;
+public class bzi {
+   private final Map<jg<bzg>, bzh> a = new Object2ObjectOpenHashMap();
+   private final Set<bzh> b = new ObjectOpenHashSet();
+   private final Set<bzh> c = new ObjectOpenHashSet();
+   private final bzk d;
 
-   public bzi(float $$0) {
-      this($$0, $$0x -> axh.F);
+   public bzi(bzk $$0) {
+      this.d = $$0;
    }
 
-   public bzi(float $$0, Function<bye, axv<bvm>> $$1) {
-      super(Map.of(cgy.aa, cgz.c, cgy.y, cgz.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   protected boolean a(aru $$0, E $$1) {
-      return $$1.ec().c(cgy.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ec().a(cgy.aa);
-   }
-
-   protected boolean a(aru $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aru $$0, E $$1, long $$2) {
-      $$1.ec().a(cgy.aa, true);
-      $$1.ec().b(cgy.n);
-   }
-
-   protected void c(aru $$0, E $$1, long $$2) {
-      byw<?> $$3 = $$1.ec();
-      $$3.b(cgy.aa);
-   }
-
-   protected void d(aru $$0, E $$1, long $$2) {
-      if ($$1.O().k()) {
-         ffs $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.ec().a(cgy.n, new chb($$3, this.g, 0));
-         }
+   private void a(bzh $$0) {
+      this.c.add($$0);
+      if ($$0.a().a().b()) {
+         this.b.add($$0);
       }
+   }
+
+   public Set<bzh> a() {
+      return this.b;
+   }
+
+   public Set<bzh> b() {
+      return this.c;
+   }
+
+   public Collection<bzh> c() {
+      return this.a.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   private ffs a(E $$0, aru $$1) {
-      if ($$0.bX()) {
-         Optional<ffs> $$2 = this.a((djd)$$1, $$0).map(ffs::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cis.a($$0, 5, 4);
+   public bzh a(jg<bzg> $$0) {
+      return this.a.computeIfAbsent($$0, $$0x -> this.d.a(this::a, $$0x));
    }
 
-   private Optional<iw> a(djd $$0, bwv $$1) {
-      iw $$2 = $$1.dv();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
+   public boolean b(jg<bzg> $$0) {
+      return this.a.get($$0) != null || this.d.c($$0);
+   }
+
+   public boolean a(jg<bzg> $$0, alr $$1) {
+      bzh $$2 = this.a.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.d.b($$0, $$1);
+   }
+
+   public double c(jg<bzg> $$0) {
+      bzh $$1 = this.a.get($$0);
+      return $$1 != null ? $$1.g() : this.d.a($$0);
+   }
+
+   public double d(jg<bzg> $$0) {
+      bzh $$1 = this.a.get($$0);
+      return $$1 != null ? $$1.b() : this.d.b($$0);
+   }
+
+   public double b(jg<bzg> $$0, alr $$1) {
+      bzh $$2 = this.a.get($$0);
+      return $$2 != null ? $$2.a($$1).b() : this.d.a($$0, $$1);
+   }
+
+   public void a(Multimap<jg<bzg>, bzj> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bzh $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.a());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jg<bzg>, bzj> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bzh $$2 = this.a.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.a()));
+         }
+      });
+   }
+
+   public void a(bzi $$0) {
+      $$0.a.values().forEach($$0x -> {
+         bzh $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bzi $$0) {
+      $$0.a.values().forEach($$0x -> {
+         bzh $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bzi $$0) {
+      $$0.a.values().forEach($$0x -> {
+         bzh $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public boolean e(jg<bzg> $$0) {
+      if (!this.d.c($$0)) {
+         return false;
       } else {
-         Predicate<iw> $$3;
-         if (azq.f($$1.dq()) == 2) {
-            $$3 = $$1x -> iw.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axl.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axl.a);
+         bzh $$1 = this.a.get($$0);
+         if ($$1 != null) {
+            $$1.a(this.d.b($$0));
          }
 
-         return iw.a($$2, 5, 1, $$3);
+         return true;
+      }
+   }
+
+   public ug d() {
+      ug $$0 = new ug();
+
+      for (bzh $$1 : this.a.values()) {
+         $$0.add($$1.h());
+      }
+
+      return $$0;
+   }
+
+   public void a(ug $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ua $$2 = $$0.b($$1);
+         $$2.<jg<bzg>>a("id", bzh.b).map(this::a).ifPresent($$1x -> $$1x.a($$2));
       }
    }
 }

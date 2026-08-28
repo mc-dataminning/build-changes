@@ -1,72 +1,36 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-public class deq {
-   public static final int a = -1;
-   public static final deq b = new deq(List.of(), IntList.of());
-   private final List<den> c;
-   private final IntList d;
-
-   private deq(List<den> $$0, IntList $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public interface deq extends dfb<dep> {
+   @Override
+   default dfm<deq> b() {
+      return dfm.a;
    }
 
-   public static deq a(den $$0) {
-      return $$0.b() ? b : new deq(List.of($$0), IntList.of(0));
+   @Override
+   dfl<? extends deq> a();
+
+   deo c();
+
+   default jp<dak> a(dep $$0) {
+      return b($$0);
    }
 
-   public static deq a(List<Optional<den>> $$0) {
-      int $$1 = $$0.size();
-      List<den> $$2 = new ArrayList<>($$1);
-      IntList $$3 = new IntArrayList($$1);
-      int $$4 = 0;
+   static jp<dak> b(dep $$0) {
+      jp<dak> $$1 = jp.a($$0.a(), dak.l);
 
-      for (Optional<den> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            den $$6 = $$5.get();
-            if ($$6.b()) {
-               return b;
-            }
-
-            $$2.add($$6);
-            $$3.add($$4++);
-         } else {
-            $$3.add(-1);
-         }
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         dag $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.i());
       }
 
-      return new deq($$2, $$3);
+      return $$1;
    }
 
-   public static deq b(List<den> $$0) {
-      int $$1 = $$0.size();
-      IntList $$2 = new IntArrayList($$1);
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         den $$4 = $$0.get($$3);
-         if ($$4.b()) {
-            return b;
-         }
-
-         $$2.add($$3);
-      }
-
-      return new deq($$0, $$2);
-   }
-
-   public IntList a() {
-      return this.d;
-   }
-
-   public List<den> b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d.isEmpty();
+   @Override
+   default dfe h() {
+      return switch (this.c()) {
+         case a -> dfd.a;
+         case c -> dfd.c;
+         case b -> dfd.b;
+         case d -> dfd.d;
+      };
    }
 }

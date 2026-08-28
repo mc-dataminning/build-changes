@@ -1,105 +1,60 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface egy {
-   Codec<egy> b = egz.b;
-   Codec<jg<egy>> c = alg.a(mi.aO, b);
-   Codec<egy> d = c.xmap(egz.j::new, $$0 -> (jg)($$0 instanceof egz.j $$1 ? $$1.j() : new jg.a<>($$0)));
+public class egy {
+   public static final Codec<egy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egx.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
+            .apply($$0, egy::new)
+   );
+   private Optional<Pair<egx, Long>> b;
 
-   double a(egy.b var1);
-
-   void a(double[] var1, egy.a var2);
-
-   egy a(egy.f var1);
-
-   double a();
-
-   double b();
-
-   azj<? extends egy> c();
-
-   default egy a(double $$0, double $$1) {
-      return new egz.g(this, $$0, $$1);
+   public egy(Optional<egx> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   default egy d() {
-      return egz.a(this, egz.k.a.a);
+   public egy() {
+      this.b = Optional.empty();
    }
 
-   default egy e() {
-      return egz.a(this, egz.k.a.b);
-   }
-
-   default egy f() {
-      return egz.a(this, egz.k.a.c);
-   }
-
-   default egy g() {
-      return egz.a(this, egz.k.a.d);
-   }
-
-   default egy h() {
-      return egz.a(this, egz.k.a.e);
-   }
-
-   default egy i() {
-      return egz.a(this, egz.k.a.f);
-   }
-
-   public interface a {
-      egy.b a(int var1);
-
-      void a(double[] var1, egy var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default eih d() {
-         return eih.a();
+   public void a(egx $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
       }
    }
 
-   public static record c(jg<ewt.a> b, @Nullable ewt c) {
-      public static final Codec<egy.c> a = ewt.a.b.xmap($$0 -> new egy.c($$0, null), egy.c::b);
-
-      public c(jg<ewt.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends egy {
-      @Override
-      default void a(double[] $$0, egy.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default egy a(egy.f $$0) {
-         return $$0.apply(this);
+   private boolean b(egx $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<egx, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            egx $$4 = (egx)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : egz.a_($$0.a()) > egz.a_($$4.a());
+            }
+         }
       }
    }
 
-   public static record e(int a, int b, int c) implements egy.b {
+   public Optional<egx> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((egx)this.b.get().getLeft()) : Optional.empty();
+      }
    }
 
-   public interface f {
-      egy apply(egy var1);
-
-      default egy.c a(egy.c $$0) {
-         return $$0;
-      }
+   public void a() {
+      this.b = Optional.empty();
    }
 }

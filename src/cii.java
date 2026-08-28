@@ -1,36 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cii extends chy {
-   private static final ImmutableMap<bxe<?>, Float> a = ImmutableMap.builder()
-      .put(bxe.L, 8.0F)
-      .put(bxe.T, 12.0F)
-      .put(bxe.an, 8.0F)
-      .put(bxe.ao, 12.0F)
-      .put(bxe.aU, 15.0F)
-      .put(bxe.ba, 12.0F)
-      .put(bxe.bD, 8.0F)
-      .put(bxe.bF, 10.0F)
-      .put(bxe.bO, 10.0F)
-      .put(bxe.bP, 8.0F)
-      .put(bxe.bR, 8.0F)
-      .build();
-
+public class cii extends cin<byf> {
    @Override
-   protected boolean a(aru $$0, bxw $$1, bxw $$2) {
-      return this.b($$2) && this.a($$1, $$2);
-   }
-
-   private boolean a(bxw $$0, bxw $$1) {
-      float $$2 = (Float)a.get($$1.an());
-      return $$1.g($$0) <= (double)($$2 * $$2);
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(chh.h, chh.N, chh.ao);
    }
 
    @Override
-   protected cgy<bxw> b() {
-      return cgy.B;
-   }
+   protected void a(asb $$0, byf $$1) {
+      bzf<?> $$2 = $$1.ec();
+      List<cqw> $$3 = Lists.newArrayList();
+      chj $$4 = $$2.c(chh.h).orElse(chj.a());
+      Optional<byh> $$5 = $$4.a($$0x -> $$0x instanceof cqb || $$0x instanceof coa).map(byh.class::cast);
 
-   private boolean b(bxw $$0) {
-      return a.containsKey($$0.an());
+      for (byf $$7 : $$2.c(chh.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cqw && ((cqw)$$7).t()) {
+            $$3.add((cqw)$$7);
+         }
+      }
+
+      $$2.a(chh.N, $$5);
+      $$2.a(chh.ao, $$3);
    }
 }

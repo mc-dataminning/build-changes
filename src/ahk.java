@@ -1,29 +1,20 @@
-public class ahk implements zj<agt> {
-   public static final za<vy, ahk> a = zj.a(ahk::a, ahk::new);
-   private final int b;
-
-   public ahk(int $$0) {
-      this.b = $$0;
-   }
+public record ahk(float b) implements zo<aha> {
+   public static final ze<vy, ahk> a = zo.a(ahk::a, ahk::new);
 
    private ahk(vy $$0) {
-      this.b = $$0.x();
+      this($$0.readFloat());
    }
 
    private void a(vy $$0) {
-      $$0.f(this.b);
+      $$0.a(this.b);
    }
 
    @Override
-   public zl<ahk> a() {
-      return agr.bA;
+   public zq<ahk> a() {
+      return agy.bt;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

@@ -1,19 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record dxt(alk e, String f) {
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alk.a.fieldOf("asset_id").forGetter(dxt::a), Codec.STRING.fieldOf("translation_key").forGetter(dxt::b)).apply($$0, dxt::new)
-   );
-   public static final za<wn, dxt> b = za.a(alk.b, dxt::a, yy.p, dxt::b, dxt::new);
-   public static final Codec<jg<dxt>> c = alg.a(mi.aF, a);
-   public static final za<wn, jg<dxt>> d = yy.a(mi.aF, b);
+public class dxt extends drh {
+   public static final MapCodec<dxt> c = b(dxt::new);
+   private static final fgw g = dno.b(8.0, 9.0, 16.0);
 
-   public alk a() {
-      return this.e;
+   @Override
+   public MapCodec<dxt> a() {
+      return c;
    }
 
-   public String b() {
-      return this.f;
+   public dxt(ebp.d $$0) {
+      super($$0, jc.a, g, false, 0.1);
+   }
+
+   @Override
+   protected int a(bai $$0) {
+      return dtb.a($$0);
+   }
+
+   @Override
+   protected dno b() {
+      return dnq.pg;
+   }
+
+   @Override
+   protected boolean h(ebq $$0) {
+      return dtb.a($$0);
    }
 }

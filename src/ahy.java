@@ -1,36 +1,29 @@
-public class ahy implements zj<agt> {
-   public static final za<vy, ahy> a = zj.a(ahy::a, ahy::new);
-   private static final int b = 2;
-   private final boolean c;
+public class ahy implements zo<aha> {
+   public static final ze<vy, ahy> a = zo.a(ahy::a, ahy::new);
+   private final boolean b;
 
-   public ahy(crv $$0) {
-      this.c = $$0.b;
+   public ahy(boolean $$0) {
+      this.b = $$0;
    }
 
    private ahy(vy $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+      this.b = $$0.readBoolean();
    }
 
    private void a(vy $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+      $$0.a(this.b);
    }
 
    @Override
-   public zl<ahy> a() {
-      return agr.bR;
+   public zq<ahy> a() {
+      return agy.bH;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
    public boolean b() {
-      return this.c;
+      return this.b;
    }
 }

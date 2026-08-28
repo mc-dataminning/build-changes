@@ -1,143 +1,158 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.IdentityHashMap;
-import java.util.Map;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dpk extends dmq {
-   private static final Logger e = LogUtils.getLogger();
+public class dpk extends dna {
    public static final MapCodec<dpk> a = b(dpk::new);
-   public static final ece<jc> b = dpi.a;
-   public static final ebx c = ebw.G;
-   private static final lh f = new lh();
-   public static final Map<czw, li> d = new IdentityHashMap<>();
-   private static final int g = 4;
+   public static final eco<jc.a> b = ecg.K;
+   public static final eco<eck> c = ecg.bD;
+   public static final ech d = ecg.w;
 
    @Override
-   public MapCodec<? extends dpk> a() {
+   public MapCodec<dpk> a() {
       return a;
    }
 
-   public static void a(djy $$0, li $$1) {
-      d.put($$0.h(), $$1);
-   }
-
-   public static void a(djy $$0) {
-      d.put($$0.h(), new lm($$0.h()));
-   }
-
-   protected dpk(ebf.d $$0) {
+   protected dpk(ebp.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jc.c).b(c, Boolean.valueOf(false)));
+      this.l(this.m().b(b, jc.a.b).b(c, eck.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dyz $$5) {
-         $$3.a($$5);
-         $$3.a($$5 instanceof dza ? axb.ac : axb.ae);
-      }
-
-      return but.a;
+   public dyo a(iw $$0, ebq $$1) {
+      return new dze($$0, $$1);
    }
 
-   protected void a(aru $$0, ebg $$1, iw $$2) {
-      dyz $$3 = $$0.a($$2, dyg.f).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
+   @Nullable
+   @Override
+   public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
+      if ($$0.C) {
+         return null;
       } else {
-         lf $$4 = new lf($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-            $$0.a(egg.a, $$2, egg.a.a($$3.m()));
-         } else {
-            daa $$6 = $$3.a($$5);
-            li $$7 = this.a($$0, $$6);
-            if ($$7 != li.b) {
-               $$3.a($$5, $$7.dispense($$4, $$6));
+         return $$1.c(c) != eck.a ? a($$2, dyq.k, dze::a) : null;
+      }
+   }
+
+   public static boolean a(dkj $$0) {
+      return $$0.X();
+   }
+
+   @Override
+   public void a(ebq $$0, dkj $$1, iw $$2, bai $$3) {
+      if (a($$1)) {
+         if ($$0.c(c) != eck.a) {
+            if ($$3.a(16) == 0 && a($$1, $$2)) {
+               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awy.gD, awz.e, 1.0F, 1.0F, false);
             }
          }
       }
    }
 
-   protected li a(djz $$0, daa $$1) {
-      if (!$$1.a($$0.K())) {
-         return f;
-      } else {
-         li $$2 = d.get($$1.h());
-         return $$2 != null ? $$2 : a($$1);
+   @Override
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      $$2.a($$3, this, 1);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      ebq $$4 = d($$0, $$1, $$2);
+      if ($$4 != $$0) {
+         $$1.a($$2, $$4, 3);
       }
    }
 
-   private static li a(daa $$0) {
-      return (li)($$0.c(kl.D) ? lj.c : f);
+   private static ebq d(ebq $$0, dkj $$1, iw $$2) {
+      boolean $$3 = b($$0, $$1, $$2);
+      boolean $$4 = $$0.c(c) == eck.a;
+      return $$3 && $$4 ? $$0.b(c, a($$1) ? eck.c : eck.b) : $$0;
+   }
+
+   public static boolean b(ebq $$0, dkm $$1, iw $$2) {
+      jc.a $$3 = $$0.c(b);
+
+      for (jc $$4 : $$3.g()) {
+         ebq $$5 = $$1.a_($$2.a($$4));
+         if (!$$5.a(axn.w) || $$5.c(b) != $$3) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dkk $$0, iw $$1) {
+      for (jc $$2 : jc.values()) {
+         iw $$3 = $$1.a($$2);
+         ebq $$4 = $$0.a_($$3);
+         if (!$$4.a(axn.w)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Nullable
+   @Override
+   public ebq a(ded $$0) {
+      return d(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
-      boolean $$6 = $$1.D($$2) || $$1.D($$2.d());
-      boolean $$7 = $$0.c(c);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
+   protected ebq a(ebq $$0, dui $$1) {
+      return duh.b($$0, $$1);
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, boolean $$3) {
+      buy.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, dkc $$3, BiConsumer<dak, iw> $$4) {
+      if ($$1.c_($$2) instanceof dze $$5 && $$3 instanceof dkz $$6 && $$3.b().a()) {
+         $$5.a($$6.k());
+         if ($$3.c() instanceof csi $$7 && $$3.b().a()) {
+            this.a($$7, $$0, $$1, $$2);
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public ebq a(dkj $$0, iw $$1, ebq $$2, csi $$3) {
+      if ($$0.c_($$1) instanceof dze $$4) {
+         $$4.a($$3.dW().a($$3));
+         this.a($$3, $$2, $$0, $$1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(csi $$0, ebq $$1, dkj $$2, iw $$3) {
+      if (!$$0.gl() && !$$0.aa_() && $$1.c(d) && $$2 instanceof asb $$4) {
+         this.a($$4, $$3, $$2.A.a(20, 24));
       }
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      this.a($$1, $$0, $$2);
-   }
-
-   @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new dyz($$0, $$1);
-   }
-
-   @Override
-   public ebg a(ddt $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
-      bup.a($$0, $$1, $$2);
-   }
-
-   public static jq a(lf $$0) {
-      return a($$0, 0.7, ffs.c);
-   }
-
-   public static jq a(lf $$0, double $$1, ffs $$2) {
-      jc $$3 = $$0.d().c(b);
-      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
-   }
-
-   @Override
-   protected boolean c_(ebg $$0) {
+   protected boolean c_(ebq $$0) {
       return true;
    }
 
    @Override
-   protected int a(ebg $$0, djz $$1, iw $$2) {
-      return cvs.a($$1.c_($$2));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b, c);
+   protected int a(ebq $$0, dkj $$1, iw $$2) {
+      if ($$0.c(c) == eck.a) {
+         return 0;
+      } else {
+         return $$1.c_($$2) instanceof dze $$3 ? $$3.d() : 0;
+      }
    }
 }

@@ -1,61 +1,70 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public abstract class avl<T> extends avm<Map<alk, T>> {
+public class avl implements avo, AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private final DynamicOps<JsonElement> b;
-   private final Codec<T> c;
-   private final ald d;
+   private ave c;
+   private final List<avi> d = Lists.newArrayList();
+   private final auc e;
 
-   protected avl(ji.a $$0, Codec<T> $$1, alj<? extends jt<T>> $$2) {
-      this($$0.a(JsonOps.INSTANCE), $$1, ald.a($$2));
+   public avl(auc $$0) {
+      this.e = $$0;
+      this.c = new avh($$0, List.of());
    }
 
-   protected avl(Codec<T> $$0, ald $$1) {
-      this(JsonOps.INSTANCE, $$0, $$1);
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   private avl(DynamicOps<JsonElement> $$0, Codec<T> $$1, ald $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public void a(avi $$0) {
+      this.d.add($$0);
    }
 
-   protected Map<alk, T> a(avh $$0, brd $$1) {
-      Map<alk, T> $$2 = new HashMap<>();
-      a($$0, this.d, this.b, this.c, $$2);
-      return $$2;
+   public avk a(Executor $$0, Executor $$1, CompletableFuture<bbh> $$2, List<aua> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(aua::b).collect(Collectors.joining(", "))));
+      this.c.close();
+      this.c = new avh(this.e, $$3);
+      return avu.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
    }
 
-   public static <T> void a(avh $$0, alj<? extends jt<T>> $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<alk, T> $$4) {
-      a($$0, ald.a($$1), $$2, $$3, $$4);
+   @Override
+   public Optional<avm> getResource(alr $$0) {
+      return this.c.getResource($$0);
    }
 
-   public static <T> void a(avh $$0, ald $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<alk, T> $$4) {
-      for (Entry<alk, avf> $$5 : $$1.a($$0).entrySet()) {
-         alk $$6 = $$5.getKey();
-         alk $$7 = $$1.b($$6);
+   @Override
+   public Set<String> a() {
+      return this.c.a();
+   }
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            $$3.parse($$2, JsonParser.parseReader($$8)).ifSuccess($$2x -> {
-               if ($$4.putIfAbsent($$7, (T)$$2x) != null) {
-                  throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-               }
-            }).ifError($$2x -> a.error("Couldn't parse data file '{}' from '{}': {}", new Object[]{$$7, $$6, $$2x}));
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file '{}' from '{}'", new Object[]{$$7, $$6, var14});
-         }
-      }
+   @Override
+   public List<avm> a(alr $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public Map<alr, avm> b(String $$0, Predicate<alr> $$1) {
+      return this.c.b($$0, $$1);
+   }
+
+   @Override
+   public Map<alr, List<avm>> c(String $$0, Predicate<alr> $$1) {
+      return this.c.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<aua> b() {
+      return this.c.b();
    }
 }

@@ -83,17 +83,17 @@ public record ud(float c) implements uq {
 
    @Override
    public int h() {
-      return azq.d(this.c);
+      return azz.d(this.c);
    }
 
    @Override
    public short i() {
-      return (short)(azq.d(this.c) & 65535);
+      return (short)(azz.d(this.c) & 65535);
    }
 
    @Override
    public byte j() {
-      return (byte)(azq.d(this.c) & 0xFF);
+      return (byte)(azz.d(this.c) & 0xFF);
    }
 
    @Override

@@ -1,81 +1,143 @@
-import com.mojang.logging.LogUtils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+public interface fxp {
+   fxp a(int var1);
 
-public class fxp {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Object a = new Object();
-   private static long c = 0L;
+   fxp a(int var1, int var2);
 
-   public static long a() {
-      synchronized (a) {
-         if (c == 0L) {
-            MemoryStack $$0 = MemoryStack.stackPush();
+   fxp a(int var1, int var2, int var3, int var4);
 
-            try {
-               PointerBuffer $$1 = $$0.mallocPointer(1);
-               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-               c = $$1.get();
-            } catch (Throwable var6) {
-               if ($$0 != null) {
-                  try {
-                     $$0.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
+   fxp b(int var1);
 
-               throw var6;
-            }
+   fxp c(int var1);
 
-            if ($$0 != null) {
-               $$0.close();
-            }
-         }
+   fxp d(int var1);
 
-         return c;
+   fxp e(int var1);
+
+   fxp f(int var1);
+
+   fxp g(int var1);
+
+   fxp a(float var1, float var2);
+
+   fxp a(float var1);
+
+   fxp b(float var1);
+
+   default fxp a() {
+      return this.a(0.0F);
+   }
+
+   default fxp b() {
+      return this.a(0.5F);
+   }
+
+   default fxp c() {
+      return this.a(1.0F);
+   }
+
+   default fxp d() {
+      return this.b(0.0F);
+   }
+
+   default fxp e() {
+      return this.b(0.5F);
+   }
+
+   default fxp f() {
+      return this.b(1.0F);
+   }
+
+   fxp g();
+
+   fxp.a h();
+
+   static fxp i() {
+      return new fxp.a();
+   }
+
+   public static class a implements fxp {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
-   }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      public a(fxp.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
-   }
 
-   public static boolean b(int $$0, String $$1) {
-      if ($$0 != 0) {
-         b.error("FreeType error: {} ({})", a($$0), $$1);
-         return true;
-      } else {
-         return false;
+      public fxp.a h(int $$0) {
+         return this.b($$0, $$0);
       }
-   }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
+      public fxp.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
+      public fxp.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
 
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
+      public fxp.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   public static void b() {
-      synchronized (a) {
-         if (c != 0L) {
-            FreeType.FT_Done_Library(c);
-            c = 0L;
-         }
+      public fxp.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fxp.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fxp.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fxp.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fxp.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fxp.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fxp.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fxp.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fxp.a j() {
+         return new fxp.a(this);
+      }
+
+      @Override
+      public fxp.a h() {
+         return this;
       }
    }
 }

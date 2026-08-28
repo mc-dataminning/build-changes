@@ -1,739 +1,113 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import java.io.File;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.EnumSet;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public abstract class avu {
-   public static final File a = new File("banned-players.json");
-   public static final File b = new File("banned-ips.json");
-   public static final File c = new File("ops.json");
-   public static final File d = new File("whitelist.json");
-   public static final xc e = xc.c("chat.filtered_full");
-   public static final xc f = xc.c("multiplayer.disconnect.duplicate_login");
-   private static final Logger h = LogUtils.getLogger();
-   private static final int i = 600;
-   private static final SimpleDateFormat j = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-   private final MinecraftServer k;
-   private final List<arv> l = Lists.newArrayList();
-   private final Map<UUID, arv> m = Maps.newHashMap();
-   private final awa n = new awa(a);
-   private final avr o = new avr(b);
-   private final avv p = new avv(c);
-   private final awc q = new awc(d);
-   private final Map<UUID, awx> r = Maps.newHashMap();
-   private final Map<UUID, als> s = Maps.newHashMap();
-   private final faa t;
-   private boolean u;
-   private final jn<alt> v;
-   protected final int g;
-   private int w;
-   private int x;
-   private boolean y;
-   private static final boolean z = false;
-   private int A;
-
-   public avu(MinecraftServer $$0, jn<alt> $$1, faa $$2, int $$3) {
-      this.k = $$0;
-      this.v = $$1;
-      this.g = $$3;
-      this.t = $$2;
-   }
-
-   public void a(vv $$0, arv $$1, ask $$2) {
-      GameProfile $$3 = $$1.gi();
-      avq $$4 = this.k.at();
-      String $$6;
-      if ($$4 != null) {
-         Optional<GameProfile> $$5 = $$4.a($$3.getId());
-         $$6 = $$5.<String>map(GameProfile::getName).orElse($$3.getName());
-         $$4.a($$3);
-      } else {
-         $$6 = $$3.getName();
-      }
-
-      Optional<ua> $$8 = this.a($$1);
-      alj<djz> $$9 = $$8.<alj<djz>>flatMap($$0x -> efd.a(new Dynamic(uo.a, $$0x.a("Dimension"))).resultOrPartial(h::error)).orElse(djz.i);
-      aru $$10 = this.k.a($$9);
-      aru $$11;
-      if ($$10 == null) {
-         h.warn("Unknown respawn dimension {}, defaulting to overworld", $$9);
-         $$11 = this.k.J();
-      } else {
-         $$11 = $$10;
-      }
-
-      $$1.a($$11);
-      String $$13 = $$0.a(this.k.bl());
-      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ai().getString(), $$13, $$1.ao(), $$1.dA(), $$1.dC(), $$1.dG()});
-      ezt $$14 = $$11.C_();
-      $$1.e($$8.orElse(null));
-      asx $$15 = new asx(this.k, $$0, $$1, $$2);
-      $$0.a(ags.a.a(wn.a(this.k.ba())), $$15);
-      djv $$16 = $$11.O();
-      boolean $$17 = $$16.c(djv.F);
-      boolean $$18 = $$16.c(djv.r);
-      boolean $$19 = $$16.c(djv.y);
-      $$15.b(new adp($$1.ao(), $$14.l(), this.k.K(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aA()));
-      $$15.b(new ack($$14.q(), $$14.r()));
-      $$15.b(new adz($$1.gk()));
-      $$15.b(new afn($$1.gj().f()));
-      dey $$20 = this.k.aI();
-      $$15.b(new agn($$20.b(), $$20.c()));
-      this.e($$1);
-      $$1.I().c();
-      $$1.J().a($$1);
-      this.a($$11.g(), $$1);
-      this.k.av();
-      xq $$21;
-      if ($$1.gi().getName().equalsIgnoreCase($$6)) {
-         $$21 = xc.a("multiplayer.player.joined", $$1.m_());
-      } else {
-         $$21 = xc.a("multiplayer.player.joined.renamed", $$1.m_(), $$6);
-      }
-
-      this.a($$21.a(o.o), false);
-      $$15.a($$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
-      akh $$23 = this.k.au();
-      if ($$23 != null && !$$2.d()) {
-         $$1.a($$23);
-      }
-
-      $$1.f.b(aef.a(this.l));
-      this.l.add($$1);
-      this.m.put($$1.cG(), $$1);
-      this.a(aef.a(List.of($$1)));
-      this.a($$1, $$11);
-      $$11.a($$1);
-      this.k.aM().a($$1);
-      this.d($$1);
-      $$8.ifPresent($$1x -> {
-         $$1.d($$1x);
-         $$1.c($$1x);
-      });
-      $$1.d();
-   }
-
-   protected void a(amd $$0, arv $$1) {
-      Set<fgp> $$2 = Sets.newHashSet();
-
-      for (fgs $$3 : $$0.f()) {
-         $$1.f.b(afr.a($$3, true));
-      }
-
-      for (fgo $$4 : fgo.values()) {
-         fgp $$5 = $$0.a($$4);
-         if ($$5 != null && !$$2.contains($$5)) {
-            for (zj<?> $$7 : $$0.d($$5)) {
-               $$1.f.b($$7);
-            }
-
-            $$2.add($$5);
-         }
-      }
-   }
-
-   public void a(aru $$0) {
-      $$0.E_().a(new ecw() {
-         @Override
-         public void a(ecy $$0, double $$1) {
-            avu.this.a(new aey($$0));
-         }
-
-         @Override
-         public void a(ecy $$0, double $$1, double $$2, long $$3) {
-            avu.this.a(new aex($$0));
-         }
-
-         @Override
-         public void a(ecy $$0, double $$1, double $$2) {
-            avu.this.a(new aew($$0));
-         }
-
-         @Override
-         public void a(ecy $$0, int $$1) {
-            avu.this.a(new aez($$0));
-         }
-
-         @Override
-         public void b(ecy $$0, int $$1) {
-            avu.this.a(new afa($$0));
-         }
-
-         @Override
-         public void b(ecy $$0, double $$1) {
-         }
-
-         @Override
-         public void c(ecy $$0, double $$1) {
-         }
-      });
-   }
-
-   public Optional<ua> a(arv $$0) {
-      ua $$1 = this.k.aZ().w();
-      Optional<ua> $$2;
-      if (this.k.a($$0.gi()) && $$1 != null) {
-         $$2 = Optional.of($$1);
-         $$0.i($$1);
-         h.debug("loading single player");
-      } else {
-         $$2 = this.t.b($$0);
-      }
-
-      return $$2;
-   }
-
-   protected void b(arv $$0) {
-      this.t.a($$0);
-      awx $$1 = this.r.get($$0.cG());
-      if ($$1 != null) {
-         $$1.a();
-      }
-
-      als $$2 = this.s.get($$0.cG());
-      if ($$2 != null) {
-         $$2.b();
-      }
-   }
-
-   public void c(arv $$0) {
-      aru $$1 = $$0.y();
-      $$0.a(axb.j);
-      this.b($$0);
-      if ($$0.bY()) {
-         bwv $$2 = $$0.df();
-         if ($$2.de()) {
-            h.debug("Removing player mount");
-            $$0.bO();
-            $$2.db().forEach($$0x -> $$0x.c(bwv.d.d));
-         }
-      }
-
-      $$0.al();
-
-      for (cte $$3 : $$0.ah()) {
-         $$3.c(bwv.d.d);
-      }
-
-      $$1.a($$0, bwv.d.d);
-      $$0.S().a();
-      this.l.remove($$0);
-      this.k.aM().b($$0);
-      UUID $$4 = $$0.cG();
-      arv $$5 = this.m.get($$4);
-      if ($$5 == $$0) {
-         this.m.remove($$4);
-         this.r.remove($$4);
-         this.s.remove($$4);
-      }
-
-      this.a(new aee(List.of($$0.cG())));
-   }
-
+public class avu<S> implements avk {
+   private static final int a = 2;
+   private static final int b = 2;
+   private static final int c = 1;
+   final CompletableFuture<bbh> d = new CompletableFuture<>();
    @Nullable
-   public xc a(SocketAddress $$0, GameProfile $$1) {
-      if (this.n.a($$1)) {
-         awb $$2 = this.n.b($$1);
-         xq $$3 = xc.a("multiplayer.disconnect.banned.reason", $$2.d());
-         if ($$2.c() != null) {
-            $$3.b(xc.a("multiplayer.disconnect.banned.expiration", j.format($$2.c())));
-         }
+   private CompletableFuture<List<S>> e;
+   final Set<avi> f;
+   private final int g;
+   private final AtomicInteger h = new AtomicInteger();
+   private final AtomicInteger i = new AtomicInteger();
+   private final AtomicInteger j = new AtomicInteger();
+   private final AtomicInteger k = new AtomicInteger();
 
-         return $$3;
-      } else if (!this.c($$1)) {
-         return xc.c("multiplayer.disconnect.not_whitelisted");
-      } else if (this.o.a($$0)) {
-         avs $$4 = this.o.b($$0);
-         xq $$5 = xc.a("multiplayer.disconnect.banned_ip.reason", $$4.d());
-         if ($$4.c() != null) {
-            $$5.b(xc.a("multiplayer.disconnect.banned_ip.expiration", j.format($$4.c())));
-         }
-
-         return $$5;
-      } else {
-         return this.l.size() >= this.g && !this.d($$1) ? xc.c("multiplayer.disconnect.server_full") : null;
-      }
-   }
-
-   public arv a(GameProfile $$0, are $$1) {
-      return new arv(this.k, this.k.J(), $$0, $$1);
-   }
-
-   public boolean e(GameProfile $$0) {
-      UUID $$1 = $$0.getId();
-      Set<arv> $$2 = Sets.newIdentityHashSet();
-
-      for (arv $$3 : this.l) {
-         if ($$3.cG().equals($$1)) {
-            $$2.add($$3);
-         }
-      }
-
-      arv $$4 = this.m.get($$0.getId());
-      if ($$4 != null) {
-         $$2.add($$4);
-      }
-
-      for (arv $$5 : $$2) {
-         $$5.f.a(f);
-      }
-
-      return !$$2.isEmpty();
-   }
-
-   public arv a(arv $$0, boolean $$1, bwv.d $$2) {
-      this.l.remove($$0);
-      $$0.y().a($$0, $$2);
-      eyq $$3 = $$0.a(!$$1, eyq.a);
-      aru $$4 = $$3.b();
-      arv $$5 = new arv(this.k, $$4, $$0.gi(), $$0.C());
-      $$5.f = $$0.f;
-      $$5.a($$0, $$1);
-      $$5.e($$0.ao());
-      $$5.b($$0.fy());
-      if (!$$3.g()) {
-         $$5.b($$0);
-      }
-
-      for (String $$6 : $$0.ap()) {
-         $$5.a($$6);
-      }
-
-      ffs $$7 = $$3.c();
-      $$5.b($$7.d, $$7.e, $$7.f, $$3.e(), $$3.f());
-      if ($$3.g()) {
-         $$5.f.b(new adf(adf.b, 0.0F));
-      }
-
-      byte $$8 = (byte)($$1 ? 1 : 0);
-      aru $$9 = $$5.y();
-      ezt $$10 = $$9.C_();
-      $$5.f.b(new aeq($$5.b($$9), $$8));
-      $$5.f.a($$5.dA(), $$5.dC(), $$5.dG(), $$5.dL(), $$5.dN());
-      $$5.f.b(new aff($$4.aa(), $$4.ab()));
-      $$5.f.b(new ack($$10.q(), $$10.r()));
-      $$5.f.b(new afl($$5.ch, $$5.cg, $$5.cf));
-      this.d($$5);
-      this.a($$5, $$4);
-      this.e($$5);
-      $$4.b($$5);
-      this.l.add($$5);
-      this.m.put($$5.cG(), $$5);
-      $$5.d();
-      $$5.d($$5.eG());
-      arv.a $$11 = $$5.T();
-      if (!$$1 && $$11 != null) {
-         aru $$12 = this.k.a($$11.a());
-         if ($$12 != null) {
-            iw $$13 = $$11.b();
-            ebg $$14 = $$12.a_($$13);
-            if ($$14.a(dng.pT)) {
-               $$5.f.b(new afz(awr.wm, aws.e, (double)$$13.u(), (double)$$13.v(), (double)$$13.w(), 1.0F, 1.0F, $$4.G_().g()));
-            }
-         }
-      }
-
+   public static avk b(avo $$0, List<avi> $$1, Executor $$2, Executor $$3, CompletableFuture<bbh> $$4) {
+      avu<Void> $$5 = new avu<>($$1);
+      $$5.b($$2, $$3, $$0, $$1, avu.a.a, $$4);
       return $$5;
    }
 
-   public void d(arv $$0) {
-      this.a($$0, $$0.f);
+   protected avu(List<avi> $$0) {
+      this.g = $$0.size();
+      this.f = new HashSet<>($$0);
    }
 
-   public void a(bxw $$0, asx $$1) {
-      for (bvz $$2 : $$0.eD()) {
-         $$1.b(new agm($$0.ao(), $$2, false));
+   protected void b(Executor $$0, Executor $$1, avo $$2, List<avi> $$3, avu.a<S> $$4, CompletableFuture<?> $$5) {
+      this.e = this.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected CompletableFuture<List<S>> a(Executor $$0, Executor $$1, avo $$2, List<avi> $$3, avu.a<S> $$4, CompletableFuture<?> $$5) {
+      Executor $$6 = $$1x -> {
+         this.h.incrementAndGet();
+         $$0.execute(() -> {
+            $$1x.run();
+            this.i.incrementAndGet();
+         });
+      };
+      Executor $$7 = $$1x -> {
+         this.j.incrementAndGet();
+         $$1.execute(() -> {
+            $$1x.run();
+            this.k.incrementAndGet();
+         });
+      };
+      this.h.incrementAndGet();
+      $$5.thenRun(this.i::incrementAndGet);
+      CompletableFuture<?> $$8 = $$5;
+      List<CompletableFuture<S>> $$9 = new ArrayList<>();
+
+      for (avi $$10 : $$3) {
+         avi.a $$11 = this.a($$10, $$8, $$1);
+         CompletableFuture<S> $$12 = $$4.create($$11, $$2, $$10, $$6, $$7);
+         $$9.add($$12);
+         $$8 = $$12;
       }
+
+      return ag.e($$9);
    }
 
-   public void e(arv $$0) {
-      GameProfile $$1 = $$0.gi();
-      int $$2 = this.k.c($$1);
-      this.a($$0, $$2);
-   }
-
-   public void d() {
-      if (++this.A > 600) {
-         this.a(new aef(EnumSet.of(aef.a.e), this.l));
-         this.A = 0;
-      }
-   }
-
-   public void a(zj<?> $$0) {
-      for (arv $$1 : this.l) {
-         $$1.f.b($$0);
-      }
-   }
-
-   public void a(zj<?> $$0, alj<djz> $$1) {
-      for (arv $$2 : this.l) {
-         if ($$2.dV().aj() == $$1) {
-            $$2.f.b($$0);
+   private avi.a a(final avi $$0, final CompletableFuture<?> $$1, final Executor $$2) {
+      return new avi.a() {
+         @Override
+         public <T> CompletableFuture<T> wait(T $$0x) {
+            $$2.execute(() -> {
+               avu.this.f.remove($$0);
+               if (avu.this.f.isEmpty()) {
+                  avu.this.d.complete(bbh.a);
+               }
+            });
+            return avu.this.d.thenCombine((CompletionStage<? extends T>)$$1, ($$1xx, $$2xx) -> $$0);
          }
-      }
+      };
    }
 
-   public void a(crz $$0, xc $$1) {
-      fgz $$2 = $$0.cq();
-      if ($$2 != null) {
-         for (String $$4 : $$2.h()) {
-            arv $$5 = this.a($$4);
-            if ($$5 != null && $$5 != $$0) {
-               $$5.a($$1);
-            }
-         }
-      }
+   @Override
+   public CompletableFuture<?> a() {
+      return Objects.requireNonNull(this.e, "not started");
    }
 
-   public void b(crz $$0, xc $$1) {
-      fgz $$2 = $$0.cq();
-      if ($$2 == null) {
-         this.a($$1, false);
-      } else {
-         for (int $$3 = 0; $$3 < this.l.size(); $$3++) {
-            arv $$4 = this.l.get($$3);
-            if ($$4.cq() != $$2) {
-               $$4.a($$1);
-            }
-         }
-      }
+   @Override
+   public float b() {
+      int $$0 = this.g - this.f.size();
+      float $$1 = (float)a(this.i.get(), this.k.get(), $$0);
+      float $$2 = (float)a(this.h.get(), this.j.get(), this.g);
+      return $$1 / $$2;
    }
 
-   public String[] e() {
-      String[] $$0 = new String[this.l.size()];
-
-      for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
-         $$0[$$1] = this.l.get($$1).gi().getName();
-      }
-
-      return $$0;
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 * 2 + $$1 * 2 + $$2 * 1;
    }
 
-   public awa f() {
-      return this.n;
+   public static avk a(avo $$0, List<avi> $$1, Executor $$2, Executor $$3, CompletableFuture<bbh> $$4, boolean $$5) {
+      return $$5 ? avj.a($$0, $$1, $$2, $$3, $$4) : b($$0, $$1, $$2, $$3, $$4);
    }
 
-   public avr g() {
-      return this.o;
-   }
+   @FunctionalInterface
+   protected interface a<S> {
+      avu.a<Void> a = ($$0, $$1, $$2, $$3, $$4) -> $$2.reload($$0, $$1, $$3, $$4);
 
-   public void a(GameProfile $$0) {
-      this.p.a(new avw($$0, this.k.k(), this.p.a($$0)));
-      arv $$1 = this.a($$0.getId());
-      if ($$1 != null) {
-         this.e($$1);
-      }
-   }
-
-   public void b(GameProfile $$0) {
-      this.p.c($$0);
-      arv $$1 = this.a($$0.getId());
-      if ($$1 != null) {
-         this.e($$1);
-      }
-   }
-
-   private void a(arv $$0, int $$1) {
-      if ($$0.f != null) {
-         byte $$2;
-         if ($$1 <= 0) {
-            $$2 = 24;
-         } else if ($$1 >= 4) {
-            $$2 = 28;
-         } else {
-            $$2 = (byte)(24 + $$1);
-         }
-
-         $$0.f.b(new adb($$0, $$2));
-      }
-
-      this.k.aG().a($$0);
-   }
-
-   public boolean c(GameProfile $$0) {
-      return !this.u || this.p.d($$0) || this.q.d($$0);
-   }
-
-   public boolean f(GameProfile $$0) {
-      return this.p.d($$0) || this.k.a($$0) && this.k.aZ().m() || this.y;
-   }
-
-   @Nullable
-   public arv a(String $$0) {
-      int $$1 = this.l.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         arv $$3 = this.l.get($$2);
-         if ($$3.gi().getName().equalsIgnoreCase($$0)) {
-            return $$3;
-         }
-      }
-
-      return null;
-   }
-
-   public void a(@Nullable crz $$0, double $$1, double $$2, double $$3, double $$4, alj<djz> $$5, zj<?> $$6) {
-      for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
-         arv $$8 = this.l.get($$7);
-         if ($$8 != $$0 && $$8.dV().aj() == $$5) {
-            double $$9 = $$1 - $$8.dA();
-            double $$10 = $$2 - $$8.dC();
-            double $$11 = $$3 - $$8.dG();
-            if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
-               $$8.f.b($$6);
-            }
-         }
-      }
-   }
-
-   public void h() {
-      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
-         this.b(this.l.get($$0));
-      }
-   }
-
-   public awc i() {
-      return this.q;
-   }
-
-   public String[] j() {
-      return this.q.a();
-   }
-
-   public avv k() {
-      return this.p;
-   }
-
-   public String[] l() {
-      return this.p.a();
-   }
-
-   public void a() {
-   }
-
-   public void a(arv $$0, aru $$1) {
-      ecy $$2 = this.k.J().E_();
-      $$0.f.b(new adi($$2));
-      $$0.f.b(new afv($$1.ae(), $$1.af(), $$1.O().c(djv.m)));
-      $$0.f.b(new aff($$1.aa(), $$1.ab()));
-      if ($$1.ah()) {
-         $$0.f.b(new adf(adf.c, 0.0F));
-         $$0.f.b(new adf(adf.i, $$1.d(1.0F)));
-         $$0.f.b(new adf(adf.j, $$1.b(1.0F)));
-      }
-
-      $$0.f.b(new adf(adf.o, 0.0F));
-      this.k.aP().a($$0);
-   }
-
-   public void f(arv $$0) {
-      $$0.bQ.b();
-      $$0.v();
-      $$0.f.b(new afn($$0.gj().f()));
-   }
-
-   public int m() {
-      return this.l.size();
-   }
-
-   public int n() {
-      return this.g;
-   }
-
-   public boolean o() {
-      return this.u;
-   }
-
-   public void a(boolean $$0) {
-      this.u = $$0;
-   }
-
-   public List<arv> b(String $$0) {
-      List<arv> $$1 = Lists.newArrayList();
-
-      for (arv $$2 : this.l) {
-         if ($$2.B().equals($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public int p() {
-      return this.w;
-   }
-
-   public int q() {
-      return this.x;
-   }
-
-   public MinecraftServer c() {
-      return this.k;
-   }
-
-   @Nullable
-   public ua r() {
-      return null;
-   }
-
-   public void b(boolean $$0) {
-      this.y = $$0;
-   }
-
-   public void s() {
-      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
-         this.l.get($$0).f.a(xc.c("multiplayer.disconnect.server_shutdown"));
-      }
-   }
-
-   public void a(xc $$0, boolean $$1) {
-      this.a($$0, $$1x -> $$0, $$1);
-   }
-
-   public void a(xc $$0, Function<arv, xc> $$1, boolean $$2) {
-      this.k.a($$0);
-
-      for (arv $$3 : this.l) {
-         xc $$4 = $$1.apply($$3);
-         if ($$4 != null) {
-            $$3.b($$4, $$2);
-         }
-      }
-   }
-
-   public void a(xs $$0, ek $$1, wy.a $$2) {
-      this.a($$0, $$1::a, $$1.i(), $$2);
-   }
-
-   public void a(xs $$0, arv $$1, wy.a $$2) {
-      this.a($$0, $$1::c, $$1, $$2);
-   }
-
-   private void a(xs $$0, Predicate<arv> $$1, @Nullable arv $$2, wy.a $$3) {
-      boolean $$4 = this.a($$0);
-      this.k.a($$0.d(), $$3, $$4 ? null : "Not Secure");
-      xr $$5 = xr.a($$0);
-      boolean $$6 = false;
-
-      for (arv $$7 : this.l) {
-         boolean $$8 = $$1.test($$7);
-         $$7.a($$5, $$8, $$3);
-         $$6 |= $$8 && $$0.j();
-      }
-
-      if ($$6 && $$2 != null) {
-         $$2.a(e);
-      }
-   }
-
-   private boolean a(xs $$0) {
-      return $$0.i() && !$$0.a(Instant.now());
-   }
-
-   public awx a(crz $$0) {
-      UUID $$1 = $$0.cG();
-      awx $$2 = this.r.get($$1);
-      if ($$2 == null) {
-         File $$3 = this.k.a(ezv.b).toFile();
-         File $$4 = new File($$3, $$1 + ".json");
-         if (!$$4.exists()) {
-            File $$5 = new File($$3, $$0.ai().getString() + ".json");
-            Path $$6 = $$5.toPath();
-            if (w.a($$6) && w.b($$6) && $$6.startsWith($$3.getPath()) && $$5.isFile()) {
-               $$5.renameTo($$4);
-            }
-         }
-
-         $$2 = new awx(this.k, $$4);
-         this.r.put($$1, $$2);
-      }
-
-      return $$2;
-   }
-
-   public als g(arv $$0) {
-      UUID $$1 = $$0.cG();
-      als $$2 = this.s.get($$1);
-      if ($$2 == null) {
-         Path $$3 = this.k.a(ezv.a).resolve($$1 + ".json");
-         $$2 = new als(this.k.aC(), this, this.k.aD(), $$3, $$0);
-         this.s.put($$1, $$2);
-      }
-
-      $$2.a($$0);
-      return $$2;
-   }
-
-   public void a(int $$0) {
-      this.w = $$0;
-      this.a(new afd($$0));
-
-      for (aru $$1 : this.k.L()) {
-         if ($$1 != null) {
-            $$1.m().a($$0);
-         }
-      }
-   }
-
-   public void b(int $$0) {
-      this.x = $$0;
-      this.a(new aft($$0));
-
-      for (aru $$1 : this.k.L()) {
-         if ($$1 != null) {
-            $$1.m().b($$0);
-         }
-      }
-   }
-
-   public List<arv> t() {
-      return this.l;
-   }
-
-   @Nullable
-   public arv a(UUID $$0) {
-      return this.m.get($$0);
-   }
-
-   public boolean d(GameProfile $$0) {
-      return false;
-   }
-
-   public void u() {
-      for (als $$0 : this.s.values()) {
-         $$0.a(this.k.aD());
-      }
-
-      this.a(new aaa(axx.a(this.v)));
-      dey $$1 = this.k.aI();
-      agn $$2 = new agn($$1.b(), $$1.c());
-
-      for (arv $$3 : this.l) {
-         $$3.f.b($$2);
-         $$3.J().a($$3);
-      }
-   }
-
-   public boolean v() {
-      return this.y;
+      CompletableFuture<S> create(avi.a var1, avo var2, avi var3, Executor var4, Executor var5);
    }
 }

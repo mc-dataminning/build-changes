@@ -1,4 +1,3 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
@@ -8,87 +7,180 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 import java.util.Optional;
 
 public class bgy extends DataFix {
-   private final String a;
-   private static final Map<String, String> b = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("minecraft:bat", "minecraft:bat_spawn_egg");
-      $$0.put("minecraft:blaze", "minecraft:blaze_spawn_egg");
-      $$0.put("minecraft:cave_spider", "minecraft:cave_spider_spawn_egg");
-      $$0.put("minecraft:chicken", "minecraft:chicken_spawn_egg");
-      $$0.put("minecraft:cow", "minecraft:cow_spawn_egg");
-      $$0.put("minecraft:creeper", "minecraft:creeper_spawn_egg");
-      $$0.put("minecraft:donkey", "minecraft:donkey_spawn_egg");
-      $$0.put("minecraft:elder_guardian", "minecraft:elder_guardian_spawn_egg");
-      $$0.put("minecraft:ender_dragon", "minecraft:ender_dragon_spawn_egg");
-      $$0.put("minecraft:enderman", "minecraft:enderman_spawn_egg");
-      $$0.put("minecraft:endermite", "minecraft:endermite_spawn_egg");
-      $$0.put("minecraft:evocation_illager", "minecraft:evocation_illager_spawn_egg");
-      $$0.put("minecraft:ghast", "minecraft:ghast_spawn_egg");
-      $$0.put("minecraft:guardian", "minecraft:guardian_spawn_egg");
-      $$0.put("minecraft:horse", "minecraft:horse_spawn_egg");
-      $$0.put("minecraft:husk", "minecraft:husk_spawn_egg");
-      $$0.put("minecraft:iron_golem", "minecraft:iron_golem_spawn_egg");
-      $$0.put("minecraft:llama", "minecraft:llama_spawn_egg");
-      $$0.put("minecraft:magma_cube", "minecraft:magma_cube_spawn_egg");
-      $$0.put("minecraft:mooshroom", "minecraft:mooshroom_spawn_egg");
-      $$0.put("minecraft:mule", "minecraft:mule_spawn_egg");
-      $$0.put("minecraft:ocelot", "minecraft:ocelot_spawn_egg");
-      $$0.put("minecraft:pufferfish", "minecraft:pufferfish_spawn_egg");
-      $$0.put("minecraft:parrot", "minecraft:parrot_spawn_egg");
-      $$0.put("minecraft:pig", "minecraft:pig_spawn_egg");
-      $$0.put("minecraft:polar_bear", "minecraft:polar_bear_spawn_egg");
-      $$0.put("minecraft:rabbit", "minecraft:rabbit_spawn_egg");
-      $$0.put("minecraft:sheep", "minecraft:sheep_spawn_egg");
-      $$0.put("minecraft:shulker", "minecraft:shulker_spawn_egg");
-      $$0.put("minecraft:silverfish", "minecraft:silverfish_spawn_egg");
-      $$0.put("minecraft:skeleton", "minecraft:skeleton_spawn_egg");
-      $$0.put("minecraft:skeleton_horse", "minecraft:skeleton_horse_spawn_egg");
-      $$0.put("minecraft:slime", "minecraft:slime_spawn_egg");
-      $$0.put("minecraft:snow_golem", "minecraft:snow_golem_spawn_egg");
-      $$0.put("minecraft:spider", "minecraft:spider_spawn_egg");
-      $$0.put("minecraft:squid", "minecraft:squid_spawn_egg");
-      $$0.put("minecraft:stray", "minecraft:stray_spawn_egg");
-      $$0.put("minecraft:turtle", "minecraft:turtle_spawn_egg");
-      $$0.put("minecraft:vex", "minecraft:vex_spawn_egg");
-      $$0.put("minecraft:villager", "minecraft:villager_spawn_egg");
-      $$0.put("minecraft:vindication_illager", "minecraft:vindication_illager_spawn_egg");
-      $$0.put("minecraft:witch", "minecraft:witch_spawn_egg");
-      $$0.put("minecraft:wither", "minecraft:wither_spawn_egg");
-      $$0.put("minecraft:wither_skeleton", "minecraft:wither_skeleton_spawn_egg");
-      $$0.put("minecraft:wolf", "minecraft:wolf_spawn_egg");
-      $$0.put("minecraft:zombie", "minecraft:zombie_spawn_egg");
-      $$0.put("minecraft:zombie_horse", "minecraft:zombie_horse_spawn_egg");
-      $$0.put("minecraft:zombie_pigman", "minecraft:zombie_pigman_spawn_egg");
-      $$0.put("minecraft:zombie_villager", "minecraft:zombie_villager_spawn_egg");
+   private static final int b = 16384;
+   private static final String[] c = (String[])DataFixUtils.make(new String[128], $$0 -> {
+      $$0[0] = "minecraft:water";
+      $$0[1] = "minecraft:regeneration";
+      $$0[2] = "minecraft:swiftness";
+      $$0[3] = "minecraft:fire_resistance";
+      $$0[4] = "minecraft:poison";
+      $$0[5] = "minecraft:healing";
+      $$0[6] = "minecraft:night_vision";
+      $$0[7] = null;
+      $$0[8] = "minecraft:weakness";
+      $$0[9] = "minecraft:strength";
+      $$0[10] = "minecraft:slowness";
+      $$0[11] = "minecraft:leaping";
+      $$0[12] = "minecraft:harming";
+      $$0[13] = "minecraft:water_breathing";
+      $$0[14] = "minecraft:invisibility";
+      $$0[15] = null;
+      $$0[16] = "minecraft:awkward";
+      $$0[17] = "minecraft:regeneration";
+      $$0[18] = "minecraft:swiftness";
+      $$0[19] = "minecraft:fire_resistance";
+      $$0[20] = "minecraft:poison";
+      $$0[21] = "minecraft:healing";
+      $$0[22] = "minecraft:night_vision";
+      $$0[23] = null;
+      $$0[24] = "minecraft:weakness";
+      $$0[25] = "minecraft:strength";
+      $$0[26] = "minecraft:slowness";
+      $$0[27] = "minecraft:leaping";
+      $$0[28] = "minecraft:harming";
+      $$0[29] = "minecraft:water_breathing";
+      $$0[30] = "minecraft:invisibility";
+      $$0[31] = null;
+      $$0[32] = "minecraft:thick";
+      $$0[33] = "minecraft:strong_regeneration";
+      $$0[34] = "minecraft:strong_swiftness";
+      $$0[35] = "minecraft:fire_resistance";
+      $$0[36] = "minecraft:strong_poison";
+      $$0[37] = "minecraft:strong_healing";
+      $$0[38] = "minecraft:night_vision";
+      $$0[39] = null;
+      $$0[40] = "minecraft:weakness";
+      $$0[41] = "minecraft:strong_strength";
+      $$0[42] = "minecraft:slowness";
+      $$0[43] = "minecraft:strong_leaping";
+      $$0[44] = "minecraft:strong_harming";
+      $$0[45] = "minecraft:water_breathing";
+      $$0[46] = "minecraft:invisibility";
+      $$0[47] = null;
+      $$0[48] = null;
+      $$0[49] = "minecraft:strong_regeneration";
+      $$0[50] = "minecraft:strong_swiftness";
+      $$0[51] = "minecraft:fire_resistance";
+      $$0[52] = "minecraft:strong_poison";
+      $$0[53] = "minecraft:strong_healing";
+      $$0[54] = "minecraft:night_vision";
+      $$0[55] = null;
+      $$0[56] = "minecraft:weakness";
+      $$0[57] = "minecraft:strong_strength";
+      $$0[58] = "minecraft:slowness";
+      $$0[59] = "minecraft:strong_leaping";
+      $$0[60] = "minecraft:strong_harming";
+      $$0[61] = "minecraft:water_breathing";
+      $$0[62] = "minecraft:invisibility";
+      $$0[63] = null;
+      $$0[64] = "minecraft:mundane";
+      $$0[65] = "minecraft:long_regeneration";
+      $$0[66] = "minecraft:long_swiftness";
+      $$0[67] = "minecraft:long_fire_resistance";
+      $$0[68] = "minecraft:long_poison";
+      $$0[69] = "minecraft:healing";
+      $$0[70] = "minecraft:long_night_vision";
+      $$0[71] = null;
+      $$0[72] = "minecraft:long_weakness";
+      $$0[73] = "minecraft:long_strength";
+      $$0[74] = "minecraft:long_slowness";
+      $$0[75] = "minecraft:long_leaping";
+      $$0[76] = "minecraft:harming";
+      $$0[77] = "minecraft:long_water_breathing";
+      $$0[78] = "minecraft:long_invisibility";
+      $$0[79] = null;
+      $$0[80] = "minecraft:awkward";
+      $$0[81] = "minecraft:long_regeneration";
+      $$0[82] = "minecraft:long_swiftness";
+      $$0[83] = "minecraft:long_fire_resistance";
+      $$0[84] = "minecraft:long_poison";
+      $$0[85] = "minecraft:healing";
+      $$0[86] = "minecraft:long_night_vision";
+      $$0[87] = null;
+      $$0[88] = "minecraft:long_weakness";
+      $$0[89] = "minecraft:long_strength";
+      $$0[90] = "minecraft:long_slowness";
+      $$0[91] = "minecraft:long_leaping";
+      $$0[92] = "minecraft:harming";
+      $$0[93] = "minecraft:long_water_breathing";
+      $$0[94] = "minecraft:long_invisibility";
+      $$0[95] = null;
+      $$0[96] = "minecraft:thick";
+      $$0[97] = "minecraft:regeneration";
+      $$0[98] = "minecraft:swiftness";
+      $$0[99] = "minecraft:long_fire_resistance";
+      $$0[100] = "minecraft:poison";
+      $$0[101] = "minecraft:strong_healing";
+      $$0[102] = "minecraft:long_night_vision";
+      $$0[103] = null;
+      $$0[104] = "minecraft:long_weakness";
+      $$0[105] = "minecraft:strength";
+      $$0[106] = "minecraft:long_slowness";
+      $$0[107] = "minecraft:leaping";
+      $$0[108] = "minecraft:strong_harming";
+      $$0[109] = "minecraft:long_water_breathing";
+      $$0[110] = "minecraft:long_invisibility";
+      $$0[111] = null;
+      $$0[112] = null;
+      $$0[113] = "minecraft:regeneration";
+      $$0[114] = "minecraft:swiftness";
+      $$0[115] = "minecraft:long_fire_resistance";
+      $$0[116] = "minecraft:poison";
+      $$0[117] = "minecraft:strong_healing";
+      $$0[118] = "minecraft:long_night_vision";
+      $$0[119] = null;
+      $$0[120] = "minecraft:long_weakness";
+      $$0[121] = "minecraft:strength";
+      $$0[122] = "minecraft:long_slowness";
+      $$0[123] = "minecraft:leaping";
+      $$0[124] = "minecraft:strong_harming";
+      $$0[125] = "minecraft:long_water_breathing";
+      $$0[126] = "minecraft:long_invisibility";
+      $$0[127] = null;
    });
+   public static final String a = "minecraft:water";
 
-   public bgy(Schema $$0, boolean $$1, String $$2) {
+   public bgy(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bjd.F.typeName(), bky.a()));
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bky.a());
-      OpticFinder<?> $$3 = $$0.findField("tag");
-      OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
-      return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), $$0, $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$1);
-         if ($$5.isPresent() && Objects.equals($$5.get().getSecond(), this.a)) {
-            Typed<?> $$6 = $$4x.getOrCreateTyped($$3);
-            Typed<?> $$7 = $$6.getOrCreateTyped($$4);
-            Optional<String> $$8 = $$7.getOptional($$2);
-            if ($$8.isPresent()) {
-               return $$4x.set($$1, Pair.of(bjd.F.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
+      Type<?> $$0 = this.getInputSchema().getType(bjm.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bjm.F.typeName(), blh.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemPotionFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isPresent() && Objects.equals($$3.get().getSecond(), "minecraft:potion")) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            Optional<? extends Typed<?>> $$5 = $$2x.getOptionalTyped($$2);
+            short $$6 = $$4.get("Damage").asShort((short)0);
+            if ($$5.isPresent()) {
+               Typed<?> $$7 = $$2x;
+               Dynamic<?> $$8 = (Dynamic<?>)$$5.get().get(DSL.remainderFinder());
+               Optional<String> $$9 = $$8.get("Potion").asString().result();
+               if ($$9.isEmpty()) {
+                  String $$10 = c[$$6 & 127];
+                  Typed<?> $$11 = $$5.get().set(DSL.remainderFinder(), $$8.set("Potion", $$8.createString($$10 == null ? "minecraft:water" : $$10)));
+                  $$7 = $$2x.set($$2, $$11);
+                  if (($$6 & 16384) == 16384) {
+                     $$7 = $$7.set($$1, Pair.of(bjm.F.typeName(), "minecraft:splash_potion"));
+                  }
+               }
+
+               if ($$6 != 0) {
+                  $$4 = $$4.set("Damage", $$4.createShort((short)0));
+               }
+
+               return $$7.set(DSL.remainderFinder(), $$4);
             }
          }
 
-         return $$4x;
+         return $$2x;
       });
    }
 }

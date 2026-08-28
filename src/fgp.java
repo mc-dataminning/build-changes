@@ -1,132 +1,85 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-public class fgp {
-   private final fgx a;
-   private final String b;
-   private final fha c;
-   private xc d;
-   private xc e;
-   private fha.a f;
-   private boolean g;
-   @Nullable
-   private ys h;
+public class fgp implements fgo {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
 
-   public fgp(fgx $$0, String $$1, fha $$2, xc $$3, fha.a $$4, boolean $$5, @Nullable ys $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.j();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
+   public fgp(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
+
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
+         } else {
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
+         }
+      }
    }
 
-   public fgp.a a() {
-      return new fgp.a(this.b, this.c, this.d, this.f, this.g, Optional.ofNullable(this.h));
+   @Override
+   public boolean a(fgo.a $$0) {
+      int $$1 = this.e - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public fgx b() {
-      return this.a;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public fha d() {
-      return this.c;
-   }
-
-   public xc e() {
-      return this.d;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   @Nullable
-   public ys g() {
-      return this.h;
-   }
-
-   public ys a(ys $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
-   }
-
-   private xc j() {
-      return xf.a((xc)this.d.f().a($$0 -> $$0.a(new xi.e(xc.b(this.b)))));
-   }
-
-   public xc h() {
+   @Override
+   public int size() {
       return this.e;
    }
 
-   public void a(xc $$0) {
-      this.d = $$0;
-      this.e = this.j();
-      this.a.b(this);
-   }
-
-   public fha.a i() {
-      return this.f;
-   }
-
-   public void a(fha.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
-   }
-
-   public void b(@Nullable ys $$0) {
-      this.h = $$0;
-      this.a.b(this);
-   }
-
-   public static record a(String b, fha c, xc d, fha.a e, boolean f, Optional<ys> g) {
-      public static final Codec<fgp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("Name").forGetter(fgp.a::a),
-                  fha.b.optionalFieldOf("CriteriaName", fha.c).forGetter(fgp.a::b),
-                  xe.a.fieldOf("DisplayName").forGetter(fgp.a::c),
-                  fha.a.c.optionalFieldOf("RenderType", fha.a.a).forGetter(fgp.a::d),
-                  Codec.BOOL.optionalFieldOf("display_auto_update", false).forGetter(fgp.a::e),
-                  yu.b.optionalFieldOf("format").forGetter(fgp.a::f)
-               )
-               .apply($$0, fgp.a::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public fha b() {
-         return this.c;
-      }
-
-      public xc c() {
-         return this.d;
-      }
-
-      public fha.a d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public Optional<ys> f() {
-         return this.g;
-      }
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

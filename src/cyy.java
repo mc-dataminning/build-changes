@@ -1,118 +1,136 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cyy implements bao {
-   a(0, "white", 16383998, exu.i, 15790320, 16777215),
-   b(1, "orange", 16351261, exu.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, exu.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, exu.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, exu.s, 14602026, 16776960),
-   f(5, "lime", 8439583, exu.t, 4312372, 12582656),
-   g(6, "pink", 15961002, exu.u, 14188952, 16738740),
-   h(7, "gray", 4673362, exu.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, exu.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, exu.x, 2651799, 65535),
-   k(10, "purple", 8991416, exu.y, 8073150, 10494192),
-   l(11, "blue", 3949738, exu.z, 2437522, 255),
-   m(12, "brown", 8606770, exu.A, 5320730, 9127187),
-   n(13, "green", 6192150, exu.B, 3887386, 65280),
-   o(14, "red", 11546150, exu.C, 11743532, 16711680),
-   p(15, "black", 1908001, exu.D, 1973019, 0);
+public class cyy extends dag implements czg {
+   private final exz a;
 
-   private static final IntFunction<cyy> t = ayg.a(cyy::a, values(), ayg.a.a);
-   private static final Int2ObjectOpenHashMap<cyy> u = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.z, $$0 -> (cyy)$$0))
-   );
-   public static final bao.a<cyy> q = bao.a(cyy::values);
-   public static final za<ByteBuf, cyy> r = yy.a(t, cyy::a);
-   @Deprecated
-   public static final Codec<cyy> s = Codec.BYTE.xmap(cyy::a, $$0 -> (byte)$$0.v);
-   private final int v;
-   private final String w;
-   private final exu x;
-   private final int y;
-   private final int z;
-   private final int A;
-
-   private cyy(final int $$0, final String $$1, final int $$2, final exu $$3, final int $$4, final int $$5) {
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$3;
-      this.A = $$5;
-      this.y = aya.f($$2);
-      this.z = $$4;
-   }
-
-   public int a() {
-      return this.v;
-   }
-
-   public String b() {
-      return this.w;
-   }
-
-   public int d() {
-      return this.y;
-   }
-
-   public exu e() {
-      return this.x;
-   }
-
-   public int f() {
-      return this.z;
-   }
-
-   public int g() {
-      return this.A;
-   }
-
-   public static cyy a(int $$0) {
-      return t.apply($$0);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cyy a(String $$0, @Nullable cyy $$1) {
-      cyy $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   public static cyy b(int $$0) {
-      return (cyy)u.get($$0);
+   public cyy(exz $$0, dag.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public String toString() {
-      return this.w;
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      ffy $$4 = a($$0, $$1, this.a == eyb.a ? djq.b.b : djq.b.a);
+      if ($$4.d() == fga.a.a) {
+         return bvc.e;
+      } else if ($$4.d() != fga.a.b) {
+         return bvc.e;
+      } else {
+         iw $$5 = $$4.b();
+         jc $$6 = $$4.c();
+         iw $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bvc.d;
+         } else if (this.a == eyb.a) {
+            ebq $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof dnw $$9) {
+               dak $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.f()) {
+                  $$1.b(axi.c.b(this));
+                  $$9.au_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, egq.y, $$5);
+                  dak $$11 = dan.a($$3, $$1, $$10);
+                  if (!$$0.C) {
+                     aq.k.a((asc)$$1, $$10);
+                  }
+
+                  return bvc.a.a($$11);
+               }
+            }
+
+            return bvc.d;
+         } else {
+            ebq $$12 = $$0.a_($$5);
+            iw $$13 = $$12.b() instanceof dsl && this.a == eyb.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof asc) {
+                  aq.z.a((asc)$$1, $$13, $$3);
+               }
+
+               $$1.b(axi.c.b(this));
+               dak $$14 = dan.a($$3, $$1, b($$3, $$1));
+               return bvc.a.a($$14);
+            } else {
+               return bvc.d;
+            }
+         }
+      }
+   }
+
+   public static dak b(dak $$0, csi $$1) {
+      return !$$1.fV() ? new dak(dao.ro) : $$0;
    }
 
    @Override
-   public String c() {
-      return this.w;
+   public void a(@Nullable byf $$0, dkj $$1, dak $$2, iw $$3) {
    }
 
-   public static cyy a(aru $$0, cyy $$1, cyy $$2) {
-      def $$3 = a($$1, $$2);
-      return $$0.t()
-         .a(dfc.a, $$3, $$0)
-         .map($$2x -> ((deg)$$2x.b()).a($$3, $$0.J_()))
-         .map(daa::h)
-         .filter(cyz.class::isInstance)
-         .map(cyz.class::cast)
-         .map(cyz::a)
-         .orElseGet(() -> $$0.A.h() ? $$1 : $$2);
+   @Override
+   public boolean a(@Nullable byf $$0, dkj $$1, iw $$2, @Nullable ffy $$3) {
+      if (!(this.a instanceof exy $$4)) {
+         return false;
+      } else {
+         dno $$7;
+         boolean $$8;
+         ebq $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.l() && !$$8) {
+               if ($$7 instanceof dsl $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
+
+               var10000 = false;
+               break label82;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
+         } else if ($$1.F_().i() && this.a.a(axs.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, awy.jy, awz.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(lz.aa, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
+            return true;
+         } else {
+            if ($$7 instanceof dsl $$15 && this.a == eyb.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.C && $$8 && !$$6.n()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+         }
+      }
    }
 
-   private static def a(cyy $$0, cyy $$1) {
-      return def.a(2, 1, List.of(new daa(cyz.a($$0)), new daa(cyz.a($$1))));
+   protected void a(@Nullable byf $$0, dkk $$1, iw $$2) {
+      awx $$3 = this.a.a(axs.b) ? awy.dg : awy.dd;
+      $$1.a($$0, $$2, $$3, awz.e, 1.0F, 1.0F);
+      $$1.a($$0, egq.z, $$2);
    }
 }

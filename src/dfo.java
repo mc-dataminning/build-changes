@@ -1,82 +1,61 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dfo implements dfm {
-   final Optional<den> d;
-   final den e;
-   final Optional<den> f;
-   final dfu g;
-   @Nullable
-   private deq h;
-
-   public dfo(Optional<den> $$0, den $$1, Optional<den> $$2, dfu $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+public record dfo<T extends dfb<?>>(dgn a, Optional<dfg<T>> b) {
+   public static <T extends dfb<?>> ze<wp, dfo<T>> a() {
+      return ze.a(dgn.b, dfo::b, $$0 -> new dfo<>($$0, Optional.empty()));
    }
 
-   public daa a(dfn $$0, ji.a $$1) {
-      return this.g.a($$0.d());
+   public dgn b() {
+      return this.a;
    }
 
-   @Override
-   public Optional<den> c() {
-      return this.d;
+   public Optional<dfg<T>> c() {
+      return this.b;
    }
 
-   @Override
-   public den f() {
-      return this.e;
-   }
+   public static record a<T extends dfb<?>>(dex a, dfo<T> b) {
 
-   @Override
-   public Optional<den> k() {
-      return this.f;
-   }
-
-   @Override
-   public dfb<dfo> a() {
-      return dfb.t;
-   }
-
-   @Override
-   public deq ap_() {
-      if (this.h == null) {
-         this.h = deq.a(List.of(this.d, Optional.of(this.e), this.f));
+      public static <T extends dfb<?>> ze<wp, dfo.a<T>> a() {
+         return ze.a(dex.a, dfo.a::b, dfo.a(), dfo.a::c, dfo.a::new);
       }
 
-      return this.h;
-   }
-
-   @Override
-   public List<dfx> g() {
-      return List.of(new dgg(den.a(this.d), this.e.c(), den.a(this.f), this.g.a(), new dgd.d(dae.xB)));
-   }
-
-   public static class a implements dfb<dfo> {
-      private static final MapCodec<dfo> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  den.d.optionalFieldOf("template").forGetter($$0x -> $$0x.d),
-                  den.d.fieldOf("base").forGetter($$0x -> $$0x.e),
-                  den.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.f),
-                  dfu.a.fieldOf("result").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, dfo::new)
-      );
-      public static final za<wn, dfo> w = za.a(den.b, $$0 -> $$0.d, den.a, $$0 -> $$0.e, den.b, $$0 -> $$0.f, dfu.b, $$0 -> $$0.g, dfo::new);
-
-      @Override
-      public MapCodec<dfo> a() {
-         return x;
+      public dex b() {
+         return this.a;
       }
 
-      @Override
-      public za<wn, dfo> b() {
-         return w;
+      public dfo<T> c() {
+         return this.b;
+      }
+   }
+
+   public static record b<T extends dfb<?>>(List<dfo.a<T>> a) {
+      public static <T extends dfb<?>> dfo.b<T> a() {
+         return new dfo.b<>(List.of());
+      }
+
+      public static <T extends dfb<?>> ze<wp, dfo.b<T>> b() {
+         return ze.a(dfo.a.<T>a().a(zc.a()), dfo.b::e, dfo.b::new);
+      }
+
+      public boolean a(dak $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public dfo.b<T> b(dak $$0) {
+         return new dfo.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<dfo.a<T>> e() {
+         return this.a;
       }
    }
 }

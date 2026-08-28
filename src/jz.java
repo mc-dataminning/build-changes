@@ -35,11 +35,11 @@ public class jz extends kb {
       return new jz(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static jz a(dje $$0, int $$1) {
+   public static jz a(djo $$0, int $$1) {
       return new jz($$0.h, $$1, $$0.i);
    }
 
-   public static jz a(efl $$0) {
+   public static jz a(efv $$0) {
       return a($$0.dv());
    }
 
@@ -51,7 +51,7 @@ public class jz extends kb {
       return new jz(b($$0), c($$0), d($$0));
    }
 
-   public static jz a(edd $$0) {
+   public static jz a(edn $$0) {
       return a($$0.f(), $$0.aq());
    }
 
@@ -64,7 +64,7 @@ public class jz extends kb {
    }
 
    public static int a(double $$0) {
-      return a(azq.a($$0));
+      return a(azz.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class jz extends kb {
    }
 
    public static int b(double $$0) {
-      return azq.a($$0) >> 4;
+      return azz.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -183,7 +183,7 @@ public class jz extends kb {
    }
 
    public static long g(long $$0) {
-      return dje.c(b($$0), d($$0));
+      return djo.c(b($$0), d($$0));
    }
 
    public iw j() {
@@ -195,8 +195,8 @@ public class jz extends kb {
       return this.j().b(8, 8, 8);
    }
 
-   public dje r() {
-      return new dje(this.a(), this.c());
+   public djo r() {
+      return new djo(this.a(), this.c());
    }
 
    public static long c(iw $$0) {
@@ -229,7 +229,7 @@ public class jz extends kb {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<jz> a(dje $$0, int $$1, int $$2, int $$3) {
+   public static Stream<jz> a(djo $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.h;
       int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

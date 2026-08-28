@@ -1,18 +1,14 @@
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
 
-public record aij(Optional<jg<bvx>> b, Optional<jg<bvx>> c) implements zj<agt> {
-   public static final za<wn, aij> a = za.a(bvx.b.a(yy::a), aij::b, bvx.b.a(yy::a), aij::e, aij::new);
+public record aij() implements zo<aha> {
+   public static final ze<ByteBuf, aij> a = ze.a(new aij());
 
    @Override
-   public zl<aij> a() {
-      return agr.cb;
+   public zq<aij> a() {
+      return agy.bV;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
-   }
-
-   public Optional<jg<bvx>> e() {
-      return this.c;
    }
 }

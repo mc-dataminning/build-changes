@@ -1,44 +1,55 @@
-import javax.annotation.Nullable;
+import java.security.PublicKey;
 
-public record ajo(int b, @Nullable ajs c) implements zj<ajn> {
-   public static final za<vy, ajo> a = zj.a(ajo::c, ajo::a);
-   private static final int d = 1048576;
+public class ajo implements zo<ajm> {
+   public static final ze<vy, ajo> a = zo.a(ajo::a, ajo::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
 
-   private static ajo a(vy $$0) {
-      int $$1 = $$0.l();
-      return new ajo($$1, a($$1, $$0));
+   public ajo(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static ajs a(int $$0, vy $$1) {
-      return b($$1);
+   private ajo(vy $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private static ajs b(vy $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.k($$1);
-         return aju.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zl<ajo> a() {
-      return ajl.f;
+   public zq<ajo> a() {
+      return ajs.c;
    }
 
-   public void a(ajn $$0) {
+   public void a(ajm $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ajs e() {
-      return this.c;
+   public String b() {
+      return this.b;
+   }
+
+   public PublicKey e() throws ayw {
+      return ayv.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

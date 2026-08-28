@@ -1,69 +1,63 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
-public class dzw extends dye implements dku {
-   private final diz a = new diz() {
-      @Override
-      public void a(djz $$0, iw $$1, int $$2) {
-         $$0.a($$1, dng.cD, $$2, 0);
+public record dzw(Optional<dag> d, Optional<dag> e, Optional<dag> f, Optional<dag> g) implements ddp {
+   public static final dzw a = new dzw(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+   public static final Codec<dzw> b = mh.g.q().sizeLimitedListOf(4).xmap(dzw::new, dzw::a);
+   public static final ze<wp, dzw> c = zc.a(mi.K).a(zc.c(4)).a(dzw::new, dzw::a);
+
+   private dzw(List<dag> $$0) {
+      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   }
+
+   public dzw(dag $$0, dag $$1, dag $$2, dag $$3) {
+      this(List.of($$0, $$1, $$2, $$3));
+   }
+
+   private static Optional<dag> a(List<dag> $$0, int $$1) {
+      if ($$1 >= $$0.size()) {
+         return Optional.empty();
+      } else {
+         dag $$2 = $$0.get($$1);
+         return $$2 == dao.rB ? Optional.empty() : Optional.of($$2);
       }
+   }
 
-      @Override
-      public void a(@Nullable djz $$0, iw $$1, dkt $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            ebg $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 260);
-         }
+   public List<dag> a() {
+      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(dao.rB)).toList();
+   }
+
+   @Override
+   public void a(dag.b $$0, Consumer<xg> $$1, dbz $$2, kg $$3) {
+      if (!this.equals(a)) {
+         $$1.accept(xf.a);
+         a($$1, this.g);
+         a($$1, this.e);
+         a($$1, this.f);
+         a($$1, this.d);
       }
-   };
-
-   public dzw(iw $$0, ebg $$1) {
-      super(dyg.j, $$0, $$1);
    }
 
-   @Override
-   protected void a(ua $$0, ji.a $$1) {
-      super.a($$0, $$1);
-      this.a.a(this.n, this.o, $$0);
+   private static void a(Consumer<xg> $$0, Optional<dag> $$1) {
+      $$0.accept(new dak($$1.orElse(dao.rB), 1).y().e().a(o.h));
    }
 
-   @Override
-   protected void b(ua $$0, ji.a $$1) {
-      super.b($$0, $$1);
-      this.a.a($$0);
+   public Optional<dag> b() {
+      return this.d;
    }
 
-   public static void a(djz $$0, iw $$1, ebg $$2, dzw $$3) {
-      $$3.a.a($$0, $$1);
+   public Optional<dag> c() {
+      return this.e;
    }
 
-   public static void b(djz $$0, iw $$1, ebg $$2, dzw $$3) {
-      $$3.a.a((aru)$$0, $$1);
+   public Optional<dag> d() {
+      return this.f;
    }
 
-   public ace a() {
-      return ace.a(this);
-   }
-
-   @Override
-   public ua a(ji.a $$0) {
-      ua $$1 = this.e($$0);
-      $$1.r("SpawnPotentials");
-      return $$1;
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
-   }
-
-   @Override
-   public void a(bxe<?> $$0, azz $$1) {
-      this.a.a($$0, this.n, $$1, this.o);
-      this.e();
-   }
-
-   public diz c() {
-      return this.a;
+   public Optional<dag> e() {
+      return this.g;
    }
 }

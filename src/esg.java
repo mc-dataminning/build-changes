@@ -1,51 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public interface esg {
+   alq<est> a = a("villages");
+   alq<est> b = a("desert_pyramids");
+   alq<est> c = a("igloos");
+   alq<est> d = a("jungle_temples");
+   alq<est> e = a("swamp_huts");
+   alq<est> f = a("pillager_outposts");
+   alq<est> g = a("ocean_monuments");
+   alq<est> h = a("woodland_mansions");
+   alq<est> i = a("buried_treasures");
+   alq<est> j = a("mineshafts");
+   alq<est> k = a("ruined_portals");
+   alq<est> l = a("shipwrecks");
+   alq<est> m = a("ocean_ruins");
+   alq<est> n = a("nether_complexes");
+   alq<est> o = a("nether_fossils");
+   alq<est> p = a("end_cities");
+   alq<est> q = a("ancient_cities");
+   alq<est> r = a("strongholds");
+   alq<est> s = a("trail_ruins");
+   alq<est> t = a("trial_chambers");
 
-public class esg extends ezc {
-   private final LongSet b;
-   private final LongSet c;
-   private static final Codec<LongSet> d = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
-   public static final Codec<esg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(d.fieldOf("All").forGetter($$0x -> $$0x.b), d.fieldOf("Remaining").forGetter($$0x -> $$0x.c)).apply($$0, esg::new)
-   );
-
-   public static ezd<esg> a(String $$0) {
-      return new ezd<>($$0, esg::new, a, bbf.o);
-   }
-
-   private esg(LongSet $$0, LongSet $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public esg() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public void a(long $$0) {
-      this.b.add($$0);
-      this.c.add($$0);
-      this.f();
-   }
-
-   public boolean b(long $$0) {
-      return this.b.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void d(long $$0) {
-      if (this.c.remove($$0)) {
-         this.f();
-      }
-   }
-
-   public LongSet a() {
-      return this.b;
+   private static alq<est> a(String $$0) {
+      return alq.a(mi.bd, alr.b($$0));
    }
 }

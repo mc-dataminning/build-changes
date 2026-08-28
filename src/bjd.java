@@ -1,58 +1,22 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bjd {
-   public static final TypeReference a = a("level");
-   public static final TypeReference b = a("player");
-   public static final TypeReference c = a("chunk");
-   public static final TypeReference d = a("hotbar");
-   public static final TypeReference e = a("options");
-   public static final TypeReference f = a("structure");
-   public static final TypeReference g = a("stats");
-   public static final TypeReference h = a("saved_data/command_storage");
-   public static final TypeReference i = a("saved_data/tickets");
-   public static final TypeReference j = a("saved_data/map_data");
-   public static final TypeReference k = a("saved_data/idcounts");
-   public static final TypeReference l = a("saved_data/raids");
-   public static final TypeReference m = a("saved_data/random_sequences");
-   public static final TypeReference n = a("saved_data/structure_feature_indices");
-   public static final TypeReference o = a("saved_data/scoreboard");
-   public static final TypeReference p = a("advancements");
-   public static final TypeReference q = a("poi_chunk");
-   public static final TypeReference r = a("entity_chunk");
-   public static final TypeReference s = a("block_entity");
-   public static final TypeReference t = a("item_stack");
-   public static final TypeReference u = a("block_state");
-   public static final TypeReference v = a("flat_block_state");
-   public static final TypeReference w = a("data_components");
-   public static final TypeReference x = a("villager_trade");
-   public static final TypeReference y = a("particle");
-   public static final TypeReference z = a("text_component");
-   public static final TypeReference A = a("entity_equipment");
-   public static final TypeReference B = a("entity_name");
-   public static final TypeReference C = a("entity_tree");
-   public static final TypeReference D = a("entity");
-   public static final TypeReference E = a("block_name");
-   public static final TypeReference F = a("item_name");
-   public static final TypeReference G = a("game_event_name");
-   public static final TypeReference H = a("untagged_spawner");
-   public static final TypeReference I = a("structure_feature");
-   public static final TypeReference J = a("objective");
-   public static final TypeReference K = a("team");
-   public static final TypeReference L = a("recipe");
-   public static final TypeReference M = a("biome");
-   public static final TypeReference N = a("multi_noise_biome_source_parameter_list");
-   public static final TypeReference O = a("world_gen_settings");
+public class bjd extends bbv {
+   private final Predicate<String> a;
 
-   public static TypeReference a(final String $$0) {
-      return new TypeReference() {
-         public String typeName() {
-            return $$0;
-         }
+   public bjd(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2.negate();
+   }
 
-         @Override
-         public String toString() {
-            return "@" + $$0;
-         }
-      };
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
+   }
+
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
    }
 }

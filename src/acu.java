@@ -1,53 +1,79 @@
-public class acu implements zj<aby> {
-   public static final za<wn, acu> a = zj.a(acu::a, acu::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final daa e;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-   public acu(int $$0, int $$1, int $$2, daa $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3.v();
+public record acu(List<acu.a> b) implements zo<acf> {
+   public static final ze<vy, acu> a = zo.a(acu::a, acu::new);
+   private static final int c = 2097152;
+
+   private acu(vy $$0) {
+      this($$0.a(acu.a::new));
    }
 
-   private acu(wn $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readShort();
-      this.e = daa.h.decode($$0);
+   public static acu a(List<edx> $$0) {
+      return new acu($$0.stream().map(acu.a::new).toList());
    }
 
-   private void a(wn $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.m(this.d);
-      daa.h.encode($$0, this.e);
+   private void a(vy $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zl<acu> a() {
-      return agr.v;
+   public zq<acu> a() {
+      return agy.o;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
+   public static record a(djo a, byte[] b) {
+      public a(edx $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new vy(this.d()), $$0);
+      }
 
-   public int e() {
-      return this.d;
-   }
+      public a(vy $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public daa f() {
-      return this.e;
-   }
+      private static int a(edx $$0) {
+         int $$1 = 0;
 
-   public int g() {
-      return this.c;
+         for (edy $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public vy a() {
+         return new vy(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(vy $$0, edx $$1) {
+         for (edy $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(vy $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public djo b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

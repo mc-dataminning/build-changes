@@ -1,50 +1,32 @@
-import java.util.EnumSet;
+public class cef extends ced {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class cef extends cff {
-   private final cjp g;
-
-   public cef(cjp $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(ces.a.c, ces.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.q() && !this.g.gu() && !this.g.gH() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(bye $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.z(false);
+   public cef(byh $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gH()) {
-         this.g.z(true);
-      }
-   }
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.O().k()) {
+            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
+         }
 
-   @Override
-   protected boolean a(dkc $$0, iw $$1) {
-      return $$0.v($$1.d()) && $$0.a_($$1).a(axg.T);
+         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
+      }
+
+      float $$0 = azz.h(this.a.aX - this.a.aV);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aV -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aV += 4.0F;
+      }
    }
 }

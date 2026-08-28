@@ -1,146 +1,126 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cfc extends ces {
-   protected final bye a;
-   private final double b;
-   private final boolean c;
-   private eye d;
-   private double e;
-   private double f;
-   private double g;
-   private int h;
-   private int i;
-   private final int j = 20;
-   private long k;
-   private static final long l = 20L;
+public class cfc {
+   private static final cgp a = new cgp(Integer.MAX_VALUE, new cfb() {
+      @Override
+      public boolean b() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<cfb.a, cgp> b = new EnumMap<>(cfb.a.class);
+   private final Set<cgp> c = new ObjectLinkedOpenHashSet();
+   private final EnumSet<cfb.a> d = EnumSet.noneOf(cfb.a.class);
 
-   public cfc(bye $$0, double $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.a(EnumSet.of(ces.a.a, ces.a.b));
+   public void a(int $$0, cfb $$1) {
+      this.c.add(new cgp($$0, $$1));
    }
 
-   @Override
-   public boolean b() {
-      long $$0 = this.a.dV().ae();
-      if ($$0 - this.k < 20L) {
-         return false;
-      } else {
-         this.k = $$0;
-         bxw $$1 = this.a.f();
-         if ($$1 == null) {
-            return false;
-         } else if (!$$1.bJ()) {
-            return false;
-         } else {
-            this.d = this.a.O().a($$1, 0);
-            return this.d != null ? true : this.a.h($$1);
+   @VisibleForTesting
+   public void a(Predicate<cfb> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(cfb $$0) {
+      for (cgp $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
          }
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Override
-   public boolean c() {
-      bxw $$0 = this.a.f();
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.bJ()) {
-         return false;
-      } else if (!this.c) {
-         return !this.a.O().k();
-      } else if (!this.a.a($$0.dv())) {
-         return false;
-      } else {
-         if ($$0 instanceof crz $$1 && ($$1.Z_() || $$1.b())) {
+   private static boolean a(cgp $$0, EnumSet<cfb.a> $$1) {
+      for (cfb.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(cgp $$0, Map<cfb.a, cgp> $$1) {
+      for (cfb.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
             return false;
          }
-
-         return true;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.O().a(this.d, this.b);
-      this.a.v(true);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public void e() {
-      bxw $$0 = this.a.f();
-      if (!bxc.e.test($$0)) {
-         this.a.g(null);
       }
 
-      this.a.v(false);
-      this.a.O().m();
-   }
-
-   @Override
-   public boolean V_() {
       return true;
    }
 
-   @Override
    public void a() {
-      bxw $$0 = this.a.f();
-      if ($$0 != null) {
-         this.a.J().a($$0, 30.0F, 30.0F);
-         this.h = Math.max(this.h - 1, 0);
-         if ((this.c || this.a.P().a($$0))
-            && this.h <= 0
-            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.h(this.e, this.f, this.g) >= 1.0 || this.a.dY().i() < 0.05F)) {
-            this.e = $$0.dA();
-            this.f = $$0.dC();
-            this.g = $$0.dG();
-            this.h = 4 + this.a.dY().a(7);
-            double $$1 = this.a.g((bwv)$$0);
-            if ($$1 > 1024.0) {
-               this.h += 10;
-            } else if ($$1 > 256.0) {
-               this.h += 5;
-            }
+      brm $$0 = brl.a();
+      $$0.a("goalCleanup");
 
-            if (!this.a.O().a($$0, this.b)) {
-               this.h += 15;
-            }
-
-            this.h = this.a(this.h);
+      for (cgp $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
+            $$1.e();
          }
+      }
 
-         this.i = Math.max(this.i - 1, 0);
+      this.b.entrySet().removeIf($$0x -> !((cgp)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cgp $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
+            for (cfb.a $$3 : $$2.j()) {
+               cgp $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      brm $$1 = brl.a();
+      $$1.a("goalTick");
+
+      for (cgp $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.W_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cgp> b() {
+      return this.c;
+   }
+
+   public void a(cfb.a $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(cfb.a $$0) {
+      this.d.remove($$0);
+   }
+
+   public void a(cfb.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
          this.a($$0);
       }
-   }
-
-   protected void a(bxw $$0) {
-      if (this.b($$0)) {
-         this.h();
-         this.a.a(bus.a);
-         this.a.c(a(this.a), $$0);
-      }
-   }
-
-   protected void h() {
-      this.i = this.a(20);
-   }
-
-   protected boolean i() {
-      return this.i <= 0;
-   }
-
-   protected boolean b(bxw $$0) {
-      return this.i() && this.a.h($$0) && this.a.P().a($$0);
-   }
-
-   protected int k() {
-      return this.i;
-   }
-
-   protected int l() {
-      return this.a(20);
    }
 }

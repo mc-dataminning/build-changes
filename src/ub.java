@@ -83,17 +83,17 @@ public record ub(double c) implements uq {
 
    @Override
    public int h() {
-      return azq.a(this.c);
+      return azz.a(this.c);
    }
 
    @Override
    public short i() {
-      return (short)(azq.a(this.c) & 65535);
+      return (short)(azz.a(this.c) & 65535);
    }
 
    @Override
    public byte j() {
-      return (byte)(azq.a(this.c) & 0xFF);
+      return (byte)(azz.a(this.c) & 0xFF);
    }
 
    @Override

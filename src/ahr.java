@@ -1,29 +1,29 @@
-public class ahr implements zj<agt> {
-   public static final za<vy, ahr> a = zj.a(ahr::a, ahr::new);
-   private final boolean b;
+public class ahr implements zo<aha> {
+   public static final ze<vy, ahr> a = zo.a(ahr::a, ahr::new);
+   private final int b;
 
-   public ahr(boolean $$0) {
+   public ahr(int $$0) {
       this.b = $$0;
    }
 
    private ahr(vy $$0) {
-      this.b = $$0.readBoolean();
+      this.b = $$0.x();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      $$0.f(this.b);
    }
 
    @Override
-   public zl<ahr> a() {
-      return agr.bH;
+   public zq<ahr> a() {
+      return agy.bA;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int b() {
       return this.b;
    }
 }

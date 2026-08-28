@@ -9,11 +9,11 @@ public class co extends dl<co.a> {
       return co.a.a;
    }
 
-   public void a(arv $$0, iw $$1, daa $$2) {
-      aru $$3 = $$0.y();
-      ebg $$4 = $$3.a_($$1);
-      fam $$5 = new fam.a($$3).a(fdd.f, $$1.b()).a(fdd.a, $$0).a(fdd.g, $$4).a(fdd.i, $$2).a(fdc.o);
-      faj $$6 = new faj.a($$5).a(Optional.empty());
+   public void a(asc $$0, iw $$1, dak $$2) {
+      asb $$3 = $$0.y();
+      ebq $$4 = $$3.a_($$1);
+      faw $$5 = new faw.a($$3).a(fdn.f, $$1.b()).a(fdn.a, $$0).a(fdn.g, $$4).a(fdn.i, $$2).a(fdm.o);
+      fat $$6 = new fat.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -22,18 +22,18 @@ public class co extends dl<co.a> {
          $$0 -> $$0.group(bz.b.optionalFieldOf("player").forGetter(co.a::a), bj.a.optionalFieldOf("location").forGetter(co.a::b)).apply($$0, co.a::new)
       );
 
-      public static ar<co.a> a(dne $$0) {
-         bj $$1 = bj.a(fdr.a($$0).build());
+      public static ar<co.a> a(dno $$0) {
+         bj $$1 = bj.a(feb.a($$0).build());
          return aq.z.a(new co.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static ar<co.a> a(fds.a... $$0) {
-         bj $$1 = bj.a(Arrays.stream($$0).map(fds.a::build).toArray(fds[]::new));
+      public static ar<co.a> a(fec.a... $$0) {
+         bj $$1 = bj.a(Arrays.stream($$0).map(fec.a::build).toArray(fec[]::new));
          return aq.z.a(new co.a(Optional.empty(), Optional.of($$1)));
       }
 
       private static co.a c(cv.a $$0, cn.a $$1) {
-         bj $$2 = bj.a(fdq.a($$0).build(), fdz.a($$1).build());
+         bj $$2 = bj.a(fea.a($$0).build(), fej.a($$1).build());
          return new co.a(Optional.empty(), Optional.of($$2));
       }
 
@@ -45,14 +45,14 @@ public class co extends dl<co.a> {
          return aq.aa.a(c($$0, $$1));
       }
 
-      public boolean a(faj $$0) {
+      public boolean a(fat $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bk $$0) {
          dl.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, fdc.o, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, fdm.o, ".location"));
       }
 
       @Override

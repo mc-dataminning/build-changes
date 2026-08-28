@@ -1,107 +1,71 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gws implements gwf.a {
-   private final frf a;
-   private final Map<alj<djz>, Map<String, erv>> b = Maps.newIdentityHashMap();
-   private final Map<alj<djz>, Map<String, abb.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class gws extends gyw<coc, hdh, gge> {
+   public static final alr a = alr.b("textures/entity/armorstand/wood.png");
+   private final gge j = this.c();
+   private final gge k;
 
-   public gws(frf $$0) {
-      this.a = $$0;
+   public gws(gxv.a $$0) {
+      super($$0, new ggf($$0.a(gkq.f)), 0.0F);
+      this.k = new ggf($$0.a(gkq.i));
+      this.a(new hby<>(this, new gge($$0.a(gkq.g)), new gge($$0.a(gkq.h)), new gge($$0.a(gkq.j)), new gge($$0.a(gkq.k)), $$0.h()));
+      this.a(new hcb<>(this));
+      this.a(new hcv<>(this, $$0.f(), $$0.h()));
+      this.a(new hbo<>(this, $$0.f()));
    }
 
-   @Override
-   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
-      fqn $$5 = this.a.j.k();
-      alj<djz> $$6 = this.a.s.aj();
-      iw $$7 = iw.a($$5.b().d, 0.0, $$5.b().f);
-      flt $$8 = $$1.getBuffer(gsn.w());
-      if (this.b.containsKey($$6)) {
-         for (erv $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gsv.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
+   public alr a(hdh $$0) {
+      return a;
+   }
+
+   public hdh a() {
+      return new hdh();
+   }
+
+   public void a(coc $$0, hdh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gym.a($$0, $$1, $$2, this.h);
+      $$1.a = azz.i($$2, $$0.N, $$0.dL());
+      $$1.c = $$0.t();
+      $$1.d = $$0.m();
+      $$1.j = $$0.n();
+      $$1.k = $$0.q();
+      $$1.m = $$0.x();
+      $$1.l = $$0.u();
+      $$1.n = $$0.y();
+      $$1.o = $$0.z();
+      $$1.p = $$0.A();
+      $$1.q = $$0.B();
+      $$1.b = (float)($$0.dV().ae() - $$0.bD) + $$2;
+   }
+
+   public void a(hdh $$0, fld $$1, grn $$2, int $$3) {
+      this.g = $$0.d ? this.k : this.j;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(hdh $$0, fld $$1, float $$2, float $$3) {
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      if ($$0.b < 5.0F) {
+         $$1.a(a.d.rotationDegrees(azz.a($$0.b / 1.5F * (float) Math.PI) * 3.0F));
+      }
+   }
+
+   protected boolean a(coc $$0, double $$1) {
+      return $$0.cL();
+   }
+
+   @Nullable
+   protected gry a(hdh $$0, boolean $$1, boolean $$2, boolean $$3) {
+      if (!$$0.c) {
+         return super.a($$0, $$1, $$2, $$3);
+      } else {
+         alr $$4 = this.a($$0);
+         if ($$2) {
+            return gry.c($$4, false);
+         } else {
+            return $$1 ? gry.a($$4, false) : null;
          }
       }
-
-      Map<String, abb.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (abb.a $$11 : $$10.values()) {
-            erv $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gsv.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gsv.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   public void a(erv $$0, List<abb.a> $$1, alj<djz> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, abb.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (abb.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

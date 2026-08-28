@@ -2,21 +2,21 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ch(Optional<jk<exp>> b, Optional<ds> c) {
+public record ch(Optional<jk<exz>> b, Optional<ds> c) {
    public static final Codec<ch> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(jv.a(mi.F).optionalFieldOf("fluids").forGetter(ch::a), ds.a.optionalFieldOf("state").forGetter(ch::b)).apply($$0, ch::new)
    );
 
-   public boolean a(aru $$0, iw $$1) {
+   public boolean a(asb $$0, iw $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         exq $$2 = $$0.b_($$1);
+         eya $$2 = $$0.b_($$1);
          return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
       }
    }
 
-   public Optional<jk<exp>> a() {
+   public Optional<jk<exz>> a() {
       return this.b;
    }
 
@@ -25,7 +25,7 @@ public record ch(Optional<jk<exp>> b, Optional<ds> c) {
    }
 
    public static class a {
-      private Optional<jk<exp>> a = Optional.empty();
+      private Optional<jk<exz>> a = Optional.empty();
       private Optional<ds> b = Optional.empty();
 
       private a() {
@@ -35,12 +35,12 @@ public record ch(Optional<jk<exp>> b, Optional<ds> c) {
          return new ch.a();
       }
 
-      public ch.a a(exp $$0) {
+      public ch.a a(exz $$0) {
          this.a = Optional.of(jk.a($$0.k()));
          return this;
       }
 
-      public ch.a a(jk<exp> $$0) {
+      public ch.a a(jk<exz> $$0) {
          this.a = Optional.of($$0);
          return this;
       }

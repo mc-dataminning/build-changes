@@ -1,12 +1,20 @@
-public class hcw extends hck<hga, gjc> {
-   private static final gsn a = gsn.q(alk.b("textures/entity/phantom_eyes.png"));
-
-   public hcw(hah<hga, gjc> $$0) {
+public class hcw extends hbn<hgr, gke> {
+   public hcw(gzs<hgr, gke> $$0) {
       super($$0);
    }
 
-   @Override
-   public gsn a() {
-      return a;
+   protected void a(hgr $$0, fld $$1) {
+      if ($$0.c) {
+         this.d().e().a($$1);
+         this.d().b().a($$1);
+         this.d().c().a($$1);
+         $$1.a(0.0625F, 0.25F, 0.0F);
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(140.0F));
+         $$1.a(a.f.rotationDegrees(10.0F));
+         $$1.a(a.b.rotationDegrees(180.0F));
+      } else {
+         super.a($$0, $$1);
+      }
    }
 }

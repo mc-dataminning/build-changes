@@ -1,32 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.function.Function;
 
-public class hcm extends hcy<hfh, gio> {
-   private static final alk a = alk.b("invisible");
-   private static final Map<clz, alk> b = Maps.newEnumMap(
-      Map.of(
-         clz.a,
-         a,
-         clz.b,
-         alk.b("textures/entity/horse/horse_markings_white.png"),
-         clz.c,
-         alk.b("textures/entity/horse/horse_markings_whitefield.png"),
-         clz.d,
-         alk.b("textures/entity/horse/horse_markings_whitedots.png"),
-         clz.e,
-         alk.b("textures/entity/horse/horse_markings_blackdots.png")
-      )
-   );
+public class hcm<S extends hfe, RM extends ghn<? super S>, EM extends ghn<? super S>> extends hcj<S, RM> {
+   private final hbu a;
+   private final hmw.d b;
+   private final Function<S, dak> c;
+   private final EM d;
+   private final EM e;
 
-   public hcm(hah<hfh, gio> $$0) {
+   public hcm(gzs<S, RM> $$0, hbu $$1, hmw.d $$2, Function<S, dak> $$3, EM $$4, EM $$5) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hfh $$3, float $$4, float $$5) {
-      alk $$6 = b.get($$3.h);
-      if ($$6 != a && !$$3.z) {
-         flt $$7 = $$1.getBuffer(gsn.j($$6));
-         this.d().a($$0, $$7, $$2, gzl.a($$3, 0.0F));
+   public hcm(gzs<S, RM> $$0, hbu $$1, EM $$2, hmw.d $$3, Function<S, dak> $$4) {
+      this($$0, $$1, $$3, $$4, $$2, $$2);
+   }
+
+   public void a(fld $$0, grn $$1, int $$2, S $$3, float $$4, float $$5) {
+      dak $$6 = this.c.apply($$3);
+      dit $$7 = $$6.a(kl.D);
+      if ($$7 != null && !$$7.d().isEmpty()) {
+         EM $$8 = $$3.am ? this.e : this.d;
+         $$8.a($$3);
+         this.a.a(this.b, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
       }
    }
 }

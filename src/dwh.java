@@ -1,39 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class dwh extends doi {
-   public static final MapCodec<dwh> g = b(dwh::new);
+public class dwh extends dno {
+   public static final MapCodec<dwh> a = b(dwh::new);
 
    @Override
    public MapCodec<dwh> a() {
-      return g;
+      return a;
    }
 
-   public dwh(ebf.d $$0) {
-      super(() -> dyg.c, $$0);
-   }
-
-   @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new ead($$0, $$1);
+   public dwh(ebp.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected awy<alk> c() {
-      return axb.i.b(axb.ai);
-   }
-
-   @Override
-   protected boolean f_(ebg $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(ebg $$0, djd $$1, iw $$2, jc $$3) {
-      return azq.a(dym.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(ebg $$0, djd $$1, iw $$2, jc $$3) {
-      return $$3 == jc.b ? $$0.a($$1, $$2, $$3) : 0;
+   public void a(ebq $$0, dkj $$1, iw $$2, bai $$3) {
+      ebo.a($$0, $$1, $$2, $$3);
    }
 }

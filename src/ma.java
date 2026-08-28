@@ -9,7 +9,7 @@ public abstract class ma implements lx {
    private final float a;
 
    public ma(float $$0) {
-      this.a = azq.a($$0, 0.01F, 4.0F);
+      this.a = azz.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

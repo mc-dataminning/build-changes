@@ -1,30 +1,42 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class bgh extends DataFix {
-   public bgh(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bgh extends big {
+   private static final String c = "minecraft:wolf";
+   private static final String d = "minecraft:generic.max_health";
+
+   public bgh(Schema $$0) {
+      super($$0, false, "FixWolfHealth", bjm.D, "minecraft:wolf");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.I);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bgh::a));
-   }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            MutableBoolean $$1 = new MutableBoolean(false);
+            $$0x = $$0x.update(
+               "Attributes",
+               $$1x -> $$1x.createList(
+                     $$1x.asStream()
+                        .map($$1xx -> "minecraft:generic.max_health".equals(blh.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                              if ($$1xxx.asDouble(0.0) == 20.0) {
+                                 $$1.setTrue();
+                                 return $$1xxx.createDouble(40.0);
+                              } else {
+                                 return $$1xxx;
+                              }
+                           }) : $$1xx)
+                  )
+            );
+            if ($$1.isTrue()) {
+               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
+            }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bgh::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bgh::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+            return $$0x;
+         }
+      );
    }
 }

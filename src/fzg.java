@@ -1,202 +1,146 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.function.IntSupplier;
 
-public class fzg extends gaf {
-   private static final xc b = xc.c("createWorld.customize.flat.title");
-   static final alk c = alk.b("container/slot");
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private final fyb y = new fyb(this, 33, 64);
-   protected final gfg a;
-   private final Consumer<eqg> z;
-   eqg A;
-   @Nullable
-   private fzg.a B;
-   @Nullable
-   private fun C;
+public class fzg extends fzk {
+   public static final alr a = alr.b("textures/gui/title/mojangstudios.png");
+   private static final int d = ayh.a(255, 239, 50, 61);
+   private static final int e = ayh.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fqq.Q().n.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long b = 1000L;
+   public static final long c = 500L;
+   private final fqq m;
+   private final avk n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fzg(gfg $$0, Consumer<eqg> $$1, eqg $$2) {
-      super(b);
-      this.a = $$0;
-      this.z = $$1;
-      this.A = $$2;
+   public fzg(fqq $$0, avk $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   public eqg l() {
-      return this.A;
+   public static void a(hks $$0) {
+      $$0.a(a, (hkh)(new fzg.a()));
    }
 
-   public void a(eqg $$0) {
-      this.A = $$0;
-      if (this.B != null) {
-         this.B.b();
-         this.m();
-      }
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aS_() {
-      this.y.a(this.l, this.p);
-      this.B = this.y.c(new fzg.a());
-      fyf $$0 = this.y.b(fyf.d().a(4));
-      $$0.c().e();
-      fyf $$1 = $$0.a(fyf.e().a(8));
-      fyf $$2 = $$0.a(fyf.e().a(8));
-      this.C = $$1.a(fun.a(xc.c("createWorld.customize.flat.removeLayer"), $$0x -> {
-         if (this.E()) {
-            List<eqd> $$1x = this.A.e();
-            int $$2x = this.B.aI_().indexOf(this.B.p());
-            int $$3 = $$1x.size() - $$2x - 1;
-            $$1x.remove($$3);
-            this.B.a($$1x.isEmpty() ? null : this.B.aI_().get(Math.min($$2x, $$1x.size() - 1)));
-            this.A.g();
-            this.B.b();
-            this.m();
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ag.c();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.z != null) {
+            this.m.z.a($$0, 0, 0, $$3);
          }
-      }).a());
-      $$1.a(fun.a(xc.c("createWorld.customize.presets"), $$0x -> {
-         this.m.a(new gab(this));
-         this.A.g();
-         this.m();
-      }).a());
-      $$2.a(fun.a(xb.d, $$0x -> {
-         this.z.accept(this.A);
-         this.aP_();
-         this.A.g();
-      }).a());
-      $$2.a(fun.a(xb.e, $$0x -> {
-         this.aP_();
-         this.A.g();
-      }).a());
-      this.A.g();
-      this.m();
-      this.y.a(this::c);
-      this.c();
+
+         int $$9 = azz.f((1.0F - azz.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(gry.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - azz.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.z != null && $$8 < 1.0F) {
+            this.m.z.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = azz.c(azz.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(gry.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = azz.a($$8, 0.0F, 1.0F);
+      } else {
+         int $$13 = f.getAsInt();
+         RenderSystem.getDevice().createCommandEncoder().clearColorTexture(this.m.h().c(), $$13);
+         $$10 = 1.0F;
+      }
+
+      int $$15 = (int)((double)$$0.a() * 0.5);
+      int $$16 = (int)((double)$$0.b() * 0.5);
+      double $$17 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$18 = (int)($$17 * 0.5);
+      double $$19 = $$17 * 4.0;
+      int $$20 = (int)($$19 * 0.5);
+      int $$21 = ayh.a($$10);
+      $$0.a($$0x -> gry.K(), a, $$15 - $$20, $$16 - $$18, -0.0625F, 0.0F, $$20, (int)$$17, 120, 60, 120, 120, $$21);
+      $$0.a($$0x -> gry.K(), a, $$15, $$16 - $$18, 0.0625F, 60.0F, $$20, (int)$$17, 120, 60, 120, 120, $$21);
+      int $$22 = (int)((double)$$0.b() * 0.8325);
+      float $$23 = this.n.b();
+      this.q = azz.a(this.q * 0.95F + $$23 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$20, $$22 - 5, $$4 / 2 + $$20, $$22 + 5, 1.0F - azz.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var24) {
+            this.o.accept(Optional.of(var24));
+         }
+
+         this.r = ag.c();
+         if (this.m.z != null) {
+            this.m.z.b(this.m, $$0.a(), $$0.b());
+         }
+      }
+   }
+
+   private void a(ftk $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = azz.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = ayh.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
    @Override
-   protected void c() {
-      if (this.B != null) {
-         this.B.a(this.n, this.y);
-      }
-
-      this.y.a();
+   public boolean a() {
+      return true;
    }
 
-   void m() {
-      if (this.C != null) {
-         this.C.j = this.E();
-      }
-   }
-
-   private boolean E() {
-      return this.B != null && this.B.p() != null;
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.a);
-   }
-
-   class a extends fvj<fzg.a.a> {
-      private static final xc m = xc.c("createWorld.customize.flat.tile").a(o.t);
-      private static final xc n = xc.c("createWorld.customize.flat.height").a(o.t);
-
+   static class a extends hkh {
       public a() {
-         super(fzg.this.m, fzg.this.n, fzg.this.o - 103, 43, 24, (int)(9.0 * 1.5));
-
-         for (int $$0 = 0; $$0 < fzg.this.A.e().size(); $$0++) {
-            this.b(new fzg.a.a());
-         }
-      }
-
-      public void a(@Nullable fzg.a.a $$0) {
-         super.a($$0);
-         fzg.this.m();
-      }
-
-      public void b() {
-         int $$0 = this.aI_().indexOf(this.p());
-         this.s();
-
-         for (int $$1 = 0; $$1 < fzg.this.A.e().size(); $$1++) {
-            this.b(new fzg.a.a());
-         }
-
-         List<fzg.a.a> $$2 = this.aI_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
+         super(fzg.a);
       }
 
       @Override
-      protected void a(ftz $$0, int $$1, int $$2) {
-         $$0.b(fzg.this.p, m, $$1, $$2, -1);
-         $$0.b(fzg.this.p, n, $$1 + this.a() - fzg.this.p.a(n) - 8, $$2, -1);
-      }
+      public hkr a(avo $$0) throws IOException {
+         avr $$1 = fqq.Q().ae().d();
 
-      class a extends fvj.a<fzg.a.a> {
-         @Override
-         public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            eqd $$10 = fzg.this.A.e().get(fzg.this.A.e().size() - $$1 - 1);
-            ebg $$11 = $$10.b();
-            daa $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            int $$13 = $$2 + $$5 / 2 - 9 / 2;
-            $$0.b(fzg.this.p, $$12.y(), $$3 + 18 + 5, $$13, -1);
-            xc $$14;
-            if ($$1 == 0) {
-               $$14 = xc.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fzg.this.A.e().size() - 1) {
-               $$14 = xc.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$14 = xc.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.b(fzg.this.p, $$14, $$3 + $$4 - fzg.this.p.a($$14) - 8, $$13, -1);
+         hkr var4;
+         try (InputStream $$2 = $$1.open(fzg.a)) {
+            var4 = new hkr(fkf.a($$2), new hmn(true, true));
          }
 
-         private daa a(ebg $$0) {
-            czw $$1 = $$0.b().h();
-            if ($$1 == dae.a) {
-               if ($$0.a(dng.J)) {
-                  $$1 = dae.rp;
-               } else if ($$0.a(dng.K)) {
-                  $$1 = dae.rq;
-               }
-            }
-
-            return new daa($$1);
-         }
-
-         @Override
-         public xc a() {
-            eqd $$0 = fzg.this.A.e().get(fzg.this.A.e().size() - a.this.aI_().indexOf(this) - 1);
-            daa $$1 = this.a($$0.b());
-            return (xc)(!$$1.f() ? xc.a("narrator.select", $$1.y()) : xb.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void a(ftz $$0, int $$1, int $$2, daa $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.f()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
-
-         private void a(ftz $$0, int $$1, int $$2) {
-            $$0.a(gsn::H, fzg.c, $$1, $$2, 18, 18);
-         }
+         return var4;
       }
    }
 }

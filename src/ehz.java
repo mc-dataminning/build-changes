@@ -1,93 +1,68 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+public final class ehz {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public interface ehz {
-   Codec<ehz> a = Codec.xor(ehz.b.d, Codec.xor(ehz.a.d, ehz.c.d)).xmap(ehz::a, ehz::a);
-   ehz b = b(0);
-   ehz c = c(0);
-
-   static ehz a(int $$0) {
-      return new ehz.b($$0);
+   private ehz() {
    }
 
-   static ehz b(int $$0) {
-      return new ehz.a($$0);
+   protected static eht.c a(ehi $$0, ehi $$1, ehi $$2, eic $$3) {
+      ebq $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         ehz.a $$8 = $$6 > 0.0 ? ehz.a.a : ehz.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = azz.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               bai $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = azz.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   static ehz c(int $$0) {
-      return new ehz.c($$0);
-   }
+   protected static enum a {
+      a(dnq.rI.m(), dnq.tQ.m(), dnq.c.m(), 0, 50),
+      b(dnq.T.m(), dnq.tP.m(), dnq.rh.m(), -60, -8);
 
-   static ehz a() {
-      return b;
-   }
+      final ebq e;
+      final ebq f;
+      final ebq g;
+      protected final int c;
+      protected final int d;
 
-   static ehz b() {
-      return c;
-   }
-
-   private static ehz a(Either<ehz.b, Either<ehz.a, ehz.c>> $$0) {
-      return (ehz)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<ehz.b, Either<ehz.a, ehz.c>> a(ehz $$0) {
-      return $$0 instanceof ehz.b ? Either.left((ehz.b)$$0) : Either.right($$0 instanceof ehz.a ? Either.left((ehz.a)$$0) : Either.right((ehz.c)$$0));
-   }
-
-   int a(eic var1);
-
-   public static record a(int e) implements ehz {
-      public static final Codec<ehz.a> d = Codec.intRange(efd.e, efd.d).fieldOf("above_bottom").xmap(ehz.a::new, ehz.a::c).codec();
-
-      @Override
-      public int a(eic $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements ehz {
-      public static final Codec<ehz.b> d = Codec.intRange(efd.e, efd.d).fieldOf("absolute").xmap(ehz.b::new, ehz.b::c).codec();
-
-      @Override
-      public int a(eic $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements ehz {
-      public static final Codec<ehz.c> d = Codec.intRange(efd.e, efd.d).fieldOf("below_top").xmap(ehz.c::new, ehz.c::c).codec();
-
-      @Override
-      public int a(eic $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+      private a(final ebq $$0, final ebq $$1, final ebq $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

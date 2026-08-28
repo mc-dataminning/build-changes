@@ -1,251 +1,198 @@
-public class gdy extends fvj<gdy.a> {
-   static final alk a = alk.b("transferable_list/select_highlighted");
-   static final alk m = alk.b("transferable_list/select");
-   static final alk n = alk.b("transferable_list/unselect_highlighted");
-   static final alk o = alk.b("transferable_list/unselect");
-   static final alk p = alk.b("transferable_list/move_up_highlighted");
-   static final alk q = alk.b("transferable_list/move_up");
-   static final alk r = alk.b("transferable_list/move_down_highlighted");
-   static final alk s = alk.b("transferable_list/move_down");
-   static final xc u = xc.c("pack.incompatible");
-   static final xc v = xc.c("pack.incompatible.confirm.title");
-   private final xc w;
-   final gdx x;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   public gdy(frf $$0, gdx $$1, int $$2, int $$3, xc $$4) {
-      super($$0, $$2, $$3, 33, 36, (int)(9.0F * 1.5F));
+public abstract class gdy<B extends gmt.a<?>> extends fzq {
+   private static final xg C = xg.c("gui.abuseReport.report_sent_msg");
+   private static final xg D = xg.c("gui.abuseReport.sending.title").a(o.r);
+   private static final xg E = xg.c("gui.abuseReport.sent.title").a(o.r);
+   private static final xg F = xg.c("gui.abuseReport.error.title").a(o.r);
+   private static final xg G = xg.c("gui.abuseReport.send.generic_error");
+   protected static final xg a = xg.c("gui.abuseReport.send");
+   protected static final xg b = xg.c("gui.abuseReport.observed_what");
+   protected static final xg c = xg.c("gui.abuseReport.select_reason");
+   private static final xg H = xg.c("gui.abuseReport.describe");
+   protected static final xg d = xg.c("gui.abuseReport.more_comments");
+   private static final xg I = xg.c("gui.abuseReport.comments");
+   private static final xg J = xg.c("gui.abuseReport.attestation");
+   protected static final int s = 120;
+   protected static final int u = 20;
+   protected static final int v = 280;
+   protected static final int w = 8;
+   private static final Logger K = LogUtils.getLogger();
+   protected final fzq x;
+   protected final gmx y;
+   protected final fxq z = fxq.d().a(8);
+   protected B A;
+   private fua L;
+   protected fty B;
+
+   protected gdy(xg $$0, fzq $$1, gmx $$2, B $$3) {
+      super($$0);
       this.x = $$1;
-      this.w = $$4;
-      this.e = false;
+      this.y = $$2;
+      this.A = $$3;
+   }
+
+   protected fuq a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.y.a().b();
+      fuq $$4 = new fuq(this.p, 0, 0, $$0, $$1, H, I);
+      $$4.a(this.A.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
    @Override
-   protected void a(ftz $$0, int $$1, int $$2) {
-      xc $$3 = xc.i().b(this.w).a(o.t, o.r);
-      $$0.b(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.G() + 3, $$2), -1);
+   protected void aT_() {
+      this.z.c().b();
+      this.m();
+      this.E();
+      this.F();
+      this.G();
+      this.z.a($$1 -> {
+         ftw var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   protected void m() {
+      this.z.a(new fvf(this.l, this.p));
+   }
+
+   protected abstract void E();
+
+   protected void F() {
+      this.L = this.z.a(fua.a(J, this.p).a(this.A.h()).a(280).a(($$0x, $$1) -> {
+         this.A.a($$1);
+         this.G();
+      }).a());
+      fxq $$0 = this.z.a(fxq.e().a(8));
+      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a(120).a());
+      this.B = $$0.a(fty.a(a, $$0x -> this.H()).a(120).a());
+   }
+
+   protected void G() {
+      gmt.b $$0 = this.A.c();
+      this.B.j = $$0 == null && this.L.a();
+      this.B.a(y.a($$0, gmt.b::a));
    }
 
    @Override
-   public int a() {
-      return this.g;
+   protected void c() {
+      this.z.a();
+      fxk.a(this.z, this.J());
    }
 
-   @Override
-   protected int l() {
-      return this.H() - 6;
-   }
-
-   @Override
-   protected void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.j()) {
-         int $$6 = 2;
-         int $$7 = this.u() - 2;
-         int $$8 = this.H() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.p().c();
-               return true;
-            default:
-               if (gaf.t()) {
-                  switch ($$0) {
-                     case 264:
-                        this.p().g();
-                        return true;
-                     case 265:
-                        this.p().e();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public static class a extends fvj.a<gdy.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final gdy e;
-      protected final frf a;
-      private final gdw.a f;
-      private final azc g;
-      private final fvg h;
-      private final azc i;
-      private final fvg j;
-
-      public a(frf $$0, gdy $$1, gdw.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, gdy.u);
-         this.j = b($$0, $$2.b().b());
-      }
-
-      private static azc a(frf $$0, xc $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            xh $$3 = xh.a($$0.h.a($$1, 157 - $$0.h.b("...")), xh.e("..."));
-            return tv.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
-
-      private static fvg b(frf $$0, xc $$1) {
-         return fvg.a($$0.h, 157, 2, $$1);
-      }
-
-      @Override
-      public xc a() {
-         return xc.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(ftz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         aup $$10 = this.f.b();
-         if (!$$10.a()) {
-            int $$11 = $$3 + $$4 - 3 - (this.e.j() ? 7 : 0);
-            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(gsn::H, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         azc $$12 = this.g;
-         fvg $$13 = this.h;
-         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aN_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            int $$15 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$12 = this.i;
-               $$13 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$14 < 32) {
-                  $$0.a(gsn::H, gdy.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(gsn::H, gdy.m, $$3, $$2, 32, 32);
-               }
+   protected void H() {
+      this.A.a(this.y).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.y.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(fzc.a(D, xf.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.I();
             } else {
-               if (this.f.p()) {
-                  if ($$14 < 16) {
-                     $$0.a(gsn::H, gdy.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsn::H, gdy.o, $$3, $$2, 32, 32);
-                  }
+               if ($$1x instanceof CancellationException) {
+                  return null;
                }
 
-               if (this.f.q()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
-                     $$0.a(gsn::H, gdy.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsn::H, gdy.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
-                     $$0.a(gsn::H, gdy.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gsn::H, gdy.s, $$3, $$2, 32, 32);
-                  }
-               }
+               this.a($$1x);
             }
-         }
 
-         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void I() {
+      this.M();
+      this.m.a(fzc.a(E, C, xf.d, () -> this.m.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      K.error("Encountered error while sending abuse report", $$0);
+      xg $$2;
+      if ($$0.getCause() instanceof yg $$1) {
+         $$2 = $$1.a();
+      } else {
+         $$2 = G;
       }
 
-      public String b() {
-         return this.f.c();
-      }
+      this.a($$2);
+   }
 
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
+   private void a(xg $$0) {
+      xg $$1 = $$0.f().a(o.m);
+      this.m.a(fzc.a(F, $$1, xf.k, () -> this.m.a(this)));
+   }
 
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
+   void L() {
+      if (this.A.b()) {
+         this.y.a(this.A.e().b());
       }
+   }
 
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
+   void M() {
+      this.y.a(null);
+   }
+
+   @Override
+   public void aQ_() {
+      if (this.A.b()) {
+         this.m.a(new gdy.a());
+      } else {
+         this.m.a(this.x);
       }
+   }
 
-      void g() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
+   @Override
+   public void aK_() {
+      this.L();
+      super.aK_();
+   }
 
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            xc $$0 = this.f.b().c();
-            this.a.a(new fzd($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, gdy.v, $$0));
-            return false;
-         }
+   class a extends gcn {
+      private static final xg c = xg.c("gui.abuseReport.discard.title").a(o.r);
+      private static final xg d = xg.c("gui.abuseReport.discard.content");
+      private static final xg s = xg.c("gui.abuseReport.discard.return");
+      private static final xg u = xg.c("gui.abuseReport.discard.draft");
+      private static final xg v = xg.c("gui.abuseReport.discard.discard");
+
+      protected a() {
+         super(c, d, d);
       }
 
       @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.u();
-         double $$4 = $$1 - (double)this.e.d(this.e.aI_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.m();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
+      protected fxn m() {
+         fxq $$0 = fxq.d().a(8);
+         $$0.c().b();
+         fxq $$1 = $$0.a(fxq.e().a(8));
+         $$1.a(fty.a(s, $$0x -> this.aQ_()).a());
+         $$1.a(fty.a(u, $$0x -> {
+            gdy.this.L();
+            this.m.a(gdy.this.x);
+         }).a());
+         $$0.a(fty.a(v, $$0x -> {
+            gdy.this.M();
+            this.m.a(gdy.this.x);
+         }).a());
+         return $$0;
+      }
 
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
+      @Override
+      public void aQ_() {
+         this.m.a(gdy.this);
+      }
 
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
+      @Override
+      public boolean aI_() {
+         return false;
       }
    }
 }

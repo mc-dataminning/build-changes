@@ -3,13 +3,13 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bfn extends bhx {
+public class bfn extends big {
    public bfn(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bjd.D, "minecraft:wolf");
+      super($$0, $$1, "EntityShulkerColorFix", bjm.D, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
+      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
    }
 
    @Override

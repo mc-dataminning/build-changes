@@ -1,36 +1,26 @@
-public class gzu extends gyj<byc, hfm> {
-   private static final float a = 40.0F;
-   private static final int g = 50;
-   private final hhs h;
-   private final azz i = azz.a();
+public class gzu extends gwp<cmr, hfx, gje> {
+   private static final alr a = alr.b("textures/entity/sheep/sheep.png");
 
-   protected gzu(gyk.a $$0) {
-      super($$0);
-      this.h = $$0.b();
+   public gzu(gxv.a $$0) {
+      super($$0, new gje($$0.a(gkq.cN)), new gje($$0.a(gkq.cO)), 0.7F);
+      this.a(new hcl(this, $$0.f()));
+      this.a(new hck(this, $$0.f()));
    }
 
-   public hfm a() {
-      return new hfm();
+   public alr a(hfx $$0) {
+      return a;
    }
 
-   public void a(byc $$0, hfm $$1, float $$2) {
+   public hfx b() {
+      return new hfx();
+   }
+
+   public void a(cmr $$0, hfx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      daa $$3 = $$0.g();
-      $$1.a($$0, $$3, this.h);
-   }
-
-   public void a(hfm $$0, flq $$1, gsc $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         if ($$0.u <= 50.0F) {
-            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
-            $$1.b($$4, $$4, $$4);
-         }
-
-         float $$5 = azq.h($$0.u * 40.0F);
-         $$1.a(a.d.rotationDegrees($$5));
-         gzg.a($$1, $$2, 15728880, $$0, this.i);
-         $$1.b();
-      }
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ao();
    }
 }

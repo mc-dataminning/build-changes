@@ -1,87 +1,39 @@
-import java.util.List;
+public class ght extends ghn<hen> {
+   private final gkr[] a = new gkr[9];
 
-public class ght extends gic<hej> {
-   public static final List<glg> a = List.of();
-   private final glg b;
-   private final List<glg> c;
-
-   public ght(glg $$0) {
+   public ght(gkr $$0) {
       super($$0);
-      glg $$1 = $$0.b("root");
-      glg $$2 = $$1.b("upper_body");
-      this.b = $$2.b("head");
-      this.c = List.of(this.b);
+
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1] = $$0.b(a($$1));
+      }
    }
 
-   private static glo b() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      glq $$2 = $$1.a("root", gll.c(), gli.a(0.0F, 24.0F, 0.0F));
-      glq $$3 = $$2.a("upper_body", gll.c(), gli.a(-1.0F, -19.0F, 0.0F));
-      $$3.a(
-         "head",
-         gll.c()
-            .a(0, 0)
-            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
-            .a(28, 31)
-            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
-            .a(12, 40)
-            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
-            .a(34, 12)
-            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
-         gli.a(-3.0F, -11.0F, 0.0F)
-      );
-      $$3.a("body", gll.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gli.a(0.0F, -7.0F, 1.0F));
-      $$3.a(
-         "right_arm", gll.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gli.a(-7.0F, -9.5F, 1.5F)
-      );
-      $$3.a(
-         "left_arm",
-         gll.c()
-            .a(30, 40)
-            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
-            .a(52, 12)
-            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
-            .a(52, 19)
-            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
-         gli.a(6.0F, -9.0F, 0.5F)
-      );
-      $$2.a(
-         "left_leg", gll.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gli.a(1.5F, -16.0F, 0.5F)
-      );
-      $$2.a(
-         "right_leg",
-         gll.c()
-            .a(0, 34)
-            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
-            .a(45, 46)
-            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
-            .a(12, 34)
-            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
-         gli.a(-1.0F, -17.5F, 0.5F)
-      );
-      return $$0;
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public static glm a() {
-      glo $$0 = b();
-      return glm.a($$0, 64, 64);
-   }
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("body", gkw.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gkt.a(0.0F, 17.6F, 0.0F));
+      bai $$2 = bai.a(1660L);
 
-   public void a(hej $$0) {
-      super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.e) {
-         this.a(fsa.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), gkw.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gkt.a($$4, 24.6F, $$5));
       }
 
-      this.a($$0.b, fsa.b, $$0.u);
-      this.a($$0.a, fsa.c, $$0.u);
-      this.a($$0.c, fsa.d, $$0.u);
+      return gkx.a($$0, 64, 32).a(gla.scaling(4.5F));
    }
 
-   public List<glg> b(hej $$0) {
-      return !$$0.d ? a : this.c;
+   public void a(hen $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1].e = 0.2F * azz.a($$0.v * 0.3F + (float)$$1) + 0.4F;
+      }
    }
 }

@@ -1,105 +1,180 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dux extends dne {
-   public static final MapCodec<dux> a = b(dux::new);
-   public static final int b = 8;
-   public static final ecg c = ebw.aI;
-   private static final fgm[] e = dne.a(8, $$0 -> dne.b(16.0, 0.0, (double)($$0 * 2)));
-   public static final int d = 5;
+public class dux extends dna {
+   public static final MapCodec<dux> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czi.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.e)), t())
+            .apply($$0, ($$0x, $$1) -> new dux((czi)$$0x.orElse(null), $$1))
+   );
+   public static final Map<jc, fgw> b = fgt.d(dno.c(16.0, 0.0, 1.0));
+   public static final eco<jc> c = dps.a;
+   public static final alr d = alr.b("contents");
+   @Nullable
+   private final czi e;
 
    @Override
    public MapCodec<dux> a() {
       return a;
    }
 
-   protected dux(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(1)));
+   public dux(@Nullable czi $$0, ebp.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.l(this.C.b().b(c, jc.b));
    }
 
    @Override
-   protected boolean a(ebg $$0, eyf $$1) {
-      return $$1 == eyf.a ? $$0.c(c) < 5 : false;
-   }
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e[$$0.c(c) - 1];
-   }
-
-   @Override
-   protected fgm b_(ebg $$0, djd $$1, iw $$2) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean g_(ebg $$0) {
-      return true;
-   }
-
-   @Override
-   protected float c(ebg $$0, djd $$1, iw $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      ebg $$3 = $$1.a_($$2.e());
-      if ($$3.a(axg.cv)) {
-         return false;
-      } else {
-         return $$3.a(axg.cw) ? true : dne.a($$3.g($$1, $$2.e()), jc.b) || $$3.a(this) && $$3.c(c) == 8;
-      }
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if ($$1.a(dki.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(ebg $$0, ddt $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.h()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jc.b : true;
-      }
+   public dyo a(iw $$0, ebq $$1) {
+      return new eab(this.e, $$0, $$1);
    }
 
    @Nullable
    @Override
-   public ebg a(ddt $$0) {
-      ebg $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+   public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
+      return a($$2, dyq.y, eab::a);
+   }
+
+   @Override
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if ($$1 instanceof asb $$5 && $$1.c_($$2) instanceof eab $$6 && a($$0, $$1, $$2, $$6)) {
+         $$3.a($$6);
+         $$3.a(axi.aq);
+         cqy.a($$5, $$3, true);
+      }
+
+      return bvc.a;
+   }
+
+   private static boolean a(ebq $$0, dkj $$1, iw $$2, eab $$3) {
+      if ($$3.k() != eab.a.a) {
+         return true;
       } else {
-         return super.a($$0);
+         ffx $$4 = cpq.a(1.0F, $$0.c(c), 0.0F, 0.5F, $$2.c()).h(1.0E-6);
+         return $$1.b($$4);
       }
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
+   public ebq a(ded $$0) {
+      return this.m().b(c, $$0.k());
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
       $$0.a(c);
+   }
+
+   @Override
+   public ebq a(dkj $$0, iw $$1, ebq $$2, csi $$3) {
+      dyo $$4 = $$0.c_($$1);
+      if ($$4 instanceof eab $$5) {
+         if (!$$0.C && $$3.gl() && !$$5.c()) {
+            dak $$6 = b(this.b());
+            $$6.b($$4.q());
+            coo $$7 = new coo($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
+            $$7.j();
+            $$0.b($$7);
+         } else {
+            $$5.d_($$3);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected List<dak> a(ebq $$0, faw.a $$1) {
+      dyo $$2 = $$1.b(fdn.h);
+      if ($$2 instanceof eab $$3) {
+         $$1 = $$1.a(d, $$1x -> {
+            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
+               $$1x.accept($$3.a($$2x));
+            }
+         });
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, boolean $$3) {
+      buy.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected fgw b_(ebq $$0, djn $$1, iw $$2) {
+      if ($$1.c_($$2) instanceof eab $$4 && !$$4.t()) {
+         return b.get($$0.c(c).g());
+      }
+
+      return fgt.b();
+   }
+
+   @Override
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return $$1.c_($$2) instanceof eab $$5 ? fgt.a($$5.a($$0)) : fgt.b();
+   }
+
+   @Override
+   protected boolean e_(ebq $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean c_(ebq $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(ebq $$0, dkj $$1, iw $$2) {
+      return cwb.a($$1.c_($$2));
+   }
+
+   public static dno a(@Nullable czi $$0) {
+      if ($$0 == null) {
+         return dnq.lv;
+      } else {
+         return switch ($$0) {
+            case a -> dnq.lw;
+            case b -> dnq.lx;
+            case c -> dnq.ly;
+            case d -> dnq.lz;
+            case e -> dnq.lA;
+            case f -> dnq.lB;
+            case g -> dnq.lC;
+            case h -> dnq.lD;
+            case i -> dnq.lE;
+            case j -> dnq.lF;
+            case l -> dnq.lH;
+            case m -> dnq.lI;
+            case n -> dnq.lJ;
+            case o -> dnq.lK;
+            case p -> dnq.lL;
+            case k -> dnq.lG;
+         };
+      }
+   }
+
+   @Nullable
+   public czi b() {
+      return this.e;
+   }
+
+   public static dak b(@Nullable czi $$0) {
+      return new dak(a($$0));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 }

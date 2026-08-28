@@ -1,4 +1,4 @@
-public enum je implements bao {
+public enum je implements bax {
    a("down_east", jc.a, jc.f),
    b("down_north", jc.a, jc.c),
    c("down_south", jc.a, jc.d),

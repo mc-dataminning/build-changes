@@ -1,56 +1,67 @@
-public class gpi extends gqm {
-   gpi(gmd $$0, double $$1, double $$2, double $$3) {
+import org.joml.Quaternionf;
+
+public class gpi extends gpx {
+   private static final float a = 1.0472F;
+   private int b;
+
+   gpi(glo $$0, double $$1, double $$2, double $$3, int $$4) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-   }
-
-   @Override
-   public gpq b() {
-      return gpq.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+      return this.D * azz.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a(flg $$0, fpy $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - azz.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gpb b() {
+      return gpb.c;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(lz.ah, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
       }
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
+   public static class a implements gpa<mc> {
+      private final gps a;
 
-      public a(gqh $$0) {
+      public a(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpi $$8 = new gpi($$1, $$2, $$3, $$4);
+      public gox a(mc $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpi $$8 = new gpi($$1, $$2, $$3, $$4, $$0.b());
          $$8.a(this.a);
+         $$8.e(1.0F);
          return $$8;
       }
    }

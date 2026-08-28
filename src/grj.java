@@ -1,125 +1,81 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class grj {
-   private static final grj a = new grj("") {
-      @Override
-      public void a(frf $$0) {
-      }
-
-      @Override
-      public void a(grj.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
+public class grj implements grr.a {
+   public static final alr a = grr.a;
+   public static final alr b = alr.b("translucent");
+   public static final alr c = alr.b("item_entity");
+   public static final alr d = alr.b("particles");
+   public static final alr e = alr.b("weather");
+   public static final alr f = alr.b("clouds");
+   public static final alr g = alr.b("entity_outline");
+   public static final Set<alr> h = Set.of(a);
+   public static final Set<alr> i = Set.of(a, g);
+   public static final Set<alr> j = Set.of(a, b, c, d, e, f);
+   public fkr<fjr> k = fkr.a();
    @Nullable
-   private grj.b e;
+   public fkr<fjr> l;
+   @Nullable
+   public fkr<fjr> m;
+   @Nullable
+   public fkr<fjr> n;
+   @Nullable
+   public fkr<fjr> o;
+   @Nullable
+   public fkr<fjr> p;
+   @Nullable
+   public fkr<fjr> q;
 
-   grj(String $$0) {
-      this.d = frf.Q().q.toPath().resolve($$0);
-   }
-
-   public static grj a(@Nullable String $$0) {
-      return $$0 == null ? a : new grj($$0);
-   }
-
-   public void a(grj.c $$0, String $$1, String $$2) {
-      this.e = new grj.b($$0, $$1, $$2);
-   }
-
-   public void a(frf $$0) {
-      if ($$0.r != null && this.e != null) {
-         ag.i().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            grj.a $$2 = new grj.a(this.e, Instant.now(), $$0.r.i());
-            Codec.list(grj.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ag.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
+   @Override
+   public void a(alr $$0, fkr<fjr> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
       } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
+         }
+
+         this.q = $$1;
       }
    }
 
-   static record a(grj.b b, Instant c, djw d) {
-      public static final Codec<grj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(grj.b.a.forGetter(grj.a::a), ayy.q.fieldOf("lastPlayedTime").forGetter(grj.a::b), djw.f.fieldOf("gamemode").forGetter(grj.a::c))
-               .apply($$0, grj.a::new)
-      );
-
-      public grj.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public djw c() {
-         return this.d;
-      }
-   }
-
-   static record b(grj.c b, String c, String d) {
-      public static final MapCodec<grj.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  grj.c.d.fieldOf("type").forGetter(grj.b::a), ayy.s.fieldOf("id").forGetter(grj.b::b), Codec.STRING.fieldOf("name").forGetter(grj.b::c)
-               )
-               .apply($$0, grj.b::new)
-      );
-
-      public grj.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
+   @Nullable
+   @Override
+   public fkr<fjr> a(alr $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
+      } else {
+         return $$0.equals(g) ? this.q : null;
       }
    }
 
-   public static enum c implements bao {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<grj.c> d = bao.a(grj.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   public void a() {
+      this.k = fkr.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

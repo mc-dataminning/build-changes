@@ -1,98 +1,32 @@
 public class axb {
-   public static final axa<dne> a = a("mined", mh.e);
-   public static final axa<czw> b = a("crafted", mh.g);
-   public static final axa<czw> c = a("used", mh.g);
-   public static final axa<czw> d = a("broken", mh.g);
-   public static final axa<czw> e = a("picked_up", mh.g);
-   public static final axa<czw> f = a("dropped", mh.g);
-   public static final axa<bxe<?>> g = a("killed", mh.f);
-   public static final axa<bxe<?>> h = a("killed_by", mh.f);
-   public static final axa<alk> i = a("custom", mh.k);
-   public static final alk j = a("leave_game", awz.b);
-   public static final alk k = a("play_time", awz.e);
-   public static final alk l = a("total_world_time", awz.e);
-   public static final alk m = a("time_since_death", awz.e);
-   public static final alk n = a("time_since_rest", awz.e);
-   public static final alk o = a("sneak_time", awz.e);
-   public static final alk p = a("walk_one_cm", awz.d);
-   public static final alk q = a("crouch_one_cm", awz.d);
-   public static final alk r = a("sprint_one_cm", awz.d);
-   public static final alk s = a("walk_on_water_one_cm", awz.d);
-   public static final alk t = a("fall_one_cm", awz.d);
-   public static final alk u = a("climb_one_cm", awz.d);
-   public static final alk v = a("fly_one_cm", awz.d);
-   public static final alk w = a("walk_under_water_one_cm", awz.d);
-   public static final alk x = a("minecart_one_cm", awz.d);
-   public static final alk y = a("boat_one_cm", awz.d);
-   public static final alk z = a("pig_one_cm", awz.d);
-   public static final alk A = a("horse_one_cm", awz.d);
-   public static final alk B = a("aviate_one_cm", awz.d);
-   public static final alk C = a("swim_one_cm", awz.d);
-   public static final alk D = a("strider_one_cm", awz.d);
-   public static final alk E = a("jump", awz.b);
-   public static final alk F = a("drop", awz.b);
-   public static final alk G = a("damage_dealt", awz.c);
-   public static final alk H = a("damage_dealt_absorbed", awz.c);
-   public static final alk I = a("damage_dealt_resisted", awz.c);
-   public static final alk J = a("damage_taken", awz.c);
-   public static final alk K = a("damage_blocked_by_shield", awz.c);
-   public static final alk L = a("damage_absorbed", awz.c);
-   public static final alk M = a("damage_resisted", awz.c);
-   public static final alk N = a("deaths", awz.b);
-   public static final alk O = a("mob_kills", awz.b);
-   public static final alk P = a("animals_bred", awz.b);
-   public static final alk Q = a("player_kills", awz.b);
-   public static final alk R = a("fish_caught", awz.b);
-   public static final alk S = a("talked_to_villager", awz.b);
-   public static final alk T = a("traded_with_villager", awz.b);
-   public static final alk U = a("eat_cake_slice", awz.b);
-   public static final alk V = a("fill_cauldron", awz.b);
-   public static final alk W = a("use_cauldron", awz.b);
-   public static final alk X = a("clean_armor", awz.b);
-   public static final alk Y = a("clean_banner", awz.b);
-   public static final alk Z = a("clean_shulker_box", awz.b);
-   public static final alk aa = a("interact_with_brewingstand", awz.b);
-   public static final alk ab = a("interact_with_beacon", awz.b);
-   public static final alk ac = a("inspect_dropper", awz.b);
-   public static final alk ad = a("inspect_hopper", awz.b);
-   public static final alk ae = a("inspect_dispenser", awz.b);
-   public static final alk af = a("play_noteblock", awz.b);
-   public static final alk ag = a("tune_noteblock", awz.b);
-   public static final alk ah = a("pot_flower", awz.b);
-   public static final alk ai = a("trigger_trapped_chest", awz.b);
-   public static final alk aj = a("open_enderchest", awz.b);
-   public static final alk ak = a("enchant_item", awz.b);
-   public static final alk al = a("play_record", awz.b);
-   public static final alk am = a("interact_with_furnace", awz.b);
-   public static final alk an = a("interact_with_crafting_table", awz.b);
-   public static final alk ao = a("open_chest", awz.b);
-   public static final alk ap = a("sleep_in_bed", awz.b);
-   public static final alk aq = a("open_shulker_box", awz.b);
-   public static final alk ar = a("open_barrel", awz.b);
-   public static final alk as = a("interact_with_blast_furnace", awz.b);
-   public static final alk at = a("interact_with_smoker", awz.b);
-   public static final alk au = a("interact_with_lectern", awz.b);
-   public static final alk av = a("interact_with_campfire", awz.b);
-   public static final alk aw = a("interact_with_cartography_table", awz.b);
-   public static final alk ax = a("interact_with_loom", awz.b);
-   public static final alk ay = a("interact_with_stonecutter", awz.b);
-   public static final alk az = a("bell_ring", awz.b);
-   public static final alk aA = a("raid_trigger", awz.b);
-   public static final alk aB = a("raid_win", awz.b);
-   public static final alk aC = a("interact_with_anvil", awz.b);
-   public static final alk aD = a("interact_with_grindstone", awz.b);
-   public static final alk aE = a("target_hit", awz.b);
-   public static final alk aF = a("interact_with_smithing_table", awz.b);
+   protected final axc a = new axc();
 
-   private static alk a(String $$0, awz $$1) {
-      alk $$2 = alk.b($$0);
-      jt.a(mh.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+   public boolean a(cxr $$0) {
+      return this.a.a($$0);
    }
 
-   private static <T> axa<T> a(String $$0, jt<T> $$1) {
-      xc $$2 = xc.c("stat_type.minecraft." + $$0);
-      return jt.a(mh.v, $$0, new axa<>($$1, $$2));
+   public void a(cxr $$0, boolean $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   public boolean b(cxr $$0) {
+      return this.a.b($$0);
+   }
+
+   public void b(cxr $$0, boolean $$1) {
+      this.a.b($$0, $$1);
+   }
+
+   public void a(axc $$0) {
+      this.a.a($$0);
+   }
+
+   public axc a() {
+      return this.a.a();
+   }
+
+   public void a(cxr $$0, boolean $$1, boolean $$2) {
+      this.a.a($$0, $$1);
+      this.a.b($$0, $$2);
    }
 }

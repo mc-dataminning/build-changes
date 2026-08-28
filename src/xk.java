@@ -1,77 +1,160 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import java.util.BitSet;
-import java.util.Objects;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class xk {
-   private final xm[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xo d;
+   public static final Codec<xk> a = bax.a(xk.a::values).dispatch(xk::c, xk.a::a);
+   public static final xk b = new xk(new BitSet(0), xk.a.b);
+   public static final xk c = new xk(new BitSet(0), xk.a.a);
+   public static final yd d = yd.a.a(o.i).a(new xm.e(xg.c("chat.filtered")));
+   static final MapCodec<xk> e = MapCodec.unit(c);
+   static final MapCodec<xk> f = MapCodec.unit(b);
+   static final MapCodec<xk> g = azg.w.xmap(xk::new, xk::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xk.a j;
+
+   private xk(BitSet $$0, xk.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   private xk(BitSet $$0) {
+      this.i = $$0;
+      this.j = xk.a.c;
+   }
 
    public xk(int $$0) {
-      this.a = new xm[$$0];
+      this(new BitSet($$0), xk.a.c);
    }
 
-   public boolean a(xo $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xm($$0, true) : null);
+   private xk.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xk a(vy $$0) {
+      xk.a $$1 = $$0.b(xk.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xk($$0.w(), xk.a.c);
+      };
+   }
+
+   public static void a(vy $$0, xk $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xk.a.c) {
+         $$0.a($$1.i);
+      }
+   }
+
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public xg b(String $$0) {
+      return switch (this.j) {
+         case a -> xg.b($$0);
+         case b -> null;
+         case c -> {
+            xu $$1 = xg.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(xg.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == xk.a.a;
+   }
+
+   public boolean b() {
+      return this.j == xk.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xk $$1 = (xk)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
       }
    }
 
-   private void a(@Nullable xm $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
    }
 
-   public void a(xo $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xm $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
+   static enum a implements bax {
+      a("pass_through", () -> xk.e),
+      b("fully_filtered", () -> xk.f),
+      c("partially_filtered", () -> xk.g);
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
+      private final String d;
+      private final Supplier<MapCodec<xk>> e;
 
-   public xk.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xo> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xm $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+      private a(final String $$0, final Supplier<MapCodec<xk>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      xj $$6 = new xj($$2);
-      xj.b $$7 = new xj.b($$0, $$1);
-      return new xk.a($$6, $$7);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xj a, xj.b b) {
+      private MapCodec<xk> a() {
+         return this.e.get();
+      }
    }
 }

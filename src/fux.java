@@ -1,59 +1,35 @@
-public class fux extends fuk {
-   private final ftx a;
-   private final fvh c;
+public class fux {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public fux(int $$0, int $$1, int $$2, int $$3, xc $$4, ftx $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.c = new fvh($$4, $$5).d(this.A() - this.b());
+   public static void a(ftk $$0, hls $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   public fux a(int $$0) {
-      this.c.c($$0);
-      return this;
+   public static void a(ftk $$0, hls $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   @Override
-   public void h(int $$0) {
-      super.h($$0);
-      this.c.d(this.A() - this.b());
+   public static void a(ftk $$0, alr $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gry::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+      }
    }
 
-   @Override
-   protected int c() {
-      return this.c.y();
-   }
-
-   @Override
-   protected double o() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(ftz $$0) {
-      super.c($$0);
-   }
-
-   public boolean q() {
-      return super.j();
-   }
-
-   @Override
-   protected void c(ftz $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fyk $$0) {
-      $$0.a(fyj.a, this.B());
-   }
-
-   @Override
-   public void b(xc $$0) {
-      super.b($$0);
-      this.c.b($$0);
+   private static void a(ftk $$0, alr $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gry::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

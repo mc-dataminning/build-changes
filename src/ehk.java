@@ -1,117 +1,112 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public record ehk(ehn j, ebg k, ebg l, ehl m, ehw.o n, List<dll.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<ehk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehn.a.fieldOf("noise").forGetter(ehk::f),
-               ebg.a.fieldOf("default_block").forGetter(ehk::g),
-               ebg.a.fieldOf("default_fluid").forGetter(ehk::h),
-               ehl.a.fieldOf("noise_router").forGetter(ehk::i),
-               ehw.o.b.fieldOf("surface_rule").forGetter(ehk::j),
-               dll.d.a.listOf().fieldOf("spawn_target").forGetter(ehk::k),
-               Codec.INT.fieldOf("sea_level").forGetter(ehk::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ehk::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ehk::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ehk::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ehk::n)
-            )
-            .apply($$0, ehk::new)
+public class ehk extends edo {
+   public static final MapCodec<ehk> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eqq.a.fieldOf("settings").forGetter(ehk::h)).apply($$0, $$0.stable(ehk::new))
    );
-   public static final Codec<jg<ehk>> b = alg.a(mi.aX, a);
-   public static final alj<ehk> c = alj.a(mi.aX, alk.b("overworld"));
-   public static final alj<ehk> d = alj.a(mi.aX, alk.b("large_biomes"));
-   public static final alj<ehk> e = alj.a(mi.aX, alk.b("amplified"));
-   public static final alj<ehk> f = alj.a(mi.aX, alk.b("nether"));
-   public static final alj<ehk> g = alj.a(mi.aX, alk.b("end"));
-   public static final alj<ehk> h = alj.a(mi.aX, alk.b("caves"));
-   public static final alj<ehk> i = alj.a(mi.aX, alk.b("floating_islands"));
+   private final eqq d;
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   public ehk(eqq $$0) {
+      super(new dlx($$0.d()), ag.b($$0::a));
+      this.d = $$0;
    }
 
-   public boolean b() {
-      return this.r;
+   @Override
+   public edp a(ji<est> $$0, eid $$1, long $$2) {
+      Stream<jg<est>> $$3 = this.d.c().map(jk::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return edp.a($$1, $$2, this.b, $$3);
    }
 
-   public boolean c() {
-      return this.s;
+   @Override
+   protected MapCodec<? extends edo> b() {
+      return c;
    }
 
-   public eie.a d() {
-      return this.t ? eie.a.a : eie.a.b;
+   public eqq h() {
+      return this.d;
    }
 
-   public static void a(qi<ehk> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   @Override
+   public void a(asj $$0, dlf $$1, eid $$2, edn $$3) {
    }
 
-   private static ehk b(qi<?> $$0) {
-      return new ehk(ehn.d, dng.fY.m(), dng.a.m(), ehm.a($$0.a(mi.aO)), qv.c(), List.of(), 0, true, false, false, true);
+   @Override
+   public int a(dkl $$0) {
+      return $$0.K_() + Math.min($$0.L_(), this.d.f().size());
    }
 
-   private static ehk c(qi<?> $$0) {
-      return new ehk(ehn.c, dng.em.m(), dng.K.m(), ehm.a($$0.a(mi.aO), $$0.a(mi.aY)), qv.b(), List.of(), 32, false, false, false, true);
+   @Override
+   public CompletableFuture<edn> a(eir $$0, eid $$1, dlf $$2, edn $$3) {
+      List<ebq> $$4 = this.d.f();
+      iw.a $$5 = new iw.a();
+      ehp $$6 = $$3.a(ehp.a.c);
+      ehp $$7 = $$3.a(ehp.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.L_(), $$4.size()); $$8++) {
+         ebq $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.K_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   private static ehk a(qi<?> $$0, boolean $$1, boolean $$2) {
-      return new ehk(ehn.b, dng.b.m(), dng.J.m(), ehm.a($$0.a(mi.aO), $$0.a(mi.aY), $$2, $$1), qv.a(), new dls().a(), 63, false, true, true, false);
+   @Override
+   public int a(int $$0, int $$1, ehp.a $$2, dkl $$3, eid $$4) {
+      List<ebq> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
+         ebq $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.K_() + $$6 + 1;
+         }
+      }
+
+      return $$3.K_();
    }
 
-   private static ehk d(qi<?> $$0) {
-      return new ehk(ehn.e, dng.b.m(), dng.J.m(), ehm.b($$0.a(mi.aO), $$0.a(mi.aY)), qv.a(false, true, true), List.of(), 32, false, false, false, true);
+   @Override
+   public dkv a(int $$0, int $$1, dkl $$2, eid $$3) {
+      return new dkv($$2.K_(), this.d.f().stream().limit((long)$$2.L_()).map($$0x -> $$0x == null ? dnq.a.m() : $$0x).toArray(ebq[]::new));
    }
 
-   private static ehk e(qi<?> $$0) {
-      return new ehk(ehn.f, dng.b.m(), dng.J.m(), ehm.c($$0.a(mi.aO), $$0.a(mi.aY)), qv.a(false, false, false), List.of(), -64, false, false, false, true);
+   @Override
+   public void a(List<String> $$0, eid $$1, iw $$2) {
    }
 
-   public static ehk e() {
-      return new ehk(ehn.b, dng.b.m(), dng.a.m(), ehm.a(), qv.d(), List.of(), 63, true, false, false, false);
+   @Override
+   public void a(asj $$0, long $$1, eid $$2, dlo $$3, dlf $$4, edn $$5) {
    }
 
-   public ehn f() {
-      return this.j;
+   @Override
+   public void a(asj $$0) {
    }
 
-   public ebg g() {
-      return this.k;
+   @Override
+   public int g() {
+      return 0;
    }
 
-   public ebg h() {
-      return this.l;
+   @Override
+   public int e() {
+      return 384;
    }
 
-   public ehl i() {
-      return this.m;
-   }
-
-   public ehw.o j() {
-      return this.n;
-   }
-
-   public List<dll.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+   @Override
+   public int f() {
+      return -63;
    }
 }

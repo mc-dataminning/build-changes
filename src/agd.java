@@ -1,16 +1,12 @@
-public record agd(xc b, xc c) implements zj<aby> {
-   public static final za<wn, agd> a = za.a(xe.d, agd::b, xe.d, agd::e, agd::new);
+public record agd(xg b) implements zo<acf> {
+   public static final ze<wp, agd> a = ze.a(xi.d, agd::b, agd::new);
 
    @Override
-   public zl<agd> a() {
-      return agr.ba;
+   public zq<agd> a() {
+      return agy.aT;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public xc e() {
-      return this.c;
    }
 }

@@ -1,21 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emx extends emi {
-   public static final Codec<emx> c = RecordCodecBuilder.create(
+public record emx(epk b, eiw c, buh d, int e) implements enb {
+   public static final Codec<emx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eos.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayy.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayy.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+               epk.a.fieldOf("state_provider").forGetter(emx::a),
+               eiw.b.fieldOf("target").forGetter(emx::b),
+               buh.b(0, 8).fieldOf("radius").forGetter(emx::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(emx::d)
             )
             .apply($$0, emx::new)
    );
-   public final int d;
-   public final int e;
 
-   public emx(eos $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public epk a() {
+      return this.b;
+   }
+
+   public eiw b() {
+      return this.c;
+   }
+
+   public buh c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

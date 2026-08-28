@@ -1,76 +1,93 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
-public record bqh<T>(bpx<StringReader> a, bqa<StringReader, T> b) implements bqg<T> {
-   public bqh(bpx<StringReader> a, bqa<StringReader, T> b) {
-      a.a();
-      this.a = a;
-      this.b = b;
+public interface bqh<S> {
+   void a(int var1, bqn<S> var2, Object var3);
+
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bqn.b(), $$1);
    }
 
-   public Optional<T> a(bqb<StringReader> $$0) {
-      return $$0.b(this.b);
-   }
+   void a(int var1);
 
-   @Override
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bpy.a<StringReader> $$1 = new bpy.a<>();
-      bqp $$2 = new bqp($$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
-      } else {
-         List<bpz<StringReader>> $$4 = $$1.a();
-         List<Exception> $$5 = $$4.stream().<Exception>mapMulti(($$1x, $$2x) -> {
-            if ($$1x.c() instanceof bpw<?> $$4x) {
-               $$2x.accept($$4x.create($$0.getString(), $$1x.a()));
-            } else if ($$1x.c() instanceof Exception $$6x) {
-               $$2x.accept($$6x);
-            }
-         }).toList();
+   public static class a<S> implements bqh<S> {
+      private bqh.a.a<S>[] a = new bqh.a.a[16];
+      private int b;
+      private int c = -1;
 
-         for (Exception $$6 : $$5) {
-            if ($$6 instanceof CommandSyntaxException $$7) {
-               throw $$7;
-            }
+      private void b(int $$0) {
+         if ($$0 > this.c) {
+            this.c = $$0;
+            this.b = 0;
+         }
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, bqn<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.c) {
+            this.a($$1, $$2);
+         }
+      }
+
+      private void a(bqn<S> $$0, Object $$1) {
+         int $$2 = this.a.length;
+         if (this.b >= $$2) {
+            int $$3 = ag.a($$2, this.b + 1);
+            bqh.a.a<S>[] $$4 = new bqh.a.a[$$3];
+            System.arraycopy(this.a, 0, $$4, 0, $$2);
+            this.a = $$4;
          }
 
-         if ($$5.size() == 1 && $$5.get(0) instanceof RuntimeException $$8) {
-            throw $$8;
+         int $$5 = this.b++;
+         bqh.a.a<S> $$6 = this.a[$$5];
+         if ($$6 == null) {
+            $$6 = new bqh.a.a<>();
+            this.a[$$5] = $$6;
+         }
+
+         $$6.a = $$0;
+         $$6.b = $$1;
+      }
+
+      public List<bqi<S>> a() {
+         int $$0 = this.b;
+         if ($$0 == 0) {
+            return List.of();
          } else {
-            throw new IllegalStateException("Failed to parse: " + $$4.stream().map(bpz::toString).collect(Collectors.joining(", ")));
+            List<bqi<S>> $$1 = new ArrayList<>($$0);
+
+            for (int $$2 = 0; $$2 < $$0; $$2++) {
+               bqh.a.a<S> $$3 = this.a[$$2];
+               $$1.add(new bqi<>(this.c, $$3.a, $$3.b));
+            }
+
+            return $$1;
          }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      static class a<S> {
+         bqn<S> a = bqn.b();
+         Object b = "empty";
       }
    }
 
-   @Override
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bpy.a<StringReader> $$2 = new bpy.a<>();
-      bqp $$3 = new bqp($$2, $$1);
-      this.a($$3);
-      List<bpz<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public static class b<S> implements bqh<S> {
+      @Override
+      public void a(int $$0, bqn<S> $$1, Object $$2) {
+      }
 
-         for (bpz<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bqo $$7) {
-               ep.a($$7.a(), $$5);
-            } else {
-               ep.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
-
-         return $$5.buildFuture();
+      @Override
+      public void a(int $$0) {
       }
    }
 }

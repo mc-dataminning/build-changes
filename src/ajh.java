@@ -1,55 +1,49 @@
-import java.security.PublicKey;
+public record ajh(int b, String c, int d, ajg e) implements zo<ajk> {
+   public static final ze<vy, ajh> a = zo.a(ajh::a, ajh::new);
+   private static final int f = 255;
 
-public class ajh implements zj<ajf> {
-   public static final za<vy, ajh> a = zj.a(ajh::a, ajh::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajh(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   @Deprecated
+   public ajh(int b, String c, int d, ajg e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    private ajh(vy $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ajg.a($$0.l()));
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.m(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zl<ajh> a() {
-      return ajl.c;
+   public zq<ajh> a() {
+      return aji.a;
    }
 
-   public void a(ajf $$0) {
+   public void a(ajk $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 
-   public PublicKey e() throws ayo {
-      return ayn.a(this.c);
+   public String e() {
+      return this.c;
    }
 
-   public byte[] f() {
+   public int f() {
       return this.d;
    }
 
-   public boolean g() {
+   public ajg g() {
       return this.e;
    }
 }

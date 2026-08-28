@@ -21,31 +21,31 @@ public class ib<T extends em<T>> implements hy<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, ia<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final alk e;
+   private final alr e;
    private final List<ib.a<T>> f;
 
-   public ib(alk $$0, List<ib.a<T>> $$1, List<String> $$2) {
+   public ib(alr $$0, List<ib.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public alk a() {
+   public alr a() {
       return this.e;
    }
 
    @Override
    public ia<T> a(@Nullable ua $$0, CommandDispatcher<T> $$1) throws en {
       if ($$0 == null) {
-         throw new en(xc.a("commands.function.error.missing_arguments", xc.a(this.a())));
+         throw new en(xg.a("commands.function.error.missing_arguments", xg.a(this.a())));
       } else {
          List<String> $$2 = new ArrayList<>(this.c.size());
 
          for (String $$3 : this.c) {
             va $$4 = $$0.a($$3);
             if ($$4 == null) {
-               throw new en(xc.a("commands.function.error.missing_argument", xc.a(this.a()), $$3));
+               throw new en(xg.a("commands.function.error.missing_argument", xg.a(this.a()), $$3));
             }
 
             $$2.add(a($$4));
@@ -176,7 +176,7 @@ public class ib<T extends em<T>> implements hy<T> {
    interface a<T> {
       IntList a();
 
-      hp<T> a(List<String> var1, CommandDispatcher<T> var2, alk var3) throws en;
+      hp<T> a(List<String> var1, CommandDispatcher<T> var2, alr var3) throws en;
    }
 
    static class b<T extends em<T>> implements ib.a<T> {
@@ -196,13 +196,13 @@ public class ib<T extends em<T>> implements hy<T> {
       }
 
       @Override
-      public hp<T> a(List<String> $$0, CommandDispatcher<T> $$1, alk $$2) throws en {
+      public hp<T> a(List<String> $$0, CommandDispatcher<T> $$1, alr $$2) throws en {
          String $$3 = this.a.a($$0);
 
          try {
             return hy.a($$1, this.c, new StringReader($$3));
          } catch (CommandSyntaxException var6) {
-            throw new en(xc.a("commands.function.error.parse", xc.a($$2), $$3, var6.getMessage()));
+            throw new en(xg.a("commands.function.error.parse", xg.a($$2), $$3, var6.getMessage()));
          }
       }
    }
@@ -220,7 +220,7 @@ public class ib<T extends em<T>> implements hy<T> {
       }
 
       @Override
-      public hp<T> a(List<String> $$0, CommandDispatcher<T> $$1, alk $$2) {
+      public hp<T> a(List<String> $$0, CommandDispatcher<T> $$1, alr $$2) {
          return this.a;
       }
    }

@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class ft implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xc.b("slot.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xc.b("slot.only_single_allowed", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xg.b("slot.only_single_allowed", $$0));
 
    public static ft a() {
       return new ft();
@@ -24,7 +24,7 @@ public class ft implements ArgumentType<Integer> {
 
    public Integer a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = eo.a($$0, $$0x -> $$0x != ' ');
-      cxq $$2 = cxr.a($$1);
+      cya $$2 = cyb.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else if ($$2.b() != 1) {
@@ -35,7 +35,7 @@ public class ft implements ArgumentType<Integer> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ep.b(cxr.b(), $$1);
+      return ep.b(cyb.b(), $$1);
    }
 
    public Collection<String> getExamples() {

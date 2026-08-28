@@ -1,37 +1,44 @@
-public class aer implements zj<aby> {
-   public static final za<vy, aer> a = zj.a(aer::a, aer::new);
-   private final int b;
-   private final byte c;
+import java.util.List;
 
-   public aer(bwv $$0, byte $$1) {
-      this.b = $$0.ao();
-      this.c = $$1;
-   }
-
-   private aer(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-   }
+public record aer(List<aer.a> b, boolean c) implements zo<acf> {
+   public static final ze<wp, aer> a = ze.a(aer.a.c.a(zc.a()), aer::b, zc.b, aer::e, aer::new);
 
    @Override
-   public zl<aer> a() {
-      return agr.aq;
+   public zq<aer> a() {
+      return agy.ak;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public bwv a(djz $$0) {
-      return $$0.a(this.b);
+   public boolean e() {
+      return this.c;
    }
 
-   public float b() {
-      return azq.a(this.c);
+   public static record a(dgi d, byte e) {
+      public static final byte a = 1;
+      public static final byte b = 2;
+      public static final ze<wp, aer.a> c = ze.a(dgi.a, aer.a::c, zc.c, aer.a::d, aer.a::new);
+
+      public a(dgi $$0, boolean $$1, boolean $$2) {
+         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
+      }
+
+      public boolean a() {
+         return (this.e & 1) != 0;
+      }
+
+      public boolean b() {
+         return (this.e & 2) != 0;
+      }
+
+      public dgi c() {
+         return this.d;
+      }
+
+      public byte d() {
+         return this.e;
+      }
    }
 }

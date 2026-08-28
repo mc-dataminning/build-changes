@@ -21,35 +21,35 @@ public class sy extends MinecraftServer {
    private static final Logger l = LogUtils.getLogger();
    private static final int m = 20;
    private static final int n = 14999992;
-   private static final amf o = new amf(null, ServicesKeySet.EMPTY, null, null);
-   private static final cvj p = cvl.e.a().d(cvj.a(cvl.c, cvl.d));
-   private final bpe q = new bpe(4);
+   private static final amm o = new amm(null, ServicesKeySet.EMPTY, null, null);
+   private static final cvs p = cvu.e.a().d(cvs.a(cvu.c, cvu.d));
+   private final bpn q = new bpn(4);
    private final Optional<String> r;
    private final boolean s;
    private List<sk> t = new ArrayList<>();
    private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final eid v = new eid(0L, false, false);
+   private static final ein v = new ein(0L, false, false);
    @Nullable
    private tf w;
 
-   public static sy a(Thread $$0, ezx.c $$1, aur $$2, Optional<String> $$3, boolean $$4) {
+   public static sy a(Thread $$0, fah.c $$1, auz $$2, Optional<String> $$3, boolean $$4) {
       $$2.a();
       ArrayList<String> $$5 = new ArrayList<>($$2.c());
       $$5.remove("vanilla");
       $$5.addFirst("vanilla");
-      dkx $$6 = new dkx(new djm($$5, List.of()), p);
-      dkd $$7 = new dkd("Test Level", djw.b, false, buq.c, true, new djv(p), $$6);
-      ami.d $$8 = new ami.d($$2, $$6, false, true);
-      ami.c $$9 = new ami.c($$8, el.a.b, 4);
+      dlh $$6 = new dlh(new djw($$5, List.of()), p);
+      dkn $$7 = new dkn("Test Level", dkg.b, false, buz.c, true, new dkf(p), $$6);
+      amp.d $$8 = new amp.d($$2, $$6, false, true);
+      amp.c $$9 = new amp.c($$8, el.a.b, 4);
 
       try {
          l.debug("Starting resource loading");
          Stopwatch $$10 = Stopwatch.createStarted();
-         amj $$11 = ag.<amj>c($$2x -> ami.a($$9, $$1xx -> {
-               jt<efe> $$2xx = new jo<>(mi.bq, Lifecycle.stable()).n();
-               eia.b $$3x = $$1xx.c().e(mi.bo).b(ert.b).a().a().a($$2xx);
-               return new ami.b<>(new fab($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
-            }, amj::new, ag.h(), $$2x)).get();
+         amq $$11 = ag.<amq>c($$2x -> amp.a($$9, $$1xx -> {
+               jt<efo> $$2xx = new jo<>(mi.bq, Lifecycle.stable()).n();
+               eik.b $$3x = $$1xx.c().e(mi.bo).b(esd.b).a().a().a($$2xx);
+               return new amp.b<>(new fal($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
+            }, amq::new, ag.h(), $$2x)).get();
          $$10.stop();
          l.debug("Finished resource loading after {} ms", $$10.elapsed(TimeUnit.MILLISECONDS));
          return new sy($$0, $$1, $$2, $$11, $$3, $$4);
@@ -60,24 +60,24 @@ public class sy extends MinecraftServer {
       }
    }
 
-   private sy(Thread $$0, ezx.c $$1, aur $$2, amj $$3, Optional<String> $$4, boolean $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbg.a(), o, asg::b);
+   private sy(Thread $$0, fah.c $$1, auz $$2, amq $$3, Optional<String> $$4, boolean $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbp.a(), o, asn::b);
       this.r = $$4;
       this.s = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new avu(this, this.bb(), this.g, 1) {
+      this.a(new awb(this, this.bb(), this.g, 1) {
       });
       this.u_();
-      aru $$0 = this.J();
+      asb $$0 = this.J();
       this.t = this.b($$0);
       l.info("Started game test server");
       return true;
    }
 
-   private List<sk> b(aru $$0) {
+   private List<sk> b(asb $$0) {
       jt<ss> $$1 = $$0.J_().f(mi.bh);
       Collection<jg.c<ss>> $$2;
       sl.a $$3;
@@ -85,7 +85,7 @@ public class sy extends MinecraftServer {
          $$2 = a($$0.J_(), this.r.get()).filter($$0x -> !((ss)$$0x.a()).i()).toList();
          if (this.s) {
             $$3 = sy::a;
-            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dty.values().length);
+            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dui.values().length);
          } else {
             $$3 = sl.a;
             l.info("Will run tests matching {} ({} tests)", this.r.get(), $$2.size());
@@ -98,10 +98,10 @@ public class sy extends MinecraftServer {
       return sl.a($$2, $$3, $$0);
    }
 
-   private static Stream<sr> a(jg.c<ss> $$0, aru $$1) {
+   private static Stream<sr> a(jg.c<ss> $$0, asb $$1) {
       Builder<sr> $$2 = Stream.builder();
 
-      for (dty $$3 : dty.values()) {
+      for (dui $$3 : dui.values()) {
          for (int $$4 = 0; $$4 < 100; $$4++) {
             $$2.add(new sr($$0, $$3, $$1, th.a()));
          }
@@ -117,7 +117,7 @@ public class sy extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      aru $$1 = this.J();
+      asb $$1 = this.J();
       if (!this.br()) {
          this.c($$1);
       }
@@ -148,7 +148,7 @@ public class sy extends MinecraftServer {
    }
 
    private static void a(sr $$0) {
-      if ($$0.u() != dty.a) {
+      if ($$0.u() != dui.a) {
          l.info("   - {} with rotation {}: {}", new Object[]{$$0.b(), $$0.u().c(), $$0.n().a().getString()});
       } else {
          l.info("   - {}: {}", $$0.b(), $$0.n().a().getString());
@@ -156,7 +156,7 @@ public class sy extends MinecraftServer {
    }
 
    @Override
-   public bph f() {
+   public bpq f() {
       return this.q;
    }
 
@@ -190,7 +190,7 @@ public class sy extends MinecraftServer {
       System.exit(1);
    }
 
-   private void c(aru $$0) {
+   private void c(asb $$0) {
       iw $$1 = new iw($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
       $$0.a($$1, 0.0F);
       sw $$2 = sw.a.a(this.t, $$0).a((sw.c)(new ti($$1, 8, false))).a();

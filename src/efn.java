@@ -1,61 +1,233 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.OptionalLong;
 
-public class efn<T extends efl> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public record efn(
+   OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, ayc<dno> x, alr y, float z, efn.a A
+) {
+   public static final int a = iw.e;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<efn> h = azg.e(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  azg.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(efn::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(efn::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(efn::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(efn::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(efn::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(efn::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(efn::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(efn::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(efn::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(efn::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(efn::p),
+                  ayc.b(mi.i).fieldOf("infiniburn").forGetter(efn::q),
+                  alr.a.fieldOf("effects").orElse(efl.e).forGetter(efn::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(efn::s),
+                  efn.a.a.forGetter(efn::t)
+               )
+               .apply($$0, efn::new)
+      )
+   );
+   public static final ze<wp, jg<efn>> i = zc.b(mi.aP);
+   public static final int j = 8;
+   public static final float[] k = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<jg<efn>> l = aln.a(mi.aP, h);
 
-   public <U extends T> void a(efs<T, U> $$0, ayb<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
+   public efn(
+      OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, ayc<dno> x, alr y, float z, efn.a A
+   ) {
+      if (v < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (u + v > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (w > v) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (v % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (u % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
+      } else {
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
+         this.z = z;
+         this.A = A;
+      }
+   }
 
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
+   @Deprecated
+   public static DataResult<alq<dkj>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dkj.j);
+         }
+
+         if ($$2 == 0) {
+            return DataResult.success(dkj.i);
+         }
+
+         if ($$2 == 1) {
+            return DataResult.success(dkj.k);
          }
       }
+
+      return dkj.h.parse($$0);
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
+   public static double a(efn $$0, efn $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
    }
 
-   public void a(T $$0) {
-      UUID $$1 = $$0.cG();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+   public static Path a(alq<dkj> $$0, Path $$1) {
+      if ($$0 == dkj.i) {
+         return $$1;
+      } else if ($$0 == dkj.k) {
+         return $$1.resolve("DIM1");
       } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ao(), $$0);
+         return $$0 == dkj.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   public void b(T $$0) {
-      this.c.remove($$0.cG());
-      this.b.remove($$0.ao());
+   public boolean a() {
+      return this.m.isPresent();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   public float a(long $$0) {
+      double $$1 = azz.e((double)this.m.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
    }
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
    }
 
-   public int b() {
-      return this.c.size();
+   public boolean b() {
+      return this.A.a();
+   }
+
+   public boolean c() {
+      return this.A.b();
+   }
+
+   public buh d() {
+      return this.A.c();
+   }
+
+   public int e() {
+      return this.A.d();
+   }
+
+   public OptionalLong f() {
+      return this.m;
+   }
+
+   public boolean g() {
+      return this.n;
+   }
+
+   public boolean h() {
+      return this.o;
+   }
+
+   public boolean i() {
+      return this.p;
+   }
+
+   public boolean j() {
+      return this.q;
+   }
+
+   public double k() {
+      return this.r;
+   }
+
+   public boolean l() {
+      return this.s;
+   }
+
+   public boolean m() {
+      return this.t;
+   }
+
+   public int n() {
+      return this.u;
+   }
+
+   public int o() {
+      return this.v;
+   }
+
+   public int p() {
+      return this.w;
+   }
+
+   public ayc<dno> q() {
+      return this.x;
+   }
+
+   public alr r() {
+      return this.y;
+   }
+
+   public float s() {
+      return this.z;
+   }
+
+   public efn.a t() {
+      return this.A;
+   }
+
+   public static record a(boolean b, boolean c, buh d, int e) {
+      public static final MapCodec<efn.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(efn.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(efn.a::b),
+                  buh.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(efn.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(efn.a::d)
+               )
+               .apply($$0, efn.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
+      }
+
+      public buh c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
    }
 }

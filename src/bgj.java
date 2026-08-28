@@ -2,25 +2,26 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.Objects;
 
 public class bgj extends DataFix {
-   public bgj(Schema $$0) {
-      super($$0, false);
+   public bgj(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityLockToComponentFix", this.getInputSchema().getType(bjd.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Optional<? extends Dynamic<?>> $$1 = $$0x.get("lock").result();
-               if ($$1.isEmpty()) {
-                  return $$0x;
-               } else {
-                  Dynamic<?> $$2 = bgk.b($$1.get());
-                  return $$2 != null ? $$0x.set("lock", $$2) : $$0x.remove("lock");
-               }
-            })
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bjm.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bjm.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bgj::a));
+      }
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
    }
 }

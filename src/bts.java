@@ -1,61 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.slf4j.Logger;
 
-public class bts extends btw {
-   public static final MapCodec<bts> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, bts::new)
-      )
-      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
+public class bts implements ThreadFactory {
+   private static final Logger a = LogUtils.getLogger();
+   private final ThreadGroup b;
+   private final AtomicInteger c = new AtomicInteger(1);
+   private final String d;
 
-   public static bts a(float $$0, float $$1, float $$2, float $$3) {
-      return new bts($$0, $$1, $$2, $$3);
-   }
-
-   private bts(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public bts(String $$0) {
+      SecurityManager $$1 = System.getSecurityManager();
+      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
+      this.d = $$0 + "-";
    }
 
    @Override
-   public float a(azz $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
-   }
+   public Thread newThread(Runnable $$0) {
+      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
+      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
+         a.error("Caught exception in thread {} from {}", $$1x, $$0);
+         a.error("", $$2);
+      });
+      if ($$1.getPriority() != 5) {
+         $$1.setPriority(5);
+      }
 
-   public static float a(azz $$0, float $$1, float $$2, float $$3, float $$4) {
-      return azq.a(azq.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public float a() {
-      return this.e;
-   }
-
-   @Override
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public btx<?> c() {
-      return btx.c;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+      return $$1;
    }
 }

@@ -1,76 +1,49 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class djg {
-   private final ffs a;
-   private final ffs b;
-   private final djg.a c;
-   private final djg.b d;
-   private final ffx e;
+public class djg extends ArrayList<djf> {
+   public static final Codec<djg> a = djf.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(djg::new, Function.identity()).codec();
+   public static final ze<wp, djg> b = djf.b.a(zc.a(djg::new));
 
-   public djg(ffs $$0, ffs $$1, djg.a $$2, djg.b $$3, bwv $$4) {
-      this($$0, $$1, $$2, $$3, ffx.a($$4));
+   public djg() {
    }
 
-   public djg(ffs $$0, ffs $$1, djg.a $$2, djg.b $$3, ffx $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   private djg(int $$0) {
+      super($$0);
    }
 
-   public ffs a() {
-      return this.b;
+   private djg(Collection<djf> $$0) {
+      super($$0);
    }
 
-   public ffs b() {
-      return this.a;
-   }
+   @Nullable
+   public djf a(dak $$0, dak $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         djf $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            djf $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
 
-   public fgm a(ebg $$0, djd $$1, iw $$2) {
-      return this.c.get($$0, $$1, $$2, this.e);
-   }
-
-   public fgm a(exq $$0, djd $$1, iw $$2) {
-      return this.d.a($$0) ? $$0.d($$1, $$2) : fgj.a();
-   }
-
-   public static enum a implements djg.c {
-      a(ebf.a::b),
-      b(ebf.a::a),
-      c(ebf.a::c),
-      d(($$0, $$1, $$2, $$3) -> $$0.a(axg.aT) ? fgj.b() : fgj.a());
-
-      private final djg.c e;
-
-      private a(final djg.c $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public fgm get(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-         return this.e.get($$0, $$1, $$2, $$3);
+         return null;
       }
    }
 
-   public static enum b {
-      a($$0 -> false),
-      b(exq::b),
-      c($$0 -> !$$0.c()),
-      d($$0 -> $$0.a(axl.a));
+   public djg a() {
+      djg $$0 = new djg(this.size());
 
-      private final Predicate<exq> e;
-
-      private b(final Predicate<exq> $$0) {
-         this.e = $$0;
+      for (djf $$1 : this) {
+         $$0.add($$1.v());
       }
 
-      public boolean a(exq $$0) {
-         return this.e.test($$0);
-      }
-   }
-
-   public interface c {
-      fgm get(ebg var1, djd var2, iw var3, ffx var4);
+      return $$0;
    }
 }

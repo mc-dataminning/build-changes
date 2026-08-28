@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dqi extends doz {
-   public static final MapCodec<dqi> b = b(dqi::new);
+public interface dqi {
+   @Nullable
+   dyo a(iw var1, ebq var2);
 
-   @Override
-   public MapCodec<dqi> a() {
-      return b;
+   @Nullable
+   default <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
+      return null;
    }
 
-   protected dqi(ebf.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      return but.e;
+   @Nullable
+   default <T extends dyo> egs a(asb $$0, T $$1) {
+      return $$1 instanceof egs.b<?> $$2 ? $$2.c() : null;
    }
 }

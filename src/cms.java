@@ -1,53 +1,46 @@
-import java.util.Optional;
-
 public class cms {
-   public static final alj<cmr> a = a("pale");
-   public static final alj<cmr> b = a("spotted");
-   public static final alj<cmr> c = a("snowy");
-   public static final alj<cmr> d = a("black");
-   public static final alj<cmr> e = a("ashen");
-   public static final alj<cmr> f = a("rusty");
-   public static final alj<cmr> g = a("woods");
-   public static final alj<cmr> h = a("chestnut");
-   public static final alj<cmr> i = a("striped");
-   public static final alj<cmr> j = a;
+   private static final cms.b a = new cms.b(a(a().a(b(czi.p), 5).a(b(czi.h), 5).a(b(czi.i), 5).a(b(czi.m), 3).a(a(czi.a), 82).a()));
+   private static final cms.b b = new cms.b(a(a().a(b(czi.h), 5).a(b(czi.i), 5).a(b(czi.a), 5).a(b(czi.p), 3).a(a(czi.m), 82).a()));
+   private static final cms.b c = new cms.b(a(a().a(b(czi.i), 5).a(b(czi.h), 5).a(b(czi.a), 5).a(b(czi.m), 3).a(a(czi.p), 82).a()));
 
-   private static alj<cmr> a(String $$0) {
-      return alj.a(mi.bm, alk.b($$0));
+   private static cms.a a(czi $$0) {
+      return a(a().a(b($$0), 499).a(b(czi.g), 1).a());
    }
 
-   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, alj<dlc> $$3) {
-      a($$0, $$1, $$2, a(jk.a($$0.a(mi.aG).b($$3))));
+   public static czi a(jg<dlm> $$0, bai $$1) {
+      cms.b $$2 = a($$0);
+      return $$2.a().get($$1);
    }
 
-   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, axv<dlc> $$3) {
-      a($$0, $$1, $$2, a($$0.a(mi.aG).b($$3)));
+   private static cms.b a(jg<dlm> $$0) {
+      if ($$0.a(axm.al)) {
+         return b;
+      } else {
+         return $$0.a(axm.ak) ? c : a;
+      }
    }
 
-   private static cug a(jk<dlc> $$0) {
-      return cug.a(new ctz($$0), 1);
+   private static cms.a a(btm<cms.a> $$0) {
+      if ($$0.c()) {
+         throw new IllegalArgumentException("List must be non-empty");
+      } else {
+         return $$1 -> $$0.b($$1).get($$1);
+      }
    }
 
-   private static void a(qi<cmr> $$0, alj<cmr> $$1, String $$2, cug $$3) {
-      alk $$4 = alk.b("entity/wolf/" + $$2);
-      alk $$5 = alk.b("entity/wolf/" + $$2 + "_tame");
-      alk $$6 = alk.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cmr(new cmr.a(new ix($$4), new ix($$5), new ix($$6)), $$3));
+   private static cms.a b(czi $$0) {
+      return $$1 -> $$0;
    }
 
-   public static Optional<? extends jg<cmr>> a(azz $$0, ju $$1, cuf $$2) {
-      return cuc.a($$1.f(mi.bm).c(), jg::a, $$0, $$2);
+   private static btm.a<cms.a> a() {
+      return btm.b();
    }
 
-   public static void a(qi<cmr> $$0) {
-      a($$0, a, "wolf", cug.a(0));
-      a($$0, b, "wolf_spotted", axf.k);
-      a($$0, c, "wolf_snowy", dlj.G);
-      a($$0, d, "wolf_black", dlj.o);
-      a($$0, e, "wolf_ashen", dlj.r);
-      a($$0, f, "wolf_rusty", axf.i);
-      a($$0, g, "wolf_woods", dlj.i);
-      a($$0, h, "wolf_chestnut", dlj.p);
-      a($$0, i, "wolf_striped", axf.f);
+   @FunctionalInterface
+   interface a {
+      czi get(bai var1);
+   }
+
+   static record b(cms.a a) {
    }
 }

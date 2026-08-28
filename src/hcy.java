@@ -1,25 +1,42 @@
-public abstract class hcy<S extends her, M extends gic<? super S>> {
-   private final hah<S, M> a;
+import java.util.Map;
 
-   public hcy(hah<S, M> $$0) {
-      this.a = $$0;
+public class hcy extends hcj<hgu, gkg> {
+   private final gkg a;
+   private final gkg b;
+   private final hbu c;
+   private static final Map<bxa.a, alr> d = Map.of(
+      bxa.a.b,
+      alr.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
+      bxa.a.c,
+      alr.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
+      bxa.a.d,
+      alr.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
+   );
+
+   public hcy(gzs<hgu, gkg> $$0, gkn $$1, hbu $$2) {
+      super($$0);
+      this.a = new gkg($$1.a(gkq.ec));
+      this.b = new gkg($$1.a(gkq.ee));
+      this.c = $$2;
    }
 
-   protected static <S extends hfr> void a(gic<S> $$0, alk $$1, flq $$2, gsc $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.z) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fld $$0, grn $$1, int $$2, hgu $$3, float $$4, float $$5) {
+      dak $$6 = $$3.i;
+      dit $$7 = $$6.a(kl.D);
+      if ($$7 != null && !$$7.d().isEmpty()) {
+         gkg $$8 = $$3.am ? this.b : this.a;
+         $$8.a($$3);
+         this.c.a(hmw.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+         this.a($$0, $$1, $$2, $$6, $$8);
       }
    }
 
-   protected static void b(gic<?> $$0, alk $$1, flq $$2, gsc $$3, int $$4, hfr $$5, int $$6) {
-      flt $$7 = $$3.getBuffer(gsn.g($$1));
-      $$0.a($$2, $$7, $$4, gzl.a($$5, 0.0F), $$6);
+   private void a(fld $$0, grn $$1, int $$2, dak $$3, gij $$4) {
+      bxa.a $$5 = bxa.b.a($$3);
+      if ($$5 != bxa.a.a) {
+         alr $$6 = d.get($$5);
+         flg $$7 = $$1.getBuffer(gry.c($$6));
+         $$4.a($$0, $$7, $$2, hkg.d);
+      }
    }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(flq var1, gsc var2, int var3, S var4, float var5, float var6);
 }

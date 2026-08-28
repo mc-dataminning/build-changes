@@ -1,30 +1,37 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class bib extends DataFix {
-   public bib(Schema $$0) {
-      super($$0, false);
+public class bib extends big {
+   public bib(Schema $$0, String $$1) {
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bjm.D, $$1);
    }
 
-   private static String a(String $$0) {
-      return $$0.equals("health") ? "hearts" : "integer";
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.J);
-      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
-            if ($$1.isEmpty()) {
-               String $$2 = $$0xx.get("CriteriaName").asString("");
-               String $$3 = a($$2);
-               return $$0xx.set("RenderType", $$0xx.createString($$3));
-            } else {
-               return $$0xx;
-            }
-         }));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("Brain", this::b);
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("memories", this::c);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.updateMapValues(this::a);
+   }
+
+   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
+      return $$0.mapSecond(this::d);
+   }
+
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
    }
 }

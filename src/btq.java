@@ -1,52 +1,172 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import org.slf4j.Logger;
 
-public class btq extends bty {
-   public static final MapCodec<btq> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, btq::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public abstract class btq<R extends Runnable> implements bsz, btx<R>, Executor {
+   public static final long k = 100000L;
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   private btq(int $$0, int $$1) {
+   protected btq(String $$0) {
       this.b = $$0;
-      this.f = $$1;
+      bsx.a.a(this);
    }
 
-   public static btq a(int $$0, int $$1) {
-      return new btq($$0, $$1);
+   protected abstract boolean e(R var1);
+
+   public boolean bx() {
+      return Thread.currentThread() == this.ay();
+   }
+
+   protected abstract Thread ay();
+
+   protected boolean ax() {
+      return !this.bx();
+   }
+
+   public int by() {
+      return this.d.size();
    }
 
    @Override
-   public int a(azz $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
-   }
-
-   @Override
-   public int a() {
+   public String z_() {
       return this.b;
    }
 
-   @Override
-   public int b() {
-      return this.f;
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> b(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.ax()) {
+         return this.b($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   public void h(Runnable $$0) {
+      if (!this.bx()) {
+         this.b($$0).join();
+      } else {
+         $$0.run();
+      }
    }
 
    @Override
-   public btz<?> c() {
-      return btz.c;
+   public void a_(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.ay());
    }
 
    @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public void execute(Runnable $$0) {
+      if (this.ax()) {
+         this.a_(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bz() {
+      this.d.clear();
+   }
+
+   protected void bA() {
+      while (this.B()) {
+      }
+   }
+
+   public boolean B() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void b(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.B()) {
+               this.A();
+            }
+         }
+      } finally {
+         this.e--;
+      }
+   }
+
+   protected void A() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         Zone $$1 = TracyClient.beginZone("Task", ac.aU);
+
+         try {
+            $$0.run();
+         } catch (Throwable var6) {
+            if ($$1 != null) {
+               try {
+                  $$1.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$1 != null) {
+            $$1.close();
+         }
+      } catch (Exception var7) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.z_(), var7);
+         throw var7;
+      }
+   }
+
+   @Override
+   public List<bsw> bw() {
+      return ImmutableList.of(bsw.a(this.b + "-pending-tasks", bsv.b, this::by));
+   }
+
+   public static boolean a(Throwable $$0) {
+      return $$0 instanceof aa $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
    }
 }

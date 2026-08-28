@@ -1,45 +1,68 @@
-public class ceg extends cff {
-   private final cjp g;
+public class ceg extends cee {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-   public ceg(cjp $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.q() && !this.g.gu() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
+   public ceg(byh $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.x(this.m());
+      if (this.r && this.d.bi()) {
+         this.d.i(this.d.dy().b(0.0, 0.005, 0.0));
+      }
+
+      if (this.k == cee.a.b && !this.d.O().k()) {
+         double $$0 = this.e - this.d.dA();
+         double $$1 = this.f - this.d.dC();
+         double $$2 = this.g - this.d.dG();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.G(0.0F);
+         } else {
+            float $$4 = (float)(azz.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.w(this.b(this.d.dL(), $$4, (float)this.o));
+            this.d.aV = this.d.dL();
+            this.d.aX = this.d.dL();
+            float $$5 = (float)(this.h * this.d.h(bzl.v));
+            if (this.d.bi()) {
+               this.d.B($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(azz.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = azz.a(azz.h($$7), (float)(-this.n), (float)this.n);
+                  this.d.x(this.a(this.d.dN(), $$7, 5.0F));
+               }
+
+               float $$8 = azz.b(this.d.dN() * (float) (Math.PI / 180.0));
+               float $$9 = azz.a(this.d.dN() * (float) (Math.PI / 180.0));
+               this.d.bi = $$8 * $$5;
+               this.d.bh = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(azz.h(this.d.dL() - $$4));
+               float $$11 = a($$10);
+               this.d.B($$5 * this.q * $$11);
+            }
+         }
+      } else {
+         this.d.B(0.0F);
+         this.d.I(0.0F);
+         this.d.H(0.0F);
+         this.d.G(0.0F);
+      }
    }
 
-   @Override
-   protected boolean a(dkc $$0, iw $$1) {
-      if (!$$0.v($$1.d())) {
-         return false;
-      } else {
-         ebg $$2 = $$0.a_($$1);
-         if ($$2.a(dng.cG)) {
-            return dym.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dng.cO) && $$2.c(dqp.b) ? true : $$2.a(axg.T, $$0x -> $$0x.d(dmx.b).map($$0xx -> $$0xx != ebt.a).orElse(true));
-         }
-      }
+   private static float a(float $$0) {
+      return 1.0F - azz.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

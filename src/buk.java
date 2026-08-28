@@ -1,3 +1,3 @@
 public interface buk {
-   void a();
+   float a(bai var1);
 }

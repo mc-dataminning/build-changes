@@ -1,245 +1,96 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gap extends gaf implements gly.a {
-   private static final alk x = alk.b("textures/gui/advancements/window.png");
-   public static final int a = 252;
-   public static final int b = 140;
-   private static final int y = 9;
-   private static final int z = 18;
-   public static final int c = 234;
-   public static final int d = 113;
-   private static final int A = 8;
-   private static final int B = 6;
-   private static final int C = 256;
-   private static final int D = 256;
-   public static final int s = 16;
-   public static final int u = 16;
-   public static final int v = 14;
-   public static final int w = 7;
-   private static final double E = 16.0;
-   private static final xc F = xc.c("advancements.sad_label");
-   private static final xc G = xc.c("advancements.empty");
-   private static final xc H = xc.c("gui.advancements");
-   private final fyb I = new fyb(this);
-   @Nullable
-   private final gaf J;
-   private final gly K;
-   private final Map<aj, gal> L = Maps.newLinkedHashMap();
-   @Nullable
-   private gal M;
-   private boolean N;
+public class gap extends gaf<cwj> {
+   private static final alr G = alr.b("container/cartography_table/error");
+   private static final alr H = alr.b("container/cartography_table/scaled_map");
+   private static final alr I = alr.b("container/cartography_table/duplicated_map");
+   private static final alr J = alr.b("container/cartography_table/map");
+   private static final alr K = alr.b("container/cartography_table/locked");
+   private static final alr L = alr.b("textures/gui/container/cartography_table.png");
+   private final hjz M = new hjz();
 
-   public gap(gly $$0) {
-      this($$0, null);
-   }
-
-   public gap(gly $$0, @Nullable gaf $$1) {
-      super(H);
-      this.K = $$0;
-      this.J = $$1;
+   public gap(cwj $$0, csh $$1, xg $$2) {
+      super($$0, $$1, $$2);
+      this.w -= 2;
    }
 
    @Override
-   protected void aS_() {
-      this.I.a(H, this.p);
-      this.L.clear();
-      this.M = null;
-      this.K.a(this);
-      if (this.M == null && !this.L.isEmpty()) {
-         gal $$0 = this.L.values().iterator().next();
-         this.K.a($$0.c().b(), true);
-      } else {
-         this.K.a(this.M == null ? null : this.M.c().b(), true);
-      }
-
-      this.I.b(fun.a(xb.d, $$0x -> this.aP_()).a(200).a());
-      this.I.a($$1 -> {
-         ful var10000 = this.c($$1);
-      });
-      this.c();
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void c() {
-      this.I.a();
-   }
+   protected void a(ftk $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gry::H, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      dak $$6 = this.z.b(1).g();
+      boolean $$7 = $$6.a(dao.vt);
+      boolean $$8 = $$6.a(dao.rE);
+      boolean $$9 = $$6.a(dao.gp);
+      dak $$10 = this.z.b(0).g();
+      ezt $$11 = $$10.a(kl.M);
+      boolean $$12 = false;
+      ezv $$13;
+      if ($$11 != null) {
+         $$13 = dax.a($$11, this.m.s);
+         if ($$13 != null) {
+            if ($$13.i) {
+               $$12 = true;
+               if ($$8 || $$9) {
+                  $$0.a(gry::H, G, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.J);
-   }
-
-   @Override
-   public void aJ_() {
-      this.K.a(null);
-      gme $$0 = this.m.L();
-      if ($$0 != null) {
-         $$0.b(aig.b());
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         int $$3 = (this.n - 252) / 2;
-         int $$4 = (this.o - 140) / 2;
-
-         for (gal $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, $$0, $$1)) {
-               this.K.a($$5.c().b(), true);
-               break;
+            if ($$8 && $$13.g >= 4) {
+               $$12 = true;
+               $$0.a(gry::H, G, $$4 + 35, $$5 + 31, 28, 21);
             }
          }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.m.n.R.a($$0, $$1)) {
-         this.m.a(null);
-         this.m.o.i();
-         return true;
       } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 252) / 2;
-      int $$5 = (this.o - 140) / 2;
-      this.b($$0, $$1, $$2, $$4, $$5);
-      this.a($$0, $$4, $$5);
-      this.c($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if ($$2 != 0) {
-         this.N = false;
-         return false;
-      } else {
-         if (!this.N) {
-            this.N = true;
-         } else if (this.M != null) {
-            this.M.a($$3, $$4);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.M != null) {
-         this.M.a($$2 * 16.0, $$3 * 16.0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void b(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-      gal $$5 = this.M;
-      if ($$5 == null) {
-         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
-         int $$6 = $$3 + 9 + 117;
-         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
-         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
-      } else {
-         $$5.b($$0, $$3 + 9, $$4 + 18);
-      }
-   }
-
-   public void a(ftz $$0, int $$1, int $$2) {
-      $$0.a(gsn::H, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
-      if (this.L.size() > 1) {
-         for (gal $$3 : this.L.values()) {
-            $$3.a($$0, $$1, $$2, $$3 == this.M);
-         }
-
-         for (gal $$4 : this.L.values()) {
-            $$4.a($$0, $$1, $$2);
-         }
+         $$13 = null;
       }
 
-      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
+      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
    }
 
-   private void c(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.M != null) {
+   private void a(ftk $$0, @Nullable ezt $$1, @Nullable ezv $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.C;
+      int $$8 = this.D;
+      if ($$4 && !$$6) {
+         $$0.a(gry::H, H, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(gry::H, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
          $$0.c().a();
-         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
-         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(gry::H, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(gry::H, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(gry::H, K, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(gry::H, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      }
+   }
+
+   private void a(ftk $$0, @Nullable ezt $$1, @Nullable ezv $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         grl $$6 = this.m.at();
+         $$6.a($$1, $$2, this.M);
+         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
          $$0.c().b();
       }
-
-      if (this.L.size() > 1) {
-         for (gal $$5 : this.L.values()) {
-            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
-               $$0.a(this.p, $$5.d(), $$1, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(ak $$0) {
-      gal $$1 = gal.a(this.m, this, this.L.size(), $$0);
-      if ($$1 != null) {
-         this.L.put($$0.b(), $$1);
-      }
-   }
-
-   @Override
-   public void b(ak $$0) {
-   }
-
-   @Override
-   public void c(ak $$0) {
-      gal $$1 = this.f($$0);
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
-   }
-
-   @Override
-   public void d(ak $$0) {
-   }
-
-   @Override
-   public void a(ak $$0, al $$1) {
-      gan $$2 = this.e($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
-
-   @Override
-   public void a(@Nullable aj $$0) {
-      this.M = this.L.get($$0);
-   }
-
-   @Override
-   public void a() {
-      this.L.clear();
-      this.M = null;
-   }
-
-   @Nullable
-   public gan e(ak $$0) {
-      gal $$1 = this.f($$0);
-      return $$1 == null ? null : $$1.a($$0.b());
-   }
-
-   @Nullable
-   private gal f(ak $$0) {
-      ak $$1 = $$0.d();
-      return this.L.get($$1.b());
    }
 }

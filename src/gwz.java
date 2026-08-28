@@ -1,14 +1,22 @@
-public abstract class gwz<T extends bxy & cqk> extends gxe<T, hff, gin> {
-   public gwz(gyk.a $$0, gle $$1, gle $$2, float $$3) {
-      super($$0, new gin($$0.a($$1)), new gin($$0.a($$2)), $$3);
+public class gwz extends gwn<cou, hdo> {
+   private static final alr a = alr.b("textures/entity/skeleton/bogged.png");
+   private static final alr j = alr.b("textures/entity/skeleton/bogged_overlay.png");
+
+   public gwz(gxv.a $$0) {
+      super($$0, gkq.G, gkq.H, new ggr($$0.a(gkq.F)));
+      this.a(new hcn<>(this, $$0.f(), gkq.I, j));
    }
 
-   public hff a() {
-      return new hff();
+   public alr a(hdo $$0) {
+      return a;
    }
 
-   public void a(T $$0, hff $$1, float $$2) {
+   public hdo a() {
+      return new hdo();
+   }
+
+   public void a(cou $$0, hdo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+      $$1.a = $$0.gv();
    }
 }

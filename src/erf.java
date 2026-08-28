@@ -1,38 +1,26 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class erf extends ero {
-   public static final MapCodec<erf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, erf::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class erf extends ert {
+   private static final erf c = new erf();
+   public static MapCodec<erf> a = MapCodec.unit(() -> c);
 
-   private erf(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private erf() {
    }
 
-   public static erf a(int $$0, double $$1, double $$2) {
-      return new erf($$0, $$1, $$2);
+   public static erf a() {
+      return c;
    }
 
    @Override
-   protected int a(azz $$0, iw $$1) {
-      double $$2 = dlc.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   protected boolean a(ers $$0, bai $$1, iw $$2) {
+      err $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jg<dlm> $$4 = $$0.d().u($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public erl<?> b() {
-      return erl.g;
+   public erv<?> b() {
+      return erv.e;
    }
 }

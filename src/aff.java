@@ -1,37 +1,29 @@
-public class aff implements zj<aby> {
-   public static final za<vy, aff> a = zj.a(aff::a, aff::new);
-   private final iw b;
-   private final float c;
+public class aff implements zo<acf> {
+   public static final ze<vy, aff> a = zo.a(aff::a, aff::new);
+   private final double b;
 
-   public aff(iw $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aff(edi $$0) {
+      this.b = $$0.k();
    }
 
    private aff(vy $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+      this.b = $$0.readDouble();
    }
 
    private void a(vy $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zl<aff> a() {
-      return agr.aD;
+   public zq<aff> a() {
+      return agy.ax;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public iw b() {
+   public double b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

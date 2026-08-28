@@ -1,17 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.io.IOException;
 
-public class hlj {
-   private static final ayy.b<alk, MapCodec<? extends hlh>> c = new ayy.b<>();
-   public static final Codec<hlh> a = c.a(alk.a).dispatch(hlh::a, $$0 -> $$0);
-   public static final Codec<List<hlh>> b = a.listOf().fieldOf("sources").codec();
+public class hlj extends avt<int[]> {
+   private static final alr a = alr.b("textures/colormap/dry_foliage.png");
 
-   public static void a() {
-      c.a(alk.b("single"), hlo.b);
-      c.a(alk.b("directory"), hll.b);
-      c.a(alk.b("filter"), hlp.b);
-      c.a(alk.b("unstitch"), hlq.b);
-      c.a(alk.b("paletted_permutations"), hln.c);
+   protected int[] a(avo $$0, brm $$1) {
+      try {
+         return hln.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load dry foliage color texture", var4);
+      }
+   }
+
+   protected void a(int[] $$0, avo $$1, brm $$2) {
+      djx.a($$0);
    }
 }

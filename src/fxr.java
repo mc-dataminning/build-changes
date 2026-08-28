@@ -1,28 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Consumer;
 
-public enum fxr implements bao {
-   a("bitmap", fxo.a.a),
-   b("ttf", fxt.a),
-   c("space", fio.a.a),
-   d("unihex", fxu.b.a),
-   e("reference", fxs.a);
+public class fxr implements fxo {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   public static final Codec<fxr> f = bao.a(fxr::values);
-   private final String g;
-   private final MapCodec<? extends fxq> h;
+   public fxr(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
 
-   private fxr(final String $$0, final MapCodec<? extends fxq> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public fxr(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static fxr a(int $$0) {
+      return new fxr($$0, 0);
+   }
+
+   public static fxr b(int $$0) {
+      return new fxr(0, $$0);
    }
 
    @Override
-   public String c() {
-      return this.g;
+   public void j(int $$0) {
+      this.a = $$0;
    }
 
-   public MapCodec<? extends fxq> a() {
-      return this.h;
+   @Override
+   public void k(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int F() {
+      return this.a;
+   }
+
+   @Override
+   public int G() {
+      return this.b;
+   }
+
+   @Override
+   public int A() {
+      return this.c;
+   }
+
+   @Override
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<ftw> $$0) {
    }
 }

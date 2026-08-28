@@ -1,76 +1,133 @@
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.jtracy.Plot;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
+import java.lang.StackWalker.Option;
+import java.lang.StackWalker.StackFrame;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class brq extends Event {
-   @Name("regionPosX")
-   @Label("Region X Position")
-   public final int regionPosX;
-   @Name("regionPosZ")
-   @Label("Region Z Position")
-   public final int regionPosZ;
-   @Name("localPosX")
-   @Label("Local X Position")
-   public final int localChunkPosX;
-   @Name("localPosZ")
-   @Label("Local Z Position")
-   public final int localChunkPosZ;
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("level")
-   @Label("Level Id")
-   public final String levelId;
-   @Name("dimension")
-   @Label("Dimension")
-   public final String dimension;
-   @Name("type")
-   @Label("Type")
-   public final String type;
-   @Name("compression")
-   @Label("Compression")
-   public final String compression;
-   @Name("bytes")
-   @Label("Bytes")
-   public final int bytes;
+public class brq implements brm {
+   private static final Logger a = LogUtils.getLogger();
+   private static final StackWalker c = StackWalker.getInstance(Set.of(Option.RETAIN_CLASS_REFERENCE), 5);
+   private final List<Zone> d = new ArrayList<>();
+   private final Map<String, brq.a> e = new HashMap<>();
+   private final String f = Thread.currentThread().getName();
 
-   public brq(eew $$0, dje $$1, eev $$2, int $$3) {
-      this.regionPosX = $$1.h();
-      this.regionPosZ = $$1.i();
-      this.localChunkPosX = $$1.j();
-      this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.h;
-      this.chunkPosZ = $$1.i;
-      this.levelId = $$0.a();
-      this.dimension = $$0.b().a().toString();
-      this.type = $$0.c();
-      this.compression = "standard:" + $$2.b();
-      this.bytes = $$3;
+   @Override
+   public void a() {
    }
 
-   public static class a {
-      public static final String a = "regionPosX";
-      public static final String b = "regionPosZ";
-      public static final String c = "localPosX";
-      public static final String d = "localPosZ";
-      public static final String e = "chunkPosX";
-      public static final String f = "chunkPosZ";
-      public static final String g = "level";
-      public static final String h = "dimension";
-      public static final String i = "type";
-      public static final String j = "compression";
-      public static final String k = "bytes";
+   @Override
+   public void b() {
+      for (brq.a $$0 : this.e.values()) {
+         $$0.a(0);
+      }
+   }
 
-      private a() {
+   @Override
+   public void a(String $$0) {
+      String $$1 = "";
+      String $$2 = "";
+      int $$3 = 0;
+      if (ac.aU) {
+         Optional<StackFrame> $$4 = c.walk(
+            $$0x -> $$0x.filter($$0xx -> $$0xx.getDeclaringClass() != brq.class && $$0xx.getDeclaringClass() != brm.a.class).findFirst()
+         );
+         if ($$4.isPresent()) {
+            StackFrame $$5 = $$4.get();
+            $$1 = $$5.getMethodName();
+            $$2 = $$5.getFileName();
+            $$3 = $$5.getLineNumber();
+         }
+      }
+
+      Zone $$6 = TracyClient.beginZone($$0, $$1, $$2, $$3);
+      this.d.add($$6);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
+   }
+
+   @Override
+   public void c() {
+      if (this.d.isEmpty()) {
+         a.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         Zone $$0 = this.d.removeLast();
+         $$0.close();
+      }
+   }
+
+   @Override
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0.get());
+   }
+
+   @Override
+   public void a(bsv $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.e.computeIfAbsent($$0, $$1x -> new brq.a(this.f + " " + $$0)).b($$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.a($$0.get(), $$1);
+   }
+
+   private Zone d() {
+      return this.d.getLast();
+   }
+
+   @Override
+   public void e(String $$0) {
+      this.d().addText($$0);
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.d().addValue($$0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.d().setColor($$0);
+   }
+
+   static final class a {
+      private final Plot a;
+      private int b;
+
+      a(String $$0) {
+         this.a = TracyClient.createPlot($$0);
+         this.b = 0;
+      }
+
+      void a(int $$0) {
+         this.b = $$0;
+         this.a.setValue((double)$$0);
+      }
+
+      void b(int $$0) {
+         this.a(this.b + $$0);
       }
    }
 }

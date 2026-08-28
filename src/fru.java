@@ -1,4 +1,8 @@
-import org.joml.Vector3f;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record fru(float a, Vector3f b, frs.a c) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fru {
 }

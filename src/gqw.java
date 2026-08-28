@@ -1,22 +1,26 @@
-public class gqw extends god {
-   private static final int a = 12235202;
+public class gqw {
+   public static final djt a = dlm::a;
+   public static final djt b = ($$0, $$1, $$2) -> $$0.f();
+   public static final djt c = ($$0, $$1, $$2) -> $$0.g();
+   public static final djt d = ($$0, $$1, $$2) -> $$0.j();
 
-   protected gqw(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gqh $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   private static int a(djk $$0, iw $$1, djt $$2) {
+      return $$0.a($$1, $$2);
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
+   public static int a(djk $$0, iw $$1) {
+      return a($$0, $$1, a);
+   }
 
-      public a(gqh $$0) {
-         this.a = $$0;
-      }
+   public static int b(djk $$0, iw $$1) {
+      return a($$0, $$1, b);
+   }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gqw($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+   public static int c(djk $$0, iw $$1) {
+      return a($$0, $$1, c);
+   }
+
+   public static int d(djk $$0, iw $$1) {
+      return a($$0, $$1, d);
    }
 }

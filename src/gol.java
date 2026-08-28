@@ -1,83 +1,147 @@
-public class gol extends gqm {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final gqh M;
+public class gol extends gpx {
+   static final bai a = bai.a();
+   private final gps b;
 
-   gol(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gqh $$7) {
-      super($$0, $$1, $$2, $$3);
+   gol(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gps $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = azq.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = azq.a(this.r, 0.0F, 0.0F);
-      this.x = azq.a(this.r, 0.8235294F, 0.9764706F);
+      this.C = true;
+      this.b = $$7;
       this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
       this.n = false;
-      this.M = $$7;
       this.b($$7);
    }
 
    @Override
+   public gpb b() {
+      return gpb.c;
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azz.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
+      super.a();
+      this.b(this.b);
+   }
 
-         if (this.L) {
-            this.k += 0.002;
-         }
+   public static class a implements gpa<md> {
+      private final double a = 0.25;
+      private final gps b;
 
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
+      public a(gps $$0) {
+         this.b = $$0;
+      }
 
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.A.a(2) + 2);
+         return $$8;
       }
    }
 
-   @Override
-   public gpq b() {
-      return gpq.b;
-   }
+   public static class b implements gpa<md> {
+      private final gps a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements gpp<md> {
-      private final gqh a;
-
-      public a(gqh $$0) {
+      public b(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gol($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, 0.5 - gol.a.j(), $$6, 0.5 - gol.a.j(), this.a);
+         if ($$1.A.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
+         return $$8;
+      }
+   }
+
+   public static class c implements gpa<md> {
+      private final double a = 0.01;
+      private final gps b;
+
+      public c(gps $$0) {
+         this.b = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.A.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements gpa<md> {
+      private final double a = 0.01;
+      private final gps b;
+
+      public d(gps $$0) {
+         this.b = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements gpa<md> {
+      private final double a = 0.01;
+      private final gps b;
+
+      public e(gps $$0) {
+         this.b = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
       }
    }
 }

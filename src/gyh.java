@@ -1,21 +1,17 @@
-public class gyh extends gzq<cos, hfr, gib> {
-   private static final alk a = alk.b("textures/entity/endermite.png");
+public class gyh extends hae<bxu> {
+   private static final alr a = alr.b("textures/entity/squid/glow_squid.png");
 
-   public gyh(gyk.a $$0) {
-      super($$0, new gib($$0.a(glf.aS)), 0.3F);
+   public gyh(gxv.a $$0, gjr $$1, gjr $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected float aW_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alk b(hfr $$0) {
+   public alr a(hge $$0) {
       return a;
    }
 
-   public hfr b() {
-      return new hfr();
+   protected int a(bxu $$0, iw $$1) {
+      int $$2 = (int)azz.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

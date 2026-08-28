@@ -1,42 +1,31 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bud extends btw {
-   public static final MapCodec<bud> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bud::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
+public class bud extends buf {
+   public static final bud a = new bud(0.0F);
+   public static final MapCodec<bud> b = Codec.FLOAT.fieldOf("value").xmap(bud::a, bud::d);
    private final float d;
 
-   private bud(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public static bud a(float $$0) {
+      return $$0 == 0.0F ? a : new bud($$0);
    }
 
-   public static bud b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bud($$0, $$1);
-      }
+   private bud(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public float a(azz $$0) {
-      return azq.b($$0, this.b, this.d);
+   public float a(bai $$0) {
+      return this.d;
    }
 
    @Override
    public float a() {
-      return this.b;
+      return this.d;
    }
 
    @Override
@@ -45,12 +34,12 @@ public class bud extends btw {
    }
 
    @Override
-   public btx<?> c() {
-      return btx.b;
+   public bug<?> c() {
+      return bug.a;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return Float.toString(this.d);
    }
 }

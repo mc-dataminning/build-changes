@@ -1,92 +1,36 @@
-import java.util.Optional;
-import org.joml.Quaternionf;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public class gqr extends gqm {
-   private final egk a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
+public class gqr implements bsy {
+   private final gri a;
+   private final Set<bsw> b = new ObjectOpenHashSet();
+   private final bte c = new bte();
 
-   gqr(gmd $$0, double $$1, double $$2, double $$3, egk $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<ffs> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         ffs $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)azq.d($$8, $$10);
-         this.H = this.G = (float)azq.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+   public gqr(LongSupplier $$0, gri $$1) {
+      this.a = $$1;
+      this.b.add(btf.a($$0));
+      this.a();
+   }
+
+   private void a() {
+      this.b.addAll(btf.a());
+      this.b.add(bsw.a("totalChunks", bsv.f, this.a, gri::g));
+      this.b.add(bsw.a("renderedChunks", bsv.f, this.a, gri::i));
+      this.b.add(bsw.a("lastViewDistance", bsv.f, this.a, gri::h));
+      gvd $$0 = this.a.f();
+      this.b.add(bsw.a("toUpload", bsv.g, $$0, gvd::c));
+      this.b.add(bsw.a("freeBufferCount", bsv.g, $$0, gvd::d));
+      this.b.add(bsw.a("toBatchCount", bsv.g, $$0, gvd::b));
+      if (fkw.a().isPresent()) {
+         this.b.add(bsw.a("gpuUtilization", bsv.i, fqq.Q(), fqq::v));
       }
    }
 
    @Override
-   public void a(flt $$0, fqn $$1, float $$2) {
-      float $$3 = azq.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = azq.h($$2, this.F, this.b);
-      float $$5 = azq.h($$2, this.H, this.G) + (float) (Math.PI / 2);
-      Quaternionf $$6 = new Quaternionf();
-      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gpq b() {
-      return gpq.c;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         Optional<ffs> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            ffs $$3 = $$0.get();
-            this.g = azq.d($$2, this.g, $$3.a());
-            this.h = azq.d($$2, this.h, $$3.b());
-            this.i = azq.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)azq.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)azq.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
-         }
-      }
-   }
-
-   public static class a implements gpp<mf> {
-      private final gqh a;
-
-      public a(gqh $$0) {
-         this.a = $$0;
-      }
-
-      public gpm a(mf $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gqr $$8 = new gqr($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
-      }
+   public Set<bsw> a(Supplier<brj> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

@@ -1,43 +1,79 @@
-public class gpc extends gpk {
-   private final double a;
-   private final int b;
+public class gpc extends gpx {
+   private final gps a;
 
-   gpc(gmd $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+   gpc(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gps $$7) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+      this.B = 0.96F;
+      this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+      this.n = false;
+      this.b($$7);
+   }
+
+   @Override
+   public gpb b() {
+      return gpb.c;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azz.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(lz.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         csi $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.dC();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dy().e - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
          }
-      }
-
-      if (this.s++ == this.t) {
-         this.k();
       }
    }
 
-   public static class a implements gpp<md> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class a implements gpa<md> {
+      private final gps a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public a(gps $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gpc($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gpc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gpa<md> {
+      private final gps a;
+
+      public b(gps $$0) {
+         this.a = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gpc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
+         return $$8;
       }
    }
 }

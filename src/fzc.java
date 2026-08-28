@@ -1,109 +1,82 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import javax.annotation.Nullable;
 
-public class fzc extends fzd {
-   private static final xc d = xc.c("chat.copy");
-   private static final xc s = xc.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fzc extends fzq {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final xg d;
+   private final xg s;
+   private final Runnable u;
+   @Nullable
+   private fur v;
+   private fty w;
+   private int x;
 
-   public fzc(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xc.b($$1), $$1, $$2 ? xb.e : xb.g, $$2);
+   public static fzc a(xg $$0, xg $$1, Runnable $$2) {
+      return new fzc($$0, null, $$1, $$2, 0);
    }
 
-   public fzc(BooleanConsumer $$0, xc $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xb.e : xb.g, $$3);
+   public static fzc a(xg $$0, xg $$1, xg $$2, Runnable $$3) {
+      return new fzc($$0, $$1, $$2, $$3, 20);
    }
 
-   public fzc(BooleanConsumer $$0, xc $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
-   }
-
-   public fzc(BooleanConsumer $$0, xc $$1, xc $$2, URI $$3, xc $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
-   }
-
-   public fzc(BooleanConsumer $$0, xc $$1, xc $$2, String $$3, xc $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xc)($$5 ? xc.c("chat.link.open") : xb.f);
-      this.b = $$4;
-      this.v = !$$5;
+   protected fzc(xg $$0, @Nullable xg $$1, xg $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.s = $$2;
       this.u = $$3;
-   }
-
-   protected static xq a(boolean $$0, String $$1) {
-      return c($$0).b(xb.v).b(xc.b($$1));
-   }
-
-   protected static xq c(boolean $$0) {
-      return xc.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+      this.x = $$4;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fun.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fun.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fun.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
+   protected void aT_() {
+      super.aT_();
+      if (this.d != null) {
+         this.v = fur.a(this.p, this.d, 360);
+      }
 
-   public void l() {
-      this.m.p.a(this.u);
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.v != null ? this.v.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.w = this.c(fty.a(this.s, $$0x -> this.aQ_()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      if (this.x > 0) {
+         this.x--;
+      }
+
+      this.w.j = this.x == 0;
+   }
+
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.v == null) {
+         String $$4 = fzf.a(ag.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.v.a($$0, this.n / 2, 120);
       }
    }
 
-   public static void a(gaf $$0, String $$1, boolean $$2) {
-      frf $$3 = frf.Q();
-      $$3.a(new fzc($$3x -> {
-         if ($$3x) {
-            ag.n().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1, $$2));
+   @Override
+   public boolean aI_() {
+      return this.v != null && this.w.j;
    }
 
-   public static void a(gaf $$0, URI $$1, boolean $$2) {
-      frf $$3 = frf.Q();
-      $$3.a(new fzc($$3x -> {
-         if ($$3x) {
-            ag.n().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+   @Override
+   public void aQ_() {
+      this.u.run();
    }
 
-   public static void a(gaf $$0, URI $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static void a(gaf $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static fun.c b(gaf $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fun.c b(gaf $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fun.c b(gaf $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static fun.c b(gaf $$0, URI $$1) {
-      return b($$0, $$1, true);
+   @Override
+   public xg i() {
+      return xf.a(this.l, this.d != null ? this.d : xf.a);
    }
 }

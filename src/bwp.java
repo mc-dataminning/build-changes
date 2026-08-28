@@ -1,12 +1,14 @@
-import javax.annotation.Nullable;
-
-public record bwp(bwq a, boolean b, boolean c, @Nullable fgs d) {
-   public static bwp a(bxy $$0, boolean $$1, boolean $$2) {
-      return new bwp(bwq.a, $$1, $$2, $$0.cq());
+class bwp extends bwf {
+   protected bwp(bwh $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @FunctionalInterface
-   public interface a<T extends bxy> {
-      void finalizeConversion(T var1);
+   @Override
+   public boolean a(asb $$0, byf $$1, int $$2) {
+      if ($$1 instanceof csi $$3) {
+         $$3.gu().a($$2 + 1, 1.0F);
+      }
+
+      return true;
    }
 }

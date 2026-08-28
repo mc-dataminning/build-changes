@@ -1,28 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class elk extends ekm<ene> {
-   public elk(Codec<ene> $$0) {
+public class elk extends ekw<eni> {
+   public elk(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<ene> $$0) {
-      ene $$1 = $$0.f();
-      azz $$2 = $$0.d();
+   public boolean a(eky<eni> $$0) {
+      int $$1 = 0;
+      dli $$2 = $$0.b();
       iw $$3 = $$0.e();
-      dky $$4 = $$0.b();
-      int $$5 = 0;
-      iw.a $$6 = new iw.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+      bai $$4 = $$0.d();
+      int $$5 = $$2.a(ehp.a.d, $$3.u(), $$3.w());
+      iw $$6 = new iw($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dnq.J)) {
+         ebq $$7 = dnq.mI.m();
+         ebq $$8 = dnq.mJ.m();
+         int $$9 = 1 + $$4.a(10);
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dnq.J) && $$2.a_($$6.d()).a(dnq.J) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(drx.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
+               }
+            } else if ($$10 > 0) {
+               iw $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dnq.mI)) {
+                  $$2.a($$11, $$7.b(drx.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
+            }
+
+            $$6 = $$6.d();
          }
       }
 
-      return $$5 > 0;
+      return $$1 > 0;
    }
 }

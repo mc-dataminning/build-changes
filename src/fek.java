@@ -1,53 +1,61 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fek(feo b, feo c) implements feo {
+public record fek(Optional<Long> b, fas c) implements fec {
    public static final MapCodec<fek> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fep.a.fieldOf("n").forGetter(fek::c), fep.a.fieldOf("p").forGetter(fek::d)).apply($$0, fek::new)
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fek::c), fas.a.fieldOf("value").forGetter(fek::d)).apply($$0, fek::new)
    );
 
    @Override
-   public fen b() {
-      return fep.d;
+   public fed b() {
+      return fee.q;
    }
 
    @Override
-   public int a(faj $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azz $$3 = $$0.b();
-      int $$4 = 0;
+   public Set<bbk<?>> a() {
+      return this.c.a();
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public boolean a(fat $$0) {
+      asb $$1 = $$0.d();
+      long $$2 = $$1.af();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
 
-      return $$4;
+      return this.c.b($$0, (int)$$2);
    }
 
-   @Override
-   public float b(faj $$0) {
-      return (float)this.a($$0);
+   public static fek.a a(fas $$0) {
+      return new fek.a($$0);
    }
 
-   public static fek a(int $$0, float $$1) {
-      return new fek(fel.a((float)$$0), fel.a($$1));
-   }
-
-   @Override
-   public Set<bbb<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public feo c() {
+   public Optional<Long> c() {
       return this.b;
    }
 
-   public feo d() {
+   public fas d() {
       return this.c;
+   }
+
+   public static class a implements fec.a {
+      private Optional<Long> a = Optional.empty();
+      private final fas b;
+
+      public a(fas $$0) {
+         this.b = $$0;
+      }
+
+      public fek.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fek a() {
+         return new fek(this.a, this.b);
+      }
    }
 }

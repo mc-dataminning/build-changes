@@ -16,9 +16,9 @@ public record er(List<er.a> b) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static er a(xu<?> $$0, er.b $$1) {
+   public static er a(xy<?> $$0, er.b $$1) {
       List<er.a> $$2 = $$0.a().stream().map($$1x -> {
-         xo $$2x = $$1.sign($$1x.c());
+         xs $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new er.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new er($$2);
@@ -28,20 +28,20 @@ public record er(List<er.a> b) {
       return this.b;
    }
 
-   public static record a(String a, xo b) {
+   public static record a(String a, xs b) {
       public a(vy $$0) {
-         this($$0.d(16), xo.a($$0));
+         this($$0.d(16), xs.a($$0));
       }
 
       public void a(vy $$0) {
          $$0.a(this.a, 16);
-         xo.a($$0, this.b);
+         xs.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      xo sign(String var1);
+      xs sign(String var1);
    }
 }

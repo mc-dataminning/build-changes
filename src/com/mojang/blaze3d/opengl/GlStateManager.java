@@ -1,4 +1,4 @@
-package com.mojang.blaze3d.platform;
+package com.mojang.blaze3d.opengl;
 
 import com.google.common.base.Charsets;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -9,8 +9,6 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
 import org.lwjgl.PointerBuffer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
@@ -24,14 +22,13 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@fhs
+@fic
 public class GlStateManager {
    private static final boolean ON_LINUX = ag.n() == ag.a.a;
    private static final Plot PLOT_TEXTURES = TracyClient.createPlot("GPU Textures");
    private static int numTextures = 0;
    private static final Plot PLOT_BUFFERS = TracyClient.createPlot("GPU Buffers");
    private static int numBuffers = 0;
-   public static final int TEXTURE_COUNT = 12;
    private static final GlStateManager.a BLEND = new GlStateManager.a();
    private static final GlStateManager.f DEPTH = new GlStateManager.f();
    private static final GlStateManager.e CULL = new GlStateManager.e();
@@ -41,6 +38,8 @@ public class GlStateManager {
    private static int activeTexture;
    private static final GlStateManager.i[] TEXTURES = IntStream.range(0, 12).mapToObj($$0 -> new GlStateManager.i()).toArray(GlStateManager.i[]::new);
    private static final GlStateManager.d COLOR_MASK = new GlStateManager.d();
+   private static int readFbo;
+   private static int writeFbo;
 
    public static void _disableScissorTest() {
       RenderSystem.assertOnRenderThread();
@@ -301,7 +300,23 @@ public class GlStateManager {
    }
 
    public static void _glBindFramebuffer(int $$0, int $$1) {
-      GL30.glBindFramebuffer($$0, $$1);
+      if (($$0 == 36008 || $$0 == 36160) && readFbo != $$1) {
+         GL30.glBindFramebuffer(36008, $$1);
+         readFbo = $$1;
+      }
+
+      if (($$0 == 36009 || $$0 == 36160) && writeFbo != $$1) {
+         GL30.glBindFramebuffer(36009, $$1);
+         writeFbo = $$1;
+      }
+   }
+
+   public static int getFrameBuffer(int $$0) {
+      if ($$0 == 36008) {
+         return readFbo;
+      } else {
+         return $$0 == 36009 ? writeFbo : 0;
+      }
    }
 
    public static void _glBlitFrameBuffer(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
@@ -342,26 +357,6 @@ public class GlStateManager {
    public static String glGetProgramInfoLog(int $$0, int $$1) {
       RenderSystem.assertOnRenderThread();
       return GL20.glGetProgramInfoLog($$0, $$1);
-   }
-
-   public static void setupLevelDiffuseLighting(Vector3f $$0, Vector3f $$1, Matrix4f $$2) {
-      RenderSystem.assertOnRenderThread();
-      RenderSystem.setShaderLights($$2.transformDirection($$0, new Vector3f()), $$2.transformDirection($$1, new Vector3f()));
-   }
-
-   public static void setupGuiFlatDiffuseLighting(Vector3f $$0, Vector3f $$1) {
-      RenderSystem.assertOnRenderThread();
-      Matrix4f $$2 = new Matrix4f().rotationY((float) (-Math.PI / 8)).rotateX((float) (Math.PI * 3.0 / 4.0));
-      setupLevelDiffuseLighting($$0, $$1, $$2);
-   }
-
-   public static void setupGui3DDiffuseLighting(Vector3f $$0, Vector3f $$1) {
-      RenderSystem.assertOnRenderThread();
-      Matrix4f $$2 = new Matrix4f()
-         .scaling(1.0F, -1.0F, 1.0F)
-         .rotateYXZ(1.0821041F, 3.2375858F, 0.0F)
-         .rotateYXZ((float) (-Math.PI / 8), (float) (Math.PI * 3.0 / 4.0), 0.0F);
-      setupLevelDiffuseLighting($$0, $$1, $$2);
    }
 
    public static void _enableCull() {
@@ -499,7 +494,7 @@ public class GlStateManager {
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThread();
       GL11.glClear($$0);
-      if (fkf.a) {
+      if (fkc.a) {
          _getError();
       }
    }

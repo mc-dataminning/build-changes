@@ -1,43 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class dsd extends dne {
+public class dsd extends dxa implements duv {
    public static final MapCodec<dsd> a = b(dsd::new);
-   private static final int b = 20;
+   public static final eco<jc> b = ecg.T;
+   private final Function<ebq, fgw> c;
+
+   public dsd(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jc.c).b(this.c(), Integer.valueOf(1)));
+      this.c = this.q();
+   }
+
+   private Function<ebq, fgw> q() {
+      return this.a(this.a(b, this.c()));
+   }
 
    @Override
-   public MapCodec<dsd> a() {
+   protected MapCodec<dsd> a() {
       return a;
    }
 
-   public dsd(ebf.d $$0) {
-      super($$0);
+   @Override
+   public ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(djz $$0, iw $$1, ebg $$2, bwv $$3) {
-      if (!$$3.cd() && $$3 instanceof bxw) {
-         $$3.a($$0.al().f(), 1.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      dnl.b($$1, $$2.d(), $$0);
+   public boolean a(ebq $$0, ded $$1) {
+      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$4 == jc.b && $$6.a(dng.J)) {
-         $$2.a($$3, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      iw $$3 = $$2.e();
+      return $$1.a_($$3).c($$1, $$3, jc.b);
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   public fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return this.c.apply($$0);
+   }
+
+   @Override
+   public ebq a(ded $$0) {
+      return this.a($$0, this, this.c(), b);
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b, this.c());
    }
 }

@@ -1,68 +1,19 @@
-public class cdx extends cdv {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public cdx(bxy $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-   }
+public class cdx {
+   private static final buh a = bun.a(100, 200);
 
-   @Override
-   public void a() {
-      if (this.r && this.d.bi()) {
-         this.d.i(this.d.dy().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == cdv.a.b && !this.d.O().k()) {
-         double $$0 = this.e - this.d.dA();
-         double $$1 = this.f - this.d.dC();
-         double $$2 = this.g - this.d.dG();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.G(0.0F);
-         } else {
-            float $$4 = (float)(azq.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.w(this.b(this.d.dL(), $$4, (float)this.o));
-            this.d.aV = this.d.dL();
-            this.d.aX = this.d.dL();
-            float $$5 = (float)(this.h * this.d.h(bzc.v));
-            if (this.d.bi()) {
-               this.d.B($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(azq.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = azq.a(azq.h($$7), (float)(-this.n), (float)this.n);
-                  this.d.x(this.a(this.d.dN(), $$7, 5.0F));
-               }
-
-               float $$8 = azq.b(this.d.dN() * (float) (Math.PI / 180.0));
-               float $$9 = azq.a(this.d.dN() * (float) (Math.PI / 180.0));
-               this.d.bi = $$8 * $$5;
-               this.d.bh = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(azq.h(this.d.dL() - $$4));
-               float $$11 = a($$10);
-               this.d.B($$5 * this.q * $$11);
-            }
-         }
-      } else {
-         this.d.B(0.0F);
-         this.d.I(0.0F);
-         this.d.H(0.0F);
-         this.d.G(0.0F);
-      }
-   }
-
-   private static float a(float $$0) {
-      return 1.0F - azq.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   public static bzx<byf> a() {
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$0 -> $$0.group($$0.a(chh.aC), $$0.a(chh.n), $$0.c(chh.aH), $$0.b(chh.C), $$0.c(chh.aA))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(bbh.a);
+                     $$2.a(bbh.a, (long)a.a($$3x.G_()));
+                     $$1.b();
+                     $$4x.b(byr.m);
+                     return true;
+                  }))
+      );
    }
 }

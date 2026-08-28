@@ -1,73 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public class czq extends czw {
-   protected static final Map<dne, Pair<Predicate<ddv>, Consumer<ddv>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dng.i,
-         Pair.of(czq::b, a(dng.cN.m())),
-         dng.lk,
-         Pair.of(czq::b, a(dng.cN.m())),
-         dng.j,
-         Pair.of(czq::b, a(dng.cN.m())),
-         dng.k,
-         Pair.of(czq::b, a(dng.j.m())),
-         dng.tr,
-         Pair.of((Predicate<ddv>)$$0 -> true, a(dng.j.m(), dae.eg))
-      )
-   );
-
-   public czq(dbo $$0, float $$1, float $$2, czw.a $$3) {
-      super($$3.c($$0, $$1, $$2));
+public class czq extends dag implements dbe {
+   public czq(dag.a $$0) {
+      super($$0);
    }
 
    @Override
-   public but a(ddv $$0) {
-      djz $$1 = $$0.q();
-      iw $$2 = $$0.a();
-      Pair<Predicate<ddv>, Consumer<ddv>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return but.e;
-      } else {
-         Predicate<ddv> $$4 = (Predicate<ddv>)$$3.getFirst();
-         Consumer<ddv> $$5 = (Consumer<ddv>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            crz $$6 = $$0.o();
-            $$1.a($$6, $$2, awr.mP, aws.e, 1.0F, 1.0F);
-            if (!$$1.C) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bxw.d($$0.p()));
-               }
-            }
-
-            return but.a;
-         } else {
-            return but.e;
-         }
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.je, awz.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof asb $$4) {
+         ctd.a(cto::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
+
+      $$1.b(axi.c.b(this));
+      $$3.a(1, $$1);
+      return bvc.a;
    }
 
-   public static Consumer<ddv> a(ebg $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(egg.c, $$1.a(), egg.a.a($$1.o(), $$0));
-      };
+   @Override
+   public ctd a(dkj $$0, jq $$1, dak $$2, jc $$3) {
+      return new cto($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 
-   public static Consumer<ddv> a(ebg $$0, djy $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(egg.c, $$2.a(), egg.a.a($$2.o(), $$0));
-         dne.a($$2.q(), $$2.a(), $$2.k(), new daa($$1));
-      };
-   }
-
-   public static boolean b(ddv $$0) {
-      return $$0.k() != jc.a && $$0.q().a_($$0.a().d()).l();
+   @Override
+   public dbe.a a() {
+      return dbe.a.a().a(dbe.a.a.c() * 0.5F).b(dbe.a.a.d() * 1.25F).a();
    }
 }

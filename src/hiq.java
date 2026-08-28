@@ -1,6 +1,8 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-@FunctionalInterface
 public interface hiq {
-   boolean get(daa var1, @Nullable gmd var2, @Nullable bxw var3, int var4, czy var5);
+   float a(dak var1, @Nullable glo var2, @Nullable byf var3, int var4);
+
+   MapCodec<? extends hiq> a();
 }

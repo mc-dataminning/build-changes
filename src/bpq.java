@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bpq {
+   void a(long[] var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bpq {
+   void a(long var1);
+
+   void a(long var1, int var3);
 }

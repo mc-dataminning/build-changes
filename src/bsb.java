@@ -1,7 +1,8 @@
-import jdk.jfr.consumer.RecordedEvent;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record bsb(double a, double b, double c) {
-   public static bsb a(RecordedEvent $$0) {
-      return new bsb((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bsb {
 }

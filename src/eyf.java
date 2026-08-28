@@ -1,5 +1,7 @@
 public enum eyf {
    a,
    b,
-   c;
+   c,
+   d,
+   e;
 }

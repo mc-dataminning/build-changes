@@ -1,176 +1,145 @@
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class cva extends cum {
-   private static final byte b = 10;
-   private static final String c = "explosion_power";
-   private static final String d = "explosion_speed_factor";
-   private static final String h = "fuse";
-   private static final float i = 4.0F;
-   private static final float j = 1.0F;
-   private static final int k = -1;
+public interface cva extends buv, bve {
+   fgc dt();
+
+   ffx cR();
+
    @Nullable
-   private bvk l;
-   private int m = -1;
-   private float n = 4.0F;
-   private float o = 1.0F;
+   alq<fay> q();
 
-   public cva(bxe<? extends cva> $$0, djz $$1) {
-      super($$0, $$1);
-   }
+   void a(@Nullable alq<fay> var1);
+
+   long s();
+
+   void a(long var1);
+
+   jp<dak> t();
+
+   void u();
+
+   dkj dV();
+
+   boolean dQ();
 
    @Override
-   public ebg v() {
-      return dng.cu.m();
+   default boolean c() {
+      return this.am_();
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (this.m > 0) {
-         this.m--;
-         this.dV().a(lz.ah, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
-      } else if (this.m == 0) {
-         this.a(this.l, this.dy().j());
-      }
-
-      if (this.P) {
-         double $$0 = this.dy().j();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
+   default void a(ua $$0, ji.a $$1) {
+      if (this.q() != null) {
+         $$0.a("LootTable", this.q().a().toString());
+         if (this.s() != 0L) {
+            $$0.a("LootTableSeed", this.s());
          }
-      }
-   }
-
-   @Override
-   public boolean a(aru $$0, bvk $$1, float $$2) {
-      if ($$1.c() instanceof csh $$4 && $$4.bX()) {
-         bvk $$5 = this.dW().d(this, $$1.d());
-         this.a($$5, $$4.dy().h());
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(aru $$0, bvk $$1) {
-      double $$2 = this.dy().j();
-      if (!f($$1) && !($$2 >= 0.01F)) {
-         this.a($$0, this.o());
       } else {
-         if (this.m < 0) {
-            this.a($$1);
-            this.m = this.ae.a(20) + this.ae.a(20);
+         buw.a($$0, this.t(), $$1);
+      }
+   }
+
+   default void b(ua $$0, ji.a $$1) {
+      this.u();
+      alq<fay> $$2 = $$0.<alq<fay>>a("LootTable", fay.a).orElse(null);
+      this.a($$2);
+      this.a($$0.b("LootTableSeed", 0L));
+      if ($$2 == null) {
+         buw.b($$0, this.t(), $$1);
+      }
+   }
+
+   default void a(bvt $$0, asb $$1, bxe $$2) {
+      if ($$1.O().c(dkf.j)) {
+         buy.a($$1, $$2, this);
+         bxe $$3 = $$0.c();
+         if ($$3 != null && $$3.an() == bxn.bT) {
+            cqy.a($$1, (csi)$$3, true);
          }
       }
    }
 
-   @Override
-   protected czw o() {
-      return dae.oy;
+   default bvc b_(csi $$0) {
+      $$0.a(this);
+      return bvc.a;
    }
 
-   @Override
-   public daa dI() {
-      return new daa(dae.oy);
-   }
+   default void f(@Nullable csi $$0) {
+      MinecraftServer $$1 = this.dV().p();
+      if (this.q() != null && $$1 != null) {
+         fay $$2 = $$1.bc().b(this.q());
+         if ($$0 != null) {
+            aq.Q.a((asc)$$0, this.q());
+         }
 
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable bvk $$0, double $$1) {
-      if (this.dV() instanceof aru $$2) {
-         double $$3 = Math.min(Math.sqrt($$1), 5.0);
-         $$2.a(this, $$0, null, this.dA(), this.dC(), this.dG(), (float)((double)this.n + (double)this.o * this.ae.j() * 1.5 * $$3), false, djz.a.d);
-         this.aq();
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, float $$1, bvk $$2) {
-      if ($$0 >= 3.0) {
-         double $$3 = $$0 / 10.0;
-         this.h($$3 * $$3);
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.m < 0) {
          this.a(null);
+         faw.a $$3 = new faw.a((asb)this.dV()).a(fdn.f, this.dt());
+         if ($$0 != null) {
+            $$3.a($$0.eh()).a(fdn.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(fdm.c), this.s());
       }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.a(null);
+   default void al_() {
+      this.f(null);
+      this.t().clear();
+   }
+
+   default boolean am_() {
+      for (dak $$0 : this.t()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   default dak f_(int $$0) {
+      this.f(null);
+      dak $$1 = this.t().get($$0);
+      if ($$1.f()) {
+         return dak.l;
       } else {
-         super.b($$0);
+         this.t().set($$0, dak.l);
+         return $$1;
       }
    }
 
-   public void a(@Nullable bvk $$0) {
-      this.m = 80;
-      if (!this.dV().C) {
-         if ($$0 != null && this.l == null) {
-            this.l = this.dW().d(this, $$0.d());
+   default dak g_(int $$0) {
+      this.f(null);
+      return this.t().get($$0);
+   }
+
+   default dak b(int $$0, int $$1) {
+      this.f(null);
+      return buw.a(this.t(), $$0, $$1);
+   }
+
+   default void c(int $$0, dak $$1) {
+      this.f(null);
+      this.t().set($$0, $$1);
+      $$1.f(this.f_($$1));
+   }
+
+   default byw h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new byw() {
+         @Override
+         public dak a() {
+            return cva.this.g_($$0);
          }
 
-         this.dV().a(this, (byte)10);
-         if (!this.ba()) {
-            this.dV().a(null, this.dA(), this.dC(), this.dG(), awr.AC, aws.e, 1.0F, 1.0F);
+         @Override
+         public boolean a(dak $$0x) {
+            cva.this.c($$0, $$0);
+            return true;
          }
-      }
+      } : byw.a;
    }
 
-   public int q() {
-      return this.m;
-   }
-
-   public boolean s() {
-      return this.m > -1;
-   }
-
-   @Override
-   public float a(djs $$0, djd $$1, iw $$2, ebg $$3, exq $$4, float $$5) {
-      return !this.s() || !$$3.a(axg.P) && !$$1.a_($$2.d()).a(axg.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(djs $$0, djd $$1, iw $$2, ebg $$3, float $$4) {
-      return !this.s() || !$$3.a(axg.P) && !$$1.a_($$2.d()).a(axg.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(ua $$0) {
-      super.a($$0);
-      this.m = $$0.b("fuse", -1);
-      this.n = azq.a($$0.b("explosion_power", 4.0F), 0.0F, 128.0F);
-      this.o = azq.a($$0.b("explosion_speed_factor", 1.0F), 0.0F, 128.0F);
-   }
-
-   @Override
-   protected void b(ua $$0) {
-      super.b($$0);
-      $$0.a("fuse", this.m);
-      if (this.n != 4.0F) {
-         $$0.a("explosion_power", this.n);
-      }
-
-      if (this.o != 1.0F) {
-         $$0.a("explosion_speed_factor", this.o);
-      }
-   }
-
-   @Override
-   boolean e(bvk $$0) {
-      return f($$0);
-   }
-
-   private static boolean f(bvk $$0) {
-      return $$0.c() instanceof csu $$1 ? $$1.bX() : $$0.a(axh.i) || $$0.a(axh.l);
+   default boolean g(csi $$0) {
+      return !this.dQ() && $$0.a(this.cR(), 4.0);
    }
 }

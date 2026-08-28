@@ -1,33 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record czt(jg<awq> e, float f, float g, xc h) {
-   public static final Codec<czt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awq.b.fieldOf("sound_event").forGetter(czt::a),
-               ayy.o.fieldOf("use_duration").forGetter(czt::b),
-               ayy.o.fieldOf("range").forGetter(czt::c),
-               xe.a.fieldOf("description").forGetter(czt::d)
-            )
-            .apply($$0, czt::new)
-   );
-   public static final za<wn, czt> b = za.a(awq.d, czt::a, yy.l, czt::b, yy.l, czt::c, xe.b, czt::d, czt::new);
-   public static final Codec<jg<czt>> c = alg.a(mi.aU, a);
-   public static final za<wn, jg<czt>> d = yy.a(mi.aU, b);
-
-   public jg<awq> a() {
-      return this.e;
+public class czt extends dag {
+   public czt(dag.a $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.f;
-   }
+   @Override
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      if ($$1.ck != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.ck.a($$3);
+            $$3.a($$4, $$1, byf.d($$2));
+         }
 
-   public float c() {
-      return this.g;
-   }
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.jA, awz.g, 1.0F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         $$1.a(egq.C);
+      } else {
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.jC, awz.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof asb $$5) {
+            int $$6 = (int)(dgz.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dgz.a($$5, $$3, $$1);
+            ctd.a(new csz($$1, $$0, $$7, $$6), $$5, $$3);
+         }
 
-   public xc d() {
-      return this.h;
+         $$1.b(axi.c.b(this));
+         $$1.a(egq.D);
+      }
+
+      return bvc.a;
    }
 }

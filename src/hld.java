@@ -1,44 +1,20 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hld(fki a, @Nullable hmz b) implements Closeable {
-   public static hld a(avh $$0, alk $$1) throws IOException {
-      avf $$2 = $$0.getResourceOrThrow($$1);
+public record hld(bak c) implements hkv {
+   public static final MapCodec<hld> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bak.a.fieldOf("pattern").forGetter(hld::b)).apply($$0, hld::new));
 
-      fki $$4;
-      try (InputStream $$3 = $$2.d()) {
-         $$4 = fki.a($$3);
-      }
-
-      hmz $$6 = $$2.f().a(hmz.d).orElse(null);
-      return new hld($$4, $$6);
-   }
-
-   public static hld a() {
-      return new hld(hkr.a(), null);
-   }
-
-   public boolean b() {
-      return this.b != null ? this.b.a() : false;
-   }
-
-   public boolean c() {
-      return this.b != null ? this.b.b() : false;
+   @Override
+   public void a(avo $$0, hkv.a $$1) {
+      $$1.a(this.c.c());
    }
 
    @Override
-   public void close() {
-      this.a.close();
+   public MapCodec<hld> a() {
+      return b;
    }
 
-   public fki d() {
-      return this.a;
-   }
-
-   @Nullable
-   public hmz e() {
-      return this.b;
+   public bak b() {
+      return this.c;
    }
 }

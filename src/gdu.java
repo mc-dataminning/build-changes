@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gdu {
+   void L();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface gdu {
+   void a(dgh var1);
 }

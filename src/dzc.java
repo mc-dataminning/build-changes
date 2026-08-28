@@ -1,69 +1,82 @@
-public class dzc extends dye implements dzl {
-   private final dyn a = new dyn();
-   private final dys b = new dys() {
-      @Override
-      protected void a(djz $$0, iw $$1, ebg $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awr.ix, aws.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+import java.util.List;
+
+public abstract class dzc {
+   private static final int a = 5;
+   private int b;
+   private double c;
+
+   protected abstract void a(dkj var1, iw var2, ebq var3);
+
+   protected abstract void b(dkj var1, iw var2, ebq var3);
+
+   protected abstract void a(dkj var1, iw var2, ebq var3, int var4, int var5);
+
+   protected abstract boolean a(csi var1);
+
+   public void a(csi $$0, dkj $$1, iw $$2, ebq $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, egq.k, $$2);
+         d($$1, $$2, $$3);
       }
 
-      @Override
-      protected void b(djz $$0, iw $$1, ebg $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awr.iw, aws.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
-
-      @Override
-      protected void a(djz $$0, iw $$1, ebg $$2, int $$3, int $$4) {
-         $$0.a(dzc.this.o, dng.gf, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(crz $$0) {
-         return $$0.gx().b(dzc.this);
-      }
-   };
-
-   public dzc(iw $$0, ebg $$1) {
-      super(dyg.d, $$0, $$1);
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gL(), this.c);
    }
 
-   public static void a(djz $$0, iw $$1, ebg $$2, dzc $$3) {
-      $$3.a.a();
+   public void b(csi $$0, dkj $$1, iw $$2, ebq $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, egq.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   private List<csi> a(dkj $$0, iw $$1) {
+      double $$2 = this.c + 4.0;
+      ffx $$3 = new ffx($$1).g($$2);
+      return $$0.a(egc.a(csi.class), $$3, this::a);
+   }
+
+   public void c(dkj $$0, iw $$1, ebq $$2) {
+      List<csi> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
+
+      for (csi $$4 : $$3) {
+         this.c = Math.max($$4.gL(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, egq.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, egq.j, $$1);
+         }
+
+         this.b = $$5;
+      }
+
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   public void a(crz $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.b.a($$0, this.i(), this.aB_(), this.m());
-      }
+   public int a() {
+      return this.b;
    }
 
-   public void b(crz $$0) {
-      if (!this.p && !$$0.Z_()) {
-         this.b.b($$0, this.i(), this.aB_(), this.m());
-      }
-   }
-
-   public boolean c(crz $$0) {
-      return bum.a(this, $$0);
-   }
-
-   public void a() {
-      if (!this.p) {
-         this.b.c(this.i(), this.aB_(), this.m());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   private static void d(dkj $$0, iw $$1, ebq $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

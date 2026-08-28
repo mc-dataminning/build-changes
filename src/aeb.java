@@ -1,29 +1,24 @@
-public class aeb implements zj<aby> {
-   public static final za<vy, aeb> a = zj.a(aeb::a, aeb::new);
-   private final int b;
+public record aeb(fgc b, float c, float d) implements zo<acf> {
+   public static final ze<vy, aeb> a = ze.a(fgc.b, aeb::b, zc.l, aeb::e, zc.l, aeb::f, aeb::new);
 
-   public aeb(bvh $$0) {
-      this($$0.b());
-   }
-
-   public aeb(int $$0) {
-      this.b = $$0;
-   }
-
-   private aeb(vy $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
+   public static aeb a(bxe $$0) {
+      return new aeb($$0.dt(), $$0.dL(), $$0.dN());
    }
 
    @Override
-   public zl<aeb> a() {
-      return agr.ac;
+   public zq<aeb> a() {
+      return agy.V;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public float e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

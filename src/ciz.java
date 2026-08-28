@@ -1,108 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-
 public class ciz {
-   private final iw a;
-   private final jg<cjb> b;
-   private int c;
-   private final Runnable d;
-
-   ciz(iw $$0, jg<cjb> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.j();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static boolean a(byh $$0) {
+      return $$0.O() instanceof cho;
    }
 
-   public ciz(iw $$0, jg<cjb> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
+   public static boolean a(byn $$0, int $$1) {
+      return $$0.gi() && $$0.gf().a($$0.dt(), (double)($$0.gg() + (float)$$1) + 1.0);
    }
 
-   public ciz.a a() {
-      return new ciz.a(this.a, this.b, this.c);
+   public static boolean a(iw $$0, byn $$1) {
+      return $$1.dV().e($$0.v());
    }
 
-   @Deprecated
-   @baz
-   public int b() {
-      return this.c;
+   public static boolean a(boolean $$0, byn $$1, iw $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   protected boolean c() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
+   public static boolean a(chp $$0, iw $$1) {
+      return !$$0.a($$1);
    }
 
-   protected boolean d() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
+   public static boolean a(byn $$0, iw $$1) {
+      return $$0.dV().b_($$1).a(axs.a);
    }
 
-   public boolean e() {
-      return this.c > 0;
+   public static boolean b(byn $$0, iw $$1) {
+      return $$0.a(eyw.b($$0, $$1)) != 0.0F;
    }
 
-   public boolean f() {
-      return this.c != this.b.a().b();
-   }
-
-   public iw g() {
-      return this.a;
-   }
-
-   public jg<cjb> h() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((ciz)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
-   }
-
-   public static record a(iw b, jg<cjb> c, int d) {
-      public static final Codec<ciz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  iw.a.fieldOf("pos").forGetter(ciz.a::a),
-                  alh.a(mi.aa).fieldOf("type").forGetter(ciz.a::b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(ciz.a::c)
-               )
-               .apply($$0, ciz.a::new)
-      );
-
-      public ciz a(Runnable $$0) {
-         return new ciz(this.b, this.c, this.d, $$0);
-      }
-
-      public iw a() {
-         return this.b;
-      }
-
-      public jg<cjb> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   public static boolean c(byn $$0, iw $$1) {
+      return $$0.dV().a_($$1).e();
    }
 }

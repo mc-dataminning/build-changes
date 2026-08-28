@@ -1,23 +1,32 @@
 import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public class abh implements zj<abg> {
-   public static final abh a = new abh();
-   public static final za<ByteBuf, abh> b = za.a(a);
-
-   private abh() {
-   }
+public record abh(long c, List<abh.a> d) implements aat {
+   public static final aat.b<abh> a = aat.a("debug/redstone_update_order");
+   public static final ze<vy, abh> b = ze.a(zc.k, abh::b, abh.a.a.a(zc.a()), abh::c, abh::new);
 
    @Override
-   public zl<abh> a() {
-      return abm.a;
+   public aat.b<abh> a() {
+      return a;
    }
 
-   public void a(abg $$0) {
-      $$0.a(this);
+   public long b() {
+      return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public List<abh.a> c() {
+      return this.d;
+   }
+
+   public static record a(iw b, ezi c) {
+      public static final ze<ByteBuf, abh.a> a = ze.a(iw.b, abh.a::a, ezi.a, abh.a::b, abh.a::new);
+
+      public iw a() {
+         return this.b;
+      }
+
+      public ezi b() {
+         return this.c;
+      }
    }
 }

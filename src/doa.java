@@ -1,130 +1,108 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class doa extends drf {
+public class doa extends dno {
    public static final MapCodec<doa> a = b(doa::new);
-   public static final ece<jc> b = drf.e;
-   @Nullable
-   private ebl c;
-   @Nullable
-   private ebl d;
-   @Nullable
-   private ebl f;
-   @Nullable
-   private ebl g;
-   private static final Predicate<ebg> h = $$0 -> $$0 != null && ($$0.a(dng.ev) || $$0.a(dng.ew));
+   public static final ecq b = ecg.az;
+   public static final int c = 15;
+   private static final fgw d = dno.b(14.0, 0.0, 16.0);
+   private static final fgw e = dno.b(14.0, 0.0, 15.0);
+   private static final int f = 3;
+   private static final int g = 8;
+   private static final double h = 0.1;
+   private static final double i = 0.25;
 
    @Override
-   public MapCodec<? extends doa> a() {
+   public MapCodec<doa> a() {
       return a;
    }
 
-   protected doa(ebf.d $$0) {
+   protected doa(ebp.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jc.c));
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected void a(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   public boolean a(dkc $$0, iw $$1) {
-      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
-   }
+   @Override
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      iw $$4 = $$2.d();
+      if ($$1.v($$4)) {
+         int $$5 = 1;
+         int $$6 = $$0.c(b);
 
-   private void a(djz $$0, iw $$1) {
-      ebl.b $$2 = this.q().a($$0, $$1);
-      if ($$2 != null) {
-         ckp $$3 = bxe.bm.a($$0, bxd.k);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
-      } else {
-         ebl.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            ckc $$5 = bxe.aq.a($$0, bxd.k);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            if (++$$5 == 3 && $$6 == 15) {
+               return;
             }
          }
-      }
-   }
 
-   private static void a(djz $$0, ebl.b $$1, bwv $$2, iw $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (arv $$4 : $$0.a(arv.class, $$2.cR().g(5.0))) {
-         aq.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(djz $$0, ebl.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            ebk $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dng.a.m(), 2);
-            $$0.c(2001, $$4.d(), dne.j($$4.a()));
+         if ($$6 == 8 && this.a(this.m(), $$1, $$2.d())) {
+            double $$7 = $$5 >= 3 ? 0.25 : 0.1;
+            if ($$3.j() <= $$7) {
+               $$1.b($$4, dnq.eh.m());
+            }
+         } else if ($$6 == 15 && $$5 < 3) {
+            $$1.b($$4, this.m());
+            ebq $$8 = $$0.b(b, Integer.valueOf(0));
+            $$1.a($$2, $$8, 260);
+            $$1.a($$8, $$4, this, null, false);
          }
-      }
-   }
 
-   public static void b(djz $$0, ebl.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            ebk $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dng.a);
+         if ($$6 < 15) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
          }
       }
    }
 
    @Override
-   public ebg a(ddt $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected fgw b(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return e;
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return d;
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      for (jc $$3 : jc.c.a) {
+         ebq $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(axs.b)) {
+            return false;
+         }
+      }
+
+      ebq $$5 = $$1.a_($$2.e());
+      return ($$5.a(dnq.eg) || $$5.a(axn.J)) && !$$1.a_($$2.d()).n();
+   }
+
+   @Override
+   protected void a(ebq $$0, dkj $$1, iw $$2, bxe $$3, bxx $$4) {
+      $$3.a($$1.al().k(), 1.0F);
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
       $$0.a(b);
    }
 
-   private ebl b() {
-      if (this.c == null) {
-         this.c = ebm.a().a(" ", "#", "#").a('#', ebk.a(ebp.a(dng.ef))).b();
-      }
-
-      return this.c;
-   }
-
-   private ebl q() {
-      if (this.d == null) {
-         this.d = ebm.a().a("^", "#", "#").a('^', ebk.a(h)).a('#', ebk.a(ebp.a(dng.ef))).b();
-      }
-
-      return this.d;
-   }
-
-   private ebl r() {
-      if (this.f == null) {
-         this.f = ebm.a().a("~ ~", "###", "~#~").a('#', ebk.a(ebp.a(dng.cs))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.f;
-   }
-
-   private ebl y() {
-      if (this.g == null) {
-         this.g = ebm.a().a("~^~", "###", "~#~").a('^', ebk.a(h)).a('#', ebk.a(ebp.a(dng.cs))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.g;
+   @Override
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 }

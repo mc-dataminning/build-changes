@@ -1,18 +1,18 @@
 import java.util.List;
 
 public class ry {
-   public static final erk a = erd.a(ehf.a.e);
-   public static final erk b = erd.a(ehf.a.f);
-   public static final erk c = erd.a(ehf.a.c);
-   public static final erk d = erd.a(ehf.a.a);
-   public static final erk e = erd.a(ehf.a.d);
-   public static final erk f = erc.a(ehz.a(), ehz.b());
-   public static final erk g = erc.a(ehz.b(10), ehz.c(10));
-   public static final erk h = erc.a(ehz.b(8), ehz.c(8));
-   public static final erk i = erc.a(ehz.b(4), ehz.c(4));
-   public static final erk j = erc.a(ehz.a(), ehz.a(256));
+   public static final eru a = ern.a(ehp.a.e);
+   public static final eru b = ern.a(ehp.a.f);
+   public static final eru c = ern.a(ehp.a.c);
+   public static final eru d = ern.a(ehp.a.a);
+   public static final eru e = ern.a(ehp.a.d);
+   public static final eru f = erm.a(eij.a(), eij.b());
+   public static final eru g = erm.a(eij.b(10), eij.c(10));
+   public static final eru h = erm.a(eij.b(8), eij.c(8));
+   public static final eru i = erm.a(eij.b(4), eij.c(4));
+   public static final eru j = erm.a(eij.a(), eij.a(256));
 
-   public static void a(qi<erh> $$0) {
+   public static void a(qi<err> $$0) {
       rs.a($$0);
       rt.a($$0);
       ru.a($$0);
@@ -24,49 +24,49 @@ public class ry {
       sb.a($$0);
    }
 
-   public static alj<erh> a(String $$0) {
-      return alj.a(mi.bb, alk.b($$0));
+   public static alq<err> a(String $$0) {
+      return alq.a(mi.bb, alr.b($$0));
    }
 
-   public static void a(qi<erh> $$0, alj<erh> $$1, jg<ejx<?, ?>> $$2, List<erk> $$3) {
-      $$0.a($$1, new erh($$2, List.copyOf($$3)));
+   public static void a(qi<err> $$0, alq<err> $$1, jg<ekh<?, ?>> $$2, List<eru> $$3) {
+      $$0.a($$1, new err($$2, List.copyOf($$3)));
    }
 
-   public static void a(qi<erh> $$0, alj<erh> $$1, jg<ejx<?, ?>> $$2, erk... $$3) {
+   public static void a(qi<err> $$0, alq<err> $$1, jg<ekh<?, ?>> $$2, eru... $$3) {
       a($$0, $$1, $$2, List.of($$3));
    }
 
-   public static erk a(int $$0, float $$1, int $$2) {
+   public static eru a(int $$0, float $$1, int $$2) {
       float $$3 = 1.0F / $$1;
       if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
          throw new IllegalStateException("Chance data cannot be represented as list weight");
       } else {
-         btd<bty> $$4 = btd.<bty>b().a(btv.a($$0), (int)$$3 - 1).a(btv.a($$0 + $$2), 1).a();
-         return eqz.a(new buf($$4));
+         btm<buh> $$4 = btm.<buh>b().a(bue.a($$0), (int)$$3 - 1).a(bue.a($$0 + $$2), 1).a();
+         return erj.a(new buo($$4));
       }
    }
 
-   public static erj a() {
-      return eqw.a(eim.c);
+   public static ert a() {
+      return erg.a(eiw.c);
    }
 
-   public static eqw a(dne $$0) {
-      return eqw.a(eim.a($$0.m(), iw.c));
+   public static erg a(dno $$0) {
+      return erg.a(eiw.a($$0.m(), iw.c));
    }
 
-   public static jg<erh> a(jg<ejx<?, ?>> $$0, erk... $$1) {
-      return jg.a(new erh($$0, List.of($$1)));
+   public static jg<err> a(jg<ekh<?, ?>> $$0, eru... $$1) {
+      return jg.a(new err($$0, List.of($$1)));
    }
 
-   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1, erk... $$2) {
-      return a(jg.a(new ejx($$0, $$1)), $$2);
+   public static <FC extends enb, F extends ekw<FC>> jg<err> a(F $$0, FC $$1, eru... $$2) {
+      return a(jg.a(new ekh($$0, $$1)), $$2);
    }
 
-   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1) {
-      return a($$0, $$1, eim.c);
+   public static <FC extends enb, F extends ekw<FC>> jg<err> a(F $$0, FC $$1) {
+      return a($$0, $$1, eiw.c);
    }
 
-   public static <FC extends emr, F extends ekm<FC>> jg<erh> a(F $$0, FC $$1, eim $$2) {
-      return a($$0, $$1, eqw.a($$2));
+   public static <FC extends enb, F extends ekw<FC>> jg<err> a(F $$0, FC $$1, eiw $$2) {
+      return a($$0, $$1, erg.a($$2));
    }
 }

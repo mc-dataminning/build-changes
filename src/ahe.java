@@ -1,34 +1,29 @@
-public class ahe implements zj<agt> {
-   public static final za<vy, ahe> a = zj.a(ahe::a, ahe::new);
-   private final ahe.a b;
+public class ahe implements zo<aha> {
+   public static final ze<vy, ahe> a = zo.a(ahe::a, ahe::new);
+   private final buz b;
 
-   public ahe(ahe.a $$0) {
+   public ahe(buz $$0) {
       this.b = $$0;
    }
 
    private ahe(vy $$0) {
-      this.b = $$0.b(ahe.a.class);
+      this.b = buz.a($$0.readUnsignedByte());
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
+      $$0.l(this.b.a());
    }
 
    @Override
-   public zl<ahe> a() {
-      return agr.bu;
+   public zq<ahe> a() {
+      return agy.bn;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public ahe.a b() {
+   public buz b() {
       return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

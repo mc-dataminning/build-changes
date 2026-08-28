@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class jx {
-   private static final Set<alj<? extends jt<?>>> a = alf.c.stream().map(alf.d::a).collect(Collectors.toUnmodifiableSet());
+   private static final Set<alq<? extends jt<?>>> a = alm.c.stream().map(alm.d::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<va> $$0, ju $$1, Set<aun> $$2, BiConsumer<alj<? extends jt<?>>, List<jx.a>> $$3) {
-      alf.c.forEach($$4 -> a($$0, (alf.d<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<va> $$0, ju $$1, Set<auu> $$2, BiConsumer<alq<? extends jt<?>>, List<jx.a>> $$3) {
+      alm.c.forEach($$4 -> a($$0, (alm.d<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<va> $$0, alf.d<T> $$1, ju $$2, Set<aun> $$3, BiConsumer<alj<? extends jt<?>>, List<jx.a>> $$4) {
+   private static <T> void a(DynamicOps<va> $$0, alm.d<T> $$1, ju $$2, Set<auu> $$3, BiConsumer<alq<? extends jt<?>>, List<jx.a>> $$4) {
       $$2.a($$1.a())
          .ifPresent(
             $$4x -> {
@@ -46,24 +46,24 @@ public class jx {
       return $$0.a().filter($$0x -> a($$0x.a()));
    }
 
-   public static Stream<ju.d<?>> a(jn<alt> $$0) {
-      return a($$0.c(alt.b));
+   public static Stream<ju.d<?>> a(jn<ama> $$0) {
+      return a($$0.c(ama.b));
    }
 
-   public static Stream<ju.d<?>> b(jn<alt> $$0) {
-      Stream<ju.d<?>> $$1 = $$0.a(alt.a).a();
+   public static Stream<ju.d<?>> b(jn<ama> $$0) {
+      Stream<ju.d<?>> $$1 = $$0.a(ama.a).a();
       Stream<ju.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static boolean a(alj<? extends jt<?>> $$0) {
+   public static boolean a(alq<? extends jt<?>> $$0) {
       return a.contains($$0);
    }
 
-   public static record a(alk b, Optional<va> c) {
-      public static final za<ByteBuf, jx.a> a = za.a(alk.b, jx.a::a, yy.q.a(yy::a), jx.a::b, jx.a::new);
+   public static record a(alr b, Optional<va> c) {
+      public static final ze<ByteBuf, jx.a> a = ze.a(alr.b, jx.a::a, zc.q.a(zc::a), jx.a::b, jx.a::new);
 
-      public alk a() {
+      public alr a() {
          return this.b;
       }
 

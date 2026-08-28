@@ -1,89 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eky extends ekm<emy> {
-   public eky(Codec<emy> $$0) {
-      super($$0);
+public class eky<FC extends enb> {
+   private final Optional<ekh<?, ?>> a;
+   private final dli b;
+   private final edo c;
+   private final bai d;
+   private final iw e;
+   private final FC f;
+
+   public eky(Optional<ekh<?, ?>> $$0, dli $$1, edo $$2, bai $$3, iw $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(eko<emy> $$0) {
-      iw $$1 = $$0.e();
-      azz $$2 = $$0.d();
-      dky $$3 = $$0.b();
+   public Optional<ekh<?, ?>> a() {
+      return this.a;
+   }
 
-      while ($$3.v($$1) && $$1.v() > $$3.K_() + 2) {
-         $$1 = $$1.e();
-      }
+   public dli b() {
+      return this.b;
+   }
 
-      if (!$$3.a_($$1).a(dng.ef)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+   public edo c() {
+      return this.c;
+   }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = azq.f($$7);
+   public bai d() {
+      return this.d;
+   }
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)azq.a($$9) - 0.25F;
+   public iw e() {
+      return this.e;
+   }
 
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)azq.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     ebg $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.l() || b($$13) || $$13.a(dng.ef) || $$13.a(dng.ee)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dng.je.m());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.l() || b($$13) || $$13.a(dng.ef) || $$13.a(dng.ee)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dng.je.m());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               iw $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  ebg $$19 = $$3.a_($$17);
-                  if (!$$19.l() && !b($$19) && !$$19.a(dng.ef) && !$$19.a(dng.ee) && !$$19.a(dng.je)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dng.je.m());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   public FC f() {
+      return this.f;
    }
 }

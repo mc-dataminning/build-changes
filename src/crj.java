@@ -1,34 +1,44 @@
-public interface crj {
-   String n_ = "Inventory";
+import java.util.Arrays;
 
-   bva n();
+public enum crj {
+   a(0, awy.CL, awy.CT),
+   b(40, awy.CK, awy.CU),
+   c(80, awy.CM, awy.CU);
 
-   static void a(aru $$0, bxy $$1, crj $$2, coe $$3) {
-      daa $$4 = $$3.f();
-      if ($$1.c($$0, $$4)) {
-         bva $$5 = $$2.n();
-         boolean $$6 = $$5.c($$4);
-         if (!$$6) {
-            return;
-         }
+   private static final crj[] d = ag.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final awx f;
+   private final awx g;
 
-         $$1.a($$3);
-         int $$7 = $$4.M();
-         daa $$8 = $$5.b($$4);
-         $$1.a($$3, $$7 - $$8.M());
-         if ($$8.f()) {
-            $$3.aq();
-         } else {
-            $$4.e($$8.M());
+   private crj(final int $$0, final awx $$1, final awx $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   public int a() {
+      return this.e;
+   }
+
+   public awx b() {
+      return this.f;
+   }
+
+   public awx c() {
+      return this.g;
+   }
+
+   public static crj a(int $$0) {
+      for (crj $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
          }
       }
+
+      return a;
    }
 
-   default void a(ua $$0, ji.a $$1) {
-      $$0.o("Inventory").ifPresent($$1x -> this.n().a($$1x, $$1));
-   }
-
-   default void b(ua $$0, ji.a $$1) {
-      $$0.a("Inventory", this.n().a($$1));
+   public boolean d() {
+      return this == c;
    }
 }

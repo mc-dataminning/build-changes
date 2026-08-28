@@ -1,263 +1,42 @@
-public class fry {
-   public static final frt a = frt.a.a(2.0F)
-      .a()
-      .a(
-         "wind_top",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.a(0.5F, 0.0F, -0.5F), frs.b.a),
-            new fru(0.75F, frv.a(-0.5F, 0.0F, -0.5F), frs.b.a),
-            new fru(1.25F, frv.a(-0.5F, 0.0F, 0.5F), frs.b.a),
-            new fru(1.75F, frv.a(0.5F, 0.0F, 0.5F), frs.b.a),
-            new fru(2.0F, frv.a(0.5F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.5F, 0.0F, -0.5F), frs.b.a),
-            new fru(0.5F, frv.a(-0.5F, 0.0F, -0.5F), frs.b.a),
-            new fru(1.0F, frv.a(-0.5F, 0.0F, 0.5F), frs.b.a),
-            new fru(1.5F, frv.a(0.5F, 0.0F, 0.5F), frs.b.a),
-            new fru(2.0F, frv.a(0.5F, 0.0F, -0.5F), frs.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.b),
-            new fru(1.0F, frv.a(0.0F, 1.0F, 0.0F), frs.b.b),
-            new fru(2.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.b)
-         )
-      )
-      .a("rods", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(2.0F, frv.b(0.0F, 1080.0F, 0.0F), frs.b.a)))
-      .a(
-         "rods",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(1.0F, frv.a(0.0F, -1.0F, 0.0F), frs.b.a),
-            new fru(2.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .b();
-   public static final frt b = frt.a.a(1.125F)
-      .a(
-         "head",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.b(-12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.75F, frv.b(-12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.9167F, frv.b(5.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.a(0.0F, -2.0F, 0.0F), frs.b.a),
-            new fru(0.7917F, frv.a(0.0F, -1.0F, 2.0F), frs.b.a),
-            new fru(0.9583F, frv.a(0.0F, -1.0F, 0.0F), frs.b.a),
-            new fru(1.125F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("wind_bottom", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_mid",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.75F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.9167F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.a(0.0F, 0.0F, 5.0F), frs.b.a),
-            new fru(0.75F, frv.a(0.0F, 0.0F, 6.0F), frs.b.a),
-            new fru(0.9167F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a),
-            new fru(1.125F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.b(15.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.75F, frv.b(15.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.9167F, frv.b(-10.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.a(0.0F, 0.0F, 3.0F), frs.b.a),
-            new fru(0.8333F, frv.a(0.0F, 0.0F, 4.0F), frs.b.a),
-            new fru(0.9583F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a),
-            new fru(1.125F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.75F, frv.b(12.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.9167F, frv.b(-2.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(1.125F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "body",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.25F, frv.a(0.0F, 3.0F, 5.0F), frs.b.a),
-            new fru(0.8333F, frv.a(0.0F, 3.0F, 6.0F), frs.b.a),
-            new fru(0.9583F, frv.a(0.0F, 3.0F, -1.0F), frs.b.a),
-            new fru(1.125F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("rods", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(1.0F, frv.b(0.0F, 360.0F, 0.0F), frs.b.a)))
-      .b();
-   public static final frt c = frt.a.a(0.5F)
-      .a(
-         "body",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, -10.0F, 0.0F), frs.b.a),
-            new fru(0.125F, frv.a(0.0F, 11.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(22.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.2083F, frv.b(-19.25F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new frs(
-            frs.d.c,
-            new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a),
-            new fru(0.125F, frv.a(1.0, 1.3F, 1.0), frs.b.a),
-            new fru(0.5F, frv.a(1.0, 1.0, 1.0), frs.b.a)
-         )
-      )
-      .a("wind_bottom", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 90.0F, 0.0F), frs.b.a), new fru(0.5F, frv.b(0.0F, 360.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_bottom",
-         new frs(
-            frs.d.c,
-            new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a),
-            new fru(0.125F, frv.a(1.0, 1.1F, 1.0), frs.b.a),
-            new fru(0.5F, frv.a(1.0, 1.0, 1.0), frs.b.a)
-         )
-      )
-      .a("wind_mid", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.5F, frv.b(0.0F, 180.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_mid",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, -6.0F, 0.0F), frs.b.a),
-            new fru(0.125F, frv.a(0.0F, 2.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("wind_top", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.5F, frv.b(0.0F, 90.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_top",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, -5.0F, 0.0F), frs.b.a),
-            new fru(0.125F, frv.a(0.0F, 2.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("rods", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.5F, frv.b(0.0F, 360.0F, 0.0F), frs.b.a)))
-      .b();
-   public static final frt d = frt.a.a(2.0F)
-      .a(
-         "body",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, -10.0F, 0.0F), frs.b.a),
-            new fru(0.625F, frv.a(0.0F, -10.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "head",
-         new frs(
-            frs.d.b,
-            new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.b(22.5F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.625F, frv.b(22.5F, 0.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new frs(
-            frs.d.c, new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a), new fru(0.5F, frv.a(1.0, 1.0, 1.0), frs.b.a), new fru(0.625F, frv.a(1.0, 1.0, 1.0), frs.b.a)
-         )
-      )
-      .a("wind_bottom", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.625F, frv.b(0.0F, 90.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_bottom",
-         new frs(
-            frs.d.c, new fru(0.0F, frv.a(1.0, 1.0, 1.0), frs.b.a), new fru(0.5F, frv.a(1.0, 1.0, 1.0), frs.b.a), new fru(0.625F, frv.a(1.0, 1.0, 1.0), frs.b.a)
-         )
-      )
-      .a("wind_mid", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.625F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_mid",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, -6.0F, 0.0F), frs.b.a),
-            new fru(0.625F, frv.a(0.0F, -6.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("wind_top", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.625F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .a(
-         "wind_top",
-         new frs(
-            frs.d.a,
-            new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a),
-            new fru(0.5F, frv.a(0.0F, -5.0F, 0.0F), frs.b.a),
-            new fru(0.625F, frv.a(0.0F, -5.0F, 0.0F), frs.b.a)
-         )
-      )
-      .a("rods", new frs(frs.d.b, new fru(0.0F, frv.b(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.625F, frv.b(0.0F, 360.0F, 0.0F), frs.b.a)))
-      .b();
-   public static final frt e = frt.a.a(0.2F)
-      .a("body", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2F, frv.a(0.0F, 0.0F, -6.0F), frs.b.a)))
-      .a("wind_mid", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2F, frv.a(0.0F, 0.0F, -3.0F), frs.b.a)))
-      .a("wind_top", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a), new fru(0.2F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a)))
-      .b();
-   public static final frt f = frt.a.a(0.1F)
-      .a("body", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, -6.0F), frs.b.a), new fru(0.1F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .a("wind_mid", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, -3.0F), frs.b.a), new fru(0.1F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .a("wind_top", new frs(frs.d.a, new fru(0.0F, frv.a(0.0F, 0.0F, -2.0F), frs.b.a), new fru(0.1F, frv.a(0.0F, 0.0F, 0.0F), frs.b.a)))
-      .b();
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
+
+public record fry(int b) implements fsa {
+   public static final MapCodec<fry> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azg.i.fieldOf("default").forGetter(fry::b)).apply($$0, fry::new));
+
+   public fry() {
+      this(-7697782);
+   }
+
+   @Override
+   public int a(dak $$0, @Nullable glo $$1, @Nullable byf $$2) {
+      dcy $$3 = $$0.a(kl.ai);
+      IntList $$4 = $$3 != null ? $$3.b() : IntList.of();
+      int $$5 = $$4.size();
+      if ($$5 == 0) {
+         return this.b;
+      } else if ($$5 == 1) {
+         return ayh.f($$4.getInt(0));
+      } else {
+         int $$6 = 0;
+         int $$7 = 0;
+         int $$8 = 0;
+
+         for (int $$9 = 0; $$9 < $$5; $$9++) {
+            int $$10 = $$4.getInt($$9);
+            $$6 += ayh.b($$10);
+            $$7 += ayh.c($$10);
+            $$8 += ayh.d($$10);
+         }
+
+         return ayh.a($$6 / $$5, $$7 / $$5, $$8 / $$5);
+      }
+   }
+
+   @Override
+   public MapCodec<fry> a() {
+      return a;
+   }
 }

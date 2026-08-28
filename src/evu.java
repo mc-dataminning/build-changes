@@ -1,51 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class evu {
-   public static final ewm a = ewm.a;
-   public static final Codec<evu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               evz.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
-               evz.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
-               evs.c.lenientOptionalFieldOf("position_predicate", evr.b).forGetter($$0x -> $$0x.e),
-               ebg.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
-               ewn.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, evu::new)
+public class evu extends ewm {
+   public static final MapCodec<evu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ewo.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), buh.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, evu::new)
    );
-   private final evz c;
-   private final evz d;
-   private final evs e;
-   private final ebg f;
-   private final ewn g;
+   private final ewm b;
+   private final buh c;
 
-   public evu(evz $$0, evz $$1, ebg $$2) {
-      this($$0, $$1, evr.b, $$2);
+   public evu(ewm $$0, buh $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public evu(evz $$0, evz $$1, evs $$2, ebg $$3) {
-      this($$0, $$1, $$2, $$3, a);
+   @Override
+   protected ewo<?> a() {
+      return ewo.o;
    }
 
-   public evu(evz $$0, evz $$1, evs $$2, ebg $$3, ewn $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
+   @Override
+   public final List<ewp.d> a(dla $$0, iw $$1, iw $$2, List<ewp.d> $$3, List<ewp.d> $$4, ewl $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ag.b(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            bai $$6 = bai.a($$0.a().E()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ag.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
 
-   public boolean a(ebg $$0, ebg $$1, iw $$2, iw $$3, iw $$4, azz $$5) {
-      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
-   }
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  ewp.d $$12 = $$3.get($$11);
+                  ewp.d $$13 = $$4.get($$11);
+                  ewp.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
 
-   public ebg a() {
-      return this.f;
-   }
-
-   @Nullable
-   public ua a(azz $$0, @Nullable ua $$1) {
-      return this.g.a($$0, $$1);
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
    }
 }

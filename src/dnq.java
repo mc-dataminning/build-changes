@@ -1,108 +1,1244 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
-public class dnq extends dne {
-   public static final MapCodec<dnq> a = b(dnq::new);
-   public static final ecg b = ebw.az;
-   public static final int c = 15;
-   private static final fgm d = dne.b(14.0, 0.0, 16.0);
-   private static final fgm e = dne.b(14.0, 0.0, 15.0);
-   private static final int f = 3;
-   private static final int g = 8;
-   private static final double h = 0.1;
-   private static final double i = 0.25;
+public class dnq {
+   private static final ebp.f um = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof eab $$4 ? $$4.t() : true;
+   private static final ebp.f un = ($$0x, $$1x, $$2) -> !$$0x.c(ebi.c);
+   public static final dno a = a("air", dml::new, ebp.d.a().p().b().g().m());
+   public static final dno b = a("stone", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno c = a("granite", ebp.d.a().a(eye.k).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno d = a("polished_granite", ebp.d.a().a(eye.k).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno e = a("diorite", ebp.d.a().a(eye.o).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno f = a("polished_diorite", ebp.d.a().a(eye.o).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno g = a("andesite", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno h = a("polished_andesite", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno i = a("grass_block", drd::new, ebp.d.a().a(eye.b).e().d(0.6F).a(dvl.d));
+   public static final dno j = a("dirt", ebp.d.a().a(eye.k).d(0.5F).a(dvl.c));
+   public static final dno k = a("coarse_dirt", ebp.d.a().a(eye.k).d(0.5F).a(dvl.c));
+   public static final dno l = a("podzol", dvi::new, ebp.d.a().a(eye.I).d(0.5F).a(dvl.c));
+   public static final dno m = a("cobblestone", ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno n = a("oak_planks", ebp.d.a().a(eye.n).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno o = a("spruce_planks", ebp.d.a().a(eye.I).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno p = a("birch_planks", ebp.d.a().a(eye.c).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno q = a("jungle_planks", ebp.d.a().a(eye.k).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno r = a("acacia_planks", ebp.d.a().a(eye.p).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno s = a("cherry_planks", ebp.d.a().a(eye.K).a(ecr.e).a(2.0F, 3.0F).a(dvl.aW).i());
+   public static final dno t = a("dark_oak_planks", ebp.d.a().a(eye.A).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno u = a("pale_oak_wood", duh::new, ebp.d.a().a(eye.l).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno v = a("pale_oak_planks", ebp.d.a().a(eye.o).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno w = a("mangrove_planks", ebp.d.a().a(eye.C).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno x = a("bamboo_planks", ebp.d.a().a(eye.s).a(ecr.e).a(2.0F, 3.0F).a(dvl.aU).i());
+   public static final dno y = a("bamboo_mosaic", ebp.d.a().a(eye.s).a(ecr.e).a(2.0F, 3.0F).a(dvl.aU).i());
+   public static final dno z = a("oak_sapling", $$0x -> new duk(ebe.b, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno A = a("spruce_sapling", $$0x -> new duk(ebe.c, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno B = a("birch_sapling", $$0x -> new duk(ebe.f, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno C = a("jungle_sapling", $$0x -> new duk(ebe.g, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno D = a("acacia_sapling", $$0x -> new duk(ebe.h, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno E = a("cherry_sapling", $$0x -> new duk(ebe.i, $$0x), ebp.d.a().a(eye.u).b().e().d().a(dvl.aX).a(eyf.b));
+   public static final dno F = a("dark_oak_sapling", $$0x -> new duk(ebe.j, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno G = a("pale_oak_sapling", $$0x -> new duk(ebe.k, $$0x), ebp.d.a().a(eye.g).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno H = a("mangrove_propagule", $$0x -> new dsp(ebe.d, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno I = a("bedrock", ebp.d.a().a(eye.l).a(ecr.b).a(-1.0F, 3600000.0F).g().a(dnq::a));
+   public static final dno J = a("water", $$0x -> new dsk(eyb.c, $$0x), ebp.d.a().a(eye.m).p().b().d(100.0F).a(eyf.b).g().j().a(dvl.a));
+   public static final dno K = a("lava", $$0x -> new dsk(eyb.e, $$0x), ebp.d.a().a(eye.e).p().b().e().d(100.0F).a($$0x -> 15).a(eyf.b).g().j().a(dvl.a));
+   public static final dno L = a("sand", $$0x -> new duj(new ayr(14406560), $$0x), ebp.d.a().a(eye.c).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno M = a("suspicious_sand", $$0x -> new dnu(L, awy.cT, awy.cT, $$0x), ebp.d.a().a(eye.c).a(ecr.c).d(0.25F).a(dvl.bb).a(eyf.b));
+   public static final dno N = a("red_sand", $$0x -> new duj(new ayr(11098145), $$0x), ebp.d.a().a(eye.p).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno O = a("gravel", $$0x -> new dox(new ayr(-8356741), $$0x), ebp.d.a().a(eye.l).a(ecr.c).d(0.6F).a(dvl.c));
+   public static final dno P = a("suspicious_gravel", $$0x -> new dnu(O, awy.cU, awy.cU, $$0x), ebp.d.a().a(eye.l).a(ecr.c).d(0.25F).a(dvl.bc).a(eyf.b));
+   public static final dno Q = a("gold_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno R = a("deepslate_gold_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.b(Q).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno S = a("iron_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno T = a("deepslate_iron_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.b(S).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno U = a("coal_ore", $$0x -> new dpz(bun.a(0, 2), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno V = a("deepslate_coal_ore", $$0x -> new dpz(bun.a(0, 2), $$0x), ebp.d.b(U).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno W = a("nether_gold_ore", $$0x -> new dpz(bun.a(0, 1), $$0x), ebp.d.a().a(eye.J).a(ecr.b).n().a(3.0F, 3.0F).a(dvl.V));
+   public static final dno X = a("oak_log", duh::new, a(eye.n, eye.I, dvl.b));
+   public static final dno Y = a("spruce_log", duh::new, a(eye.I, eye.A, dvl.b));
+   public static final dno Z = a("birch_log", duh::new, a(eye.c, eye.o, dvl.b));
+   public static final dno aa = a("jungle_log", duh::new, a(eye.k, eye.I, dvl.b));
+   public static final dno ab = a("acacia_log", duh::new, a(eye.p, eye.l, dvl.b));
+   public static final dno ac = a("cherry_log", duh::new, a(eye.K, eye.R, dvl.aW));
+   public static final dno ad = a("dark_oak_log", duh::new, a(eye.A, eye.A, dvl.b));
+   public static final dno ae = a("pale_oak_log", duh::new, a(v.w(), u.w(), dvl.b));
+   public static final dno af = a("mangrove_log", duh::new, a(eye.C, eye.I, dvl.b));
+   public static final dno ag = a("mangrove_roots", dsq::new, ebp.d.a().a(eye.I).a(ecr.e).d(0.7F).a(dvl.aM).c().b(dnq::b).c(dnq::b).c().i());
+   public static final dno ah = a("muddy_mangrove_roots", duh::new, ebp.d.a().a(eye.I).d(0.7F).a(dvl.aN));
+   public static final dno ai = a("bamboo_block", duh::new, a(eye.s, eye.h, dvl.aU));
+   public static final dno aj = a("stripped_spruce_log", duh::new, a(eye.I, eye.I, dvl.b));
+   public static final dno ak = a("stripped_birch_log", duh::new, a(eye.c, eye.c, dvl.b));
+   public static final dno al = a("stripped_jungle_log", duh::new, a(eye.k, eye.k, dvl.b));
+   public static final dno am = a("stripped_acacia_log", duh::new, a(eye.p, eye.p, dvl.b));
+   public static final dno an = a("stripped_cherry_log", duh::new, a(eye.K, eye.Q, dvl.aW));
+   public static final dno ao = a("stripped_dark_oak_log", duh::new, a(eye.A, eye.A, dvl.b));
+   public static final dno ap = a("stripped_pale_oak_log", duh::new, a(v.w(), v.w(), dvl.b));
+   public static final dno aq = a("stripped_oak_log", duh::new, a(eye.n, eye.n, dvl.b));
+   public static final dno ar = a("stripped_mangrove_log", duh::new, a(eye.C, eye.C, dvl.b));
+   public static final dno as = a("stripped_bamboo_block", duh::new, a(eye.s, eye.s, dvl.aU));
+   public static final dno at = a("oak_wood", duh::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno au = a("spruce_wood", duh::new, ebp.d.a().a(eye.I).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno av = a("birch_wood", duh::new, ebp.d.a().a(eye.c).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aw = a("jungle_wood", duh::new, ebp.d.a().a(eye.k).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno ax = a("acacia_wood", duh::new, ebp.d.a().a(eye.v).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno ay = a("cherry_wood", duh::new, ebp.d.a().a(eye.R).a(ecr.e).d(2.0F).a(dvl.aW).i());
+   public static final dno az = a("dark_oak_wood", duh::new, ebp.d.a().a(eye.A).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aA = a("mangrove_wood", duh::new, ebp.d.a().a(eye.C).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aB = a("stripped_oak_wood", duh::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aC = a("stripped_spruce_wood", duh::new, ebp.d.a().a(eye.I).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aD = a("stripped_birch_wood", duh::new, ebp.d.a().a(eye.c).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aE = a("stripped_jungle_wood", duh::new, ebp.d.a().a(eye.k).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aF = a("stripped_acacia_wood", duh::new, ebp.d.a().a(eye.p).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aG = a("stripped_cherry_wood", duh::new, ebp.d.a().a(eye.Q).a(ecr.e).d(2.0F).a(dvl.aW).i());
+   public static final dno aH = a("stripped_dark_oak_wood", duh::new, ebp.d.a().a(eye.A).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aI = a("stripped_pale_oak_wood", duh::new, ebp.d.a().a(v.w()).a(ecr.e).d(2.0F).a(dvl.b).i());
+   public static final dno aJ = a("stripped_mangrove_wood", duh::new, a(eye.C, eye.C, dvl.b));
+   public static final dno aK = a("oak_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aL = a("spruce_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aM = a("birch_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aN = a("jungle_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aO = a("acacia_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aP = a(
+      "cherry_leaves", $$0x -> new dwy(0.1F, lz.H, $$0x), ebp.d.a().a(eye.u).d(0.2F).e().a(dvl.aY).c().a(dnq::c).b(dnq::b).c(dnq::b).i().a(eyf.b).a(dnq::b)
+   );
+   public static final dno aQ = a("dark_oak_leaves", $$0x -> new dwl(0.01F, $$0x), a(dvl.d));
+   public static final dno aR = a(
+      "pale_oak_leaves", $$0x -> new dwy(0.02F, lz.I, $$0x), ebp.d.a().a(eye.g).d(0.2F).e().a(dvl.d).c().a(dnq::c).b(dnq::b).c(dnq::b).i().a(eyf.b).a(dnq::b)
+   );
+   public static final dno aS = a("mangrove_leaves", $$0x -> new dso(0.01F, $$0x), a(dvl.d));
+   public static final dno aT = a("azalea_leaves", $$0x -> new dwy(0.01F, ls.a(lz.J, -9399763), $$0x), a(dvl.az));
+   public static final dno aU = a("flowering_azalea_leaves", $$0x -> new dwy(0.01F, ls.a(lz.J, -9399763), $$0x), a(dvl.az));
+   public static final dno aV = a("sponge", dvn::new, ebp.d.a().a(eye.s).d(0.6F).a(dvl.bg));
+   public static final dno aW = a("wet_sponge", dxw::new, ebp.d.a().a(eye.s).d(0.6F).a(dvl.bh));
+   public static final dno aX = a("glass", dwp::new, ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c().a(dnq::a).a(dnq::b).b(dnq::b).c(dnq::b));
+   public static final dno aY = a("lapis_ore", $$0x -> new dpz(bun.a(2, 5), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno aZ = a("deepslate_lapis_ore", $$0x -> new dpz(bun.a(2, 5), $$0x), ebp.d.b(aY).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno ba = a("lapis_block", ebp.d.a().a(eye.G).n().a(3.0F, 3.0F));
+   public static final dno bb = a("dispenser", dpu::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F));
+   public static final dno bc = a("sandstone", ebp.d.a().a(eye.c).a(ecr.b).n().d(0.8F));
+   public static final dno bd = a("chiseled_sandstone", ebp.d.a().a(eye.c).a(ecr.b).n().d(0.8F));
+   public static final dno be = a("cut_sandstone", ebp.d.a().a(eye.c).a(ecr.b).n().d(0.8F));
+   public static final dno bf = a("note_block", dte::new, ebp.d.a().a(eye.n).a(ecr.e).a(dvl.b).d(0.8F).i());
+   public static final dno bg = a("white_bed", czi.a);
+   public static final dno bh = a("orange_bed", czi.b);
+   public static final dno bi = a("magenta_bed", czi.c);
+   public static final dno bj = a("light_blue_bed", czi.d);
+   public static final dno bk = a("yellow_bed", czi.e);
+   public static final dno bl = a("lime_bed", czi.f);
+   public static final dno bm = a("pink_bed", czi.g);
+   public static final dno bn = a("gray_bed", czi.h);
+   public static final dno bo = a("light_gray_bed", czi.i);
+   public static final dno bp = a("cyan_bed", czi.j);
+   public static final dno bq = a("purple_bed", czi.k);
+   public static final dno br = a("blue_bed", czi.l);
+   public static final dno bs = a("brown_bed", czi.m);
+   public static final dno bt = a("green_bed", czi.n);
+   public static final dno bu = a("red_bed", czi.o);
+   public static final dno bv = a("black_bed", czi.p);
+   public static final dno bw = a("powered_rail", dtr::new, ebp.d.a().b().d(0.7F).a(dvl.g));
+   public static final dno bx = a("detector_rail", dpq::new, ebp.d.a().b().d(0.7F).a(dvl.g));
+   public static final dno by = a("sticky_piston", $$0x -> new ebi(true, $$0x), a());
+   public static final dno bz = a("cobweb", dxs::new, ebp.d.a().a(eye.d).a(dvl.bl).k().b().n().d(4.0F).a(eyf.b));
+   public static final dno bA = a("short_grass", dwe::new, ebp.d.a().a(eye.h).p().b().d().a(dvl.d).a(ebp.c.c).i().a(eyf.b));
+   public static final dno bB = a("fern", dwe::new, ebp.d.a().a(eye.h).p().b().d().a(dvl.d).a(ebp.c.c).i().a(eyf.b));
+   public static final dno bC = a("dead_bush", dqb::new, ebp.d.a().a(eye.n).p().b().d().a(dvl.d).i().a(eyf.b));
+   public static final dno bD = a("bush", dny::new, ebp.d.a().a(eye.h).p().b().d().a(dvl.d).i().a(eyf.b));
+   public static final dno bE = a("short_dry_grass", duw::new, ebp.d.a().a(eye.s).p().b().d().a(dvl.d).i().a(ebp.c.c).a(eyf.b));
+   public static final dno bF = a("tall_dry_grass", dwc::new, ebp.d.a().a(eye.s).p().b().d().a(dvl.d).i().a(ebp.c.c).a(eyf.b));
+   public static final dno bG = a("seagrass", duu::new, ebp.d.a().a(eye.m).p().b().d().a(dvl.q).a(eyf.b));
+   public static final dno bH = a("tall_seagrass", dwf::new, ebp.d.a().a(eye.m).p().b().d().a(dvl.q).a(ebp.c.b).a(eyf.b));
+   public static final dno bI = a("piston", $$0x -> new ebi(false, $$0x), a());
+   public static final dno bJ = a("piston_head", ebj::new, ebp.d.a().a(eye.l).d(1.5F).g().a(eyf.c));
+   public static final dno bK = a("white_wool", ebp.d.a().a(eye.i).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bL = a("orange_wool", ebp.d.a().a(eye.p).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bM = a("magenta_wool", ebp.d.a().a(eye.q).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bN = a("light_blue_wool", ebp.d.a().a(eye.r).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bO = a("yellow_wool", ebp.d.a().a(eye.s).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bP = a("lime_wool", ebp.d.a().a(eye.t).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bQ = a("pink_wool", ebp.d.a().a(eye.u).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bR = a("gray_wool", ebp.d.a().a(eye.v).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bS = a("light_gray_wool", ebp.d.a().a(eye.w).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bT = a("cyan_wool", ebp.d.a().a(eye.x).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bU = a("purple_wool", ebp.d.a().a(eye.y).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bV = a("blue_wool", ebp.d.a().a(eye.z).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bW = a("brown_wool", ebp.d.a().a(eye.A).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bX = a("green_wool", ebp.d.a().a(eye.B).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bY = a("red_wool", ebp.d.a().a(eye.C).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno bZ = a("black_wool", ebp.d.a().a(eye.D).a(ecr.h).d(0.8F).a(dvl.i).i());
+   public static final dno ca = a("moving_piston", ebh::new, ebp.d.a().a(eye.l).k().d(-1.0F).f().g().c().a(dnq::b).b(dnq::b).c(dnq::b).a(eyf.c));
+   public static final dno cb = a("dandelion", $$0x -> new dqu(bwk.w, 0.35F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cc = a("torchflower", $$0x -> new dqu(bwk.p, 5.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cd = a("poppy", $$0x -> new dqu(bwk.p, 5.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno ce = a("blue_orchid", $$0x -> new dqu(bwk.w, 0.35F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cf = a("allium", $$0x -> new dqu(bwk.l, 3.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cg = a("azure_bluet", $$0x -> new dqu(bwk.o, 11.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno ch = a("red_tulip", $$0x -> new dqu(bwk.r, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno ci = a("orange_tulip", $$0x -> new dqu(bwk.r, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cj = a("white_tulip", $$0x -> new dqu(bwk.r, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno ck = a("pink_tulip", $$0x -> new dqu(bwk.r, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cl = a("oxeye_daisy", $$0x -> new dqu(bwk.j, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cm = a("cornflower", $$0x -> new dqu(bwk.h, 5.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cn = a("wither_rose", $$0x -> new dxx(bwk.t, 7.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno co = a("lily_of_the_valley", $$0x -> new dqu(bwk.s, 11.0F, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b));
+   public static final dno cp = a("brown_mushroom", $$0x -> new dsx(ro.e, $$0x), ebp.d.a().a(eye.A).b().e().d().a(dvl.d).a($$0x -> 1).d(dnq::a).a(eyf.b));
+   public static final dno cq = a("red_mushroom", $$0x -> new dsx(ro.f, $$0x), ebp.d.a().a(eye.C).b().e().d().a(dvl.d).d(dnq::a).a(eyf.b));
+   public static final dno cr = a("gold_block", ebp.d.a().a(eye.E).a(ecr.g).n().a(3.0F, 6.0F).a(dvl.g));
+   public static final dno cs = a("iron_block", ebp.d.a().a(eye.g).a(ecr.k).n().a(5.0F, 6.0F).a(dvl.bp));
+   public static final dno ct = a("bricks", ebp.d.a().a(eye.C).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno cu = a("tnt", dwm::new, ebp.d.a().a(eye.e).d().a(dvl.d).i().a(dnq::b));
+   public static final dno cv = a("bookshelf", ebp.d.a().a(eye.n).a(ecr.e).d(1.5F).a(dvl.b).i());
+   public static final dno cw = a("chiseled_bookshelf", dot::new, ebp.d.a().a(eye.n).a(ecr.e).d(1.5F).a(dvl.ba).i());
+   public static final dno cx = a("mossy_cobblestone", ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno cy = a("obsidian", ebp.d.a().a(eye.D).a(ecr.b).n().a(50.0F, 1200.0F));
+   public static final dno cz = a("torch", $$0x -> new dwn(lz.F, $$0x), ebp.d.a().b().d().a($$0x -> 14).a(dvl.b).a(eyf.b));
+   public static final dno cA = a("wall_torch", $$0x -> new dxh(lz.F, $$0x), a(cz, true).b().d().a($$0x -> 14).a(dvl.b).a(eyf.b));
+   public static final dno cB = a("fire", dqq::new, ebp.d.a().a(eye.e).p().b().d().a($$0x -> 15).a(dvl.i).a(eyf.b));
+   public static final dno cC = a("soul_fire", dvj::new, ebp.d.a().a(eye.r).p().b().d().a($$0x -> 10).a(dvl.i).a(eyf.b));
+   public static final dno cD = a("spawner", dvm::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(5.0F).a(dvl.bm).c());
+   public static final dno cE = a("creaking_heart", dpk::new, ebp.d.a().a(eye.p).a(ecr.b).d(10.0F).a(dvl.bj));
+   public static final dno cF = a("oak_stairs", n);
+   public static final dno cG = a("chest", $$0x -> new dos(() -> dyq.b, $$0x), ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno cH = a("redstone_wire", dtx::new, ebp.d.a().b().d().a(eyf.b));
+   public static final dno cI = a("diamond_ore", $$0x -> new dpz(bun.a(3, 7), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno cJ = a("deepslate_diamond_ore", $$0x -> new dpz(bun.a(3, 7), $$0x), ebp.d.b(cI).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno cK = a("diamond_block", ebp.d.a().a(eye.F).n().a(5.0F, 6.0F).a(dvl.g));
+   public static final dno cL = a("crafting_table", dpj::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno cM = a("wheat", dpl::new, ebp.d.a().a($$0x -> $$0x.c(dpl.f) >= 6 ? eye.s : eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno cN = a("farmland", dqn::new, ebp.d.a().a(eye.k).e().d(0.6F).a(dvl.c).c(dnq::a).b(dnq::a));
+   public static final dno cO = a("furnace", dqz::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F).a(a(13)));
+   public static final dno cP = a("oak_sign", $$0x -> new dvt(ede.b, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cQ = a("spruce_sign", $$0x -> new dvt(ede.c, $$0x), ebp.d.a().a(Y.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cR = a("birch_sign", $$0x -> new dvt(ede.d, $$0x), ebp.d.a().a(eye.c).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cS = a("acacia_sign", $$0x -> new dvt(ede.e, $$0x), ebp.d.a().a(eye.p).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cT = a("cherry_sign", $$0x -> new dvt(ede.f, $$0x), ebp.d.a().a(s.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cU = a("jungle_sign", $$0x -> new dvt(ede.g, $$0x), ebp.d.a().a(aa.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cV = a("dark_oak_sign", $$0x -> new dvt(ede.h, $$0x), ebp.d.a().a(ad.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cW = a("pale_oak_sign", $$0x -> new dvt(ede.i, $$0x), ebp.d.a().a(v.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cX = a("mangrove_sign", $$0x -> new dvt(ede.l, $$0x), ebp.d.a().a(af.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cY = a("bamboo_sign", $$0x -> new dvt(ede.m, $$0x), ebp.d.a().a(x.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno cZ = a("oak_door", $$0x -> new dpv(ecf.g, $$0x), ebp.d.a().a(n.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno da = a("ladder", drz::new, ebp.d.a().l().d(0.4F).a(dvl.m).c().a(eyf.b));
+   public static final dno db = a("rail", dtu::new, ebp.d.a().b().d(0.7F).a(dvl.g));
+   public static final dno dc = a("cobblestone_stairs", m);
+   public static final dno dd = a("oak_wall_sign", $$0x -> new dxf(ede.b, $$0x), a(cP, true).a(eye.n).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno de = a("spruce_wall_sign", $$0x -> new dxf(ede.c, $$0x), a(cQ, true).a(Y.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno df = a("birch_wall_sign", $$0x -> new dxf(ede.d, $$0x), a(cR, true).a(eye.c).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dg = a("acacia_wall_sign", $$0x -> new dxf(ede.e, $$0x), a(cS, true).a(eye.p).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dh = a("cherry_wall_sign", $$0x -> new dxf(ede.f, $$0x), a(cT, true).a(ac.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno di = a("jungle_wall_sign", $$0x -> new dxf(ede.g, $$0x), a(cU, true).a(aa.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dj = a("dark_oak_wall_sign", $$0x -> new dxf(ede.h, $$0x), a(cV, true).a(ad.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dk = a("pale_oak_wall_sign", $$0x -> new dxf(ede.i, $$0x), a(cW, true).a(v.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dl = a("mangrove_wall_sign", $$0x -> new dxf(ede.l, $$0x), a(cX, true).a(af.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dm = a("bamboo_wall_sign", $$0x -> new dxf(ede.m, $$0x), a(cY, true).a(x.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dn = a("oak_hanging_sign", $$0x -> new dop(ede.b, $$0x), ebp.d.a().a(X.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno do = a("spruce_hanging_sign", $$0x -> new dop(ede.c, $$0x), ebp.d.a().a(Y.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dp = a("birch_hanging_sign", $$0x -> new dop(ede.d, $$0x), ebp.d.a().a(eye.c).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dq = a("acacia_hanging_sign", $$0x -> new dop(ede.e, $$0x), ebp.d.a().a(eye.p).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dr = a("cherry_hanging_sign", $$0x -> new dop(ede.f, $$0x), ebp.d.a().a(eye.Q).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno ds = a("jungle_hanging_sign", $$0x -> new dop(ede.g, $$0x), ebp.d.a().a(aa.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dt = a("dark_oak_hanging_sign", $$0x -> new dop(ede.h, $$0x), ebp.d.a().a(ad.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno du = a("pale_oak_hanging_sign", $$0x -> new dop(ede.i, $$0x), ebp.d.a().a(v.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dv = a("crimson_hanging_sign", $$0x -> new dop(ede.j, $$0x), ebp.d.a().a(eye.ab).k().a(ecr.e).b().d(1.0F));
+   public static final dno dw = a("warped_hanging_sign", $$0x -> new dop(ede.k, $$0x), ebp.d.a().a(eye.ae).k().a(ecr.e).b().d(1.0F));
+   public static final dno dx = a("mangrove_hanging_sign", $$0x -> new dop(ede.l, $$0x), ebp.d.a().a(af.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dy = a("bamboo_hanging_sign", $$0x -> new dop(ede.m, $$0x), ebp.d.a().a(eye.s).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dz = a("oak_wall_hanging_sign", $$0x -> new dxe(ede.b, $$0x), a(dn, true).a(X.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dA = a("spruce_wall_hanging_sign", $$0x -> new dxe(ede.c, $$0x), a(do, true).a(eye.n).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dB = a("birch_wall_hanging_sign", $$0x -> new dxe(ede.d, $$0x), a(dp, true).a(eye.c).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dC = a("acacia_wall_hanging_sign", $$0x -> new dxe(ede.e, $$0x), a(dq, true).a(eye.p).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dD = a("cherry_wall_hanging_sign", $$0x -> new dxe(ede.f, $$0x), a(dr, true).a(eye.Q).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dE = a("jungle_wall_hanging_sign", $$0x -> new dxe(ede.g, $$0x), a(ds, true).a(aa.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dF = a("dark_oak_wall_hanging_sign", $$0x -> new dxe(ede.h, $$0x), a(dt, true).a(ad.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dG = a("pale_oak_wall_hanging_sign", $$0x -> new dxe(ede.i, $$0x), a(du, true).a(v.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dH = a("mangrove_wall_hanging_sign", $$0x -> new dxe(ede.l, $$0x), a(dx, true).a(af.w()).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dI = a("crimson_wall_hanging_sign", $$0x -> new dxe(ede.j, $$0x), a(dv, true).a(eye.ab).k().a(ecr.e).b().d(1.0F));
+   public static final dno dJ = a("warped_wall_hanging_sign", $$0x -> new dxe(ede.k, $$0x), a(dw, true).a(eye.ae).k().a(ecr.e).b().d(1.0F));
+   public static final dno dK = a("bamboo_wall_hanging_sign", $$0x -> new dxe(ede.m, $$0x), a(dy, true).a(eye.s).k().a(ecr.e).b().d(1.0F).i());
+   public static final dno dL = a("lever", dsh::new, ebp.d.a().b().d(0.5F).a(dvl.f).a(eyf.b));
+   public static final dno dM = a("stone_pressure_plate", $$0x -> new dts(ecf.e, $$0x), ebp.d.a().a(eye.l).k().a(ecr.b).b().d(0.5F).a(eyf.b));
+   public static final dno dN = a("iron_door", $$0x -> new dpv(ecf.b, $$0x), ebp.d.a().a(eye.g).d(5.0F).c().a(eyf.b));
+   public static final dno dO = a("oak_pressure_plate", $$0x -> new dts(ecf.g, $$0x), ebp.d.a().a(n.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dP = a("spruce_pressure_plate", $$0x -> new dts(ecf.h, $$0x), ebp.d.a().a(o.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dQ = a("birch_pressure_plate", $$0x -> new dts(ecf.i, $$0x), ebp.d.a().a(p.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dR = a("jungle_pressure_plate", $$0x -> new dts(ecf.l, $$0x), ebp.d.a().a(q.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dS = a("acacia_pressure_plate", $$0x -> new dts(ecf.j, $$0x), ebp.d.a().a(r.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dT = a("cherry_pressure_plate", $$0x -> new dts(ecf.k, $$0x), ebp.d.a().a(s.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dU = a("dark_oak_pressure_plate", $$0x -> new dts(ecf.m, $$0x), ebp.d.a().a(t.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dV = a("pale_oak_pressure_plate", $$0x -> new dts(ecf.n, $$0x), ebp.d.a().a(v.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dW = a("mangrove_pressure_plate", $$0x -> new dts(ecf.q, $$0x), ebp.d.a().a(w.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dX = a("bamboo_pressure_plate", $$0x -> new dts(ecf.r, $$0x), ebp.d.a().a(x.w()).k().a(ecr.e).b().d(0.5F).i().a(eyf.b));
+   public static final dno dY = a("redstone_ore", dtw::new, ebp.d.a().a(eye.l).a(ecr.b).n().e().a(a(9)).a(3.0F, 3.0F));
+   public static final dno dZ = a("deepslate_redstone_ore", dtw::new, ebp.d.b(dY).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno ea = a("redstone_torch", dtz::new, ebp.d.a().b().d().a(a(7)).a(dvl.b).a(eyf.b));
+   public static final dno eb = a("redstone_wall_torch", dua::new, a(ea, true).b().d().a(a(7)).a(dvl.b).a(eyf.b));
+   public static final dno ec = a("stone_button", $$0x -> new dnz(ecf.e, 20, $$0x), b());
+   public static final dno ed = a("snow", dvh::new, ebp.d.a().a(eye.i).p().l().e().d(0.1F).n().a(dvl.k).c(($$0x, $$1x, $$2) -> $$0x.c(dvh.c) >= 8).a(eyf.b));
+   public static final dno ee = a("ice", drr::new, ebp.d.a().a(eye.f).a(0.98F).e().d(0.5F).a(dvl.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bxn.aV).a(dnq::b));
+   public static final dno ef = a("snow_block", ebp.d.a().a(eye.i).n().d(0.2F).a(dvl.k));
+   public static final dno eg = a("cactus", doa::new, ebp.d.a().a(eye.h).e().d(0.4F).a(dvl.i).a(eyf.b));
+   public static final dno eh = a("cactus_flower", dob::new, ebp.d.a().a(eye.u).b().d().i().a(dvl.ao).a(eyf.b));
+   public static final dno ei = a("clay", ebp.d.a().a(eye.j).a(ecr.f).d(0.6F).a(dvl.c));
+   public static final dno ej = a("sugar_cane", dvy::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.d).a(eyf.b));
+   public static final dno ek = a("jukebox", drw::new, ebp.d.a().a(eye.k).a(ecr.e).a(2.0F, 6.0F).a(dvl.b).i());
+   public static final dno el = a("oak_fence", dqo::new, ebp.d.a().a(n.w()).k().a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno em = a("netherrack", dtd::new, ebp.d.a().a(eye.J).a(ecr.b).n().d(0.4F).a(dvl.M));
+   public static final dno en = a("soul_sand", dvk::new, ebp.d.a().a(eye.A).a(ecr.l).d(0.5F).b(0.4F).a(dvl.I).a(dnq::b).a(dnq::a).c(dnq::a).b(dnq::a));
+   public static final dno eo = a("soul_soil", ebp.d.a().a(eye.A).d(0.5F).a(dvl.J));
+   public static final dno ep = a("basalt", duh::new, ebp.d.a().a(eye.D).a(ecr.b).n().a(1.25F, 4.2F).a(dvl.K));
+   public static final dno eq = a("polished_basalt", duh::new, ebp.d.a().a(eye.D).a(ecr.b).n().a(1.25F, 4.2F).a(dvl.K));
+   public static final dno er = a("soul_torch", $$0x -> new dwn(lz.N, $$0x), ebp.d.a().b().d().a($$0x -> 10).a(dvl.b).a(eyf.b));
+   public static final dno es = a("soul_wall_torch", $$0x -> new dxh(lz.N, $$0x), a(er, true).b().d().a($$0x -> 10).a(dvl.b).a(eyf.b));
+   public static final dno et = a("glowstone", ebp.d.a().a(eye.c).a(ecr.p).d(0.3F).a(dvl.h).a($$0x -> 15).a(dnq::b));
+   public static final dno eu = a("nether_portal", dsz::new, ebp.d.a().b().e().d(-1.0F).a(dvl.h).a($$0x -> 11).a(eyf.c));
+   public static final dno ev = a("carved_pumpkin", dok::new, ebp.d.a().a(eye.p).d(1.0F).a(dvl.b).a(dnq::b).a(eyf.b));
+   public static final dno ew = a("jack_o_lantern", dok::new, ebp.d.a().a(eye.p).d(1.0F).a(dvl.b).a($$0x -> 15).a(dnq::b).a(eyf.b));
+   public static final dno ex = a("cake", doc::new, ebp.d.a().k().d(0.5F).a(dvl.i).a(eyf.b));
+   public static final dno ey = a("repeater", duc::new, ebp.d.a().d().a(dvl.f).a(eyf.b));
+   public static final dno ez = b("white_stained_glass", czi.a);
+   public static final dno eA = b("orange_stained_glass", czi.b);
+   public static final dno eB = b("magenta_stained_glass", czi.c);
+   public static final dno eC = b("light_blue_stained_glass", czi.d);
+   public static final dno eD = b("yellow_stained_glass", czi.e);
+   public static final dno eE = b("lime_stained_glass", czi.f);
+   public static final dno eF = b("pink_stained_glass", czi.g);
+   public static final dno eG = b("gray_stained_glass", czi.h);
+   public static final dno eH = b("light_gray_stained_glass", czi.i);
+   public static final dno eI = b("cyan_stained_glass", czi.j);
+   public static final dno eJ = b("purple_stained_glass", czi.k);
+   public static final dno eK = b("blue_stained_glass", czi.l);
+   public static final dno eL = b("brown_stained_glass", czi.m);
+   public static final dno eM = b("green_stained_glass", czi.n);
+   public static final dno eN = b("red_stained_glass", czi.o);
+   public static final dno eO = b("black_stained_glass", czi.p);
+   public static final dno eP = a("oak_trapdoor", $$0x -> new dwq(ecf.g, $$0x), ebp.d.a().a(eye.n).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eQ = a("spruce_trapdoor", $$0x -> new dwq(ecf.h, $$0x), ebp.d.a().a(eye.I).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eR = a("birch_trapdoor", $$0x -> new dwq(ecf.i, $$0x), ebp.d.a().a(eye.c).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eS = a("jungle_trapdoor", $$0x -> new dwq(ecf.l, $$0x), ebp.d.a().a(eye.k).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eT = a("acacia_trapdoor", $$0x -> new dwq(ecf.j, $$0x), ebp.d.a().a(eye.p).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eU = a("cherry_trapdoor", $$0x -> new dwq(ecf.k, $$0x), ebp.d.a().a(eye.K).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eV = a("dark_oak_trapdoor", $$0x -> new dwq(ecf.m, $$0x), ebp.d.a().a(eye.A).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eW = a("pale_oak_trapdoor", $$0x -> new dwq(ecf.n, $$0x), ebp.d.a().a(v.w()).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eX = a("mangrove_trapdoor", $$0x -> new dwq(ecf.q, $$0x), ebp.d.a().a(eye.C).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eY = a("bamboo_trapdoor", $$0x -> new dwq(ecf.r, $$0x), ebp.d.a().a(eye.s).a(ecr.e).d(3.0F).c().a(dnq::a).i());
+   public static final dno eZ = a("stone_bricks", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno fa = a("mossy_stone_bricks", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno fb = a("cracked_stone_bricks", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno fc = a("chiseled_stone_bricks", ebp.d.a().a(eye.l).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno fd = a("packed_mud", ebp.d.b(j).a(1.0F, 3.0F).a(dvl.aQ));
+   public static final dno fe = a("mud_bricks", ebp.d.a().a(eye.S).a(ecr.b).n().a(1.5F, 3.0F).a(dvl.aP));
+   public static final dno ff = a("infested_stone", $$0x -> new drs(b, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fg = a("infested_cobblestone", $$0x -> new drs(m, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fh = a("infested_stone_bricks", $$0x -> new drs(eZ, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fi = a("infested_mossy_stone_bricks", $$0x -> new drs(fa, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fj = a("infested_cracked_stone_bricks", $$0x -> new drs(fb, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fk = a("infested_chiseled_stone_bricks", $$0x -> new drs(fc, $$0x), ebp.d.a().a(eye.j));
+   public static final dno fl = a("brown_mushroom_block", drq::new, ebp.d.a().a(eye.k).a(ecr.e).d(0.2F).a(dvl.b).i());
+   public static final dno fm = a("red_mushroom_block", drq::new, ebp.d.a().a(eye.C).a(ecr.e).d(0.2F).a(dvl.b).i());
+   public static final dno fn = a("mushroom_stem", drq::new, ebp.d.a().a(eye.d).a(ecr.e).d(0.2F).a(dvl.b).i());
+   public static final dno fo = a("iron_bars", dru::new, ebp.d.a().n().a(5.0F, 6.0F).a(dvl.bp).c());
+   public static final dno fp = a("chain", doq::new, ebp.d.a().k().n().a(5.0F, 6.0F).a(dvl.U).c());
+   public static final dno fq = a("glass_pane", dru::new, ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno fr = a(alf.a, dtt::new, ebp.d.a().a(eye.p).a(ecr.m).d(1.0F).a(dvl.b).a(eyf.b));
+   public static final dno fs = a(alf.d, ebp.d.a().a(eye.t).d(1.0F).a(dvl.b).a(eyf.b));
+   public static final dno ft = a(alf.c, $$0x -> new dmp(alf.b, alf.a, alg.a, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.b).a(eyf.b));
+   public static final dno fu = a(alf.f, $$0x -> new dmp(alf.e, alf.d, alg.b, $$0x), ebp.d.a().a(eye.h).b().d().a(dvl.b).a(eyf.b));
+   public static final dno fv = a(alf.b, $$0x -> new dvu(alf.a, alf.c, alg.a, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.x).a(eyf.b));
+   public static final dno fw = a(alf.e, $$0x -> new dvu(alf.d, alf.f, alg.b, $$0x), ebp.d.a().a(eye.h).b().e().d().a(dvl.x).a(eyf.b));
+   public static final dno fx = a("vine", dxb::new, ebp.d.a().a(eye.h).p().b().e().d(0.2F).a(dvl.y).i().a(eyf.b));
+   public static final dno fy = a("glow_lichen", drc::new, ebp.d.a().a(eye.aj).p().b().d(0.2F).a(dvl.aF).a(drc.b(7)).i().a(eyf.b));
+   public static final dno fz = a("resin_clump", dsu::new, ebp.d.a().a(eye.L).p().b().a(dvl.bn).i().a(eyf.b));
+   public static final dno fA = a("oak_fence_gate", $$0x -> new dqp(ede.b, $$0x), ebp.d.a().a(n.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno fB = a("brick_stairs", ct);
+   public static final dno fC = a("stone_brick_stairs", eZ);
+   public static final dno fD = a("mud_brick_stairs", fe);
+   public static final dno fE = a("mycelium", dsy::new, ebp.d.a().a(eye.y).e().d(0.6F).a(dvl.d));
+   public static final dno fF = a("lily_pad", dxi::new, ebp.d.a().a(eye.h).d().a(dvl.e).c().a(eyf.b));
+   public static final dno fG = a("resin_block", ebp.d.a().a(eye.L).a(ecr.b).a(dvl.bn));
+   public static final dno fH = a("resin_bricks", ebp.d.a().a(eye.L).a(ecr.b).n().a(dvl.bo).a(1.5F, 6.0F));
+   public static final dno fI = a("resin_brick_stairs", fH);
+   public static final dno fJ = a("resin_brick_slab", $$0x -> new dvb($$0x), ebp.d.a().a(eye.L).a(ecr.b).n().a(dvl.bo).a(1.5F, 6.0F));
+   public static final dno fK = a("resin_brick_wall", $$0x -> new dxd($$0x), ebp.d.a().a(eye.L).a(ecr.b).n().a(dvl.bo).a(1.5F, 6.0F));
+   public static final dno fL = a("chiseled_resin_bricks", ebp.d.a().a(eye.L).a(ecr.b).n().a(dvl.bo).a(1.5F, 6.0F));
+   public static final dno fM = a("nether_bricks", ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno fN = a("nether_brick_fence", dqo::new, ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno fO = a("nether_brick_stairs", fM);
+   public static final dno fP = a("nether_wart", dtc::new, ebp.d.a().a(eye.C).b().e().a(dvl.z).a(eyf.b));
+   public static final dno fQ = a("enchanting_table", dqc::new, ebp.d.a().a(eye.C).a(ecr.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
+   public static final dno fR = a("brewing_stand", dnt::new, ebp.d.a().a(eye.g).d(0.5F).a($$0x -> 1).c());
+   public static final dno fS = a("cauldron", dol::new, ebp.d.a().a(eye.l).n().d(2.0F).c());
+   public static final dno fT = a("water_cauldron", $$0x -> new dsc(dlm.c.b, kd.d, $$0x), ebp.d.b(fS));
+   public static final dno fU = a("lava_cauldron", dsb::new, ebp.d.b(fS).a($$0x -> 15));
+   public static final dno fV = a("powder_snow_cauldron", $$0x -> new dsc(dlm.c.c, kd.f, $$0x), ebp.d.b(fS));
+   public static final dno fW = a("end_portal", dqe::new, ebp.d.a().a(eye.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eyf.c));
+   public static final dno fX = a("end_portal_frame", dqf::new, ebp.d.a().a(eye.B).a(ecr.b).a(dvl.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
+   public static final dno fY = a("end_stone", ebp.d.a().a(eye.c).a(ecr.b).n().a(3.0F, 9.0F));
+   public static final dno fZ = a("dragon_egg", dpy::new, ebp.d.a().a(eye.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(eyf.b));
+   public static final dno ga = a("redstone_lamp", dty::new, ebp.d.a().a(eye.L).a(a(15)).d(0.3F).a(dvl.h).a(dnq::b));
+   public static final dno gb = a("cocoa", dow::new, ebp.d.a().a(eye.h).e().a(0.2F, 3.0F).a(dvl.b).c().a(eyf.b));
+   public static final dno gc = a("sandstone_stairs", bc);
+   public static final dno gd = a("emerald_ore", $$0x -> new dpz(bun.a(3, 7), $$0x), ebp.d.a().a(eye.l).a(ecr.b).n().a(3.0F, 3.0F));
+   public static final dno ge = a("deepslate_emerald_ore", $$0x -> new dpz(bun.a(3, 7), $$0x), ebp.d.b(gd).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno gf = a("ender_chest", dqh::new, ebp.d.a().a(eye.l).a(ecr.b).a(22.5F, 600.0F).a($$0x -> 7));
+   public static final dno gg = a("tripwire_hook", dwu::new, ebp.d.a().b().a(dvl.b).a(eyf.b));
+   public static final dno gh = a("tripwire", $$0x -> new dwt(gg, $$0x), ebp.d.a().b().a(eyf.b));
+   public static final dno gi = a("emerald_block", ebp.d.a().a(eye.H).a(ecr.n).n().a(5.0F, 6.0F).a(dvl.g));
+   public static final dno gj = a("spruce_stairs", o);
+   public static final dno gk = a("birch_stairs", p);
+   public static final dno gl = a("jungle_stairs", q);
+   public static final dno gm = a("command_block", $$0x -> new doy(false, $$0x), ebp.d.a().a(eye.A).n().a(-1.0F, 3600000.0F).g());
+   public static final dno gn = a("beacon", dng::new, ebp.d.a().a(eye.F).a(ecr.d).d(3.0F).a($$0x -> 15).c().a(dnq::b));
+   public static final dno go = a("cobblestone_wall", dxd::new, ebp.d.b(m).k());
+   public static final dno gp = a("mossy_cobblestone_wall", dxd::new, ebp.d.b(m).k());
+   public static final dno gq = a("flower_pot", $$0x -> new dqv(a, $$0x), c());
+   public static final dno gr = a("potted_torchflower", $$0x -> new dqv(cc, $$0x), c());
+   public static final dno gs = a("potted_oak_sapling", $$0x -> new dqv(z, $$0x), c());
+   public static final dno gt = a("potted_spruce_sapling", $$0x -> new dqv(A, $$0x), c());
+   public static final dno gu = a("potted_birch_sapling", $$0x -> new dqv(B, $$0x), c());
+   public static final dno gv = a("potted_jungle_sapling", $$0x -> new dqv(C, $$0x), c());
+   public static final dno gw = a("potted_acacia_sapling", $$0x -> new dqv(D, $$0x), c());
+   public static final dno gx = a("potted_cherry_sapling", $$0x -> new dqv(E, $$0x), c());
+   public static final dno gy = a("potted_dark_oak_sapling", $$0x -> new dqv(F, $$0x), c());
+   public static final dno gz = a("potted_pale_oak_sapling", $$0x -> new dqv(G, $$0x), c());
+   public static final dno gA = a("potted_mangrove_propagule", $$0x -> new dqv(H, $$0x), c());
+   public static final dno gB = a("potted_fern", $$0x -> new dqv(bB, $$0x), c());
+   public static final dno gC = a("potted_dandelion", $$0x -> new dqv(cb, $$0x), c());
+   public static final dno gD = a("potted_poppy", $$0x -> new dqv(cd, $$0x), c());
+   public static final dno gE = a("potted_blue_orchid", $$0x -> new dqv(ce, $$0x), c());
+   public static final dno gF = a("potted_allium", $$0x -> new dqv(cf, $$0x), c());
+   public static final dno gG = a("potted_azure_bluet", $$0x -> new dqv(cg, $$0x), c());
+   public static final dno gH = a("potted_red_tulip", $$0x -> new dqv(ch, $$0x), c());
+   public static final dno gI = a("potted_orange_tulip", $$0x -> new dqv(ci, $$0x), c());
+   public static final dno gJ = a("potted_white_tulip", $$0x -> new dqv(cj, $$0x), c());
+   public static final dno gK = a("potted_pink_tulip", $$0x -> new dqv(ck, $$0x), c());
+   public static final dno gL = a("potted_oxeye_daisy", $$0x -> new dqv(cl, $$0x), c());
+   public static final dno gM = a("potted_cornflower", $$0x -> new dqv(cm, $$0x), c());
+   public static final dno gN = a("potted_lily_of_the_valley", $$0x -> new dqv(co, $$0x), c());
+   public static final dno gO = a("potted_wither_rose", $$0x -> new dqv(cn, $$0x), c());
+   public static final dno gP = a("potted_red_mushroom", $$0x -> new dqv(cq, $$0x), c());
+   public static final dno gQ = a("potted_brown_mushroom", $$0x -> new dqv(cp, $$0x), c());
+   public static final dno gR = a("potted_dead_bush", $$0x -> new dqv(bC, $$0x), c());
+   public static final dno gS = a("potted_cactus", $$0x -> new dqv(eg, $$0x), c());
+   public static final dno gT = a("carrots", doi::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno gU = a("potatoes", dto::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno gV = a("oak_button", $$0x -> new dnz(ecf.g, 30, $$0x), b());
+   public static final dno gW = a("spruce_button", $$0x -> new dnz(ecf.h, 30, $$0x), b());
+   public static final dno gX = a("birch_button", $$0x -> new dnz(ecf.i, 30, $$0x), b());
+   public static final dno gY = a("jungle_button", $$0x -> new dnz(ecf.l, 30, $$0x), b());
+   public static final dno gZ = a("acacia_button", $$0x -> new dnz(ecf.j, 30, $$0x), b());
+   public static final dno ha = a("cherry_button", $$0x -> new dnz(ecf.k, 30, $$0x), b());
+   public static final dno hb = a("dark_oak_button", $$0x -> new dnz(ecf.m, 30, $$0x), b());
+   public static final dno hc = a("pale_oak_button", $$0x -> new dnz(ecf.n, 30, $$0x), b());
+   public static final dno hd = a("mangrove_button", $$0x -> new dnz(ecf.q, 30, $$0x), b());
+   public static final dno he = a("bamboo_button", $$0x -> new dnz(ecf.r, 30, $$0x), b());
+   public static final dno hf = a("skeleton_skull", $$0x -> new dva(dva.b.c, $$0x), ebp.d.a().a(ecr.r).d(1.0F).a(eyf.b));
+   public static final dno hg = a("skeleton_wall_skull", $$0x -> new dxg(dva.b.c, $$0x), a(hf, true).d(1.0F).a(eyf.b));
+   public static final dno hh = a("wither_skeleton_skull", dxy::new, ebp.d.a().a(ecr.u).d(1.0F).a(eyf.b));
+   public static final dno hi = a("wither_skeleton_wall_skull", dxz::new, a(hh, true).d(1.0F).a(eyf.b));
+   public static final dno hj = a("zombie_head", $$0x -> new dva(dva.b.f, $$0x), ebp.d.a().a(ecr.q).d(1.0F).a(eyf.b));
+   public static final dno hk = a("zombie_wall_head", $$0x -> new dxg(dva.b.f, $$0x), a(hj, true).d(1.0F).a(eyf.b));
+   public static final dno hl = a("player_head", dtk::new, ebp.d.a().a(ecr.w).d(1.0F).a(eyf.b));
+   public static final dno hm = a("player_wall_head", dtl::new, a(hl, true).d(1.0F).a(eyf.b));
+   public static final dno hn = a("creeper_head", $$0x -> new dva(dva.b.g, $$0x), ebp.d.a().a(ecr.s).d(1.0F).a(eyf.b));
+   public static final dno ho = a("creeper_wall_head", $$0x -> new dxg(dva.b.g, $$0x), a(hn, true).d(1.0F).a(eyf.b));
+   public static final dno hp = a("dragon_head", $$0x -> new dva(dva.b.i, $$0x), ebp.d.a().a(ecr.t).d(1.0F).a(eyf.b));
+   public static final dno hq = a("dragon_wall_head", $$0x -> new dxg(dva.b.i, $$0x), a(hp, true).d(1.0F).a(eyf.b));
+   public static final dno hr = a("piglin_head", $$0x -> new dva(dva.b.h, $$0x), ebp.d.a().a(ecr.v).d(1.0F).a(eyf.b));
+   public static final dno hs = a("piglin_wall_head", dth::new, a(hr, true).d(1.0F).a(eyf.b));
+   public static final dno ht = a("anvil", dmo::new, ebp.d.a().a(eye.g).n().a(5.0F, 1200.0F).a(dvl.n).a(eyf.c));
+   public static final dno hu = a("chipped_anvil", dmo::new, ebp.d.a().a(eye.g).n().a(5.0F, 1200.0F).a(dvl.n).a(eyf.c));
+   public static final dno hv = a("damaged_anvil", dmo::new, ebp.d.a().a(eye.g).n().a(5.0F, 1200.0F).a(dvl.n).a(eyf.c));
+   public static final dno hw = a("trapped_chest", dwr::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno hx = a("light_weighted_pressure_plate", $$0x -> new dxv(15, ecf.d, $$0x), ebp.d.a().a(eye.E).k().b().d(0.5F).a(eyf.b));
+   public static final dno hy = a("heavy_weighted_pressure_plate", $$0x -> new dxv(150, ecf.b, $$0x), ebp.d.a().a(eye.g).k().b().d(0.5F).a(eyf.b));
+   public static final dno hz = a("comparator", doz::new, ebp.d.a().d().a(dvl.f).a(eyf.b));
+   public static final dno hA = a("daylight_detector", dpo::new, ebp.d.a().a(eye.n).a(ecr.e).d(0.2F).a(dvl.b).i());
+   public static final dno hB = a("redstone_block", dtq::new, ebp.d.a().a(eye.e).n().a(5.0F, 6.0F).a(dvl.g).a(dnq::b));
+   public static final dno hC = a("nether_quartz_ore", $$0x -> new dpz(bun.a(2, 5), $$0x), ebp.d.a().a(eye.J).a(ecr.b).n().a(3.0F, 3.0F).a(dvl.P));
+   public static final dno hD = a("hopper", dro::new, ebp.d.a().a(eye.l).n().a(3.0F, 4.8F).a(dvl.g).c());
+   public static final dno hE = a("quartz_block", ebp.d.a().a(eye.o).a(ecr.b).n().d(0.8F));
+   public static final dno hF = a("chiseled_quartz_block", ebp.d.a().a(eye.o).a(ecr.b).n().d(0.8F));
+   public static final dno hG = a("quartz_pillar", duh::new, ebp.d.a().a(eye.o).a(ecr.b).n().d(0.8F));
+   public static final dno hH = a("quartz_stairs", hE);
+   public static final dno hI = a("activator_rail", dtr::new, ebp.d.a().b().d(0.7F).a(dvl.g));
+   public static final dno hJ = a("dropper", dqa::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F));
+   public static final dno hK = a("white_terracotta", dwh::new, ebp.d.a().a(eye.K).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hL = a("orange_terracotta", dwh::new, ebp.d.a().a(eye.L).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hM = a("magenta_terracotta", dwh::new, ebp.d.a().a(eye.M).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hN = a("light_blue_terracotta", dwh::new, ebp.d.a().a(eye.N).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hO = a("yellow_terracotta", dwh::new, ebp.d.a().a(eye.O).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hP = a("lime_terracotta", dwh::new, ebp.d.a().a(eye.P).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hQ = a("pink_terracotta", dwh::new, ebp.d.a().a(eye.Q).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hR = a("gray_terracotta", dwh::new, ebp.d.a().a(eye.R).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hS = a("light_gray_terracotta", dwh::new, ebp.d.a().a(eye.S).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hT = a("cyan_terracotta", dwh::new, ebp.d.a().a(eye.T).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hU = a("purple_terracotta", dwh::new, ebp.d.a().a(eye.U).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hV = a("blue_terracotta", dwh::new, ebp.d.a().a(eye.V).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hW = a("brown_terracotta", dwh::new, ebp.d.a().a(eye.W).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hX = a("green_terracotta", dwh::new, ebp.d.a().a(eye.X).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hY = a("red_terracotta", dwh::new, ebp.d.a().a(eye.Y).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno hZ = a("black_terracotta", dwh::new, ebp.d.a().a(eye.Z).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno ia = a("white_stained_glass_pane", $$0x -> new dvr(czi.a, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ib = a("orange_stained_glass_pane", $$0x -> new dvr(czi.b, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ic = a("magenta_stained_glass_pane", $$0x -> new dvr(czi.c, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno id = a("light_blue_stained_glass_pane", $$0x -> new dvr(czi.d, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ie = a("yellow_stained_glass_pane", $$0x -> new dvr(czi.e, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno if = a("lime_stained_glass_pane", $$0x -> new dvr(czi.f, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ig = a("pink_stained_glass_pane", $$0x -> new dvr(czi.g, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ih = a("gray_stained_glass_pane", $$0x -> new dvr(czi.h, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ii = a("light_gray_stained_glass_pane", $$0x -> new dvr(czi.i, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ij = a("cyan_stained_glass_pane", $$0x -> new dvr(czi.j, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ik = a("purple_stained_glass_pane", $$0x -> new dvr(czi.k, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno il = a("blue_stained_glass_pane", $$0x -> new dvr(czi.l, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno im = a("brown_stained_glass_pane", $$0x -> new dvr(czi.m, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno in = a("green_stained_glass_pane", $$0x -> new dvr(czi.n, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno io = a("red_stained_glass_pane", $$0x -> new dvr(czi.o, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno ip = a("black_stained_glass_pane", $$0x -> new dvr(czi.p, $$0x), ebp.d.a().a(ecr.d).d(0.3F).a(dvl.h).c());
+   public static final dno iq = a("acacia_stairs", r);
+   public static final dno ir = a("cherry_stairs", s);
+   public static final dno is = a("dark_oak_stairs", t);
+   public static final dno it = a("pale_oak_stairs", v);
+   public static final dno iu = a("mangrove_stairs", w);
+   public static final dno iv = a("bamboo_stairs", x);
+   public static final dno iw = a("bamboo_mosaic_stairs", y);
+   public static final dno ix = a("slime_block", dvc::new, ebp.d.a().a(eye.b).a(0.8F).a(dvl.o).c());
+   public static final dno iy = a("barrier", dmv::new, ebp.d.a().a(-1.0F, 3600000.8F).a(a(eye.a)).g().c().a(dnq::a).o().a(eyf.c));
+   public static final dno iz = a("light", dsi::new, ebp.d.a().p().a(-1.0F, 3600000.8F).a(a(eye.a)).g().c().a(dsi.e));
+   public static final dno iA = a("iron_trapdoor", $$0x -> new dwq(ecf.b, $$0x), ebp.d.a().a(eye.g).n().d(5.0F).c().a(dnq::a));
+   public static final dno iB = a("prismarine", ebp.d.a().a(eye.x).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iC = a("prismarine_bricks", ebp.d.a().a(eye.F).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iD = a("dark_prismarine", ebp.d.a().a(eye.F).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iE = a("prismarine_stairs", iB);
+   public static final dno iF = a("prismarine_brick_stairs", iC);
+   public static final dno iG = a("dark_prismarine_stairs", iD);
+   public static final dno iH = a("prismarine_slab", dvb::new, ebp.d.a().a(eye.x).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iI = a("prismarine_brick_slab", dvb::new, ebp.d.a().a(eye.F).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iJ = a("dark_prismarine_slab", dvb::new, ebp.d.a().a(eye.F).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno iK = a("sea_lantern", ebp.d.a().a(eye.o).a(ecr.d).d(0.3F).a(dvl.h).a($$0x -> 15).a(dnq::b));
+   public static final dno iL = a("hay_block", drl::new, ebp.d.a().a(eye.s).a(ecr.o).d(0.5F).a(dvl.d));
+   public static final dno iM = a("white_carpet", $$0x -> new dya(czi.a, $$0x), ebp.d.a().a(eye.i).d(0.1F).a(dvl.i).i());
+   public static final dno iN = a("orange_carpet", $$0x -> new dya(czi.b, $$0x), ebp.d.a().a(eye.p).d(0.1F).a(dvl.i).i());
+   public static final dno iO = a("magenta_carpet", $$0x -> new dya(czi.c, $$0x), ebp.d.a().a(eye.q).d(0.1F).a(dvl.i).i());
+   public static final dno iP = a("light_blue_carpet", $$0x -> new dya(czi.d, $$0x), ebp.d.a().a(eye.r).d(0.1F).a(dvl.i).i());
+   public static final dno iQ = a("yellow_carpet", $$0x -> new dya(czi.e, $$0x), ebp.d.a().a(eye.s).d(0.1F).a(dvl.i).i());
+   public static final dno iR = a("lime_carpet", $$0x -> new dya(czi.f, $$0x), ebp.d.a().a(eye.t).d(0.1F).a(dvl.i).i());
+   public static final dno iS = a("pink_carpet", $$0x -> new dya(czi.g, $$0x), ebp.d.a().a(eye.u).d(0.1F).a(dvl.i).i());
+   public static final dno iT = a("gray_carpet", $$0x -> new dya(czi.h, $$0x), ebp.d.a().a(eye.v).d(0.1F).a(dvl.i).i());
+   public static final dno iU = a("light_gray_carpet", $$0x -> new dya(czi.i, $$0x), ebp.d.a().a(eye.w).d(0.1F).a(dvl.i).i());
+   public static final dno iV = a("cyan_carpet", $$0x -> new dya(czi.j, $$0x), ebp.d.a().a(eye.x).d(0.1F).a(dvl.i).i());
+   public static final dno iW = a("purple_carpet", $$0x -> new dya(czi.k, $$0x), ebp.d.a().a(eye.y).d(0.1F).a(dvl.i).i());
+   public static final dno iX = a("blue_carpet", $$0x -> new dya(czi.l, $$0x), ebp.d.a().a(eye.z).d(0.1F).a(dvl.i).i());
+   public static final dno iY = a("brown_carpet", $$0x -> new dya(czi.m, $$0x), ebp.d.a().a(eye.A).d(0.1F).a(dvl.i).i());
+   public static final dno iZ = a("green_carpet", $$0x -> new dya(czi.n, $$0x), ebp.d.a().a(eye.B).d(0.1F).a(dvl.i).i());
+   public static final dno ja = a("red_carpet", $$0x -> new dya(czi.o, $$0x), ebp.d.a().a(eye.C).d(0.1F).a(dvl.i).i());
+   public static final dno jb = a("black_carpet", $$0x -> new dya(czi.p, $$0x), ebp.d.a().a(eye.D).d(0.1F).a(dvl.i).i());
+   public static final dno jc = a("terracotta", dwh::new, ebp.d.a().a(eye.p).a(ecr.b).n().a(1.25F, 4.2F));
+   public static final dno jd = a("coal_block", ebp.d.a().a(eye.D).a(ecr.b).n().a(5.0F, 6.0F));
+   public static final dno je = a("packed_ice", ebp.d.a().a(eye.f).a(ecr.i).a(0.98F).d(0.5F).a(dvl.h));
+   public static final dno jf = a("sunflower", dwd::new, ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno jg = a("lilac", dwd::new, ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno jh = a("rose_bush", dwd::new, ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno ji = a("peony", dwd::new, ebp.d.a().a(eye.h).b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno jj = a("tall_grass", dpx::new, ebp.d.a().a(eye.h).p().b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno jk = a("large_fern", dpx::new, ebp.d.a().a(eye.h).p().b().d().a(dvl.d).a(ebp.c.b).i().a(eyf.b));
+   public static final dno jl = a("white_banner", $$0x -> new dmt(czi.a, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jm = a("orange_banner", $$0x -> new dmt(czi.b, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jn = a("magenta_banner", $$0x -> new dmt(czi.c, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jo = a("light_blue_banner", $$0x -> new dmt(czi.d, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jp = a("yellow_banner", $$0x -> new dmt(czi.e, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jq = a("lime_banner", $$0x -> new dmt(czi.f, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jr = a("pink_banner", $$0x -> new dmt(czi.g, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno js = a("gray_banner", $$0x -> new dmt(czi.h, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jt = a("light_gray_banner", $$0x -> new dmt(czi.i, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno ju = a("cyan_banner", $$0x -> new dmt(czi.j, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jv = a("purple_banner", $$0x -> new dmt(czi.k, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jw = a("blue_banner", $$0x -> new dmt(czi.l, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jx = a("brown_banner", $$0x -> new dmt(czi.m, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jy = a("green_banner", $$0x -> new dmt(czi.n, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jz = a("red_banner", $$0x -> new dmt(czi.o, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jA = a("black_banner", $$0x -> new dmt(czi.p, $$0x), ebp.d.a().a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jB = a("white_wall_banner", $$0x -> new dxc(czi.a, $$0x), a(jl, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jC = a("orange_wall_banner", $$0x -> new dxc(czi.b, $$0x), a(jm, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jD = a("magenta_wall_banner", $$0x -> new dxc(czi.c, $$0x), a(jn, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jE = a("light_blue_wall_banner", $$0x -> new dxc(czi.d, $$0x), a(jo, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jF = a("yellow_wall_banner", $$0x -> new dxc(czi.e, $$0x), a(jp, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jG = a("lime_wall_banner", $$0x -> new dxc(czi.f, $$0x), a(jq, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jH = a("pink_wall_banner", $$0x -> new dxc(czi.g, $$0x), a(jr, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jI = a("gray_wall_banner", $$0x -> new dxc(czi.h, $$0x), a(js, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jJ = a("light_gray_wall_banner", $$0x -> new dxc(czi.i, $$0x), a(jt, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jK = a("cyan_wall_banner", $$0x -> new dxc(czi.j, $$0x), a(ju, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jL = a("purple_wall_banner", $$0x -> new dxc(czi.k, $$0x), a(jv, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jM = a("blue_wall_banner", $$0x -> new dxc(czi.l, $$0x), a(jw, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jN = a("brown_wall_banner", $$0x -> new dxc(czi.m, $$0x), a(jx, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jO = a("green_wall_banner", $$0x -> new dxc(czi.n, $$0x), a(jy, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jP = a("red_wall_banner", $$0x -> new dxc(czi.o, $$0x), a(jz, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jQ = a("black_wall_banner", $$0x -> new dxc(czi.p, $$0x), a(jA, true).a(eye.n).k().a(ecr.e).b().d(1.0F).a(dvl.b).i());
+   public static final dno jR = a("red_sandstone", ebp.d.a().a(eye.p).a(ecr.b).n().d(0.8F));
+   public static final dno jS = a("chiseled_red_sandstone", ebp.d.a().a(eye.p).a(ecr.b).n().d(0.8F));
+   public static final dno jT = a("cut_red_sandstone", ebp.d.a().a(eye.p).a(ecr.b).n().d(0.8F));
+   public static final dno jU = a("red_sandstone_stairs", jR);
+   public static final dno jV = a("oak_slab", dvb::new, ebp.d.a().a(eye.n).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno jW = a("spruce_slab", dvb::new, ebp.d.a().a(eye.I).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno jX = a("birch_slab", dvb::new, ebp.d.a().a(eye.c).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno jY = a("jungle_slab", dvb::new, ebp.d.a().a(eye.k).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno jZ = a("acacia_slab", dvb::new, ebp.d.a().a(eye.p).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno ka = a("cherry_slab", dvb::new, ebp.d.a().a(eye.K).a(ecr.e).a(2.0F, 3.0F).a(dvl.aW).i());
+   public static final dno kb = a("dark_oak_slab", dvb::new, ebp.d.a().a(eye.A).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno kc = a("pale_oak_slab", dvb::new, ebp.d.a().a(v.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno kd = a("mangrove_slab", dvb::new, ebp.d.a().a(eye.C).a(ecr.e).a(2.0F, 3.0F).a(dvl.b).i());
+   public static final dno ke = a("bamboo_slab", dvb::new, ebp.d.a().a(eye.s).a(ecr.e).a(2.0F, 3.0F).a(dvl.aU).i());
+   public static final dno kf = a("bamboo_mosaic_slab", dvb::new, ebp.d.a().a(eye.s).a(ecr.e).a(2.0F, 3.0F).a(dvl.aU).i());
+   public static final dno kg = a("stone_slab", dvb::new, ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kh = a("smooth_stone_slab", dvb::new, ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno ki = a("sandstone_slab", dvb::new, ebp.d.a().a(eye.c).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kj = a("cut_sandstone_slab", dvb::new, ebp.d.a().a(eye.c).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kk = a("petrified_oak_slab", dvb::new, ebp.d.a().a(eye.n).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kl = a("cobblestone_slab", dvb::new, ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno km = a("brick_slab", dvb::new, ebp.d.a().a(eye.C).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kn = a("stone_brick_slab", dvb::new, ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno ko = a("mud_brick_slab", dvb::new, ebp.d.a().a(eye.S).a(ecr.b).n().a(1.5F, 3.0F).a(dvl.aP));
+   public static final dno kp = a("nether_brick_slab", dvb::new, ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno kq = a("quartz_slab", dvb::new, ebp.d.a().a(eye.o).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kr = a("red_sandstone_slab", dvb::new, ebp.d.a().a(eye.p).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno ks = a("cut_red_sandstone_slab", dvb::new, ebp.d.a().a(eye.p).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kt = a("purpur_slab", dvb::new, ebp.d.a().a(eye.q).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno ku = a("smooth_stone", ebp.d.a().a(eye.l).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kv = a("smooth_sandstone", ebp.d.a().a(eye.c).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kw = a("smooth_quartz", ebp.d.a().a(eye.o).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno kx = a("smooth_red_sandstone", ebp.d.a().a(eye.p).a(ecr.b).n().a(2.0F, 6.0F));
+   public static final dno ky = a("spruce_fence_gate", $$0x -> new dqp(ede.c, $$0x), ebp.d.a().a(o.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kz = a("birch_fence_gate", $$0x -> new dqp(ede.d, $$0x), ebp.d.a().a(p.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kA = a("jungle_fence_gate", $$0x -> new dqp(ede.g, $$0x), ebp.d.a().a(q.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kB = a("acacia_fence_gate", $$0x -> new dqp(ede.e, $$0x), ebp.d.a().a(r.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kC = a("cherry_fence_gate", $$0x -> new dqp(ede.f, $$0x), ebp.d.a().a(s.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kD = a("dark_oak_fence_gate", $$0x -> new dqp(ede.h, $$0x), ebp.d.a().a(t.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kE = a("pale_oak_fence_gate", $$0x -> new dqp(ede.i, $$0x), ebp.d.a().a(v.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kF = a("mangrove_fence_gate", $$0x -> new dqp(ede.l, $$0x), ebp.d.a().a(w.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kG = a("bamboo_fence_gate", $$0x -> new dqp(ede.m, $$0x), ebp.d.a().a(x.w()).k().a(ecr.e).a(2.0F, 3.0F).i());
+   public static final dno kH = a("spruce_fence", dqo::new, ebp.d.a().a(o.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kI = a("birch_fence", dqo::new, ebp.d.a().a(p.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kJ = a("jungle_fence", dqo::new, ebp.d.a().a(q.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kK = a("acacia_fence", dqo::new, ebp.d.a().a(r.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kL = a("cherry_fence", dqo::new, ebp.d.a().a(s.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.aW));
+   public static final dno kM = a("dark_oak_fence", dqo::new, ebp.d.a().a(t.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kN = a("pale_oak_fence", dqo::new, ebp.d.a().a(v.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kO = a("mangrove_fence", dqo::new, ebp.d.a().a(w.w()).a(ecr.e).a(2.0F, 3.0F).i().a(dvl.b));
+   public static final dno kP = a("bamboo_fence", dqo::new, ebp.d.a().a(x.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.aU).i());
+   public static final dno kQ = a("spruce_door", $$0x -> new dpv(ecf.h, $$0x), ebp.d.a().a(o.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kR = a("birch_door", $$0x -> new dpv(ecf.i, $$0x), ebp.d.a().a(p.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kS = a("jungle_door", $$0x -> new dpv(ecf.l, $$0x), ebp.d.a().a(q.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kT = a("acacia_door", $$0x -> new dpv(ecf.j, $$0x), ebp.d.a().a(r.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kU = a("cherry_door", $$0x -> new dpv(ecf.k, $$0x), ebp.d.a().a(s.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kV = a("dark_oak_door", $$0x -> new dpv(ecf.m, $$0x), ebp.d.a().a(t.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kW = a("pale_oak_door", $$0x -> new dpv(ecf.n, $$0x), ebp.d.a().a(v.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kX = a("mangrove_door", $$0x -> new dpv(ecf.q, $$0x), ebp.d.a().a(w.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kY = a("bamboo_door", $$0x -> new dpv(ecf.r, $$0x), ebp.d.a().a(x.w()).a(ecr.e).d(3.0F).c().i().a(eyf.b));
+   public static final dno kZ = a("end_rod", dqg::new, ebp.d.a().l().d().a($$0x -> 14).a(dvl.b).c());
+   public static final dno la = a("chorus_plant", dov::new, ebp.d.a().a(eye.y).l().d(0.4F).a(dvl.b).c().a(eyf.b));
+   public static final dno lb = a("chorus_flower", $$0x -> new dou(la, $$0x), ebp.d.a().a(eye.y).l().e().d(0.4F).a(dvl.b).c().a(dnq::a).a(eyf.b).a(dnq::b));
+   public static final dno lc = a("purpur_block", ebp.d.a().a(eye.q).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno ld = a("purpur_pillar", duh::new, ebp.d.a().a(eye.q).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno le = a("purpur_stairs", lc);
+   public static final dno lf = a("end_stone_bricks", ebp.d.a().a(eye.c).a(ecr.b).n().a(3.0F, 9.0F));
+   public static final dno lg = a("torchflower_crop", dwo::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno lh = a("pitcher_crop", dtj::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno li = a("pitcher_plant", dpx::new, ebp.d.a().a(eye.h).b().d().a(dvl.w).a(ebp.c.b).i().a(eyf.b));
+   public static final dno lj = a("beetroots", dnj::new, ebp.d.a().a(eye.h).b().e().d().a(dvl.w).a(eyf.b));
+   public static final dno lk = a("dirt_path", dpt::new, ebp.d.a().a(eye.k).d(0.65F).a(dvl.d).c(dnq::a).b(dnq::a));
+   public static final dno ll = a("end_gateway", dqd::new, ebp.d.a().a(eye.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(eyf.c));
+   public static final dno lm = a("repeating_command_block", $$0x -> new doy(false, $$0x), ebp.d.a().a(eye.y).n().a(-1.0F, 3600000.0F).g());
+   public static final dno ln = a("chain_command_block", $$0x -> new doy(true, $$0x), ebp.d.a().a(eye.B).n().a(-1.0F, 3600000.0F).g());
+   public static final dno lo = a(
+      "frosted_ice", dqx::new, ebp.d.a().a(eye.f).a(0.98F).d(0.5F).a(dvl.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bxn.aV).a(dnq::b)
+   );
+   public static final dno lp = a(
+      "magma_block", dsn::new, ebp.d.a().a(eye.J).a(ecr.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dnq::a).e(dnq::a)
+   );
+   public static final dno lq = a("nether_wart_block", ebp.d.a().a(eye.C).d(1.0F).a(dvl.L));
+   public static final dno lr = a("red_nether_bricks", ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno ls = a("bone_block", duh::new, ebp.d.a().a(eye.c).a(ecr.j).n().d(2.0F).a(dvl.Q));
+   public static final dno lt = a("structure_void", dvx::new, ebp.d.a().p().b().g().o().a(eyf.b));
+   public static final dno lu = a("observer", dtg::new, ebp.d.a().a(eye.l).a(ecr.b).d(3.0F).n().a(dnq::b));
+   public static final dno lv = a("shulker_box", $$0x -> new dux(null, $$0x), c(eye.y));
+   public static final dno lw = a("white_shulker_box", $$0x -> new dux(czi.a, $$0x), c(eye.i));
+   public static final dno lx = a("orange_shulker_box", $$0x -> new dux(czi.b, $$0x), c(eye.p));
+   public static final dno ly = a("magenta_shulker_box", $$0x -> new dux(czi.c, $$0x), c(eye.q));
+   public static final dno lz = a("light_blue_shulker_box", $$0x -> new dux(czi.d, $$0x), c(eye.r));
+   public static final dno lA = a("yellow_shulker_box", $$0x -> new dux(czi.e, $$0x), c(eye.s));
+   public static final dno lB = a("lime_shulker_box", $$0x -> new dux(czi.f, $$0x), c(eye.t));
+   public static final dno lC = a("pink_shulker_box", $$0x -> new dux(czi.g, $$0x), c(eye.u));
+   public static final dno lD = a("gray_shulker_box", $$0x -> new dux(czi.h, $$0x), c(eye.v));
+   public static final dno lE = a("light_gray_shulker_box", $$0x -> new dux(czi.i, $$0x), c(eye.w));
+   public static final dno lF = a("cyan_shulker_box", $$0x -> new dux(czi.j, $$0x), c(eye.x));
+   public static final dno lG = a("purple_shulker_box", $$0x -> new dux(czi.k, $$0x), c(eye.U));
+   public static final dno lH = a("blue_shulker_box", $$0x -> new dux(czi.l, $$0x), c(eye.z));
+   public static final dno lI = a("brown_shulker_box", $$0x -> new dux(czi.m, $$0x), c(eye.A));
+   public static final dno lJ = a("green_shulker_box", $$0x -> new dux(czi.n, $$0x), c(eye.B));
+   public static final dno lK = a("red_shulker_box", $$0x -> new dux(czi.o, $$0x), c(eye.C));
+   public static final dno lL = a("black_shulker_box", $$0x -> new dux(czi.p, $$0x), c(eye.D));
+   public static final dno lM = a("white_glazed_terracotta", drb::new, ebp.d.a().a(czi.a).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lN = a("orange_glazed_terracotta", drb::new, ebp.d.a().a(czi.b).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lO = a("magenta_glazed_terracotta", drb::new, ebp.d.a().a(czi.c).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lP = a("light_blue_glazed_terracotta", drb::new, ebp.d.a().a(czi.d).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lQ = a("yellow_glazed_terracotta", drb::new, ebp.d.a().a(czi.e).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lR = a("lime_glazed_terracotta", drb::new, ebp.d.a().a(czi.f).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lS = a("pink_glazed_terracotta", drb::new, ebp.d.a().a(czi.g).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lT = a("gray_glazed_terracotta", drb::new, ebp.d.a().a(czi.h).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lU = a("light_gray_glazed_terracotta", drb::new, ebp.d.a().a(czi.i).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lV = a("cyan_glazed_terracotta", drb::new, ebp.d.a().a(czi.j).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lW = a("purple_glazed_terracotta", drb::new, ebp.d.a().a(czi.k).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lX = a("blue_glazed_terracotta", drb::new, ebp.d.a().a(czi.l).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lY = a("brown_glazed_terracotta", drb::new, ebp.d.a().a(czi.m).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno lZ = a("green_glazed_terracotta", drb::new, ebp.d.a().a(czi.n).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno ma = a("red_glazed_terracotta", drb::new, ebp.d.a().a(czi.o).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno mb = a("black_glazed_terracotta", drb::new, ebp.d.a().a(czi.p).a(ecr.b).n().d(1.4F).a(eyf.e));
+   public static final dno mc = a("white_concrete", ebp.d.a().a(czi.a).a(ecr.b).n().d(1.8F));
+   public static final dno md = a("orange_concrete", ebp.d.a().a(czi.b).a(ecr.b).n().d(1.8F));
+   public static final dno me = a("magenta_concrete", ebp.d.a().a(czi.c).a(ecr.b).n().d(1.8F));
+   public static final dno mf = a("light_blue_concrete", ebp.d.a().a(czi.d).a(ecr.b).n().d(1.8F));
+   public static final dno mg = a("yellow_concrete", ebp.d.a().a(czi.e).a(ecr.b).n().d(1.8F));
+   public static final dno mh = a("lime_concrete", ebp.d.a().a(czi.f).a(ecr.b).n().d(1.8F));
+   public static final dno mi = a("pink_concrete", ebp.d.a().a(czi.g).a(ecr.b).n().d(1.8F));
+   public static final dno mj = a("gray_concrete", ebp.d.a().a(czi.h).a(ecr.b).n().d(1.8F));
+   public static final dno mk = a("light_gray_concrete", ebp.d.a().a(czi.i).a(ecr.b).n().d(1.8F));
+   public static final dno ml = a("cyan_concrete", ebp.d.a().a(czi.j).a(ecr.b).n().d(1.8F));
+   public static final dno mm = a("purple_concrete", ebp.d.a().a(czi.k).a(ecr.b).n().d(1.8F));
+   public static final dno mn = a("blue_concrete", ebp.d.a().a(czi.l).a(ecr.b).n().d(1.8F));
+   public static final dno mo = a("brown_concrete", ebp.d.a().a(czi.m).a(ecr.b).n().d(1.8F));
+   public static final dno mp = a("green_concrete", ebp.d.a().a(czi.n).a(ecr.b).n().d(1.8F));
+   public static final dno mq = a("red_concrete", ebp.d.a().a(czi.o).a(ecr.b).n().d(1.8F));
+   public static final dno mr = a("black_concrete", ebp.d.a().a(czi.p).a(ecr.b).n().d(1.8F));
+   public static final dno ms = a("white_concrete_powder", $$0x -> new dpb(mc, $$0x), ebp.d.a().a(czi.a).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mt = a("orange_concrete_powder", $$0x -> new dpb(md, $$0x), ebp.d.a().a(czi.b).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mu = a("magenta_concrete_powder", $$0x -> new dpb(me, $$0x), ebp.d.a().a(czi.c).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mv = a("light_blue_concrete_powder", $$0x -> new dpb(mf, $$0x), ebp.d.a().a(czi.d).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mw = a("yellow_concrete_powder", $$0x -> new dpb(mg, $$0x), ebp.d.a().a(czi.e).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mx = a("lime_concrete_powder", $$0x -> new dpb(mh, $$0x), ebp.d.a().a(czi.f).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno my = a("pink_concrete_powder", $$0x -> new dpb(mi, $$0x), ebp.d.a().a(czi.g).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mz = a("gray_concrete_powder", $$0x -> new dpb(mj, $$0x), ebp.d.a().a(czi.h).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mA = a("light_gray_concrete_powder", $$0x -> new dpb(mk, $$0x), ebp.d.a().a(czi.i).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mB = a("cyan_concrete_powder", $$0x -> new dpb(ml, $$0x), ebp.d.a().a(czi.j).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mC = a("purple_concrete_powder", $$0x -> new dpb(mm, $$0x), ebp.d.a().a(czi.k).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mD = a("blue_concrete_powder", $$0x -> new dpb(mn, $$0x), ebp.d.a().a(czi.l).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mE = a("brown_concrete_powder", $$0x -> new dpb(mo, $$0x), ebp.d.a().a(czi.m).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mF = a("green_concrete_powder", $$0x -> new dpb(mp, $$0x), ebp.d.a().a(czi.n).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mG = a("red_concrete_powder", $$0x -> new dpb(mq, $$0x), ebp.d.a().a(czi.o).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mH = a("black_concrete_powder", $$0x -> new dpb(mr, $$0x), ebp.d.a().a(czi.p).a(ecr.c).d(0.5F).a(dvl.j));
+   public static final dno mI = a("kelp", drx::new, ebp.d.a().a(eye.m).b().e().d().a(dvl.q).a(eyf.b));
+   public static final dno mJ = a("kelp_plant", dry::new, ebp.d.a().a(eye.m).b().d().a(dvl.q).a(eyf.b));
+   public static final dno mK = a("dried_kelp_block", ebp.d.a().a(eye.B).a(0.5F, 2.5F).a(dvl.d));
+   public static final dno mL = a("turtle_egg", dwv::new, ebp.d.a().a(eye.c).k().d(0.5F).a(dvl.g).e().c().a(eyf.b));
+   public static final dno mM = a("sniffer_egg", dvg::new, ebp.d.a().a(eye.C).d(0.5F).a(dvl.g).c());
+   public static final dno mN = a("dead_tube_coral_block", ebp.d.a().a(eye.v).k().a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno mO = a("dead_brain_coral_block", ebp.d.a().a(eye.v).k().a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno mP = a("dead_bubble_coral_block", ebp.d.a().a(eye.v).k().a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno mQ = a("dead_fire_coral_block", ebp.d.a().a(eye.v).k().a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno mR = a("dead_horn_coral_block", ebp.d.a().a(eye.v).k().a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno mS = a("tube_coral_block", $$0x -> new dpe(mN, $$0x), ebp.d.a().a(eye.z).a(ecr.b).n().a(1.5F, 6.0F).a(dvl.r));
+   public static final dno mT = a("brain_coral_block", $$0x -> new dpe(mO, $$0x), ebp.d.a().a(eye.u).a(ecr.b).n().a(1.5F, 6.0F).a(dvl.r));
+   public static final dno mU = a("bubble_coral_block", $$0x -> new dpe(mP, $$0x), ebp.d.a().a(eye.y).a(ecr.b).n().a(1.5F, 6.0F).a(dvl.r));
+   public static final dno mV = a("fire_coral_block", $$0x -> new dpe(mQ, $$0x), ebp.d.a().a(eye.C).a(ecr.b).n().a(1.5F, 6.0F).a(dvl.r));
+   public static final dno mW = a("horn_coral_block", $$0x -> new dpe(mR, $$0x), ebp.d.a().a(eye.s).a(ecr.b).n().a(1.5F, 6.0F).a(dvl.r));
+   public static final dno mX = a("dead_tube_coral", dmx::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno mY = a("dead_brain_coral", dmx::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno mZ = a("dead_bubble_coral", dmx::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno na = a("dead_fire_coral", dmx::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nb = a("dead_horn_coral", dmx::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nc = a("tube_coral", $$0x -> new dpg(mX, $$0x), ebp.d.a().a(eye.z).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nd = a("brain_coral", $$0x -> new dpg(mY, $$0x), ebp.d.a().a(eye.u).b().d().a(dvl.q).a(eyf.b));
+   public static final dno ne = a("bubble_coral", $$0x -> new dpg(mZ, $$0x), ebp.d.a().a(eye.y).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nf = a("fire_coral", $$0x -> new dpg(na, $$0x), ebp.d.a().a(eye.C).b().d().a(dvl.q).a(eyf.b));
+   public static final dno ng = a("horn_coral", $$0x -> new dpg(nb, $$0x), ebp.d.a().a(eye.s).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nh = a("dead_tube_coral_fan", dmw::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno ni = a("dead_brain_coral_fan", dmw::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nj = a("dead_bubble_coral_fan", dmw::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nk = a("dead_fire_coral_fan", dmw::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nl = a("dead_horn_coral_fan", dmw::new, ebp.d.a().a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nm = a("tube_coral_fan", $$0x -> new dpf(nh, $$0x), ebp.d.a().a(eye.z).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nn = a("brain_coral_fan", $$0x -> new dpf(ni, $$0x), ebp.d.a().a(eye.u).b().d().a(dvl.q).a(eyf.b));
+   public static final dno no = a("bubble_coral_fan", $$0x -> new dpf(nj, $$0x), ebp.d.a().a(eye.y).b().d().a(dvl.q).a(eyf.b));
+   public static final dno np = a("fire_coral_fan", $$0x -> new dpf(nk, $$0x), ebp.d.a().a(eye.C).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nq = a("horn_coral_fan", $$0x -> new dpf(nl, $$0x), ebp.d.a().a(eye.s).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nr = a("dead_tube_coral_wall_fan", dmz::new, a(nh, false).a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno ns = a("dead_brain_coral_wall_fan", dmz::new, a(ni, false).a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nt = a("dead_bubble_coral_wall_fan", dmz::new, a(nj, false).a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nu = a("dead_fire_coral_wall_fan", dmz::new, a(nk, false).a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nv = a("dead_horn_coral_wall_fan", dmz::new, a(nl, false).a(eye.v).k().a(ecr.b).n().b().d());
+   public static final dno nw = a("tube_coral_wall_fan", $$0x -> new dph(nr, $$0x), a(nm, false).a(eye.z).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nx = a("brain_coral_wall_fan", $$0x -> new dph(ns, $$0x), a(nn, false).a(eye.u).b().d().a(dvl.q).a(eyf.b));
+   public static final dno ny = a("bubble_coral_wall_fan", $$0x -> new dph(nt, $$0x), a(no, false).a(eye.y).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nz = a("fire_coral_wall_fan", $$0x -> new dph(nu, $$0x), a(np, false).a(eye.C).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nA = a("horn_coral_wall_fan", $$0x -> new dph(nv, $$0x), a(nq, false).a(eye.s).b().d().a(dvl.q).a(eyf.b));
+   public static final dno nB = a("sea_pickle", dut::new, ebp.d.a().a(eye.B).a($$0x -> dut.o($$0x) ? 0 : 3 + 3 * $$0x.c(dut.c)).a(dvl.o).c().a(eyf.b));
+   public static final dno nC = a("blue_ice", dri::new, ebp.d.a().a(eye.f).d(2.8F).a(0.989F).a(dvl.h));
+   public static final dno nD = a("conduit", dpc::new, ebp.d.a().a(eye.F).k().a(ecr.d).d(3.0F).a($$0x -> 15).c());
+   public static final dno nE = a("bamboo_sapling", dmr::new, ebp.d.a().a(eye.n).k().e().d().b().d(1.0F).a(dvl.t).a(ebp.c.b).i().a(eyf.b));
+   public static final dno nF = a("bamboo", dms::new, ebp.d.a().a(eye.h).k().e().d().d(1.0F).a(dvl.s).c().f().a(ebp.c.b).i().a(eyf.b).a(dnq::b));
+   public static final dno nG = a("potted_bamboo", $$0x -> new dqv(nF, $$0x), c());
+   public static final dno nH = a("void_air", dml::new, ebp.d.a().p().b().g().m());
+   public static final dno nI = a("cave_air", dml::new, ebp.d.a().p().b().g().m());
+   public static final dno nJ = a("bubble_column", dnv::new, ebp.d.a().a(eye.m).p().b().g().a(eyf.b).j().a(dvl.a));
+   public static final dno nK = a("polished_granite_stairs", d);
+   public static final dno nL = a("smooth_red_sandstone_stairs", kx);
+   public static final dno nM = a("mossy_stone_brick_stairs", fa);
+   public static final dno nN = a("polished_diorite_stairs", f);
+   public static final dno nO = a("mossy_cobblestone_stairs", cx);
+   public static final dno nP = a("end_stone_brick_stairs", lf);
+   public static final dno nQ = a("stone_stairs", b);
+   public static final dno nR = a("smooth_sandstone_stairs", kv);
+   public static final dno nS = a("smooth_quartz_stairs", kw);
+   public static final dno nT = a("granite_stairs", c);
+   public static final dno nU = a("andesite_stairs", g);
+   public static final dno nV = a("red_nether_brick_stairs", lr);
+   public static final dno nW = a("polished_andesite_stairs", h);
+   public static final dno nX = a("diorite_stairs", e);
+   public static final dno nY = a("polished_granite_slab", dvb::new, ebp.d.b(d));
+   public static final dno nZ = a("smooth_red_sandstone_slab", dvb::new, ebp.d.b(kx));
+   public static final dno oa = a("mossy_stone_brick_slab", dvb::new, ebp.d.b(fa));
+   public static final dno ob = a("polished_diorite_slab", dvb::new, ebp.d.b(f));
+   public static final dno oc = a("mossy_cobblestone_slab", dvb::new, ebp.d.b(cx));
+   public static final dno od = a("end_stone_brick_slab", dvb::new, ebp.d.b(lf));
+   public static final dno oe = a("smooth_sandstone_slab", dvb::new, ebp.d.b(kv));
+   public static final dno of = a("smooth_quartz_slab", dvb::new, ebp.d.b(kw));
+   public static final dno og = a("granite_slab", dvb::new, ebp.d.b(c));
+   public static final dno oh = a("andesite_slab", dvb::new, ebp.d.b(g));
+   public static final dno oi = a("red_nether_brick_slab", dvb::new, ebp.d.b(lr));
+   public static final dno oj = a("polished_andesite_slab", dvb::new, ebp.d.b(h));
+   public static final dno ok = a("diorite_slab", dvb::new, ebp.d.b(e));
+   public static final dno ol = a("brick_wall", dxd::new, ebp.d.b(ct).k());
+   public static final dno om = a("prismarine_wall", dxd::new, ebp.d.b(iB).k());
+   public static final dno on = a("red_sandstone_wall", dxd::new, ebp.d.b(jR).k());
+   public static final dno oo = a("mossy_stone_brick_wall", dxd::new, ebp.d.b(fa).k());
+   public static final dno op = a("granite_wall", dxd::new, ebp.d.b(c).k());
+   public static final dno oq = a("stone_brick_wall", dxd::new, ebp.d.b(eZ).k());
+   public static final dno or = a("mud_brick_wall", dxd::new, ebp.d.b(fe).k());
+   public static final dno os = a("nether_brick_wall", dxd::new, ebp.d.b(fM).k());
+   public static final dno ot = a("andesite_wall", dxd::new, ebp.d.b(g).k());
+   public static final dno ou = a("red_nether_brick_wall", dxd::new, ebp.d.b(lr).k());
+   public static final dno ov = a("sandstone_wall", dxd::new, ebp.d.b(bc).k());
+   public static final dno ow = a("end_stone_brick_wall", dxd::new, ebp.d.b(lf).k());
+   public static final dno ox = a("diorite_wall", dxd::new, ebp.d.b(e).k());
+   public static final dno oy = a("scaffolding", dul::new, ebp.d.a().a(eye.c).b().a(dvl.u).f().a(dnq::a).a(eyf.b).a(dnq::b));
+   public static final dno oz = a("loom", dsm::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oA = a("barrel", dmu::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oB = a("smoker", dvf::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F).a(a(13)));
+   public static final dno oC = a("blast_furnace", dnn::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F).a(a(13)));
+   public static final dno oD = a("cartography_table", doj::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oE = a("fletching_table", dqs::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oF = a("grindstone", dre::new, ebp.d.a().a(eye.g).n().a(2.0F, 6.0F).a(dvl.f).a(eyf.c));
+   public static final dno oG = a("lectern", dsf::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oH = a("smithing_table", dve::new, ebp.d.a().a(eye.n).a(ecr.e).d(2.5F).a(dvl.b).i());
+   public static final dno oI = a("stonecutter", dvv::new, ebp.d.a().a(eye.l).a(ecr.b).n().d(3.5F));
+   public static final dno oJ = a("bell", dnk::new, ebp.d.a().a(eye.E).k().d(5.0F).a(dvl.n).a(eyf.b));
+   public static final dno oK = a("lantern", dsa::new, ebp.d.a().a(eye.g).k().d(3.5F).a(dvl.A).a($$0x -> 15).c().a(eyf.b));
+   public static final dno oL = a("soul_lantern", dsa::new, ebp.d.a().a(eye.g).k().d(3.5F).a(dvl.A).a($$0x -> 10).c().a(eyf.b));
+   public static final dno oM = a("campfire", $$0x -> new doe(true, 1, $$0x), ebp.d.a().a(eye.I).a(ecr.e).d(2.0F).a(dvl.b).a(a(15)).c().i());
+   public static final dno oN = a("soul_campfire", $$0x -> new doe(false, 2, $$0x), ebp.d.a().a(eye.I).a(ecr.e).d(2.0F).a(dvl.b).a(a(10)).c().i());
+   public static final dno oO = a("sweet_berry_bush", dwb::new, ebp.d.a().a(eye.h).e().b().a(dvl.v).a(eyf.b));
+   public static final dno oP = a("warped_stem", duh::new, b(eye.ae));
+   public static final dno oQ = a("stripped_warped_stem", duh::new, b(eye.ae));
+   public static final dno oR = a("warped_hyphae", duh::new, ebp.d.a().a(eye.af).a(ecr.e).d(2.0F).a(dvl.B));
+   public static final dno oS = a("stripped_warped_hyphae", duh::new, ebp.d.a().a(eye.af).a(ecr.e).d(2.0F).a(dvl.B));
+   public static final dno oT = a("warped_nylium", dtf::new, ebp.d.a().a(eye.ad).a(ecr.b).n().d(0.4F).a(dvl.C).e());
+   public static final dno oU = a("warped_fungus", $$0x -> new dqy(ro.d, oT, $$0x), ebp.d.a().a(eye.x).d().b().a(dvl.D).a(eyf.b));
+   public static final dno oV = a("warped_wart_block", ebp.d.a().a(eye.ag).d(1.0F).a(dvl.L));
+   public static final dno oW = a("warped_roots", dug::new, ebp.d.a().a(eye.x).p().b().d().a(dvl.E).a(ebp.c.b).a(eyf.b));
+   public static final dno oX = a("nether_sprouts", dta::new, ebp.d.a().a(eye.x).p().b().d().a(dvl.O).a(ebp.c.b).a(eyf.b));
+   public static final dno oY = a("crimson_stem", duh::new, b(eye.ab));
+   public static final dno oZ = a("stripped_crimson_stem", duh::new, b(eye.ab));
+   public static final dno pa = a("crimson_hyphae", duh::new, ebp.d.a().a(eye.ac).a(ecr.e).d(2.0F).a(dvl.B));
+   public static final dno pb = a("stripped_crimson_hyphae", duh::new, ebp.d.a().a(eye.ac).a(ecr.e).d(2.0F).a(dvl.B));
+   public static final dno pc = a("crimson_nylium", dtf::new, ebp.d.a().a(eye.aa).a(ecr.b).n().d(0.4F).a(dvl.C).e());
+   public static final dno pd = a("crimson_fungus", $$0x -> new dqy(ro.b, pc, $$0x), ebp.d.a().a(eye.J).d().b().a(dvl.D).a(eyf.b));
+   public static final dno pe = a("shroomlight", ebp.d.a().a(eye.C).d(1.0F).a(dvl.F).a($$0x -> 15));
+   public static final dno pf = a("weeping_vines", dxt::new, ebp.d.a().a(eye.J).e().b().d().a(dvl.G).a(eyf.b));
+   public static final dno pg = a("weeping_vines_plant", dxu::new, ebp.d.a().a(eye.J).b().d().a(dvl.G).a(eyf.b));
+   public static final dno ph = a("twisting_vines", dww::new, ebp.d.a().a(eye.x).e().b().d().a(dvl.G).a(eyf.b));
+   public static final dno pi = a("twisting_vines_plant", dwx::new, ebp.d.a().a(eye.x).b().d().a(dvl.G).a(eyf.b));
+   public static final dno pj = a("crimson_roots", dug::new, ebp.d.a().a(eye.J).p().b().d().a(dvl.E).a(ebp.c.b).a(eyf.b));
+   public static final dno pk = a("crimson_planks", ebp.d.a().a(eye.ab).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno pl = a("warped_planks", ebp.d.a().a(eye.ae).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno pm = a("crimson_slab", dvb::new, ebp.d.a().a(pk.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno pn = a("warped_slab", dvb::new, ebp.d.a().a(pl.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno po = a("crimson_pressure_plate", $$0x -> new dts(ecf.o, $$0x), ebp.d.a().a(pk.w()).k().a(ecr.e).b().d(0.5F).a(eyf.b));
+   public static final dno pp = a("warped_pressure_plate", $$0x -> new dts(ecf.p, $$0x), ebp.d.a().a(pl.w()).k().a(ecr.e).b().d(0.5F).a(eyf.b));
+   public static final dno pq = a("crimson_fence", dqo::new, ebp.d.a().a(pk.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno pr = a("warped_fence", dqo::new, ebp.d.a().a(pl.w()).a(ecr.e).a(2.0F, 3.0F).a(dvl.aV));
+   public static final dno ps = a("crimson_trapdoor", $$0x -> new dwq(ecf.o, $$0x), ebp.d.a().a(pk.w()).a(ecr.e).d(3.0F).c().a(dnq::a));
+   public static final dno pt = a("warped_trapdoor", $$0x -> new dwq(ecf.p, $$0x), ebp.d.a().a(pl.w()).a(ecr.e).d(3.0F).c().a(dnq::a));
+   public static final dno pu = a("crimson_fence_gate", $$0x -> new dqp(ede.j, $$0x), ebp.d.a().a(pk.w()).k().a(ecr.e).a(2.0F, 3.0F));
+   public static final dno pv = a("warped_fence_gate", $$0x -> new dqp(ede.k, $$0x), ebp.d.a().a(pl.w()).k().a(ecr.e).a(2.0F, 3.0F));
+   public static final dno pw = a("crimson_stairs", pk);
+   public static final dno px = a("warped_stairs", pl);
+   public static final dno py = a("crimson_button", $$0x -> new dnz(ecf.o, 30, $$0x), b());
+   public static final dno pz = a("warped_button", $$0x -> new dnz(ecf.p, 30, $$0x), b());
+   public static final dno pA = a("crimson_door", $$0x -> new dpv(ecf.o, $$0x), ebp.d.a().a(pk.w()).a(ecr.e).d(3.0F).c().a(eyf.b));
+   public static final dno pB = a("warped_door", $$0x -> new dpv(ecf.p, $$0x), ebp.d.a().a(pl.w()).a(ecr.e).d(3.0F).c().a(eyf.b));
+   public static final dno pC = a("crimson_sign", $$0x -> new dvt(ede.j, $$0x), ebp.d.a().a(pk.w()).a(ecr.e).k().b().d(1.0F));
+   public static final dno pD = a("warped_sign", $$0x -> new dvt(ede.k, $$0x), ebp.d.a().a(pl.w()).a(ecr.e).k().b().d(1.0F));
+   public static final dno pE = a("crimson_wall_sign", $$0x -> new dxf(ede.j, $$0x), a(pC, true).a(pk.w()).a(ecr.e).k().b().d(1.0F));
+   public static final dno pF = a("warped_wall_sign", $$0x -> new dxf(ede.k, $$0x), a(pD, true).a(pl.w()).a(ecr.e).k().b().d(1.0F));
+   public static final dno pG = a("structure_block", dvw::new, ebp.d.a().a(eye.w).n().a(-1.0F, 3600000.0F).g());
+   public static final dno pH = a("jigsaw", drv::new, ebp.d.a().a(eye.w).n().a(-1.0F, 3600000.0F).g());
+   public static final dno pI = a("test_block", dwi::new, ebp.d.a().a(eye.w).a(-1.0F, 3600000.0F).g());
+   public static final dno pJ = a("test_instance_block", dwj::new, ebp.d.a().c().a(-1.0F, 3600000.0F).g().c(dnq::b));
+   public static final dno pK = a("composter", dpa::new, ebp.d.a().a(eye.n).a(ecr.e).d(0.6F).a(dvl.b).i());
+   public static final dno pL = a("target", dwg::new, ebp.d.a().a(eye.o).d(0.5F).a(dvl.d));
+   public static final dno pM = a("bee_nest", dni::new, ebp.d.a().a(eye.s).a(ecr.e).d(0.3F).a(dvl.b).i());
+   public static final dno pN = a("beehive", dni::new, ebp.d.a().a(eye.n).a(ecr.e).d(0.6F).a(dvl.b).i());
+   public static final dno pO = a("honey_block", drn::new, ebp.d.a().a(eye.p).b(0.4F).c(0.5F).c().a(dvl.p));
+   public static final dno pP = a("honeycomb_block", ebp.d.a().a(eye.p).d(0.6F).a(dvl.r));
+   public static final dno pQ = a("netherite_block", ebp.d.a().a(eye.D).n().a(50.0F, 1200.0F).a(dvl.R));
+   public static final dno pR = a("ancient_debris", ebp.d.a().a(eye.D).n().a(30.0F, 1200.0F).a(dvl.S));
+   public static final dno pS = a("crying_obsidian", dpn::new, ebp.d.a().a(eye.D).a(ecr.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
+   public static final dno pT = a("respawn_anchor", dud::new, ebp.d.a().a(eye.D).a(ecr.b).n().a(50.0F, 1200.0F).a($$0x -> dud.a($$0x, 15)));
+   public static final dno pU = a("potted_crimson_fungus", $$0x -> new dqv(pd, $$0x), c());
+   public static final dno pV = a("potted_warped_fungus", $$0x -> new dqv(oU, $$0x), c());
+   public static final dno pW = a("potted_crimson_roots", $$0x -> new dqv(pj, $$0x), c());
+   public static final dno pX = a("potted_warped_roots", $$0x -> new dqv(oW, $$0x), c());
+   public static final dno pY = a("lodestone", ebp.d.a().a(eye.g).n().d(3.5F).a(dvl.T).a(eyf.c));
+   public static final dno pZ = a("blackstone", ebp.d.a().a(eye.D).a(ecr.b).n().a(1.5F, 6.0F));
+   public static final dno qa = a("blackstone_stairs", pZ);
+   public static final dno qb = a("blackstone_wall", dxd::new, ebp.d.b(pZ).k());
+   public static final dno qc = a("blackstone_slab", dvb::new, ebp.d.b(pZ).a(2.0F, 6.0F));
+   public static final dno qd = a("polished_blackstone", ebp.d.b(pZ).a(2.0F, 6.0F));
+   public static final dno qe = a("polished_blackstone_bricks", ebp.d.b(qd).a(1.5F, 6.0F));
+   public static final dno qf = a("cracked_polished_blackstone_bricks", ebp.d.b(qe));
+   public static final dno qg = a("chiseled_polished_blackstone", ebp.d.b(qd).a(1.5F, 6.0F));
+   public static final dno qh = a("polished_blackstone_brick_slab", dvb::new, ebp.d.b(qe).a(2.0F, 6.0F));
+   public static final dno qi = a("polished_blackstone_brick_stairs", qe);
+   public static final dno qj = a("polished_blackstone_brick_wall", dxd::new, ebp.d.b(qe).k());
+   public static final dno qk = a("gilded_blackstone", ebp.d.b(pZ).a(dvl.W));
+   public static final dno ql = a("polished_blackstone_stairs", qd);
+   public static final dno qm = a("polished_blackstone_slab", dvb::new, ebp.d.b(qd));
+   public static final dno qn = a("polished_blackstone_pressure_plate", $$0x -> new dts(ecf.f, $$0x), ebp.d.a().a(eye.D).k().a(ecr.b).b().d(0.5F).a(eyf.b));
+   public static final dno qo = a("polished_blackstone_button", $$0x -> new dnz(ecf.e, 20, $$0x), b());
+   public static final dno qp = a("polished_blackstone_wall", dxd::new, ebp.d.b(qd).k());
+   public static final dno qq = a("chiseled_nether_bricks", ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno qr = a("cracked_nether_bricks", ebp.d.a().a(eye.J).a(ecr.b).n().a(2.0F, 6.0F).a(dvl.N));
+   public static final dno qs = a("quartz_bricks", ebp.d.b(hE));
+   public static final dno qt = a("candle", dof::new, d(eye.c));
+   public static final dno qu = a("white_candle", dof::new, d(eye.d));
+   public static final dno qv = a("orange_candle", dof::new, d(eye.p));
+   public static final dno qw = a("magenta_candle", dof::new, d(eye.q));
+   public static final dno qx = a("light_blue_candle", dof::new, d(eye.r));
+   public static final dno qy = a("yellow_candle", dof::new, d(eye.s));
+   public static final dno qz = a("lime_candle", dof::new, d(eye.t));
+   public static final dno qA = a("pink_candle", dof::new, d(eye.u));
+   public static final dno qB = a("gray_candle", dof::new, d(eye.v));
+   public static final dno qC = a("light_gray_candle", dof::new, d(eye.w));
+   public static final dno qD = a("cyan_candle", dof::new, d(eye.x));
+   public static final dno qE = a("purple_candle", dof::new, d(eye.y));
+   public static final dno qF = a("blue_candle", dof::new, d(eye.z));
+   public static final dno qG = a("brown_candle", dof::new, d(eye.A));
+   public static final dno qH = a("green_candle", dof::new, d(eye.B));
+   public static final dno qI = a("red_candle", dof::new, d(eye.C));
+   public static final dno qJ = a("black_candle", dof::new, d(eye.D));
+   public static final dno qK = a("candle_cake", $$0x -> new dog(qt, $$0x), ebp.d.b(ex).a(a(3)));
+   public static final dno qL = a("white_candle_cake", $$0x -> new dog(qu, $$0x), ebp.d.b(qK));
+   public static final dno qM = a("orange_candle_cake", $$0x -> new dog(qv, $$0x), ebp.d.b(qK));
+   public static final dno qN = a("magenta_candle_cake", $$0x -> new dog(qw, $$0x), ebp.d.b(qK));
+   public static final dno qO = a("light_blue_candle_cake", $$0x -> new dog(qx, $$0x), ebp.d.b(qK));
+   public static final dno qP = a("yellow_candle_cake", $$0x -> new dog(qy, $$0x), ebp.d.b(qK));
+   public static final dno qQ = a("lime_candle_cake", $$0x -> new dog(qz, $$0x), ebp.d.b(qK));
+   public static final dno qR = a("pink_candle_cake", $$0x -> new dog(qA, $$0x), ebp.d.b(qK));
+   public static final dno qS = a("gray_candle_cake", $$0x -> new dog(qB, $$0x), ebp.d.b(qK));
+   public static final dno qT = a("light_gray_candle_cake", $$0x -> new dog(qC, $$0x), ebp.d.b(qK));
+   public static final dno qU = a("cyan_candle_cake", $$0x -> new dog(qD, $$0x), ebp.d.b(qK));
+   public static final dno qV = a("purple_candle_cake", $$0x -> new dog(qE, $$0x), ebp.d.b(qK));
+   public static final dno qW = a("blue_candle_cake", $$0x -> new dog(qF, $$0x), ebp.d.b(qK));
+   public static final dno qX = a("brown_candle_cake", $$0x -> new dog(qG, $$0x), ebp.d.b(qK));
+   public static final dno qY = a("green_candle_cake", $$0x -> new dog(qH, $$0x), ebp.d.b(qK));
+   public static final dno qZ = a("red_candle_cake", $$0x -> new dog(qI, $$0x), ebp.d.b(qK));
+   public static final dno ra = a("black_candle_cake", $$0x -> new dog(qJ, $$0x), ebp.d.b(qK));
+   public static final dno rb = a("amethyst_block", dmm::new, ebp.d.a().a(eye.y).d(1.5F).a(dvl.Y).n());
+   public static final dno rc = a("budding_amethyst", dnx::new, ebp.d.a().a(eye.y).e().d(1.5F).a(dvl.Y).n().a(eyf.b));
+   public static final dno rd = a("amethyst_cluster", $$0x -> new dmn(7.0F, 10.0F, $$0x), ebp.d.a().a(eye.y).k().c().a(dvl.Z).d(1.5F).a($$0x -> 5).a(eyf.b));
+   public static final dno re = a("large_amethyst_bud", $$0x -> new dmn(5.0F, 10.0F, $$0x), ebp.d.b(rd).a(dvl.ab).a($$0x -> 4));
+   public static final dno rf = a("medium_amethyst_bud", $$0x -> new dmn(4.0F, 10.0F, $$0x), ebp.d.b(rd).a(dvl.ac).a($$0x -> 2));
+   public static final dno rg = a("small_amethyst_bud", $$0x -> new dmn(3.0F, 8.0F, $$0x), ebp.d.b(rd).a(dvl.aa).a($$0x -> 1));
+   public static final dno rh = a("tuff", ebp.d.a().a(eye.R).a(ecr.b).a(dvl.ad).n().a(1.5F, 6.0F));
+   public static final dno ri = a("tuff_slab", dvb::new, ebp.d.b(rh));
+   public static final dno rj = a("tuff_stairs", $$0x -> new dvs(rh.m(), $$0x), ebp.d.b(rh));
+   public static final dno rk = a("tuff_wall", dxd::new, ebp.d.b(rh).k());
+   public static final dno rl = a("polished_tuff", ebp.d.b(rh).a(dvl.af));
+   public static final dno rm = a("polished_tuff_slab", dvb::new, ebp.d.b(rl));
+   public static final dno rn = a("polished_tuff_stairs", $$0x -> new dvs(rl.m(), $$0x), ebp.d.b(rl));
+   public static final dno ro = a("polished_tuff_wall", dxd::new, ebp.d.b(rl).k());
+   public static final dno rp = a("chiseled_tuff", ebp.d.b(rh));
+   public static final dno rq = a("tuff_bricks", ebp.d.b(rh).a(dvl.ae));
+   public static final dno rr = a("tuff_brick_slab", dvb::new, ebp.d.b(rq));
+   public static final dno rs = a("tuff_brick_stairs", $$0x -> new dvs(rq.m(), $$0x), ebp.d.b(rq));
+   public static final dno rt = a("tuff_brick_wall", dxd::new, ebp.d.b(rq).k());
+   public static final dno ru = a("chiseled_tuff_bricks", ebp.d.b(rq));
+   public static final dno rv = a("calcite", ebp.d.a().a(eye.K).a(ecr.b).a(dvl.ag).n().d(0.75F));
+   public static final dno rw = a("tinted_glass", dwk::new, ebp.d.b(aX).a(eye.v).c().a(dnq::a).a(dnq::b).b(dnq::b).c(dnq::b));
+   public static final dno rx = a("powder_snow", dtp::new, ebp.d.a().a(eye.i).d(0.25F).a(dvl.l).f().c().a(dnq::b));
+   public static final dno ry = a("sculk_sensor", dup::new, ebp.d.a().a(eye.x).d(1.5F).a(dvl.aA).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dup.o($$0x) == ecx.b));
+   public static final dno rz = a("calibrated_sculk_sensor", dod::new, ebp.d.b(ry));
+   public static final dno rA = a("sculk", dun::new, ebp.d.a().a(eye.D).d(0.2F).a(dvl.aC));
+   public static final dno rB = a("sculk_vein", dus::new, ebp.d.a().a(eye.D).k().b().d(0.2F).a(dvl.aD).a(eyf.b));
+   public static final dno rC = a("sculk_catalyst", duo::new, ebp.d.a().a(eye.D).a(3.0F, 3.0F).a(dvl.aB).a($$0x -> 6));
+   public static final dno rD = a("sculk_shrieker", duq::new, ebp.d.a().a(eye.D).a(3.0F, 3.0F).a(dvl.aE));
+   public static final dno rE = a("copper_block", $$0x -> new dxn(dxk.a.a, $$0x), ebp.d.a().a(eye.p).n().a(3.0F, 6.0F).a(dvl.aj));
+   public static final dno rF = a("exposed_copper", $$0x -> new dxn(dxk.a.b, $$0x), ebp.d.a(rE).a(eye.S));
+   public static final dno rG = a("weathered_copper", $$0x -> new dxn(dxk.a.c, $$0x), ebp.d.a(rE).a(eye.ae));
+   public static final dno rH = a("oxidized_copper", $$0x -> new dxn(dxk.a.d, $$0x), ebp.d.a(rE).a(eye.ad));
+   public static final dno rI = a("copper_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.b(S));
+   public static final dno rJ = a("deepslate_copper_ore", $$0x -> new dpz(bue.a(0), $$0x), ebp.d.b(rI).a(eye.ah).a(4.5F, 3.0F).a(dvl.aG));
+   public static final dno rK = a("oxidized_cut_copper", $$0x -> new dxn(dxk.a.d, $$0x), ebp.d.a(rH));
+   public static final dno rL = a("weathered_cut_copper", $$0x -> new dxn(dxk.a.c, $$0x), ebp.d.a(rG));
+   public static final dno rM = a("exposed_cut_copper", $$0x -> new dxn(dxk.a.b, $$0x), ebp.d.a(rF));
+   public static final dno rN = a("cut_copper", $$0x -> new dxn(dxk.a.a, $$0x), ebp.d.a(rE));
+   public static final dno rO = a("oxidized_chiseled_copper", $$0x -> new dxn(dxk.a.d, $$0x), ebp.d.a(rH));
+   public static final dno rP = a("weathered_chiseled_copper", $$0x -> new dxn(dxk.a.c, $$0x), ebp.d.a(rG));
+   public static final dno rQ = a("exposed_chiseled_copper", $$0x -> new dxn(dxk.a.b, $$0x), ebp.d.a(rF));
+   public static final dno rR = a("chiseled_copper", $$0x -> new dxn(dxk.a.a, $$0x), ebp.d.a(rE));
+   public static final dno rS = a("waxed_oxidized_chiseled_copper", ebp.d.a(rO));
+   public static final dno rT = a("waxed_weathered_chiseled_copper", ebp.d.a(rP));
+   public static final dno rU = a("waxed_exposed_chiseled_copper", ebp.d.a(rQ));
+   public static final dno rV = a("waxed_chiseled_copper", ebp.d.a(rR));
+   public static final dno rW = a("oxidized_cut_copper_stairs", $$0x -> new dxq(dxk.a.d, rK.m(), $$0x), ebp.d.a(rK));
+   public static final dno rX = a("weathered_cut_copper_stairs", $$0x -> new dxq(dxk.a.c, rL.m(), $$0x), ebp.d.a(rG));
+   public static final dno rY = a("exposed_cut_copper_stairs", $$0x -> new dxq(dxk.a.b, rM.m(), $$0x), ebp.d.a(rF));
+   public static final dno rZ = a("cut_copper_stairs", $$0x -> new dxq(dxk.a.a, rN.m(), $$0x), ebp.d.a(rE));
+   public static final dno sa = a("oxidized_cut_copper_slab", $$0x -> new dxp(dxk.a.d, $$0x), ebp.d.a(rK));
+   public static final dno sb = a("weathered_cut_copper_slab", $$0x -> new dxp(dxk.a.c, $$0x), ebp.d.a(rL));
+   public static final dno sc = a("exposed_cut_copper_slab", $$0x -> new dxp(dxk.a.b, $$0x), ebp.d.a(rM));
+   public static final dno sd = a("cut_copper_slab", $$0x -> new dxp(dxk.a.a, $$0x), ebp.d.a(rN));
+   public static final dno se = a("waxed_copper_block", ebp.d.a(rE));
+   public static final dno sf = a("waxed_weathered_copper", ebp.d.a(rG));
+   public static final dno sg = a("waxed_exposed_copper", ebp.d.a(rF));
+   public static final dno sh = a("waxed_oxidized_copper", ebp.d.a(rH));
+   public static final dno si = a("waxed_oxidized_cut_copper", ebp.d.a(rH));
+   public static final dno sj = a("waxed_weathered_cut_copper", ebp.d.a(rG));
+   public static final dno sk = a("waxed_exposed_cut_copper", ebp.d.a(rF));
+   public static final dno sl = a("waxed_cut_copper", ebp.d.a(rE));
+   public static final dno sm = b("waxed_oxidized_cut_copper_stairs", si);
+   public static final dno sn = b("waxed_weathered_cut_copper_stairs", sj);
+   public static final dno so = b("waxed_exposed_cut_copper_stairs", sk);
+   public static final dno sp = b("waxed_cut_copper_stairs", sl);
+   public static final dno sq = a("waxed_oxidized_cut_copper_slab", dvb::new, ebp.d.a(si).n());
+   public static final dno sr = a("waxed_weathered_cut_copper_slab", dvb::new, ebp.d.a(sj).n());
+   public static final dno ss = a("waxed_exposed_cut_copper_slab", dvb::new, ebp.d.a(sk).n());
+   public static final dno st = a("waxed_cut_copper_slab", dvb::new, ebp.d.a(sl).n());
+   public static final dno su = a("copper_door", $$0x -> new dxm(ecf.c, dxk.a.a, $$0x), ebp.d.a().a(rE.w()).a(3.0F, 6.0F).c().a(eyf.b));
+   public static final dno sv = a("exposed_copper_door", $$0x -> new dxm(ecf.c, dxk.a.b, $$0x), ebp.d.a(su).a(rF.w()));
+   public static final dno sw = a("oxidized_copper_door", $$0x -> new dxm(ecf.c, dxk.a.d, $$0x), ebp.d.a(su).a(rH.w()));
+   public static final dno sx = a("weathered_copper_door", $$0x -> new dxm(ecf.c, dxk.a.c, $$0x), ebp.d.a(su).a(rG.w()));
+   public static final dno sy = a("waxed_copper_door", $$0x -> new dpv(ecf.c, $$0x), ebp.d.a(su));
+   public static final dno sz = a("waxed_exposed_copper_door", $$0x -> new dpv(ecf.c, $$0x), ebp.d.a(sv));
+   public static final dno sA = a("waxed_oxidized_copper_door", $$0x -> new dpv(ecf.c, $$0x), ebp.d.a(sw));
+   public static final dno sB = a("waxed_weathered_copper_door", $$0x -> new dpv(ecf.c, $$0x), ebp.d.a(sx));
+   public static final dno sC = a("copper_trapdoor", $$0x -> new dxr(ecf.c, dxk.a.a, $$0x), ebp.d.a().a(rE.w()).a(3.0F, 6.0F).n().c().a(dnq::a));
+   public static final dno sD = a("exposed_copper_trapdoor", $$0x -> new dxr(ecf.c, dxk.a.b, $$0x), ebp.d.a(sC).a(rF.w()));
+   public static final dno sE = a("oxidized_copper_trapdoor", $$0x -> new dxr(ecf.c, dxk.a.d, $$0x), ebp.d.a(sC).a(rH.w()));
+   public static final dno sF = a("weathered_copper_trapdoor", $$0x -> new dxr(ecf.c, dxk.a.c, $$0x), ebp.d.a(sC).a(rG.w()));
+   public static final dno sG = a("waxed_copper_trapdoor", $$0x -> new dwq(ecf.c, $$0x), ebp.d.a(sC));
+   public static final dno sH = a("waxed_exposed_copper_trapdoor", $$0x -> new dwq(ecf.c, $$0x), ebp.d.a(sD));
+   public static final dno sI = a("waxed_oxidized_copper_trapdoor", $$0x -> new dwq(ecf.c, $$0x), ebp.d.a(sE));
+   public static final dno sJ = a("waxed_weathered_copper_trapdoor", $$0x -> new dwq(ecf.c, $$0x), ebp.d.a(sF));
+   public static final dno sK = a(
+      "copper_grate", $$0x -> new dxo(dxk.a.a, $$0x), ebp.d.a().a(3.0F, 6.0F).a(dvl.al).a(eye.p).c().n().a(dnq::a).a(dnq::b).b(dnq::b).c(dnq::b)
+   );
+   public static final dno sL = a("exposed_copper_grate", $$0x -> new dxo(dxk.a.b, $$0x), ebp.d.a(sK).a(eye.S));
+   public static final dno sM = a("weathered_copper_grate", $$0x -> new dxo(dxk.a.c, $$0x), ebp.d.a(sK).a(eye.ae));
+   public static final dno sN = a("oxidized_copper_grate", $$0x -> new dxo(dxk.a.d, $$0x), ebp.d.a(sK).a(eye.ad));
+   public static final dno sO = a("waxed_copper_grate", dxj::new, ebp.d.a(sK));
+   public static final dno sP = a("waxed_exposed_copper_grate", dxj::new, ebp.d.a(sL));
+   public static final dno sQ = a("waxed_weathered_copper_grate", dxj::new, ebp.d.a(sM));
+   public static final dno sR = a("waxed_oxidized_copper_grate", dxj::new, ebp.d.a(sN));
+   public static final dno sS = a("copper_bulb", $$0x -> new dxl(dxk.a.a, $$0x), ebp.d.a().a(rE.w()).a(3.0F, 6.0F).a(dvl.ak).n().a(dnq::b).a(a(15)));
+   public static final dno sT = a("exposed_copper_bulb", $$0x -> new dxl(dxk.a.b, $$0x), ebp.d.a(sS).a(eye.S).a(a(12)));
+   public static final dno sU = a("weathered_copper_bulb", $$0x -> new dxl(dxk.a.c, $$0x), ebp.d.a(sS).a(eye.ae).a(a(8)));
+   public static final dno sV = a("oxidized_copper_bulb", $$0x -> new dxl(dxk.a.d, $$0x), ebp.d.a(sS).a(eye.ad).a(a(4)));
+   public static final dno sW = a("waxed_copper_bulb", dpd::new, ebp.d.a(sS));
+   public static final dno sX = a("waxed_exposed_copper_bulb", dpd::new, ebp.d.a(sT));
+   public static final dno sY = a("waxed_weathered_copper_bulb", dpd::new, ebp.d.a(sU));
+   public static final dno sZ = a("waxed_oxidized_copper_bulb", dpd::new, ebp.d.a(sV));
+   public static final dno ta = a("lightning_rod", dsj::new, ebp.d.a().a(eye.p).k().n().a(3.0F, 6.0F).a(dvl.aj).c());
+   public static final dno tb = a(
+      "pointed_dripstone", dtm::new, ebp.d.a().a(eye.W).k().a(ecr.b).c().a(dvl.ai).e().a(1.5F, 3.0F).f().a(ebp.c.b).a(eyf.b).a(dnq::b)
+   );
+   public static final dno tc = a("dripstone_block", ebp.d.a().a(eye.W).a(ecr.b).a(dvl.ah).n().a(1.5F, 1.0F));
+   public static final dno td = a("cave_vines", don::new, ebp.d.a().a(eye.h).e().b().a(dom.i_(14)).d().a(dvl.am).a(eyf.b));
+   public static final dno te = a("cave_vines_plant", doo::new, ebp.d.a().a(eye.h).b().a(dom.i_(14)).d().a(dvl.am).a(eyf.b));
+   public static final dno tf = a("spore_blossom", dvo::new, ebp.d.a().a(eye.h).d().b().a(dvl.an).a(eyf.b));
+   public static final dno tg = a("azalea", dmq::new, ebp.d.a().a(eye.h).l().d().a(dvl.ap).c().a(eyf.b));
+   public static final dno th = a("flowering_azalea", dmq::new, ebp.d.a().a(eye.h).l().d().a(dvl.aq).c().a(eyf.b));
+   public static final dno ti = a("moss_carpet", doh::new, ebp.d.a().a(eye.B).d(0.1F).a(dvl.ar).a(eyf.b));
+   public static final dno tj = a("pink_petals", dqt::new, ebp.d.a().a(eye.h).b().a(dvl.as).a(eyf.b));
+   public static final dno tk = a("wildflowers", dqt::new, ebp.d.a().a(eye.h).b().a(dvl.as).a(eyf.b));
+   public static final dno tl = a("leaf_litter", dsd::new, ebp.d.a().a(eye.A).p().b().a(dvl.at).a(eyf.b));
+   public static final dno tm = a("moss_block", $$0x -> new dns(rh.n, $$0x), ebp.d.a().a(eye.B).d(0.1F).a(dvl.au).a(eyf.b));
+   public static final dno tn = a("big_dripleaf", dnl::new, ebp.d.a().a(eye.h).l().d(0.1F).a(dvl.av).a(eyf.b));
+   public static final dno to = a("big_dripleaf_stem", dnm::new, ebp.d.a().a(eye.h).b().d(0.1F).a(dvl.av).a(eyf.b));
+   public static final dno tp = a("small_dripleaf", dvd::new, ebp.d.a().a(eye.h).b().d().a(dvl.aw).a(ebp.c.c).a(eyf.b));
+   public static final dno tq = a("hanging_roots", drk::new, ebp.d.a().a(eye.k).p().b().d().a(dvl.ay).a(ebp.c.b).i().a(eyf.b));
+   public static final dno tr = a("rooted_dirt", duf::new, ebp.d.a().a(eye.k).d(0.5F).a(dvl.ax));
+   public static final dno ts = a("mud", dst::new, ebp.d.b(j).a(eye.T).a(dnq::b).a(dnq::a).c(dnq::a).b(dnq::a).a(dvl.aO));
+   public static final dno tt = a("deepslate", duh::new, ebp.d.a().a(eye.ah).a(ecr.b).n().a(3.0F, 6.0F).a(dvl.aG));
+   public static final dno tu = a("cobbled_deepslate", ebp.d.b(tt).a(3.5F, 6.0F));
+   public static final dno tv = a("cobbled_deepslate_stairs", tu);
+   public static final dno tw = a("cobbled_deepslate_slab", dvb::new, ebp.d.b(tu));
+   public static final dno tx = a("cobbled_deepslate_wall", dxd::new, ebp.d.b(tu).k());
+   public static final dno ty = a("polished_deepslate", ebp.d.b(tu).a(dvl.aJ));
+   public static final dno tz = a("polished_deepslate_stairs", ty);
+   public static final dno tA = a("polished_deepslate_slab", dvb::new, ebp.d.b(ty));
+   public static final dno tB = a("polished_deepslate_wall", dxd::new, ebp.d.b(ty).k());
+   public static final dno tC = a("deepslate_tiles", ebp.d.b(tu).a(dvl.aI));
+   public static final dno tD = a("deepslate_tile_stairs", tC);
+   public static final dno tE = a("deepslate_tile_slab", dvb::new, ebp.d.b(tC));
+   public static final dno tF = a("deepslate_tile_wall", dxd::new, ebp.d.b(tC).k());
+   public static final dno tG = a("deepslate_bricks", ebp.d.b(tu).a(dvl.aH));
+   public static final dno tH = a("deepslate_brick_stairs", tG);
+   public static final dno tI = a("deepslate_brick_slab", dvb::new, ebp.d.b(tG));
+   public static final dno tJ = a("deepslate_brick_wall", dxd::new, ebp.d.b(tG).k());
+   public static final dno tK = a("chiseled_deepslate", ebp.d.b(tu).a(dvl.aH));
+   public static final dno tL = a("cracked_deepslate_bricks", ebp.d.b(tG));
+   public static final dno tM = a("cracked_deepslate_tiles", ebp.d.b(tC));
+   public static final dno tN = a("infested_deepslate", $$0x -> new drt(tt, $$0x), ebp.d.a().a(eye.ah).a(dvl.aG));
+   public static final dno tO = a("smooth_basalt", ebp.d.b(ep));
+   public static final dno tP = a("raw_iron_block", ebp.d.a().a(eye.ai).a(ecr.b).n().a(5.0F, 6.0F));
+   public static final dno tQ = a("raw_copper_block", ebp.d.a().a(eye.p).a(ecr.b).n().a(5.0F, 6.0F));
+   public static final dno tR = a("raw_gold_block", ebp.d.a().a(eye.E).a(ecr.b).n().a(5.0F, 6.0F));
+   public static final dno tS = a("potted_azalea_bush", $$0x -> new dqv(tg, $$0x), c());
+   public static final dno tT = a("potted_flowering_azalea_bush", $$0x -> new dqv(th, $$0x), c());
+   public static final dno tU = a("ochre_froglight", duh::new, ebp.d.a().a(eye.c).d(0.3F).a($$0x -> 15).a(dvl.aK));
+   public static final dno tV = a("verdant_froglight", duh::new, ebp.d.a().a(eye.aj).d(0.3F).a($$0x -> 15).a(dvl.aK));
+   public static final dno tW = a("pearlescent_froglight", duh::new, ebp.d.a().a(eye.u).d(0.3F).a($$0x -> 15).a(dvl.aK));
+   public static final dno tX = a("frogspawn", dqw::new, ebp.d.a().a(eye.m).d().c().b().a(dvl.aL).a(eyf.b));
+   public static final dno tY = a("reinforced_deepslate", ebp.d.a().a(eye.ah).a(ecr.b).a(dvl.aG).a(55.0F, 1200.0F));
+   public static final dno tZ = a("decorated_pot", dpp::new, ebp.d.a().a(eye.Y).a(0.0F, 0.0F).a(eyf.b).c());
+   public static final dno ua = a("crafter", dpi::new, ebp.d.a().a(eye.l).a(1.5F, 3.5F));
+   public static final dno ub = a("trial_spawner", dws::new, ebp.d.a().a(eye.l).a(ecr.b).a($$0x -> $$0x.c(dws.b).a()).d(50.0F).a(dvl.bf).c(dnq::b).c());
+   public static final dno uc = a("vault", dwz::new, ebp.d.a().a(eye.l).a(ecr.b).c().a(dvl.bi).a($$0x -> $$0x.c(dwz.b).a()).d(50.0F).c(dnq::b));
+   public static final dno ud = a("heavy_core", drm::new, ebp.d.a().a(eye.g).a(ecr.c).a(dvl.bk).d(10.0F).a(eyf.a).f(1200.0F));
+   public static final dno ue = a("pale_moss_block", $$0x -> new dns(rp.N, $$0x), ebp.d.a().i().a(eye.w).d(0.1F).a(dvl.au).a(eyf.b));
+   public static final dno uf = a("pale_moss_carpet", dss::new, ebp.d.a().i().a(ue.w()).d(0.1F).a(dvl.ar).a(eyf.b));
+   public static final dno ug = a("pale_hanging_moss", drj::new, ebp.d.a().i().a(ue.w()).b().a(dvl.ar).a(eyf.b));
+   public static final dno uh = a("open_eyeblossom", $$0x -> new dqj(dqj.a.a, $$0x), ebp.d.a().a(cE.w()).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b).e());
+   public static final dno ui = a("closed_eyeblossom", $$0x -> new dqj(dqj.a.b, $$0x), ebp.d.a().a(aR.w()).b().d().a(dvl.d).a(ebp.c.b).a(eyf.b).e());
+   public static final dno uj = a("potted_open_eyeblossom", $$0x -> new dqv(uh, $$0x), c().e());
+   public static final dno uk = a("potted_closed_eyeblossom", $$0x -> new dqv(ui, $$0x), c().e());
+   public static final dno ul = a("firefly_bush", dqr::new, ebp.d.a().a(eye.h).i().a($$0x -> 2).b().d().a(dvl.v).a(eyf.b));
 
-   @Override
-   public MapCodec<dnq> a() {
-      return a;
+   private static ToIntFunction<ebq> a(int $$0) {
+      return $$1 -> $$1.c(ecg.u) ? $$0 : 0;
    }
 
-   protected dnq(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
+   private static Function<ebq, eye> a(eye $$0) {
+      return $$1 -> $$1.c(ecg.I) ? eye.m : $$0;
    }
 
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void b(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      iw $$4 = $$2.d();
-      if ($$1.v($$4)) {
-         int $$5 = 1;
-         int $$6 = $$0.c(b);
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            if (++$$5 == 3 && $$6 == 15) {
-               return;
-            }
-         }
-
-         if ($$6 == 8 && this.a(this.m(), $$1, $$2.d())) {
-            double $$7 = $$5 >= 3 ? 0.25 : 0.1;
-            if ($$3.j() <= $$7) {
-               $$1.b($$4, dng.eh.m());
-            }
-         } else if ($$6 == 15 && $$5 < 3) {
-            $$1.b($$4, this.m());
-            ebg $$8 = $$0.b(b, Integer.valueOf(0));
-            $$1.a($$2, $$8, 260);
-            $$1.a($$8, $$4, this, null, false);
-         }
-
-         if ($$6 < 15) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
-         }
-      }
-   }
-
-   @Override
-   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return e;
-   }
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return d;
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      for (jc $$3 : jc.c.a) {
-         ebg $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(axl.b)) {
-            return false;
-         }
-      }
-
-      ebg $$5 = $$1.a_($$2.e());
-      return ($$5.a(dng.eg) || $$5.a(axg.J)) && !$$1.a_($$2.d()).n();
-   }
-
-   @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
-      $$3.a($$1.al().k(), 1.0F);
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, eyf $$1) {
+   private static Boolean a(ebq $$0, djn $$1, iw $$2, bxn<?> $$3) {
       return false;
+   }
+
+   private static Boolean b(ebq $$0, djn $$1, iw $$2, bxn<?> $$3) {
+      return true;
+   }
+
+   private static Boolean c(ebq $$0, djn $$1, iw $$2, bxn<?> $$3) {
+      return $$3 == bxn.aJ || $$3 == bxn.aP;
+   }
+
+   private static dno a(String $$0, czi $$1) {
+      return a($$0, $$1x -> new dnh($$1, $$1x), ebp.d.a().a($$1x -> $$1x.c(dnh.b) == ecd.b ? $$1.e() : eye.d).a(dvl.b).d(0.2F).c().i().a(eyf.b));
+   }
+
+   private static ebp.d a(eye $$0, eye $$1, dvl $$2) {
+      return ebp.d.a().a($$2x -> $$2x.c(duh.d) == jc.a.b ? $$0 : $$1).a(ecr.e).d(2.0F).a($$2).i();
+   }
+
+   private static ebp.d b(eye $$0) {
+      return ebp.d.a().a($$1 -> $$0).a(ecr.e).d(2.0F).a(dvl.B);
+   }
+
+   private static boolean a(ebq $$0, djn $$1, iw $$2) {
+      return true;
+   }
+
+   private static boolean b(ebq $$0, djn $$1, iw $$2) {
+      return false;
+   }
+
+   private static dno b(String $$0, czi $$1) {
+      return a($$0, $$1x -> new dvq($$1, $$1x), ebp.d.a().a($$1).a(ecr.d).d(0.3F).a(dvl.h).c().a(dnq::a).a(dnq::b).b(dnq::b).c(dnq::b));
+   }
+
+   private static ebp.d a(dvl $$0) {
+      return ebp.d.a().a(eye.h).d(0.2F).e().a($$0).c().a(dnq::c).b(dnq::b).c(dnq::b).i().a(eyf.b).a(dnq::b);
+   }
+
+   private static ebp.d c(eye $$0) {
+      return ebp.d.a().a($$0).k().d(2.0F).f().c().b(um).c(um).a(eyf.b);
+   }
+
+   private static ebp.d a() {
+      return ebp.d.a().a(eye.l).d(1.5F).a(dnq::b).b(un).c(un).a(eyf.c);
+   }
+
+   private static ebp.d b() {
+      return ebp.d.a().b().d(0.5F).a(eyf.b);
+   }
+
+   private static ebp.d c() {
+      return ebp.d.a().d().c().a(eyf.b);
+   }
+
+   private static ebp.d d(eye $$0) {
+      return ebp.d.a().a($$0).c().d(0.1F).a(dvl.X).a(dof.i).a(eyf.b);
+   }
+
+   @Deprecated
+   private static dno a(String $$0, dno $$1) {
+      return a($$0, $$1x -> new dvs($$1.m(), $$1x), ebp.d.b($$1));
+   }
+
+   private static dno b(String $$0, dno $$1) {
+      return a($$0, $$1x -> new dvs($$1.m(), $$1x), ebp.d.a($$1));
+   }
+
+   private static ebp.d a(dno $$0, boolean $$1) {
+      ebp.d $$2 = $$0.s();
+      ebp.d $$3 = ebp.d.a().a($$0.u());
+      if ($$1) {
+         $$3 = $$3.a($$0.v());
+      }
+
+      return $$3;
+   }
+
+   private static dno a(alq<dno> $$0, Function<ebp.d, dno> $$1, ebp.d $$2) {
+      dno $$3 = $$1.apply($$2.a($$0));
+      return jt.a(mh.e, $$0, $$3);
+   }
+
+   private static dno a(alq<dno> $$0, ebp.d $$1) {
+      return a($$0, dno::new, $$1);
+   }
+
+   private static alq<dno> a(String $$0) {
+      return alq.a(mi.i, alr.b($$0));
+   }
+
+   private static dno a(String $$0, Function<ebp.d, dno> $$1, ebp.d $$2) {
+      return a(a($$0), $$1, $$2);
+   }
+
+   private static dno a(String $$0, ebp.d $$1) {
+      return a($$0, dno::new, $$1);
+   }
+
+   static {
+      for (dno $$0 : mh.e) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            ebq $$1 = (ebq)var2.next();
+            dno.k.b($$1);
+            $$1.a();
+         }
+      }
    }
 }

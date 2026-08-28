@@ -2,34 +2,40 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbr extends fbw {
-   public static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cn.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), fbz.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fbr::new)
-   );
-   private final cn b;
-   private final fbx c;
+public class fbr extends fcg {
+   public static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fbr::new));
 
-   private fbr(List<fds> $$0, cn $$1, fbx $$2) {
+   private fbr(List<fec> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public fby<fbr> b() {
-      return fbz.v;
+   public fci<fbr> b() {
+      return fcj.z;
    }
 
    @Override
-   public daa a(daa $$0, faj $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public dak a(dak $$0, fat $$1) {
+      Float $$2 = $$1.c(fdn.j);
+      if ($$2 != null) {
+         bai $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.M();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
+      }
+
+      return $$0;
    }
 
-   @Override
-   public void a(fap $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static fcg.a<?> c() {
+      return a(fbr::new);
    }
 }

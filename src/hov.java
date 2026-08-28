@@ -1,31 +1,36 @@
-public class hov extends hoi {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cml p;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-   public hov(cml $$0) {
-      super(awr.zy, aws.g, hoz.t());
-      this.p = $$0;
-      this.k = hoz.a.b;
-      this.i = false;
-      this.j = 0;
+public class hov<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
+
+   public hov(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   public boolean s() {
-      return !this.p.ba();
-   }
-
-   @Override
-   public void q() {
-      if (!this.p.dQ() && this.p.f() == null && this.p.gv()) {
-         this.f = (double)((float)this.p.dA());
-         this.g = (double)((float)this.p.dC());
-         this.h = (double)((float)this.p.dG());
-         this.d = 1.0F;
-         this.e = 1.0F;
+   protected T computeNext() {
+      boolean $$0 = !this.a.hasNext();
+      boolean $$1 = !this.b.hasNext();
+      if ($$0 && $$1) {
+         return (T)this.endOfData();
+      } else if ($$0) {
+         return (T)this.b.next();
+      } else if ($$1) {
+         return (T)this.a.next();
       } else {
-         this.n();
+         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$2 == 0) {
+            this.b.next();
+         }
+
+         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
       }
    }
 }

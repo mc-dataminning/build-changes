@@ -1,5 +1,5 @@
 public class ra {
-   public static void a(qi<etn> $$0) {
+   public static void a(qi<etx> $$0) {
       qo.a($$0);
       qs.a($$0);
       qr.a($$0);

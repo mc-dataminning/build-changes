@@ -1,109 +1,11 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
 public class axt {
-   private static final Codec<axt> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayy.t.fieldOf("id").forGetter(axt::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, axt::new)
-   );
-   public static final Codec<axt> a = Codec.either(ayy.t, b)
-      .xmap($$0 -> (axt)$$0.map($$0x -> new axt($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final alk c;
-   private final boolean d;
-   private final boolean e;
+   public static final ayc<egq> a = a("vibrations");
+   public static final ayc<egq> b = a("warden_can_listen");
+   public static final ayc<egq> c = a("shrieker_can_listen");
+   public static final ayc<egq> d = a("ignore_vibrations_sneaking");
+   public static final ayc<egq> e = a("allay_can_listen");
 
-   private axt(alk $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   private axt(ayy.d $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
-   }
-
-   private ayy.d a() {
-      return new ayy.d(this.c, this.d);
-   }
-
-   public static axt a(alk $$0) {
-      return new axt($$0, false, true);
-   }
-
-   public static axt b(alk $$0) {
-      return new axt($$0, false, false);
-   }
-
-   public static axt c(alk $$0) {
-      return new axt($$0, true, true);
-   }
-
-   public static axt d(alk $$0) {
-      return new axt($$0, true, false);
-   }
-
-   public <T> boolean a(axt.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.a(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
-      } else {
-         T $$3 = $$0.a(this.c, this.e);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<alk> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public void b(Consumer<alk> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public boolean a(Predicate<alk> $$0, Predicate<alk> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
-      }
-
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
-      }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(alk var1, boolean var2);
-
-      @Nullable
-      Collection<T> a(alk var1);
+   private static ayc<egq> a(String $$0) {
+      return ayc.a(mi.H, alr.b($$0));
    }
 }

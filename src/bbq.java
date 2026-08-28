@@ -1,67 +1,119 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.RewriteResult;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.View;
+import com.mojang.datafixers.functions.PointFreeRule;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.BitSet;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public class bbq extends bbr {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:recipes/brewing/speckled_melon", "minecraft:recipes/brewing/glistering_melon_slice")
-      .put("minecraft:recipes/building_blocks/black_stained_hardened_clay", "minecraft:recipes/building_blocks/black_terracotta")
-      .put("minecraft:recipes/building_blocks/blue_stained_hardened_clay", "minecraft:recipes/building_blocks/blue_terracotta")
-      .put("minecraft:recipes/building_blocks/brown_stained_hardened_clay", "minecraft:recipes/building_blocks/brown_terracotta")
-      .put("minecraft:recipes/building_blocks/cyan_stained_hardened_clay", "minecraft:recipes/building_blocks/cyan_terracotta")
-      .put("minecraft:recipes/building_blocks/gray_stained_hardened_clay", "minecraft:recipes/building_blocks/gray_terracotta")
-      .put("minecraft:recipes/building_blocks/green_stained_hardened_clay", "minecraft:recipes/building_blocks/green_terracotta")
-      .put("minecraft:recipes/building_blocks/light_blue_stained_hardened_clay", "minecraft:recipes/building_blocks/light_blue_terracotta")
-      .put("minecraft:recipes/building_blocks/light_gray_stained_hardened_clay", "minecraft:recipes/building_blocks/light_gray_terracotta")
-      .put("minecraft:recipes/building_blocks/lime_stained_hardened_clay", "minecraft:recipes/building_blocks/lime_terracotta")
-      .put("minecraft:recipes/building_blocks/magenta_stained_hardened_clay", "minecraft:recipes/building_blocks/magenta_terracotta")
-      .put("minecraft:recipes/building_blocks/orange_stained_hardened_clay", "minecraft:recipes/building_blocks/orange_terracotta")
-      .put("minecraft:recipes/building_blocks/pink_stained_hardened_clay", "minecraft:recipes/building_blocks/pink_terracotta")
-      .put("minecraft:recipes/building_blocks/purple_stained_hardened_clay", "minecraft:recipes/building_blocks/purple_terracotta")
-      .put("minecraft:recipes/building_blocks/red_stained_hardened_clay", "minecraft:recipes/building_blocks/red_terracotta")
-      .put("minecraft:recipes/building_blocks/white_stained_hardened_clay", "minecraft:recipes/building_blocks/white_terracotta")
-      .put("minecraft:recipes/building_blocks/yellow_stained_hardened_clay", "minecraft:recipes/building_blocks/yellow_terracotta")
-      .put("minecraft:recipes/building_blocks/acacia_wooden_slab", "minecraft:recipes/building_blocks/acacia_slab")
-      .put("minecraft:recipes/building_blocks/birch_wooden_slab", "minecraft:recipes/building_blocks/birch_slab")
-      .put("minecraft:recipes/building_blocks/dark_oak_wooden_slab", "minecraft:recipes/building_blocks/dark_oak_slab")
-      .put("minecraft:recipes/building_blocks/jungle_wooden_slab", "minecraft:recipes/building_blocks/jungle_slab")
-      .put("minecraft:recipes/building_blocks/oak_wooden_slab", "minecraft:recipes/building_blocks/oak_slab")
-      .put("minecraft:recipes/building_blocks/spruce_wooden_slab", "minecraft:recipes/building_blocks/spruce_slab")
-      .put("minecraft:recipes/building_blocks/brick_block", "minecraft:recipes/building_blocks/bricks")
-      .put("minecraft:recipes/building_blocks/chiseled_stonebrick", "minecraft:recipes/building_blocks/chiseled_stone_bricks")
-      .put("minecraft:recipes/building_blocks/end_bricks", "minecraft:recipes/building_blocks/end_stone_bricks")
-      .put("minecraft:recipes/building_blocks/lit_pumpkin", "minecraft:recipes/building_blocks/jack_o_lantern")
-      .put("minecraft:recipes/building_blocks/magma", "minecraft:recipes/building_blocks/magma_block")
-      .put("minecraft:recipes/building_blocks/melon_block", "minecraft:recipes/building_blocks/melon")
-      .put("minecraft:recipes/building_blocks/mossy_stonebrick", "minecraft:recipes/building_blocks/mossy_stone_bricks")
-      .put("minecraft:recipes/building_blocks/nether_brick", "minecraft:recipes/building_blocks/nether_bricks")
-      .put("minecraft:recipes/building_blocks/pillar_quartz_block", "minecraft:recipes/building_blocks/quartz_pillar")
-      .put("minecraft:recipes/building_blocks/red_nether_brick", "minecraft:recipes/building_blocks/red_nether_bricks")
-      .put("minecraft:recipes/building_blocks/snow", "minecraft:recipes/building_blocks/snow_block")
-      .put("minecraft:recipes/building_blocks/smooth_red_sandstone", "minecraft:recipes/building_blocks/cut_red_sandstone")
-      .put("minecraft:recipes/building_blocks/smooth_sandstone", "minecraft:recipes/building_blocks/cut_sandstone")
-      .put("minecraft:recipes/building_blocks/stonebrick", "minecraft:recipes/building_blocks/stone_bricks")
-      .put("minecraft:recipes/building_blocks/stone_stairs", "minecraft:recipes/building_blocks/cobblestone_stairs")
-      .put("minecraft:recipes/building_blocks/string_to_wool", "minecraft:recipes/building_blocks/white_wool_from_string")
-      .put("minecraft:recipes/decorations/fence", "minecraft:recipes/decorations/oak_fence")
-      .put("minecraft:recipes/decorations/purple_shulker_box", "minecraft:recipes/decorations/shulker_box")
-      .put("minecraft:recipes/decorations/slime", "minecraft:recipes/decorations/slime_block")
-      .put("minecraft:recipes/decorations/snow_layer", "minecraft:recipes/decorations/snow")
-      .put("minecraft:recipes/misc/bone_meal_from_block", "minecraft:recipes/misc/bone_meal_from_bone_block")
-      .put("minecraft:recipes/misc/bone_meal_from_bone", "minecraft:recipes/misc/bone_meal")
-      .put("minecraft:recipes/misc/gold_ingot_from_block", "minecraft:recipes/misc/gold_ingot_from_gold_block")
-      .put("minecraft:recipes/misc/iron_ingot_from_block", "minecraft:recipes/misc/iron_ingot_from_iron_block")
-      .put("minecraft:recipes/redstone/fence_gate", "minecraft:recipes/redstone/oak_fence_gate")
-      .put("minecraft:recipes/redstone/noteblock", "minecraft:recipes/redstone/note_block")
-      .put("minecraft:recipes/redstone/trapdoor", "minecraft:recipes/redstone/oak_trapdoor")
-      .put("minecraft:recipes/redstone/wooden_button", "minecraft:recipes/redstone/oak_button")
-      .put("minecraft:recipes/redstone/wooden_door", "minecraft:recipes/redstone/oak_door")
-      .put("minecraft:recipes/redstone/wooden_pressure_plate", "minecraft:recipes/redstone/oak_pressure_plate")
-      .put("minecraft:recipes/transportation/boat", "minecraft:recipes/transportation/oak_boat")
-      .put("minecraft:recipes/transportation/golden_rail", "minecraft:recipes/transportation/powered_rail")
-      .build();
+public class bbq {
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty() ? a($$0, $$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()) : $$0;
+   }
 
-   public bbq(Schema $$0, boolean $$1) {
-      super($$0, $$1, "AdvancementsFix", $$0x -> a.getOrDefault($$0x, $$0x));
+   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2, String $$3, String $$4) {
+      Optional<Number> $$5 = $$0.get($$1).asNumber().result();
+      Optional<Number> $$6 = $$0.get($$2).asNumber().result();
+      Optional<Number> $$7 = $$0.get($$3).asNumber().result();
+      return !$$5.isEmpty() && !$$6.isEmpty() && !$$7.isEmpty()
+         ? $$0.remove($$1).remove($$2).remove($$3).set($$4, a($$0, $$5.get().intValue(), $$6.get().intValue(), $$7.get().intValue()))
+         : $$0;
+   }
+
+   public static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, int $$3) {
+      return $$0.createIntList(IntStream.of($$1, $$2, $$3));
+   }
+
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   }
+
+   public static <T> Typed<T> a(Type<T> $$0, Object $$1, DynamicOps<?> $$2) {
+      return new Typed($$0, $$2, $$1);
+   }
+
+   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
+      return $$0.all(a($$1, $$2), true, false).view().newType();
+   }
+
+   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
+      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
+            throw new UnsupportedOperationException();
+         }), new BitSet());
+      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
+   }
+
+   @SafeVarargs
+   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
+      return $$1 -> {
+         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
+            $$1 = $$2.apply($$1);
+         }
+
+         return $$1;
+      };
+   }
+
+   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
+      Dynamic<va> $$2 = new Dynamic(uo.a, new ua());
+      Dynamic<va> $$3 = $$2.set("Name", $$2.createString($$0));
+      if (!$$1.isEmpty()) {
+         $$3 = $$3.set(
+            "Properties",
+            $$2.createMap(
+               $$1.entrySet()
+                  .stream()
+                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
+            )
+         );
+      }
+
+      return $$3;
+   }
+
+   public static Dynamic<?> a(String $$0) {
+      return a($$0, Map.of());
+   }
+
+   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
+      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
+   }
+
+   public static String a(int $$0) {
+      return switch ($$0) {
+         case 1 -> "orange";
+         case 2 -> "magenta";
+         case 3 -> "light_blue";
+         case 4 -> "yellow";
+         case 5 -> "lime";
+         case 6 -> "pink";
+         case 7 -> "gray";
+         case 8 -> "light_gray";
+         case 9 -> "cyan";
+         case 10 -> "purple";
+         case 11 -> "blue";
+         case 12 -> "brown";
+         case 13 -> "green";
+         case 14 -> "red";
+         case 15 -> "black";
+         default -> "white";
+      };
+   }
+
+   public static <T> Typed<?> a(Typed<?> $$0, OpticFinder<T> $$1, Dynamic<?> $$2) {
+      return $$0.set($$1, ag.a($$1.type(), $$2, true));
    }
 }

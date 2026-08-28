@@ -1,21 +1,45 @@
-public record ada(xc b, wy.a c) implements zj<aby> {
-   public static final za<wn, ada> a = za.a(xe.d, ada::b, wy.a.a, ada::e, ada::new);
+public class ada implements zo<acf> {
+   public static final ze<vy, ada> a = zo.a(ada::a, ada::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   @Override
-   public zl<ada> a() {
-      return agr.B;
+   public ada(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(aby $$0) {
+   private ada(vy $$0) {
+      this.b = $$0.x();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(vy $$0) {
+      $$0.f(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+   }
+
+   @Override
+   public zq<ada> a() {
+      return agy.u;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int b() {
+      return this.b;
    }
 
-   public wy.a e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

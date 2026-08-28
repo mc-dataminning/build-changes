@@ -1,634 +1,512 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.WritableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.EnumSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.IntUnaryOperator;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.lwjgl.stb.STBIWriteCallback;
-import org.lwjgl.stb.STBImage;
-import org.lwjgl.stb.STBImageResize;
-import org.lwjgl.stb.STBImageWrite;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.Callbacks;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWImage;
+import org.lwjgl.glfw.GLFWWindowCloseCallback;
+import org.lwjgl.glfw.GLFWImage.Buffer;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FreeType;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
 public final class fki implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final MemoryPool b = TracyClient.createMemoryPool("NativeImage");
-   private static final Set<StandardOpenOption> c = EnumSet.of(StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-   private final fki.a d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private long h;
-   private final long i;
+   private static final Logger c = LogUtils.getLogger();
+   public static final int a = 320;
+   public static final int b = 240;
+   private final GLFWErrorCallback d = GLFWErrorCallback.create(this::a);
+   private final fkj e;
+   private final fkg f;
+   private final long g;
+   private int h;
+   private int i;
+   private int j;
+   private int k;
+   private Optional<fkh> l;
+   private boolean m;
+   private boolean n;
+   private int o;
+   private int p;
+   private int q;
+   private int r;
+   private int s;
+   private int t;
+   private int u;
+   private int v;
+   private double w;
+   private String x = "";
+   private boolean y;
+   private boolean z;
+   private boolean A;
+   private boolean B;
 
-   public fki(int $$0, int $$1, boolean $$2) {
-      this(fki.a.a, $$0, $$1, $$2);
-   }
-
-   public fki(fki.a $$0, int $$1, int $$2, boolean $$3) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
-         this.g = false;
-         if ($$3) {
-            this.h = MemoryUtil.nmemCalloc(1L, this.i);
-         } else {
-            this.h = MemoryUtil.nmemAlloc(this.i);
-         }
-
-         b.malloc(this.h, (int)this.i);
-         if (this.h == 0L) {
-            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
-         }
+   public fki(fkj $$0, fkg $$1, fjx $$2, @Nullable String $$3, String $$4) {
+      this.f = $$1;
+      this.v();
+      this.a("Pre startup");
+      this.e = $$0;
+      Optional<fkh> $$5 = fkh.a($$3);
+      if ($$5.isPresent()) {
+         this.l = $$5;
+      } else if ($$2.c().isPresent() && $$2.d().isPresent()) {
+         this.l = Optional.of(new fkh($$2.c().getAsInt(), $$2.d().getAsInt(), 8, 8, 8, 60));
       } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+         this.l = Optional.empty();
       }
-   }
 
-   public fki(fki.a $$0, int $$1, int $$2, boolean $$3, long $$4) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
+      this.n = this.m = $$2.e();
+      fkd $$6 = $$1.a(GLFW.glfwGetPrimaryMonitor());
+      this.j = this.q = Math.max($$2.a(), 1);
+      this.k = this.r = Math.max($$2.b(), 1);
+      GLFW.glfwDefaultWindowHints();
+      GLFW.glfwWindowHint(139265, 196609);
+      GLFW.glfwWindowHint(139275, 221185);
+      GLFW.glfwWindowHint(139266, 3);
+      GLFW.glfwWindowHint(139267, 2);
+      GLFW.glfwWindowHint(139272, 204801);
+      GLFW.glfwWindowHint(139270, 1);
+      this.g = GLFW.glfwCreateWindow(this.q, this.r, $$4, this.m && $$6 != null ? $$6.f() : 0L, 0L);
+      if ($$6 != null) {
+         fkh $$7 = $$6.a(this.m ? this.l : Optional.empty());
+         this.h = this.o = $$6.c() + $$7.a() / 2 - this.q / 2;
+         this.i = this.p = $$6.d() + $$7.b() / 2 - this.r / 2;
       } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
+         int[] $$8 = new int[1];
+         int[] $$9 = new int[1];
+         GLFW.glfwGetWindowPos(this.g, $$8, $$9);
+         this.h = this.o = $$8[0];
+         this.i = this.p = $$9[0];
       }
+
+      this.x();
+      this.w();
+      GLFW.glfwSetFramebufferSizeCallback(this.g, this::b);
+      GLFW.glfwSetWindowPosCallback(this.g, this::a);
+      GLFW.glfwSetWindowSizeCallback(this.g, this::c);
+      GLFW.glfwSetWindowFocusCallback(this.g, this::a);
+      GLFW.glfwSetCursorEnterCallback(this.g, this::b);
+      GLFW.glfwSetWindowIconifyCallback(this.g, this::c);
    }
 
-   @Override
-   public String toString() {
-      return "NativeImage[" + this.d + " " + this.e + "x" + this.f + "@" + this.h + (this.g ? "S" : "N") + "]";
+   public static String a() {
+      int $$0 = GLFW.glfwGetPlatform();
+
+      return switch ($$0) {
+         case 0 -> "<error>";
+         case 393217 -> "win32";
+         case 393218 -> "cocoa";
+         case 393219 -> "wayland";
+         case 393220 -> "x11";
+         case 393221 -> "null";
+         default -> String.format(Locale.ROOT, "unknown (%08X)", $$0);
+      };
    }
 
-   private boolean c(int $$0, int $$1) {
-      return $$0 < 0 || $$0 >= this.e || $$1 < 0 || $$1 >= this.f;
+   public int b() {
+      RenderSystem.assertOnRenderThread();
+      return GLX._getRefreshRate(this);
    }
 
-   public static fki a(InputStream $$0) throws IOException {
-      return a(fki.a.a, $$0);
+   public boolean c() {
+      return GLX._shouldClose(this);
    }
 
-   public static fki a(@Nullable fki.a $$0, InputStream $$1) throws IOException {
-      ByteBuffer $$2 = null;
+   public static void a(BiConsumer<Integer, String> $$0) {
+      MemoryStack $$1 = MemoryStack.stackPush();
 
-      fki var3;
       try {
-         $$2 = TextureUtil.readResource($$1);
-         $$2.rewind();
-         var3 = a($$0, $$2);
-      } finally {
-         MemoryUtil.memFree($$2);
-         IOUtils.closeQuietly($$1);
-      }
-
-      return var3;
-   }
-
-   public static fki a(ByteBuffer $$0) throws IOException {
-      return a(fki.a.a, $$0);
-   }
-
-   public static fki a(byte[] $$0) throws IOException {
-      MemoryStack $$1 = MemoryStack.stackGet();
-      int $$2 = $$1.getPointer();
-      if ($$2 < $$0.length) {
-         ByteBuffer $$3 = MemoryUtil.memAlloc($$0.length);
-
-         fki var13;
-         try {
-            var13 = a($$3, $$0);
-         } finally {
-            MemoryUtil.memFree($$3);
+         PointerBuffer $$2 = $$1.mallocPointer(1);
+         int $$3 = GLFW.glfwGetError($$2);
+         if ($$3 != 0) {
+            long $$4 = $$2.get();
+            String $$5 = $$4 == 0L ? "" : MemoryUtil.memUTF8($$4);
+            $$0.accept($$3, $$5);
+         }
+      } catch (Throwable var8) {
+         if ($$1 != null) {
+            try {
+               $$1.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
          }
 
-         return var13;
-      } else {
-         MemoryStack $$4 = MemoryStack.stackPush();
+         throw var8;
+      }
 
-         fki var5;
-         try {
-            ByteBuffer $$5 = $$4.malloc($$0.length);
-            var5 = a($$5, $$0);
-         } catch (Throwable var11) {
-            if ($$4 != null) {
+      if ($$1 != null) {
+         $$1.close();
+      }
+   }
+
+   public void a(aua $$0, fjz $$1) throws IOException {
+      int $$2 = GLFW.glfwGetPlatform();
+      switch ($$2) {
+         case 393217:
+         case 393220:
+            List<avg<InputStream>> $$3 = $$1.a($$0);
+            List<ByteBuffer> $$4 = new ArrayList<>($$3.size());
+
+            try {
+               MemoryStack $$5 = MemoryStack.stackPush();
+
                try {
-                  $$4.close();
-               } catch (Throwable var9) {
-                  var11.addSuppressed(var9);
+                  Buffer $$6 = GLFWImage.malloc($$3.size(), $$5);
+
+                  for (int $$7 = 0; $$7 < $$3.size(); $$7++) {
+                     try (fkf $$8 = fkf.a($$3.get($$7).get())) {
+                        ByteBuffer $$9 = MemoryUtil.memAlloc($$8.a() * $$8.b() * 4);
+                        $$4.add($$9);
+                        $$9.asIntBuffer().put($$8.d());
+                        $$6.position($$7);
+                        $$6.width($$8.a());
+                        $$6.height($$8.b());
+                        $$6.pixels($$9);
+                     }
+                  }
+
+                  GLFW.glfwSetWindowIcon(this.g, (Buffer)$$6.position(0));
+               } catch (Throwable var21) {
+                  if ($$5 != null) {
+                     try {
+                        $$5.close();
+                     } catch (Throwable var18) {
+                        var21.addSuppressed(var18);
+                     }
+                  }
+
+                  throw var21;
                }
-            }
 
-            throw var11;
-         }
-
-         if ($$4 != null) {
-            $$4.close();
-         }
-
-         return var5;
-      }
-   }
-
-   private static fki a(ByteBuffer $$0, byte[] $$1) throws IOException {
-      $$0.put($$1);
-      $$0.rewind();
-      return a($$0);
-   }
-
-   public static fki a(@Nullable fki.a $$0, ByteBuffer $$1) throws IOException {
-      if ($$0 != null && !$$0.t()) {
-         throw new UnsupportedOperationException("Don't know how to read format " + $$0);
-      } else if (MemoryUtil.memAddress($$1) == 0L) {
-         throw new IllegalArgumentException("Invalid buffer");
-      } else {
-         azw.a($$1);
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         fki var9;
-         try {
-            IntBuffer $$3 = $$2.mallocInt(1);
-            IntBuffer $$4 = $$2.mallocInt(1);
-            IntBuffer $$5 = $$2.mallocInt(1);
-            ByteBuffer $$6 = STBImage.stbi_load_from_memory($$1, $$3, $$4, $$5, $$0 == null ? 0 : $$0.e);
-            if ($$6 == null) {
-               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
-            }
-
-            long $$7 = MemoryUtil.memAddress($$6);
-            b.malloc($$7, $$6.limit());
-            var9 = new fki($$0 == null ? fki.a.a($$5.get(0)) : $$0, $$3.get(0), $$4.get(0), true, $$7);
-         } catch (Throwable var11) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var10) {
-                  var11.addSuppressed(var10);
+               if ($$5 != null) {
+                  $$5.close();
                }
+               break;
+            } finally {
+               $$4.forEach(MemoryUtil::memFree);
             }
-
-            throw var11;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-
-         return var9;
+         case 393218:
+            fkc.a($$1.b($$0));
+         case 393219:
+         case 393221:
+            break;
+         default:
+            c.warn("Not setting icon for unrecognized platform: {}", $$2);
       }
    }
 
-   private void i() {
-      if (this.h == 0L) {
-         throw new IllegalStateException("Image is not allocated.");
+   public void a(String $$0) {
+      this.x = $$0;
+   }
+
+   private void v() {
+      GLFW.glfwSetErrorCallback(fki::b);
+   }
+
+   private static void b(int $$0, long $$1) {
+      String $$2 = "GLFW error " + $$0 + ": " + MemoryUtil.memUTF8($$1);
+      TinyFileDialogs.tinyfd_messageBox(
+         "Minecraft", $$2 + ".\n\nPlease make sure you have up-to-date drivers (see aka.ms/mcdriver for instructions).", "ok", "error", false
+      );
+      throw new fki.a($$2);
+   }
+
+   public void a(int $$0, long $$1) {
+      RenderSystem.assertOnRenderThread();
+      String $$2 = MemoryUtil.memUTF8($$1);
+      c.error("########## GL ERROR ##########");
+      c.error("@ {}", this.x);
+      c.error("{}: {}", $$0, $$2);
+   }
+
+   public void d() {
+      GLFWErrorCallback $$0 = GLFW.glfwSetErrorCallback(this.d);
+      if ($$0 != null) {
+         $$0.free();
       }
+   }
+
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThread();
+      this.z = $$0;
+      GLFW.glfwSwapInterval($$0 ? 1 : 0);
    }
 
    @Override
    public void close() {
-      if (this.h != 0L) {
-         if (this.g) {
-            STBImage.nstbi_image_free(this.h);
+      RenderSystem.assertOnRenderThread();
+      Callbacks.glfwFreeCallbacks(this.g);
+      this.d.close();
+      GLFW.glfwDestroyWindow(this.g);
+      GLFW.glfwTerminate();
+   }
+
+   private void a(long $$0, int $$1, int $$2) {
+      this.o = $$1;
+      this.p = $$2;
+   }
+
+   private void b(long $$0, int $$1, int $$2) {
+      if ($$0 == this.g) {
+         int $$3 = this.k();
+         int $$4 = this.l();
+         if ($$1 != 0 && $$2 != 0) {
+            this.B = false;
+            this.s = $$1;
+            this.t = $$2;
+            if (this.k() != $$3 || this.l() != $$4) {
+               try {
+                  this.e.a();
+               } catch (Exception var10) {
+                  p $$6 = p.a(var10, "Window resize");
+                  q $$7 = $$6.a("Window Dimensions");
+                  $$7.a("Old", $$3 + "x" + $$4);
+                  $$7.a("New", $$1 + "x" + $$2);
+                  throw new aa($$6);
+               }
+            }
          } else {
-            MemoryUtil.nmemFree(this.h);
+            this.B = true;
          }
-
-         b.free(this.h);
-      }
-
-      this.h = 0L;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public fki.a c() {
-      return this.d;
-   }
-
-   private int d(int $$0, int $$1) {
-      if (this.d != fki.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.i();
-         long $$2 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         return MemoryUtil.memGetInt(this.h + $$2);
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return aya.n(this.d($$0, $$1));
+   private void w() {
+      int[] $$0 = new int[1];
+      int[] $$1 = new int[1];
+      GLFW.glfwGetFramebufferSize(this.g, $$0, $$1);
+      this.s = $$0[0] > 0 ? $$0[0] : 1;
+      this.t = $$1[0] > 0 ? $$1[0] : 1;
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      if (this.d != fki.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.i();
-         long $$3 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         MemoryUtil.memPutInt(this.h + $$3, $$2);
+   private void c(long $$0, int $$1, int $$2) {
+      this.q = $$1;
+      this.r = $$2;
+   }
+
+   private void a(long $$0, boolean $$1) {
+      if ($$0 == this.g) {
+         this.e.a($$1);
       }
    }
 
-   public void b(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, aya.m($$2));
-   }
-
-   public fki a(IntUnaryOperator $$0) {
-      if (this.d != fki.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.d));
-      } else {
-         this.i();
-         fki $$1 = new fki(this.e, this.f, false);
-         int $$2 = this.e * this.f;
-         IntBuffer $$3 = MemoryUtil.memIntBuffer(this.h, $$2);
-         IntBuffer $$4 = MemoryUtil.memIntBuffer($$1.h, $$2);
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            int $$6 = aya.n($$3.get($$5));
-            int $$7 = $$0.applyAsInt($$6);
-            $$4.put($$5, aya.m($$7));
-         }
-
-         return $$1;
+   private void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.e.b();
       }
    }
 
-   public int[] d() {
-      if (this.d != fki.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixels only works on RGBA images; have %s", this.d));
-      } else {
-         this.i();
-         int[] $$0 = new int[this.e * this.f];
-         MemoryUtil.memIntBuffer(this.h, this.e * this.f).get($$0);
-         return $$0;
+   private void c(long $$0, boolean $$1) {
+      this.A = $$1;
+   }
+
+   public void a(@Nullable fii $$0) {
+      RenderSystem.flipFrame(this.g, $$0);
+      if (this.m != this.n) {
+         this.n = this.m;
+         this.a(this.z, $$0);
       }
    }
 
-   public int[] e() {
-      int[] $$0 = this.d();
-
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         $$0[$$1] = aya.n($$0[$$1]);
-      }
-
-      return $$0;
+   public Optional<fkh> e() {
+      return this.l;
    }
 
-   public byte b(int $$0, int $$1) {
-      if (!this.d.o()) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "no luminance or alpha in %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         int $$2 = ($$0 + $$1 * this.e) * this.d.a() + this.d.s() / 8;
-         return MemoryUtil.memGetByte(this.h + (long)$$2);
+   public void a(Optional<fkh> $$0) {
+      boolean $$1 = !$$0.equals(this.l);
+      this.l = $$0;
+      if ($$1) {
+         this.y = true;
       }
    }
 
-   @Deprecated
-   public int[] f() {
-      if (this.d != fki.a.a) {
-         throw new UnsupportedOperationException("can only call makePixelArray for RGBA images.");
-      } else {
-         this.i();
-         int[] $$0 = new int[this.a() * this.b()];
+   public void f() {
+      if (this.m && this.y) {
+         this.y = false;
+         this.x();
+         this.e.a();
+      }
+   }
 
-         for (int $$1 = 0; $$1 < this.b(); $$1++) {
-            for (int $$2 = 0; $$2 < this.a(); $$2++) {
-               $$0[$$2 + $$1 * this.a()] = this.a($$2, $$1);
+   private void x() {
+      boolean $$0 = GLFW.glfwGetWindowMonitor(this.g) != 0L;
+      if (this.m) {
+         fkd $$1 = this.f.a(this);
+         if ($$1 == null) {
+            c.warn("Failed to find suitable monitor for fullscreen mode");
+            this.m = false;
+         } else {
+            if (fkc.a) {
+               fkc.a(this.g);
+            }
+
+            fkh $$2 = $$1.a(this.l);
+            if (!$$0) {
+               this.h = this.o;
+               this.i = this.p;
+               this.j = this.q;
+               this.k = this.r;
+            }
+
+            this.o = 0;
+            this.p = 0;
+            this.q = $$2.a();
+            this.r = $$2.b();
+            GLFW.glfwSetWindowMonitor(this.g, $$1.f(), this.o, this.p, this.q, this.r, $$2.f());
+            if (fkc.a) {
+               fkc.b(this.g);
             }
          }
-
-         return $$0;
-      }
-   }
-
-   public void a(File $$0) throws IOException {
-      this.a($$0.toPath());
-   }
-
-   public boolean a(FT_Face $$0, int $$1) {
-      if (this.d.a() != 1) {
-         throw new IllegalArgumentException("Can only write fonts into 1-component images.");
-      } else if (fxp.b(FreeType.FT_Load_Glyph($$0, $$1, 4), "Loading glyph")) {
-         return false;
       } else {
-         FT_GlyphSlot $$2 = Objects.requireNonNull($$0.glyph(), "Glyph not initialized");
-         FT_Bitmap $$3 = $$2.bitmap();
-         if ($$3.pixel_mode() != 2) {
-            throw new IllegalStateException("Rendered glyph was not 8-bit grayscale");
-         } else if ($$3.width() == this.a() && $$3.rows() == this.b()) {
-            int $$4 = $$3.width() * $$3.rows();
-            ByteBuffer $$5 = Objects.requireNonNull($$3.buffer($$4), "Glyph has no bitmap");
-            MemoryUtil.memCopy(MemoryUtil.memAddress($$5), this.h, (long)$$4);
-            return true;
-         } else {
-            throw new IllegalArgumentException(
-               String.format(Locale.ROOT, "Glyph bitmap of size %sx%s does not match image of size: %sx%s", $$3.width(), $$3.rows(), this.a(), this.b())
-            );
-         }
-      }
-   }
-
-   public void a(Path $$0) throws IOException {
-      if (!this.d.t()) {
-         throw new UnsupportedOperationException("Don't know how to write format " + this.d);
-      } else {
-         this.i();
-
-         try (WritableByteChannel $$1 = Files.newByteChannel($$0, c)) {
-            if (!this.a($$1)) {
-               throw new IOException("Could not write image to the PNG file \"" + $$0.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
-            }
-         }
-      }
-   }
-
-   private boolean a(WritableByteChannel $$0) throws IOException {
-      fki.b $$1 = new fki.b($$0);
-
-      boolean var4;
-      try {
-         int $$2 = Math.min(this.b(), Integer.MAX_VALUE / this.a() / this.d.a());
-         if ($$2 < this.b()) {
-            a.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.b(), $$2);
-         }
-
-         if (STBImageWrite.nstbi_write_png_to_func($$1.address(), 0L, this.a(), $$2, this.d.a(), this.h, 0) != 0) {
-            $$1.a();
-            return true;
-         }
-
-         var4 = false;
-      } finally {
-         $$1.free();
-      }
-
-      return var4;
-   }
-
-   public void a(fki $$0) {
-      if ($$0.c() != this.d) {
-         throw new UnsupportedOperationException("Image formats don't match.");
-      } else {
-         int $$1 = this.d.a();
-         this.i();
-         $$0.i();
-         if (this.e == $$0.e) {
-            MemoryUtil.memCopy($$0.h, this.h, Math.min(this.i, $$0.i));
-         } else {
-            int $$2 = Math.min(this.a(), $$0.a());
-            int $$3 = Math.min(this.b(), $$0.b());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               int $$5 = $$4 * $$0.a() * $$1;
-               int $$6 = $$4 * this.a() * $$1;
-               MemoryUtil.memCopy($$0.h + (long)$$5, this.h + (long)$$6, (long)$$2);
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$1 + $$3; $$5++) {
-         for (int $$6 = $$0; $$6 < $$0 + $$2; $$6++) {
-            this.b($$6, $$5, $$4);
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6, boolean $$7) {
-      this.a(this, $$0, $$1, $$0 + $$2, $$1 + $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(fki $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            int $$11 = $$7 ? $$5 - 1 - $$10 : $$10;
-            int $$12 = $$8 ? $$6 - 1 - $$9 : $$9;
-            int $$13 = this.d($$1 + $$10, $$2 + $$9);
-            $$0.a($$3 + $$11, $$4 + $$12, $$13);
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, fki $$4) {
-      this.i();
-      if ($$4.c() != this.d) {
-         throw new UnsupportedOperationException("resizeSubRectTo only works for images of the same format.");
-      } else {
-         int $$5 = this.d.a();
-         STBImageResize.nstbir_resize_uint8(this.h + (long)(($$0 + $$1 * this.a()) * $$5), $$2, $$3, this.a() * $$5, $$4.h, $$4.a(), $$4.b(), 0, $$5);
+         this.o = this.h;
+         this.p = this.i;
+         this.q = this.j;
+         this.r = this.k;
+         GLFW.glfwSetWindowMonitor(this.g, 0L, this.o, this.p, this.q, this.r, -1);
       }
    }
 
    public void g() {
-      fjx.a(this.h);
+      this.m = !this.m;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.j = $$0;
+      this.k = $$1;
+      this.m = false;
+      this.x();
+   }
+
+   private void a(boolean $$0, @Nullable fii $$1) {
+      RenderSystem.assertOnRenderThread();
+
+      try {
+         this.x();
+         this.e.a();
+         this.a($$0);
+         this.a($$1);
+      } catch (Exception var4) {
+         c.error("Couldn't toggle fullscreen", var4);
+      }
+   }
+
+   public int a(int $$0, boolean $$1) {
+      int $$2 = 1;
+
+      while ($$2 != $$0 && $$2 < this.s && $$2 < this.t && this.s / ($$2 + 1) >= 320 && this.t / ($$2 + 1) >= 240) {
+         $$2++;
+      }
+
+      if ($$1 && $$2 % 2 != 0) {
+         $$2++;
+      }
+
+      return $$2;
+   }
+
+   public void a(double $$0) {
+      this.w = $$0;
+      int $$1 = (int)((double)this.s / $$0);
+      this.u = (double)this.s / $$0 > (double)$$1 ? $$1 + 1 : $$1;
+      int $$2 = (int)((double)this.t / $$0);
+      this.v = (double)this.t / $$0 > (double)$$2 ? $$2 + 1 : $$2;
+   }
+
+   public void b(String $$0) {
+      GLFW.glfwSetWindowTitle(this.g, $$0);
    }
 
    public long h() {
-      return this.h;
+      return this.g;
    }
 
-   public static enum a {
-      a(4, true, true, true, false, true, 0, 8, 16, 255, 24, true),
-      b(3, true, true, true, false, false, 0, 8, 16, 255, 255, true),
-      c(2, false, false, false, true, true, 255, 255, 255, 0, 8, true),
-      d(1, false, false, false, true, false, 0, 0, 0, 0, 255, true);
+   public boolean i() {
+      return this.m;
+   }
 
-      final int e;
-      private final boolean f;
-      private final boolean g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
-      private final int k;
-      private final int l;
-      private final int m;
-      private final int n;
-      private final int o;
-      private final boolean p;
+   public boolean j() {
+      return this.A;
+   }
 
-      private a(
-         final int $$0,
-         final boolean $$1,
-         final boolean $$2,
-         final boolean $$3,
-         final boolean $$4,
-         final boolean $$5,
-         final int $$6,
-         final int $$7,
-         final int $$8,
-         final int $$9,
-         final int $$10,
-         final boolean $$11
-      ) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$5;
-         this.k = $$6;
-         this.l = $$7;
-         this.m = $$8;
-         this.n = $$9;
-         this.o = $$10;
-         this.p = $$11;
-      }
+   public int k() {
+      return this.s;
+   }
 
-      public int a() {
-         return this.e;
-      }
+   public int l() {
+      return this.t;
+   }
 
-      public boolean b() {
-         return this.f;
-      }
+   public void a(int $$0) {
+      this.s = $$0;
+   }
 
-      public boolean c() {
-         return this.g;
-      }
+   public void b(int $$0) {
+      this.t = $$0;
+   }
 
-      public boolean d() {
-         return this.h;
-      }
+   public int m() {
+      return this.q;
+   }
 
-      public boolean e() {
-         return this.i;
-      }
+   public int n() {
+      return this.r;
+   }
 
-      public boolean f() {
-         return this.j;
-      }
+   public int o() {
+      return this.u;
+   }
 
-      public int g() {
-         return this.k;
-      }
+   public int p() {
+      return this.v;
+   }
 
-      public int h() {
-         return this.l;
-      }
+   public int q() {
+      return this.o;
+   }
 
-      public int i() {
-         return this.m;
-      }
+   public int r() {
+      return this.p;
+   }
 
-      public int j() {
-         return this.n;
-      }
+   public double s() {
+      return this.w;
+   }
 
-      public int k() {
-         return this.o;
-      }
+   @Nullable
+   public fkd t() {
+      return this.f.a(this);
+   }
 
-      public boolean l() {
-         return this.i || this.f;
-      }
+   public void b(boolean $$0) {
+      fka.a(this.g, $$0);
+   }
 
-      public boolean m() {
-         return this.i || this.g;
-      }
-
-      public boolean n() {
-         return this.i || this.h;
-      }
-
-      public boolean o() {
-         return this.i || this.j;
-      }
-
-      public int p() {
-         return this.i ? this.n : this.k;
-      }
-
-      public int q() {
-         return this.i ? this.n : this.l;
-      }
-
-      public int r() {
-         return this.i ? this.n : this.m;
-      }
-
-      public int s() {
-         return this.i ? this.n : this.o;
-      }
-
-      public boolean t() {
-         return this.p;
-      }
-
-      static fki.a a(int $$0) {
-         switch ($$0) {
-            case 1:
-               return d;
-            case 2:
-               return c;
-            case 3:
-               return b;
-            case 4:
-            default:
-               return a;
-         }
+   public void a(Runnable $$0) {
+      GLFWWindowCloseCallback $$1 = GLFW.glfwSetWindowCloseCallback(this.g, $$1x -> $$0.run());
+      if ($$1 != null) {
+         $$1.free();
       }
    }
 
-   static class b extends STBIWriteCallback {
-      private final WritableByteChannel a;
-      @Nullable
-      private IOException b;
+   public boolean u() {
+      return this.B;
+   }
 
-      b(WritableByteChannel $$0) {
-         this.a = $$0;
-      }
-
-      public void invoke(long $$0, long $$1, int $$2) {
-         ByteBuffer $$3 = getData($$1, $$2);
-
-         try {
-            this.a.write($$3);
-         } catch (IOException var8) {
-            this.b = var8;
-         }
-      }
-
-      public void a() throws IOException {
-         if (this.b != null) {
-            throw this.b;
-         }
+   public static class a extends gft {
+      a(String $$0) {
+         super($$0);
       }
    }
 }

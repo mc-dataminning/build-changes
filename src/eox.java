@@ -1,49 +1,40 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eox extends eov {
-   public static final MapCodec<eox> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  ebg.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  ayy.b(ebg.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  ayy.b(ebg.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+public record eox(jk<dno> b, jk<dno> c, epc d, int e, int f, float g) {
+   public static final Codec<eox> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jv.a(mi.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jv.a(mi.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               epc.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, eox::new)
    );
-   private final float g;
-   private final float h;
-   private final ebg i;
-   private final List<ebg> j;
-   private final List<ebg> k;
 
-   public eox(long $$0, ewt.a $$1, float $$2, float $$3, float $$4, ebg $$5, List<ebg> $$6, List<ebg> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public jk<dno> a() {
+      return this.b;
    }
 
-   @Override
-   protected eot<?> a() {
-      return eot.c;
+   public jk<dno> b() {
+      return this.c;
    }
 
-   @Override
-   public ebg a(azz $$0, iw $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ag.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ag.a(this.k, $$0) : this.i;
-      }
+   public epc c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

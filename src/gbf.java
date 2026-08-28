@@ -1,82 +1,48 @@
-public class gbf extends gat {
-   private final dyp u;
-   private fuu<dyp.a> v;
-   private fuu<Boolean> w;
-   private fuu<Boolean> x;
-   private dyp.a y = dyp.a.c;
-   private boolean z;
-   private boolean A;
+public class gbf extends gaf<cxd> {
+   private static final alr G = alr.b("container/slot");
+   private static final alr H = alr.b("container/horse/chest_slots");
+   private static final alr I = alr.b("textures/gui/container/horse.png");
+   private final cme J;
+   private final int K;
+   private float L;
+   private float M;
 
-   public gbf(dyp $$0) {
-      this.u = $$0;
+   public gbf(cxd $$0, csh $$1, cme $$2, int $$3) {
+      super($$0, $$1, $$2.m_());
+      this.J = $$2;
+      this.K = $$3;
    }
 
    @Override
-   diy m() {
-      return this.u.a();
+   protected void a(ftk $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gry::H, I, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.K > 0) {
+         $$0.a(gry::H, H, 90, 54, 0, 0, $$4 + 79, $$5 + 17, this.K * 18, 54);
+      }
+
+      if (this.J.e(bxo.h) && this.J.an().a(axq.J)) {
+         this.c($$0, $$4 + 7, $$5 + 35 - 18);
+      }
+
+      boolean $$6 = this.J instanceof cmh;
+      if (this.J.e(bxo.g) && (this.J.an().a(axq.K) || $$6)) {
+         this.c($$0, $$4 + 7, $$5 + 35);
+      }
+
+      gbg.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.L, this.M, this.J);
+   }
+
+   private void c(ftk $$0, int $$1, int $$2) {
+      $$0.a(gry::H, G, $$1, $$2, 18, 18);
    }
 
    @Override
-   int E() {
-      return 135;
-   }
-
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.v = this.c(fuu.<dyp.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xc.c("advMode.mode.sequence");
-            case b -> xc.c("advMode.mode.auto");
-            case c -> xc.c("advMode.mode.redstone");
-         };
-      }).a(dyp.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xc.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         fuu.a(xc.c("advMode.mode.conditional"), xc.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 - 50, 165, 100, 20, xc.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         fuu.a(xc.c("advMode.mode.autoexec.bat"), xc.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xc.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void G() {
-      diy $$0 = this.u.a();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.s();
-      this.z = this.u.t();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
-   }
-
-   @Override
-   public void a(frf $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
-   }
-
-   @Override
-   protected void a(diy $$0) {
-      this.m.L().b(new ail(iw.a((jq)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      this.L = (float)$$1;
+      this.M = (float)$$2;
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 }

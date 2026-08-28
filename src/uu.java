@@ -24,27 +24,27 @@ import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
 public class uu {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xc.b("snbt.parser.number_parse_failure", $$0));
-   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xc.b("snbt.parser.expected_hex_escape", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xc.b("snbt.parser.invalid_codepoint", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xc.b("snbt.parser.no_such_operation", $$0));
-   static final bpw<CommandSyntaxException> e = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_integer_type")));
-   private static final bpw<CommandSyntaxException> f = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_float_type")));
-   static final bpw<CommandSyntaxException> g = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_non_negative_number")));
-   private static final bpw<CommandSyntaxException> h = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.invalid_character_name")));
-   static final bpw<CommandSyntaxException> i = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.invalid_array_element_type")));
-   private static final bpw<CommandSyntaxException> j = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.invalid_unquoted_start")));
-   private static final bpw<CommandSyntaxException> k = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_unquoted_string")));
-   private static final bpw<CommandSyntaxException> l = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.invalid_string_contents")));
-   private static final bpw<CommandSyntaxException> m = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_binary_numeral")));
-   private static final bpw<CommandSyntaxException> n = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.undescore_not_allowed")));
-   private static final bpw<CommandSyntaxException> o = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_decimal_numeral")));
-   private static final bpw<CommandSyntaxException> p = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.expected_hex_numeral")));
-   private static final bpw<CommandSyntaxException> q = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.empty_key")));
-   private static final bpw<CommandSyntaxException> r = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.leading_zero_not_allowed")));
-   private static final bpw<CommandSyntaxException> s = bpw.a(new SimpleCommandExceptionType(xc.c("snbt.parser.infinity_not_allowed")));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xg.b("snbt.parser.number_parse_failure", $$0));
+   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("snbt.parser.expected_hex_escape", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xg.b("snbt.parser.invalid_codepoint", $$0));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xg.b("snbt.parser.no_such_operation", $$0));
+   static final bqf<CommandSyntaxException> e = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_integer_type")));
+   private static final bqf<CommandSyntaxException> f = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_float_type")));
+   static final bqf<CommandSyntaxException> g = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_non_negative_number")));
+   private static final bqf<CommandSyntaxException> h = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.invalid_character_name")));
+   static final bqf<CommandSyntaxException> i = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.invalid_array_element_type")));
+   private static final bqf<CommandSyntaxException> j = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.invalid_unquoted_start")));
+   private static final bqf<CommandSyntaxException> k = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_unquoted_string")));
+   private static final bqf<CommandSyntaxException> l = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.invalid_string_contents")));
+   private static final bqf<CommandSyntaxException> m = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_binary_numeral")));
+   private static final bqf<CommandSyntaxException> n = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.undescore_not_allowed")));
+   private static final bqf<CommandSyntaxException> o = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_decimal_numeral")));
+   private static final bqf<CommandSyntaxException> p = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.expected_hex_numeral")));
+   private static final bqf<CommandSyntaxException> q = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.empty_key")));
+   private static final bqf<CommandSyntaxException> r = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.leading_zero_not_allowed")));
+   private static final bqf<CommandSyntaxException> s = bqf.a(new SimpleCommandExceptionType(xg.c("snbt.parser.infinity_not_allowed")));
    private static final HexFormat t = HexFormat.of().withUpperCase();
-   private static final bqk u = new bqk(m, n) {
+   private static final bqt u = new bqt(m, n) {
       @Override
       protected boolean a(char $$0) {
          return switch ($$0) {
@@ -53,7 +53,7 @@ public class uu {
          };
       }
    };
-   private static final bqk v = new bqk(o, n) {
+   private static final bqt v = new bqt(o, n) {
       @Override
       protected boolean a(char $$0) {
          return switch ($$0) {
@@ -62,7 +62,7 @@ public class uu {
          };
       }
    };
-   private static final bqk w = new bqk(p, n) {
+   private static final bqt w = new bqt(p, n) {
       @Override
       protected boolean a(char $$0) {
          return switch ($$0) {
@@ -71,7 +71,7 @@ public class uu {
          };
       }
    };
-   private static final bqj x = new bqj(1, l) {
+   private static final bqs x = new bqs(1, l) {
       @Override
       protected boolean a(char $$0) {
          return switch ($$0) {
@@ -80,7 +80,7 @@ public class uu {
          };
       }
    };
-   private static final bqq.a y = new bqq.a(CharList.of()) {
+   private static final bqz.a y = new bqz.a(CharList.of()) {
       @Override
       protected boolean a(char $$0) {
          return uu.c($$0);
@@ -88,8 +88,8 @@ public class uu {
    };
    private static final Pattern z = Pattern.compile("[-a-zA-Z0-9 ]+");
 
-   static bpw<CommandSyntaxException> a(NumberFormatException $$0) {
-      return bpw.a(a, $$0.getMessage());
+   static bqf<CommandSyntaxException> a(NumberFormatException $$0) {
+      return bqf.a(a, $$0.getMessage());
    }
 
    @Nullable
@@ -145,7 +145,7 @@ public class uu {
    }
 
    @Nullable
-   private static <T> T a(DynamicOps<T> $$0, uu.e $$1, @Nullable String $$2, @Nullable String $$3, @Nullable uu.f<String> $$4, @Nullable uu.i $$5, bqb<?> $$6) {
+   private static <T> T a(DynamicOps<T> $$0, uu.e $$1, @Nullable String $$2, @Nullable String $$3, @Nullable uu.f<String> $$4, @Nullable uu.i $$5, bqk<?> $$6) {
       StringBuilder $$7 = new StringBuilder();
       $$1.a($$7);
       if ($$2 != null) {
@@ -185,7 +185,7 @@ public class uu {
    }
 
    @Nullable
-   private static <T> T a(DynamicOps<T> $$0, bqb<?> $$1, String $$2) {
+   private static <T> T a(DynamicOps<T> $$0, bqk<?> $$1, String $$2) {
       float $$3 = Float.parseFloat($$2);
       if (!Float.isFinite($$3)) {
          $$1.b().a($$1.g(), s);
@@ -196,7 +196,7 @@ public class uu {
    }
 
    @Nullable
-   private static <T> T b(DynamicOps<T> $$0, bqb<?> $$1, String $$2) {
+   private static <T> T b(DynamicOps<T> $$0, bqk<?> $$1, String $$2) {
       double $$3 = Double.parseDouble($$2);
       if (!Double.isFinite($$3)) {
          $$1.b().a($$1.g(), s);
@@ -214,63 +214,63 @@ public class uu {
       };
    }
 
-   public static <T> bqh<T> a(DynamicOps<T> $$0) {
+   public static <T> bqq<T> a(DynamicOps<T> $$0) {
       T $$1 = (T)$$0.createBoolean(true);
       T $$2 = (T)$$0.createBoolean(false);
       T $$3 = (T)$$0.emptyMap();
       T $$4 = (T)$$0.emptyList();
-      bpx<StringReader> $$5 = new bpx<>();
-      bpt<uu.e> $$6 = bpt.a("sign");
-      $$5.a($$6, bqf.b(bqf.a(bqq.a('+'), bqf.a($$6, uu.e.a)), bqf.a(bqq.a('-'), bqf.a($$6, uu.e.b))), $$1x -> $$1x.b($$6));
-      bpt<uu.d> $$7 = bpt.a("integer_suffix");
+      bqg<StringReader> $$5 = new bqg<>();
+      bqc<uu.e> $$6 = bqc.a("sign");
+      $$5.a($$6, bqo.b(bqo.a(bqz.a('+'), bqo.a($$6, uu.e.a)), bqo.a(bqz.a('-'), bqo.a($$6, uu.e.b))), $$1x -> $$1x.b($$6));
+      bqc<uu.d> $$7 = bqc.a("integer_suffix");
       $$5.a(
          $$7,
-         bqf.b(
-            bqf.a(
-               bqq.a('u', 'U'),
-               bqf.b(
-                  bqf.a(bqq.a('b', 'B'), bqf.a($$7, new uu.d(uu.g.b, uu.i.c))),
-                  bqf.a(bqq.a('s', 'S'), bqf.a($$7, new uu.d(uu.g.b, uu.i.d))),
-                  bqf.a(bqq.a('i', 'I'), bqf.a($$7, new uu.d(uu.g.b, uu.i.e))),
-                  bqf.a(bqq.a('l', 'L'), bqf.a($$7, new uu.d(uu.g.b, uu.i.f)))
+         bqo.b(
+            bqo.a(
+               bqz.a('u', 'U'),
+               bqo.b(
+                  bqo.a(bqz.a('b', 'B'), bqo.a($$7, new uu.d(uu.g.b, uu.i.c))),
+                  bqo.a(bqz.a('s', 'S'), bqo.a($$7, new uu.d(uu.g.b, uu.i.d))),
+                  bqo.a(bqz.a('i', 'I'), bqo.a($$7, new uu.d(uu.g.b, uu.i.e))),
+                  bqo.a(bqz.a('l', 'L'), bqo.a($$7, new uu.d(uu.g.b, uu.i.f)))
                )
             ),
-            bqf.a(
-               bqq.a('s', 'S'),
-               bqf.b(
-                  bqf.a(bqq.a('b', 'B'), bqf.a($$7, new uu.d(uu.g.a, uu.i.c))),
-                  bqf.a(bqq.a('s', 'S'), bqf.a($$7, new uu.d(uu.g.a, uu.i.d))),
-                  bqf.a(bqq.a('i', 'I'), bqf.a($$7, new uu.d(uu.g.a, uu.i.e))),
-                  bqf.a(bqq.a('l', 'L'), bqf.a($$7, new uu.d(uu.g.a, uu.i.f)))
+            bqo.a(
+               bqz.a('s', 'S'),
+               bqo.b(
+                  bqo.a(bqz.a('b', 'B'), bqo.a($$7, new uu.d(uu.g.a, uu.i.c))),
+                  bqo.a(bqz.a('s', 'S'), bqo.a($$7, new uu.d(uu.g.a, uu.i.d))),
+                  bqo.a(bqz.a('i', 'I'), bqo.a($$7, new uu.d(uu.g.a, uu.i.e))),
+                  bqo.a(bqz.a('l', 'L'), bqo.a($$7, new uu.d(uu.g.a, uu.i.f)))
                )
             ),
-            bqf.a(bqq.a('b', 'B'), bqf.a($$7, new uu.d(null, uu.i.c))),
-            bqf.a(bqq.a('s', 'S'), bqf.a($$7, new uu.d(null, uu.i.d))),
-            bqf.a(bqq.a('i', 'I'), bqf.a($$7, new uu.d(null, uu.i.e))),
-            bqf.a(bqq.a('l', 'L'), bqf.a($$7, new uu.d(null, uu.i.f)))
+            bqo.a(bqz.a('b', 'B'), bqo.a($$7, new uu.d(null, uu.i.c))),
+            bqo.a(bqz.a('s', 'S'), bqo.a($$7, new uu.d(null, uu.i.d))),
+            bqo.a(bqz.a('i', 'I'), bqo.a($$7, new uu.d(null, uu.i.e))),
+            bqo.a(bqz.a('l', 'L'), bqo.a($$7, new uu.d(null, uu.i.f)))
          ),
          $$1x -> $$1x.b($$7)
       );
-      bpt<String> $$8 = bpt.a("binary_numeral");
+      bqc<String> $$8 = bqc.a("binary_numeral");
       $$5.a($$8, u);
-      bpt<String> $$9 = bpt.a("decimal_numeral");
+      bqc<String> $$9 = bqc.a("decimal_numeral");
       $$5.a($$9, v);
-      bpt<String> $$10 = bpt.a("hex_numeral");
+      bqc<String> $$10 = bqc.a("hex_numeral");
       $$5.a($$10, w);
-      bpt<uu.c> $$11 = bpt.a("integer_literal");
-      bqa<StringReader, uu.c> $$12 = $$5.a(
+      bqc<uu.c> $$11 = bqc.a("integer_literal");
+      bqj<StringReader, uu.c> $$12 = $$5.a(
          $$11,
-         bqf.a(
-            bqf.a($$5.c($$6)),
-            bqf.b(
-               bqf.a(
-                  bqq.a('0'),
-                  bqf.c(),
-                  bqf.b(bqf.a(bqq.a('x', 'X'), bqf.c(), $$5.c($$10)), bqf.a(bqq.a('b', 'B'), $$5.c($$8)), bqf.a($$5.c($$9), bqf.c(), bqf.a(r)), bqf.a($$9, "0"))
+         bqo.a(
+            bqo.a($$5.c($$6)),
+            bqo.b(
+               bqo.a(
+                  bqz.a('0'),
+                  bqo.c(),
+                  bqo.b(bqo.a(bqz.a('x', 'X'), bqo.c(), $$5.c($$10)), bqo.a(bqz.a('b', 'B'), $$5.c($$8)), bqo.a($$5.c($$9), bqo.c(), bqo.a(r)), bqo.a($$9, "0"))
                ),
                $$5.c($$9)
             ),
-            bqf.a($$5.c($$7))
+            bqo.a($$5.c($$7))
          ),
          $$5x -> {
             uu.d $$6x = $$5x.b($$7, uu.d.a);
@@ -289,26 +289,26 @@ public class uu {
             }
          }
       );
-      bpt<uu.i> $$13 = bpt.a("float_type_suffix");
-      $$5.a($$13, bqf.b(bqf.a(bqq.a('f', 'F'), bqf.a($$13, uu.i.a)), bqf.a(bqq.a('d', 'D'), bqf.a($$13, uu.i.b))), $$1x -> $$1x.b($$13));
-      bpt<uu.f<String>> $$14 = bpt.a("float_exponent_part");
-      $$5.a($$14, bqf.a(bqq.a('e', 'E'), bqf.a($$5.c($$6)), $$5.c($$9)), $$2x -> new uu.f<>($$2x.b($$6, uu.e.a), $$2x.b($$9)));
-      bpt<String> $$15 = bpt.a("float_whole_part");
-      bpt<String> $$16 = bpt.a("float_fraction_part");
-      bpt<T> $$17 = bpt.a("float_literal");
+      bqc<uu.i> $$13 = bqc.a("float_type_suffix");
+      $$5.a($$13, bqo.b(bqo.a(bqz.a('f', 'F'), bqo.a($$13, uu.i.a)), bqo.a(bqz.a('d', 'D'), bqo.a($$13, uu.i.b))), $$1x -> $$1x.b($$13));
+      bqc<uu.f<String>> $$14 = bqc.a("float_exponent_part");
+      $$5.a($$14, bqo.a(bqz.a('e', 'E'), bqo.a($$5.c($$6)), $$5.c($$9)), $$2x -> new uu.f<>($$2x.b($$6, uu.e.a), $$2x.b($$9)));
+      bqc<String> $$15 = bqc.a("float_whole_part");
+      bqc<String> $$16 = bqc.a("float_fraction_part");
+      bqc<T> $$17 = bqc.a("float_literal");
       $$5.a(
          $$17,
-         bqf.a(
-            bqf.a($$5.c($$6)),
-            bqf.b(
-               bqf.a($$5.a($$9, $$15), bqq.a('.'), bqf.c(), bqf.a($$5.a($$9, $$16)), bqf.a($$5.c($$14)), bqf.a($$5.c($$13))),
-               bqf.a(bqq.a('.'), bqf.c(), $$5.a($$9, $$16), bqf.a($$5.c($$14)), bqf.a($$5.c($$13))),
-               bqf.a($$5.a($$9, $$15), $$5.c($$14), bqf.c(), bqf.a($$5.c($$13))),
-               bqf.a($$5.a($$9, $$15), bqf.a($$5.c($$14)), $$5.c($$13))
+         bqo.a(
+            bqo.a($$5.c($$6)),
+            bqo.b(
+               bqo.a($$5.a($$9, $$15), bqz.a('.'), bqo.c(), bqo.a($$5.a($$9, $$16)), bqo.a($$5.c($$14)), bqo.a($$5.c($$13))),
+               bqo.a(bqz.a('.'), bqo.c(), $$5.a($$9, $$16), bqo.a($$5.c($$14)), bqo.a($$5.c($$13))),
+               bqo.a($$5.a($$9, $$15), $$5.c($$14), bqo.c(), bqo.a($$5.c($$13))),
+               bqo.a($$5.a($$9, $$15), bqo.a($$5.c($$14)), $$5.c($$13))
             )
          ),
          $$6x -> {
-            bqd $$7x = $$6x.a();
+            bqm $$7x = $$6x.a();
             uu.e $$8x = $$7x.b($$6, uu.e.a);
             String $$9x = $$7x.a($$15);
             String $$10x = $$7x.a($$16);
@@ -317,34 +317,34 @@ public class uu {
             return a($$0, $$8x, $$9x, $$10x, $$11x, $$12x, $$6x);
          }
       );
-      bpt<String> $$18 = bpt.a("string_hex_2");
+      bqc<String> $$18 = bqc.a("string_hex_2");
       $$5.a($$18, new uu.h(2));
-      bpt<String> $$19 = bpt.a("string_hex_4");
+      bqc<String> $$19 = bqc.a("string_hex_4");
       $$5.a($$19, new uu.h(4));
-      bpt<String> $$20 = bpt.a("string_hex_8");
+      bqc<String> $$20 = bqc.a("string_hex_8");
       $$5.a($$20, new uu.h(8));
-      bpt<String> $$21 = bpt.a("string_unicode_name");
-      $$5.a($$21, new bqi(z, h));
-      bpt<String> $$22 = bpt.a("string_escape_sequence");
+      bqc<String> $$21 = bqc.a("string_unicode_name");
+      $$5.a($$21, new bqr(z, h));
+      bqc<String> $$22 = bqc.a("string_escape_sequence");
       $$5.a(
          $$22,
-         bqf.b(
-            bqf.a(bqq.a('b'), bqf.a($$22, "\b")),
-            bqf.a(bqq.a('s'), bqf.a($$22, " ")),
-            bqf.a(bqq.a('t'), bqf.a($$22, "\t")),
-            bqf.a(bqq.a('n'), bqf.a($$22, "\n")),
-            bqf.a(bqq.a('f'), bqf.a($$22, "\f")),
-            bqf.a(bqq.a('r'), bqf.a($$22, "\r")),
-            bqf.a(bqq.a('\\'), bqf.a($$22, "\\")),
-            bqf.a(bqq.a('\''), bqf.a($$22, "'")),
-            bqf.a(bqq.a('"'), bqf.a($$22, "\"")),
-            bqf.a(bqq.a('x'), $$5.c($$18)),
-            bqf.a(bqq.a('u'), $$5.c($$19)),
-            bqf.a(bqq.a('U'), $$5.c($$20)),
-            bqf.a(bqq.a('N'), bqq.a('{'), $$5.c($$21), bqq.a('}'))
+         bqo.b(
+            bqo.a(bqz.a('b'), bqo.a($$22, "\b")),
+            bqo.a(bqz.a('s'), bqo.a($$22, " ")),
+            bqo.a(bqz.a('t'), bqo.a($$22, "\t")),
+            bqo.a(bqz.a('n'), bqo.a($$22, "\n")),
+            bqo.a(bqz.a('f'), bqo.a($$22, "\f")),
+            bqo.a(bqz.a('r'), bqo.a($$22, "\r")),
+            bqo.a(bqz.a('\\'), bqo.a($$22, "\\")),
+            bqo.a(bqz.a('\''), bqo.a($$22, "'")),
+            bqo.a(bqz.a('"'), bqo.a($$22, "\"")),
+            bqo.a(bqz.a('x'), $$5.c($$18)),
+            bqo.a(bqz.a('u'), $$5.c($$19)),
+            bqo.a(bqz.a('U'), $$5.c($$20)),
+            bqo.a(bqz.a('N'), bqz.a('{'), $$5.c($$21), bqz.a('}'))
          ),
          $$5x -> {
-            bqd $$6x = $$5x.a();
+            bqm $$6x = $$5x.a();
             String $$7x = $$6x.b($$22);
             if ($$7x != null) {
                return $$7x;
@@ -353,7 +353,7 @@ public class uu {
                if ($$8x != null) {
                   int $$9x = HexFormat.fromHexDigits($$8x);
                   if (!Character.isValidCodePoint($$9x)) {
-                     $$5x.b().a($$5x.g(), bpw.a(c, String.format(Locale.ROOT, "U+%08X", $$9x)));
+                     $$5x.b().a($$5x.g(), bqf.a(c, String.format(Locale.ROOT, "U+%08X", $$9x)));
                      return null;
                   } else {
                      return Character.toString($$9x);
@@ -374,36 +374,36 @@ public class uu {
             }
          }
       );
-      bpt<String> $$23 = bpt.a("string_plain_contents");
+      bqc<String> $$23 = bqc.a("string_plain_contents");
       $$5.a($$23, x);
-      bpt<List<String>> $$24 = bpt.a("string_chunks");
-      bpt<String> $$25 = bpt.a("string_contents");
-      bpt<String> $$26 = bpt.a("single_quoted_string_chunk");
-      bqa<StringReader, String> $$27 = $$5.a(
-         $$26, bqf.b($$5.a($$23, $$25), bqf.a(bqq.a('\\'), $$5.a($$22, $$25)), bqf.a(bqq.a('"'), bqf.a($$25, "\""))), $$1x -> $$1x.b($$25)
+      bqc<List<String>> $$24 = bqc.a("string_chunks");
+      bqc<String> $$25 = bqc.a("string_contents");
+      bqc<String> $$26 = bqc.a("single_quoted_string_chunk");
+      bqj<StringReader, String> $$27 = $$5.a(
+         $$26, bqo.b($$5.a($$23, $$25), bqo.a(bqz.a('\\'), $$5.a($$22, $$25)), bqo.a(bqz.a('"'), bqo.a($$25, "\""))), $$1x -> $$1x.b($$25)
       );
-      bpt<String> $$28 = bpt.a("single_quoted_string_contents");
-      $$5.a($$28, bqf.a($$27, $$24), $$1x -> a($$1x.b($$24)));
-      bpt<String> $$29 = bpt.a("double_quoted_string_chunk");
-      bqa<StringReader, String> $$30 = $$5.a(
-         $$29, bqf.b($$5.a($$23, $$25), bqf.a(bqq.a('\\'), $$5.a($$22, $$25)), bqf.a(bqq.a('\''), bqf.a($$25, "'"))), $$1x -> $$1x.b($$25)
+      bqc<String> $$28 = bqc.a("single_quoted_string_contents");
+      $$5.a($$28, bqo.a($$27, $$24), $$1x -> a($$1x.b($$24)));
+      bqc<String> $$29 = bqc.a("double_quoted_string_chunk");
+      bqj<StringReader, String> $$30 = $$5.a(
+         $$29, bqo.b($$5.a($$23, $$25), bqo.a(bqz.a('\\'), $$5.a($$22, $$25)), bqo.a(bqz.a('\''), bqo.a($$25, "'"))), $$1x -> $$1x.b($$25)
       );
-      bpt<String> $$31 = bpt.a("double_quoted_string_contents");
-      $$5.a($$31, bqf.a($$30, $$24), $$1x -> a($$1x.b($$24)));
-      bpt<String> $$32 = bpt.a("quoted_string_literal");
+      bqc<String> $$31 = bqc.a("double_quoted_string_contents");
+      $$5.a($$31, bqo.a($$30, $$24), $$1x -> a($$1x.b($$24)));
+      bqc<String> $$32 = bqc.a("quoted_string_literal");
       $$5.a(
          $$32,
-         bqf.b(bqf.a(bqq.a('"'), bqf.c(), bqf.a($$5.a($$31, $$25)), bqq.a('"')), bqf.a(bqq.a('\''), bqf.a($$5.a($$28, $$25)), bqq.a('\''))),
+         bqo.b(bqo.a(bqz.a('"'), bqo.c(), bqo.a($$5.a($$31, $$25)), bqz.a('"')), bqo.a(bqz.a('\''), bqo.a($$5.a($$28, $$25)), bqz.a('\''))),
          $$1x -> $$1x.b($$25)
       );
-      bpt<String> $$33 = bpt.a("unquoted_string");
-      $$5.a($$33, new bqs(1, k));
-      bpt<T> $$34 = bpt.a("literal");
-      bpt<List<T>> $$35 = bpt.a("arguments");
-      $$5.a($$35, bqf.a($$5.b($$34), $$35, bqq.a(',')), $$1x -> $$1x.b($$35));
-      bpt<T> $$36 = bpt.a("unquoted_string_or_builtin");
-      $$5.a($$36, bqf.a($$5.c($$33), bqf.a(bqf.a(bqq.a('('), $$5.c($$35), bqq.a(')')))), $$5x -> {
-         bqd $$6x = $$5x.a();
+      bqc<String> $$33 = bqc.a("unquoted_string");
+      $$5.a($$33, new brb(1, k));
+      bqc<T> $$34 = bqc.a("literal");
+      bqc<List<T>> $$35 = bqc.a("arguments");
+      $$5.a($$35, bqo.a($$5.b($$34), $$35, bqz.a(',')), $$1x -> $$1x.b($$35));
+      bqc<T> $$36 = bqc.a("unquoted_string_or_builtin");
+      $$5.a($$36, bqo.a($$5.c($$33), bqo.a(bqo.a(bqz.a('('), $$5.c($$35), bqz.a(')')))), $$5x -> {
+         bqm $$6x = $$5x.a();
          String $$7x = $$6x.b($$33);
          if (!$$7x.isEmpty() && b($$7x.charAt(0))) {
             List<T> $$8x = $$6x.a($$35);
@@ -413,7 +413,7 @@ public class uu {
                if ($$10x != null) {
                   return $$10x.a($$0, $$8x, $$5x);
                } else {
-                  $$5x.b().a($$5x.g(), bpw.a(d, $$9x.toString()));
+                  $$5x.b().a($$5x.g(), bqf.a(d, $$9x.toString()));
                   return null;
                }
             } else if ($$7x.equalsIgnoreCase("true")) {
@@ -426,11 +426,11 @@ public class uu {
             return null;
          }
       });
-      bpt<String> $$37 = bpt.a("map_key");
-      $$5.a($$37, bqf.b($$5.c($$32), $$5.c($$33)), $$2x -> $$2x.c($$32, $$33));
-      bpt<Entry<String, T>> $$38 = bpt.a("map_entry");
-      bqa<StringReader, Entry<String, T>> $$39 = $$5.a($$38, bqf.a($$5.c($$37), bqq.a(':'), $$5.c($$34)), $$2x -> {
-         bqd $$3x = $$2x.a();
+      bqc<String> $$37 = bqc.a("map_key");
+      $$5.a($$37, bqo.b($$5.c($$32), $$5.c($$33)), $$2x -> $$2x.c($$32, $$33));
+      bqc<Entry<String, T>> $$38 = bqc.a("map_entry");
+      bqj<StringReader, Entry<String, T>> $$39 = $$5.a($$38, bqo.a($$5.c($$37), bqz.a(':'), $$5.c($$34)), $$2x -> {
+         bqm $$3x = $$2x.a();
          String $$4x = $$3x.b($$37);
          if ($$4x.isEmpty()) {
             $$2x.b().a($$2x.g(), q);
@@ -440,10 +440,10 @@ public class uu {
             return Map.entry($$4x, $$5x);
          }
       });
-      bpt<List<Entry<String, T>>> $$40 = bpt.a("map_entries");
-      $$5.a($$40, bqf.a($$39, $$40, bqq.a(',')), $$1x -> $$1x.b($$40));
-      bpt<T> $$41 = bpt.a("map_literal");
-      $$5.a($$41, bqf.a(bqq.a('{'), $$5.c($$40), bqq.a('}')), $$3x -> {
+      bqc<List<Entry<String, T>>> $$40 = bqc.a("map_entries");
+      $$5.a($$40, bqo.a($$39, $$40, bqz.a(',')), $$1x -> $$1x.b($$40));
+      bqc<T> $$41 = bqc.a("map_literal");
+      $$5.a($$41, bqo.a(bqz.a('{'), $$5.c($$40), bqz.a('}')), $$3x -> {
          List<Entry<String, T>> $$4x = $$3x.b($$40);
          if ($$4x.isEmpty()) {
             return $$3;
@@ -457,19 +457,19 @@ public class uu {
             return (T)$$0.createMap($$5x.buildKeepingLast());
          }
       });
-      bpt<List<T>> $$42 = bpt.a("list_entries");
-      $$5.a($$42, bqf.a($$5.b($$34), $$42, bqq.a(',')), $$1x -> $$1x.b($$42));
-      bpt<uu.a> $$43 = bpt.a("array_prefix");
+      bqc<List<T>> $$42 = bqc.a("list_entries");
+      $$5.a($$42, bqo.a($$5.b($$34), $$42, bqz.a(',')), $$1x -> $$1x.b($$42));
+      bqc<uu.a> $$43 = bqc.a("array_prefix");
       $$5.a(
          $$43,
-         bqf.b(bqf.a(bqq.a('B'), bqf.a($$43, uu.a.a)), bqf.a(bqq.a('L'), bqf.a($$43, uu.a.c)), bqf.a(bqq.a('I'), bqf.a($$43, uu.a.b))),
+         bqo.b(bqo.a(bqz.a('B'), bqo.a($$43, uu.a.a)), bqo.a(bqz.a('L'), bqo.a($$43, uu.a.c)), bqo.a(bqz.a('I'), bqo.a($$43, uu.a.b))),
          $$1x -> $$1x.b($$43)
       );
-      bpt<List<uu.c>> $$44 = bpt.a("int_array_entries");
-      $$5.a($$44, bqf.a($$12, $$44, bqq.a(',')), $$1x -> $$1x.b($$44));
-      bpt<T> $$45 = bpt.a("list_literal");
-      $$5.a($$45, bqf.a(bqq.a('['), bqf.b(bqf.a($$5.c($$43), bqq.a(';'), $$5.c($$44)), $$5.c($$42)), bqq.a(']')), $$5x -> {
-         bqd $$6x = $$5x.a();
+      bqc<List<uu.c>> $$44 = bqc.a("int_array_entries");
+      $$5.a($$44, bqo.a($$12, $$44, bqz.a(',')), $$1x -> $$1x.b($$44));
+      bqc<T> $$45 = bqc.a("list_literal");
+      $$5.a($$45, bqo.a(bqz.a('['), bqo.b(bqo.a($$5.c($$43), bqz.a(';'), $$5.c($$44)), $$5.c($$42)), bqz.a(']')), $$5x -> {
+         bqm $$6x = $$5x.a();
          uu.a $$7x = $$6x.a($$43);
          if ($$7x != null) {
             List<uu.c> $$8x = $$6x.b($$44);
@@ -479,17 +479,17 @@ public class uu {
             return (T)($$9x.isEmpty() ? $$4 : $$0.createList($$9x.stream()));
          }
       });
-      bqa<StringReader, T> $$46 = $$5.a(
+      bqj<StringReader, T> $$46 = $$5.a(
          $$34,
-         bqf.b(
-            bqf.a(bqf.b(y), bqf.b($$5.a($$17, $$34), $$5.c($$11))),
-            bqf.a(bqf.b(bqq.a('"', '\'')), bqf.c(), $$5.c($$32)),
-            bqf.a(bqf.b(bqq.a('{')), bqf.c(), $$5.a($$41, $$34)),
-            bqf.a(bqf.b(bqq.a('[')), bqf.c(), $$5.a($$45, $$34)),
+         bqo.b(
+            bqo.a(bqo.b(y), bqo.b($$5.a($$17, $$34), $$5.c($$11))),
+            bqo.a(bqo.b(bqz.a('"', '\'')), bqo.c(), $$5.c($$32)),
+            bqo.a(bqo.b(bqz.a('{')), bqo.c(), $$5.a($$41, $$34)),
+            bqo.a(bqo.b(bqz.a('[')), bqo.c(), $$5.a($$45, $$34)),
             $$5.a($$36, $$34)
          ),
          $$4x -> {
-            bqd $$5x = $$4x.a();
+            bqm $$5x = $$4x.a();
             String $$6x = $$5x.a($$32);
             if ($$6x != null) {
                return (T)$$0.createString($$6x);
@@ -499,7 +499,7 @@ public class uu {
             }
          }
       );
-      return new bqh<>($$5, $$46);
+      return new bqq<>($$5, $$46);
    }
 
    static enum a {
@@ -513,7 +513,7 @@ public class uu {
 
          @Nullable
          @Override
-         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqb<?> $$2) {
+         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqk<?> $$2) {
             ByteList $$3 = new ByteArrayList();
 
             for (uu.c $$4 : $$1) {
@@ -536,7 +536,7 @@ public class uu {
 
          @Nullable
          @Override
-         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqb<?> $$2) {
+         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqk<?> $$2) {
             java.util.stream.IntStream.Builder $$3 = IntStream.builder();
 
             for (uu.c $$4 : $$1) {
@@ -559,7 +559,7 @@ public class uu {
 
          @Nullable
          @Override
-         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqb<?> $$2) {
+         public <T> T a(DynamicOps<T> $$0, List<uu.c> $$1, bqk<?> $$2) {
             java.util.stream.LongStream.Builder $$3 = LongStream.builder();
 
             for (uu.c $$4 : $$1) {
@@ -590,10 +590,10 @@ public class uu {
       public abstract <T> T a(DynamicOps<T> var1);
 
       @Nullable
-      public abstract <T> T a(DynamicOps<T> var1, List<uu.c> var2, bqb<?> var3);
+      public abstract <T> T a(DynamicOps<T> var1, List<uu.c> var2, bqk<?> var3);
 
       @Nullable
-      protected Number a(uu.c $$0, bqb<?> $$1) {
+      protected Number a(uu.c $$0, bqk<?> $$1) {
          uu.i $$2 = this.a($$0.d);
          if ($$2 == null) {
             $$1.b().a($$1.g(), uu.i);
@@ -646,12 +646,12 @@ public class uu {
       }
 
       @Nullable
-      public <T> T a(DynamicOps<T> $$0, bqb<?> $$1) {
+      public <T> T a(DynamicOps<T> $$0, bqk<?> $$1) {
          return this.a($$0, Objects.requireNonNullElse(this.d.c, uu.i.e), $$1);
       }
 
       @Nullable
-      public <T> T a(DynamicOps<T> $$0, uu.i $$1, bqb<?> $$2) {
+      public <T> T a(DynamicOps<T> $$0, uu.i $$1, bqk<?> $$2) {
          boolean $$3 = this.e() == uu.g.a;
          if (!$$3 && this.a == uu.e.b) {
             $$2.b().a($$2.g(), uu.g);
@@ -730,9 +730,9 @@ public class uu {
       b;
    }
 
-   static class h extends bqj {
+   static class h extends bqs {
       public h(int $$0) {
-         super($$0, $$0, bpw.a(uu.b, String.valueOf($$0)));
+         super($$0, $$0, bqf.a(uu.b, String.valueOf($$0)));
       }
 
       @Override

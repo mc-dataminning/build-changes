@@ -1,48 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+@FunctionalInterface
+public interface gub<T extends dyo> {
+   gua<T> create(gub.a var1);
 
-public record gub(gub.a b, List<guc> c) implements guc {
-   @Override
-   public <O, S extends ebi<O, S>> Predicate<S> instantiate(ebh<O, S> $$0) {
-      return this.b.a(Lists.transform(this.c, $$1 -> $$1.instantiate($$0)));
-   }
+   public static class a {
+      private final gtz a;
+      private final gsq b;
+      private final hhg c;
+      private final gyt d;
+      private final gxt e;
+      private final gkn f;
+      private final fti g;
 
-   public gub.a a() {
-      return this.b;
-   }
-
-   public List<guc> b() {
-      return this.c;
-   }
-
-   public static enum a implements bao {
-      a("AND") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.a($$0);
-         }
-      },
-      b("OR") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.b($$0);
-         }
-      };
-
-      public static final Codec<gub.a> c = bao.a(gub.a::values);
-      private final String d;
-
-      a(final String $$0) {
-         this.d = $$0;
+      public a(gtz $$0, gsq $$1, hhg $$2, gyt $$3, gxt $$4, gkn $$5, fti $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
 
-      @Override
-      public String c() {
+      public gtz a() {
+         return this.a;
+      }
+
+      public gsq b() {
+         return this.b;
+      }
+
+      public gxt c() {
+         return this.e;
+      }
+
+      public hhg d() {
+         return this.c;
+      }
+
+      public gyt e() {
          return this.d;
       }
 
-      public abstract <V> Predicate<V> a(List<Predicate<V>> var1);
+      public gkn f() {
+         return this.f;
+      }
+
+      public gkr a(gkp $$0) {
+         return this.f.a($$0);
+      }
+
+      public fti g() {
+         return this.g;
+      }
    }
 }

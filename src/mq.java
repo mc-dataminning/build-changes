@@ -19,11 +19,11 @@ public class mq {
       return new mq.a(this, $$0, $$1);
    }
 
-   public mq.a a(alj<? extends jt<?>> $$0) {
+   public mq.a a(alq<? extends jt<?>> $$0) {
       return this.a(mq.b.a, mi.c($$0));
    }
 
-   public mq.a b(alj<? extends jt<?>> $$0) {
+   public mq.a b(alq<? extends jt<?>> $$0) {
       return this.a(mq.b.a, mi.d($$0));
    }
 
@@ -36,15 +36,15 @@ public class mq {
          this.b = $$2;
       }
 
-      public Path a(alk $$0, String $$1) {
+      public Path a(alr $$0, String $$1) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
       }
 
-      public Path a(alk $$0) {
+      public Path a(alr $$0) {
          return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
       }
 
-      public Path a(alj<?> $$0) {
+      public Path a(alq<?> $$0) {
          return this.a.resolve($$0.a().b()).resolve(this.b).resolve($$0.a().a() + ".json");
       }
    }

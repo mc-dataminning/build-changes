@@ -1,4 +1,17 @@
-import java.util.Map;
+import java.util.Locale;
 
-public record gmw(Map<alk, byte[]> a) {
+public enum gmw {
+   a("chat"),
+   b("skin"),
+   c("username");
+
+   private final String d;
+
+   private gmw(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.d;
+   }
 }

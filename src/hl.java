@@ -12,7 +12,7 @@ public class hl<T> implements AutoCloseable {
    private static final Logger b = LogUtils.getLogger();
    private final int c;
    private final int d;
-   private final brd e;
+   private final brm e;
    @Nullable
    private ho f;
    private int g;
@@ -21,7 +21,7 @@ public class hl<T> implements AutoCloseable {
    private final List<hh<T>> j = new ObjectArrayList();
    private int k;
 
-   public hl(int $$0, int $$1, brd $$2) {
+   public hl(int $$0, int $$1, brm $$2) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -115,7 +115,7 @@ public class hl<T> implements AutoCloseable {
       return this.f;
    }
 
-   public brd c() {
+   public brm c() {
       return this.e;
    }
 

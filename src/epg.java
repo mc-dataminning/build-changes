@@ -1,42 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class epg extends epn {
-   public static final MapCodec<epg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               eos.a.fieldOf("block_provider").forGetter($$0x -> $$0x.c),
-               ayy.b(jc.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, epg::new)
-   );
-   private final float b;
-   private final eos c;
-   private final List<jc> d;
+public class epg extends epf {
+   public static final MapCodec<epg> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, epg::new));
+   protected final List<ebq> h;
 
-   public epg(float $$0, eos $$1, List<jc> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   protected static <P extends epg> P4<Mu<P>, Long, exd.a, Float, List<ebq>> b(Instance<P> $$0) {
+      return a($$0).and(azg.b(ebq.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public epg(long $$0, exd.a $$1, float $$2, List<ebq> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public void a(epn.a $$0) {
-      azz $$1 = $$0.b();
-
-      for (iw $$2 : ag.a($$0.c(), $$1)) {
-         jc $$3 = ag.a(this.d, $$1);
-         iw $$4 = $$2.a($$3);
-         if ($$1.i() <= this.b && $$0.a($$4)) {
-            $$0.a($$4, this.c.a($$1, $$4));
-         }
-      }
+   protected epd<?> a() {
+      return epd.d;
    }
 
    @Override
-   protected epo<?> a() {
-      return epo.j;
+   public ebq a(bai $$0, iw $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected ebq a(List<ebq> $$0, iw $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected ebq a(List<ebq> $$0, double $$1) {
+      double $$2 = azz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

@@ -1,5 +1,9 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+public interface gfl {
+   void a(gfj var1);
 
-public record gfl(gfs.a a, Set<djv.e<djv.a>> b, @Nullable alj<eqe> c) {
+   xg aU_();
+
+   void a(ftk var1, float var2, float var3);
+
+   boolean aV_();
 }

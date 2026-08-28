@@ -1,67 +1,42 @@
 import java.util.EnumSet;
 
-public class cfw extends ces {
-   private final clv a;
-   private final double b;
+public class cfw extends cfb {
+   private final byh a;
+   private double b;
    private double c;
-   private double d;
-   private double e;
+   private int d;
 
-   public cfw(clv $$0, double $$1) {
+   public cfw(byh $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(ces.a.a));
+      this.a(EnumSet.of(cfb.a.a, cfb.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gL() && this.a.bZ()) {
-         ffs $$0 = cip.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.b);
+      return this.a.dY().i() < 0.02F;
    }
 
    @Override
    public boolean c() {
-      return !this.a.gL() && !this.a.O().k() && this.a.bZ();
+      return this.d >= 0;
+   }
+
+   @Override
+   public void d() {
+      double $$0 = (Math.PI * 2) * this.a.dY().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dY().a(20);
+   }
+
+   @Override
+   public boolean W_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (!this.a.gL() && this.a.dY().a(this.a(50)) == 0) {
-         bwv $$0 = this.a.cZ();
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof crz $$1) {
-            int $$2 = this.a.gR();
-            int $$3 = this.a.gW();
-            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
-               this.a.f($$1);
-               return;
-            }
-
-            this.a.u(5);
-         }
-
-         this.a.bN();
-         this.a.ha();
-         this.a.dV().a(this.a, (byte)6);
-      }
+      this.d--;
+      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
    }
 }

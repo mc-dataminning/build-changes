@@ -48,8 +48,8 @@ public abstract class tv {
          }
 
          @Override
-         public azc a(xh $$0) {
-            return $$1 -> $$0.a(($$1x, $$2) -> ban.c($$2, $$1x, $$1) ? Optional.empty() : xh.a, xz.a).isPresent();
+         public azk a(xl $$0) {
+            return $$1 -> $$0.a(($$1x, $$2) -> baw.c($$2, $$1x, $$1) ? Optional.empty() : xl.a, yd.a).isPresent();
          }
       };
    }
@@ -66,7 +66,7 @@ public abstract class tv {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(azg.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(azo.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -89,9 +89,9 @@ public abstract class tv {
 
    public abstract boolean b();
 
-   public abstract azc a(xh var1);
+   public abstract azk a(xl var1);
 
-   public List<azc> a(List<xh> $$0) {
+   public List<azk> a(List<xl> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

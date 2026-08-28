@@ -1,25 +1,15 @@
-import javax.annotation.Nullable;
+public class dkh {
+   private static int[] a = new int[65536];
 
-public interface dkh {
-   boolean a(iw var1, ebg var2, int var3, int var4);
-
-   default boolean a(iw $$0, ebg $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   boolean a(iw var1, boolean var2);
-
-   default boolean b(iw $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public static int a(double $$0, double $$1) {
+      return djs.a($$0, $$1, a, -65281);
    }
 
-   default boolean a(iw $$0, boolean $$1, @Nullable bwv $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(iw var1, boolean var2, @Nullable bwv var3, int var4);
-
-   default boolean b(bwv $$0) {
-      return false;
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

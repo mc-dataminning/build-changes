@@ -1,10 +1,27 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlh {
-   public static MapCodec<? extends dlg> a(jt<MapCodec<? extends dlg>> $$0) {
-      jt.a($$0, "fixed", dln.b);
-      jt.a($$0, "multi_noise", dlp.c);
-      jt.a($$0, "checkerboard", dlk.b);
-      return jt.a($$0, "the_end", dlt.b);
+public record dlh(djw e, cvs f) {
+   public static final String a = "enabled_features";
+   public static final MapCodec<dlh> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               djw.b.lenientOptionalFieldOf("DataPacks", djw.a).forGetter(dlh::a), cvu.f.lenientOptionalFieldOf("enabled_features", cvu.h).forGetter(dlh::b)
+            )
+            .apply($$0, dlh::new)
+   );
+   public static final Codec<dlh> c = b.codec();
+   public static final dlh d = new dlh(djw.a, cvu.h);
+
+   public dlh a(cvs $$0) {
+      return new dlh(this.e, this.f.c($$0));
+   }
+
+   public djw a() {
+      return this.e;
+   }
+
+   public cvs b() {
+      return this.f;
    }
 }

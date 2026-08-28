@@ -1,21 +1,14 @@
-public class gpe extends gqm {
-   private final gqh a;
-
-   protected gpe(gmd $$0, double $$1, double $$2, double $$3, double $$4, gqh $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public class gpe extends gpd {
+   gpe(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
    @Override
@@ -26,24 +19,24 @@ public class gpe extends gqm {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
       }
    }
 
-   @Override
-   public gpq b() {
-      return gpq.b;
-   }
+   public static class a implements gpa<md> {
+      private final gps a;
 
-   public static class a implements gpp<md> {
-      private final gqh a;
-
-      public a(gqh $$0) {
+      public a(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gpe($$1, $$2, $$3, $$4, $$5, this.a);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gpe $$8 = new gpe($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

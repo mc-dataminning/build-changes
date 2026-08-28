@@ -1,44 +1,31 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
 
-public class cas extends bzn<crl> {
-   private final float c;
-
-   public cas(float $$0) {
-      super(ImmutableMap.of(cgy.n, cgz.c, cgy.o, cgz.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(aru $$0, crl $$1) {
-      crz $$2 = $$1.x();
-      return $$1.bJ() && $$2 != null && !$$1.bi() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bR != null;
-   }
-
-   protected boolean a(aru $$0, crl $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aru $$0, crl $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(aru $$0, crl $$1, long $$2) {
-      byw<?> $$3 = $$1.ec();
-      $$3.b(cgy.n);
-      $$3.b(cgy.o);
-   }
-
-   protected void d(aru $$0, crl $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(crl $$0) {
-      byw<?> $$1 = $$0.ec();
-      $$1.a(cgy.n, new chb(new bzy($$0.x(), false), this.c, 2));
-      $$1.a(cgy.o, new bzy($$0.x(), true));
+public class cas {
+   public static bzx<byn> a(float $$0) {
+      return cdj.a(
+         (Function<cdj.b<byn>, ? extends App<cdj.c<byn>, cdm<byn>>>)($$1 -> $$1.group($$1.c(chh.n))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dv())) {
+                           return false;
+                        } else {
+                           iw $$5 = $$3.dv();
+                           List<iw> $$6 = iw.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(iw::j).collect(ag.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new chk($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

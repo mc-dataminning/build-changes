@@ -1,54 +1,56 @@
-import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class zm {
-   private static final Logger a = LogUtils.getLogger();
+public interface zm {
+   int a = 4096;
 
-   public static <T extends wi> void a(zj<T> $$0, T $$1, aru $$2) throws alw {
-      a($$0, $$1, $$2.p());
-   }
-
-   public static <T extends wi> void a(zj<T> $$0, T $$1, bth<?> $$2) throws alw {
-      if (!$$2.bx()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof aa $$3 && $$3.getCause() instanceof OutOfMemoryError) {
-                     throw a(var4, $$0, $$1);
-                  }
-
-                  $$1.a($$0, var4);
-               }
+   static <T extends wk, P extends zl<? super T>> zm a(final zq<P> $$0, final Function<Iterable<zo<? super T>>, P> $$1, final zk<? super T> $$2) {
+      return new zm() {
+         @Override
+         public void a(zo<?> $$0x, Consumer<zo<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
             } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
+               $$1.accept($$0);
             }
-         });
-         throw alw.a;
-      }
+         }
+
+         @Nullable
+         @Override
+         public zm.a a(zo<?> $$0x) {
+            return $$0 == $$2 ? new zm.a() {
+               private final List<zo<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public zo<?> a(zo<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((zo<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   public static <T extends wi> aa a(Exception $$0, zj<T> $$1, T $$2) {
-      if ($$0 instanceof aa $$3) {
-         a($$3.a(), $$2, $$1);
-         return $$3;
-      } else {
-         p $$4 = p.a($$0, "Main thread packet handler");
-         a($$4, $$2, $$1);
-         return new aa($$4);
-      }
-   }
+   void a(zo<?> var1, Consumer<zo<?>> var2);
 
-   public static <T extends wi> void a(p $$0, T $$1, @Nullable zj<T> $$2) {
-      if ($$2 != null) {
-         q $$3 = $$0.a("Incoming Packet");
-         $$3.a("Type", () -> $$2.a().toString());
-         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
-         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
-      }
+   @Nullable
+   zm.a a(zo<?> var1);
 
-      $$1.a($$0);
+   public interface a {
+      @Nullable
+      zo<?> a(zo<?> var1);
    }
 }

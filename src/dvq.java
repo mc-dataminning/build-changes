@@ -1,25 +1,22 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dvq {
-   ddc c();
+public class dvq extends dwp implements dnf {
+   public static final MapCodec<dvq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czi.q.fieldOf("color").forGetter(dvq::b), t()).apply($$0, dvq::new));
+   private final czi c;
 
-   static List<dvq> d() {
-      return mh.g.s().map(dvq::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dvq> a() {
+      return a;
    }
 
-   @Nullable
-   static dvq a(djy $$0) {
-      if ($$0.h() instanceof cyi $$1) {
-         dne var6 = $$1.c();
-         if (var6 instanceof dvq) {
-            return (dvq)var6;
-         }
-      }
+   public dvq(czi $$0, ebp.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
-      czw $$2 = $$0.h();
-      return $$2 instanceof dvq ? (dvq)$$2 : null;
+   @Override
+   public czi b() {
+      return this.c;
    }
 }

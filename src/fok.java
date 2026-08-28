@@ -1,121 +1,211 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fok extends hro {
-   private static final xc a = xc.c("mco.selectServer.popup");
-   private static final xc b = xc.c("mco.selectServer.close");
-   private static final alk c = alk.b("popup/background");
-   private static final alk C = alk.b("icon/trial_available");
-   private static final fwa D = new fwa(alk.b("widget/cross_button"), alk.b("widget/cross_button_highlighted"));
-   private static final int E = 236;
-   private static final int F = 34;
-   private static final int G = 6;
-   private static final int H = 195;
-   private static final int I = 152;
-   private static final int J = 4;
-   private static final int K = 10;
-   private static final int L = 320;
-   private static final int M = 172;
-   private static final int N = 100;
-   private static final int O = 99;
-   private static final int P = 100;
-   private static List<alk> Q = List.of();
-   private final gaf R;
-   private final boolean S;
+public class fok extends hrc {
+   static final alr a = alr.b("pending_invite/accept_highlighted");
+   static final alr b = alr.b("pending_invite/accept");
+   static final alr c = alr.b("pending_invite/reject_highlighted");
+   static final alr C = alr.b("pending_invite/reject");
+   private static final Logger D = LogUtils.getLogger();
+   private static final xg E = xg.c("mco.invites.nopending");
+   static final xg F = xg.c("mco.invites.button.accept");
+   static final xg G = xg.c("mco.invites.button.reject");
+   private final fzq H;
+   private final CompletableFuture<List<fmk>> I = CompletableFuture.supplyAsync(() -> {
+      try {
+         return flq.a().j().a;
+      } catch (fnm var1x) {
+         D.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ag.i());
    @Nullable
-   private fun T;
-   private int U;
-   private int V;
+   xg J;
+   fok.b K;
+   private fty L;
+   private fty M;
 
-   public fok(gaf $$0, boolean $$1) {
-      super(a);
-      this.R = $$0;
-      this.S = $$1;
-   }
-
-   public static void a(avh $$0) {
-      Collection<alk> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
+   public fok(fzq $$0, xg $$1) {
+      super($$1);
+      this.H = $$0;
    }
 
    @Override
-   protected void aS_() {
-      this.R.a(this.m, this.n, this.o);
-      if (this.S) {
-         this.T = this.c(fun.a(xc.c("mco.selectServer.trial"), fzc.b(this, ayl.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
-      }
-
-      this.c(fun.a(xc.c("mco.selectServer.buy"), fzc.b(this, ayl.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
-      fuz $$0 = this.c(new fuz(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aP_(), b));
-      $$0.a(fvy.a(b));
-      int $$1 = 142 - (this.S ? 40 : 20);
-      fux $$2 = new fux(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
-      if ($$2.q()) {
-         $$2.h(94);
-      }
-
-      this.c($$2);
+   public void aT_() {
+      fll.f();
+      this.K = new fok.b();
+      this.I.thenAcceptAsync($$0 -> {
+         List<fok.a> $$1 = $$0.stream().map($$0x -> new fok.a($$0x)).toList();
+         this.K.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aY().b(E);
+         }
+      }, this.r);
+      this.c(this.K);
+      this.L = this.c((fty)fty.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fty)fty.a(xf.d, $$0 -> this.aQ_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fty)fty.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.E();
    }
 
    @Override
-   public void e() {
-      super.e();
-      if (++this.V > 100) {
-         this.V = 0;
-         this.U = (this.U + 1) % Q.size();
+   public void aQ_() {
+      this.m.a(this.H);
+   }
+
+   @Override
+   void c(boolean $$0) {
+      if (this.K.p() instanceof fok.a $$1) {
+         String $$2 = $$1.c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               flq $$2x = flq.a();
+               if ($$0) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (fnm var3) {
+               D.error("Couldn't handle invite", var3);
+               return false;
+            }
+         }, ag.i()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.K.a($$1);
+               this.E();
+               fnp $$3 = this.m.bb();
+               if ($$0) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.r);
       }
    }
 
    @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      this.J = null;
       super.a($$0, $$1, $$2, $$3);
-      if (this.T != null) {
-         a($$0, this.T);
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.J != null) {
+         $$0.a(this.p, this.J, $$1, $$2);
+      }
+
+      if (this.I.isDone() && this.K.b()) {
+         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
       }
    }
 
-   public static void a(ftz $$0, fun $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(gsn::H, C, $$1.F() + $$1.A() - 8 - 4, $$1.G() + $$1.y() / 2 - 4, 8, 8);
-      $$0.c().b();
+   void E() {
+      fok.a $$0 = this.K.p();
+      this.L.k = $$0 != null;
+      this.M.k = $$0 != null;
    }
 
-   @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      this.R.a($$0, -1, -1, $$3);
-      $$0.d();
-      fjs $$4 = this.m.h();
-      RenderSystem.getDevice().b().a($$4.e(), 1.0);
-      this.A();
-      this.b($$0);
-      $$0.a(gsn::H, c, this.E(), this.F(), 320, 172);
-      if (!Q.isEmpty()) {
-         $$0.a(gsn::H, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
+   class a extends fuu.a<fok.a> {
+      private static final int b = 38;
+      final fmk c;
+      private final List<fnt> d;
+
+      a(final fmk $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fok.a.a(), new fok.a.b());
+      }
+
+      @Override
+      public void a(ftk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fnt.a(fok.this.K, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(ftk $$0, fmk $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.b(fok.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
+         $$0.b(fok.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
+         $$0.b(fok.this.p, fpg.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
+         fnt.a($$0, this.d, fok.this.K, $$2, $$3, $$4, $$5);
+         fpg.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public xg a() {
+         xg $$0 = xf.b(xg.b(this.c.b), xg.b(this.c.c), fpg.a(this.c.e));
+         return xg.a("narrator.select", $$0);
+      }
+
+      class a extends fnt {
+         a() {
+            super(15, 15, 215, 5);
+         }
+
+         @Override
+         protected void a(ftk $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gry::H, $$3 ? fok.a : fok.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fok.this.J = fok.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fok.this.c(true);
+         }
+      }
+
+      class b extends fnt {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(ftk $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(gry::H, $$3 ? fok.c : fok.C, $$1, $$2, 18, 18);
+            if ($$3) {
+               fok.this.J = fok.G;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fok.this.c(false);
+         }
       }
    }
 
-   private int E() {
-      return (this.n - 320) / 2;
-   }
+   class b extends fuu<fok.a> {
+      public b() {
+         super(fqq.Q(), fok.this.n, fok.this.o - 72, 32, 36);
+      }
 
-   private int F() {
-      return (this.o - 172) / 2;
-   }
+      @Override
+      public int a() {
+         return 260;
+      }
 
-   private int G() {
-      return this.E() + 320;
-   }
+      @Override
+      public void a(int $$0) {
+         super.a($$0);
+         fok.this.E();
+      }
 
-   private int H() {
-      return this.F() + 172;
-   }
+      public boolean b() {
+         return this.t() == 0;
+      }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.R);
+      public void a(fok.a $$0) {
+         this.g($$0);
+      }
    }
 }

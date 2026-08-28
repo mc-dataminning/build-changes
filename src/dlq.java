@@ -1,89 +1,142 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dlq {
-   public static final Codec<dlq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dlq.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ali.c(mi.aG)).apply($$0, dlq::new)
-   );
-   public static final Codec<jg<dlq>> b = alg.a(mi.aW, a);
-   private final dlq.a c;
-   private final dll.c<jg<dlc>> d;
+public abstract class dlq implements dlp {
+   public static final Codec<dlq> a = mh.Z.q().dispatchStable(dlq::a, Function.identity());
+   private final Supplier<Set<jg<dlm>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   public dlq(dlq.a $$0, jh<dlc> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   protected dlq() {
    }
 
-   public dll.c<jg<dlc>> a() {
-      return this.d;
+   protected abstract MapCodec<? extends dlq> a();
+
+   protected abstract Stream<jg<dlm>> b();
+
+   public Set<jg<dlm>> c() {
+      return this.b.get();
    }
 
-   public static Map<dlq.a, dll.c<alj<dlc>>> b() {
-      return dlq.a.f.values().stream().collect(Collectors.toMap($$0 -> (dlq.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
+   public Set<jg<dlm>> a(int $$0, int $$1, int $$2, int $$3, dlv.f $$4) {
+      int $$5 = jr.a($$0 - $$3);
+      int $$6 = jr.a($$1 - $$3);
+      int $$7 = jr.a($$2 - $$3);
+      int $$8 = jr.a($$0 + $$3);
+      int $$9 = jr.a($$1 + $$3);
+      int $$10 = jr.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<jg<dlm>> $$14 = Sets.newHashSet();
 
-   public static record a(alk d, dlq.a.a e) {
-      public static final dlq.a a = new dlq.a(
-         alk.b("nether"),
-         new dlq.a.a() {
-            @Override
-            public <T> dll.c<T> apply(Function<alj<dlc>, T> $$0) {
-               return new dll.c<>(
-                  List.of(
-                     Pair.of(dll.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dlj.ad)),
-                     Pair.of(dll.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dlj.ag)),
-                     Pair.of(dll.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dlj.af)),
-                     Pair.of(dll.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dlj.ae)),
-                     Pair.of(dll.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dlj.ah))
-                  )
-               );
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
             }
          }
-      );
-      public static final dlq.a b = new dlq.a(alk.b("overworld"), new dlq.a.a() {
-         @Override
-         public <T> dll.c<T> apply(Function<alj<dlc>, T> $$0) {
-            return dlq.a.a($$0);
+      }
+
+      return $$14;
+   }
+
+   @Nullable
+   public Pair<iw, jg<dlm>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jg<dlm>> $$4, bai $$5, dlv.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<iw, jg<dlm>> a(iw $$0, int $$1, int $$2, int $$3, Predicate<jg<dlm>> $$4, dlv.f $$5, dkm $$6) {
+      Set<jg<dlm>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = azz.a($$0.v(), $$6.K_() + 1, $$6.ao() + 1, $$3).toArray();
+
+         for (iw.a $$10 : iw.a(iw.c, $$8, jc.f, jc.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = jr.a($$11);
+            int $$14 = jr.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = jr.a($$15);
+               jg<dlm> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new iw($$11, $$15, $$12), $$17);
+               }
+            }
          }
-      });
-      static final Map<alk, dlq.a> f = Stream.of(a, b).collect(Collectors.toMap(dlq.a::b, $$0 -> (dlq.a)$$0));
-      public static final Codec<dlq.a> c = alk.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
 
-      static <T> dll.c<T> a(Function<alj<dlc>, T> $$0) {
-         Builder<Pair<dll.d, T>> $$1 = ImmutableList.builder();
-         new dls().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dll.c<>($$1.build());
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<iw, jg<dlm>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jg<dlm>> $$5, bai $$6, boolean $$7, dlv.f $$8) {
+      int $$9 = jr.a($$0);
+      int $$10 = jr.a($$2);
+      int $$11 = jr.a($$3);
+      int $$12 = jr.a($$1);
+      Pair<iw, jg<dlm>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = ac.ar ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               jg<dlm> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     iw $$24 = new iw(jr.c($$21), $$1, jr.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
+         }
+
+         $$16 += $$4;
       }
 
-      public Stream<alj<dlc>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<alj<dlc>>map(Pair::getSecond).distinct();
-      }
+      return $$13;
+   }
 
-      public alk b() {
-         return this.d;
-      }
+   @Override
+   public abstract jg<dlm> getNoiseBiome(int var1, int var2, int var3, dlv.f var4);
 
-      public dlq.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dll.c<T> apply(Function<alj<dlc>, T> var1);
-      }
+   public void a(List<String> $$0, iw $$1, dlv.f $$2) {
    }
 }

@@ -1,32 +1,25 @@
-public interface dbp {
-   dbp.a a = new dbp.a(false, false);
-   dbp.a b = new dbp.a(true, false);
+public class dbp extends dag implements dbe {
+   public static float a = 1.5F;
 
-   boolean a();
+   public dbp(dag.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
-
-   public static record a(boolean c, boolean d) implements dbp {
-      @Override
-      public boolean a() {
-         return this.c;
+   @Override
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      dak $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.zE, awz.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof asb $$4) {
+         ctd.a(cti::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+      $$1.b(axi.c.b(this));
+      $$3.a(1, $$1);
+      return bvc.a;
+   }
 
-      public dbp.a c() {
-         return new dbp.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public ctd a(dkj $$0, jq $$1, dak $$2, jc $$3) {
+      return new cti($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

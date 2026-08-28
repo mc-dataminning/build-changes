@@ -1,78 +1,54 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-@Deprecated
-public class eqy extends erk {
-   public static final MapCodec<eqy> a = bty.b(0, 256).fieldOf("count").xmap(eqy::new, $$0 -> $$0.c);
-   private final bty c;
+public class eqy extends equ {
+   public static final MapCodec<eqy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eij.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eij.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eqy::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final eij d;
+   private final eij e;
+   private final int f;
 
-   private eqy(bty $$0) {
-      this.c = $$0;
+   private eqy(eij $$0, eij $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eqy a(bty $$0) {
-      return new eqy($$0);
-   }
-
-   public static eqy a(int $$0) {
-      return a(btv.a($$0));
-   }
-
-   @Override
-   public Stream<iw> a_(eri $$0, azz $$1, iw $$2) {
-      Builder<iw> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(ehf.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new iw($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public static eqy a(eij $$0, eij $$1, int $$2) {
+      return new eqy($$0, $$1, $$2);
    }
 
    @Override
-   public erl<?> b() {
-      return erl.i;
-   }
-
-   private static int a(eri $$0, int $$1, int $$2, int $$3, int $$4) {
-      iw.a $$5 = new iw.a($$1, $$2, $$3);
-      int $$6 = 0;
-      ebg $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         ebg $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(dng.I)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
-         }
-
-         $$7 = $$9;
+   public int a(bai $$0, eim $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = azz.a($$0, $$2 + this.f, $$3);
+         int $$5 = azz.a($$0, $$2, $$4 - 1);
+         return azz.a($$0, $$2, $$5 - 1 + this.f);
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   private static boolean a(ebg $$0) {
-      return $$0.l() || $$0.a(dng.J) || $$0.a(dng.K);
+   @Override
+   public eqv<?> a() {
+      return eqv.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

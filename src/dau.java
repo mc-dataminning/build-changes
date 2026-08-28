@@ -1,57 +1,59 @@
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.function.Predicate;
 
-public interface dau {
-   csu a(djz var1, jq var2, daa var3, jc var4);
-
-   default dau.a a() {
-      return dau.a.a;
+public class dau extends dag {
+   public dau(dag.a $$0) {
+      super($$0);
    }
 
-   default void a(csu $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(dau.b b, float c, float d, OptionalInt e) {
-      public static final dau.a a = a().a();
-
-      public static dau.a.a a() {
-         return new dau.a.a();
+   @Override
+   public bvc a(def $$0) {
+      dkj $$1 = $$0.q();
+      iw $$2 = $$0.a();
+      ebq $$3 = $$1.a_($$2);
+      if ($$3.a(axn.U)) {
+         csi $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            return a($$4, $$1, $$2);
+         }
       }
 
-      public static class a {
-         private dau.b a = ($$0, $$1) -> dpk.a($$0, 0.7, new ffs(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
+      return bvc.e;
+   }
 
-         public dau.a.a a(dau.b $$0) {
-            this.a = $$0;
-            return this;
+   public static bvc a(csi $$0, dkj $$1, iw $$2) {
+      coh $$3 = null;
+      List<byd> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+
+      for (byd $$5 : $$4) {
+         if ($$3 == null) {
+            $$3 = coh.b($$1, $$2);
+            $$3.m();
          }
 
-         public dau.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
+         $$5.a_($$3, true);
+      }
 
-         public dau.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public dau.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public dau.a a() {
-            return new dau.a(this.a, this.b, this.c, this.d);
-         }
+      if (!$$4.isEmpty()) {
+         $$1.a(egq.b, $$2, egq.a.a($$0));
+         return bvc.b;
+      } else {
+         return bvc.e;
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      jq getDispensePosition(lf var1, jc var2);
+   public static List<byd> a(dkj $$0, iw $$1, Predicate<byd> $$2) {
+      double $$3 = 7.0;
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      ffx $$7 = new ffx((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
+      return $$0.a(bxe.class, $$7, $$1x -> {
+         if ($$1x instanceof byd $$2x && $$2.test($$2x)) {
+            return true;
+         }
+
+         return false;
+      }).stream().map(byd.class::cast).toList();
    }
 }

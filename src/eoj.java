@@ -1,48 +1,28 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eoj extends eod {
-   public static final MapCodec<eoj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bty.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eoj::new)
-   );
-   private final bty b;
+public class eoj extends eoi {
+   public static final MapCodec<eoj> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eoj::new));
 
-   public eoj(bty $$0, bty $$1, bty $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public eoj(buh $$0, buh $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.b;
+   protected eoo<?> a() {
+      return eoo.e;
    }
 
    @Override
-   protected void a(dkf $$0, eod.b $$1, azz $$2, enn $$3, int $$4, eod.a $$5, int $$6, int $$7, int $$8) {
-      iw $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
+   protected void a(dkp $$0, eon.b $$1, bai $$2, enx $$3, int $$4, eon.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(azz $$0, int $$1, enn $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(azz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(bai $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

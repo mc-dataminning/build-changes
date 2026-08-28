@@ -1,47 +1,84 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
 import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
 public class aos {
    private static final Logger a = LogUtils.getLogger();
-
-   public static void a(Collection<String> $$0, ek $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(xc.c("commands.reload.failure"));
-         return null;
-      });
-   }
-
-   private static Collection<String> a(aur $$0, fad $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
-
-      for (String $$5 : $$0.c()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
-      }
-
-      return $$3;
-   }
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xg.c("commands.perf.alreadyRunning"));
 
    public static void a(CommandDispatcher<ek> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         ek $$1 = (ek)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         aur $$3 = $$2.aF();
-         fad $$4 = $$2.aZ();
-         Collection<String> $$5 = $$3.e();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> xc.c("commands.reload.success"), true);
-         a($$6, $$1);
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(el.a("start").executes($$0x -> a((ek)$$0x.getSource()))))
+            .then(el.a("stop").executes($$0x -> b((ek)$$0x.getSource())))
+      );
+   }
+
+   private static int a(ek $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aT()) {
+         throw c.create();
+      } else {
+         Consumer<brk> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> xg.c("commands.perf.started"), false);
          return 0;
-      }));
+      }
+   }
+
+   private static int b(ek $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aT()) {
+         throw b.create();
+      } else {
+         $$1.aV();
+         return 0;
+      }
+   }
+
+   private static void a(ek $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ag.f(), $$2.aZ().e(), ac.b().b());
+
+      String $$4;
+      try {
+         $$4 = w.a(bth.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(xg.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
+      }
+
+      try (azj $$7 = new azj(bth.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ae()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> xg.a("commands.perf.reportSaved", $$4), false);
+   }
+
+   private static void a(ek $$0, brk $$1) {
+      if ($$1 != brg.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)bbd.a;
+         $$0.a(() -> xg.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

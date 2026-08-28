@@ -1,119 +1,77 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public interface gnb extends gna {
-   static gnb.a a(GameProfile $$0, xs $$1, gmz $$2) {
-      return new gnb.a($$0, $$1, $$2);
+public class gnb implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gnb.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(iw $$0, ebq $$1, gqm $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gnb.a(this.b, $$1, $$2.dt()));
    }
 
-   static gnb.b a(xc $$0, Instant $$1) {
-      return new gnb.b($$0, $$1);
+   public boolean a(iw $$0, ebq $$1) {
+      gnb.a $$2 = (gnb.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
    }
 
-   xc b();
+   public void a(int $$0, glo $$1) {
+      ObjectIterator<Entry<gnb.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-   default xc c() {
-      return this.b();
-   }
-
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xs d, gmz e) implements gnb {
-      public static final MapCodec<gnb.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayy.z.fieldOf("profile").forGetter(gnb.a::f), xs.a.forGetter(gnb.a::g), gmz.d.optionalFieldOf("trust_level", gmz.a).forGetter(gnb.a::h)
-               )
-               .apply($$0, gnb.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public xc b() {
-         if (!this.d.o().a()) {
-            xc $$0 = this.d.o().b(this.d.c());
-            return (xc)($$0 != null ? $$0 : xc.i());
-         } else {
-            return this.d.d();
+      while ($$2.hasNext()) {
+         Entry<gnb.a> $$3 = (Entry<gnb.a>)$$2.next();
+         gnb.a $$4 = (gnb.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            iw $$5 = iw.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
          }
       }
-
-      @Override
-      public xc c() {
-         xc $$0 = this.b();
-         xc $$1 = this.i();
-         return xc.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public xc d() {
-         xc $$0 = this.i();
-         return xc.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private xc i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return xc.b($$0.format(f)).a(o.u, o.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gna.a a() {
-         return gna.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xs g() {
-         return this.d;
-      }
-
-      public gmz h() {
-         return this.e;
-      }
    }
 
-   public static record b(xc c, Instant d) implements gnb {
-      public static final MapCodec<gnb.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xe.a.fieldOf("message").forGetter(gnb.b::d), ayy.q.fieldOf("time_stamp").forGetter(gnb.b::e)).apply($$0, gnb.b::new)
-      );
+   public gnb a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
 
-      @Override
-      public xc b() {
-         return this.c;
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final fgc a;
+      int b;
+      ebq c;
+
+      a(int $$0, ebq $$1, fgc $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
+      gnb.a a(int $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      @Override
-      public gna.a a() {
-         return gna.a.b;
-      }
-
-      public xc d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
+      void a(ebq $$0) {
+         this.c = $$0;
       }
    }
 }

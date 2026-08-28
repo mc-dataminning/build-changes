@@ -1,20 +1,46 @@
+import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fxx {
-   private static final int a = 4;
+public class fxx<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fxx<?> a = new fxx<>(bbh.a, ($$0, $$1) -> {
+   });
 
-   private fxx() {
+   private fxx(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fyc a(ftx $$0, fyd $$1, xc $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   public static fxx<?> a(String $$0) {
+      return new fxx<>($$0, Consumer::accept);
    }
 
-   public static fyc a(ftx $$0, fyd $$1, xc $$2, Consumer<fye> $$3) {
-      fyf $$4 = fyf.d().a(4);
-      $$4.a(new fvu($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public static fxx<?> a(xg $$0) {
+      return new fxx<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
+
+   public static fxx<?> a(List<xg> $$0) {
+      return new fxx<>($$0, ($$1, $$2) -> $$0.stream().map(xg::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fxx<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

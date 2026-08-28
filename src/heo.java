@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class heo extends her {
+public class heo extends hfe {
    public boolean a = true;
-   @Nullable
-   public ffs b;
+   public boolean b = true;
+   public float c;
 }

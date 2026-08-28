@@ -8,21 +8,20 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
 import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
 public class fm<T> implements ArgumentType<jg<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xc.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xc.c("argument.resource_or_id.invalid"));
-   private static final vb<Object> d = vb.a(JavaOps.INSTANCE);
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xg.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xg.c("argument.resource_or_id.invalid"));
+   private static final vb<?> d = vb.a(uo.a);
    private final ji.a e;
    private final boolean f;
    private final Codec<jg<T>> g;
 
-   protected fm(eg $$0, alj<jt<T>> $$1, Codec<jg<T>> $$2) {
+   protected fm(eg $$0, alq<jt<T>> $$1, Codec<jg<T>> $$2) {
       this.e = $$0;
       this.f = $$0.a($$1).isPresent();
       this.g = $$2;
@@ -32,7 +31,7 @@ public class fm<T> implements ArgumentType<jg<T>> {
       return new fm.c($$0);
    }
 
-   public static jg<fao> a(CommandContext<ek> $$0, String $$1) throws CommandSyntaxException {
+   public static jg<fay> a(CommandContext<ek> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -40,7 +39,7 @@ public class fm<T> implements ArgumentType<jg<T>> {
       return new fm.a($$0);
    }
 
-   public static jg<fbx> b(CommandContext<ek> $$0, String $$1) {
+   public static jg<fch> b(CommandContext<ek> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -48,7 +47,7 @@ public class fm<T> implements ArgumentType<jg<T>> {
       return new fm.b($$0);
    }
 
-   public static jg<fds> c(CommandContext<ek> $$0, String $$1) {
+   public static jg<fec> c(CommandContext<ek> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -58,9 +57,14 @@ public class fm<T> implements ArgumentType<jg<T>> {
 
    @Nullable
    public jg<T> a(StringReader $$0) throws CommandSyntaxException {
-      ali<Object> $$1 = this.e.a(JavaOps.INSTANCE);
-      Dynamic<?> $$2 = a($$1, d, $$0);
-      return !this.f ? null : (jg)this.g.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+      return this.a($$0, d);
+   }
+
+   @Nullable
+   private <O> jg<T> a(StringReader $$0, vb<O> $$1) throws CommandSyntaxException {
+      alp<O> $$2 = this.e.a($$1.a());
+      Dynamic<?> $$3 = a($$2, $$1, $$0);
+      return !this.f ? null : (jg)this.g.parse($$3).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
    }
 
    @VisibleForTesting
@@ -71,7 +75,7 @@ public class fm<T> implements ArgumentType<jg<T>> {
          return new Dynamic($$0, $$4);
       } else {
          $$2.setCursor($$3);
-         alk $$5 = alk.a($$2);
+         alr $$5 = alr.a($$2);
          if (b($$2)) {
             return new Dynamic($$0, $$0.createString($$5.toString()));
          } else {
@@ -89,21 +93,21 @@ public class fm<T> implements ArgumentType<jg<T>> {
       return b;
    }
 
-   public static class a extends fm<fbx> {
+   public static class a extends fm<fch> {
       protected a(eg $$0) {
-         super($$0, mi.bs, fbz.d);
+         super($$0, mi.bs, fcj.d);
       }
    }
 
-   public static class b extends fm<fds> {
+   public static class b extends fm<fec> {
       protected b(eg $$0) {
-         super($$0, mi.bt, fds.f);
+         super($$0, mi.bt, fec.f);
       }
    }
 
-   public static class c extends fm<fao> {
+   public static class c extends fm<fay> {
       protected c(eg $$0) {
-         super($$0, mi.br, fao.e);
+         super($$0, mi.br, fay.e);
       }
    }
 }

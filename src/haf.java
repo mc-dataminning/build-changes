@@ -1,22 +1,17 @@
-import java.util.function.UnaryOperator;
+public class haf extends gwn<cpw, hga> {
+   private static final alr a = alr.b("textures/entity/skeleton/stray.png");
+   private static final alr j = alr.b("textures/entity/skeleton/stray_overlay.png");
 
-public class haf extends gwy {
-   private final gic<hec> a;
-   private final alk g;
-
-   public haf(gyk.a $$0, gle $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gjp($$0.a($$1));
+   public haf(gxv.a $$0) {
+      super($$0, gkq.dr, gkq.ds, gkq.dt);
+      this.a(new hcn<>(this, $$0.f(), gkq.du, j));
    }
 
-   @Override
-   protected gic<hec> a() {
-      return this.a;
+   public alr b(hga $$0) {
+      return a;
    }
 
-   @Override
-   protected gsn b() {
-      return this.a.a(this.g);
+   public hga b() {
+      return new hga();
    }
 }

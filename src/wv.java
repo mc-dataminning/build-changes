@@ -1,57 +1,101 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import io.netty.util.ReferenceCountUtil;
 
-public class wv extends ByteToMessageDecoder {
-   private static final int a = 3;
-   private final ByteBuf b = Unpooled.directBuffer(3);
-   @Nullable
-   private final vo c;
-
-   public wv(@Nullable vo $$0) {
-      this.c = $$0;
+public class wv {
+   public static <T extends wk> wv.b a(wm<T> $$0) {
+      return a(new wi<T>($$0));
    }
 
-   protected void handlerRemoved0(ChannelHandlerContext $$0) {
-      this.b.release();
+   private static wv.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
    }
 
-   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (!$$0.isReadable()) {
-            return false;
-         }
+   public static <T extends wk> wv.d b(wm<T> $$0) {
+      return a(new wj<T>($$0));
+   }
 
-         byte $$3 = $$0.readByte();
-         $$1.writeByte($$3);
-         if (!wt.a($$3)) {
-            return true;
+   private static wv.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   }
+
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof zo)) {
+            $$0.fireChannelRead($$1);
+         } else {
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
          }
       }
 
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      this.b.clear();
-      if (!a($$1, this.b)) {
-         $$1.resetReaderIndex();
-      } else {
-         int $$3 = wt.a(this.b);
-         if ($$1.readableBytes() < $$3) {
-            $$1.resetReaderIndex();
-         } else {
-            if (this.c != null) {
-               this.c.a($$3 + wt.a($$3));
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof wv.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
             }
 
-            $$2.add($$1.readBytes($$3));
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
          }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default wv.b andThen(wv.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
+   }
+
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof zo) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof wv.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
+            } else {
+               $$0.write($$1, $$2);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
+
+      default wv.d andThen(wv.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
       }
    }
 }

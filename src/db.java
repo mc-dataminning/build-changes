@@ -9,8 +9,8 @@ public class db extends dl<db.a> {
       return db.a.a;
    }
 
-   public void a(arv $$0, daa $$1, @Nullable bwv $$2) {
-      faj $$3 = bz.b($$0, $$2);
+   public void a(asc $$0, dak $$1, @Nullable bxe $$2) {
+      fat $$3 = bz.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class db extends dl<db.a> {
          return aq.S.a(new db.a($$0, $$1, $$2));
       }
 
-      public boolean a(arv $$0, daa $$1, faj $$2) {
+      public boolean a(asc $$0, dak $$1, fat $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

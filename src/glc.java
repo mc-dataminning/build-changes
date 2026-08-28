@@ -1,24 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
 public class glc {
-   public static final glc a = new glc(Map.of());
-   private final Map<gle, glm> b;
+   private final float a;
+   private final float b;
 
-   public glc(Map<gle, glm> $$0) {
-      this.b = $$0;
+   public glc(float $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public glg a(gle $$0) {
-      glm $$1 = this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
-      } else {
-         return $$1.a();
-      }
+   public float a() {
+      return this.a;
    }
 
-   public static glc a() {
-      return new glc(ImmutableMap.copyOf(gld.a()));
+   public float b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
    }
 }

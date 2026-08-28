@@ -1,17 +1,29 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class bfd extends bhx {
+public class bfd extends bfk {
    public bfd(Schema $$0) {
-      super($$0, false, "EntitySalmonSizeFix", bjd.D, "minecraft:salmon");
+      super("EntityMinecartIdentifiersFix", $$0, true);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         String $$1 = $$0x.get("type").asString("medium");
-         return $$1.equals("large") ? $$0x : $$0x.set("type", $$0x.createString("medium"));
-      });
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("Minecart")) {
+         return Pair.of($$0, $$1);
+      } else {
+         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+
+         String $$3 = switch ($$2) {
+            case 1 -> "MinecartChest";
+            case 2 -> "MinecartFurnace";
+            default -> "MinecartRideable";
+         };
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bjm.D).types().get($$3);
+         return Pair.of($$3, ag.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+      }
    }
 }

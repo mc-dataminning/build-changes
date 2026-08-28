@@ -1,24 +1,24 @@
-import java.util.Set;
-
-public class gjd extends gjn<hfr> {
-   public static final glp a = new ggx(false, 4.0F, 4.0F, Set.of("head"));
-
-   public gjd(glg $$0) {
+public class gjd extends giy<hfx> {
+   public gjd(gkr $$0) {
       super($$0);
    }
 
-   public static glm b(glk $$0) {
-      return glm.a(c($$0), 64, 64);
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("head", gkw.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gkv(0.6F)), gkt.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gkw.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gkv(1.75F)), gkt.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gkw $$2 = gkw.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gkv(0.5F));
+      $$1.a("right_hind_leg", $$2, gkt.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gkt.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, gkt.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, gkt.a(3.0F, 12.0F, -5.0F));
+      return gkx.a($$0, 64, 32);
    }
 
-   protected static glo c(glk $$0) {
-      glo $$1 = gjn.a(6, $$0);
-      glq $$2 = $$1.a();
-      $$2.a(
-         "head",
-         gll.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
-         gli.a(0.0F, 12.0F, -6.0F)
-      );
-      return $$1;
+   public void a(hfx $$0) {
+      super.a($$0);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.aj;
+      this.b.e = $$0.b;
    }
 }

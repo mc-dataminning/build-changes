@@ -1,41 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dbg extends cyi implements cyw {
-   private final awq a;
+public enum dbg implements bax {
+   a(0, "common", o.p),
+   b(1, "uncommon", o.o),
+   c(2, "rare", o.l),
+   d(3, "epic", o.n);
 
-   public dbg(dne $$0, awq $$1, czw.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public static final Codec<dbg> e = bax.b(dbg::values);
+   public static final IntFunction<dbg> f = ayo.a($$0 -> $$0.h, values(), ayo.a.a);
+   public static final ze<ByteBuf, dbg> g = zc.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final o j;
+
+   private dbg(final int $$0, final String $$1, final o $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public o a() {
+      return this.j;
    }
 
    @Override
-   public but a(ddv $$0) {
-      but $$1 = super.a($$0);
-      crz $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), cyo.b($$0.n(), $$2));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   protected awq a(ebg $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable bxw $$0, djz $$1, iw $$2, @Nullable ffo $$3) {
-      if ($$1.k($$2) && $$1.v($$2)) {
-         if (!$$1.C) {
-            $$1.a($$2, this.c().m(), 3);
-         }
-
-         $$1.a($$0, egg.z, $$2);
-         $$1.a($$0, $$2, this.a, aws.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public String c() {
+      return this.i;
    }
 }

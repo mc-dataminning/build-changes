@@ -1,60 +1,39 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public class cha {
-   private static final cha a = new cha();
-   private final List<bxw> b;
-   private final Predicate<bxw> c;
+public class cha<T extends byh & byk> extends cfb {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   private cha() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public cha(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public cha(aru $$0, bxw $$1, List<bxw> $$2) {
-      this.b = $$2;
-      Object2BooleanOpenHashMap<bxw> $$3 = new Object2BooleanOpenHashMap($$2.size());
-      Predicate<bxw> $$4 = $$2x -> cie.b($$0, $$1, $$2x);
-      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
+   @Override
+   public boolean b() {
+      return a(this.b).O().c(dkf.Q) && this.h();
    }
 
-   public static cha a() {
-      return a;
+   private boolean h() {
+      return this.b.er() != null && this.b.er().an() == bxn.bT && this.b.et() > this.d;
    }
 
-   public Optional<bxw> a(Predicate<bxw> $$0) {
-      for (bxw $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public void d() {
+      this.d = this.b.et();
+      this.b.ag_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (byk)$$0).forEach(byk::ag_);
       }
 
-      return Optional.empty();
+      super.d();
    }
 
-   public Iterable<bxw> b(Predicate<bxw> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bxw> c(Predicate<bxw> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bxw $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bxw> $$0) {
-      for (bxw $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   private List<? extends byh> i() {
+      double $$0 = this.b.h(bzl.m);
+      ffx $$1 = ffx.a(this.b.dt()).c($$0, 10.0, $$0);
+      return this.b.dV().a((Class<? extends byh>)this.b.getClass(), $$1, bxl.f);
    }
 }

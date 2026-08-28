@@ -1,59 +1,36 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public record fdj(alj<fds> b) implements fds {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<fdj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alj.a(mi.bt).fieldOf("name").forGetter(fdj::c)).apply($$0, fdj::new));
+public class fdj extends fcg {
+   public static final MapCodec<fdj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(kk.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fdj::new)
+   );
+   private final Map<kk<?>, Boolean> b;
 
-   @Override
-   public fdt b() {
-      return fdu.p;
+   private fdj(List<fec> $$0, Map<kk<?>, Boolean> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(fap $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         fds.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
-   }
-
-   public boolean a(faj $$0) {
-      fds $$1 = $$0.a().c(this.b).map(jg.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         faj.c<?> $$2 = faj.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
+   protected dak a(dak $$0, fat $$1) {
+      $$0.a(kl.q, ddo.c, $$0x -> {
+         for (Entry<kk<?>, Boolean> $$1x : this.b.entrySet()) {
+            boolean $$2 = $$1x.getValue();
+            $$0x = $$0x.a($$1x.getKey(), !$$2);
          }
-      }
+
+         return $$0x;
+      });
+      return $$0;
    }
 
-   public static fds.a a(alj<fds> $$0) {
-      return () -> new fdj($$0);
-   }
-
-   public alj<fds> c() {
-      return this.b;
+   @Override
+   public fci<fdj> b() {
+      return fcj.P;
    }
 }

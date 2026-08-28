@@ -1,37 +1,15 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum dac implements bao {
-   a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush"),
-   k(10, "bundle");
-
-   private static final IntFunction<dac> n = ayg.a(dac::a, values(), ayg.a.a);
-   public static final Codec<dac> l = bao.a(dac::values);
-   public static final za<ByteBuf, dac> m = yy.a(n, dac::a);
-   private final int o;
-   private final String p;
-
-   private dac(final int $$0, final String $$1) {
-      this.o = $$0;
-      this.p = $$1;
-   }
-
-   public int a() {
-      return this.o;
+public class dac extends dag implements dbm {
+   public dac(dag.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.p;
+   public boolean a(dkj $$0, eac $$1, boolean $$2, csi $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aC_(), awy.nN, awz.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,20 +1,8 @@
-import com.mojang.authlib.GameProfile;
-import io.netty.buffer.ByteBuf;
-
-public record ajk(GameProfile b) implements zj<ajf> {
-   public static final za<ByteBuf, ajk> a = za.a(yy.z, ajk::b, ajk::new);
-
+public interface ajk extends ahb {
    @Override
-   public zl<ajk> a() {
-      return ajl.b;
+   default vw b() {
+      return vw.a;
    }
 
-   public void a(ajf $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(ajh var1);
 }

@@ -1,41 +1,40 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class bbt extends bhx {
+public class bbt extends DataFix {
    public bbt(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bjd.D, "minecraft:area_effect_cloud");
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bjm.D), this::a);
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Color").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Potion").result();
-      $$0 = $$0.remove("Color").remove("effects").remove("Potion");
-      if ($$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()) {
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", bbt::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", bbt::a);
+      return this.a($$0, "minecraft:trident", bbt::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
          return $$0;
       } else {
-         Dynamic<T> $$4 = $$0.emptyMap();
-         if ($$1.isPresent()) {
-            $$4 = $$4.set("custom_color", $$1.get());
-         }
-
-         if ($$2.isPresent()) {
-            $$4 = $$4.set("custom_effects", $$2.get());
-         }
-
-         if ($$3.isPresent()) {
-            $$4 = $$4.set("potion", $$3.get());
-         }
-
-         return $$0.set("potion_contents", $$4);
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
       }
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bjm.D, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bjm.D, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

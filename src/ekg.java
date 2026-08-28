@@ -1,111 +1,20 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class ekg {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class ekg extends ekw<eni> {
+   public ekg(Codec<eni> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dky $$0, iw $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(azq.b($$5) * (float)$$2);
-            int $$7 = (int)(azq.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected static boolean a(dka $$0, iw $$1) {
-      return $$0.a($$1, ekg::c);
-   }
-
-   protected static boolean b(dka $$0, iw $$1) {
-      return $$0.a($$1, ekg::e);
-   }
-
-   protected static void a(jc $$0, int $$1, boolean $$2, Consumer<ebg> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, ecd.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, ecd.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, ecd.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? ecd.a : ecd.b));
-      }
-   }
-
-   protected static void a(dka $$0, iw $$1, jc $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         iw.a $$5 = $$1.k();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dng.tb)) {
-               $$3x = $$3x.b(dtc.d, Boolean.valueOf($$0.A($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(dka $$0, iw $$1) {
-      ebg $$2 = $$0.a_($$1);
-      if ($$2.a(axg.bv)) {
-         $$0.a($$1, dng.tc.m(), 2);
+   @Override
+   public boolean a(eky<eni> $$0) {
+      dli $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      bai $$3 = $$0.d();
+      if ($$1.v($$2) && $$1.a_($$2.e()).a(dnq.fY)) {
+         dou.a($$1, $$2, $$3, 8);
          return true;
       } else {
          return false;
       }
-   }
-
-   private static ebg a(jc $$0, ecd $$1) {
-      return dng.tb.m().b(dtc.b, $$0).b(dtc.c, $$1);
-   }
-
-   public static boolean a(ebg $$0) {
-      return b($$0) || $$0.a(dng.K);
-   }
-
-   public static boolean b(ebg $$0) {
-      return $$0.a(dng.tc) || $$0.a(axg.bv);
-   }
-
-   public static boolean c(ebg $$0) {
-      return $$0.l() || $$0.a(dng.J);
-   }
-
-   public static boolean d(ebg $$0) {
-      return !$$0.l() && !$$0.a(dng.J);
-   }
-
-   public static boolean e(ebg $$0) {
-      return $$0.l() || $$0.a(dng.J) || $$0.a(dng.K);
    }
 }

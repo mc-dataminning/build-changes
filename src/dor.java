@@ -1,71 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dor extends dqc {
-   public static final MapCodec<dor> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mh.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dor::new)
-   );
-   private final dne b;
+public interface dor<T extends Enum<T>> {
+   int v_ = 4;
 
-   @Override
-   public MapCodec<dor> a() {
-      return a;
-   }
+   Optional<ebq> k_(ebq var1);
 
-   public dor(dne $$0, ebf.d $$1) {
-      super($$1);
-      this.b = $$0;
-   }
+   float aw_();
 
-   @Override
-   public void a(djz $$0, iw $$1, ebg $$2, ebg $$3, cod $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.m(), 3);
+   default void a_(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   public ebg a(ddt $$0) {
-      djd $$1 = $$0.q();
-      iw $$2 = $$0.a();
-      ebg $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
-   }
+   T c();
 
-   private static boolean a(djd $$0, iw $$1, ebg $$2) {
-      return o($$2) || a($$0, $$1);
-   }
+   default Optional<ebq> c(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-   private static boolean a(djd $$0, iw $$1) {
-      boolean $$2 = false;
-      iw.a $$3 = $$1.k();
+      for (iw $$7 : iw.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
 
-      for (jc $$4 : jc.values()) {
-         ebg $$5 = $$0.a_($$3);
-         if ($$4 != jc.a || o($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dor<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
             }
          }
       }
 
-      return $$2;
-   }
-
-   private static boolean o(ebg $$0) {
-      return $$0.y().a(axl.a);
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public int b(ebg $$0, djd $$1, iw $$2) {
-      return $$0.a($$1, $$2).ak;
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.aw_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

@@ -1,37 +1,29 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
+import java.util.function.Function;
 
 public class aoj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.pardonip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("commands.pardonip.failed"));
-
    public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("pardon-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               el.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> ep.a(((ek)$$0x.getSource()).l().ag().g().a(), $$1))
-                  .executes($$0x -> a((ek)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("list").executes($$0x -> a((ek)$$0x.getSource())))
+            .then(el.a("uuids").executes($$0x -> b((ek)$$0x.getSource())))
       );
    }
 
-   private static int a(ek $$0, String $$1) throws CommandSyntaxException {
-      if (!InetAddresses.isInetAddress($$1)) {
-         throw a.create();
-      } else {
-         avr $$2 = $$0.l().ag().g();
-         if (!$$2.a($$1)) {
-            throw b.create();
-         } else {
-            $$2.c($$1);
-            $$0.a(() -> xc.a("commands.pardonip.success", $$1), true);
-            return 1;
-         }
-      }
+   private static int a(ek $$0) {
+      return a($$0, csi::m_);
+   }
+
+   private static int b(ek $$0) {
+      return a($$0, $$0x -> xg.a("commands.list.nameAndId", $$0x.ai(), xg.a($$0x.gi().getId())));
+   }
+
+   private static int a(ek $$0, Function<asc, xg> $$1) {
+      awb $$2 = $$0.l().ag();
+      List<asc> $$3 = $$2.t();
+      xg $$4 = xj.b($$3, $$1);
+      $$0.a(() -> xg.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

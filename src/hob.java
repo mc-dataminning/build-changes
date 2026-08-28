@@ -1,395 +1,123 @@
-import com.google.common.collect.Lists;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.mojang.logging.LogUtils;
-import com.mojang.util.UndashedUuid;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hob implements AutoCloseable {
-   private static final xc a = xc.c("resourcePack.server.name");
-   private static final Pattern b = Pattern.compile("^[a-fA-F0-9]{40}$");
-   static final Logger c = LogUtils.getLogger();
-   private static final aut d = $$0 -> {
-   };
-   private static final atu e = new atu(true, auo.b.a, true);
-   private static final hod f = new hod() {
-      @Override
-      public void a(UUID $$0, hod.b $$1) {
-         hob.c.debug("Downloaded pack {} changed state to {}", $$0, $$1);
-      }
-
-      @Override
-      public void a(UUID $$0, hod.a $$1) {
-         hob.c.debug("Downloaded pack {} finished with state {}", $$0, $$1);
-      }
-   };
-   final frf g;
-   private aut h = d;
+public class hob implements hnx {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gqm c;
+   private final hpt d;
+   private final dlo e;
+   private final bai f;
+   private final Object2ObjectArrayMap<dlm, hob.a> g = new Object2ObjectArrayMap();
+   private Optional<dlk> h = Optional.empty();
+   private Optional<dlj> i = Optional.empty();
+   private float j;
    @Nullable
-   private hoe.a i;
-   final hof j;
-   private final ato k;
-   private aus l = aus.f;
-   hod m = f;
-   private int n;
+   private dlm k;
 
-   public hob(frf $$0, Path $$1, ggh.d $$2) {
-      this.g = $$0;
-
-      try {
-         this.k = new ato($$1);
-      } catch (IOException var5) {
-         throw new UncheckedIOException("Failed to open download queue in directory " + $$1, var5);
-      }
-
-      Executor $$4 = $$0::a_;
-      this.j = new hof(this.a(this.k, $$4, $$2.a, $$2.d), new hod() {
-         @Override
-         public void a(UUID $$0, hod.b $$1) {
-            hob.this.m.a($$0, $$1);
-         }
-
-         @Override
-         public void a(UUID $$0, hod.a $$1) {
-            hob.this.m.a($$0, $$1);
-         }
-      }, this.j(), this.a($$4), hof.c.a);
+   public hob(gqm $$0, hpt $$1, dlo $$2) {
+      this.f = $$0.dV().G_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   azh.a a(final int $$0) {
-      return new azh.a() {
-         private final fww.a c = new fww.a();
-         private xc d = xc.i();
-         @Nullable
-         private xc e = null;
-         private int f;
-         private int g;
-         private OptionalLong h = OptionalLong.empty();
-
-         private void b() {
-            hob.this.g.execute(() -> fww.b(hob.this.g.aA(), this.c, this.d, this.e));
-         }
-
-         private void b(long $$0x) {
-            if (this.h.isPresent()) {
-               this.e = xc.a("download.pack.progress.percent", $$0 * 100L / this.h.getAsLong());
-            } else {
-               this.e = xc.a("download.pack.progress.bytes", fmb.b($$0));
-            }
-
-            this.b();
-         }
-
-         @Override
-         public void a() {
-            this.f++;
-            this.d = xc.a("download.pack.title", this.f, $$0);
-            this.b();
-            hob.c.debug("Starting pack {}/{} download", this.f, $$0);
-         }
-
-         @Override
-         public void a(OptionalLong $$0x) {
-            hob.c.debug("File size = {} bytes", $$0);
-            this.h = $$0;
-            this.b(0L);
-         }
-
-         @Override
-         public void a(long $$0x) {
-            hob.c.debug("Progress for pack {}: {} bytes", this.f, $$0);
-            this.b($$0);
-         }
-
-         @Override
-         public void a(boolean $$0x) {
-            if (!$$0) {
-               hob.c.info("Pack {} failed to download", this.f);
-               this.g++;
-            } else {
-               hob.c.debug("Download ended for pack {}", this.f);
-            }
-
-            if (this.f == $$0) {
-               if (this.g > 0) {
-                  this.d = xc.a("download.pack.failed", this.g, $$0);
-                  this.e = null;
-                  this.b();
-               } else {
-                  fww.a(hob.this.g.aA(), this.c);
-               }
-            }
-         }
-      };
-   }
-
-   private hoc a(final ato $$0, final Executor $$1, final frr $$2, final Proxy $$3) {
-      return new hoc() {
-         private static final int f = 262144000;
-         private static final HashFunction g = Hashing.sha1();
-
-         private Map<String, String> a() {
-            ah $$0 = ac.b();
-            return Map.of(
-               "X-Minecraft-Username",
-               $$2.c(),
-               "X-Minecraft-UUID",
-               UndashedUuid.toString($$2.b()),
-               "X-Minecraft-Version",
-               $$0.c(),
-               "X-Minecraft-Version-ID",
-               $$0.b(),
-               "X-Minecraft-Pack-Format",
-               String.valueOf($$0.a(atv.a)),
-               "User-Agent",
-               "Minecraft Java/" + $$0.c()
-            );
-         }
-
-         @Override
-         public void a(Map<UUID, ato.c> $$0x, Consumer<ato.b> $$1x) {
-            $$0.a(new ato.a(g, 262144000, this.a(), $$3, hob.this.a($$0.size())), $$0).thenAcceptAsync($$1, $$1);
-         }
-      };
-   }
-
-   private Runnable a(final Executor $$0) {
-      return new Runnable() {
-         private boolean c;
-         private boolean d;
-
-         @Override
-         public void run() {
-            this.d = true;
-            if (!this.c) {
-               this.c = true;
-               $$0.execute(this::a);
-            }
-         }
-
-         private void a() {
-            while (this.d) {
-               this.d = false;
-               hob.this.j.e();
-            }
-
-            this.c = false;
-         }
-      };
-   }
-
-   private hoe j() {
-      return this::a;
-   }
-
-   @Nullable
-   private List<auo> a(List<hoe.b> $$0) {
-      List<auo> $$1 = new ArrayList<>($$0.size());
-
-      for (hoe.b $$2 : Lists.reverse($$0)) {
-         String $$3 = String.format(Locale.ROOT, "server/%08X/%s", this.n++, $$2.a());
-         Path $$4 = $$2.b();
-         ats $$5 = new ats($$3, a, this.l, Optional.empty());
-         auo.c $$6 = new atq.a($$4);
-         int $$7 = ac.b().a(atv.a);
-         auo.a $$8 = auo.a($$5, $$6, $$7);
-         if ($$8 == null) {
-            c.warn("Invalid pack metadata in {}, ignoring all", $$4);
-            return null;
-         }
-
-         $$1.add(new auo($$5, $$6, $$8, e));
-      }
-
-      return $$1;
-   }
-
-   public aut a() {
-      return $$0 -> this.h.loadPacks($$0);
-   }
-
-   private static aut b(List<auo> $$0) {
-      return $$0.isEmpty() ? d : $$0::forEach;
-   }
-
-   private void a(hoe.a $$0) {
-      this.i = $$0;
-      List<hoe.b> $$1 = $$0.b();
-      List<auo> $$2 = this.a($$1);
-      if ($$2 == null) {
-         $$0.a(false);
-         List<hoe.b> $$3 = $$0.b();
-         $$2 = this.a($$3);
-         if ($$2 == null) {
-            c.warn("Double failure in loading server packs");
-            $$2 = List.of();
-         }
-      }
-
-      this.h = b($$2);
-      this.g.l();
-   }
-
-   public void b() {
-      if (this.i != null) {
-         this.i.a(false);
-         List<auo> $$0 = this.a(this.i.b());
-         if ($$0 == null) {
-            c.warn("Double failure in loading server packs");
-            $$0 = List.of();
-         }
-
-         this.h = b($$0);
-      }
-   }
-
-   public void c() {
-      if (this.i != null) {
-         this.i.a(true);
-         this.i = null;
-         this.h = d;
-      }
-   }
-
-   public void d() {
-      if (this.i != null) {
-         this.i.a();
-         this.i = null;
-      }
-   }
-
-   @Nullable
-   private static HashCode a(@Nullable String $$0) {
-      return $$0 != null && b.matcher($$0).matches() ? HashCode.fromString($$0.toLowerCase(Locale.ROOT)) : null;
-   }
-
-   public void a(UUID $$0, URL $$1, @Nullable String $$2) {
-      HashCode $$3 = a($$2);
-      this.j.a($$0, $$1, $$3);
-   }
-
-   public void a(UUID $$0, Path $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public void a(UUID $$0) {
-      this.j.a($$0);
-   }
-
-   public void e() {
-      this.j.a();
-   }
-
-   private static hod a(final vv $$0) {
-      return new hod() {
-         @Override
-         public void a(UUID $$0x, hod.b $$1) {
-            hob.c.debug("Pack {} changed status to {}", $$0, $$1);
-
-            aah.a $$2 = switch ($$1) {
-               case a -> aah.a.d;
-               case b -> aah.a.e;
-            };
-            $$0.a(new aah($$0, $$2));
-         }
-
-         @Override
-         public void a(UUID $$0x, hod.a $$1) {
-            hob.c.debug("Pack {} changed status to {}", $$0, $$1);
-
-            aah.a $$2 = switch ($$1) {
-               case b -> aah.a.a;
-               case d -> aah.a.c;
-               case a -> aah.a.b;
-               case c -> aah.a.h;
-               case e -> aah.a.g;
-            };
-            $$0.a(new aah($$0, $$2));
-         }
-      };
-   }
-
-   public void a(vv $$0, hof.c $$1) {
-      this.l = aus.f;
-      this.m = a($$0);
-      switch ($$1) {
-         case b:
-            this.j.b();
-            break;
-         case c:
-            this.j.c();
-            break;
-         case a:
-            this.j.d();
-      }
-   }
-
-   public void f() {
-      this.l = aus.e;
-      this.m = f;
-      this.j.b();
-   }
-
-   public void g() {
-      this.j.b();
-   }
-
-   public void h() {
-      this.j.c();
-   }
-
-   public CompletableFuture<Void> b(final UUID $$0) {
-      final CompletableFuture<Void> $$1 = new CompletableFuture<>();
-      final hod $$2 = this.m;
-      this.m = new hod() {
-         @Override
-         public void a(UUID $$0x, hod.b $$1x) {
-            $$2.a($$0, $$1);
-         }
-
-         @Override
-         public void a(UUID $$0x, hod.a $$1x) {
-            if ($$0.equals($$0)) {
-               hob.this.m = $$2;
-               if ($$1 == hod.a.b) {
-                  $$1.complete(null);
-               } else {
-                  $$1.completeExceptionally(new IllegalStateException("Failed to apply pack " + $$0 + ", reason: " + $$1));
-               }
-            }
-
-            $$2.a($$0, $$1);
-         }
-      };
-      return $$1;
-   }
-
-   public void i() {
-      this.j.a();
-      this.m = f;
-      this.j.d();
+   public float b() {
+      return this.j;
    }
 
    @Override
-   public void close() throws IOException {
-      this.k.close();
+   public void a() {
+      this.g.values().removeIf(hnw::m);
+      dlm $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.n();
+         this.i = $$0.o();
+         this.g.values().forEach(hob.a::o);
+         $$0.m().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new hob.a((awx)$$1.a());
+                  this.d.a((hon)$$2);
+               }
+
+               $$2.p();
+               return $$2;
+            }));
+      }
+
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(hoi.b($$0x.a().a()));
+         }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               dkj $$1 = this.c.dV();
+               int $$2 = $$0x.c() * 2 + 1;
+               iw $$3 = iw.a(
+                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(dks.a, $$3);
+               if ($$4 > 0) {
+                  this.j -= (float)$$4 / 15.0F * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(dks.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dA();
+                  double $$9 = $$6 - this.c.dE();
+                  double $$10 = $$7 - this.c.dG();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  hoi $$13 = hoi.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
+   }
+
+   public static class a extends hnw {
+      private int n;
+      private int o;
+
+      public a(awx $$0) {
+         super($$0, awz.i, hon.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
+
+         this.o = this.o + this.n;
+         this.d = azz.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
+
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
+
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
+      }
    }
 }

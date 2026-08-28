@@ -1,67 +1,70 @@
-import java.util.Locale;
-import java.util.function.Consumer;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Queues;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Deque;
+import javax.annotation.Nullable;
 
-public class bam<T> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Object[] e;
+public final class bam<T> extends AbstractIterator<T> {
+   private static final int a = Integer.MIN_VALUE;
+   @Nullable
+   private Deque<T> b = null;
+   private int c = Integer.MIN_VALUE;
+   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
 
-   public static <T> bam<T> a(int $$0, int $$1, int $$2, bam.a<T> $$3) {
-      int $$4 = $$0 - $$2;
-      int $$5 = $$1 - $$2;
-      int $$6 = 2 * $$2 + 1;
-      return new bam<>($$4, $$5, $$6, $$6, $$3);
-   }
-
-   private bam(int $$0, int $$1, int $$2, int $$3, bam.a<T> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = new Object[this.c * this.d];
-
-      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
-         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
-            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
+   public void a(T $$0, int $$1) {
+      if ($$1 == this.c && this.b != null) {
+         this.b.addLast($$0);
+      } else {
+         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
+         $$2.addLast($$0);
+         if ($$1 >= this.c) {
+            this.b = $$2;
+            this.c = $$1;
          }
       }
    }
 
-   public void a(Consumer<T> $$0) {
-      for (Object $$1 : this.e) {
-         $$0.accept((T)$$1);
-      }
-   }
-
-   public T a(int $$0, int $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+   @Nullable
+   protected T computeNext() {
+      if (this.b == null) {
+         return (T)this.endOfData();
       } else {
-         return (T)this.e[this.c($$0, $$1)];
+         T $$0 = this.b.removeFirst();
+         if ($$0 == null) {
+            return (T)this.endOfData();
+         } else {
+            if (this.b.isEmpty()) {
+               this.a();
+            }
+
+            return $$0;
+         }
       }
    }
 
-   public boolean b(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
-   }
+   private void a() {
+      int $$0 = Integer.MIN_VALUE;
+      Deque<T> $$1 = null;
+      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
-   }
+      while (var3.hasNext()) {
+         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
+         Deque<T> $$3 = (Deque<T>)$$2.getValue();
+         int $$4 = $$2.getIntKey();
+         if ($$4 > $$0 && !$$3.isEmpty()) {
+            $$0 = $$4;
+            $$1 = $$3;
+            if ($$4 == this.c - 1) {
+               break;
+            }
+         }
+      }
 
-   private int c(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 * this.d + $$3;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      T get(int var1, int var2);
+      this.c = $$0;
+      this.b = $$1;
    }
 }

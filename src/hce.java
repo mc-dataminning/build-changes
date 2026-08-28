@@ -1,18 +1,51 @@
-public class hce extends hcy<hgd, gji> {
-   private final giq<hgd> a;
+public class hce extends hcj<hfj, ghd> {
+   private final gsq a;
 
-   public hce(hah<hgd, gji> $$0, glc $$1) {
+   public hce(gzs<hfj, ghd> $$0, gsq $$1) {
       super($$0);
-      this.a = new gjh($$1.a(glf.cu));
+      this.a = $$1;
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hgd $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         flt $$6 = $$1.getBuffer(gsn.d($$3.a.a()));
-         int $$7 = gzl.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
+   public void a(fld $$0, grn $$1, int $$2, hfj $$3, float $$4, float $$5) {
+      if (!$$3.am) {
+         boolean $$6 = $$3.ar && $$3.A;
+         if (!$$3.A || $$6) {
+            ebq $$7 = $$3.a.a();
+            int $$8 = gyw.a($$3, 0.0F);
+            gta $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
+      }
+   }
+
+   private void a(fld $$0, grn $$1, int $$2, boolean $$3, ebq $$4, int $$5, gta $$6) {
+      if ($$3) {
+         gss.a($$0.c(), $$1.getBuffer(gry.s(hkp.c)), $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

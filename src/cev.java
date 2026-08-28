@@ -1,13 +1,28 @@
 import java.util.EnumSet;
 
-public class cev extends cfa {
-   public cev(bxy $$0, Class<? extends bxw> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(ces.a.b, ces.a.a));
+public class cev extends cfb {
+   private final byh a;
+
+   public cev(byh $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cfb.a.c));
+      $$0.O().a(true);
    }
 
-   public cev(bxy $$0, Class<? extends bxw> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(ces.a.b, ces.a.a));
+   @Override
+   public boolean b() {
+      return this.a.bi() && this.a.b(axs.a) > this.a.dp() || this.a.bv();
+   }
+
+   @Override
+   public boolean W_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.a.dY().i() < 0.8F) {
+         this.a.N().a();
+      }
    }
 }

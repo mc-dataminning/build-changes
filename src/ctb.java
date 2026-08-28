@@ -1,47 +1,47 @@
-public abstract class ctb extends ctc implements csr {
-   private static final akn<daa> a = akr.a(ctb.class, akp.h);
+public class ctb extends csx {
+   private static final byte d = 1;
+   private int e = 1;
 
-   public ctb(bxe<? extends ctb> $$0, djz $$1) {
+   public ctb(bxn<? extends ctb> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
-   public ctb(bxe<? extends ctb> $$0, double $$1, double $$2, double $$3, djz $$4, daa $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a($$5);
-   }
-
-   public ctb(bxe<? extends ctb> $$0, bxw $$1, djz $$2, daa $$3) {
-      this($$0, $$1.dA(), $$1.dE() - 0.1F, $$1.dG(), $$2, $$3);
-      this.c($$1);
-   }
-
-   public void a(daa $$0) {
-      this.ar().a(a, $$0.c(1));
-   }
-
-   protected abstract czw g();
-
-   @Override
-   public daa f() {
-      return this.ar().a(a);
+   public ctb(dkj $$0, byf $$1, fgc $$2, int $$3) {
+      super(bxn.Z, $$1, $$2, $$0);
+      this.e = $$3;
    }
 
    @Override
-   protected void a(akr.a $$0) {
-      $$0.a(a, new daa(this.g()));
+   protected void a(fga $$0) {
+      super.a($$0);
+      if (this.dV() instanceof asb $$1) {
+         boolean $$2 = $$1.O().c(dkf.d);
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), (float)this.e, $$2, dkj.a.c);
+         this.aq();
+      }
+   }
+
+   @Override
+   protected void a(ffz $$0) {
+      super.a($$0);
+      if (this.dV() instanceof asb $$1) {
+         bxe var6 = $$0.a();
+         bxe $$4 = this.q();
+         bvt $$5 = this.dW().a((csx)this, $$4);
+         var6.a($$1, $$5, 6.0F);
+         dgz.a($$1, var6, $$5);
+      }
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      ali<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Item", daa.b, $$1, this.f());
+      $$0.a("ExplosionPower", (byte)this.e);
    }
 
    @Override
    public void a(ua $$0) {
       super.a($$0);
-      ali<va> $$1 = this.dX().a(uo.a);
-      this.a($$0.<daa>a("Item", daa.b, $$1).orElseGet(() -> new daa(this.g())));
+      this.e = $$0.b("ExplosionPower", (byte)1);
    }
 }

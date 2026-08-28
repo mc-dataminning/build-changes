@@ -1,9 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public abstract class evz {
-   public static final Codec<evz> c = mh.m.q().dispatch("predicate_type", evz::a, ewa::codec);
+public enum evz implements bax {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   public abstract boolean a(ebg var1, azz var2);
+   public static Codec<evz> c = bax.b(evz::values);
+   private final String d;
 
-   protected abstract ewa<?> a();
+   private evz(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

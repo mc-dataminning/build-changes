@@ -1,37 +1,93 @@
-public class agw implements zj<agt> {
-   public static final za<vy, agw> a = zj.a(agw::a, agw::new);
-   private final int b;
-   private final iw c;
+import java.util.UUID;
 
-   public agw(int $$0, iw $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class agw {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(bxe $$0) {
+      if ($$0 instanceof csi) {
+         return $$0.ai().getString();
+      } else {
+         xg $$1 = $$0.ak();
+         return $$1 != null ? $$1.getString() : a($$0.cG());
+      }
    }
 
-   private agw(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
+   public static String a(UUID $$0) {
+      bai $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private static String a(bai $$0, String[] $$1) {
+      return ag.a($$1, $$0);
    }
 
-   @Override
-   public zl<agw> a() {
-      return agr.bl;
-   }
-
-   public void a(agt $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public iw e() {
-      return this.c;
+   private static bai b(UUID $$0) {
+      return bai.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,12 +1,23 @@
-public record aev(xc b) implements zj<aby> {
-   public static final za<wn, aev> a = za.a(xe.d, aev::b, aev::new);
+import javax.annotation.Nullable;
+
+public record aev(int b, jg<bwg> c) implements zo<acf> {
+   public static final ze<wp, aev> a = ze.a(zc.h, aev::b, bwg.b, aev::e, aev::new);
 
    @Override
-   public zl<aev> a() {
-      return agr.au;
+   public zq<aev> a() {
+      return agy.ao;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public bxe a(dkj $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jg<bwg> e() {
+      return this.c;
    }
 }

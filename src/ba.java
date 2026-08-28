@@ -9,10 +9,10 @@ public class ba extends dl<ba.a> {
       return ba.a.a;
    }
 
-   public void a(arv $$0, cjm $$1, cjm $$2, @Nullable bwl $$3) {
-      faj $$4 = bz.b($$0, $$1);
-      faj $$5 = bz.b($$0, $$2);
-      faj $$6 = $$3 != null ? bz.b($$0, $$3) : null;
+   public void a(asc $$0, cjv $$1, cjv $$2, @Nullable bwu $$3) {
+      fat $$4 = bz.b($$0, $$1);
+      fat $$5 = bz.b($$0, $$2);
+      fat $$6 = $$3 != null ? bz.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class ba extends dl<ba.a> {
          return aq.p.a(new ba.a(Optional.empty(), bz.a($$0), bz.a($$1), bz.a($$2)));
       }
 
-      public boolean a(faj $$0, faj $$1, @Nullable faj $$2) {
+      public boolean a(fat $$0, fat $$1, @Nullable fat $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bj> $$0, faj $$1) {
+      private static boolean a(Optional<bj> $$0, fat $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

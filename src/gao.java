@@ -1,38 +1,48 @@
-public enum gao {
-   a(
-      alk.b("advancements/box_obtained"),
-      alk.b("advancements/task_frame_obtained"),
-      alk.b("advancements/challenge_frame_obtained"),
-      alk.b("advancements/goal_frame_obtained")
-   ),
-   b(
-      alk.b("advancements/box_unobtained"),
-      alk.b("advancements/task_frame_unobtained"),
-      alk.b("advancements/challenge_frame_unobtained"),
-      alk.b("advancements/goal_frame_unobtained")
-   );
+public class gao extends gaf<cwi> {
+   private static final alr G = alr.b("container/brewing_stand/fuel_length");
+   private static final alr H = alr.b("container/brewing_stand/brew_progress");
+   private static final alr I = alr.b("container/brewing_stand/bubbles");
+   private static final alr J = alr.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   private final alk c;
-   private final alk d;
-   private final alk e;
-   private final alk f;
-
-   private gao(final alk $$0, final alk $$1, final alk $$2, final alk $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public gao(cwi $$0, csh $$1, xg $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public alk a() {
-      return this.c;
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   public alk a(ap $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(ftk $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gry::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azz.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gry::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gry::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gry::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

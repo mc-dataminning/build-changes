@@ -1,42 +1,64 @@
-public class gqo extends gpk {
-   private final bwv a;
-   private int b;
-   private final int D;
-   private final lx E;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public gqo(gmd $$0, bwv $$1, lx $$2) {
-      this($$0, $$1, $$2, 3);
+public class gqo {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = csh.h();
+   public static final Codec<gqo> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ag.a($$0, c)).xmap(gqo::new, $$0 -> $$0.f);
+   private static final DynamicOps<va> d = uo.a;
+   private static final Dynamic<?> e = new Dynamic(d, (va)dak.f.encodeStart(d, dak.l).getOrThrow());
+   private List<Dynamic<?>> f;
+
+   private gqo(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public gqo(gmd $$0, bwv $$1, lx $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dy());
+   public gqo() {
+      this(Collections.nCopies(c, e));
    }
 
-   private gqo(gmd $$0, bwv $$1, lx $$2, int $$3, ffs $$4) {
-      super($$0, $$1.dA(), $$1.e(0.5), $$1.dG(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   public List<dak> a(ji.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> dak.f.parse(alp.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(dak.l))
+         .toList();
    }
 
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+   public void a(csh $$0, ju $$1) {
+      alp<va> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         dak $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = dak.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
+
+      this.f = $$3.build();
+   }
+
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
-      }
+      return true;
+   }
+
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

@@ -1,7 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ffd<T> {
-   void a(T var1, fff<T> var2, long var3);
-
-   MapCodec<? extends ffd<T>> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ffd {
 }

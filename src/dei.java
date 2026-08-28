@@ -1,35 +1,69 @@
-public class dei extends deh {
-   public dei(dee $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dei extends der {
+   public dei(deo $$0) {
       super($$0);
    }
 
-   private static daa c(def $$0) {
-      return $$0.a(1, 0);
+   public boolean a(dep $$0, dkj $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            dak $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(axv.bQ)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof czj)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   private static daa d(def $$0) {
-      return $$0.a(0, 1);
-   }
+   public dak a(dep $$0, ji.a $$1) {
+      List<czj> $$2 = new ArrayList<>();
+      dak $$3 = dak.l;
 
-   private static daa e(def $$0) {
-      return $$0.a(2, 1);
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         dak $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axv.bQ)) {
+               if (!$$3.f()) {
+                  return dak.l;
+               }
 
-   private static daa f(def $$0) {
-      return $$0.a(1, 2);
-   }
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof czj $$6)) {
+                  return dak.l;
+               }
 
-   public boolean a(def $$0, djz $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axo.bH) && d($$0).a(axo.bH) && e($$0).a(axo.bH) && f($$0).a(axo.bH) : false;
-   }
+               $$2.add($$6);
+            }
+         }
+      }
 
-   public daa a(def $$0, ji.a $$1) {
-      dzm $$2 = new dzm(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return dyw.a($$2);
+      return !$$3.f() && !$$2.isEmpty() ? dcx.a($$3, $$2) : dak.l;
    }
 
    @Override
-   public dfb<dei> a() {
-      return dfb.v;
+   public dfl<dei> a() {
+      return dfl.c;
    }
 }

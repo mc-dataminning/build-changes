@@ -1,6 +1,6 @@
 package com.mojang.blaze3d.platform;
 
-@fhs
+@fic
 public enum SourceFactor {
    CONSTANT_ALPHA,
    CONSTANT_COLOR,

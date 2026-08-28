@@ -1,57 +1,64 @@
-import java.util.BitSet;
-import java.util.Set;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public class gvu {
-   private static final int a = jc.values().length;
-   private final BitSet b = new BitSet(a * a);
+public class gvu implements gvq.a {
+   private final fqq a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
 
-   public void a(Set<jc> $$0) {
-      for (jc $$1 : $$0) {
-         for (jc $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
-   }
-
-   public void a(jc $$0, jc $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(jc $$0, jc $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   public gvu(fqq $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
+   public void a(fld $$0, grn $$1, double $$2, double $$3, double $$4) {
+      dkk $$5 = this.a.s;
+      flg $$6 = $$1.getBuffer(gry.z());
+      iw $$7 = iw.a($$2, 0.0, $$4);
 
-      for (jc $$1 : jc.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            edn $$10 = $$5.z($$7.b($$8 * 16, 0, $$9 * 16));
 
-      $$0.append('\n');
+            for (Entry<ehp.a, ehp> $$11 : $$10.e()) {
+               ehp.a $$12 = $$11.getKey();
+               djo $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
 
-      for (jc $$2 : jc.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (jc $$3 : jc.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jz.a($$13.h, $$15);
+                     int $$18 = jz.a($$13.i, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     gsg.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
             }
          }
-
-         $$0.append('\n');
       }
+   }
 
-      return $$0.toString();
+   private Vector3f a(ehp.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

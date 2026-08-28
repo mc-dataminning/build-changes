@@ -1,15 +1,15 @@
 public class rn {
-   public static final alj<ejx<?, ?>> a = rj.a("pile_hay");
-   public static final alj<ejx<?, ?>> b = rj.a("pile_melon");
-   public static final alj<ejx<?, ?>> c = rj.a("pile_snow");
-   public static final alj<ejx<?, ?>> d = rj.a("pile_ice");
-   public static final alj<ejx<?, ?>> e = rj.a("pile_pumpkin");
+   public static final alq<ekh<?, ?>> a = rj.a("pile_hay");
+   public static final alq<ekh<?, ?>> b = rj.a("pile_melon");
+   public static final alq<ekh<?, ?>> c = rj.a("pile_snow");
+   public static final alq<ekh<?, ?>> d = rj.a("pile_ice");
+   public static final alq<ekh<?, ?>> e = rj.a("pile_pumpkin");
 
-   public static void a(qi<ejx<?, ?>> $$0) {
-      rj.a($$0, a, ekm.k, new emi(new eoz(dng.iL)));
-      rj.a($$0, b, ekm.k, new emi(eos.a(dng.fs)));
-      rj.a($$0, c, ekm.k, new emi(eos.a(dng.ed)));
-      rj.a($$0, d, ekm.k, new emi(new epc(btd.<ebg>b().a(dng.nC.m(), 1).a(dng.je.m(), 5))));
-      rj.a($$0, e, ekm.k, new emi(new epc(btd.<ebg>b().a(dng.fr.m(), 19).a(dng.ew.m(), 1))));
+   public static void a(qi<ekh<?, ?>> $$0) {
+      rj.a($$0, a, ekw.k, new ems(new epj(dnq.iL)));
+      rj.a($$0, b, ekw.k, new ems(epc.a(dnq.fs)));
+      rj.a($$0, c, ekw.k, new ems(epc.a(dnq.ed)));
+      rj.a($$0, d, ekw.k, new ems(new epm(btm.<ebq>b().a(dnq.nC.m(), 1).a(dnq.je.m(), 5))));
+      rj.a($$0, e, ekw.k, new ems(new epm(btm.<ebq>b().a(dnq.fr.m(), 19).a(dnq.ew.m(), 1))));
    }
 }

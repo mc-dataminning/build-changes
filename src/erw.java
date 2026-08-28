@@ -1,26 +1,42 @@
-public interface erw {
-   alj<esj> a = a("villages");
-   alj<esj> b = a("desert_pyramids");
-   alj<esj> c = a("igloos");
-   alj<esj> d = a("jungle_temples");
-   alj<esj> e = a("swamp_huts");
-   alj<esj> f = a("pillager_outposts");
-   alj<esj> g = a("ocean_monuments");
-   alj<esj> h = a("woodland_mansions");
-   alj<esj> i = a("buried_treasures");
-   alj<esj> j = a("mineshafts");
-   alj<esj> k = a("ruined_portals");
-   alj<esj> l = a("shipwrecks");
-   alj<esj> m = a("ocean_ruins");
-   alj<esj> n = a("nether_complexes");
-   alj<esj> o = a("nether_fossils");
-   alj<esj> p = a("end_cities");
-   alj<esj> q = a("ancient_cities");
-   alj<esj> r = a("strongholds");
-   alj<esj> s = a("trail_ruins");
-   alj<esj> t = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static alj<esj> a(String $$0) {
-      return alj.a(mi.bd, alk.b($$0));
+public class erw extends eru {
+   public static final MapCodec<erw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(buh.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), buh.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, erw::new)
+   );
+   private final buh c;
+   private final buh d;
+
+   public static erw a(buh $$0, buh $$1) {
+      return new erw($$0, $$1);
+   }
+
+   public static erw a(buh $$0) {
+      return new erw(bue.a(0), $$0);
+   }
+
+   public static erw b(buh $$0) {
+      return new erw($$0, bue.a(0));
+   }
+
+   private erw(buh $$0, buh $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public Stream<iw> a_(ers $$0, bai $$1, iw $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new iw($$3, $$4, $$5));
+   }
+
+   @Override
+   public erv<?> b() {
+      return erv.n;
    }
 }

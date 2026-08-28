@@ -1,49 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Function;
 
-public class duv extends dlz {
-   public static final MapCodec<duv> c = b(duv::new);
+public interface duv {
+   int d = 1;
+   int e = 4;
+   ecq f = ecg.V;
 
-   @Override
-   public MapCodec<duv> a() {
-      return c;
-   }
+   default Function<ebq, fgw> a(eco<jc> $$0, ecq $$1) {
+      Map<jc, fgw> $$2 = fgt.c(dno.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         fgw $$4 = fgt.a();
+         jc $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
 
-   protected duv(ebf.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new dzv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
-      return a($$0, $$2, dyg.C);
-   }
-
-   @Override
-   protected void a(djz $$0, iw $$1, crz $$2) {
-      dye $$3 = $$0.c_($$1);
-      if ($$3 instanceof dzv) {
-         $$2.a((buv)$$3);
-         $$2.a(axb.at);
-      }
-   }
-
-   @Override
-   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awr.zo, aws.e, 1.0F, 1.0F, false);
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fgt.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
          }
 
-         $$1.a(lz.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
-      }
+         return $$4.b();
+      };
+   }
+
+   default ecq c() {
+      return f;
+   }
+
+   default double b() {
+      return 1.0;
+   }
+
+   default boolean a(ebq $$0, ded $$1, ecq $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
+   }
+
+   default ebq a(ded $$0, dno $$1, ecq $$2, eco<jc> $$3) {
+      ebq $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

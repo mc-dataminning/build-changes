@@ -1,82 +1,64 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+public abstract class byn extends byh {
+   protected static final float bH = 0.0F;
 
-public interface byn {
-   byn a = new byn() {
-      @Override
-      public daa a() {
-         return daa.k;
-      }
+   protected byn(bxn<? extends byn> $$0, dkj $$1) {
+      super($$0, $$1);
+   }
 
-      @Override
-      public boolean a(daa $$0) {
+   public float c(iw $$0) {
+      return this.a($$0, this.dV());
+   }
+
+   public float a(iw $$0, dkm $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(dkk $$0, bxm $$1) {
+      return this.a(this.dv(), $$0) >= 0.0F;
+   }
+
+   public boolean gq() {
+      return !this.O().k();
+   }
+
+   public boolean gr() {
+      if (this.bs.a(chh.aa)) {
+         return this.bs.c(chh.aa).isPresent();
+      } else {
+         for (cgp $$0 : this.bF.b()) {
+            if ($$0.h() && $$0.k() instanceof cfu) {
+               return true;
+            }
+         }
+
          return false;
       }
-   };
-
-   static byn a(final Supplier<daa> $$0, final Consumer<daa> $$1) {
-      return new byn() {
-         @Override
-         public daa a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(daa $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
    }
 
-   static byn a(final bum $$0, final int $$1, final Predicate<daa> $$2) {
-      return new byn() {
-         @Override
-         public daa a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(daa $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   protected boolean gs() {
+      return true;
    }
 
-   static byn a(bum $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
+   @Override
+   public void a(bxe $$0) {
+      super.a($$0);
+      if (this.gs() && !this.gr()) {
+         this.bF.b(cfb.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         fgc $$3 = new fgc($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.O().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gt());
+      }
    }
 
-   static byn a(final bxw $$0, final bxf $$1, final Predicate<daa> $$2) {
-      return new byn() {
-         @Override
-         public daa a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(daa $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   @Override
+   public boolean a(bxe $$0, float $$1) {
+      this.a($$0.dv(), 5);
+      return true;
    }
 
-   static byn a(bxw $$0, bxf $$1) {
-      return a($$0, $$1, $$0x -> true);
+   protected double gt() {
+      return 1.0;
    }
-
-   daa a();
-
-   boolean a(daa var1);
 }

@@ -1,177 +1,94 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public abstract class cul extends cuk implements bxm, cur {
-   private static final int j = 27;
-   private jp<daa> k = jp.a(27, daa.k);
-   @Nullable
-   private alj<fao> l;
-   private long m;
+public interface cul<Context, Condition extends cul.b<Context>> {
+   List<cul.a<Context, Condition>> a();
 
-   public cul(bxe<? extends cul> $$0, djz $$1, Supplier<czw> $$2) {
-      super($$0, $$1, $$2);
-   }
+   static <C, T> Stream<T> a(Stream<T> $$0, Function<T, cul<C, ?>> $$1, C $$2) {
+      List<cul.c<C, T>> $$3 = new ArrayList<>();
+      $$0.forEach($$2x -> {
+         cul<C, ?> $$3x = $$1.apply((T)$$2x);
 
-   @Override
-   protected float m() {
-      return 0.15F;
-   }
+         for (cul.a<C, ?> $$4x : $$3x.a()) {
+            $$3.add(new cul.c<>((T)$$2x, $$4x.b(), (cul.b<C>)DataFixUtils.orElseGet($$4x.a(), cul.b::alwaysTrue)));
+         }
+      });
+      $$3.sort(cul.c.a);
+      Iterator<cul.c<C, T>> $$4 = $$3.iterator();
+      int $$5 = Integer.MIN_VALUE;
 
-   @Override
-   protected int n() {
-      return 1;
-   }
-
-   @Override
-   protected void b(ua $$0) {
-      super.b($$0);
-      this.a($$0, this.dX());
-   }
-
-   @Override
-   protected void a(ua $$0) {
-      super.a($$0);
-      this.b($$0, this.dX());
-   }
-
-   @Override
-   public void a(aru $$0, bvk $$1) {
-      this.a($$0, this.o());
-      this.a($$1, $$0, this);
-   }
-
-   @Override
-   public void a(bwv.d $$0) {
-      if (!this.dV().C && $$0.a()) {
-         bup.a(this.dV(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public but a(crz $$0, bus $$1) {
-      if (!$$0.fY()) {
-         but $$2 = super.a($$0, $$1);
-         if ($$2 != but.e) {
-            return $$2;
+      while ($$4.hasNext()) {
+         cul.c<C, T> $$6 = $$4.next();
+         if ($$6.c < $$5) {
+            $$4.remove();
+         } else if ($$6.d.test($$2)) {
+            $$5 = $$6.c;
+         } else {
+            $$4.remove();
          }
       }
 
-      if (this.r($$0) && !$$0.fY()) {
-         return but.e;
-      } else {
-         but $$3 = this.b_($$0);
-         if ($$3.a() && $$0.dV() instanceof aru $$4) {
-            this.a(egg.k, $$0);
-            cqp.a($$4, $$0, true);
-         }
+      return $$3.stream().map(cul.c::a);
+   }
 
-         return $$3;
+   static <C, T> Optional<T> a(Stream<T> $$0, Function<T, cul<C, ?>> $$1, bai $$2, C $$3) {
+      List<T> $$4 = a($$0, $$1, $$3).toList();
+      return ag.b($$4, $$2);
+   }
+
+   static <Context, Condition extends cul.b<Context>> List<cul.a<Context, Condition>> a(Condition $$0, int $$1) {
+      return List.of(new cul.a<>($$0, $$1));
+   }
+
+   static <Context, Condition extends cul.b<Context>> List<cul.a<Context, Condition>> a(int $$0) {
+      return List.of(new cul.a<>(Optional.empty(), $$0));
+   }
+
+   public static record a<Context, Condition extends cul.b<Context>>(Optional<Condition> a, int b) {
+      public a(Condition $$0, int $$1) {
+         this(Optional.of($$0), $$1);
+      }
+
+      public a(int $$0) {
+         this(Optional.empty(), $$0);
+      }
+
+      public static <Context, Condition extends cul.b<Context>> Codec<cul.a<Context, Condition>> a(Codec<Condition> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.optionalFieldOf("condition").forGetter(cul.a::a), Codec.INT.fieldOf("priority").forGetter(cul.a::b)).apply($$1, cul.a::new)
+         );
       }
    }
 
-   @Override
-   public void b(crz $$0) {
-      $$0.a(this);
-      if ($$0.dV() instanceof aru $$1) {
-         this.a(egg.k, $$0);
-         cqp.a($$1, $$0, true);
+   @FunctionalInterface
+   public interface b<C> extends Predicate<C> {
+      static <C> cul.b<C> alwaysTrue() {
+         return $$0 -> true;
       }
    }
 
-   @Override
-   public void a() {
-      this.ak_();
-   }
+   public static record c<C, T>(T b, int c, cul.b<C> d) {
+      public static final Comparator<cul.c<?, ?>> a = Comparator.comparingInt(cul.c::b).reversed();
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public daa a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public daa a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public daa b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, daa $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public byn a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cvs createMenu(int $$0, cry $$1, crz $$2) {
-      if (this.l != null && $$2.Z_()) {
-         return null;
-      } else {
-         this.e($$1.h);
-         return cwb.a($$0, $$1, this);
+      public T a() {
+         return this.b;
       }
-   }
 
-   public void e(@Nullable crz $$0) {
-      this.f($$0);
-   }
+      public int b() {
+         return this.c;
+      }
 
-   @Nullable
-   @Override
-   public alj<fao> q() {
-      return this.l;
-   }
-
-   @Override
-   public void a(@Nullable alj<fao> $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public long s() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public jp<daa> t() {
-      return this.k;
-   }
-
-   @Override
-   public void u() {
-      this.k = jp.a(this.b(), daa.k);
-   }
-
-   @Override
-   public void c(crz $$0) {
-      this.dV().a(egg.j, this.dt(), egg.a.a($$0));
+      public cul.b<C> c() {
+         return this.d;
+      }
    }
 }

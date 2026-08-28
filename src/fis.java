@@ -1,13 +1,24 @@
-public interface fis {
-   <T> fkv<T> a(String var1, fku<T> var2);
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-   <T> void a(fkv<T> var1);
+public interface fis extends AutoCloseable {
+   float a = 7.0F;
 
-   <T> fkv<T> b(fkv<T> var1);
+   @Override
+   default void close() {
+   }
 
-   void a(fis var1);
+   @Nullable
+   default fir a(int $$0) {
+      return null;
+   }
 
-   void a();
+   IntSet a();
 
-   void a(Runnable var1);
+   public static record a(fis a, fwp.a b) implements AutoCloseable {
+      @Override
+      public void close() {
+         this.a.close();
+      }
+   }
 }

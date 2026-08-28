@@ -1,39 +1,33 @@
-public class dad {
-   public static but a(djz $$0, crz $$1, bus $$2) {
-      $$1.c($$2);
-      return but.c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dad(jg<awx> e, float f, float g, xg h) {
+   public static final Codec<dad> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awx.b.fieldOf("sound_event").forGetter(dad::a),
+               azg.o.fieldOf("use_duration").forGetter(dad::b),
+               azg.o.fieldOf("range").forGetter(dad::c),
+               xi.a.fieldOf("description").forGetter(dad::d)
+            )
+            .apply($$0, dad::new)
+   );
+   public static final ze<wp, dad> b = ze.a(awx.d, dad::a, zc.l, dad::b, zc.l, dad::c, xi.b, dad::d, dad::new);
+   public static final Codec<jg<dad>> c = aln.a(mi.aU, a);
+   public static final ze<wp, jg<dad>> d = zc.a(mi.aU, b);
+
+   public jg<awx> a() {
+      return this.e;
    }
 
-   public static daa a(daa $$0, crz $$1, daa $$2, boolean $$3) {
-      boolean $$4 = $$1.fV();
-      if ($$3 && $$4) {
-         if (!$$1.gj().j($$2)) {
-            $$1.gj().g($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gj().g($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   public float b() {
+      return this.f;
    }
 
-   public static daa a(daa $$0, crz $$1, daa $$2) {
-      return a($$0, $$1, $$2, true);
+   public float c() {
+      return this.g;
    }
 
-   public static void a(coe $$0, Iterable<daa> $$1) {
-      djz $$2 = $$0.dV();
-      if (!$$2.C) {
-         $$1.forEach($$2x -> $$2.b(new coe($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
-      }
+   public xg d() {
+      return this.h;
    }
 }

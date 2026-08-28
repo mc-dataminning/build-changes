@@ -1,24 +1,18 @@
-public enum eby implements bao {
-   a("single"),
-   b("left"),
-   c("right");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class eby implements Predicate<ebq> {
+   private final dno a;
 
-   private eby(final String $$0) {
-      this.d = $$0;
+   public eby(dno $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static eby a(dno $$0) {
+      return new eby($$0);
    }
 
-   public eby a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   public boolean a(@Nullable ebq $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

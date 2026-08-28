@@ -1,103 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-
-public abstract class dav extends czw {
-   public static final Predicate<daa> c = $$0 -> $$0.a(axo.aZ);
-   public static final Predicate<daa> d = c.or($$0 -> $$0.a(dae.vE));
-
-   public dav(czw.a $$0) {
+public class dav extends dbw {
+   public dav(dag.a $$0) {
       super($$0);
    }
 
-   public Predicate<daa> c() {
-      return this.a();
+   @Override
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.oJ, awz.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 
-   public abstract Predicate<daa> a();
-
-   public static daa a(bxw $$0, Predicate<daa> $$1) {
-      if ($$1.test($$0.b(bus.b))) {
-         return $$0.b(bus.b);
-      } else {
-         return $$1.test($$0.b(bus.a)) ? $$0.b(bus.a) : daa.k;
-      }
+   @Override
+   protected css a(asb $$0, byf $$1, dak $$2) {
+      return new ctp($$0, $$1, $$2);
    }
 
-   public abstract int b();
-
-   protected void a(aru $$0, bxw $$1, bus $$2, daa $$3, List<daa> $$4, float $$5, float $$6, boolean $$7, @Nullable bxw $$8) {
-      float $$9 = dgp.a($$0, $$3, $$1, 0.0F);
-      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
-      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
-      float $$12 = 1.0F;
-
-      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
-         daa $$14 = $$4.get($$13);
-         if (!$$14.f()) {
-            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
-            $$12 = -$$12;
-            int $$16 = $$13;
-            csu.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
-            $$3.a(this.h($$14), $$1, bxw.d($$2));
-            if ($$3.f()) {
-               break;
-            }
-         }
-      }
-   }
-
-   protected int h(daa $$0) {
-      return 1;
-   }
-
-   protected abstract void a(bxw var1, csu var2, int var3, float var4, float var5, float var6, @Nullable bxw var7);
-
-   protected csu a(djz $$0, bxw $$1, daa $$2, daa $$3, boolean $$4) {
-      cye $$6 = $$3.h() instanceof cye $$5 ? $$5 : (cye)dae.pk;
-      csh $$7 = $$6.a($$0, $$3, $$1, $$2);
-      if ($$4) {
-         $$7.b(true);
-      }
-
-      return $$7;
-   }
-
-   protected static List<daa> a(daa $$0, daa $$1, bxw $$2) {
-      if ($$1.f()) {
-         return List.of();
-      } else {
-         int $$4 = $$2.dV() instanceof aru $$3 ? dgp.a($$3, $$0, $$2, 1) : 1;
-         List<daa> $$5 = new ArrayList<>($$4);
-         daa $$6 = $$1.v();
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            daa $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
-            if (!$$8.f()) {
-               $$5.add($$8);
-            }
-         }
-
-         return $$5;
-      }
-   }
-
-   protected static daa a(daa $$0, daa $$1, bxw $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fV() && $$2.dV() instanceof aru $$4 ? dgp.a($$4, $$0, $$1, 1) : 0;
-      if ($$5 > $$1.M()) {
-         return daa.k;
-      } else if ($$5 == 0) {
-         daa $$6 = $$1.c(1);
-         $$6.b(kl.u, bay.a);
-         return $$6;
-      } else {
-         daa $$7 = $$1.a($$5);
-         if ($$1.f() && $$2 instanceof crz $$8) {
-            $$8.gj().i($$1);
-         }
-
-         return $$7;
-      }
+   @Override
+   protected css a(dkj $$0, jq $$1, dak $$2) {
+      return new ctp($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

@@ -1,121 +1,42 @@
-public class gou extends gqm {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private float G;
-   private final float H;
-   private final float I;
-   private final float J;
-   private boolean K;
-   private boolean L;
-   private double M;
-   private double N;
-   private double O;
+public class gou extends gox {
+   private final gij a;
+   private final gry b = gry.j(gxo.a);
 
-   protected gou(gmd $$0, double $$1, double $$2, double $$3, gqh $$4, float $$5, float $$6, boolean $$7, boolean $$8, float $$9, float $$10) {
+   gou(glo $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.G = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.H = this.r.i();
-      this.I = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.J = $$6;
-      this.K = $$7;
-      this.L = $$8;
-      this.t = 300;
-      this.u = $$5 * 1.2F * 0.0025F;
-      float $$11 = $$9 * (this.r.h() ? 0.05F : 0.075F);
-      this.D = $$11;
-      this.b($$11, $$11);
-      this.B = 1.0F;
-      this.k = (double)(-$$10);
-      this.M = Math.cos(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
-      this.N = Math.sin(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
-      this.O = Math.toRadians((double)(1000.0F + this.H * 3000.0F));
+      this.a = new ghw(fqq.Q().aS().a(gkq.aO));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public gpq b() {
-      return gpq.b;
+   public gpb b() {
+      return gpb.d;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      }
-
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = 0.0;
-         double $$3 = 0.0;
-         if (this.L) {
-            $$2 += this.M * Math.pow((double)$$1, 1.25);
-            $$3 += this.N * Math.pow((double)$$1, 1.25);
-         }
-
-         if (this.K) {
-            $$2 += (double)$$1 * Math.cos((double)$$1 * this.O) * (double)this.J;
-            $$3 += (double)$$1 * Math.sin((double)$$1 * this.O) * (double)this.J;
-         }
-
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.G = this.G + this.I / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.G / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
-
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
-      }
+   public void a(fld $$0, grn $$1, fpy $$2, float $$3) {
+      float $$4 = ((float)this.s + $$3) / (float)this.t;
+      float $$5 = 0.05F + 0.5F * azz.a($$4 * (float) Math.PI);
+      int $$6 = ayh.a($$5, 1.0F, 1.0F, 1.0F);
+      $$0.a();
+      $$0.a($$2.f());
+      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
+      float $$7 = 0.42553192F;
+      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
+      $$0.a(0.0F, -0.56F, 3.5F);
+      flg $$8 = $$1.getBuffer(this.b);
+      this.a.a($$0, $$8, 15728880, hkg.d, $$6);
+      $$0.b();
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
-
-      public a(gqh $$0) {
-         this.a = $$0;
-      }
-
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gou($$1, $$2, $$3, $$4, this.a, 0.25F, 2.0F, false, true, 1.0F, 0.0F);
-      }
+   @Override
+   public void a(flg $$0, fpy $$1, float $$2) {
    }
 
-   public static class b implements gpp<md> {
-      private final gqh a;
-
-      public b(gqh $$0) {
-         this.a = $$0;
-      }
-
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gou($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
-      }
-   }
-
-   public static class c implements gpp<ls> {
-      private final gqh a;
-
-      public c(gqh $$0) {
-         this.a = $$0;
-      }
-
-      public gpm a(ls $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpm $$8 = new gou($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         return $$8;
+   public static class a implements gpa<md> {
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gou($$1, $$2, $$3, $$4);
       }
    }
 }

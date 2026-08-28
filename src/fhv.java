@@ -1,11 +1,5 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+import java.util.List;
 
-@Nonnull
-@TypeQualifierDefault({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface fhv {
+public interface fhv<T> {
+   List<fht<T>> a(long var1);
 }

@@ -1,28 +1,26 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cch<T extends bxy> extends bzn<T> {
-   private final float c;
+public class cch {
+   private static final float a = 0.3F;
 
-   public cch(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static <T extends bxy> boolean a(T $$0) {
-      return $$0.bi() && $$0.b(axl.a) > $$0.dp() || $$0.bv();
-   }
-
-   protected boolean a(aru $$0, bxy $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(aru $$0, bxy $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aru $$0, bxy $$1, long $$2) {
-      if ($$1.dY().i() < this.c) {
-         $$1.N().a();
-      }
+   public static cbh<byf> a() {
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$0 -> $$0.group($$0.a(chh.n), $$0.a(chh.o), $$0.b(chh.e), $$0.b(chh.h), $$0.c(chh.r))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jf $$9 = $$0.b($$3);
+                     chj $$10 = $$0.b($$4);
+                     if ($$6.G_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bxn.bE.equals($$0xxx.an()))) {
+                        $$10.a($$1xx -> bxn.bE.equals($$1xx.an()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new cah($$3xx, true));
+                           $$1.a(new chk(new cah($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

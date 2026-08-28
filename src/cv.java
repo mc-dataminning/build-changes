@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record cv(
    Optional<cv.b> b,
-   Optional<jk<dlc>> c,
-   Optional<jk<esd>> d,
-   Optional<alj<djz>> e,
+   Optional<jk<dlm>> c,
+   Optional<jk<esn>> d,
+   Optional<alq<dkj>> e,
    Optional<Boolean> f,
    Optional<cs> g,
    Optional<az> h,
@@ -18,7 +18,7 @@ public record cv(
                cv.b.a.optionalFieldOf("position").forGetter(cv::a),
                jv.a(mi.aG).optionalFieldOf("biomes").forGetter(cv::b),
                jv.a(mi.be).optionalFieldOf("structures").forGetter(cv::c),
-               alj.a(mi.bp).optionalFieldOf("dimension").forGetter(cv::d),
+               alq.a(mi.bp).optionalFieldOf("dimension").forGetter(cv::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(cv::e),
                cs.a.optionalFieldOf("light").forGetter(cv::f),
                az.a.optionalFieldOf("block").forGetter(cv::g),
@@ -28,7 +28,7 @@ public record cv(
             .apply($$0, cv::new)
    );
 
-   public boolean a(aru $$0, double $$1, double $$2, double $$3) {
+   public boolean a(asb $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.aj()) {
@@ -38,7 +38,7 @@ public record cv(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.u($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.b().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dnu.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == doe.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record cv(
       return this.b;
    }
 
-   public Optional<jk<dlc>> b() {
+   public Optional<jk<dlm>> b() {
       return this.c;
    }
 
-   public Optional<jk<esd>> c() {
+   public Optional<jk<esn>> c() {
       return this.d;
    }
 
-   public Optional<alj<djz>> d() {
+   public Optional<alq<dkj>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record cv(
       private cx.c a;
       private cx.c b;
       private cx.c c;
-      private Optional<jk<dlc>> d;
-      private Optional<jk<esd>> e;
-      private Optional<alj<djz>> f;
+      private Optional<jk<dlm>> d;
+      private Optional<jk<esn>> e;
+      private Optional<alq<dkj>> f;
       private Optional<Boolean> g;
       private Optional<cs> h;
       private Optional<az> i;
@@ -125,15 +125,15 @@ public record cv(
          return new cv.a();
       }
 
-      public static cv.a a(jg<dlc> $$0) {
+      public static cv.a a(jg<dlm> $$0) {
          return a().a(jk.a($$0));
       }
 
-      public static cv.a a(alj<djz> $$0) {
+      public static cv.a a(alq<dkj> $$0) {
          return a().b($$0);
       }
 
-      public static cv.a b(jg<esd> $$0) {
+      public static cv.a b(jg<esn> $$0) {
          return a().b(jk.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record cv(
          return this;
       }
 
-      public cv.a a(jk<dlc> $$0) {
+      public cv.a a(jk<dlm> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public cv.a b(jk<esd> $$0) {
+      public cv.a b(jk<esn> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public cv.a b(alj<djz> $$0) {
+      public cv.a b(alq<dkj> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

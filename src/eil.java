@@ -1,25 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eil extends eio {
-   public static final MapCodec<eil> a = a(eil::new);
+public record eil(ein b, eik c) {
+   public static final Codec<eil> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ein.a.forGetter(eil::a), eik.a.forGetter(eil::b)).apply($$0, $$0.stable(eil::new))
+   );
 
-   public eil(List<eim> $$0) {
-      super($$0);
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, ein $$1, eik $$2) {
+      return a.encodeStart($$0, new eil($$1, $$2));
    }
 
-   public boolean a(dky $$0, iw $$1) {
-      for (eim $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, ein $$1, ju $$2) {
+      return a($$0, $$1, new eik($$2.f(mi.bq)));
    }
 
-   @Override
-   public ein<?> a() {
-      return ein.i;
+   public ein a() {
+      return this.b;
+   }
+
+   public eik b() {
+      return this.c;
    }
 }

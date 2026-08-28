@@ -1,13 +1,6 @@
-public enum ecl implements bao {
-   a("up"),
-   b("side"),
-   c("none");
-
-   private final String d;
-
-   private ecl(final String $$0) {
-      this.d = $$0;
-   }
+public enum ecl implements bax {
+   a,
+   b;
 
    @Override
    public String toString() {
@@ -16,10 +9,6 @@ public enum ecl implements bao {
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
+      return this == a ? "left" : "right";
    }
 }

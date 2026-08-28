@@ -1,249 +1,153 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
 import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
-public class gsu extends avm<gsu.c> implements AutoCloseable {
-   static final Logger c = LogUtils.getLogger();
-   public static final int a = 32768;
-   public static final String b = "shaders";
-   private static final String d = "shaders/include/";
-   private static final ald e = ald.a("post_effect");
-   final hle f;
-   private final Consumer<Exception> g;
-   private gsu.a h = new gsu.a(gsu.c.a);
+public record gsu(Vector3fc a, Vector3fc b, Map<jc, gsv> c, @Nullable gsw d, boolean e, int f) {
+   private static final boolean g = false;
+   private static final float h = -16.0F;
+   private static final float i = 32.0F;
 
-   public gsu(hle $$0, Consumer<Exception> $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   public gsu(Vector3fc $$0, Vector3fc $$1, Map<jc, gsv> $$2) {
+      this($$0, $$1, $$2, null, true, 0);
    }
 
-   protected gsu.c a(avh $$0, brd $$1) {
-      Builder<gsu.d, String> $$2 = ImmutableMap.builder();
-      Map<alk, avf> $$3 = $$0.b("shaders", gsu::a);
+   protected static class a implements JsonDeserializer<gsu> {
+      private static final boolean a = true;
+      private static final int b = 0;
 
-      for (Entry<alk, avf> $$4 : $$3.entrySet()) {
-         alk $$5 = $$4.getKey();
-         fky $$6 = fky.a($$5);
-         if ($$6 != null) {
-            a($$5, $$4.getValue(), $$6, $$3, $$2);
-         }
-      }
-
-      Builder<alk, gsh> $$7 = ImmutableMap.builder();
-
-      for (Entry<alk, avf> $$8 : e.a($$0).entrySet()) {
-         a($$8.getKey(), $$8.getValue(), $$7);
-      }
-
-      return new gsu.c($$2.build(), $$7.build());
-   }
-
-   private static void a(alk $$0, avf $$1, fky $$2, Map<alk, avf> $$3, Builder<gsu.d, String> $$4) {
-      alk $$5 = $$2.b().b($$0);
-      fkp $$6 = a($$3, $$0);
-
-      try (Reader $$7 = $$1.e()) {
-         String $$8 = IOUtils.toString($$7);
-         $$4.put(new gsu.d($$5, $$2), String.join("", $$6.a($$8)));
-      } catch (IOException var12) {
-         c.error("Failed to load shader source at {}", $$0, var12);
-      }
-   }
-
-   private static fkp a(final Map<alk, avf> $$0, alk $$1) {
-      final alk $$2 = $$1.a(w::b);
-      return new fkp() {
-         private final Set<alk> c = new ObjectArraySet();
-
-         @Override
-         public String a(boolean $$0x, String $$1) {
-            alk $$2;
-            try {
-               if ($$0) {
-                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> w.c($$1x + $$1)));
-               } else {
-                  $$2 = alk.a($$1).f("shaders/include/");
+      public gsu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         gsw $$6 = this.a($$3);
+         Map<jc, gsv> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !azo.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = azo.a($$3, "shade", true);
+            int $$9 = 0;
+            if ($$3.has("light_emission")) {
+               boolean $$10 = azo.b($$3, "light_emission");
+               if ($$10) {
+                  $$9 = azo.o($$3, "light_emission");
                }
-            } catch (ab var8) {
-               gsu.c.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
-               return "#error " + var8.getMessage();
-            }
 
-            if (!this.c.add($$2)) {
-               return null;
-            } else {
-               try {
-                  String var5;
-                  try (Reader $$6 = $$0.get($$2).e()) {
-                     var5 = IOUtils.toString($$6);
-                  }
-
-                  return var5;
-               } catch (IOException var10) {
-                  gsu.c.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
-                  return "#error " + var10.getMessage();
+               if (!$$10 || $$9 < 0 || $$9 > 15) {
+                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
                }
             }
+
+            return new gsu($$4, $$5, $$7, $$6, $$8, $$9);
          }
-      };
-   }
-
-   private static void a(alk $$0, avf $$1, Builder<alk, gsh> $$2) {
-      alk $$3 = e.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         $$2.put($$3, (gsh)gsh.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         c.error("Failed to parse post chain at {}", $$0, var9);
-      }
-   }
-
-   private static boolean a(alk $$0) {
-      return fky.a($$0) != null || $$0.a().endsWith(".glsl");
-   }
-
-   protected void a(gsu.c $$0, avh $$1, brd $$2) {
-      gsu.a $$3 = new gsu.a($$0);
-      Set<fjr> $$4 = new HashSet<>(gsl.a());
-      List<alk> $$5 = new ArrayList<>();
-      flc $$6 = RenderSystem.getDevice();
-      $$6.k();
-
-      for (fjr $$7 : $$4) {
-         fjo $$8 = $$6.b($$7, $$3::a);
-         if (!$$8.a()) {
-            $$5.add($$7.k());
-         }
-      }
-
-      if (!$$5.isEmpty()) {
-         $$6.k();
-         throw new RuntimeException("Failed to load required shader programs:\n" + $$5.stream().map($$0x -> " - " + $$0x).collect(Collectors.joining("\n")));
-      } else {
-         this.h.close();
-         this.h = $$3;
-      }
-   }
-
-   @Override
-   public String getName() {
-      return "Shader Loader";
-   }
-
-   private void a(Exception $$0) {
-      if (!this.h.d) {
-         this.g.accept($$0);
-         this.h.d = true;
-      }
-   }
-
-   @Nullable
-   public gsg a(alk $$0, Set<alk> $$1) {
-      try {
-         return this.h.a($$0, $$1);
-      } catch (gsu.b var4) {
-         c.error("Failed to load post chain: {}", $$0, var4);
-         this.h.c.put($$0, Optional.empty());
-         this.a(var4);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.h.close();
-   }
-
-   public String a(alk $$0, fky $$1) {
-      return this.h.a($$0, $$1);
-   }
-
-   class a implements AutoCloseable {
-      private final gsu.c b;
-      final Map<alk, Optional<gsg>> c = new HashMap<>();
-      boolean d;
-
-      a(final gsu.c $$0) {
-         this.b = $$0;
       }
 
       @Nullable
-      public gsg a(alk $$0, Set<alk> $$1) throws gsu.b {
-         Optional<gsg> $$2 = this.c.get($$0);
-         if ($$2 != null) {
-            return $$2.orElse(null);
+      private gsw a(JsonObject $$0) {
+         gsw $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = azo.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            jc.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = azo.a($$2, "rescale", false);
+            $$1 = new gsw($$3, $$4, $$5, $$6);
+         }
+
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = azo.m($$0, "angle");
+         if ($$1 != 0.0F && azz.e($$1) != 22.5F && azz.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
          } else {
-            gsg $$3 = this.b($$0, $$1);
-            this.c.put($$0, Optional.of($$3));
-            return $$3;
+            return $$1;
          }
       }
 
-      private gsg b(alk $$0, Set<alk> $$1) throws gsu.b {
-         gsh $$2 = this.b.c.get($$0);
+      private jc.a c(JsonObject $$0) {
+         String $$1 = azo.i($$0, "axis");
+         jc.a $$2 = jc.a.a($$1.toLowerCase(Locale.ROOT));
          if ($$2 == null) {
-            throw new gsu.b("Could not find post chain with id: " + $$0);
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
          } else {
-            return gsg.a($$2, gsu.this.f, $$1, $$0);
+            return $$2;
          }
       }
 
-      @Override
-      public void close() {
-         this.c.clear();
+      private Map<jc, gsv> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jc, gsv> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
       }
 
-      public String a(alk $$0, fky $$1) {
-         return this.b.b.get(new gsu.d($$0, $$1));
-      }
-   }
+      private Map<jc, gsv> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jc, gsv> $$2 = Maps.newEnumMap(jc.class);
+         JsonObject $$3 = azo.u($$1, "faces");
 
-   public static class b extends Exception {
-      public b(String $$0) {
-         super($$0);
-      }
-   }
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            jc $$5 = this.a($$4.getKey());
+            $$2.put($$5, (gsv)$$0.deserialize($$4.getValue(), gsv.class));
+         }
 
-   public static record c(Map<gsu.d, String> b, Map<alk, gsh> c) {
-      public static final gsu.c a = new gsu.c(Map.of(), Map.of());
-
-      public Map<gsu.d, String> a() {
-         return this.b;
+         return $$2;
       }
 
-      public Map<alk, gsh> b() {
-         return this.c;
+      private jc a(String $$0) {
+         jc $$1 = jc.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
       }
-   }
 
-   static record d(alk a, fky b) {
-      @Override
-      public String toString() {
-         return this.a + " (" + this.b + ")";
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = azo.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = azo.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
       }
    }
 }

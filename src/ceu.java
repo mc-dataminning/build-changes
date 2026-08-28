@@ -1,86 +1,70 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class ceu extends cfp {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class ceu extends cfb {
+   protected final byn a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dkj f;
 
-   public ceu(bye $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public ceu(byn $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dV();
+      this.a(EnumSet.of(cfb.a.a));
    }
 
-   @Nullable
    @Override
-   protected ffs h() {
-      float $$0 = this.b.dV().A.i();
-      if (this.b.dV().A.i() < 0.3F) {
-         return this.k();
+   public boolean b() {
+      if (this.a.f() != null) {
+         return false;
+      } else if (!this.f.V()) {
+         return false;
+      } else if (!this.a.bX()) {
+         return false;
+      } else if (!this.f.h(this.a.dv())) {
+         return false;
       } else {
-         ffs $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
-
-         return $$1 == null ? this.k() : $$1;
+         return !this.a.a(bxo.f).f() ? false : this.h();
       }
    }
 
-   @Nullable
-   private ffs k() {
-      return cis.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private ffs l() {
-      aru $$0 = (aru)this.b.dV();
-      List<crl> $$1 = $$0.a(bxe.bE, this.b.cR().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         crl $$2 = $$1.get(this.b.dV().A.a($$1.size()));
-         ffs $$3 = $$2.dt();
-         return cis.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private ffs m() {
-      jz $$0 = this.n();
+   protected boolean h() {
+      fgc $$0 = this.i();
       if ($$0 == null) {
-         return null;
+         return false;
       } else {
-         iw $$1 = this.a($$0);
-         return $$1 == null ? null : cis.a(this.b, 10, 7, ffs.c($$1));
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
       }
    }
 
-   @Nullable
-   private jz n() {
-      aru $$0 = (aru)this.b.dV();
-      List<jz> $$1 = jz.a(jz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   @Override
+   public boolean c() {
+      return !this.a.O().k();
+   }
+
+   @Override
+   public void d() {
+      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 
    @Nullable
-   private iw a(jz $$0) {
-      aru $$1 = (aru)this.b.dV();
-      ciy $$2 = $$1.A();
-      List<iw> $$3 = $$2.c($$0x -> true, $$0.k(), 8, ciy.b.b).map(ciz::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
-   }
+   protected fgc i() {
+      bai $$0 = this.a.dY();
+      iw $$1 = this.a.dv();
 
-   private boolean a(crl $$0) {
-      return $$0.a(this.b.dV().ae());
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         iw $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return fgc.c($$3);
+         }
+      }
+
+      return null;
    }
 }

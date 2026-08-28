@@ -1,25 +1,29 @@
-public record acy(long[] b, bpf c) implements zj<aby> {
-   public static final za<vy, acy> a = zj.a(acy::a, acy::new);
+public class acy implements zo<acf> {
+   public static final ze<vy, acy> a = zo.a(acy::a, acy::new);
+   private final int b;
+
+   public acy(int $$0) {
+      this.b = $$0;
+   }
 
    private acy(vy $$0) {
-      this($$0.d(), $$0.b(bpf.class));
+      this.b = $$0.x();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      $$0.f(this.b);
    }
 
    @Override
-   public zl<acy> a() {
-      return agr.z;
+   public zq<acy> a() {
+      return agy.s;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public bpf e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

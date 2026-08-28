@@ -1,111 +1,59 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class edl<T> implements edt<T> {
-   private final jl<T> a;
-   private final aym<T> b;
-   private final edu<T> c;
-   private final int d;
+public class edl implements AutoCloseable {
+   private final dkk a;
+   private final Long2ObjectMap<edy> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private edy c;
+   private long d;
 
-   public edl(jl<T> $$0, int $$1, edu<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::d);
-   }
-
-   public edl(jl<T> $$0, int $$1, edu<T> $$2) {
-      this($$0, $$1, $$2, aym.c(1 << $$1));
-   }
-
-   private edl(jl<T> $$0, int $$1, edu<T> $$2, aym<T> $$3) {
+   public edl(dkk $$0) {
       this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
    }
 
-   public static <A> edt<A> a(int $$0, jl<A> $$1, edu<A> $$2, List<A> $$3) {
-      return new edl<>($$1, $$0, $$2, $$3);
-   }
-
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.d($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
+   @Nullable
+   public edy a(iw $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ap()) {
+         long $$2 = jz.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (edy)this.b.computeIfAbsent($$2, $$2x -> {
+               edn $$3 = this.a.a(jz.a($$0.u()), jz.a($$0.w()));
+               edy $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
          }
-      }
 
-      return $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new eds($$0);
+         return this.c;
       } else {
-         return $$1;
+         return null;
+      }
+   }
+
+   public ebq b(iw $$0) {
+      edy $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dnq.a.m();
+      } else {
+         int $$2 = jz.b($$0.u());
+         int $$3 = jz.b($$0.v());
+         int $$4 = jz.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
       }
    }
 
    @Override
-   public void a(vy $$0) {
-      this.b.a();
-      int $$1 = $$0.l();
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.d(this.a.b($$0.l()));
+      while (var1.hasNext()) {
+         edy $$0 = (edy)var1.next();
+         $$0.b();
       }
-   }
-
-   @Override
-   public void b(vy $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = wt.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += wt.a(this.a.a(this.b.a($$1)));
-      }
-
-      return $$0;
-   }
-
-   public List<T> c() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.b.d();
-   }
-
-   @Override
-   public edt<T> a(edu<T> $$0) {
-      return new edl<>(this.a, this.d, $$0, this.b.b());
    }
 }

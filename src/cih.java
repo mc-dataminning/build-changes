@@ -1,28 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cih extends cie<bxw> {
-   @Override
-   public Set<cgy<?>> a() {
-      return ImmutableSet.of(cgy.i);
-   }
+public abstract class cih extends cin<byf> {
+   protected abstract boolean a(asb var1, byf var2, byf var3);
+
+   protected abstract chh<byf> b();
 
    @Override
-   protected void a(aru $$0, bxw $$1) {
-      $$1.ec().a(cgy.i, this.a($$1));
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   private List<bxw> a(bxw $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   protected void a(asb $$0, byf $$1) {
+      $$1.ec().a(this.b(), this.c($$0, $$1));
    }
 
-   private boolean b(bxw $$0) {
-      return $$0.an() == bxe.bE && $$0.n_();
+   private Optional<byf> c(asb $$0, byf $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
    }
 
-   private cha c(bxw $$0) {
-      return $$0.ec().c(cgy.h).orElse(cha.a());
+   protected Optional<chj> a(byf $$0) {
+      return $$0.ec().c(chh.h);
    }
 }

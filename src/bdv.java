@@ -1,41 +1,29 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public abstract class bdv extends DataFix {
-   private final String a;
-   private final String b;
-   private final String c;
-
-   public bdv(Schema $$0, String $$1, String $$2) {
-      this($$0, $$1, $$2, $$2);
+public class bdv extends DataFix {
+   public bdv(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public bdv(Schema $$0, String $$1, String $$2, String $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bjd.w);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-            Optional<? extends Dynamic<?>> $$1 = $$0xx.get(this.b).result();
-            if ($$1.isEmpty()) {
-               return $$0xx;
-            } else {
-               Dynamic<?> $$2 = this.a($$1.get());
-               return $$0xx.remove(this.b).setFieldIfPresent(this.c, Optional.ofNullable($$2));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bjm.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            if (Objects.equals($$2x, "postprocessed")) {
+               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
             }
+
+            return $$0xx.set(DSL.remainderFinder(), $$1xx);
          }));
    }
-
-   @Nullable
-   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

@@ -1,138 +1,91 @@
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class gig extends gic<hfa> {
-   public static final glp a = new ggx(true, 8.0F, 3.35F, Set.of("head"));
-   public final glg b;
-   private final glg c;
-   private final glg d;
-   private final glg e;
-   private final glg f;
-   private final glg g;
-   private final glg i;
-   private static final int j = 6;
-   private static final float k = 16.5F;
-   private static final float l = 17.5F;
-   private float m;
+public class gig extends ghn<hff> {
+   public static final gla a = gig::a;
+   private final gkr b;
+   private final gkr c;
+   private final gkr d;
+   private final gkr e;
+   private final gkr f;
+   private final gkr g;
+   private final gkr i;
 
-   public gig(glg $$0) {
+   public gig(gkr $$0) {
       super($$0);
       this.b = $$0.b("head");
-      this.c = $$0.b("body");
-      this.d = $$0.b("right_hind_leg");
-      this.e = $$0.b("left_hind_leg");
-      this.f = $$0.b("right_front_leg");
-      this.g = $$0.b("left_front_leg");
-      this.i = this.c.b("tail");
+      this.g = $$0.b("right_chest");
+      this.i = $$0.b("left_chest");
+      this.c = $$0.b("right_hind_leg");
+      this.d = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.f = $$0.b("left_front_leg");
    }
 
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      glq $$2 = $$1.a("head", gll.c().a(1, 5).a(-3.0F, -2.0F, -5.0F, 8.0F, 6.0F, 6.0F), gli.a(-1.0F, 16.5F, -3.0F));
-      $$2.a("right_ear", gll.c().a(8, 1).a(-3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), gli.a);
-      $$2.a("left_ear", gll.c().a(15, 1).a(3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), gli.a);
-      $$2.a("nose", gll.c().a(6, 18).a(-1.0F, 2.01F, -8.0F, 4.0F, 2.0F, 3.0F), gli.a);
-      glq $$3 = $$1.a("body", gll.c().a(24, 15).a(-3.0F, 3.999F, -3.5F, 6.0F, 11.0F, 6.0F), gli.a(0.0F, 16.0F, -6.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      glk $$4 = new glk(0.001F);
-      gll $$5 = gll.c().a(4, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
-      gll $$6 = gll.c().a(13, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
-      $$1.a("right_hind_leg", $$6, gli.a(-5.0F, 17.5F, 7.0F));
-      $$1.a("left_hind_leg", $$5, gli.a(-1.0F, 17.5F, 7.0F));
-      $$1.a("right_front_leg", $$6, gli.a(-5.0F, 17.5F, 0.0F));
-      $$1.a("left_front_leg", $$5, gli.a(-1.0F, 17.5F, 0.0F));
-      $$3.a("tail", gll.c().a(30, 0).a(2.0F, 0.0F, -1.0F, 4.0F, 9.0F, 5.0F), gli.a(-4.0F, 15.0F, -1.0F, -0.05235988F, 0.0F, 0.0F));
-      return glm.a($$0, 48, 32);
+   public static gkx a(gkv $$0) {
+      gkz $$1 = new gkz();
+      glb $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gkw.c()
+            .a(0, 0)
+            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
+            .a(0, 14)
+            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
+            .a(17, 0)
+            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
+            .a(17, 0)
+            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
+         gkt.a(0.0F, 7.0F, -6.0F)
+      );
+      $$2.a("body", gkw.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gkt.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("right_chest", gkw.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gkt.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$2.a("left_chest", gkw.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gkt.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      int $$3 = 4;
+      int $$4 = 14;
+      gkw $$5 = gkw.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$5, gkt.a(-3.5F, 10.0F, 6.0F));
+      $$2.a("left_hind_leg", $$5, gkt.a(3.5F, 10.0F, 6.0F));
+      $$2.a("right_front_leg", $$5, gkt.a(-3.5F, 10.0F, -5.0F));
+      $$2.a("left_front_leg", $$5, gkt.a(3.5F, 10.0F, -5.0F));
+      return gkx.a($$1, 128, 64);
    }
 
-   public void a(hfa $$0) {
+   private static gkz a(gkz $$0) {
+      float $$1 = 2.0F;
+      float $$2 = 0.7F;
+      float $$3 = 1.1F;
+      UnaryOperator<gkt> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
+      UnaryOperator<gkt> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
+      UnaryOperator<gkt> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
+      gkz $$7 = new gkz();
+
+      for (Entry<String, glb> $$8 : $$0.a().a()) {
+         String $$9 = $$8.getKey();
+         glb $$10 = $$8.getValue();
+
+         UnaryOperator<gkt> $$11 = switch ($$9) {
+            case "head" -> $$4;
+            case "body" -> $$5;
+            default -> $$6;
+         };
+         $$7.a().a($$9, $$10.a($$11));
+      }
+
+      return $$7;
+   }
+
+   public void a(hff $$0) {
       super.a($$0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      this.d.e = azq.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.e.e = azq.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.f.e = azq.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.g.e = azq.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.b.g = $$0.a;
-      this.d.k = true;
-      this.e.k = true;
-      this.f.k = true;
-      this.g.k = true;
-      float $$3 = $$0.ag;
-      if ($$0.c) {
-         this.c.e += 0.10471976F;
-         float $$4 = $$0.b;
-         this.c.c += $$4 * $$3;
-         this.b.c += $$4 * $$3;
-      } else if ($$0.d) {
-         this.c.g = (float) (-Math.PI / 2);
-         this.c.c += 5.0F * $$3;
-         this.i.e = (float) (-Math.PI * 5.0 / 6.0);
-         if ($$0.aj) {
-            this.i.e = -2.1816616F;
-            this.c.d += 2.0F;
-         }
-
-         this.b.b += 2.0F * $$3;
-         this.b.c += 2.99F * $$3;
-         this.b.f = (float) (-Math.PI * 2.0 / 3.0);
-         this.b.g = 0.0F;
-         this.d.k = false;
-         this.e.k = false;
-         this.f.k = false;
-         this.g.k = false;
-      } else if ($$0.e) {
-         this.c.e = (float) (Math.PI / 6);
-         this.c.c -= 7.0F * $$3;
-         this.c.d += 3.0F * $$3;
-         this.i.e = (float) (Math.PI / 4);
-         this.i.d -= 1.0F * $$3;
-         this.b.e = 0.0F;
-         this.b.f = 0.0F;
-         if ($$0.aj) {
-            this.b.c--;
-            this.b.d -= 0.375F;
-         } else {
-            this.b.c -= 6.5F;
-            this.b.d += 2.75F;
-         }
-
-         this.d.e = (float) (-Math.PI * 5.0 / 12.0);
-         this.d.c += 4.0F * $$3;
-         this.d.d -= 0.25F * $$3;
-         this.e.e = (float) (-Math.PI * 5.0 / 12.0);
-         this.e.c += 4.0F * $$3;
-         this.e.d -= 0.25F * $$3;
-         this.f.e = (float) (-Math.PI / 12);
-         this.g.e = (float) (-Math.PI / 12);
-      }
-
-      if (!$$0.d && !$$0.f && !$$0.c) {
-         this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-         this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      }
-
-      if ($$0.d) {
-         this.b.e = 0.0F;
-         this.b.f = (float) (-Math.PI * 2.0 / 3.0);
-         this.b.g = azq.b($$0.u * 0.027F) / 22.0F;
-      }
-
-      if ($$0.c) {
-         float $$5 = azq.b($$0.u) * 0.01F;
-         this.c.f = $$5;
-         this.d.g = $$5;
-         this.e.g = $$5;
-         this.f.g = $$5 / 2.0F;
-         this.g.g = $$5 / 2.0F;
-      }
-
-      if ($$0.f) {
-         float $$6 = 0.1F;
-         this.m += 0.67F;
-         this.d.e = azq.b(this.m * 0.4662F) * 0.1F;
-         this.e.e = azq.b(this.m * 0.4662F + (float) Math.PI) * 0.1F;
-         this.f.e = azq.b(this.m * 0.4662F + (float) Math.PI) * 0.1F;
-         this.g.e = azq.b(this.m * 0.4662F) * 0.1F;
-      }
+      this.b.e = $$0.ae * (float) (Math.PI / 180.0);
+      this.b.f = $$0.ad * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ah;
+      float $$2 = $$0.ag;
+      this.c.e = azz.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.d.e = azz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = azz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.f.e = azz.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.g.k = $$0.b;
+      this.i.k = $$0.b;
    }
 }

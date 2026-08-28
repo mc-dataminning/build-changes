@@ -1,91 +1,63 @@
-import java.util.EnumMap;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fc;
+import java.util.Set;
 
-public enum hnd implements hnr {
-   a(i.a, i.a),
-   b(i.a, i.b),
-   c(i.a, i.c),
-   d(i.a, i.d),
-   e(i.b, i.a),
-   f(i.b, i.b),
-   g(i.b, i.c),
-   h(i.b, i.d),
-   i(i.c, i.a),
-   j(i.c, i.b),
-   k(i.c, i.c),
-   l(i.c, i.d),
-   m(i.d, i.a),
-   n(i.d, i.b),
-   o(i.d, i.c),
-   p(i.d, i.d);
+public class hnd {
+   static final int a = -1;
+   private static final int b = 0;
 
-   private static final hnd[][] r = ag.a(new hnd[i.values().length][i.values().length], $$0 -> {
-      for (hnd $$1 : values()) {
-         $$0[$$1.s.ordinal()][$$1.t.ordinal()] = $$1;
-      }
-   });
-   private final i s;
-   private final i t;
-   final k u;
-   private final h v;
-   final Map<jc, Matrix4fc> w = new EnumMap<>(jc.class);
-   final Map<jc, Matrix4fc> x = new EnumMap<>(jc.class);
-   private final hnd.a y = new hnd.a(this);
+   public static Object2IntMap<ebq> a(frs $$0, hmt.b $$1) {
+      Map<dno, List<ect<?>>> $$2 = new HashMap<>();
+      Map<hnd.a, Set<ebq>> $$3 = new HashMap<>();
+      $$1.a().forEach(($$3x, $$4x) -> {
+         List<ect<?>> $$5x = $$2.computeIfAbsent($$3x.b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hnd.a $$6x = hnd.a.a($$3x, $$4x, $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$3x);
+      });
+      int $$4 = 1;
+      Object2IntMap<ebq> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-   private hnd(final i $$0, final i $$1) {
-      this.s = $$0;
-      this.t = $$1;
-      this.v = h.a($$0, $$1);
-      if (this.v != h.a) {
-         this.u = new k(new Matrix4f(this.v.b()));
-      } else {
-         this.u = k.a();
+      for (Set<ebq> $$6 : $$3.values()) {
+         Iterator<ebq> $$7 = $$6.iterator();
+
+         while ($$7.hasNext()) {
+            ebq $$8 = $$7.next();
+            if ($$8.o() != dub.b) {
+               $$7.remove();
+               $$5.put($$8, 0);
+            }
+         }
+
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
+         }
       }
 
-      for (jc $$2 : jc.values()) {
-         Matrix4fc $$3 = iv.a(this.u, $$2).c();
-         this.w.put($$2, $$3);
-         this.x.put($$2, $$3.invertAffine(new Matrix4f()));
-      }
+      return $$5;
    }
 
-   @Override
-   public k a() {
-      return this.u;
-   }
-
-   public static hnd a(i $$0, i $$1) {
-      return r[$$0.ordinal()][$$1.ordinal()];
-   }
-
-   public h b() {
-      return this.v;
-   }
-
-   public hnr c() {
-      return this.y;
-   }
-
-   static record a(hnd a) implements hnr {
-      @Override
-      public k a() {
-         return this.a.u;
+   static record a(Object a, List<Object> b) {
+      public static hnd.a a(ebq $$0, gta.c $$1, List<ect<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hnd.a($$4, $$3);
       }
 
-      @Override
-      public Matrix4fc a(jc $$0) {
-         return this.a.w.getOrDefault($$0, q);
-      }
+      private static List<Object> a(ebq $$0, List<ect<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
 
-      @Override
-      public Matrix4fc b(jc $$0) {
-         return this.a.x.getOrDefault($$0, q);
-      }
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
+         }
 
-      public hnd b() {
-         return this.a;
+         return List.of($$2);
       }
    }
 }

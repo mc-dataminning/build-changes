@@ -1,111 +1,113 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fyf implements fyc {
-   private final fya a;
-   private final fyf.a b;
-   private int c = 0;
+public record fyf(fye a, int b, int c) {
+   private static final fyf d = new fyf(0, 0, 0, 0);
 
-   private fyf(fyf.a $$0) {
-      this(0, 0, $$0);
+   public fyf(int $$0, int $$1, int $$2, int $$3) {
+      this(new fye($$0, $$1), $$2, $$3);
    }
 
-   public fyf(int $$0, int $$1, fyf.a $$2) {
-      this.a = new fya($$0, $$1);
-      this.b = $$2;
+   public static fyf a() {
+      return d;
    }
 
-   public fyf a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
+   public static fyf a(fyc $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fyf($$1, $$2, $$3, $$4);
+         case b -> new fyf($$2, $$1, $$4, $$3);
+      };
    }
 
-   public fye b() {
+   public fyf a(fyd $$0) {
+      return new fyf(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(fyc $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(fyd $$0) {
+      fyc $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fyf c(fyd $$0) {
+      int $$1 = this.b($$0);
+      fyc $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fyf $$0) {
+      return this.a($$0, fyc.a) && this.a($$0, fyc.b);
+   }
+
+   public boolean a(fyf $$0, fyc $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fyc $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fyf b(fyf $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fyf($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
       return this.a.b();
    }
 
-   public fye c() {
-      return this.a.c();
+   public int c() {
+      return this.a.b() + this.c;
    }
 
-   public <T extends fyd> T a(T $$0, fye $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
+   public int d() {
+      return this.a.a();
    }
 
-   public <T extends fyd> T a(T $$0) {
-      return this.a($$0, this.b());
+   public int e() {
+      return this.a.a() + this.b;
    }
 
-   public <T extends fyd> T a(T $$0, Consumer<fye> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ag.a(this.b(), $$1));
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
    }
 
-   @Override
-   public void b(Consumer<fyd> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int A() {
-      return this.a.A();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
-   }
-
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
-   }
-
-   @Override
-   public int F() {
-      return this.a.F();
-   }
-
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fyf d() {
-      return new fyf(fyf.a.b);
-   }
-
-   public static fyf e() {
-      return new fyf(fyf.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fya $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
+   public fyf a(Matrix4f $$0) {
+      if (f.a($$0)) {
+         return this;
+      } else {
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new fyf(azz.d($$1.x), azz.d($$1.y), azz.d($$2.x - $$1.x), azz.d($$2.y - $$1.y));
       }
+   }
 
-      public <T extends fyd> T a(fya $$0, T $$1, int $$2, fye $$3) {
-         return (T)(switch (this) {
-            case a -> (fyd)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fyd)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   public fye f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

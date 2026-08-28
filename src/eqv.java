@@ -1,26 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class eqv extends erj {
-   private static final eqv c = new eqv();
-   public static MapCodec<eqv> a = MapCodec.unit(() -> c);
+public interface eqv<P extends equ> {
+   eqv<eqt> a = a("constant", eqt.b);
+   eqv<eqx> b = a("uniform", eqx.a);
+   eqv<eqs> c = a("biased_to_bottom", eqs.a);
+   eqv<eqy> d = a("very_biased_to_bottom", eqy.a);
+   eqv<eqw> e = a("trapezoid", eqw.a);
+   eqv<eqz> f = a("weighted_list", eqz.a);
 
-   private eqv() {
-   }
+   MapCodec<P> codec();
 
-   public static eqv a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(eri $$0, azz $$1, iw $$2) {
-      erh $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      jg<dlc> $$4 = $$0.d().u($$2);
-      return $$0.f().a($$4).a($$3);
-   }
-
-   @Override
-   public erl<?> b() {
-      return erl.e;
+   private static <P extends equ> eqv<P> a(String $$0, MapCodec<P> $$1) {
+      return jt.a(mh.L, $$0, () -> $$1);
    }
 }

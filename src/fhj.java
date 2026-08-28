@@ -1,64 +1,83 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import java.util.Collection;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public record fhj<T>(T b, iw c, int d, fho e) {
-   public static final Strategy<fhj<?>> a = new Strategy<fhj<?>>() {
-      public int a(fhj<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+public abstract class fhj {
+   public boolean a(@Nullable fhj $$0) {
+      return $$0 == null ? false : this == $$0;
+   }
+
+   public abstract String c();
+
+   public abstract xu d(xg var1);
+
+   public abstract boolean j();
+
+   public abstract boolean i();
+
+   public abstract fhj.b k();
+
+   public abstract o o();
+
+   public abstract Collection<String> h();
+
+   public abstract fhj.b l();
+
+   public abstract fhj.a m();
+
+   public static enum a implements bax {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      public static final Codec<fhj.a> e = bax.a(fhj.a::values);
+      private static final IntFunction<fhj.a> i = ayo.a($$0 -> $$0.h, values(), ayo.a.a);
+      public static final ze<ByteBuf, fhj.a> f = zc.a(i, $$0 -> $$0.h);
+      public final String g;
+      public final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      public boolean a(@Nullable fhj<?> $$0, @Nullable fhj<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
+      public xg a() {
+         return xg.c("team.collision." + this.g);
       }
-   };
 
-   public static <T> Codec<fhj<T>> a(Codec<T> $$0) {
-      MapCodec<iw> $$1 = RecordCodecBuilder.mapCodec(
-         $$0x -> $$0x.group(Codec.INT.fieldOf("x").forGetter(kb::u), Codec.INT.fieldOf("y").forGetter(kb::v), Codec.INT.fieldOf("z").forGetter(kb::w))
-               .apply($$0x, iw::new)
-      );
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  $$0.fieldOf("i").forGetter(fhj::a), $$1.forGetter(fhj::b), Codec.INT.fieldOf("t").forGetter(fhj::c), fho.h.fieldOf("p").forGetter(fhj::d)
-               )
-               .apply($$2, fhj::new)
-      );
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 
-   public static <T> List<fhj<T>> a(List<fhj<T>> $$0, dje $$1) {
-      long $$2 = $$1.a();
-      return $$0.stream().filter($$1x -> dje.a($$1x.b()) == $$2).toList();
-   }
+   public static enum b implements bax {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   public fhk<T> a(long $$0, long $$1) {
-      return new fhk<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
+      public static final Codec<fhj.b> e = bax.a(fhj.b::values);
+      private static final IntFunction<fhj.b> i = ayo.a($$0 -> $$0.h, values(), ayo.a.a);
+      public static final ze<ByteBuf, fhj.b> f = zc.a(i, $$0 -> $$0.h);
+      public final String g;
+      public final int h;
 
-   public static <T> fhj<T> a(T $$0, iw $$1) {
-      return new fhj<>($$0, $$1, 0, fho.d);
-   }
+      private b(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
 
-   public T a() {
-      return this.b;
-   }
+      public xg a() {
+         return xg.c("team.visibility." + this.g);
+      }
 
-   public iw b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public fho d() {
-      return this.e;
+      @Override
+      public String c() {
+         return this.g;
+      }
    }
 }

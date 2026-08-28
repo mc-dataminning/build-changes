@@ -1,35 +1,61 @@
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record asn(String b, xg c) {
-   public static final asn a = a("");
+public class asn implements asl {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   public static asn a(String $$0) {
-      return new asn($$0, xg.c);
+   private asn(int $$0) {
+      this.b = $$0;
    }
 
-   public static asn b(String $$0) {
-      return new asn($$0, xg.b);
+   public static asn b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   public static asn c(int $$0) {
+      int $$1 = asl.a($$0);
+      return new asn($$1 * $$1);
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   public static asn c() {
+      return new asn(0);
    }
 
-   public boolean c() {
-      return !this.c.a();
+   @Override
+   public void a(djo $$0) {
+      this.e = ag.c();
+      this.d = this.e;
    }
 
-   public String d() {
-      return this.b;
+   @Override
+   public void a(djo $$0, @Nullable eeo $$1) {
+      if ($$1 == eeo.n) {
+         this.c++;
+      }
+
+      int $$2 = this.d();
+      if (ag.c() > this.e) {
+         this.e += 500L;
+         a.info(xg.a("menu.preparingSpawn", azz.a($$2, 0, 100)).getString());
+      }
    }
 
-   public xg e() {
-      return this.c;
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+      a.info("Time elapsed: {} ms", ag.c() - this.d);
+      this.e = Long.MAX_VALUE;
+   }
+
+   public int d() {
+      return this.b == 0 ? 100 : azz.d((float)this.c * 100.0F / (float)this.b);
    }
 }

@@ -1,50 +1,124 @@
-public abstract class coh extends ctq {
-   protected coh(bxe<? extends coh> $$0, djz $$1) {
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class coh extends cod {
+   public static final double b = 0.375;
+
+   public coh(bxn<? extends coh> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void D() {
-      super.D();
-   }
-
-   public coh.a j() {
-      return coh.a.a;
+   public coh(dkj $$0, iw $$1) {
+      super(bxn.aw, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   public boolean c(bxw $$0) {
-      return $$0 instanceof crg && $$0.n_() ? false : super.c($$0);
+   protected void a(aky.a $$0) {
    }
 
    @Override
-   protected boolean t(bwv $$0) {
-      if (super.t($$0)) {
-         return true;
+   protected void f() {
+      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
+      double $$0 = (double)this.an().l() / 2.0;
+      double $$1 = (double)this.an().m();
+      this.a(new ffx(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void a(asb $$0, @Nullable bxe $$1) {
+      this.a(awy.oE, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ua $$0) {
+   }
+
+   @Override
+   public void a(ua $$0) {
+   }
+
+   @Override
+   public bvc a(csi $$0, bvb $$1) {
+      if (this.dV().C) {
+         return bvc.a;
       } else {
-         return !$$0.an().a(axj.z) ? false : this.cq() == null && $$0.cq() == null;
+         boolean $$2 = false;
+         List<byd> $$3 = dau.a(this.dV(), this.j(), $$1x -> {
+            bxe $$2x = $$1x.C();
+            return $$2x == $$0 || $$2x == this;
+         });
+
+         for (byd $$4 : $$3) {
+            if ($$4.C() == $$0) {
+               $$4.a_(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$5 = false;
+         if (!$$2) {
+            this.aq();
+            if ($$0.gk().d) {
+               for (byd $$6 : $$3) {
+                  if ($$6.T_() && $$6.C() == this) {
+                     $$6.z();
+                     $$5 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$5) {
+            this.a(egq.b, $$0);
+         }
+
+         return bvc.a;
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   @Override
+   public boolean g() {
+      return this.dV().a_(this.a).a(axn.U);
    }
 
-   protected class b extends cfk {
-      public b(final ctq $$1) {
-         super($$1, false);
+   public static coh b(dkj $$0, iw $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (coh $$6 : $$0.a(coh.class, new ffx((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.j().equals($$1)) {
+            return $$6;
+         }
       }
 
-      @Override
-      public boolean b() {
-         return super.b() && coh.this.gI();
-      }
+      coh $$7 = new coh($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   public void m() {
+      this.a(awy.oF, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zo<acf> a(arz $$0) {
+      return new acg(this, 0, this.j());
+   }
+
+   @Override
+   public fgc v(float $$0) {
+      return this.p($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public dak dI() {
+      return new dak(dao.vV);
    }
 }

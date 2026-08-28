@@ -3,14 +3,14 @@ import java.util.Map;
 import java.util.Optional;
 
 public class on {
-   private final den a;
-   private final den b;
-   private final den c;
+   private final dex a;
+   private final dex b;
+   private final dex c;
    private final og d;
-   private final czw e;
+   private final dag e;
    private final Map<String, ar<?>> f = new LinkedHashMap<>();
 
-   public on(den $$0, den $$1, den $$2, og $$3, czw $$4) {
+   public on(dex $$0, dex $$1, dex $$2, og $$3, dag $$4) {
       this.d = $$3;
       this.a = $$0;
       this.b = $$1;
@@ -18,7 +18,7 @@ public class on {
       this.e = $$4;
    }
 
-   public static on a(den $$0, den $$1, den $$2, og $$3, czw $$4) {
+   public static on a(dex $$0, dex $$1, dex $$2, og $$3, dag $$4) {
       return new on($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -28,18 +28,18 @@ public class on {
    }
 
    public void a(oh $$0, String $$1) {
-      this.a($$0, alj.a(mi.bv, alk.a($$1)));
+      this.a($$0, alq.a(mi.bv, alr.a($$1)));
    }
 
-   public void a(oh $$0, alj<der<?>> $$1) {
+   public void a(oh $$0, alq<dfb<?>> $$1) {
       this.a($$1);
       ai.a $$2 = $$0.a().a("has_the_recipe", di.a($$1)).a(an.a.c($$1)).a(am.a.b);
       this.f.forEach($$2::a);
-      dfo $$3 = new dfo(Optional.of(this.a), this.b, Optional.of(this.c), new dfu(this.e));
+      dfy $$3 = new dfy(Optional.of(this.a), this.b, Optional.of(this.c), new dge(this.e));
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.d.a() + "/")));
    }
 
-   private void a(alj<der<?>> $$0) {
+   private void a(alq<dfb<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

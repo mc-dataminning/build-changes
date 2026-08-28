@@ -1,31 +1,30 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.types.templates.List.ListType;
 
 public class bhz extends DataFix {
-   private final String a;
-   private final TypeReference b;
-   private final UnaryOperator<String> c;
-
-   public bhz(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+   public bhz(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bky.a());
-      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
-         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
-      }
+      Type<?> $$0 = this.getInputSchema().getType(bjm.j);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      OpticFinder<?> $$2 = $$1.type().findField("banners");
+      OpticFinder<?> $$3 = DSL.typeFinder(((ListType)$$2.type()).getElement());
+      return this.fixTypeEverywhereTyped(
+         "MapBannerBlockPosFormatFix",
+         $$0,
+         $$3x -> $$3x.updateTyped(
+               $$1,
+               $$2xx -> $$2xx.updateTyped(
+                     $$2, $$1xxx -> $$1xxx.updateTyped($$3, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), $$0xxxxx -> $$0xxxxx.update("Pos", bbq::a)))
+                  )
+            )
+      );
    }
 }

@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bpr {
+   int c();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface bpr {
+   int d();
+
+   long a(int var1);
+
+   long a(int var1, int var2);
+
+   void e();
 }

@@ -1,63 +1,45 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Consumer;
 
-public class fbc extends fbb {
-   public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(fao.a, fao.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, fbc::new)
-   );
-   private final Either<alj<fao>, fao> j;
+public abstract class fbc extends fbj {
+   protected final List<fbj> d;
+   private final fbb a;
 
-   private fbc(Either<alj<fao>, fao> $$0, int $$1, int $$2, List<fds> $$3, List<fbx> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected fbc(List<fbj> $$0, List<fec> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public fba a() {
-      return fax.d;
-   }
-
-   @Override
-   public void a(Consumer<daa> $$0, faj $$1) {
-      ((fao)this.j.map($$1x -> $$1.a().c($$1x).map(jg::a).orElse(fao.f), $$0x -> $$0x)).a($$1, $$0);
-   }
-
-   @Override
-   public void a(fap $$0) {
-      Optional<alj<fao>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         alj<fao> $$2 = $$1.get();
-         if (!$$0.b()) {
-            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
-            return;
-         }
-
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
-         }
+   public void a(faz $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .c($$1x)
-                  .ifPresentOrElse($$2x -> ((fao)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   public static fbb.a<?> a(alj<fao> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new fbc(Either.left($$0), $$1, $$2, $$3, $$4));
+   protected abstract fbb a(List<? extends fbb> var1);
+
+   @Override
+   public final boolean expand(fat $$0, Consumer<fbi> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public static fbb.a<?> a(fao $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new fbc(Either.right($$0), $$1, $$2, $$3, $$4));
+   public static <T extends fbc> MapCodec<T> a(fbc.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(fbh.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends fbc> {
+      T create(List<fbj> var1, List<fec> var2);
    }
 }

@@ -1,77 +1,184 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class faa {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = ezs.a();
+public class faa implements fam {
+   private final fan a;
+   private final fam b;
 
-   public faa(ezx.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(ezv.c).toFile();
-      this.c.mkdirs();
+   public faa(fan $$0, fam $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(crz $$0) {
-      try {
-         ua $$1 = $$0.h(new ua());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
-         un.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cH() + ".dat");
-         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
-         ag.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ai().getString());
-      }
+   @Override
+   public iw a() {
+      return this.b.a();
    }
 
-   private void a(crz $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cH() + $$1);
-      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ai().getString(), var7);
-         }
-      }
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   private Optional<ua> b(crz $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cH() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(un.a($$2.toPath(), uj.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ai().getString());
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public Optional<ua> b(crz $$0) {
-      Optional<ua> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
+   @Override
+   public long d() {
+      return this.b.d();
+   }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = up.b($$1x, -1);
-         $$1x = bbf.b.a(this.a, $$1x, $$2);
-         $$0.i($$1x);
-         return $$1x;
-      });
+   @Override
+   public String e() {
+      return this.a.e();
+   }
+
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dkg k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(iw $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dkg $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dkf o() {
+      return this.a.o();
+   }
+
+   @Override
+   public edi.d p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(edi.d $$0) {
+   }
+
+   @Override
+   public buz q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public ffp<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(q $$0, dkl $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

@@ -1,69 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class ddy extends deh {
-   public ddy(dee $$0) {
-      super($$0);
-   }
+public interface ddy {
+   Codec<ddy> d = mh.aw.q().dispatch(ddy::a, ddy.a::a);
+   ze<wp, ddy> e = zc.a(mi.n).b(ddy::a, ddy.a::b);
 
-   public boolean a(def $$0, djz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+   ddy.a<? extends ddy> a();
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            daa $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.a(axo.bQ)) {
-                  if ($$2) {
-                     return false;
-                  }
+   boolean a(dkj var1, dak var2, byf var3);
 
-                  $$2 = true;
-               } else {
-                  if (!($$5.h() instanceof cyz)) {
-                     return false;
-                  }
+   public static record a<T extends ddy>(MapCodec<T> f, ze<wp, T> g) {
+      public static final ddy.a<ddw> a = a("apply_effects", ddw.a, ddw.b);
+      public static final ddy.a<dea> b = a("remove_effects", dea.a, dea.b);
+      public static final ddy.a<ddx> c = a("clear_all_effects", ddx.b, ddx.c);
+      public static final ddy.a<deb> d = a("teleport_randomly", deb.a, deb.b);
+      public static final ddy.a<ddz> e = a("play_sound", ddz.a, ddz.b);
 
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public daa a(def $$0, ji.a $$1) {
-      List<cyz> $$2 = new ArrayList<>();
-      daa $$3 = daa.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         daa $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axo.bQ)) {
-               if (!$$3.f()) {
-                  return daa.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cyz $$6)) {
-                  return daa.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
+      private static <T extends ddy> ddy.a<T> a(String $$0, MapCodec<T> $$1, ze<wp, T> $$2) {
+         return jt.a(mh.aw, $$0, new ddy.a<>($$1, $$2));
       }
 
-      return !$$3.f() && !$$2.isEmpty() ? dcn.a($$3, $$2) : daa.k;
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   @Override
-   public dfb<ddy> a() {
-      return dfb.c;
+      public ze<wp, T> b() {
+         return this.g;
+      }
    }
 }

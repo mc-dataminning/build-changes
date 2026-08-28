@@ -1,33 +1,22 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public class hql implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bpm<hqk> b;
-   private final bti c;
+public class hql {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
 
-   public hql(FileChannel $$0, Executor $$1) {
-      this.b = new bpm<>(hqk.a, $$0);
-      this.c = new bti($$1, "telemetry-event-log");
+   public hql(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public hqm a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
+   public void a(hqb $$0) {
+      if (this.b != null) {
+         $$0.send(hqc.d, $$0x -> {
+            $$0x.a(hqe.x, (int)this.b.toMillis());
+            $$0x.a(hqe.y, this.a);
          });
-   }
-
-   @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+      }
    }
 }

@@ -19,12 +19,12 @@ public class ou implements mo {
    public CompletableFuture<?> a(mm $$0) {
       return this.e.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(alf.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alf.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         return CompletableFuture.allOf(alm.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alm.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(mm $$0, ji.a $$1, DynamicOps<JsonElement> $$2, alf.d<T> $$3) {
-      alj<? extends jt<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(mm $$0, ji.a $$1, DynamicOps<JsonElement> $$2, alm.d<T> $$3) {
+      alq<? extends jt<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          mq.a $$5 = this.d.a($$4);
          return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

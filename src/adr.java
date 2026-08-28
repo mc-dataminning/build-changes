@@ -1,45 +1,41 @@
-public class adr implements zj<aby> {
-   public static final za<wn, adr> a = zj.a(adr::a, adr::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class adr implements zo<acf> {
+   public static final ze<wp, adr> a = zo.a(adr::a, adr::new);
    private final int b;
-   private final diw c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+   private final int c;
+   private final adq d;
+   private final adv e;
 
-   public adr(int $$0, diw $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public adr(edx $$0, exp $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      djo $$4 = $$0.f();
+      this.b = $$4.h;
+      this.c = $$4.i;
+      this.d = new adq($$0);
+      this.e = new adv($$4, $$1, $$2, $$3);
    }
 
-   private adr(wn $$0) {
-      this.b = $$0.x();
-      this.c = diw.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   private adr(wp $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = new adq($$0, this.b, this.c);
+      this.e = new adv($$0, this.b, this.c);
    }
 
-   private void a(wn $$0) {
-      $$0.f(this.b);
-      diw.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   private void a(wp $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public zl<adr> a() {
-      return agr.Q;
+   public zq<adr> a() {
+      return agy.K;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
@@ -47,23 +43,15 @@ public class adr implements zj<aby> {
       return this.b;
    }
 
-   public diw e() {
+   public int e() {
       return this.c;
    }
 
-   public int f() {
+   public adq f() {
       return this.d;
    }
 
-   public int g() {
+   public adv g() {
       return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

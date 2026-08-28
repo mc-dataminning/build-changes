@@ -1,6 +1,8 @@
-public interface hky extends AutoCloseable {
-   void a(int var1, int var2, flj var3);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   void close();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hky {
 }

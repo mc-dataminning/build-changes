@@ -1,77 +1,87 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+public class gnq extends gpx {
+   private final float a;
+   private final float b;
 
-public class gnq implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<gnq.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
-
-   public void a(iw $$0, ebg $$1, grb $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gnq.a(this.b, $$1, $$2.dt()));
-   }
-
-   public boolean a(iw $$0, ebg $$1) {
-      gnq.a $$2 = (gnq.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
-   }
-
-   public void a(int $$0, gmd $$1) {
-      ObjectIterator<Entry<gnq.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<gnq.a> $$3 = (Entry<gnq.a>)$$2.next();
-         gnq.a $$4 = (gnq.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            iw $$5 = iw.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
-   }
-
-   public gnq a() {
-      this.b++;
-      this.c = true;
-      return this;
+   gnq(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hhi $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void close() {
-      this.c = false;
+   public gpb b() {
+      return gpb.a;
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final ffs a;
-      int b;
-      ebg c;
-
-      a(int $$0, ebg $$1, ffs $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+   protected gnq(glo $$0, double $$1, double $$2, double $$3, hhi $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      hkq $$5 = $$4.a(this.r);
+      if ($$5 != null) {
+         this.a($$5);
+      } else {
+         this.a(fqq.Q().a(hkp.c).apply(hkf.c()));
       }
 
-      gnq.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
 
-      void a(ebg $$0) {
-         this.c = $$0;
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a extends gnq.b<md> {
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnq($$1, $$2, $$3, $$4, this.a(new dak(dao.cT), $$1));
+      }
+   }
+
+   public abstract static class b<T extends lx> implements gpa<T> {
+      private final hhi a = new hhi();
+
+      protected hhi a(dak $$0, glo $$1) {
+         fqq.Q().bf().a(this.a, $$0, dai.h, $$1, null, 0);
+         return this.a;
+      }
+   }
+
+   public static class c extends gnq.b<lv> {
+      public gox a(lv $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      }
+   }
+
+   public static class d extends gnq.b<md> {
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnq($$1, $$2, $$3, $$4, this.a(new dak(dao.rG), $$1));
+      }
+   }
+
+   public static class e extends gnq.b<md> {
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnq($$1, $$2, $$3, $$4, this.a(new dak(dao.rs), $$1));
       }
    }
 }

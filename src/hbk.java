@@ -1,26 +1,24 @@
-public class hbk extends gyj<ctl, her> {
-   private static final alk a = alk.b("textures/entity/projectiles/wind_charge.png");
-   private final gks g;
+public class hbk extends hcj<heb, ghl<heb>> {
+   private final gsq a;
 
-   public hbk(gyk.a $$0) {
+   public hbk(gzs<heb, ghl<heb>> $$0, gsq $$1) {
       super($$0);
-      this.g = new gks($$0.a(glf.dS));
+      this.a = $$1;
    }
 
-   @Override
-   public void a(her $$0, flq $$1, gsc $$2, int $$3) {
-      flt $$4 = $$2.getBuffer(gsn.a(a, this.a($$0.u) % 1.0F, 0.0F));
-      this.g.a($$0);
-      this.g.a($$1, $$4, $$3, hks.d);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
-   }
-
-   @Override
-   public her d() {
-      return new her();
+   public void a(fld $$0, grn $$1, int $$2, heb $$3, float $$4, float $$5) {
+      ebq $$6 = $$3.b;
+      if ($$6 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$7 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hkg.d);
+         $$0.b();
+      }
    }
 }

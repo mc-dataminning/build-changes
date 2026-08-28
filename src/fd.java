@@ -2,9 +2,9 @@ import com.mojang.brigadier.context.CommandContext;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class fd extends bql<va> {
+public class fd extends bqu<va> {
    private static final Collection<String> a = Arrays.asList("0", "0b", "0l", "0.0", "\"foo\"", "{foo=bar}", "[0]");
-   private static final bqg<va> b = uu.a(uo.a);
+   private static final bqp<va> b = uu.a(uo.a);
 
    private fd() {
       super(b);

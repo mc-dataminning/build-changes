@@ -1,47 +1,80 @@
-public class fyy extends gaf {
-   private static final int a = 90;
-   private final xc b;
-   private fvg c = fvg.a;
-   private final Runnable d;
-   private final xc s;
-   private final boolean u;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fyy(Runnable $$0, xc $$1, xc $$2) {
-      this($$0, $$1, $$2, xb.k, true);
-   }
+public class fyy extends fzq {
+   private static final xg a = xg.c("addServer.enterName");
+   private static final xg b = xg.c("addServer.enterIp");
+   private fty c;
+   private final BooleanConsumer d;
+   private final gmd s;
+   private fuh u;
+   private fuh v;
+   private final fzq w;
 
-   public fyy(Runnable $$0, xc $$1, xc $$2, xc $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.s = $$3;
-      this.u = $$4;
-   }
-
-   @Override
-   public xc i() {
-      return xb.a(super.i(), this.b);
+   public fyy(fzq $$0, BooleanConsumer $$1, gmd $$2) {
+      super(xg.c("addServer.title"));
+      this.w = $$0;
+      this.d = $$1;
+      this.s = $$2;
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      this.c = fvg.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = azq.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(fun.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+   protected void aT_() {
+      this.v = new fuh(this.p, this.n / 2 - 100, 66, 200, 20, xg.c("addServer.enterName"));
+      this.v.a(this.s.a);
+      this.v.b($$0 -> this.E());
+      this.d(this.v);
+      this.u = new fuh(this.p, this.n / 2 - 100, 106, 200, 20, xg.c("addServer.enterIp"));
+      this.u.f(128);
+      this.u.a(this.s.b);
+      this.u.b($$0 -> this.E());
+      this.d(this.u);
+      this.c(
+         fuf.<gmd.a>a(gmd.a::a)
+            .a(gmd.a.values())
+            .a(this.s.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xg.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
+      );
+      this.c = this.c(fty.a(xg.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fty.a(xf.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.E();
    }
 
    @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
+   protected void aH_() {
+      this.b(this.v);
+   }
+
+   @Override
+   public void a(fqq $$0, int $$1, int $$2) {
+      String $$3 = this.u.a();
+      String $$4 = this.v.a();
+      this.b($$0, $$1, $$2);
+      this.u.a($$3);
+      this.v.a($$4);
+   }
+
+   private void m() {
+      this.s.a = this.v.a();
+      this.s.b = this.u.a();
+      this.d.accept(true);
+   }
+
+   @Override
+   public void aQ_() {
+      this.m.a(this.w);
+   }
+
+   private void E() {
+      this.c.j = gng.b(this.u.a()) && !this.v.a().isEmpty();
+   }
+
+   @Override
+   public void a(ftk $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
-   }
-
-   @Override
-   public boolean aH_() {
-      return this.u;
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
    }
 }

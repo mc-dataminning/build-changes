@@ -1,43 +1,41 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+public class dbu extends dag {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class dbu implements cvg {
-   public static final Codec<jg<dbu>> a = mh.h.r();
-   public static final za<wn, jg<dbu>> b = yy.b(mi.ae);
-   private final String c;
-   private final List<bvz> d;
-   private cvj e = cvl.g;
-
-   public dbu(String $$0, bvz... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public dbu a(cvh... $$0) {
-      this.e = cvl.e.a($$0);
-      return this;
+   public dbu(dag.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cvj k() {
-      return this.e;
+   public int a(dak $$0, byf $$1) {
+      return 1200;
    }
 
-   public List<bvz> a() {
-      return this.d;
+   @Override
+   public dam b(dak $$0) {
+      return dam.h;
    }
 
-   public String b() {
-      return this.c;
+   @Override
+   public bvc a(dkj $$0, csi $$1, bvb $$2) {
+      $$1.a(awy.Ab, 1.0F, 1.0F);
+      $$1.b(axi.c.b(this));
+      return dan.a($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      for (bvz $$0 : this.d) {
-         if ($$0.c().a().a()) {
-            return true;
-         }
-      }
+   @Override
+   public dak a(dak $$0, dkj $$1, byf $$2) {
+      this.b($$2);
+      return $$0;
+   }
 
-      return false;
+   @Override
+   public boolean a(dak $$0, dkj $$1, byf $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(byf $$0) {
+      $$0.a(awy.Ac, 1.0F, 1.0F);
    }
 }

@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hds {
+public class hds extends hfe {
+   public float a;
+   public float b;
+   @Nullable
+   public ckc c;
 }

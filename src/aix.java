@@ -1,51 +1,20 @@
-import org.jetbrains.annotations.VisibleForTesting;
+public record aix(iw b, edb c, String d) implements zo<aha> {
+   public static final ze<vy, aix> a = ze.a(iw.b, aix::b, edb.f, aix::e, zc.p, aix::f, aix::new);
 
-public class aix {
-   private static final double a = 4096.0;
-   private ffs b = ffs.c;
-
-   @VisibleForTesting
-   static long a(double $$0) {
-      return Math.round($$0 * 4096.0);
+   @Override
+   public zq<aix> a() {
+      return agy.ci;
    }
 
-   @VisibleForTesting
-   static double a(long $$0) {
-      return (double)$$0 / 4096.0;
+   public void a(aha $$0) {
+      $$0.a(this);
    }
 
-   public ffs a(long $$0, long $$1, long $$2) {
-      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
-         return this.b;
-      } else {
-         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
-         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
-         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new ffs($$3, $$4, $$5);
-      }
+   public edb e() {
+      return this.c;
    }
 
-   public long a(ffs $$0) {
-      return a($$0.d) - a(this.b.d);
-   }
-
-   public long b(ffs $$0) {
-      return a($$0.e) - a(this.b.e);
-   }
-
-   public long c(ffs $$0) {
-      return a($$0.f) - a(this.b.f);
-   }
-
-   public ffs d(ffs $$0) {
-      return $$0.d(this.b);
-   }
-
-   public void e(ffs $$0) {
-      this.b = $$0;
-   }
-
-   public ffs a() {
-      return this.b;
+   public String f() {
+      return this.d;
    }
 }

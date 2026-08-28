@@ -1,44 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class aoa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("commands.kick.singleplayer.failed"));
+   public static final int a = 2;
 
    public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("kick").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("gamemode").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)el.a("targets", ex.d())
-                     .executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), xc.c("multiplayer.disconnect.kicked"))))
-                  .then(el.a("reason", fb.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), fb.a($$0x, "reason"))))
+               ((RequiredArgumentBuilder)el.a("gamemode", ey.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ek)$$0x.getSource()).h()), ey.a($$0x, "gamemode"))))
+                  .then(el.a("target", ex.d()).executes($$0x -> a($$0x, ex.f($$0x, "target"), ey.a($$0x, "gamemode"))))
             )
       );
    }
 
-   private static int a(ek $$0, Collection<arv> $$1, xc $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
+   private static void a(ek $$0, asc $$1, dkg $$2) {
+      xg $$3 = xg.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xg.a("commands.gamemode.success.self", $$3), true);
       } else {
-         int $$3 = 0;
-
-         for (arv $$4 : $$1) {
-            if (!$$0.l().a($$4.gi())) {
-               $$4.f.a($$2);
-               $$0.a(() -> xc.a("commands.kick.success", $$4.m_(), $$2), true);
-               $$3++;
-            }
+         if ($$0.e().O().c(dkf.q)) {
+            $$1.a(xg.a("gameMode.changed", $$3));
          }
 
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
+         $$0.a(() -> xg.a("commands.gamemode.success.other", $$1.m_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<ek> $$0, Collection<asc> $$1, dkg $$2) {
+      int $$3 = 0;
+
+      for (asc $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ek)$$0.getSource(), $$4, $$2);
+            $$3++;
          }
       }
+
+      return $$3;
    }
 }

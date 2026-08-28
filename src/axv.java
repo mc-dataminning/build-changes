@@ -1,48 +1,185 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public final class axv {
+   public static final ayc<dag> a = a("wool");
+   public static final ayc<dag> b = a("planks");
+   public static final ayc<dag> c = a("stone_bricks");
+   public static final ayc<dag> d = a("wooden_buttons");
+   public static final ayc<dag> e = a("stone_buttons");
+   public static final ayc<dag> f = a("buttons");
+   public static final ayc<dag> g = a("wool_carpets");
+   public static final ayc<dag> h = a("wooden_doors");
+   public static final ayc<dag> i = a("wooden_stairs");
+   public static final ayc<dag> j = a("wooden_slabs");
+   public static final ayc<dag> k = a("wooden_fences");
+   public static final ayc<dag> l = a("fence_gates");
+   public static final ayc<dag> m = a("wooden_pressure_plates");
+   public static final ayc<dag> n = a("wooden_trapdoors");
+   public static final ayc<dag> o = a("doors");
+   public static final ayc<dag> p = a("saplings");
+   public static final ayc<dag> q = a("logs_that_burn");
+   public static final ayc<dag> r = a("logs");
+   public static final ayc<dag> s = a("dark_oak_logs");
+   public static final ayc<dag> t = a("pale_oak_logs");
+   public static final ayc<dag> u = a("oak_logs");
+   public static final ayc<dag> v = a("birch_logs");
+   public static final ayc<dag> w = a("acacia_logs");
+   public static final ayc<dag> x = a("cherry_logs");
+   public static final ayc<dag> y = a("jungle_logs");
+   public static final ayc<dag> z = a("spruce_logs");
+   public static final ayc<dag> A = a("mangrove_logs");
+   public static final ayc<dag> B = a("crimson_stems");
+   public static final ayc<dag> C = a("warped_stems");
+   public static final ayc<dag> D = a("bamboo_blocks");
+   public static final ayc<dag> E = a("wart_blocks");
+   public static final ayc<dag> F = a("banners");
+   public static final ayc<dag> G = a("sand");
+   public static final ayc<dag> H = a("smelts_to_glass");
+   public static final ayc<dag> I = a("stairs");
+   public static final ayc<dag> J = a("slabs");
+   public static final ayc<dag> K = a("walls");
+   public static final ayc<dag> L = a("anvil");
+   public static final ayc<dag> M = a("rails");
+   public static final ayc<dag> N = a("leaves");
+   public static final ayc<dag> O = a("trapdoors");
+   public static final ayc<dag> P = a("small_flowers");
+   public static final ayc<dag> Q = a("flowers");
+   public static final ayc<dag> R = a("beds");
+   public static final ayc<dag> S = a("fences");
+   public static final ayc<dag> T = a("piglin_repellents");
+   public static final ayc<dag> U = a("piglin_loved");
+   public static final ayc<dag> V = a("ignored_by_piglin_babies");
+   public static final ayc<dag> W = a("piglin_safe_armor");
+   public static final ayc<dag> X = a("duplicates_allays");
+   public static final ayc<dag> Y = a("brewing_fuel");
+   public static final ayc<dag> Z = a("shulker_boxes");
+   public static final ayc<dag> aa = a("eggs");
+   public static final ayc<dag> ab = a("meat");
+   public static final ayc<dag> ac = a("sniffer_food");
+   public static final ayc<dag> ad = a("piglin_food");
+   public static final ayc<dag> ae = a("fox_food");
+   public static final ayc<dag> af = a("cow_food");
+   public static final ayc<dag> ag = a("goat_food");
+   public static final ayc<dag> ah = a("sheep_food");
+   public static final ayc<dag> ai = a("wolf_food");
+   public static final ayc<dag> aj = a("cat_food");
+   public static final ayc<dag> ak = a("horse_food");
+   public static final ayc<dag> al = a("horse_tempt_items");
+   public static final ayc<dag> am = a("camel_food");
+   public static final ayc<dag> an = a("armadillo_food");
+   public static final ayc<dag> ao = a("bee_food");
+   public static final ayc<dag> ap = a("chicken_food");
+   public static final ayc<dag> aq = a("frog_food");
+   public static final ayc<dag> ar = a("hoglin_food");
+   public static final ayc<dag> as = a("llama_food");
+   public static final ayc<dag> at = a("llama_tempt_items");
+   public static final ayc<dag> au = a("ocelot_food");
+   public static final ayc<dag> av = a("panda_food");
+   public static final ayc<dag> aw = a("panda_eats_from_ground");
+   public static final ayc<dag> ax = a("pig_food");
+   public static final ayc<dag> ay = a("rabbit_food");
+   public static final ayc<dag> az = a("strider_food");
+   public static final ayc<dag> aA = a("strider_tempt_items");
+   public static final ayc<dag> aB = a("turtle_food");
+   public static final ayc<dag> aC = a("parrot_food");
+   public static final ayc<dag> aD = a("parrot_poisonous_food");
+   public static final ayc<dag> aE = a("axolotl_food");
+   public static final ayc<dag> aF = a("gold_ores");
+   public static final ayc<dag> aG = a("iron_ores");
+   public static final ayc<dag> aH = a("diamond_ores");
+   public static final ayc<dag> aI = a("redstone_ores");
+   public static final ayc<dag> aJ = a("lapis_ores");
+   public static final ayc<dag> aK = a("coal_ores");
+   public static final ayc<dag> aL = a("emerald_ores");
+   public static final ayc<dag> aM = a("copper_ores");
+   public static final ayc<dag> aN = a("non_flammable_wood");
+   public static final ayc<dag> aO = a("soul_fire_base_blocks");
+   public static final ayc<dag> aP = a("candles");
+   public static final ayc<dag> aQ = a("dirt");
+   public static final ayc<dag> aR = a("terracotta");
+   public static final ayc<dag> aS = a("completes_find_tree_tutorial");
+   public static final ayc<dag> aT = a("boats");
+   public static final ayc<dag> aU = a("chest_boats");
+   public static final ayc<dag> aV = a("fishes");
+   public static final ayc<dag> aW = a("signs");
+   public static final ayc<dag> aX = a("creeper_drop_music_discs");
+   public static final ayc<dag> aY = a("coals");
+   public static final ayc<dag> aZ = a("arrows");
+   public static final ayc<dag> ba = a("lectern_books");
+   public static final ayc<dag> bb = a("bookshelf_books");
+   public static final ayc<dag> bc = a("beacon_payment_items");
+   public static final ayc<dag> bd = a("wooden_tool_materials");
+   public static final ayc<dag> be = a("stone_tool_materials");
+   public static final ayc<dag> bf = a("iron_tool_materials");
+   public static final ayc<dag> bg = a("gold_tool_materials");
+   public static final ayc<dag> bh = a("diamond_tool_materials");
+   public static final ayc<dag> bi = a("netherite_tool_materials");
+   public static final ayc<dag> bj = a("repairs_leather_armor");
+   public static final ayc<dag> bk = a("repairs_chain_armor");
+   public static final ayc<dag> bl = a("repairs_iron_armor");
+   public static final ayc<dag> bm = a("repairs_gold_armor");
+   public static final ayc<dag> bn = a("repairs_diamond_armor");
+   public static final ayc<dag> bo = a("repairs_netherite_armor");
+   public static final ayc<dag> bp = a("repairs_turtle_helmet");
+   public static final ayc<dag> bq = a("repairs_wolf_armor");
+   public static final ayc<dag> br = a("stone_crafting_materials");
+   public static final ayc<dag> bs = a("freeze_immune_wearables");
+   public static final ayc<dag> bt = a("dampens_vibrations");
+   public static final ayc<dag> bu = a("cluster_max_harvestables");
+   public static final ayc<dag> bv = a("compasses");
+   public static final ayc<dag> bw = a("hanging_signs");
+   public static final ayc<dag> bx = a("creeper_igniters");
+   public static final ayc<dag> by = a("noteblock_top_instruments");
+   public static final ayc<dag> bz = a("foot_armor");
+   public static final ayc<dag> bA = a("leg_armor");
+   public static final ayc<dag> bB = a("chest_armor");
+   public static final ayc<dag> bC = a("head_armor");
+   public static final ayc<dag> bD = a("skulls");
+   public static final ayc<dag> bE = a("trimmable_armor");
+   public static final ayc<dag> bF = a("trim_materials");
+   public static final ayc<dag> bG = a("decorated_pot_sherds");
+   public static final ayc<dag> bH = a("decorated_pot_ingredients");
+   public static final ayc<dag> bI = a("swords");
+   public static final ayc<dag> bJ = a("axes");
+   public static final ayc<dag> bK = a("hoes");
+   public static final ayc<dag> bL = a("pickaxes");
+   public static final ayc<dag> bM = a("shovels");
+   public static final ayc<dag> bN = a("breaks_decorated_pots");
+   public static final ayc<dag> bO = a("villager_plantable_seeds");
+   public static final ayc<dag> bP = a("villager_picks_up");
+   public static final ayc<dag> bQ = a("dyeable");
+   public static final ayc<dag> bR = a("furnace_minecart_fuel");
+   public static final ayc<dag> bS = a("bundles");
+   public static final ayc<dag> bT = a("book_cloning_target");
+   public static final ayc<dag> bU = a("skeleton_preferred_weapons");
+   public static final ayc<dag> bV = a("drowned_preferred_weapons");
+   public static final ayc<dag> bW = a("piglin_preferred_weapons");
+   public static final ayc<dag> bX = a("pillager_preferred_weapons");
+   public static final ayc<dag> bY = a("wither_skeleton_disliked_weapons");
+   public static final ayc<dag> bZ = a("enchantable/foot_armor");
+   public static final ayc<dag> ca = a("enchantable/leg_armor");
+   public static final ayc<dag> cb = a("enchantable/chest_armor");
+   public static final ayc<dag> cc = a("enchantable/head_armor");
+   public static final ayc<dag> cd = a("enchantable/armor");
+   public static final ayc<dag> ce = a("enchantable/sword");
+   public static final ayc<dag> cf = a("enchantable/fire_aspect");
+   public static final ayc<dag> cg = a("enchantable/sharp_weapon");
+   public static final ayc<dag> ch = a("enchantable/weapon");
+   public static final ayc<dag> ci = a("enchantable/mining");
+   public static final ayc<dag> cj = a("enchantable/mining_loot");
+   public static final ayc<dag> ck = a("enchantable/fishing");
+   public static final ayc<dag> cl = a("enchantable/trident");
+   public static final ayc<dag> cm = a("enchantable/durability");
+   public static final ayc<dag> cn = a("enchantable/bow");
+   public static final ayc<dag> co = a("enchantable/equippable");
+   public static final ayc<dag> cp = a("enchantable/crossbow");
+   public static final ayc<dag> cq = a("enchantable/vanishing");
+   public static final ayc<dag> cr = a("enchantable/mace");
+   public static final ayc<dag> cs = a("map_invisibility_equipment");
+   public static final ayc<dag> ct = a("gaze_disguise_equipment");
 
-public record axv<T>(alj<? extends jt<T>> a, alk b) {
-   private static final Interner<axv<?>> c = Interners.newWeakInterner();
-
-   @Deprecated
-   public axv(alj<? extends jt<T>> a, alk b) {
-      this.a = a;
-      this.b = b;
+   private axv() {
    }
 
-   public static <T> Codec<axv<T>> a(alj<? extends jt<T>> $$0) {
-      return alk.a.xmap($$1 -> a($$0, $$1), axv::b);
-   }
-
-   public static <T> Codec<axv<T>> b(alj<? extends jt<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? alk.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
-   }
-
-   public static <T> za<ByteBuf, axv<T>> c(alj<? extends jt<T>> $$0) {
-      return alk.b.a($$1 -> a($$0, $$1), axv::b);
-   }
-
-   public static <T> axv<T> a(alj<? extends jt<T>> $$0, alk $$1) {
-      return (axv<T>)c.intern(new axv<>($$0, $$1));
-   }
-
-   public boolean d(alj<? extends jt<?>> $$0) {
-      return this.a == $$0;
-   }
-
-   public <E> Optional<axv<E>> e(alj<? extends jt<E>> $$0) {
-      return this.d($$0) ? Optional.of((axv<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   private static ayc<dag> a(String $$0) {
+      return ayc.a(mi.K, alr.b($$0));
    }
 }

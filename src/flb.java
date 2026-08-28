@@ -1,37 +1,67 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormatElement;
 
-public interface flb {
-   fld a(flj var1, OptionalInt var2);
-
-   fld a(flj var1, OptionalInt var2, @Nullable flj var3, OptionalDouble var4);
-
-   void a(flj var1, int var2);
-
-   void a(flj var1, int var2, flj var3, double var4);
-
-   void a(flj var1, double var2);
-
-   void a(fii var1, ByteBuffer var2, int var3);
-
-   fii.a a(fii var1);
-
-   fii.a a(fii var1, int var2, int var3);
-
-   void a(flj var1, fki var2);
-
-   void a(flj var1, fki var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flj var1, IntBuffer var2, fki.a var3, int var4, int var5, int var6, int var7, int var8);
-
-   void a(flj var1, fii var2, int var3, Runnable var4, int var5);
-
-   void a(flj var1, fii var2, int var3, Runnable var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flj var1, flj var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9);
-
-   void a(flj var1);
+public class flb {
+   public static final VertexFormat a = VertexFormat.builder().add("Position", VertexFormatElement.POSITION).build();
+   public static final VertexFormat b = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("UV2", VertexFormatElement.UV2)
+      .add("Normal", VertexFormatElement.NORMAL)
+      .padding(1)
+      .build();
+   public static final VertexFormat c = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("UV1", VertexFormatElement.UV1)
+      .add("UV2", VertexFormatElement.UV2)
+      .add("Normal", VertexFormatElement.NORMAL)
+      .padding(1)
+      .build();
+   public static final VertexFormat d = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("UV2", VertexFormatElement.UV2)
+      .build();
+   public static final VertexFormat e = VertexFormat.builder().add("Position", VertexFormatElement.POSITION).build();
+   public static final VertexFormat f = VertexFormat.builder().add("Position", VertexFormatElement.POSITION).add("Color", VertexFormatElement.COLOR).build();
+   public static final VertexFormat g = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("Normal", VertexFormatElement.NORMAL)
+      .padding(1)
+      .build();
+   public static final VertexFormat h = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("UV2", VertexFormatElement.UV2)
+      .build();
+   public static final VertexFormat i = VertexFormat.builder().add("Position", VertexFormatElement.POSITION).add("UV0", VertexFormatElement.UV0).build();
+   public static final VertexFormat j = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("Color", VertexFormatElement.COLOR)
+      .build();
+   public static final VertexFormat k = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("UV2", VertexFormatElement.UV2)
+      .build();
+   public static final VertexFormat l = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("UV2", VertexFormatElement.UV2)
+      .add("Color", VertexFormatElement.COLOR)
+      .build();
+   public static final VertexFormat m = VertexFormat.builder()
+      .add("Position", VertexFormatElement.POSITION)
+      .add("UV0", VertexFormatElement.UV0)
+      .add("Color", VertexFormatElement.COLOR)
+      .add("Normal", VertexFormatElement.NORMAL)
+      .padding(1)
+      .build();
 }

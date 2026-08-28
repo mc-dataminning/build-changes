@@ -1,22 +1,39 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+public class fnq {
+   private final fpe a;
+   private boolean b;
+   private String c;
 
-public class fnq extends fnu {
-   @Nullable
-   public String a;
-   public long b;
-   public long c;
+   public fnq(fpe $$0) {
+      this.a = $$0;
+      fpe.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
 
-   public static fnq a(JsonObject $$0) {
-      fnq $$1 = new fnq();
+   public boolean a() {
+      return this.b;
+   }
 
-      try {
-         $$1.a = fpr.b("profileUuid", $$0, null);
-         $$1.b = fpr.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fpr.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+   public String b() {
+      return this.c;
+   }
+
+   public void a(fmp $$0) {
+      fpe.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fpe.a b(fmp $$0) {
+      fpe.a $$1 = this.a.a();
+      if ($$0.a != null && !$$0.a.equals($$1.a)) {
+         fpe.a $$2 = new fpe.a();
+         $$2.a = $$0.a;
+         $$2.b = true;
+         this.a.a($$2);
+         return $$2;
+      } else {
+         return $$1;
       }
-
-      return $$1;
    }
 }

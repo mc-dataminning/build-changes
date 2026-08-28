@@ -1,37 +1,22 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
 public class bgb extends DataFix {
    public bgb(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.w);
+      OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
       return this.fixTypeEverywhereTyped(
-         "ForcedChunkToTicketFix",
-         this.getInputSchema().getType(bjd.i),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$1 -> $$1.renameAndFixField(
-                           "Forced",
-                           "tickets",
-                           $$1x -> $$1x.createList(
-                                 $$1x.asLongStream()
-                                    .mapToObj(
-                                       $$1xx -> $$0x.emptyMap()
-                                             .set("type", $$0x.createString("minecraft:forced"))
-                                             .set("level", $$0x.createInt(31))
-                                             .set("ticks_left", $$0x.createLong(0L))
-                                             .set("chunk_pos", $$0x.createLong($$1xx))
-                                    )
-                              )
-                        )
-                  )
-            )
+         "equippable asset rename fix",
+         $$0,
+         $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameField("model", "asset_id")))
       );
    }
 }

@@ -1,29 +1,22 @@
-public class bst implements bsu {
-   public static final bsu a = new bst();
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public brd f() {
-      return bqz.a;
-   }
-
-   @Override
-   public void d() {
+public record bst<T extends bss>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bss> bst<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bss::a)).toList();
+         Duration $$2 = $$1.stream().map(bss::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = brv.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bst<>($$3, $$4, $$5, $$6, $$7, $$2);
+      }
    }
 }

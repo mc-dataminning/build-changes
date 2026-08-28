@@ -1,3 +1,5 @@
-public interface akc extends wi {
-   void a(akd var1);
+public record akc(alr a) implements aka {
+   @Override
+   public void a(vy $$0) {
+   }
 }

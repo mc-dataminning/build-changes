@@ -1,36 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqf extends fqd {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xc c = xc.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public class fqf {
+   private final glp a;
+   private int b = -1;
+   @Nullable
+   private Consumer<ua> c;
 
-   public fqf(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fqf(glp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void run() {
-      fmf $$0 = fmf.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fob var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+   public boolean a(int $$0, @Nullable ua $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public xc a() {
-      return c;
+   private int a(Consumer<ua> $$0) {
+      this.c = $$0;
+      return ++this.b;
+   }
+
+   public void a(int $$0, Consumer<ua> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahv($$2, $$0));
+   }
+
+   public void a(iw $$0, Consumer<ua> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahd($$2, $$0));
    }
 }

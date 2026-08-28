@@ -8,7 +8,7 @@ public class cr extends dl<cr.a> {
       return cr.a.a;
    }
 
-   public void a(arv $$0, ffs $$1, int $$2) {
+   public void a(asc $$0, fgc $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class cr extends dl<cr.a> {
          return aq.v.a(new cr.a(Optional.empty(), Optional.of($$0), cx.d.c));
       }
 
-      public boolean a(arv $$0, ffs $$1, int $$2) {
+      public boolean a(asc $$0, fgc $$1, int $$2) {
          return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
       }
 

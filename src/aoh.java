@@ -1,38 +1,44 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aoh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.op.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("commands.kick.singleplayer.failed"));
 
    public static void a(CommandDispatcher<ek> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("op").requires($$0x -> $$0x.c(3))).then(el.a("targets", ez.a()).suggests(($$0x, $$1) -> {
-            avu $$2 = ((ek)$$0x.getSource()).l().ag();
-            return ep.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gi())).map($$0xx -> $$0xx.gi().getName()), $$1);
-         }).executes($$0x -> a((ek)$$0x.getSource(), ez.a($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)el.a("targets", ex.d())
+                     .executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), xg.c("multiplayer.disconnect.kicked"))))
+                  .then(el.a("reason", fb.a()).executes($$0x -> a((ek)$$0x.getSource(), ex.f($$0x, "targets"), fb.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ek $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avu $$2 = $$0.l().ag();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> xc.a("commands.op.success", $$4.getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
+   private static int a(ek $$0, Collection<asc> $$1, xg $$2) throws CommandSyntaxException {
+      if (!$$0.l().r()) {
+         throw b.create();
       } else {
-         return $$3;
+         int $$3 = 0;
+
+         for (asc $$4 : $$1) {
+            if (!$$0.l().a($$4.gi())) {
+               $$4.f.a($$2);
+               $$0.a(() -> xg.a("commands.kick.success", $$4.m_(), $$2), true);
+               $$3++;
+            }
+         }
+
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
+         }
       }
    }
 }

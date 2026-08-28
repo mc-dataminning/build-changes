@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 
 public interface tm {
    Codec<tm> a = mh.aB.q().dispatch(tm::a, $$0 -> $$0);
-   Codec<jg<tm>> b = alg.a(mi.bg, a);
+   Codec<jg<tm>> b = aln.a(mi.bg, a);
 
    static MapCodec<? extends tm> a(jt<MapCodec<? extends tm>> $$0) {
       jt.a($$0, "all_of", tm.a.c);
@@ -20,9 +20,9 @@ public interface tm {
       return jt.a($$0, "function", tm.b.c);
    }
 
-   void a(aru var1);
+   void a(asb var1);
 
-   default void b(aru $$0) {
+   default void b(asb $$0) {
    }
 
    MapCodec<? extends tm> a();
@@ -37,12 +37,12 @@ public interface tm {
       }
 
       @Override
-      public void a(aru $$0) {
+      public void a(asb $$0) {
          this.d.forEach($$1 -> $$1.a().a($$0));
       }
 
       @Override
-      public void b(aru $$0) {
+      public void b(asb $$0) {
          this.d.forEach($$1 -> $$1.a().b($$0));
       }
 
@@ -56,25 +56,25 @@ public interface tm {
       }
    }
 
-   public static record b(Optional<alk> d, Optional<alk> e) implements tm {
+   public static record b(Optional<alr> d, Optional<alr> e) implements tm {
       private static final Logger f = LogUtils.getLogger();
       public static final MapCodec<tm.b> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alk.a.optionalFieldOf("setup").forGetter(tm.b::b), alk.a.optionalFieldOf("teardown").forGetter(tm.b::c)).apply($$0, tm.b::new)
+         $$0 -> $$0.group(alr.a.optionalFieldOf("setup").forGetter(tm.b::b), alr.a.optionalFieldOf("teardown").forGetter(tm.b::c)).apply($$0, tm.b::new)
       );
 
       @Override
-      public void a(aru $$0) {
+      public void a(asb $$0) {
          this.d.ifPresent($$1 -> a($$0, $$1));
       }
 
       @Override
-      public void b(aru $$0) {
+      public void b(asb $$0) {
          this.e.ifPresent($$1 -> a($$0, $$1));
       }
 
-      private static void a(aru $$0, alk $$1) {
+      private static void a(asb $$0, alr $$1) {
          MinecraftServer $$2 = $$0.p();
-         alz $$3 = $$2.aE();
+         amg $$3 = $$2.aE();
          Optional<hy<ek>> $$4 = $$3.a($$1);
          if ($$4.isPresent()) {
             ek $$5 = $$2.aH().a(2).a().a($$0);
@@ -89,49 +89,49 @@ public interface tm {
          return c;
       }
 
-      public Optional<alk> b() {
+      public Optional<alr> b() {
          return this.d;
       }
 
-      public Optional<alk> c() {
+      public Optional<alr> c() {
          return this.e;
       }
    }
 
-   public static record c(List<tm.c.a<Boolean, djv.a>> d, List<tm.c.a<Integer, djv.d>> e) implements tm {
+   public static record c(List<tm.c.a<Boolean, dkf.a>> d, List<tm.c.a<Integer, dkf.d>> e) implements tm {
       public static final MapCodec<tm.c> c = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  tm.c.a.a(djv.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tm.c::b),
-                  tm.c.a.a(djv.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tm.c::c)
+                  tm.c.a.a(dkf.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tm.c::b),
+                  tm.c.a.a(dkf.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tm.c::c)
                )
                .apply($$0, tm.c::new)
       );
 
       @Override
-      public void a(aru $$0) {
-         djv $$1 = $$0.O();
+      public void a(asb $$0) {
+         dkf $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tm.c.a<Boolean, djv.a> $$3 : this.d) {
+         for (tm.c.a<Boolean, dkf.a> $$3 : this.d) {
             $$1.b($$3.a()).a($$3.b(), $$2);
          }
 
-         for (tm.c.a<Integer, djv.d> $$4 : this.e) {
+         for (tm.c.a<Integer, dkf.d> $$4 : this.e) {
             $$1.b($$4.a()).a($$4.b(), $$2);
          }
       }
 
       @Override
-      public void b(aru $$0) {
-         djv $$1 = $$0.O();
+      public void b(asb $$0) {
+         dkf $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tm.c.a<Boolean, djv.a> $$3 : this.d) {
-            $$1.b($$3.a()).a(djv.a($$3.a()).a(), $$2);
+         for (tm.c.a<Boolean, dkf.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(dkf.a($$3.a()).a(), $$2);
          }
 
-         for (tm.c.a<Integer, djv.d> $$4 : this.e) {
-            $$1.b($$4.a()).a(djv.a($$4.a()).a(), $$2);
+         for (tm.c.a<Integer, dkf.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(dkf.a($$4.a()).a(), $$2);
          }
       }
 
@@ -140,32 +140,32 @@ public interface tm {
          return c;
       }
 
-      public static <S, T extends djv.g<T>> tm.c.a<S, T> a(djv.e<T> $$0, S $$1) {
+      public static <S, T extends dkf.g<T>> tm.c.a<S, T> a(dkf.e<T> $$0, S $$1) {
          return new tm.c.a<>($$0, $$1);
       }
 
-      public List<tm.c.a<Boolean, djv.a>> b() {
+      public List<tm.c.a<Boolean, dkf.a>> b() {
          return this.d;
       }
 
-      public List<tm.c.a<Integer, djv.d>> c() {
+      public List<tm.c.a<Integer, dkf.d>> c() {
          return this.e;
       }
 
-      public static record a<S, T extends djv.g<T>>(djv.e<T> a, S b) {
-         public static <S, T extends djv.g<T>> Codec<tm.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+      public static record a<S, T extends dkf.g<T>>(dkf.e<T> a, S b) {
+         public static <S, T extends dkf.g<T>> Codec<tm.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
             return RecordCodecBuilder.create(
-               $$2 -> $$2.group(djv.a($$0).fieldOf("rule").forGetter(tm.c.a::a), $$1.fieldOf("value").forGetter(tm.c.a::b)).apply($$2, tm.c.a::new)
+               $$2 -> $$2.group(dkf.a($$0).fieldOf("rule").forGetter(tm.c.a::a), $$1.fieldOf("value").forGetter(tm.c.a::b)).apply($$2, tm.c.a::new)
             );
          }
       }
    }
 
    public static record d(int d) implements tm {
-      public static final MapCodec<tm.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.l.fieldOf("time").forGetter(tm.d::b)).apply($$0, tm.d::new));
+      public static final MapCodec<tm.d> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azg.l.fieldOf("time").forGetter(tm.d::b)).apply($$0, tm.d::new));
 
       @Override
-      public void a(aru $$0) {
+      public void a(asb $$0) {
          $$0.b((long)this.d);
       }
 
@@ -183,12 +183,12 @@ public interface tm {
       public static final MapCodec<tm.e> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tm.e.a.d.fieldOf("weather").forGetter(tm.e::b)).apply($$0, tm.e::new));
 
       @Override
-      public void a(aru $$0) {
+      public void a(asb $$0) {
          this.d.a($$0);
       }
 
       @Override
-      public void b(aru $$0) {
+      public void b(asb $$0) {
          $$0.h();
       }
 
@@ -201,12 +201,12 @@ public interface tm {
          return this.d;
       }
 
-      public static enum a implements bao {
+      public static enum a implements bax {
          a("clear", 100000, 0, false, false),
          b("rain", 0, 100000, true, false),
          c("thunder", 0, 100000, true, true);
 
-         public static final Codec<tm.e.a> d = bao.a(tm.e.a::values);
+         public static final Codec<tm.e.a> d = bax.a(tm.e.a::values);
          private final String e;
          private final int f;
          private final int g;
@@ -221,7 +221,7 @@ public interface tm {
             this.i = $$4;
          }
 
-         void a(aru $$0) {
+         void a(asb $$0) {
             $$0.a(this.f, this.g, this.h, this.i);
          }
 

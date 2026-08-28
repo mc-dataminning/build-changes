@@ -16,7 +16,7 @@ public class sr {
    private final jg.c<ss> a;
    @Nullable
    private iw b;
-   private final aru c;
+   private final asb c;
    private final Collection<su> d = Lists.newArrayList();
    private final int e;
    private final Collection<sx> f = Lists.newCopyOnWriteArrayList();
@@ -28,13 +28,13 @@ public class sr {
    private final th l;
    private final Stopwatch m = Stopwatch.createUnstarted();
    private boolean n;
-   private final dty o;
+   private final dui o;
    @Nullable
    private sp p;
    @Nullable
-   private dzz q;
+   private eaj q;
 
-   public sr(jg.c<ss> $$0, dty $$1, aru $$2, th $$3) {
+   public sr(jg.c<ss> $$0, dui $$1, asb $$2, th $$3) {
       this.a = $$0;
       this.c = $$2;
       this.l = $$3;
@@ -53,14 +53,14 @@ public class sr {
 
    public void a() {
       if (!this.h) {
-         dzz $$0 = this.f();
+         eaj $$0 = this.f();
          if (!$$0.A()) {
-            this.a(xc.a("test.error.structure.failure", $$0.k().getString()));
+            this.a(xg.a("test.error.structure.failure", $$0.k().getString()));
          }
 
          this.h = true;
          $$0.C();
-         erv $$1 = $$0.d();
+         esf $$1 = $$0.d();
          this.c.n().a($$1);
          this.c.a($$1);
          this.d.forEach($$0x -> $$0x.a(this));
@@ -70,11 +70,11 @@ public class sr {
    public void a(sw $$0) {
       if (!this.k()) {
          if (!this.h) {
-            this.a(xc.c("test.error.ticking_without_structure"));
+            this.a(xg.c("test.error.ticking_without_structure"));
          }
 
          if (this.q == null) {
-            this.a(xc.c("test.error.missing_block_entity"));
+            this.a(xg.c("test.error.missing_block_entity"));
          }
 
          if (this.p != null) {
@@ -121,11 +121,11 @@ public class sr {
 
          if (this.j > this.e) {
             if (this.f.isEmpty()) {
-               this.a(new ta(xc.a("test.error.timeout.no_result", this.a.a().f())));
+               this.a(new ta(xg.a("test.error.timeout.no_result", this.a.a().f())));
             } else {
                this.f.forEach($$0x -> $$0x.c(this.j));
                if (this.p == null) {
-                  this.a(new ta(xc.a("test.error.timeout.no_sequences_finished", this.a.a().f())));
+                  this.a(new ta(xg.a("test.error.timeout.no_sequences_finished", this.a.a().f())));
                }
             }
          } else {
@@ -153,7 +153,7 @@ public class sr {
       this.g.put($$1, $$0);
    }
 
-   public alk b() {
+   public alr b() {
       return this.a.h().a();
    }
 
@@ -166,18 +166,18 @@ public class sr {
       return this.q.B();
    }
 
-   public ffn e() {
-      dzz $$0 = this.f();
+   public ffx e() {
+      eaj $$0 = this.f();
       return $$0.f();
    }
 
-   public dzz f() {
+   public eaj f() {
       if (this.q == null) {
          if (this.b == null) {
             throw new IllegalStateException("This GameTestInfo has no position");
          }
 
-         if (this.c.c_(this.b) instanceof dzz $$0) {
+         if (this.c.c_(this.b) instanceof eaj $$0) {
             this.q = $$0;
          }
 
@@ -189,7 +189,7 @@ public class sr {
       return this.q;
    }
 
-   public aru g() {
+   public asb g() {
       return this.c;
    }
 
@@ -225,13 +225,13 @@ public class sr {
    public void m() {
       if (this.p == null) {
          this.G();
-         ffn $$0 = this.e();
-         List<bwv> $$1 = this.g().a(bwv.class, $$0.g(1.0), $$0x -> !($$0x instanceof crz));
-         $$1.forEach($$0x -> $$0x.a(bwv.d.b));
+         ffx $$0 = this.e();
+         List<bxe> $$1 = this.g().a(bxe.class, $$0.g(1.0), $$0x -> !($$0x instanceof csi));
+         $$1.forEach($$0x -> $$0x.a(bxe.d.b));
       }
    }
 
-   public void a(xc $$0) {
+   public void a(xg $$0) {
       this.a(new si($$0, this.j));
    }
 
@@ -259,12 +259,12 @@ public class sr {
       return this;
    }
 
-   private dzz a(iw $$0, dty $$1, aru $$2) {
-      $$2.b($$0, dng.pJ.m());
-      dzz $$3 = Objects.requireNonNull((dzz)$$2.c_($$0));
-      alj<ss> $$4 = this.w().h();
-      kb $$5 = dzz.a($$2, $$4).orElse(new kb(1, 1, 1));
-      $$3.a(new dzz.a(Optional.of($$4), $$5, $$1, false, dzz.b.a, Optional.empty()));
+   private eaj a(iw $$0, dui $$1, asb $$2) {
+      $$2.b($$0, dnq.pJ.m());
+      eaj $$3 = Objects.requireNonNull((eaj)$$2.c_($$0));
+      alq<ss> $$4 = this.w().h();
+      kb $$5 = eaj.a($$2, $$4).orElse(new kb(1, 1, 1));
+      $$3.a(new eaj.a(Optional.of($$4), $$5, $$1, false, eaj.b.a, Optional.empty()));
       return $$3;
    }
 
@@ -286,11 +286,11 @@ public class sr {
       return !this.a.a().h();
    }
 
-   public alk t() {
+   public alr t() {
       return this.a.a().e();
    }
 
-   public dty u() {
+   public dui u() {
       return this.a.a().n().f().a(this.o);
    }
 

@@ -9,7 +9,7 @@ import javax.annotation.concurrent.Immutable;
 public class kb implements Comparable<kb> {
    public static final Codec<kb> g = Codec.INT_STREAM
       .comapFlatMap($$0 -> ag.a($$0, 3).map($$0x -> new kb($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
-   public static final za<ByteBuf, kb> h = za.a(yy.h, kb::u, yy.h, kb::v, yy.h, kb::w, kb::new);
+   public static final ze<ByteBuf, kb> h = ze.a(zc.h, kb::u, zc.h, kb::v, zc.h, kb::w, kb::new);
    public static final kb i = new kb(0, 0, 0);
    private int a;
    private int b;
@@ -174,11 +174,11 @@ public class kb implements Comparable<kb> {
    }
 
    public boolean a(kb $$0, double $$1) {
-      return this.j($$0) < azq.k($$1);
+      return this.j($$0) < azz.k($$1);
    }
 
    public boolean a(jq $$0, double $$1) {
-      return this.b($$0) < azq.k($$1);
+      return this.b($$0) < azz.k($$1);
    }
 
    public double j(kb $$0) {

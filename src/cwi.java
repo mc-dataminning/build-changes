@@ -1,116 +1,176 @@
-public class cwi extends cvs implements cwg {
-   protected static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final cxk r = new cxk();
-   private final cwe s;
-   private final crz t;
-   private final cwk u;
+import java.util.Optional;
 
-   public cwi(int $$0, cry $$1) {
-      super(cxb.h, $$0);
-      this.t = $$1.h;
-      this.s = new cxo(10);
-      this.u = new cxw(this, 3, 3);
-      this.a($$1);
+public class cwi extends cwb {
+   static final alr m = alr.b("container/slot/brewing_fuel");
+   static final alr n = alr.b("container/slot/potion");
+   private static final int o = 0;
+   private static final int p = 2;
+   private static final int q = 3;
+   private static final int r = 4;
+   private static final int s = 5;
+   private static final int t = 2;
+   private static final int u = 5;
+   private static final int v = 32;
+   private static final int w = 32;
+   private static final int x = 41;
+   private final buv y;
+   private final cwn z;
+   private final cxz A;
+
+   public cwi(int $$0, csh $$1) {
+      this($$0, $$1, new bvj(5), new cxy(2));
    }
 
-   public cwi(int $$0, cry $$1, cwk $$2, cwe $$3) {
-      super(cxb.h, $$0);
-      this.t = $$1.h;
-      this.s = $$3;
-      this.u = $$2;
-      a($$2, 9);
-      $$2.c_($$1.h);
-      this.a($$1);
-      this.a(this);
-   }
-
-   private void a(cry $$0) {
-      for (int $$1 = 0; $$1 < 3; $$1++) {
-         for (int $$2 = 0; $$2 < 3; $$2++) {
-            int $$3 = $$2 + $$1 * 3;
-            this.a(new cwj(this.u, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
-         }
-      }
-
-      this.c($$0, 8, 84);
-      this.a(new cxf(this.r, 0, 134, 35));
-      this.a(this.s);
-      this.n();
-   }
-
-   public void a(int $$0, boolean $$1) {
-      cwj $$2 = (cwj)this.b($$0);
-      this.s.a($$2.d, $$1 ? 0 : 1);
-      this.d();
-   }
-
-   public boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 ? this.s.a($$0) == 1 : false;
-   }
-
-   public boolean l() {
-      return this.s.a(9) == 1;
+   public cwi(int $$0, csh $$1, buv $$2, cwn $$3) {
+      super(cxk.l, $$0);
+      a($$2, 5);
+      a($$3, 2);
+      this.y = $$2;
+      this.z = $$3;
+      dcf $$4 = $$1.h.dV().L();
+      this.a(new cwi.c($$2, 0, 56, 51));
+      this.a(new cwi.c($$2, 1, 79, 58));
+      this.a(new cwi.c($$2, 2, 102, 51));
+      this.A = this.a(new cwi.b($$4, $$2, 3, 79, 17));
+      this.a(new cwi.a($$2, 4, 17, 17));
+      this.a($$3);
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public daa b(crz $$0, int $$1) {
-      daa $$2 = daa.k;
-      cxp $$3 = this.k.get($$1);
+   public boolean b(csi $$0) {
+      return this.y.a($$0);
+   }
+
+   @Override
+   public dak b(csi $$0, int $$1) {
+      dak $$2 = dak.l;
+      cxz $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         daa $$4 = $$3.g();
+         dak $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return daa.k;
+         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
+            if (cwi.a.b($$2)) {
+               if (this.a($$4, 4, 5, false) || this.A.a($$4) && !this.a($$4, 3, 4, false)) {
+                  return dak.l;
+               }
+            } else if (this.A.a($$4)) {
+               if (!this.a($$4, 3, 4, false)) {
+                  return dak.l;
+               }
+            } else if (cwi.c.b($$2)) {
+               if (!this.a($$4, 0, 3, false)) {
+                  return dak.l;
+               }
+            } else if ($$1 >= 5 && $$1 < 32) {
+               if (!this.a($$4, 32, 41, false)) {
+                  return dak.l;
+               }
+            } else if ($$1 >= 32 && $$1 < 41) {
+               if (!this.a($$4, 5, 32, false)) {
+                  return dak.l;
+               }
+            } else if (!this.a($$4, 5, 41, false)) {
+               return dak.l;
             }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return daa.k;
+         } else {
+            if (!this.a($$4, 5, 41, true)) {
+               return dak.l;
+            }
+
+            $$3.b($$4, $$2);
          }
 
          if ($$4.f()) {
-            $$3.f(daa.k);
+            $$3.e(dak.l);
          } else {
             $$3.d();
          }
 
          if ($$4.M() == $$2.M()) {
-            return daa.k;
+            return dak.l;
          }
 
-         $$3.a($$0, $$4);
+         $$3.a($$0, $$2);
       }
 
       return $$2;
    }
 
-   @Override
-   public boolean b(crz $$0) {
-      return this.u.a($$0);
+   public int l() {
+      return this.z.a(1);
    }
 
-   private void n() {
-      if (this.t instanceof arv $$0) {
-         aru $$1 = $$0.y();
-         def $$2 = this.u.aC_();
-         daa $$3 = doy.a($$1, $$2).map($$2x -> ((deg)$$2x.b()).a($$2, $$1.J_())).orElse(daa.k);
-         this.r.a(0, $$3);
+   public int m() {
+      return this.z.a(0);
+   }
+
+   static class a extends cxz {
+      public a(buv $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(dak $$0) {
+         return b($$0);
+      }
+
+      public static boolean b(dak $$0) {
+         return $$0.a(axv.Y);
+      }
+
+      @Override
+      public alr c() {
+         return cwi.m;
       }
    }
 
-   public bum m() {
-      return this.u;
+   static class b extends cxz {
+      private final dcf a;
+
+      public b(dcf $$0, buv $$1, int $$2, int $$3, int $$4) {
+         super($$1, $$2, $$3, $$4);
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean a(dak $$0) {
+         return this.a.a($$0);
+      }
    }
 
-   @Override
-   public void a(cvs $$0, int $$1, daa $$2) {
-      this.n();
-   }
+   static class c extends cxz {
+      public c(buv $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
 
-   @Override
-   public void a(cvs $$0, int $$1, int $$2) {
+      @Override
+      public boolean a(dak $$0) {
+         return b($$0);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+
+      @Override
+      public void a(csi $$0, dak $$1) {
+         Optional<jg<dce>> $$2 = $$1.a(kl.R, dcg.a).e();
+         if ($$2.isPresent() && $$0 instanceof asc $$3) {
+            aq.l.a($$3, $$2.get());
+         }
+
+         super.a($$0, $$1);
+      }
+
+      public static boolean b(dak $$0) {
+         return $$0.a(dao.tt) || $$0.a(dao.wz) || $$0.a(dao.wC) || $$0.a(dao.ts);
+      }
+
+      @Override
+      public alr c() {
+         return cwi.n;
+      }
    }
 }

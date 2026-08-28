@@ -1,4 +1,18 @@
 import javax.annotation.Nullable;
 
-public record bvf(bvk a, float b, @Nullable bvp c, float d) {
+public interface bvf {
+   xg ai();
+
+   default boolean h_() {
+      return this.ak() != null;
+   }
+
+   default xg m_() {
+      return this.ai();
+   }
+
+   @Nullable
+   default xg ak() {
+      return null;
+   }
 }

@@ -1,21 +1,28 @@
-class bvr extends bvx {
-   protected bvr(bvy $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bvr implements bax {
+   a("hurt", awy.uZ),
+   b("thorns", awy.uZ),
+   c("drowning", awy.va),
+   d("burning", awy.vc),
+   e("poking", awy.vd),
+   f("freezing", awy.vb);
+
+   public static final Codec<bvr> g = bax.a(bvr::values);
+   private final String h;
+   private final awx i;
+
+   private bvr(final String $$0, final awx $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(aru $$0, bxw $$1, int $$2) {
-      return $$1.fw() > 0.0F;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bxw $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
+   public awx a() {
+      return this.i;
    }
 }

@@ -12,53 +12,53 @@ import java.util.stream.Collectors;
 
 public abstract class nk implements nm {
    protected final ji.a a;
-   private final cvj b;
-   private final cvj c;
-   private final Map<bxe<?>, Map<alj<fao>, fao.a>> d = Maps.newHashMap();
+   private final cvs b;
+   private final cvs c;
+   private final Map<bxn<?>, Map<alq<fay>, fay.a>> d = Maps.newHashMap();
 
-   protected final fdg.a a() {
-      ji.b<dgn> $$0 = this.a.e(mi.aR);
-      return fdg.a(
-         fdv.a(faj.b.a, bz.a.a().a(bx.a.a().b(true))),
-         fdv.a(faj.b.c, bz.a.a().a(bw.a.a().f(cn.a.a().a(bo.a.a().a(kv.b, kw.a(List.of(new bu($$0.b(axi.p), cx.d.c)))).b()))))
+   protected final fdq.a a() {
+      ji.b<dgx> $$0 = this.a.e(mi.aR);
+      return fdq.a(
+         fef.a(fat.b.a, bz.a.a().a(bx.a.a().b(true))),
+         fef.a(fat.b.c, bz.a.a().a(bw.a.a().f(cn.a.a().a(bo.a.a().a(kv.b, kw.a(List.of(new bu($$0.b(axp.p), cx.d.c)))).b()))))
       );
    }
 
-   protected nk(cvj $$0, ji.a $$1) {
+   protected nk(cvs $$0, ji.a $$1) {
       this($$0, $$0, $$1);
    }
 
-   protected nk(cvj $$0, cvj $$1, ji.a $$2) {
+   protected nk(cvs $$0, cvs $$1, ji.a $$2) {
       this.b = $$0;
       this.c = $$1;
       this.a = $$2;
    }
 
-   public static fan.a a(Map<cyy, alj<fao>> $$0) {
-      faq.a $$1 = faq.a();
+   public static fax.a a(Map<czi, alq<fay>> $$0) {
+      fba.a $$1 = fba.a();
 
-      for (Entry<cyy, alj<fao>> $$2 : $$0.entrySet()) {
-         $$1 = $$1.a(fbc.a($$2.getValue()).a(fdv.a(faj.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aR, $$2.getKey())).b()).a(dj.b()))));
+      for (Entry<czi, alq<fay>> $$2 : $$0.entrySet()) {
+         $$1 = $$1.a(fbm.a($$2.getValue()).a(fef.a(fat.b.a, bz.a.a().a(bo.a.a().a(kf.a(kl.aR, $$2.getKey())).b()).a(dj.b()))));
       }
 
-      return fan.a().a($$1);
+      return fax.a().a($$1);
    }
 
    public abstract void b();
 
    @Override
-   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
+   public void generate(BiConsumer<alq<fay>, fay.a> $$0) {
       this.b();
-      Set<alj<fao>> $$1 = new HashSet<>();
+      Set<alq<fay>> $$1 = new HashSet<>();
       mh.f
          .c()
          .forEach(
             $$2 -> {
-               bxe<?> $$3 = $$2.a();
+               bxn<?> $$3 = $$2.a();
                if ($$3.a(this.b)) {
-                  Optional<alj<fao>> $$4 = $$3.j();
+                  Optional<alq<fay>> $$4 = $$3.j();
                   if ($$4.isPresent()) {
-                     Map<alj<fao>, fao.a> $$5 = this.d.remove($$3);
+                     Map<alq<fay>, fay.a> $$5 = this.d.remove($$3);
                      if ($$3.a(this.c) && ($$5 == null || !$$5.containsKey($$4.get()))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$4.get(), $$2.h().a()));
                      }
@@ -73,7 +73,7 @@ public abstract class nk implements nm {
                         });
                      }
                   } else {
-                     Map<alj<fao>, fao.a> $$6 = this.d.remove($$3);
+                     Map<alq<fay>, fay.a> $$6 = this.d.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -93,19 +93,19 @@ public abstract class nk implements nm {
       }
    }
 
-   protected fds.a a(jh<bxe<?>> $$0) {
-      return fdl.a(bn.a.a().b(bz.a.a().a($$0, bxe.ac)));
+   protected fec.a a(jh<bxn<?>> $$0) {
+      return fdv.a(bn.a.a().b(bz.a.a().a($$0, bxn.ac)));
    }
 
-   protected fds.a a(jh<bxe<?>> $$0, jh<cll> $$1, alj<cll> $$2) {
-      return fdl.a(bn.a.a().b(bz.a.a().a($$0, bxe.ac).a(bo.a.a().a(kf.a(kl.aK, $$1.b($$2))).b())));
+   protected fec.a a(jh<bxn<?>> $$0, jh<clu> $$1, alq<clu> $$2) {
+      return fdv.a(bn.a.a().b(bz.a.a().a($$0, bxn.ac).a(bo.a.a().a(kf.a(kl.aK, $$1.b($$2))).b())));
    }
 
-   protected void a(bxe<?> $$0, fao.a $$1) {
+   protected void a(bxn<?> $$0, fay.a $$1) {
       this.a($$0, $$0.j().orElseThrow(() -> new IllegalStateException("Entity " + $$0 + " has no loot table")), $$1);
    }
 
-   protected void a(bxe<?> $$0, alj<fao> $$1, fao.a $$2) {
+   protected void a(bxn<?> $$0, alq<fay> $$1, fay.a $$2) {
       this.d.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

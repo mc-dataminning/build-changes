@@ -1,103 +1,74 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class dld {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dld a = new dld(jk.a(), List.of());
-   public static final MapCodec<dld> b = RecordCodecBuilder.mapCodec(
+public record dld(ua d, Optional<dld.a> e, Optional<bxq> f) {
+   public static final String a = "entity";
+   public static final Codec<dld> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ejj.c.promotePartial(ag.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               erh.d.promotePartial(ag.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+               ua.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
+               dld.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
+               bxq.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dld::new)
    );
-   private final jk<ejj<?>> d;
-   private final List<jk<erh>> e;
-   private final Supplier<List<ejx<?, ?>>> f;
-   private final Supplier<Set<erh>> g;
+   public static final Codec<btm<dld>> c = btm.a(b);
 
-   dld(jk<ejj<?>> $$0, List<jk<erh>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(jk::a).map(jg::a).flatMap(erh::a).filter($$0xx -> $$0xx.b() == ekm.h).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jk::a).map(jg::a).collect(Collectors.toSet()));
+   public dld() {
+      this(new ua(), Optional.empty(), Optional.empty());
    }
 
-   public Iterable<jg<ejj<?>>> a() {
+   public dld(ua d, Optional<dld.a> e, Optional<bxq> f) {
+      Optional<alr> $$3 = d.a("id", alr.a);
+      if ($$3.isPresent()) {
+         d.a("id", alr.a, $$3.get());
+      } else {
+         d.r("id");
+      }
+
+      this.d = d;
+      this.e = e;
+      this.f = f;
+   }
+
+   public ua a() {
       return this.d;
    }
 
-   public List<ejx<?, ?>> b() {
-      return this.f.get();
-   }
-
-   public List<jk<erh>> c() {
+   public Optional<dld.a> b() {
       return this.e;
    }
 
-   public boolean a(erh $$0) {
-      return this.g.get().contains($$0);
+   public Optional<bxq> c() {
+      return this.f;
    }
 
-   public static class a extends dld.b {
-      private final jh<erh> a;
-      private final jh<ejj<?>> b;
+   public static record a(azr<Integer> b, azr<Integer> c) {
+      private static final azr<Integer> d = new azr<>(0, 15);
+      public static final Codec<dld.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dld.a::new)
+      );
 
-      public a(jh<erh> $$0, jh<ejj<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      private static DataResult<azr<Integer>> a(azr<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
       }
 
-      public dld.a a(ehb.a $$0, alj<erh> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
+      private static MapCodec<azr<Integer>> a(String $$0) {
+         return azr.a.lenientOptionalFieldOf($$0, d).validate(dld.a::a);
       }
 
-      public dld.a a(alj<ejj<?>> $$0) {
-         this.a(this.b.b($$0));
-         return this;
-      }
-   }
-
-   public static class b {
-      private final List<jg<ejj<?>>> a = new ArrayList<>();
-      private final List<List<jg<erh>>> b = new ArrayList<>();
-
-      public dld.b a(ehb.a $$0, jg<erh> $$1) {
-         return this.a($$0.ordinal(), $$1);
+      public boolean a(iw $$0, asb $$1) {
+         return this.b.a($$1.a(dks.b, $$0)) && this.c.a($$1.a(dks.a, $$0));
       }
 
-      public dld.b a(int $$0, jg<erh> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
+      public azr<Integer> a() {
+         return this.b;
       }
 
-      public dld.b a(jg<ejj<?>> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
-         }
-      }
-
-      public dld a() {
-         return new dld(jk.a(this.a), this.b.stream().map(jk::a).collect(ImmutableList.toImmutableList()));
+      public azr<Integer> b() {
+         return this.c;
       }
    }
 }

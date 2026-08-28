@@ -1,15 +1,24 @@
-public interface eft<T> {
-   void g(T var1);
+import java.util.List;
+import java.util.stream.Stream;
 
-   void f(T var1);
+public class eft<T> {
+   private final djo a;
+   private final List<T> b;
 
-   void e(T var1);
+   public eft(djo $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   void d(T var1);
+   public djo a() {
+      return this.a;
+   }
 
-   void c(T var1);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void b(T var1);
-
-   void a(T var1);
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

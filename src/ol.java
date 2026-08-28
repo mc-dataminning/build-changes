@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 
 public class ol implements of {
    private final og b;
-   private final ded c;
-   private final czw d;
-   private final den e;
+   private final den c;
+   private final dag d;
+   private final dex e;
    private final float f;
    private final int g;
    private final Map<String, ar<?>> h = new LinkedHashMap<>();
    @Nullable
    private String i;
-   private final ddx.a<?> j;
+   private final deh.a<?> j;
 
-   private ol(og $$0, ded $$1, djy $$2, den $$3, float $$4, int $$5, ddx.a<?> $$6) {
+   private ol(og $$0, den $$1, dki $$2, dex $$3, float $$4, int $$5, deh.a<?> $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.h();
@@ -25,24 +25,24 @@ public class ol implements of {
       this.j = $$6;
    }
 
-   public static <T extends ddx> ol a(den $$0, og $$1, djy $$2, float $$3, int $$4, dfb<T> $$5, ddx.a<T> $$6) {
+   public static <T extends deh> ol a(dex $$0, og $$1, dki $$2, float $$3, int $$4, dfl<T> $$5, deh.a<T> $$6) {
       return new ol($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
    }
 
-   public static ol a(den $$0, og $$1, djy $$2, float $$3, int $$4) {
-      return new ol($$1, ded.a, $$2, $$0, $$3, $$4, dec::new);
+   public static ol a(dex $$0, og $$1, dki $$2, float $$3, int $$4) {
+      return new ol($$1, den.a, $$2, $$0, $$3, $$4, dem::new);
    }
 
-   public static ol b(den $$0, og $$1, djy $$2, float $$3, int $$4) {
-      return new ol($$1, c($$2), $$2, $$0, $$3, $$4, dea::new);
+   public static ol b(dex $$0, og $$1, dki $$2, float $$3, int $$4) {
+      return new ol($$1, c($$2), $$2, $$0, $$3, $$4, dek::new);
    }
 
-   public static ol c(den $$0, og $$1, djy $$2, float $$3, int $$4) {
-      return new ol($$1, b($$2), $$2, $$0, $$3, $$4, dfl::new);
+   public static ol c(dex $$0, og $$1, dki $$2, float $$3, int $$4) {
+      return new ol($$1, b($$2), $$2, $$0, $$3, $$4, dfv::new);
    }
 
-   public static ol d(den $$0, og $$1, djy $$2, float $$3, int $$4) {
-      return new ol($$1, ded.a, $$2, $$0, $$3, $$4, dfq::new);
+   public static ol d(dex $$0, og $$1, dki $$2, float $$3, int $$4) {
+      return new ol($$1, den.a, $$2, $$0, $$3, $$4, dga::new);
    }
 
    public ol b(String $$0, ar<?> $$1) {
@@ -56,44 +56,44 @@ public class ol implements of {
    }
 
    @Override
-   public czw a() {
+   public dag a() {
       return this.d;
    }
 
    @Override
-   public void a(oh $$0, alj<der<?>> $$1) {
+   public void a(oh $$0, alq<dfb<?>> $$1) {
       this.a($$1);
       ai.a $$2 = $$0.a().a("has_the_recipe", di.a($$1)).a(an.a.c($$1)).a(am.a.b);
       this.h.forEach($$2::a);
-      ddx $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new daa(this.d), this.f, this.g);
+      deh $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new dak(this.d), this.f, this.g);
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
    }
 
-   private static ded b(djy $$0) {
+   private static den b(dki $$0) {
       if ($$0.h().f().c(kl.v)) {
-         return ded.a;
+         return den.a;
       } else {
-         return $$0.h() instanceof cyi ? ded.b : ded.c;
+         return $$0.h() instanceof cys ? den.b : den.c;
       }
    }
 
-   private static ded c(djy $$0) {
-      return $$0.h() instanceof cyi ? ded.b : ded.c;
+   private static den c(dki $$0) {
+      return $$0.h() instanceof cys ? den.b : den.c;
    }
 
-   private static ded a(dfb<? extends ddx> $$0, djy $$1) {
-      if ($$0 == dfb.o) {
+   private static den a(dfl<? extends deh> $$0, dki $$1) {
+      if ($$0 == dfl.o) {
          return b($$1);
-      } else if ($$0 == dfb.p) {
+      } else if ($$0 == dfl.p) {
          return c($$1);
-      } else if ($$0 != dfb.q && $$0 != dfb.r) {
+      } else if ($$0 != dfl.q && $$0 != dfl.r) {
          throw new IllegalStateException("Unknown cooking recipe type");
       } else {
-         return ded.a;
+         return den.a;
       }
    }
 
-   private void a(alj<der<?>> $$0) {
+   private void a(alq<dfb<?>> $$0) {
       if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

@@ -8,8 +8,8 @@ public class cq extends dl<cq.a> {
       return cq.a.a;
    }
 
-   public void a(arv $$0, bwv $$1, bvk $$2) {
-      faj $$3 = bz.b($$0, $$1);
+   public void a(asc $$0, bxe $$1, bvt $$2) {
+      fat $$3 = bz.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -83,7 +83,7 @@ public class cq extends dl<cq.a> {
          return aq.d.a(new cq.a(Optional.empty(), Optional.of(bz.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(arv $$0, faj $$1, bvk $$2) {
+      public boolean a(asc $$0, fat $$1, bvt $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

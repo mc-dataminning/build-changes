@@ -1,56 +1,53 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class cnb extends cmz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private ffs d;
-   private int e;
+public class cnb {
+   public static final alq<cna> a = a("pale");
+   public static final alq<cna> b = a("spotted");
+   public static final alq<cna> c = a("snowy");
+   public static final alq<cna> d = a("black");
+   public static final alq<cna> e = a("ashen");
+   public static final alq<cna> f = a("rusty");
+   public static final alq<cna> g = a("woods");
+   public static final alq<cna> h = a("chestnut");
+   public static final alq<cna> i = a("striped");
+   public static final alq<cna> j = a;
 
-   public cnb(cmx $$0) {
-      super($$0);
+   private static alq<cna> a(String $$0) {
+      return alq.a(mi.bm, alr.b($$0));
    }
 
-   @Override
-   public void a(aru $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.t().a(cnn.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.t().a(cnn.a);
-      } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
+   private static void a(qi<cna> $$0, alq<cna> $$1, String $$2, alq<dlm> $$3) {
+      a($$0, $$1, $$2, a(jk.a($$0.a(mi.aG).b($$3))));
    }
 
-   @Override
-   public void c() {
-      this.d = null;
-      this.e = 0;
+   private static void a(qi<cna> $$0, alq<cna> $$1, String $$2, ayc<dlm> $$3) {
+      a($$0, $$1, $$2, a($$0.a(mi.aG).b($$3)));
    }
 
-   public void a(ffs $$0) {
-      this.d = $$0;
+   private static cup a(jk<dlm> $$0) {
+      return cup.a(new cui($$0), 1);
    }
 
-   @Override
-   public float e() {
-      return 3.0F;
+   private static void a(qi<cna> $$0, alq<cna> $$1, String $$2, cup $$3) {
+      alr $$4 = alr.b("entity/wolf/" + $$2);
+      alr $$5 = alr.b("entity/wolf/" + $$2 + "_tame");
+      alr $$6 = alr.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cna(new cna.a(new ix($$4), new ix($$5), new ix($$6)), $$3));
    }
 
-   @Nullable
-   @Override
-   public ffs f() {
-      return this.d;
+   public static Optional<? extends jg<cna>> a(bai $$0, ju $$1, cuo $$2) {
+      return cul.a($$1.f(mi.bm).c(), jg::a, $$0, $$2);
    }
 
-   @Override
-   public cnn<cnb> h() {
-      return cnn.i;
+   public static void a(qi<cna> $$0) {
+      a($$0, a, "wolf", cup.a(0));
+      a($$0, b, "wolf_spotted", axm.k);
+      a($$0, c, "wolf_snowy", dlt.G);
+      a($$0, d, "wolf_black", dlt.o);
+      a($$0, e, "wolf_ashen", dlt.r);
+      a($$0, f, "wolf_rusty", axm.i);
+      a($$0, g, "wolf_woods", dlt.i);
+      a($$0, h, "wolf_chestnut", dlt.p);
+      a($$0, i, "wolf_striped", axm.f);
    }
 }

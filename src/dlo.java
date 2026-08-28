@@ -1,130 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.hash.Hashing;
 
 public class dlo {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final btd<dlo.c> a = btd.a();
-   public static final dlo b = new dlo.a().a();
-   public static final MapCodec<dlo> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bxz.i, btd.a(dlo.c.a).promotePartial(ag.a("Spawn data: ", d::error)), bao.a(bxz.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(mh.f.q(), dlo.b.a, mh.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dlo::new)
-   );
-   private final float f;
-   private final Map<bxz, btd<dlo.c>> g;
-   private final Map<bxe<?>, dlo.b> h;
+   public static final int a = jr.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dlo.a e;
+   private final long f;
 
-   dlo(float $$0, Map<bxz, btd<dlo.c>> $$1, Map<bxe<?>, dlo.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   public dlo(dlo.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public btd<dlo.c> a(bxz $$0) {
-      return this.g.getOrDefault($$0, a);
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Nullable
-   public dlo.b a(bxe<?> $$0) {
-      return this.h.get($$0);
+   public dlo a(dlo.a $$0) {
+      return new dlo($$0, this.f);
    }
 
-   public float a() {
-      return this.f;
+   public jg<dlm> a(iw $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   public static class a {
-      private final Map<bxz, btd.a<dlo.c>> a = ag.a(bxz.class, $$0 -> btd.b());
-      private final Map<bxe<?>, dlo.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public dlo.a a(bxz $$0, int $$1, dlo.c $$2) {
-         this.a.get($$0).a($$2, $$1);
-         return this;
-      }
-
-      public dlo.a a(bxe<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new dlo.b($$2, $$1));
-         return this;
-      }
-
-      public dlo.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dlo a() {
-         return new dlo(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((btd.a)$$0.getValue()).a())),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
+   public jg<dlm> a(double $$0, double $$1, double $$2) {
+      int $$3 = jr.a(azz.a($$0));
+      int $$4 = jr.a(azz.a($$1));
+      int $$5 = jr.a(azz.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<dlo.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, dlo.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
+   public jg<dlm> b(iw $$0) {
+      int $$1 = jr.a($$0.u());
+      int $$2 = jr.a($$0.v());
+      int $$3 = jr.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   public static record c(bxe<?> b, int c, int d) {
-      public static final MapCodec<dlo.c> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     mh.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     ayy.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     ayy.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, dlo.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+   public jg<dlm> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
 
-      public c(bxe<?> b, int c, int d) {
-         b = b.f() == bxz.h ? bxe.aR : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azu.a($$0, (long)$$1);
+      $$7 = azu.a($$7, (long)$$2);
+      $$7 = azu.a($$7, (long)$$3);
+      $$7 = azu.a($$7, (long)$$1);
+      $$7 = azu.a($$7, (long)$$2);
+      $$7 = azu.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azu.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azu.a($$7, $$0);
+      double $$10 = b($$7);
+      return azz.k($$6 + $$10) + azz.k($$5 + $$9) + azz.k($$4 + $$8);
+   }
 
-      @Override
-      public String toString() {
-         return bxe.a(this.b) + "*(" + this.c + "-" + this.d + ")";
-      }
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
 
-      public bxe<?> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   public interface a {
+      jg<dlm> getNoiseBiome(int var1, int var2, int var3);
    }
 }

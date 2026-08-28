@@ -1,19 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ent<P extends ens> {
-   public static final ent<env> a = a("two_layers_feature_size", env.d);
-   public static final ent<enu> b = a("three_layers_feature_size", enu.d);
-   private final MapCodec<P> c;
+public record ent(epc b, boolean c) implements enb {
+   public static final Codec<ent> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(epc.a.fieldOf("to_place").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("schedule_tick", false).forGetter($$0x -> $$0x.c))
+            .apply($$0, ent::new)
+   );
 
-   private static <P extends ens> ent<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.Y, $$0, new ent<>($$1));
+   public ent(epc $$0) {
+      this($$0, false);
    }
 
-   private ent(MapCodec<P> $$0) {
-      this.c = $$0;
+   public epc a() {
+      return this.b;
    }
 
-   public MapCodec<P> a() {
+   public boolean b() {
       return this.c;
    }
 }

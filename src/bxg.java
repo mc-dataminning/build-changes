@@ -1,70 +1,86 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum bxg implements bao, Iterable<bxf> {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bxf.a),
-   c(2, "offhand", bxf.b),
-   d(3, "hand", $$0 -> $$0.a() == bxf.a.a),
-   e(4, "feet", bxf.c),
-   f(5, "legs", bxf.d),
-   g(6, "chest", bxf.e),
-   h(7, "head", bxf.f),
-   i(8, "armor", bxf::f),
-   j(9, "body", bxf.g),
-   k(10, "saddle", bxf.h);
+public class bxg {
+   private final Map<bxf, List<fgc>> a;
 
-   public static final IntFunction<bxg> l = ayg.a($$0 -> $$0.o, values(), ayg.a.a);
-   public static final Codec<bxg> m = bao.a(bxg::values);
-   public static final za<ByteBuf, bxg> n = yy.a(l, $$0 -> $$0.o);
-   private final int o;
-   private final String p;
-   private final Predicate<bxf> q;
-   private final List<bxf> r;
-
-   private bxg(final int $$0, final String $$1, final Predicate<bxf> $$2) {
-      this.o = $$0;
-      this.p = $$1;
-      this.q = $$2;
-      this.r = bxf.j.stream().filter($$2).toList();
+   bxg(Map<bxf, List<fgc>> $$0) {
+      this.a = $$0;
    }
 
-   private bxg(final int $$0, final String $$1, final bxf $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public static bxg a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public static bxg a(bxf $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-         case h -> k;
-      };
+   public static bxg.a a() {
+      return new bxg.a();
    }
 
-   @Override
-   public String c() {
-      return this.p;
+   public bxg a(float $$0, float $$1, float $$2) {
+      return new bxg(ag.a(bxf.class, $$3 -> {
+         List<fgc> $$4 = new ArrayList<>();
+
+         for (fgc $$5 : this.a.get($$3)) {
+            $$4.add($$5.d((double)$$0, (double)$$1, (double)$$2));
+         }
+
+         return $$4;
+      }));
    }
 
-   public boolean b(bxf $$0) {
-      return this.q.test($$0);
+   @Nullable
+   public fgc a(bxf $$0, int $$1, float $$2) {
+      List<fgc> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public List<bxf> a() {
-      return this.r;
+   public fgc b(bxf $$0, int $$1, float $$2) {
+      fgc $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
    }
 
-   @Override
-   public Iterator<bxf> iterator() {
-      return this.r.iterator();
+   public fgc c(bxf $$0, int $$1, float $$2) {
+      List<fgc> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         fgc $$4 = $$3.get(azz.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static fgc a(fgc $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bxf, List<fgc>> a = new EnumMap<>(bxf.class);
+
+      a() {
+      }
+
+      public bxg.a a(bxf $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new fgc((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bxg.a a(bxf $$0, fgc $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bxg a(float $$0, float $$1) {
+         Map<bxf, List<fgc>> $$2 = ag.a(bxf.class, $$2x -> {
+            List<fgc> $$3 = this.a.get($$2x);
+            return $$3 == null ? $$2x.a($$0, $$1) : List.copyOf($$3);
+         });
+         return new bxg($$2);
+      }
    }
 }

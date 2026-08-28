@@ -1,35 +1,36 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class fcx extends fbw {
+public class fcx extends fcg {
    public static final MapCodec<fcx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(ddk.h.fieldOf("pages").forGetter($$0x -> $$0x.b), fbv.a.forGetter($$0x -> $$0x.c))).apply($$0, fcx::new)
+      $$0 -> a($$0).and(ayc.b(mi.aU).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, fcx::new)
    );
-   private final List<asm<xc>> b;
-   private final fbv c;
+   private final ayc<dad> b;
 
-   protected fcx(List<fds> $$0, List<asm<xc>> $$1, fbv $$2) {
+   private fcx(List<fec> $$0, ayc<dad> $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   protected daa a(daa $$0, faj $$1) {
-      $$0.a(kl.V, ddk.a, this::a);
+   public fci<fcx> b() {
+      return fcj.G;
+   }
+
+   @Override
+   public dak a(dak $$0, fat $$1) {
+      jt<dad> $$2 = $$1.d().J_().f(mi.aU);
+      Optional<jg<dad>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kl.ab, new dda($$3.get()));
+      }
+
       return $$0;
    }
 
-   @VisibleForTesting
-   public ddk a(ddk $$0) {
-      List<asm<xc>> $$1 = this.c.a($$0.a(), this.b);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public fby<fcx> b() {
-      return fbz.N;
+   public static fcg.a<?> a(ayc<dad> $$0) {
+      return a($$1 -> new fcx($$1, $$0));
    }
 }

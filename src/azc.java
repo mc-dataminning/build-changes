@@ -1,80 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-@FunctionalInterface
-public interface azc {
-   azc a = $$0 -> true;
+public class azc<K, V extends azc.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-   boolean accept(azd var1);
-
-   static azc codepoint(int $$0, xz $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
+   public azc<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   static azc forward(String $$0, xz $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ban.a($$0, $$1, $$2);
-   }
-
-   static azc forward(String $$0, xz $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ban.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static azc backward(String $$0, xz $$1) {
-      return $$0.isEmpty() ? a : $$2 -> ban.b($$0, $$1, $$2);
-   }
-
-   static azc backward(String $$0, xz $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> ban.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static azd decorateOutput(azd $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static azc composite() {
-      return a;
-   }
-
-   static azc composite(azc $$0) {
-      return $$0;
-   }
-
-   static azc composite(azc $$0, azc $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static azc composite(azc... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static azc composite(List<azc> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
+         }
       }
    }
 
-   static azc fromPair(azc $$0, azc $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
    }
 
-   static azc fromList(List<azc> $$0) {
-      return $$1 -> {
-         for (azc $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
-         }
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
+      }
+   }
 
-         return true;
-      };
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
+
+   public interface a<K> {
+      void a(Consumer<K> var1);
+
+      void b(Consumer<K> var1);
    }
 }

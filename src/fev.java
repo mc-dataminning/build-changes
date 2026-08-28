@@ -1,31 +1,36 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record fev(String b) implements fex {
-   public static final MapCodec<fev> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fev::c)).apply($$0, fev::new));
+public record fev(float c) implements fey {
+   public static final MapCodec<fev> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fev::c)).apply($$0, fev::new));
+   public static final Codec<fev> b = Codec.FLOAT.xmap(fev::new, fev::c);
 
-   public static fex a(String $$0) {
+   @Override
+   public fex b() {
+      return fez.b;
+   }
+
+   @Override
+   public float b(fat $$0) {
+      return this.c;
+   }
+
+   public static fev a(float $$0) {
       return new fev($$0);
    }
 
    @Override
-   public few a() {
-      return fey.b;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fev)$$0).c, this.c) == 0 : false;
+      }
    }
 
    @Override
-   public fgw a(faj $$0) {
-      return fgw.c(this.b);
-   }
-
-   @Override
-   public Set<bbb<?>> b() {
-      return Set.of();
-   }
-
-   public String c() {
-      return this.b;
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

@@ -1,20 +1,26 @@
-public record acz(xo.a b) implements zj<aby> {
-   public static final za<vy, acz> a = zj.a(acz::a, acz::new);
+import java.util.List;
 
-   private acz(vy $$0) {
-      this(xo.a.a($$0));
-   }
-
-   private void a(vy $$0) {
-      xo.a.a($$0, this.b);
-   }
+public record acz(int b, int c, List<dak> d, dak e) implements zo<acf> {
+   public static final ze<wp, acz> a = ze.a(zc.x, acz::b, zc.h, acz::e, dak.k, acz::f, dak.h, acz::g, acz::new);
 
    @Override
-   public zl<acz> a() {
-      return agr.A;
+   public zq<acz> a() {
+      return agy.t;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public List<dak> f() {
+      return this.d;
+   }
+
+   public dak g() {
+      return this.e;
    }
 }

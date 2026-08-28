@@ -1,8 +1,16 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fsu {
+public class fsu implements fsw {
+   private final alr a;
+
+   public fsu(alr $$0) {
+      this.a = $$0;
+   }
+
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
+   }
 }

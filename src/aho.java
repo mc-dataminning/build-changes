@@ -1,37 +1,23 @@
-public class aho implements zj<agt> {
-   public static final za<vy, aho> a = zj.a(aho::a, aho::new);
-   private final int b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public aho(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class aho implements zo<aha> {
+   public static final aho a = new aho();
+   public static final ze<ByteBuf, aho> b = ze.a(a);
 
-   private aho(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aho() {
    }
 
    @Override
-   public zl<aho> a() {
-      return agr.bE;
+   public zq<aho> a() {
+      return agy.bx;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

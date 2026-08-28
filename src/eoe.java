@@ -1,28 +1,46 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class eoe<P extends eod> {
-   public static final eoe<eny> a = a("blob_foliage_placer", eny.a);
-   public static final eoe<eoj> b = a("spruce_foliage_placer", eoj.a);
-   public static final eoe<eoh> c = a("pine_foliage_placer", eoh.a);
-   public static final eoe<enx> d = a("acacia_foliage_placer", enx.a);
-   public static final eoe<enz> e = a("bush_foliage_placer", enz.c);
-   public static final eoe<eoc> f = a("fancy_foliage_placer", eoc.c);
-   public static final eoe<eof> g = a("jungle_foliage_placer", eof.a);
-   public static final eoe<eog> h = a("mega_pine_foliage_placer", eog.a);
-   public static final eoe<eob> i = a("dark_oak_foliage_placer", eob.a);
-   public static final eoe<eoi> j = a("random_spread_foliage_placer", eoi.a);
-   public static final eoe<eoa> k = a("cherry_foliage_placer", eoa.a);
-   private final MapCodec<P> l;
+public class eoe extends eoc {
+   public static final MapCodec<eoe> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, eoe::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   private static <P extends eod> eoe<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.U, $$0, new eoe<>($$1));
+   public eoe(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   private eoe(MapCodec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected eod<?> b() {
+      return eod.b;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
+      }
    }
 }

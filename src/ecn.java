@@ -1,21 +1,23 @@
-public enum ecn implements bao {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum ecn implements bax {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String d;
+   private final String f;
 
    private ecn(final String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.f;
    }
 }

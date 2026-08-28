@@ -1,38 +1,65 @@
 import javax.annotation.Nullable;
 
-public interface byq {
-   byp a = ($$0, $$1, $$2) -> true;
-   byp b = ($$0, $$1, $$2) -> {
-      if ($$2 != null && $$0.E_().a($$1)) {
-         iw $$3 = $$1.d();
-         return $$0.b_($$1).a(axl.a) && !$$0.a_($$3).d($$0, $$3);
-      } else {
+public class byq {
+   private final dtn a;
+   private iw b;
+   private int c;
+   private boolean d;
+
+   public byq(dtn $$0, iw $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
+   }
+
+   public boolean a(asb $$0, bxe $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
          return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
       }
-   };
-   byp c = ($$0, $$1, $$2) -> $$2 != null && $$0.E_().a($$1) ? $$0.b_($$1).a(axl.b) : false;
-   byp d = new byp() {
-      @Override
-      public boolean isSpawnPositionOk(dkc $$0, iw $$1, @Nullable bxe<?> $$2) {
-         if ($$2 != null && $$0.E_().a($$1)) {
-            iw $$3 = $$1.d();
-            iw $$4 = $$1.e();
-            ebg $$5 = $$0.a_($$4);
-            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
-         } else {
-            return false;
-         }
-      }
+   }
 
-      private boolean a(dkc $$0, iw $$1, bxe<?> $$2) {
-         ebg $$3 = $$0.a_($$1);
-         return dkk.a($$0, $$1, $$3, $$3.y(), $$2);
-      }
+   @Nullable
+   public eza a(asb $$0, bxe $$1) {
+      return this.a.a($$0, $$1, this.b);
+   }
 
-      @Override
-      public iw a(dkc $$0, iw $$1) {
-         iw $$2 = $$1.e();
-         return $$0.a_($$2).a(eyf.a) ? $$2 : $$1;
-      }
-   };
+   public dtn.a a() {
+      return this.a.b();
+   }
+
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public iw c() {
+      return this.b;
+   }
+
+   public void a(iw $$0) {
+      this.b = $$0;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean a(dtn $$0) {
+      return this.a == $$0;
+   }
 }

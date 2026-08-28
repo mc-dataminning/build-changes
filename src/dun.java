@@ -1,180 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dun extends dmq {
-   public static final MapCodec<dun> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cyy.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.e)), t())
-            .apply($$0, ($$0x, $$1) -> new dun((cyy)$$0x.orElse(null), $$1))
-   );
-   public static final Map<jc, fgm> b = fgj.d(dne.c(16.0, 0.0, 1.0));
-   public static final ece<jc> c = dpi.a;
-   public static final alk d = alk.b("contents");
-   @Nullable
-   private final cyy e;
+public class dun extends dpz implements dum {
+   public static final MapCodec<dun> b = b(dun::new);
 
    @Override
    public MapCodec<dun> a() {
-      return a;
+      return b;
    }
 
-   public dun(@Nullable cyy $$0, ebf.d $$1) {
-      super($$1);
-      this.e = $$0;
-      this.l(this.C.b().b(c, jc.b));
-   }
-
-   @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new dzr(this.e, $$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dye> dyf<T> a(djz $$0, ebg $$1, dyg<T> $$2) {
-      return a($$2, dyg.y, dzr::a);
+   public dun(ebp.d $$0) {
+      super(bue.a(1), $$0);
    }
 
    @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      if ($$1 instanceof aru $$5 && $$1.c_($$2) instanceof dzr $$6 && a($$0, $$1, $$2, $$6)) {
-         $$3.a($$6);
-         $$3.a(axb.aq);
-         cqp.a($$5, $$3, true);
+   public int a(dur.a $$0, dkk $$1, iw $$2, bai $$3, dur $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iw $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iw $$10 = $$7.d();
+               ebq $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awz.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
+      }
+   }
+
+   private static int a(dur $$0, iw $$1, iw $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azz.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azz.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private ebq a(dkk $$0, iw $$1, bai $$2, boolean $$3) {
+      ebq $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dnq.rD.m().b(duq.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dnq.ry.m();
       }
 
-      return but.a;
+      return $$4.b(ecg.I) && !$$0.b_($$1).c() ? $$4.b(ecg.I, Boolean.valueOf(true)) : $$4;
    }
 
-   private static boolean a(ebg $$0, djz $$1, iw $$2, dzr $$3) {
-      if ($$3.k() != dzr.a.a) {
+   private static boolean a(dkk $$0, iw $$1) {
+      ebq $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dnq.J) && $$2.y().b(eyb.c)) {
+         int $$3 = 0;
+
+         for (iw $$4 : iw.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            ebq $$5 = $$0.a_($$4);
+            if ($$5.a(dnq.ry) || $$5.a(dnq.rD)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
          return true;
       } else {
-         ffn $$4 = cph.a(1.0F, $$0.c(c), 0.0F, 0.5F, $$2.c()).h(1.0E-6);
-         return $$1.b($$4);
+         return false;
       }
    }
 
    @Override
-   public ebg a(ddt $$0) {
-      return this.m().b(c, $$0.k());
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public ebg a(djz $$0, iw $$1, ebg $$2, crz $$3) {
-      dye $$4 = $$0.c_($$1);
-      if ($$4 instanceof dzr $$5) {
-         if (!$$0.C && $$3.gl() && !$$5.c()) {
-            daa $$6 = b(this.b());
-            $$6.b($$4.q());
-            coe $$7 = new coe($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
-            $$7.j();
-            $$0.b($$7);
-         } else {
-            $$5.d_($$3);
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected List<daa> a(ebg $$0, fam.a $$1) {
-      dye $$2 = $$1.b(fdd.h);
-      if ($$2 instanceof dzr $$3) {
-         $$1 = $$1.a(d, $$1x -> {
-            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
-               $$1x.accept($$3.a($$2x));
-            }
-         });
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
-      bup.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected fgm b_(ebg $$0, djd $$1, iw $$2) {
-      if ($$1.c_($$2) instanceof dzr $$4 && !$$4.t()) {
-         return b.get($$0.c(c).g());
-      }
-
-      return fgj.b();
-   }
-
-   @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return $$1.c_($$2) instanceof dzr $$5 ? fgj.a($$5.a($$0)) : fgj.b();
-   }
-
-   @Override
-   protected boolean e_(ebg $$0) {
+   public boolean d() {
       return false;
-   }
-
-   @Override
-   protected boolean c_(ebg $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(ebg $$0, djz $$1, iw $$2) {
-      return cvs.a($$1.c_($$2));
-   }
-
-   public static dne a(@Nullable cyy $$0) {
-      if ($$0 == null) {
-         return dng.lv;
-      } else {
-         return switch ($$0) {
-            case a -> dng.lw;
-            case b -> dng.lx;
-            case c -> dng.ly;
-            case d -> dng.lz;
-            case e -> dng.lA;
-            case f -> dng.lB;
-            case g -> dng.lC;
-            case h -> dng.lD;
-            case i -> dng.lE;
-            case j -> dng.lF;
-            case l -> dng.lH;
-            case m -> dng.lI;
-            case n -> dng.lJ;
-            case o -> dng.lK;
-            case p -> dng.lL;
-            case k -> dng.lG;
-         };
-      }
-   }
-
-   @Nullable
-   public cyy b() {
-      return this.e;
-   }
-
-   public static daa b(@Nullable cyy $$0) {
-      return new daa(a($$0));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(c)));
    }
 }

@@ -1,110 +1,154 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class ckw {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+public class ckw extends cjt {
+   private static final String a = "type";
+   private static final aku<Integer> b = aky.a(ckw.class, akw.b);
 
-   protected static byw<?> a(byw<ckv> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(ctt.a));
-      $$0.b(ctt.b);
-      $$0.f();
-      return $$0;
+   public ckw(bxn<? extends ckw> $$0, dkj $$1) {
+      super($$0, $$1);
+      this.i_();
    }
 
-   private static void b(byw<ckv> $$0) {
-      $$0.a(ctt.a, 0, ImmutableList.of(new cch(0.8F), new bzi(2.5F), new cat(45, 90), new cax(), new bzt(cgy.aP), new bzt(cgy.aQ)));
+   @Override
+   public int x() {
+      return 5;
    }
 
-   private static void c(byw<ckv> $$0) {
-      $$0.a(
-         ctt.b,
-         ImmutableList.of(
-            Pair.of(0, cah.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new cad(ckw::b, 2.25F, 20)),
-            Pair.of(2, ccb.a(ckw::b, Predicate.not(ckw::c), 4, 16, 2.25F)),
-            Pair.of(3, cbn.a(6.0F, bue.a(30, 60))),
-            Pair.of(4, new cbk(ImmutableList.of(Pair.of(cbf.b(1.0F), 2), Pair.of(cbu.a(1.0F, 3), 2), Pair.of(new bzx(30, 60), 1))))
-         ),
-         ImmutableSet.of()
-      );
+   @Override
+   public dak X_() {
+      return new dak(dao.rw);
    }
 
-   public static void a(ckv $$0) {
-      $$0.ec().a(ImmutableList.of(ctt.b));
+   @Override
+   protected awx u() {
+      return awy.wt;
    }
 
-   public static void a(bxw $$0, iw $$1) {
-      byw<?> $$2 = $$0.ec();
-      jf $$3 = jf.a($$0.dV().aj(), $$1);
-      Optional<jf> $$4 = $$2.c(cgy.aO);
-      if ($$4.isEmpty()) {
-         $$2.a(cgy.aO, $$3);
-         $$2.a(cgy.aP, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(cgy.aP, 600);
+   @Override
+   protected awx l_() {
+      return awy.wu;
+   }
+
+   @Override
+   protected awx e(bvt $$0) {
+      return awy.ww;
+   }
+
+   @Override
+   protected awx t() {
+      return awy.wv;
+   }
+
+   @Override
+   protected void a(aky.a $$0) {
+      super.a($$0);
+      $$0.a(b, ckw.a.d.a());
+   }
+
+   @Override
+   public void a(aku<?> $$0) {
+      super.a($$0);
+      if (b.equals($$0)) {
+         this.i_();
       }
    }
 
-   private static Optional<cbb> b(bxw $$0) {
-      byw<?> $$1 = $$0.ec();
-      Optional<jf> $$2 = $$1.c(cgy.aO);
-      if ($$2.isPresent()) {
-         jf $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new bzq($$3.b().d()));
-         }
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("type", ckw.a.e, this.gA());
+   }
 
-         $$1.b(cgy.aO);
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.a($$0.<ckw.a>a("type", ckw.a.e).orElse(ckw.a.d));
+   }
+
+   @Override
+   public void a_(dak $$0) {
+      cjx.a(this, $$0);
+      $$0.a(kl.aA, this);
+   }
+
+   private void a(ckw.a $$0) {
+      this.al.a(b, $$0.i);
+   }
+
+   public ckw.a gA() {
+      return ckw.a.g.apply(this.al.a(b));
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(kk<? extends T> $$0) {
+      return $$0 == kl.aA ? c((kk<T>)$$0, this.gA()) : super.a($$0);
+   }
+
+   @Override
+   protected void a(kg $$0) {
+      this.a($$0, kl.aA);
+      super.a($$0);
+   }
+
+   @Override
+   protected <T> boolean b(kk<T> $$0, T $$1) {
+      if ($$0 == kl.aA) {
+         this.a(c(kl.aA, $$1));
+         return true;
+      } else {
+         return super.b($$0, $$1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
+      btm.a<ckw.a> $$4 = btm.b();
+      $$4.a(ckw.a.a, 30);
+      $$4.a(ckw.a.b, 50);
+      $$4.a(ckw.a.c, 15);
+      $$4.a().a(this.ae).ifPresent(this::a);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public float gB() {
+      return this.gA().j;
+   }
+
+   @Override
+   protected bxh e(byr $$0) {
+      return super.e($$0).a(this.gB());
+   }
+
+   public static enum a implements bax {
+      a("small", 0, 0.5F),
+      b("medium", 1, 1.0F),
+      c("large", 2, 1.5F);
+
+      public static final ckw.a d = b;
+      public static final bax.a<ckw.a> e = bax.a(ckw.a::values);
+      static final IntFunction<ckw.a> g = ayo.a(ckw.a::a, values(), ayo.a.c);
+      public static final ze<ByteBuf, ckw.a> f = zc.a(g, ckw.a::a);
+      private final String h;
+      final int i;
+      final float j;
+
+      private a(final String $$0, final int $$1, final float $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      return d($$0);
-   }
-
-   private static boolean c(bxw $$0) {
-      byw<?> $$1 = $$0.ec();
-      return $$1.a(cgy.M);
-   }
-
-   private static boolean a(bxw $$0, byw<?> $$1, jf $$2) {
-      Optional<Integer> $$3 = $$1.c(cgy.aP);
-      djz $$4 = $$0.dV();
-      return $$2.a($$4.aj(), $$0.dv(), 1024) && $$4.a_($$2.b()).a(dng.bf) && $$3.isPresent();
-   }
-
-   private static Optional<cbb> d(bxw $$0) {
-      return a($$0).map($$0x -> new bzy($$0x, true));
-   }
-
-   public static Optional<arv> a(bxw $$0) {
-      djz $$1 = $$0.dV();
-      if (!$$1.A_() && $$1 instanceof aru $$2) {
-         Optional<UUID> $$3 = $$0.ec().c(cgy.aN);
-         if ($$3.isPresent()) {
-            if ($$2.b($$3.get()) instanceof arv $$5 && ($$5.h.d() || $$5.h.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
-            }
-
-            return Optional.empty();
-         }
+      @Override
+      public String c() {
+         return this.h;
       }
 
-      return Optional.empty();
+      int a() {
+         return this.i;
+      }
    }
 }

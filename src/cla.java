@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cla {
+public interface cla {
+   alr a = alr.b("temperate");
+   alr b = alr.b("warm");
+   alr c = alr.b("cold");
 }

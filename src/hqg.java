@@ -1,58 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class hqg implements hqh<how> {
-   private final List<hqh<how>> a = Lists.newArrayList();
-   @Nullable
-   private final xc b;
+public class hqg {
+   private final UUID a = UUID.randomUUID();
+   private final hqb b;
+   private final hqk c;
+   private final hqm d = new hqm();
+   private final hqj e;
+   private final hql f;
 
-   public hqg(alk $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : xc.c($$1);
+   public hqg(hqb $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hqk($$3);
+      this.e = new hqj();
+      this.f = new hql($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(hqe.i, this.a);
+      });
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
+   public void a() {
+      this.e.a(this.b);
+   }
 
-      for (hqh<how> $$1 : this.a) {
-         $$0 += $$1.e();
+   public void a(dkg $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
+   public void b() {
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
-
-      return $$0;
    }
 
-   public how a(azz $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (hqh<how> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return hqf.b;
-      } else {
-         return hqf.b;
-      }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
    }
 
-   public void a(hqh<how> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public xc a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(hqc $$0) {
-      for (hqh<how> $$1 : this.a) {
-         $$1.a($$0);
+   public void a(dkj $$0, aj $$1) {
+      alr $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.ae();
+         this.b.send(hqc.f, $$2x -> {
+            $$2x.a(hqe.D, $$2.toString());
+            $$2x.a(hqe.E, $$3);
+         });
       }
    }
 }

@@ -1,38 +1,59 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface etp {
-   Codec<etp> b = mh.ah.q().dispatch(etp::b, Function.identity());
+public class etp extends etv {
+   public static final MapCodec<etp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(err.b.fieldOf("feature").forGetter($$0x -> $$0x.c), f()).apply($$0, etp::new)
+   );
+   private static final alr b = alr.b("bottom");
+   private final jg<err> c;
+   private final ua d;
 
-   void a(azz var1, BiConsumer<alj<etn>, alj<etn>> var2);
-
-   Stream<alj<etn>> a();
-
-   static eto a(String $$0, String $$1) {
-      return a(qp.a($$0), qp.a($$1));
+   protected etp(jg<err> $$0, etx.a $$1) {
+      super($$1);
+      this.c = $$0;
+      this.d = this.b();
    }
 
-   static eto a(alj<etn> $$0, alj<etn> $$1) {
-      return new eto($$0, $$1);
+   private ua b() {
+      ua $$0 = new ua();
+      $$0.a("name", alr.a, b);
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", dzs.a, qp.a);
+      $$0.a("target", alr.a, dzs.b);
+      $$0.a("joint", dzs.a.c, dzs.a.a);
+      return $$0;
    }
 
-   static ett a(String $$0, btd<String> $$1) {
-      btd.a<alj<etn>> $$2 = btd.b();
-      $$1.d().forEach($$1x -> $$2.a(qp.a((String)$$1x.a()), $$1x.b()));
-      return a(qp.a($$0), $$2.a());
+   @Override
+   public kb a(ewq $$0, dui $$1) {
+      return kb.i;
    }
 
-   static ett a(alj<etn> $$0, btd<alj<etn>> $$1) {
-      return new ett($$0, $$1);
+   @Override
+   public List<ewp.a> a(ewq $$0, iw $$1, dui $$2, bai $$3) {
+      return List.of(ewp.a.a(new ewp.d($$1, dnq.pH.m().b(drv.b, je.a(jc.a, jc.d)), this.d)));
    }
 
-   static ets a(btd<List<etp>> $$0) {
-      return new ets($$0);
+   @Override
+   public esf a(ewq $$0, iw $$1, dui $$2) {
+      kb $$3 = this.a($$0, $$2);
+      return new esf($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
-   MapCodec<? extends etp> b();
+   @Override
+   public boolean a(ewq $$0, dli $$1, dlf $$2, edo $$3, iw $$4, iw $$5, dui $$6, esf $$7, bai $$8, evz $$9, boolean $$10) {
+      return this.c.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public etw<?> a() {
+      return etw.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Feature[" + this.c + "]";
+   }
 }

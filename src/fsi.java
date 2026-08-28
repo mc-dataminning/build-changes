@@ -1,164 +1,62 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public class fsi {
-   private static final int a = 256;
-   private final ThreadLocal<fsi.b> b = ThreadLocal.withInitial(fsi.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fsi.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<iw> e;
+public class fsi implements mo {
+   private final mq.a d;
 
-   public fsi(ToIntFunction<iw> $$0) {
-      this.e = $$0;
+   public fsi(mq $$0) {
+      this.d = $$0.a(mq.b.b, "equipment");
    }
 
-   public int a(iw $$0) {
-      int $$1 = jz.a($$0.u());
-      int $$2 = jz.a($$0.w());
-      fsi.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
+   private static void a(BiConsumer<alq<dir>, hmw> $$0) {
+      $$0.accept(dis.b, hmw.a().a(alr.b("leather"), true).a(alr.b("leather_overlay"), false).a(hmw.d.e, hmw.c.a(alr.b("leather"), true)).a());
+      $$0.accept(dis.c, a("chainmail"));
+      $$0.accept(dis.d, b("iron"));
+      $$0.accept(dis.e, b("gold"));
+      $$0.accept(dis.f, b("diamond"));
+      $$0.accept(dis.g, hmw.a().b(alr.b("turtle_scute"), false).a());
+      $$0.accept(dis.h, a("netherite"));
+      $$0.accept(dis.i, hmw.a().a(hmw.d.d, hmw.c.b(alr.b("armadillo_scute"), false)).a(hmw.d.d, hmw.c.b(alr.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(dis.j, hmw.a().a(hmw.d.c, new hmw.c(alr.b("elytra"), Optional.empty(), true)).a());
+      hmw.c $$1 = new hmw.c(alr.b("saddle"));
+      $$0.accept(
+         dis.k, hmw.a().a(hmw.d.g, $$1).a(hmw.d.h, $$1).a(hmw.d.i, $$1).a(hmw.d.j, $$1).a(hmw.d.k, $$1).a(hmw.d.l, $$1).a(hmw.d.n, $$1).a(hmw.d.m, $$1).a()
+      );
+
+      for (Entry<czi, alq<dir>> $$2 : dis.l.entrySet()) {
+         czi $$3 = $$2.getKey();
+         alq<dir> $$4 = $$2.getValue();
+         $$0.accept($$4, hmw.a().a(hmw.d.f, new hmw.c(alr.b($$3.c()))).a());
       }
 
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
+      $$0.accept(dis.m, hmw.a().a(hmw.d.f, new hmw.c(alr.b("trader_llama"))).a());
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
+   private static hmw a(String $$0) {
+      return hmw.a().a(alr.b($$0)).a();
+   }
 
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dje.c($$0 + $$2, $$1 + $$3);
-               fsi.a $$5 = (fsi.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
+   private static hmw b(String $$0) {
+      return hmw.a().a(alr.b($$0)).a(hmw.d.e, hmw.c.a(alr.b($$0), false)).a();
+   }
+
+   @Override
+   public CompletableFuture<?> a(mm $$0) {
+      Map<alq<dir>, hmw> $$1 = new HashMap<>();
+      a(($$1x, $$2) -> {
+         if ($$1.putIfAbsent($$1x, $$2) != null) {
+            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
          }
-      } finally {
-         this.d.writeLock().unlock();
-      }
+      });
+      return mo.a($$0, hmw.a, this.d::a, $$1);
    }
 
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fsi.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private fsi.a b(int $$0, int $$1) {
-      long $$2 = dje.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fsi.a $$3 = (fsi.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      fsi.a $$5;
-      try {
-         fsi.a $$4 = (fsi.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fsi.a();
-            if (this.c.size() >= 256) {
-               fsi.a $$6 = (fsi.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = azq.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fsi.a c;
-
-      private b() {
-      }
+   @Override
+   public String a() {
+      return "Equipment Asset Definitions";
    }
 }

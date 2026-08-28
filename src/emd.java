@@ -1,43 +1,36 @@
 import com.mojang.serialization.Codec;
 
-public class emd extends ekm<emy> {
-   private static final iw a = new iw(8, 3, 8);
-   private static final dje b = new dje(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public emd(Codec<emy> $$0) {
+public class emd extends ekw<ent> {
+   public emd(Codec<ent> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(eko<emy> $$0) {
-      dky $$1 = $$0.b();
-      dje $$2 = new dje($$0.e());
-      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
-         return true;
-      } else {
-         iw $$3 = a.h($$0.e().v() + a.v());
-         iw.a $$4 = new iw.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dng.m.m(), 2);
-                  } else {
-                     $$1.a($$4, dng.b.m(), 2);
-                  }
-               }
+   public boolean a(eky<ent> $$0) {
+      ent $$1 = $$0.f();
+      dli $$2 = $$0.b();
+      iw $$3 = $$0.e();
+      ebq $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dpx) {
+            if (!$$2.v($$3.d())) {
+               return false;
             }
+
+            dpx.a($$2, $$4, $$3, 2);
+         } else if ($$4.b() instanceof dss) {
+            dss.a($$2, $$3, $$2.G_(), 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         if ($$1.b()) {
+            $$2.a($$3, $$2.a_($$3).b(), 1);
          }
 
          return true;
+      } else {
+         return false;
       }
    }
 }

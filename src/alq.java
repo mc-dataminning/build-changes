@@ -1,51 +1,64 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public class alq {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public class alq<T> {
+   private static final ConcurrentMap<alq.a, alq<?>> a = new MapMaker().weakValues().makeMap();
+   private final alr b;
+   private final alr c;
 
-   public alq(Path $$0) {
+   public static <T> Codec<alq<T>> a(alq<? extends jt<T>> $$0) {
+      return alr.a.xmap($$1 -> a($$0, $$1), alq::a);
+   }
+
+   public static <T> ze<ByteBuf, alq<T>> b(alq<? extends jt<T>> $$0) {
+      return alr.b.a($$1 -> a($$0, $$1), alq::a);
+   }
+
+   public static <T> alq<T> a(alq<? extends jt<T>> $$0, alr $$1) {
+      return a($$0.c, $$1);
+   }
+
+   public static <T> alq<jt<T>> a(alr $$0) {
+      return a(mi.a, $$0);
+   }
+
+   private static <T> alq<T> a(alr $$0, alr $$1) {
+      return (alq<T>)a.computeIfAbsent(new alq.a($$0, $$1), $$0x -> new alq($$0x.a, $$0x.b));
+   }
+
+   private alq(alr $$0, alr $$1) {
       this.b = $$0;
-      this.c = ac.aU || this.b();
+      this.c = $$1;
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
-         }
-
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
-      }
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   public boolean a() {
+   public boolean c(alq<? extends jt<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<alq<E>> d(alq<? extends jt<E>> $$0) {
+      return this.c($$0) ? Optional.of((alq<E>)this) : Optional.empty();
+   }
+
+   public alr a() {
       return this.c;
    }
 
-   private void c() {
-      if (!ac.aU) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + ayl.b + ").");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
-         }
-      }
+   public alr b() {
+      return this.b;
+   }
+
+   public alq<jt<T>> c() {
+      return a(this.b);
+   }
+
+   static record a(alr a, alr b) {
    }
 }

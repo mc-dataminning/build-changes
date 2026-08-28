@@ -1,8 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+public class cud {
+   private final int a;
+   private final float b;
 
-public interface cud extends cuc.b<cuf> {
-   Codec<cud> b = mh.aD.q().dispatch(cud::a, $$0 -> $$0);
+   public cud(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   MapCodec<? extends cud> a();
+   public int a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
 }

@@ -1,52 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class ejz extends ekm<emy> {
-   public ejz(Codec<emy> $$0) {
+public class ejz extends ekw<emu> {
+   private static final ImmutableList<dno> a = ImmutableList.of(dnq.K, dnq.I, dnq.lp, dnq.en, dnq.fM, dnq.fN, dnq.fO, dnq.fP, dnq.cG, dnq.cD);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int ap = 15;
+
+   public ejz(Codec<emu> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emy> $$0) {
-      azz $$1 = $$0.d();
-      dky $$2 = $$0.b();
-      iw $$3 = $$0.e();
-      Optional<dne> $$4 = mh.e.a(axg.at, $$1).map(jg::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   public boolean a(eky<emu> $$0) {
+      int $$1 = $$0.c().f();
+      iw $$2 = $$0.e();
+      dli $$3 = $$0.b();
+      bai $$4 = $$0.d();
+      emu $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.k())) {
+         return false;
+      } else {
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
 
-   protected abstract boolean a(dka var1, azz var2, iw var3, ebg var4);
-
-   protected boolean b(dka $$0, azz $$1, iw $$2, ebg $$3) {
-      iw $$4 = $$2.d();
-      ebg $$5 = $$0.a_($$2);
-      if (($$5.a(dng.J) || $$5.a(axg.aw)) && $$0.a_($$4).a(dng.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mh.e.a(axg.aw, $$1).map(jg::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dng.nB.m().b(duj.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (jc $$6 : jc.c.a) {
-            if ($$1.i() < 0.2F) {
-               iw $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dng.J)) {
-                  mh.e.a(axg.au, $$1).map(jg::a).ifPresent($$3x -> {
-                     ebg $$4x = $$3x.m();
-                     if ($$4x.b(dmp.d)) {
-                        $$4x = $$4x.b(dmp.d, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+         for (iw $$11 : iw.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         return true;
-      } else {
-         return false;
+         return $$10;
       }
+   }
+
+   private boolean a(dkk $$0, int $$1, iw $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (iw $$6 : iw.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         iw $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (iw.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (iw)$$10)) {
+                  this.a($$0, $$10, dnq.ep.m());
+                  $$10.c(jc.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dnq.ep)) {
+                     break;
+                  }
+
+                  $$10.c(jc.b);
+               }
+            }
+         }
+      }
+
+      return $$5;
+   }
+
+   @Nullable
+   private static iw a(dkk $$0, int $$1, iw.a $$2, int $$3) {
+      while ($$2.v() > $$0.K_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(jc.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dkk $$0, int $$1, iw.a $$2) {
+      if (!a($$0, $$1, (iw)$$2)) {
+         return false;
+      } else {
+         ebq $$3 = $$0.a_($$2.c(jc.a));
+         $$2.c(jc.b);
+         return !$$3.l() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static iw a(dkk $$0, iw.a $$1, int $$2) {
+      while ($$1.v() <= $$0.ao() && $$2 > 0) {
+         $$2--;
+         ebq $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.l()) {
+            return $$1;
+         }
+
+         $$1.c(jc.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(dkk $$0, int $$1, iw $$2) {
+      ebq $$3 = $$0.a_($$2);
+      return $$3.l() || $$3.a(dnq.K) && $$2.v() <= $$1;
    }
 }

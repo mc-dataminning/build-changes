@@ -1,18 +1,16 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
-public class bif extends DataFix {
-   public bif(Schema $$0) {
-      super($$0, false);
+public class bif extends big {
+   public bif(Schema $$0, String $$1, TypeReference $$2, String $$3) {
+      super($$0, true, $$1, $$2, $$3);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsAccessibilityOnboardFix",
-         this.getInputSchema().getType(bjd.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createString("false")))
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(this.b, this.a);
+      return bbq.a($$1, $$0);
    }
 }

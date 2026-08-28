@@ -1,7 +1,12 @@
 import javax.annotation.Nullable;
 
-public class hgw extends her {
-   public float a;
+public class hgw extends hgv implements hgo {
    @Nullable
-   public ebg b;
+   public crv c;
+
+   @Nullable
+   @Override
+   public crv a() {
+      return this.c;
+   }
 }

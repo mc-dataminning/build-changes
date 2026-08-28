@@ -1,51 +1,42 @@
-import java.time.Duration;
-import java.time.Instant;
 import javax.annotation.Nullable;
 
-public abstract class hqt {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
+public class hqt implements hqw {
+   private static final int a = 600;
+   private static final xg b = xg.c("tutorial.open_inventory.title");
+   private static final xg c = xg.a("tutorial.open_inventory.description", hqv.a("inventory"));
+   private final hqv d;
    @Nullable
-   private Instant e;
+   private fwk e;
+   private int f;
 
+   public hqt(hqv $$0) {
+      this.d = $$0;
+   }
+
+   @Override
    public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
-   }
-
-   public void a(hqn $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hqx.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            fqq $$0 = this.d.e();
+            this.e = new fwk($$0.h, fwk.a.d, b, c, false);
+            $$0.aA().a(this.e);
+         }
       }
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
+      }
    }
 
-   public boolean c() {
-      return this.c >= 10;
+   @Override
+   public void c() {
+      this.d.a(hqx.e);
    }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(hqn var1);
 }

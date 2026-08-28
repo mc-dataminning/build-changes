@@ -1,37 +1,18 @@
-public class aej implements zj<aby> {
-   public static final za<vy, aej> a = zj.a(aej::a, aej::new);
-   private final int b;
-   private final double c;
+import io.netty.buffer.ByteBuf;
 
-   public aej(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class aej implements zo<acf> {
+   public static final aej a = new aej();
+   public static final ze<ByteBuf, aej> b = ze.a(a);
 
-   private aej(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private aej() {
    }
 
    @Override
-   public zl<aej> a() {
-      return agr.bj;
+   public zq<aej> a() {
+      return agy.ad;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
    }
 }

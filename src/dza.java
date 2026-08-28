@@ -1,10 +1,28 @@
-public class dza extends dyz {
-   public dza(iw $$0, ebg $$1) {
-      super(dyg.g, $$0, $$1);
+public class dza extends dyo {
+   private static final int a = 0;
+   private int b = 0;
+
+   public dza(iw $$0, ebq $$1) {
+      super(dyq.t, $$0, $$1);
    }
 
    @Override
-   protected xc j() {
-      return xc.c("container.dropper");
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("OutputSignal", this.b);
+   }
+
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.b = $$0.b("OutputSignal", 0);
+   }
+
+   public int a() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.b = $$0;
    }
 }

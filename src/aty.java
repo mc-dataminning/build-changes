@@ -1,157 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.regex.Pattern;
 
-public class aty {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<aty> a = $$0 -> {
-   };
-   private static final Map<atv, Path> c = ag.a(() -> {
-      synchronized (atx.class) {
-         Builder<atv, Path> $$0 = ImmutableMap.builder();
+public record aty(List<aty.a> b) {
+   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
+   private static final Codec<aty> d = RecordCodecBuilder.create($$0 -> $$0.group(aty.a.c.listOf().fieldOf("entries").forGetter(aty::a)).apply($$0, aty::new));
+   public static final aun<aty> a = new aun<>("overlays", d);
 
-         for (atv $$1 : atv.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = atx.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
-            } else {
-               try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
+   private static DataResult<String> a(String $$0) {
+      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
+   }
 
-                  Path $$6 = aza.a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
-               }
-            }
-         }
+   public List<String> a(int $$0) {
+      return this.b.stream().filter($$1 -> $$1.a($$0)).map(aty.a::b).toList();
+   }
 
-         return $$0.build();
+   public List<aty.a> a() {
+      return this.b;
+   }
+
+   public static record a(azr<Integer> a, String b) {
+      static final Codec<aty.a> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(azr.a(Codec.INT).fieldOf("formats").forGetter(aty.a::a), Codec.STRING.validate(aty::a).fieldOf("directory").forGetter(aty.a::b))
+               .apply($$0, aty.a::new)
+      );
+
+      public boolean a(int $$0) {
+         return this.a.a($$0);
       }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<atv, Set<Path>> e = new EnumMap<>(atv.class);
-   private atl f = atl.a();
-   private final Set<String> g = new HashSet<>();
-
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
-      }
-   }
-
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
-      }
-   }
-
-   private void b(atv $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
-      }
-   }
-
-   public aty a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
-      });
-      return this;
-   }
-
-   public aty a(atv $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
-
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
-      }
-
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
-
-         try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
-            }
-         } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
-         }
-      }
-
-      return this;
-   }
-
-   public aty b() {
-      a.accept(this);
-      return this;
-   }
-
-   public aty a(Path $$0) {
-      this.c($$0);
-
-      for (atv $$1 : atv.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
-      }
-
-      return this;
-   }
-
-   public aty a(atv $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public aty a(atl $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public aty a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public atx a(ats $$0) {
-      return new atx($$0, this.f, Set.copyOf(this.g), a(this.d), ag.a(atv.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
    }
 }

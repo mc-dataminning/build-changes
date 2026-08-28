@@ -1,20 +1,18 @@
-public record aiq(iw b, ecr c, String d) implements zj<agt> {
-   public static final za<vy, aiq> a = za.a(iw.b, aiq::b, ecr.f, aiq::e, yy.p, aiq::f, aiq::new);
+import java.util.Optional;
+
+public record aiq(Optional<jg<bwg>> b, Optional<jg<bwg>> c) implements zo<aha> {
+   public static final ze<wp, aiq> a = ze.a(bwg.b.a(zc::a), aiq::b, bwg.b.a(zc::a), aiq::e, aiq::new);
 
    @Override
-   public zl<aiq> a() {
-      return agr.ci;
+   public zq<aiq> a() {
+      return agy.cb;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public ecr e() {
+   public Optional<jg<bwg>> e() {
       return this.c;
-   }
-
-   public String f() {
-      return this.d;
    }
 }

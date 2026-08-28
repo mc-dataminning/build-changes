@@ -1,16 +1,24 @@
-import javax.annotation.Nullable;
+public class cge extends cfb {
+   private final byn a;
 
-public class cge extends cgf {
-   public cge(bye $$0, double $$1) {
-      super($$0, $$1);
+   public cge(byn $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
    @Override
-   protected ffs h() {
-      ffs $$0 = this.b.h(0.0F);
-      int $$1 = 8;
-      ffs $$2 = cir.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cin.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.a.dV().V() && this.a.a(bxo.f).f() && ciz.a(this.a);
+   }
+
+   @Override
+   public void d() {
+      ((cho)this.a.O()).c(true);
+   }
+
+   @Override
+   public void e() {
+      if (ciz.a(this.a)) {
+         ((cho)this.a.O()).c(false);
+      }
    }
 }

@@ -1,34 +1,36 @@
-public class gzf extends gzq<ckc, hfl, gis> {
-   private static final alk a = alk.b("textures/entity/iron_golem/iron_golem.png");
+public class gzf extends gxu<byl, hez> {
+   private static final float a = 40.0F;
+   private static final int g = 50;
+   private final hhg h;
+   private final bai i = bai.a();
 
-   public gzf(gyk.a $$0) {
-      super($$0, new gis($$0.a(glf.bA)), 0.7F);
-      this.a(new hco(this));
-      this.a(new hcp(this, $$0.d()));
+   protected gzf(gxv.a $$0) {
+      super($$0);
+      this.h = $$0.b();
    }
 
-   public alk a(hfl $$0) {
-      return a;
+   public hez a() {
+      return new hez();
    }
 
-   public hfl b() {
-      return new hfl();
-   }
-
-   public void a(ckc $$0, hfl $$1, float $$2) {
+   public void a(byl $$0, hez $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
+      dak $$3 = $$0.g();
+      $$1.a($$0, $$3, this.h);
    }
 
-   protected void a(hfl $$0, flq $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.ae < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.ad + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+   public void a(hez $$0, fld $$1, grn $$2, int $$3) {
+      if (!$$0.a.c()) {
+         $$1.a();
+         if ($$0.v <= 50.0F) {
+            float $$4 = Math.min($$0.v, 50.0F) / 50.0F;
+            $$1.b($$4, $$4, $$4);
+         }
+
+         float $$5 = azz.h($$0.v * 40.0F);
+         $$1.a(a.d.rotationDegrees($$5));
+         gyr.a($$1, $$2, 15728880, $$0, this.i);
+         $$1.b();
       }
    }
 }

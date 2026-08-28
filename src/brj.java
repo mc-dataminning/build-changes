@@ -1,20 +1,12 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public enum brj {
-   a("client"),
-   b("server");
+public interface brj extends brm {
+   brk d();
 
-   private final String c;
+   @Nullable
+   bre.a c(String var1);
 
-   private brj(final String $$0) {
-      this.c = $$0;
-   }
-
-   public static brj a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
-   }
+   Set<Pair<String, bsv>> e();
 }

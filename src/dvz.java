@@ -1,38 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-
-public class dvz extends dmq implements dqq {
-   public static final MapCodec<dvz> a = b(dvz::new);
-
-   public dvz(ebf.d $$0) {
-      super($$0);
-   }
-
-   @Nullable
-   @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new dzz($$0, $$1);
-   }
-
-   @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      if ($$1.c_($$2) instanceof dzz $$6) {
-         if (!$$3.gG()) {
-            return but.e;
-         } else {
-            if ($$3.cU().C) {
-               $$3.a($$6);
-            }
-
-            return but.a;
-         }
-      } else {
-         return but.e;
+public enum dvz {
+   a {
+      @Override
+      public boolean a(ebq $$0, djn $$1, iw $$2, jc $$3) {
+         return dno.a($$0.h($$1, $$2), $$3);
       }
-   }
+   },
+   b {
+      private final fgw d = dno.b(2.0, 0.0, 10.0);
 
-   @Override
-   protected MapCodec<dvz> a() {
-      return a;
-   }
+      @Override
+      public boolean a(ebq $$0, djn $$1, iw $$2, jc $$3) {
+         return !fgt.c($$0.h($$1, $$2).a($$3), this.d, fgg.c);
+      }
+   },
+   c {
+      private final fgw d = fgt.a(fgt.b(), dno.b(12.0, 0.0, 16.0), fgg.e);
+
+      @Override
+      public boolean a(ebq $$0, djn $$1, iw $$2, jc $$3) {
+         return !fgt.c($$0.h($$1, $$2).a($$3), this.d, fgg.c);
+      }
+   };
+
+   public abstract boolean a(ebq var1, djn var2, iw var3, jc var4);
 }

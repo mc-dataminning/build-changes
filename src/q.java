@@ -12,15 +12,15 @@ public class q {
       this.a = $$0;
    }
 
-   public static String a(dkb $$0, double $$1, double $$2, double $$3) {
+   public static String a(dkl $$0, double $$1, double $$2, double $$3) {
       return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, iw.a($$1, $$2, $$3)));
    }
 
-   public static String a(dkb $$0, iw $$1) {
+   public static String a(dkl $$0, iw $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(dkb $$0, int $$1, int $$2, int $$3) {
+   public static String a(dkl $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -190,12 +190,13 @@ public class q {
       return this.c;
    }
 
-   public static void a(q $$0, dkb $$1, iw $$2, @Nullable ebg $$3) {
-      if ($$3 != null) {
-         $$0.a("Block", $$3::toString);
-      }
+   public static void a(q $$0, dkl $$1, iw $$2, ebq $$3) {
+      $$0.a("Block", $$3::toString);
+      a($$0, $$1, $$2);
+   }
 
-      $$0.a("Block location", () -> a($$1, $$2));
+   public static q a(q $$0, dkl $$1, iw $$2) {
+      return $$0.a("Block location", () -> a($$1, $$2));
    }
 
    static class a {

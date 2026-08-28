@@ -1,112 +1,85 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class asp extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final ama b;
+public class asp implements asl {
+   private final asn a;
+   private final Long2ObjectOpenHashMap<eeo> b = new Long2ObjectOpenHashMap();
+   private djo c = new djo(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
 
-   public asp(ama $$0) {
-      this.b = $$0;
+   private asp(asn $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
+   public static asp b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
+   }
 
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
+   public static asp c(int $$0) {
+      asn $$1 = asn.c($$0);
+      int $$2 = asl.a($$0);
+      int $$3 = $$0 + are.a;
+      int $$4 = asl.a($$3);
+      return new asp($$1, $$2, $$3, $$4);
+   }
 
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
+   public static asp c() {
+      return new asp(asn.c(), 0, 0, 0);
+   }
 
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
-                  }
-
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
-               }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
-            }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
-         }
+   @Override
+   public void a(djo $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
       }
    }
 
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
-      } else {
-         String $$2 = aso.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
+   @Override
+   public void a(djo $$0, @Nullable eeo $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
          } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = aso.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
+            this.b.put($$0.a(), $$1);
          }
       }
    }
 
-   private static String a(ama $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.ae(), $$0.N(), $$0.O());
+   @Override
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
    }
 
-   private static String b(ama $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.M(), $$0.ae(), $$0.N(), $$0.O());
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
    }
 
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   public int d() {
+      return this.d;
    }
 
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      aso.a($$2, $$1);
-      return $$2;
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.a.d();
+   }
+
+   @Nullable
+   public eeo a(int $$0, int $$1) {
+      return (eeo)this.b.get(djo.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
    }
 }

@@ -1,106 +1,163 @@
-import org.joml.Matrix4f;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fxj {
-   public static final float a = 0.001F;
-   private final fxh b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
-   private final float j;
+public class fxj extends fxh {
+   private final fxj.b c;
+   private final List<fxj.a> d = new ArrayList<>();
+   private final fxp e = fxp.i();
 
-   public fxj(fxh $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public fxj(int $$0, int $$1, fxj.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public void a(fxj.b $$0, Matrix4f $$1, flt $$2, int $$3) {
-      xz $$4 = $$0.f();
-      boolean $$5 = $$4.d();
-      float $$6 = $$0.a();
-      float $$7 = $$0.b();
-      int $$8 = $$0.c();
-      int $$9 = $$0.d();
-      boolean $$10 = $$4.c();
-      if ($$0.i()) {
-         this.a($$5, $$6 + $$0.h(), $$7 + $$0.h(), $$1, $$2, $$9, $$10, $$3);
-         this.a($$5, $$6, $$7, 0.03F, $$1, $$2, $$8, $$10, $$3);
-      } else {
-         this.a($$5, $$6, $$7, $$1, $$2, $$8, $$10, $$3);
-      }
+   public fxj(int $$0, int $$1, int $$2, int $$3, fxj.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+   }
 
-      if ($$10) {
-         if ($$0.i()) {
-            this.a($$5, $$6 + $$0.g() + $$0.h(), $$7 + $$0.h(), 0.001F, $$1, $$2, $$9, true, $$3);
-            this.a($$5, $$6 + $$0.g(), $$7, 0.03F, $$1, $$2, $$8, true, $$3);
-         } else {
-            this.a($$5, $$6 + $$0.g(), $$7, $$1, $$2, $$8, true, $$3);
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fxj.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fxj.a> $$5 = this.d.iterator();
+         fxj.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fxj.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fxj.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
          }
       }
    }
 
-   private void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, flt $$4, int $$5, boolean $$6, int $$7) {
-      this.a($$0, $$1, $$2, 0.0F, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public void b(Consumer<fxo> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   private void a(boolean $$0, float $$1, float $$2, float $$3, Matrix4f $$4, flt $$5, int $$6, boolean $$7, int $$8) {
-      float $$9 = $$1 + this.g;
-      float $$10 = $$1 + this.h;
-      float $$11 = $$2 + this.i;
-      float $$12 = $$2 + this.j;
-      float $$13 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.j : 0.0F;
-      float $$15 = $$7 ? 0.1F : 0.0F;
-      $$5.a($$4, $$9 + $$13 - $$15, $$11 - $$15, $$3).a($$6).a(this.c, this.e).c($$8);
-      $$5.a($$4, $$9 + $$14 - $$15, $$12 + $$15, $$3).a($$6).a(this.c, this.f).c($$8);
-      $$5.a($$4, $$10 + $$14 + $$15, $$12 + $$15, $$3).a($$6).a(this.d, this.f).c($$8);
-      $$5.a($$4, $$10 + $$13 + $$15, $$11 - $$15, $$3).a($$6).a(this.d, this.e).c($$8);
+   public fxp b() {
+      return this.e.g();
    }
 
-   public void a(fxj.a $$0, Matrix4f $$1, flt $$2, int $$3) {
-      if ($$0.i()) {
-         this.a($$0, $$0.h(), 0.0F, $$0.g(), $$2, $$3, $$1);
-         this.a($$0, 0.0F, 0.03F, $$0.f, $$2, $$3, $$1);
-      } else {
-         this.a($$0, 0.0F, 0.0F, $$0.f, $$2, $$3, $$1);
+   public fxp c() {
+      return this.e;
+   }
+
+   public <T extends fxo> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fxo> T a(T $$0, fxp $$1) {
+      this.d.add(new fxj.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fxo> T a(T $$0, Consumer<fxp> $$1) {
+      return this.a($$0, ag.a(this.b(), $$1));
+   }
+
+   static class a extends fxh.a {
+      protected a(fxo $$0, fxp $$1) {
+         super($$0, $$1);
       }
    }
 
-   private void a(fxj.a $$0, float $$1, float $$2, int $$3, flt $$4, int $$5, Matrix4f $$6) {
-      $$4.a($$6, $$0.a + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.e).c($$5);
-      $$4.a($$6, $$0.c + $$1, $$0.b + $$1, $$0.e + $$2).a($$3).a(this.c, this.f).c($$5);
-      $$4.a($$6, $$0.c + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.f).c($$5);
-      $$4.a($$6, $$0.a + $$1, $$0.d + $$1, $$0.e + $$2).a($$3).a(this.d, this.e).c($$5);
-   }
+   public static enum b {
+      a,
+      b;
 
-   public gsn a(ftx.a $$0) {
-      return this.b.a($$0);
-   }
-
-   public static record a(float a, float b, float c, float d, float e, int f, int g, float h) {
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, int $$5) {
-         this($$0, $$1, $$2, $$3, $$4, $$5, 0, 0.0F);
+      int a(fxo $$0) {
+         return switch (this) {
+            case a -> $$0.A();
+            case b -> $$0.y();
+         };
       }
 
-      boolean i() {
-         return this.g() != 0;
+      int a(fxj.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
       }
-   }
 
-   public static record b(float a, float b, int c, int d, fxj e, xz f, float g, float h) {
-      boolean i() {
-         return this.d() != 0;
+      int b(fxo $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.A();
+         };
+      }
+
+      int b(fxj.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fxj.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fxj.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fxo $$0) {
+         return switch (this) {
+            case a -> $$0.F();
+            case b -> $$0.G();
+         };
+      }
+
+      int d(fxo $$0) {
+         return switch (this) {
+            case a -> $$0.G();
+            case b -> $$0.F();
+         };
       }
    }
 }

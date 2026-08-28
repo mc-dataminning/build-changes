@@ -1,121 +1,35 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.net.InetSocketAddress;
 
-public class gnf extends gni {
-   final IntSet g = new IntOpenHashSet();
+public interface gnf {
+   String a();
 
-   gnf(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
-   }
+   String b();
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
-      }
-   }
+   int c();
 
-   public gnf a() {
-      gnf $$0 = new gnf(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
+   InetSocketAddress d();
 
-   @Override
-   public gaf a(gaf $$0, gnm $$1) {
-      return new geo($$0, $$1, this);
-   }
-
-   public static class a extends gni.a<gnf> {
-      public a(gnf $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gnf(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.g;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public gni.b c() {
-         if (this.a.g.isEmpty()) {
-            return gni.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gni.b.c;
-         } else if (this.a.e == null) {
-            return gni.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gni.b.d : super.c();
+   static gnf a(final InetSocketAddress $$0) {
+      return new gnf() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
          }
-      }
 
-      @Override
-      public Either<gni.c, gni.b> a(gnm $$0) {
-         gni.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gni.c(this.a.a, gnl.a, $$5));
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
          }
-      }
 
-      private ReportEvidence b(gnm $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gng $$2 = new gng(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
 
-      private ReportChatMessage a(gnb.a $$0, boolean $$1) {
-         xx $$2 = $$0.g().k();
-         xv $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xo::a).toList();
-         ByteBuffer $$5 = y.a($$0.g().l(), xo::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public gnf.a d() {
-         return new gnf.a(this.a.a(), this.b);
-      }
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

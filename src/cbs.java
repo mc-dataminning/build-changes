@@ -1,29 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cbs {
-   private static final int a = 1;
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static bzo<bxy> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bzo<bxy> a(Function<bxw, Float> $$0) {
-      return cda.a(
-         (Function<cda.b<bxy>, ? extends App<cda.c<bxy>, cdd<bxy>>>)($$1 -> $$1.group($$1.a(cgy.n), $$1.a(cgy.o), $$1.b(cgy.p), $$1.a(cgy.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bxw $$9 = $$1.b($$4);
-                     Optional<cha> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bzp.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bzy($$9, true));
-                        $$2.a(new chb(new bzy($$9, false), $$0.apply($$7), 0));
+   public static bzx<byf> a() {
+      return cdj.a((Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$0 -> $$0.group($$0.b(chh.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  iw $$5 = $$0.<jf>b($$1).b();
+                  if ($$5.a($$3.dv(), 3.0)) {
+                     ebq $$6 = $$2.a_($$5);
+                     if ($$6.a(dnq.oJ)) {
+                        dnk $$7 = (dnk)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
+                  }
 
-                     return true;
-                  }))
-      );
+                  return true;
+               }
+            })));
    }
 }

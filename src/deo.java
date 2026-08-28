@@ -1,66 +1,30 @@
-public class deo extends deh {
-   public deo(dee $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public boolean a(def $$0, djz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+public enum deo implements bax {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            daa $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kl.M)) {
-                  if ($$3) {
-                     return false;
-                  }
+   public static final Codec<deo> e = bax.a(deo::values);
+   public static final IntFunction<deo> f = ayo.a(deo::a, values(), ayo.a.a);
+   public static final ze<ByteBuf, deo> g = zc.a(f, deo::a);
+   private final String h;
+   private final int i;
 
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(dae.vt)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public daa a(def $$0, ji.a $$1) {
-      int $$2 = 0;
-      daa $$3 = daa.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         daa $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kl.M)) {
-               if (!$$3.f()) {
-                  return daa.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(dae.vt)) {
-                  return daa.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : daa.k;
+   private deo(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public dfb<deo> a() {
-      return dfb.e;
+   public String c() {
+      return this.h;
+   }
+
+   private int a() {
+      return this.i;
    }
 }

@@ -1,20 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public interface dfx {
-   Codec<dfx> d = mh.ax.q().dispatch(dfx::a, dfx.a::a);
-   za<wn, dfx> e = yy.a(mi.ag).b(dfx::a, dfx.a::b);
-
-   dgd d();
-
-   dgd e();
-
-   dfx.a<? extends dfx> a();
-
-   default boolean a(cvj $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public record dfx(dak a, dak b, dak c) implements dfh {
+   @Override
+   public dak a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
-   public static record a<T extends dfx>(MapCodec<T> a, za<wn, T> b) {
+   @Override
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public dak c() {
+      return this.a;
+   }
+
+   public dak d() {
+      return this.b;
+   }
+
+   public dak e() {
+      return this.c;
    }
 }

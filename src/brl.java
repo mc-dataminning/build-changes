@@ -1,99 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public interface brl {
-   brl f = (brl)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? brk.a() : new brl.a());
+public final class brl {
+   private static final ThreadLocal<brq> a = ThreadLocal.withInitial(brq::new);
+   private static final ThreadLocal<brm> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   boolean a(brj var1);
+   private brl() {
+   }
 
-   Path b();
+   public static brl.a a(brm $$0) {
+      b($$0);
+      return brl::b;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(vw var1, zl<?> var2, SocketAddress var3, int var4);
-
-   void b(vw var1, zl<?> var2, SocketAddress var3, int var4);
-
-   void a(eew var1, dje var2, eev var3, int var4);
-
-   void b(eew var1, dje var2, eev var3, int var4);
-
-   @Nullable
-   bro e();
-
-   @Nullable
-   bro a(dje var1, alj<djz> var2, String var3);
-
-   @Nullable
-   bro a(dje var1, alj<djz> var2, jg<esd> var3);
-
-   public static class a implements brl {
-      private static final Logger b = LogUtils.getLogger();
-      static final bro a = $$0 -> {
-      };
-
-      @Override
-      public boolean a(brj $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+   private static void b(brm $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
+      } else {
+         brm $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
+   }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+   private static void b() {
+      brm $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
       }
+   }
 
-      @Override
-      public boolean c() {
-         return false;
-      }
+   private static brm c(brm $$0) {
+      return brm.a(c(), $$0);
+   }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
+   public static brm a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), brl::c);
+   }
 
-      @Override
-      public void a(vw $$0, zl<?> $$1, SocketAddress $$2, int $$3) {
-      }
+   private static brm c() {
+      return (brm)(TracyClient.isAvailable() ? a.get() : bri.a);
+   }
 
+   public interface a extends AutoCloseable {
       @Override
-      public void b(vw $$0, zl<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(eew $$0, dje $$1, eev $$2, int $$3) {
-      }
-
-      @Override
-      public void b(eew $$0, dje $$1, eev $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bro e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bro a(dje $$0, alj<djz> $$1, String $$2) {
-         return null;
-      }
-
-      @Override
-      public bro a(dje $$0, alj<djz> $$1, jg<esd> $$2) {
-         return a;
-      }
+      void close();
    }
 }

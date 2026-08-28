@@ -1,45 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public record dhp(dca d, kb e, Optional<jg<egg>> f) implements dhe {
-   public static final MapCodec<dhp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dca.b.fieldOf("properties").forGetter(dhp::b),
-               kb.g.optionalFieldOf("offset", kb.i).forGetter(dhp::c),
-               egg.aj.optionalFieldOf("trigger_game_event").forGetter(dhp::d)
-            )
-            .apply($$0, dhp::new)
-   );
+public interface dhp {
+   Codec<dhp> c = mh.at.q().dispatch(dhp::a, Function.identity());
 
-   public dhp(dca $$0) {
-      this($$0, kb.i, Optional.of(egg.c));
+   static MapCodec<? extends dhp> b(jt<MapCodec<? extends dhp>> $$0) {
+      jt.a($$0, "all_of", dhi.b.a);
+      jt.a($$0, "apply_mob_effect", dhj.a);
+      jt.a($$0, "attribute", dhn.a);
+      jt.a($$0, "change_item_damage", dhk.a);
+      jt.a($$0, "damage_entity", dhl.a);
+      jt.a($$0, "explode", dhr.a);
+      jt.a($$0, "ignite", dhs.a);
+      jt.a($$0, "play_sound", dhu.a);
+      jt.a($$0, "replace_block", dhw.a);
+      jt.a($$0, "replace_disk", dhx.a);
+      jt.a($$0, "run_function", dhy.a);
+      jt.a($$0, "set_block_properties", dhz.a);
+      jt.a($$0, "spawn_particles", dib.a);
+      return jt.a($$0, "summon_entity", dic.a);
    }
 
-   @Override
-   public void a(aru $$0, int $$1, dgm $$2, bwv $$3, ffs $$4) {
-      iw $$5 = iw.a((jq)$$4).a(this.e);
-      ebg $$6 = $$3.dV().a_($$5);
-      ebg $$7 = this.d.a($$6);
-      if ($$6 != $$7 && $$3.dV().a($$5, $$7, 3)) {
-         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   void a(asb var1, int var2, dgw var3, bxe var4, fgc var5, boolean var6);
+
+   default void a(dgw $$0, bxe $$1, fgc $$2, int $$3) {
    }
 
-   @Override
-   public MapCodec<dhp> a() {
-      return a;
-   }
-
-   public dca b() {
-      return this.d;
-   }
-
-   public kb c() {
-      return this.e;
-   }
-
-   public Optional<jg<egg>> d() {
-      return this.f;
-   }
+   MapCodec<? extends dhp> a();
 }

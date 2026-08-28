@@ -1,43 +1,15 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-
-public class ays<T> {
-   private final AtomicReferenceArray<T> a;
-   private final AtomicInteger b;
-
-   public ays(int $$0) {
-      this.a = new AtomicReferenceArray<>($$0);
-      this.b = new AtomicInteger(0);
-   }
-
-   public void a(T $$0) {
-      int $$1 = this.a.length();
-
-      int $$2;
-      int $$3;
-      do {
-         $$2 = this.b.get();
-         $$3 = ($$2 + 1) % $$1;
-      } while (!this.b.compareAndSet($$2, $$3));
-
-      this.a.set($$3, $$0);
-   }
-
-   public List<T> a() {
-      int $$0 = this.b.get();
-      Builder<T> $$1 = ImmutableList.builder();
-
-      for (int $$2 = 0; $$2 < this.a.length(); $$2++) {
-         int $$3 = Math.floorMod($$0 - $$2, this.a.length());
-         T $$4 = this.a.get($$3);
-         if ($$4 != null) {
-            $$1.add($$4);
-         }
-      }
-
-      return $$1.build();
-   }
+public class ays {
+   public static final int a = -1;
+   public static final int b = -16777216;
+   public static final int c = -8355712;
+   public static final int d = -6250336;
+   public static final int e = -4539718;
+   public static final int f = -65536;
+   public static final int g = -2142128;
+   public static final int h = -16711936;
+   public static final int i = -16776961;
+   public static final int j = -256;
+   public static final int k = -171;
+   public static final int l = -11534256;
+   public static final int m = -11010079;
 }

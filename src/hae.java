@@ -1,41 +1,30 @@
-public class hae extends gxe<ckm, hgg, gjo> {
-   private static final alk a = alk.b("textures/entity/rabbit/brown.png");
-   private static final alk j = alk.b("textures/entity/rabbit/white.png");
-   private static final alk k = alk.b("textures/entity/rabbit/black.png");
-   private static final alk l = alk.b("textures/entity/rabbit/gold.png");
-   private static final alk m = alk.b("textures/entity/rabbit/salt.png");
-   private static final alk n = alk.b("textures/entity/rabbit/white_splotched.png");
-   private static final alk o = alk.b("textures/entity/rabbit/toast.png");
-   private static final alk p = alk.b("textures/entity/rabbit/caerbannog.png");
+public class hae<T extends ckz> extends gwp<T, hge, gjr> {
+   private static final alr a = alr.b("textures/entity/squid/squid.png");
 
-   public hae(gyk.a $$0) {
-      super($$0, new gjo($$0.a(glf.cH)), new gjo($$0.a(glf.cI)), 0.3F);
+   public hae(gxv.a $$0, gjr $$1, gjr $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public alk a(hgg $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> j;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+   public alr a(hge $$0) {
+      return a;
    }
 
-   public hgg b() {
-      return new hgg();
+   public hge b() {
+      return new hge();
    }
 
-   public void a(ckm $$0, hgg $$1, float $$2) {
+   public void a(T $$0, hge $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(o.a($$0.ai().getString()));
-      $$1.c = $$0.gu();
+      $$1.a = azz.h($$2, $$0.bP, $$0.bO);
+      $$1.b = azz.h($$2, $$0.bJ, $$0.bI);
+      $$1.c = azz.h($$2, $$0.bL, $$0.bK);
+   }
+
+   protected void a(hge $$0, fld $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.am ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.am ? -0.6F : -1.2F, 0.0F);
    }
 }

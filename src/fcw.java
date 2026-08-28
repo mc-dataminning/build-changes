@@ -1,33 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class fcw extends fbw {
+public class fcw extends fcg {
    public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(ddj.d.fieldOf("pages").forGetter($$0x -> $$0x.b), fbv.a(100).forGetter($$0x -> $$0x.c))).apply($$0, fcw::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  fcf.e.a(dcy.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  azg.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, fcw::new)
    );
-   private final List<asm<String>> b;
-   private final fbv c;
+   public static final dcz b = new dcz(0, List.of());
+   private final Optional<fcf.e<dcy>> c;
+   private final Optional<Integer> d;
 
-   protected fcw(List<fds> $$0, List<asm<String>> $$1, fbv $$2) {
+   protected fcw(List<fec> $$0, Optional<fcf.e<dcy>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected daa a(daa $$0, faj $$1) {
-      $$0.a(kl.U, ddj.a, this::a);
+   protected dak a(dak $$0, fat $$1) {
+      $$0.a(kl.aj, b, this::a);
       return $$0;
    }
 
-   public ddj a(ddj $$0) {
-      List<asm<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
+   private dcz a(dcz $$0) {
+      return new dcz(this.d.orElseGet($$0::a), this.c.<List<dcy>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public fby<fcw> b() {
-      return fbz.O;
+   public fci<fcw> b() {
+      return fcj.K;
    }
 }

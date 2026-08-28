@@ -1,17 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record fsm(int b) implements fsp {
-   public static final MapCodec<fsm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.i.fieldOf("default").forGetter(fsm::b)).apply($$0, fsm::new));
-
-   @Override
-   public int a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2) {
-      return dcn.a($$0, this.b);
+public record fsm(btm<gtj> a) {
+   public fsm(btm<gtj> a) {
+      if (a.c()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
-   @Override
-   public MapCodec<fsm> a() {
-      return a;
+   public fsm a(gtk $$0) {
+      return new fsm(this.a.a($$0));
+   }
+
+   public gta.b a() {
+      List<btl<gtj>> $$0 = this.a.d();
+      return (gta.b)($$0.size() == 1 ? new gth.a($$0.getFirst().a()) : new hnm.a(this.a.a(gth.a::new)));
+   }
+
+   public btm<gtj> b() {
+      return this.a;
    }
 }

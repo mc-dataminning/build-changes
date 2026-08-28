@@ -1,23 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record aga(int b) implements zo<acf> {
+   public static final ze<vy, aga> a = zo.a(aga::a, aga::new);
 
-public class aga implements zj<aby> {
-   public static final aga a = new aga();
-   public static final za<ByteBuf, aga> b = za.a(a);
+   private aga(vy $$0) {
+      this($$0.l());
+   }
 
-   private aga() {
+   private void a(vy $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zl<aga> a() {
-      return agr.aX;
+   public zq<aga> a() {
+      return agy.aQ;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean d() {
-      return true;
    }
 }

@@ -1,32 +1,24 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Map.Entry;
 
-public class bew extends bhx {
-   private static final Map<String, String> c = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("donkeykong", "donkey_kong");
-      $$0.put("burningskull", "burning_skull");
-      $$0.put("skullandroses", "skull_and_roses");
-   });
+public class bew extends big {
+   private final Map<String, String> c;
 
-   public bew(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bjd.D, "minecraft:painting");
+   public bew(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
+      super($$0, false, $$1, bjm.D, $$2);
+      this.c = $$3;
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Motive").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(bky.a(c.getOrDefault($$2, $$2))));
-      } else {
-         return $$0;
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         $$0 = $$0.renameField($$1.getKey(), $$1.getValue());
       }
+
+      return $$0;
    }
 
    @Override

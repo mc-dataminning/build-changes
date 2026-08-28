@@ -1,9 +1,9 @@
-public interface cwh {
-   void a(cvs var1, jp<daa> var2, daa var3, int[] var4);
+public class cwh extends cwd {
+   public cwh(int $$0, csh $$1) {
+      super(cxk.k, dfm.c, dfk.f, cxr.c, $$0, $$1);
+   }
 
-   void a(cvs var1, int var2, daa var3);
-
-   void a(cvs var1, daa var2);
-
-   void a(cvs var1, int var2, int var3);
+   public cwh(int $$0, csh $$1, buv $$2, cwn $$3) {
+      super(cxk.k, dfm.c, dfk.f, cxr.c, $$0, $$1, $$2, $$3);
+   }
 }

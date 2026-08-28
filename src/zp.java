@@ -1,23 +1,18 @@
-public interface zp extends abs {
-   void a(zt var1);
+public enum zp {
+   a("serverbound"),
+   b("clientbound");
 
-   void a(zu var1);
+   private final String c;
 
-   void a(zq var1);
+   private zp(final String $$0) {
+      this.c = $$0;
+   }
 
-   void a(zs var1);
+   public zp a() {
+      return this == b ? a : b;
+   }
 
-   void a(zw var1);
-
-   void a(zv var1);
-
-   void a(aaa var1);
-
-   void a(zy var1);
-
-   void a(zz var1);
-
-   void a(zr var1);
-
-   void a(zx var1);
+   public String b() {
+      return this.c;
+   }
 }

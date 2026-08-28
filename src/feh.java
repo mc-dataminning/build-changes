@@ -1,16 +1,28 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class feh {
-   private static final Codec<feg> d = mh.H.q().dispatch(feg::a, fef::a);
-   public static final Codec<feg> a = Codec.lazyInitialized(
-      () -> Codec.either(fee.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fee $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final fef b = a("storage", fei.a);
-   public static final fef c = a("context", fee.b);
+public record feh(fey b) implements fec {
+   public static final MapCodec<feh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fez.a.fieldOf("chance").forGetter(feh::c)).apply($$0, feh::new));
 
-   private static fef a(String $$0, MapCodec<? extends feg> $$1) {
-      return jt.a(mh.H, alk.b($$0), new fef($$1));
+   @Override
+   public fed b() {
+      return fee.d;
+   }
+
+   public boolean a(fat $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
+   }
+
+   public static fec.a a(float $$0) {
+      return () -> new feh(fev.a($$0));
+   }
+
+   public static fec.a a(fey $$0) {
+      return () -> new feh($$0);
+   }
+
+   public fey c() {
+      return this.b;
    }
 }

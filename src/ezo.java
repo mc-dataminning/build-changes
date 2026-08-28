@@ -1,97 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ezo {
-   private static final String a = "command_storage_";
-   private final Map<String, ezo.a> b = new HashMap<>();
-   private final ezr c;
-
-   public ezo(ezr $$0) {
-      this.c = $$0;
-   }
-
-   public ua a(alk $$0) {
-      ezo.a $$1 = this.a($$0.b());
-      return $$1 != null ? $$1.b($$0.a()) : new ua();
-   }
+public record ezo(iw b, czi c, Optional<xg> d) {
+   public static final Codec<ezo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iw.a.fieldOf("pos").forGetter(ezo::c),
+               czi.q.lenientOptionalFieldOf("color", czi.a).forGetter(ezo::d),
+               xi.a.lenientOptionalFieldOf("name").forGetter(ezo::e)
+            )
+            .apply($$0, ezo::new)
+   );
 
    @Nullable
-   private ezo.a a(String $$0) {
-      ezo.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
+   public static ezo a(djn $$0, iw $$1) {
+      if ($$0.c_($$1) instanceof dyc $$3) {
+         czi $$4 = $$3.f();
+         Optional<xg> $$5 = Optional.ofNullable($$3.ak());
+         return new ezo($$1, $$4, $$5);
       } else {
-         ezo.a $$2 = this.c.b(ezo.a.a($$0));
-         if ($$2 != null) {
-            this.b.put($$0, $$2);
-         }
-
-         return $$2;
+         return null;
       }
    }
 
-   private ezo.a b(String $$0) {
-      ezo.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         ezo.a $$2 = this.c.a(ezo.a.a($$0));
-         this.b.put($$0, $$2);
-         return $$2;
-      }
+   public jg<ezq> a() {
+      return switch (this.c) {
+         case a -> ezr.k;
+         case b -> ezr.l;
+         case c -> ezr.m;
+         case d -> ezr.n;
+         case e -> ezr.o;
+         case f -> ezr.p;
+         case g -> ezr.q;
+         case h -> ezr.r;
+         case i -> ezr.s;
+         case j -> ezr.t;
+         case k -> ezr.u;
+         case l -> ezr.v;
+         case m -> ezr.w;
+         case n -> ezr.x;
+         case o -> ezr.y;
+         case p -> ezr.z;
+      };
    }
 
-   public void a(alk $$0, ua $$1) {
-      this.b($$0.b()).a($$0.a(), $$1);
+   public String b() {
+      return "banner-" + this.b.u() + "," + this.b.v() + "," + this.b.w();
    }
 
-   public Stream<alk> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
+   public iw c() {
+      return this.b;
    }
 
-   static String c(String $$0) {
-      return "command_storage_" + $$0;
+   public czi d() {
+      return this.c;
    }
 
-   static class a extends ezc {
-      public static final Codec<ezo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ayy.C, ua.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, ezo.a::new)
-      );
-      private final Map<String, ua> b;
-
-      private a(Map<String, ua> $$0) {
-         this.b = new HashMap<>($$0);
-      }
-
-      private a() {
-         this(new HashMap<>());
-      }
-
-      public static ezd<ezo.a> a(String $$0) {
-         return new ezd<>(ezo.c($$0), ezo.a::new, a, bbf.h);
-      }
-
-      public ua b(String $$0) {
-         ua $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new ua();
-      }
-
-      public void a(String $$0, ua $$1) {
-         if ($$1.j()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.f();
-      }
-
-      public Stream<alk> c(String $$0) {
-         return this.b.keySet().stream().map($$1 -> alk.a($$0, $$1));
-      }
+   public Optional<xg> e() {
+      return this.d;
    }
 }

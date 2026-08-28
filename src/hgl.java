@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hgl extends hfr {
-   public ffs a = ffs.c;
-   @Nullable
-   public cyy b;
-   public float c;
-   public float d;
-   public float e;
-   public jc f = jc.a;
+public class hgl extends hfe {
+   public clb.b a = clb.b.g;
+   public int b = -1;
+   public int c = -1;
 }

@@ -1,17 +1,20 @@
-public class eic {
-   private final int a;
-   private final int b;
+import com.google.common.annotations.VisibleForTesting;
 
-   public eic(ede $$0, dkb $$1) {
-      this.a = Math.max($$1.K_(), $$0.g());
-      this.b = Math.min($$1.L_(), $$0.e());
+public interface eic {
+   default bai a(iw $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public int a() {
-      return this.a;
+   default bai a(alr $$0) {
+      return this.a($$0.toString());
    }
 
-   public int b() {
-      return this.b;
-   }
+   bai a(String var1);
+
+   bai a(long var1);
+
+   bai a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fhq {
+public interface fhq<T> extends fhw<T> {
+   boolean b(iw var1, T var2);
 }

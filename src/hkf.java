@@ -1,59 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public final class hkf {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final alr d = alr.b("missingno");
 
-public class hkf implements hkg<dda> {
-   private final duq.a a;
-   private final gka b;
-   @Nullable
-   private final alk c;
-   private final float d;
-
-   public hkf(duq.a $$0, gka $$1, @Nullable alk $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static fkf a() {
+      return a(16, 16);
    }
 
-   @Nullable
-   public dda a(daa $$0) {
-      return $$0.a(kl.ak);
+   public static fkf a(int $$0, int $$1) {
+      fkf $$2 = new fkf($$0, $$1, false);
+      int $$3 = -524040;
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.b($$5, $$4, -524040);
+            } else {
+               $$2.b($$5, $$4, -16777216);
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public void a(@Nullable dda $$0, czy $$1, flq $$2, gsc $$3, int $$4, int $$5, boolean $$6) {
-      gsn $$7 = gvf.a(this.a, $$0, this.c);
-      gvf.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
+   public static hkk b() {
+      fkf $$0 = a(16, 16);
+      return new hkk(d, new hme(16, 16), $$0, avq.a);
    }
 
-   public static record a(duq.a b, Optional<alk> c, float d) implements hkg.a {
-      public static final MapCodec<hkf.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  duq.a.b.fieldOf("kind").forGetter(hkf.a::b),
-                  alk.a.optionalFieldOf("texture").forGetter(hkf.a::c),
-                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hkf.a::d)
-               )
-               .apply($$0, hkf.a::new)
-      );
-
-      public a(duq.a $$0) {
-         this($$0, Optional.empty(), 0.0F);
-      }
-
-      @Override
-      public MapCodec<hkf.a> a() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public hkg<?> a(glc $$0) {
-         gka $$1 = gvf.a($$0, this.b);
-         alk $$2 = this.c.<alk>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
-         return $$1 != null ? new hkf(this.b, $$1, $$2, this.d) : null;
-      }
+   public static alr c() {
+      return d;
    }
 }

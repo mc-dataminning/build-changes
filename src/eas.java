@@ -1,116 +1,142 @@
-public enum eas implements bao {
-   a("inactive", eas.a.a) {
-      @Override
-      protected void a(aru $$0, iw $$1, eap $$2, ear $$3, boolean $$4) {
-         $$3.a(daa.k);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", eas.a.b) {
-      @Override
-      protected void a(aru $$0, iw $$1, eap $$2, ear $$3, boolean $$4) {
-         if (!$$3.b()) {
-            ean.b.a($$0, this, $$2, $$3, $$1);
-         }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", eas.a.b) {
-      @Override
-      protected void a(aru $$0, iw $$1, eap $$2, ear $$3, boolean $$4) {
-         $$0.a(null, $$1, awr.BN, aws.e);
-      }
-   },
-   d("ejecting", eas.a.b) {
-      @Override
-      protected void a(aru $$0, iw $$1, eap $$2, ear $$3, boolean $$4) {
-         $$0.a(null, $$1, awr.BP, aws.e);
-      }
+public record eas(int d, float e, float f, float g, float h, int i, btm<dld> j, btm<alq<fay>> k, alq<fay> l) {
+   public static final eas a = b().a();
+   public static final Codec<eas> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(eas::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(eas::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(eas::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(eas::f),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(eas::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(eas::h),
+               dld.c.optionalFieldOf("spawn_potentials", btm.a()).forGetter(eas::i),
+               btm.a(fay.a).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(eas::j),
+               fay.a.optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(eas::k)
+            )
+            .apply($$0, eas::new)
+   );
+   public static final Codec<jg<eas>> c = aln.a(mi.bi, b);
 
-      @Override
-      protected void a(aru $$0, iw $$1, eap $$2, ear $$3) {
-         $$0.a(null, $$1, awr.BH, aws.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final eas.a j;
-
-   eas(final String $$0, final eas.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Override
-   public String c() {
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   }
+
+   public long a() {
+      return 160L;
+   }
+
+   public static eas.a b() {
+      return new eas.a();
+   }
+
+   public eas a(bxn<?> $$0) {
+      ua $$1 = new ua();
+      $$1.a("id", mh.f.b($$0).toString());
+      dld $$2 = new dld($$1, Optional.empty(), Optional.empty());
+      return new eas(this.d, this.e, this.f, this.g, this.h, this.i, btm.a($$2), this.k, this.l);
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public int h() {
       return this.i;
    }
 
-   public int a() {
-      return this.j.c;
+   public btm<dld> i() {
+      return this.j;
    }
 
-   public eas a(aru $$0, iw $$1, eap $$2, eaq $$3, ear $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.ae() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.ae() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public btm<alq<fay>> j() {
+      return this.k;
    }
 
-   private static eas a(aru $$0, iw $$1, eap $$2, eaq $$3, ear $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.ae() + 20L);
-      return $$4.c() ? b : a;
+   public alq<fay> k() {
+      return this.l;
    }
 
-   public void a(aru $$0, iw $$1, eas $$2, eap $$3, ear $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
-   }
+   public static class a {
+      private int a = 4;
+      private float b = 6.0F;
+      private float c = 2.0F;
+      private float d = 2.0F;
+      private float e = 1.0F;
+      private int f = 40;
+      private btm<dld> g = btm.a();
+      private btm<alq<fay>> h = btm.<alq<fay>>b().a(fap.aM).a(fap.aL).a();
+      private alq<fay> i = fap.aP;
 
-   protected void a(aru $$0, iw $$1, eap $$2, ear $$3, boolean $$4) {
-   }
+      public eas.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   protected void a(aru $$0, iw $$1, eap $$2, ear $$3) {
-   }
+      public eas.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   private void a(aru $$0, iw $$1, daa $$2, float $$3) {
-      lh.a($$0, $$2, 2, jc.b, ffs.c($$1).a(jc.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, awr.BJ, aws.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
+      public eas.a b(float $$0) {
          this.c = $$0;
+         return this;
+      }
+
+      public eas.a c(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eas.a d(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eas.a b(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public eas.a a(btm<dld> $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public eas.a b(btm<alq<fay>> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public eas.a a(alq<fay> $$0) {
+         this.i = $$0;
+         return this;
+      }
+
+      public eas a() {
+         return new eas(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
       }
    }
 }

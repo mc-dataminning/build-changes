@@ -1,31 +1,21 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejg extends eic {
-   private final ju a;
-   private final ehj b;
-   private final eht c;
-   private final ehw.o d;
+@Deprecated
+public class ejg extends ejh {
+   public static final MapCodec<ejg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejg::new));
 
-   public ejg(ehi $$0, ju $$1, dkb $$2, ehj $$3, eht $$4, ehw.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public ejg(kb $$0) {
+      super($$0);
    }
 
-   @Deprecated
-   public Optional<ebg> a(Function<iw, jg<dlc>> $$0, edd $$1, iw $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   @Override
+   protected boolean a(ebq $$0) {
+      return $$0.e();
    }
 
-   @Deprecated
-   public ju c() {
-      return this.a;
-   }
-
-   public eht d() {
-      return this.c;
+   @Override
+   public eix<?> a() {
+      return eix.e;
    }
 }

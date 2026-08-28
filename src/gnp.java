@@ -1,8 +1,25 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gnp extends gpx {
+   gnp(glo $$0, double $$1, double $$2, double $$3, ebq $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fqq.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface gnp {
+   @Override
+   public gpb b() {
+      return gpb.a;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
+
+   public static class a implements gpa<lr> {
+      public gox a(lr $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnp($$1, $$2, $$3, $$4, $$0.b());
+      }
+   }
 }

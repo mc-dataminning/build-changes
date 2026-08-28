@@ -1,39 +1,98 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class eza {
-   protected final dtn a;
+public record eza(asb d, fgc e, fgc f, float g, float h, boolean i, boolean j, Set<byt> k, eza.a l) {
+   public static final eza.a a = $$0 -> {
+   };
+   public static final eza.a b = eza::a;
+   public static final eza.a c = eza::b;
 
-   protected eza(dtn $$0) {
-      this.a = $$0;
+   public eza(asb $$0, fgc $$1, fgc $$2, float $$3, float $$4, eza.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   public abstract void a(djz var1, iw var2, ebg var3, @Nullable eyy var4, boolean var5);
-
-   protected int a(djz $$0, iw $$1) {
-      return this.a.a($$0, $$1);
+   public eza(asb $$0, fgc $$1, fgc $$2, float $$3, float $$4, Set<byt> $$5, eza.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   protected int a(iw $$0, ebg $$1) {
-      return $$1.a(this.a) ? $$1.c(dtn.f) : 0;
+   public eza(asb $$0, bxe $$1, eza.a $$2) {
+      this($$0, a($$0, $$1), fgc.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   protected int b(djz $$0, iw $$1) {
-      int $$2 = 0;
-
-      for (jc $$3 : jc.c.a) {
-         iw $$4 = $$1.a($$3);
-         ebg $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         iw $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            iw $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            iw $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
-         }
+   private static void a(bxe $$0) {
+      if ($$0 instanceof asc $$1) {
+         $$1.f.b(new ads(1032, iw.c, 0, false));
       }
+   }
 
-      return Math.max(0, $$2 - 1);
+   private static void b(bxe $$0) {
+      $$0.f(iw.a((jq)$$0.dt()));
+   }
+
+   public static eza a(asb $$0, bxe $$1, eza.a $$2) {
+      return new eza($$0, a($$0, $$1), fgc.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   }
+
+   private static fgc a(asb $$0, bxe $$1) {
+      return $$1.a($$0, $$0.aa()).c();
+   }
+
+   public eza a(float $$0, float $$1) {
+      return new eza(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
+
+   public eza a(fgc $$0) {
+      return new eza(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public eza a() {
+      return new eza(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public asb b() {
+      return this.d;
+   }
+
+   public fgc c() {
+      return this.e;
+   }
+
+   public fgc d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<byt> i() {
+      return this.k;
+   }
+
+   public eza.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bxe var1);
+
+      default eza.a then(eza.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
+      }
    }
 }

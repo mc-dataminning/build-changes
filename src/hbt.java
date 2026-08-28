@@ -1,21 +1,24 @@
-public class hbt extends gzb<cpw, hhj, gky> {
-   private static final alk a = alk.b("textures/entity/piglin/zombified_piglin.png");
-
-   public hbt(gyk.a $$0, gle $$1, gle $$2, gle $$3, gle $$4, gle $$5, gle $$6) {
-      super($$0, new gky($$0.a($$1)), new gky($$0.a($$2)), 0.5F, haa.a);
-      this.a(new hcn<>(this, new gip($$0.a($$3)), new gip($$0.a($$4)), new gip($$0.a($$5)), new gip($$0.a($$6)), $$0.h()));
+public abstract class hbt<S extends hec, M extends ghn<S>> extends hcj<S, M> {
+   public hbt(gzs<S, M> $$0) {
+      super($$0);
    }
 
-   public alk a(hhj $$0) {
-      return a;
+   @Override
+   public void a(fld $$0, grn $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.v;
+         M $$7 = this.c();
+         flg $$8 = $$1.getBuffer(gry.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hkg.d, -8355712);
+      }
    }
 
-   public hhj b() {
-      return new hhj();
-   }
+   protected abstract boolean a(S var1);
 
-   public void a(cpw $$0, hhj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gl();
-   }
+   protected abstract float a(float var1);
+
+   protected abstract alr a();
+
+   protected abstract M c();
 }

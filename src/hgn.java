@@ -1,4 +1,3 @@
-public class hgn extends hfr {
-   public float a;
-   public int b = 1;
+public class hgn extends hdg {
+   public boolean a;
 }

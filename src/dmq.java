@@ -1,30 +1,45 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dmq extends dne implements dpy {
-   protected dmq(ebf.d $$0) {
+public class dmq extends dxa implements dnr {
+   public static final MapCodec<dmq> a = b(dmq::new);
+   private static final fgw b = fgt.a(dno.b(16.0, 8.0, 16.0), dno.b(4.0, 0.0, 8.0));
+
+   @Override
+   public MapCodec<dmq> a() {
+      return a;
+   }
+
+   protected dmq(ebp.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dmq> a();
-
-   @Override
-   protected boolean a(ebg $$0, djz $$1, iw $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dye $$5 = $$1.c_($$2);
-      return $$5 == null ? false : $$5.a_($$3, $$4);
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   protected buv b(ebg $$0, djz $$1, iw $$2) {
-      dye $$3 = $$1.c_($$2);
-      return $$3 instanceof buv ? (buv)$$3 : null;
+   protected boolean b(ebq $$0, djn $$1, iw $$2) {
+      return $$0.a(dnq.ei) || super.b($$0, $$1, $$2);
    }
 
-   @Nullable
-   protected static <E extends dye, A extends dye> dyf<A> a(dyg<A> $$0, dyg<E> $$1, dyf<? super E> $$2) {
-      return $$1 == $$0 ? $$2 : null;
+   @Override
+   public boolean a(dkm $$0, iw $$1, ebq $$2) {
+      return $$0.b_($$1.d()).c();
+   }
+
+   @Override
+   public boolean a(dkj $$0, bai $$1, iw $$2, ebq $$3) {
+      return (double)$$0.A.i() < 0.45;
+   }
+
+   @Override
+   public void a(asb $$0, bai $$1, iw $$2, ebq $$3) {
+      ebe.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   }
+
+   @Override
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 }

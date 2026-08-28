@@ -1,44 +1,39 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class afp implements zj<aby> {
-   public static final za<vy, afp> a = zj.a(afp::a, afp::new);
+public class afp implements zo<acf> {
+   public static final ze<vy, afp> a = zo.a(afp::a, afp::new);
    private final int b;
-   private final int[] c;
+   private final int c;
 
-   public afp(bwv $$0) {
+   public afp(bxe $$0, @Nullable bxe $$1) {
       this.b = $$0.ao();
-      List<bwv> $$1 = $$0.cY();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).ao();
-      }
+      this.c = $$1 != null ? $$1.ao() : 0;
    }
 
    private afp(vy $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zl<afp> a() {
-      return agr.aN;
+   public zq<afp> a() {
+      return agy.aG;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
    }
 }

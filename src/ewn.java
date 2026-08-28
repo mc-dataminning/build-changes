@@ -1,11 +1,18 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface ewn {
-   Codec<ewn> c = mh.n.q().dispatch(ewn::a, ewo::codec);
+public class ewn {
+   private final List<ewm> a;
 
-   @Nullable
-   ua a(azz var1, @Nullable ua var2);
+   public ewn(List<ewm> $$0) {
+      this.a = $$0;
+   }
 
-   ewo<?> a();
+   public List<ewm> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
+   }
 }

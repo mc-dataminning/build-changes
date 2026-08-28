@@ -1,86 +1,30 @@
-public class afz implements zj<aby> {
-   public static final za<wn, afz> a = zj.a(afz::a, afz::new);
-   public static final float b = 8.0F;
-   private final jg<awq> c;
-   private final aws d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final float h;
-   private final float i;
-   private final long j;
+import java.util.Optional;
 
-   public afz(jg<awq> $$0, aws $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = (int)($$2 * 8.0);
-      this.f = (int)($$3 * 8.0);
-      this.g = (int)($$4 * 8.0);
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-   }
-
-   private afz(wn $$0) {
-      this.c = awq.d.decode($$0);
-      this.d = $$0.b(aws.class);
-      this.e = $$0.readInt();
-      this.f = $$0.readInt();
-      this.g = $$0.readInt();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.j = $$0.readLong();
-   }
-
-   private void a(wn $$0) {
-      awq.d.encode($$0, this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
-      $$0.q(this.f);
-      $$0.q(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.b(this.j);
-   }
+public record afz(String b, String c, int d, Optional<xg> e, Optional<yw> f) implements zo<acf> {
+   public static final ze<wp, afz> a = ze.a(zc.p, afz::b, zc.p, afz::e, zc.h, afz::f, xi.e, afz::g, yy.d, afz::h, afz::new);
 
    @Override
-   public zl<afz> a() {
-      return agr.aW;
+   public zq<afz> a() {
+      return agy.aP;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public jg<awq> b() {
+   public String e() {
       return this.c;
    }
 
-   public aws e() {
+   public int f() {
       return this.d;
    }
 
-   public double f() {
-      return (double)((float)this.e / 8.0F);
+   public Optional<xg> g() {
+      return this.e;
    }
 
-   public double g() {
-      return (double)((float)this.f / 8.0F);
-   }
-
-   public double h() {
-      return (double)((float)this.g / 8.0F);
-   }
-
-   public float i() {
-      return this.h;
-   }
-
-   public float j() {
-      return this.i;
-   }
-
-   public long k() {
-      return this.j;
+   public Optional<yw> h() {
+      return this.f;
    }
 }

@@ -1,9 +1,9 @@
 import java.util.List;
 
 public interface kc<T> extends jt<T> {
-   jg.c<T> a(alj<T> var1, T var2, js var3);
+   jg.c<T> a(alq<T> var1, T var2, js var3);
 
-   void a(axv<T> var1, List<jg<T>> var2);
+   void a(ayc<T> var1, List<jg<T>> var2);
 
    boolean m();
 

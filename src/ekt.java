@@ -1,46 +1,32 @@
 import com.mojang.serialization.Codec;
 
-public class ekt extends ekm<emy> {
-   public ekt(Codec<emy> $$0) {
+public class ekt extends ekw<eni> {
+   public ekt(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emy> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      azz $$3 = $$0.d();
-      if (!$$1.v($$2)) {
-         return false;
-      } else {
-         ebg $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dng.em) && !$$4.a(dng.ep) && !$$4.a(dng.pZ)) {
-            return false;
-         } else {
-            $$1.a($$2, dng.et.m(), 2);
+   public boolean a(eky<eni> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               iw $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
+   public static void a(dla $$0, iw $$1, boolean $$2) {
+      iw.a $$3 = $$1.k();
 
-                  for (jc $$8 : jc.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dng.et)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               iw $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dno $$8 = $$6 == -1 ? dnq.cy : dnq.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
                   }
 
-                  if ($$7 == 1) {
-                     $$1.a($$6, dng.et.m(), 2);
-                  }
+                  $$0.a($$7, $$8.m(), 3);
                }
             }
-
-            return true;
          }
       }
    }

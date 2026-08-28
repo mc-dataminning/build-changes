@@ -1,55 +1,65 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eva extends esd {
-   public static final MapCodec<eva> d = a(eva::new);
+public class eva extends esn {
+   public static final MapCodec<eva> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               eva.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eva::new)
+   );
+   public final eva.a e;
+   public final float f;
+   public final float g;
 
-   public eva(esd.c $$0) {
+   public eva(esn.c $$0, eva.a $$1, float $$2, float $$3) {
       super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      dty $$1 = dty.a($$0.f());
-      iw $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new esd.b($$2, (Consumer<esv>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   public Optional<esn.b> a(esn.a $$0) {
+      return a($$0, ehp.a.c, $$1 -> this.a($$1, $$0));
    }
 
-   private void a(esv $$0, esd.a $$1, iw $$2, dty $$3) {
-      List<euz.i> $$4 = Lists.newLinkedList();
-      euz.a($$1.e(), $$2, $$3, $$4, $$1.f());
-      $$4.forEach($$0::a);
+   private void a(etf $$0, esn.a $$1) {
+      iw $$2 = new iw($$1.h().d(), 90, $$1.h().e());
+      dui $$3 = dui.a($$1.f());
+      euz.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public void a(dky $$0, dkv $$1, ede $$2, azz $$3, erv $$4, dje $$5, ess $$6) {
-      iw.a $$7 = new iw.a();
-      int $$8 = $$0.K_();
-      erv $$9 = $$6.b();
-      int $$10 = $$9.i();
+   public esw<?> e() {
+      return esw.k;
+   }
 
-      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
-         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
-            $$7.d($$11, $$10, $$12);
-            if (!$$0.v($$7) && $$9.b($$7) && $$6.a($$7)) {
-               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
-                  $$7.q($$13);
-                  if (!$$0.v($$7) && !$$0.a_($$7).n()) {
-                     break;
-                  }
+   public static enum a implements bax {
+      a("warm"),
+      b("cold");
 
-                  $$0.a($$7, dng.m.m(), 2);
-               }
-            }
-         }
+      public static final Codec<eva.a> c = bax.a(eva.a::values);
+      @Deprecated
+      public static final Codec<eva.a> d = azg.c(eva.a::valueOf);
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
-   }
 
-   @Override
-   public esm<?> e() {
-      return esm.p;
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

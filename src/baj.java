@@ -1,25 +1,6 @@
-public class baj {
-   private double a;
-   private double b;
-   private double c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-   public double a(double $$0, double $$1) {
-      this.a += $$0;
-      double $$2 = this.a - this.b;
-      double $$3 = azq.d(0.5, this.c, $$2);
-      double $$4 = Math.signum($$2);
-      if ($$4 * $$2 > $$4 * this.c) {
-         $$2 = $$3;
-      }
-
-      this.c = $$3;
-      this.b += $$2 * $$1;
-      return $$2 * $$1;
-   }
-
-   public void a() {
-      this.a = 0.0;
-      this.b = 0.0;
-      this.c = 0.0;
-   }
+public interface baj {
+   <T> DataResult<T> a(Codec<T> var1, T var2, ji.a var3);
 }

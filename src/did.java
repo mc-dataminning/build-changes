@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface did {
-   jk<bxe<?>> get(jh<bxe<?>> var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface did {
 }

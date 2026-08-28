@@ -1,25 +1,30 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record ets(btd<List<etp>> c) implements etp {
-   static MapCodec<ets> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(btd.b(Codec.list(etp.b)).fieldOf("groups").forGetter(ets::c)).apply($$0, ets::new));
+public class ets extends etu {
+   public static final MapCodec<ets> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), f(), c()).apply($$0, ets::new));
 
-   @Override
-   public void a(azz $$0, BiConsumer<alj<etn>, alj<etn>> $$1) {
-      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
+   protected ets(Either<alr, ewp> $$0, jg<ewn> $$1, etx.a $$2, Optional<evz> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public Stream<alj<etn>> a() {
-      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(etp::a);
+   protected ewl a(dui $$0, esf $$1, evz $$2, boolean $$3) {
+      ewl $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(evq.b);
+      $$4.a(evq.d);
+      return $$4;
    }
 
    @Override
-   public MapCodec<ets> b() {
-      return a;
+   public etw<?> a() {
+      return etw.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

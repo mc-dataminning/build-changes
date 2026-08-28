@@ -12,8 +12,8 @@ public record dp(cx.d c) implements ca {
    }
 
    @Override
-   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
-      return $$0 instanceof cpk $$3 ? this.c.d($$3.gs()) : false;
+   public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
+      return $$0 instanceof cpt $$3 ? this.c.d($$3.gs()) : false;
    }
 
    @Override

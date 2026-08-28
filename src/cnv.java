@@ -1,39 +1,80 @@
-public class cnv extends cnx {
-   public cnv(bxe<? extends cnx> $$0, djz $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cnv(djz $$0, iw $$1, jc $$2) {
-      super(bxe.ag, $$0, $$1, $$2);
-   }
+public class cnv extends cni {
+   private boolean b;
+   @Nullable
+   private eyo c;
+   @Nullable
+   private fgc d;
 
-   @Override
-   public awq m() {
-      return awr.li;
-   }
-
-   @Override
-   public awq n() {
-      return awr.lg;
+   public cnv(cng $$0) {
+      super($$0);
    }
 
    @Override
-   public awq o() {
-      return awr.lh;
+   public void a(asb $$0) {
+      if (!this.b && this.c != null) {
+         iw $$1 = $$0.a(ehp.a.f, eku.a(this.a.j()));
+         if (!$$1.a(this.a.dt(), 10.0)) {
+            this.a.t().a(cnw.a);
+         }
+      } else {
+         this.b = false;
+         this.i();
+      }
    }
 
    @Override
-   public awq q() {
-      return awr.lf;
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void i() {
+      int $$0 = this.a.n();
+      fgc $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.x() != null && this.a.x().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
+   }
+
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            kb $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new fgc((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public fgc f() {
+      return this.d;
    }
 
    @Override
-   public awq s() {
-      return awr.lj;
-   }
-
-   @Override
-   protected daa t() {
-      return new daa(dae.vn);
+   public cnw<cnv> h() {
+      return cnw.e;
    }
 }

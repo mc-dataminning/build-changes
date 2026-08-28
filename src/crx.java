@@ -1,63 +1,87 @@
-public record crx(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
-   private static final byte j = 1;
-   private static final byte k = 2;
-   private static final byte l = 4;
-   private static final byte m = 8;
-   private static final byte n = 16;
-   private static final byte o = 32;
-   private static final byte p = 64;
-   public static final za<vy, crx> a = new za<vy, crx>() {
-      public void a(vy $$0, crx $$1) {
-         byte $$2 = 0;
-         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
-         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
-         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
-         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
-         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
-         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
-         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
-         $$0.l($$2);
-      }
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-      public crx a(vy $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         boolean $$3 = ($$1 & 2) != 0;
-         boolean $$4 = ($$1 & 4) != 0;
-         boolean $$5 = ($$1 & 8) != 0;
-         boolean $$6 = ($$1 & 16) != 0;
-         boolean $$7 = ($$1 & 32) != 0;
-         boolean $$8 = ($$1 & 64) != 0;
-         return new crx($$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-   };
-   public static crx b = new crx(false, false, false, false, false, false, false);
+public record crx(xg q, Predicate<jg<cjk>> r, Predicate<jg<cjk>> s, ImmutableSet<dag> t, ImmutableSet<dno> u, @Nullable awx v) {
+   public static final Predicate<jg<cjk>> a = $$0 -> $$0.a(axx.a);
+   public static final alq<crx> b = a("none");
+   public static final alq<crx> c = a("armorer");
+   public static final alq<crx> d = a("butcher");
+   public static final alq<crx> e = a("cartographer");
+   public static final alq<crx> f = a("cleric");
+   public static final alq<crx> g = a("farmer");
+   public static final alq<crx> h = a("fisherman");
+   public static final alq<crx> i = a("fletcher");
+   public static final alq<crx> j = a("leatherworker");
+   public static final alq<crx> k = a("librarian");
+   public static final alq<crx> l = a("mason");
+   public static final alq<crx> m = a("nitwit");
+   public static final alq<crx> n = a("shepherd");
+   public static final alq<crx> o = a("toolsmith");
+   public static final alq<crx> p = a("weaponsmith");
 
-   public boolean a() {
-      return this.c;
+   private static alq<crx> a(String $$0) {
+      return alq.a(mi.aD, alr.b($$0));
    }
 
-   public boolean b() {
-      return this.d;
+   private static crx a(jt<crx> $$0, alq<crx> $$1, alq<cjk> $$2, @Nullable awx $$3) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
    }
 
-   public boolean c() {
-      return this.e;
+   private static crx a(jt<crx> $$0, alq<crx> $$1, Predicate<jg<cjk>> $$2, Predicate<jg<cjk>> $$3, @Nullable awx $$4) {
+      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
    }
 
-   public boolean d() {
-      return this.f;
+   private static crx a(jt<crx> $$0, alq<crx> $$1, alq<cjk> $$2, ImmutableSet<dag> $$3, ImmutableSet<dno> $$4, @Nullable awx $$5) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
    }
 
-   public boolean e() {
-      return this.g;
+   private static crx a(
+      jt<crx> $$0, alq<crx> $$1, Predicate<jg<cjk>> $$2, Predicate<jg<cjk>> $$3, ImmutableSet<dag> $$4, ImmutableSet<dno> $$5, @Nullable awx $$6
+   ) {
+      return jt.a($$0, $$1, new crx(xg.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
    }
 
-   public boolean f() {
-      return this.h;
+   public static crx a(jt<crx> $$0) {
+      a($$0, b, cjk.a, a, null);
+      a($$0, c, cjl.a, awy.Cd);
+      a($$0, d, cjl.b, awy.Ce);
+      a($$0, e, cjl.c, awy.Cf);
+      a($$0, f, cjl.d, awy.Cg);
+      a($$0, g, cjl.e, ImmutableSet.of(dao.qk, dao.qj, dao.ww, dao.sG), ImmutableSet.of(dnq.cN), awy.Ch);
+      a($$0, h, cjl.f, awy.Ci);
+      a($$0, i, cjl.g, awy.Cj);
+      a($$0, j, cjl.h, awy.Ck);
+      a($$0, k, cjl.i, awy.Cl);
+      a($$0, l, cjl.j, awy.Cm);
+      a($$0, m, cjk.a, cjk.a, null);
+      a($$0, n, cjl.k, awy.Cn);
+      a($$0, o, cjl.l, awy.Co);
+      return a($$0, p, cjl.m, awy.Cp);
    }
 
-   public boolean g() {
-      return this.i;
+   public xg a() {
+      return this.q;
+   }
+
+   public Predicate<jg<cjk>> b() {
+      return this.r;
+   }
+
+   public Predicate<jg<cjk>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<dag> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dno> e() {
+      return this.u;
+   }
+
+   @Nullable
+   public awx f() {
+      return this.v;
    }
 }

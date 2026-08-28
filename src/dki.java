@@ -1,4 +1,3 @@
-public enum dki {
-   a,
-   b;
+public interface dki {
+   dag h();
 }

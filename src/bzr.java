@@ -1,48 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bzr extends bzn<crl> {
+public class bzr<E extends byn> extends bzw<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<byn, ayc<bvv>> h;
+
+   public bzr(float $$0) {
+      this($$0, $$0x -> axo.F);
+   }
+
+   public bzr(float $$0, Function<byn, ayc<bvv>> $$1) {
+      super(Map.of(chh.aa, chi.c, chh.y, chi.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   protected boolean a(asb $$0, E $$1) {
+      return $$1.ec().c(chh.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.ec().a(chh.aa);
+   }
+
+   protected boolean a(asb $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(asb $$0, E $$1, long $$2) {
+      $$1.ec().a(chh.aa, true);
+      $$1.ec().b(chh.n);
+   }
+
+   protected void c(asb $$0, E $$1, long $$2) {
+      bzf<?> $$3 = $$1.ec();
+      $$3.b(chh.aa);
+   }
+
+   protected void d(asb $$0, E $$1, long $$2) {
+      if ($$1.O().k()) {
+         fgc $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.ec().a(chh.n, new chk($$3, this.g, 0));
+         }
+      }
+   }
+
    @Nullable
-   private ctp c;
+   private fgc a(E $$0, asb $$1) {
+      if ($$0.bX()) {
+         Optional<fgc> $$2 = this.a((djn)$$1, $$0).map(fgc::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
 
-   public bzr(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+      return cjb.a($$0, 5, 4);
    }
 
-   protected boolean a(aru $$0, crl $$1) {
+   private Optional<iw> a(djn $$0, bxe $$1) {
       iw $$2 = $$1.dv();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && caw.a($$0, $$1, $$2);
-   }
+      if (!$$0.a_($$2).g($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<iw> $$3;
+         if (azz.f($$1.dq()) == 2) {
+            $$3 = $$1x -> iw.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axs.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(axs.a);
+         }
 
-   protected boolean a(aru $$0, crl $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
-
-   protected void b(aru $$0, crl $$1, long $$2) {
-      this.c = null;
-      $$1.ec().a($$0.af(), $$0.ae());
-   }
-
-   protected void c(aru $$0, crl $$1, long $$2) {
-      azz $$3 = $$1.dY();
-      if ($$3.a(100) == 0) {
-         $$1.gy();
+         return iw.a($$2, 5, 1, $$3);
       }
-
-      if ($$3.a(200) == 0 && caw.a($$0, $$1, $$1.dv())) {
-         cyy $$4 = ag.a(cyy.values(), $$3);
-         int $$5 = $$3.a(3);
-         daa $$6 = this.a($$4, $$5);
-         csu.a(new csp($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
-      }
-   }
-
-   private daa a(cyy $$0, int $$1) {
-      daa $$2 = new daa(dae.vE);
-      $$2.b(kl.aj, new dcp((byte)$$1, List.of(new dco(dco.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
    }
 }

@@ -1,37 +1,30 @@
-public class ahu implements zj<agt> {
-   public static final za<vy, ahu> a = zj.a(ahu::a, ahu::new);
-   private final boolean b;
-   private final boolean c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahu(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahu(int b, List<String> c, Optional<String> d) implements zo<aha> {
+   public static final ze<vy, ahu> a = ze.a(zc.h, ahu::b, zc.b(1024).a(zc.c(100)), ahu::e, zc.b(32).a(zc::a), ahu::f, ahu::new);
 
-   private ahu(vy $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agt $$0) {
-      $$0.a(this);
+   public ahu(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zl<ahu> a() {
-      return agr.bN;
+   public zq<ahu> a() {
+      return agy.bD;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(aha $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
+   public List<String> e() {
       return this.c;
+   }
+
+   public Optional<String> f() {
+      return this.d;
    }
 }

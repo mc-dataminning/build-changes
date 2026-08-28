@@ -1,270 +1,74 @@
-import com.google.common.collect.Lists;
-import com.google.common.math.DoubleMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public abstract class fgm {
-   protected final fgb a;
-   @Nullable
-   private fgm[] b;
-
-   protected fgm(fgb $$0) {
-      this.a = $$0;
-   }
-
-   public double b(jc.a $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public double c(jc.a $$0) {
-      int $$1 = this.a.b($$0);
-      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public ffn a() {
-      if (this.c()) {
-         throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("No bounds for empty shape."));
-      } else {
-         return new ffn(this.b(jc.a.a), this.b(jc.a.b), this.b(jc.a.c), this.c(jc.a.a), this.c(jc.a.b), this.c(jc.a.c));
+public class fgm implements fgh {
+   protected static final fgh a = new fgm(false, false, -Double.MAX_VALUE, dak.l, $$0 -> false, null) {
+      @Override
+      public boolean a(fgw $$0, iw $$1, boolean $$2) {
+         return $$2;
       }
+   };
+   private final boolean b;
+   private final double c;
+   private final boolean d;
+   private final dak e;
+   private final Predicate<eya> f;
+   @Nullable
+   private final bxe g;
+
+   protected fgm(boolean $$0, boolean $$1, double $$2, dak $$3, Predicate<eya> $$4, @Nullable bxe $$5) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public fgm b() {
-      return this.c() ? fgj.a() : fgj.a(this.b(jc.a.a), this.b(jc.a.b), this.b(jc.a.c), this.c(jc.a.a), this.c(jc.a.b), this.c(jc.a.c));
+   @Deprecated
+   protected fgm(bxe $$0, boolean $$1, boolean $$2) {
+      this(
+         $$0.cg(),
+         $$2,
+         $$0.dC(),
+         $$0 instanceof byf $$3 ? $$3.fb() : dak.l,
+         $$1 ? $$0x -> true : ($$0 instanceof byf $$4 ? $$1x -> $$4.a($$1x) : $$0x -> false),
+         $$0
+      );
    }
 
-   protected double a(jc.a $$0, int $$1) {
-      return this.a($$0).getDouble($$1);
+   @Override
+   public boolean a(dag $$0) {
+      return this.e.a($$0);
    }
 
-   public abstract DoubleList a(jc.a var1);
+   @Override
+   public boolean a(eya $$0, eya $$1) {
+      return this.f.test($$1) && !$$0.a().a($$1.a());
+   }
 
+   @Override
+   public fgw a(ebq $$0, djr $$1, iw $$2) {
+      return $$0.b($$1, $$2, this);
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean a(fgw $$0, iw $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(jc.a.b) - 1.0E-5F;
+   }
+
+   @Nullable
+   public bxe d() {
+      return this.g;
+   }
+
+   @Override
    public boolean c() {
-      return this.a.a();
-   }
-
-   public fgm a(ffs $$0) {
-      return this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public fgm a(kb $$0) {
-      return this.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public fgm a(double $$0, double $$1, double $$2) {
-      return (fgm)(this.c() ? fgj.a() : new ffu(this.a, new fgi(this.a(jc.a.a), $$0), new fgi(this.a(jc.a.b), $$1), new fgi(this.a(jc.a.c), $$2)));
-   }
-
-   public fgm d() {
-      fgm[] $$0 = new fgm[]{fgj.a()};
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = fgj.b($$0[0], fgj.a($$1, $$2, $$3, $$4, $$5, $$6), ffw.o));
-      return $$0[0];
-   }
-
-   public void a(fgj.a $$0) {
-      this.a
-         .a(
-            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
-                  this.a(jc.a.a, $$1), this.a(jc.a.b, $$2), this.a(jc.a.c, $$3), this.a(jc.a.a, $$4), this.a(jc.a.b, $$5), this.a(jc.a.c, $$6)
-               ),
-            true
-         );
-   }
-
-   public void b(fgj.a $$0) {
-      DoubleList $$1 = this.a(jc.a.a);
-      DoubleList $$2 = this.a(jc.a.b);
-      DoubleList $$3 = this.a(jc.a.c);
-      this.a
-         .b(
-            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
-                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
-               ),
-            true
-         );
-   }
-
-   public List<ffn> e() {
-      List<ffn> $$0 = Lists.newArrayList();
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new ffn($$1, $$2, $$3, $$4, $$5, $$6)));
-      return $$0;
-   }
-
-   public double a(jc.a $$0, double $$1, double $$2) {
-      jc.a $$3 = it.b.a($$0);
-      jc.a $$4 = it.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.a($$0, $$5, $$6);
-      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   public double b(jc.a $$0, double $$1, double $$2) {
-      jc.a $$3 = it.b.a($$0);
-      jc.a $$4 = it.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.b($$0, $$5, $$6);
-      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   protected int a(jc.a $$0, double $$1) {
-      return azq.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
-   }
-
-   @Nullable
-   public ffo a(ffs $$0, ffs $$1, iw $$2) {
-      if (this.c()) {
-         return null;
-      } else {
-         ffs $$3 = $$1.d($$0);
-         if ($$3.h() < 1.0E-7) {
-            return null;
-         } else {
-            ffs $$4 = $$0.e($$3.c(0.001));
-            return this.a.e(this.a(jc.a.a, $$4.d - (double)$$2.u()), this.a(jc.a.b, $$4.e - (double)$$2.v()), this.a(jc.a.c, $$4.f - (double)$$2.w()))
-               ? new ffo($$4, jc.a($$3.d, $$3.e, $$3.f).g(), $$2, true)
-               : ffn.a(this.e(), $$0, $$1, $$2);
-         }
-      }
-   }
-
-   public Optional<ffs> b(ffs $$0) {
-      if (this.c()) {
-         return Optional.empty();
-      } else {
-         ffs[] $$1 = new ffs[1];
-         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
-            double $$8 = azq.a($$0.a(), $$2, $$5);
-            double $$9 = azq.a($$0.b(), $$3, $$6);
-            double $$10 = azq.a($$0.c(), $$4, $$7);
-            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
-               $$1[0] = new ffs($$8, $$9, $$10);
-            }
-         });
-         return Optional.of($$1[0]);
-      }
-   }
-
-   public fgm a(jc $$0) {
-      if (!this.c() && this != fgj.b()) {
-         if (this.b != null) {
-            fgm $$1 = this.b[$$0.ordinal()];
-            if ($$1 != null) {
-               return $$1;
-            }
-         } else {
-            this.b = new fgm[6];
-         }
-
-         fgm $$2 = this.b($$0);
-         this.b[$$0.ordinal()] = $$2;
-         return $$2;
-      } else {
-         return this;
-      }
-   }
-
-   private fgm b(jc $$0) {
-      jc.a $$1 = $$0.o();
-      if (this.d($$1)) {
-         return this;
-      } else {
-         jc.b $$2 = $$0.f();
-         int $$3 = this.a($$1, $$2 == jc.b.a ? 0.9999999 : 1.0E-7);
-         fgk $$4 = new fgk(this, $$1, $$3);
-         if ($$4.c()) {
-            return fgj.a();
-         } else {
-            return (fgm)($$4.f() ? fgj.b() : $$4);
-         }
-      }
-   }
-
-   protected boolean f() {
-      for (jc.a $$0 : jc.a.d) {
-         if (!this.d($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private boolean d(jc.a $$0) {
-      DoubleList $$1 = this.a($$0);
-      return $$1.size() == 2 && DoubleMath.fuzzyEquals($$1.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$1.getDouble(1), 1.0, 1.0E-7);
-   }
-
-   public double a(jc.a $$0, ffn $$1, double $$2) {
-      return this.a(it.a($$0, jc.a.a), $$1, $$2);
-   }
-
-   protected double a(it $$0, ffn $$1, double $$2) {
-      if (this.c()) {
-         return $$2;
-      } else if (Math.abs($$2) < 1.0E-7) {
-         return 0.0;
-      } else {
-         it $$3 = $$0.a();
-         jc.a $$4 = $$3.a(jc.a.a);
-         jc.a $$5 = $$3.a(jc.a.b);
-         jc.a $$6 = $$3.a(jc.a.c);
-         double $$7 = $$1.b($$4);
-         double $$8 = $$1.a($$4);
-         int $$9 = this.a($$4, $$8 + 1.0E-7);
-         int $$10 = this.a($$4, $$7 - 1.0E-7);
-         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
-         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
-         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
-         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
-         int $$15 = this.a.c($$4);
-         if ($$2 > 0.0) {
-            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
-               for (int $$17 = $$11; $$17 < $$12; $$17++) {
-                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
-                     if (this.a.a($$3, $$16, $$17, $$18)) {
-                        double $$19 = this.a($$4, $$16) - $$7;
-                        if ($$19 >= -1.0E-7) {
-                           $$2 = Math.min($$2, $$19);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
-            }
-         } else if ($$2 < 0.0) {
-            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
-               for (int $$21 = $$11; $$21 < $$12; $$21++) {
-                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
-                     if (this.a.a($$3, $$20, $$21, $$22)) {
-                        double $$23 = this.a($$4, $$20 + 1) - $$8;
-                        if ($$23 <= 1.0E-7) {
-                           $$2 = Math.max($$2, $$23);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$2;
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return super.equals($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
+      return this.d;
    }
 }

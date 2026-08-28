@@ -1,167 +1,77 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public class eia implements djv {
+   private int a;
 
-public record eia(Map<alj<efe>, efe> b) {
-   public static final MapCodec<eia> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(alj.a(mi.bq), efe.a).fieldOf("dimensions").forGetter(eia::d)).apply($$0, $$0.stable(eia::new))
-   );
-   private static final Set<alj<efe>> c = ImmutableSet.of(efe.b, efe.c, efe.d);
-   private static final int d = c.size();
+   @Override
+   public void a(asb $$0, boolean $$1, boolean $$2) {
+      if ($$1) {
+         if ($$0.O().c(dkf.M)) {
+            bai $$3 = $$0.A;
+            this.a--;
+            if (this.a <= 0) {
+               this.a = this.a + 12000 + $$3.a(1200);
+               long $$4 = $$0.af() / 24000L;
+               if ($$4 >= 5L && $$0.V()) {
+                  if ($$3.a(5) == 0) {
+                     int $$5 = $$0.z().size();
+                     if ($$5 >= 1) {
+                        csi $$6 = $$0.z().get($$3.a($$5));
+                        if (!$$6.aa_()) {
+                           if (!$$0.a($$6.dv(), 2)) {
+                              int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                              int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                              iw.a $$9 = $$6.dv().k().e($$7, 0, $$8);
+                              int $$10 = 10;
+                              if ($$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                                 jg<dlm> $$11 = $$0.u($$9);
+                                 if (!$$11.a(axm.ag)) {
+                                    int $$12 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   public eia(Map<alj<efe>, efe> b) {
-      efe $$1 = b.get(efe.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
-   }
+                                    for (int $$13 = 0; $$13 < $$12; $$13++) {
+                                       $$9.q($$0.a(ehp.a.f, $$9).v());
+                                       if ($$13 == 0) {
+                                          if (!this.a($$0, $$9, $$3, true)) {
+                                             break;
+                                          }
+                                       } else {
+                                          this.a($$0, $$9, $$3, false);
+                                       }
 
-   public eia(jt<efe> $$0) {
-      this($$0.c().collect(Collectors.toMap(jg.c::h, jg.c::a)));
-   }
-
-   public static Stream<alj<efe>> a(Stream<alj<efe>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
-
-   public eia a(ji.a $$0, ede $$1) {
-      ji<efd> $$2 = $$0.e(mi.aP);
-      Map<alj<efe>, efe> $$3 = a($$2, this.b, $$1);
-      return new eia($$3);
-   }
-
-   public static Map<alj<efe>, efe> a(ji<efd> $$0, Map<alj<efe>, efe> $$1, ede $$2) {
-      efe $$3 = $$1.get(efe.b);
-      jg<efd> $$4 = (jg<efd>)($$3 == null ? $$0.b(efb.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static Map<alj<efe>, efe> a(Map<alj<efe>, efe> $$0, jg<efd> $$1, ede $$2) {
-      Builder<alj<efe>, efe> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(efe.b, new efe($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public ede a() {
-      efe $$0 = this.b.get(efe.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<efe> a(alj<efe> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<alj<djz>> b() {
-      return this.d().keySet().stream().map(mi::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof egw;
-   }
-
-   private static fab.a b(jt<efe> $$0) {
-      return $$0.f(efe.b).map($$0x -> {
-         ede $$1 = $$0x.b();
-         if ($$1 instanceof egw) {
-            return fab.a.c;
-         } else {
-            return $$1 instanceof eha ? fab.a.b : fab.a.a;
+                                       $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                                       $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
-      }).orElse(fab.a.a);
-   }
-
-   static Lifecycle a(alj<efe> $$0, efe $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(alj<efe> $$0, efe $$1) {
-      if ($$0 == efe.b) {
-         return a($$1);
-      } else if ($$0 == efe.c) {
-         return b($$1);
-      } else {
-         return $$0 == efe.d ? c($$1) : false;
       }
    }
 
-   private static boolean a(efe $$0) {
-      jg<efd> $$1 = $$0.a();
-      if (!$$1.a(efb.a) && !$$1.a(efb.d)) {
+   private boolean a(asb $$0, iw $$1, bai $$2, boolean $$3) {
+      ebq $$4 = $$0.a_($$1);
+      if (!dku.a($$0, $$1, $$4, $$4.y(), bxn.aU)) {
+         return false;
+      } else if (!cpl.b(bxn.aU, $$0, bxm.p, $$1, $$2)) {
          return false;
       } else {
-         if ($$0.b().d() instanceof dlp $$2 && !$$2.a(dlr.b)) {
+         cpl $$5 = bxn.aU.a($$0, bxm.p);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gz();
+            }
+
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bxm.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
             return false;
          }
-
-         return true;
-      }
-   }
-
-   private static boolean b(efe $$0) {
-      return $$0.a().a(efb.b) && $$0.b() instanceof ehi $$1 && $$1.a(ehk.f) && $$1.d() instanceof dlp $$2 && $$2.a(dlr.a);
-   }
-
-   private static boolean c(efe $$0) {
-      return $$0.a().a(efb.c) && $$0.b() instanceof ehi $$1 && $$1.a(ehk.g) && $$1.d() instanceof dlt;
-   }
-
-   public eia.b a(jt<efe> $$0) {
-      Stream<alj<efe>> $$1 = Stream.concat($$0.j().stream(), this.b.keySet().stream()).distinct();
-
-      record a(alj<efe> a, efe b) {
-
-         js c() {
-            return new js(Optional.empty(), eia.a(this.a, this.b));
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.f($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      kc<efe> $$4 = new jo<>(mi.bq, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      jt<efe> $$5 = $$4.n();
-      fab.a $$6 = b($$5);
-      return new eia.b($$5.n(), $$6);
-   }
-
-   public Map<alj<efe>, efe> d() {
-      return this.b;
-   }
-
-   public static record b(jt<efe> a, fab.a b) {
-      public Lifecycle a() {
-         return this.a.h();
-      }
-
-      public ju.b b() {
-         return new ju.c(List.of(this.a)).e();
-      }
-
-      public jt<efe> c() {
-         return this.a;
-      }
-
-      public fab.a d() {
-         return this.b;
       }
    }
 }

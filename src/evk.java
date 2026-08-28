@@ -1,64 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class evk extends ewc {
-   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ewe.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bty.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, evk::new)
-   );
-   private final ewc b;
-   private final bty c;
+public class evk extends esn {
+   public static final MapCodec<evk> d = a(evk::new);
 
-   public evk(ewc $$0, bty $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public evk(esn.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected ewe<?> a() {
-      return ewe.o;
+   public Optional<esn.b> a(esn.a $$0) {
+      dui $$1 = dui.a($$0.f());
+      iw $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new esn.b($$2, (Consumer<etf>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(etf $$0, esn.a $$1, iw $$2, dui $$3) {
+      List<evj.i> $$4 = Lists.newLinkedList();
+      evj.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public final List<ewf.d> a(dkq $$0, iw $$1, iw $$2, List<ewf.d> $$3, List<ewf.d> $$4, ewb $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ag.b(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azz $$6 = azz.a($$0.a().E()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ag.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
+   public void a(dli $$0, dlf $$1, edo $$2, bai $$3, esf $$4, djo $$5, etc $$6) {
+      iw.a $$7 = new iw.a();
+      int $$8 = $$0.K_();
+      esf $$9 = $$6.b();
+      int $$10 = $$9.i();
 
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ewf.d $$12 = $$3.get($$11);
-                  ewf.d $$13 = $$4.get($$11);
-                  ewf.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.v($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.v($$7) && !$$0.a_($$7).n()) {
+                     break;
                   }
-               }
 
-               return $$4;
+                  $$0.a($$7, dnq.m.m(), 2);
+               }
             }
          }
-      } else {
-         return $$4;
       }
+   }
+
+   @Override
+   public esw<?> e() {
+      return esw.p;
    }
 }

@@ -1,10 +1,28 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public abstract class erj extends erk {
-   @Override
-   public final Stream<iw> a_(eri $$0, azz $$1, iw $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class erj extends ery {
+   public static final MapCodec<erj> a = buh.b(0, 256).fieldOf("count").xmap(erj::new, $$0 -> $$0.c);
+   private final buh c;
+
+   private erj(buh $$0) {
+      this.c = $$0;
    }
 
-   protected abstract boolean a(eri var1, azz var2, iw var3);
+   public static erj a(buh $$0) {
+      return new erj($$0);
+   }
+
+   public static erj a(int $$0) {
+      return a(bue.a($$0));
+   }
+
+   @Override
+   protected int a(bai $$0, iw $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public erv<?> b() {
+      return erv.f;
+   }
 }

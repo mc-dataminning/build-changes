@@ -1,36 +1,71 @@
-public class guz implements gup<dzb> {
-   public static final hnj a = new hnj(hlb.c, alk.b("entity/enchanting_table_book"));
-   private final ghh b;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public guz(guq.a $$0) {
-      this.b = new ghh($$0.a(glf.J));
+class guz {
+   private final Map<iw, dyo> a;
+   @Nullable
+   private final List<eef<ebq>> b;
+   private final boolean c;
+   private final edx d;
+
+   guz(edx $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof edt) {
+         this.b = null;
+      } else {
+         edy[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (edy $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
    }
 
-   public void a(dzb $$0, float $$1, flq $$2, gsc $$3, int $$4, int $$5, ffs $$6) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$7 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + azq.a($$7 * 0.1F) * 0.01F, 0.0F);
-      float $$8 = $$0.h - $$0.i;
+   @Nullable
+   public dyo a(iw $$0) {
+      return this.a.get($$0);
+   }
 
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
+   public ebq b(iw $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         ebq $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dnq.iy.m();
+         }
+
+         if ($$2 == 70) {
+            $$4 = ehg.a($$1, $$3);
+         }
+
+         return $$4 == null ? dnq.a.m() : $$4;
+      } else if (this.b == null) {
+         return dnq.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               eef<ebq> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dnq.a.m();
+         } catch (Throwable var8) {
+            p $$8 = p.a(var8, "Getting block state");
+            q $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> q.a(this.d, $$1, $$2, $$3));
+            throw new aa($$8);
+         }
       }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      float $$9 = $$0.i + $$8 * $$1;
-      $$2.a(a.d.rotation(-$$9));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$10 = azq.h($$1, $$0.c, $$0.b);
-      float $$11 = azq.i($$10 + 0.25F) * 1.6F - 0.3F;
-      float $$12 = azq.i($$10 + 0.75F) * 1.6F - 0.3F;
-      float $$13 = azq.h($$1, $$0.g, $$0.f);
-      this.b.a($$7, azq.a($$11, 0.0F, 1.0F), azq.a($$12, 0.0F, 1.0F), $$13);
-      flt $$14 = a.a($$3, gsn::d);
-      this.b.a($$2, $$14, $$4, $$5);
-      $$2.b();
    }
 }

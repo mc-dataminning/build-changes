@@ -1,51 +1,15 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public interface gua<T extends dyo> {
+   void a(T var1, float var2, fld var3, grn var4, int var5, int var6, fgc var7);
 
-public class gua {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
-
-   public static <O, S extends ebi<O, S>> Predicate<ebi<O, S>> a(ebh<O, S> $$0, String $$1) {
-      Map<ecj<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            ecj<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((ecj<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<ecj<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   default boolean a(T $$0) {
+      return false;
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T a(ecj<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   default int aW_() {
+      return 64;
+   }
+
+   default boolean a(T $$0, fgc $$1) {
+      return fgc.b($$0.aC_()).a((jq)$$1, (double)this.aW_());
    }
 }

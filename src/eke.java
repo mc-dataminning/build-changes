@@ -1,54 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class eke extends ekm<emn> {
-   public eke(Codec<emn> $$0) {
+public class eke extends ekw<eni> {
+   public eke(Codec<eni> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emn> $$0) {
-      emn $$1 = $$0.f();
-      iw $$2 = $$0.e();
-      dky $$3 = $$0.b();
-      azz $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      iw.a $$10 = new iw.a();
+   public boolean a(eky<eni> $$0) {
+      iw $$1 = $$0.e();
+      dli $$2 = $$0.b();
+      bai $$3 = $$0.d();
+      if ($$1.v() > $$2.P() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dnq.J) && !$$2.a_($$1.e()).a(dnq.J)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-      for (iw $$11 : iw.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+         for (jc $$5 : jc.values()) {
+            if ($$5 != jc.a && $$2.a_($$1.a($$5)).a(dnq.je)) {
+               $$4 = true;
+               break;
+            }
          }
-      }
 
-      return $$5;
-   }
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dnq.nC.m(), 2);
 
-   protected boolean a(emn $$0, dky $$1, azz $$2, int $$3, int $$4, iw.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            ebg $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
+               if ($$8 >= 1) {
+                  iw $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  ebq $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(dnq.J) || $$10.a(dnq.je) || $$10.a(dnq.ee)) {
+                     for (jc $$11 : jc.values()) {
+                        ebq $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dnq.nC)) {
+                           $$2.a($$9, dnq.nC.m(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
             }
 
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
+            return true;
          }
       }
-
-      return $$6;
    }
 }

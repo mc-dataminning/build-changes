@@ -1,74 +1,86 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class gck extends gaf {
-   private static final List<ecr> a = List.of(ecr.values());
-   private static final xc b = xc.c(dng.pI.v());
-   private static final xc c = xc.c("test_block.message");
-   private final iw d;
-   private ecr s;
-   private String u;
+public class gck extends fzq {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final xg c = xg.c("menu.server_links.title");
+   private final fzq d;
    @Nullable
-   private fuw v;
+   private gck.a s;
+   final fxm u = new fxm(this);
+   final amj v;
 
-   public gck(dzy $$0) {
-      super(b);
-      this.d = $$0.aB_();
-      this.s = $$0.d();
-      this.u = $$0.t();
+   public gck(fzq $$0, amj $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
-   public void aS_() {
-      this.v = new fuw(this.p, this.n / 2 - 152, 80, 240, 20, xc.c("test_block.message"));
-      this.v.f(128);
-      this.v.a(this.u);
-      this.c(this.v);
-      this.b(this.v);
-      this.a(this.s);
-      this.c(fuu.<ecr>a(ecr::a).a(a).a().a(this.s).a(this.n / 2 - 4 - 150, 185, 50, 20, b, ($$0, $$1) -> this.a($$1)));
-      this.c(fun.a(xb.d, $$0 -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c(fun.a(xb.e, $$0 -> this.E()).a(this.n / 2 + 4, 210, 150, 20).a());
+   protected void aT_() {
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new gck.a(this.m, this.n, this));
+      this.u.b(fty.a(xf.k, $$0 -> this.aQ_()).a(200).a());
+      this.u.a($$1 -> {
+         ftw var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
-      if (this.s != ecr.a) {
-         $$0.b(this.p, c, this.n / 2 - 153, 70, 10526880);
+   protected void c() {
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
+      }
+   }
+
+   @Override
+   public void aQ_() {
+      this.m.a(this.d);
+   }
+
+   static class a extends fue<gck.b> {
+      public a(fqq $$0, int $$1, gck $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new gck.b($$2, $$1x)));
       }
 
-      $$0.b(this.p, this.s.b(), this.n / 2 - 153, 174, 10526880);
+      @Override
+      public int a() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, fxm $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aJ_().forEach($$1x -> $$1x.a.j($$2));
+      }
    }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
+   static class b extends fue.a<gck.b> {
+      final ftw a;
 
-   private void m() {
-      this.u = this.v.a();
-      this.m.L().b(new aiq(this.d, this.s, this.u));
-      this.aP_();
-   }
+      b(fzq $$0, amj.a $$1) {
+         this.a = fty.a($$1.a(), fyn.b($$0, $$1.c(), false)).a(310).a();
+      }
 
-   @Override
-   public void aP_() {
-      this.E();
-   }
+      @Override
+      public void a(ftk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.k($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
 
-   private void E() {
-      this.m.a(null);
-   }
+      @Override
+      public List<? extends fvv> aJ_() {
+         return List.of(this.a);
+      }
 
-   private void a(ecr $$0) {
-      this.s = $$0;
-      this.v.k = $$0 != ecr.a;
-   }
-
-   @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+      @Override
+      public List<? extends fxt> b() {
+         return List.of(this.a);
+      }
    }
 }

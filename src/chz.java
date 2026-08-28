@@ -1,30 +1,41 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class chz extends cie<bxw> {
-   @Override
-   public Set<cgy<?>> a() {
-      return ImmutableSet.of(cgy.h, cgy.N, cgy.ao);
+public class chz extends cin<byf> {
+   private static final int a = 200;
+   private static final int b = 599;
+
+   public chz() {
+      this(200);
+   }
+
+   public chz(int $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(aru $$0, bxw $$1) {
-      byw<?> $$2 = $$1.ec();
-      List<cqn> $$3 = Lists.newArrayList();
-      cha $$4 = $$2.c(cgy.h).orElse(cha.a());
-      Optional<bxy> $$5 = $$4.a($$0x -> $$0x instanceof cps || $$0x instanceof cnr).map(bxy.class::cast);
+   protected void a(asb $$0, byf $$1) {
+      a($$1);
+   }
 
-      for (bxw $$7 : $$2.c(cgy.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cqn && ((cqn)$$7).t()) {
-            $$3.add((cqn)$$7);
+   @Override
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(chh.g);
+   }
+
+   public static void a(byf $$0) {
+      Optional<List<byf>> $$1 = $$0.ec().c(chh.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.an().equals(bxn.aq));
+         if ($$2) {
+            b($$0);
          }
       }
+   }
 
-      $$2.a(cgy.N, $$5);
-      $$2.a(cgy.ao, $$3);
+   public static void b(byf $$0) {
+      $$0.ec().a(chh.G, true, 599L);
    }
 }

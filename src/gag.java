@@ -1,96 +1,41 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class gag extends gaf {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final xc c = xc.c("selectWorld.allowCommands");
-   private static final xc d = xc.c("selectWorld.gameMode");
-   private static final xc s = xc.c("lanServer.otherPlayers");
-   private static final xc u = xc.c("lanServer.port");
-   private static final xc v = xc.a("lanServer.port.unavailable", 1024, 65535);
-   private static final xc w = xc.a("lanServer.port.invalid", 1024, 65535);
-   private static final int x = 16733525;
-   private final gaf y;
-   private djw z = djw.a;
-   private boolean A;
-   private int B = azh.a();
-   @Nullable
-   private fuw C;
+public abstract class gag<T extends cwd> extends gah<T> {
+   private final alr G;
+   private final alr H;
+   private final alr I;
 
-   public gag(gaf $$0) {
-      super(xc.c("lanServer.title"));
-      this.y = $$0;
+   public gag(T $$0, csh $$1, xg $$2, xg $$3, alr $$4, alr $$5, alr $$6, List<gdp.a> $$7) {
+      super($$0, new gdm($$0, $$3, $$7), $$1, $$2);
+      this.G = $$4;
+      this.H = $$5;
+      this.I = $$6;
    }
 
    @Override
-   protected void aS_() {
-      hpn $$0 = this.m.V();
-      this.z = $$0.u();
-      this.A = $$0.aZ().m();
-      this.c(fuu.a(djw::e).a(djw.a, djw.d, djw.b, djw.c).a(this.z).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.z = $$1x));
-      this.c(fuu.b(this.A).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
-      fun $$1 = fun.a(xc.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         xc $$2;
-         if ($$0.a(this.z, this.A, this.B)) {
-            $$2 = aoo.a(this.B);
-         } else {
-            $$2 = xc.c("commands.publish.failed");
-         }
-
-         this.m.m.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.C = new fuw(this.p, this.n / 2 - 75, 160, 150, 20, xc.c("lanServer.port"));
-      this.C.b($$1x -> {
-         xc $$2 = this.a($$1x);
-         this.C.c(xc.b(this.B + "").a(o.i));
-         if ($$2 == null) {
-            this.C.m(14737632);
-            this.C.a(null);
-            $$1.j = true;
-         } else {
-            this.C.m(16733525);
-            this.C.a(fvy.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.C.c(xc.b(this.B + "").a(o.i));
-      this.c(this.C);
-      this.c($$1);
-      this.c(fun.a(xb.e, $$0x -> this.aP_()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+   public void aT_() {
+      super.aT_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.y);
+   protected fye G() {
+      return new fye(this.C + 20, this.o / 2 - 49);
    }
 
-   @Nullable
-   private xc a(String $$0) {
-      if ($$0.isBlank()) {
-         this.B = azh.a();
-         return null;
-      } else {
-         try {
-            this.B = Integer.parseInt($$0);
-            if (this.B < 1024 || this.B > 65535) {
-               return w;
-            } else {
-               return !azh.a(this.B) ? v : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.B = azh.a();
-            return w;
-         }
+   @Override
+   protected void a(ftk $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gry::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = azz.f(this.z.n() * 13.0F) + 1;
+         $$0.a(gry::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
       }
-   }
 
-   @Override
-   public void a(ftz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, s, this.n / 2, 82, 16777215);
-      $$0.a(this.p, u, this.n / 2, 142, 16777215);
+      int $$8 = 24;
+      int $$9 = azz.f(this.z.m() * 24.0F);
+      $$0.a(gry::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 }

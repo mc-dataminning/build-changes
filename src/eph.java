@@ -1,51 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eph extends epn {
-   public static final MapCodec<eph> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eph::new, $$0 -> $$0.d);
-   private static final jc b = jc.d;
-   private static final jc[] c = jc.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jc[]::new);
-   private final float d;
+public class eph extends epf {
+   public static final MapCodec<eph> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  ebq.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  azg.b(ebq.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  azg.b(ebq.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, eph::new)
+   );
+   private final float g;
+   private final float h;
+   private final ebq i;
+   private final List<ebq> j;
+   private final List<ebq> k;
 
-   public eph(float $$0) {
-      this.d = $$0;
+   public eph(long $$0, exd.a $$1, float $$2, float $$3, float $$4, ebq $$5, List<ebq> $$6, List<ebq> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected epo<?> a() {
-      return epo.f;
+   protected epd<?> a() {
+      return epd.c;
    }
 
    @Override
-   public void a(epn.a $$0) {
-      List<iw> $$1 = $$0.d();
-      List<iw> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         azz $$3 = $$0.b();
-         if (!($$3.i() >= this.d)) {
-            int $$4 = !$$1.isEmpty()
-               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
-               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
-            List<iw> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-            if (!$$5.isEmpty()) {
-               ag.c($$5, $$3);
-               Optional<iw> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-               if (!$$6.isEmpty()) {
-                  $$0.a($$6.get(), dng.pM.m().b(dmy.b, b));
-                  $$0.a().a($$6.get(), dyg.I).ifPresent($$1x -> {
-                     int $$2x = 2 + $$3.a(2);
-
-                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                        $$1x.a(dyb.c.a($$3.a(599)));
-                     }
-                  });
-               }
-            }
-         }
+   public ebq a(bai $$0, iw $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ag.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ag.a(this.k, $$0) : this.i;
       }
    }
 }

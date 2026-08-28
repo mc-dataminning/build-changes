@@ -1,44 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.List;
 
-public record dcv(Map<String, dcv.a> c) {
-   public static final dcv a = new dcv(Map.of());
-   public static final Codec<dcv> b = Codec.unboundedMap(Codec.STRING, dcv.a.a).xmap(dcv::new, dcv::a);
+public record dcv(List<ddy> d) {
+   public static final Codec<dcv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ddy.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(dcv::a)).apply($$0, dcv::new)
+   );
+   public static final ze<wp, dcv> b = ze.a(ddy.e.a(zc.a()), dcv::a, dcv::new);
+   public static final dcv c = new dcv(List.of(new ddx(), new ddw(List.of(new bwi(bwk.j, 900, 1), new bwi(bwk.v, 100, 1), new bwi(bwk.l, 800, 0)))));
 
-   public dcv a(String $$0, dcv.a $$1) {
-      return new dcv(ag.a(this.c, $$0, $$1));
+   public void a(dak $$0, byf $$1) {
+      for (ddy $$2 : this.d) {
+         $$2.a($$1.dV(), $$0, $$1);
+      }
    }
 
-   public Map<String, dcv.a> a() {
-      return this.c;
-   }
-
-   public static record a(jg<ezg> b, double c, double d, float e) {
-      public static final Codec<dcv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ezg.b.fieldOf("type").forGetter(dcv.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(dcv.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(dcv.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(dcv.a::d)
-               )
-               .apply($$0, dcv.a::new)
-      );
-
-      public jg<ezg> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   public List<ddy> a() {
+      return this.d;
    }
 }

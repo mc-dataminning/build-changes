@@ -1,20 +1,24 @@
-public class hca extends hcy<heg, ghl> {
-   private static final alk a = alk.b("textures/entity/cat/cat_collar.png");
-   private final ghl b;
-   private final ghl c;
+public class hca extends hcj<hey, gid> {
+   private final gsq a;
 
-   public hca(hah<heg, ghl> $$0, glc $$1) {
+   public hca(gzs<hey, gid> $$0, gsq $$1) {
       super($$0);
-      this.b = new ghl($$1.a(glf.T));
-      this.c = new ghl($$1.a(glf.S));
+      this.a = $$1;
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, heg $$3, float $$4, float $$5) {
-      cyy $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         ghl $$8 = $$3.aj ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
+   public void a(fld $$0, grn $$1, int $$2, hey $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gkr $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dnq.cd.m(), $$0, $$1, $$2, hkg.d);
+         $$0.b();
       }
    }
 }

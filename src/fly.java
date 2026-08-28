@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fhv
-@fht
-interface fly {
+public abstract class fly extends RuntimeException {
+   @Nullable
+   public xg a() {
+      return null;
+   }
+
+   @Nullable
+   public xg[] b() {
+      return null;
+   }
 }

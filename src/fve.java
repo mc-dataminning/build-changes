@@ -1,35 +1,36 @@
-public class fve {
-   public static final alk a = alk.b("textures/gui/title/minecraft.png");
-   public static final alk b = alk.b("textures/gui/title/minceraft.png");
-   public static final alk c = alk.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azz.a().i() < 1.0E-4;
-   private final boolean o;
+import javax.annotation.Nullable;
 
-   public fve(boolean $$0) {
-      this.o = $$0;
+public class fve extends ftw {
+   @Nullable
+   protected fvl a;
+   protected boolean b;
+
+   public fve(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, xf.a);
+      this.b = $$4;
    }
 
-   public void a(ftz $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public void a(fvl $$0) {
+      this.a = $$0;
    }
 
-   public void a(ftz $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = aya.a($$5);
-      $$0.a(gsn::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(gsn::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(fxv $$0) {
+      this.c($$0);
+   }
+
+   @Override
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gry::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
+      }
    }
 }

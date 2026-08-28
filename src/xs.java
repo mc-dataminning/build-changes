@@ -1,135 +1,108 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Objects;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Optional;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public record xs(xx d, @Nullable xo e, xv f, @Nullable xc g, xg h) {
-   public static final MapCodec<xs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               xx.a.fieldOf("link").forGetter(xs::k),
-               xo.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
-               xv.a.forGetter(xs::m),
-               xe.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
-               xg.a.optionalFieldOf("filter_mask", xg.c).forGetter(xs::o)
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new xs($$0x, (xo)$$1.orElse(null), $$2, (xc)$$3.orElse(null), $$4))
-   );
-   private static final UUID i = ag.e;
-   public static final Duration b = Duration.ofMinutes(5L);
-   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+public record xs(byte[] c) {
+   public static final Codec<xs> a = azg.r.xmap(xs::new, xs::c);
+   public static final int b = 256;
 
-   public static xs a(String $$0) {
-      return a(i, $$0);
+   public xs(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static xs a(UUID $$0, String $$1) {
-      xv $$2 = xv.a($$1);
-      xx $$3 = xx.a($$0);
-      return new xs($$3, null, $$2, null, xg.c);
+   public static xs a(vy $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xs($$1);
    }
 
-   public xs a(xc $$0) {
-      xc $$1 = !$$0.equals(xc.b(this.c())) ? $$0 : null;
-      return new xs(this.d, this.e, this.f, $$1, this.h);
+   public static void a(vy $$0, xs $$1) {
+      $$0.c($$1.c);
    }
 
-   public xs a() {
-      return this.g != null ? new xs(this.d, this.e, this.f, null, this.h) : this;
+   public boolean a(bao $$0, ban $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public xs a(xg $$0) {
-      return this.h.equals($$0) ? this : new xs(this.d, this.e, this.f, this.g, $$0);
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
-   public xs a(boolean $$0) {
-      return this.a($$0 ? this.h : xg.c);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xs $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public xs b() {
-      xv $$0 = xv.a(this.c());
-      xx $$1 = xx.a(this.g());
-      return new xs($$1, null, $$0, this.g, this.h);
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
    }
 
-   public static void a(bae.a $$0, xx $$1, xv $$2) throws SignatureException {
-      $$0.update(Ints.toByteArray(1));
-      $$1.a($$0);
-      $$2.a($$0);
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
    }
 
-   public boolean a(baf $$0) {
-      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   public static String a(@Nullable xs $$0) {
+      return $$0 == null ? "<no signature>" : $$0.toString();
    }
 
-   public String c() {
-      return this.f.a();
+   public xs.a a(xt $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xs.a($$1) : new xs.a(this);
    }
 
-   public xc d() {
-      return Objects.requireNonNullElseGet(this.g, () -> xc.b(this.c()));
+   public int b() {
+      return Arrays.hashCode(this.c);
    }
 
-   public Instant e() {
-      return this.f.b();
-   }
+   public static record a(int b, @Nullable xs c) {
+      public static final int a = -1;
 
-   public long f() {
-      return this.f.c();
-   }
+      public a(xs $$0) {
+         this(-1, $$0);
+      }
 
-   public boolean a(Instant $$0) {
-      return $$0.isAfter(this.e().plus(b));
-   }
+      public a(int $$0) {
+         this($$0, null);
+      }
 
-   public boolean b(Instant $$0) {
-      return $$0.isAfter(this.e().plus(c));
-   }
+      public static xs.a a(vy $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xs.a(xs.a($$0)) : new xs.a($$1);
+      }
 
-   public UUID g() {
-      return this.d.c();
-   }
+      public static void a(vy $$0, xs.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xs.a($$0, $$1.b());
+         }
+      }
 
-   public boolean h() {
-      return this.g().equals(i);
-   }
+      public Optional<xs> a(xt $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
 
-   public boolean i() {
-      return this.e != null;
-   }
+      public int a() {
+         return this.b;
+      }
 
-   public boolean a(UUID $$0) {
-      return this.i() && this.d.c().equals($$0);
-   }
-
-   public boolean j() {
-      return this.h.b();
-   }
-
-   public xx k() {
-      return this.d;
-   }
-
-   @Nullable
-   public xo l() {
-      return this.e;
-   }
-
-   public xv m() {
-      return this.f;
-   }
-
-   @Nullable
-   public xc n() {
-      return this.g;
-   }
-
-   public xg o() {
-      return this.h;
+      @Nullable
+      public xs b() {
+         return this.c;
+      }
    }
 }

@@ -1,35 +1,37 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eyt extends eza {
-   public eyt(dtn $$0) {
-      super($$0);
-   }
+public class eyt {
+   private final djr a;
+   @Nullable
+   private final eys b;
+   private final iw c;
+   private final iw.a d = new iw.a();
 
-   @Override
-   public void a(djz $$0, iw $$1, ebg $$2, @Nullable eyy $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dtn.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dtn.f, Integer.valueOf($$5)), 2);
-         }
-
-         Set<iw> $$6 = Sets.newHashSet();
-         $$6.add($$1);
-
-         for (jc $$7 : jc.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (iw $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
+   public eyt(djr $$0, byh $$1) {
+      this.a = $$0;
+      if ($$1.dV() instanceof asb $$2) {
+         this.b = $$2.I();
+      } else {
+         this.b = null;
       }
+
+      this.c = $$1.dv();
    }
 
-   private int c(djz $$0, iw $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   public eyr a(int $$0, int $$1, int $$2) {
+      iw $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? eyw.b(this.a, $$3) : this.b.a(this.a, $$3);
+   }
+
+   public ebq a(iw $$0) {
+      return this.a.a_($$0);
+   }
+
+   public djr a() {
+      return this.a;
+   }
+
+   public iw b() {
+      return this.c;
    }
 }

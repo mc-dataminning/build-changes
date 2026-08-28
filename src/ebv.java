@@ -1,102 +1,174 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.MoreObjects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record ebv(String s, boolean t, boolean u, boolean v, ebv.a w, dvb x, awq y, awq z, awq A, awq B, awq C, awq D, awq E, awq F) {
-   private static final Map<String, ebv> G = new Object2ObjectArrayMap();
-   public static final Codec<ebv> a = Codec.stringResolver(ebv::b, G::get);
-   public static final ebv b = a(new ebv("iron", false, false, false, ebv.a.a, dvb.bp, awr.nT, awr.nU, awr.ob, awr.oc, awr.pu, awr.pv, awr.Ai, awr.Aj));
-   public static final ebv c = a(new ebv("copper", true, true, false, ebv.a.a, dvb.aj, awr.fR, awr.fS, awr.fY, awr.fZ, awr.pu, awr.pv, awr.Ai, awr.Aj));
-   public static final ebv d = a(new ebv("gold", false, true, false, ebv.a.a, dvb.g, awr.nT, awr.nU, awr.ob, awr.oc, awr.pu, awr.pv, awr.Ai, awr.Aj));
-   public static final ebv e = a(new ebv("stone", true, true, false, ebv.a.b, dvb.f, awr.nT, awr.nU, awr.ob, awr.oc, awr.An, awr.Ao, awr.Ai, awr.Aj));
-   public static final ebv f = a(
-      new ebv("polished_blackstone", true, true, false, ebv.a.b, dvb.f, awr.nT, awr.nU, awr.ob, awr.oc, awr.An, awr.Ao, awr.Ai, awr.Aj)
-   );
-   public static final ebv g = a(new ebv("oak"));
-   public static final ebv h = a(new ebv("spruce"));
-   public static final ebv i = a(new ebv("birch"));
-   public static final ebv j = a(new ebv("acacia"));
-   public static final ebv k = a(new ebv("cherry", true, true, true, ebv.a.a, dvb.aW, awr.eI, awr.eJ, awr.eK, awr.eL, awr.eO, awr.eP, awr.eM, awr.eN));
-   public static final ebv l = a(new ebv("jungle"));
-   public static final ebv m = a(new ebv("dark_oak"));
-   public static final ebv n = a(new ebv("pale_oak"));
-   public static final ebv o = a(new ebv("crimson", true, true, true, ebv.a.a, dvb.aV, awr.rA, awr.rB, awr.rC, awr.rD, awr.rG, awr.rH, awr.rE, awr.rF));
-   public static final ebv p = a(new ebv("warped", true, true, true, ebv.a.a, dvb.aV, awr.rA, awr.rB, awr.rC, awr.rD, awr.rG, awr.rH, awr.rE, awr.rF));
-   public static final ebv q = a(new ebv("mangrove"));
-   public static final ebv r = a(new ebv("bamboo", true, true, true, ebv.a.a, dvb.aU, awr.bo, awr.bp, awr.bq, awr.br, awr.bu, awr.bv, awr.bs, awr.bt));
+public class ebv {
+   private final Predicate<ebu>[][][] a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public ebv(String $$0) {
-      this($$0, true, true, true, ebv.a.a, dvb.b, awr.DT, awr.DU, awr.DV, awr.DW, awr.DZ, awr.Ea, awr.DX, awr.DY);
+   public ebv(Predicate<ebu>[][][] $$0) {
+      this.a = $$0;
+      this.b = $$0.length;
+      if (this.b > 0) {
+         this.c = $$0[0].length;
+         if (this.c > 0) {
+            this.d = $$0[0][0].length;
+         } else {
+            this.d = 0;
+         }
+      } else {
+         this.c = 0;
+         this.d = 0;
+      }
    }
 
-   private static ebv a(ebv $$0) {
-      G.put($$0.s, $$0);
-      return $$0;
+   public int a() {
+      return this.b;
    }
 
-   public static Stream<ebv> a() {
-      return G.values().stream();
+   public int b() {
+      return this.c;
    }
 
-   public String b() {
-      return this.s;
+   public int c() {
+      return this.d;
    }
 
-   public boolean c() {
-      return this.t;
+   @VisibleForTesting
+   public Predicate<ebu>[][][] d() {
+      return this.a;
    }
 
-   public boolean d() {
-      return this.u;
+   @Nullable
+   @VisibleForTesting
+   public ebv.b a(dkm $$0, iw $$1, jc $$2, jc $$3) {
+      LoadingCache<iw, ebu> $$4 = a($$0, false);
+      return this.a($$1, $$2, $$3, $$4);
    }
 
-   public boolean e() {
-      return this.v;
+   @Nullable
+   private ebv.b a(iw $$0, jc $$1, jc $$2, LoadingCache<iw, ebu> $$3) {
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         for (int $$5 = 0; $$5 < this.c; $$5++) {
+            for (int $$6 = 0; $$6 < this.b; $$6++) {
+               if (!this.a[$$6][$$5][$$4].test((ebu)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
+                  return null;
+               }
+            }
+         }
+      }
+
+      return new ebv.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   public ebv.a f() {
-      return this.w;
+   @Nullable
+   public ebv.b a(dkm $$0, iw $$1) {
+      LoadingCache<iw, ebu> $$2 = a($$0, false);
+      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+
+      for (iw $$4 : iw.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
+         for (jc $$5 : jc.values()) {
+            for (jc $$6 : jc.values()) {
+               if ($$6 != $$5 && $$6 != $$5.g()) {
+                  ebv.b $$7 = this.a($$4, $$5, $$6, $$2);
+                  if ($$7 != null) {
+                     return $$7;
+                  }
+               }
+            }
+         }
+      }
+
+      return null;
    }
 
-   public dvb g() {
-      return this.x;
+   public static LoadingCache<iw, ebu> a(dkm $$0, boolean $$1) {
+      return CacheBuilder.newBuilder().build(new ebv.a($$0, $$1));
    }
 
-   public awq h() {
-      return this.y;
+   protected static iw a(iw $$0, jc $$1, jc $$2, int $$3, int $$4, int $$5) {
+      if ($$1 != $$2 && $$1 != $$2.g()) {
+         kb $$6 = new kb($$1.j(), $$1.k(), $$1.l());
+         kb $$7 = new kb($$2.j(), $$2.k(), $$2.l());
+         kb $$8 = $$6.d($$7);
+         return $$0.b(
+            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
+         );
+      } else {
+         throw new IllegalArgumentException("Invalid forwards & up combination");
+      }
    }
 
-   public awq i() {
-      return this.z;
+   static class a extends CacheLoader<iw, ebu> {
+      private final dkm a;
+      private final boolean b;
+
+      public a(dkm $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ebu a(iw $$0) {
+         return new ebu(this.a, $$0, this.b);
+      }
    }
 
-   public awq j() {
-      return this.A;
-   }
+   public static class b {
+      private final iw a;
+      private final jc b;
+      private final jc c;
+      private final LoadingCache<iw, ebu> d;
+      private final int e;
+      private final int f;
+      private final int g;
 
-   public awq k() {
-      return this.B;
-   }
+      public b(iw $$0, jc $$1, jc $$2, LoadingCache<iw, ebu> $$3, int $$4, int $$5, int $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
 
-   public awq l() {
-      return this.C;
-   }
+      public iw a() {
+         return this.a;
+      }
 
-   public awq m() {
-      return this.D;
-   }
+      public jc b() {
+         return this.b;
+      }
 
-   public awq n() {
-      return this.E;
-   }
+      public jc c() {
+         return this.c;
+      }
 
-   public awq o() {
-      return this.F;
-   }
+      public int d() {
+         return this.e;
+      }
 
-   public static enum a {
-      a,
-      b;
+      public int e() {
+         return this.f;
+      }
+
+      public int f() {
+         return this.g;
+      }
+
+      public ebu a(int $$0, int $$1, int $$2) {
+         return (ebu)this.d.getUnchecked(ebv.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      }
+
+      @Override
+      public String toString() {
+         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      }
    }
 }

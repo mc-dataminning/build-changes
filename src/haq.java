@@ -1,21 +1,27 @@
-public class haq extends gzq<ckp, hgp, gkd> {
-   private static final alk a = alk.b("textures/entity/snow_golem.png");
+public class haq extends gzb<cpy, hgn, gjy> {
+   private static final alr a = alr.b("textures/entity/illager/vex.png");
+   private static final alr j = alr.b("textures/entity/illager/vex_charging.png");
 
-   public haq(gyk.a $$0) {
-      super($$0, new gkd($$0.a(glf.dk)), 0.5F);
-      this.a(new hde(this, $$0.d()));
+   public haq(gxv.a $$0) {
+      super($$0, new gjy($$0.a(gkq.dK)), 0.3F);
+      this.a(new hcb<>(this));
    }
 
-   public alk a(hgp $$0) {
-      return a;
+   protected int a(cpy $$0, iw $$1) {
+      return 15;
    }
 
-   public hgp b() {
-      return new hgp();
+   public alr a(hgn $$0) {
+      return $$0.a ? j : a;
    }
 
-   public void a(ckp $$0, hgp $$1, float $$2) {
+   public hgn b() {
+      return new hgn();
+   }
+
+   public void a(cpy $$0, hgn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      hdg.a($$0, $$1, this.h);
+      $$1.a = $$0.t();
    }
 }

@@ -1,6 +1,8 @@
-public record gle(alk a, String b) {
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gle {
 }

@@ -1,10 +1,8 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fjt extends fjs {
-   public fjt(@Nullable String $$0, int $$1, int $$2, boolean $$3) {
-      super($$0, $$3);
-      RenderSystem.assertOnRenderThread();
-      this.a($$1, $$2);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fif
+@fid
+interface fjt {
 }

@@ -1,8 +1,8 @@
-public interface akf extends ajz, vs {
-   @Override
-   default vw b() {
-      return vw.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(akg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface akf {
 }

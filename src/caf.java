@@ -1,41 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class caf extends bzn<crl> {
-   private static final int d = 1200;
-   final float c;
-
-   public caf(float $$0) {
-      super(ImmutableMap.of(cgy.d, cgz.a), 1200);
-      this.c = $$0;
+public class caf {
+   public static <E extends byf> bzx<E> a(int $$0, BiPredicate<E, bxe> $$1) {
+      return cdj.a((Function<cdj.b<E>, ? extends App<cdj.c<E>, cdm<E>>>)($$2 -> $$2.group($$2.a(chh.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               bxe $$7 = $$5.dk();
+               bxe $$8 = $$2.<bxe>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  bxe $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.bO();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   protected boolean a(aru $$0, crl $$1) {
-      return $$1.ec().g().map($$0x -> $$0x == ctt.b || $$0x == ctt.c || $$0x == ctt.d).orElse(true);
-   }
-
-   protected boolean a(aru $$0, crl $$1, long $$2) {
-      return $$1.ec().a(cgy.d);
-   }
-
-   protected void b(aru $$0, crl $$1, long $$2) {
-      bzp.a($$1, $$1.ec().c(cgy.d).get().b(), this.c, 1);
-   }
-
-   protected void c(aru $$0, crl $$1, long $$2) {
-      Optional<jf> $$3 = $$1.ec().c(cgy.d);
-      $$3.ifPresent($$1x -> {
-         iw $$2x = $$1x.b();
-         aru $$3x = $$0.p().a($$1x.a());
-         if ($$3x != null) {
-            ciy $$4 = $$3x.A();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            agq.c($$0, $$2x);
-         }
-      });
-      $$1.ec().b(cgy.d);
+   private static boolean a(byf $$0, bxe $$1, int $$2) {
+      return $$1.bJ() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
    }
 }

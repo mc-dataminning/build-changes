@@ -1,40 +1,32 @@
-import java.util.EnumSet;
-
-public class cgq extends cgs {
-   private final bys a;
-   private bxw b;
+public class cgq extends cfl {
+   private final cqd b;
    private int c;
 
-   public cgq(bys $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ces.a.d));
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.q() && !this.a.gu()) {
-         bxw $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eu();
-            int $$1 = $$0.ev();
-            return $$1 != this.c && this.a(this.b, cil.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+   public cgq(cqd $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
    public void d() {
-      this.e.g(this.b);
-      bxw $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.ev();
-      }
-
       super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

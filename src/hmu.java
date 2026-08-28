@@ -1,131 +1,80 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface hmu {
-   Codec<hmu> a = hmu.d.d.dispatch(hmu::a, hmu.d::a);
-   hmu b = new hmu.b();
+public class hmu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alk b = alk.a("items");
 
-   hmu.d a();
+   public static CompletableFuture<hmu.a> a(avo $$0, Executor $$1) {
+      ju.b $$2 = glr.a().a();
+      return CompletableFuture.<Map<alr, avm>>supplyAsync(() -> b.a($$0), $$1)
+         .thenCompose(
+            $$2x -> {
+               List<CompletableFuture<hmu.b>> $$3 = new ArrayList<>($$2x.size());
+               $$2x.forEach(
+                  ($$3x, $$4) -> $$3.add(
+                        CompletableFuture.supplyAsync(
+                           () -> {
+                              alr $$3xx = b.b($$3x);
 
-   public static record a(int d, int e, hmu.a.a f, boolean g) implements hmu {
-      public static final MapCodec<hmu.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ayy.m.fieldOf("width").forGetter(hmu.a::b),
-                     ayy.m.fieldOf("height").forGetter(hmu.a::c),
-                     hmu.a.a.g.fieldOf("border").forGetter(hmu.a::d),
-                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(hmu.a::e)
-                  )
-                  .apply($$0, hmu.a::new)
-         )
-         .validate(hmu.a::a);
+                              try {
+                                 hmu.b var8;
+                                 try (Reader $$4x = $$4.e()) {
+                                    bae $$5 = new bae($$2);
+                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+                                    hhb $$7 = hhb.a
+                                       .parse($$6, JsonParser.parseReader($$4x))
+                                       .ifError(
+                                          $$2xxxx -> a.error(
+                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
+                                             )
+                                       )
+                                       .result()
+                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
+                                       .orElse(null);
+                                    var8 = new hmu.b($$3xx, $$7);
+                                 }
 
-      private static DataResult<hmu.a> a(hmu.a $$0) {
-         hmu.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
-         } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
-         }
-      }
+                                 return var8;
+                              } catch (Exception var11) {
+                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
+                                 return new hmu.b($$3xx, null);
+                              }
+                           },
+                           $$1
+                        )
+                     )
+               );
+               return ag.d($$3).thenApply($$0xx -> {
+                  Map<alr, hhb> $$1xx = new HashMap<>();
 
-      @Override
-      public hmu.d a() {
-         return hmu.d.c;
-      }
+                  for (hmu.b $$2xx : $$0xx) {
+                     if ($$2xx.b != null) {
+                        $$1xx.put($$2xx.a, $$2xx.b);
+                     }
+                  }
 
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public hmu.a.a d() {
-         return this.f;
-      }
-
-      public boolean e() {
-         return this.g;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<hmu.a.a> e = ayy.m.flatComapMap($$0 -> new hmu.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<hmu.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ayy.l.fieldOf("left").forGetter(hmu.a.a::a),
-                     ayy.l.fieldOf("top").forGetter(hmu.a.a::b),
-                     ayy.l.fieldOf("right").forGetter(hmu.a.a::c),
-                     ayy.l.fieldOf("bottom").forGetter(hmu.a.a::d)
-                  )
-                  .apply($$0, hmu.a.a::new)
+                  return new hmu.a($$1xx);
+               });
+            }
          );
-         static final Codec<hmu.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
-         }
-      }
    }
 
-   public static record b() implements hmu {
-      public static final MapCodec<hmu.b> c = MapCodec.unit(hmu.b::new);
-
-      @Override
-      public hmu.d a() {
-         return hmu.d.a;
-      }
+   public static record a(Map<alr, hhb> a) {
    }
 
-   public static record c(int d, int e) implements hmu {
-      public static final MapCodec<hmu.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayy.m.fieldOf("width").forGetter(hmu.c::b), ayy.m.fieldOf("height").forGetter(hmu.c::c)).apply($$0, hmu.c::new)
-      );
-
-      @Override
-      public hmu.d a() {
-         return hmu.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements bao {
-      a("stretch", hmu.b.c),
-      b("tile", hmu.c.c),
-      c("nine_slice", hmu.a.c);
-
-      public static final Codec<hmu.d> d = bao.a(hmu.d::values);
-      private final String e;
-      private final MapCodec<? extends hmu> f;
-
-      private d(final String $$0, final MapCodec<? extends hmu> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public MapCodec<? extends hmu> a() {
-         return this.f;
-      }
+   static record b(alr a, @Nullable hhb b) {
    }
 }

@@ -1,29 +1,31 @@
-import java.util.HashSet;
-import java.util.Set;
-
-public record abc(Set<jz> c, Set<jz> d) implements aam {
-   public static final za<vy, abc> a = aam.a(abc::a, abc::new);
-   public static final aam.b<abc> b = aam.a("debug/village_sections");
+public record abc(int c, eyo d, float e) implements aat {
+   public static final ze<vy, abc> a = aat.a(abc::a, abc::new);
+   public static final aat.b<abc> b = aat.a("debug/path");
 
    private abc(vy $$0) {
-      this($$0.a(HashSet::new, vy::g), $$0.a(HashSet::new, vy::g));
+      this($$0.readInt(), eyo.b($$0), $$0.readFloat());
    }
 
    private void a(vy $$0) {
-      $$0.a(this.c, vy::a);
-      $$0.a(this.d, vy::a);
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aam.b<abc> a() {
+   public aat.b<abc> a() {
       return b;
    }
 
-   public Set<jz> b() {
+   public int b() {
       return this.c;
    }
 
-   public Set<jz> c() {
+   public eyo c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

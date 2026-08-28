@@ -1,43 +1,23 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eny extends eod {
-   public static final MapCodec<eny> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eny::new));
-   protected final int b;
+public record eny(int b, int c, int d) implements enb {
+   public static final Codec<eny> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azg.m.fieldOf("spread_width").forGetter(eny::a), azg.m.fieldOf("spread_height").forGetter(eny::b), azg.m.fieldOf("max_height").forGetter(eny::c)
+            )
+            .apply($$0, eny::new)
+   );
 
-   protected static <P extends eny> P3<Mu<P>, bty, bty, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public eny(bty $$0, bty $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected eoe<?> a() {
-      return eoe.a;
-   }
-
-   @Override
-   protected void a(dkf $$0, eod.b $$1, azz $$2, enn $$3, int $$4, eod.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azz $$0, int $$1, enn $$2) {
+   public int a() {
       return this.b;
    }
 
-   @Override
-   protected boolean a(azz $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,140 +1,61 @@
-import javax.annotation.Nullable;
-
-public abstract class cww extends cvs {
+public class cww extends cwb {
    private static final int m = 9;
-   private static final int n = 3;
-   private static final int o = 0;
-   protected final cwf q;
-   protected final crz r;
-   protected final bum s;
-   protected final cxk t = new cxk() {
-      @Override
-      public void e() {
-         cww.this.a(this);
-      }
-   };
-   private final int p;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final buv r;
 
-   protected boolean a(crz $$0, boolean $$1) {
-      return true;
+   public cww(int $$0, csh $$1) {
+      this($$0, $$1, new bvj(9));
    }
 
-   protected abstract void a(crz var1, daa var2);
-
-   protected abstract boolean a(ebg var1);
-
-   public cww(@Nullable cxb<?> $$0, int $$1, cry $$2, cwf $$3, cwx $$4) {
-      super($$0, $$1);
-      this.q = $$3;
-      this.r = $$2.h;
-      this.s = this.e($$4.d());
-      this.p = $$4.e();
-      this.a($$4);
-      this.b($$4);
-      this.c($$2, 8, 84);
+   public cww(int $$0, csh $$1, buv $$2) {
+      super(cxk.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.c_($$1.h);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
    }
 
-   private void a(cwx $$0) {
-      for (final cwx.b $$1 : $$0.c()) {
-         this.a(new cxp(this.s, $$1.a(), $$1.b(), $$1.c()) {
-            @Override
-            public boolean a(daa $$0) {
-               return $$1.d().test($$0);
-            }
-         });
-      }
-   }
-
-   private void b(cwx $$0) {
-      this.a(new cxp(this.t, $$0.b().a(), $$0.b().b(), $$0.b().c()) {
-         @Override
-         public boolean a(daa $$0) {
-            return false;
+   protected void d(buv $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new cxz($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
-
-         @Override
-         public boolean a(crz $$0) {
-            return cww.this.a($$0, this.h());
-         }
-
-         @Override
-         public void a(crz $$0, daa $$1) {
-            cww.this.a($$0, $$1);
-         }
-      });
-   }
-
-   @Override
-   public abstract void l();
-
-   private bva e(int $$0) {
-      return new bva($$0) {
-         @Override
-         public void e() {
-            super.e();
-            cww.this.a(this);
-         }
-      };
-   }
-
-   @Override
-   public void a(bum $$0) {
-      super.a($$0);
-      if ($$0 == this.s) {
-         this.l();
       }
    }
 
    @Override
-   public void a(crz $$0) {
-      super.a($$0);
-      this.q.a(($$1, $$2) -> this.a($$0, this.s));
+   public boolean b(csi $$0) {
+      return this.r.a($$0);
    }
 
    @Override
-   public boolean b(crz $$0) {
-      return this.q.a(($$1, $$2) -> !this.a($$1.a_($$2)) ? false : $$0.a($$2, 4.0), true);
-   }
-
-   @Override
-   public daa b(crz $$0, int $$1) {
-      daa $$2 = daa.k;
-      cxp $$3 = this.k.get($$1);
+   public dak b(csi $$0, int $$1) {
+      dak $$2 = dak.l;
+      cxz $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         daa $$4 = $$3.g();
+         dak $$4 = $$3.g();
          $$2 = $$4.v();
-         int $$5 = this.m();
-         int $$6 = this.q();
-         if ($$1 == this.n()) {
-            if (!this.a($$4, $$5, $$6, true)) {
-               return daa.k;
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return dak.l;
             }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 >= 0 && $$1 < this.n()) {
-            if (!this.a($$4, $$5, $$6, false)) {
-               return daa.k;
-            }
-         } else if (this.c($$4) && $$1 >= this.m() && $$1 < this.q()) {
-            if (!this.a($$4, 0, this.n(), false)) {
-               return daa.k;
-            }
-         } else if ($$1 >= this.m() && $$1 < this.o()) {
-            if (!this.a($$4, this.p(), this.q(), false)) {
-               return daa.k;
-            }
-         } else if ($$1 >= this.p() && $$1 < this.q() && !this.a($$4, this.m(), this.o(), false)) {
-            return daa.k;
+         } else if (!this.a($$4, 0, 9, false)) {
+            return dak.l;
          }
 
          if ($$4.f()) {
-            $$3.e(daa.k);
+            $$3.e(dak.l);
          } else {
             $$3.d();
          }
 
          if ($$4.M() == $$2.M()) {
-            return daa.k;
+            return dak.l;
          }
 
          $$3.a($$0, $$4);
@@ -143,27 +64,9 @@ public abstract class cww extends cvs {
       return $$2;
    }
 
-   protected boolean c(daa $$0) {
-      return true;
-   }
-
-   public int n() {
-      return this.p;
-   }
-
-   private int m() {
-      return this.n() + 1;
-   }
-
-   private int o() {
-      return this.m() + 27;
-   }
-
-   private int p() {
-      return this.o();
-   }
-
-   private int q() {
-      return this.p() + 9;
+   @Override
+   public void a(csi $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

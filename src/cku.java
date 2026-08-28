@@ -1,60 +1,192 @@
-public abstract class cku extends bye {
-   public static final int d = 120;
+import java.util.List;
 
-   protected cku(bxe<? extends cku> $$0, djz $$1) {
+public class cku extends cjr {
+   private static final aku<Integer> e = aky.a(cku.class, akw.b);
+   int f;
+   int bI;
+   private static final ciu.a bJ = ($$0, $$1) -> {
+      if ($$0 instanceof csi $$2 && $$2.b()) {
+         return false;
+      }
+
+      return !$$0.an().a(axq.A);
+   };
+   static final ciu bK = ciu.b().e().d().a(bJ);
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private static final int bL = 0;
+
+   public cku(bxn<? extends cku> $$0, dkj $$1) {
       super($$0, $$1);
-      this.a(eyh.j, 0.0F);
+      this.i_();
    }
 
    @Override
-   public boolean a(dkc $$0) {
-      return $$0.f(this);
+   protected void a(aky.a $$0) {
+      super.a($$0);
+      $$0.a(e, 0);
+   }
+
+   public int x() {
+      return this.al.a(e);
+   }
+
+   public void b(int $$0) {
+      this.al.a(e, $$0);
    }
 
    @Override
-   public int S() {
-      return 120;
+   public void a(aku<?> $$0) {
+      if (e.equals($$0)) {
+         this.i_();
+      }
+
+      super.a($$0);
    }
 
    @Override
-   protected int e(aru $$0) {
-      return 1 + this.ae.a(3);
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("PuffState", this.x());
    }
 
-   protected void a(aru $$0, int $$1) {
-      if (this.bJ() && !this.bi()) {
-         this.j($$1 - 1);
-         if (this.cs() == -20) {
-            this.j(0);
-            this.a($$0, this.dW().i(), 2.0F);
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.b(Math.min($$0.b("PuffState", 0), 2));
+   }
+
+   @Override
+   public dak X_() {
+      return new dak(dao.rv);
+   }
+
+   @Override
+   protected void D() {
+      super.D();
+      this.bF.a(1, new cku.a(this));
+   }
+
+   @Override
+   public void h() {
+      if (!this.dV().C && this.bJ() && this.dj()) {
+         if (this.f > 0) {
+            if (this.x() == 0) {
+               this.b(awy.vF);
+               this.b(1);
+            } else if (this.f > 40 && this.x() == 1) {
+               this.b(awy.vF);
+               this.b(2);
+            }
+
+            this.f++;
+         } else if (this.x() != 0) {
+            if (this.bI > 60 && this.x() == 2) {
+               this.b(awy.vE);
+               this.b(1);
+            } else if (this.bI > 100 && this.x() == 1) {
+               this.b(awy.vE);
+               this.b(0);
+            }
+
+            this.bI++;
          }
-      } else {
-         this.j(300);
+      }
+
+      super.h();
+   }
+
+   @Override
+   public void k_() {
+      super.k_();
+      if (this.dV() instanceof asb $$0 && this.bJ() && this.x() > 0) {
+         for (byh $$2 : this.dV().a(byh.class, this.cR().g(0.3), $$1 -> bK.a($$0, this, $$1))) {
+            if ($$2.bJ()) {
+               this.a($$0, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(asb $$0, byh $$1) {
+      int $$2 = this.x();
+      if ($$1.a($$0, this.dW().b((byf)this), (float)(1 + $$2))) {
+         $$1.b(new bwi(bwk.s, 60 * $$2, 0), this);
+         this.a(awy.vJ, 1.0F, 1.0F);
       }
    }
 
    @Override
-   public void aw() {
-      int $$0 = this.cs();
-      super.aw();
-      if (this.dV() instanceof aru $$1) {
-         this.a($$1, $$0);
+   public void a_(csi $$0) {
+      int $$1 = this.x();
+      if ($$0 instanceof asc $$2 && $$1 > 0 && $$0.a($$2.y(), this.dW().b((byf)this), (float)(1 + $$1))) {
+         if (!this.ba()) {
+            $$2.f.b(new adm(adm.k, 0.0F));
+         }
+
+         $$0.b(new bwi(bwk.s, 60 * $$1, 0), this);
       }
    }
 
    @Override
-   public boolean cJ() {
-      return false;
+   protected awx u() {
+      return awy.vD;
    }
 
    @Override
-   public boolean w() {
-      return false;
+   protected awx l_() {
+      return awy.vG;
    }
 
-   public static boolean c(bxe<? extends cku> $$0, dka $$1, bxd $$2, iw $$3, azz $$4) {
-      int $$5 = $$1.P();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axl.a) && $$1.a_($$3.d()).a(dng.J);
+   @Override
+   protected awx e(bvt $$0) {
+      return awy.vI;
+   }
+
+   @Override
+   protected awx t() {
+      return awy.vH;
+   }
+
+   @Override
+   public bxh e(byr $$0) {
+      return super.e($$0).a(c(this.x()));
+   }
+
+   private static float c(int $$0) {
+      switch ($$0) {
+         case 0:
+            return 0.5F;
+         case 1:
+            return 0.7F;
+         default:
+            return 1.0F;
+      }
+   }
+
+   static class a extends cfb {
+      private final cku a;
+
+      public a(cku $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean b() {
+         List<byf> $$0 = this.a.dV().a(byf.class, this.a.cR().g(2.0), $$0x -> cku.bK.a(a(this.a), this.a, $$0x));
+         return !$$0.isEmpty();
+      }
+
+      @Override
+      public void d() {
+         this.a.f = 1;
+         this.a.bI = 0;
+      }
+
+      @Override
+      public void e() {
+         this.a.f = 0;
+      }
    }
 }

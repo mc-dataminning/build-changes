@@ -1,3 +1,8 @@
-public interface hlf {
-   void c();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hlf {
 }

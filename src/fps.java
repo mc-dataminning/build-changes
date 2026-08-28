@@ -1,22 +1,59 @@
-public enum fps {
-   a(0, ert.a),
-   b(1, ert.b),
-   c(2, ert.c),
-   d(3, ert.d);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private final int e;
-   private final xc f;
+public abstract class fps extends fpo {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xg d;
+   private final Runnable e;
 
-   private fps(final int $$0, final alj<ers> $$1) {
-      this.e = $$0;
-      this.f = xc.c($$1.a().h("generator"));
+   public fps(long $$0, xg $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public xc a() {
-      return this.f;
+   protected abstract void a(flq var1, long var2) throws fnm;
+
+   @Override
+   public void run() {
+      flq $$0 = flq.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fnn var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public xg a() {
+      return this.d;
    }
 }

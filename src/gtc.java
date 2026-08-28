@@ -1,180 +1,269 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class gtc {
-   private static final int a = 10;
-   private static final int b = 21;
-   private static final alk c = alk.b("textures/environment/rain.png");
-   private static final alk d = alk.b("textures/environment/snow.png");
-   private static final int e = 32;
-   private static final int f = 16;
-   private int g;
-   private final float[] h = new float[1024];
-   private final float[] i = new float[1024];
+public class gtc implements hnl {
+   public static final alr a = alr.b("builtin/generated");
+   public static final List<String> b = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
+   private static final float d = 7.5F;
+   private static final float e = 8.5F;
+   private static final gti.a f = new gti.a.a().a("particle", "layer0").a();
+   private static final gsv.b g = new gsv.b(0.0F, 0.0F, 16.0F, 16.0F);
+   private static final gsv.b h = new gsv.b(16.0F, 0.0F, 0.0F, 16.0F);
 
-   public gtc() {
-      for (int $$0 = 0; $$0 < 32; $$0++) {
-         for (int $$1 = 0; $$1 < 32; $$1++) {
-            float $$2 = (float)($$1 - 16);
-            float $$3 = (float)($$0 - 16);
-            float $$4 = azq.f($$2, $$3);
-            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
-            this.i[$$0 * 32 + $$1] = $$2 / $$4;
+   @Override
+   public gti.a e() {
+      return f;
+   }
+
+   @Override
+   public hnk a() {
+      return gtc::a;
+   }
+
+   @Nullable
+   @Override
+   public hnl.a b() {
+      return hnl.a.a;
+   }
+
+   private static hng a(gti $$0, hmz $$1, hnf $$2, hnb $$3) {
+      return a($$0, $$1.a(), $$2, $$3);
+   }
+
+   private static hng a(gti $$0, hnj $$1, hnf $$2, hnb $$3) {
+      List<gsu> $$4 = new ArrayList<>();
+
+      for (int $$5 = 0; $$5 < b.size(); $$5++) {
+         String $$6 = b.get($$5);
+         hmx $$7 = $$0.a($$6);
+         if ($$7 == null) {
+            break;
          }
+
+         hkk $$8 = $$1.a($$7, $$3).e();
+         $$4.addAll(a($$5, $$6, $$8));
+      }
+
+      return gtg.a($$4, $$0, $$1, $$2, $$3);
+   }
+
+   private static List<gsu> a(int $$0, String $$1, hkk $$2) {
+      Map<jc, gsv> $$3 = Map.of(jc.d, new gsv(null, $$0, $$1, g, i.a), jc.c, new gsv(null, $$0, $$1, h, i.a));
+      List<gsu> $$4 = new ArrayList<>();
+      $$4.add(new gsu(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
+      $$4.addAll(a($$2, $$1, $$0));
+      return $$4;
+   }
+
+   private static List<gsu> a(hkk $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gsu> $$5 = new ArrayList<>();
+
+      for (gtc.a $$6 : a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         gtc.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<jc, gsv> $$21 = Map.of($$20.a(), new gsv(null, $$2, $$1, new gsv.b($$11, $$13, $$12, $$14), i.a));
+         switch ($$20) {
+            case a:
+               $$5.add(new gsu(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
+               break;
+            case b:
+               $$5.add(new gsu(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+               break;
+            case c:
+               $$5.add(new gsu(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
+               break;
+            case d:
+               $$5.add(new gsu(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+         }
+      }
+
+      return $$5;
+   }
+
+   private static List<gtc.a> a(hkk $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<gtc.a> $$3 = new ArrayList<>();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !a($$0, $$4, $$6, $$5, $$1, $$2);
+               a(gtc.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               a(gtc.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               a(gtc.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               a(gtc.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+            }
+         }
+      });
+      return $$3;
+   }
+
+   private static void a(gtc.b $$0, List<gtc.a> $$1, hkk $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         a($$1, $$0, $$4, $$5);
       }
    }
 
-   public void a(djz $$0, gsc $$1, int $$2, float $$3, ffs $$4) {
-      float $$5 = $$0.d($$3);
-      if (!($$5 <= 0.0F)) {
-         int $$6 = frf.N() ? 10 : 5;
-         List<gtc.a> $$7 = new ArrayList<>();
-         List<gtc.a> $$8 = new ArrayList<>();
-         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
-         if (!$$7.isEmpty() || !$$8.isEmpty()) {
-            this.a($$1, $$4, $$6, $$5, $$7, $$8);
-         }
-      }
-   }
+   private static void a(List<gtc.a> $$0, gtc.b $$1, int $$2, int $$3) {
+      gtc.a $$4 = null;
 
-   private void a(djz $$0, int $$1, float $$2, ffs $$3, int $$4, List<gtc.a> $$5, List<gtc.a> $$6) {
-      int $$7 = azq.a($$3.d);
-      int $$8 = azq.a($$3.e);
-      int $$9 = azq.a($$3.f);
-      iw.a $$10 = new iw.a();
-      azz $$11 = azz.a();
-
-      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
-         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
-            int $$14 = $$0.a(ehf.a.e, $$13, $$12);
-            int $$15 = Math.max($$8 - $$4, $$14);
-            int $$16 = Math.max($$8 + $$4, $$14);
-            if ($$16 - $$15 != 0) {
-               dlc.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
-               if ($$17 != dlc.c.a) {
-                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
-                  $$11.b((long)$$18);
-                  int $$19 = Math.max($$8, $$14);
-                  int $$20 = grx.a($$0, $$10.d($$13, $$19, $$12));
-                  if ($$17 == dlc.c.b) {
-                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  } else if ($$17 == dlc.c.c) {
-                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  }
-               }
+      for (gtc.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
             }
          }
       }
-   }
 
-   private void a(gsc $$0, ffs $$1, int $$2, float $$3, List<gtc.a> $$4, List<gtc.a> $$5) {
-      if (!$$4.isEmpty()) {
-         gsn $$6 = gsn.f(c, frf.O());
-         this.a($$0.getBuffer($$6), $$4, $$1, 1.0F, $$2, $$3);
-      }
-
-      if (!$$5.isEmpty()) {
-         gsn $$7 = gsn.f(d, frf.O());
-         this.a($$0.getBuffer($$7), $$5, $$1, 0.8F, $$2, $$3);
-      }
-   }
-
-   private gtc.a a(azz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      int $$8 = $$1 & 131071;
-      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
-      float $$10 = 3.0F + $$0.i();
-      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
-      float $$12 = $$11 % 32.0F;
-      return new gtc.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
-   }
-
-   private gtc.a b(azz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      float $$8 = (float)$$1 + $$7;
-      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
-      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
-      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
-      int $$12 = grz.a((grz.a($$6) * 3 + 15) / 4, (grz.b($$6) * 3 + 15) / 4);
-      return new gtc.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
-   }
-
-   private void a(flt $$0, List<gtc.a> $$1, ffs $$2, float $$3, int $$4, float $$5) {
-      for (gtc.a $$6 : $$1) {
-         float $$7 = (float)((double)$$6.a + 0.5 - $$2.d);
-         float $$8 = (float)((double)$$6.b + 0.5 - $$2.f);
-         float $$9 = (float)azq.e((double)$$7, (double)$$8);
-         float $$10 = azq.h($$9 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
-         int $$11 = aya.a($$10);
-         int $$12 = ($$6.b - azq.a($$2.f) + 16) * 32 + $$6.a - azq.a($$2.d) + 16;
-         float $$13 = this.h[$$12] / 2.0F;
-         float $$14 = this.i[$$12] / 2.0F;
-         float $$15 = $$7 - $$13;
-         float $$16 = $$7 + $$13;
-         float $$17 = (float)((double)$$6.d - $$2.e);
-         float $$18 = (float)((double)$$6.c - $$2.e);
-         float $$19 = $$8 - $$14;
-         float $$20 = $$8 + $$14;
-         float $$21 = $$6.e + 0.0F;
-         float $$22 = $$6.e + 1.0F;
-         float $$23 = (float)$$6.c * 0.25F + $$6.f;
-         float $$24 = (float)$$6.d * 0.25F + $$6.f;
-         $$0.a($$15, $$17, $$19).a($$21, $$23).a($$11).c($$6.g);
-         $$0.a($$16, $$17, $$20).a($$22, $$23).a($$11).c($$6.g);
-         $$0.a($$16, $$18, $$20).a($$22, $$24).a($$11).c($$6.g);
-         $$0.a($$15, $$18, $$19).a($$21, $$24).a($$11).c($$6.g);
-      }
-   }
-
-   public void a(gmd $$0, fqn $$1, int $$2, arm $$3) {
-      float $$4 = $$0.d(1.0F) / (frf.N() ? 1.0F : 2.0F);
-      if (!($$4 <= 0.0F)) {
-         azz $$5 = azz.a((long)$$2 * 312987231L);
-         iw $$6 = iw.a((jq)$$1.b());
-         iw $$7 = null;
-         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == arm.b ? 2 : 1);
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$5.a(21) - 10;
-            int $$11 = $$5.a(21) - 10;
-            iw $$12 = $$0.a(ehf.a.e, $$6.b($$10, 0, $$11));
-            if ($$12.v() > $$0.K_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dlc.c.b) {
-               $$7 = $$12.e();
-               if ($$3 == arm.c) {
-                  break;
-               }
-
-               double $$13 = $$5.j();
-               double $$14 = $$5.j();
-               ebg $$15 = $$0.a_($$7);
-               exq $$16 = $$0.b_($$7);
-               fgm $$17 = $$15.g($$0, $$7);
-               double $$18 = $$17.b(jc.a.b, $$13, $$14);
-               double $$19 = (double)$$16.a($$0, $$7);
-               double $$20 = Math.max($$18, $$19);
-               lx $$21 = !$$16.a(axl.b) && !$$15.a(dng.lp) && !dnu.h($$15) ? lz.ag : lz.ah;
-               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if ($$7 != null && $$5.a(3) < this.g++) {
-            this.g = 0;
-            if ($$7.v() > $$6.v() + 1 && $$0.a(ehf.a.e, $$6).v() > azq.d((float)$$6.v())) {
-               $$0.a($$7, awr.Di, aws.d, 0.1F, 0.5F, false);
-            } else {
-               $$0.a($$7, awr.Dh, aws.d, 0.2F, 1.0F, false);
-            }
-         }
-      }
-   }
-
-   private dlc.c a(djz $$0, iw $$1) {
-      if (!$$0.S().b(jz.a($$1.u()), jz.a($$1.w()))) {
-         return dlc.c.a;
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new gtc.a($$1, $$8, $$7));
       } else {
-         dlc $$2 = $$0.u($$1).a();
-         return $$2.a($$1, $$0.P());
+         $$4.a($$8);
       }
    }
 
-   static record a(int a, int b, int c, int d, float e, float f, int g) {
+   private static boolean a(hkk $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final gtc.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(gtc.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public gtc.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(jc.b, 0, -1),
+      b(jc.a, 0, 1),
+      c(jc.f, -1, 0),
+      d(jc.e, 1, 0);
+
+      private final jc e;
+      private final int f;
+      private final int g;
+
+      private b(final jc $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public jc a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
+      }
    }
 }

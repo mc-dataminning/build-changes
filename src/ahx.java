@@ -1,16 +1,41 @@
-public record ahx(int b, dfz c, boolean d) implements zj<agt> {
-   public static final za<vy, ahx> a = za.a(yy.x, ahx::b, dfz.a, ahx::e, yy.b, ahx::f, ahx::new);
+public class ahx implements zo<aha> {
+   public static final ze<vy, ahx> a = zo.a(ahx::a, ahx::new);
+   private final iw b;
+   private final int c;
+   private final boolean d;
 
-   @Override
-   public zl<ahx> a() {
-      return agr.bQ;
+   public ahx(iw $$0, int $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(agt $$0) {
+   private ahx(vy $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+   }
+
+   @Override
+   public zq<ahx> a() {
+      return agy.bG;
+   }
+
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public dfz e() {
+   public iw b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 

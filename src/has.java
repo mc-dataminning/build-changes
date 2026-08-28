@@ -1,30 +1,22 @@
-public class has<T extends cpm> extends gzq<T, hfr, gke> {
-   private static final alk a = alk.b("textures/entity/spider/spider.png");
+public class has extends gyo<cpz, hew> {
+   private static final alr a = alr.b("textures/entity/illager/vindicator.png");
 
-   public has(gyk.a $$0) {
-      this($$0, glf.dm);
+   public has(gxv.a $$0) {
+      super($$0, new gic<>($$0.a(gkq.dN)), 0.5F);
+      this.a(new hcb<hew, gic<hew>>(this) {
+         public void a(fld $$0, grn $$1, int $$2, hew $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public has(gyk.a $$0, gle $$1) {
-      super($$0, new gke($$0.a($$1)), 0.8F);
-      this.a(new hdf<>(this));
-   }
-
-   @Override
-   protected float aW_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alk b(hfr $$0) {
+   public alr a(hew $$0) {
       return a;
    }
 
-   public hfr b() {
-      return new hfr();
-   }
-
-   public void a(T $$0, hfr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
+   public hew b() {
+      return new hew();
    }
 }

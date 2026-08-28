@@ -1,196 +1,154 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class eyy {
-   public static final za<ByteBuf, eyy> a = yy.a(eyy::a, eyy::i);
-   private static final eyy[] b = ag.a(() -> {
-      eyy[] $$0 = new eyy[48];
-      a(new eyy(jc.b, jc.c, eyy.a.a), $$0);
-      return $$0;
-   });
-   private final jc c;
-   private final jc d;
-   private final jc e;
-   private final eyy.a f;
-   private final int g;
-   private final List<jc> h;
-   private final List<jc> i;
-   private final List<jc> j;
-   private final Map<jc, eyy> k = new EnumMap<>(jc.class);
-   private final Map<jc, eyy> l = new EnumMap<>(jc.class);
-   private final Map<eyy.a, eyy> m = new EnumMap<>(eyy.a.class);
+   public static final int a = 3;
+   private static final int b = 16;
+   private static final int c = 128;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final asb n;
 
-   private eyy(jc $$0, jc $$1, eyy.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      kb $$3 = $$1.q().d($$0.q());
-      jc $$4 = jc.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == eyy.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
+   public eyy(asb $$0) {
+      this.n = $$0;
+   }
+
+   public Optional<iw> a(iw $$0, boolean $$1, edi $$2) {
+      cjh $$3 = this.n.A();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      return $$3.b($$0x -> $$0x.a(cjl.r), $$0, $$4, cjh.b.c)
+         .map(cji::g)
+         .filter($$2::a)
+         .filter($$0x -> this.n.a_($$0x).b(ecg.J))
+         .min(Comparator.<iw>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(kb::v));
+   }
+
+   public Optional<m.a> a(iw $$0, jc.a $$1) {
+      jc $$2 = jc.a(jc.b.a, $$1);
+      double $$3 = -1.0;
+      iw $$4 = null;
+      double $$5 = -1.0;
+      iw $$6 = null;
+      edi $$7 = this.n.E_();
+      int $$8 = Math.min(this.n.ao(), this.n.K_() + this.n.l() - 1);
+      int $$9 = 1;
+      iw.a $$10 = $$0.k();
+
+      for (iw.a $$11 : iw.a($$0, 16, jc.f, jc.d)) {
+         int $$12 = Math.min($$8, this.n.a(ehp.a.e, $$11.u(), $$11.w()));
+         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
+            $$11.c($$2.g(), 1);
+
+            for (int $$13 = $$12; $$13 >= this.n.K_(); $$13--) {
+               $$11.q($$13);
+               if (this.a($$11)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.K_() && this.a($$11.c(jc.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$11.q($$13);
+                        if (this.a($$11, $$10, $$2, 0)) {
+                           double $$16 = $$0.j($$11);
+                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$11.j();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$11.j();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
 
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
-   }
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
+      }
 
-   public static eyy a(jc $$0, jc $$1, eyy.a $$2) {
-      return b[b($$0, $$1, $$2)];
-   }
-
-   public eyy a(jc $$0) {
-      return this.l.get($$0);
-   }
-
-   public eyy b(jc $$0) {
-      return this.k.get($$0);
-   }
-
-   public eyy c(jc $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
-   }
-
-   public eyy d(jc $$0) {
-      eyy $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public eyy a(eyy.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public eyy a() {
-      return this.a(this.f.a());
-   }
-
-   public jc b() {
-      return this.d;
-   }
-
-   public jc c() {
-      return this.c;
-   }
-
-   public jc d() {
-      return this.e;
-   }
-
-   public eyy.a e() {
-      return this.f;
-   }
-
-   public List<jc> f() {
-      return this.h;
-   }
-
-   public List<jc> g() {
-      return this.i;
-   }
-
-   public List<jc> h() {
-      return this.j;
-   }
-
-   @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public static eyy a(int $$0) {
-      return b[$$0];
-   }
-
-   public static eyy a(azz $$0) {
-      return ag.a(b, $$0);
-   }
-
-   private static eyy a(eyy $$0, eyy[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (eyy.a $$2 : eyy.a.values()) {
-            $$0.m.put($$2, a(new eyy($$0.c, $$0.d, $$2), $$1));
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.K_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
          }
 
-         for (jc $$3 : jc.values()) {
-            jc $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
+         $$4 = new iw($$0.u() - $$2.j() * 1, azz.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
+         $$4 = $$7.b($$4);
+         jc $$19 = $$2.h();
 
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  ebq $$23 = $$22 < 0 ? dnq.cy.m() : dnq.a.m();
+                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$10, $$23);
+               }
             }
-
-            $$0.k.put($$3, a(new eyy($$4, $$3, $$0.f), $$1));
          }
-
-         for (jc $$5 : jc.values()) {
-            jc $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new eyy($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
       }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$10, dnq.cy.m(), 3);
+            }
+         }
+      }
+
+      ebq $$26 = dnq.eu.m().b(dsz.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$10, $$26, 18);
+         }
+      }
+
+      return Optional.of(new m.a($$4.j(), 2, 3));
    }
 
-   @VisibleForTesting
-   protected static int b(jc $$0, jc $$1, eyy.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jc.a.b) {
-            $$3 = $$1.o() == jc.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == jc.a.b ? 1 : 0;
-         }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
-      }
+   private boolean a(iw.a $$0) {
+      ebq $$1 = this.n.a_($$0);
+      return $$1.v() && $$1.y().c();
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   private boolean a(iw $$0, iw.a $$1, jc $$2, int $$3) {
+      jc $$4 = $$2.h();
 
-      private final String c;
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
 
-      private a(final String $$0) {
-         this.c = $$0;
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
       }
 
-      public eyy.a a() {
-         return this == a ? b : a;
-      }
-
-      @Override
-      public String toString() {
-         return this.c;
-      }
+      return true;
    }
 }

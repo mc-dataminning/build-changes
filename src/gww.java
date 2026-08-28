@@ -1,45 +1,31 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public class gww extends gwp<cjw, hdl, ggm> {
+   private static final alr a = alr.b("textures/entity/bee/bee_angry.png");
+   private static final alr j = alr.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final alr k = alr.b("textures/entity/bee/bee.png");
+   private static final alr l = alr.b("textures/entity/bee/bee_nectar.png");
 
-public class gww implements gwf.a {
-   private final List<iw> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
-
-   public void a(iw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gww(gxv.a $$0) {
+      super($$0, new ggm($$0.a(gkq.x)), new ggm($$0.a(gkq.y)), 0.4F);
    }
 
-   @Override
-   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
-      flt $$5 = $$1.getBuffer(gsn.z());
-
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         iw $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gsv.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+   public alr a(hdl $$0) {
+      if ($$0.d) {
+         return $$0.e ? j : a;
+      } else {
+         return $$0.e ? l : k;
       }
+   }
+
+   public hdl a() {
+      return new hdl();
+   }
+
+   public void a(cjw $$0, hdl $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gH();
+      $$1.c = $$0.aH() && $$0.dy().h() < 1.0E-7;
+      $$1.d = $$0.af_();
+      $$1.e = $$0.gG();
    }
 }

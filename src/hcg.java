@@ -1,16 +1,35 @@
-public class hcg extends hcy<hhh, ghx> {
-   private static final alk a = alk.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final ghx b;
-   private final ghx c;
+public class hcg extends hcj<hfq, git> {
+   private final gim a;
+   private final hfm b = new hfm();
 
-   public hcg(hah<hhh, ghx> $$0, glc $$1) {
+   public hcg(gzs<hfq, git> $$0, gkn $$1) {
       super($$0);
-      this.b = new ghx($$1.a(glf.aN));
-      this.c = new ghx($$1.a(glf.aK));
+      this.a = new gim($$1.a(gkq.cb));
+      this.b.c = gim.a.e;
    }
 
-   public void a(flq $$0, gsc $$1, int $$2, hhh $$3, float $$4, float $$5) {
-      ghx $$6 = $$3.aj ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   public void a(fld $$0, grn $$1, int $$2, hfq $$3, float $$4, float $$5) {
+      ckp.b $$6 = $$3.aH;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+      }
+
+      ckp.b $$7 = $$3.aI;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+      }
+   }
+
+   private void a(fld $$0, grn $$1, int $$2, hfq $$3, ckp.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.Q ? -1.3F : -1.5F, 0.0F);
+      this.b.v = $$3.v;
+      this.b.ag = $$3.ag;
+      this.b.ah = $$3.ah;
+      this.b.ad = $$5;
+      this.b.ae = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gzi.a($$4))), $$2, hkg.d);
+      $$0.b();
    }
 }

@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum ecz implements bax {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface ecz {
+   private final String f;
+
+   private ecz(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

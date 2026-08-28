@@ -1,57 +1,57 @@
-import javax.annotation.Nullable;
+public class cmz {
+   public static final alq<cmy> a = a(cmz.a.a);
+   public static final alq<cmy> b = a(cmz.a.b);
+   public static final alq<cmy> c = a(cmz.a.c);
+   public static final alq<cmy> d = a(cmz.a.d);
+   public static final alq<cmy> e = a(cmz.a.e);
+   public static final alq<cmy> f = a(cmz.a.f);
+   public static final alq<cmy> g = a(cmz.a.g);
 
-public abstract class cmz implements cnh {
-   protected final cmx a;
-
-   public cmz(cmx $$0) {
-      this.a = $$0;
+   private static alq<cmy> a(cmz.a $$0) {
+      return alq.a(mi.bn, alr.b($$0.a()));
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public static void a(qi<cmy> $$0) {
+      a($$0, a, cmz.a.a);
+      a($$0, b, cmz.a.b);
+      a($$0, c, cmz.a.c);
+      a($$0, d, cmz.a.d);
+      a($$0, e, cmz.a.e);
+      a($$0, f, cmz.a.f);
+      a($$0, g, cmz.a.g);
    }
 
-   @Override
-   public void b() {
+   private static void a(qi<cmy> $$0, alq<cmy> $$1, cmz.a $$2) {
+      $$0.a($$1, awy.DS.get($$2));
    }
 
-   @Override
-   public void a(aru $$0) {
+   public static jg<cmy> a(ju $$0, bai $$1) {
+      return $$0.f(mi.bn).a($$1).orElseThrow();
    }
 
-   @Override
-   public void a(cmw $$0, iw $$1, bvk $$2, @Nullable crz $$3) {
-   }
+   public static enum a {
+      a("classic", ""),
+      b("puglin", "_puglin"),
+      c("sad", "_sad"),
+      d("angry", "_angry"),
+      e("grumpy", "_grumpy"),
+      f("big", "_big"),
+      g("cute", "_cute");
 
-   @Override
-   public void c() {
-   }
+      private final String h;
+      private final String i;
 
-   @Override
-   public void d() {
-   }
+      private a(final String $$0, final String $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
 
-   @Override
-   public float e() {
-      return 0.6F;
-   }
+      public String a() {
+         return this.h;
+      }
 
-   @Nullable
-   @Override
-   public ffs f() {
-      return null;
-   }
-
-   @Override
-   public float a(bvk $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+      public String b() {
+         return this.i;
+      }
    }
 }

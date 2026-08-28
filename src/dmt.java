@@ -1,139 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public abstract class dmt extends dne implements dup {
-   public static final ebx a = ebw.I;
-   private static final fgm b = dne.b(16.0, 0.0, 2.0);
-   private static final fgm c = dne.b(16.0, 0.0, 8.0);
-   private final boolean d;
+public class dmt extends dmf {
+   public static final MapCodec<dmt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czi.q.fieldOf("color").forGetter(dmf::b), t()).apply($$0, dmt::new));
+   public static final ecq b = ecg.bd;
+   private static final Map<czi, dno> c = Maps.newHashMap();
+   private static final fgw d = dno.b(8.0, 0.0, 16.0);
 
-   public static boolean a(djz $$0, iw $$1) {
-      return h($$0.a_($$1));
+   @Override
+   public MapCodec<dmt> a() {
+      return a;
    }
 
-   public static boolean h(ebg $$0) {
-      return $$0.a(axg.P) && $$0.b() instanceof dmt;
-   }
-
-   protected dmt(boolean $$0, ebf.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dmt(czi $$0, ebp.d $$1) {
+      super($$0, $$1);
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected abstract MapCodec<? extends dmt> a();
-
-   public boolean b() {
-      return this.d;
+   protected boolean a(ebq $$0, dkm $$1, iw $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return $$0.c(this.c()).b() ? c : b;
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return d;
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return c($$1, $$2.e());
+   public ebq a(ded $$0) {
+      return this.m().b(b, Integer.valueOf(ecw.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
-      }
-   }
-
-   protected ebg a(ebg $$0, djz $$1, iw $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, null, $$3);
-      }
-
-      return $$0;
+   protected ebq a(ebq $$0, dkm $$1, dky $$2, iw $$3, jc $$4, iw $$5, ebq $$6, bai $$7) {
+      return $$4 == jc.a && !$$0.a($$1, $$3) ? dnq.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3, @Nullable eyy $$4, boolean $$5) {
-      if (!$$1.C && $$1.a_($$2).a(this)) {
-         eck $$6 = $$0.c(this.c());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(iw $$0, djz $$1, eck $$2) {
-      if (!c($$1, $$0.e())) {
-         return true;
-      } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.i());
-            case d:
-               return !c($$1, $$0.h());
-            case e:
-               return !c($$1, $$0.f());
-            case f:
-               return !c($$1, $$0.g());
-            default:
-               return false;
-         }
-      }
-   }
-
-   protected void a(ebg $$0, djz $$1, iw $$2, dne $$3) {
-   }
-
-   protected ebg a(djz $$0, iw $$1, ebg $$2, boolean $$3) {
-      if ($$0.C) {
-         return $$2;
-      } else {
-         eck $$4 = $$2.c(this.c());
-         return new dtl($$0, $$1, $$2).a($$0.D($$1), $$3, $$4).c();
-      }
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
-      if (!$$3) {
-         if ($$0.c(this.c()).b()) {
-            $$1.a($$2.d(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.e(), this);
-         }
-      }
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public ebg a(ddt $$0) {
-      exq $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == exr.c;
-      ebg $$3 = super.m();
-      jc $$4 = $$0.g();
-      boolean $$5 = $$4 == jc.f || $$4 == jc.e;
-      return $$3.b(this.c(), $$5 ? eck.b : eck.a).b(a, Boolean.valueOf($$2));
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(b);
    }
 
-   public abstract ecj<eck> c();
-
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$0.c(a)) {
-         $$2.a($$3, exr.c, exr.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected exq b_(ebg $$0) {
-      return $$0.c(a) ? exr.c.a(false) : super.b_($$0);
+   public static dno a(czi $$0) {
+      return c.getOrDefault($$0, dnq.jl);
    }
 }

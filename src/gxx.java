@@ -1,38 +1,34 @@
-public class gxx extends gzq<com, hek, ghu> {
-   private static final alk a = alk.b("textures/entity/creeper/creeper.png");
+public class gxx extends gxu<csv, hee> {
+   private static final alr a = alr.b("textures/entity/illager/evoker_fangs.png");
+   private final ghp g;
 
-   public gxx(gyk.a $$0) {
-      super($$0, new ghu($$0.a(glf.aq)), 0.5F);
-      this.a(new hcb(this, $$0.f()));
+   public gxx(gxv.a $$0) {
+      super($$0);
+      this.g = new ghp($$0.a(gkq.aW));
    }
 
-   protected void a(hek $$0, flq $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azq.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azq.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public void a(hee $$0, fld $$1, grn $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.g.a($$0);
+         flg $$5 = $$2.getBuffer(this.g.a(a));
+         this.g.a($$1, $$5, $$3, hkg.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   protected float a(hek $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azq.a($$1, 0.5F, 1.0F);
+   public hee a() {
+      return new hee();
    }
 
-   public alk b(hek $$0) {
-      return a;
-   }
-
-   public hek a() {
-      return new hek();
-   }
-
-   public void a(com $$0, hek $$1, float $$2) {
+   public void a(csv $$0, hee $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+      $$1.a = $$0.dL();
+      $$1.b = $$0.a($$2);
    }
 }

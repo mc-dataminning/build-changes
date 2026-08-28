@@ -1,28 +1,101 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bzw {
-   public static <E extends bxw> bzo<E> a(int $$0, BiPredicate<E, bwv> $$1) {
-      return cda.a((Function<cda.b<E>, ? extends App<cda.c<E>, cdd<E>>>)($$2 -> $$2.group($$2.a(cgy.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bwv $$7 = $$5.dk();
-               bwv $$8 = $$2.<bwv>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bwv $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.bO();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public abstract class bzw<E extends byf> implements bzx<E> {
+   public static final int a = 60;
+   protected final Map<chh<?>, chi> b;
+   private bzw.a c = bzw.a.a;
+   private long d;
+   private final int e;
+   private final int f;
+
+   public bzw(Map<chh<?>, chi> $$0) {
+      this($$0, 60);
    }
 
-   private static boolean a(bxw $$0, bwv $$1, int $$2) {
-      return $$1.bJ() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
+   public bzw(Map<chh<?>, chi> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bzw(Map<chh<?>, chi> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
+   }
+
+   @Override
+   public bzw.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(asb $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bzw.a.b;
+         int $$3 = this.e + $$0.G_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(asb $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(asb $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(asb $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(asb $$0, E $$1, long $$2) {
+      this.c = bzw.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(asb $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(asb $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(asb $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<chh<?>, chi> $$1 : this.b.entrySet()) {
+         chh<?> $$2 = $$1.getKey();
+         chi $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

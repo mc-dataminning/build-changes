@@ -1,39 +1,45 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class aog {
-   public static void a(CommandDispatcher<ek> $$0) {
-      LiteralCommandNode<ek> $$1 = $$0.register(
-         (LiteralArgumentBuilder)el.a("msg").then(el.a("targets", ex.d()).then(el.a("message", fb.a()).executes($$0x -> {
-            Collection<arv> $$1x = ex.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               fb.a($$0x, "message", $$2 -> a((ek)$$0x.getSource(), $$1x, $$2));
-            }
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xg.b("commands.jfr.dump.failed", $$0));
 
-            return $$1x.size();
-         })))
-      );
-      $$0.register((LiteralArgumentBuilder)el.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)el.a("w").redirect($$1));
+   private aog() {
    }
 
-   private static void a(ek $$0, Collection<arv> $$1, xs $$2) {
-      wy.a $$3 = wy.a(wy.g, $$0);
-      xr $$4 = xr.a($$2);
-      boolean $$5 = false;
+   public static void a(CommandDispatcher<ek> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(el.a("start").executes($$0x -> a((ek)$$0x.getSource()))))
+            .then(el.a("stop").executes($$0x -> b((ek)$$0x.getSource())))
+      );
+   }
 
-      for (arv $$6 : $$1) {
-         wy.a $$7 = wy.a(wy.h, $$0).c($$6.m_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
+   private static int a(ek $$0) throws CommandSyntaxException {
+      brs $$1 = brs.a($$0.l());
+      if (!bru.f.a($$1)) {
+         throw a.create();
+      } else {
+         $$0.a(() -> xg.c("commands.jfr.started"), false);
+         return 1;
       }
+   }
 
-      if ($$5) {
-         $$0.a(avu.e);
+   private static int b(ek $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bru.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ac.aU ? $$1 : $$1.toAbsolutePath();
+         xg $$3 = xg.b($$1.toString()).a(o.t).a($$1x -> $$1x.a(new xe.c($$2.toString())).a(new xm.e(xg.c("chat.copy.click"))));
+         $$0.a(() -> xg.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
       }
    }
 }

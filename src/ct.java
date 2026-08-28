@@ -19,8 +19,8 @@ public record ct(cx.d c, Optional<bz> d) implements ca {
    }
 
    @Override
-   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
-      return !($$0 instanceof bxv $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
+      return !($$0 instanceof bye $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cx.d b() {

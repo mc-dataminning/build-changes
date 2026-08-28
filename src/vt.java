@@ -22,7 +22,7 @@ public class vt extends ByteToMessageDecoder {
 
    protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
       if ($$1.readableBytes() != 0) {
-         int $$3 = wt.a($$1);
+         int $$3 = wx.a($$1);
          if ($$3 == 0) {
             $$2.add($$1.readBytes($$1.readableBytes()));
          } else {

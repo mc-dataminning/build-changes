@@ -2,57 +2,57 @@ import java.util.function.BiConsumer;
 
 public record nw(ji.a a) implements nm {
    @Override
-   public void generate(BiConsumer<alj<fao>, fao.a> $$0) {
-      ji.b<dlc> $$1 = this.a.e(mi.aG);
+   public void generate(BiConsumer<alq<fay>, fay.a> $$0) {
+      ji.b<dlm> $$1 = this.a.e(mi.aG);
       $$0.accept(
-         faf.am,
-         fao.b()
+         fap.am,
+         fay.b()
             .a(
-               fan.a()
-                  .a(fel.a(1.0F))
-                  .a(fbc.a(faf.an).a(10).b(-2))
-                  .a(fbc.a(faf.ao).a(5).b(2).a(fdv.a(faj.b.a, bz.a.a().a(cf.a(true)))))
-                  .a(fbc.a(faf.ap).a(85).b(-1))
+               fax.a()
+                  .a(fev.a(1.0F))
+                  .a(fbm.a(fap.an).a(10).b(-2))
+                  .a(fbm.a(fap.ao).a(5).b(2).a(fef.a(fat.b.a, bz.a.a().a(cf.a(true)))))
+                  .a(fbm.a(fap.ap).a(85).b(-1))
             )
       );
-      $$0.accept(faf.ap, a());
+      $$0.accept(fap.ap, a());
       $$0.accept(
-         faf.an,
-         fao.b()
+         fap.an,
+         fay.b()
             .a(
-               fan.a()
-                  .a(faw.a(dng.fF).a(17))
-                  .a(faw.a(dae.qp).a(10).a(fcp.a(fes.a(0.0F, 0.9F))))
-                  .a(faw.a(dae.rt).a(10))
-                  .a(faw.a(dae.sH).a(10))
-                  .a(faw.a(dae.tt).a(10).a(fcu.a(dbx.a)))
-                  .a(faw.a(dae.qg).a(5))
-                  .a(faw.a(dae.sd).a(2).a(fcp.a(fes.a(0.0F, 0.9F))))
-                  .a(faw.a(dae.ph).a(10))
-                  .a(faw.a(dae.qe).a(5))
-                  .a(faw.a(dae.sn).a(1).a(fco.a(fel.a(10.0F))))
-                  .a(faw.a(dng.gg).a(10))
-                  .a(faw.a(dae.tm).a(10))
-                  .a(faw.a(dng.nF).a(fdq.a(cv.a.a().a(jk.a($$1.b(dlj.y), $$1.b(dlj.z), $$1.b(dlj.A))))).a(10))
+               fax.a()
+                  .a(fbg.a(dnq.fF).a(17))
+                  .a(fbg.a(dao.qp).a(10).a(fcz.a(ffc.a(0.0F, 0.9F))))
+                  .a(fbg.a(dao.rt).a(10))
+                  .a(fbg.a(dao.sH).a(10))
+                  .a(fbg.a(dao.tt).a(10).a(fde.a(dch.a)))
+                  .a(fbg.a(dao.qg).a(5))
+                  .a(fbg.a(dao.sd).a(2).a(fcz.a(ffc.a(0.0F, 0.9F))))
+                  .a(fbg.a(dao.ph).a(10))
+                  .a(fbg.a(dao.qe).a(5))
+                  .a(fbg.a(dao.sn).a(1).a(fcy.a(fev.a(10.0F))))
+                  .a(fbg.a(dnq.gg).a(10))
+                  .a(fbg.a(dao.tm).a(10))
+                  .a(fbg.a(dnq.nF).a(fea.a(cv.a.a().a(jk.a($$1.b(dlt.y), $$1.b(dlt.z), $$1.b(dlt.A))))).a(10))
             )
       );
       $$0.accept(
-         faf.ao,
-         fao.b()
+         fap.ao,
+         fay.b()
             .a(
-               fan.a()
-                  .a(faw.a(dae.vW))
-                  .a(faw.a(dae.ou))
-                  .a(faw.a(dae.pj).a(fcp.a(fes.a(0.0F, 0.25F))).a(fbn.a(this.a, fel.a(30.0F))))
-                  .a(faw.a(dae.sd).a(fcp.a(fes.a(0.0F, 0.25F))).a(fbn.a(this.a, fel.a(30.0F))))
-                  .a(faw.a(dae.rF).a(fbn.a(this.a, fel.a(30.0F))))
-                  .a(faw.a(dae.xe))
+               fax.a()
+                  .a(fbg.a(dao.vW))
+                  .a(fbg.a(dao.ou))
+                  .a(fbg.a(dao.pj).a(fcz.a(ffc.a(0.0F, 0.25F))).a(fbx.a(this.a, fev.a(30.0F))))
+                  .a(fbg.a(dao.sd).a(fcz.a(ffc.a(0.0F, 0.25F))).a(fbx.a(this.a, fev.a(30.0F))))
+                  .a(fbg.a(dao.rF).a(fbx.a(this.a, fev.a(30.0F))))
+                  .a(fbg.a(dao.xe))
             )
       );
    }
 
-   public static fao.a a() {
-      return fao.b().a(fan.a().a(faw.a(dae.sh).a(60)).a(faw.a(dae.si).a(25)).a(faw.a(dae.sj).a(2)).a(faw.a(dae.sk).a(13)));
+   public static fay.a a() {
+      return fay.b().a(fax.a().a(fbg.a(dao.sh).a(60)).a(fbg.a(dao.si).a(25)).a(fbg.a(dao.sj).a(2)).a(fbg.a(dao.sk).a(13)));
    }
 
    public ji.a b() {

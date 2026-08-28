@@ -1,50 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxn extends dqk {
-   public static final MapCodec<dxn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dqk::c), t()).apply($$0, dxn::new));
+public class dxn extends dno implements dxk {
+   public static final MapCodec<dxn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxk.a.e.fieldOf("weathering_state").forGetter(dor::c), t()).apply($$0, dxn::new)
+   );
+   private final dxk.a e;
 
    @Override
    public MapCodec<dxn> a() {
-      return a;
+      return d;
    }
 
-   public dxn(jg<bvx> $$0, float $$1, ebf.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dxn(ddc $$0, ebf.d $$1) {
-      super($$0, $$1);
+   public dxn(dxk.a $$0, ebp.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected boolean b(ebg $$0, djd $$1, iw $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dng.em) || $$0.a(dng.en) || $$0.a(dng.eo);
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
-      fgm $$4 = this.a($$0, $$1, $$2, ffx.a());
-      ffs $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.d;
-      double $$7 = (double)$$2.w() + $$5.f;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(lz.ah, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
-         }
-      }
+   protected boolean f(ebq $$0) {
+      return dxk.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, bwv $$3, bxo $$4) {
-      if ($$1 instanceof aru $$5 && $$1.an() != buq.a && $$3 instanceof bxw $$6 && !$$6.a($$5, $$1.al().r())) {
-         $$6.a(this.b());
-      }
-   }
-
-   @Override
-   public bvz b() {
-      return new bvz(bwb.t, 40);
+   public dxk.a q() {
+      return this.e;
    }
 }

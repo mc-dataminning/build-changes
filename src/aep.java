@@ -1,28 +1,16 @@
-import javax.annotation.Nullable;
-
-public record aep(String b, @Nullable String c) implements zj<aby> {
-   public static final za<vy, aep> a = zj.a(aep::a, aep::new);
-
-   private aep(vy $$0) {
-      this($$0.p(), $$0.c(vy::p));
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vy::a);
-   }
+public record aep(float b, float c) implements zo<acf> {
+   public static final ze<vy, aep> a = ze.a(zc.l, aep::b, zc.l, aep::e, aep::new);
 
    @Override
-   public zl<aep> a() {
-      return agr.cp;
+   public zq<aep> a() {
+      return agy.aj;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public float e() {
       return this.c;
    }
 }

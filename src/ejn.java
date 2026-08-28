@@ -1,78 +1,104 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public abstract class ejn extends ekm<emt> {
-   public ejn(Codec<emt> $$0) {
+public class ejn extends ejv<ejm> {
+   public ejn(Codec<ejm> $$0) {
       super($$0);
    }
 
-   protected void a(dka $$0, azz $$1, iw $$2, emt $$3, int $$4, iw.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(jc.b, $$6);
-         this.a($$0, $$5, $$3.c.a($$1, $$2));
-      }
+   public boolean a(ejm $$0, bai $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   protected void a(dka $$0, iw.a $$1, ebg $$2) {
-      ebg $$3 = $$0.a_($$1);
-      if ($$3.l() || $$3.a(axg.cu)) {
-         this.a($$0, $$1, $$2);
-      }
+   public boolean a(ejq $$0, ejm $$1, edn $$2, Function<iw, jg<dlm>> $$3, bai $$4, ehb $$5, djo $$6, edm $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
    }
 
-   protected int a(azz $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
+   private void a(
+      ejq $$0,
+      ejm $$1,
+      edn $$2,
+      Function<iw, jg<dlm>> $$3,
+      long $$4,
+      ehb $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      edm $$15
+   ) {
+      bai $$16 = bai.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
 
-      return $$1;
-   }
-
-   protected boolean a(dka $$0, iw $$1, int $$2, iw.a $$3, emt $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.K_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
-         ebg $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(axg.bc)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     ebg $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.l() && !$$11.a(axg.Q)) {
-                        return false;
-                     }
-                  }
-               }
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(azz.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = azz.b($$11);
+         float $$24 = azz.a($$11);
+         $$6 += (double)(azz.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(azz.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
             }
 
-            return true;
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
          }
-      } else {
-         return false;
       }
    }
 
-   @Override
-   public boolean a(eko<emt> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      azz $$3 = $$0.d();
-      emt $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      iw.a $$6 = new iw.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
+   private float[] a(ejq $$0, ejm $$1, bai $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
+         }
+
+         $$4[$$6] = $$5 * $$5;
       }
+
+      return $$4;
    }
 
-   protected abstract int a(int var1, int var2, int var3, int var4);
+   private double a(ejm $$0, bai $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - azz.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)azz.b($$1, 0.75F, 1.0F);
+   }
 
-   protected abstract void a(dka var1, azz var2, iw var3, int var4, iw.a var5, emt var6);
+   private boolean a(ejq $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
+   }
 }

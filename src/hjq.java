@@ -1,23 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hjq() implements hjs<bxn> {
-   public static final Codec<bxn> a = bxn.c;
-   public static final hjs.a<hjq, bxn> b = hjs.a.a(MapCodec.unit(new hjq()), a);
-
+public interface hjq extends hju<Void> {
    @Nullable
-   public bxn a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3, czy $$4) {
-      return $$2 == null ? null : $$2.fy();
+   default Void a(dak $$0) {
+      return null;
    }
 
-   @Override
-   public hjs.a<hjq, bxn> a() {
-      return b;
+   default void a(@Nullable Void $$0, dai $$1, fld $$2, grn $$3, int $$4, int $$5, boolean $$6) {
+      this.a($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public Codec<bxn> b() {
-      return a;
-   }
+   void a(dai var1, fld var2, grn var3, int var4, int var5, boolean var6);
 }

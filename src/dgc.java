@@ -1,40 +1,46 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class dgc extends der {
+   public dgc(deo $$0) {
+      super($$0);
+   }
 
-public record dgc(List<dgd> f, dgd g, dgd h) implements dfx {
-   public static final MapCodec<dgc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dgd.a.listOf().fieldOf("ingredients").forGetter(dgc::b),
-               dgd.a.fieldOf("result").forGetter(dgc::d),
-               dgd.a.fieldOf("crafting_station").forGetter(dgc::e)
-            )
-            .apply($$0, dgc::new)
-   );
-   public static final za<wn, dgc> b = za.a(dgd.b.a(yy.a()), dgc::b, dgd.b, dgc::d, dgd.b, dgc::e, dgc::new);
-   public static final dfx.a<dgc> c = new dfx.a<>(a, b);
+   public boolean a(dep $$0, dkj $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
+         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
+            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
+               dak $$4 = $$0.a($$3, $$2);
+               if ($$4.f()) {
+                  return false;
+               }
 
-   @Override
-   public dfx.a<dgc> a() {
-      return c;
+               if ($$3 == 1 && $$2 == 1) {
+                  if (!$$4.a(dao.wC)) {
+                     return false;
+                  }
+               } else if (!$$4.a(dao.pk)) {
+                  return false;
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public dak a(dep $$0, ji.a $$1) {
+      dak $$2 = $$0.a(1, 1);
+      if (!$$2.a(dao.wC)) {
+         return dak.l;
+      } else {
+         dak $$3 = new dak(dao.wB, 8);
+         $$3.b(kl.R, $$2.a(kl.R));
+         return $$3;
+      }
    }
 
    @Override
-   public boolean a(cvj $$0) {
-      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dfx.super.a($$0);
-   }
-
-   public List<dgd> b() {
-      return this.f;
-   }
-
-   @Override
-   public dgd d() {
-      return this.g;
-   }
-
-   @Override
-   public dgd e() {
-      return this.h;
+   public dfl<dgc> a() {
+      return dfl.j;
    }
 }

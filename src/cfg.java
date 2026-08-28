@@ -1,42 +1,37 @@
-import java.util.EnumSet;
+public class cfg extends cfb {
+   private final ckx a;
+   private boolean b;
 
-public class cfg extends ces {
-   private final bye a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-
-   public cfg(bye $$0, double $$1) {
+   public cfg(ckx $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(ces.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.ge()) {
+      if (!(this.a.e() instanceof asc $$0)) {
          return false;
       } else {
-         ffs $$0 = cip.a(this.a, 16, 7, ffs.c(this.a.gf()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
+         boolean $$1 = !$$0.aa_() && !$$0.gk().b && !$$0.bi() && !$$0.av;
+         return !this.a.gu() && $$1 && this.a.gK();
       }
    }
 
    @Override
-   public boolean c() {
-      return !this.a.O().k();
+   public boolean V_() {
+      return !this.b;
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.b = false;
+   }
+
+   @Override
+   public void a() {
+      if (!this.b && !this.a.x() && !this.a.T_()) {
+         if (this.a.e() instanceof asc $$0 && this.a.cR().c($$0.cR())) {
+            this.b = this.a.b($$0);
+         }
+      }
    }
 }

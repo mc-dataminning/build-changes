@@ -1,67 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cfy extends ces {
-   private static final int a = 10;
-   private final bye b;
-   private final int c;
-   @Nullable
-   private iw d;
+public class cfy extends cfb {
+   public static final int a = 120;
+   protected final byn b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cfy(bye $$0, int $$1) {
+   public cfy(byn $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public cfy(byn $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cfy(byn $$0, double $$1, int $$2, boolean $$3) {
       this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(ces.a.a));
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cfb.a.a));
    }
 
    @Override
    public boolean b() {
       if (this.b.cX()) {
          return false;
-      } else if (this.b.dV().V()) {
-         return false;
-      } else if (this.b.dY().a(this.c) != 0) {
-         return false;
       } else {
-         aru $$0 = (aru)this.b.dV();
-         iw $$1 = this.b.dv();
-         if (!$$0.a($$1, 6)) {
+         if (!this.h) {
+            if (this.i && this.b.ew() >= 100) {
+               return false;
+            }
+
+            if (this.b.dY().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         fgc $$0 = this.h();
+         if ($$0 == null) {
             return false;
          } else {
-            ffs $$2 = cis.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jz.a($$1x))));
-            this.d = $$2 == null ? null : iw.a((jq)$$2);
-            return this.d != null;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
          }
       }
+   }
+
+   @Nullable
+   protected fgc h() {
+      return ciy.a(this.b, 10, 7);
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+      return !this.b.O().k() && !this.b.cX();
    }
 
    @Override
-   public void a() {
-      if (this.d != null) {
-         chg $$0 = this.b.O();
-         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
-            ffs $$1 = ffs.c(this.d);
-            ffs $$2 = this.b.dt();
-            ffs $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            ffs $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            iw $$5 = iw.a((jq)$$4);
-            $$5 = this.b.dV().a(ehf.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
-         }
-      }
+   public void d() {
+      this.b.O().a(this.c, this.d, this.e, this.f);
    }
 
-   private void h() {
-      azz $$0 = this.b.dY();
-      iw $$1 = this.b.dV().a(ehf.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      this.b.O().m();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

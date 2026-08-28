@@ -1,24 +1,21 @@
-public record agj(int b) implements zj<aby> {
-   public static final za<vy, agj> a = zj.a(agj::a, agj::new);
+public record agj(xg b, boolean c) implements zo<acf> {
+   public static final ze<wp, agj> a = ze.a(xi.d, agj::b, zc.b, agj::e, agj::new);
 
-   private agj(vy $$0) {
-      this($$0.l());
+   @Override
+   public zq<agj> a() {
+      return agy.aZ;
    }
 
-   public static agj a(bvc $$0) {
-      return new agj($$0.k());
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
+   public void a(acf $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zl<agj> a() {
-      return agr.cr;
+   public boolean c() {
+      return true;
    }
 
-   public void a(aby $$0) {
-      $$0.a(this);
+   public boolean e() {
+      return this.c;
    }
 }

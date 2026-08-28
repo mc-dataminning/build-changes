@@ -1,828 +1,327 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
 public class ehw {
-   public static final ehw.f a = a(0, false, eqx.b);
-   public static final ehw.f b = a(0, true, eqx.b);
-   public static final ehw.f c = a(0, true, 6, eqx.b);
-   public static final ehw.f d = a(0, true, 30, eqx.b);
-   public static final ehw.f e = a(0, false, eqx.a);
-   public static final ehw.f f = a(0, true, eqx.a);
+   public static final float a = -0.50375F;
+   private static final float n = 0.08F;
+   private static final double o = 1.5;
+   private static final double p = 1.5;
+   private static final double q = 1.5625;
+   private static final double r = -0.703125;
+   public static final int b = 64;
+   public static final long c = 4096L;
+   private static final ehi s = ehj.a(10.0);
+   private static final ehi t = ehj.a();
+   private static final alq<ehi> u = a("zero");
+   private static final alq<ehi> v = a("y");
+   private static final alq<ehi> w = a("shift_x");
+   private static final alq<ehi> x = a("shift_z");
+   private static final alq<ehi> y = a("overworld/base_3d_noise");
+   private static final alq<ehi> z = a("nether/base_3d_noise");
+   private static final alq<ehi> A = a("end/base_3d_noise");
+   public static final alq<ehi> d = a("overworld/continents");
+   public static final alq<ehi> e = a("overworld/erosion");
+   public static final alq<ehi> f = a("overworld/ridges");
+   public static final alq<ehi> g = a("overworld/ridges_folded");
+   public static final alq<ehi> h = a("overworld/offset");
+   public static final alq<ehi> i = a("overworld/factor");
+   public static final alq<ehi> j = a("overworld/jaggedness");
+   public static final alq<ehi> k = a("overworld/depth");
+   private static final alq<ehi> B = a("overworld/sloped_cheese");
+   public static final alq<ehi> l = a("overworld_large_biomes/continents");
+   public static final alq<ehi> m = a("overworld_large_biomes/erosion");
+   private static final alq<ehi> C = a("overworld_large_biomes/offset");
+   private static final alq<ehi> D = a("overworld_large_biomes/factor");
+   private static final alq<ehi> E = a("overworld_large_biomes/jaggedness");
+   private static final alq<ehi> F = a("overworld_large_biomes/depth");
+   private static final alq<ehi> G = a("overworld_large_biomes/sloped_cheese");
+   private static final alq<ehi> H = a("overworld_amplified/offset");
+   private static final alq<ehi> I = a("overworld_amplified/factor");
+   private static final alq<ehi> J = a("overworld_amplified/jaggedness");
+   private static final alq<ehi> K = a("overworld_amplified/depth");
+   private static final alq<ehi> L = a("overworld_amplified/sloped_cheese");
+   private static final alq<ehi> M = a("end/sloped_cheese");
+   private static final alq<ehi> N = a("overworld/caves/spaghetti_roughness_function");
+   private static final alq<ehi> O = a("overworld/caves/entrances");
+   private static final alq<ehi> P = a("overworld/caves/noodle");
+   private static final alq<ehi> Q = a("overworld/caves/pillars");
+   private static final alq<ehi> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
+   private static final alq<ehi> S = a("overworld/caves/spaghetti_2d");
 
-   public static ehw.f a(int $$0, boolean $$1, eqx $$2) {
-      return new ehw.t($$0, $$1, 0, $$2);
+   private static alq<ehi> a(String $$0) {
+      return alq.a(mi.aO, alr.b($$0));
    }
 
-   public static ehw.f a(int $$0, boolean $$1, int $$2, eqx $$3) {
-      return new ehw.t($$0, $$1, $$2, $$3);
+   public static jg<? extends ehi> a(qi<ehi> $$0) {
+      jh<exd.a> $$1 = $$0.a(mi.aY);
+      jh<ehi> $$2 = $$0.a(mi.aO);
+      $$0.a(u, ehj.a());
+      int $$3 = efn.e * 2;
+      int $$4 = efn.d * 2;
+      $$0.a(v, ehj.a($$3, $$4, (double)$$3, (double)$$4));
+      ehi $$5 = a($$0, w, ehj.b(ehj.c(ehj.b($$1.b(ehy.j)))));
+      ehi $$6 = a($$0, x, ehj.b(ehj.c(ehj.c($$1.b(ehy.j)))));
+      $$0.a(y, exa.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, exa.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, exa.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      jg<ehi> $$7 = $$0.a(d, ehj.b(ehj.a($$5, $$6, 0.25, $$1.b(ehy.c))));
+      jg<ehi> $$8 = $$0.a(e, ehj.b(ehj.a($$5, $$6, 0.25, $$1.b(ehy.d))));
+      ehi $$9 = a($$0, f, ehj.b(ehj.a($$5, $$6, 0.25, $$1.b(ehy.i))));
+      $$0.a(g, a($$9));
+      ehi $$10 = ehj.b($$1.b(ehy.M), 1500.0, 0.0);
+      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
+      jg<ehi> $$11 = $$0.a(l, ehj.b(ehj.a($$5, $$6, 0.25, $$1.b(ehy.g))));
+      jg<ehi> $$12 = $$0.a(m, ehj.b(ehj.a($$5, $$6, 0.25, $$1.b(ehy.h))));
+      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
+      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
+      $$0.a(M, ehj.a(ehj.a(0L), a($$2, A)));
+      $$0.a(N, b($$1));
+      $$0.a(R, ehj.d(ehj.a($$1.b(ehy.u), 2.0, 1.0, -0.6, -1.3)));
+      $$0.a(S, f($$2, $$1));
+      $$0.a(O, d($$2, $$1));
+      $$0.a(P, e($$2, $$1));
+      return $$0.a(Q, c($$1));
    }
 
-   public static ehw.f a(ehw.f $$0) {
-      return new ehw.n($$0);
+   private static void a(
+      qi<ehi> $$0, jh<ehi> $$1, ehi $$2, jg<ehi> $$3, jg<ehi> $$4, alq<ehi> $$5, alq<ehi> $$6, alq<ehi> $$7, alq<ehi> $$8, alq<ehi> $$9, boolean $$10
+   ) {
+      ehj.w.a $$11 = new ehj.w.a($$3);
+      ehj.w.a $$12 = new ehj.w.a($$4);
+      ehj.w.a $$13 = new ehj.w.a($$1.b(f));
+      ehj.w.a $$14 = new ehj.w.a($$1.b(g));
+      ehi $$15 = a($$0, $$5, a(ehj.a(ehj.a(-0.50375F), ehj.a(qx.a($$11, $$12, $$14, $$10))), ehj.c()));
+      ehi $$16 = a($$0, $$6, a(ehj.a(qx.a($$11, $$12, $$13, $$14, $$10)), s));
+      ehi $$17 = a($$0, $$8, ehj.a(ehj.a(-64, 320, 1.5, -1.5), $$15));
+      ehi $$18 = a($$0, $$7, a(ehj.a(qx.b($$11, $$12, $$13, $$14, $$10)), t));
+      ehi $$19 = ehj.b($$18, $$2.g());
+      ehi $$20 = b($$16, ehj.a($$17, $$19));
+      $$0.a($$9, ehj.a($$20, a($$1, y)));
    }
 
-   public static ehw.f a(ehz $$0, int $$1) {
-      return new ehw.aa($$0, $$1, false);
+   private static ehi a(qi<ehi> $$0, alq<ehi> $$1, ehi $$2) {
+      return new ehj.j($$0.a($$1, $$2));
    }
 
-   public static ehw.f b(ehz $$0, int $$1) {
-      return new ehw.aa($$0, $$1, true);
+   private static ehi a(jh<ehi> $$0, alq<ehi> $$1) {
+      return new ehj.j($$0.b($$1));
    }
 
-   public static ehw.f a(int $$0, int $$1) {
-      return new ehw.z($$0, $$1, false);
+   private static ehi a(ehi $$0) {
+      return ehj.b(ehj.a(ehj.a($$0.d(), ehj.a(-0.6666666666666666)).d(), ehj.a(-0.3333333333333333)), ehj.a(-3.0));
    }
 
-   public static ehw.f b(int $$0, int $$1) {
-      return new ehw.z($$0, $$1, true);
+   public static float a(float $$0) {
+      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
    }
 
-   @SafeVarargs
-   public static ehw.f a(alj<dlc>... $$0) {
-      return a(List.of($$0));
+   private static ehi b(jh<exd.a> $$0) {
+      ehi $$1 = ehj.a($$0.b(ehy.z));
+      ehi $$2 = ehj.a($$0.b(ehy.A), 0.0, -0.1);
+      return ehj.d(ehj.b($$2, ehj.a($$1.d(), ehj.a(-0.4))));
    }
 
-   private static ehw.c a(List<alj<dlc>> $$0) {
-      return new ehw.c($$0);
+   private static ehi d(jh<ehi> $$0, jh<exd.a> $$1) {
+      ehi $$2 = ehj.d(ehj.b($$1.b(ehy.x), 2.0, 1.0));
+      ehi $$3 = ehj.a($$1.b(ehy.y), -0.065, -0.088);
+      ehi $$4 = ehj.a($$2, $$1.b(ehy.v), ehj.z.a.a);
+      ehi $$5 = ehj.a($$2, $$1.b(ehy.w), ehj.z.a.a);
+      ehi $$6 = ehj.a(ehj.d($$4, $$5), $$3).a(-1.0, 1.0);
+      ehi $$7 = a($$0, N);
+      ehi $$8 = ehj.b($$1.b(ehy.B), 0.75, 0.5);
+      ehi $$9 = ehj.a(ehj.a($$8, ehj.a(0.37)), ehj.a(-10, 30, 0.3, 0.0));
+      return ehj.d(ehj.c($$9, ehj.a($$7, $$6)));
    }
 
-   public static ehw.f a(alj<ewt.a> $$0, double $$1) {
-      return a($$0, $$1, Double.MAX_VALUE);
+   private static ehi e(jh<ehi> $$0, jh<exd.a> $$1) {
+      ehi $$2 = a($$0, v);
+      int $$3 = -64;
+      int $$4 = -60;
+      int $$5 = 320;
+      ehi $$6 = a($$2, ehj.b($$1.b(ehy.I), 1.0, 1.0), -60, 320, -1);
+      ehi $$7 = a($$2, ehj.a($$1.b(ehy.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
+      double $$8 = 2.6666666666666665;
+      ehi $$9 = a($$2, ehj.b($$1.b(ehy.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      ehi $$10 = a($$2, ehj.b($$1.b(ehy.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      ehi $$11 = ehj.b(ehj.a(1.5), ehj.d($$9.d(), $$10.d()));
+      return ehj.a($$6, -1000000.0, 0.0, ehj.a(64.0), ehj.a($$7, $$11));
    }
 
-   public static ehw.f a(alj<ewt.a> $$0, double $$1, double $$2) {
-      return new ehw.l($$0, $$1, $$2);
+   private static ehi c(jh<exd.a> $$0) {
+      double $$1 = 25.0;
+      double $$2 = 0.3;
+      ehi $$3 = ehj.b($$0.b(ehy.o), 25.0, 0.3);
+      ehi $$4 = ehj.a($$0.b(ehy.p), 0.0, -2.0);
+      ehi $$5 = ehj.a($$0.b(ehy.q), 0.0, 1.1);
+      ehi $$6 = ehj.a(ehj.b($$3, ehj.a(2.0)), $$4);
+      return ehj.d(ehj.b($$6, $$5.f()));
    }
 
-   public static ehw.f a(String $$0, ehz $$1, ehz $$2) {
-      return new ehw.y(alk.a($$0), $$1, $$2);
+   private static ehi f(jh<ehi> $$0, jh<exd.a> $$1) {
+      ehi $$2 = ehj.b($$1.b(ehy.t), 2.0, 1.0);
+      ehi $$3 = ehj.a($$2, $$1.b(ehy.r), ehj.z.a.b);
+      ehi $$4 = ehj.a($$1.b(ehy.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
+      ehi $$5 = a($$0, R);
+      ehi $$6 = ehj.a($$4, ehj.a(-64, 320, 8.0, -40.0)).d();
+      ehi $$7 = ehj.a($$6, $$5).f();
+      double $$8 = 0.083;
+      ehi $$9 = ehj.a($$3, ehj.b(ehj.a(0.083), $$5));
+      return ehj.d($$9, $$7).a(-1.0, 1.0);
    }
 
-   public static ehw.f a() {
-      return ehw.s.a;
+   private static ehi a(jh<ehi> $$0, jh<exd.a> $$1, ehi $$2) {
+      ehi $$3 = a($$0, S);
+      ehi $$4 = a($$0, N);
+      ehi $$5 = ehj.a($$1.b(ehy.C), 8.0);
+      ehi $$6 = ehj.b(ehj.a(4.0), $$5.e());
+      ehi $$7 = ehj.a($$1.b(ehy.D), 0.6666666666666666);
+      ehi $$8 = ehj.a(ehj.a(ehj.a(0.27), $$7).a(-1.0, 1.0), ehj.a(ehj.a(1.5), ehj.b(ehj.a(-0.64), $$2)).a(0.0, 0.5));
+      ehi $$9 = ehj.a($$6, $$8);
+      ehi $$10 = ehj.c(ehj.c($$9, a($$0, O)), ehj.a($$3, $$4));
+      ehi $$11 = a($$0, Q);
+      ehi $$12 = ehj.a($$11, -1000000.0, 0.03, ehj.a(-1000000.0), $$11);
+      return ehj.d($$10, $$12);
    }
 
-   public static ehw.f b() {
-      return ehw.h.a;
+   private static ehi b(ehi $$0) {
+      ehi $$1 = ehj.f($$0);
+      return ehj.b(ehj.a($$1), ehj.a(0.64)).i();
    }
 
-   public static ehw.f c() {
-      return ehw.a.a;
-   }
-
-   public static ehw.f d() {
-      return ehw.v.a;
-   }
-
-   public static ehw.o a(ehw.f $$0, ehw.o $$1) {
-      return new ehw.x($$0, $$1);
-   }
-
-   public static ehw.o a(ehw.o... $$0) {
-      if ($$0.length == 0) {
-         throw new IllegalArgumentException("Need at least 1 rule for a sequence");
-      } else {
-         return new ehw.q(Arrays.asList($$0));
-      }
-   }
-
-   public static ehw.o a(ebg $$0) {
-      return new ehw.d($$0);
-   }
-
-   public static ehw.o e() {
-      return ehw.b.a;
-   }
-
-   static <A> MapCodec<? extends A> a(jt<MapCodec<? extends A>> $$0, String $$1, azj<? extends A> $$2) {
-      return jt.a($$0, $$1, $$2.a());
-   }
-
-   static enum a implements ehw.f {
-      a;
-
-      static final azj<ehw.a> c = azj.a(MapCodec.unit(a));
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return c;
-      }
-
-      public ehw.e a(ehw.g $$0) {
-         return $$0.i;
-      }
-   }
-
-   static record aa(ehz a, int c, boolean d) implements ehw.f {
-      static final azj<ehw.aa> e = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ehz.a.fieldOf("anchor").forGetter(ehw.aa::b),
-                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(ehw.aa::c),
-                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(ehw.aa::d)
-                  )
-                  .apply($$0, ehw.aa::new)
-         )
+   protected static ehv a(jh<ehi> $$0, jh<exd.a> $$1, boolean $$2, boolean $$3) {
+      ehi $$4 = ehj.a($$1.b(ehy.k), 0.5);
+      ehi $$5 = ehj.a($$1.b(ehy.l), 0.67);
+      ehi $$6 = ehj.a($$1.b(ehy.n), 0.7142857142857143);
+      ehi $$7 = ehj.a($$1.b(ehy.m));
+      ehi $$8 = a($$0, w);
+      ehi $$9 = a($$0, x);
+      ehi $$10 = ehj.a($$8, $$9, 0.25, $$1.b($$2 ? ehy.e : ehy.a));
+      ehi $$11 = ehj.a($$8, $$9, 0.25, $$1.b($$2 ? ehy.f : ehy.b));
+      ehi $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
+      ehi $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
+      ehi $$14 = b(ehj.c($$12), $$13);
+      ehi $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
+      ehi $$16 = ehj.c($$15, ehj.b(ehj.a(5.0), a($$0, O)));
+      ehi $$17 = ehj.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
+      ehi $$18 = ehj.c(b(a($$3, $$17)), a($$0, P));
+      ehi $$19 = a($$0, v);
+      int $$20 = Stream.of(ehz.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-efn.e * 2);
+      int $$21 = Stream.of(ehz.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-efn.e * 2);
+      ehi $$22 = a($$19, ehj.b($$1.b(ehy.E), 1.5, 1.5), $$20, $$21, 0);
+      float $$23 = 4.0F;
+      ehi $$24 = a($$19, ehj.b($$1.b(ehy.F), 4.0, 4.0), $$20, $$21, 0).d();
+      ehi $$25 = a($$19, ehj.b($$1.b(ehy.G), 4.0, 4.0), $$20, $$21, 0).d();
+      ehi $$26 = ehj.a(ehj.a(-0.08F), ehj.d($$24, $$25));
+      ehi $$27 = ehj.a($$1.b(ehy.H));
+      return new ehv(
+         $$4,
+         $$5,
+         $$6,
+         $$7,
+         $$10,
+         $$11,
+         a($$0, $$2 ? l : d),
+         a($$0, $$2 ? m : e),
+         $$13,
+         a($$0, f),
+         a($$3, ehj.a($$14, ehj.a(-0.703125)).a(-64.0, 64.0)),
+         $$18,
+         $$22,
+         $$26,
+         $$27
       );
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return e;
-      }
-
-      public ehw.e a(final ehw.g $$0) {
-         class a extends ehw.k {
-            a() {
-               super($$0);
-            }
-
-            @Override
-            protected boolean a() {
-               return this.c.B + (aa.this.d ? this.c.E : 0) >= aa.this.a.a(this.c.n) + this.c.t * aa.this.c;
-            }
-         }
-
-         return new a();
-      }
-
-      public ehz b() {
-         return this.a;
-      }
    }
 
-   static enum b implements ehw.o {
-      a;
-
-      static final azj<ehw.b> c = azj.a(MapCodec.unit(a));
-
-      @Override
-      public azj<? extends ehw.o> a() {
-         return c;
-      }
-
-      public ehw.u a(ehw.g $$0) {
-         return $$0.e::a;
-      }
+   private static ehv b(jh<ehi> $$0, jh<exd.a> $$1, ehi $$2) {
+      ehi $$3 = a($$0, w);
+      ehi $$4 = a($$0, x);
+      ehi $$5 = ehj.a($$3, $$4, 0.25, $$1.b(ehy.a));
+      ehi $$6 = ehj.a($$3, $$4, 0.25, $$1.b(ehy.b));
+      ehi $$7 = b($$2);
+      return new ehv(ehj.a(), ehj.a(), ehj.a(), ehj.a(), $$5, $$6, ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), $$7, ehj.a(), ehj.a(), ehj.a());
    }
 
-   static final class c implements ehw.f {
-      static final azj<ehw.c> a = azj.a(alj.a(mi.aG).listOf().fieldOf("biome_is").xmap(ehw::a, $$0 -> $$0.c));
-      private final List<alj<dlc>> c;
-      final Predicate<alj<dlc>> d;
+   private static ehi a(boolean $$0, ehi $$1) {
+      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
+   }
 
-      c(List<alj<dlc>> $$0) {
-         this.c = $$0;
-         this.d = Set.copyOf($$0)::contains;
-      }
+   private static ehi a(jh<ehi> $$0, int $$1, int $$2) {
+      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
+   }
 
-      @Override
-      public azj<? extends ehw.f> a() {
-         return a;
-      }
+   private static ehi a(ehi $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
+   }
 
-      public ehw.e a(final ehw.g $$0) {
-         class a extends ehw.k {
-            a() {
-               super($$0);
-            }
+   protected static ehv a(jh<ehi> $$0, jh<exd.a> $$1) {
+      return b($$0, $$1, a($$0, 0, 128));
+   }
 
-            @Override
-            protected boolean a() {
-               return this.c.A.get().a(c.this.d);
-            }
-         }
+   protected static ehv b(jh<ehi> $$0, jh<exd.a> $$1) {
+      return b($$0, $$1, a($$0, -64, 192));
+   }
 
-         return new a();
-      }
+   protected static ehv c(jh<ehi> $$0, jh<exd.a> $$1) {
+      return b($$0, $$1, a(a($$0, A), 0, 256));
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
+   private static ehi c(ehi $$0) {
+      return a($$0, 0, 128);
+   }
+
+   protected static ehv a(jh<ehi> $$0) {
+      ehi $$1 = ehj.c(ehj.a(0L));
+      ehi $$2 = b(c(a($$0, M)));
+      return new ehv(
+         ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), $$1, ehj.a(), ehj.a(), c(ehj.a($$1, ehj.a(-0.703125))), $$2, ehj.a(), ehj.a(), ehj.a()
+      );
+   }
+
+   protected static ehv a() {
+      return new ehv(ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a(), ehj.a());
+   }
+
+   private static ehi a(ehi $$0, ehi $$1) {
+      ehi $$2 = ehj.a(ehj.b(), $$1, $$0);
+      return ehj.b(ehj.c($$2));
+   }
+
+   private static ehi b(ehi $$0, ehi $$1) {
+      ehi $$2 = ehj.b($$1, $$0);
+      return ehj.b(ehj.a(4.0), $$2.h());
+   }
+
+   private static ehi a(ehi $$0, ehi $$1, int $$2, int $$3, int $$4) {
+      return ehj.a(ehj.a($$0, (double)$$2, (double)($$3 + 1), $$1, ehj.a((double)$$4)));
+   }
+
+   private static ehi a(ehi $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
+      ehi $$10 = ehj.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
+      ehi $$9 = ehj.a($$10, $$5, $$0);
+      ehi $$11 = ehj.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
+      return ehj.a($$11, $$8, $$9);
+   }
+
+   protected static final class a {
+      protected static double a(double $$0) {
+         if ($$0 < -0.75) {
+            return 0.5;
+         } else if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.5) {
+            return 1.0;
          } else {
-            return $$0 instanceof ehw.c $$1 ? this.c.equals($$1.c) : false;
+            return $$0 < 0.75 ? 2.0 : 3.0;
          }
       }
 
-      @Override
-      public int hashCode() {
-         return this.c.hashCode();
-      }
-
-      @Override
-      public String toString() {
-         return "BiomeConditionSource[biomes=" + this.c + "]";
-      }
-   }
-
-   static record d(ebg a, ehw.r c) implements ehw.o {
-      static final azj<ehw.d> d = azj.a(ebg.a.xmap(ehw.d::new, ehw.d::b).fieldOf("result_state"));
-
-      d(ebg $$0) {
-         this($$0, new ehw.r($$0));
-      }
-
-      @Override
-      public azj<? extends ehw.o> a() {
-         return d;
-      }
-
-      public ehw.u a(ehw.g $$0) {
-         return this.c;
-      }
-
-      public ebg b() {
-         return this.a;
-      }
-   }
-
-   interface e {
-      boolean b();
-   }
-
-   public interface f extends Function<ehw.g, ehw.e> {
-      Codec<ehw.f> b = mh.ab.q().dispatch($$0 -> $$0.a().a(), Function.identity());
-
-      static MapCodec<? extends ehw.f> a(jt<MapCodec<? extends ehw.f>> $$0) {
-         ehw.a($$0, "biome", ehw.c.a);
-         ehw.a($$0, "noise_threshold", ehw.l.e);
-         ehw.a($$0, "vertical_gradient", ehw.y.e);
-         ehw.a($$0, "y_above", ehw.aa.e);
-         ehw.a($$0, "water", ehw.z.e);
-         ehw.a($$0, "temperature", ehw.v.c);
-         ehw.a($$0, "steep", ehw.s.c);
-         ehw.a($$0, "not", ehw.n.c);
-         ehw.a($$0, "hole", ehw.h.c);
-         ehw.a($$0, "above_preliminary_surface", ehw.a.c);
-         return ehw.a($$0, "stone_depth", ehw.t.f);
-      }
-
-      azj<? extends ehw.f> a();
-   }
-
-   protected static final class g {
-      private static final int a = 8;
-      private static final int b = 4;
-      private static final int c = 16;
-      private static final int d = 15;
-      final ehx e;
-      final ehw.e f = new ehw.g.d(this);
-      final ehw.e g = new ehw.g.c(this);
-      final ehw.e h = new ehw.g.b(this);
-      final ehw.e i = new ehw.g.a();
-      final eht j;
-      final edd k;
-      private final ehj l;
-      private final Function<iw, jg<dlc>> m;
-      final eic n;
-      private long o = Long.MAX_VALUE;
-      private final int[] p = new int[4];
-      long q = -9223372036854775807L;
-      int r;
-      int s;
-      int t;
-      private long u = this.q - 1L;
-      private double v;
-      private long w = this.q - 1L;
-      private int x;
-      long y = -9223372036854775807L;
-      final iw.a z = new iw.a();
-      Supplier<jg<dlc>> A;
-      int B;
-      int C;
-      int D;
-      int E;
-
-      protected g(ehx $$0, eht $$1, edd $$2, ehj $$3, Function<iw, jg<dlc>> $$4, jt<dlc> $$5, eic $$6) {
-         this.e = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-         this.m = $$4;
-         this.n = $$6;
-      }
-
-      protected void a(int $$0, int $$1) {
-         this.q++;
-         this.y++;
-         this.r = $$0;
-         this.s = $$1;
-         this.t = this.e.a($$0, $$1);
-      }
-
-      protected void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-         this.y++;
-         this.A = Suppliers.memoize(() -> this.m.apply(this.z.d($$3, $$4, $$5)));
-         this.B = $$4;
-         this.C = $$2;
-         this.D = $$1;
-         this.E = $$0;
-      }
-
-      protected double a() {
-         if (this.u != this.q) {
-            this.u = this.q;
-            this.v = this.e.b(this.r, this.s);
-         }
-
-         return this.v;
-      }
-
-      public int b() {
-         return this.e.a();
-      }
-
-      private static int a(int $$0) {
-         return $$0 >> 4;
-      }
-
-      private static int b(int $$0) {
-         return $$0 << 4;
-      }
-
-      protected int c() {
-         if (this.w != this.q) {
-            this.w = this.q;
-            int $$0 = a(this.r);
-            int $$1 = a(this.s);
-            long $$2 = dje.c($$0, $$1);
-            if (this.o != $$2) {
-               this.o = $$2;
-               this.p[0] = this.l.a(b($$0), b($$1));
-               this.p[1] = this.l.a(b($$0 + 1), b($$1));
-               this.p[2] = this.l.a(b($$0), b($$1 + 1));
-               this.p[3] = this.l.a(b($$0 + 1), b($$1 + 1));
-            }
-
-            int $$3 = azq.a(
-               azq.a(
-                  (double)((float)(this.r & 15) / 16.0F),
-                  (double)((float)(this.s & 15) / 16.0F),
-                  (double)this.p[0],
-                  (double)this.p[1],
-                  (double)this.p[2],
-                  (double)this.p[3]
-               )
-            );
-            this.x = $$3 + this.t - 8;
-         }
-
-         return this.x;
-      }
-
-      final class a implements ehw.e {
-         @Override
-         public boolean b() {
-            return g.this.B >= g.this.c();
-         }
-      }
-
-      static final class b extends ehw.j {
-         b(ehw.g $$0) {
-            super($$0);
-         }
-
-         @Override
-         protected boolean a() {
-            return this.c.t <= 0;
-         }
-      }
-
-      static class c extends ehw.j {
-         c(ehw.g $$0) {
-            super($$0);
-         }
-
-         @Override
-         protected boolean a() {
-            int $$0 = this.c.r & 15;
-            int $$1 = this.c.s & 15;
-            int $$2 = Math.max($$1 - 1, 0);
-            int $$3 = Math.min($$1 + 1, 15);
-            edd $$4 = this.c.k;
-            int $$5 = $$4.a(ehf.a.a, $$0, $$2);
-            int $$6 = $$4.a(ehf.a.a, $$0, $$3);
-            if ($$6 >= $$5 + 4) {
-               return true;
-            } else {
-               int $$7 = Math.max($$0 - 1, 0);
-               int $$8 = Math.min($$0 + 1, 15);
-               int $$9 = $$4.a(ehf.a.a, $$7, $$1);
-               int $$10 = $$4.a(ehf.a.a, $$8, $$1);
-               return $$9 >= $$10 + 4;
-            }
-         }
-      }
-
-      static class d extends ehw.k {
-         d(ehw.g $$0) {
-            super($$0);
-         }
-
-         @Override
-         protected boolean a() {
-            return this.c.A.get().a().b(this.c.z.d(this.c.r, this.c.B, this.c.s), this.c.b());
-         }
-      }
-   }
-
-   static enum h implements ehw.f {
-      a;
-
-      static final azj<ehw.h> c = azj.a(MapCodec.unit(a));
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return c;
-      }
-
-      public ehw.e a(ehw.g $$0) {
-         return $$0.h;
-      }
-   }
-
-   abstract static class i implements ehw.e {
-      protected final ehw.g c;
-      private long a;
-      @Nullable
-      Boolean d;
-
-      protected i(ehw.g $$0) {
-         this.c = $$0;
-         this.a = this.c() - 1L;
-      }
-
-      @Override
-      public boolean b() {
-         long $$0 = this.c();
-         if ($$0 == this.a) {
-            if (this.d == null) {
-               throw new IllegalStateException("Update triggered but the result is null");
-            } else {
-               return this.d;
-            }
+      protected static double b(double $$0) {
+         if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.0) {
+            return 1.0;
          } else {
-            this.a = $$0;
-            this.d = this.a();
-            return this.d;
+            return $$0 < 0.5 ? 1.5 : 2.0;
          }
-      }
-
-      protected abstract long c();
-
-      protected abstract boolean a();
-   }
-
-   abstract static class j extends ehw.i {
-      protected j(ehw.g $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected long c() {
-         return this.c.q;
-      }
-   }
-
-   abstract static class k extends ehw.i {
-      protected k(ehw.g $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected long c() {
-         return this.c.y;
-      }
-   }
-
-   static record l(alj<ewt.a> a, double c, double d) implements ehw.f {
-      static final azj<ehw.l> e = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     alj.a(mi.aY).fieldOf("noise").forGetter(ehw.l::b),
-                     Codec.DOUBLE.fieldOf("min_threshold").forGetter(ehw.l::c),
-                     Codec.DOUBLE.fieldOf("max_threshold").forGetter(ehw.l::d)
-                  )
-                  .apply($$0, ehw.l::new)
-         )
-      );
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return e;
-      }
-
-      public ehw.e a(final ehw.g $$0) {
-         final ewt $$1 = $$0.j.a(this.a);
-
-         class a extends ehw.j {
-            a() {
-               super($$0);
-            }
-
-            @Override
-            protected boolean a() {
-               double $$0 = $$1.a((double)this.c.r, 0.0, (double)this.c.s);
-               return $$0 >= l.this.c && $$0 <= l.this.d;
-            }
-         }
-
-         return new a();
-      }
-
-      public alj<ewt.a> b() {
-         return this.a;
-      }
-   }
-
-   static record m(ehw.e a) implements ehw.e {
-      @Override
-      public boolean b() {
-         return !this.a.b();
-      }
-   }
-
-   static record n(ehw.f a) implements ehw.f {
-      static final azj<ehw.n> c = azj.a(ehw.f.b.xmap(ehw.n::new, ehw.n::b).fieldOf("invert"));
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return c;
-      }
-
-      public ehw.e a(ehw.g $$0) {
-         return new ehw.m(this.a.apply($$0));
-      }
-
-      public ehw.f b() {
-         return this.a;
-      }
-   }
-
-   public interface o extends Function<ehw.g, ehw.u> {
-      Codec<ehw.o> b = mh.ac.q().dispatch($$0 -> $$0.a().a(), Function.identity());
-
-      static MapCodec<? extends ehw.o> a(jt<MapCodec<? extends ehw.o>> $$0) {
-         ehw.a($$0, "bandlands", ehw.b.c);
-         ehw.a($$0, "block", ehw.d.d);
-         ehw.a($$0, "sequence", ehw.q.c);
-         return ehw.a($$0, "condition", ehw.x.d);
-      }
-
-      azj<? extends ehw.o> a();
-   }
-
-   static record p(List<ehw.u> a) implements ehw.u {
-      @Nullable
-      @Override
-      public ebg tryApply(int $$0, int $$1, int $$2) {
-         for (ehw.u $$3 : this.a) {
-            ebg $$4 = $$3.tryApply($$0, $$1, $$2);
-            if ($$4 != null) {
-               return $$4;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   static record q(List<ehw.o> a) implements ehw.o {
-      static final azj<ehw.q> c = azj.a(ehw.o.b.listOf().xmap(ehw.q::new, ehw.q::b).fieldOf("sequence"));
-
-      @Override
-      public azj<? extends ehw.o> a() {
-         return c;
-      }
-
-      public ehw.u a(ehw.g $$0) {
-         if (this.a.size() == 1) {
-            return this.a.get(0).apply($$0);
-         } else {
-            Builder<ehw.u> $$1 = ImmutableList.builder();
-
-            for (ehw.o $$2 : this.a) {
-               $$1.add($$2.apply($$0));
-            }
-
-            return new ehw.p($$1.build());
-         }
-      }
-
-      public List<ehw.o> b() {
-         return this.a;
-      }
-   }
-
-   static record r(ebg a) implements ehw.u {
-      @Override
-      public ebg tryApply(int $$0, int $$1, int $$2) {
-         return this.a;
-      }
-   }
-
-   static enum s implements ehw.f {
-      a;
-
-      static final azj<ehw.s> c = azj.a(MapCodec.unit(a));
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return c;
-      }
-
-      public ehw.e a(ehw.g $$0) {
-         return $$0.g;
-      }
-   }
-
-   static record t(int a, boolean c, int d, eqx e) implements ehw.f {
-      static final azj<ehw.t> f = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     Codec.INT.fieldOf("offset").forGetter(ehw.t::b),
-                     Codec.BOOL.fieldOf("add_surface_depth").forGetter(ehw.t::c),
-                     Codec.INT.fieldOf("secondary_depth_range").forGetter(ehw.t::d),
-                     eqx.c.fieldOf("surface_type").forGetter(ehw.t::e)
-                  )
-                  .apply($$0, ehw.t::new)
-         )
-      );
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return f;
-      }
-
-      public ehw.e a(final ehw.g $$0) {
-         final boolean $$1 = this.e == eqx.a;
-
-         class a extends ehw.k {
-            a() {
-               super($$0);
-            }
-
-            @Override
-            protected boolean a() {
-               int $$0 = $$1 ? this.c.D : this.c.E;
-               int $$1 = t.this.c ? this.c.t : 0;
-               int $$2 = t.this.d == 0 ? 0 : (int)azq.b(this.c.a(), -1.0, 1.0, 0.0, (double)t.this.d);
-               return $$0 <= 1 + t.this.a + $$1 + $$2;
-            }
-         }
-
-         return new a();
-      }
-
-      public int b() {
-         return this.a;
-      }
-   }
-
-   protected interface u {
-      @Nullable
-      ebg tryApply(int var1, int var2, int var3);
-   }
-
-   static enum v implements ehw.f {
-      a;
-
-      static final azj<ehw.v> c = azj.a(MapCodec.unit(a));
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return c;
-      }
-
-      public ehw.e a(ehw.g $$0) {
-         return $$0.f;
-      }
-   }
-
-   static record w(ehw.e a, ehw.u b) implements ehw.u {
-      @Nullable
-      @Override
-      public ebg tryApply(int $$0, int $$1, int $$2) {
-         return !this.a.b() ? null : this.b.tryApply($$0, $$1, $$2);
-      }
-   }
-
-   static record x(ehw.f a, ehw.o c) implements ehw.o {
-      static final azj<ehw.x> d = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(ehw.f.b.fieldOf("if_true").forGetter(ehw.x::b), ehw.o.b.fieldOf("then_run").forGetter(ehw.x::c)).apply($$0, ehw.x::new)
-         )
-      );
-
-      @Override
-      public azj<? extends ehw.o> a() {
-         return d;
-      }
-
-      public ehw.u a(ehw.g $$0) {
-         return new ehw.w(this.a.apply($$0), this.c.apply($$0));
-      }
-
-      public ehw.f b() {
-         return this.a;
-      }
-   }
-
-   static record y(alk a, ehz c, ehz d) implements ehw.f {
-      static final azj<ehw.y> e = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     alk.a.fieldOf("random_name").forGetter(ehw.y::b),
-                     ehz.a.fieldOf("true_at_and_below").forGetter(ehw.y::c),
-                     ehz.a.fieldOf("false_at_and_above").forGetter(ehw.y::d)
-                  )
-                  .apply($$0, ehw.y::new)
-         )
-      );
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return e;
-      }
-
-      public ehw.e a(final ehw.g $$0) {
-         final int $$1 = this.c().a($$0.n);
-         final int $$2 = this.d().a($$0.n);
-         final ehs $$3 = $$0.j.a(this.b());
-
-         class a extends ehw.k {
-            a() {
-               super($$0);
-            }
-
-            @Override
-            protected boolean a() {
-               int $$0 = this.c.B;
-               if ($$0 <= $$1) {
-                  return true;
-               } else if ($$0 >= $$2) {
-                  return false;
-               } else {
-                  double $$1 = azq.b((double)$$0, (double)$$1, (double)$$2, 1.0, 0.0);
-                  azz $$2 = $$3.a(this.c.r, $$0, this.c.s);
-                  return (double)$$2.i() < $$1;
-               }
-            }
-         }
-
-         return new a();
-      }
-
-      public alk b() {
-         return this.a;
-      }
-   }
-
-   static record z(int a, int c, boolean d) implements ehw.f {
-      static final azj<ehw.z> e = azj.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     Codec.INT.fieldOf("offset").forGetter(ehw.z::b),
-                     Codec.intRange(-20, 20).fieldOf("surface_depth_multiplier").forGetter(ehw.z::c),
-                     Codec.BOOL.fieldOf("add_stone_depth").forGetter(ehw.z::d)
-                  )
-                  .apply($$0, ehw.z::new)
-         )
-      );
-
-      @Override
-      public azj<? extends ehw.f> a() {
-         return e;
-      }
-
-      public ehw.e a(final ehw.g $$0) {
-         class a extends ehw.k {
-            a() {
-               super($$0);
-            }
-
-            @Override
-            protected boolean a() {
-               return this.c.C == Integer.MIN_VALUE || this.c.B + (z.this.d ? this.c.E : 0) >= this.c.C + z.this.a + this.c.t * z.this.c;
-            }
-         }
-
-         return new a();
-      }
-
-      public int b() {
-         return this.a;
       }
    }
 }

@@ -1,14 +1,16 @@
-public enum ecb implements bao {
-   a,
-   b;
+public enum ecb implements bax {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   @Override
-   public String toString() {
-      return this.c();
+   private final String d;
+
+   private ecb(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.d;
    }
 }

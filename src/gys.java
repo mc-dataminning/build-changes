@@ -1,43 +1,113 @@
-public class gys extends gxe<ckb, hfa, gig> {
-   private static final alk a = alk.b("textures/entity/fox/fox.png");
-   private static final alk j = alk.b("textures/entity/fox/fox_sleep.png");
-   private static final alk k = alk.b("textures/entity/fox/snow_fox.png");
-   private static final alk l = alk.b("textures/entity/fox/snow_fox_sleep.png");
+public class gys<T extends cog> extends gxu<T, hfc> {
+   public static final int a = 5;
+   public static final int g = 30;
+   private final hhg h;
+   private final grl i;
+   private final gsq j;
 
-   public gys(gyk.a $$0) {
-      super($$0, new gig($$0.a(glf.aX)), new gig($$0.a(glf.aY)), 0.4F);
-      this.a(new hcl(this));
+   public gys(gxv.a $$0) {
+      super($$0);
+      this.h = $$0.b();
+      this.i = $$0.c();
+      this.j = $$0.d();
    }
 
-   protected void a(hfa $$0, flq $$1, float $$2, float $$3) {
+   protected int a(T $$0, iw $$1) {
+      return $$0.an() == bxn.ag ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   }
+
+   public void a(hfc $$0, fld $$1, grn $$2, int $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.ab));
-      }
-   }
-
-   public alk a(hfa $$0) {
-      if ($$0.h == ckb.v.a) {
-         return $$0.d ? j : a;
+      $$1.a();
+      jc $$4 = $$0.a;
+      fgc $$5 = this.a($$0);
+      $$1.a(-$$5.a(), -$$5.b(), -$$5.c());
+      double $$6 = 0.46875;
+      $$1.a((double)$$4.j() * 0.46875, (double)$$4.k() * 0.46875, (double)$$4.l() * 0.46875);
+      float $$7;
+      float $$8;
+      if ($$4.o().d()) {
+         $$7 = 0.0F;
+         $$8 = 180.0F - $$4.p();
       } else {
-         return $$0.d ? l : k;
+         $$7 = (float)(-90 * $$4.f().a());
+         $$8 = 180.0F;
       }
+
+      $$1.a(a.b.rotationDegrees($$7));
+      $$1.a(a.d.rotationDegrees($$8));
+      if (!$$0.A) {
+         ebq $$11 = hms.a($$0.d, $$0.e != null);
+         gta $$12 = this.j.a($$11);
+         $$1.a();
+         $$1.a(-0.5F, -0.5F, -0.5F);
+         gss.a($$1.c(), $$2.getBuffer(gry.e(hkp.c)), $$12, 1.0F, 1.0F, 1.0F, $$3, hkg.d);
+         $$1.b();
+      }
+
+      if ($$0.A) {
+         $$1.a(0.0F, 0.0F, 0.5F);
+      } else {
+         $$1.a(0.0F, 0.0F, 0.4375F);
+      }
+
+      if ($$0.e != null) {
+         int $$13 = $$0.c % 4 * 2;
+         $$1.a(a.f.rotationDegrees((float)$$13 * 360.0F / 8.0F));
+         $$1.a(a.f.rotationDegrees(180.0F));
+         float $$14 = 0.0078125F;
+         $$1.b(0.0078125F, 0.0078125F, 0.0078125F);
+         $$1.a(-64.0F, -64.0F, 0.0F);
+         $$1.a(0.0F, 0.0F, -1.0F);
+         int $$15 = this.a($$0.d, 15728850, $$3);
+         this.i.a($$0.f, $$1, $$2, true, $$15);
+      } else if (!$$0.b.c()) {
+         $$1.a(a.f.rotationDegrees((float)$$0.c * 360.0F / 8.0F));
+         int $$16 = this.a($$0.d, 15728880, $$3);
+         $$1.b(0.5F, 0.5F, 0.5F);
+         $$0.b.a($$1, $$2, $$16, hkg.d);
+      }
+
+      $$1.b();
    }
 
-   public hfa b() {
-      return new hfa();
+   private int a(boolean $$0, int $$1, int $$2) {
+      return $$0 ? $$1 : $$2;
    }
 
-   public void a(ckb $$0, hfa $$1, float $$2) {
+   public fgc a(hfc $$0) {
+      return new fgc((double)((float)$$0.a.j() * 0.3F), -0.25, (double)((float)$$0.a.l() * 0.3F));
+   }
+
+   protected boolean a(T $$0, double $$1) {
+      return fqq.M() && this.d.c == $$0 && $$0.w().z() != null;
+   }
+
+   protected xg a(T $$0) {
+      return $$0.w().y();
+   }
+
+   public hfc a() {
+      return new hfc();
+   }
+
+   public void a(T $$0, hfc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hfg.a($$0, $$1, this.h);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ch();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fR();
-      $$1.e = $$0.x();
-      $$1.f = $$0.gu();
-      $$1.g = $$0.gv();
-      $$1.h = $$0.t();
+      $$1.a = $$0.cO();
+      dak $$3 = $$0.w();
+      this.h.a($$1.b, $$3, dai.i, $$0);
+      $$1.c = $$0.y();
+      $$1.d = $$0.an() == bxn.ag;
+      $$1.e = null;
+      if (!$$3.f()) {
+         ezt $$4 = $$0.a($$3);
+         if ($$4 != null) {
+            ezv $$5 = $$0.dV().a($$4);
+            if ($$5 != null) {
+               this.i.a($$4, $$5, $$1.f);
+               $$1.e = $$4;
+            }
+         }
+      }
    }
 }

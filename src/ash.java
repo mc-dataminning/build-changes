@@ -1,43 +1,56 @@
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ash implements ase {
-   private final ase a;
-   private final bti b;
-   private boolean c;
+public class ash {
+   public static final MapCodec<ash> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               mh.aA.q().fieldOf("type").forGetter(ash::a),
+               azg.l.fieldOf("level").forGetter(ash::b),
+               Codec.LONG.optionalFieldOf("ticks_left", 0L).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, ash::new)
+   );
+   private final asi b;
+   private final int c;
+   private long d;
 
-   private ash(ase $$0, Executor $$1) {
-      this.a = $$0;
-      this.b = new bti($$1, "progressListener");
+   public ash(asi $$0, int $$1) {
+      this($$0, $$1, $$0.d());
    }
 
-   public static ash a(ase $$0, Executor $$1) {
-      ash $$2 = new ash($$0, $$1);
-      $$2.a();
-      return $$2;
+   private ash(asi $$0, int $$1, long $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public void a(dje $$0) {
-      this.b.a_(() -> this.a.a($$0));
+   public String toString() {
+      return this.b.c()
+         ? "Ticket[" + ag.a(mh.aA, this.b) + " " + this.c + "] with " + this.d + " ticks left ( out of" + this.b.d() + ")"
+         : "Ticket[" + ag.a(mh.aA, this.b) + " " + this.c + "] with no timeout";
    }
 
-   @Override
-   public void a(dje $$0, @Nullable eee $$1) {
-      if (this.c) {
-         this.b.a_(() -> this.a.a($$0, $$1));
+   public asi a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public void c() {
+      this.d = this.b.d();
+   }
+
+   public void d() {
+      if (this.b.c()) {
+         this.d--;
       }
    }
 
-   @Override
-   public void a() {
-      this.c = true;
-      this.b.a_(this.a::a);
-   }
-
-   @Override
-   public void b() {
-      this.c = false;
-      this.b.a_(this.a::b);
+   public boolean e() {
+      return this.b.c() && this.d < 0L;
    }
 }

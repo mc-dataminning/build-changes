@@ -1,24 +1,65 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-public class chn extends chx<cpx> {
-   @Override
-   public Set<cgy<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgy.C)));
+public class chn extends chp {
+   public chn(byh $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(aru $$0, cpx $$1) {
-      super.a($$0, $$1);
-      $$1.ec()
-         .c(cgy.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bxc.e)
-         .filter($$2 -> cie.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.ec().a(cgy.C, $$1x), () -> $$1.ec().b(cgy.C));
+   @Override
+   protected eyq a(int $$0) {
+      this.o = new eyl();
+      return new eyq(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(fgc $$0, fgc $$1) {
+      return a(this.a, $$0, $$1, true);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.o() && this.a.bl() || !this.a.bY();
+   }
+
+   @Override
+   protected fgc b() {
+      return this.a.dt();
+   }
+
+   @Override
+   public eyo a(bxe $$0, int $$1) {
+      return this.a($$0.dv(), $$1);
+   }
+
+   @Override
+   public void c() {
+      this.e++;
+      if (this.m) {
+         this.h();
+      }
+
+      if (!this.k()) {
+         if (this.a()) {
+            this.j();
+         } else if (this.c != null && !this.c.c()) {
+            fgc $$0 = this.c.a(this.a);
+            if (this.a.dz() == azz.a($$0.d) && this.a.dB() == azz.a($$0.e) && this.a.dF() == azz.a($$0.f)) {
+               this.c.a();
+            }
+         }
+
+         agx.a(this.b, this.a, this.c, this.l);
+         if (!this.k()) {
+            fgc $$1 = this.c.a(this.a);
+            this.a.L().a($$1.d, $$1.e, $$1.f, this.d);
+         }
+      }
+   }
+
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
+   @Override
+   public boolean a(iw $$0) {
+      return this.b.a_($$0).b(this.b, $$0, this.a);
    }
 }

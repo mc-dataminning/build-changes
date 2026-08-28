@@ -1,137 +1,47 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ast extends atc {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
-
-   private ast(URL $$0, atc.b $$1, atc.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+public record ast<T>(T a, Optional<T> b) {
+   public static <T> Codec<ast<T>> a(Codec<T> $$0) {
+      Codec<ast<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(ast::a), $$0.optionalFieldOf("filtered").forGetter(ast::b)).apply($$1x, ast::new)
+      );
+      Codec<ast<T>> $$2 = $$0.xmap(ast::a, ast::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   @Nullable
-   public static atc a(String $$0) {
-      JsonObject $$1 = azg.a($$0);
-      URI $$2 = URI.create(azg.i($$1, "apiServer"));
-      String $$3 = azg.i($$1, "apiPath");
-      String $$4 = azg.i($$1, "scope");
-      String $$5 = azg.a($$1, "serverId", "");
-      String $$6 = azg.i($$1, "applicationId");
-      String $$7 = azg.i($$1, "tenantId");
-      String $$8 = azg.a($$1, "roomId", "Java:Chat");
-      String $$9 = azg.i($$1, "certificatePath");
-      String $$10 = azg.a($$1, "certificatePassword", "");
-      int $$11 = azg.a($$1, "hashesToDrop", -1);
-      int $$12 = azg.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = azg.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(azg.a($$1x, "filteredEvent")));
-      int $$15 = azg.a($$1, "connectionReadTimeoutMs", 2000);
-
-      URL $$16;
-      try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
-      }
-
-      atc.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      atc.a $$20 = atc.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new ast($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
+   public static <B extends ByteBuf, T> ze<B, ast<T>> a(ze<B, T> $$0) {
+      return ze.a($$0, ast::a, $$0.a(zc::a), ast::b, ast::new);
    }
 
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   public static <T> ast<T> a(T $$0) {
+      return new ast<>($$0, Optional.empty());
    }
 
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
+   public static ast<String> a(asu $$0) {
+      return new ast<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   @Override
-   protected asn a(String $$0, atc.a $$1, JsonObject $$2) {
-      JsonObject $$3 = azg.a($$2, "result", null);
-      if ($$3 == null) {
-         return asn.b($$0);
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
+   }
+
+   public <U> ast<U> a(Function<T, U> $$0) {
+      return new ast<>($$0.apply(this.a), this.b.map($$0));
+   }
+
+   public <U> Optional<ast<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new ast<>($$1.get(), $$2));
       } else {
-         boolean $$4 = azg.a($$3, "filtered", true);
-         if (!$$4) {
-            return asn.a($$0);
-         } else {
-            for (JsonElement $$6 : azg.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = azg.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return asn.b($$0);
-               }
-            }
-
-            JsonArray $$9 = azg.a($$3, "redactedTextIndex", new JsonArray());
-            return new asn($$0, this.a($$0, $$9, $$1));
-         }
+         return Optional.of(new ast<>($$1.get(), Optional.empty()));
       }
-   }
-
-   @Override
-   protected int a() {
-      return this.e;
    }
 }

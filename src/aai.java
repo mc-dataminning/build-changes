@@ -1,98 +1,26 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aai {
+   public static final zq<zx> a = a("custom_payload");
+   public static final zq<zy> b = a("custom_report_details");
+   public static final zq<zz> c = a("disconnect");
+   public static final zq<aaa> d = a("keep_alive");
+   public static final zq<aab> e = a("ping");
+   public static final zq<aac> f = a("resource_pack_pop");
+   public static final zq<aad> g = a("resource_pack_push");
+   public static final zq<aae> h = a("server_links");
+   public static final zq<aaf> i = a("store_cookie");
+   public static final zq<aag> j = a("transfer");
+   public static final zq<aah> k = a("update_tags");
+   public static final zq<aak> l = b("client_information");
+   public static final zq<aal> m = b("custom_payload");
+   public static final zq<aam> n = b("keep_alive");
+   public static final zq<aan> o = b("pong");
+   public static final zq<aao> p = b("resource_pack");
 
-public record aai(aai.a c) implements aam {
-   public static final za<vy, aai> a = aam.a(aai::a, aai::new);
-   public static final aam.b<aai> b = aam.a("debug/bee");
-
-   private aai(vy $$0) {
-      this(new aai.a($$0));
+   private static <T extends zo<zw>> zq<T> a(String $$0) {
+      return new zq<>(zp.b, alr.b($$0));
    }
 
-   private void a(vy $$0) {
-      this.c.a($$0);
-   }
-
-   @Override
-   public aam.b<aai> a() {
-      return b;
-   }
-
-   public aai.a b() {
-      return this.c;
-   }
-
-   public static record a(UUID a, int b, ffs c, @Nullable eye d, @Nullable iw e, @Nullable iw f, int g, Set<String> h, List<iw> i) {
-      public a(vy $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eye::b), $$0.c(iw.b), $$0.c(iw.b), $$0.readInt(), $$0.a(HashSet::new, vy::p), $$0.a(iw.b));
-      }
-
-      public void a(vy $$0) {
-         $$0.a(this.a);
-         $$0.q(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
-         $$0.a(this.e, iw.b);
-         $$0.a(this.f, iw.b);
-         $$0.q(this.g);
-         $$0.a(this.h, vy::a);
-         $$0.a(this.i, iw.b);
-      }
-
-      public boolean a(iw $$0) {
-         return Objects.equals($$0, this.e);
-      }
-
-      public String a() {
-         return agp.a(this.a);
-      }
-
-      @Override
-      public String toString() {
-         return this.a();
-      }
-
-      public UUID b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public ffs d() {
-         return this.c;
-      }
-
-      @Nullable
-      public eye e() {
-         return this.d;
-      }
-
-      @Nullable
-      public iw f() {
-         return this.e;
-      }
-
-      @Nullable
-      public iw g() {
-         return this.f;
-      }
-
-      public int h() {
-         return this.g;
-      }
-
-      public Set<String> i() {
-         return this.h;
-      }
-
-      public List<iw> j() {
-         return this.i;
-      }
+   private static <T extends zo<aaj>> zq<T> b(String $$0) {
+      return new zq<>(zp.a, alr.b($$0));
    }
 }

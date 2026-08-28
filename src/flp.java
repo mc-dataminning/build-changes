@@ -1,111 +1,73 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public class flp implements AutoCloseable {
-   private final fln.a a;
-   @Nullable
-   private fln.a b;
-   private final flp.a c;
+public class flp {
+   public static List<fna> a(flp.a... $$0) {
+      for (flp.a $$1 : $$0) {
+         a($$1.j);
+      }
 
-   public flp(fln.a $$0, flp.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
+      List<fna> $$2 = Lists.newArrayList();
+
+      for (flp.a $$3 : $$0) {
+         $$2.add(new fna($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fna::a));
+      return $$2;
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, flu $$2) {
-      int $$3 = $$2.a(flv.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
 
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
          }
-
-         return $$8;
-      }
-   }
-
-   public ByteBuffer a() {
-      return this.a.a();
-   }
-
-   @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
-   }
-
-   public flp.a c() {
-      return this.c;
-   }
-
-   @Nullable
-   public flp.b a(fln $$0, flx $$1) {
-      if (this.c.d() != flu.c.h) {
-         return null;
-      } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         flp.b $$3 = new flp.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
-      }
-   }
-
-   public static record a(flu a, int b, int c, flu.c d, flu.b e) {
-   }
-
-   public static record b(Vector3f[] a, flu.b b) {
-      @Nullable
-      public fln.a a(fln $$0, flx $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.c);
-         IntConsumer $$4 = this.a($$3, this.b);
-
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
-         }
-
-         return $$0.a();
       }
 
-      private IntConsumer a(long $$0, flu.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
+      return (int)((double)$$2 / 5.0);
+   }
 
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
+   private static long b() {
+      return ag.c();
+   }
+
+   public static List<fna> a() {
+      return a(flp.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
    }
 }

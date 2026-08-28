@@ -1,278 +1,242 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eak {
-   public static final String a = "spawn_data";
-   private static final String m = "next_mob_spawns_at";
-   private static final int n = 20;
-   private static final int o = 18000;
-   public static MapCodec<eak> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ka.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
-               ka.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
-               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
-               dkt.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
-               fao.a.lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, eak::new)
-   );
-   protected final Set<UUID> c = new HashSet<>();
-   protected final Set<UUID> d = new HashSet<>();
-   protected long e;
-   protected long f;
-   protected int g;
-   protected Optional<dkt> h;
-   protected Optional<alj<fao>> i;
+public class eak extends eal {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 200;
+   private static final int c = 40;
+   private static final int d = 2400;
+   private static final int e = 1;
+   private static final int f = 10;
+   private static final long g = 0L;
+   private static final boolean h = false;
+   private long i = 0L;
+   private int j;
    @Nullable
-   protected bwv j;
-   @Nullable
-   private btd<daa> p;
-   protected double k;
-   protected double l;
+   private iw k;
+   private boolean l = false;
 
-   public eak() {
-      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
+   public eak(iw $$0, ebq $$1) {
+      super(dyq.w, $$0, $$1);
    }
 
-   public eak(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dkt> $$5, Optional<alj<fao>> $$6) {
-      this.c.addAll($$0);
-      this.d.addAll($$1);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
+   @Override
+   protected void b(ua $$0, ji.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("Age", this.i);
+      $$0.b("exit_portal", iw.a, this.k);
+      if (this.l) {
+         $$0.a("ExactTeleport", true);
+      }
    }
 
-   public void a() {
-      this.d.clear();
-      this.h = Optional.empty();
-      this.b();
+   @Override
+   protected void a(ua $$0, ji.a $$1) {
+      super.a($$0, $$1);
+      this.i = $$0.b("Age", 0L);
+      this.k = $$0.<iw>a("exit_portal", iw.a).filter(dkj::l).orElse(null);
+      this.l = $$0.b("ExactTeleport", false);
    }
 
-   public void b() {
-      this.c.clear();
-      this.g = 0;
-      this.f = 0L;
-      this.e = 0L;
+   public static void a(dkj $$0, iw $$1, ebq $$2, eak $$3) {
+      $$3.i++;
+      if ($$3.c()) {
+         $$3.j--;
+      }
    }
 
-   public boolean a(eah $$0, azz $$1) {
-      boolean $$2 = this.b($$0, $$1).a().i("id").isPresent();
-      return $$2 || !$$0.b().i().c();
+   public static void b(dkj $$0, iw $$1, ebq $$2, eak $$3) {
+      boolean $$4 = $$3.a();
+      boolean $$5 = $$3.c();
+      $$3.i++;
+      if ($$5) {
+         $$3.j--;
+      } else if ($$3.i % 2400L == 0L) {
+         c($$0, $$1, $$2, $$3);
+      }
+
+      if ($$4 != $$3.a() || $$5 != $$3.c()) {
+         a($$0, $$1, $$2);
+      }
    }
 
-   public boolean a(eai $$0, int $$1) {
-      return this.g >= $$0.a($$1);
+   public boolean a() {
+      return this.i < 200L;
    }
 
    public boolean c() {
-      return this.d.isEmpty();
+      return this.j > 0;
    }
 
-   public boolean a(aru $$0, eai $$1, int $$2) {
-      return $$0.ae() >= this.f && this.d.size() < $$1.b($$2);
+   public float a(float $$0) {
+      return azz.a(((float)this.i + $$0) / 200.0F, 0.0F, 1.0F);
    }
 
-   public int a(iw $$0) {
-      if (this.c.isEmpty()) {
-         ag.b("Trial Spawner at " + $$0 + " has no detected players");
+   public float b(float $$0) {
+      return 1.0F - azz.a(((float)this.j - $$0) / 40.0F, 0.0F, 1.0F);
+   }
+
+   public acl d() {
+      return acl.a(this);
+   }
+
+   @Override
+   public ua a(ji.a $$0) {
+      return this.e($$0);
+   }
+
+   public static void c(dkj $$0, iw $$1, ebq $$2, eak $$3) {
+      if (!$$0.C) {
+         $$3.j = 40;
+         $$0.a($$1, $$2.b(), 1, 0);
+         a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.j = 40;
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Nullable
+   public fgc a(asb $$0, iw $$1) {
+      if (this.k == null && $$0.aj() == dkj.k) {
+         iw $$2 = b($$0, $$1);
+         $$2 = $$2.b(10);
+         a.debug("Creating portal at {}", $$2);
+         a($$0, $$2, emz.a($$1, false));
+         this.a($$2, this.l);
       }
 
-      return Math.max(0, this.c.size() - 1);
+      if (this.k != null) {
+         iw $$3 = this.l ? this.k : a((dkj)$$0, this.k);
+         return $$3.c();
+      } else {
+         return null;
+      }
    }
 
-   public void a(aru $$0, iw $$1, eah $$2) {
-      boolean $$3 = ($$1.a() + $$0.ae()) % 20L != 0L;
-      if (!$$3) {
-         if (!$$2.i().equals(eal.f) || !$$2.e()) {
-            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
-            boolean $$7;
-            if (!$$2.e() && !$$4.isEmpty()) {
-               Optional<Pair<crz, jg<bvx>>> $$6 = a($$0, $$4);
-               $$6.ifPresent($$3x -> {
-                  crz $$4x = (crz)$$3x.getFirst();
-                  if ($$3x.getSecond() == bwb.E) {
-                     a($$4x);
-                  }
+   private static iw a(dkj $$0, iw $$1) {
+      iw $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
+      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
+      return $$2.d();
+   }
 
-                  $$0.c(3020, iw.a((jq)$$4x.bD()), 0);
-                  $$2.a($$0, $$1);
-               });
-               $$7 = $$6.isPresent();
-            } else {
-               $$7 = false;
-            }
+   private static iw b(asb $$0, iw $$1) {
+      fgc $$2 = c($$0, $$1);
+      edx $$3 = a((dkj)$$0, $$2);
+      iw $$4 = a($$3);
+      if ($$4 == null) {
+         iw $$5 = iw.a($$2.d + 0.5, 75.0, $$2.f + 0.5);
+         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
+         $$0.J_().a(mi.aL).flatMap($$0x -> $$0x.a(ri.f)).ifPresent($$2x -> ((ekh)$$2x.a()).a($$0, $$0.m().g(), bai.a($$5.a()), $$5));
+         $$4 = $$5;
+      } else {
+         a.debug("Found suitable block to teleport to: {}", $$4);
+      }
 
-            if (!$$2.i().equals(eal.f) || $$7) {
-               boolean $$8 = $$2.f().c.isEmpty();
-               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
-               if (this.c.addAll($$9)) {
-                  this.f = Math.max($$0.ae() + 40L, this.f);
-                  if (!$$7) {
-                     int $$10 = $$2.e() ? 3019 : 3013;
-                     $$0.c($$10, $$1, this.c.size());
+      return a($$0, $$4, 16, true);
+   }
+
+   private static fgc c(asb $$0, iw $$1) {
+      fgc $$2 = new fgc((double)$$1.u(), 0.0, (double)$$1.w()).d();
+      int $$3 = 1024;
+      fgc $$4 = $$2.c(1024.0);
+
+      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.c(-16.0))) {
+         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
+      }
+
+      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.c(16.0))) {
+         a.debug("Skipping forward past empty chunk at {}", $$4);
+      }
+
+      a.debug("Found chunk at {}", $$4);
+      return $$4;
+   }
+
+   private static boolean a(asb $$0, fgc $$1) {
+      return a((dkj)$$0, $$1).a() == -1;
+   }
+
+   private static iw a(djn $$0, iw $$1, int $$2, boolean $$3) {
+      iw $$4 = null;
+
+      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
+         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
+            if ($$5 != 0 || $$6 != 0 || $$3) {
+               for (int $$7 = $$0.ao(); $$7 > ($$4 == null ? $$0.K_() : $$4.v()); $$7--) {
+                  iw $$8 = new iw($$1.u() + $$5, $$7, $$1.w() + $$6);
+                  ebq $$9 = $$0.a_($$8);
+                  if ($$9.m($$0, $$8) && ($$3 || !$$9.a(dnq.I))) {
+                     $$4 = $$8;
+                     break;
                   }
                }
             }
          }
       }
+
+      return $$4 == null ? $$1 : $$4;
    }
 
-   private static Optional<Pair<crz, jg<bvx>>> a(aru $$0, List<UUID> $$1) {
-      crz $$2 = null;
-
-      for (UUID $$3 : $$1) {
-         crz $$4 = $$0.a($$3);
-         if ($$4 != null) {
-            jg<bvx> $$5 = bwb.H;
-            if ($$4.b($$5)) {
-               return Optional.of(Pair.of($$4, $$5));
-            }
-
-            if ($$4.b(bwb.E)) {
-               $$2 = $$4;
-            }
-         }
-      }
-
-      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, bwb.E));
-   }
-
-   public void a(eah $$0, aru $$1) {
-      this.d.stream().map($$1::b).forEach($$1x -> {
-         if ($$1x != null) {
-            $$1.c(3012, $$1x.dv(), eah.a.a.a());
-            if ($$1x instanceof bxy $$2) {
-               $$2.b($$1);
-            }
-
-            $$1x.a(bwv.d.b);
-         }
-      });
-      if (!$$0.d().i().c()) {
-         this.h = Optional.empty();
-      }
-
-      this.g = 0;
-      this.d.clear();
-      this.f = $$1.ae() + (long)$$0.d().h();
-      $$0.j();
-      this.e = $$1.ae() + $$0.d().a();
-   }
-
-   private static void a(crz $$0) {
-      bvz $$1 = $$0.c(bwb.E);
-      if ($$1 != null) {
-         int $$2 = $$1.e() + 1;
-         int $$3 = 18000 * $$2;
-         $$0.e(bwb.E);
-         $$0.a(new bvz(bwb.H, $$3, 0));
-      }
-   }
-
-   public boolean a(aru $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)$$0.ae() >= (float)$$3 + $$1;
-   }
-
-   public boolean b(aru $$0, float $$1, int $$2) {
-      long $$3 = this.e - (long)$$2;
-      return (float)($$0.ae() - $$3) % $$1 == 0.0F;
-   }
-
-   public boolean a(aru $$0) {
-      return $$0.ae() >= this.e;
-   }
-
-   protected dkt b(eah $$0, azz $$1) {
-      if (this.h.isPresent()) {
-         return this.h.get();
-      } else {
-         btd<dkt> $$2 = $$0.b().i();
-         Optional<dkt> $$3 = $$2.c() ? this.h : $$2.a($$1);
-         this.h = Optional.of($$3.orElseGet(dkt::new));
-         $$0.j();
-         return this.h.get();
-      }
+   private static edx a(dkj $$0, fgc $$1) {
+      return $$0.d(azz.a($$1.d / 16.0), azz.a($$1.f / 16.0));
    }
 
    @Nullable
-   public bwv a(eah $$0, djz $$1, eal $$2) {
-      if (!$$2.d()) {
-         return null;
-      } else {
-         if (this.j == null) {
-            ua $$3 = this.b($$0, $$1.G_()).a();
-            if ($$3.i("id").isPresent()) {
-               this.j = bxe.a($$3, $$1, bxd.q, Function.identity());
+   private static iw a(edx $$0) {
+      djo $$1 = $$0.f();
+      iw $$2 = new iw($$1.d(), 30, $$1.e());
+      int $$3 = $$0.b() + 16 - 1;
+      iw $$4 = new iw($$1.f(), $$3, $$1.g());
+      iw $$5 = null;
+      double $$6 = 0.0;
+
+      for (iw $$7 : iw.c($$2, $$4)) {
+         ebq $$8 = $$0.a_($$7);
+         iw $$9 = $$7.d();
+         iw $$10 = $$7.b(2);
+         if ($$8.a(dnq.fY) && !$$0.a_($$9).m($$0, $$9) && !$$0.a_($$10).m($$0, $$10)) {
+            double $$11 = $$7.c(0.0, 0.0, 0.0);
+            if ($$5 == null || $$11 < $$6) {
+               $$5 = $$7;
+               $$6 = $$11;
             }
          }
-
-         return this.j;
-      }
-   }
-
-   public ua a(eal $$0) {
-      ua $$1 = new ua();
-      if ($$0 == eal.c) {
-         $$1.a("next_mob_spawns_at", this.f);
       }
 
-      this.h.ifPresent($$1x -> $$1.a("spawn_data", dkt.b, $$1x));
-      return $$1;
+      return $$5;
    }
 
-   public double d() {
-      return this.k;
+   private static void a(asb $$0, iw $$1, emz $$2) {
+      ekw.N.a($$2, $$0, $$0.m().g(), bai.a(), $$1);
    }
 
-   public double e() {
-      return this.l;
+   @Override
+   public boolean a(jc $$0) {
+      return dno.a(this.m(), this.n.a_(this.aC_().a($$0)), $$0);
    }
 
-   btd<daa> a(aru $$0, eai $$1, iw $$2) {
-      if (this.p != null) {
-         return this.p;
-      } else {
-         fao $$3 = $$0.p().bc().b($$1.k());
-         fam $$4 = new fam.a($$0).a(fdc.b);
-         long $$5 = a($$0, $$2);
-         ObjectArrayList<daa> $$6 = $$3.a($$4, $$5);
-         if ($$6.isEmpty()) {
-            return btd.a();
-         } else {
-            btd.a<daa> $$7 = btd.b();
-            ObjectListIterator var10 = $$6.iterator();
+   public int f() {
+      int $$0 = 0;
 
-            while (var10.hasNext()) {
-               daa $$8 = (daa)var10.next();
-               $$7.a($$8.c(1), $$8.M());
-            }
-
-            this.p = $$7.a();
-            return this.p;
-         }
+      for (jc $$1 : jc.values()) {
+         $$0 += this.a($$1) ? 1 : 0;
       }
+
+      return $$0;
    }
 
-   private static long a(aru $$0, iw $$1) {
-      iw $$2 = new iw(azq.d((float)$$1.u() / 30.0F), azq.d((float)$$1.v() / 20.0F), azq.d((float)$$1.w() / 30.0F));
-      return $$0.E() + $$2.a();
+   public void a(iw $$0, boolean $$1) {
+      this.l = $$1;
+      this.k = $$0;
+      this.e();
    }
 }

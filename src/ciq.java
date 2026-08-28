@@ -1,33 +1,28 @@
-public class ciq {
-   public static boolean a(bxy $$0) {
-      return $$0.O() instanceof chf;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
+
+public class ciq extends cin<byf> {
+   @Override
+   public Set<chh<?>> a() {
+      return ImmutableSet.of(chh.i);
    }
 
-   public static boolean a(bye $$0, int $$1) {
-      return $$0.gi() && $$0.gf().a($$0.dt(), (double)($$0.gg() + (float)$$1) + 1.0);
+   @Override
+   protected void a(asb $$0, byf $$1) {
+      $$1.ec().a(chh.i, this.a($$1));
    }
 
-   public static boolean a(iw $$0, bye $$1) {
-      return $$1.dV().e($$0.v());
+   private List<byf> a(byf $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   public static boolean a(boolean $$0, bye $$1, iw $$2) {
-      return $$0 && !$$1.a($$2);
+   private boolean b(byf $$0) {
+      return $$0.an() == bxn.bE && $$0.n_();
    }
 
-   public static boolean a(chg $$0, iw $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bye $$0, iw $$1) {
-      return $$0.dV().b_($$1).a(axl.a);
-   }
-
-   public static boolean b(bye $$0, iw $$1) {
-      return $$0.a(eym.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bye $$0, iw $$1) {
-      return $$0.dV().a_($$1).e();
+   private chj c(byf $$0) {
+      return $$0.ec().c(chh.h).orElse(chj.a());
    }
 }

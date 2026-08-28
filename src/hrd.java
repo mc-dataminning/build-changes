@@ -1,77 +1,29 @@
-import javax.annotation.Nullable;
+import com.google.common.util.concurrent.RateLimiter;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class hrd implements hri {
-   private static final int a = 6000;
-   private static final xc b = xc.c("tutorial.find_tree.title");
-   private static final xc c = xc.c("tutorial.find_tree.description");
-   private final hrh d;
-   @Nullable
-   private fwz e;
-   private int f;
+public class hrd {
+   private final float a;
+   private final AtomicReference<hrd.a> b = new AtomicReference<>();
 
-   public hrd(hrh $$0) {
-      this.d = $$0;
+   public hrd(Duration $$0) {
+      this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hrj.f);
-      } else {
-         frf $$0 = this.d.e();
-         if (this.f == 1) {
-            grb $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(hrj.e);
-               return;
-            }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fwz($$0.h, fwz.a.c, b, c, false);
-            $$0.aA().a(this.e);
-         }
+   public void a(fqh $$0, xg $$1) {
+      hrd.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hrd.a($$1, RateLimiter.create((double)this.a)));
+      if ($$2.b.tryAcquire(1)) {
+         $$0.c($$1);
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
+   static class a {
+      final xg a;
+      final RateLimiter b;
+
+      a(xg $$0, RateLimiter $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
-
-   @Override
-   public void a(gmd $$0, ffq $$1) {
-      if ($$1.d() == ffq.a.b) {
-         ebg $$2 = $$0.a_(((ffo)$$1).b());
-         if ($$2.a(axg.al)) {
-            this.d.a(hrj.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(daa $$0) {
-      if ($$0.a(axo.aS)) {
-         this.d.a(hrj.e);
-      }
-   }
-
-   private static boolean b(grb $$0) {
-      return $$0.gj().a_($$0x -> $$0x.a(axo.aS));
-   }
-
-   public static boolean a(grb $$0) {
-      for (jg<dne> $$1 : mh.e.c(axg.al)) {
-         dne $$2 = $$1.a();
-         if ($$0.l().a(axb.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

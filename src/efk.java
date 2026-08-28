@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface efk {
-   void onChunkStatusChange(dje var1, ari var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface efk {
 }

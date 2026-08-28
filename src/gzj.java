@@ -1,25 +1,33 @@
-public class gzj extends gyj<cny, her> {
-   private static final alk a = alk.b("textures/entity/lead_knot.png");
-   private final giu g;
+public class gzj extends gzb<cpm, hfn, gin> {
+   private static final alr a = alr.b("textures/entity/phantom.png");
 
-   public gzj(gyk.a $$0) {
-      super($$0);
-      this.g = new giu($$0.a(glf.bD));
+   public gzj(gxv.a $$0) {
+      super($$0, new gin($$0.a(gkq.cc)), 0.75F);
+      this.a(new hch(this));
    }
 
-   @Override
-   public void a(her $$0, flq $$1, gsc $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.g.a($$0);
-      flt $$4 = $$2.getBuffer(this.g.a(a));
-      this.g.a($$1, $$4, $$3, hks.d);
-      $$1.b();
+   public alr a(hfn $$0) {
+      return a;
+   }
+
+   public hfn b() {
+      return new hfn();
+   }
+
+   public void a(cpm $$0, hfn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.m() + $$1.v;
+      $$1.b = $$0.j();
+   }
+
+   protected void a(hfn $$0, fld $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(hfn $$0, fld $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public her d() {
-      return new her();
+      $$1.a(a.b.rotationDegrees($$0.ae));
    }
 }

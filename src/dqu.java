@@ -1,82 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dqu extends dqa {
-   public static final MapCodec<dqu> a = b(dqu::new);
-   private static final xc b = xc.c("container.grindstone_title");
-   private final Function<ebg, fgm> d;
+public class dqu extends dxa implements dwa {
+   protected static final MapCodec<ddm> b = ddm.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dqu> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dqu::c), t()).apply($$0, dqu::new));
+   private static final fgw a = dno.b(6.0, 0.0, 10.0);
+   private final ddm d;
 
    @Override
-   public MapCodec<dqu> a() {
-      return a;
+   public MapCodec<? extends dqu> a() {
+      return c;
    }
 
-   protected dqu(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(e, jc.c).b(c, ebr.b));
-      this.d = this.b();
+   public dqu(jg<bwg> $$0, float $$1, ebp.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   private Function<ebg, fgm> b() {
-      fgm $$0 = fgj.a(dne.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dne.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-      fgm $$1 = fgj.a($$0, h.z);
-      fgm $$2 = fgj.a(dne.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
-      Map<ebr, Map<jc, fgm>> $$3 = fgj.e($$2);
-      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
+   public dqu(ddm $$0, ebp.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
-   private fgm o(ebg $$0) {
-      return this.d.apply($$0);
+   protected static ddm a(jg<bwg> $$0, float $$1) {
+      return new ddm(List.of(new ddm.a($$0, azz.d($$1 * 20.0F))));
    }
 
    @Override
-   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return this.o($$0);
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return a.a($$0.a($$2));
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return this.o($$0);
+   public ddm c() {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return true;
-   }
-
-   @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(axb.aD);
-      }
-
-      return but.a;
-   }
-
-   @Override
-   protected buv b(ebg $$0, djz $$1, iw $$2) {
-      return new bvb(($$2x, $$3, $$4) -> new cws($$2x, $$3, cwf.a($$1, $$2)), b);
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(e, $$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(e, c);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, eyf $$1) {
-      return false;
+   @Nullable
+   public bwi b() {
+      return null;
    }
 }

@@ -1,16 +1,52 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface btz<P extends bty> {
-   btz<btv> a = a("constant", btv.b);
-   btz<bue> b = a("uniform", bue.a);
-   btz<btq> c = a("biased_to_bottom", btq.a);
-   btz<btr> d = a("clamped", btr.a);
-   btz<buf> e = a("weighted_list", buf.a);
-   btz<btt> f = a("clamped_normal", btt.a);
+public class btz extends buh {
+   public static final MapCodec<btz> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, btz::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   MapCodec<P> codec();
+   private btz(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
+   }
 
-   static <P extends bty> btz<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.K, $$0, () -> $$1);
+   public static btz a(int $$0, int $$1) {
+      return new btz($$0, $$1);
+   }
+
+   @Override
+   public int a(bai $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   }
+
+   @Override
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bui<?> c() {
+      return bui.c;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

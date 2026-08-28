@@ -4,13 +4,25 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bod extends bky {
+public class bod extends blh {
    public bod(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bjd.t, () -> DSL.optionalFields("id", bjd.F.in($$0), "components", bjd.w.in($$0)));
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:vault",
+         () -> DSL.optionalFields(
+               "config",
+               DSL.optionalFields("key_item", bjm.t.in($$0)),
+               "server_data",
+               DSL.optionalFields("items_to_eject", DSL.list(bjm.t.in($$0))),
+               "shared_data",
+               DSL.optionalFields("display_item", bjm.t.in($$0))
+            )
+      );
+      return $$1;
    }
 }

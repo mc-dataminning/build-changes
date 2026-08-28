@@ -1,18 +1,18 @@
-import javax.annotation.Nullable;
-
-public record gpq(String f, @Nullable gsn g) {
-   public static final gpq a = new gpq("TERRAIN_SHEET", gsn.B(hlb.c));
-   public static final gpq b = new gpq("PARTICLE_SHEET_OPAQUE", gsn.A(hlb.d));
-   public static final gpq c = new gpq("PARTICLE_SHEET_TRANSLUCENT", gsn.B(hlb.d));
-   public static final gpq d = new gpq("CUSTOM", null);
-   public static final gpq e = new gpq("NO_RENDER", null);
-
-   public String a() {
-      return this.f;
+public class gpq extends god {
+   gpq(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gps $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      this.u = 0.5F;
    }
 
-   @Nullable
-   public gsn b() {
-      return this.g;
+   public static class a implements gpa<md> {
+      private final gps a;
+
+      public a(gps $$0) {
+         this.a = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gpq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

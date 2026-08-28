@@ -1,29 +1,88 @@
-public class adv implements zj<aby> {
-   public static final za<vy, adv> a = zj.a(adv::a, adv::new);
-   private final bus b;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adv(bus $$0) {
-      this.b = $$0;
+public class adv {
+   private static final ze<ByteBuf, byte[]> a = zc.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public adv(djo $$0, exp $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dks.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dks.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   private adv(vy $$0) {
-      this.b = $$0.b(bus.class);
+   public adv(vy $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(vy $$0) {
+   public void a(vy $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public zl<adv> a() {
-      return agr.W;
+   private void a(djo $$0, exp $$1, dks $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      eds $$7 = $$1.a($$2).a(jz.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(aby $$0) {
-      $$0.a(this);
-   }
-
-   public bus b() {
+   public BitSet a() {
       return this.b;
+   }
+
+   public BitSet b() {
+      return this.d;
+   }
+
+   public List<byte[]> c() {
+      return this.f;
+   }
+
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
+      return this.e;
+   }
+
+   public List<byte[]> f() {
+      return this.g;
    }
 }

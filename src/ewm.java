@@ -1,18 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ewm implements ewn {
-   public static final ewm a = new ewm();
-   public static final MapCodec<ewm> b = MapCodec.unit(a);
-
+public abstract class ewm {
    @Nullable
-   @Override
-   public ua a(azz $$0, @Nullable ua $$1) {
-      return $$1;
+   public ewp.d a(dkm $$0, iw $$1, iw $$2, ewp.d $$3, ewp.d $$4, ewl $$5) {
+      return $$4;
    }
 
-   @Override
-   public ewo<?> a() {
-      return ewo.b;
+   protected abstract ewo<?> a();
+
+   public List<ewp.d> a(dla $$0, iw $$1, iw $$2, List<ewp.d> $$3, List<ewp.d> $$4, ewl $$5) {
+      return $$4;
    }
 }

@@ -1,60 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dva extends dne {
-   public static final MapCodec<dva> a = b(dva::new);
-   private static final fgm b = dne.b(16.0, 0.0, 14.0);
-   private static final int c = 20;
-
-   @Override
-   public MapCodec<dva> a() {
-      return a;
-   }
-
-   public dva(ebf.d $$0) {
-      super($$0);
-   }
+public class dva extends dmk {
+   public static final MapCodec<dva> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dva.a.b.fieldOf("kind").forGetter(dmk::b), t()).apply($$0, dva::new));
+   public static final int d = ecw.a();
+   private static final int b = d + 1;
+   public static final ecq e = ecg.bd;
+   private static final fgw f = dno.b(8.0, 0.0, 8.0);
+   private static final fgw g = dno.b(10.0, 0.0, 8.0);
 
    @Override
-   protected fgm b(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return b;
+   public MapCodec<? extends dva> a() {
+      return c;
    }
 
-   @Override
-   protected fgm b_(ebg $$0, djd $$1, iw $$2) {
-      return fgj.b();
+   protected dva(dva.a $$0, ebp.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected fgm c(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return fgj.b();
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return this.b() == dva.b.h ? g : f;
    }
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      dnl.b($$1, $$2.d(), $$0);
+   protected fgw d_(ebq $$0) {
+      return fgt.a();
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      if ($$4 == jc.b && $$6.a(dng.J)) {
-         $$2.a($$3, this, 20);
+   public ebq a(ded $$0) {
+      return super.a($$0).b(e, Integer.valueOf(ecw.a($$0.i())));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bax {
+      Map<String, dva.a> a = new Object2ObjectArrayMap();
+      Codec<dva.a> b = Codec.stringResolver(bax::c, a::get);
+   }
+
+   public static enum b implements dva.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(ebg $$0, djz $$1, iw $$2, ebg $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, eyf $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(ebg $$0, djd $$1, iw $$2) {
-      return 0.2F;
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

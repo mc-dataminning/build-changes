@@ -9,9 +9,9 @@ public class cd extends dl<cd.a> {
       return cd.a.a;
    }
 
-   public void a(arv $$0, ffs $$1, @Nullable bwv $$2) {
-      ffs $$3 = $$0.dt();
-      faj $$4 = $$2 != null ? bz.b($$0, $$2) : null;
+   public void a(asc $$0, fgc $$1, @Nullable bxe $$2) {
+      fgc $$3 = $$0.dt();
+      fat $$4 = $$2 != null ? bz.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.y(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class cd extends dl<cd.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(aru $$0, ffs $$1, ffs $$2, @Nullable faj $$3) {
+      public boolean a(asb $$0, fgc $$1, fgc $$2, @Nullable fat $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

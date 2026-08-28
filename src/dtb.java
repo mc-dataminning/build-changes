@@ -1,14 +1,19 @@
-import com.mojang.serialization.MapCodec;
+public class dtb {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dtb extends dww {
-   public static final MapCodec<dtb> b = b(dtb::new);
-
-   @Override
-   public MapCodec<dtb> a() {
-      return b;
+   public static boolean a(ebq $$0) {
+      return $$0.l();
    }
 
-   protected dtb(ebf.d $$0) {
-      super(duq.b.e, $$0);
+   public static int a(bai $$0) {
+      double $$1 = 1.0;
+
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
+
+      return $$2;
    }
 }

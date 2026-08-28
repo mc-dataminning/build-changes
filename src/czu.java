@@ -1,52 +1,40 @@
-import java.util.Optional;
-
-public class czu extends czw {
-   public czu(czw.a $$0) {
+public class czu extends dag {
+   public czu(dag.a $$0) {
       super($$0);
    }
 
-   public static daa a(czw $$0, jg<czt> $$1) {
-      daa $$2 = new daa($$0);
-      $$2.b(kl.ab, new dcq($$1));
-      return $$2;
-   }
-
    @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      daa $$3 = $$1.b($$2);
-      Optional<? extends jg<czt>> $$4 = this.a($$3, $$1.dX());
-      if ($$4.isPresent()) {
-         czt $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gF().a($$3, azq.d($$5.b() * 20.0F));
-         $$1.b(axb.c.b(this));
-         return but.c;
+   public bvc a(def $$0) {
+      csi $$1 = $$0.o();
+      dkj $$2 = $$0.q();
+      iw $$3 = $$0.a();
+      ebq $$4 = $$2.a_($$3);
+      if (!doe.i($$4) && !dof.h($$4) && !dog.h($$4)) {
+         iw $$5 = $$3.a($$0.k());
+         if (dnb.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awy.jD, awz.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
+            ebq $$6 = dnb.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, egq.i, $$3);
+            dak $$7 = $$0.n();
+            if ($$1 instanceof asc) {
+               aq.z.a((asc)$$1, $$5, $$7);
+               $$7.a(1, $$1, byf.d($$0.p()));
+            }
+
+            return bvc.a;
+         } else {
+            return bvc.d;
+         }
       } else {
-         return but.d;
+         $$2.a($$1, $$3, awy.jD, awz.e, 1.0F, $$2.G_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(ecg.u, Boolean.valueOf(true)), 11);
+         $$2.a($$1, egq.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, byf.d($$0.p()));
+         }
+
+         return bvc.a;
       }
-   }
-
-   @Override
-   public int a(daa $$0, bxw $$1) {
-      Optional<jg<czt>> $$2 = this.a($$0, $$1.dX());
-      return $$2.<Integer>map($$0x -> azq.d(((czt)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jg<czt>> a(daa $$0, ji.a $$1) {
-      dcq $$2 = $$0.a(kl.ab);
-      return $$2 != null ? $$2.a($$1) : Optional.empty();
-   }
-
-   @Override
-   public dac b(daa $$0) {
-      return dac.i;
-   }
-
-   private static void a(djz $$0, crz $$1, czt $$2) {
-      awq $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, aws.c, $$4, 1.0F);
-      $$0.a(egg.B, $$1.dt(), egg.a.a($$1));
    }
 }

@@ -1,20 +1,140 @@
-public class axe {
-   public static final axv<dxt> a = a("no_item_required");
-   public static final axv<dxt> b = a("pattern_item/flower");
-   public static final axv<dxt> c = a("pattern_item/creeper");
-   public static final axv<dxt> d = a("pattern_item/skull");
-   public static final axv<dxt> e = a("pattern_item/mojang");
-   public static final axv<dxt> f = a("pattern_item/globe");
-   public static final axv<dxt> g = a("pattern_item/piglin");
-   public static final axv<dxt> h = a("pattern_item/flow");
-   public static final axv<dxt> i = a("pattern_item/guster");
-   public static final axv<dxt> j = a("pattern_item/field_masoned");
-   public static final axv<dxt> k = a("pattern_item/bordure_indented");
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-   private axe() {
+public class axe extends axj {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Codec<Map<axf<?>, Integer>> c = Codec.dispatchedMap(mh.v.q(), ag.b(axe::a)).xmap($$0 -> {
+      Map<axf<?>, Integer> $$1 = new HashMap<>();
+      $$0.forEach(($$1x, $$2) -> $$1.putAll((Map<? extends axf<?>, ? extends Integer>)$$2));
+      return $$1;
+   }, $$0 -> $$0.entrySet().stream().collect(Collectors.groupingBy($$0x -> ((axf)$$0x.getKey()).a(), ag.a())));
+   private final MinecraftServer d;
+   private final File e;
+   private final Set<axf<?>> f = Sets.newHashSet();
+
+   private static <T> Codec<Map<axf<?>, Integer>> a(axh<T> $$0) {
+      Codec<T> $$1 = $$0.b().q();
+      Codec<axf<?>> $$2 = $$1.flatComapMap(
+         $$0::b, $$1x -> $$1x.a() == $$0 ? DataResult.success($$1x.b()) : DataResult.error(() -> "Expected type " + $$0 + ", but got " + $$1x.a())
+      );
+      return Codec.unboundedMap($$2, Codec.INT);
    }
 
-   private static axv<dxt> a(String $$0) {
-      return axv.a(mi.aF, alk.b($$0));
+   public axe(MinecraftServer $$0, File $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      if ($$1.isFile()) {
+         try {
+            this.a($$0.aC(), FileUtils.readFileToString($$1));
+         } catch (IOException var4) {
+            b.error("Couldn't read statistics file {}", $$1, var4);
+         } catch (JsonParseException var5) {
+            b.error("Couldn't parse statistics file {}", $$1, var5);
+         }
+      }
+   }
+
+   public void a() {
+      try {
+         FileUtils.writeStringToFile(this.e, this.b());
+      } catch (IOException var2) {
+         b.error("Couldn't save stats", var2);
+      }
+   }
+
+   @Override
+   public void a(csi $$0, axf<?> $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f.add($$1);
+   }
+
+   private Set<axf<?>> d() {
+      Set<axf<?>> $$0 = Sets.newHashSet(this.f);
+      this.f.clear();
+      return $$0;
+   }
+
+   public void a(DataFixer $$0, String $$1) {
+      try {
+         JsonReader $$2 = new JsonReader(new StringReader($$1));
+
+         label35: {
+            try {
+               $$2.setLenient(false);
+               JsonElement $$3 = Streams.parse($$2);
+               if (!$$3.isJsonNull()) {
+                  Dynamic<JsonElement> $$4 = new Dynamic(JsonOps.INSTANCE, $$3);
+                  $$4 = bbo.g.a($$0, $$4, up.a($$4, 1343));
+                  this.a
+                     .putAll(
+                        c.parse($$4.get("stats").orElseEmptyMap())
+                           .resultOrPartial($$0x -> b.error("Failed to parse statistics for {}: {}", this.e, $$0x))
+                           .orElse(Map.of())
+                     );
+                  break label35;
+               }
+
+               b.error("Unable to parse Stat data from {}", this.e);
+            } catch (Throwable var7) {
+               try {
+                  $$2.close();
+               } catch (Throwable var6) {
+                  var7.addSuppressed(var6);
+               }
+
+               throw var7;
+            }
+
+            $$2.close();
+            return;
+         }
+
+         $$2.close();
+      } catch (IOException | JsonParseException var8) {
+         b.error("Unable to parse Stat data from {}", this.e, var8);
+      }
+   }
+
+   protected String b() {
+      JsonObject $$0 = new JsonObject();
+      $$0.add("stats", (JsonElement)c.encodeStart(JsonOps.INSTANCE, this.a).getOrThrow());
+      $$0.addProperty("DataVersion", ac.b().d().c());
+      return $$0.toString();
+   }
+
+   public void c() {
+      this.f.addAll(this.a.keySet());
+   }
+
+   public void a(asc $$0) {
+      Object2IntMap<axf<?>> $$1 = new Object2IntOpenHashMap();
+
+      for (axf<?> $$2 : this.d()) {
+         $$1.put($$2, this.a($$2));
+      }
+
+      $$0.f.b(new aci($$1));
    }
 }

@@ -1,41 +1,103 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-public class ffu extends fgm {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public class ffu implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<ffu.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
 
-   protected ffu(fgb $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   public ffu(List<ffu.a> $$0) {
+      this.c = $$0;
    }
 
-   ffu(fgb $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ag.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
+
+            return false;
+         };
+         };
+      });
    }
 
    @Override
-   public DoubleList a(jc.a $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-         case c -> this.d;
-      };
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
+   }
+
+   public static ffu a(BufferedReader $$0) {
+      return new ffu($$0.lines().flatMap($$0x -> ffu.a.a($$0x).stream()).toList());
+   }
+
+   public static record a(ffu.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<ffu.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new ffu.a(ffu.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new ffu.a(ffu.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new ffu.a(ffu.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static ffu.a b(String $$0) {
+         return new ffu.a(ffu.b.a, "glob:" + $$0);
+      }
+
+      static ffu.a c(String $$0) {
+         return new ffu.a(ffu.b.a, "regex:" + $$0);
+      }
+
+      static ffu.a d(String $$0) {
+         return new ffu.a(ffu.b.b, $$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      ffu.b a = FileSystem::getPathMatcher;
+      ffu.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

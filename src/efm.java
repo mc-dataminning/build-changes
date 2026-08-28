@@ -1,15 +1,15 @@
-public interface efm {
-   efm a = new efm() {
-      @Override
-      public void a() {
-      }
-
-      @Override
-      public void a(bwv.d $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bwv.d var1);
+public class efm {
+   public static final int a = -64;
+   public static final int b = 384;
+   public static final int c = 384;
+   public static final int d = 384;
+   public static final int e = 0;
+   public static final int f = 256;
+   public static final int g = 128;
+   public static final int h = 128;
+   public static final int i = 0;
+   public static final int j = 256;
+   public static final int k = 128;
+   public static final int l = 256;
+   public static final int m = 63;
 }

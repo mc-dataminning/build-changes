@@ -1,135 +1,61 @@
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class bxr {
-   public static final int a = 3;
-   private final bwv b;
-   private int c;
-   private final bxr.a d = new bxr.a(0, ffs.c, 0.0F, 0.0F);
-   @Nullable
-   private ffs e;
-   @Nullable
-   private ffr f;
-   @Nullable
-   private final Consumer<bxr> g;
+public interface bxr {
+   void a(bxo var1, dak var2);
 
-   public bxr(bwv $$0) {
-      this($$0, 3, null);
+   dak a(bxo var1);
+
+   void a(bxo var1, float var2);
+
+   default void a(bxq $$0, faw $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   public bxr(bwv $$0, int $$1) {
-      this($$0, $$1, null);
+   default void a(alq<fay> $$0, faw $$1, Map<bxo, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   public bxr(bwv $$0, @Nullable Consumer<bxr> $$1) {
-      this($$0, 3, $$1);
-   }
+   default void a(alq<fay> $$0, faw $$1, long $$2, Map<bxo, Float> $$3) {
+      fay $$4 = $$1.a().p().bc().b($$0);
+      if ($$4 != fay.f) {
+         List<dak> $$5 = $$4.a($$1, $$2);
+         List<bxo> $$6 = new ArrayList<>();
 
-   public bxr(bwv $$0, int $$1, @Nullable Consumer<bxr> $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.g = $$2;
-   }
+         for (dak $$7 : $$5) {
+            bxo $$8 = this.a($$7, $$6);
+            if ($$8 != null) {
+               dak $$9 = $$8.a($$7);
+               this.a($$8, $$9);
+               Float $$10 = $$3.get($$8);
+               if ($$10 != null) {
+                  this.a($$8, $$10);
+               }
 
-   public ffs a() {
-      return this.d.a > 0 ? this.d.b : this.b.dt();
-   }
-
-   public float b() {
-      return this.d.a > 0 ? this.d.c : this.b.dL();
-   }
-
-   public float c() {
-      return this.d.a > 0 ? this.d.d : this.b.dN();
-   }
-
-   public void a(ffs $$0, float $$1, float $$2) {
-      if (this.c == 0) {
-         this.b.b($$0, $$1, $$2);
-         this.f();
-      } else {
-         this.d.a = this.c;
-         this.d.b = $$0;
-         this.d.c = $$1;
-         this.d.d = $$2;
-         this.e = this.b.dt();
-         this.f = new ffr(this.b.dN(), this.b.dL());
-         if (this.g != null) {
-            this.g.accept(this);
-         }
-      }
-   }
-
-   public boolean d() {
-      return this.d.a > 0;
-   }
-
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   public void e() {
-      if (!this.d()) {
-         this.f();
-      } else {
-         double $$0 = 1.0 / (double)this.d.a;
-         if (this.e != null) {
-            ffs $$1 = this.b.dt().d(this.e);
-            if (this.b.dV().a(this.b, this.b.au().c(this.d.b.e($$1)))) {
-               this.d.a($$1);
+               $$6.add($$8);
             }
          }
+      }
+   }
 
-         if (this.f != null) {
-            float $$2 = this.b.dL() - this.f.k;
-            float $$3 = this.b.dN() - this.f.j;
-            this.d.a($$2, $$3);
+   @Nullable
+   default bxo a(dak $$0, List<bxo> $$1) {
+      if ($$0.f()) {
+         return null;
+      } else {
+         dit $$2 = $$0.a(kl.D);
+         if ($$2 != null) {
+            bxo $$3 = $$2.b();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(bxo.a)) {
+            return bxo.a;
          }
 
-         double $$4 = azq.d($$0, this.b.dA(), this.d.b.d);
-         double $$5 = azq.d($$0, this.b.dC(), this.d.b.e);
-         double $$6 = azq.d($$0, this.b.dG(), this.d.b.f);
-         ffs $$7 = new ffs($$4, $$5, $$6);
-         float $$8 = (float)azq.e($$0, (double)this.b.dL(), (double)this.d.c);
-         float $$9 = (float)azq.d($$0, (double)this.b.dN(), (double)this.d.d);
-         this.b.b($$7);
-         this.b.b($$8, $$9);
-         this.d.a();
-         this.e = $$7;
-         this.f = new ffr(this.b.dN(), this.b.dL());
-      }
-   }
-
-   public void f() {
-      this.d.a = 0;
-      this.e = null;
-      this.f = null;
-   }
-
-   static class a {
-      protected int a;
-      ffs b;
-      float c;
-      float d;
-
-      a(int $$0, ffs $$1, float $$2, float $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public void a() {
-         this.a--;
-      }
-
-      public void a(ffs $$0) {
-         this.b = this.b.e($$0);
-      }
-
-      public void a(float $$0, float $$1) {
-         this.c += $$0;
-         this.d += $$1;
+         return null;
       }
    }
 }

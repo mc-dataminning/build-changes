@@ -1,46 +1,57 @@
-public class gxp extends gzq<cpx, hee, ghi> {
-   private static final alk a = alk.b("textures/entity/breeze/breeze.png");
+public class gxp extends gxu<cnf, hdz> {
+   private static final alr a = alr.b("textures/entity/end_crystal/end_crystal.png");
+   private static final gry g = gry.g(a);
+   private final ghk h;
 
-   public gxp(gyk.a $$0) {
-      super($$0, new ghi($$0.a(glf.K)), 0.5F);
-      this.a(new hbx($$0, this));
-      this.a(new hbw(this));
+   public gxp(gxv.a $$0) {
+      super($$0);
+      this.e = 0.5F;
+      this.h = new ghk($$0.a(gkq.aU));
    }
 
-   public void a(hee $$0, flq $$1, gsc $$2, int $$3) {
-      ghi $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
+   public void a(hdz $$0, fld $$1, grn $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(0.0F, -0.5F, 0.0F);
+      this.h.a($$0);
+      this.h.a($$1, $$2.getBuffer(g), $$3, hkg.d);
+      $$1.b();
+      fgc $$4 = $$0.b;
+      if ($$4 != null) {
+         float $$5 = a($$0.v);
+         float $$6 = (float)$$4.d;
+         float $$7 = (float)$$4.e;
+         float $$8 = (float)$$4.f;
+         $$1.a($$4);
+         gxq.a(-$$6, -$$7 + $$5, -$$8, $$0.v, $$1, $$2, $$3);
+      }
+
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public alk a(hee $$0) {
-      return a;
+   public static float a(float $$0) {
+      float $$1 = azz.a($$0 * 0.2F) / 2.0F + 0.5F;
+      $$1 = ($$1 * $$1 + $$1) * 0.4F;
+      return $$1 - 1.4F;
    }
 
-   public hee a() {
-      return new hee();
+   public hdz a() {
+      return new hdz();
    }
 
-   public void a(cpx $$0, hee $$1, float $$2) {
+   public void a(cnf $$0, hdz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.e);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.f);
-      $$1.f.a($$0.d);
+      $$1.v = (float)$$0.a + $$2;
+      $$1.a = $$0.g();
+      iw $$3 = $$0.f();
+      if ($$3 != null) {
+         $$1.b = fgc.b($$3).d($$0.p($$2));
+      } else {
+         $$1.b = null;
+      }
    }
 
-   public static ghi a(ghi $$0, glg... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (glg $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
+   public boolean a(cnf $$0, gvh $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.f() != null;
    }
 }

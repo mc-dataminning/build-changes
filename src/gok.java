@@ -1,81 +1,134 @@
-public class gok extends gqm {
-   gok(gmd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+public class gok extends gpx {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final gox.a H;
+
+   gok(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gox.a.a);
+   }
+
+   gok(glo $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gox.a $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
       this.n = false;
-      this.a();
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * azq.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public gpb b() {
+      return this.H.a() ? gpb.b : gpb.c;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
+      } else {
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
+
+         return $$3 | $$4 << 16;
+      }
    }
 
    @Override
    public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
    }
 
    @Override
-   public gpq b() {
-      return gpq.b;
+   public void a(flg $$0, fpy $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
    }
 
-   public static class a implements gpp<md> {
-      private final gqh a;
+   public static class a implements gpa<md> {
+      private final gps a;
 
-      public a(gqh $$0) {
+      public a(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gok $$8 = new gok($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gok $$8 = new gok($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b implements gpp<md> {
-      private final gqh a;
+   public static class b implements gpa<md> {
+      private final gps a;
 
-      public b(gqh $$0) {
+      public b(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gok $$8 = new gok($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class c implements gpp<md> {
-      private final gqh a;
+   public static class c implements gpa<md> {
+      private final gps a;
 
-      public c(gqh $$0) {
+      public c(gps $$0) {
          this.a = $$0;
       }
 
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gok $$8 = new gok($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gok $$8 = new gok($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gox.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
          $$8.a(this.a);
          return $$8;
       }

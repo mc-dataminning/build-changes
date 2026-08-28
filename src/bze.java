@@ -1,30 +1,43 @@
-public class bze extends byx {
-   private final double c;
-   private final double d;
+public class bze {
+   private float a;
+   private float b;
+   private float c;
+   private float d = 1.0F;
 
-   public bze(String $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1);
-      this.c = $$2;
-      this.d = $$3;
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
-      } else if ($$1 < $$2) {
-         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
-      } else if ($$1 > $$3) {
-         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
-      }
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public double d() {
-      return this.c;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+      this.d = $$2;
    }
 
-   public double e() {
-      return this.d;
+   public void a() {
+      this.a = 0.0F;
+      this.b = 0.0F;
+      this.c = 0.0F;
    }
 
-   @Override
-   public double a(double $$0) {
-      return Double.isNaN($$0) ? this.c : azq.a($$0, this.c, this.d);
+   public float b() {
+      return this.b;
+   }
+
+   public float b(float $$0) {
+      return Math.min(azz.h($$0, this.a, this.b), 1.0F);
+   }
+
+   public float c() {
+      return this.c * this.d;
+   }
+
+   public float c(float $$0) {
+      return (this.c - this.b * (1.0F - $$0)) * this.d;
+   }
+
+   public boolean d() {
+      return this.b > 1.0E-5F;
    }
 }

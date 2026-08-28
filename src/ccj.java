@@ -1,28 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class ccj {
-   public static <E extends bxw> cay<E> a(List<Pair<? extends cdd<? super E>, Integer>> $$0) {
-      return a($$0, cab.a.b, cab.b.a);
-   }
+   public static bzx<byf> a(int $$0, BiPredicate<byf, byf> $$1) {
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$2 -> $$2.group($$2.b(chh.p), $$2.a(chh.ac), $$2.c(chh.aj), $$2.a(chh.ak))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     byf $$10 = $$2.b($$3);
+                     if (!$$10.eH()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   public static <E extends bxw> cay<E> a(List<Pair<? extends cdd<? super E>, Integer>> $$0, cab.a $$1, cab.b $$2) {
-      cbw<cdd<? super E>> $$3 = new cbw<>();
-      $$0.forEach($$1x -> $$3.a((cdd<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return cda.a((Function<cda.b<E>, ? extends App<cda.c<E>, cdd<E>>>)($$3x -> $$3x.a((cdd<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == cab.a.b) {
-               $$3.a();
-            }
+                        $$5.a($$10.dv(), (long)$$0);
+                        if ($$10.an() != bxn.bT || $$7.O().c(dkf.P)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-            for (cdd<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == cab.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

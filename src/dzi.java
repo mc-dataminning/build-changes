@@ -1,144 +1,95 @@
-import com.mojang.serialization.Codec;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dzi extends dye {
-   public static final Codec<alj<etn>> a = alj.a(mi.bf);
-   public static final alk b = alk.b("empty");
-   private static final int k = 0;
-   private static final int l = 0;
-   public static final String c = "target";
-   public static final String d = "pool";
-   public static final String e = "joint";
-   public static final String f = "placement_priority";
-   public static final String g = "selection_priority";
-   public static final String h = "name";
-   public static final String i = "final_state";
-   public static final String j = "minecraft:air";
-   private alk m = b;
-   private alk q = b;
-   private alj<etn> r = qp.a;
-   private dzi.a s = dzi.a.a;
-   private String t = "minecraft:air";
-   private int u = 0;
-   private int v = 0;
+public class dzi {
+   public static final alq<dzh> a = a("blank");
+   public static final alq<dzh> b = a("angler");
+   public static final alq<dzh> c = a("archer");
+   public static final alq<dzh> d = a("arms_up");
+   public static final alq<dzh> e = a("blade");
+   public static final alq<dzh> f = a("brewer");
+   public static final alq<dzh> g = a("burn");
+   public static final alq<dzh> h = a("danger");
+   public static final alq<dzh> i = a("explorer");
+   public static final alq<dzh> j = a("flow");
+   public static final alq<dzh> k = a("friend");
+   public static final alq<dzh> l = a("guster");
+   public static final alq<dzh> m = a("heart");
+   public static final alq<dzh> n = a("heartbreak");
+   public static final alq<dzh> o = a("howl");
+   public static final alq<dzh> p = a("miner");
+   public static final alq<dzh> q = a("mourner");
+   public static final alq<dzh> r = a("plenty");
+   public static final alq<dzh> s = a("prize");
+   public static final alq<dzh> t = a("scrape");
+   public static final alq<dzh> u = a("sheaf");
+   public static final alq<dzh> v = a("shelter");
+   public static final alq<dzh> w = a("skull");
+   public static final alq<dzh> x = a("snort");
+   private static final Map<dag, alq<dzh>> y = Map.ofEntries(
+      Map.entry(dao.rB, a),
+      Map.entry(dao.za, b),
+      Map.entry(dao.zb, c),
+      Map.entry(dao.zc, d),
+      Map.entry(dao.zd, e),
+      Map.entry(dao.ze, f),
+      Map.entry(dao.zf, g),
+      Map.entry(dao.zg, h),
+      Map.entry(dao.zh, i),
+      Map.entry(dao.zi, j),
+      Map.entry(dao.zj, k),
+      Map.entry(dao.zk, l),
+      Map.entry(dao.zl, m),
+      Map.entry(dao.zm, n),
+      Map.entry(dao.zn, o),
+      Map.entry(dao.zo, p),
+      Map.entry(dao.zp, q),
+      Map.entry(dao.zq, r),
+      Map.entry(dao.zr, s),
+      Map.entry(dao.zs, t),
+      Map.entry(dao.zt, u),
+      Map.entry(dao.zu, v),
+      Map.entry(dao.zv, w),
+      Map.entry(dao.zw, x)
+   );
 
-   public dzi(iw $$0, ebg $$1) {
-      super(dyg.G, $$0, $$1);
+   @Nullable
+   public static alq<dzh> a(dag $$0) {
+      return y.get($$0);
    }
 
-   public alk a() {
-      return this.m;
+   private static alq<dzh> a(String $$0) {
+      return alq.a(mi.s, alr.b($$0));
    }
 
-   public alk c() {
-      return this.q;
+   public static dzh a(jt<dzh> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   public alj<etn> d() {
-      return this.r;
-   }
-
-   public String f() {
-      return this.t;
-   }
-
-   public dzi.a j() {
-      return this.s;
-   }
-
-   public int k() {
-      return this.u;
-   }
-
-   public int s() {
-      return this.v;
-   }
-
-   public void a(alk $$0) {
-      this.m = $$0;
-   }
-
-   public void b(alk $$0) {
-      this.q = $$0;
-   }
-
-   public void a(alj<etn> $$0) {
-      this.r = $$0;
-   }
-
-   public void a(String $$0) {
-      this.t = $$0;
-   }
-
-   public void a(dzi.a $$0) {
-      this.s = $$0;
-   }
-
-   public void a(int $$0) {
-      this.u = $$0;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-   }
-
-   @Override
-   protected void b(ua $$0, ji.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", alk.a, this.m);
-      $$0.a("target", alk.a, this.q);
-      $$0.a("pool", a, this.r);
-      $$0.a("final_state", this.t);
-      $$0.a("joint", dzi.a.c, this.s);
-      $$0.a("placement_priority", this.u);
-      $$0.a("selection_priority", this.v);
-   }
-
-   @Override
-   protected void a(ua $$0, ji.a $$1) {
-      super.a($$0, $$1);
-      this.m = $$0.<alk>a("name", alk.a).orElse(b);
-      this.q = $$0.<alk>a("target", alk.a).orElse(b);
-      this.r = $$0.<alj<etn>>a("pool", a).orElse(qp.a);
-      this.t = $$0.b("final_state", "minecraft:air");
-      this.s = $$0.<dzi.a>a("joint", dzi.a.c).orElseGet(() -> ewf.a(this.m()));
-      this.u = $$0.b("placement_priority", 0);
-      this.v = $$0.b("selection_priority", 0);
-   }
-
-   public ace t() {
-      return ace.a(this);
-   }
-
-   @Override
-   public ua a(ji.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(aru $$0, int $$1, boolean $$2) {
-      iw $$3 = this.aB_().a(this.m().c(drl.b).a());
-      jt<etn> $$4 = $$0.J_().f(mi.bf);
-      jg<etn> $$5 = $$4.b(this.r);
-      eth.a($$0, $$5, this.q, $$1, $$3, $$2);
-   }
-
-   public static enum a implements bao {
-      a("rollable"),
-      b("aligned");
-
-      public static final bao.a<dzi.a> c = bao.a(dzi.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public xc a() {
-         return xc.c("jigsaw_block.joint." + this.d);
-      }
+   private static dzh a(jt<dzh> $$0, alq<dzh> $$1, String $$2) {
+      return jt.a($$0, $$1, new dzh(alr.b($$2)));
    }
 }

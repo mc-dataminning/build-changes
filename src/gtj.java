@@ -1,153 +1,97 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record gtj(Vector3fc a, Vector3fc b, Map<jc, gtk> c, @Nullable gtl d, boolean e, int f) {
-   private static final boolean g = false;
-   private static final float h = -16.0F;
-   private static final float i = 32.0F;
+public record gtj(alr c, gtj.a d) implements gsz.a {
+   public static final MapCodec<gtj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alr.a.fieldOf("model").forGetter(gtj::a), gtj.a.a.forGetter(gtj::b)).apply($$0, gtj::new)
+   );
+   public static final Codec<gtj> b = a.codec();
 
-   public gtj(Vector3fc $$0, Vector3fc $$1, Map<jc, gtk> $$2) {
-      this($$0, $$1, $$2, null, true, 0);
+   public gtj(alr $$0) {
+      this($$0, gtj.a.b);
    }
 
-   protected static class a implements JsonDeserializer<gtj> {
-      private static final boolean a = true;
-      private static final int b = 0;
+   public gtj a(i $$0) {
+      return this.a(this.d.a($$0));
+   }
 
-      public gtj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         gtl $$6 = this.a($$3);
-         Map<jc, gtk> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !azg.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = azg.a($$3, "shade", true);
-            int $$9 = 0;
-            if ($$3.has("light_emission")) {
-               boolean $$10 = azg.b($$3, "light_emission");
-               if ($$10) {
-                  $$9 = azg.o($$3, "light_emission");
-               }
+   public gtj b(i $$0) {
+      return this.a(this.d.b($$0));
+   }
 
-               if (!$$10 || $$9 < 0 || $$9 > 15) {
-                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
-               }
-            }
+   public gtj a(boolean $$0) {
+      return this.a(this.d.a($$0));
+   }
 
-            return new gtj($$4, $$5, $$7, $$6, $$8, $$9);
-         }
+   public gtj a(alr $$0) {
+      return new gtj($$0, this.d);
+   }
+
+   public gtj a(gtj.a $$0) {
+      return new gtj(this.c, $$0);
+   }
+
+   public gtj a(gtk $$0) {
+      return $$0.apply(this);
+   }
+
+   @Override
+   public gsz a(hmz $$0) {
+      return gtf.a($$0, this.c, this.d.a());
+   }
+
+   @Override
+   public void a(hnh.a $$0) {
+      $$0.markDependency(this.c);
+   }
+
+   public alr a() {
+      return this.c;
+   }
+
+   public gtj.a b() {
+      return this.d;
+   }
+
+   public static record a(i c, i d, boolean e) {
+      public static final MapCodec<gtj.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  i.e.optionalFieldOf("x", i.a).forGetter(gtj.a::b),
+                  i.e.optionalFieldOf("y", i.a).forGetter(gtj.a::c),
+                  Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(gtj.a::d)
+               )
+               .apply($$0, gtj.a::new)
+      );
+      public static final gtj.a b = new gtj.a(i.a, i.a, false);
+
+      public hnf a() {
+         hmr $$0 = hmr.a(this.c, this.d);
+         return (hnf)(this.e ? $$0.c() : $$0);
       }
 
-      @Nullable
-      private gtl a(JsonObject $$0) {
-         gtl $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = azg.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            jc.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = azg.a($$2, "rescale", false);
-            $$1 = new gtl($$3, $$4, $$5, $$6);
-         }
-
-         return $$1;
+      public gtj.a a(i $$0) {
+         return new gtj.a($$0, this.d, this.e);
       }
 
-      private float b(JsonObject $$0) {
-         float $$1 = azg.m($$0, "angle");
-         if ($$1 != 0.0F && azq.e($$1) != 22.5F && azq.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
+      public gtj.a b(i $$0) {
+         return new gtj.a(this.c, $$0, this.e);
       }
 
-      private jc.a c(JsonObject $$0) {
-         String $$1 = azg.i($$0, "axis");
-         jc.a $$2 = jc.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
+      public gtj.a a(boolean $$0) {
+         return new gtj.a(this.c, this.d, $$0);
       }
 
-      private Map<jc, gtk> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jc, gtk> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
+      public i b() {
+         return this.c;
       }
 
-      private Map<jc, gtk> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jc, gtk> $$2 = Maps.newEnumMap(jc.class);
-         JsonObject $$3 = azg.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            jc $$5 = this.a($$4.getKey());
-            $$2.put($$5, (gtk)$$0.deserialize($$4.getValue(), gtk.class));
-         }
-
-         return $$2;
+      public i c() {
+         return this.d;
       }
 
-      private jc a(String $$0) {
-         jc $$1 = jc.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = azg.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = azg.e($$2.get($$4), $$1 + "[" + $$4 + "]");
-            }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
-         }
+      public boolean d() {
+         return this.e;
       }
    }
 }

@@ -1,12 +1,25 @@
-import java.util.Set;
+import com.mojang.brigadier.StringReader;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public interface bra extends brd {
-   brb d();
+public class bra<T> implements bql<StringReader, Dynamic<?>> {
+   private final vb<T> a;
+
+   public bra(DynamicOps<T> $$0) {
+      this.a = vb.a($$0);
+   }
 
    @Nullable
-   bqv.a c(String var1);
+   public Dynamic<T> b(bqk<StringReader> $$0) {
+      $$0.f().skipWhitespace();
+      int $$1 = $$0.g();
 
-   Set<Pair<String, bsm>> e();
+      try {
+         return new Dynamic(this.a.a(), this.a.b($$0.f()));
+      } catch (Exception var4) {
+         $$0.b().a($$1, var4);
+         return null;
+      }
+   }
 }

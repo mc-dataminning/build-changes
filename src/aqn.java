@@ -1,97 +1,56 @@
-import com.google.common.collect.Streams;
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.nio.file.Path;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class aqn implements Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final aqk d;
-   private final long e;
+public class aqn implements aqk {
+   static final SuggestionProvider<ek> b = ($$0, $$1) -> ep.a(a($$0).a(), $$1);
+   public static final Function<String, aql.c> a = $$0 -> new aql.c() {
+         @Override
+         public aqk a(CommandContext<ek> $$0x) {
+            return new aqn(aqn.a($$0), fl.a($$0, $$0));
+         }
 
-   public aqn(aqk $$0) {
-      this.d = $$0;
-      this.e = $$0.bv() * bau.b;
+         @Override
+         public ArgumentBuilder<ek, ?> a(ArgumentBuilder<ek, ?> $$0x, Function<ArgumentBuilder<ek, ?>, ArgumentBuilder<ek, ?>> $$1) {
+            return $$0.then(el.a("storage").then($$1.apply(el.a($$0, fl.a()).suggests(aqn.b))));
+         }
+      };
+   private final ezy c;
+   private final alr d;
+
+   static ezy a(CommandContext<ek> $$0) {
+      return ((ek)$$0.getSource()).l().aK();
+   }
+
+   aqn(ezy $$0, alr $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void run() {
-      while (this.d.x()) {
-         long $$0 = this.d.aB();
-         long $$1 = ag.d();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)bau.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aP().g() / (float)bau.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            p $$3 = a("Watching Server", this.d.ay().threadId());
-            this.d.b($$3.f());
-            q $$4 = $$3.a("Performance stats");
-            $$4.a("Random tick rate", () -> this.d.aZ().o().b(djv.p).toString());
-            $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.aj().a() + ": " + $$0x.G()).collect(Collectors.joining(",\n")));
-            alm.a("Crash report:\n" + $$3.a(z.a));
-            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + ag.f() + "-server.txt");
-            if ($$3.a($$5, z.a)) {
-               a.error("This crash report has been saved to: {}", $$5.toAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
-
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / bau.b);
-         } catch (InterruptedException var10) {
-         }
-      }
+   public void a(ua $$0) {
+      this.c.a(this.d, $$0);
    }
 
-   public static p a(String $$0, long $$1) {
-      ThreadMXBean $$2 = ManagementFactory.getThreadMXBean();
-      ThreadInfo[] $$3 = $$2.dumpAllThreads(true, true);
-      StringBuilder $$4 = new StringBuilder();
-      Error $$5 = new Error("Watchdog");
-
-      for (ThreadInfo $$6 : $$3) {
-         if ($$6.getThreadId() == $$1) {
-            $$5.setStackTrace($$6.getStackTrace());
-         }
-
-         $$4.append($$6);
-         $$4.append("\n");
-      }
-
-      p $$7 = new p($$0, $$5);
-      q $$8 = $$7.a("Thread Dump");
-      $$8.a("Threads", $$4);
-      return $$7;
+   @Override
+   public ua a() {
+      return this.c.a(this.d);
    }
 
-   private void a() {
-      try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
-      }
+   @Override
+   public xg b() {
+      return xg.a("commands.data.storage.modified", xg.a(this.d));
+   }
+
+   @Override
+   public xg a(va $$0) {
+      return xg.a("commands.data.storage.query", xg.a(this.d), up.b($$0));
+   }
+
+   @Override
+   public xg a(fc.g $$0, double $$1, int $$2) {
+      return xg.a("commands.data.storage.get", $$0.a(), xg.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

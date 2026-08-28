@@ -1,13 +1,16 @@
-public class hbr extends gxd<cpu, hhh, gkw<hhh>> {
-   public hbr(gyk.a $$0) {
-      this($$0, glf.eh, glf.ei, glf.eq, glf.er, glf.ej, glf.ek);
+public class hbr extends hcj<hgv, ghi> {
+   private static final alr a = alr.b("textures/entity/zombie/drowned_outer_layer.png");
+   private final ghi b;
+   private final ghi c;
+
+   public hbr(gzs<hgv, ghi> $$0, gkn $$1) {
+      super($$0);
+      this.b = new ghi($$1.a(gkq.aN));
+      this.c = new ghi($$1.a(gkq.aK));
    }
 
-   public hhh b() {
-      return new hhh();
-   }
-
-   public hbr(gyk.a $$0, gle $$1, gle $$2, gle $$3, gle $$4, gle $$5, gle $$6) {
-      super($$0, new gkw<>($$0.a($$1)), new gkw<>($$0.a($$2)), new gkw<>($$0.a($$3)), new gkw<>($$0.a($$4)), new gkw<>($$0.a($$5)), new gkw<>($$0.a($$6)));
+   public void a(fld $$0, grn $$1, int $$2, hgv $$3, float $$4, float $$5) {
+      ghi $$6 = $$3.am ? this.c : this.b;
+      a($$6, a, $$0, $$1, $$2, $$3, -1);
    }
 }

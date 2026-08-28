@@ -1,43 +1,129 @@
-public class ghw extends ggl<hen> {
-   public static final float e = 0.87F;
-   public static final float f = 0.92F;
-   private static final glp g = $$0 -> {
-      a($$0.a());
-      return $$0;
-   };
-   private final glg i = this.c.b("left_chest");
-   private final glg j = this.c.b("right_chest");
+public class ghw extends ghn<hep> {
+   public static final gla a = gla.scaling(2.35F);
+   private static final float[] b = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] c = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] d = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] e = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] f = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] g = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String i = "eye";
+   private static final String j = "tail0";
+   private static final String k = "tail1";
+   private static final String l = "tail2";
+   private final gkr m;
+   private final gkr n;
+   private final gkr[] o = new gkr[12];
+   private final gkr[] p;
 
-   public ghw(glg $$0) {
+   public ghw(gkr $$0) {
       super($$0);
+      this.m = $$0.b("head");
+
+      for (int $$1 = 0; $$1 < this.o.length; $$1++) {
+         this.o[$$1] = this.m.b(a($$1));
+      }
+
+      this.n = this.m.b("eye");
+      this.p = new gkr[3];
+      this.p[0] = this.m.b("tail0");
+      this.p[1] = this.p[0].b("tail1");
+      this.p[2] = this.p[1].b("tail2");
    }
 
-   public static glm a(float $$0) {
-      return glm.a(ggl.a(glk.a), 64, 64).a(g).a(glp.scaling($$0));
+   private static String a(int $$0) {
+      return "spike" + $$0;
    }
 
-   public static glm b(float $$0) {
-      return glm.a(ggl.c(glk.a), 64, 64).a(g).a(b).a(glp.scaling($$0));
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      glb $$2 = $$1.a(
+         "head",
+         gkw.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         gkt.a
+      );
+      gkw $$3 = gkw.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * b[$$4];
+         float $$9 = (float) Math.PI * c[$$4];
+         float $$10 = (float) Math.PI * d[$$4];
+         $$2.a(a($$4), $$3, gkt.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", gkw.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), gkt.a(0.0F, 0.0F, -8.25F));
+      glb $$11 = $$2.a("tail0", gkw.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), gkt.a);
+      glb $$12 = $$11.a("tail1", gkw.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), gkt.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", gkw.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), gkt.a(0.5F, 0.5F, 6.0F));
+      return gkx.a($$0, 64, 64);
    }
 
-   public static glm a(float $$0, boolean $$1) {
-      return gid.b($$1).a(g).a($$1 ? ggl.b : glp.a).a(glp.scaling($$0));
+   public static gkx b() {
+      return a().a(a);
    }
 
-   private static void a(glq $$0) {
-      glq $$1 = $$0.b("body");
-      gll $$2 = gll.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$1.a("left_chest", $$2, gli.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("right_chest", $$2, gli.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      glq $$3 = $$0.b("head_parts").b("head");
-      gll $$4 = gll.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$3.a("left_ear", $$4, gli.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$3.a("right_ear", $$4, gli.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void a(hen $$0) {
+   public void a(hep $$0) {
       super.a($$0);
-      this.i.k = $$0.a;
-      this.j.k = $$0.a;
+      this.m.f = $$0.ad * (float) (Math.PI / 180.0);
+      this.m.e = $$0.ae * (float) (Math.PI / 180.0);
+      float $$1 = (1.0F - $$0.a) * 0.55F;
+      this.a($$0.v, $$1);
+      if ($$0.e != null && $$0.d != null) {
+         double $$2 = $$0.e.e - $$0.c.e;
+         if ($$2 > 0.0) {
+            this.n.c = 0.0F;
+         } else {
+            this.n.c = 1.0F;
+         }
+
+         fgc $$3 = $$0.d;
+         $$3 = new fgc($$3.d, 0.0, $$3.f);
+         fgc $$4 = new fgc($$0.c.d - $$0.e.d, 0.0, $$0.c.f - $$0.e.f).d().b((float) (Math.PI / 2));
+         double $$5 = $$3.b($$4);
+         this.n.b = azz.c((float)Math.abs($$5)) * 2.0F * (float)Math.signum($$5);
+      }
+
+      this.n.k = true;
+      float $$6 = $$0.b;
+      this.p[0].f = azz.a($$6) * (float) Math.PI * 0.05F;
+      this.p[1].f = azz.a($$6) * (float) Math.PI * 0.1F;
+      this.p[2].f = azz.a($$6) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.o[$$2].b = b($$2, $$0, $$1);
+         this.o[$$2].c = c($$2, $$0, $$1);
+         this.o[$$2].d = d($$2, $$0, $$1);
+      }
+   }
+
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + azz.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
+
+   private static float b(int $$0, float $$1, float $$2) {
+      return e[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + f[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
    }
 }

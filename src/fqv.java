@@ -1,120 +1,158 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fqv {
-   fqv a = new fqv.a(0.0F);
-   fqv b = new fqv.a(1.0F);
+public class fqv extends avt<Map<String, List<fqv.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fqv.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fqv.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fqv.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fqv.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fqv.a::d)
+                  )
+                  .apply($$0, fqv.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final alr c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fqv.b f;
 
-   float a();
+   public fqv(alr $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   float a(boolean var1);
+   protected Map<String, List<fqv.a>> a(avo $$0, brm $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
 
-   float b();
-
-   public static class a implements fqv {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
-
-      @Override
-      public float b() {
-         return this.c;
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
       }
    }
 
-   public static class b implements fqv {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
+   protected void a(Map<String, List<fqv.a>> $$0, avo $$1, brm $$2) {
+      List<fqv.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ag.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
+      } else {
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
 
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
-      }
-
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
-
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
-
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
+         if (this.f == null) {
+            this.f = new fqv.b($$3, $$4, $$5);
          } else {
-            this.d();
-         }
-      }
-
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
+            this.f = this.f.a($$3, $$5);
          }
 
-         this.k = true;
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<fqv.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fqv.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final fqq a = fqq.Q();
+      private final List<fqv.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<fqv.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
       }
 
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
+      public fqv.b a(List<fqv.a> $$0, long $$1) {
+         this.cancel();
+         return new fqv.b($$0, this.d.get(), $$1);
       }
 
       @Override
-      public float a() {
-         return this.c;
-      }
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
 
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
+         for (fqv.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fwh.a(fqq.Q().aA(), fwh.a.g, xg.a($$2.c, $$3), xg.a($$2.d, $$3)));
+                  return;
+               }
+            }
          }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
       }
    }
 }

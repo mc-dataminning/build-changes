@@ -1,40 +1,36 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class bqk implements bqc<StringReader, String> {
-   private final bpw<CommandSyntaxException> a;
-   private final bpw<CommandSyntaxException> b;
+public interface bqk<S> {
+   bqm a();
 
-   public bqk(bpw<CommandSyntaxException> $$0, bpw<CommandSyntaxException> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   bqh<S> b();
+
+   default <T> Optional<T> b(bqj<S, T> $$0) {
+      T $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.b().a(this.g());
+      }
+
+      if (!this.a().g()) {
+         throw new IllegalStateException("Malformed scope: " + this.a());
+      } else {
+         return Optional.ofNullable($$1);
+      }
    }
 
    @Nullable
-   public String b(bqb<StringReader> $$0) {
-      StringReader $$1 = $$0.f();
-      $$1.skipWhitespace();
-      String $$2 = $$1.getString();
-      int $$3 = $$1.getCursor();
-      int $$4 = $$3;
+   <T> T a(bqj<S, T> var1);
 
-      while ($$4 < $$2.length() && this.a($$2.charAt($$4))) {
-         $$4++;
-      }
+   S f();
 
-      int $$5 = $$4 - $$3;
-      if ($$5 == 0) {
-         $$0.b().a($$0.g(), this.a);
-         return null;
-      } else if ($$2.charAt($$3) != '_' && $$2.charAt($$4 - 1) != '_') {
-         $$1.setCursor($$4);
-         return $$2.substring($$3, $$4);
-      } else {
-         $$0.b().a($$0.g(), this.b);
-         return null;
-      }
-   }
+   int g();
 
-   protected abstract boolean a(char var1);
+   void a(int var1);
+
+   bqe c();
+
+   void d();
+
+   bqk<S> e();
 }

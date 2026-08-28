@@ -1,82 +1,185 @@
 import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class fzw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cxb<?>, fzw.a<?, ?>> b = Maps.newHashMap();
+   private final fqq a;
+   private final gaa b;
+   private final fzx c;
+   private final int d;
+   private final ak e;
+   private final av f;
+   private final dak g;
+   private final xg h;
+   private final fzy i;
+   private final Map<aj, fzy> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public static <T extends cvs> void a(cxb<T> $$0, frf $$1, int $$2, xc $$3) {
-      fzw.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", mh.p.b($$0));
+   public fzw(fqq $$0, gaa $$1, fzx $$2, int $$3, ak $$4, av $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fzy(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
+   }
+
+   public fzx a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ak c() {
+      return this.e;
+   }
+
+   public xg d() {
+      return this.h;
+   }
+
+   public av e() {
+      return this.f;
+   }
+
+   public void a(ftk $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(ftk $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(ftk $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      alr $$3 = this.f.d().map(ix::b).orElse(hks.a);
+      int $$4 = azz.a(this.k);
+      int $$5 = azz.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a(gry::H, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
+      }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.e();
+   }
+
+   public void a(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, azz.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = azz.a(this.k);
+      int $$7 = azz.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fzy $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
+
+      $$0.c().b();
+      if ($$5) {
+         this.q = azz.a(this.q + 0.02F, 0.0F, 0.3F);
       } else {
-         $$4.a($$3, $$0, $$1, $$2);
+         this.q = azz.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static fzw a(fqq $$0, gaa $$1, int $$2, ak $$3) {
+      Optional<av> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (fzx $$5 : fzx.values()) {
+            if ($$2 < $$5.a()) {
+               return new fzw($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
+
+            $$2 -= $$5.a();
+         }
+
+         return null;
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = azz.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = azz.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
+   }
+
+   public void a(ak $$0) {
+      Optional<av> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fzy $$2 = new fzy(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
+      }
+   }
+
+   private void a(fzy $$0, aj $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (fzy $$6 : this.j.values()) {
+         $$6.b();
       }
    }
 
    @Nullable
-   private static <T extends cvs> fzw.a<T, ?> a(cxb<T> $$0) {
-      return (fzw.a<T, ?>)b.get($$0);
+   public fzy a(aj $$0) {
+      return this.j.get($$0);
    }
 
-   private static <M extends cvs, U extends gaf & gca<M>> void a(cxb<? extends M> $$0, fzw.a<M, U> $$1) {
-      fzw.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + mh.p.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cxb<?> $$1 : mh.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", mh.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(cxb.a, gbg::new);
-      a(cxb.b, gbg::new);
-      a(cxb.c, gbg::new);
-      a(cxb.d, gbg::new);
-      a(cxb.e, gbg::new);
-      a(cxb.f, gbg::new);
-      a(cxb.g, gbm::new);
-      a(cxb.h, gbh::new);
-      a(cxb.i, gay::new);
-      a(cxb.j, gaz::new);
-      a(cxb.k, gba::new);
-      a(cxb.l, gbd::new);
-      a(cxb.m, gbi::new);
-      a(cxb.n, gbp::new);
-      a(cxb.o, gbq::new);
-      a(cxb.p, gbr::new);
-      a(cxb.q, gbt::new);
-      a(cxb.r, gby::new);
-      a(cxb.s, gbz::new);
-      a(cxb.t, gcb::new);
-      a(cxb.u, gce::new);
-      a(cxb.v, gcg::new);
-      a(cxb.w, gch::new);
-      a(cxb.x, gbe::new);
-      a(cxb.y, gci::new);
-   }
-
-   interface a<T extends cvs, U extends gaf & gca<T>> {
-      default void a(xc $$0, cxb<T> $$1, frf $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gj()), $$2.t.gj(), $$0);
-         $$2.t.bR = $$4.F();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cry var2, xc var3);
+   public gaa f() {
+      return this.b;
    }
 }

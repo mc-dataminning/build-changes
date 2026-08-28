@@ -1,78 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Optional;
+import com.google.common.base.Stopwatch;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.slf4j.Logger;
 
-public interface avj {
-   avj a = new avj() {
-      @Override
-      public <T> Optional<T> a(aug<T> $$0) {
-         return Optional.empty();
-      }
-   };
-   auz<avj> b = () -> a;
+public class avj extends avu<avj.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Stopwatch b = Stopwatch.createUnstarted();
 
-   static avj a(InputStream $$0) throws IOException {
-      avj var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = azg.a($$1);
-         var3 = new avj() {
-            @Override
-            public <T> Optional<T> a(aug<T> $$0) {
-               String $$1 = $$0.a();
-               if ($$2.has($$1)) {
-                  T $$2 = (T)$$0.b().parse(JsonOps.INSTANCE, $$2.get($$1)).getOrThrow(JsonParseException::new);
-                  return Optional.of($$2);
-               } else {
-                  return Optional.empty();
-               }
-            }
-         };
-      }
-
-      return var3;
+   public static avk a(avo $$0, List<avi> $$1, Executor $$2, Executor $$3, CompletableFuture<bbh> $$4) {
+      avj $$5 = new avj($$1);
+      $$5.b($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5x) -> {
+         AtomicLong $$6 = new AtomicLong();
+         AtomicLong $$7 = new AtomicLong();
+         AtomicLong $$8 = new AtomicLong();
+         AtomicLong $$9 = new AtomicLong();
+         CompletableFuture<Void> $$10 = $$3x.reload($$1x, $$2x, a($$4x, $$6, $$7, $$3x.getName()), a($$5x, $$8, $$9, $$3x.getName()));
+         return $$10.thenApplyAsync($$5xx -> {
+            a.debug("Finished reloading {}", $$3x.getName());
+            return new avj.a($$3x.getName(), $$6, $$7, $$8, $$9);
+         }, $$3);
+      }, $$4);
+      return $$5;
    }
 
-   <T> Optional<T> a(aug<T> var1);
-
-   default avj a(Collection<aug<?>> $$0) {
-      avj.a $$1 = new avj.a();
-
-      for (aug<?> $$2 : $$0) {
-         this.a($$1, $$2);
-      }
-
-      return $$1.a();
+   private avj(List<avi> $$0) {
+      super($$0);
+      this.b.start();
    }
 
-   private <T> void a(avj.a $$0, aug<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
+   @Override
+   protected CompletableFuture<List<avj.a>> a(Executor $$0, Executor $$1, avo $$2, List<avi> $$3, avu.a<avj.a> $$4, CompletableFuture<?> $$5) {
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5).thenApplyAsync(this::a, $$1);
    }
 
-   public static class a {
-      private final Builder<aug<?>, Object> a = ImmutableMap.builder();
+   private static Executor a(Executor $$0, AtomicLong $$1, AtomicLong $$2, String $$3) {
+      return $$4 -> $$0.execute(() -> {
+            brm $$4x = brl.a();
+            $$4x.a($$3);
+            long $$5 = ag.d();
+            $$4.run();
+            $$1.addAndGet(ag.d() - $$5);
+            $$2.incrementAndGet();
+            $$4x.c();
+         });
+   }
 
-      public <T> avj.a a(aug<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
+   private List<avj.a> a(List<avj.a> $$0) {
+      this.b.stop();
+      long $$1 = 0L;
+      a.info("Resource reload finished after {} ms", this.b.elapsed(TimeUnit.MILLISECONDS));
+
+      for (avj.a $$2 : $$0) {
+         long $$3 = TimeUnit.NANOSECONDS.toMillis($$2.b.get());
+         long $$4 = $$2.c.get();
+         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
+         long $$6 = $$2.e.get();
+         long $$7 = $$3 + $$5;
+         long $$8 = $$4 + $$6;
+         String $$9 = $$2.a;
+         a.info("{} took approximately {} tasks/{} ms ({} tasks/{} ms preparing, {} tasks/{} ms applying)", new Object[]{$$9, $$8, $$7, $$4, $$3, $$6, $$5});
+         $$1 += $$5;
       }
 
-      public avj a() {
-         final ImmutableMap<aug<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? avj.a : new avj() {
-            @Override
-            public <T> Optional<T> a(aug<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
-      }
+      a.info("Total blocking time: {} ms", $$1);
+      return $$0;
+   }
+
+   public static record a(String a, AtomicLong b, AtomicLong c, AtomicLong d, AtomicLong e) {
    }
 }

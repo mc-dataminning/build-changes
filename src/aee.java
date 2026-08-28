@@ -1,23 +1,37 @@
-import java.util.List;
-import java.util.UUID;
+public class aee implements zo<acf> {
+   public static final ze<vy, aee> a = zo.a(aee::a, aee::new);
+   private final iw b;
+   private final boolean c;
 
-public record aee(List<UUID> b) implements zj<aby> {
-   public static final za<vy, aee> a = zj.a(aee::a, aee::new);
+   public aee(iw $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
    private aee(vy $$0) {
-      this($$0.a(ka.g));
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
    private void a(vy $$0) {
-      $$0.a(this.b, ka.g);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zl<aee> a() {
-      return agr.af;
+   public zq<aee> a() {
+      return agy.Y;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public iw b() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

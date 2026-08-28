@@ -1,25 +1,23 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hiy(int b) implements hjc {
-   public static final MapCodec<hiy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayy.l.optionalFieldOf("index", 0).forGetter(hiy::b)).apply($$0, hiy::new));
+public record hiy() implements hjg<alq<dkj>> {
+   public static final Codec<alq<dkj>> a = alq.a(mi.bp);
+   public static final hjg.a<hiy, alq<dkj>> b = hjg.a.a(MapCodec.unit(new hiy()), a);
 
-   @Override
-   public float a(daa $$0, @Nullable gmd $$1, @Nullable bxw $$2, int $$3) {
-      dcj $$4 = $$0.a(kl.p);
-      if ($$4 != null) {
-         Float $$5 = $$4.a(this.b);
-         if ($$5 != null) {
-            return $$5;
-         }
-      }
-
-      return 0.0F;
+   @Nullable
+   public alq<dkj> a(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      return $$1 != null ? $$1.aj() : null;
    }
 
    @Override
-   public MapCodec<hiy> a() {
+   public hjg.a<hiy, alq<dkj>> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<alq<dkj>> b() {
       return a;
    }
 }

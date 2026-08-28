@@ -7,8 +7,8 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 
 public class vb<T> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("argument.nbt.trailing"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("argument.nbt.expected.compound"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("argument.nbt.trailing"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("argument.nbt.expected.compound"));
    public static final char c = ',';
    public static final char d = ':';
    private static final vb<va> g = a(uo.a);
@@ -21,14 +21,20 @@ public class vb<T> {
       }
    }, ua::toString);
    public static final Codec<ua> f = Codec.withAlternative(e, ua.a);
-   private final bqh<T> h;
+   private final DynamicOps<T> h;
+   private final bqq<T> i;
 
-   public vb(bqh<T> $$0) {
+   private vb(DynamicOps<T> $$0, bqq<T> $$1) {
       this.h = $$0;
+      this.i = $$1;
+   }
+
+   public DynamicOps<T> a() {
+      return this.h;
    }
 
    public static <T> vb<T> a(DynamicOps<T> $$0) {
-      return new vb<>(uu.a($$0));
+      return new vb<>($$0, uu.a($$0));
    }
 
    private static ua a(StringReader $$0, va $$1) throws CommandSyntaxException {
@@ -49,7 +55,7 @@ public class vb<T> {
    }
 
    public T a(StringReader $$0) throws CommandSyntaxException {
-      T $$1 = this.h.a($$0);
+      T $$1 = this.i.a($$0);
       $$0.skipWhitespace();
       if ($$0.canRead()) {
          throw a.createWithContext($$0);
@@ -59,7 +65,7 @@ public class vb<T> {
    }
 
    public T b(StringReader $$0) throws CommandSyntaxException {
-      return this.h.a($$0);
+      return this.i.a($$0);
    }
 
    public static ua c(StringReader $$0) throws CommandSyntaxException {

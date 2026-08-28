@@ -1,50 +1,41 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class foz extends hro {
-   private static final xc a = xc.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fyf c = fyf.d();
-   private final gaf C;
-   @Nullable
-   private fvh D;
-
-   public foz(gaf $$0) {
-      super(fqw.a);
-      this.C = $$0;
-   }
-
-   @Override
-   public void aS_() {
-      this.c.a(15).c().b();
-      this.D = new fvh(a, this.p).b(true);
-      this.c.a(this.D);
-      fyf $$0 = this.c.a(fyf.e().a(8));
-      xc $$1 = xc.c("mco.account.privacy.info.button");
-      $$0.a(fun.a($$1, fzc.b(this, ayl.a)).a());
-      $$0.a(fun.a(xb.k, $$0x -> this.aP_()).a());
-      this.c.a($$1x -> {
-         ful var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.C);
-   }
-
-   @Override
-   protected void c() {
-      if (this.D != null) {
-         this.D.d(this.n - 15);
+public interface foz {
+   foz a = new foz() {
+      @Override
+      public long a() {
+         return 1L;
       }
 
-      this.c.a();
-      fxz.a(this.c, this.J());
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   @Override
-   public xc i() {
-      return a;
+   long a();
+
+   long b();
+
+   static foz a(final int $$0) {
+      return new foz() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

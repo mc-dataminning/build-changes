@@ -1,21 +1,41 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dii {
-   alj<? extends jt<dih>> a = alj.a(alk.b("equipment_asset"));
-   alj<dih> b = a("leather");
-   alj<dih> c = a("chainmail");
-   alj<dih> d = a("iron");
-   alj<dih> e = a("gold");
-   alj<dih> f = a("diamond");
-   alj<dih> g = a("turtle_scute");
-   alj<dih> h = a("netherite");
-   alj<dih> i = a("armadillo_scute");
-   alj<dih> j = a("elytra");
-   alj<dih> k = a("saddle");
-   Map<cyy, alj<dih>> l = ag.a(cyy.class, $$0 -> a($$0.c() + "_carpet"));
-   alj<dih> m = a("trader_llama");
+public record dii(jk<dgx> d, int e, int f) implements dif {
+   public static final int b = 10000;
+   public static final MapCodec<dii> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jv.a(mi.aR).fieldOf("enchantments").forGetter(dii::b),
+               azg.a(1, 10000).fieldOf("min_cost").forGetter(dii::c),
+               azg.a(0, 10000).fieldOf("max_cost_span").forGetter(dii::d)
+            )
+            .apply($$0, dii::new)
+   );
 
-   static alj<dih> a(String $$0) {
-      return alj.a(a, alk.b($$0));
+   @Override
+   public void a(dak $$0, dhd.a $$1, bai $$2, bva $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azz.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (dha $$7 : dgz.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.b(), $$7.c());
+      }
+   }
+
+   @Override
+   public MapCodec<dii> a() {
+      return c;
+   }
+
+   public jk<dgx> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

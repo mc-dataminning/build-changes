@@ -1,80 +1,127 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cnf extends cmz {
-   private static final cil b = cil.a().d();
-   @Nullable
-   private eye c;
-   @Nullable
-   private ffs d;
+public class cnf extends bxe {
+   private static final aku<Optional<iw>> b = aky.a(cnf.class, akw.p);
+   private static final aku<Boolean> c = aky.a(cnf.class, akw.k);
+   private static final boolean d = true;
+   public int a;
 
-   public cnf(cmx $$0) {
-      super($$0);
+   public cnf(bxn<? extends cnf> $$0, dkj $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.a = this.ae.a(100000);
+   }
+
+   public cnf(dkj $$0, double $$1, double $$2, double $$3) {
+      this(bxn.S, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public cnn<cnf> h() {
-      return cnn.c;
+   protected bxe.c bf() {
+      return bxe.c.a;
    }
 
    @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
+   protected void a(aky.a $$0) {
+      $$0.a(b, Optional.empty());
+      $$0.a(c, true);
    }
 
    @Override
-   public void a(aru $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
-   }
-
-   @Nullable
-   @Override
-   public ffs f() {
-      return this.d;
-   }
-
-   private void b(aru $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         iw $$2 = $$0.a(ehf.a.f, ekk.a(this.a.j()));
-         crz $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            ffs $$4 = new ffs($$3.dA(), 0.0, $$3.dG()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         eyc $$7 = new eyc($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
+   public void h() {
+      this.a++;
+      this.aI();
+      this.bV();
+      if (this.dV() instanceof asb) {
+         iw $$0 = this.dv();
+         if (((asb)this.dV()).F() != null && this.dV().a_($$0).l()) {
+            this.dV().b($$0, dnb.a(this.dV(), $$0));
          }
       }
+   }
 
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.t().a(cnn.d);
+   @Override
+   protected void b(ua $$0) {
+      $$0.b("beam_target", iw.a, this.f());
+      $$0.a("ShowBottom", this.g());
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      this.a($$0.<iw>a("beam_target", iw.a).orElse(null));
+      this.a($$0.b("ShowBottom", true));
+   }
+
+   @Override
+   public boolean bF() {
+      return true;
+   }
+
+   @Override
+   public final boolean b(bvt $$0) {
+      return this.d($$0) ? false : !($$0.d() instanceof cng);
+   }
+
+   @Override
+   public final boolean a(asb $$0, bvt $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if ($$1.d() instanceof cng) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.a(bxe.d.a);
+            if (!$$1.a(axo.l)) {
+               bvt $$3 = $$1.d() != null ? this.dW().d(this, $$1.d()) : null;
+               $$0.a(this, $$3, null, this.dA(), this.dC(), this.dG(), 6.0F, false, dkj.a.b);
+            }
+
+            this.a($$0, $$1);
+         }
+
+         return true;
       }
    }
 
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         kb $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
+   @Override
+   public void c(asb $$0) {
+      this.a($$0, this.dW().p());
+      super.c($$0);
+   }
 
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new ffs($$1, $$3, $$2);
+   private void a(asb $$0, bvt $$1) {
+      efq $$2 = $$0.F();
+      if ($$2 != null) {
+         $$2.a(this, $$1);
       }
+   }
+
+   public void a(@Nullable iw $$0) {
+      this.ar().a(b, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public iw f() {
+      return this.ar().a(b).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.ar().a(c, $$0);
+   }
+
+   public boolean g() {
+      return this.ar().a(c);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return super.a($$0) || this.f() != null;
+   }
+
+   @Override
+   public dak dI() {
+      return new dak(dao.wq);
    }
 }

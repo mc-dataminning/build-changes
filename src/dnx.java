@@ -1,30 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnx extends dne {
-   public static final MapCodec<dnx> a = b(dnx::new);
-   private static final fgm b = dne.b(16.0, 0.0, 1.0);
+public class dnx extends dmm {
+   public static final MapCodec<dnx> b = b(dnx::new);
+   public static final int c = 5;
+   private static final jc[] d = jc.values();
 
    @Override
-   public MapCodec<? extends dnx> a() {
-      return a;
+   public MapCodec<dnx> a() {
+      return b;
    }
 
-   public dnx(ebf.d $$0) {
+   public dnx(ebp.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return b;
+   protected void b(ebq $$0, asb $$1, iw $$2, bai $$3) {
+      if ($$3.a(5) == 0) {
+         jc $$4 = d[$$3.a(d.length)];
+         iw $$5 = $$2.a($$4);
+         ebq $$6 = $$1.a_($$5);
+         dno $$7 = null;
+         if (h($$6)) {
+            $$7 = dnq.rg;
+         } else if ($$6.a(dnq.rg) && $$6.c(dmn.d) == $$4) {
+            $$7 = dnq.rf;
+         } else if ($$6.a(dnq.rf) && $$6.c(dmn.d) == $$4) {
+            $$7 = dnq.re;
+         } else if ($$6.a(dnq.re) && $$6.c(dmn.d) == $$4) {
+            $$7 = dnq.rd;
+         }
+
+         if ($$7 != null) {
+            ebq $$8 = $$7.m().b(dmn.d, $$4).b(dmn.c, Boolean.valueOf($$6.y().a() == eyb.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return !$$1.v($$2.e());
+   public static boolean h(ebq $$0) {
+      return $$0.l() || $$0.a(dnq.J) && $$0.y().e() == 8;
    }
 }

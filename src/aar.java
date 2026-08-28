@@ -1,16 +1,21 @@
-public record aar() implements aam {
-   public static final za<vy, aar> a = aam.a(aar::a, aar::new);
-   public static final aam.b<aar> b = aam.a("debug/game_test_clear");
+public record aar(String c) implements aat {
+   public static final ze<vy, aar> a = aat.a(aar::a, aar::new);
+   public static final aat.b<aar> b = aat.a("brand");
 
    private aar(vy $$0) {
-      this();
+      this($$0.p());
    }
 
    private void a(vy $$0) {
+      $$0.a(this.c);
    }
 
    @Override
-   public aam.b<aar> a() {
+   public aat.b<aar> a() {
       return b;
+   }
+
+   public String b() {
+      return this.c;
    }
 }

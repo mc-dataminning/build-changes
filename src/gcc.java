@@ -1,30 +1,32 @@
-public class gcc extends gat {
-   private final diy u;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-   public gcc(diy $$0) {
-      this.u = $$0;
+public interface gcc {
+   static gcc a(azk $$0) {
+      return new gcb($$0);
    }
 
-   @Override
-   public diy m() {
-      return this.u;
+   static gcc a(cyj $$0) {
+      Objects.requireNonNull($$0);
+
+      return (gcc)(switch ($$0) {
+         case cyi $$1 -> new gca($$1.a());
+         case gbz.a $$2 -> new gbz($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
+      });
    }
 
-   @Override
-   int E() {
-      return 150;
+   int a(fti var1);
+
+   int b(fti var1);
+
+   default boolean a() {
+      return false;
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.a.a(this.m().m());
+   default void a(fti $$0, int $$1, int $$2, Matrix4f $$3, grn.a $$4) {
    }
 
-   @Override
-   protected void a(diy $$0) {
-      if ($$0 instanceof cuw.a $$1) {
-         this.m.L().b(new aim($$1.h().ao(), this.a.a(), $$0.p()));
-      }
+   default void a(fti $$0, int $$1, int $$2, int $$3, int $$4, ftk $$5) {
    }
 }

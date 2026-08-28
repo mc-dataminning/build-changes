@@ -1,3 +1,4 @@
-public class hgv extends hdx {
-   public boolean d;
+public class hgv extends hev {
+   public boolean a;
+   public boolean b;
 }

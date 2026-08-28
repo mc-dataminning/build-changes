@@ -118,13 +118,13 @@ public class lz {
    public static final ly<lr> bi = a("block_crumble", false, lr::a, lr::b);
    public static final md bj = a("firefly", false);
    public static final Codec<lx> bk = mh.i.q().dispatch("type", lx::a, ly::c);
-   public static final za<wn, lx> bl = yy.a(mi.Y).b(lx::a, ly::d);
+   public static final ze<wp, lx> bl = zc.a(mi.Y).b(lx::a, ly::d);
 
    private static md a(String $$0, boolean $$1) {
       return jt.a(mh.i, $$0, new md($$1));
    }
 
-   private static <T extends lx> ly<T> a(String $$0, boolean $$1, final Function<ly<T>, MapCodec<T>> $$2, final Function<ly<T>, za<? super wn, T>> $$3) {
+   private static <T extends lx> ly<T> a(String $$0, boolean $$1, final Function<ly<T>, MapCodec<T>> $$2, final Function<ly<T>, ze<? super wp, T>> $$3) {
       return jt.a(mh.i, $$0, new ly<T>($$1) {
          @Override
          public MapCodec<T> c() {
@@ -132,7 +132,7 @@ public class lz {
          }
 
          @Override
-         public za<? super wn, T> d() {
+         public ze<? super wp, T> d() {
             return $$3.apply(this);
          }
       });

@@ -11,8 +11,8 @@ public class bd extends dl<bd.a> {
       return bd.a.a;
    }
 
-   public void a(arv $$0, Collection<? extends bwv> $$1) {
-      List<faj> $$2 = $$1.stream().map($$1x -> bz.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(asc $$0, Collection<? extends bxe> $$1) {
+      List<fat> $$2 = $$1.stream().map($$1x -> bz.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,11 +26,11 @@ public class bd extends dl<bd.a> {
          return aq.F.a(new bd.a(Optional.empty(), bz.a($$0)));
       }
 
-      public boolean a(Collection<? extends faj> $$0) {
+      public boolean a(Collection<? extends fat> $$0) {
          for (bj $$1 : this.c) {
             boolean $$2 = false;
 
-            for (faj $$3 : $$0) {
+            for (fat $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

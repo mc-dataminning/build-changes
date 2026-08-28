@@ -7,7 +7,7 @@ public class ts extends sp {
    }
 
    @Override
-   public xc a() {
-      return xc.a("test.error.unknown", this.a.getMessage());
+   public xg a() {
+      return xg.a("test.error.unknown", this.a.getMessage());
    }
 }

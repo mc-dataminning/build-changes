@@ -1,42 +1,53 @@
-public class gpj extends gpm {
-   private final giy a;
-   private final gsn b = gsn.j(gyd.a);
+public class gpj extends gpx {
+   protected final gps a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   gpj(gmd $$0, double $$1, double $$2, double $$3) {
+   protected gpj(glo $$0, double $$1, double $$2, double $$3, gps $$4, float $$5) {
       super($$0, $$1, $$2, $$3);
-      this.a = new gil(frf.Q().aS().a(glf.aO));
-      this.u = 0.0F;
-      this.t = 30;
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
+
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public gpq b() {
-      return gpq.d;
+   public gpb b() {
+      return gpb.c;
    }
 
    @Override
-   public void a(flq $$0, gsc $$1, fqn $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * azq.a($$4 * (float) Math.PI);
-      int $$6 = aya.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      flt $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hks.d, $$6);
-      $$0.b();
-   }
-
-   @Override
-   public void a(flt $$0, fqn $$1, float $$2) {
-   }
-
-   public static class a implements gpp<md> {
-      public gpm a(md $$0, gmd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gpj($$1, $$2, $$3, $$4);
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

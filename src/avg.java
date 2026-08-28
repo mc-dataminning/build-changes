@@ -1,23 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public class avg {
-   private static final Codec<avg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(bab.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avg::new)
-   );
-   public static final aug<avg> a = new aug<>("filter", b);
-   private final List<bab> c;
-
-   public avg(List<bab> $$0) {
-      this.c = List.copyOf($$0);
+@FunctionalInterface
+public interface avg<T> {
+   static avg<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   static avg<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
-   }
+   T get() throws IOException;
 }

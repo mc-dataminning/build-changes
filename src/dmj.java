@@ -1,61 +1,66 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dmj extends dlv {
-   public static final MapCodec<dmj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyy.q.fieldOf("color").forGetter(dlv::b), t()).apply($$0, dmj::new));
-   public static final ecg b = ebw.bd;
-   private static final Map<cyy, dne> c = Maps.newHashMap();
-   private static final fgm d = dne.b(8.0, 0.0, 16.0);
+public abstract class dmj extends dna {
+   public static final eco<jc> a = drp.e;
+   public static final ech b = ecg.u;
 
-   @Override
-   public MapCodec<dmj> a() {
-      return a;
-   }
-
-   public dmj(cyy $$0, ebf.d $$1) {
-      super($$0, $$1);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   protected dmj(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(a, jc.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(ebg $$0, dkc $$1, iw $$2) {
-      return $$1.a_($$2.e()).e();
+   protected abstract MapCodec<? extends dmj> a();
+
+   @Override
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
+      }
+
+      return bvc.a;
+   }
+
+   protected abstract void a(dkj var1, iw var2, csi var3);
+
+   @Override
+   public ebq a(ded $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected fgm a(ebg $$0, djd $$1, iw $$2, ffx $$3) {
-      return d;
+   protected void a(ebq $$0, asb $$1, iw $$2, boolean $$3) {
+      buy.a($$0, $$1, $$2);
    }
 
    @Override
-   public ebg a(ddt $$0) {
-      return this.m().b(b, Integer.valueOf(ecm.a($$0.i() + 180.0F)));
+   protected boolean c_(ebq $$0) {
+      return true;
    }
 
    @Override
-   protected ebg a(ebg $$0, dkc $$1, dko $$2, iw $$3, jc $$4, iw $$5, ebg $$6, azz $$7) {
-      return $$4 == jc.a && !$$0.a($$1, $$3) ? dng.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected int a(ebq $$0, dkj $$1, iw $$2) {
+      return cwb.a($$1.c_($$2));
    }
 
    @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected ebq a(ebq $$0, dui $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected ebq a(ebq $$0, dsr $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b);
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(a, b);
    }
 
-   public static dne a(cyy $$0) {
-      return c.getOrDefault($$0, dng.jl);
+   @Nullable
+   protected static <T extends dyo> dyp<T> a(dkj $$0, dyq<T> $$1, dyq<? extends dyb> $$2) {
+      return $$0 instanceof asb $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dyb.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

@@ -1,42 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejk extends eji {
-   public ejk(Codec<ejh> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(exr.e, exr.c);
+public class ejk implements eiw {
+   public static final MapCodec<ejk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kb.v(16).optionalFieldOf("offset", kb.i).forGetter($$0x -> $$0x.e), ebq.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, ejk::new)
+   );
+   private final kb e;
+   private final ebq f;
+
+   protected ejk(kb $$0, ebq $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dli $$0, iw $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   protected int a() {
-      return 10;
-   }
-
-   @Override
-   protected float a(azz $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(ejg $$0, ejh $$1, edd $$2, Function<iw, jg<dlc>> $$3, edc $$4, iw.a $$5, iw.a $$6, egr $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         ebg $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9);
-         return true;
-      } else {
-         return false;
-      }
+   public eix<?> a() {
+      return eix.g;
    }
 }

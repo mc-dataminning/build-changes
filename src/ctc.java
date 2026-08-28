@@ -1,88 +1,81 @@
-public abstract class ctc extends csu {
-   private static final float a = 12.25F;
-
-   protected ctc(bxe<? extends ctc> $$0, djz $$1) {
+public class ctc extends ctd {
+   public ctc(bxn<? extends ctc> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
-   protected ctc(bxe<? extends ctc> $$0, double $$1, double $$2, double $$3, djz $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      if (this.af < 2 && $$0 < 12.25) {
-         return false;
-      } else {
-         double $$1 = this.cR().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
-         }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
-      }
-   }
-
-   @Override
-   public boolean n(boolean $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      this.j();
-      this.be();
-      this.g();
-      ffq $$0 = csw.a(this, this::b);
-      ffs $$1;
-      if ($$0.d() != ffq.a.a) {
-         $$1 = $$0.g();
-      } else {
-         $$1 = this.dt().e(this.dy());
-      }
-
-      this.b($$1);
-      this.A();
-      this.aI();
-      super.h();
-      if ($$0.d() != ffq.a.a && this.bJ()) {
-         this.b($$0);
-      }
-   }
-
-   private void g() {
-      ffs $$0 = this.dy();
-      ffs $$1 = this.dt();
-      float $$4;
-      if (this.bi()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dV().a(lz.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = 0.8F;
-      } else {
-         $$4 = 0.99F;
-      }
-
-      this.i($$0.c((double)$$4));
-   }
-
-   private void j() {
-      if (this.ak) {
-         for (iw $$0 : iw.a(this.cR())) {
-            ebg $$1 = this.dV().a_($$0);
-            if ($$1.a(dng.nJ)) {
-               $$1.a(this.dV(), $$0, this, bxo.a);
-            }
-         }
-      }
+   public ctc(dkj $$0, cmh $$1) {
+      this(bxn.az, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azz.a($$1.aV * (float) (Math.PI / 180.0)),
+         $$1.dE() - 0.1F,
+         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azz.b($$1.aV * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
    protected double bc() {
-      return 0.03;
+      return 0.06;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      fgc $$0 = this.dy();
+      fga $$1 = ctf.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dA() + $$0.d;
+      double $$3 = this.dC() + $$0.e;
+      double $$4 = this.dG() + $$0.f;
+      this.A();
+      float $$5 = 0.99F;
+      if (this.dV().a(this.cR()).noneMatch(ebp.a::l)) {
+         this.aq();
+      } else if (this.bi()) {
+         this.aq();
+      } else {
+         this.i($$0.c(0.99F));
+         this.be();
+         this.a_($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(ffz $$0) {
+      super.a($$0);
+      if (this.q() instanceof byf $$1) {
+         bxe $$2 = $$0.a();
+         bvt $$3 = this.dW().b(this, $$1);
+         if (this.dV() instanceof asb $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dgz.a($$4, $$2, $$3);
+         }
+      }
+   }
+
+   @Override
+   protected void a(ffy $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.aq();
+      }
+   }
+
+   @Override
+   protected void a(aky.a $$0) {
+   }
+
+   @Override
+   public void a(acg $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dV().a(lz.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

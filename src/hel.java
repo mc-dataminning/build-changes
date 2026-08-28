@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
-
-public abstract class hel extends her {
-   @Nullable
-   public bws.j b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class hel extends het {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public ckk.v h = ckk.v.c;
 }

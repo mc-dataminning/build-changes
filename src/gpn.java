@@ -1,27 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class gpn {
-   private final List<alk> a;
-
-   private gpn(List<alk> $$0) {
-      this.a = $$0;
+public class gpn extends gop {
+   protected gpn(glo $$0, double $$1, double $$2, double $$3, double $$4, gps $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   public List<alk> a() {
-      return this.a;
-   }
+   public static class a implements gpa<md> {
+      private final gps a;
 
-   public static gpn a(JsonObject $$0) {
-      JsonArray $$1 = azg.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gpn(List.of());
-      } else {
-         List<alk> $$2 = Streams.stream($$1).map($$0x -> azg.a($$0x, "texture")).map(alk::a).collect(ImmutableList.toImmutableList());
-         return new gpn($$2);
+      public a(gps $$0) {
+         this.a = $$0;
+      }
+
+      public gox a(md $$0, glo $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gpn($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

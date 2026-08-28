@@ -1,78 +1,63 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmk extends dmq {
-   public static final MapCodec<dmk> a = b(dmk::new);
-   public static final ece<jc> b = ebw.R;
-   public static final ebx c = ebw.y;
+public abstract class dmk extends dna {
+   public static final ech a = ecg.A;
+   private final dva.a b;
 
-   @Override
-   public MapCodec<dmk> a() {
-      return a;
-   }
-
-   public dmk(ebf.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, jc.c).b(c, Boolean.valueOf(false)));
+   public dmk(dva.a $$0, ebp.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.C.b().b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected but a(ebg $$0, djz $$1, iw $$2, crz $$3, ffo $$4) {
-      if ($$1 instanceof aru $$5 && $$1.c_($$2) instanceof dxw $$6) {
-         $$3.a($$6);
-         $$3.a(axb.ar);
-         cqp.a($$5, $$3, true);
-      }
-
-      return but.a;
-   }
+   protected abstract MapCodec<? extends dmk> a();
 
    @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, boolean $$3) {
-      bup.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(ebg $$0, aru $$1, iw $$2, azz $$3) {
-      dye $$4 = $$1.c_($$2);
-      if ($$4 instanceof dxw) {
-         ((dxw)$$4).k();
-      }
+   public dyo a(iw $$0, ebq $$1) {
+      return new eae($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dye a(iw $$0, ebg $$1) {
-      return new dxw($$0, $$1);
+   public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
+      if ($$0.C) {
+         boolean $$3 = $$1.a(dnq.hp) || $$1.a(dnq.hq) || $$1.a(dnq.hr) || $$1.a(dnq.hs);
+         if ($$3) {
+            return a($$2, dyq.q, eae::a);
+         }
+      }
+
+      return null;
+   }
+
+   public dva.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean c_(ebg $$0) {
-      return true;
+   protected boolean a(ebq $$0, eyp $$1) {
+      return false;
    }
 
    @Override
-   protected int a(ebg $$0, djz $$1, iw $$2) {
-      return cvs.a($$1.c_($$2));
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   protected ebg a(ebg $$0, dty $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public ebq a(ded $$0) {
+      return this.m().b(a, Boolean.valueOf($$0.q().D($$0.a())));
    }
 
    @Override
-   protected ebg a(ebg $$0, dsh $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(ebh.a<dne, ebg> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public ebg a(ddt $$0) {
-      return this.m().b(b, $$0.d().g());
+   protected void a(ebq $$0, dkj $$1, iw $$2, dno $$3, @Nullable ezi $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.D($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

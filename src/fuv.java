@@ -1,613 +1,143 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.DataFixUtils;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import net.minecraft.client.ClientBrandRetriever;
 
-public class fuv {
-   private static final float a = 10.0F;
-   private static final int b = 18;
-   private static final int c = 14737632;
-   private static final int d = 2;
-   private static final int e = 2;
-   private static final int f = 2;
-   private static final Map<ehf.a, String> g = Maps.newEnumMap(Map.of(ehf.a.a, "SW", ehf.a.b, "S", ehf.a.c, "OW", ehf.a.d, "O", ehf.a.e, "M", ehf.a.f, "ML"));
-   private final frf h;
-   private final fuv.a i;
-   private final ftx j;
-   private final fii k;
-   private final RenderSystem.a l = RenderSystem.getSequentialBuffer(flu.c.a);
-   private ffq m;
-   private ffq n;
+public class fuv extends fue<fuv.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final gcw n;
+
+   public fuv(fqq $$0, int $$1, gcw $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(fqt<?> $$0) {
+      this.b(fuv.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fqt<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fqt<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fuv.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<ftw> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(ftw $$0, @Nullable ftw $$1) {
+      this.b(fuv.a.a($$0, $$1, this.n));
+   }
+
+   @Override
+   public int a() {
+      return 310;
+   }
+
    @Nullable
-   private dje o;
-   @Nullable
-   private edn p;
-   @Nullable
-   private CompletableFuture<edn> q;
-   private boolean r;
-   private boolean s;
-   private boolean t;
-   private boolean u;
-   private final bpe v = new bpe(1);
-   private final bpe w = new bpe(bpj.values().length);
-   private final bpe x = new bpe(1);
-   private final bpe y = new bpe(1);
-   private final Map<bpf, bpe> z = Map.of(bpf.a, this.w);
-   private final fwe A;
-   private final fwh B;
-   private final fwf C;
-   private final fwd D;
-   private final fwg E;
-
-   public fuv(frf $$0) {
-      this.h = $$0;
-      this.i = new fuv.a();
-      this.j = $$0.h;
-      this.A = new fwe(this.j, this.v);
-      this.B = new fwh(this.j, this.w, () -> $$0.s.u().g());
-      this.C = new fwf(this.j, this.x);
-      this.D = new fwd(this.j, this.y);
-      this.E = new fwg(this.j);
-
-      try (fln $$1 = new fln(flo.g.b() * 12)) {
-         flm $$2 = new flm($$1, flu.c.a, flo.g);
-         $$2.a(0.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
-         $$2.a(10.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
-         $$2.a(0.0F, 0.0F, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
-         $$2.a(0.0F, 10.0F, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
-         $$2.a(0.0F, 0.0F, 0.0F).a(-8421377).b(0.0F, 0.0F, 1.0F);
-         $$2.a(0.0F, 0.0F, 10.0F).a(-8421377).b(0.0F, 0.0F, 1.0F);
-
-         try (flp $$3 = $$2.b()) {
-            this.k = RenderSystem.getDevice().a(() -> "Crosshair vertex buffer", fig.a, fih.b, $$3.a());
-         }
-      }
-   }
-
-   public void a() {
-      this.q = null;
-      this.p = null;
-   }
-
-   public void a(ftz $$0) {
-      brd $$1 = brc.a();
-      $$1.a("debug");
-      bwv $$2 = this.h.ao();
-      this.m = $$2.a(20.0, 0.0F, false);
-      this.n = $$2.a(20.0, 0.0F, true);
-      this.b($$0);
-      this.c($$0);
-      this.E.a(10);
-      if (this.t) {
-         int $$3 = $$0.a();
-         int $$4 = $$3 / 2;
-         this.A.a($$0, 0, this.A.a($$4));
-         if (this.w.d() > 0) {
-            int $$5 = this.B.a($$4);
-            this.B.a($$0, $$3 - $$5, $$5);
-         }
-
-         this.E.a(this.B.a());
-      }
-
-      if (this.u) {
-         int $$6 = $$0.a();
-         int $$7 = $$6 / 2;
-         if (!this.h.T()) {
-            this.D.a($$0, 0, this.D.a($$7));
-         }
-
-         int $$8 = this.C.a($$7);
-         this.C.a($$0, $$6 - $$8, $$8);
-         this.E.a(this.C.a());
-      }
-
-      try (bri $$9 = $$1.d("profilerPie")) {
-         this.E.a($$0);
-      }
-
-      $$1.c();
-   }
-
-   protected void b(ftz $$0) {
-      List<String> $$1 = this.b();
-      $$1.add("");
-      boolean $$2 = this.h.V() != null;
-      $$1.add(
-         "Debug charts: [F3+1] Profiler "
-            + (this.s ? "visible" : "hidden")
-            + "; [F3+2] "
-            + ($$2 ? "FPS + TPS " : "FPS ")
-            + (this.t ? "visible" : "hidden")
-            + "; [F3+3] "
-            + (!this.h.T() ? "Bandwidth + Ping" : "Ping")
-            + (this.u ? " visible" : " hidden")
-      );
-      $$1.add("For help: press F3 + Q");
-      this.a($$0, $$1, true);
-   }
-
-   protected void c(ftz $$0) {
-      List<String> $$1 = this.c();
-      this.a($$0, $$1, false);
-   }
-
-   private void a(ftz $$0, List<String> $$1, boolean $$2) {
-      int $$3 = 9;
-
-      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-         String $$5 = $$1.get($$4);
-         if (!Strings.isNullOrEmpty($$5)) {
-            int $$6 = this.j.b($$5);
-            int $$7 = $$2 ? 2 : $$0.a() - 2 - $$6;
-            int $$8 = 2 + $$3 * $$4;
-            $$0.a($$7 - 1, $$8 - 1, $$7 + $$6 + 1, $$8 + $$3 - 1, -1873784752);
-         }
-      }
-
-      for (int $$9 = 0; $$9 < $$1.size(); $$9++) {
-         String $$10 = $$1.get($$9);
-         if (!Strings.isNullOrEmpty($$10)) {
-            int $$11 = this.j.b($$10);
-            int $$12 = $$2 ? 2 : $$0.a() - 2 - $$11;
-            int $$13 = 2 + $$3 * $$9;
-            $$0.a(this.j, $$10, $$12, $$13, 14737632, false);
-         }
-      }
-   }
-
-   protected List<String> b() {
-      hpn $$0 = this.h.V();
-      gme $$1 = this.h.L();
-      vv $$2 = $$1.k();
-      float $$3 = $$2.p();
-      float $$4 = $$2.o();
-      bvc $$5 = this.t().u();
-      String $$6;
-      if ($$5.j()) {
-         $$6 = " (frozen - stepping)";
-      } else if ($$5.l()) {
-         $$6 = " (frozen)";
-      } else {
-         $$6 = "";
-      }
-
-      String $$12;
-      if ($$0 != null) {
-         ame $$9 = $$0.aP();
-         boolean $$10 = $$9.a();
-         if ($$10) {
-            $$6 = " (sprinting)";
-         }
-
-         String $$11 = $$10 ? "-" : String.format(Locale.ROOT, "%.1f", $$5.g());
-         $$12 = String.format(Locale.ROOT, "Integrated server @ %.1f/%s ms%s, %.0f tx, %.0f rx", $$0.aO(), $$11, $$6, $$3, $$4);
-      } else {
-         $$12 = String.format(Locale.ROOT, "\"%s\" server%s, %.0f tx, %.0f rx", $$1.f(), $$6, $$3, $$4);
-      }
-
-      iw $$14 = this.h.ao().dv();
-      if (this.h.az()) {
-         return Lists.newArrayList(
-            new String[]{
-               "Minecraft " + ac.b().c() + " (" + this.h.i() + "/" + ClientBrandRetriever.getClientModName() + ")",
-               this.h.A,
-               $$12,
-               this.h.f.e(),
-               this.h.f.j(),
-               "P: " + this.h.g.c() + ". T: " + this.h.s.g(),
-               this.h.s.J(),
-               "",
-               String.format(Locale.ROOT, "Chunk-relative: %d %d %d", $$14.u() & 15, $$14.v() & 15, $$14.w() & 15)
+   public ftw b(fqt<?> $$0) {
+      for (fuv.a $$1 : this.aJ_()) {
+         if ($$1 instanceof fuv.b $$2) {
+            ftw $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
             }
-         );
-      } else {
-         bwv $$15 = this.h.ao();
-         jc $$16 = $$15.cO();
-
-         String $$21 = switch ($$16) {
-            case c -> "Towards negative Z";
-            case d -> "Towards positive Z";
-            case e -> "Towards negative X";
-            case f -> "Towards positive X";
-            default -> "Invalid";
-         };
-         dje $$22 = new dje($$14);
-         if (!Objects.equals(this.o, $$22)) {
-            this.o = $$22;
-            this.a();
          }
+      }
 
-         djz $$23 = this.t();
-         LongSet $$24 = (LongSet)($$23 instanceof aru ? ((aru)$$23).y() : LongSets.EMPTY_SET);
-         List<String> $$25 = Lists.newArrayList(
-            new String[]{
-               "Minecraft "
-                  + ac.b().c()
-                  + " ("
-                  + this.h.i()
-                  + "/"
-                  + ClientBrandRetriever.getClientModName()
-                  + ("release".equalsIgnoreCase(this.h.j()) ? "" : "/" + this.h.j())
-                  + ")",
-               this.h.A,
-               $$12,
-               this.h.f.e(),
-               this.h.f.j(),
-               "P: " + this.h.g.c() + ". T: " + this.h.s.g(),
-               this.h.s.J()
-            }
-         );
-         String $$26 = this.s();
-         if ($$26 != null) {
-            $$25.add($$26);
-         }
+      return null;
+   }
 
-         $$25.add(this.h.s.aj().a() + " FC: " + $$24.size());
-         $$25.add("");
-         $$25.add(String.format(Locale.ROOT, "XYZ: %.3f / %.5f / %.3f", this.h.ao().dA(), this.h.ao().dC(), this.h.ao().dG()));
-         $$25.add(String.format(Locale.ROOT, "Block: %d %d %d [%d %d %d]", $$14.u(), $$14.v(), $$14.w(), $$14.u() & 15, $$14.v() & 15, $$14.w() & 15));
-         $$25.add(String.format(Locale.ROOT, "Chunk: %d %d %d [%d %d in r.%d.%d.mca]", $$22.h, jz.a($$14.v()), $$22.i, $$22.j(), $$22.k(), $$22.h(), $$22.i()));
-         $$25.add(String.format(Locale.ROOT, "Facing: %s (%s) (%.1f / %.1f)", $$16, $$21, azq.h($$15.dL()), azq.h($$15.dN())));
-         edn $$27 = this.v();
-         if ($$27.E()) {
-            $$25.add("Waiting for chunk...");
-         } else {
-            int $$28 = this.h.s.h().q().a($$14, 0);
-            int $$29 = this.h.s.a(dki.a, $$14);
-            int $$30 = this.h.s.a(dki.b, $$14);
-            $$25.add("Client Light: " + $$28 + " (" + $$29 + " sky, " + $$30 + " block)");
-            edn $$31 = this.u();
-            StringBuilder $$32 = new StringBuilder("CH");
+   public void b() {
+      for (fuv.a $$0 : this.aJ_()) {
+         if ($$0 instanceof fuv.b) {
+            fuv.b $$1 = (fuv.b)$$0;
 
-            for (ehf.a $$33 : ehf.a.values()) {
-               if ($$33.b()) {
-                  $$32.append(" ").append(g.get($$33)).append(": ").append($$27.a($$33, $$14.u(), $$14.w()));
+            for (ftw $$2 : $$1.a.values()) {
+               if ($$2 instanceof fqt.i<?> $$3) {
+                  $$3.c();
                }
             }
+         }
+      }
+   }
 
-            $$25.add($$32.toString());
-            $$32.setLength(0);
-            $$32.append("SH");
-
-            for (ehf.a $$34 : ehf.a.values()) {
-               if ($$34.d()) {
-                  $$32.append(" ").append(g.get($$34)).append(": ");
-                  if ($$31 != null) {
-                     $$32.append($$31.a($$34, $$14.u(), $$14.w()));
-                  } else {
-                     $$32.append("??");
-                  }
-               }
-            }
-
-            $$25.add($$32.toString());
-            if (this.h.s.d($$14.v())) {
-               $$25.add("Biome: " + a(this.h.s.u($$14)));
-               if ($$31 != null) {
-                  float $$35 = $$23.as();
-                  long $$36 = $$31.w();
-                  bur $$37 = new bur($$23.an(), $$23.af(), $$36, $$35);
-                  $$25.add(String.format(Locale.ROOT, "Local Difficulty: %.2f // %.2f (Day %d)", $$37.b(), $$37.d(), this.h.s.af() / 24000L));
-               } else {
-                  $$25.add("Local Difficulty: ??");
-               }
-            }
-
-            if ($$31 != null && $$31.u()) {
-               $$25.add("Blending: Old");
+   public Optional<fvv> e(double $$0, double $$1) {
+      for (fuv.a $$2 : this.aJ_()) {
+         for (fvv $$3 : $$2.aJ_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
             }
          }
-
-         aru $$38 = this.r();
-         if ($$38 != null) {
-            arr $$39 = $$38.m();
-            ede $$40 = $$39.g();
-            eht $$41 = $$39.i();
-            $$40.a($$25, $$41, $$14);
-            dll.f $$42 = $$41.b();
-            dlg $$43 = $$40.d();
-            $$43.a($$25, $$14, $$42);
-            dkk.d $$44 = $$39.o();
-            if ($$44 != null) {
-               Object2IntMap<bxz> $$45 = $$44.b();
-               int $$46 = $$44.a();
-               $$25.add(
-                  "SC: "
-                     + $$46
-                     + ", "
-                     + Stream.of(bxz.values())
-                        .map($$1x -> Character.toUpperCase($$1x.a().charAt(0)) + ": " + $$45.getInt($$1x))
-                        .collect(Collectors.joining(", "))
-               );
-            } else {
-               $$25.add("SC: N/A");
-            }
-         }
-
-         alk $$47 = this.h.j.f();
-         if ($$47 != null) {
-            $$25.add("Post: " + $$47);
-         }
-
-         $$25.add(this.h.ak().i() + String.format(Locale.ROOT, " (Mood %d%%)", Math.round(this.h.t.d() * 100.0F)));
-         return $$25;
-      }
-   }
-
-   private static String a(jg<dlc> $$0) {
-      return (String)$$0.d().map($$0x -> $$0x.a().toString(), $$0x -> "[unregistered " + $$0x + "]");
-   }
-
-   @Nullable
-   private aru r() {
-      hpn $$0 = this.h.V();
-      return $$0 != null ? $$0.a(this.h.s.aj()) : null;
-   }
-
-   @Nullable
-   private String s() {
-      aru $$0 = this.r();
-      return $$0 != null ? $$0.J() : null;
-   }
-
-   private djz t() {
-      return (djz)DataFixUtils.orElse(Optional.ofNullable(this.h.V()).flatMap($$0 -> Optional.ofNullable($$0.a(this.h.s.aj()))), this.h.s);
-   }
-
-   @Nullable
-   private edn u() {
-      if (this.q == null) {
-         aru $$0 = this.r();
-         if ($$0 == null) {
-            return null;
-         }
-
-         this.q = $$0.m().b(this.o.h, this.o.i, eee.n, false).thenApply($$0x -> (edn)$$0x.b(null));
       }
 
-      return this.q.getNow(null);
+      return Optional.empty();
    }
 
-   private edn v() {
-      if (this.p == null) {
-         this.p = this.h.s.d(this.o.h, this.o.i);
+   protected static class a extends fue.a<fuv.a> {
+      private final List<ftw> a;
+      private final fzq b;
+      private static final int c = 160;
+
+      a(List<ftw> $$0, fzq $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
       }
 
-      return this.p;
-   }
-
-   protected List<String> c() {
-      long $$0 = Runtime.getRuntime().maxMemory();
-      long $$1 = Runtime.getRuntime().totalMemory();
-      long $$2 = Runtime.getRuntime().freeMemory();
-      long $$3 = $$1 - $$2;
-      flc $$4 = RenderSystem.getDevice();
-      List<String> $$5 = Lists.newArrayList(
-         new String[]{
-            String.format(Locale.ROOT, "Java: %s", System.getProperty("java.version")),
-            String.format(Locale.ROOT, "Mem: %2d%% %03d/%03dMB", $$3 * 100L / $$0, b($$3), b($$0)),
-            String.format(Locale.ROOT, "Allocation rate: %03dMB/s", b(this.i.a($$3))),
-            String.format(Locale.ROOT, "Allocated: %2d%% %03dMB", $$1 * 100L / $$0, b($$1)),
-            "",
-            String.format(Locale.ROOT, "CPU: %s", GLX._getCpuInfo()),
-            "",
-            String.format(Locale.ROOT, "Display: %dx%d (%s)", frf.Q().aO().k(), frf.Q().aO().l(), $$4.g()),
-            $$4.f(),
-            String.format(Locale.ROOT, "%s %s", $$4.h(), $$4.i())
-         }
-      );
-      if (this.h.az()) {
-         return $$5;
-      } else {
-         if (this.m.d() == ffq.a.b) {
-            iw $$6 = ((ffo)this.m).b();
-            ebg $$7 = this.h.s.a_($$6);
-            $$5.add("");
-            $$5.add(o.t + "Targeted Block: " + $$6.u() + ", " + $$6.v() + ", " + $$6.w());
-            $$5.add(String.valueOf(mh.e.b($$7.b())));
-
-            for (Entry<ecj<?>, Comparable<?>> $$8 : $$7.G().entrySet()) {
-               $$5.add(this.a($$8));
-            }
-
-            $$7.w().map($$0x -> "#" + $$0x.b()).forEach($$5::add);
-         }
-
-         if (this.n.d() == ffq.a.b) {
-            iw $$9 = ((ffo)this.n).b();
-            exq $$10 = this.h.s.b_($$9);
-            $$5.add("");
-            $$5.add(o.t + "Targeted Fluid: " + $$9.u() + ", " + $$9.v() + ", " + $$9.w());
-            $$5.add(String.valueOf(mh.c.b($$10.a())));
-
-            for (Entry<ecj<?>, Comparable<?>> $$11 : $$10.G().entrySet()) {
-               $$5.add(this.a($$11));
-            }
-
-            $$10.k().map($$0x -> "#" + $$0x.b()).forEach($$5::add);
-         }
-
-         bwv $$12 = this.h.v;
-         if ($$12 != null) {
-            $$5.add("");
-            $$5.add(o.t + "Targeted Entity");
-            $$5.add(String.valueOf(mh.f.b($$12.an())));
-         }
-
-         return $$5;
-      }
-   }
-
-   private String a(Entry<ecj<?>, Comparable<?>> $$0) {
-      ecj<?> $$1 = $$0.getKey();
-      Comparable<?> $$2 = $$0.getValue();
-      String $$3 = ag.a($$1, $$2);
-      if (Boolean.TRUE.equals($$2)) {
-         $$3 = o.k + $$3;
-      } else if (Boolean.FALSE.equals($$2)) {
-         $$3 = o.m + $$3;
+      public static fuv.a a(List<ftw> $$0, fzq $$1) {
+         return new fuv.a($$0, $$1);
       }
 
-      return $$1.f() + ": " + $$3;
-   }
-
-   private static long b(long $$0) {
-      return $$0 / 1024L / 1024L;
-   }
-
-   public boolean d() {
-      return this.r && !this.h.n.X;
-   }
-
-   public boolean e() {
-      return this.d() && this.s;
-   }
-
-   public boolean f() {
-      return this.d() && this.u;
-   }
-
-   public boolean g() {
-      return this.d() && this.t;
-   }
-
-   public void h() {
-      this.r = !this.r;
-   }
-
-   public void i() {
-      this.u = !this.r || !this.u;
-      if (this.u) {
-         this.r = true;
-         this.t = false;
+      public static fuv.a a(ftw $$0, @Nullable ftw $$1, fzq $$2) {
+         return $$1 == null ? new fuv.a(ImmutableList.of($$0), $$2) : new fuv.a(ImmutableList.of($$0, $$1), $$2);
       }
-   }
 
-   public void j() {
-      this.t = !this.r || !this.t;
-      if (this.t) {
-         this.r = true;
-         this.u = false;
-      }
-   }
+      @Override
+      public void a(ftk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
 
-   public void k() {
-      this.s = !this.r || !this.s;
-      if (this.s) {
-         this.r = true;
-      }
-   }
-
-   public void a(long $$0) {
-      this.v.a($$0);
-   }
-
-   public bpe l() {
-      return this.w;
-   }
-
-   public bpe m() {
-      return this.x;
-   }
-
-   public bpe n() {
-      return this.y;
-   }
-
-   public fwg o() {
-      return this.E;
-   }
-
-   public void a(long[] $$0, bpf $$1) {
-      bpe $$2 = this.z.get($$1);
-      if ($$2 != null) {
-         $$2.a($$0);
-      }
-   }
-
-   public void p() {
-      this.r = false;
-      this.w.e();
-      this.x.e();
-      this.y.e();
-   }
-
-   public void q() {
-      fjr $$0 = gsl.W;
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      fjs $$1 = frf.Q().h();
-      flj $$2 = $$1.d();
-      flj $$3 = $$1.e();
-
-      try (fld $$4 = RenderSystem.getDevice().b().a($$2, OptionalInt.empty(), $$3, OptionalDouble.empty())) {
-         $$4.a($$0);
-         $$4.a("LineWidth", 4.0F);
-         $$4.a(0, this.k);
-         $$4.a(this.l.b(18), this.l.a());
-         $$4.a(0, 18);
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         $$4.a("LineWidth", 2.0F);
-         $$4.a(0, 18);
-      }
-   }
-
-   static class a {
-      private static final int a = 500;
-      private static final List<GarbageCollectorMXBean> b = ManagementFactory.getGarbageCollectorMXBeans();
-      private long c = 0L;
-      private long d = -1L;
-      private long e = -1L;
-      private long f = 0L;
-
-      long a(long $$0) {
-         long $$1 = System.currentTimeMillis();
-         if ($$1 - this.c < 500L) {
-            return this.f;
-         } else {
-            long $$2 = a();
-            if (this.c != 0L && $$2 == this.e) {
-               double $$3 = (double)TimeUnit.SECONDS.toMillis(1L) / (double)($$1 - this.c);
-               long $$4 = $$0 - this.d;
-               this.f = Math.round((double)$$4 * $$3);
-            }
-
-            this.c = $$1;
-            this.d = $$0;
-            this.e = $$2;
-            return this.f;
+         for (ftw $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
          }
       }
 
-      private static long a() {
-         long $$0 = 0L;
+      @Override
+      public List<? extends fvv> aJ_() {
+         return this.a;
+      }
 
-         for (GarbageCollectorMXBean $$1 : b) {
-            $$0 += $$1.getCollectionCount();
-         }
+      @Override
+      public List<? extends fxt> b() {
+         return this.a;
+      }
+   }
 
-         return $$0;
+   protected static class b extends fuv.a {
+      final Map<fqt<?>, ftw> a;
+
+      private b(Map<fqt<?>, ftw> $$0, gcw $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fuv.b a(fqu $$0, fqt<?> $$1, gcw $$2) {
+         return new fuv.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fuv.b a(fqu $$0, fqt<?> $$1, @Nullable fqt<?> $$2, gcw $$3) {
+         ftw $$4 = $$1.a($$0);
+         return $$2 == null ? new fuv.b(ImmutableMap.of($$1, $$4), $$3) : new fuv.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

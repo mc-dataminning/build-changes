@@ -1,15 +1,23 @@
-public class hbn extends gxc<cps, hgm> {
-   private static final alk a = alk.b("textures/entity/skeleton/wither_skeleton.png");
-
-   public hbn(gyk.a $$0) {
-      super($$0, glf.dW, glf.dX, glf.dY);
+public class hbn<S extends het, M extends ghn<S> & gjz> extends hcj<S, M> {
+   public hbn(gzs<S, M> $$0) {
+      super($$0);
    }
 
-   public alk b(hgm $$0) {
-      return a;
+   public void a(fld $$0, grn $$1, int $$2, S $$3, float $$4, float $$5) {
+      hhi $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         this.a($$3, $$0);
+         $$6.a($$0, $$1, $$2, hkg.d);
+         $$0.b();
+      }
    }
 
-   public hgm b() {
-      return new hgm();
+   protected void a(S $$0, fld $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

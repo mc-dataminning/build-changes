@@ -1,61 +1,49 @@
-public class exn extends exp {
-   @Override
-   public czw a() {
-      return dae.a;
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(exq $$0, djd $$1, iw $$2, exp $$3, jc $$4) {
-      return true;
-   }
+public interface exn extends exs {
+   @Nullable
+   eds a(jz var1);
 
-   @Override
-   public ffs a(djd $$0, iw $$1, exq $$2) {
-      return ffs.c;
-   }
+   int b(iw var1);
 
-   @Override
-   public int a(dkc $$0) {
-      return 0;
-   }
+   public static enum a implements exn {
+      a;
 
-   @Override
-   protected boolean b() {
-      return true;
-   }
+      @Nullable
+      @Override
+      public eds a(jz $$0) {
+         return null;
+      }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+      @Override
+      public int b(iw $$0) {
+         return 0;
+      }
 
-   @Override
-   public float a(exq $$0, djd $$1, iw $$2) {
-      return 0.0F;
-   }
+      @Override
+      public void a(iw $$0) {
+      }
 
-   @Override
-   public float a(exq $$0) {
-      return 0.0F;
-   }
+      @Override
+      public boolean M_() {
+         return false;
+      }
 
-   @Override
-   protected ebg b(exq $$0) {
-      return dng.a.m();
-   }
+      @Override
+      public int a() {
+         return 0;
+      }
 
-   @Override
-   public boolean c(exq $$0) {
-      return false;
-   }
+      @Override
+      public void a(jz $$0, boolean $$1) {
+      }
 
-   @Override
-   public int d(exq $$0) {
-      return 0;
-   }
+      @Override
+      public void a(djo $$0, boolean $$1) {
+      }
 
-   @Override
-   public fgm b(exq $$0, djd $$1, iw $$2) {
-      return fgj.a();
+      @Override
+      public void b(djo $$0) {
+      }
    }
 }

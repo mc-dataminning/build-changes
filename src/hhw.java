@@ -1,12 +1,16 @@
-public record hhw(boolean a, hlc b, gtt c) {
-   public static hhw a(hnl $$0, hnu $$1, gtx $$2) {
-      hlc $$3 = $$1.a($$2, $$0);
-      return new hhw($$1.d().a(), $$3, $$1.e());
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public record hhw() implements hht {
+   public static final MapCodec<hhw> a = MapCodec.unit(new hhw());
+
+   @Override
+   public boolean get(dak $$0, @Nullable glo $$1, @Nullable byf $$2, int $$3, dai $$4) {
+      return $$4 == dai.g && fzq.t();
    }
 
-   public void a(hhu.b $$0, czy $$1) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c.a($$1));
+   @Override
+   public MapCodec<hhw> a() {
+      return a;
    }
 }

@@ -1,113 +1,57 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ame extends bvc {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
+public class ame extends avs<ai> {
+   private static final Logger a = LogUtils.getLogger();
+   private Map<alr, aj> b = Map.of();
+   private ao c = new ao();
+   private final ji.a d;
 
-   public ame(MinecraftServer $$0) {
-      this.l = $$0;
+   public ame(ji.a $$0) {
+      super($$0, ai.a, mi.bu);
+      this.d = $$0;
    }
 
-   public boolean a() {
-      return this.j > 0L;
-   }
+   protected void a(Map<alr, ai> $$0, avo $$1, brm $$2) {
+      Builder<alr, aj> $$3 = ImmutableMap.builder();
+      $$0.forEach(($$1x, $$2x) -> {
+         this.a($$1x, $$2x);
+         $$3.put($$1x, new aj($$1x, $$2x));
+      });
+      this.b = $$3.buildOrThrow();
+      ao $$4 = new ao();
+      $$4.a(this.b.values());
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
-   }
-
-   private void n() {
-      this.l.ag().a(agi.a(this));
-   }
-
-   private void o() {
-      this.l.ag().a(agj.a(this));
-   }
-
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
+      for (ak $$5 : $$4.b()) {
+         if ($$5.b().b().c().isPresent()) {
+            aw.a($$5);
+         }
       }
+
+      this.c = $$4;
    }
 
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
-      } else {
-         return false;
-      }
+   private void a(alr $$0, ai $$1) {
+      bag.a $$2 = new bag.a();
+      $$1.a($$2, this.d);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
-      }
+   @Nullable
+   public aj a(alr $$0) {
+      return this.b.get($$0);
    }
 
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
+   public ao a() {
+      return this.c;
    }
 
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)bau.b;
-      int $$2 = (int)((double)(bau.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aH().a(() -> xc.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.F();
-   }
-
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
-      }
-   }
-
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
-   }
-
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.F();
-      this.n();
-   }
-
-   public void a(arv $$0) {
-      $$0.f.b(agi.a(this));
-      $$0.f.b(agj.a(this));
+   public Collection<aj> b() {
+      return this.b.values();
    }
 }

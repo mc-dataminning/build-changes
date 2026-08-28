@@ -1,30 +1,37 @@
-import java.util.List;
-import java.util.Optional;
+public class ahn implements zo<aha> {
+   public static final ze<vy, ahn> a = zo.a(ahn::a, ahn::new);
+   private final int b;
+   private final String c;
 
-public record ahn(int b, List<String> c, Optional<String> d) implements zj<agt> {
-   public static final za<vy, ahn> a = za.a(yy.h, ahn::b, yy.b(1024).a(yy.c(100)), ahn::e, yy.b(32).a(yy::a), ahn::f, ahn::new);
+   public ahn(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public ahn(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private ahn(vy $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
+   }
+
+   private void a(vy $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zl<ahn> a() {
-      return agr.bD;
+   public zq<ahn> a() {
+      return agy.bw;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public Optional<String> f() {
-      return this.d;
+   public String e() {
+      return this.c;
    }
 }

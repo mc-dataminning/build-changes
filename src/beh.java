@@ -1,30 +1,56 @@
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class beh extends bjq {
-   public beh(Schema $$0, boolean $$1) {
-      super("EntityCatSplitFix", $$0, $$1);
+public class beh extends DataFix {
+   private final String a;
+
+   public beh(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals("minecraft:ocelot", $$0)) {
-         int $$2 = $$1.get("CatType").asInt(0);
-         if ($$2 == 0) {
-            String $$3 = $$1.get("Owner").asString("");
-            String $$4 = $$1.get("OwnerUUID").asString("");
-            if ($$3.length() > 0 || $$4.length() > 0) {
-               $$1.set("Trusting", $$1.createBoolean(true));
-            }
-         } else if ($$2 > 0 && $$2 < 4) {
-            $$1 = $$1.set("CatType", $$1.createInt($$2));
-            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
-            return Pair.of("minecraft:cat", $$1);
-         }
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", beh::b);
+      $$0 = $$0.update("back_text", beh::b);
+
+      for (String $$1 : bcy.a) {
+         $$0 = $$0.remove($$1);
       }
 
-      return Pair.of($$0, $$1);
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Stream<Dynamic<T>>> $$1 = $$0.get("filtered_messages").asStreamOpt().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<T> $$2 = bbr.a($$0.getOps());
+         List<Dynamic<T>> $$3 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+         List<Dynamic<T>> $$4 = Streams.mapWithIndex($$1.get(), ($$2x, $$3x) -> {
+            Dynamic<T> $$4x = $$3x < (long)$$3.size() ? $$3.get((int)$$3x) : $$2;
+            return $$2x.equals($$2) ? $$4x : $$2x;
+         }).toList();
+         return $$4.equals($$3) ? $$0.remove("filtered_messages") : $$0.set("filtered_messages", $$0.createList($$4.stream()));
+      }
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.s);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bjm.s, this.a);
+      OpticFinder<?> $$2 = DSL.namedChoice(this.a, $$1);
+      return this.fixTypeEverywhereTyped("DropInvalidSignDataFix for " + this.a, $$0, $$2x -> $$2x.updateTyped($$2, $$1, $$1xx -> {
+            boolean $$2xx = ((Dynamic)$$1xx.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
+            return $$2xx ? $$1xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("_filtered_correct")) : ag.a($$1xx, $$1, this::a);
+         }));
    }
 }

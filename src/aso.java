@@ -1,24 +1,43 @@
-import io.netty.buffer.ByteBuf;
-import java.nio.charset.StandardCharsets;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class aso {
-   public static final int a = 250;
-   public static final String b = "MC|PingHost";
-   public static final int c = 254;
-   public static final int d = 1;
-   public static final int e = 255;
-   public static final int f = 127;
+public class aso implements asl {
+   private final asl a;
+   private final btr b;
+   private boolean c;
 
-   public static void a(ByteBuf $$0, String $$1) {
-      $$0.writeShort($$1.length());
-      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   private aso(asl $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = new btr($$1, "progressListener");
    }
 
-   public static String a(ByteBuf $$0) {
-      int $$1 = $$0.readShort();
-      int $$2 = $$1 * 2;
-      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
-      $$0.skipBytes($$2);
-      return $$3;
+   public static aso a(asl $$0, Executor $$1) {
+      aso $$2 = new aso($$0, $$1);
+      $$2.a();
+      return $$2;
+   }
+
+   @Override
+   public void a(djo $$0) {
+      this.b.a_(() -> this.a.a($$0));
+   }
+
+   @Override
+   public void a(djo $$0, @Nullable eeo $$1) {
+      if (this.c) {
+         this.b.a_(() -> this.a.a($$0, $$1));
+      }
+   }
+
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a_(this.a::a);
+   }
+
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a_(this.a::b);
    }
 }

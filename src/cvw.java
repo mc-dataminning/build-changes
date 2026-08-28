@@ -1,48 +1,31 @@
-import javax.annotation.Nullable;
+public class cvw {
+   public static final int a = 20;
+   public static final float b = 20.0F;
+   public static final float c = 5.0F;
+   public static final float d = 2.5F;
+   public static final float e = 4.0F;
+   public static final int f = 80;
+   public static final int g = 10;
+   public static final int h = 18;
+   public static final int i = 6;
+   public static final int j = 0;
+   public static final float k = 0.1F;
+   public static final float l = 0.3F;
+   public static final float m = 0.6F;
+   public static final float n = 0.8F;
+   public static final float o = 1.0F;
+   public static final float p = 1.2F;
+   public static final float q = 6.0F;
+   public static final float r = 0.05F;
+   public static final float s = 0.2F;
+   public static final float t = 0.005F;
+   public static final float u = 0.1F;
+   public static final float v = 0.0F;
+   public static final float w = 0.0F;
+   public static final float x = 0.1F;
+   public static final float y = 0.01F;
 
-class cvw extends cxp {
-   private final bxw a;
-   private final bxf b;
-   @Nullable
-   private final alk g;
-
-   public cvw(bum $$0, bxw $$1, bxf $$2, int $$3, int $$4, int $$5, @Nullable alk $$6) {
-      super($$0, $$3, $$4, $$5);
-      this.a = $$1;
-      this.b = $$2;
-      this.g = $$6;
-   }
-
-   @Override
-   public void a(daa $$0, daa $$1) {
-      this.a.a(this.b, $$1, $$0);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public int a() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(daa $$0) {
-      return this.a.a($$0, this.b);
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.e(this.b);
-   }
-
-   @Override
-   public boolean a(crz $$0) {
-      daa $$1 = this.g();
-      return !$$1.f() && !$$0.b() && dgp.a($$1, dgo.E) ? false : super.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public alk c() {
-      return this.g;
+   public static float a(int $$0, float $$1) {
+      return (float)$$0 * $$1 * 2.0F;
    }
 }

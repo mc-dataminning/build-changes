@@ -8,7 +8,7 @@ public record jy(float c, float d, float e) {
       .comapFlatMap(
          $$0 -> ag.a($$0, 3).map($$0x -> new jy((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2))), $$0 -> List.of($$0.a(), $$0.b(), $$0.c())
       );
-   public static final za<ByteBuf, jy> b = new za<ByteBuf, jy>() {
+   public static final ze<ByteBuf, jy> b = new ze<ByteBuf, jy>() {
       public jy a(ByteBuf $$0) {
          return new jy($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
       }

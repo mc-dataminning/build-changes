@@ -1,83 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ejq extends ekm<emy> {
-   public ejq(Codec<emy> $$0) {
-      super($$0);
+public class ejq extends eim {
+   private final ju a;
+   private final eht b;
+   private final eid c;
+   private final eig.o d;
+
+   public ejq(ehs $$0, ju $$1, dkl $$2, eht $$3, eid $$4, eig.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(eko<emy> $$0) {
-      iw $$1 = $$0.e();
-      dky $$2 = $$0.b();
-      azz $$3 = $$0.d();
-      if ($$2.v($$1) && !$$2.v($$1.d())) {
-         iw.a $$4 = $$1.k();
-         iw.a $$5 = $$1.k();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.v($$4)) {
-            if ($$2.t($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, dng.ep.m(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jc.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jc.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jc.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jc.f));
-            $$4.c(jc.a);
-         }
-
-         $$4.c(jc.b);
-         this.a($$2, $$3, $$5.a($$4, jc.c));
-         this.a($$2, $$3, $$5.a($$4, jc.d));
-         this.a($$2, $$3, $$5.a($$4, jc.e));
-         this.a($$2, $$3, $$5.a($$4, jc.f));
-         $$4.c(jc.a);
-         iw.a $$10 = new iw.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = azq.a($$11) * azq.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.v($$5.a($$10, jc.a))) {
-                     $$10.c(jc.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.v($$5.a($$10, jc.a))) {
-                     $$2.a($$10, dng.ep.m(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   @Deprecated
+   public Optional<ebq> a(Function<iw, jg<dlm>> $$0, edn $$1, iw $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   private void a(dka $$0, azz $$1, iw $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, dng.ep.m(), 2);
-      }
+   @Deprecated
+   public ju c() {
+      return this.a;
    }
 
-   private boolean b(dka $$0, azz $$1, iw $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, dng.ep.m(), 2);
-         return true;
-      } else {
-         return false;
-      }
+   public eid d() {
+      return this.c;
    }
 }

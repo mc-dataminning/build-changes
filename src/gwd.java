@@ -1,104 +1,107 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 
-public class gwd implements gwf.a {
-   final frf a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private gwd.a d;
+public class gwd implements gvq.a {
+   private final fqq a;
+   private final Map<alq<dkj>, Map<String, esf>> b = Maps.newIdentityHashMap();
+   private final Map<alq<dkj>, Map<String, abi.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   public gwd(frf $$0) {
+   public gwd(fqq $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ag.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hpn $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gwd.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
+   public void a(fld $$0, grn $$1, double $$2, double $$3, double $$4) {
+      fpy $$5 = this.a.j.k();
+      alq<dkj> $$6 = this.a.s.aj();
+      iw $$7 = iw.a($$5.b().d, 0.0, $$5.b().f);
+      flg $$8 = $$1.getBuffer(gry.w());
+      if (this.b.containsKey($$6)) {
+         for (esf $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gsg.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
          }
       }
 
-      if (this.d != null) {
-         Map<dje, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
-
-         for (Entry<dje, String> $$9 : this.d.a.entrySet()) {
-            dje $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               gwf.a($$0, $$1, $$14, (double)jz.a($$10.h, 8), $$8 + (double)$$13, (double)jz.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
+      Map<String, abi.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (abi.a $$11 : $$10.values()) {
+            esf $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gsg.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gsg.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
             }
          }
       }
    }
 
-   final class a {
-      final Map<dje, String> a;
-      final CompletableFuture<Map<dje, String>> b;
+   public void a(esf $$0, List<abi.a> $$1, alq<dkj> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, abi.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
 
-      a(final hpn $$0, final double $$1, final double $$2) {
-         gmd $$3 = gwd.this.a.s;
-         alj<djz> $$4 = $$3.aj();
-         int $$5 = jz.a($$1);
-         int $$6 = jz.a($$2);
-         Builder<dje, String> $$7 = ImmutableMap.builder();
-         glz $$8 = $$3.h();
-
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dje $$11 = new dje($$9, $$10);
-               String $$12 = "";
-               edn $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.E() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
-         }
-
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            aru $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dje, String> $$5x = ImmutableMap.builder();
-               arr $$6x = $$4x.m();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dje $$9x = new dje($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+      for (abi.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
       }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

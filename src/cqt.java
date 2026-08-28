@@ -1,18 +1,43 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public interface cqt {
+   int l_ = 10;
+   float m_ = 0.2F;
 
-public class cqt {
-   public static bzo<bxw> a() {
-      return cda.a(
-         (Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$0 -> $$0.group($$0.b(cgy.p), $$0.a(cgy.ai))
-               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                     bxw $$6 = $$0.b($$1);
-                     if ($$6.an() == bxe.ak && $$6.eH()) {
-                        $$2.a(true, (long)cqp.d.a($$4.dV().A));
-                     }
+   int q();
 
-                     return true;
-                  }))
-      );
+   static boolean a(asb $$0, byf $$1, byf $$2) {
+      float $$3 = (float)$$1.h(bzl.c);
+      float $$4;
+      if (!$$1.n_() && (int)$$3 > 0) {
+         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
+      } else {
+         $$4 = $$3;
+      }
+
+      bvt $$6 = $$1.dW().b($$1);
+      boolean $$7 = $$2.a($$0, $$6, $$4);
+      if ($$7) {
+         dgz.a($$0, (bxe)$$2, $$6);
+         if (!$$1.n_()) {
+            a($$1, $$2);
+         }
+      }
+
+      return $$7;
+   }
+
+   static void a(byf $$0, byf $$1) {
+      double $$2 = $$0.h(bzl.d);
+      double $$3 = $$1.h(bzl.p);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dA() - $$0.dA();
+         double $$6 = $$1.dG() - $$0.dG();
+         float $$7 = (float)($$0.dV().A.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
+         fgc $$9 = new fgc($$5, 0.0, $$6).d().c($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
+         $$1.i($$9.d, $$10, $$9.f);
+         $$1.T = true;
+      }
    }
 }

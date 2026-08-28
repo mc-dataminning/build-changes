@@ -1,63 +1,78 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
 public class xp {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xo[] c;
+   private final int a;
+   private final ObjectList<xq> b = new ObjectArrayList();
+   @Nullable
+   private xs c;
 
    public xp(int $$0) {
-      this.c = new xo[$$0];
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
    }
 
-   public static xp a() {
-      return new xp(128);
+   public void a(xs $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new xq($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public int a(xo $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
+   public int a() {
+      return this.b.size();
+   }
+
+   public void a(int $$0) throws xp.a {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
+      } else {
+         throw new xp.a("Advanced last seen window by " + $$0 + " messages, but expected at most " + $$1);
+      }
+   }
+
+   public xn a(xn.b $$0) throws xp.a {
+      this.a($$0.a());
+      ObjectList<xs> $$1 = new ObjectArrayList($$0.b().cardinality());
+      if ($$0.b().length() > this.a) {
+         throw new xp.a("Last seen update contained " + $$0.b().length() + " messages, but maximum window size is " + this.a);
+      } else {
+         for (int $$2 = 0; $$2 < this.a; $$2++) {
+            boolean $$3 = $$0.b().get($$2);
+            xq $$4 = (xq)this.b.get($$2);
+            if ($$3) {
+               if ($$4 == null) {
+                  throw new xp.a("Last seen update acknowledged unknown or previously ignored message at index " + $$2);
+               }
+
+               this.b.set($$2, $$4.a());
+               $$1.add($$4.b());
+            } else {
+               if ($$4 != null && !$$4.c()) {
+                  throw new xp.a("Last seen update ignored previously acknowledged message at index " + $$2 + " and signature " + $$4.b());
+               }
+
+               this.b.set($$2, null);
+            }
+         }
+
+         xn $$5 = new xn($$1);
+         if (!$$0.a($$5)) {
+            throw new xp.a("Checksum mismatch on last seen update: the client and server must have desynced");
+         } else {
+            return $$5;
          }
       }
-
-      return -1;
    }
 
-   @Nullable
-   public xo a(int $$0) {
-      return this.c[$$0];
-   }
-
-   public void a(xv $$0, @Nullable xo $$1) {
-      List<xo> $$2 = $$0.d().a();
-      ArrayDeque<xo> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
-   }
-
-   @VisibleForTesting
-   void a(List<xo> $$0) {
-      this.a(new ArrayDeque<>($$0));
-   }
-
-   private void a(ArrayDeque<xo> $$0) {
-      Set<xo> $$1 = new ObjectOpenHashSet($$0);
-
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xo $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
+   public static class a extends Exception {
+      public a(String $$0) {
+         super($$0);
       }
    }
 }

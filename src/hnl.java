@@ -1,12 +1,59 @@
+import javax.annotation.Nullable;
+
 public interface hnl {
-   hnu a(alk var1);
+   String c = "particle";
 
-   hnv a();
+   @Nullable
+   default Boolean c() {
+      return null;
+   }
 
-   <T> T a(hnl.a<T> var1);
+   @Nullable
+   default hnl.a b() {
+      return null;
+   }
 
-   @FunctionalInterface
-   public interface a<T> {
-      T compute(hnl var1);
+   @Nullable
+   default gte d() {
+      return null;
+   }
+
+   default gti.a e() {
+      return gti.a.a;
+   }
+
+   @Nullable
+   default hnk a() {
+      return null;
+   }
+
+   @Nullable
+   default alr f() {
+      return null;
+   }
+
+   public static enum a {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static hnl.a a(String $$0) {
+         for (hnl.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

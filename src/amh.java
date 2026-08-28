@@ -1,18 +1,9 @@
-public class amh implements Runnable {
-   private final int a;
-   private final Runnable b;
+public interface amh {
+   String ae();
 
-   public amh(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   String M();
 
-   public int a() {
-      return this.a;
-   }
+   int N();
 
-   @Override
-   public void run() {
-      this.b.run();
-   }
+   int O();
 }

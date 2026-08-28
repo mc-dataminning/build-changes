@@ -2,59 +2,59 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qb {
-   public static void a(qi<etn> $$0) {
-      jh<ewd> $$1 = $$0.a(mi.bc);
-      jg<ewd> $$2 = $$1.b(qq.y);
-      jg<ewd> $$3 = $$1.b(qq.w);
-      jg<ewd> $$4 = $$1.b(qq.z);
-      jg<ewd> $$5 = $$1.b(qq.x);
-      jh<etn> $$6 = $$0.a(mi.bf);
-      jg<etn> $$7 = $$6.b(qp.a);
+   public static void a(qi<etx> $$0) {
+      jh<ewn> $$1 = $$0.a(mi.bc);
+      jg<ewn> $$2 = $$1.b(qq.y);
+      jg<ewn> $$3 = $$1.b(qq.w);
+      jg<ewn> $$4 = $$1.b(qq.z);
+      jg<ewn> $$5 = $$1.b(qq.x);
+      jh<etx> $$6 = $$0.a(mi.bf);
+      jg<etx> $$7 = $$6.b(qp.a);
       qp.a(
          $$0,
          "bastion/bridge/starting_pieces",
-         new etn(
+         new etx(
             $$7,
             ImmutableList.of(
-               Pair.of(etl.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(etl.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
+               Pair.of(etv.b("bastion/bridge/starting_pieces/entrance", $$2), 1), Pair.of(etv.b("bastion/bridge/starting_pieces/entrance_face", $$3), 1)
             ),
-            etn.a.b
+            etx.a.b
          )
       );
-      qp.a($$0, "bastion/bridge/bridge_pieces", new etn($$7, ImmutableList.of(Pair.of(etl.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), etn.a.b));
+      qp.a($$0, "bastion/bridge/bridge_pieces", new etx($$7, ImmutableList.of(Pair.of(etv.b("bastion/bridge/bridge_pieces/bridge", $$4), 1)), etx.a.b));
       qp.a(
          $$0,
          "bastion/bridge/legs",
-         new etn($$7, ImmutableList.of(Pair.of(etl.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(etl.b("bastion/bridge/legs/leg_1", $$3), 1)), etn.a.b)
+         new etx($$7, ImmutableList.of(Pair.of(etv.b("bastion/bridge/legs/leg_0", $$3), 1), Pair.of(etv.b("bastion/bridge/legs/leg_1", $$3), 1)), etx.a.b)
       );
       qp.a(
          $$0,
          "bastion/bridge/walls",
-         new etn(
+         new etx(
             $$7,
-            ImmutableList.of(Pair.of(etl.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(etl.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
-            etn.a.b
+            ImmutableList.of(Pair.of(etv.b("bastion/bridge/walls/wall_base_0", $$5), 1), Pair.of(etv.b("bastion/bridge/walls/wall_base_1", $$5), 1)),
+            etx.a.b
          )
       );
       qp.a(
          $$0,
          "bastion/bridge/ramparts",
-         new etn(
+         new etx(
             $$7,
-            ImmutableList.of(Pair.of(etl.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(etl.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
-            etn.a.b
+            ImmutableList.of(Pair.of(etv.b("bastion/bridge/ramparts/rampart_0", $$5), 1), Pair.of(etv.b("bastion/bridge/ramparts/rampart_1", $$5), 1)),
+            etx.a.b
          )
       );
-      qp.a($$0, "bastion/bridge/rampart_plates", new etn($$7, ImmutableList.of(Pair.of(etl.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), etn.a.b));
+      qp.a($$0, "bastion/bridge/rampart_plates", new etx($$7, ImmutableList.of(Pair.of(etv.b("bastion/bridge/rampart_plates/plate_0", $$5), 1)), etx.a.b));
       qp.a(
          $$0,
          "bastion/bridge/connectors",
-         new etn(
+         new etx(
             $$7,
             ImmutableList.of(
-               Pair.of(etl.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(etl.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
+               Pair.of(etv.b("bastion/bridge/connectors/back_bridge_top", $$3), 1), Pair.of(etv.b("bastion/bridge/connectors/back_bridge_bottom", $$3), 1)
             ),
-            etn.a.b
+            etx.a.b
          )
       );
    }

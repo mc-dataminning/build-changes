@@ -1,83 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class guo implements gua<eab> {
+   private final guo.a a;
 
-public class guo implements avi {
-   private Map<dyg<?>, gup<?>> d = ImmutableMap.of();
-   private final ftx e;
-   private final Supplier<glc> f;
-   public djz a;
-   public fqn b;
-   public ffq c;
-   private final gtf g;
-   private final hhs h;
-   private final gzi i;
-   private final gyi j;
-
-   public guo(ftx $$0, Supplier<glc> $$1, gtf $$2, hhs $$3, gzi $$4, gyi $$5) {
-      this.i = $$4;
-      this.h = $$3;
-      this.j = $$5;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public guo(gub.a $$0) {
+      this($$0.f());
    }
 
-   @Nullable
-   public <E extends dye> gup<E> a(E $$0) {
-      return (gup<E>)this.d.get($$0.p());
+   public guo(gkn $$0) {
+      this.a = new guo.a($$0.a(gkq.cV));
    }
 
-   public void a(djz $$0, fqn $$1, ffq $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dye> void a(E $$0, float $$1, flq $$2, gsc $$3) {
-      gup<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.p().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               try {
-                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
-               } catch (Throwable var9) {
-                  p $$6 = p.a(var9, "Rendering Block Entity");
-                  q $$7 = $$6.a("Block Entity Details");
-                  $$0.a($$7);
-                  throw new aa($$6);
-               }
-            }
-         }
-      }
-   }
-
-   private static <T extends dye> void a(gup<T> $$0, T $$1, float $$2, flq $$3, gsc $$4, ffs $$5) {
-      djz $$6 = $$1.i();
-      int $$7;
-      if ($$6 != null) {
-         $$7 = grx.a($$6, $$1.aB_());
+   public void a(eab $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
+      jc $$7 = $$0.m().a(dux.c, jc.b);
+      czi $$8 = $$0.s();
+      hmx $$9;
+      if ($$8 == null) {
+         $$9 = gsh.s;
       } else {
-         $$7 = 15728880;
+         $$9 = gsh.d($$8);
       }
 
-      $$0.a($$1, $$2, $$3, $$4, $$7, hks.d, $$5);
+      float $$11 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
    }
 
-   public void a(@Nullable djz $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
+   public void a(fld $$0, grn $$1, int $$2, int $$3, jc $$4, float $$5, hmx $$6) {
+      $$0.a();
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      flg $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   static class a extends gij {
+      private final gkr a;
+
+      public a(gkr $$0) {
+         super($$0, gry::g);
+         this.a = $$0.b("lid");
       }
-   }
 
-   @Override
-   public void a(avh $$0) {
-      guq.a $$1 = new guq.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
-      this.d = gur.a($$1);
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

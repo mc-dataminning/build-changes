@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class fo<T> implements ArgumentType<fo.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final alj<? extends jt<T>> b;
+   final alq<? extends jt<T>> b;
 
-   public fo(alj<? extends jt<T>> $$0) {
+   public fo(alq<? extends jt<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> fo<T> a(alj<? extends jt<T>> $$0) {
+   public static <T> fo<T> a(alq<? extends jt<T>> $$0) {
       return new fo<>($$0);
    }
 
-   public static <T> fo.c<T> a(CommandContext<ek> $$0, String $$1, alj<jt<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> fo.c<T> a(CommandContext<ek> $$0, String $$1, alq<jt<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       fo.c<?> $$4 = (fo.c<?>)$$0.getArgument($$1, fo.c.class);
       Optional<fo.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class fo<T> implements ArgumentType<fo.c<T>> {
 
          try {
             $$0.skip();
-            alk $$2 = alk.a($$0);
-            return new fo.d<>(axv.a(this.b, $$2));
+            alr $$2 = alr.a($$0);
+            return new fo.d<>(ayc.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         alk $$4 = alk.a($$0);
-         return new fo.b<>(alj.a(this.b, $$4));
+         alr $$4 = alr.a($$0);
+         return new fo.b<>(alq.a(this.b, $$4));
       }
    }
 
@@ -75,9 +75,9 @@ public class fo<T> implements ArgumentType<fo.c<T>> {
       }
 
       public final class a implements ih.a<fo<T>> {
-         final alj<? extends jt<T>> b;
+         final alq<? extends jt<T>> b;
 
-         a(final alj<? extends jt<T>> $$1) {
+         a(final alq<? extends jt<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class fo<T> implements ArgumentType<fo.c<T>> {
       }
    }
 
-   static record b<T>(alj<T> a) implements fo.c<T> {
+   static record b<T>(alq<T> a) implements fo.c<T> {
       @Override
-      public Either<alj<T>, axv<T>> a() {
+      public Either<alq<T>, ayc<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<fo.c<E>> a(alj<? extends jt<E>> $$0) {
+      public <E> Optional<fo.c<E>> a(alq<? extends jt<E>> $$0) {
          return this.a.d($$0).map(fo.b::new);
       }
 
@@ -112,27 +112,27 @@ public class fo<T> implements ArgumentType<fo.c<T>> {
          return this.a.a().toString();
       }
 
-      public alj<T> c() {
+      public alq<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<jg<T>> {
-      Either<alj<T>, axv<T>> a();
+      Either<alq<T>, ayc<T>> a();
 
-      <E> Optional<fo.c<E>> a(alj<? extends jt<E>> var1);
+      <E> Optional<fo.c<E>> a(alq<? extends jt<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axv<T> a) implements fo.c<T> {
+   static record d<T>(ayc<T> a) implements fo.c<T> {
       @Override
-      public Either<alj<T>, axv<T>> a() {
+      public Either<alq<T>, ayc<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<fo.c<E>> a(alj<? extends jt<E>> $$0) {
+      public <E> Optional<fo.c<E>> a(alq<? extends jt<E>> $$0) {
          return this.a.e($$0).map(fo.d::new);
       }
 
@@ -145,7 +145,7 @@ public class fo<T> implements ArgumentType<fo.c<T>> {
          return "#" + this.a.b();
       }
 
-      public axv<T> c() {
+      public ayc<T> c() {
          return this.a;
       }
    }

@@ -1,90 +1,136 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.BitSet;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface gtp {
-   void a(azz var1, List<gto> var2);
+public class gtp implements gta {
+   private final gtp.b a;
+   private final ebq b;
+   @Nullable
+   private List<gta> c;
 
-   default List<gto> a(azz $$0) {
-      List<gto> $$1 = new ObjectArrayList();
-      this.a($$0, $$1);
-      return $$1;
+   gtp(gtp.b $$0, ebq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   hlc a();
+   @Override
+   public hkq a() {
+      return this.a.b;
+   }
 
-   public static class a implements gtp.c {
-      final gtp.b a;
-      private final hnl.a<gtp> b = new hnl.a<gtp>() {
-         public gtp a(hnl $$0) {
-            return a.this.a.a($$0);
+   @Override
+   public void a(bai $$0, List<gsz> $$1) {
+      if (this.c == null) {
+         this.c = this.a.a(this.b);
+      }
+
+      long $$2 = $$0.g();
+
+      for (gta $$3 : this.c) {
+         $$0.b($$2);
+         $$3.a($$0, $$1);
+      }
+   }
+
+   public static record a<T>(Predicate<ebq> a, T b) {
+
+      public <S> gtp.a<S> a(S $$0) {
+         return new gtp.a<>(this.a, $$0);
+      }
+   }
+
+   static final class b {
+      private final List<gtp.a<gta>> a;
+      final hkq b;
+      private final Map<BitSet, List<gta>> c = new ConcurrentHashMap<>();
+
+      private static gta a(List<gtp.a<gta>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Model must have at least one selector");
+         } else {
+            return $$0.getFirst().b();
+         }
+      }
+
+      public b(List<gtp.a<gta>> $$0) {
+         this.a = $$0;
+         gta $$1 = a($$0);
+         this.b = $$1.a();
+      }
+
+      public List<gta> a(ebq $$0) {
+         BitSet $$1 = new BitSet();
+
+         for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+            if (this.a.get($$2).a.test($$0)) {
+               $$1.set($$2);
+            }
+         }
+
+         return this.c.computeIfAbsent($$1, $$0x -> {
+            Builder<gta> $$1x = ImmutableList.builder();
+
+            for (int $$2x = 0; $$2x < this.a.size(); $$2x++) {
+               if ($$0x.get($$2x)) {
+                  $$1x.add(this.a.get($$2x).b);
+               }
+            }
+
+            return $$1x.build();
+         });
+      }
+   }
+
+   public static class c implements gta.c {
+      final List<gtp.a<gta.b>> a;
+      private final hmz.a<gtp.b> b = new hmz.a<gtp.b>() {
+         public gtp.b a(hmz $$0) {
+            Builder<gtp.a<gta>> $$1 = ImmutableList.builderWithExpectedSize(c.this.a.size());
+
+            for (gtp.a<gta.b> $$2 : c.this.a) {
+               $$1.add($$2.a($$2.b.a($$0)));
+            }
+
+            return new gtp.b($$1.build());
          }
       };
 
-      public a(gtp.b $$0) {
+      public c(List<gtp.a<gta.b>> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public void a(hnt.a $$0) {
-         this.a.a($$0);
-      }
+      public Object a(ebq $$0) {
+         IntList $$1 = new IntArrayList();
 
-      @Override
-      public gtp a(ebg $$0, hnl $$1) {
-         return $$1.a(this.b);
-      }
-
-      @Override
-      public Object a(ebg $$0) {
-         return this;
-      }
-   }
-
-   public interface b extends hnt {
-      Codec<btc<gty>> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gty.a.forGetter(btc::a), ayy.m.optionalFieldOf("weight", 1).forGetter(btc::b)).apply($$0, btc::new)
-      );
-      Codec<hny.a> b = ayy.b(a.listOf()).flatComapMap($$0 -> new hny.a(btd.a(Lists.transform($$0, $$0x -> $$0x.a(gtw.a::new)))), $$0 -> {
-         List<btc<gtp.b>> $$1 = $$0.b().d();
-         List<btc<gty>> $$2 = new ArrayList<>($$1.size());
-
-         for (btc<gtp.b> $$3 : $$1) {
-            if (!($$3.a() instanceof gtw.a $$5)) {
-               return DataResult.error(() -> "Only single variants are supported");
+         for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+            if (this.a.get($$2).a.test($$0)) {
+               $$1.add($$2);
             }
-
-            $$2.add(new btc<>($$5.b(), $$3.b()));
          }
 
-         return DataResult.success($$2);
-      });
-      Codec<gtp.b> c = Codec.either(b, gtw.a.d).flatComapMap($$0 -> (gtp.b)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
-         Objects.requireNonNull($$0);
+         record a(gtp.c a, IntList b) {
+         }
 
-         return switch ($$0) {
-            case gtw.a $$3 -> DataResult.success(Either.right($$3));
-            case hny.a $$4 -> DataResult.success(Either.left($$4));
-            default -> DataResult.error(() -> "Only a single variant or a list of variants are supported");
-         };
-      });
-
-      gtp a(hnl var1);
-
-      default gtp.c a() {
-         return new gtp.a(this);
+         return new a(this, $$1);
       }
-   }
 
-   public interface c extends hnt {
-      gtp a(ebg var1, hnl var2);
+      @Override
+      public void a(hnh.a $$0) {
+         this.a.forEach($$1 -> $$1.b.a($$0));
+      }
 
-      Object a(ebg var1);
+      @Override
+      public gta a(ebq $$0, hmz $$1) {
+         gtp.b $$2 = $$1.a(this.b);
+         return new gtp($$2, $$0);
+      }
    }
 }

@@ -1,53 +1,52 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 
-public record wa(ByteBuf a) implements ReferenceCounted {
-   public wa(final ByteBuf a) {
-      this.a = ByteBufUtil.ensureAccessible(a);
+public record wa(Map<kk<?>, Integer> b, Set<kk<?>> c) {
+   public static final ze<wp, wa> a = ze.a(zc.a(HashMap::new, zc.a(mi.r), zc.g, 256), wa::a, zc.a(HashSet::new, zc.a(mi.r), 256), wa::b, wa::new);
+
+   public static wa a(kj $$0, wa.a $$1) {
+      kj.d $$2 = $$0.e();
+      Map<kk<?>, Integer> $$3 = new IdentityHashMap<>($$2.a().d());
+      $$2.a().forEach($$2x -> $$3.put($$2x.a(), $$1.apply($$2x)));
+      return new wa($$3, $$2.b());
    }
 
-   public static Object a(Object $$0) {
-      return $$0 instanceof ByteBuf $$1 ? new wa($$1) : $$0;
+   public boolean b(kj $$0, wa.a $$1) {
+      kj.d $$2 = $$0.e();
+      if (!$$2.b().equals(this.c)) {
+         return false;
+      } else if (this.b.size() != $$2.a().d()) {
+         return false;
+      } else {
+         for (kn<?> $$3 : $$2.a()) {
+            Integer $$4 = this.b.get($$3.a());
+            if ($$4 == null) {
+               return false;
+            }
+
+            Integer $$5 = $$1.apply($$3);
+            if (!$$5.equals($$4)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static Object b(Object $$0) {
-      return $$0 instanceof wa $$1 ? ByteBufUtil.ensureAccessible($$1.a) : $$0;
+   public Map<kk<?>, Integer> a() {
+      return this.b;
    }
 
-   public int refCnt() {
-      return this.a.refCnt();
+   public Set<kk<?>> b() {
+      return this.c;
    }
 
-   public wa a() {
-      this.a.retain();
-      return this;
-   }
-
-   public wa a(int $$0) {
-      this.a.retain($$0);
-      return this;
-   }
-
-   public wa b() {
-      this.a.touch();
-      return this;
-   }
-
-   public wa c(Object $$0) {
-      this.a.touch($$0);
-      return this;
-   }
-
-   public boolean release() {
-      return this.a.release();
-   }
-
-   public boolean release(int $$0) {
-      return this.a.release($$0);
-   }
-
-   public ByteBuf c() {
-      return this.a;
+   @FunctionalInterface
+   public interface a extends Function<kn<?>, Integer> {
    }
 }

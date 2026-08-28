@@ -1,195 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class elc extends ekm<emu> {
-   public elc(Codec<emu> $$0) {
+public class elc extends ekw<enc> {
+   private static final jc[] a = jc.values();
+
+   public elc(Codec<enc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<emu> $$0) {
-      dky $$1 = $$0.b();
-      iw $$2 = $$0.e();
-      emu $$3 = $$0.f();
-      azz $$4 = $$0.d();
-      if (!ekg.a($$1, $$2)) {
-         return false;
-      } else {
-         Optional<egv> $$5 = egv.a($$1, $$2, $$3.b, ekg::c, ekg::a);
-         if (!$$5.isEmpty() && $$5.get() instanceof egv.b) {
-            egv.b $$6 = (egv.b)$$5.get();
-            if ($$6.g() < 4) {
+   public boolean a(eky<enc> $$0) {
+      enc $$1 = $$0.f();
+      bai $$2 = $$0.d();
+      iw $$3 = $$0.e();
+      dli $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<iw, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      eio $$9 = new eio(new ehq($$4.E()));
+      exd $$10 = exd.a($$9, -4, 1.0);
+      List<iw> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      eho $$13 = $$1.d;
+      ehm $$14 = $$1.c;
+      ehn $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
+
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         iw $$27 = $$3.b($$24, $$25, $$26);
+         ebq $$28 = $$4.a_($$27);
+         if ($$28.l() || $$28.a($$14.h)) {
+            if (++$$22 > $$1.p) {
                return false;
-            } else {
-               int $$7 = (int)((float)$$6.g() * $$3.e);
-               int $$8 = azq.a($$7, $$3.c.a(), $$3.c.b());
-               int $$9 = azq.b($$4, $$3.c.a(), $$8);
-               elc.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
-               elc.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
-               elc.b $$12;
-               if ($$10.a($$3) && $$11.a($$3)) {
-                  $$12 = new elc.b($$2.v(), $$4, $$3.h);
-               } else {
-                  $$12 = elc.b.a();
-               }
-
-               boolean $$14 = $$10.a($$1, $$12);
-               boolean $$15 = $$11.a($$1, $$12);
-               if ($$14) {
-                  $$10.a($$1, $$4, $$12);
-               }
-
-               if ($$15) {
-                  $$11.a($$1, $$4, $$12);
-               }
-
-               return true;
             }
+         }
+
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+      }
+
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
          } else {
-            return false;
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
          }
       }
-   }
 
-   private static elc.a a(iw $$0, boolean $$1, azz $$2, int $$3, btw $$4, btw $$5) {
-      return new elc.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
-   }
+      List<iw> $$31 = Lists.newArrayList();
+      Predicate<ebq> $$32 = a($$1.c.g);
 
-   private void a(dky $$0, iw $$1, egv.b $$2, elc.b $$3) {
-      $$0.a($$3.a($$1.h($$2.e() - 1)), dng.cK.m(), 2);
-      $$0.a($$3.a($$1.h($$2.f() + 1)), dng.cr.m(), 2);
+      for (iw $$33 : iw.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
 
-      for (iw.a $$4 = $$1.h($$2.f() + 2).k(); $$4.v() < $$2.e() - 1; $$4.c(jc.b)) {
-         iw $$5 = $$3.a($$4);
-         if (ekg.a($$0, $$5) || $$0.a_($$5).a(dng.tc)) {
-            $$0.a($$5, dng.hn.m(), 2);
-         }
-      }
-   }
-
-   static final class a {
-      private iw a;
-      private final boolean b;
-      private int c;
-      private final double d;
-      private final double e;
-
-      a(iw $$0, boolean $$1, int $$2, double $$3, double $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      private int a() {
-         return this.a(0.0F);
-      }
-
-      private int b() {
-         return this.b ? this.a.v() : this.a.v() - this.a();
-      }
-
-      private int c() {
-         return !this.b ? this.a.v() : this.a.v() + this.a();
-      }
-
-      boolean a(dky $$0, elc.b $$1) {
-         while (this.c > 1) {
-            iw.a $$2 = this.a.k();
-            int $$3 = Math.min(10, this.a());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               if ($$0.a_($$2).a(dng.K)) {
-                  return false;
-               }
-
-               if (ekg.a($$0, $$1.a($$2), this.c)) {
-                  this.a = $$2;
-                  return true;
-               }
-
-               $$2.c(this.b ? jc.a : jc.b);
-            }
-
-            this.c /= 2;
+         for (Pair<iw, Integer> $$37 : $$7) {
+            $$35 += azz.f($$33.j((kb)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
          }
 
-         return false;
-      }
+         for (iw $$38 : $$11) {
+            $$36 += azz.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
 
-      private int a(float $$0) {
-         return (int)ekg.a((double)$$0, (double)this.c, this.e, this.d);
-      }
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, dnq.a.m(), $$32);
 
-      void a(dky $$0, azz $$1, elc.b $$2) {
-         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
-            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
-               float $$5 = azq.c((float)($$3 * $$3 + $$4 * $$4));
-               if (!($$5 > (float)this.c)) {
-                  int $$6 = this.a($$5);
-                  if ($$6 > 0) {
-                     if ((double)$$1.i() < 0.2) {
-                        $$6 = (int)((float)$$6 * azq.b($$1, 0.8F, 1.0F));
-                     }
-
-                     iw.a $$7 = this.a.b($$3, 0, $$4).k();
-                     boolean $$8 = false;
-                     int $$9 = this.b ? $$0.a(ehf.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
-
-                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
-                        iw $$11 = $$2.a($$7);
-                        if (ekg.b($$0, $$11)) {
-                           $$8 = true;
-                           dne $$12 = dng.tc;
-                           $$0.a($$11, $$12.m(), 2);
-                        } else if ($$8 && $$0.a_($$11).a(axg.bh)) {
-                           break;
-                        }
-
-                        $$7.c(this.b ? jc.b : jc.a);
-                     }
+               for (jc $$39 : a) {
+                  iw $$40 = $$33.a($$39);
+                  eya $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
                   }
                }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
+               }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.j());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
             }
          }
       }
 
-      boolean a(emu $$0) {
-         return this.c >= $$0.i && this.d >= (double)$$0.j;
-      }
-   }
+      List<ebq> $$43 = $$14.f;
 
-   static final class b {
-      private final int a;
-      @Nullable
-      private final ffs b;
+      for (iw $$44 : $$31) {
+         ebq $$45 = ag.a($$43, $$2);
 
-      b(int $$0, azz $$1, btw $$2) {
-         this.a = $$0;
-         float $$3 = $$2.a($$1);
-         float $$4 = azq.b($$1, 0.0F, (float) Math.PI);
-         this.b = new ffs((double)(azq.b($$4) * $$3), 0.0, (double)(azq.a($$4) * $$3));
-      }
+         for (jc $$46 : a) {
+            if ($$45.b(ecg.R)) {
+               $$45 = $$45.b(ecg.R, $$46);
+            }
 
-      private b() {
-         this.a = 0;
-         this.b = null;
-      }
+            iw $$47 = $$44.a($$46);
+            ebq $$48 = $$4.a_($$47);
+            if ($$45.b(ecg.I)) {
+               $$45 = $$45.b(ecg.I, Boolean.valueOf($$48.y().b()));
+            }
 
-      static elc.b a() {
-         return new elc.b();
-      }
-
-      iw a(iw $$0) {
-         if (this.b == null) {
-            return $$0;
-         } else {
-            int $$1 = this.a - $$0.v();
-            ffs $$2 = this.b.c((double)$$1);
-            return $$0.b(azq.a($$2.d), 0, azq.a($$2.f));
+            if (dnx.h($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
          }
       }
+
+      return true;
    }
 }

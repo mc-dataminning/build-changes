@@ -1,122 +1,93 @@
-import com.google.common.annotations.VisibleForTesting;
-
-public class cpj extends coi {
-   private static final int b = 300;
-   private static final akn<Boolean> c = akr.a(cpj.class, akp.k);
-   public static final String a = "StrayConversionTime";
-   private static final int d = -1;
-   private int e;
-   private int f;
-
-   public cpj(bxe<? extends cpj> $$0, djz $$1) {
+public class cpj extends cpt {
+   public cpj(bxn<? extends cpj> $$0, dkj $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(akr.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
+   public static bzk.a j() {
+      return cpk.gx().a(bzl.v, 0.2F);
    }
 
-   public boolean gu() {
-      return this.ar().a(c);
-   }
-
-   public void w(boolean $$0) {
-      this.al.a(c, $$0);
+   public static boolean b(bxn<cpj> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
+      return $$1.an() != buz.a;
    }
 
    @Override
-   public boolean x() {
-      return this.gu();
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.g(bzl.a).a((double)($$0 * 3));
    }
 
    @Override
-   public void h() {
-      if (!this.dV().C && this.bJ() && !this.gj()) {
-         if (this.av) {
-            if (this.gu()) {
-               this.f--;
-               if (this.f < 0) {
-                  this.gv();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.e = -1;
-            this.w(false);
-         }
-      }
-
-      super.h();
+   public float bw() {
+      return 1.0F;
    }
 
    @Override
-   public void b(ua $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gu() ? this.f : -1);
+   protected lx m() {
+      return lz.F;
    }
 
    @Override
-   public void a(ua $$0) {
-      super.a($$0);
-      int $$1 = $$0.b("StrayConversionTime", -1);
-      if ($$1 != -1) {
-         this.b($$1);
-      } else {
-         this.w(false);
-      }
-   }
-
-   @VisibleForTesting
-   public void b(int $$0) {
-      this.f = $$0;
-      this.w(true);
-   }
-
-   protected void gv() {
-      this.a(bxe.bt, bwp.a(this, true, true), $$0 -> {
-         if (!this.ba()) {
-            this.dV().a(null, 1048, this.dv(), 0);
-         }
-      });
-   }
-
-   @Override
-   public boolean dJ() {
+   public boolean bX() {
       return false;
    }
 
    @Override
-   protected awq u() {
-      return awr.xR;
+   protected int n() {
+      return super.n() * 4;
    }
 
    @Override
-   protected awq e(bvk $$0) {
-      return awr.yc;
+   protected void q() {
+      this.d *= 0.9F;
    }
 
    @Override
-   protected awq l_() {
-      return awr.xT;
+   public void s() {
+      fgc $$0 = this.dy();
+      float $$1 = (float)this.gs() * 0.1F;
+      this.n($$0.d, (double)(this.fh() + $$1), $$0.f);
+      this.ar = true;
    }
 
    @Override
-   awq m() {
-      return awr.ye;
-   }
-
-   @Override
-   protected void a(aru $$0, bvk $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof com $$4 && $$4.x()) {
-         $$4.gu();
-         this.a($$0, dae.vv);
+   protected void c(ayc<exz> $$0) {
+      if ($$0 == axs.b) {
+         fgc $$1 = this.dy();
+         this.n($$1.d, (double)(0.22F + (float)this.gs() * 0.05F), $$1.f);
+         this.ar = true;
+      } else {
+         super.c($$0);
       }
+   }
+
+   @Override
+   protected boolean t() {
+      return this.dj();
+   }
+
+   @Override
+   protected float x() {
+      return super.x() + 2.0F;
+   }
+
+   @Override
+   protected awx e(bvt $$0) {
+      return this.gt() ? awy.pf : awy.pe;
+   }
+
+   @Override
+   protected awx l_() {
+      return this.gt() ? awy.oT : awy.pd;
+   }
+
+   @Override
+   protected awx gq() {
+      return this.gt() ? awy.pi : awy.ph;
+   }
+
+   @Override
+   protected awx gr() {
+      return awy.pg;
    }
 }

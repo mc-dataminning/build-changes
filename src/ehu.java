@@ -1,63 +1,117 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public final class ehu {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public record ehu(ehx j, ebq k, ebq l, ehv m, eig.o n, List<dlv.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<ehu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehx.a.fieldOf("noise").forGetter(ehu::f),
+               ebq.a.fieldOf("default_block").forGetter(ehu::g),
+               ebq.a.fieldOf("default_fluid").forGetter(ehu::h),
+               ehv.a.fieldOf("noise_router").forGetter(ehu::i),
+               eig.o.b.fieldOf("surface_rule").forGetter(ehu::j),
+               dlv.d.a.listOf().fieldOf("spawn_target").forGetter(ehu::k),
+               Codec.INT.fieldOf("sea_level").forGetter(ehu::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ehu::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ehu::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ehu::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ehu::n)
+            )
+            .apply($$0, ehu::new)
+   );
+   public static final Codec<jg<ehu>> b = aln.a(mi.aX, a);
+   public static final alq<ehu> c = alq.a(mi.aX, alr.b("overworld"));
+   public static final alq<ehu> d = alq.a(mi.aX, alr.b("large_biomes"));
+   public static final alq<ehu> e = alq.a(mi.aX, alr.b("amplified"));
+   public static final alq<ehu> f = alq.a(mi.aX, alr.b("nether"));
+   public static final alq<ehu> g = alq.a(mi.aX, alr.b("end"));
+   public static final alq<ehu> h = alq.a(mi.aX, alr.b("caves"));
+   public static final alq<ehu> i = alq.a(mi.aX, alr.b("floating_islands"));
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   public static ehu.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new ehu.a($$1, $$2);
+   public boolean b() {
+      return this.r;
    }
 
-   public static ehu.a c(long $$0) {
-      return b($$0).a();
+   public boolean c() {
+      return this.s;
    }
 
-   public static ehu.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new ehu.a($$2, $$3);
+   public eio.a d() {
+      return this.t ? eio.a.a : eio.a.b;
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public static void a(qi<ehu> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   public static record a(long a, long b) {
-      public ehu.a a(long $$0, long $$1) {
-         return new ehu.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   private static ehu b(qi<?> $$0) {
+      return new ehu(ehx.d, dnq.fY.m(), dnq.a.m(), ehw.a($$0.a(mi.aO)), qv.c(), List.of(), 0, true, false, false, true);
+   }
 
-      public ehu.a a(ehu.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   private static ehu c(qi<?> $$0) {
+      return new ehu(ehx.c, dnq.em.m(), dnq.K.m(), ehw.a($$0.a(mi.aO), $$0.a(mi.aY)), qv.b(), List.of(), 32, false, false, false, true);
+   }
 
-      public ehu.a a() {
-         return new ehu.a(ehu.a(this.a), ehu.a(this.b));
-      }
+   private static ehu a(qi<?> $$0, boolean $$1, boolean $$2) {
+      return new ehu(ehx.b, dnq.b.m(), dnq.J.m(), ehw.a($$0.a(mi.aO), $$0.a(mi.aY), $$2, $$1), qv.a(), new dmc().a(), 63, false, true, true, false);
+   }
 
-      public long b() {
-         return this.a;
-      }
+   private static ehu d(qi<?> $$0) {
+      return new ehu(ehx.e, dnq.b.m(), dnq.J.m(), ehw.b($$0.a(mi.aO), $$0.a(mi.aY)), qv.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
 
-      public long c() {
-         return this.b;
-      }
+   private static ehu e(qi<?> $$0) {
+      return new ehu(ehx.f, dnq.b.m(), dnq.J.m(), ehw.c($$0.a(mi.aO), $$0.a(mi.aY)), qv.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static ehu e() {
+      return new ehu(ehx.b, dnq.b.m(), dnq.a.m(), ehw.a(), qv.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public ehx f() {
+      return this.j;
+   }
+
+   public ebq g() {
+      return this.k;
+   }
+
+   public ebq h() {
+      return this.l;
+   }
+
+   public ehv i() {
+      return this.m;
+   }
+
+   public eig.o j() {
+      return this.n;
+   }
+
+   public List<dlv.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

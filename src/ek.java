@@ -18,43 +18,43 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public class ek implements em<ek>, ep {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("permissions.requires.entity"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("permissions.requires.player"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xg.c("permissions.requires.entity"));
    private final ej d;
-   private final ffs e;
-   private final aru f;
+   private final fgc e;
+   private final asb f;
    private final int g;
    private final String h;
-   private final xc i;
+   private final xg i;
    private final MinecraftServer j;
    private final boolean k;
    @Nullable
-   private final bwv l;
+   private final bxe l;
    private final eh m;
    private final ew.a n;
-   private final ffr o;
+   private final fgb o;
    private final ei p;
-   private final baq q;
+   private final baz q;
 
-   public ek(ej $$0, ffs $$1, ffr $$2, aru $$3, int $$4, String $$5, xc $$6, MinecraftServer $$7, @Nullable bwv $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eh.a, ew.a.a, ei.a, baq.immediate($$7));
+   public ek(ej $$0, fgc $$1, fgb $$2, asb $$3, int $$4, String $$5, xg $$6, MinecraftServer $$7, @Nullable bxe $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eh.a, ew.a.a, ei.a, baz.immediate($$7));
    }
 
    protected ek(
       ej $$0,
-      ffs $$1,
-      ffr $$2,
-      aru $$3,
+      fgc $$1,
+      fgb $$2,
+      asb $$3,
       int $$4,
       String $$5,
-      xc $$6,
+      xg $$6,
       MinecraftServer $$7,
-      @Nullable bwv $$8,
+      @Nullable bxe $$8,
       boolean $$9,
       eh $$10,
       ew.a $$11,
       ei $$12,
-      baq $$13
+      baz $$13
    ) {
       this.d = $$0;
       this.e = $$1;
@@ -76,17 +76,17 @@ public class ek implements em<ek>, ep {
       return this.d == $$0 ? this : new ek($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ek a(bwv $$0) {
+   public ek a(bxe $$0) {
       return this.l == $$0
          ? this
          : new ek(this.d, this.e, this.o, this.f, this.g, $$0.ai().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ek a(ffs $$0) {
+   public ek a(fgc $$0) {
       return this.e.equals($$0) ? this : new ek(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ek a(ffr $$0) {
+   public ek a(fgb $$0) {
       return this.o.c($$0) ? this : new ek(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
@@ -119,38 +119,38 @@ public class ek implements em<ek>, ep {
       return $$0 == this.n ? this : new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, $$0, this.p, this.q);
    }
 
-   public ek a(aru $$0) {
+   public ek a(asb $$0) {
       if ($$0 == this.f) {
          return this;
       } else {
-         double $$1 = efd.a(this.f.F_(), $$0.F_());
-         ffs $$2 = new ffs(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         double $$1 = efn.a(this.f.F_(), $$0.F_());
+         fgc $$2 = new fgc(this.e.d * $$1, this.e.e, this.e.f * $$1);
          return new ek(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
 
-   public ek a(bwv $$0, ew.a $$1) {
+   public ek a(bxe $$0, ew.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ek b(ffs $$0) {
-      ffs $$1 = this.n.a(this);
+   public ek b(fgc $$0) {
+      fgc $$1 = this.n.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = azq.h((float)(-(azq.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = azq.h((float)(azq.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ffr($$6, $$7));
+      float $$6 = azz.h((float)(-(azz.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = azz.h((float)(azz.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new fgb($$6, $$7));
    }
 
-   public ek a(ei $$0, baq $$1) {
+   public ek a(ei $$0, baz $$1) {
       return $$0 == this.p && $$1 == this.q
          ? this
          : new ek(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, $$0, $$1);
    }
 
-   public xc b() {
+   public xg b() {
       return this.i;
    }
 
@@ -163,20 +163,20 @@ public class ek implements em<ek>, ep {
       return this.g >= $$0;
    }
 
-   public ffs d() {
+   public fgc d() {
       return this.e;
    }
 
-   public aru e() {
+   public asb e() {
       return this.f;
    }
 
    @Nullable
-   public bwv f() {
+   public bxe f() {
       return this.l;
    }
 
-   public bwv g() throws CommandSyntaxException {
+   public bxe g() throws CommandSyntaxException {
       if (this.l == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class ek implements em<ek>, ep {
       }
    }
 
-   public arv h() throws CommandSyntaxException {
-      bwv var2 = this.l;
-      if (var2 instanceof arv) {
-         return (arv)var2;
+   public asc h() throws CommandSyntaxException {
+      bxe var2 = this.l;
+      if (var2 instanceof asc) {
+         return (asc)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public arv i() {
-      return this.l instanceof arv $$0 ? $$0 : null;
+   public asc i() {
+      return this.l instanceof asc $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.l instanceof arv;
+      return this.l instanceof asc;
    }
 
-   public ffr k() {
+   public fgb k() {
       return this.o;
    }
 
@@ -218,18 +218,18 @@ public class ek implements em<ek>, ep {
       return this.p;
    }
 
-   public baq o() {
+   public baz o() {
       return this.q;
    }
 
-   public boolean a(arv $$0) {
-      arv $$1 = this.i();
+   public boolean a(asc $$0) {
+      asc $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.X() || $$0.X();
    }
 
-   public void a(xr $$0, boolean $$1, wy.a $$2) {
+   public void a(xv $$0, boolean $$1, xc.a $$2) {
       if (!this.k) {
-         arv $$3 = this.i();
+         asc $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -238,9 +238,9 @@ public class ek implements em<ek>, ep {
       }
    }
 
-   public void a(xc $$0) {
+   public void a(xg $$0) {
       if (!this.k) {
-         arv $$1 = this.i();
+         asc $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -249,11 +249,11 @@ public class ek implements em<ek>, ep {
       }
    }
 
-   public void a(Supplier<xc> $$0, boolean $$1) {
+   public void a(Supplier<xg> $$0, boolean $$1) {
       boolean $$2 = this.d.x_() && !this.k;
       boolean $$3 = $$1 && this.d.c() && !this.k;
       if ($$2 || $$3) {
-         xc $$4 = $$0.get();
+         xg $$4 = $$0.get();
          if ($$2) {
             this.d.a($$4);
          }
@@ -264,24 +264,24 @@ public class ek implements em<ek>, ep {
       }
    }
 
-   private void c(xc $$0) {
-      xc $$1 = xc.a("chat.type.admin", this.b(), $$0).a(o.h, o.u);
-      if (this.j.aL().c(djv.q)) {
-         for (arv $$2 : this.j.ag().t()) {
+   private void c(xg $$0) {
+      xg $$1 = xg.a("chat.type.admin", this.b(), $$0).a(o.h, o.u);
+      if (this.j.aL().c(dkf.q)) {
+         for (asc $$2 : this.j.ag().t()) {
             if ($$2.z() != this.d && this.j.ag().f($$2.gi())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.d != this.j && this.j.aL().c(djv.n)) {
+      if (this.d != this.j && this.j.aL().c(dkf.n)) {
          this.j.a($$1);
       }
    }
 
-   public void b(xc $$0) {
+   public void b(xg $$0) {
       if (this.d.y_() && !this.k) {
-         this.d.a(xc.i().b($$0).a(o.m));
+         this.d.a(xg.i().b($$0).a(o.m));
       }
    }
 
@@ -301,8 +301,8 @@ public class ek implements em<ek>, ep {
    }
 
    @Override
-   public Stream<alk> s() {
-      return mh.b.s().map(awq::a);
+   public Stream<alr> s() {
+      return mh.b.s().map(awx::a);
    }
 
    @Override
@@ -311,7 +311,7 @@ public class ek implements em<ek>, ep {
    }
 
    @Override
-   public CompletableFuture<Suggestions> a(alj<? extends jt<?>> $$0, ep.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+   public CompletableFuture<Suggestions> a(alq<? extends jt<?>> $$0, ep.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
       if ($$0 == mi.bv) {
          return ep.a(this.j.aI().d().stream().map($$0x -> $$0x.a().a()), $$2);
       } else if ($$0 == mi.bu) {
@@ -326,7 +326,7 @@ public class ek implements em<ek>, ep {
    }
 
    @Override
-   public Set<alj<djz>> t() {
+   public Set<alq<dkj>> t() {
       return this.j.K();
    }
 
@@ -336,7 +336,7 @@ public class ek implements em<ek>, ep {
    }
 
    @Override
-   public cvj v() {
+   public cvs v() {
       return this.f.K();
    }
 
@@ -352,7 +352,7 @@ public class ek implements em<ek>, ep {
       }
 
       if (!$$2) {
-         this.b(xf.a($$1));
+         this.b(xj.a($$1));
       }
    }
 

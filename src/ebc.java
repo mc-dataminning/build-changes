@@ -1,185 +1,116 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-
-public class ebc {
-   public static final int a = 12;
-   private final djz b;
-   private final iw c;
-   private final boolean d;
-   private final iw e;
-   private final jc f;
-   private final List<iw> g = Lists.newArrayList();
-   private final List<iw> h = Lists.newArrayList();
-   private final jc i;
-
-   public ebc(djz $$0, iw $$1, jc $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
+public enum ebc implements bax {
+   a("inactive", ebc.a.a) {
+      @Override
+      protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3, boolean $$4) {
+         $$3.a(dak.l);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
       }
-   }
-
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      ebg $$0 = this.b.a_(this.e);
-      if (!eay.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.r() == exv.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            iw $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
+   },
+   b("active", ebc.a.b) {
+      @Override
+      protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3, boolean $$4) {
+         if (!$$3.b()) {
+            eax.b.a($$0, this, $$2, $$3, $$1);
          }
 
-         return true;
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
       }
-   }
-
-   private static boolean a(ebg $$0) {
-      return $$0.a(dng.ix) || $$0.a(dng.pO);
-   }
-
-   private static boolean a(ebg $$0, ebg $$1) {
-      if ($$0.a(dng.pO) && $$1.a(dng.ix)) {
-         return false;
-      } else {
-         return $$0.a(dng.ix) && $$1.a(dng.pO) ? false : a($$0) || a($$1);
+   },
+   c("unlocking", ebc.a.b) {
+      @Override
+      protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3, boolean $$4) {
+         $$0.a(null, $$1, awy.BN, awz.e);
       }
+   },
+   d("ejecting", ebc.a.b) {
+      @Override
+      protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3, boolean $$4) {
+         $$0.a(null, $$1, awy.BP, awz.e);
+      }
+
+      @Override
+      protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3) {
+         $$0.a(null, $$1, awy.BH, awz.e);
+      }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final ebc.a j;
+
+   ebc(final String $$0, final ebc.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   private boolean a(iw $$0, jc $$1) {
-      ebg $$2 = this.b.a_($$0);
-      if ($$2.l()) {
-         return true;
-      } else if (!eay.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               iw $$4 = $$0.a(this.f.g(), $$3);
-               ebg $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.l() || !a($$5, $$2) || !eay.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
+   @Override
+   public String c() {
+      return this.i;
+   }
 
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
+   public int a() {
+      return this.j.c;
+   }
 
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               iw $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     iw $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.l()) {
-                  return true;
-               }
-
-               if (!eay.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.r() == exv.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
+   public ebc a(asb $$0, iw $$1, eaz $$2, eba $$3, ebb $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.ae() + 20L);
+            yield d;
+         }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.ae() + (long)$$7);
+               yield d;
             }
          }
+      };
+   }
+
+   private static ebc a(asb $$0, iw $$1, eaz $$2, eba $$3, ebb $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.ae() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(asb $$0, iw $$1, ebc $$2, eaz $$3, ebb $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3, boolean $$4) {
+   }
+
+   protected void a(asb $$0, iw $$1, eaz $$2, ebb $$3) {
+   }
+
+   private void a(asb $$0, iw $$1, dak $$2, float $$3) {
+      lh.a($$0, $$2, 2, jc.b, fgc.c($$1).a(jc.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awy.BJ, awz.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
-   }
-
-   private void a(int $$0, int $$1) {
-      List<iw> $$2 = Lists.newArrayList();
-      List<iw> $$3 = Lists.newArrayList();
-      List<iw> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(iw $$0) {
-      ebg $$1 = this.b.a_($$0);
-
-      for (jc $$2 : jc.values()) {
-         if ($$2.o() != this.f.o()) {
-            iw $$3 = $$0.a($$2);
-            ebg $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   public jc b() {
-      return this.f;
-   }
-
-   public List<iw> c() {
-      return this.g;
-   }
-
-   public List<iw> d() {
-      return this.h;
    }
 }

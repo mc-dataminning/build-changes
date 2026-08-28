@@ -1,31 +1,46 @@
-public class czj extends czw {
-   public czj(czw.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class czj extends dag implements dbm {
+   private static final Map<czi, czj> a = Maps.newEnumMap(czi.class);
+   private final czi b;
+
+   public czj(czi $$0, dag.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      daa $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.C) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, bxw.d($$2));
+   public bvc a(dak $$0, csi $$1, byf $$2, bvb $$3) {
+      if ($$2 instanceof cmr $$4 && $$4.bJ() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dV().a($$1, $$4, awy.ik, awz.h, 1.0F, 1.0F);
+         if (!$$1.dV().C) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
 
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.jA, aws.g, 1.0F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-         $$1.a(egg.C);
-      } else {
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.jC, aws.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-         if ($$0 instanceof aru $$5) {
-            int $$6 = (int)(dgp.b($$5, $$3, $$1) * 20.0F);
-            int $$7 = dgp.a($$5, $$3, $$1);
-            csu.a(new csq($$1, $$0, $$7, $$6), $$5, $$3);
-         }
-
-         $$1.b(axb.c.b(this));
-         $$1.a(egg.D);
+         return bvc.a;
       }
 
-      return but.a;
+      return bvc.e;
+   }
+
+   public czi a() {
+      return this.b;
+   }
+
+   public static czj a(czi $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(dkj $$0, eac $$1, boolean $$2, csi $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.a()), $$2)) {
+         $$0.a(null, $$1.aC_(), awy.ik, awz.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,6 +1,17 @@
-@FunctionalInterface
-public interface hnw {
-   hnw a = ($$0, $$1, $$2, $$3) -> hns.a;
+public abstract class hnw extends hnv implements hoo {
+   private boolean n;
 
-   hns bake(gtx var1, hnl var2, hnr var3, hnn var4);
+   protected hnw(awx $$0, awz $$1, bai $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean m() {
+      return this.n;
+   }
+
+   protected final void n() {
+      this.n = true;
+      this.i = false;
+   }
 }

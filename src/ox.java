@@ -11,43 +11,43 @@ public class ox {
       .a(mi.bc, qq::a)
       .a(mi.bf, qp::a)
       .a(mi.aG, rb::a)
-      .a(mi.aW, dlr::a)
+      .a(mi.aW, dmb::a)
       .a(mi.aY, qm::a)
-      .a(mi.aO, ehm::a)
-      .a(mi.aX, ehk::a)
-      .a(mi.bo, ert::a)
-      .a(mi.aS, eqf::a)
-      .a(mi.aI, wy::a)
-      .a(mi.bl, diq::a)
-      .a(mi.bk, dio::a)
-      .a(mi.bi, eaj::a)
-      .a(mi.bm, cms::a)
-      .a(mi.bn, cmq::a)
-      .a(mi.aZ, cob::a)
-      .a(mi.aN, bvn::a)
-      .a(mi.aF, dxv::a)
-      .a(mi.aR, dgs::a)
-      .a(mi.aQ, dib::a)
-      .a(mi.aV, dai::a)
-      .a(mi.aU, czv::a)
-      .a(mi.ba, ckj::a)
-      .a(mi.aM, cjy::a)
-      .a(mi.aJ, cju::a)
+      .a(mi.aO, ehw::a)
+      .a(mi.aX, ehu::a)
+      .a(mi.bo, esd::a)
+      .a(mi.aS, eqp::a)
+      .a(mi.aI, xc::a)
+      .a(mi.bl, dja::a)
+      .a(mi.bk, diy::a)
+      .a(mi.bi, eat::a)
+      .a(mi.bm, cnb::a)
+      .a(mi.bn, cmz::a)
+      .a(mi.aZ, cok::a)
+      .a(mi.aN, bvw::a)
+      .a(mi.aF, dyf::a)
+      .a(mi.aR, dhc::a)
+      .a(mi.aQ, dil::a)
+      .a(mi.aV, das::a)
+      .a(mi.aU, daf::a)
+      .a(mi.ba, cks::a)
+      .a(mi.aM, ckh::a)
+      .a(mi.aJ, ckd::a)
       .a(mi.bg, sn::a)
       .a(mi.bh, st::a)
-      .a(mi.aT, clm::a)
-      .a(mi.aH, cjr::a);
+      .a(mi.aT, clv::a)
+      .a(mi.aH, cka::a);
 
    private static void a(ji.a $$0) {
       a($$0.e(mi.bb), $$0.e(mi.aG));
    }
 
-   public static void a(jh<erh> $$0, ji<dlc> $$1) {
+   public static void a(jh<err> $$0, ji<dlm> $$1) {
       $$1.c().forEach($$1x -> {
-         alk $$2 = $$1x.h().a();
-         List<jk<erh>> $$3 = ((dlc)$$1x.a()).d().c();
+         alr $$2 = $$1x.h().a();
+         List<jk<err>> $$3 = ((dlm)$$1x.a()).d().c();
          $$3.stream().flatMap(jk::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jg.c<erh> $$3xx = $$0.b($$2xx);
+               jg.c<err> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ag.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -59,8 +59,8 @@ public class ox {
       });
    }
 
-   private static boolean a(erh $$0) {
-      return $$0.c().contains(eqv.a());
+   private static boolean a(err $$0) {
+      return $$0.c().contains(erf.a());
    }
 
    public static ji.a a() {

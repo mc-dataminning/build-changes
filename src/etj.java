@@ -1,87 +1,25 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class etj extends etl {
-   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(etl.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), f()).apply($$0, etj::new)
-   );
-   private final List<etl> b;
+public enum etj implements bax {
+   a("linear"),
+   b("triangular");
 
-   public etj(List<etl> $$0, etn.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   public static final Codec<etj> c = bax.a(etj::values);
+   private final String d;
+
+   private etj(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public kb a(ewg $$0, dty $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (etl $$5 : this.b) {
-         kb $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new kb($$2, $$3, $$4);
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public List<ewf.a> a(ewg $$0, iw $$1, dty $$2, azz $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public erv a(ewg $$0, iw $$1, dty $$2) {
-      Stream<erv> $$3 = this.b.stream().filter($$0x -> $$0x != ete.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return erv.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(ewg $$0, dky $$1, dkv $$2, ede $$3, iw $$4, iw $$5, dty $$6, erv $$7, azz $$8, evp $$9, boolean $$10) {
-      for (etl $$11 : this.b) {
-         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public etm<?> a() {
-      return etm.b;
-   }
-
-   @Override
-   public etl a(etn.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
-   }
-
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(etn.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
-   }
-
-   @VisibleForTesting
-   public List<etl> b() {
-      return this.b;
+   public int a(bai $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

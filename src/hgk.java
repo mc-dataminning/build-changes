@@ -1,4 +1,7 @@
-public class hgk extends her {
+import javax.annotation.Nullable;
+
+public class hgk extends hec {
    public float a;
-   public float b;
+   @Nullable
+   public ebq b;
 }

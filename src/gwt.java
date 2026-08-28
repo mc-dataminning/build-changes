@@ -1,62 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+public abstract class gwt<T extends csq, S extends hdi> extends gxu<T, S> {
+   private final ggg a;
 
-public class gwt implements gwf.a {
-   private final frf a;
-   private double b = Double.MIN_VALUE;
-   private List<bwv> c = Collections.emptyList();
-
-   public gwt(frf $$0) {
-      this.a = $$0;
+   public gwt(gxv.a $$0) {
+      super($$0);
+      this.a = new ggg($$0.a(gkq.l));
    }
 
-   @Override
-   public void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ag.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwv $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
-      }
-
-      crz $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bwv $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
-      }
+   public void a(S $$0, fld $$1, grn $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      flg $$4 = $$2.getBuffer(gry.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hkg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   private void a(flq $$0, gsc $$1, double $$2, double $$3, double $$4, bwv $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         iw $$12 = $$5.aQ();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         iw $$13 = $$5.aO();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
+   protected abstract alr a(S var1);
 
-   private double a(bwv $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ao() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(iw $$0, flq $$1, double $$2, double $$3, double $$4, gsc $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gsv.a($$1, $$5.getBuffer(gsn.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gwf.a($$1, $$5.getBuffer(gsn.w()), this.a.s.a_($$0).b(this.a.s, $$0, ffx.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.k($$2);
+      $$1.b = $$0.l($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

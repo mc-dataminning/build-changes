@@ -1,30 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record fth(List<ecj.a<?>> b) {
-   public static final fth a = new fth(List.of());
-   private static final Comparator<ecj.a<?>> c = Comparator.comparing($$0 -> $$0.a().f());
-
-   public fth a(ecj.a<?> $$0) {
-      return new fth(ag.a(this.b, $$0));
+public interface fth {
+   static fth a(fvv $$0) {
+      return new fth.a($$0);
    }
 
-   public fth a(fth $$0) {
-      return new fth(ImmutableList.builder().addAll(this.b).addAll($$0.b).build());
+   @Nullable
+   static fth a(fvu $$0, @Nullable fth $$1) {
+      return $$1 == null ? null : new fth.b($$0, $$1);
    }
 
-   public static fth a(ecj.a<?>... $$0) {
-      return new fth(List.of($$0));
+   static fth a(fvv $$0, fvu... $$1) {
+      fth $$2 = a($$0);
+
+      for (fvu $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   public String a() {
-      return this.b.stream().sorted(c).map(ecj.a::toString).collect(Collectors.joining(","));
+   fvv a();
+
+   void a(boolean var1);
+
+   public static record a(fvv a) implements fth {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
    }
 
-   @Override
-   public String toString() {
-      return this.a();
+   public static record b(fvu a, fth b) implements fth {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fvu b() {
+         return this.a;
+      }
+
+      public fth c() {
+         return this.b;
+      }
    }
 }

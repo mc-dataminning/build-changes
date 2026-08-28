@@ -1,110 +1,37 @@
-import com.mojang.authlib.GameProfile;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-
-public class gge implements gfz, gga {
-   private static final alk a = alk.b("spectator/teleport_to_team");
-   private static final xc b = xc.c("spectatorMenu.team_teleport");
-   private static final xc c = xc.c("spectatorMenu.team_teleport.prompt");
-   private final List<gga> d;
-
-   public gge() {
-      frf $$0 = frf.Q();
-      this.d = a($$0, $$0.s.R());
+public class gge extends gib<hdh> {
+   public gge(gkr $$0) {
+      super($$0);
    }
 
-   private static List<gga> a(frf $$0, fgx $$1) {
-      return $$1.f().stream().flatMap($$1x -> gge.a.a($$0, $$1x).stream()).toList();
+   public static gkx a(gkv $$0) {
+      gkz $$1 = gib.a($$0, 0.0F);
+      glb $$2 = $$1.a();
+      glb $$3 = $$2.a("head", gkw.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gkt.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", gkw.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gkt.a);
+      $$2.a("right_leg", gkw.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gkt.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", gkw.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gkt.a(1.9F, 11.0F, 0.0F));
+      return gkx.a($$1, 64, 32);
    }
 
-   @Override
-   public List<gga> a() {
-      return this.d;
-   }
-
-   @Override
-   public xc b() {
-      return c;
-   }
-
-   @Override
-   public void a(gfy $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public xc aT_() {
-      return b;
-   }
-
-   @Override
-   public void a(ftz $$0, float $$1, float $$2) {
-      $$0.a(gsn::H, a, 0, 0, 16, 16, aya.a($$2, $$1, $$1, $$1));
-   }
-
-   @Override
-   public boolean aU_() {
-      return !this.d.isEmpty();
-   }
-
-   static class a implements gga {
-      private final fgs a;
-      private final Supplier<hme> b;
-      private final List<gmp> c;
-
-      private a(fgs $$0, List<gmp> $$1, Supplier<hme> $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-      }
-
-      public static Optional<gga> a(frf $$0, fgs $$1) {
-         List<gmp> $$2 = new ArrayList<>();
-
-         for (String $$3 : $$1.h()) {
-            gmp $$4 = $$0.L().a($$3);
-            if ($$4 != null && $$4.e() != djw.d) {
-               $$2.add($$4);
-            }
-         }
-
-         if ($$2.isEmpty()) {
-            return Optional.empty();
-         } else {
-            GameProfile $$5 = $$2.get(azz.a().a($$2.size())).a();
-            Supplier<hme> $$6 = $$0.an().a($$5);
-            return Optional.of(new gge.a($$1, $$2, $$6));
-         }
-      }
-
-      @Override
-      public void a(gfy $$0) {
-         $$0.a(new ggd(this.c));
-      }
-
-      @Override
-      public xc aT_() {
-         return this.a.d();
-      }
-
-      @Override
-      public void a(ftz $$0, float $$1, float $$2) {
-         Integer $$3 = this.a.o().f();
-         if ($$3 != null) {
-            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
-            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
-            float $$6 = (float)($$3 & 0xFF) / 255.0F;
-            $$0.a(1, 1, 15, 15, aya.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
-         }
-
-         fvm.a($$0, this.b.get(), 2, 2, 12, aya.a($$2, $$1, $$1, $$1));
-      }
-
-      @Override
-      public boolean aU_() {
-         return true;
-      }
+   public void a(hdh $$0) {
+      super.a($$0);
+      this.o.e = (float) (Math.PI / 180.0) * $$0.l.a();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.m.a();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.m.b();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.m.c();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.n.a();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.n.b();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.n.c();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.o.a();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.o.b();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.o.c();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.p.a();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.p.b();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.p.c();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.q.a();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.q.b();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.q.c();
    }
 }

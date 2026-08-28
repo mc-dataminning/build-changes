@@ -1,20 +1,8 @@
-public enum ebt implements bao {
-   a("head"),
-   b("foot");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String c;
-
-   private ebt(final String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface ebt {
 }

@@ -1,7 +1,7 @@
 public interface ej {
    ej a = new ej() {
       @Override
-      public void a(xc $$0) {
+      public void a(xg $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface ej {
       }
    };
 
-   void a(xc var1);
+   void a(xg var1);
 
    boolean x_();
 

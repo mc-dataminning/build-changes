@@ -15,8 +15,8 @@ public record dj(Optional<Boolean> c) implements ca {
    }
 
    @Override
-   public boolean a(bwv $$0, aru $$1, @Nullable ffs $$2) {
-      return $$0 instanceof cmi $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
+   public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
+      return $$0 instanceof cmr $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
    }
 
    public static dj b() {

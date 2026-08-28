@@ -1,5 +1,5 @@
-public class hgr extends hfr {
-   public daa a = daa.k;
+public class hgr extends het {
+   public int a;
    public boolean b;
    public boolean c;
 }

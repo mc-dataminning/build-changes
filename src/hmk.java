@@ -1,26 +1,12 @@
-import java.util.IllegalFormatException;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public class hmk {
-   private static volatile tv a = tv.a();
+public record hmk(Map<String, hlz> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<hmk> b = Codec.unboundedMap(a, hlz.a).xmap(hmk::new, hmk::a);
+   public static final aun<hmk> c = new aun<>("language", b);
 
-   private hmk() {
-   }
-
-   static void a(tv $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public Map<String, hlz> a() {
+      return this.d;
    }
 }

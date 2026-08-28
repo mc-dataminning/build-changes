@@ -1,223 +1,182 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record gsh(Map<alk, gsh.d> b, List<gsh.e> c) {
-   public static final Codec<gsh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(alk.a, gsh.d.b).optionalFieldOf("targets", Map.of()).forGetter(gsh::a),
-               gsh.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gsh::b)
-            )
-            .apply($$0, gsh::new)
-   );
+public class gsh {
+   public static final alr a = alr.b("textures/atlas/shulker_boxes.png");
+   public static final alr b = alr.b("textures/atlas/beds.png");
+   public static final alr c = alr.b("textures/atlas/banner_patterns.png");
+   public static final alr d = alr.b("textures/atlas/shield_patterns.png");
+   public static final alr e = alr.b("textures/atlas/signs.png");
+   public static final alr f = alr.b("textures/atlas/chest.png");
+   public static final alr g = alr.b("textures/atlas/armor_trims.png");
+   public static final alr h = alr.b("textures/atlas/decorated_pot.png");
+   private static final gry L = gry.g(a);
+   private static final gry M = gry.d(b);
+   private static final gry N = gry.n(c);
+   private static final gry O = gry.n(d);
+   private static final gry P = gry.g(e);
+   private static final gry Q = gry.f(f);
+   private static final gry R = gry.a(g);
+   private static final gry S = gry.b(g);
+   private static final gry T = gry.d(hkp.c);
+   private static final gry U = gry.f(hkp.c);
+   private static final gry V = gry.i(hkp.c);
+   public static final grm i = new grm(hkp.c, "item");
+   public static final grm j = new grm(hkp.c, "block");
+   public static final grm k = new grm(c, "entity/banner");
+   public static final grm l = new grm(d, "entity/shield");
+   public static final grm m = new grm(f, "entity/chest");
+   public static final grm n = new grm(h, "entity/decorated_pot");
+   public static final grm o = new grm(b, "entity/bed");
+   public static final grm p = new grm(a, "entity/shulker");
+   public static final grm q = new grm(e, "entity/signs");
+   public static final grm r = new grm(e, "entity/signs/hanging");
+   public static final hmx s = p.a("shulker");
+   public static final List<hmx> t = Arrays.stream(czi.values()).sorted(Comparator.comparingInt(czi::a)).map(gsh::f).collect(ImmutableList.toImmutableList());
+   public static final Map<ede, hmx> u = ede.a().collect(Collectors.toMap(Function.identity(), gsh::c));
+   public static final Map<ede, hmx> v = ede.a().collect(Collectors.toMap(Function.identity(), gsh::d));
+   public static final hmx w = k.a("base");
+   public static final hmx x = l.a("base");
+   private static final Map<alr, hmx> W = new HashMap<>();
+   private static final Map<alr, hmx> X = new HashMap<>();
+   public static final Map<alq<dzh>, hmx> y = mh.ai.c().collect(Collectors.toMap(jg.c::h, $$0 -> n.a($$0.a().a())));
+   public static final hmx z = n.a("decorated_pot_base");
+   public static final hmx A = n.a("decorated_pot_side");
+   private static final hmx[] Y = Arrays.stream(czi.values()).sorted(Comparator.comparingInt(czi::a)).map(gsh::c).toArray(hmx[]::new);
+   public static final hmx B = m.a("trapped");
+   public static final hmx C = m.a("trapped_left");
+   public static final hmx D = m.a("trapped_right");
+   public static final hmx E = m.a("christmas");
+   public static final hmx F = m.a("christmas_left");
+   public static final hmx G = m.a("christmas_right");
+   public static final hmx H = m.a("normal");
+   public static final hmx I = m.a("normal_left");
+   public static final hmx J = m.a("normal_right");
+   public static final hmx K = m.a("ender");
 
-   public Map<alk, gsh.d> a() {
-      return this.b;
+   public static gry a() {
+      return N;
    }
 
-   public List<gsh.e> b() {
-      return this.c;
+   public static gry b() {
+      return O;
    }
 
-   public static record a(int c, int d) implements gsh.d {
-      public static final Codec<gsh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayy.m.fieldOf("width").forGetter(gsh.a::a), ayy.m.fieldOf("height").forGetter(gsh.a::b)).apply($$0, gsh.a::new)
-      );
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
+   public static gry c() {
+      return M;
    }
 
-   public static record b() implements gsh.d {
-      public static final Codec<gsh.b> a = Codec.unit(gsh.b::new);
+   public static gry d() {
+      return L;
    }
 
-   public sealed interface c permits gsh.g, gsh.f {
-      Codec<gsh.c> a = Codec.xor(gsh.g.b, gsh.f.b).xmap($$0 -> (gsh.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gsh.g $$3 -> Either.left($$3);
-            case gsh.f $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-
-      String a();
-
-      Set<alk> b();
+   public static gry e() {
+      return P;
    }
 
-   public sealed interface d permits gsh.b, gsh.a {
-      Codec<gsh.d> b = Codec.either(gsh.a.a, gsh.b.a).xmap($$0 -> (gsh.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gsh.a $$3 -> Either.left($$3);
-            case gsh.b $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
+   public static gry f() {
+      return P;
    }
 
-   public static record e(alk b, alk c, List<gsh.c> d, alk e, List<gsh.h> f) {
-      private static final Codec<List<gsh.c>> g = gsh.c.a.listOf().validate($$0 -> {
-         Set<String> $$1 = new ObjectArraySet($$0.size());
-
-         for (gsh.c $$2 : $$0) {
-            if (!$$1.add($$2.a())) {
-               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
-            }
-         }
-
-         return DataResult.success($$0);
-      });
-      public static final Codec<gsh.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alk.a.fieldOf("vertex_shader").forGetter(gsh.e::b),
-                  alk.a.fieldOf("fragment_shader").forGetter(gsh.e::c),
-                  g.optionalFieldOf("inputs", List.of()).forGetter(gsh.e::d),
-                  alk.a.fieldOf("output").forGetter(gsh.e::e),
-                  gsh.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gsh.e::f)
-               )
-               .apply($$0, gsh.e::new)
-      );
-
-      public Stream<alk> a() {
-         Stream<alk> $$0 = this.d.stream().flatMap($$0x -> $$0x.b().stream());
-         return Stream.concat($$0, Stream.of(this.e));
-      }
+   public static gry g() {
+      return Q;
    }
 
-   public static record f(String c, alk d, boolean e, boolean f) implements gsh.c {
-      public static final Codec<gsh.f> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gsh.f::a),
-                  alk.a.fieldOf("target").forGetter(gsh.f::c),
-                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gsh.f::d),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gsh.f::e)
-               )
-               .apply($$0, gsh.f::new)
-      );
-
-      @Override
-      public Set<alk> b() {
-         return Set.of(this.d);
-      }
-
-      @Override
-      public String a() {
-         return this.c;
-      }
-
-      public alk c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
+   public static gry a(boolean $$0) {
+      return $$0 ? S : R;
    }
 
-   public static record g(String c, alk d, int e, int f, boolean g) implements gsh.c {
-      public static final Codec<gsh.g> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gsh.g::a),
-                  alk.a.fieldOf("location").forGetter(gsh.g::c),
-                  ayy.m.fieldOf("width").forGetter(gsh.g::d),
-                  ayy.m.fieldOf("height").forGetter(gsh.g::e),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gsh.g::f)
-               )
-               .apply($$0, gsh.g::new)
-      );
+   public static gry h() {
+      return T;
+   }
 
-      @Override
-      public Set<alk> b() {
-         return Set.of();
-      }
+   public static gry i() {
+      return U;
+   }
 
-      @Override
-      public String a() {
-         return this.c;
-      }
+   public static gry j() {
+      return V;
+   }
 
-      public alk c() {
-         return this.d;
-      }
+   public static hmx a(czi $$0) {
+      return Y[$$0.a()];
+   }
 
-      public int d() {
-         return this.e;
-      }
+   public static alr b(czi $$0) {
+      return alr.b($$0.b());
+   }
 
-      public int e() {
-         return this.f;
-      }
+   public static hmx c(czi $$0) {
+      return o.a(b($$0));
+   }
 
-      public boolean f() {
-         return this.g;
+   public static hmx d(czi $$0) {
+      return t.get($$0.a());
+   }
+
+   public static alr e(czi $$0) {
+      return alr.b("shulker_" + $$0.b());
+   }
+
+   public static hmx f(czi $$0) {
+      return p.a(e($$0));
+   }
+
+   private static hmx c(ede $$0) {
+      return q.a($$0.b());
+   }
+
+   private static hmx d(ede $$0) {
+      return r.a($$0.b());
+   }
+
+   public static hmx a(ede $$0) {
+      return u.get($$0);
+   }
+
+   public static hmx b(ede $$0) {
+      return v.get($$0);
+   }
+
+   public static hmx a(jg<dyd> $$0) {
+      return W.computeIfAbsent($$0.a().a(), k::a);
+   }
+
+   public static hmx b(jg<dyd> $$0) {
+      return X.computeIfAbsent($$0.a().a(), l::a);
+   }
+
+   @Nullable
+   public static hmx a(@Nullable alq<dzh> $$0) {
+      return $$0 == null ? null : y.get($$0);
+   }
+
+   public static hmx a(dyo $$0, eci $$1, boolean $$2) {
+      if ($$0 instanceof dzm) {
+         return K;
+      } else if ($$2) {
+         return a($$1, E, F, G);
+      } else {
+         return $$0 instanceof ean ? a($$1, B, C, D) : a($$1, H, I, J);
       }
    }
 
-   public static record h(String b, String c, Optional<List<Float>> d) {
-      public static final Codec<gsh.h> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("name").forGetter(gsh.h::a),
-                  Codec.STRING.fieldOf("type").forGetter(gsh.h::b),
-                  Codec.FLOAT.sizeLimitedListOf(4).optionalFieldOf("values").forGetter(gsh.h::c)
-               )
-               .apply($$0, gsh.h::new)
-      );
-
-      public void a(fld $$0) {
-         fkz $$1 = fkz.h.a(this.c);
-         if (!this.d.isEmpty() && $$1 != null && !this.d.get().isEmpty()) {
-            List<Float> $$2 = this.d.get();
-            if ($$1.b()) {
-               $$0.a(this.b, (int)$$2.getFirst().floatValue());
-            } else {
-               float[] $$3 = new float[$$1.d()];
-               if ($$2.size() == 1) {
-                  Arrays.fill($$3, $$2.getFirst().floatValue());
-               } else {
-                  for (int $$4 = 0; $$4 < Math.min($$2.size(), $$1.d()); $$4++) {
-                     $$3[$$4] = $$2.get($$4);
-                  }
-               }
-
-               $$0.a(this.b, $$3);
-            }
-         }
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public Optional<List<Float>> c() {
-         return this.d;
+   private static hmx a(eci $$0, hmx $$1, hmx $$2, hmx $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
    }
 }

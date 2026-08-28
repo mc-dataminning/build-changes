@@ -1,19 +1,19 @@
 public class rg {
-   public static final alj<ejx<?, ?>> a = rj.a("seagrass_short");
-   public static final alj<ejx<?, ?>> b = rj.a("seagrass_slightly_less_short");
-   public static final alj<ejx<?, ?>> c = rj.a("seagrass_mid");
-   public static final alj<ejx<?, ?>> d = rj.a("seagrass_tall");
-   public static final alj<ejx<?, ?>> e = rj.a("sea_pickle");
-   public static final alj<ejx<?, ?>> f = rj.a("kelp");
-   public static final alj<ejx<?, ?>> g = rj.a("warm_ocean_vegetation");
+   public static final alq<ekh<?, ?>> a = rj.a("seagrass_short");
+   public static final alq<ekh<?, ?>> b = rj.a("seagrass_slightly_less_short");
+   public static final alq<ekh<?, ?>> c = rj.a("seagrass_mid");
+   public static final alq<ekh<?, ?>> d = rj.a("seagrass_tall");
+   public static final alq<ekh<?, ?>> e = rj.a("sea_pickle");
+   public static final alq<ekh<?, ?>> f = rj.a("kelp");
+   public static final alq<ekh<?, ?>> g = rj.a("warm_ocean_vegetation");
 
-   public static void a(qi<ejx<?, ?>> $$0) {
-      rj.a($$0, a, ekm.O, new enb(0.3F));
-      rj.a($$0, b, ekm.O, new enb(0.4F));
-      rj.a($$0, c, ekm.O, new enb(0.6F));
-      rj.a($$0, d, ekm.O, new enb(0.8F));
-      rj.a($$0, e, ekm.T, new eml(20));
-      rj.a($$0, f, ekm.P);
-      rj.a($$0, g, ekm.ai, new enk(jk.a(ry.a(ekm.Q, emr.m), ry.a(ekm.S, emr.m), ry.a(ekm.R, emr.m))));
+   public static void a(qi<ekh<?, ?>> $$0) {
+      rj.a($$0, a, ekw.O, new enl(0.3F));
+      rj.a($$0, b, ekw.O, new enl(0.4F));
+      rj.a($$0, c, ekw.O, new enl(0.6F));
+      rj.a($$0, d, ekw.O, new enl(0.8F));
+      rj.a($$0, e, ekw.T, new emv(20));
+      rj.a($$0, f, ekw.P);
+      rj.a($$0, g, ekw.ai, new enu(jk.a(ry.a(ekw.Q, enb.m), ry.a(ekw.S, enb.m), ry.a(ekw.R, enb.m))));
    }
 }

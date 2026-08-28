@@ -1,127 +1,289 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public record eeh(eee a, eec b, eec c, int d, eef e) {
+public class eeh extends edn {
+   @Nullable
+   private volatile exp n;
+   private volatile eeo o = eeo.c;
+   private final List<ua> p = Lists.newArrayList();
+   @Nullable
+   private edm q;
+   @Nullable
+   private ehd r;
+   private final fhs<dno> s;
+   private final fhs<exz> t;
 
-   public int a(eee $$0) {
-      return $$0 == this.a ? 0 : this.c.a($$0);
+   public eeh(djo $$0, eek $$1, dkl $$2, jt<dlm> $$3, @Nullable eis $$4) {
+      this($$0, $$1, null, new fhs<>(), new fhs<>(), $$2, $$3, $$4);
    }
 
-   public CompletableFuture<edd> a(eej $$0, bam<ark> $$1, edd $$2) {
-      if ($$2.n().d(this.a)) {
-         bro $$3 = brl.f.a($$2.f(), $$0.a().aj(), this.a.f());
-         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
+   public eeh(djo $$0, eek $$1, @Nullable edy[] $$2, fhs<dno> $$3, fhs<exz> $$4, dkl $$5, jt<dlm> $$6, @Nullable eis $$7) {
+      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
+      this.s = $$3;
+      this.t = $$4;
+   }
+
+   @Override
+   public fhx<dno> q() {
+      return this.s;
+   }
+
+   @Override
+   public fhx<exz> r() {
+      return this.t;
+   }
+
+   @Override
+   public edn.a a(long $$0) {
+      return new edn.a(this.s.a($$0), this.t.a($$0));
+   }
+
+   @Override
+   public ebq a_(iw $$0) {
+      int $$1 = $$0.v();
+      if (this.e($$1)) {
+         return dnq.nH.m();
       } else {
-         return this.e.doWork($$0, this, $$1, $$2);
+         edy $$2 = this.b(this.f($$1));
+         return $$2.c() ? dnq.a.m() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
       }
    }
 
-   private edd a(edd $$0, @Nullable bro $$1) {
-      if ($$0 instanceof edx $$2 && $$2.n().d(this.a)) {
-         $$2.a(this.a);
+   @Override
+   public eya b_(iw $$0) {
+      int $$1 = $$0.v();
+      if (this.e($$1)) {
+         return eyb.a.g();
+      } else {
+         edy $$2 = this.b(this.f($$1));
+         return $$2.c() ? eyb.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
       }
-
-      if ($$1 != null) {
-         $$1.finish(true);
-      }
-
-      return $$0;
    }
 
-   public static class a {
-      private final eee a;
-      @Nullable
-      private final eeh b;
-      private eee[] c;
-      private int d = -1;
-      private eef e = eeg::a;
-
-      protected a(eee $$0) {
-         if ($$0.c() != $$0) {
-            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
+   @Nullable
+   @Override
+   public ebq a(iw $$0, ebq $$1, int $$2) {
+      int $$3 = $$0.u();
+      int $$4 = $$0.v();
+      int $$5 = $$0.w();
+      if (this.e($$4)) {
+         return dnq.nH.m();
+      } else {
+         int $$6 = this.f($$4);
+         edy $$7 = this.b($$6);
+         boolean $$8 = $$7.c();
+         if ($$8 && $$1.a(dnq.a)) {
+            return $$1;
          } else {
-            this.a = $$0;
-            this.b = null;
-            this.c = new eee[0];
-         }
-      }
+            int $$9 = jz.b($$3);
+            int $$10 = jz.b($$4);
+            int $$11 = jz.b($$5);
+            ebq $$12 = $$7.a($$9, $$10, $$11, $$1);
+            if (this.o.a(eeo.k)) {
+               boolean $$13 = $$7.c();
+               if ($$13 != $$8) {
+                  this.n.a($$0, $$13);
+               }
 
-      protected a(eee $$0, eeh $$1) {
-         if ($$1.a.b() != $$0.b() - 1) {
-            throw new IllegalArgumentException("Out of order status: " + $$0);
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-            this.c = new eee[]{$$1.a};
-         }
-      }
-
-      public eeh.a a(eee $$0, int $$1) {
-         if ($$0.a(this.a)) {
-            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
-         } else {
-            eee[] $$2 = this.c;
-            int $$3 = $$1 + 1;
-            if ($$3 > $$2.length) {
-               this.c = new eee[$$3];
-               Arrays.fill(this.c, $$0);
-            }
-
-            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
-               this.c[$$4] = eee.a($$2[$$4], $$0);
-            }
-
-            return this;
-         }
-      }
-
-      public eeh.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eeh.a a(eef $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public eeh a() {
-         return new eeh(this.a, new eec(ImmutableList.copyOf(this.c)), new eec(ImmutableList.copyOf(this.b())), this.d, this.e);
-      }
-
-      private eee[] b() {
-         if (this.b == null) {
-            return this.c;
-         } else {
-            int $$0 = this.a(this.b.a);
-            eec $$1 = this.b.c;
-            eee[] $$2 = new eee[Math.max($$0 + $$1.b(), this.c.length)];
-
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               int $$4 = $$3 - $$0;
-               if ($$4 < 0 || $$4 >= $$1.b()) {
-                  $$2[$$3] = this.c[$$3];
-               } else if ($$3 >= this.c.length) {
-                  $$2[$$3] = $$1.a($$4);
-               } else {
-                  $$2[$$3] = eee.a(this.c[$$3], $$1.a($$4));
+               if (exr.a($$12, $$1)) {
+                  this.i.a(this, $$9, $$4, $$11);
+                  this.n.a($$0);
                }
             }
 
-            return $$2;
-         }
-      }
+            EnumSet<ehp.a> $$14 = this.n().e();
+            EnumSet<ehp.a> $$15 = null;
 
-      private int a(eee $$0) {
-         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
-            if (this.c[$$1].a($$0)) {
-               return $$1;
+            for (ehp.a $$16 : $$14) {
+               ehp $$17 = this.h.get($$16);
+               if ($$17 == null) {
+                  if ($$15 == null) {
+                     $$15 = EnumSet.noneOf(ehp.a.class);
+                  }
+
+                  $$15.add($$16);
+               }
             }
-         }
 
-         return 0;
+            if ($$15 != null) {
+               ehp.a(this, $$15);
+            }
+
+            for (ehp.a $$18 : $$14) {
+               this.h.get($$18).a($$9, $$4, $$11, $$1);
+            }
+
+            return $$12;
+         }
       }
+   }
+
+   @Override
+   public void a(dyo $$0) {
+      this.j.remove($$0.aC_());
+      this.k.put($$0.aC_(), $$0);
+   }
+
+   @Nullable
+   @Override
+   public dyo c_(iw $$0) {
+      return this.k.get($$0);
+   }
+
+   public Map<iw, dyo> H() {
+      return this.k;
+   }
+
+   public void b(ua $$0) {
+      this.p.add($$0);
+   }
+
+   @Override
+   public void a(bxe $$0) {
+      if (!$$0.bY()) {
+         ua $$1 = new ua();
+         $$0.g($$1);
+         this.b($$1);
+      }
+   }
+
+   @Override
+   public void a(esn $$0, esv $$1) {
+      ehd $$2 = this.z();
+      if ($$2 != null && $$1.b()) {
+         esf $$3 = $$1.a();
+         dkl $$4 = this.B();
+         if ($$3.i() < $$4.K_() || $$3.l() > $$4.ao()) {
+            return;
+         }
+      }
+
+      super.a($$0, $$1);
+   }
+
+   public List<ua> I() {
+      return this.p;
+   }
+
+   @Override
+   public eeo n() {
+      return this.o;
+   }
+
+   public void a(eeo $$0) {
+      this.o = $$0;
+      if (this.r != null && $$0.a(this.r.a())) {
+         this.a(null);
+      }
+
+      this.i();
+   }
+
+   @Override
+   public jg<dlm> getNoiseBiome(int $$0, int $$1, int $$2) {
+      if (this.o().a(eeo.f)) {
+         return super.getNoiseBiome($$0, $$1, $$2);
+      } else {
+         throw new IllegalStateException("Asking for biomes before we have biomes");
+      }
+   }
+
+   public static short g(iw $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      int $$4 = $$1 & 15;
+      int $$5 = $$2 & 15;
+      int $$6 = $$3 & 15;
+      return (short)($$4 | $$5 << 4 | $$6 << 8);
+   }
+
+   public static iw a(short $$0, int $$1, djo $$2) {
+      int $$3 = jz.a($$2.h, $$0 & 15);
+      int $$4 = jz.a($$1, $$0 >>> 4 & 15);
+      int $$5 = jz.a($$2.i, $$0 >>> 8 & 15);
+      return new iw($$3, $$4, $$5);
+   }
+
+   @Override
+   public void e(iw $$0) {
+      if (!this.t($$0)) {
+         edn.a(this.b, this.f($$0.v())).add(g($$0));
+      }
+   }
+
+   @Override
+   public void a(ShortList $$0, int $$1) {
+      edn.a(this.b, $$1).addAll($$0);
+   }
+
+   public Map<iw, ua> J() {
+      return Collections.unmodifiableMap(this.j);
+   }
+
+   @Nullable
+   @Override
+   public ua a(iw $$0, ji.a $$1) {
+      dyo $$2 = this.c_($$0);
+      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
+   }
+
+   @Override
+   public void d(iw $$0) {
+      this.k.remove($$0);
+      this.j.remove($$0);
+   }
+
+   @Nullable
+   public edm E() {
+      return this.q;
+   }
+
+   public edm F() {
+      if (this.q == null) {
+         this.q = new edm(this.L_(), this.K_());
+      }
+
+      return this.q;
+   }
+
+   public void a(edm $$0) {
+      this.q = $$0;
+   }
+
+   public void a(exp $$0) {
+      this.n = $$0;
+   }
+
+   public void a(@Nullable ehd $$0) {
+      this.r = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ehd z() {
+      return this.r;
+   }
+
+   private static <T> fhp<T> a(fhs<T> $$0) {
+      return new fhp<>($$0.b());
+   }
+
+   public fhp<dno> K() {
+      return a(this.s);
+   }
+
+   public fhp<exz> L() {
+      return a(this.t);
+   }
+
+   @Override
+   public dkl B() {
+      return (dkl)(this.A() ? ehd.b : this);
    }
 }

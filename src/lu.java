@@ -6,9 +6,9 @@ public class lu extends ma {
    public static final int a = 16711680;
    public static final lu b = new lu(16711680, 1.0F);
    public static final MapCodec<lu> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayy.i.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(ma::d)).apply($$0, lu::new)
+      $$0 -> $$0.group(azg.i.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(ma::d)).apply($$0, lu::new)
    );
-   public static final za<wn, lu> d = za.a(yy.g, $$0 -> $$0.h, yy.l, ma::d, lu::new);
+   public static final ze<wp, lu> d = ze.a(zc.g, $$0 -> $$0.h, zc.l, ma::d, lu::new);
    private final int h;
 
    public lu(int $$0, float $$1) {
@@ -22,6 +22,6 @@ public class lu extends ma {
    }
 
    public Vector3f b() {
-      return aya.h(this.h);
+      return ayh.h(this.h);
    }
 }

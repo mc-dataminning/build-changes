@@ -1,10 +1,10 @@
 import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public record js(Optional<aun> b, Lifecycle c) {
+public record js(Optional<auu> b, Lifecycle c) {
    public static final js a = new js(Optional.empty(), Lifecycle.stable());
 
-   public Optional<aun> a() {
+   public Optional<auu> a() {
       return this.b;
    }
 

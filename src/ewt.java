@@ -1,112 +1,27 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ewt {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final ewu d;
-   private final ewu e;
-   private final double f;
-   private final ewt.a g;
+public class ewt implements ewx {
+   public static final MapCodec<ewt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fay.a.fieldOf("loot_table").forGetter($$0x -> $$0x.b)).apply($$0, ewt::new)
+   );
+   private final alq<fay> b;
 
-   @Deprecated
-   public static ewt a(azz $$0, ewt.a $$1) {
-      return new ewt($$0, $$1, false);
+   public ewt(alq<fay> $$0) {
+      this.b = $$0;
    }
 
-   public static ewt a(azz $$0, int $$1, double... $$2) {
-      return b($$0, new ewt.a($$1, new DoubleArrayList($$2)));
+   @Override
+   public ua a(bai $$0, @Nullable ua $$1) {
+      ua $$2 = $$1 == null ? new ua() : $$1.l();
+      $$2.a("LootTable", fay.a, this.b);
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
-   public static ewt b(azz $$0, ewt.a $$1) {
-      return new ewt($$0, $$1, true);
-   }
-
-   private ewt(azz $$0, ewt.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = ewu.b($$0, $$3, $$4);
-         this.e = ewu.b($$0, $$3, $$4);
-      } else {
-         this.d = ewu.a($$0, $$3, $$4);
-         this.e = ewu.a($$0, $$3, $$4);
-      }
-
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
-
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
-         }
-      }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
-   }
-
-   public double a() {
-      return this.f;
-   }
-
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public ewt.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<ewt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(ewt.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(ewt.a::b))
-               .apply($$0, ewt.a::new)
-      );
-      public static final Codec<jg<ewt.a>> b = alg.a(mi.aY, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ag.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
-      }
+   @Override
+   public ewy<?> a() {
+      return ewy.d;
    }
 }

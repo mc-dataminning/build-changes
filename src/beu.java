@@ -1,29 +1,99 @@
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class beu extends bfb {
+public class beu extends DataFix {
    public beu(Schema $$0) {
-      super("EntityMinecartIdentifiersFix", $$0, true);
+      super($$0, true);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Minecart")) {
-         return Pair.of($$0, $$1);
-      } else {
-         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
+   public TypeRewriteRule makeRule() {
+      return this.a(this.getInputSchema().getTypeRaw(bjm.t), this.getOutputSchema().getTypeRaw(bjm.t));
+   }
 
-         String $$3 = switch ($$2) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bjd.D).types().get($$3);
-         return Pair.of($$3, ag.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+   private <ItemStackOld, ItemStackNew> TypeRewriteRule a(Type<ItemStackOld> $$0, Type<ItemStackNew> $$1) {
+      Type<Pair<String, Either<List<ItemStackOld>, Unit>>> $$2 = DSL.named(bjm.A.typeName(), DSL.optional(DSL.field("Equipment", DSL.list($$0))));
+      Type<Pair<String, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<ItemStackNew, Unit>, Either<ItemStackNew, Unit>>>>>> $$3 = DSL.named(
+         bjm.A.typeName(),
+         DSL.and(
+            DSL.optional(DSL.field("ArmorItems", DSL.list($$1))),
+            DSL.optional(DSL.field("HandItems", DSL.list($$1))),
+            DSL.optional(DSL.field("body_armor_item", $$1)),
+            DSL.optional(DSL.field("saddle", $$1))
+         )
+      );
+      if (!$$2.equals(this.getInputSchema().getType(bjm.A))) {
+         throw new IllegalStateException("Input entity_equipment type does not match expected");
+      } else if (!$$3.equals(this.getOutputSchema().getType(bjm.A))) {
+         throw new IllegalStateException("Output entity_equipment type does not match expected");
+      } else {
+         return TypeRewriteRule.seq(
+            this.fixTypeEverywhereTyped(
+               "EntityEquipmentToArmorAndHandFix - drop chances", this.getInputSchema().getType(bjm.D), $$0x -> $$0x.update(DSL.remainderFinder(), beu::a)
+            ),
+            this.fixTypeEverywhere(
+               "EntityEquipmentToArmorAndHandFix - equipment",
+               $$2,
+               $$3,
+               $$1x -> {
+                  ItemStackNew $$2x = (ItemStackNew)((Pair)$$1.read(new Dynamic($$1x).emptyMap())
+                        .result()
+                        .orElseThrow(() -> new IllegalStateException("Could not parse newly created empty itemstack.")))
+                     .getFirst();
+                  Either<ItemStackNew, Unit> $$3x = Either.right(DSL.unit());
+                  return $$2xx -> $$2xx.mapSecond($$2xxx -> {
+                        List<ItemStackOld> $$3xx = (List<ItemStackOld>)$$2xxx.map(Function.identity(), $$0xxxx -> List.of());
+                        Either<List<ItemStackNew>, Unit> $$4 = Either.right(DSL.unit());
+                        Either<List<ItemStackNew>, Unit> $$5 = Either.right(DSL.unit());
+                        if (!$$3xx.isEmpty()) {
+                           $$4 = Either.left(Lists.newArrayList(new Object[]{$$3xx.getFirst(), $$2x}));
+                        }
+
+                        if ($$3xx.size() > 1) {
+                           List<ItemStackNew> $$6 = Lists.newArrayList(new Object[]{$$2x, $$2x, $$2x, $$2x});
+
+                           for (int $$7 = 1; $$7 < Math.min($$3xx.size(), 5); $$7++) {
+                              $$6.set($$7 - 1, (ItemStackNew)$$3xx.get($$7));
+                           }
+
+                           $$5 = Either.left($$6);
+                        }
+
+                        return Pair.of($$5, Pair.of($$4, Pair.of($$3x, $$3x)));
+                     });
+               }
+            )
+         );
       }
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Stream<? extends Dynamic<?>>> $$1 = $$0.get("DropChances").asStreamOpt().result();
+      $$0 = $$0.remove("DropChances");
+      if ($$1.isPresent()) {
+         Iterator<Float> $$2 = Stream.concat($$1.get().map($$0x -> $$0x.asFloat(0.0F)), Stream.generate(() -> 0.0F)).iterator();
+         float $$3 = $$2.next();
+         if ($$0.get("HandDropChances").result().isEmpty()) {
+            $$0 = $$0.set("HandDropChances", $$0.createList(Stream.of($$3, 0.0F).map($$0::createFloat)));
+         }
+
+         if ($$0.get("ArmorDropChances").result().isEmpty()) {
+            $$0 = $$0.set("ArmorDropChances", $$0.createList(Stream.of($$2.next(), $$2.next(), $$2.next(), $$2.next()).map($$0::createFloat)));
+         }
+      }
+
+      return $$0;
    }
 }

@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class env extends ens {
-   public static final MapCodec<env> d = RecordCodecBuilder.mapCodec(
+public class env implements enb {
+   public static final Codec<env> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               emg.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               iw.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, env::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   private final boolean b;
+   private final List<emg.a> c;
+   @Nullable
+   private final iw d;
 
-   public env(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public env(boolean $$0, List<emg.a> $$1, @Nullable iw $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   public env(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private env(boolean $$0, List<emg.a> $$1, Optional<iw> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected ent<?> b() {
-      return ent.a;
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public List<emg.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public iw c() {
+      return this.d;
    }
 }

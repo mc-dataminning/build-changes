@@ -1,268 +1,138 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
-import java.util.Collections;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.channels.ClosedByInterruptException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amx {
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xc.b("commands.bossbar.create.failed", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xc.b("commands.bossbar.unknown", $$0));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.players.unchanged"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.name.unchanged"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.color.unchanged"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.style.unchanged"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.value.unchanged"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.max.unchanged"));
-   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.visibility.unchanged.hidden"));
-   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(xc.c("commands.bossbar.set.visibility.unchanged.visible"));
-   public static final SuggestionProvider<ek> a = ($$0, $$1) -> ep.a(((ek)$$0.getSource()).l().aM().a(), $$1);
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final int c;
+   private final awb d;
+   private final int e;
+   private volatile boolean f;
+   @Nullable
+   private ServerSocket g;
+   private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public static void a(CommandDispatcher<ek> $$0, eg $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a(
-                              "bossbar"
-                           )
-                           .requires($$0x -> $$0x.c(2)))
-                        .then(
-                           el.a("add")
-                              .then(
-                                 el.a("id", fl.a())
-                                    .then(el.a("name", et.a($$1)).executes($$0x -> a((ek)$$0x.getSource(), fl.a($$0x, "id"), et.b($$0x, "name"))))
-                              )
-                        ))
-                     .then(el.a("remove").then(el.a("id", fl.a()).suggests(a).executes($$0x -> e((ek)$$0x.getSource(), a($$0x))))))
-                  .then(el.a("list").executes($$0x -> a((ek)$$0x.getSource()))))
-               .then(
-                  el.a("set")
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a(
-                                                "id", fl.a()
-                                             )
-                                             .suggests(a)
-                                             .then(
-                                                el.a("name")
-                                                   .then(el.a("name", et.a($$1)).executes($$0x -> a((ek)$$0x.getSource(), a($$0x), et.b($$0x, "name"))))
-                                             ))
-                                          .then(
-                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a(
-                                                                     "color"
-                                                                  )
-                                                                  .then(el.a("pink").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.a))))
-                                                               .then(el.a("blue").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.b))))
-                                                            .then(el.a("red").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.c))))
-                                                         .then(el.a("green").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.d))))
-                                                      .then(el.a("yellow").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.e))))
-                                                   .then(el.a("purple").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.f))))
-                                                .then(el.a("white").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.a.g)))
-                                          ))
-                                       .then(
-                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("style")
-                                                         .then(el.a("progress").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.b.a))))
-                                                      .then(el.a("notched_6").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.b.b))))
-                                                   .then(el.a("notched_10").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.b.c))))
-                                                .then(el.a("notched_12").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.b.d))))
-                                             .then(el.a("notched_20").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), buj.b.e)))
-                                       ))
-                                    .then(
-                                       el.a("value")
-                                          .then(
-                                             el.a("value", IntegerArgumentType.integer(0))
-                                                .executes($$0x -> a((ek)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
-                                          )
-                                    ))
-                                 .then(
-                                    el.a("max")
-                                       .then(
-                                          el.a("max", IntegerArgumentType.integer(1))
-                                             .executes($$0x -> b((ek)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
-                                       )
-                                 ))
-                              .then(
-                                 el.a("visible")
-                                    .then(
-                                       el.a("visible", BoolArgumentType.bool())
-                                          .executes($$0x -> a((ek)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
-                                    )
-                              ))
-                           .then(
-                              ((LiteralArgumentBuilder)el.a("players").executes($$0x -> a((ek)$$0x.getSource(), a($$0x), Collections.emptyList())))
-                                 .then(el.a("targets", ex.d()).executes($$0x -> a((ek)$$0x.getSource(), a($$0x), ex.d($$0x, "targets"))))
-                           )
-                     )
-               ))
-            .then(
-               el.a("get")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)el.a("id", fl.a())
-                                 .suggests(a)
-                                 .then(el.a("value").executes($$0x -> a((ek)$$0x.getSource(), a($$0x)))))
-                              .then(el.a("max").executes($$0x -> b((ek)$$0x.getSource(), a($$0x)))))
-                           .then(el.a("visible").executes($$0x -> c((ek)$$0x.getSource(), a($$0x)))))
-                        .then(el.a("players").executes($$0x -> d((ek)$$0x.getSource(), a($$0x))))
-                  )
-            )
-      );
+   public amx(String $$0, int $$1, awb $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static int a(ek $$0, amm $$1) {
-      $$0.a(() -> xc.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
-      return $$1.c();
-   }
-
-   private static int b(ek $$0, amm $$1) {
-      $$0.a(() -> xc.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
-      return $$1.d();
-   }
-
-   private static int c(ek $$0, amm $$1) {
-      if ($$1.g()) {
-         $$0.a(() -> xc.a("commands.bossbar.get.visible.visible", $$1.e()), true);
-         return 1;
+   public void a() throws IOException {
+      if (this.g != null && !this.g.isClosed()) {
+         a.warn("Remote control server was asked to start, but it is already running. Will ignore.");
       } else {
-         $$0.a(() -> xc.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
-         return 0;
+         this.f = true;
+         this.g = new ServerSocket(this.c, 50, InetAddress.getByName(this.b));
+         Thread $$0 = new Thread(this::d, "chase-server-acceptor");
+         $$0.setDaemon(true);
+         $$0.start();
+         Thread $$1 = new Thread(this::c, "chase-server-sender");
+         $$1.setDaemon(true);
+         $$1.start();
       }
    }
 
-   private static int d(ek $$0, amm $$1) {
-      if ($$1.h().isEmpty()) {
-         $$0.a(() -> xc.a("commands.bossbar.get.players.none", $$1.e()), true);
-      } else {
-         $$0.a(() -> xc.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xf.b($$1.h(), crz::m_)), true);
-      }
+   private void c() {
+      amx.a $$0 = null;
 
-      return $$1.h().size();
-   }
+      while (this.f) {
+         if (!this.h.isEmpty()) {
+            amx.a $$1 = this.e();
+            if ($$1 != null && !$$1.equals($$0)) {
+               $$0 = $$1;
+               byte[] $$2 = $$1.g().getBytes(StandardCharsets.US_ASCII);
 
-   private static int a(ek $$0, amm $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.g() == $$2) {
-         if ($$2) {
-            throw k.create();
-         } else {
-            throw j.create();
-         }
-      } else {
-         $$1.d($$2);
-         if ($$2) {
-            $$0.a(() -> xc.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
-         } else {
-            $$0.a(() -> xc.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
+               for (Socket $$3 : this.h) {
+                  if (!$$3.isClosed()) {
+                     ag.i().execute(() -> {
+                        try {
+                           OutputStream $$2x = $$3.getOutputStream();
+                           $$2x.write($$2);
+                           $$2x.flush();
+                        } catch (IOException var3x) {
+                           a.info("Remote control client socket got an IO exception and will be closed", var3x);
+                           IOUtils.closeQuietly($$3);
+                        }
+                     });
+                  }
+               }
+            }
+
+            List<Socket> $$4 = this.h.stream().filter(Socket::isClosed).collect(Collectors.toList());
+            this.h.removeAll($$4);
          }
 
-         return 0;
-      }
-   }
-
-   private static int a(ek $$0, amm $$1, int $$2) throws CommandSyntaxException {
-      if ($$1.c() == $$2) {
-         throw h.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xc.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
-         return $$2;
-      }
-   }
-
-   private static int b(ek $$0, amm $$1, int $$2) throws CommandSyntaxException {
-      if ($$1.d() == $$2) {
-         throw i.create();
-      } else {
-         $$1.b($$2);
-         $$0.a(() -> xc.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
-         return $$2;
-      }
-   }
-
-   private static int a(ek $$0, amm $$1, buj.a $$2) throws CommandSyntaxException {
-      if ($$1.l().equals($$2)) {
-         throw f.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xc.a("commands.bossbar.set.color.success", $$1.e()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ek $$0, amm $$1, buj.b $$2) throws CommandSyntaxException {
-      if ($$1.m().equals($$2)) {
-         throw g.create();
-      } else {
-         $$1.a($$2);
-         $$0.a(() -> xc.a("commands.bossbar.set.style.success", $$1.e()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ek $$0, amm $$1, xc $$2) throws CommandSyntaxException {
-      xc $$3 = xf.a($$0, $$2, null, 0);
-      if ($$1.j().equals($$3)) {
-         throw e.create();
-      } else {
-         $$1.a($$3);
-         $$0.a(() -> xc.a("commands.bossbar.set.name.success", $$1.e()), true);
-         return 0;
-      }
-   }
-
-   private static int a(ek $$0, amm $$1, Collection<arv> $$2) throws CommandSyntaxException {
-      boolean $$3 = $$1.a($$2);
-      if (!$$3) {
-         throw d.create();
-      } else {
-         if ($$1.h().isEmpty()) {
-            $$0.a(() -> xc.a("commands.bossbar.set.players.success.none", $$1.e()), true);
-         } else {
-            $$0.a(() -> xc.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xf.b($$2, crz::m_)), true);
+         if (this.f) {
+            try {
+               Thread.sleep((long)this.e);
+            } catch (InterruptedException var6) {
+            }
          }
-
-         return $$1.h().size();
       }
    }
 
-   private static int a(ek $$0) {
-      Collection<amm> $$1 = $$0.l().aM().b();
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xc.c("commands.bossbar.list.bars.none"), false);
-      } else {
-         $$0.a(() -> xc.a("commands.bossbar.list.bars.some", $$1.size(), xf.b($$1, amm::e)), false);
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+   }
+
+   private void d() {
+      try {
+         while (this.f) {
+            if (this.g != null) {
+               a.info("Remote control server is listening for connections on port {}", this.c);
+               Socket $$0 = this.g.accept();
+               a.info("Remote control server received client connection on port {}", $$0.getPort());
+               this.h.add($$0);
+            }
+         }
+      } catch (ClosedByInterruptException var6) {
+         if (this.f) {
+            a.info("Remote control server closed by interrupt");
+         }
+      } catch (IOException var7) {
+         if (this.f) {
+            a.error("Remote control server closed because of an IO exception", var7);
+         }
+      } finally {
+         IOUtils.closeQuietly(this.g);
       }
 
-      return $$1.size();
+      a.info("Remote control server is now stopped");
+      this.f = false;
    }
 
-   private static int a(ek $$0, alk $$1, xc $$2) throws CommandSyntaxException {
-      amn $$3 = $$0.l().aM();
-      if ($$3.a($$1) != null) {
-         throw b.create($$1.toString());
+   @Nullable
+   private amx.a e() {
+      List<asc> $$0 = this.d.t();
+      if ($$0.isEmpty()) {
+         return null;
       } else {
-         amm $$4 = $$3.a($$1, xf.a($$0, $$2, null, 0));
-         $$0.a(() -> xc.a("commands.bossbar.create.success", $$4.e()), true);
-         return $$3.b().size();
+         asc $$1 = $$0.get(0);
+         String $$2 = (String)anf.a.inverse().get($$1.dV().aj());
+         return $$2 == null ? null : new amx.a($$2, $$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
       }
    }
 
-   private static int e(ek $$0, amm $$1) {
-      amn $$2 = $$0.l().aM();
-      $$1.b();
-      $$2.a($$1);
-      $$0.a(() -> xc.a("commands.bossbar.remove.success", $$1.e()), true);
-      return $$2.b().size();
-   }
-
-   public static amm a(CommandContext<ek> $$0) throws CommandSyntaxException {
-      alk $$1 = fl.a($$0, "id");
-      amm $$2 = ((ek)$$0.getSource()).l().aM().a($$1);
-      if ($$2 == null) {
-         throw c.create($$1.toString());
-      } else {
-         return $$2;
+   static record a(String a, double b, double c, double d, float e, float f) {
+      String g() {
+         return String.format(Locale.ROOT, "t %s %.2f %.2f %.2f %.2f %.2f\n", this.a, this.b, this.c, this.d, this.e, this.f);
       }
    }
 }

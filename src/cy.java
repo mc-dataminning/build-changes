@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record cy(Map<jg<bvx>, cy.b> b) {
-   public static final Codec<cy> a = Codec.unboundedMap(bvx.a, cy.b.a).xmap(cy::new, cy::a);
+public record cy(Map<jg<bwg>, cy.b> b) {
+   public static final Codec<cy> a = Codec.unboundedMap(bwg.a, cy.b.a).xmap(cy::new, cy::a);
 
-   public boolean a(bwv $$0) {
-      if ($$0 instanceof bxw $$1 && this.a($$1.eE())) {
+   public boolean a(bxe $$0) {
+      if ($$0 instanceof byf $$1 && this.a($$1.eE())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bxw $$0) {
+   public boolean a(byf $$0) {
       return this.a($$0.eE());
    }
 
-   public boolean a(Map<jg<bvx>, bvz> $$0) {
-      for (Entry<jg<bvx>, cy.b> $$1 : this.b.entrySet()) {
-         bvz $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jg<bwg>, bwi> $$0) {
+      for (Entry<jg<bwg>, cy.b> $$1 : this.b.entrySet()) {
+         bwi $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record cy(Map<jg<bvx>, cy.b> b) {
       return true;
    }
 
-   public Map<jg<bvx>, cy.b> a() {
+   public Map<jg<bwg>, cy.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jg<bvx>, cy.b> a = ImmutableMap.builder();
+      private final Builder<jg<bwg>, cy.b> a = ImmutableMap.builder();
 
       public static cy.a a() {
          return new cy.a();
       }
 
-      public cy.a a(jg<bvx> $$0) {
+      public cy.a a(jg<bwg> $$0) {
          this.a.put($$0, new cy.b());
          return this;
       }
 
-      public cy.a a(jg<bvx> $$0, cy.b $$1) {
+      public cy.a a(jg<bwg> $$0, cy.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record cy(Map<jg<bvx>, cy.b> b) {
          this(cx.d.c, cx.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bvz $$0) {
+      public boolean a(@Nullable bwi $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

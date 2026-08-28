@@ -1,2 +1,8 @@
-public record djc(iw a, dne b, int c, int d) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface djc {
 }

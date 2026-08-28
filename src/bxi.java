@@ -1,61 +1,71 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Map.Entry;
 
-public interface bxi {
-   void a(bxf var1, daa var2);
+public class bxi {
+   public static final Codec<bxi> a = Codec.unboundedMap(bxo.l, dak.b).xmap($$0 -> {
+      EnumMap<bxo, dak> $$1 = new EnumMap<>(bxo.class);
+      $$1.putAll($$0);
+      return new bxi($$1);
+   }, $$0 -> {
+      Map<bxo, dak> $$1 = new EnumMap<>($$0.b);
+      $$1.values().removeIf(dak::f);
+      return $$1;
+   });
+   private final EnumMap<bxo, dak> b;
 
-   daa a(bxf var1);
-
-   void a(bxf var1, float var2);
-
-   default void a(bxh $$0, fam $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private bxi(EnumMap<bxo, dak> $$0) {
+      this.b = $$0;
    }
 
-   default void a(alj<fao> $$0, fam $$1, Map<bxf, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   public bxi() {
+      this(new EnumMap<>(bxo.class));
    }
 
-   default void a(alj<fao> $$0, fam $$1, long $$2, Map<bxf, Float> $$3) {
-      fao $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != fao.f) {
-         List<daa> $$5 = $$4.a($$1, $$2);
-         List<bxf> $$6 = new ArrayList<>();
+   public dak a(bxo $$0, dak $$1) {
+      $$1.h().l($$1);
+      return Objects.requireNonNullElse(this.b.put($$0, $$1), dak.l);
+   }
 
-         for (daa $$7 : $$5) {
-            bxf $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               daa $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
+   public dak a(bxo $$0) {
+      return this.b.getOrDefault($$0, dak.l);
+   }
 
-               $$6.add($$8);
-            }
+   public boolean a() {
+      for (dak $$0 : this.b.values()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a(bxe $$0) {
+      for (Entry<bxo, dak> $$1 : this.b.entrySet()) {
+         dak $$2 = $$1.getValue();
+         if (!$$2.f()) {
+            $$2.a($$0.dV(), $$0, $$1.getKey());
          }
       }
    }
 
-   @Nullable
-   default bxf a(daa $$0, List<bxf> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         dij $$2 = $$0.a(kl.D);
-         if ($$2 != null) {
-            bxf $$3 = $$2.b();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bxf.a)) {
-            return bxf.a;
-         }
+   public void a(bxi $$0) {
+      this.b.clear();
+      this.b.putAll($$0.b);
+   }
 
-         return null;
+   public void a(byf $$0) {
+      for (dak $$1 : this.b.values()) {
+         $$0.a($$1, true, false);
       }
+
+      this.b();
+   }
+
+   public void b() {
+      this.b.replaceAll(($$0, $$1) -> dak.l);
    }
 }

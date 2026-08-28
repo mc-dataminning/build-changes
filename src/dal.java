@@ -1,21 +1,20 @@
-public class dal extends dbm {
-   public dal(czw.a $$0) {
-      super($$0);
-   }
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   @Override
-   public but a(djz $$0, crz $$1, bus $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awr.oJ, aws.g, 0.5F, 0.4F / ($$0.G_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
-   }
+public class dal {
+   private static final Strategy<? super dak> a = new Strategy<dak>() {
+      public int a(@Nullable dak $$0) {
+         return dak.b($$0);
+      }
 
-   @Override
-   protected csj a(aru $$0, bxw $$1, daa $$2) {
-      return new ctg($$0, $$1, $$2);
-   }
+      public boolean a(@Nullable dak $$0, @Nullable dak $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && dak.c($$0, $$1);
+      }
+   };
 
-   @Override
-   protected csj a(djz $$0, jq $$1, daa $$2) {
-      return new ctg($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public static Set<dak> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

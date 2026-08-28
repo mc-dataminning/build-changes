@@ -1,50 +1,28 @@
-public class fmj {
-   private volatile long a;
-   private volatile long b;
-   private long c = ag.c();
-   private long d;
-   private long e;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.Set;
 
-   public void a(long $$0) {
-      this.b = $$0;
-   }
+public class fmj extends fnf {
+   public Set<String> a = Sets.newHashSet();
 
-   public long a() {
-      return this.b;
-   }
+   public static fmj a(String $$0) {
+      fmj $$1 = new fmj();
+      JsonParser $$2 = new JsonParser();
 
-   public long b() {
-      return this.a;
-   }
-
-   public void b(long $$0) {
-      this.a += $$0;
-   }
-
-   public boolean c() {
-      return this.a != 0L;
-   }
-
-   public boolean d() {
-      return this.a == this.a();
-   }
-
-   public double e() {
-      return Math.min((double)this.b() / (double)this.a(), 1.0);
-   }
-
-   public void f() {
-      long $$0 = ag.c();
-      long $$1 = $$0 - this.c;
-      if ($$1 >= 1000L) {
-         long $$2 = this.a;
-         this.e = 1000L * ($$2 - this.d) / $$1;
-         this.d = $$2;
-         this.c = $$0;
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         JsonElement $$5 = $$4.get("ops");
+         if ($$5.isJsonArray()) {
+            for (JsonElement $$6 : $$5.getAsJsonArray()) {
+               $$1.a.add($$6.getAsString());
+            }
+         }
+      } catch (Exception var8) {
       }
-   }
 
-   public long g() {
-      return this.e;
+      return $$1;
    }
 }

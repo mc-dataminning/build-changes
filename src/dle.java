@@ -1,101 +1,22 @@
-import com.google.common.hash.Hashing;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dle {
-   public static final int a = jr.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final dle.a e;
-   private final long f;
+public interface dle {
+   void a(bxn<?> var1, bai var2);
 
-   public dle(dle.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
-   }
-
-   public dle a(dle.a $$0) {
-      return new dle($$0, this.f);
-   }
-
-   public jg<dlc> a(iw $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
-
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
-         }
+   static void a(dcs $$0, Consumer<xg> $$1, String $$2) {
+      xg $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.accept($$3);
+      } else {
+         $$1.accept(xf.a);
+         $$1.accept(xg.c("block.minecraft.spawner.desc1").a(o.h));
+         $$1.accept(xf.a().b(xg.c("block.minecraft.spawner.desc2").a(o.j)));
       }
-
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   public jg<dlc> a(double $$0, double $$1, double $$2) {
-      int $$3 = jr.a(azq.a($$0));
-      int $$4 = jr.a(azq.a($$1));
-      int $$5 = jr.a(azq.a($$2));
-      return this.a($$3, $$4, $$5);
-   }
-
-   public jg<dlc> b(iw $$0) {
-      int $$1 = jr.a($$0.u());
-      int $$2 = jr.a($$0.v());
-      int $$3 = jr.a($$0.w());
-      return this.a($$1, $$2, $$3);
-   }
-
-   public jg<dlc> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = azl.a($$0, (long)$$1);
-      $$7 = azl.a($$7, (long)$$2);
-      $$7 = azl.a($$7, (long)$$3);
-      $$7 = azl.a($$7, (long)$$1);
-      $$7 = azl.a($$7, (long)$$2);
-      $$7 = azl.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = azl.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = azl.a($$7, $$0);
-      double $$10 = b($$7);
-      return azq.k($$6 + $$10) + azq.k($$5 + $$9) + azq.k($$4 + $$8);
-   }
-
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      jg<dlc> getNoiseBiome(int var1, int var2, int var3);
+   @Nullable
+   static xg a(dcs $$0, String $$1) {
+      return $$0.e().m($$1).flatMap($$0x -> $$0x.m("entity")).flatMap($$0x -> $$0x.a("id", bxn.a)).map($$0x -> xg.c($$0x.g()).a(o.h)).orElse(null);
    }
 }

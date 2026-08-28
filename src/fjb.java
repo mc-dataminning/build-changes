@@ -1,133 +1,72 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.mojang.blaze3d.opengl.GlStateManager;
 import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.lwjgl.opengl.ARBDirectStateAccess;
+import org.lwjgl.opengl.GLCapabilities;
 
-public class fjb implements fld {
-   protected static final int a = 1;
-   public static final boolean b = ac.aU;
-   private final fiw l;
-   private final boolean m;
-   private boolean n;
-   @Nullable
-   protected fjc c;
-   protected final fii[] d = new fii[1];
-   @Nullable
-   protected fii e;
-   protected flu.b f = flu.b.b;
-   protected final fle g = new fle();
-   protected final HashMap<String, Object> h = new HashMap<>();
-   protected final HashMap<String, flj> i = new HashMap<>();
-   protected final Set<String> j = new HashSet<>();
-   protected final Set<String> k = new HashSet<>();
-
-   public fjb(fiw $$0, boolean $$1) {
-      this.l = $$0;
-      this.m = $$1;
-   }
-
-   public boolean a() {
-      return this.m;
-   }
-
-   @Override
-   public void a(fjr $$0) {
-      if (this.c == null || this.c.b() != $$0) {
-         this.j.addAll(this.h.keySet());
-         this.k.addAll(this.i.keySet());
-      }
-
-      this.c = this.l.b().a($$0);
-   }
-
-   @Override
-   public void a(String $$0, flj $$1) {
-      this.i.put($$0, $$1);
-      this.k.add($$0);
-   }
-
-   @Override
-   public void a(String $$0, int... $$1) {
-      this.h.put($$0, $$1);
-      this.j.add($$0);
-   }
-
-   @Override
-   public void a(String $$0, float... $$1) {
-      this.h.put($$0, $$1);
-      this.j.add($$0);
-   }
-
-   @Override
-   public void a(String $$0, Matrix4f $$1) {
-      this.h.put($$0, $$1.get(new float[16]));
-      this.j.add($$0);
-   }
-
-   @Override
-   public void a(fle $$0) {
-      this.g.a($$0);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.g.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void b() {
-      this.g.a();
-   }
-
-   @Override
-   public void a(int $$0, fii $$1) {
-      if ($$0 >= 0 && $$0 < 1) {
-         this.d[$$0] = $$1;
+public abstract class fjb {
+   public static fjb a(GLCapabilities $$0, Set<String> $$1) {
+      if ($$0.GL_ARB_direct_state_access && fjg.e) {
+         $$1.add("GL_ARB_direct_state_access");
+         return new fjb.a();
       } else {
-         throw new IllegalArgumentException("Vertex buffer slot is out of range: " + $$0);
+         return new fjb.b();
       }
    }
 
-   @Override
-   public void a(fii $$0, flu.b $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+   abstract int a();
 
-   @Override
-   public void a(int $$0, int $$1) {
-      if (this.n) {
-         throw new IllegalStateException("Can't use a closed render pass");
-      } else {
-         this.l.a(this, $$0, $$1, this.f);
+   abstract void a(int var1, int var2, int var3, int var4, int var5);
+
+   abstract void a(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12);
+
+   static class a extends fjb {
+      @Override
+      public int a() {
+         return ARBDirectStateAccess.glCreateFramebuffers();
+      }
+
+      @Override
+      public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+         ARBDirectStateAccess.glNamedFramebufferTexture($$0, 36064, $$1, $$3);
+         ARBDirectStateAccess.glNamedFramebufferTexture($$0, 36096, $$2, $$3);
+         if ($$4 != 0) {
+            GlStateManager._glBindFramebuffer($$4, $$0);
+         }
+      }
+
+      @Override
+      public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11) {
+         ARBDirectStateAccess.glBlitNamedFramebuffer($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
       }
    }
 
-   @Override
-   public void a(Collection<fld.a> $$0) {
-      if (this.n) {
-         throw new IllegalStateException("Can't use a closed render pass");
-      } else {
-         this.l.a(this, $$0);
+   static class b extends fjb {
+      @Override
+      public int a() {
+         return GlStateManager.glGenFramebuffers();
       }
-   }
 
-   @Override
-   public void b(int $$0, int $$1) {
-      if (this.n) {
-         throw new IllegalStateException("Can't use a closed render pass");
-      } else {
-         this.l.a(this, $$0, $$1, null);
+      @Override
+      public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5 = $$4 == 0 ? '販' : $$4;
+         int $$6 = GlStateManager.getFrameBuffer($$5);
+         GlStateManager._glBindFramebuffer($$5, $$0);
+         GlStateManager._glFramebufferTexture2D($$5, 36064, 3553, $$1, $$3);
+         GlStateManager._glFramebufferTexture2D($$5, 36096, 3553, $$2, $$3);
+         if ($$4 == 0) {
+            GlStateManager._glBindFramebuffer($$5, $$6);
+         }
       }
-   }
 
-   @Override
-   public void close() {
-      if (!this.n) {
-         this.n = true;
-         this.l.a();
+      @Override
+      public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11) {
+         int $$12 = GlStateManager.getFrameBuffer(36008);
+         int $$13 = GlStateManager.getFrameBuffer(36009);
+         GlStateManager._glBindFramebuffer(36008, $$0);
+         GlStateManager._glBindFramebuffer(36009, $$1);
+         GlStateManager._glBlitFrameBuffer($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
+         GlStateManager._glBindFramebuffer(36008, $$12);
+         GlStateManager._glBindFramebuffer(36009, $$13);
       }
    }
 }

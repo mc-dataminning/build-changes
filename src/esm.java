@@ -1,26 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface esm<S extends esd> {
-   esm<etx> a = a("buried_treasure", etx.d);
-   esm<etz> b = a("desert_pyramid", etz.d);
-   esm<eub> c = a("end_city", eub.d);
-   esm<euk> d = a("fortress", euk.e);
-   esm<eud> e = a("igloo", eud.d);
-   esm<eue> f = a("jigsaw", eue.i);
-   esm<eug> g = a("jungle_temple", eug.d);
-   esm<eui> h = a("mineshaft", eui.d);
-   esm<eum> i = a("nether_fossil", eum.d);
-   esm<euo> j = a("ocean_monument", euo.d);
-   esm<euq> k = a("ocean_ruin", euq.d);
-   esm<eus> l = a("ruined_portal", eus.d);
-   esm<euu> m = a("shipwreck", euu.d);
-   esm<euw> n = a("stronghold", euw.d);
-   esm<euy> o = a("swamp_hut", euy.d);
-   esm<eva> p = a("woodland_mansion", eva.d);
+public abstract class esm extends esn {
+   private final esm.a d;
+   private final int e;
+   private final int f;
 
-   MapCodec<S> codec();
+   protected esm(esm.a $$0, int $$1, int $$2, esn.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   private static <S extends esd> esm<S> a(String $$0, MapCodec<S> $$1) {
-      return jt.a(mh.R, $$0, () -> $$1);
+   @Override
+   public Optional<esn.b> a(esn.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ehp.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(etf $$0, esn.a $$1) {
+      djo $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      esr construct(eio var1, int var2, int var3);
    }
 }

@@ -1,29 +1,38 @@
-public class hap extends gxe<cml, hgo, gkc> {
-   private static final alk a = alk.b("textures/entity/sniffer/sniffer.png");
+public class hap extends gwl<cme, hed, gfw<hed>> {
+   private final alr a;
 
-   public hap(gyk.a $$0) {
-      super($$0, new gkc($$0.a(glf.di)), new gkc($$0.a(glf.dj)), 1.1F);
+   public hap(gxv.a $$0, hap.a $$1) {
+      super($$0, new ghz($$0.a($$1.d)), new ghz($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hcm<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gho($$0.a($$1.g)), new gho($$0.a($$1.h))));
    }
 
-   public alk a(hgo $$0) {
-      return a;
+   public alr a(hed $$0) {
+      return this.a;
    }
 
-   public hgo b() {
-      return new hgo();
+   public hed b() {
+      return new hed();
    }
 
-   public void a(cml $$0, hgo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.bM);
-      $$1.c.a($$0.bK);
-      $$1.d.a($$0.bN);
-      $$1.e.a($$0.bI);
-      $$1.f.a($$0.bJ);
-   }
+   public static enum a {
+      a(alr.b("textures/entity/horse/horse_skeleton.png"), gkq.cZ, gkq.da, hmw.d.n, gkq.db, gkq.dc),
+      b(alr.b("textures/entity/horse/horse_zombie.png"), gkq.em, gkq.en, hmw.d.m, gkq.eo, gkq.ep);
 
-   protected ffn a(cml $$0) {
-      return super.a($$0).g(0.6F);
+      final alr c;
+      final gkp d;
+      final gkp e;
+      final hmw.d f;
+      final gkp g;
+      final gkp h;
+
+      private a(final alr $$0, final gkp $$1, final gkp $$2, final hmw.d $$3, final gkp $$4, final gkp $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

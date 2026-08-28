@@ -1,31 +1,60 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpd extends dne {
+public class dpd extends dno {
    public static final MapCodec<dpd> a = b(dpd::new);
+   public static final ech b = ecg.A;
+   public static final ech c = ecg.u;
 
    @Override
-   public MapCodec<dpd> a() {
+   protected MapCodec<? extends dpd> a() {
       return a;
    }
 
-   public dpd(ebf.d $$0) {
+   public dpd(ebp.d $$0) {
       super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(ebg $$0, djz $$1, iw $$2, azz $$3) {
-      if ($$3.a(5) == 0) {
-         jc $$4 = jc.b($$3);
-         if ($$4 != jc.b) {
-            iw $$5 = $$2.a($$4);
-            ebg $$6 = $$1.a_($$5);
-            if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(lz.aH, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
+   protected void a(ebq $$0, dkj $$1, iw $$2, ebq $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof asb $$5) {
+         this.a($$0, $$5, $$2);
       }
+   }
+
+   @Override
+   protected void a(ebq $$0, dkj $$1, iw $$2, dno $$3, @Nullable ezi $$4, boolean $$5) {
+      if ($$1 instanceof asb $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(ebq $$0, asb $$1, iw $$2) {
+      boolean $$3 = $$1.D($$2);
+      if ($$3 != $$0.c(b)) {
+         ebq $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awy.fK : awy.fL, awz.e);
+         }
+
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
+      }
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(ebq $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(ebq $$0, dkj $$1, iw $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

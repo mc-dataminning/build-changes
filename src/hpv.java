@@ -1,6 +1,7 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+public interface hpv<T> {
+   int e();
 
-public interface hpv extends hps {
-   ByteBuffer b() throws IOException;
+   T b(bai var1);
+
+   void a(hpq var1);
 }

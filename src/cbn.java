@@ -1,56 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-@Deprecated
-public class cbn {
-   public static bzo<bxw> a(float $$0, bue $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
+public class cbn extends bzw<byh> {
+   private final buh c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static bzo<bxw> a(bxe<?> $$0, float $$1, bue $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.an()));
-   }
-
-   private static bzo<bxw> a(float $$0, bue $$1, Predicate<bxw> $$2) {
-      float $$3 = $$0 * $$0;
-      cbn.a $$4 = new cbn.a($$1);
-      return cda.a(
-         (Function<cda.b<bxw>, ? extends App<cda.c<bxw>, cdd<bxw>>>)($$3x -> $$3x.group($$3x.c(cgy.o), $$3x.b(cgy.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bxw> $$9 = $$3x.<cha>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g($$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.A)) {
-                        return false;
-                     } else {
-                        $$4x.a(new bzy($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
-   }
-
-   public static final class a {
-      private final bue a;
-      private int b;
-
-      public a(bue $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
-         } else {
-            this.a = $$0;
-         }
+   public cbn(buh $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(chh.o, chi.b, chh.R, chi.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
       }
+   }
 
-      public boolean a(azz $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
+   protected void a(asb $$0, byh $$1, long $$2) {
+      bai $$3 = $$1.dY();
+      float $$4 = azz.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = azz.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
+      fgc $$6 = fgc.a($$4, $$5);
+      $$1.ec().a(chh.o, new bzz($$1.bD().e($$6)));
+      $$1.ec().a(chh.R, this.c.a($$3));
    }
 }

@@ -1,121 +1,40 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class hlc {
-   private final alk a;
-   private final hkw b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public record hlc(alr c, Optional<alr> d) implements hkv {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<hlc> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alr.a.fieldOf("resource").forGetter(hlc::b), alr.a.optionalFieldOf("sprite").forGetter(hlc::c)).apply($$0, hlc::new)
+   );
 
-   protected hlc(alk $$0, hkw $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public hkw e() {
-      return this.b;
-   }
-
-   @Nullable
-   public hlc.a f() {
-      final hky $$0 = this.b.e();
-      return $$0 != null ? new hlc.a() {
-         @Override
-         public void a(flj $$0x) {
-            $$0.a(hlc.this.c, hlc.this.d, $$0);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
-   }
-
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public alk i() {
-      return this.a;
+   public hlc(alr $$0) {
+      this($$0, Optional.empty());
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void a(avo $$0, hkv.a $$1) {
+      alr $$2 = a.a(this.c);
+      Optional<avm> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.d.orElse(this.c), $$3.get());
+      } else {
+         e.warn("Missing sprite: {}", $$2);
+      }
    }
 
-   public void a(flj $$0) {
-      this.b.a(this.c, this.d, $$0);
+   @Override
+   public MapCodec<hlc> a() {
+      return b;
    }
 
-   private float k() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   public alr b() {
+      return this.c;
    }
 
-   public float j() {
-      return 4.0F / this.k();
-   }
-
-   public flt a(flt $$0) {
-      return new gsz($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a(flj var1);
-
-      @Override
-      void close();
+   public Optional<alr> c() {
+      return this.d;
    }
 }

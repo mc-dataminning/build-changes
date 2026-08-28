@@ -1,24 +1,109 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class adt implements zo<acf> {
+   public static final ze<wp, adt> a = zo.a(adt::a, adt::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final boolean k;
+   private final lx l;
 
-public record adt(int b, List<cvb.a> c) implements zj<aby> {
-   public static final za<vy, adt> a = za.a(yy.h, adt::b, cvb.a.a.a(yy.a()), adt::e, adt::new);
-
-   @Override
-   public zl<adt> a() {
-      return agr.T;
+   public <T extends lx> adt(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      this.l = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = $$6;
+      this.f = $$7;
+      this.g = $$8;
+      this.h = $$9;
+      this.i = $$10;
    }
 
-   public void a(aby $$0) {
+   private adt(wp $$0) {
+      this.j = $$0.readBoolean();
+      this.k = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.l = lz.bl.decode($$0);
+   }
+
+   private void a(wp $$0) {
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.q(this.i);
+      lz.bl.encode($$0, this.l);
+   }
+
+   @Override
+   public zq<adt> a() {
+      return agy.M;
+   }
+
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bwv a(djz $$0) {
-      return $$0.a(this.b);
+   public boolean b() {
+      return this.j;
    }
 
-   public List<cvb.a> e() {
+   public boolean e() {
+      return this.k;
+   }
+
+   public double f() {
+      return this.b;
+   }
+
+   public double g() {
       return this.c;
+   }
+
+   public double h() {
+      return this.d;
+   }
+
+   public float i() {
+      return this.e;
+   }
+
+   public float j() {
+      return this.f;
+   }
+
+   public float k() {
+      return this.g;
+   }
+
+   public float l() {
+      return this.h;
+   }
+
+   public int m() {
+      return this.i;
+   }
+
+   public lx n() {
+      return this.l;
    }
 }

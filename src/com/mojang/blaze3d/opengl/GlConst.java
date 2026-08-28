@@ -1,6 +1,18 @@
-package com.mojang.blaze3d.platform;
+package com.mojang.blaze3d.opengl;
 
-@fhs
+import com.mojang.blaze3d.buffers.BufferType;
+import com.mojang.blaze3d.buffers.BufferUsage;
+import com.mojang.blaze3d.platform.DepthTestFunction;
+import com.mojang.blaze3d.platform.DestFactor;
+import com.mojang.blaze3d.platform.PolygonMode;
+import com.mojang.blaze3d.platform.SourceFactor;
+import com.mojang.blaze3d.shaders.ShaderType;
+import com.mojang.blaze3d.textures.AddressMode;
+import com.mojang.blaze3d.textures.TextureFormat;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.VertexFormatElement;
+
+@fic
 public class GlConst {
    public static final int GL_READ_FRAMEBUFFER = 36008;
    public static final int GL_DRAW_FRAMEBUFFER = 36009;
@@ -123,19 +135,19 @@ public class GlConst {
    public static final int GL_RED = 6403;
    public static final int GL_OUT_OF_MEMORY = 1285;
 
-   public static int toGl(fjy $$0) {
+   public static int toGl(DepthTestFunction $$0) {
       return switch ($$0) {
-         case a -> 519;
-         case b -> 514;
-         case d -> 513;
-         case e -> 516;
+         case NO_DEPTH_TEST -> 519;
+         case EQUAL_DEPTH_TEST -> 514;
+         case LESS_DEPTH_TEST -> 513;
+         case GREATER_DEPTH_TEST -> 516;
          default -> 515;
       };
    }
 
-   public static int toGl(fkj $$0) {
+   public static int toGl(PolygonMode $$0) {
       return switch ($$0) {
-         case b -> 6913;
+         case WIREFRAME -> 6913;
          default -> 6914;
       };
    }
@@ -179,19 +191,19 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fig $$0) {
+   public static int toGl(BufferType $$0) {
       return switch ($$0) {
-         case a -> '袒';
-         case b -> '袓';
-         case c -> '裫';
-         case d -> '輶';
-         case e -> '輷';
-         case f -> '裬';
-         case g -> '訑';
+         case VERTICES -> '袒';
+         case INDICES -> '袓';
+         case PIXEL_PACK -> '裫';
+         case COPY_READ -> '輶';
+         case COPY_WRITE -> '輷';
+         case PIXEL_UNPACK -> '裬';
+         case UNIFORM -> '訑';
       };
    }
 
-   public static int toGl(flu.c $$0) {
+   public static int toGl(VertexFormat.b $$0) {
       return switch ($$0) {
          case a -> 4;
          case b -> 5;
@@ -204,14 +216,14 @@ public class GlConst {
       };
    }
 
-   public static int toGl(flu.b $$0) {
+   public static int toGl(VertexFormat.a $$0) {
       return switch ($$0) {
          case a -> 5123;
          case b -> 5125;
       };
    }
 
-   public static int toGl(fki.a $$0) {
+   public static int toGl(fkf.a $$0) {
       return switch ($$0) {
          case a -> 'ᤈ';
          case b -> 'ᤇ';
@@ -220,67 +232,67 @@ public class GlConst {
       };
    }
 
-   public static int toGl(fih $$0) {
+   public static int toGl(BufferUsage $$0) {
       return switch ($$0) {
-         case a -> '裨';
-         case b -> '裤';
-         case c -> '裠';
-         case d -> '裥';
-         case e -> '裩';
-         case f -> '裡';
-         case g -> '裪';
-         case h -> '裦';
-         case i -> '裢';
+         case DYNAMIC_WRITE -> '裨';
+         case STATIC_WRITE -> '裤';
+         case STREAM_WRITE -> '裠';
+         case STATIC_READ -> '裥';
+         case DYNAMIC_READ -> '裩';
+         case STREAM_READ -> '裡';
+         case DYNAMIC_COPY -> '裪';
+         case STATIC_COPY -> '裦';
+         case STREAM_COPY -> '裢';
       };
    }
 
-   public static int toGl(flh $$0) {
+   public static int toGl(AddressMode $$0) {
       return switch ($$0) {
-         case a -> '⤁';
-         case b -> '脯';
+         case REPEAT -> '⤁';
+         case CLAMP_TO_EDGE -> '脯';
       };
    }
 
-   public static int toGl(flv.a $$0) {
+   public static int toGl(VertexFormatElement.Type $$0) {
       return switch ($$0) {
-         case a -> 5126;
-         case b -> 5121;
-         case c -> 5120;
-         case d -> 5123;
-         case e -> 5122;
-         case f -> 5125;
-         case g -> 5124;
+         case FLOAT -> 5126;
+         case UBYTE -> 5121;
+         case BYTE -> 5120;
+         case USHORT -> 5123;
+         case SHORT -> 5122;
+         case UINT -> 5125;
+         case INT -> 5124;
       };
    }
 
-   public static int toGlInternalId(flk $$0) {
+   public static int toGlInternalId(TextureFormat $$0) {
       return switch ($$0) {
-         case a -> '聘';
-         case b -> '舩';
-         case c -> '膧';
+         case RGBA8 -> '聘';
+         case RED8 -> '舩';
+         case DEPTH32 -> '膧';
       };
    }
 
-   public static int toGlExternalId(flk $$0) {
+   public static int toGlExternalId(TextureFormat $$0) {
       return switch ($$0) {
-         case a -> 6408;
-         case b -> 6403;
-         case c -> 6402;
+         case RGBA8 -> 6408;
+         case RED8 -> 6403;
+         case DEPTH32 -> 6402;
       };
    }
 
-   public static int toGlType(flk $$0) {
+   public static int toGlType(TextureFormat $$0) {
       return switch ($$0) {
-         case a -> 5121;
-         case b -> 5121;
-         case c -> 5126;
+         case RGBA8 -> 5121;
+         case RED8 -> 5121;
+         case DEPTH32 -> 5126;
       };
    }
 
-   public static int toGl(fky $$0) {
+   public static int toGl(ShaderType $$0) {
       return switch ($$0) {
-         case a -> '謱';
-         case b -> '謰';
+         case VERTEX -> '謱';
+         case FRAGMENT -> '謰';
       };
    }
 }

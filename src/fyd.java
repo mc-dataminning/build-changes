@@ -1,26 +1,45 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-public interface fyd {
-   void j(int var1);
+public enum fyd {
+   a,
+   b,
+   c,
+   d;
 
-   void k(int var1);
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
 
-   int F();
-
-   int G();
-
-   int A();
-
-   int y();
-
-   default fyu J() {
-      return new fyu(this.F(), this.G(), this.A(), this.y());
+   public fyc a() {
+      return switch (this) {
+         case a, b -> fyc.b;
+         case c, d -> fyc.a;
+      };
    }
 
-   default void c(int $$0, int $$1) {
-      this.j($$0);
-      this.k($$1);
+   public fyd b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   void a(Consumer<ful> var1);
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   }
+
+   public IntComparator d() {
+      return this.e;
+   }
 }

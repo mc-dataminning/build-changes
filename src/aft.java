@@ -1,20 +1,45 @@
-public record aft(int b) implements zj<aby> {
-   public static final za<vy, aft> a = zj.a(aft::a, aft::new);
+public class aft implements zo<acf> {
+   public static final ze<vy, aft> a = zo.a(aft::a, aft::new);
+   private final float b;
+   private final int c;
+   private final float d;
+
+   public aft(float $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
    private aft(vy $$0) {
-      this($$0.l());
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
    private void a(vy $$0) {
-      $$0.c(this.b);
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zl<aft> a() {
-      return agr.aQ;
+   public zq<aft> a() {
+      return agy.aK;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

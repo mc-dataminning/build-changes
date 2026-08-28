@@ -15,7 +15,7 @@ public class u implements ah {
    private final String c;
    private final String d;
    private final boolean e;
-   private final ezp f;
+   private final ezz f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,25 +23,25 @@ public class u implements ah {
 
    private u() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "25w10a";
+      this.d = "1.21.5-pre1";
       this.e = false;
-      this.f = new ezp(4319, "main");
+      this.f = new ezz(4320, "main");
       this.g = ac.c();
-      this.h = 54;
+      this.h = 55;
       this.i = 70;
       this.j = new Date();
    }
 
    private u(JsonObject $$0) {
-      this.c = azg.i($$0, "id");
-      this.d = azg.i($$0, "name");
-      this.e = azg.k($$0, "stable");
-      this.f = new ezp(azg.o($$0, "world_version"), azg.a($$0, "series_id", ezp.a));
-      this.g = azg.o($$0, "protocol_version");
-      JsonObject $$1 = azg.u($$0, "pack_version");
-      this.h = azg.o($$1, "resource");
-      this.i = azg.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(azg.i($$0, "build_time")).toInstant());
+      this.c = azo.i($$0, "id");
+      this.d = azo.i($$0, "name");
+      this.e = azo.k($$0, "stable");
+      this.f = new ezz(azo.o($$0, "world_version"), azo.a($$0, "series_id", ezz.a));
+      this.g = azo.o($$0, "protocol_version");
+      JsonObject $$1 = azo.u($$0, "pack_version");
+      this.h = azo.o($$1, "resource");
+      this.i = azo.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(azo.i($$0, "build_time")).toInstant());
    }
 
    public static ah a() {
@@ -54,7 +54,7 @@ public class u implements ah {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new u(azg.a($$1));
+               var2 = new u(azo.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class u implements ah {
    }
 
    @Override
-   public ezp d() {
+   public ezz d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class u implements ah {
    }
 
    @Override
-   public int a(atv $$0) {
-      return $$0 == atv.b ? this.i : this.h;
+   public int a(auc $$0) {
+      return $$0 == auc.b ? this.i : this.h;
    }
 
    @Override

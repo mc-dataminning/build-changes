@@ -1,28 +1,23 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public record abw(alk b, @Nullable byte[] c) implements zj<abv> {
-   public static final za<vy, abw> a = zj.a(abw::a, abw::new);
+public class abw implements zo<abv> {
+   public static final abw a = new abw();
+   public static final ze<ByteBuf, abw> b = ze.a(a);
 
-   private abw(vy $$0) {
-      this($$0.q(), $$0.c(zy.b));
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, zy.b);
+   private abw() {
    }
 
    @Override
-   public zl<abw> a() {
-      return abu.b;
+   public zq<abw> a() {
+      return abt.f;
    }
 
    public void a(abv $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public byte[] e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

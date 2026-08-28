@@ -1,25 +1,44 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface erl<P extends erk> {
-   erl<eqw> a = a("block_predicate_filter", eqw.a);
-   erl<ern> b = a("rarity_filter", ern.a);
-   erl<erp> c = a("surface_relative_threshold_filter", erp.a);
-   erl<erq> d = a("surface_water_depth_filter", erq.a);
-   erl<eqv> e = a("biome", eqv.a);
-   erl<eqz> f = a("count", eqz.a);
-   erl<erf> g = a("noise_based_count", erf.a);
-   erl<erg> h = a("noise_threshold_count", erg.a);
-   erl<eqy> i = a("count_on_every_layer", eqy.a);
-   erl<era> j = a("environment_scan", era.a);
-   erl<erd> k = a("heightmap", erd.a);
-   erl<erc> l = a("height_range", erc.a);
-   erl<ere> m = a("in_square", ere.a);
-   erl<erm> n = a("random_offset", erm.a);
-   erl<erb> o = a("fixed_placement", erb.a);
+public class erl extends eru {
+   public static final MapCodec<erl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(iw.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, erl::new)
+   );
+   private final List<iw> c;
 
-   MapCodec<P> codec();
+   public static erl a(iw... $$0) {
+      return new erl(List.of($$0));
+   }
 
-   private static <P extends erk> erl<P> a(String $$0, MapCodec<P> $$1) {
-      return jt.a(mh.S, $$0, () -> $$1);
+   private erl(List<iw> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public Stream<iw> a_(ers $$0, bai $$1, iw $$2) {
+      int $$3 = jz.a($$2.u());
+      int $$4 = jz.a($$2.w());
+      boolean $$5 = false;
+
+      for (iw $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, iw $$2) {
+      return $$0 == jz.a($$2.u()) && $$1 == jz.a($$2.w());
+   }
+
+   @Override
+   public erv<?> b() {
+      return erv.o;
    }
 }

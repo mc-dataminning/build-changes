@@ -1,77 +1,234 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class cwx {
-   private final List<cwx.b> a;
-   private final cwx.b b;
-
-   cwx(List<cwx.b> $$0, cwx.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cwx.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+public class cwx extends cwb {
+   static final alr p = alr.b("container/slot/lapis_lazuli");
+   private final buv q = new bvj(2) {
+      @Override
+      public void e() {
+         super.e();
+         cwx.this.a(this);
       }
+   };
+   private final cwo r;
+   private final bai s = bai.a();
+   private final cwv t = cwv.a();
+   public final int[] m = new int[3];
+   public final int[] n = new int[]{-1, -1, -1};
+   public final int[] o = new int[]{-1, -1, -1};
+
+   public cwx(int $$0, csh $$1) {
+      this($$0, $$1, cwo.a);
    }
 
-   public static cwx.a a() {
-      return new cwx.a();
+   public cwx(int $$0, csh $$1, cwo $$2) {
+      super(cxk.n, $$0);
+      this.r = $$2;
+      this.a(new cxz(this.q, 0, 15, 47) {
+         @Override
+         public int a() {
+            return 1;
+         }
+      });
+      this.a(new cxz(this.q, 1, 35, 47) {
+         @Override
+         public boolean a(dak $$0) {
+            return $$0.a(dao.pp);
+         }
+
+         @Override
+         public alr c() {
+            return cwx.p;
+         }
+      });
+      this.c($$1, 8, 84);
+      this.a(cwv.a(this.m, 0));
+      this.a(cwv.a(this.m, 1));
+      this.a(cwv.a(this.m, 2));
+      this.a(this.t).a($$1.h.gs());
+      this.a(cwv.a(this.n, 0));
+      this.a(cwv.a(this.n, 1));
+      this.a(cwv.a(this.n, 2));
+      this.a(cwv.a(this.o, 0));
+      this.a(cwv.a(this.o, 1));
+      this.a(cwv.a(this.o, 2));
    }
 
-   public cwx.b a(int $$0) {
-      return this.a.get($$0);
-   }
+   @Override
+   public void a(buv $$0) {
+      if ($$0 == this.q) {
+         dak $$1 = $$0.a(0);
+         if (!$$1.f() && $$1.E()) {
+            this.r.a(($$1x, $$2x) -> {
+               jl<jg<dgx>> $$3 = $$1x.J_().f(mi.aR).t();
+               int $$4 = 0;
 
-   public cwx.b b() {
-      return this.b;
-   }
+               for (iw $$5 : dqc.b) {
+                  if (dqc.a($$1x, $$2x, $$5)) {
+                     $$4++;
+                  }
+               }
 
-   public List<cwx.b> c() {
-      return this.a;
-   }
+               this.s.b((long)this.t.b());
 
-   public int d() {
-      return this.a.size();
-   }
+               for (int $$6 = 0; $$6 < 3; $$6++) {
+                  this.m[$$6] = dgz.a(this.s, $$6, $$4, $$1);
+                  this.n[$$6] = -1;
+                  this.o[$$6] = -1;
+                  if (this.m[$$6] < $$6 + 1) {
+                     this.m[$$6] = 0;
+                  }
+               }
 
-   public int e() {
-      return this.d();
-   }
+               for (int $$7 = 0; $$7 < 3; $$7++) {
+                  if (this.m[$$7] > 0) {
+                     List<dha> $$8 = this.a($$1x.J_(), $$1, $$7, this.m[$$7]);
+                     if ($$8 != null && !$$8.isEmpty()) {
+                        dha $$9 = $$8.get(this.s.a($$8.size()));
+                        this.n[$$7] = $$3.a($$9.b());
+                        this.o[$$7] = $$9.c();
+                     }
+                  }
+               }
 
-   public static class a {
-      private final List<cwx.b> a = new ArrayList<>();
-      private cwx.b b = cwx.b.e;
-
-      public cwx.a a(int $$0, int $$1, int $$2, Predicate<daa> $$3) {
-         this.a.add(new cwx.b($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      public cwx.a a(int $$0, int $$1, int $$2) {
-         this.b = new cwx.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cwx a() {
-         int $$0 = this.a.size();
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            cwx.b $$2 = this.a.get($$1);
-            if ($$2.a != $$1) {
-               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+               this.d();
+            });
+         } else {
+            for (int $$2 = 0; $$2 < 3; $$2++) {
+               this.m[$$2] = 0;
+               this.n[$$2] = -1;
+               this.o[$$2] = -1;
             }
          }
-
-         if (this.b.a != $$0) {
-            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
-         } else {
-            return new cwx(this.a, this.b);
-         }
       }
    }
 
-   public static record b(int a, int b, int c, Predicate<daa> d) {
-      static final cwx.b e = new cwx.b(0, 0, 0, $$0 -> true);
+   @Override
+   public boolean a(csi $$0, int $$1) {
+      if ($$1 >= 0 && $$1 < this.m.length) {
+         dak $$2 = this.q.a(0);
+         dak $$3 = this.q.a(1);
+         int $$4 = $$1 + 1;
+         if (($$3.f() || $$3.M() < $$4) && !$$0.fV()) {
+            return false;
+         } else if (this.m[$$1] <= 0 || $$2.f() || ($$0.cf < $$4 || $$0.cf < this.m[$$1]) && !$$0.fV()) {
+            return false;
+         } else {
+            this.r.a(($$5, $$6) -> {
+               dak $$7 = $$2;
+               List<dha> $$8 = this.a($$5.J_(), $$2, $$1, this.m[$$1]);
+               if (!$$8.isEmpty()) {
+                  $$0.a($$2, $$4);
+                  if ($$2.a(dao.rF)) {
+                     $$7 = $$2.a((dki)dao.vG);
+                     this.q.a(0, $$7);
+                  }
+
+                  for (dha $$9 : $$8) {
+                     $$7.a($$9.b(), $$9.c());
+                  }
+
+                  $$3.a($$4, (byf)$$0);
+                  if ($$3.f()) {
+                     this.q.a(1, dak.l);
+                  }
+
+                  $$0.a(axi.ak);
+                  if ($$0 instanceof asc) {
+                     aq.j.a((asc)$$0, $$7, $$4);
+                  }
+
+                  this.q.e();
+                  this.t.a($$0.gs());
+                  this.a(this.q);
+                  $$5.a(null, $$6, awy.iv, awz.e, 1.0F, $$5.A.i() * 0.1F + 0.9F);
+               }
+            });
+            return true;
+         }
+      } else {
+         ag.b($$0.ai() + " pressed invalid button id: " + $$1);
+         return false;
+      }
+   }
+
+   private List<dha> a(ju $$0, dak $$1, int $$2, int $$3) {
+      this.s.b((long)(this.t.b() + $$2));
+      Optional<jk.c<dgx>> $$4 = $$0.f(mi.aR).a(axp.k);
+      if ($$4.isEmpty()) {
+         return List.of();
+      } else {
+         List<dha> $$5 = dgz.b(this.s, $$1, $$3, $$4.get().a());
+         if ($$1.a(dao.rF) && $$5.size() > 1) {
+            $$5.remove(this.s.a($$5.size()));
+         }
+
+         return $$5;
+      }
+   }
+
+   public int l() {
+      dak $$0 = this.q.a(1);
+      return $$0.f() ? 0 : $$0.M();
+   }
+
+   public int m() {
+      return this.t.b();
+   }
+
+   @Override
+   public void a(csi $$0) {
+      super.a($$0);
+      this.r.a(($$1, $$2) -> this.a($$0, this.q));
+   }
+
+   @Override
+   public boolean b(csi $$0) {
+      return a(this.r, $$0, dnq.fQ);
+   }
+
+   @Override
+   public dak b(csi $$0, int $$1) {
+      dak $$2 = dak.l;
+      cxz $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         dak $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 == 0) {
+            if (!this.a($$4, 2, 38, true)) {
+               return dak.l;
+            }
+         } else if ($$1 == 1) {
+            if (!this.a($$4, 2, 38, true)) {
+               return dak.l;
+            }
+         } else if ($$4.a(dao.pp)) {
+            if (!this.a($$4, 1, 2, true)) {
+               return dak.l;
+            }
+         } else {
+            if (this.k.get(0).h() || !this.k.get(0).a($$4)) {
+               return dak.l;
+            }
+
+            dak $$5 = $$4.c(1);
+            $$4.h(1);
+            this.k.get(0).e($$5);
+         }
+
+         if ($$4.f()) {
+            $$3.e(dak.l);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return dak.l;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 }

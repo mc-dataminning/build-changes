@@ -1,81 +1,33 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class cbx extends bzn<bxw> {
-   public static final int c = 100;
-   private long d;
+public class cbx {
+   private static final int a = 300;
 
-   public cbx() {
-      super(ImmutableMap.of(cgy.b, cgz.a, cgy.J, cgz.c));
-   }
+   public static bzx<byf> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return cdj.a(
+         (Function<cdj.b<byf>, ? extends App<cdj.c<byf>, cdm<byf>>>)($$3x -> $$3x.group($$3x.b(chh.D), $$3x.b(chh.E))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        iw $$11 = $$3x.<jf>b($$4).b();
+                        if ($$11.a($$7.dv(), (double)$$1)) {
+                           $$3.increment();
+                        }
 
-   @Override
-   protected boolean a(aru $$0, bxw $$1) {
-      if ($$1.bY()) {
-         return false;
-      } else {
-         byw<?> $$2 = $$1.ec();
-         jf $$3 = $$2.c(cgy.b).get();
-         if ($$0.aj() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(cgy.J);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.ae() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            ebg $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axg.T) && !$$6.c(dmx.c);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(aru $$0, bxw $$1, long $$2) {
-      Optional<jf> $$3 = $$1.ec().c(cgy.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         iw $$4 = $$3.get().b();
-         return $$1.ec().c(ctt.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(aru $$0, bxw $$1, long $$2) {
-      if ($$2 > this.d) {
-         byw<?> $$3 = $$1.ec();
-         if ($$3.a(cgy.w)) {
-            Set<jf> $$4 = $$3.c(cgy.w).get();
-            Optional<List<bxw>> $$5;
-            if ($$3.a(cgy.g)) {
-               $$5 = $$3.c(cgy.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            cal.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.ec().c(cgy.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(aru $$0, bxw $$1, long $$2) {
-      if ($$1.fR()) {
-         $$1.fS();
-         this.d = $$2 + 40L;
-      }
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.ec().a($$6.af(), $$6.ae());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

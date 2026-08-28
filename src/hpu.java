@@ -1,46 +1,58 @@
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
 import java.util.List;
-import org.lwjgl.BufferUtils;
+import javax.annotation.Nullable;
 
-public class hpu implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hpu implements hpv<hok> {
+   private final List<hpv<hok>> a = Lists.newArrayList();
+   @Nullable
+   private final xg b;
 
-   public hpu(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hpu(alr $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : xg.c($$1);
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (hpv<hok> $$1 : this.a) {
+         $$0 += $$1.e();
       }
 
-      int $$1 = azq.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+      return $$0;
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
+   public hok a(bai $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hpv<hok> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hpt.b;
       } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
+         return hpt.b;
       }
    }
 
-   public int b() {
-      return this.c;
+   public void a(hpv<hok> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public xg a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hpq $$0) {
+      for (hpv<hok> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

@@ -1,38 +1,53 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class bvv extends bvx {
-   private final float c;
-   private final ToIntFunction<azz> d;
+public record bvv(String d, bvs e, float f, bvr g, bvx h) {
+   public static final Codec<bvv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bvv::a),
+               bvs.d.fieldOf("scaling").forGetter(bvv::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bvv::c),
+               bvr.g.optionalFieldOf("effects", bvr.a).forGetter(bvv::d),
+               bvx.d.optionalFieldOf("death_message_type", bvx.a).forGetter(bvv::e)
+            )
+            .apply($$0, bvv::new)
+   );
+   public static final Codec<jg<bvv>> b = alo.a(mi.aN);
+   public static final ze<wp, jg<bvv>> c = zc.b(mi.aN);
 
-   protected bvv(bvy $$0, int $$1, float $$2, ToIntFunction<azz> $$3) {
-      super($$0, $$1, lz.G);
-      this.c = $$2;
-      this.d = $$3;
+   public bvv(String $$0, bvs $$1, float $$2) {
+      this($$0, $$1, $$2, bvr.a, bvx.a);
    }
 
-   @Override
-   public void a(aru $$0, bxw $$1, int $$2, bvk $$3, float $$4) {
-      if ($$1.dY().i() <= this.c) {
-         int $$5 = this.d.applyAsInt($$1.dY());
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            this.a($$0, $$1, $$1.dA(), $$1.dC() + (double)$$1.dr() / 2.0, $$1.dG());
-         }
-      }
+   public bvv(String $$0, bvs $$1, float $$2, bvr $$3) {
+      this($$0, $$1, $$2, $$3, bvx.a);
    }
 
-   private void a(aru $$0, bxw $$1, double $$2, double $$3, double $$4) {
-      cpi $$5 = bxe.bf.a($$0, bxd.k);
-      if ($$5 != null) {
-         azz $$6 = $$1.dY();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = azq.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bS().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.G_().i() * 360.0F, 0.0F);
-         $$5.i(new ffs($$9));
-         $$0.b($$5);
-         $$5.a(awr.xP);
-      }
+   public bvv(String $$0, float $$1, bvr $$2) {
+      this($$0, bvs.b, $$1, $$2);
+   }
+
+   public bvv(String $$0, float $$1) {
+      this($$0, bvs.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bvs b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bvr d() {
+      return this.g;
+   }
+
+   public bvx e() {
+      return this.h;
    }
 }

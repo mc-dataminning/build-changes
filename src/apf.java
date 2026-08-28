@@ -1,23 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class apf {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xg.c("commands.save.alreadyOn"));
+
    public static void a(CommandDispatcher<ek> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(el.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
-      );
-   }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ek $$1 = (ek)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static int a(ek $$0, int $$1) {
-      $$0.l().c($$1);
-      if ($$1 > 0) {
-         $$0.a(() -> xc.a("commands.setidletimeout.success", $$1), true);
-      } else {
-         $$0.a(() -> xc.c("commands.setidletimeout.success.disabled"), true);
-      }
+         for (asb $$3 : $$1.l().L()) {
+            if ($$3 != null && $$3.e) {
+               $$3.e = false;
+               $$2 = true;
+            }
+         }
 
-      return $$1;
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> xg.c("commands.save.enabled"), true);
+            return 1;
+         }
+      }));
    }
 }

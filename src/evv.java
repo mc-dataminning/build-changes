@@ -1,22 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class evv extends ewc {
-   public final axv<dne> a;
-   public static final MapCodec<evv> b = axv.b(mi.i).xmap(evv::new, $$0 -> $$0.a).fieldOf("value");
+public class evv extends ewm {
+   public static final MapCodec<evv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ehp.a.g.fieldOf("heightmap").orElse(ehp.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, evv::new)
+   );
+   private final ehp.a b;
+   private final int c;
 
-   public evv(axv<dne> $$0) {
-      this.a = $$0;
+   public evv(ehp.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Nullable
    @Override
-   public ewf.d a(dkc $$0, iw $$1, iw $$2, ewf.d $$3, ewf.d $$4, ewb $$5) {
-      return ekm.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public ewp.d a(dkm $$0, iw $$1, iw $$2, ewp.d $$3, ewp.d $$4, ewl $$5) {
+      ehp.a $$6;
+      if ($$0 instanceof asb) {
+         if (this.b == ehp.a.a) {
+            $$6 = ehp.a.b;
+         } else if (this.b == ehp.a.c) {
+            $$6 = ehp.a.d;
+         } else {
+            $$6 = this.b;
+         }
+      } else {
+         $$6 = this.b;
+      }
+
+      iw $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ewp.d(new iw($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   protected ewe<?> a() {
-      return ewe.n;
+   protected ewo<?> a() {
+      return ewo.g;
    }
 }

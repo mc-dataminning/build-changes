@@ -1,20 +1,350 @@
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public interface ehs {
-   default azz a(iw $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+public final class ehs extends edo {
+   public static final MapCodec<ehs> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dlq.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), ehu.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(ehs::new))
+   );
+   private static final ebq d = dnq.a.m();
+   private final jg<ehu> e;
+   private final Supplier<ehb.a> f;
+
+   public ehs(dlq $$0, jg<ehu> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   default azz a(alk $$0) {
-      return this.a($$0.toString());
+   private static ehb.a a(ehu $$0) {
+      ehb.b $$1 = new ehb.b(-54, dnq.K.m());
+      int $$2 = $$0.l();
+      ehb.b $$3 = new ehb.b($$2, $$0.h());
+      ehb.b $$4 = new ehb.b(efn.e * 2, dnq.a.m());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
    }
 
-   azz a(String var1);
+   @Override
+   public CompletableFuture<edn> a(eid $$0, eir $$1, dlf $$2, edn $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         this.b($$1, $$0, $$2, $$3);
+         return $$3;
+      }, ag.h().a("init_biomes"));
+   }
 
-   azz a(long var1);
+   private void b(eir $$0, eid $$1, dlf $$2, edn $$3) {
+      eht $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      dlp $$5 = ehd.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
+   }
 
-   azz a(int var1, int var2, int var3);
+   private eht a(edn $$0, dlf $$1, eir $$2, eid $$3) {
+      return eht.a($$0, $$3, ehc.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
+   }
+
+   @Override
+   protected MapCodec<? extends edo> b() {
+      return c;
+   }
+
+   public jg<ehu> h() {
+      return this.e;
+   }
+
+   public boolean a(alq<ehu> $$0) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, ehp.a $$2, dkl $$3, eid $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.K_());
+   }
+
+   @Override
+   public dkv a(int $$0, int $$1, dkl $$2, eid $$3) {
+      MutableObject<dkv> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (dkv)$$4.getValue();
+   }
+
+   @Override
+   public void a(List<String> $$0, eid $$1, iw $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      ehv $$4 = $$1.a();
+      ehi.e $$5 = new ehi.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)ehw.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
+      );
+   }
+
+   private OptionalInt a(dkl $$0, eid $$1, int $$2, int $$3, @Nullable MutableObject<dkv> $$4, @Nullable Predicate<ebq> $$5) {
+      ehx $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = azz.a($$8, $$7);
+      int $$10 = azz.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
+      } else {
+         ebq[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
+         } else {
+            $$11 = new ebq[$$6.d()];
+            $$4.setValue(new dkv($$8, $$11));
+         }
+
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         eht $$22 = new eht(1, $$1, $$18, $$19, $$6, ehj.b.a, this.e.a(), this.f.get(), eir.a());
+         $$22.f();
+         $$22.b(0);
+
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
+
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               ebq $$27 = $$22.e();
+               ebq $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
+
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
+               }
+            }
+         }
+
+         $$22.g();
+         return OptionalInt.empty();
+      }
+   }
+
+   @Override
+   public void a(asj $$0, dlf $$1, eid $$2, edn $$3) {
+      if (!ac.a($$3.f())) {
+         eim $$4 = new eim(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.H_(), $$0.J_().f(mi.aG), eir.a($$0));
+      }
+   }
 
    @VisibleForTesting
-   void a(StringBuilder var1);
+   public void a(edn $$0, eim $$1, eid $$2, dlf $$3, dlo $$4, jt<dlm> $$5, eir $$6) {
+      eht $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      ehu $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
+
+   @Override
+   public void a(asj $$0, long $$1, eid $$2, dlo $$3, dlf $$4, edn $$5) {
+      dlo $$6 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      eio $$7 = new eio(new ehq(eie.a()));
+      int $$8 = 8;
+      djo $$9 = $$5.f();
+      eht $$10 = $$5.a($$3x -> this.a($$3x, $$4, eir.a($$0), $$2));
+      ehb $$11 = $$10.i();
+      ejq $$12 = new ejq(this, $$0.J_(), $$5.B(), $$10, $$2, this.e.a().j());
+      edm $$13 = ((eeh)$$5).F();
+
+      for (int $$14 = -8; $$14 <= 8; $$14++) {
+         for (int $$15 = -8; $$15 <= 8; $$15++) {
+            djo $$16 = new djo($$9.h + $$14, $$9.i + $$15);
+            edn $$17 = $$0.a($$16.h, $$16.i);
+            dln $$18 = $$17.a(() -> this.a(this.b.getNoiseBiome(jr.a($$16.d()), 0, jr.a($$16.e()), $$2.b())));
+            Iterable<jg<ejt<?>>> $$19 = $$18.a();
+            int $$20 = 0;
+
+            for (jg<ejt<?>> $$21 : $$19) {
+               ejt<?> $$22 = $$21.a();
+               $$7.c($$1 + (long)$$20, $$16.h, $$16.i);
+               if ($$22.a($$7)) {
+                  $$22.a($$12, $$5, $$6::a, $$7, $$11, $$16, $$13);
+               }
+
+               $$20++;
+            }
+         }
+      }
+   }
+
+   @Override
+   public CompletableFuture<edn> a(eir $$0, eid $$1, dlf $$2, edn $$3) {
+      ehx $$4 = this.e.a().f().a($$3.B());
+      int $$5 = $$4.c();
+      int $$6 = azz.a($$5, $$4.a());
+      int $$7 = azz.a($$4.d(), $$4.a());
+      return $$7 <= 0 ? CompletableFuture.completedFuture($$3) : CompletableFuture.supplyAsync(() -> {
+         int $$8 = $$3.f($$7 * $$4.a() - 1 + $$5);
+         int $$9 = $$3.f($$5);
+         Set<edy> $$10 = Sets.newHashSet();
+
+         for (int $$11 = $$8; $$11 >= $$9; $$11--) {
+            edy $$12 = $$3.b($$11);
+            $$12.a();
+            $$10.add($$12);
+         }
+
+         edn var20;
+         try {
+            var20 = this.a($$0, $$2, $$1, $$3, $$6, $$7);
+         } finally {
+            for (edy $$14 : $$10) {
+               $$14.b();
+            }
+         }
+
+         return var20;
+      }, ag.h().a("wgen_fill_noise"));
+   }
+
+   private edn a(eir $$0, dlf $$1, eid $$2, edn $$3, int $$4, int $$5) {
+      eht $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      ehp $$7 = $$3.a(ehp.a.c);
+      ehp $$8 = $$3.a(ehp.a.a);
+      djo $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      ehb $$12 = $$6.i();
+      $$6.f();
+      iw.a $$13 = new iw.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.ap() - 1;
+            edy $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.f($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
+                  }
+
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        ebq $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !ac.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.y().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         $$6.h();
+      }
+
+      $$6.g();
+      return $$3;
+   }
+
+   private ebq a(eht $$0, int $$1, int $$2, int $$3, ebq $$4) {
+      return $$4;
+   }
+
+   @Override
+   public int e() {
+      return this.e.a().f().d();
+   }
+
+   @Override
+   public int f() {
+      return this.e.a().l();
+   }
+
+   @Override
+   public int g() {
+      return this.e.a().f().c();
+   }
+
+   @Override
+   public void a(asj $$0) {
+      if (!this.e.a().a()) {
+         djo $$1 = $$0.b();
+         jg<dlm> $$2 = $$0.u($$1.l().h($$0.ao()));
+         eio $$3 = new eio(new ehq(eie.a()));
+         $$3.a($$0.E(), $$1.d(), $$1.e());
+         dku.a($$0, $$2, $$1, $$3);
+      }
+   }
 }

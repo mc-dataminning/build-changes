@@ -1,60 +1,95 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class euo extends esd {
-   public static final MapCodec<euo> d = a(euo::new);
+public final class euo extends esn {
+   public static final etn d = etn.b;
+   public static final evz e = evz.b;
+   public static final int f = 128;
+   public static final int g = 0;
+   public static final int h = 20;
+   public static final MapCodec<euo> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  a($$0),
+                  etx.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
+                  alr.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
+                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
+                  equ.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
+                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
+                  ehp.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
+                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
+                  Codec.list(etz.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
+                  etn.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
+                  evz.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
+               )
+               .apply($$0, euo::new)
+      )
+      .validate(euo::a);
+   private final jg<etx> j;
+   private final Optional<alr> k;
+   private final int l;
+   private final equ m;
+   private final boolean n;
+   private final Optional<ehp.a> o;
+   private final int p;
+   private final List<etz> q;
+   private final etn r;
+   private final evz s;
 
-   public euo(esd.c $$0) {
+   private static DataResult<euo> a(euo $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d, e -> 12;
+      };
+      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
+   }
+
+   public euo(esn.c $$0, jg<etx> $$1, Optional<alr> $$2, int $$3, equ $$4, boolean $$5, Optional<ehp.a> $$6, int $$7, List<etz> $$8, etn $$9, evz $$10) {
       super($$0);
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.q = $$8;
+      this.r = $$9;
+      this.s = $$10;
+   }
+
+   public euo(esn.c $$0, jg<etx> $$1, int $$2, equ $$3, boolean $$4, ehp.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
+   }
+
+   public euo(esn.c $$0, jg<etx> $$1, int $$2, equ $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
    }
 
    @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (jg<dlc> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(axf.X)) {
-            return Optional.empty();
-         }
-      }
-
-      return a($$0, ehf.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static esh a(dje $$0, eie $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jc $$4 = jc.c.a.a($$1);
-      return new eun.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(esv $$0, esd.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static ess a(dje $$0, long $$1, ess $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         eie $$3 = new eie(new ehg(ehu.a()));
-         $$3.c($$1, $$0.h, $$0.i);
-         esh $$4 = $$2.c().get(0);
-         erv $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jc $$8 = jc.c.a.a($$3);
-         jc $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         esh $$10 = new eun.h($$3, $$6, $$7, $$9);
-         esv $$11 = new esv();
-         $$11.a($$10);
-         return $$11.a();
-      }
+   public Optional<esn.b> a(esn.a $$0) {
+      djo $$1 = $$0.h();
+      int $$2 = this.m.a($$0.f(), new eim($$0.b(), $$0.i()));
+      iw $$3 = new iw($$1.d(), $$2, $$1.e());
+      return etr.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, eub.create(this.q, $$3, $$0.g()), this.r, this.s);
    }
 
    @Override
-   public esm<?> e() {
-      return esm.j;
+   public esw<?> e() {
+      return esw.f;
+   }
+
+   @VisibleForTesting
+   public jg<etx> f() {
+      return this.j;
+   }
+
+   @VisibleForTesting
+   public List<etz> g() {
+      return this.q;
    }
 }

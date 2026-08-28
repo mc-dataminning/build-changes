@@ -1,19 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class bed extends bhx {
-   public bed(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bjd.D, "ArmorStand");
+public class bed extends DataFix {
+   public bed(Schema $$0) {
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.w);
+      return this.fixTypeEverywhereTyped(
+         "Custom Model Data expansion", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("minecraft:custom_model_data", $$0xxx -> {
+                  float $$1 = $$0xxx.asNumber(0.0F).floatValue();
+                  return $$0xxx.createMap(Map.of($$0xxx.createString("floats"), $$0xxx.createList(Stream.of($$0xxx.createFloat($$1)))));
+               }))
+      );
    }
 }

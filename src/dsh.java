@@ -1,59 +1,118 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum dsh implements bao {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dsh extends dqk {
+   public static final MapCodec<dsh> a = b(dsh::new);
+   public static final ech b = ecg.A;
+   private final Function<ebq, fgw> d;
 
-   public static final Codec<dsh> d = bao.a(dsh::values);
-   @Deprecated
-   public static final Codec<dsh> e = ayy.c(dsh::valueOf);
-   private final String f;
-   private final xc g;
-   private final h h;
-
-   private dsh(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = xc.c("mirror." + $$0);
-      this.h = $$1;
+   @Override
+   public MapCodec<dsh> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
+   protected dsh(ebp.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(e, jc.c).b(b, Boolean.valueOf(false)).b(c, ecb.b));
+      this.d = this.b();
    }
 
-   public dty a(jc $$0) {
-      jc.a $$1 = $$0.o();
-      return (this != b || $$1 != jc.a.c) && (this != c || $$1 != jc.a.a) ? dty.a : dty.c;
-   }
-
-   public jc b(jc $$0) {
-      if (this == c && $$0.o() == jc.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jc.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.h;
-   }
-
-   public xc b() {
-      return this.g;
+   private Function<ebq, fgw> b() {
+      Map<ecb, Map<jc, fgw>> $$0 = fgt.e(dno.b(6.0, 8.0, 10.0, 16.0));
+      return this.a($$1 -> $$0.get($$1.c(c)).get($$1.c(e)), new ect[]{b});
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected fgw a(ebq $$0, djn $$1, iw $$2, fgh $$3) {
+      return this.d.apply($$0);
+   }
+
+   @Override
+   protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
+      if ($$1.C) {
+         ebq $$5 = $$0.a(b);
+         if ($$5.c(b)) {
+            a($$5, $$1, $$2, 1.0F);
+         }
+      } else {
+         this.b($$0, $$1, $$2, null);
+      }
+
+      return bvc.a;
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, dkc $$3, BiConsumer<dak, iw> $$4) {
+      if ($$3.g()) {
+         this.b($$0, $$1, $$2, null);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void b(ebq $$0, dkj $$1, iw $$2, @Nullable csi $$3) {
+      $$0 = $$0.a(b);
+      $$1.a($$2, $$0, 3);
+      this.d($$0, $$1, $$2);
+      a($$3, $$1, $$2, $$0);
+      $$1.a($$3, $$0.c(b) ? egq.a : egq.e, $$2);
+   }
+
+   protected static void a(@Nullable csi $$0, dkk $$1, iw $$2, ebq $$3) {
+      float $$4 = $$3.c(b) ? 0.6F : 0.5F;
+      $$1.a($$0, $$2, awy.oG, awz.e, 0.3F, $$4);
+   }
+
+   private static void a(ebq $$0, dkk $$1, iw $$2, float $$3) {
+      jc $$4 = $$0.c(e).g();
+      jc $$5 = n($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new lu(16711680, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void a(ebq $$0, dkj $$1, iw $$2, bai $$3) {
+      if ($$0.c(b) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
+      }
+   }
+
+   @Override
+   protected void a(ebq $$0, asb $$1, iw $$2, boolean $$3) {
+      if (!$$3 && $$0.c(b)) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected int a(ebq $$0, djn $$1, iw $$2, jc $$3) {
+      return $$0.c(b) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(ebq $$0, djn $$1, iw $$2, jc $$3) {
+      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected boolean f_(ebq $$0) {
+      return true;
+   }
+
+   private void d(ebq $$0, dkj $$1, iw $$2) {
+      jc $$3 = n($$0).g();
+      ezi $$4 = eze.a($$1, $$3, $$3.o().d() ? jc.b : $$0.c(e));
+      $$1.a($$2, this, $$4);
+      $$1.a($$2.a($$3), this, $$4);
+   }
+
+   @Override
+   protected void a(ebr.a<dno, ebq> $$0) {
+      $$0.a(c, e, b);
    }
 }

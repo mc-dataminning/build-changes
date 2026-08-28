@@ -1,29 +1,32 @@
-public class agv implements zj<agt> {
-   public static final za<vy, agv> a = zj.a(agv::a, agv::new);
-   private final int b;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public agv(int $$0) {
-      this.b = $$0;
+public record agv(jg<efn> a, alq<dkj> b, long c, dkg d, @Nullable dkg e, boolean f, boolean g, Optional<jf> h, int i, int j) {
+   public agv(wp $$0) {
+      this(
+         efn.i.decode($$0),
+         $$0.a(mi.bp),
+         $$0.readLong(),
+         dkg.a($$0.readByte()),
+         dkg.b($$0.readByte()),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(vy::h),
+         $$0.l(),
+         $$0.l()
+      );
    }
 
-   private agv(vy $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-   }
-
-   @Override
-   public zl<agv> a() {
-      return agr.bk;
-   }
-
-   public void a(agt $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
+   public void a(wp $$0) {
+      efn.i.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.l(this.d.a());
+      $$0.l(dkg.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, vy::a);
+      $$0.c(this.i);
+      $$0.c(this.j);
    }
 }

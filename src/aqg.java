@@ -1,56 +1,47 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-public class aqg implements aqd {
-   static final SuggestionProvider<ek> b = ($$0, $$1) -> ep.a(a($$0).a(), $$1);
-   public static final Function<String, aqe.c> a = $$0 -> new aqe.c() {
-         @Override
-         public aqd a(CommandContext<ek> $$0x) {
-            return new aqg(aqg.a($$0), fl.a($$0, $$0));
-         }
+public class aqg {
+   private static final int a = -1;
 
-         @Override
-         public ArgumentBuilder<ek, ?> a(ArgumentBuilder<ek, ?> $$0x, Function<ArgumentBuilder<ek, ?>, ArgumentBuilder<ek, ?>> $$1) {
-            return $$0.then(el.a("storage").then($$1.apply(el.a($$0, fl.a()).suggests(aqg.b))));
-         }
-      };
-   private final ezo c;
-   private final alk d;
-
-   static ezo a(CommandContext<ek> $$0) {
-      return ((ek)$$0.getSource()).l().aK();
+   public static void a(CommandDispatcher<ek> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("weather").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ((LiteralArgumentBuilder)el.a("clear").executes($$0x -> a((ek)$$0x.getSource(), -1)))
+                        .then(el.a("duration", ga.a(1)).executes($$0x -> a((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)el.a("rain").executes($$0x -> b((ek)$$0x.getSource(), -1)))
+                     .then(el.a("duration", ga.a(1)).executes($$0x -> b((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)el.a("thunder").executes($$0x -> c((ek)$$0x.getSource(), -1)))
+                  .then(el.a("duration", ga.a(1)).executes($$0x -> c((ek)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+            )
+      );
    }
 
-   aqg(ezo $$0, alk $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private static int a(ek $$0, int $$1, buh $$2) {
+      return $$1 == -1 ? $$2.a($$0.l().J().G_()) : $$1;
    }
 
-   @Override
-   public void a(ua $$0) {
-      this.c.a(this.d, $$0);
+   private static int a(ek $$0, int $$1) {
+      $$0.l().J().a(a($$0, $$1, asb.b), 0, false, false);
+      $$0.a(() -> xg.c("commands.weather.set.clear"), true);
+      return $$1;
    }
 
-   @Override
-   public ua a() {
-      return this.c.a(this.d);
+   private static int b(ek $$0, int $$1) {
+      $$0.l().J().a(0, a($$0, $$1, asb.c), true, false);
+      $$0.a(() -> xg.c("commands.weather.set.rain"), true);
+      return $$1;
    }
 
-   @Override
-   public xc b() {
-      return xc.a("commands.data.storage.modified", xc.a(this.d));
-   }
-
-   @Override
-   public xc a(va $$0) {
-      return xc.a("commands.data.storage.query", xc.a(this.d), up.b($$0));
-   }
-
-   @Override
-   public xc a(fc.g $$0, double $$1, int $$2) {
-      return xc.a("commands.data.storage.get", $$0.a(), xc.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   private static int c(ek $$0, int $$1) {
+      $$0.l().J().a(0, a($$0, $$1, asb.d), true, true);
+      $$0.a(() -> xg.c("commands.weather.set.thunder"), true);
+      return $$1;
    }
 }

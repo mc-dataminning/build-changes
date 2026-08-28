@@ -11,7 +11,7 @@ public record bo(kf d, Map<ku.b<?>, ku> e) implements Predicate<kg> {
       $$0 -> $$0.group(kf.a.optionalFieldOf("components", kf.c).forGetter(bo::b), ku.b.optionalFieldOf("predicates", Map.of()).forGetter(bo::c))
             .apply($$0, bo::new)
    );
-   public static final za<wn, bo> c = za.a(kf.b, bo::b, ku.d, bo::c, bo::new);
+   public static final ze<wp, bo> c = ze.a(kf.b, bo::b, ku.d, bo::c, bo::new);
 
    public boolean a(kg $$0) {
       if (!this.d.a($$0)) {

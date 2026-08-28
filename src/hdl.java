@@ -1,20 +1,7 @@
-public class hdl extends hcc<hhd, gkt> {
-   public hdl(hah<hhd, gkt> $$0) {
-      super($$0);
-   }
-
-   protected void a(hhd $$0, flq $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
-      }
-   }
+public class hdl extends hfe {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

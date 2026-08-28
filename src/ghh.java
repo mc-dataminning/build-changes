@@ -1,50 +1,43 @@
-public class ghh extends giy {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final glg e;
-   private final glg f;
-   private final glg g;
-   private final glg h;
-   private final glg i;
-   private final glg j;
+public class ghh extends gfw<hdy> {
+   public static final float e = 0.87F;
+   public static final float f = 0.92F;
+   private static final gla g = $$0 -> {
+      a($$0.a());
+      return $$0;
+   };
+   private final gkr i = this.c.b("left_chest");
+   private final gkr j = this.c.b("right_chest");
 
-   public ghh(glg $$0) {
-      super($$0, gsn::d);
-      this.e = $$0.b("left_lid");
-      this.f = $$0.b("right_lid");
-      this.g = $$0.b("left_pages");
-      this.h = $$0.b("right_pages");
-      this.i = $$0.b("flip_page1");
-      this.j = $$0.b("flip_page2");
+   public ghh(gkr $$0) {
+      super($$0);
    }
 
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      $$1.a("left_lid", gll.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gli.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", gll.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gli.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", gll.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gli.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", gll.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gli.a);
-      $$1.a("right_pages", gll.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gli.a);
-      gll $$2 = gll.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, gli.a);
-      $$1.a("flip_page2", $$2, gli.a);
-      return glm.a($$0, 64, 32);
+   public static gkx a(float $$0) {
+      return gkx.a(gfw.a(gkv.a), 64, 64).a(g).a(gla.scaling($$0));
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (azq.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.e.f = (float) Math.PI + $$4;
-      this.f.f = -$$4;
-      this.g.f = $$4;
-      this.h.f = -$$4;
-      this.i.f = $$4 - $$4 * 2.0F * $$1;
-      this.j.f = $$4 - $$4 * 2.0F * $$2;
-      this.g.b = azq.a($$4);
-      this.h.b = azq.a($$4);
-      this.i.b = azq.a($$4);
-      this.j.b = azq.a($$4);
+   public static gkx b(float $$0) {
+      return gkx.a(gfw.c(gkv.a), 64, 64).a(g).a(b).a(gla.scaling($$0));
+   }
+
+   public static gkx a(float $$0, boolean $$1) {
+      return gho.b($$1).a(g).a($$1 ? gfw.b : gla.a).a(gla.scaling($$0));
+   }
+
+   private static void a(glb $$0) {
+      glb $$1 = $$0.b("body");
+      gkw $$2 = gkw.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gkt.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gkt.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      glb $$3 = $$0.b("head_parts").b("head");
+      gkw $$4 = gkw.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gkt.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gkt.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(hdy $$0) {
+      super.a($$0);
+      this.i.k = $$0.a;
+      this.j.k = $$0.a;
    }
 }

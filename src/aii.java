@@ -1,29 +1,12 @@
-public class aii implements zj<agt> {
-   public static final za<vy, aii> a = zj.a(aii::a, aii::new);
-   private final int b;
-
-   public aii(int $$0) {
-      this.b = $$0;
-   }
-
-   private aii(vy $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vy $$0) {
-      $$0.c(this.b);
-   }
+public record aii(csg b) implements zo<aha> {
+   public static final ze<vy, aii> a = ze.a(csg.a, aii::b, aii::new);
 
    @Override
-   public zl<aii> a() {
-      return agr.ca;
+   public zq<aii> a() {
+      return agy.bU;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

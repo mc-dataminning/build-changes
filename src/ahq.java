@@ -1,45 +1,53 @@
-public class ahq implements zj<agt> {
-   public static final za<vy, ahq> a = zj.a(ahq::a, ahq::new);
-   private final iw b;
-   private final int c;
-   private final boolean d;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public ahq(iw $$0, int $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record ahq(int b, int c, short d, byte e, cwm f, Int2ObjectMap<wb> g, wb h) implements zo<aha> {
+   private static final int i = 128;
+   private static final ze<wp, Int2ObjectMap<wb>> j = zc.a(Int2ObjectOpenHashMap::new, zc.e.a(Short::intValue, Integer::shortValue), wb.b, 128);
+   public static final ze<wp, ahq> a = ze.a(zc.x, ahq::b, zc.h, ahq::e, zc.e, ahq::f, zc.c, ahq::g, cwm.h, ahq::h, j, ahq::i, wb.b, ahq::j, ahq::new);
 
-   private ahq(vy $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vy $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   public ahq(int b, int c, short d, byte e, cwm f, Int2ObjectMap<wb> g, wb h) {
+      g = Int2ObjectMaps.unmodifiable(g);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
    @Override
-   public zl<ahq> a() {
-      return agr.bG;
+   public zq<ahq> a() {
+      return agy.bz;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
-   }
-
-   public iw b() {
-      return this.b;
    }
 
    public int e() {
       return this.c;
    }
 
-   public boolean f() {
+   public short f() {
       return this.d;
+   }
+
+   public byte g() {
+      return this.e;
+   }
+
+   public cwm h() {
+      return this.f;
+   }
+
+   public Int2ObjectMap<wb> i() {
+      return this.g;
+   }
+
+   public wb j() {
+      return this.h;
    }
 }

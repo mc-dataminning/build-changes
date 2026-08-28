@@ -1,63 +1,59 @@
-import java.util.Arrays;
+import java.util.Set;
 
-public class gjx extends gic<her> {
-   private static final int a = 7;
-   private final glg[] b = new glg[7];
-   private final glg[] c = new glg[3];
-   private static final int[][] d = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] e = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+public class gjx extends giy<hgm> {
+   private static final String i = "egg_belly";
+   public static final gla a = new ggi(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
+   private final gkr j;
 
-   public gjx(glg $$0) {
+   public gjx(gkr $$0) {
       super($$0);
-      Arrays.setAll(this.b, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
+      this.j = $$0.b("egg_belly");
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static gkx a() {
+      gkz $$0 = new gkz();
+      glb $$1 = $$0.a();
+      $$1.a("head", gkw.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gkt.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         gkw.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         gkt.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", gkw.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gkt.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", gkw.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gkt.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", gkw.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gkt.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", gkw.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gkt.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gkw.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gkt.a(5.0F, 21.0F, -4.0F));
+      return gkx.a($$0, 128, 64);
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static glm a() {
-      glo $$0 = new glo();
-      glq $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            gll.c().a(e[$$4][0], e[$$4][1]).a((float)d[$$4][0] * -0.5F, 0.0F, (float)d[$$4][2] * -0.5F, (float)d[$$4][0], (float)d[$$4][1], (float)d[$$4][2]),
-            gli.a(0.0F, (float)(24 - d[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(d[$$4][2] + d[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), gll.c().a(20, 0).a(-5.0F, 0.0F, (float)d[2][2] * -0.5F, 10.0F, 8.0F, (float)d[2][2]), gli.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), gll.c().a(20, 11).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 4.0F, (float)d[4][2]), gli.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), gll.c().a(20, 18).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 5.0F, (float)d[1][2]), gli.a(0.0F, 19.0F, $$2[1]));
-      return glm.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(her $$0) {
+   public void a(hgm $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1].f = azq.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
-         this.b[$$1].b = azq.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
+      float $$1 = $$0.ag;
+      float $$2 = $$0.ah;
+      if ($$0.a) {
+         float $$3 = $$0.b ? 4.0F : 1.0F;
+         float $$4 = $$0.b ? 2.0F : 1.0F;
+         float $$5 = $$1 * 5.0F;
+         float $$6 = azz.b($$3 * $$5);
+         float $$7 = azz.b($$5);
+         this.f.f = -$$6 * 8.0F * $$2 * $$4;
+         this.g.f = $$6 * 8.0F * $$2 * $$4;
+         this.d.f = -$$7 * 3.0F * $$2;
+         this.e.f = $$7 * 3.0F * $$2;
+      } else {
+         float $$8 = 0.5F * $$2;
+         float $$9 = azz.b($$1 * 0.6662F * 0.6F) * $$8;
+         this.d.e = $$9;
+         this.e.e = -$$9;
+         this.f.g = -$$9;
+         this.g.g = $$9;
       }
 
-      this.c[0].f = this.b[2].f;
-      this.c[1].f = this.b[4].f;
-      this.c[1].b = this.b[4].b;
-      this.c[2].f = this.b[1].f;
-      this.c[2].b = this.b[1].b;
+      this.j.k = $$0.c;
+      if (this.j.k) {
+         this.v.c--;
+      }
    }
 }

@@ -1,83 +1,59 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdz implements cea {
+   private final byh a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class cdz<T extends bxw> extends ces {
-   protected final bye a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected eye d;
-   protected final chg e;
-   protected final Class<T> f;
-   protected final Predicate<bxw> g;
-   protected final Predicate<bxw> h;
-   private final cil k;
-
-   public cdz(bye $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bxc.e::test);
-   }
-
-   public cdz(bye $$0, Class<T> $$1, Predicate<bxw> $$2, float $$3, double $$4, double $$5, Predicate<bxw> $$6) {
+   public cdz(byh $$0) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.O();
-      this.a(EnumSet.of(ces.a.a));
-      this.k = cil.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
    }
 
-   public cdz(bye $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bxw> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b() {
-      this.b = a(this.a)
-         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if (this.b == null) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aV = this.a.dL();
+         this.c();
+         this.f = this.a.aX;
+         this.e = 0;
       } else {
-         ffs $$0 = cip.a(this.a, 16, 7, this.b.dt());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.h($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
+         if (this.e()) {
+            if (Math.abs(this.a.aX - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aX;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
    }
 
-   @Override
-   public boolean c() {
-      return !this.e.k();
+   private void b() {
+      this.a.aV = azz.c(this.a.aV, this.a.aX, (float)this.a.af());
    }
 
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
+   private void c() {
+      this.a.aX = azz.c(this.a.aX, this.a.aV, (float)this.a.af());
    }
 
-   @Override
-   public void e() {
-      this.b = null;
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azz.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.af() * (1.0F - $$1);
+      this.a.aV = azz.c(this.a.aV, this.a.aX, $$2);
    }
 
-   @Override
-   public void a() {
-      if (this.a.g((bwv)this.b) < 49.0) {
-         this.a.O().a(this.j);
-      } else {
-         this.a.O().a(this.i);
-      }
+   private boolean e() {
+      return !(this.a.cZ() instanceof byh);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dA() - this.a.K;
+      double $$1 = this.a.dG() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

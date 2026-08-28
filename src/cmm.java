@@ -1,264 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cmm {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<cif<? extends cie<? super cml>>> a = ImmutableList.of(cif.c, cif.f, cif.d, cif.y);
-   static final List<cgy<?>> b = ImmutableList.of(
-      cgy.o, cgy.n, cgy.F, cgy.u, cgy.aa, cgy.aS, cgy.aT, cgy.aU, cgy.aH, cgy.aR, cgy.h, cgy.s, new cgy[]{cgy.P, cgy.Q, cgy.S}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+public class cmm extends cmh {
+   private static final int bI = 47999;
+   private int bJ = 47999;
 
-   public static Predicate<daa> a() {
-      return $$0 -> $$0.a(axo.ac);
+   public cmm(bxn<? extends cmm> $$0, dkj $$1) {
+      super($$0, $$1);
    }
 
-   protected static byw<?> a(byw<cml> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(ctt.a));
-      $$0.b(ctt.b);
-      $$0.f();
-      return $$0;
+   @Override
+   public boolean gx() {
+      return true;
    }
 
-   static cml b(cml $$0) {
-      $$0.ec().b(cgy.aT);
-      $$0.ec().b(cgy.aS);
-      return $$0.a(cml.a.a);
+   @Nullable
+   @Override
+   protected cmh gI() {
+      return bxn.bz.a(this.dV(), bxm.e);
    }
 
-   private static void b(byw<cml> $$0) {
-      $$0.a(ctt.a, 0, ImmutableList.of(new cch(0.8F), new bzi<cml>(2.0F) {
-         protected void a(aru $$0, cml $$1, long $$2) {
-            cmm.b($$1);
-            super.b($$0, $$1, $$2);
-         }
-      }, new cax(500, 700), new bzt(cgy.Q)));
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bJ);
    }
 
-   private static void c(byw<cml> $$0) {
-      $$0.a(ctt.v, ImmutableList.of(Pair.of(0, new cmm.e())), Set.of(Pair.of(cgy.aa, cgz.b), Pair.of(cgy.aS, cgz.a), Pair.of(cgy.n, cgz.a)));
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.bJ = $$0.b("DespawnDelay", 47999);
    }
 
-   private static void d(byw<cml> $$0) {
-      $$0.a(
-         ctt.z,
-         ImmutableList.of(Pair.of(0, new cmm.a(160, 180)), Pair.of(0, new cmm.c(40))),
-         Set.of(Pair.of(cgy.aa, cgz.b), Pair.of(cgy.n, cgz.b), Pair.of(cgy.aT, cgz.a))
-      );
+   @Override
+   protected void D() {
+      super.D();
+      this.bF.a(1, new cfu(this, 2.0));
+      this.bG.a(1, new cmm.a(this));
+      this.bG.a(2, new cgu<>(this, cqd.class, true, ($$0, $$1) -> $$0.an() != bxn.bS));
+      this.bG.a(2, new cgu<>(this, cor.class, true));
    }
 
-   private static void e(byw<cml> $$0) {
-      $$0.a(
-         ctt.b,
-         ImmutableList.of(
-            Pair.of(0, new bzh(bxe.bk) {
-               @Override
-               protected void a(aru $$0, cjm $$1, long $$2) {
-                  cmm.b((cml)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new caa($$0x -> 1.25F, $$0x -> $$0x.n_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(aru $$0, bye $$1, long $$2) {
-                  cmm.b((cml)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new cat(45, 90)),
-            Pair.of(3, new cmm.b(40, 100)),
-            Pair.of(
-               4,
-               new cbk(
-                  ImmutableList.of(
-                     Pair.of(cbu.a(1.0F, 3), 2),
-                     Pair.of(new cmm.d(40, 80), 1),
-                     Pair.of(new cmm.f(40, 80), 1),
-                     Pair.of(cbm.a(bxe.bT, 6.0F), 1),
-                     Pair.of(cbf.a(1.0F), 1),
-                     Pair.of(new bzx(5, 20), 2)
-                  )
-               )
-            )
-         ),
-         Set.of(Pair.of(cgy.aT, cgz.b))
-      );
+   @Override
+   public void w(int $$0) {
+      this.bJ = $$0;
    }
 
-   static void a(cml $$0) {
-      $$0.ec().a(ImmutableList.of(ctt.z, ctt.v, ctt.b));
-   }
-
-   static class a extends bzn<cml> {
-      a(int $$0, int $$1) {
-         super(Map.of(cgy.aa, cgz.b, cgy.n, cgz.b, cgy.aT, cgz.a, cgy.aH, cgz.b), $$0, $$1);
+   @Override
+   protected void a(csi $$0) {
+      bxe $$1 = this.C();
+      if (!($$1 instanceof csa)) {
+         super.a($$0);
       }
+   }
 
-      protected boolean a(aru $$0, cml $$1) {
-         return $$1.gu();
+   @Override
+   public void k_() {
+      super.k_();
+      if (!this.dV().C) {
+         this.hh();
       }
+   }
 
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         return $$1.ec().c(cgy.aT).isPresent() && $$1.gx() && !$$1.gE();
-      }
-
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.f);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.ec().a(cgy.aH, bay.a, 9600L);
-         } else {
-            cmm.b($$1);
+   private void hh() {
+      if (this.hi()) {
+         this.bJ = this.hj() ? ((csa)this.C()).gC() - 1 : this.bJ - 1;
+         if (this.bJ <= 0) {
+            this.z();
+            this.aq();
          }
       }
    }
 
-   static class b extends bzn<cml> {
-      b(int $$0, int $$1) {
-         super(Map.of(cgy.aU, cgz.a), $$0, $$1);
-      }
-
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.b);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.a);
-         $$1.ec().b(cgy.aU);
-      }
+   private boolean hi() {
+      return !this.gL() && !this.hk() && !this.de();
    }
 
-   static class c extends bzn<cml> {
-      c(int $$0) {
-         super(Map.of(cgy.aa, cgz.b, cgy.n, cgz.b, cgy.aT, cgz.a, cgy.aH, cgz.a), $$0, $$0);
-      }
-
-      protected boolean a(aru $$0, cml $$1) {
-         return true;
-      }
-
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         return $$1.ec().c(cgy.aT).isPresent();
-      }
-
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.g);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(cml.a.a).w($$3);
-         $$1.ec().b(cgy.aT);
-         $$1.ec().a(cgy.aU, true);
-      }
+   private boolean hj() {
+      return this.C() instanceof csa;
    }
 
-   static class d extends bzn<cml> {
-      d(int $$0, int $$1) {
-         super(Map.of(cgy.aa, cgz.b, cgy.aT, cgz.b, cgy.aS, cgz.b, cgy.aU, cgz.b, cgy.s, cgz.b), $$0, $$1);
-      }
-
-      protected boolean a(aru $$0, cml $$1) {
-         return !$$1.x();
-      }
-
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.c);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.a);
-      }
+   private boolean hk() {
+      return this.T_() && !this.hj();
    }
 
-   static class e extends bzn<cml> {
-      e() {
-         super(Map.of(cgy.n, cgz.a, cgy.aa, cgz.b, cgy.aS, cgz.a), 600);
+   @Nullable
+   @Override
+   public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
+      if ($$2 == bxm.h) {
+         this.c_(0);
       }
 
-      protected boolean a(aru $$0, cml $$1) {
-         return $$1.gu();
+      if ($$3 == null) {
+         $$3 = new bwu.a(false);
       }
 
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         if (!$$1.gu()) {
-            $$1.a(cml.a.a);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected static class a extends chb {
+      private final cmh a;
+      private byf b;
+      private int c;
+
+      public a(cmh $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(cfb.a.d));
+      }
+
+      @Override
+      public boolean b() {
+         if (!this.a.T_()) {
+            return false;
+         } else if (!(this.a.C() instanceof csa $$1)) {
             return false;
          } else {
-            Optional<iw> $$3 = $$1.ec().c(cgy.n).map(chb::a).map(cbb::b);
-            Optional<iw> $$4 = $$1.ec().c(cgy.aS);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
+            this.b = $$1.er();
+            int $$2 = $$1.et();
+            return $$2 != this.c && this.a(this.b, ciu.a);
          }
       }
 
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.e);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         if ($$1.gx() && $$1.gu()) {
-            $$1.ec().a(cgy.aT, true);
+      @Override
+      public void d() {
+         this.e.g(this.b);
+         bxe $$0 = this.a.C();
+         if ($$0 instanceof csa) {
+            this.c = ((csa)$$0).et();
          }
 
-         $$1.ec().b(cgy.n);
-         $$1.ec().b(cgy.aS);
-      }
-   }
-
-   static class f extends bzn<cml> {
-      f(int $$0, int $$1) {
-         super(Map.of(cgy.n, cgz.b, cgy.aS, cgz.b, cgy.aH, cgz.b), $$0, $$1);
-      }
-
-      protected boolean a(aru $$0, cml $$1) {
-         return !$$1.n_() && $$1.gu();
-      }
-
-      protected boolean a(aru $$0, cml $$1, long $$2) {
-         return $$1.gu();
-      }
-
-      protected void b(aru $$0, cml $$1, long $$2) {
-         $$1.a(cml.a.d);
-      }
-
-      protected void c(aru $$0, cml $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(cml.a.a);
-         if ($$3) {
-            $$1.gw().ifPresent($$1x -> {
-               $$1.ec().a(cgy.aS, $$1x);
-               $$1.ec().a(cgy.n, new chb($$1x, 1.25F, 0));
-            });
-         }
+         super.d();
       }
    }
 }

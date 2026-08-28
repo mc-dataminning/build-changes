@@ -1,56 +1,233 @@
-public class fvu extends fuj {
-   private float a = 0.5F;
+import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-   public fvu(xc $$0, ftx $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
-   }
+public interface fvu extends fvv {
+   List<? extends fvv> aJ_();
 
-   public fvu(int $$0, int $$1, xc $$2, ftx $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
+   default Optional<fvv> d(double $$0, double $$1) {
+      for (fvv $$2 : this.aJ_()) {
+         if ($$2.a_($$0, $$1)) {
+            return Optional.of($$2);
+         }
+      }
 
-   public fvu(int $$0, int $$1, int $$2, int $$3, xc $$4, ftx $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fvu b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fvu b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fvu c() {
-      return this.b(0.0F);
-   }
-
-   public fvu e() {
-      return this.b(0.5F);
-   }
-
-   public fvu g() {
-      return this.b(1.0F);
+      return Optional.empty();
    }
 
    @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      xc $$4 = this.B();
-      ftx $$5 = this.a();
-      int $$6 = this.A();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.G() + (this.y() - 9) / 2;
-      azc $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   default boolean a(double $$0, double $$1, int $$2) {
+      Optional<fvv> $$3 = this.d($$0, $$1);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         fvv $$4 = $$3.get();
+         if ($$4.a($$0, $$1, $$2)) {
+            this.a($$4);
+            if ($$2 == 0) {
+               this.b_(true);
+            }
+         }
+
+         return true;
+      }
    }
 
-   private azc a(xc $$0, int $$1) {
-      ftx $$2 = this.a();
-      xh $$3 = $$2.a($$0, $$1 - $$2.a(xb.u));
-      return tv.a().a(xh.a($$3, xb.u));
+   @Override
+   default boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0 && this.aM_()) {
+         this.b_(false);
+         if (this.aN_() != null) {
+            return this.aN_().b($$0, $$1, $$2);
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return this.aN_() != null && this.aM_() && $$2 == 0 ? this.aN_().a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   boolean aM_();
+
+   void b_(boolean var1);
+
+   @Override
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.d($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   }
+
+   @Override
+   default boolean a(int $$0, int $$1, int $$2) {
+      return this.aN_() != null && this.aN_().a($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean c(int $$0, int $$1, int $$2) {
+      return this.aN_() != null && this.aN_().c($$0, $$1, $$2);
+   }
+
+   @Override
+   default boolean a(char $$0, int $$1) {
+      return this.aN_() != null && this.aN_().a($$0, $$1);
+   }
+
+   @Nullable
+   fvv aN_();
+
+   void a(@Nullable fvv var1);
+
+   @Override
+   default void a(boolean $$0) {
+   }
+
+   @Override
+   default boolean aO_() {
+      return this.aN_() != null;
+   }
+
+   @Nullable
+   @Override
+   default fth aP_() {
+      fvv $$0 = this.aN_();
+      return $$0 != null ? fth.a(this, $$0.aP_()) : null;
+   }
+
+   @Nullable
+   @Override
+   default fth a(fyb $$0) {
+      fvv $$1 = this.aN_();
+      if ($$1 != null) {
+         fth $$2 = $$1.a($$0);
+         if ($$2 != null) {
+            return fth.a(this, $$2);
+         }
+      }
+
+      if ($$0 instanceof fyb.c $$3) {
+         return this.a($$3);
+      } else {
+         return $$0 instanceof fyb.a $$4 ? this.a($$4) : null;
+      }
+   }
+
+   @Nullable
+   private fth a(fyb.c $$0) {
+      boolean $$1 = $$0.b();
+      fvv $$2 = this.aN_();
+      List<? extends fvv> $$3 = new ArrayList<>(this.aJ_());
+      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.K()));
+      int $$4 = $$3.indexOf($$2);
+      int $$5;
+      if ($$2 != null && $$4 >= 0) {
+         $$5 = $$4 + ($$1 ? 1 : 0);
+      } else if ($$1) {
+         $$5 = 0;
+      } else {
+         $$5 = $$3.size();
+      }
+
+      ListIterator<? extends fvv> $$8 = $$3.listIterator($$5);
+      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
+      Supplier<? extends fvv> $$10 = $$1 ? $$8::next : $$8::previous;
+
+      while ($$9.getAsBoolean()) {
+         fvv $$11 = $$10.get();
+         fth $$12 = $$11.a($$0);
+         if ($$12 != null) {
+            return fth.a(this, $$12);
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   private fth a(fyb.a $$0) {
+      fvv $$1 = this.aN_();
+      if ($$1 == null) {
+         fyd $$2 = $$0.b();
+         fyf $$3 = this.b($$2.b());
+         return fth.a(this, this.a($$3, $$2, null, $$0));
+      } else {
+         fyf $$4 = $$1.J();
+         return fth.a(this, this.a($$4, $$0.b(), $$1, $$0));
+      }
+   }
+
+   @Nullable
+   private fth a(fyf $$0, fyd $$1, @Nullable fvv $$2, fyb $$3) {
+      fyc $$4 = $$1.a();
+      fyc $$5 = $$4.a();
+      fyd $$6 = $$5.b();
+      int $$7 = $$0.b($$1.b());
+      List<fvv> $$8 = new ArrayList<>();
+
+      for (fvv $$9 : this.aJ_()) {
+         if ($$9 != $$2) {
+            fyf $$10 = $$9.J();
+            if ($$10.a($$0, $$5)) {
+               int $$11 = $$10.b($$1.b());
+               if ($$1.a($$11, $$7)) {
+                  $$8.add($$9);
+               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
+                  $$8.add($$9);
+               }
+            }
+         }
+      }
+
+      Comparator<fvv> $$12 = Comparator.comparing($$1x -> $$1x.J().b($$1.b()), $$1.d());
+      Comparator<fvv> $$13 = Comparator.comparing($$1x -> $$1x.J().b($$6.b()), $$6.d());
+      $$8.sort($$12.thenComparing($$13));
+
+      for (fvv $$14 : $$8) {
+         fth $$15 = $$14.a($$3);
+         if ($$15 != null) {
+            return $$15;
+         }
+      }
+
+      return this.b($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   private fth b(fyf $$0, fyd $$1, @Nullable fvv $$2, fyb $$3) {
+      fyc $$4 = $$1.a();
+      fyc $$5 = $$4.a();
+      List<Pair<fvv, Long>> $$6 = new ArrayList<>();
+      fye $$7 = fye.a($$4, $$0.b($$1), $$0.b($$5));
+
+      for (fvv $$8 : this.aJ_()) {
+         if ($$8 != $$2) {
+            fyf $$9 = $$8.J();
+            fye $$10 = fye.a($$4, $$9.b($$1.b()), $$9.b($$5));
+            if ($$1.a($$10.a($$4), $$7.a($$4))) {
+               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
+               $$6.add(Pair.of($$8, $$11));
+            }
+         }
+      }
+
+      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
+
+      for (Pair<fvv, Long> $$12 : $$6) {
+         fth $$13 = ((fvv)$$12.getFirst()).a($$3);
+         if ($$13 != null) {
+            return $$13;
+         }
+      }
+
+      return null;
    }
 }

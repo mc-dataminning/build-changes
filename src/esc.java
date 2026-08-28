@@ -1,29 +1,44 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 
-public abstract class esc extends esd {
-   private final esc.a d;
-   private final int e;
-   private final int f;
+public class esc {
+   public static final Codec<esc> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(alq.a(mi.bq), efo.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, esc::new)
+      )
+      .validate(esc::a);
+   public static final Codec<jg<esc>> b = aln.a(mi.bo, a);
+   private final Map<alq<efo>, efo> c;
 
-   protected esc(esc.a $$0, int $$1, int $$2, esd.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public esc(Map<alq<efo>, efo> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public Optional<esd.b> a(esd.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ehf.a.a, $$1 -> this.a($$1, $$0));
+   private ImmutableMap<alq<efo>, efo> c() {
+      Builder<alq<efo>, efo> $$0 = ImmutableMap.builder();
+      eik.a(this.c.keySet().stream()).forEach($$1 -> {
+         efo $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
+         }
+      });
+      return $$0.build();
    }
 
-   private void a(esv $$0, esd.a $$1) {
-      dje $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   public eik a() {
+      return new eik(this.c());
    }
 
-   @FunctionalInterface
-   protected interface a {
-      esh construct(eie var1, int var2, int var3);
+   public Optional<efo> b() {
+      return Optional.ofNullable(this.c.get(efo.b));
+   }
+
+   private static DataResult<esc> a(esc $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

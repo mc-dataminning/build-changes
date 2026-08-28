@@ -1,59 +1,58 @@
-import com.google.common.net.InetAddresses;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.Collection;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amu {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xc.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xc.c("commands.banip.failed"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final Codec<Map<alr, amt.a>> b = Codec.unboundedMap(alr.a, amt.a.a);
+   private final Map<alr, amt> c = Maps.newHashMap();
 
-   public static void a(CommandDispatcher<ek> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)el.a("ban-ip").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)el.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((ek)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(el.a("reason", fb.a()).executes($$0x -> a((ek)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fb.a($$0x, "reason"))))
-            )
-      );
+   @Nullable
+   public amt a(alr $$0) {
+      return this.c.get($$0);
    }
 
-   private static int a(ek $$0, String $$1, @Nullable xc $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         arv $$3 = $$0.l().ag().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.B(), $$2);
-         } else {
-            throw a.create();
-         }
+   public amt a(alr $$0, xg $$1) {
+      amt $$2 = new amt($$0, $$1);
+      this.c.put($$0, $$2);
+      return $$2;
+   }
+
+   public void a(amt $$0) {
+      this.c.remove($$0.a());
+   }
+
+   public Collection<alr> a() {
+      return this.c.keySet();
+   }
+
+   public Collection<amt> b() {
+      return this.c.values();
+   }
+
+   public ua a(ji.a $$0) {
+      Map<alr, amt.a> $$1 = ag.a(this.c, amt::f);
+      return (ua)b.encodeStart($$0.a(uo.a), $$1).getOrThrow();
+   }
+
+   public void a(ua $$0, ji.a $$1) {
+      Map<alr, amt.a> $$2 = b.parse($$1.a(uo.a), $$0).resultOrPartial($$0x -> a.error("Failed to parse boss bar events: {}", $$0x)).orElse(Map.of());
+      $$2.forEach(($$0x, $$1x) -> this.c.put($$0x, amt.a($$0x, $$1x)));
+   }
+
+   public void a(asc $$0) {
+      for (amt $$1 : this.c.values()) {
+         $$1.c($$0);
       }
    }
 
-   private static int b(ek $$0, String $$1, @Nullable xc $$2) throws CommandSyntaxException {
-      avr $$3 = $$0.l().ag().g();
-      if ($$3.a($$1)) {
-         throw b.create();
-      } else {
-         List<arv> $$4 = $$0.l().ag().b($$1);
-         avs $$5 = new avs($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> xc.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> xc.a("commands.banip.info", $$4.size(), ha.a($$4)), true);
-         }
-
-         for (arv $$6 : $$4) {
-            $$6.f.a(xc.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+   public void b(asc $$0) {
+      for (amt $$1 : this.c.values()) {
+         $$1.d($$0);
       }
    }
 }

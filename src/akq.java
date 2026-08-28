@@ -1,7 +1,18 @@
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 
-public interface akq {
-   void a(akn<?> var1);
+public class akq implements zo<akp> {
+   public static final akq a = new akq();
+   public static final ze<ByteBuf, akq> b = ze.a(a);
 
-   void a(List<akr.c<?>> var1);
+   private akq() {
+   }
+
+   @Override
+   public zq<akq> a() {
+      return akr.b;
+   }
+
+   public void a(akp $$0) {
+      $$0.a(this);
+   }
 }

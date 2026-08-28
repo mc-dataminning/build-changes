@@ -1,20 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface hmz {
+   hni a(alr var1);
 
-public record hmz(boolean e, boolean f) {
-   public static final boolean a = false;
-   public static final boolean b = false;
-   public static final Codec<hmz> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hmz::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hmz::b))
-            .apply($$0, hmz::new)
-   );
-   public static final aug<hmz> d = new aug<>("texture", c);
+   hnj a();
 
-   public boolean a() {
-      return this.e;
-   }
+   <T> T a(hmz.a<T> var1);
 
-   public boolean b() {
-      return this.f;
+   @FunctionalInterface
+   public interface a<T> {
+      T compute(hmz var1);
    }
 }

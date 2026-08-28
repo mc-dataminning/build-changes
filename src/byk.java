@@ -1,67 +1,103 @@
-import io.netty.buffer.ByteBuf;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public enum byk {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8);
+public interface byk {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   public static final Set<byk> j = Set.of(values());
-   public static final Set<byk> k = Set.of(e, d);
-   public static final Set<byk> l = Set.of(f, g, h, i);
-   public static final za<ByteBuf, Set<byk>> m = yy.g.a(byk::a, byk::a);
-   private final int n;
+   int a();
 
-   @SafeVarargs
-   public static Set<byk> a(Set<byk>... $$0) {
-      HashSet<byk> $$1 = new HashSet<>();
+   void a(int var1);
 
-      for (Set<byk> $$2 : $$0) {
-         $$1.addAll($$2);
-      }
+   @Nullable
+   UUID b();
 
-      return $$1;
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(ua $$0) {
+      $$0.a("AngerTime", this.a());
+      $$0.b("AngryAt", ka.a, this.b());
    }
 
-   private byk(final int $$0) {
-      this.n = $$0;
-   }
-
-   private int a() {
-      return 1 << this.n;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<byk> a(int $$0) {
-      Set<byk> $$1 = EnumSet.noneOf(byk.class);
-
-      for (byk $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
+   default void a(dkj $$0, ua $$1) {
+      this.a($$1.b("AngerTime", 0));
+      if ($$0 instanceof asb $$2) {
+         UUID $$4 = $$1.<UUID>a("AngryAt", ka.a).orElse(null);
+         this.a($$4);
+         if (($$4 != null ? $$2.b($$4) : null) instanceof byf $$6) {
+            this.g($$6);
          }
       }
-
-      return $$1;
    }
 
-   public static int a(Set<byk> $$0) {
-      int $$1 = 0;
+   default void a(asb $$0, boolean $$1) {
+      byf $$2 = this.f();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eH()) && $$3 != null && $$0.b($$3) instanceof byh) {
+         this.ab_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
 
-      for (byk $$2 : $$0) {
-         $$1 |= $$2.a();
+         if (this.a() > 0 && ($$2 == null || $$2.an() != bxn.bT || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.ab_();
+            }
+         }
       }
-
-      return $$1;
    }
+
+   default boolean a(byf $$0, asb $$1) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.an() == bxn.bT && this.a_($$1) ? true : $$0.cG().equals(this.b());
+      }
+   }
+
+   default boolean a_(asb $$0) {
+      return $$0.O().c(dkf.Q) && this.af_() && this.b() == null;
+   }
+
+   default boolean af_() {
+      return this.a() > 0;
+   }
+
+   default void a_(asb $$0, csi $$1) {
+      if ($$0.O().c(dkf.P)) {
+         if ($$1.cG().equals(this.b())) {
+            this.ab_();
+         }
+      }
+   }
+
+   default void ag_() {
+      this.ab_();
+      this.c();
+   }
+
+   default void ab_() {
+      this.a(null);
+      this.a(null);
+      this.g(null);
+      this.a(0);
+   }
+
+   @Nullable
+   byf er();
+
+   void a(@Nullable byf var1);
+
+   void g(@Nullable byf var1);
+
+   boolean c(byf var1);
+
+   @Nullable
+   byf f();
 }

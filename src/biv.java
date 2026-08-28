@@ -1,19 +1,29 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public class biv extends bbm {
-   private final Function<String, String> a;
-
-   public biv(Schema $$0, String $$1, Function<String, String> $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+public class biv extends DataFix {
+   public biv(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsMenuBlurrinessFix",
+         this.getInputSchema().getType(bjm.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> {
+                  int $$1 = this.a($$0xx.asString("0.5"));
+                  return $$0xx.createString(String.valueOf($$1));
+               }))
+      );
+   }
+
+   private int a(String $$0) {
+      try {
+         return Math.round(Float.parseFloat($$0) * 10.0F);
+      } catch (NumberFormatException var3) {
+         return 5;
+      }
    }
 }

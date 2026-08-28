@@ -1,20 +1,21 @@
-public class dya extends dye {
-   private final cyy a;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dya(iw $$0, ebg $$1) {
-      this($$0, $$1, ((dmx)$$1.b()).b());
+public class dya extends doh {
+   public static final MapCodec<dya> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czi.q.fieldOf("color").forGetter(dya::b), t()).apply($$0, dya::new));
+   private final czi c;
+
+   @Override
+   public MapCodec<dya> a() {
+      return b;
    }
 
-   public dya(iw $$0, ebg $$1, cyy $$2) {
-      super(dyg.z, $$0, $$1);
-      this.a = $$2;
+   protected dya(czi $$0, ebp.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   public ace a() {
-      return ace.a(this);
-   }
-
-   public cyy c() {
-      return this.a;
+   public czi b() {
+      return this.c;
    }
 }

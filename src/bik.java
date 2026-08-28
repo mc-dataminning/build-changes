@@ -2,29 +2,29 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.types.Type;
+import java.util.Optional;
 
 public class bik extends DataFix {
-   public bik(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bik(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsKeyTranslationFix",
-         this.getInputSchema().getType(bjd.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
-                     if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
-                        String $$2 = ((Dynamic)$$1x.getValue()).asString("");
-                        if (!$$2.startsWith("key.mouse") && !$$2.startsWith("scancode.")) {
-                           return Pair.of((Dynamic)$$1x.getKey(), $$0x.createString("key.keyboard." + $$2.substring("key.".length())));
-                        }
-                     }
+   private static String a(String $$0) {
+      return $$0.equals("health") ? "hearts" : "integer";
+   }
 
-                     return Pair.of((Dynamic)$$1x.getKey(), (Dynamic)$$1x.getValue());
-                  }).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond)))).result().orElse($$0x))
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bjm.J);
+      return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+            Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
+            if ($$1.isEmpty()) {
+               String $$2 = $$0xx.get("CriteriaName").asString("");
+               String $$3 = a($$2);
+               return $$0xx.set("RenderType", $$0xx.createString($$3));
+            } else {
+               return $$0xx;
+            }
+         }));
    }
 }

@@ -1,80 +1,99 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ekn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aru, ekn.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aru, ekn.b>() {
-         public ekn.b a(aru $$0) {
-            return new ekn.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
+public class ekn extends ekw<eni> {
+   private static final ebz a = ebz.a(dnq.L);
+   private final ebq b = dnq.L.m();
+   private final ebq c = dnq.ki.m();
+   private final ebq d = dnq.bc.m();
+   private final ebq ap = dnq.J.m();
 
-   public static void a(aru $$0) {
-      try {
-         ((ekn.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
+   public ekn(Codec<eni> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(eky<eni> $$0) {
+      dli $$1 = $$0.b();
+      iw $$2 = $$0.e();
+      $$2 = $$2.d();
+
+      while ($$1.v($$2) && $$2.v() > $$1.K_() + 2) {
+         $$2 = $$2.e();
       }
-   }
 
-   public static void a(aru $$0, ejx<?, ?> $$1, Optional<erh> $$2) {
-      try {
-         ((ekn.b)b.get($$0)).a().computeInt(new ekn.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
-
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.aj().a().toString();
-               boolean $$3 = $$0.p().x();
-               jt<erh> $$4 = $$0.J_().f(mi.bb);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<alk>map(alj::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.v($$2.b($$3, -1, $$4)) && $$1.v($$2.b($$3, -2, $$4))) {
+                  return false;
+               }
             }
-         );
+         }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.ap, 2);
+
+         for (jc $$8 : jc.c.a) {
+            $$1.a($$2.a($$8), this.ap, 2);
+         }
+
+         iw $$9 = $$2.e();
+         $$1.a($$9, this.b, 2);
+
+         for (jc $$10 : jc.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<iw> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
+         bai $$18 = $$0.d();
+         b($$1, ag.a($$17, $$18).c(1));
+         b($$1, ag.a($$17, $$18).c(2));
+         return true;
+      }
    }
 
-   static record a(ejx<?, ?> a, Optional<erh> b) {
-   }
-
-   static record b(Object2IntMap<ekn.a> a, MutableInt b) {
+   private static void b(dli $$0, iw $$1) {
+      $$0.a($$1, dnq.M.m(), 3);
+      $$0.a($$1, dyq.O).ifPresent($$1x -> $$1x.a(fap.aX, $$1.a()));
    }
 }

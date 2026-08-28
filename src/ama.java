@@ -1,9 +1,15 @@
-public interface ama {
-   String ae();
+import java.util.List;
 
-   String M();
+public enum ama {
+   a,
+   b,
+   c,
+   d;
 
-   int N();
+   private static final List<ama> e = List.of(values());
+   private static final ju.b f = ju.a(mh.aF);
 
-   int O();
+   public static jn<ama> a() {
+      return new jn<>(e).a(a, f);
+   }
 }

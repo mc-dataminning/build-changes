@@ -1,45 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class ejt extends ekm<emi> {
-   public ejt(Codec<emi> $$0) {
-      super($$0);
+public record ejt<WC extends ejo>(ejv<WC> d, WC e) {
+   public static final Codec<ejt<?>> a = mh.N.q().dispatch($$0 -> $$0.d, ejv::c);
+   public static final Codec<jg<ejt<?>>> b = aln.a(mi.aK, a);
+   public static final Codec<jk<ejt<?>>> c = jv.a(mi.aK, a);
+
+   public boolean a(bai $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(eko<emi> $$0) {
-      iw $$1 = $$0.e();
-      dky $$2 = $$0.b();
-      azz $$3 = $$0.d();
-      emi $$4 = $$0.f();
-      if ($$1.v() < $$2.K_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (iw $$7 : iw.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
+   public boolean a(ejq $$0, edn $$1, Function<iw, jg<dlm>> $$2, bai $$3, ehb $$4, djo $$5, edm $$6) {
+      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private boolean a(dka $$0, iw $$1, azz $$2) {
-      iw $$3 = $$1.e();
-      ebg $$4 = $$0.a_($$3);
-      return $$4.a(dng.lk) ? $$2.h() : $$4.c($$0, $$3, jc.b);
+   public ejv<WC> a() {
+      return this.d;
    }
 
-   private void a(dka $$0, iw $$1, azz $$2, emi $$3) {
-      if ($$0.v($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 260);
-      }
+   public WC b() {
+      return this.e;
    }
 }

@@ -1,99 +1,22 @@
-public abstract class fuk extends fug {
-   private static final fwa a = new fwa(alk.b("widget/text_field"), alk.b("widget/text_field_highlighted"));
-   private static final int c = 4;
+public class fuk extends fty {
+   protected final fvl a;
 
-   public fuk(int $$0, int $$1, int $$2, int $$3, xc $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fuk(int $$0, int $$1, int $$2, int $$3, fvl $$4, fty.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, xf.a);
+   }
+
+   public fuk(int $$0, int $$1, int $$2, int $$3, fvl $$4, fty.c $$5, xg $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
+   }
+
+   public fuk(int $$0, int $$1, fvl $$2, fty.c $$3, xg $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return super.a($$0, $$1, $$2) || $$3;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.g();
-         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
-         if ($$5 != this.g()) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(ftz $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.c($$0);
-         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.g(), 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.e();
-         this.b($$0);
-      }
-   }
-
-   protected void b(ftz $$0) {
-      this.a($$0);
-   }
-
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
-   }
-
-   @Override
-   protected int l() {
-      return this.H();
-   }
-
-   @Override
-   protected int n() {
-      return this.c() + this.b();
-   }
-
-   protected void c(ftz $$0) {
-      this.a($$0, this.F(), this.G(), this.A(), this.y());
-   }
-
-   protected void a(ftz $$0, int $$1, int $$2, int $$3, int $$4) {
-      alk $$5 = a.a(this.E(), this.aN_());
-      $$0.a(gsn::H, $$5, $$1, $$2, $$3, $$4);
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
-   }
-
-   protected abstract int c();
-
-   protected abstract void c(ftz var1, int var2, int var3, float var4);
-
-   protected int e() {
-      return this.F() + this.a();
-   }
-
-   protected int p() {
-      return this.G() + this.a();
-   }
-
-   @Override
-   public void a(hqf $$0) {
+   public void b(ftk $$0, int $$1, int $$2, float $$3) {
+      alr $$4 = this.a.a(this.E(), this.D());
+      $$0.a(gry::H, $$4, this.F(), this.G(), this.g, this.h);
    }
 }

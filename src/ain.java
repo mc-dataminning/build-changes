@@ -1,20 +1,60 @@
-public record ain(short b, daa c) implements zj<agt> {
-   public static final za<wn, ain> a = za.a(yy.e, ain::b, daa.a(daa.h), ain::e, ain::new);
+import javax.annotation.Nullable;
 
-   public ain(int $$0, daa $$1) {
-      this((short)$$0, $$1);
+public class ain implements zo<aha> {
+   public static final ze<vy, ain> a = zo.a(ain::a, ain::new);
+   private final ain.a b;
+   @Nullable
+   private final alr c;
+
+   public ain(ain.a $$0, @Nullable alr $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static ain a(aj $$0) {
+      return new ain(ain.a.a, $$0.a());
+   }
+
+   public static ain b() {
+      return new ain(ain.a.b, null);
+   }
+
+   private ain(vy $$0) {
+      this.b = $$0.b(ain.a.class);
+      if (this.b == ain.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vy $$0) {
+      $$0.a(this.b);
+      if (this.b == ain.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public zl<ain> a() {
-      return agr.cf;
+   public zq<ain> a() {
+      return agy.bZ;
    }
 
-   public void a(agt $$0) {
+   public void a(aha $$0) {
       $$0.a(this);
    }
 
-   public daa e() {
+   public ain.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public alr f() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,18 +1,17 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmu extends bky {
+public class bmu extends blh {
    public bmu(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:glow_squid");
-      $$0.register($$1, "minecraft:glow_item_frame", $$1x -> DSL.optionalFields("Item", bjd.t.in($$0)));
+      $$1.remove("minecraft:zombie_pigman");
+      $$0.registerSimple($$1, "minecraft:zombified_piglin");
       return $$1;
    }
 }

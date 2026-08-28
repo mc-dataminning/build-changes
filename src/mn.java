@@ -55,7 +55,7 @@ public class mn {
    }
 
    static {
-      alm.a();
+      alt.a();
    }
 
    public class a {

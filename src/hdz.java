@@ -1,5 +1,7 @@
-public class hdz extends hfr {
-   public boolean a;
-   public final bwm b = new bwm();
-   public final bwm c = new bwm();
+import javax.annotation.Nullable;
+
+public class hdz extends hec {
+   public boolean a = true;
+   @Nullable
+   public fgc b;
 }

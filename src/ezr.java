@@ -1,203 +1,52 @@
-import com.google.common.collect.Iterables;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ezr {
+   private static final int J = 12741452;
+   public static final jg<ezq> a = a("player", "player", false, true);
+   public static final jg<ezq> b = a("frame", "frame", true, true);
+   public static final jg<ezq> c = a("red_marker", "red_marker", false, true);
+   public static final jg<ezq> d = a("blue_marker", "blue_marker", false, true);
+   public static final jg<ezq> e = a("target_x", "target_x", true, false);
+   public static final jg<ezq> f = a("target_point", "target_point", true, false);
+   public static final jg<ezq> g = a("player_off_map", "player_off_map", false, true);
+   public static final jg<ezq> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final jg<ezq> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final jg<ezq> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final jg<ezq> k = a("banner_white", "white_banner", true, true);
+   public static final jg<ezq> l = a("banner_orange", "orange_banner", true, true);
+   public static final jg<ezq> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final jg<ezq> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final jg<ezq> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final jg<ezq> p = a("banner_lime", "lime_banner", true, true);
+   public static final jg<ezq> q = a("banner_pink", "pink_banner", true, true);
+   public static final jg<ezq> r = a("banner_gray", "gray_banner", true, true);
+   public static final jg<ezq> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final jg<ezq> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final jg<ezq> u = a("banner_purple", "purple_banner", true, true);
+   public static final jg<ezq> v = a("banner_blue", "blue_banner", true, true);
+   public static final jg<ezq> w = a("banner_brown", "brown_banner", true, true);
+   public static final jg<ezq> x = a("banner_green", "green_banner", true, true);
+   public static final jg<ezq> y = a("banner_red", "red_banner", true, true);
+   public static final jg<ezq> z = a("banner_black", "black_banner", true, true);
+   public static final jg<ezq> A = a("red_x", "red_x", true, false);
+   public static final jg<ezq> B = a("village_desert", "desert_village", true, eye.w.ak, false, true);
+   public static final jg<ezq> C = a("village_plains", "plains_village", true, eye.w.ak, false, true);
+   public static final jg<ezq> D = a("village_savanna", "savanna_village", true, eye.w.ak, false, true);
+   public static final jg<ezq> E = a("village_snowy", "snowy_village", true, eye.w.ak, false, true);
+   public static final jg<ezq> F = a("village_taiga", "taiga_village", true, eye.w.ak, false, true);
+   public static final jg<ezq> G = a("jungle_temple", "jungle_temple", true, eye.w.ak, false, true);
+   public static final jg<ezq> H = a("swamp_hut", "swamp_hut", true, eye.w.ak, false, true);
+   public static final jg<ezq> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-public class ezr implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final ezc.a b;
-   private final Map<ezd<?>, Optional<ezc>> c = new HashMap<>();
-   private final DataFixer d;
-   private final ji.a e;
-   private final Path f;
-   private CompletableFuture<?> g = CompletableFuture.completedFuture(null);
-
-   public ezr(ezc.a $$0, Path $$1, DataFixer $$2, ji.a $$3) {
-      this.b = $$0;
-      this.d = $$2;
-      this.f = $$1;
-      this.e = $$3;
+   public static jg<ezq> a(jt<ezq> $$0) {
+      return a;
    }
 
-   private Path a(String $$0) {
-      return this.f.resolve($$0 + ".dat");
+   private static jg<ezq> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   public <T extends ezc> T a(ezd<T> $$0) {
-      T $$1 = this.b($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         T $$2 = (T)$$0.b().apply(this.b);
-         this.a($$0, $$2);
-         return $$2;
-      }
-   }
-
-   @Nullable
-   public <T extends ezc> T b(ezd<T> $$0) {
-      Optional<ezc> $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = Optional.ofNullable(this.c($$0));
-         this.c.put($$0, $$1);
-      }
-
-      return (T)$$1.orElse(null);
-   }
-
-   @Nullable
-   private <T extends ezc> T c(ezd<T> $$0) {
-      try {
-         Path $$1 = this.a($$0.a());
-         if (Files.exists($$1)) {
-            ua $$2 = this.a($$0.a(), $$0.d(), ac.b().d().c());
-            ali<va> $$3 = this.e.a(uo.a);
-            return (T)$$0.c()
-               .apply(this.b)
-               .parse($$3, $$2.a("data"))
-               .resultOrPartial($$1x -> a.error("Failed to parse saved data for '{}': {}", $$0, $$1x))
-               .orElse(null);
-         }
-      } catch (Exception var5) {
-         a.error("Error loading saved data: {}", $$0, var5);
-      }
-
-      return null;
-   }
-
-   public <T extends ezc> void a(ezd<T> $$0, T $$1) {
-      this.c.put($$0, Optional.of($$1));
-      $$1.f();
-   }
-
-   public ua a(String $$0, bbf $$1, int $$2) throws IOException {
-      ua var8;
-      try (
-         InputStream $$3 = Files.newInputStream(this.a($$0));
-         PushbackInputStream $$4 = new PushbackInputStream(new ayz($$3), 2);
-      ) {
-         ua $$5;
-         if (this.a($$4)) {
-            $$5 = un.a($$4, uj.a());
-         } else {
-            try (DataInputStream $$6 = new DataInputStream($$4)) {
-               $$5 = un.a($$6);
-            }
-         }
-
-         int $$9 = up.b($$5, 1343);
-         var8 = $$1.a(this.d, $$5, $$9, $$2);
-      }
-
-      return var8;
-   }
-
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
-   }
-
-   public CompletableFuture<?> a() {
-      Map<ezd<?>, ua> $$0 = this.c();
-      if ($$0.isEmpty()) {
-         return CompletableFuture.completedFuture(null);
-      } else {
-         int $$1 = ag.g();
-         int $$2 = $$0.size();
-         if ($$2 > $$1) {
-            this.g = this.g.thenCompose($$3 -> {
-               List<CompletableFuture<?>> $$4 = new ArrayList<>($$1);
-               int $$5 = azq.e($$2, $$1);
-
-               for (List<Entry<ezd<?>, ua>> $$6 : Iterables.partition($$0.entrySet(), $$5)) {
-                  $$4.add(CompletableFuture.runAsync(() -> {
-                     for (Entry<ezd<?>, ua> $$1xx : $$6) {
-                        this.a($$1xx.getKey(), $$1xx.getValue());
-                     }
-                  }, ag.i()));
-               }
-
-               return CompletableFuture.allOf($$4.toArray(CompletableFuture[]::new));
-            });
-         } else {
-            this.g = this.g
-               .thenCompose(
-                  $$1x -> CompletableFuture.allOf(
-                        $$0.entrySet()
-                           .stream()
-                           .map($$0xx -> CompletableFuture.runAsync(() -> this.a((ezd<?>)$$0xx.getKey(), (ua)$$0xx.getValue()), ag.i()))
-                           .toArray(CompletableFuture[]::new)
-                     )
-               );
-         }
-
-         return this.g;
-      }
-   }
-
-   private Map<ezd<?>, ua> c() {
-      Map<ezd<?>, ua> $$0 = new Object2ObjectArrayMap();
-      ali<va> $$1 = this.e.a(uo.a);
-      this.c.forEach(($$2, $$3) -> $$3.filter(ezc::g).ifPresent($$3x -> {
-            $$0.put($$2, this.a($$2, $$3x, $$1));
-            $$3x.a(false);
-         }));
-      return $$0;
-   }
-
-   private <T extends ezc> ua a(ezd<T> $$0, ezc $$1, ali<va> $$2) {
-      Codec<T> $$3 = $$0.c().apply(this.b);
-      ua $$4 = new ua();
-      $$4.a("data", (va)$$3.encodeStart($$2, $$1).getOrThrow());
-      up.e($$4);
-      return $$4;
-   }
-
-   private void a(ezd<?> $$0, ua $$1) {
-      Path $$2 = this.a($$0.a());
-
-      try {
-         un.a($$1, $$2);
-      } catch (IOException var5) {
-         a.error("Could not save data to {}", $$2.getFileName(), var5);
-      }
-   }
-
-   public void b() {
-      this.a().join();
-   }
-
-   @Override
-   public void close() {
-      this.b();
+   private static jg<ezq> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      alq<ezq> $$6 = alq.a(mi.R, alr.b($$0));
+      ezq $$7 = new ezq(alr.b($$1), $$2, $$3, $$5, $$4);
+      return jt.b(mh.ap, $$6, $$7);
    }
 }

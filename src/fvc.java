@@ -1,39 +1,23 @@
-import javax.annotation.Nullable;
+public class fvc {
+   public static final fvc a = new fvc("Merry X-mas!");
+   public static final fvc b = new fvc("Happy new year!");
+   public static final fvc c = new fvc("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class fvc extends ful {
-   private final ftx a;
-
-   public fvc(ftx $$0, xc $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fvc(String $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   protected void b(ftz $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.F() + this.A() / 2;
-      int $$5 = this.G() + this.y() / 2;
-      xc $$6 = this.B();
-      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
-      String $$7 = fzu.a(ag.c());
-      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
-   }
-
-   @Override
-   protected void a(fyk $$0) {
-   }
-
-   @Override
-   public void a(hqf $$0) {
-   }
-
-   @Override
-   public boolean E() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public ftw a(fyq $$0) {
-      return null;
+   public void a(ftk $$0, int $$1, fti $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - azz.e(azz.a((float)(ag.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

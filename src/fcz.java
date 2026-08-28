@@ -1,36 +1,56 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class fcz extends fbw {
+public class fcz extends fcg {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<fcz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(kk.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fcz::new)
+      $$0 -> a($$0)
+            .and($$0.group(fez.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, fcz::new)
    );
-   private final Map<kk<?>, Boolean> b;
+   private final fey c;
+   private final boolean d;
 
-   private fcz(List<fds> $$0, Map<kk<?>, Boolean> $$1) {
+   private fcz(List<fec> $$0, fey $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected daa a(daa $$0, faj $$1) {
-      $$0.a(kl.q, dde.c, $$0x -> {
-         for (Entry<kk<?>, Boolean> $$1x : this.b.entrySet()) {
-            boolean $$2 = $$1x.getValue();
-            $$0x = $$0x.a($$1x.getKey(), !$$2);
-         }
+   public fci<fcz> b() {
+      return fcj.n;
+   }
 
-         return $$0x;
-      });
+   @Override
+   public Set<bbk<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public dak a(dak $$0, fat $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - azz.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(azz.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
       return $$0;
    }
 
-   @Override
-   public fby<fcz> b() {
-      return fbz.P;
+   public static fcg.a<?> a(fey $$0) {
+      return a($$1 -> new fcz($$1, $$0, false));
+   }
+
+   public static fcg.a<?> a(fey $$0, boolean $$1) {
+      return a($$2 -> new fcz($$2, $$0, $$1));
    }
 }

@@ -1,109 +1,73 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.List;
 
-public class elo extends ekm<enh> {
-   public elo(Codec<enh> $$0) {
+public class elo extends ekw<eng> {
+   public elo(Codec<eng> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eko<enh> $$0) {
-      dky $$1 = $$0.b();
+   public boolean a(eky<eng> $$0) {
+      dli $$1 = $$0.b();
       iw $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+      bai $$3 = $$0.d();
+      eng $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         azz $$3 = $$0.d();
-         iw $$4 = $$0.e();
-         enh $$5 = $$0.f();
-         iw.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+         List<jc> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            iw.a $$6 = $$2.k();
 
-         return true;
-      }
-   }
+            for (jc $$7 : $$5) {
+               $$6.g($$2);
+               List<jc> $$8 = $$4.a($$3, $$7.g());
 
-   private static boolean a(dky $$0, enh $$1, iw $$2) {
-      iw.a $$3 = $$2.k();
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  ebq $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
 
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jc.b);
-         ebg $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
+            }
+
             return false;
          }
       }
-
-      return true;
    }
 
-   private static boolean a(ebg $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axl.a);
-      }
-   }
+   public static boolean a(dli $$0, iw $$1, ebq $$2, eng $$3, bai $$4, List<jc> $$5) {
+      iw.a $$6 = $$1.k();
 
-   private static boolean a(dky $$0, ede $$1, enh $$2, azz $$3, iw.a $$4, iw $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jc.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            iw $$7 = $$4.e();
-            if ($$0.b_($$7).a(axl.b) || !$$0.a_($$7).e()) {
+      for (jc $$7 : $$5) {
+         ebq $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            ebq $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
                return false;
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            $$0.a($$1, $$9, 3);
+            $$0.z($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
             }
+
+            return true;
          }
       }
 
       return false;
    }
 
-   private static void a(iw $$0, int $$1, dky $$2, enh $$3, azz $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      iw.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dky $$0, enh $$1, azz $$2, int $$3, int $$4, iw.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<ebg> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dky $$0, enh $$1, azz $$2, iw $$3, iw.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.v($$4)) {
-            ebg $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jc.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
+   private static boolean c(ebq $$0) {
+      return $$0.l() || $$0.a(dnq.J);
    }
 }

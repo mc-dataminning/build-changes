@@ -1,74 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-public record dkt(ua d, Optional<dkt.a> e, Optional<bxh> f) {
-   public static final String a = "entity";
-   public static final Codec<dkt> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ua.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dkt.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bxh.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dkt::new)
-   );
-   public static final Codec<btd<dkt>> c = btd.a(b);
+public class dkt {
+   private final Long2ObjectMap<List<asc>> a = new Long2ObjectOpenHashMap();
+   private final Map<asc, dkt.a> b = Maps.newHashMap();
+   private final arf c;
 
-   public dkt() {
-      this(new ua(), Optional.empty(), Optional.empty());
+   public dkt(arf $$0) {
+      this.c = $$0;
    }
 
-   public dkt(ua d, Optional<dkt.a> e, Optional<bxh> f) {
-      Optional<alk> $$3 = d.a("id", alk.a);
-      if ($$3.isPresent()) {
-         d.a("id", alk.a, $$3.get());
-      } else {
-         d.r("id");
-      }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   private List<asc> a(djo $$0) {
+      return (List<asc>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
    }
 
-   public ua a() {
-      return this.d;
+   public void a(djo $$0, byi $$1) {
+      for (asc $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dkt.a()).a($$1);
+      }
    }
 
-   public Optional<dkt.a> b() {
-      return this.e;
+   public boolean a(byi $$0, djo $$1) {
+      for (asc $$2 : this.a($$1)) {
+         dkt.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public Optional<bxh> c() {
-      return this.f;
-   }
+   static class a {
+      private final Object2IntMap<byi> a = new Object2IntOpenHashMap(byi.values().length);
 
-   public static record a(azi<Integer> b, azi<Integer> c) {
-      private static final azi<Integer> d = new azi<>(0, 15);
-      public static final Codec<dkt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dkt.a::new)
-      );
-
-      private static DataResult<azi<Integer>> a(azi<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      public void a(byi $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
       }
 
-      private static MapCodec<azi<Integer>> a(String $$0) {
-         return azi.a.lenientOptionalFieldOf($$0, d).validate(dkt.a::a);
-      }
-
-      public boolean a(iw $$0, aru $$1) {
-         return this.b.a($$1.a(dki.b, $$0)) && this.c.a($$1.a(dki.a, $$0));
-      }
-
-      public azi<Integer> a() {
-         return this.b;
-      }
-
-      public azi<Integer> b() {
-         return this.c;
+      public boolean b(byi $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
       }
    }
 }

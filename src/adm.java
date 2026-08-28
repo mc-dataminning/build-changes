@@ -1,109 +1,69 @@
-public class adm implements zj<aby> {
-   public static final za<wn, adm> a = zj.a(adm::a, adm::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final boolean k;
-   private final lx l;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public <T extends lx> adm(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      this.l = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
-      this.i = $$10;
+public class adm implements zo<acf> {
+   public static final ze<vy, adm> a = zo.a(adm::a, adm::new);
+   public static final adm.a b = new adm.a(0);
+   public static final adm.a c = new adm.a(1);
+   public static final adm.a d = new adm.a(2);
+   public static final adm.a e = new adm.a(3);
+   public static final adm.a f = new adm.a(4);
+   public static final adm.a g = new adm.a(5);
+   public static final adm.a h = new adm.a(6);
+   public static final adm.a i = new adm.a(7);
+   public static final adm.a j = new adm.a(8);
+   public static final adm.a k = new adm.a(9);
+   public static final adm.a l = new adm.a(10);
+   public static final adm.a m = new adm.a(11);
+   public static final adm.a n = new adm.a(12);
+   public static final adm.a o = new adm.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final adm.a u;
+   private final float v;
+
+   public adm(adm.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
    }
 
-   private adm(wn $$0) {
-      this.j = $$0.readBoolean();
-      this.k = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.l = lz.bl.decode($$0);
+   private adm(vy $$0) {
+      this.u = (adm.a)adm.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
    }
 
-   private void a(wn $$0) {
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.q(this.i);
-      lz.bl.encode($$0, this.l);
+   private void a(vy $$0) {
+      $$0.l(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public zl<adm> a() {
-      return agr.M;
+   public zq<adm> a() {
+      return agy.G;
    }
 
-   public void a(aby $$0) {
+   public void a(acf $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.j;
+   public adm.a b() {
+      return this.u;
    }
 
-   public boolean e() {
-      return this.k;
+   public float e() {
+      return this.v;
    }
 
-   public double f() {
-      return this.b;
-   }
+   public static class a {
+      static final Int2ObjectMap<adm.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public double g() {
-      return this.c;
-   }
-
-   public double h() {
-      return this.d;
-   }
-
-   public float i() {
-      return this.e;
-   }
-
-   public float j() {
-      return this.f;
-   }
-
-   public float k() {
-      return this.g;
-   }
-
-   public float l() {
-      return this.h;
-   }
-
-   public int m() {
-      return this.i;
-   }
-
-   public lx n() {
-      return this.l;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

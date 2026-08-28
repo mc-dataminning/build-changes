@@ -1,49 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
+public interface zw extends abz {
+   void a(aaa var1);
 
-public record zw(UUID c, String d, String e, boolean f, Optional<xc> g) implements zj<zp> {
-   public static final int a = 40;
-   public static final za<ByteBuf, zw> b = za.a(ka.g, zw::b, yy.p, zw::e, yy.b(40), zw::f, yy.b, zw::g, xe.f.a(yy::a), zw::h, zw::new);
+   void a(aab var1);
 
-   public zw(UUID c, String d, String e, boolean f, Optional<xc> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
-   }
+   void a(zx var1);
 
-   @Override
-   public zl<zw> a() {
-      return aab.g;
-   }
+   void a(zz var1);
 
-   public void a(zp $$0) {
-      $$0.a(this);
-   }
+   void a(aad var1);
 
-   public UUID b() {
-      return this.c;
-   }
+   void a(aac var1);
 
-   public String e() {
-      return this.d;
-   }
+   void a(aah var1);
 
-   public String f() {
-      return this.e;
-   }
+   void a(aaf var1);
 
-   public boolean g() {
-      return this.f;
-   }
+   void a(aag var1);
 
-   public Optional<xc> h() {
-      return this.g;
-   }
+   void a(zy var1);
+
+   void a(aae var1);
 }

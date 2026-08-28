@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class awh implements ej {
-   private static final String b = "Rcon";
-   private static final xc c = xc.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
-
-   public awh(MinecraftServer $$0) {
-      this.e = $$0;
-   }
-
-   public void e() {
-      this.d.setLength(0);
-   }
-
-   public String f() {
-      return this.d.toString();
-   }
-
-   public ek g() {
-      aru $$0 = this.e.J();
-      return new ek(this, ffs.a($$0.aa()), ffr.a, $$0, 4, "Rcon", c, this.e, null);
+public class awh extends awg<GameProfile, awi> {
+   public awh(File $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(xc $$0) {
-      this.d.append($$0.getString());
+   protected awf<GameProfile> a(JsonObject $$0) {
+      return new awi($$0);
+   }
+
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
    @Override
-   public boolean x_() {
-      return true;
+   public String[] a() {
+      return this.d().stream().map(awf::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   @Override
-   public boolean y_() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.m();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

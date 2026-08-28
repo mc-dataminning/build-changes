@@ -1,36 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record fel(float c) implements feo {
-   public static final MapCodec<fel> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fel::c)).apply($$0, fel::new));
-   public static final Codec<fel> b = Codec.FLOAT.xmap(fel::new, fel::c);
+public record fel(fey b, fas c) implements fec {
+   public static final MapCodec<fel> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fez.a.fieldOf("value").forGetter(fel::c), fas.a.fieldOf("range").forGetter(fel::d)).apply($$0, fel::new)
+   );
 
    @Override
-   public fen b() {
-      return fep.b;
+   public fed b() {
+      return fee.r;
    }
 
    @Override
-   public float b(faj $$0) {
+   public Set<bbk<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public boolean a(fat $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
+
+   public static fec.a a(fey $$0, fas $$1) {
+      return () -> new fel($$0, $$1);
+   }
+
+   public fey c() {
+      return this.b;
+   }
+
+   public fas d() {
       return this.c;
-   }
-
-   public static fel a(float $$0) {
-      return new fel($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fel)$$0).c, this.c) == 0 : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

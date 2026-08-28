@@ -1,51 +1,81 @@
-public enum grp {
-   a(new grp.b(grp.a.f, grp.a.e, grp.a.a), new grp.b(grp.a.f, grp.a.e, grp.a.d), new grp.b(grp.a.c, grp.a.e, grp.a.d), new grp.b(grp.a.c, grp.a.e, grp.a.a)),
-   b(new grp.b(grp.a.f, grp.a.b, grp.a.d), new grp.b(grp.a.f, grp.a.b, grp.a.a), new grp.b(grp.a.c, grp.a.b, grp.a.a), new grp.b(grp.a.c, grp.a.b, grp.a.d)),
-   c(new grp.b(grp.a.c, grp.a.b, grp.a.d), new grp.b(grp.a.c, grp.a.e, grp.a.d), new grp.b(grp.a.f, grp.a.e, grp.a.d), new grp.b(grp.a.f, grp.a.b, grp.a.d)),
-   d(new grp.b(grp.a.f, grp.a.b, grp.a.a), new grp.b(grp.a.f, grp.a.e, grp.a.a), new grp.b(grp.a.c, grp.a.e, grp.a.a), new grp.b(grp.a.c, grp.a.b, grp.a.a)),
-   e(new grp.b(grp.a.f, grp.a.b, grp.a.d), new grp.b(grp.a.f, grp.a.e, grp.a.d), new grp.b(grp.a.f, grp.a.e, grp.a.a), new grp.b(grp.a.f, grp.a.b, grp.a.a)),
-   f(new grp.b(grp.a.c, grp.a.b, grp.a.a), new grp.b(grp.a.c, grp.a.e, grp.a.a), new grp.b(grp.a.c, grp.a.e, grp.a.d), new grp.b(grp.a.c, grp.a.b, grp.a.d));
+import java.util.Optional;
 
-   private static final grp[] g = ag.a(new grp[6], $$0 -> {
-      $$0[grp.a.e] = a;
-      $$0[grp.a.b] = b;
-      $$0[grp.a.d] = c;
-      $$0[grp.a.a] = d;
-      $$0[grp.a.f] = e;
-      $$0[grp.a.c] = f;
-   });
-   private final grp.b[] h;
+public class grp implements grn {
+   private final grn.a a;
+   private final grn.a b = grn.a(new fla(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public static grp a(jc $$0) {
-      return g[$$0.d()];
+   public grp(grn.a $$0) {
+      this.a = $$0;
    }
 
-   private grp(final grp.b... $$0) {
-      this.h = $$0;
+   @Override
+   public flg getBuffer(gry $$0) {
+      if ($$0.S()) {
+         flg $$1 = this.b.getBuffer($$0);
+         return new grp.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         flg $$2 = this.a.getBuffer($$0);
+         Optional<gry> $$3 = $$0.R();
+         if ($$3.isPresent()) {
+            flg $$4 = this.b.getBuffer($$3.get());
+            grp.a $$5 = new grp.a($$4, this.c, this.d, this.e, this.f);
+            return flh.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   public grp.b a(int $$0) {
-      return this.h[$$0];
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static final class a {
-      public static final int a = jc.d.d();
-      public static final int b = jc.b.d();
-      public static final int c = jc.f.d();
-      public static final int d = jc.c.d();
-      public static final int e = jc.a.d();
-      public static final int f = jc.e.d();
+   public void a() {
+      this.b.b();
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   static record a(flg a, int b) implements flg {
+      public a(flg $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, ayh.a($$4, $$1, $$2, $$3));
+      }
 
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      @Override
+      public flg a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public flg a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public flg a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public flg a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public flg b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public flg b(float $$0, float $$1, float $$2) {
+         return this;
       }
    }
 }

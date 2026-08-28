@@ -1,63 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record dgb(int f, int g, List<dgd> h, dgd i, dgd j) implements dfx {
-   public static final MapCodec<dgb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("width").forGetter(dgb::b),
-               Codec.INT.fieldOf("height").forGetter(dgb::c),
-               dgd.a.listOf().fieldOf("ingredients").forGetter(dgb::f),
-               dgd.a.fieldOf("result").forGetter(dgb::d),
-               dgd.a.fieldOf("crafting_station").forGetter(dgb::e)
-            )
-            .apply($$0, dgb::new)
-   );
-   public static final za<wn, dgb> b = za.a(yy.h, dgb::b, yy.h, dgb::c, dgd.b.a(yy.a()), dgb::f, dgd.b, dgb::d, dgd.b, dgb::e, dgb::new);
-   public static final dfx.a<dgb> c = new dfx.a<>(a, b);
-
-   public dgb(int f, int g, List<dgd> h, dgd i, dgd j) {
-      if (h.size() != f * g) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.f = f;
-         this.g = g;
-         this.h = h;
-         this.i = i;
-         this.j = j;
-      }
+public class dgb extends dft {
+   public dgb(String $$0, dex $$1, dak $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public dfx.a<dgb> a() {
-      return c;
+   public dfm<dgb> b() {
+      return dfm.f;
    }
 
    @Override
-   public boolean a(cvj $$0) {
-      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dfx.super.a($$0);
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public List<dgd> f() {
-      return this.h;
+   public dfl<dgb> a() {
+      return dfl.s;
    }
 
    @Override
-   public dgd d() {
-      return this.i;
+   public List<dgh> g() {
+      return List.of(new dgr(this.k().c(), this.c(), new dgn.d(dao.xC)));
+   }
+
+   public dgn c() {
+      return new dgn.f(this.l());
    }
 
    @Override
-   public dgd e() {
-      return this.j;
+   public dfe h() {
+      return dfd.k;
    }
 }
